@@ -22,12 +22,12 @@
  {
   "test": "desktop: Q1>Q2 est : bâtiment t_guet rendu à l'écran (pixels)",
   "ok": true,
-  "detail": "(np.float64(0.89), 43407)"
+  "detail": "(np.float64(0.89), 43937)"
  },
  {
   "test": "desktop: Q1>Q2 est : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.69), np.float64(0.46)]"
+  "detail": "[np.float64(0.69), np.float64(0.47)]"
  },
  {
   "test": "desktop: Q1>Q2 est : HUD = quartier",
@@ -97,7 +97,7 @@
  {
   "test": "desktop: Q2>Q1 ouest : bâtiment halle rendu à l'écran (pixels)",
   "ok": true,
-  "detail": "(np.float64(0.97), 47344)"
+  "detail": "(np.float64(0.96), 54017)"
  },
  {
   "test": "desktop: Q2>Q1 ouest : joueur et Nilo visibles (pixels)",
@@ -142,7 +142,7 @@
  {
   "test": "desktop: Q1>Q3 nord : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.86), np.float64(0.86)]"
+  "detail": "[np.float64(0.86), np.float64(0.85)]"
  },
  {
   "test": "desktop: Q1>Q3 nord : HUD = quartier",
@@ -197,7 +197,7 @@
  {
   "test": "desktop: Q3>Q1 sud : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.7), np.float64(0.62)]"
+  "detail": "[np.float64(0.69), np.float64(0.62)]"
  },
  {
   "test": "desktop: Q3>Q1 sud : HUD = quartier",
@@ -297,12 +297,12 @@
  {
   "test": "desktop: Q4>Q1 nord : bâtiment garages rendu à l'écran (pixels)",
   "ok": true,
-  "detail": "(np.float64(0.95), 61848)"
+  "detail": "(np.float64(0.95), 62208)"
  },
  {
   "test": "desktop: Q4>Q1 nord : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.87), np.float64(0.86)]"
+  "detail": "[np.float64(0.86), np.float64(0.85)]"
  },
  {
   "test": "desktop: Q4>Q1 nord : HUD = quartier",
@@ -372,7 +372,7 @@
  {
   "test": "mobile: Q2 : sprite joueur retourné en miroir selon le sens (pixels)",
   "ok": true,
-  "detail": "(np.float64(194.4), np.float64(17.9))"
+  "detail": "(np.float64(193.3), np.float64(18.1))"
  },
  {
   "test": "mobile: Q2 : entrée camouflée du guet par geste sur la porte peinte",
@@ -422,7 +422,7 @@
  {
   "test": "mobile: Q2>Q1 ouest : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.91), np.float64(0.9)]"
+  "detail": "[np.float64(0.92), np.float64(0.89)]"
  },
  {
   "test": "mobile: Q2>Q1 ouest : HUD = quartier",
@@ -462,7 +462,7 @@
  {
   "test": "mobile: Q1>Q3 nord : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.9), np.float64(0.89)]"
+  "detail": "[np.float64(0.9), np.float64(0.87)]"
  },
  {
   "test": "mobile: Q1>Q3 nord : HUD = quartier",
@@ -517,7 +517,7 @@
  {
   "test": "mobile: Q3>Q1 sud : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.71), np.float64(0.59)]"
+  "detail": "[np.float64(0.71), np.float64(0.57)]"
  },
  {
   "test": "mobile: Q3>Q1 sud : HUD = quartier",
@@ -552,7 +552,7 @@
  {
   "test": "mobile: Q1>Q4 sud : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.86), np.float64(0.88)]"
+  "detail": "[np.float64(0.86), np.float64(0.87)]"
  },
  {
   "test": "mobile: Q1>Q4 sud : HUD = quartier",

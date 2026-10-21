@@ -1,0 +1,267 @@
+[
+ {
+  "test": "desktop: contraste #hud .cell sur sable clair ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "contraste 7.23, luminance du sable dessous 0.24 (vue 44,10)"
+ },
+ {
+  "test": "desktop: contraste #locbox sur sable clair ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "contraste 7.74, luminance du sable dessous 0.213 (vue 14,26)"
+ },
+ {
+  "test": "desktop: contraste #k-sac sur sable clair ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "contraste 11.68, luminance du sable dessous 0.255 (vue 30,2)"
+ },
+ {
+  "test": "desktop: fond de panneau non teinté en ambre (équilibre des couleurs conservé)",
+  "ok": true,
+  "detail": "0.114"
+ },
+ {
+  "test": "desktop: exploration : UI ≤ 12 % de l'écran",
+  "ok": true,
+  "detail": "0.042"
+ },
+ {
+  "test": "desktop: exploration : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "(0.86, 0.86)"
+ },
+ {
+  "test": "desktop: HUD : PV, $, quartier, Nilo",
+  "ok": true,
+  "detail": "['27/40', '40 $', 'Dusk-Town · La Pompe', 'NILO · suit']"
+ },
+ {
+  "test": "desktop: interface minimale par clic : HUD retiré, scène rendue à la place (pixels)",
+  "ok": true,
+  "detail": "PV 27/40 · 40 $"
+ },
+ {
+  "test": "desktop: minimal : UI ≤ 4 % de l'écran",
+  "ok": true,
+  "detail": "0.005"
+ },
+ {
+  "test": "desktop: retour à l'interface complète (touche H)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Journal ouvert par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Journal sur un bord, scène visible (≤ 35 %)",
+  "ok": true,
+  "detail": "(0.078, 0.86)"
+ },
+ {
+  "test": "desktop: Carte ouverte par geste, quartier courant marqué",
+  "ok": true,
+  "detail": "×CARTE · DUSK-TOWN?La Pompe> ici??Nord en haut. Les quartier"
+ },
+ {
+  "test": "desktop: fermeture du panneau par ×",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: dialogue ancré en bas à gauche, pas au centre",
+  "ok": true,
+  "detail": "[12, 520, 572, 786]"
+ },
+ {
+  "test": "desktop: contraste du texte de dialogue ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "14.16"
+ },
+ {
+  "test": "desktop: pendant le dialogue : Hector et le joueur visibles (pixels)",
+  "ok": true,
+  "detail": "(0.65, 0.81)"
+ },
+ {
+  "test": "desktop: choix numérotés (1> …)",
+  "ok": true,
+  "detail": "4"
+ },
+ {
+  "test": "desktop: Sac ouvert, offres du marchand listées",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: sac et dialogue sans chevauchement",
+  "ok": true,
+  "detail": "([12, 520, 572, 786], [688, 585.875, 1268, 742])"
+ },
+ {
+  "test": "desktop: achat par geste dans le sac (−3 $, HUD à jour)",
+  "ok": true,
+  "detail": "(40, 37)"
+ },
+ {
+  "test": "desktop: choix au clavier (chiffre) ferme le dialogue",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: touche I ouvre SAC",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: touche J ouvre JOURNAL",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: touche M ouvre CARTE",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Échap ferme le panneau",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bouton d'action discret (≤ 56 px de haut, en bas)",
+  "ok": true,
+  "detail": "[589.390625, 746, 690.609375, 786]"
+ },
+ {
+  "test": "desktop: sortie par le bouton d'action",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: aucune erreur console/réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile: contraste #hud .cell sur sable clair ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "contraste 6.66, luminance du sable dessous 0.368 (vue 22,18)"
+ },
+ {
+  "test": "mobile: contraste #locbox sur sable clair ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "contraste 7.36, luminance du sable dessous 0.288 (vue 14,18)"
+ },
+ {
+  "test": "mobile: contraste #k-sac sur sable clair ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "contraste 15.12, luminance du sable dessous 0.187 (vue 6,18)"
+ },
+ {
+  "test": "mobile: fond de panneau non teinté en ambre (équilibre des couleurs conservé)",
+  "ok": true,
+  "detail": "0.109"
+ },
+ {
+  "test": "mobile: exploration : UI ≤ 22 % de l'écran",
+  "ok": true,
+  "detail": "0.126"
+ },
+ {
+  "test": "mobile: exploration : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "(0.89, 0.89)"
+ },
+ {
+  "test": "mobile: HUD : PV, $, quartier, Nilo",
+  "ok": true,
+  "detail": "['27/40', '40 $', 'Dusk-Town · La Pompe', 'NILO · suit']"
+ },
+ {
+  "test": "mobile: interface minimale par tap : HUD retiré, scène rendue à la place (pixels)",
+  "ok": true,
+  "detail": "PV 27/40 · 40 $"
+ },
+ {
+  "test": "mobile: minimal : UI ≤ 4 % de l'écran",
+  "ok": true,
+  "detail": "0.018"
+ },
+ {
+  "test": "mobile: retour à l'interface complète (tap)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Journal ouvert par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Journal sur un bord, scène visible (≤ 45 %)",
+  "ok": true,
+  "detail": "(0.173, 0.9)"
+ },
+ {
+  "test": "mobile: Carte ouverte par geste, quartier courant marqué",
+  "ok": true,
+  "detail": "×CARTE · DUSK-TOWN?La Pompe> ici??Nord en haut. Les quartier"
+ },
+ {
+  "test": "mobile: fermeture du panneau par ×",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: dialogue ancré en bas, pas au centre",
+  "ok": true,
+  "detail": "[8, 461, 382, 788]"
+ },
+ {
+  "test": "mobile: contraste du texte de dialogue ≥ 4,5:1 (pixels)",
+  "ok": true,
+  "detail": "15.99"
+ },
+ {
+  "test": "mobile: pendant le dialogue : Hector et le joueur visibles (pixels)",
+  "ok": true,
+  "detail": "(0.65, 0.8)"
+ },
+ {
+  "test": "mobile: choix numérotés (1> …)",
+  "ok": true,
+  "detail": "4"
+ },
+ {
+  "test": "mobile: Sac ouvert, offres du marchand listées",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: mobile : un seul panneau à la fois (dialogue masqué sous le sac)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: achat par geste dans le sac (−3 $, HUD à jour)",
+  "ok": true,
+  "detail": "(40, 37)"
+ },
+ {
+  "test": "mobile: bouton d'action discret (≤ 56 px de haut, en bas)",
+  "ok": true,
+  "detail": "[144.390625, 746, 245.609375, 786]"
+ },
+ {
+  "test": "mobile: sortie par le bouton d'action",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: aucune erreur console/réseau",
+  "ok": true,
+  "detail": "[]"
+ }
+]

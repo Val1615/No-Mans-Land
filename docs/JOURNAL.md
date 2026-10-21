@@ -230,3 +230,9 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - Correctif : bâtiment du Transit renommé « Maison murée » ; l'indice de Teo donne le quartier, le chemin (ruelle de la pompe vers le nord, place devant la porte d'acier), le repère (toit de tuiles à gauche de la place, clé gravée) et le nom affiché, « l'atelier ».
 - Nouveau test `tests/entrances_walk.py` : depuis le départ de partie, sans placement par commande, trajet réel jusqu'à chacune des 8 entrées de la ville (2 variantes : geste sur la porte peinte, tap au seuil + bouton), jonctions comprises, bureau et mobile ; contrôle que l'indice de Teo nomme le lieu révélé et aucun autre bâtiment.
 - Vérifié LIVE (commit 26de913) : entrances_walk 48/48 ; captures captures/dusk-v7/entrees-live/. Local : town_pixels 129/129, dusk_q1_check 138/138.
+
+## v8 — Interface direction A (radio ambre)
+- HUD PV/$/Nilo/lieu, touches Sac/Journal/Carte/Minimal, dialogue bas-gauche à choix numérotés, mode minimal (H + bouton mobile), Journal et Carte simples, Sac avec achats existants. Troc non implémenté (signalé, pas de mécanique inventée).
+- Polices OFL : IBM Plex Mono, VT323.
+- Nouveau test `tests/ui_pixels.py` (53/53) : contraste sur sable clair ≥4,5:1, scène visible, couverture, gestes réels. Masques UI des suites existantes adaptés au nouveau HUD.
+- Détails : `docs/ui/INTERFACE_V8.md`.
