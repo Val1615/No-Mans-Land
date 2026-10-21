@@ -5,6 +5,7 @@ Jeu : **2175**. Roman : **5 octobre 2202** (Ch. I §288). Un fait du roman décr
 
 ## 0. Décisions de Valentin (21/10/2026)
 - **[décision] L'entrée dépend de la race choisie** : humain = **refusé** à la douane ; mutant = **attaqué à vue** ; augmenté ou cyborg = **possède l'implant**, passe la douane.
+- **[décision]** Nilo retiré dès le début (débloqué plus tard par une quête) : la question « Nilo selon la race » est close.
 - **[décision]** Humain ou mutant : un villageois de Dusk-Town conseille de passer **par la Sous-Ville** et oriente vers un contact.
 - **[décision]** La quête **s'arrête une fois entré dans la ville**. D'abord la carte, la quête ensuite.
 - **[décision]** Premier quartier après la douane : **Center-Town**.
@@ -100,6 +101,5 @@ La quête « La porte d'acier » mène jusqu'à **l'entrée dans la ville** (dou
 `docs/villes/steel/ambiance/` : `01-entree-sarcophage.jpg` (le dôme y paraît trop petit), `02-centre-neons.jpg` (contient du faux texte et un bâtiment-dôme : à ignorer), `03-sous-ville.jpg` (vue plus basse que v4), `04-upper-town.jpg` (angle v4), `04b-upper-town-ciel-artificiel.jpg` (vue frontale pour le ciel synthétique, angle non v4).
 
 ## 10. Questions restantes pour Valentin
-1. **Nilo selon la race.** (a) Nilo suit toujours, il passe là où passe le joueur ; (b) Nilo n'a pas d'implant : avec un joueur augmenté ou cyborg, il doit passer par la Sous-Ville ou attendre à Dusk-Town ; (c) Nilo est mutant caché. **Recommandation : (a)** pour le premier lot (zéro système en plus), (b) plus tard si on veut une séparation.
-2. **Mutant attaqué à vue, sans système de combat.** (a) Scène : sommation, tirs, le joueur s'enfuit vers le désert, PV perdus, retour à la route ; (b) écran « capturé » puis relâché dans la Sous-Ville (§1087) : ça devient l'entrée elle-même ; (c) le joueur est repéré de loin et ne peut pas approcher (avertissement de Sol). **Recommandation : (a)**, simple, lisible, et Sol prend le relais.
-3. **Le choix de race au début.** (a) écran de choix avant Dusk-Town, modifiable seulement en nouvelle partie ; (b) race tirée de l'origine ou d'un dialogue d'ouverture ; (c) choix tardif, au moment du départ pour Steel. **Recommandation : (a)**.
+Closes le 21/10/2026 [décision] : Nilo retiré dès le début ; race choisie à la création ; combat tour par tour (voir `docs/systemes/MENU_CREATION_COMBAT.md`).
+1. **Mutant attaqué à vue à la douane.** (a) premier combat du jeu : on peut fuir vers le désert ; (b) capturé puis jeté dans la Sous-Ville (Ch. IV §1087), qui devient son entrée ; (c) repéré de loin, il ne peut pas approcher. **Recommandation : (a)**, avec (b) si le joueur tombe à 0 PV.

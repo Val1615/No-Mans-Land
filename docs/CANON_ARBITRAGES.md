@@ -170,3 +170,11 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 - **[décision]** La quête s'arrête une fois entré dans la ville ; la carte d'abord, la quête ensuite.
 - **[décision]** Premier quartier après la douane : **Center-Town**.
 - Appuis canon : contrôle par « implants d'immatriculation » (Ch. VII §1652) ; sans implant, inconnu d'IO (Ch. I §157) ; mutants abattus sans sommation hors Sous-Ville (Ch. I §105, Ch. VII §1716) ; mutants capturés « balancés dans la Sous Ville » (Ch. IV §1087) ; routes propres pour sortir de la Sous-Ville (Ch. VII §1716).
+
+## 9 quinquies. Menu, création, combat (décisions de Valentin, 21/10/2026)
+- **[décision]** Nilo est retiré dès le début ; il sera débloqué plus tard par une quête.
+- **[décision]** Race choisie au début du jeu, dans la création de personnage (humain, mutant, augmenté, cyborg).
+- **[décision]** Menu principal : Nouveau jeu, Continuer, Charger / Sauvegarder, Options, Codex, Crédits, Quitter (adapté au web).
+- **[décision]** Création de personnage de cRPG : nom, race, origine, compétences, points d'attributs.
+- **[décision]** Combat tactique au tour par tour façon vieux Fallout, plus fluide et moins lent.
+- Détails proposés : `docs/systemes/MENU_CREATION_COMBAT.md`.
