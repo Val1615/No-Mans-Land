@@ -27,12 +27,17 @@
  {
   "test": "desktop: Q1>Q2 est : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.68), np.float64(0.45)]"
+  "detail": "[np.float64(0.69), np.float64(0.47)]"
  },
  {
   "test": "desktop: Q1>Q2 est : HUD = quartier",
   "ok": true,
   "detail": "Dusk-Town · Le Transit"
+ },
+ {
+  "test": "desktop: t_guet_door : porte peinte alignée sur l'ouverture (< 0,8 m)",
+  "ok": true,
+  "detail": "0.39 m"
  },
  {
   "test": "desktop: Q1>Q2 est : pas de rebond sur la jonction d'arrivée",
@@ -42,7 +47,7 @@
  {
   "test": "desktop: Q2 : sprite joueur retourné en miroir selon le sens (pixels)",
   "ok": true,
-  "detail": "(np.float64(168.0), np.float64(40.6))"
+  "detail": "(np.float64(141.5), np.float64(44.3))"
  },
  {
   "test": "desktop: Q2 : entrée camouflée du guet par geste sur la porte peinte",
@@ -97,7 +102,7 @@
  {
   "test": "desktop: Q2>Q1 ouest : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.86), np.float64(0.83)]"
+  "detail": "[np.float64(0.86), np.float64(0.84)]"
  },
  {
   "test": "desktop: Q2>Q1 ouest : HUD = quartier",
@@ -137,12 +142,17 @@
  {
   "test": "desktop: Q1>Q3 nord : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.86), np.float64(0.86)]"
+  "detail": "[np.float64(0.86), np.float64(0.85)]"
  },
  {
   "test": "desktop: Q1>Q3 nord : HUD = quartier",
   "ok": true,
   "detail": "Dusk-Town · Le Scellé"
+ },
+ {
+  "test": "desktop: s_atelier_door : porte peinte alignée sur l'ouverture (< 0,8 m)",
+  "ok": true,
+  "detail": "0.44 m"
  },
  {
   "test": "desktop: Q1>Q3 nord : pas de rebond sur la jonction d'arrivée",
@@ -187,7 +197,7 @@
  {
   "test": "desktop: Q3>Q1 sud : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.69), np.float64(0.62)]"
+  "detail": "[np.float64(0.7), np.float64(0.62)]"
  },
  {
   "test": "desktop: Q3>Q1 sud : HUD = quartier",
@@ -222,12 +232,17 @@
  {
   "test": "desktop: Q1>Q4 sud : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.83), np.float64(0.85)]"
+  "detail": "[np.float64(0.84), np.float64(0.85)]"
  },
  {
   "test": "desktop: Q1>Q4 sud : HUD = quartier",
   "ok": true,
   "detail": "Dusk-Town · Les Sables"
+ },
+ {
+  "test": "desktop: d_citerne_door : porte peinte alignée sur l'ouverture (< 0,8 m)",
+  "ok": true,
+  "detail": "0.06 m"
  },
  {
   "test": "desktop: Q1>Q4 sud : pas de rebond sur la jonction d'arrivée",
@@ -287,7 +302,7 @@
  {
   "test": "desktop: Q4>Q1 nord : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.86), np.float64(0.86)]"
+  "detail": "[np.float64(0.87), np.float64(0.85)]"
  },
  {
   "test": "desktop: Q4>Q1 nord : HUD = quartier",
@@ -345,6 +360,11 @@
   "detail": "Dusk-Town · Le Transit"
  },
  {
+  "test": "mobile: t_guet_door : porte peinte alignée sur l'ouverture (< 0,8 m)",
+  "ok": true,
+  "detail": "0.39 m"
+ },
+ {
   "test": "mobile: Q1>Q2 est : pas de rebond sur la jonction d'arrivée",
   "ok": true,
   "detail": ""
@@ -352,7 +372,7 @@
  {
   "test": "mobile: Q2 : sprite joueur retourné en miroir selon le sens (pixels)",
   "ok": true,
-  "detail": "(np.float64(192.9), np.float64(14.7))"
+  "detail": "(np.float64(192.9), np.float64(15.5))"
  },
  {
   "test": "mobile: Q2 : entrée camouflée du guet par geste sur la porte peinte",
@@ -402,7 +422,7 @@
  {
   "test": "mobile: Q2>Q1 ouest : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.92), np.float64(0.9)]"
+  "detail": "[np.float64(0.91), np.float64(0.89)]"
  },
  {
   "test": "mobile: Q2>Q1 ouest : HUD = quartier",
@@ -450,6 +470,11 @@
   "detail": "Dusk-Town · Le Scellé"
  },
  {
+  "test": "mobile: s_atelier_door : porte peinte alignée sur l'ouverture (< 0,8 m)",
+  "ok": true,
+  "detail": "0.44 m"
+ },
+ {
   "test": "mobile: Q1>Q3 nord : pas de rebond sur la jonction d'arrivée",
   "ok": true,
   "detail": ""
@@ -492,7 +517,7 @@
  {
   "test": "mobile: Q3>Q1 sud : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.7), np.float64(0.6)]"
+  "detail": "[np.float64(0.71), np.float64(0.59)]"
  },
  {
   "test": "mobile: Q3>Q1 sud : HUD = quartier",
@@ -527,12 +552,17 @@
  {
   "test": "mobile: Q1>Q4 sud : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.87), np.float64(0.9)]"
+  "detail": "[np.float64(0.87), np.float64(0.89)]"
  },
  {
   "test": "mobile: Q1>Q4 sud : HUD = quartier",
   "ok": true,
   "detail": "Dusk-Town · Les Sables"
+ },
+ {
+  "test": "mobile: d_citerne_door : porte peinte alignée sur l'ouverture (< 0,8 m)",
+  "ok": true,
+  "detail": "0.06 m"
  },
  {
   "test": "mobile: Q1>Q4 sud : pas de rebond sur la jonction d'arrivée",
@@ -592,7 +622,7 @@
  {
   "test": "mobile: Q4>Q1 nord : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.9), np.float64(0.89)]"
+  "detail": "[np.float64(0.9), np.float64(0.88)]"
  },
  {
   "test": "mobile: Q4>Q1 nord : HUD = quartier",
