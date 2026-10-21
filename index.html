@@ -11,19 +11,25 @@
 <body>
 <canvas id="view"></canvas>
 <div id="labels"></div>
-<div id="hud">
-  <div class="row"><span id="loc"></span><span class="tag" title="Volumes et textures de bâtiments provisoires">PROVISOIRE</span></div>
-  <div class="row stats"><span id="hp"></span><span id="money"></span><span id="inv"></span></div>
-  <div id="msg" role="status" aria-live="polite"></div>
+<!-- v8 : interface « radio de récupération » (docs/ui/propositions/direction-A.png). Cadres fins, fonds semi-transparents, ambre réservé au texte. -->
+<div id="hud" class="rp">
+  <div class="cell"><div class="lbl">Points de vie</div><b id="hp"></b><div class="bar"><i id="hpbar"></i></div></div>
+  <div class="cell"><div class="lbl">Dollars</div><b id="money"></b></div>
+  <div class="cell nilo"><img id="nilo-portrait" src="./assets/reused/portrait-nilo.webp" alt=""><div><div class="lbl">Compagnon</div><span id="nilo"></span></div></div>
+  <span id="inv" hidden></span>
 </div>
-<div id="actions"><button id="act" hidden></button></div>
-<div id="dialogue" hidden role="dialog" aria-modal="false">
-  <img id="dlg-portrait" alt="">
-  <div class="dlg-body">
-    <div id="dlg-name"></div>
-    <p id="dlg-text"></p>
-    <div id="dlg-options"></div>
-  </div>
+<div id="locbox" class="rp"><span id="loc"></span><span class="tag" title="Prototype">PROTO</span></div>
+<div id="mini" class="mono" hidden></div>
+<div id="msg" class="mono" role="status" aria-live="polite"></div>
+<div id="actions"><button id="act" class="rp" hidden></button></div>
+<nav id="keys" aria-label="Menus">
+  <button id="k-sac" class="rp" data-panel="sac"><u>I</u> Sac</button><button id="k-journal" class="rp" data-panel="journal"><u>J</u> Journal</button><button id="k-carte" class="rp" data-panel="carte"><u>M</u> Carte</button><button id="k-mini" class="rp"><u>H</u> <span>Discret</span></button>
+</nav>
+<section id="panel" class="rp" hidden><button id="panel-close" aria-label="Fermer">×</button><div id="panel-body"></div></section>
+<div id="dialogue" class="rp" hidden role="dialog" aria-modal="false">
+  <div class="who"><img id="dlg-portrait" alt=""><div id="dlg-name"></div></div>
+  <p id="dlg-text"></p>
+  <div id="dlg-options"></div>
   <button id="dlg-close" aria-label="Fermer">×</button>
 </div>
 <script type="module" src="./src/main.js"></script>

@@ -41,7 +41,7 @@ with sync_playwright() as p:
         def shot(): return np.asarray(Image.open(io.BytesIO(pg.screenshot())).convert('RGB')).astype(int)
         def ui_mask():
             m = np.zeros((VH * dpr, VW * dpr), bool)
-            for r in E('[...document.querySelectorAll(".wlabel:not([hidden]),#hud span,#hud,#act:not([hidden]),#msg")].map(e=>e.getBoundingClientRect()).filter(r=>r.width>0).map(r=>[r.left,r.top,r.right,r.bottom])'):
+            for r in E('[...document.querySelectorAll(".wlabel:not([hidden]),#hud,#locbox,#keys button,#mini:not([hidden]),#act:not([hidden]),#msg")].map(e=>e.getBoundingClientRect()).filter(r=>r.width>0).map(r=>[r.left,r.top,r.right,r.bottom])'):
                 m[max(0, int(r[1]*dpr)):max(0, int(r[3]*dpr)+1), max(0, int(r[0]*dpr)):max(0, int(r[2]*dpr)+1)] = True  # bornes négatives (étiquette hors écran) écrêtées
             return m
         def waitjs(js, t=25):

@@ -68,7 +68,7 @@ with sync_playwright() as p:
             actors = np.zeros(full.shape[:2], bool)
             for w in ['player', 'companion'] + npcs: actors |= mask(png(pg.evaluate(f"window.__nml.view.isolate('{w}')")))
             # ... et pixels sous l'interface HTML (étiquettes, HUD, bouton) : ce n'est pas le rendu 3D
-            for r in pg.evaluate('[...document.querySelectorAll(".wlabel:not([hidden]),#hud span,#act:not([hidden])")].map(e=>e.getBoundingClientRect()).filter(r=>r.width>0).map(r=>[r.left,r.top,r.right,r.bottom])'):
+            for r in pg.evaluate('[...document.querySelectorAll(".wlabel:not([hidden]),#hud,#locbox,#keys button,#msg,#mini:not([hidden]),#act:not([hidden])")].map(e=>e.getBoundingClientRect()).filter(r=>r.width>0).map(r=>[r.left,r.top,r.right,r.bottom])'):
                 actors[max(0, int(r[1]*dpr)):int(r[3]*dpr)+1, max(0, int(r[0]*dpr)):int(r[2]*dpr)+1] = True
             for i in range(n):
                 iso = png(pg.evaluate(f'window.__nml.view.isolateFurn({i})')); iso[actors] = [255, 0, 255]; vf, area = visible_fraction(full, iso)
