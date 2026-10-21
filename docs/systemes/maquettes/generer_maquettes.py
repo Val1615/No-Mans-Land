@@ -70,7 +70,7 @@ screens.append(page('creation-1-identite', 1280, 800, f"""
  </div>
  <div class=lbl style="margin-top:18px">Effets · Mutant</div>
  <ul style="list-style:none;margin-top:6px;line-height:1.7;font-size:12.5px">
-  <li>Carrure +1 · résiste aux radiations</li><li>Pas d'implant : inconnu d'IO</li><li>Service Militarisé : tire à vue</li><li>À Dusk-Town, certains te parlent plus volontiers</li></ul>
+  <li>Endurance +1 · résiste aux radiations</li><li>Pas d'implant : inconnu d'IO</li><li>Service Militarisé : tire à vue</li><li>À Dusk-Town, certains te parlent plus volontiers</li></ul>
 </div>
 <div class=rp style="left:796px;top:76px;right:24px;bottom:76px;padding:16px">
  <div class=lbl>Origine · Mutant</div>
@@ -78,25 +78,25 @@ screens.append(page('creation-1-identite', 1280, 800, f"""
  {''.join(f'<div class="btn {c}" style="padding:10px;white-space:normal"><div style="font-size:14px;color:{"var(--c)" if c else "#fff2d8"}">{n}</div><div class=muted style="font-size:11.5px;margin-top:5px">{t}</div></div>' for n,t,c in ori)}
  </div>
  <div class=lbl style="margin-top:16px">Apporte</div>
- <div style="font-size:12.5px;line-height:1.7;margin-top:4px">Œil +1 · Discrétion favorite<br>Foulard de sable · 25 $</div>
+ <div style="font-size:12.5px;line-height:1.7;margin-top:4px">Perception +1 · Discrétion favorite<br>Foulard de sable · 25 $</div>
 </div>
 <div class=rp style="left:24px;right:24px;bottom:20px;padding:8px 14px;display:flex;justify-content:space-between;align-items:center">
  <span class=btn>Profil prêt</span><span class=muted>Race et origine ne changent plus en cours de partie.</span><span class="btn on">Suivant &gt;</span></div>
 """))
 # 3. CREATION 2
-attrs = [('Carrure', 5, 'PV, corps à corps, porter'), ('Réflexes', 4, 'PA, initiative, esquive'), ('Œil', 6, 'précision, portes camouflées'),
-         ('Méninges', 3, 'technique, médecine'), ('Bagou', 2, 'prix, mensonges, réactions'), ('Nerfs', 4, 'tenir sous le feu')]
+attrs = [('Force', 6, 'dégâts de mêlée, effraction'), ('Perception', 7, 'précision'), ('Endurance', 7, 'santé'), ('Charisme', 3, 'négociation'),
+         ('Intelligence', 5, 'technologie, points de compétence'), ('Agilité', 6, 'PA et discrétion'), ('Volonté', 4, 'peur, douleur, intimidation')]
 skills = [('Armes à feu', 32, 0), ('Corps à corps', 28, 0), ('Discrétion', 47, 1), ('Crochetage', 18, 0), ('Parole', 14, 0), ('Troc', 12, 0),
           ('Médecine', 20, 0), ('Mécanique', 22, 1), ('Survie', 41, 1), ('Électronique', 9, 0), ('Observation', 36, 0)]
-def bar(v, m=8): return ''.join(f'<span style="display:inline-block;width:14px;height:10px;margin-right:2px;background:{"var(--c)" if i < v else "rgba(242,180,74,.15)"}"></span>' for i in range(m))
+def bar(v, m=10): return ''.join(f'<span style="display:inline-block;width:14px;height:10px;margin-right:2px;background:{"var(--c)" if i < v else "rgba(242,180,74,.15)"}"></span>' for i in range(m))
 screens.append(page('creation-2-attributs', 1280, 800, f"""
 <div class=bg style="background-image:url(file://{D}/bg-q1-desktop.png);filter:blur(3px) brightness(.55)"></div>
 <div class=rp style="left:24px;top:20px;right:24px;padding:8px 14px;display:flex;justify-content:space-between;align-items:center">
  <h2>CRÉATION · 2/2 · ATTRIBUTS ET COMPÉTENCES</h2><span>Rafael Quintero · Mutant · Né dans les Sables</span></div>
 <div class=rp style="left:24px;top:76px;width:470px;bottom:76px;padding:16px">
- <div style="display:flex;justify-content:space-between"><span class=lbl>Attributs</span><span>Points restants <b style="color:var(--c);font-size:16px">2</b></span></div>
- {''.join(f'<div style="display:grid;grid-template-columns:96px 28px 140px 28px 1fr;align-items:center;gap:6px;margin-top:14px"><span style="font-size:14px">{n}</span><span class=btn style="padding:2px 8px">-</span><span>{bar(v)} <b style="color:var(--c)">{v}</b></span><span class=btn style="padding:2px 7px">+</span><span class=muted style="font-size:11px">{t}</span></div>' for n,v,t in attrs)}
- <div class=lbl style="margin-top:22px">Traits · 0 à 2</div>
+ <div style="display:flex;justify-content:space-between"><span class=lbl>Attributs</span><span>Points restants <b style="color:var(--c);font-size:16px">2</b> <span class=muted>/ 40</span></span></div>
+ {''.join(f'<div style="display:grid;grid-template-columns:96px 26px 170px 26px 1fr;align-items:center;gap:6px;margin-top:11px"><span style="font-size:14px">{n}</span><span class=btn style="padding:2px 8px">-</span><span>{bar(v)} <b style="color:var(--c)">{v}</b></span><span class=btn style="padding:2px 7px">+</span><span class=muted style="font-size:11px">{t}</span></div>' for n,v,t in attrs)}
+ <div class=lbl style="margin-top:16px">Traits · 0 à 2</div>
  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
   <span class="btn sel">Pieds de sable</span><span class=btn>Pas de nerfs</span><span class=btn>Œil de pillard</span><span class=btn>Gueule cassée</span><span class=btn>Insomniaque</span></div>
  <div class=muted style="font-size:11.5px;margin-top:8px">Pieds de sable : le désert ne te fatigue pas. En ville, Discrétion −10.</div>
@@ -109,7 +109,7 @@ screens.append(page('creation-2-attributs', 1280, 800, f"""
 <div class=rp style="left:986px;top:76px;right:24px;bottom:76px;padding:16px;line-height:1.75">
  <div class=lbl>Fiche</div>
  <div style="margin:10px 0;border:1px solid var(--d);height:150px;background:url(file://{D}/portrait-player.webp) center 20%/cover"></div>
- PV <b style="color:var(--c)">38</b><br>PA <b style="color:var(--c)">6</b> · Initiative 4<br>Implant : aucun<br>Dollars : 25 $<br>
+ PV <b style="color:var(--c)">38</b><br>PA <b style="color:var(--c)">8</b> · Initiative 7<br>Implant : aucun<br>Dollars : 25 $<br>
  <div class=lbl style="margin-top:10px">À Dusk-Town</div><span class=muted style="font-size:11.5px">Sol te reconnaît. Teo te prévient deux fois avant les camions.</span>
 </div>
 <div class=rp style="left:24px;right:24px;bottom:20px;padding:8px 14px;display:flex;justify-content:space-between;align-items:center">

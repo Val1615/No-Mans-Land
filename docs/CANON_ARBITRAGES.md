@@ -178,3 +178,6 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 - **[décision]** Création de personnage de cRPG : nom, race, origine, compétences, points d'attributs.
 - **[décision]** Combat tactique au tour par tour façon vieux Fallout, plus fluide et moins lent.
 - Détails proposés : `docs/systemes/MENU_CREATION_COMBAT.md`.
+- **[décision]** (2e série) Attributs = les 7 de la maquette v0.13 : Force, Perception, Endurance, Charisme, Intelligence, Agilité, Volonté. Volonté y valait « sensibilité à l'Aura » : redéfinie [proposition] en résistance à la peur, à la douleur et à l'intimidation.
+- **[décision]** Aura absente de la création, débloquée plus tard par une quête.
+- **[décision]** Mutant à la douane de Steel : premier combat, fuite vers le désert ; 0 PV = capturé et jeté dans la Sous-Ville.

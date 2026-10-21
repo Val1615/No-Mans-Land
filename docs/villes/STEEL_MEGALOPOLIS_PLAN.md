@@ -101,5 +101,4 @@ La quête « La porte d'acier » mène jusqu'à **l'entrée dans la ville** (dou
 `docs/villes/steel/ambiance/` : `01-entree-sarcophage.jpg` (le dôme y paraît trop petit), `02-centre-neons.jpg` (contient du faux texte et un bâtiment-dôme : à ignorer), `03-sous-ville.jpg` (vue plus basse que v4), `04-upper-town.jpg` (angle v4), `04b-upper-town-ciel-artificiel.jpg` (vue frontale pour le ciel synthétique, angle non v4).
 
 ## 10. Questions restantes pour Valentin
-Closes le 21/10/2026 [décision] : Nilo retiré dès le début ; race choisie à la création ; combat tour par tour (voir `docs/systemes/MENU_CREATION_COMBAT.md`).
-1. **Mutant attaqué à vue à la douane.** (a) premier combat du jeu : on peut fuir vers le désert ; (b) capturé puis jeté dans la Sous-Ville (Ch. IV §1087), qui devient son entrée ; (c) repéré de loin, il ne peut pas approcher. **Recommandation : (a)**, avec (b) si le joueur tombe à 0 PV.
+Toutes closes le 21/10/2026 [décision] : Nilo retiré dès le début ; race choisie à la création ; mutant à la douane = premier combat, fuite vers le désert, 0 PV = capturé et jeté dans la Sous-Ville.

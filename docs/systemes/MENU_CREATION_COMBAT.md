@@ -3,6 +3,12 @@
 Légende : **[canon]** roman tome 1 (§ = ligne de l'extraction) · **[décision]** Valentin · **[proposition]** à valider · **[leçon]** maquette `src/a` / bilan `src/b`.
 Style : UI v8 « radio de récupération ambre » (`docs/ui/INTERFACE_V8.md`). Maquettes : `docs/systemes/maquettes/`.
 
+## 0 bis. Arbitrages de Valentin (21/10/2026, 2e série)
+- **[décision]** Attributs = les 7 de la maquette v0.13 (Force, Perception, Endurance, Charisme, Intelligence, Agilité, Volonté).
+- **[décision]** Aura absente de la création ; elle viendra par une quête plus tard.
+- **[décision]** Mutant à la douane de Steel = premier combat ; fuite vers le désert ; à 0 PV, capturé et jeté dans la Sous-Ville.
+- **[décision]** Ordre de production : celui recommandé (menu, sauvegarde, options → création → codex → combat). Lot 1 = menu + sauvegardes + options, Nilo retiré.
+
 ## 0. Décisions de Valentin (21/10/2026)
 - **[décision]** Nilo est retiré dès le début ; il sera débloqué plus tard par une quête (non écrite).
 - **[décision]** La race est choisie au début, dans la création de personnage.
@@ -12,7 +18,7 @@ Style : UI v8 « radio de récupération ambre » (`docs/ui/INTERFACE_V8.md`). M
 
 ## 1. Leçons de la maquette [leçon]
 - Elle avait création (4 origines, 7 attributs, 10 compétences, profils prêts) et combat (PA, portée, couvert, visée, fumée, garde, réaction). Bilan : « personnalisation visuelle et équilibre limités », « IA et objectifs limités » (`02_Etat-reel-et-ecarts` l.28-30).
-- À ne pas reprendre : « ISIO » et la jauge « Aura » de création (ISIO absent du roman ; l'Aura est rare et apprise, Ch. VI §1467, §1488 [canon] : pas un choix de départ) ; 7 attributs proches de SPECIAL.
+- À ne pas reprendre : « ISIO » et la compétence « Aura » de création (ISIO absent du roman ; l'Aura est rare et apprise, Ch. VI §1467, §1488 [canon]). Les 7 attributs, eux, sont repris [décision].
 - À garder : profils prêts à jouer pour qui ne veut pas répartir ; zones de visée.
 
 ## 2. Menu principal [proposition]
@@ -58,15 +64,17 @@ Deux écrans + récapitulatif. Bouton « Profil prêt » pour sauter la réparti
 
 **Écran 2 : Attributs, compétences, traits.**
 
-**Attributs (6)**, de 1 à 8, base 3, **12 points** à répartir :
-| Attribut | Sert à |
+**Attributs (7)** [décision : les 7 de la maquette v0.13, noms et définitions repris de `src/a/.../runtime-v13/app.js` et `data.js`] : de 1 à 10, **40 points** à répartir (maquette).
+| Attribut | Définition (maquette, mot pour mot) |
 |---|---|
-| Carrure | PV, corps à corps, porter |
-| Réflexes | PA, initiative, esquive |
-| Œil | précision, portée, repérer les portes camouflées |
-| Méninges | technique, médecine, nombre de compétences favorites |
-| Bagou | prix, mensonges crus, réactions des PNJ |
-| Nerfs | résistance à la peur, tir sous pression, ne pas fuir |
+| Force | dégâts de mêlée, effraction |
+| Perception | précision |
+| Endurance | santé |
+| Charisme | négociation |
+| Intelligence | technologie et points de compétence |
+| Agilité | PA et discrétion |
+| Volonté | ~~sensibilité à l'Aura~~ → **résistance à la peur, à la douleur et à l'intimidation** [proposition : l'Aura est retirée de la création, décision du 21/10 ; remplacement minimal] |
+Aucun des 7 n'était ISIO ni Aura ; seule la définition de Volonté renvoyait à l'Aura.
 
 **Compétences (11)**, 0-100, 3 **favorites** (+15 au départ, progression plus rapide) ; usages concrets **déjà** dans Dusk-Town :
 | Compétence | Usage existant ou proche |
@@ -83,15 +91,15 @@ Deux écrans + récapitulatif. Bouton « Profil prêt » pour sauter la réparti
 | Électronique | interphone du labo, portiques et terminaux de Steel |
 | Observation | entrées camouflées, signal du miroir de Teo |
 
-**Traits** (0 à 2, chacun avec contrepartie) : Pas de nerfs (PA +1, Nerfs −2), Œil de pillard (objets en plus, prix +10 %), Gueule cassée (intimide, Bagou −1 en commerce), Insomniaque (tour de garde, PV max −3), Pieds de sable (marche désert sans fatigue, ville −Discrétion).
+**Traits** (0 à 2, chacun avec contrepartie) : Pas de nerfs (PA +1, Volonté −2), Œil de pillard (objets en plus, prix +10 %), Gueule cassée (intimide, Charisme −1 en commerce), Insomniaque (tour de garde, PV max −3), Pieds de sable (marche désert sans fatigue, ville −Discrétion).
 
 **Races** [décision pour l'entrée de Steel ; détails = proposition]
 | Race | Implant | Douane de Steel | Réactions | Effet mécanique léger |
 |---|---|---|---|---|
-| Humain | non | refusé [décision] | neutre partout ; Dusk-Town plus à l'aise | Bagou +1 |
-| Mutant | non | attaqué à vue [décision] | Service Militarisé hostile [canon Ch. I §105] ; Sol se confie | Carrure +1, résistance aux radiations, Bagou −1 avec les soldats |
+| Humain | non | refusé [décision] | neutre partout ; Dusk-Town plus à l'aise | Charisme +1 |
+| Mutant | non | attaqué à vue [décision] : premier combat, fuite vers le désert ; à 0 PV, capturé et jeté dans la Sous-Ville [décision] | Service Militarisé hostile [canon Ch. I §105] ; Sol se confie | Endurance +1, résistance aux radiations, Charisme −1 avec les soldats |
 | Augmenté | oui [décision] | passe | Dusk-Town méfiante (« on dirait du matériel d'IO ») | Électronique +15 |
-| Cyborg | oui [décision] | passe | méfiance ; PNJ des Sables évitent | Carrure +1, PV +5, Médecine soigne moins (pièces) |
+| Cyborg | oui [décision] | passe | méfiance ; PNJ des Sables évitent | Force +1, PV +5, Médecine soigne moins (pièces) |
 [canon] Les quatre peuples existent (Ch. XII §3626 : « Humains, Mutants, Augmentés ou Cyborgs… et même des Androïdes ») ; les implants identifient (Ch. I §157, Ch. VII §1652). Androïde non jouable.
 
 **Origines (3 par race, 2175)** [proposition] :
@@ -104,8 +112,8 @@ Chaque origine : +1 attribut, 1 compétence favorite imposée, 1 objet, 1 répli
 ## 6. Combat [proposition]
 **Principe** : vieux Fallout (PA, tour par tour, zones de visée), sans attentes mortes.
 - **Entrée/sortie sans changement d'écran** : même scène, même caméra v4 ; un liseré ambre + bandeau « COMBAT » ; la grille apparaît en surimpression discrète. Fin : grille et bandeau s'effacent, la musique revient.
-- **Initiative** : Réflexes + d4, ordre affiché en frise de portraits en haut (petite, translucide).
-- **PA** : 6 + (Réflexes − 3) / 2, arrondi ; plafonnés à 10. Coûts : 1 PA = 1 m (2 cases de la grille 0,5 m existante) ; tir simple 3, visé 4 (+1 zone), rafale 5, recharger 2, objet 2, se baisser 1 (couvert +).
+- **Initiative** : Agilité + Perception / 2 + d4, ordre affiché en frise de portraits en haut (petite, translucide).
+- **PA** : 5 + Agilité / 2 arrondi bas (formule de la maquette) ; plafonnés à 10. Coûts : 1 PA = 1 m (2 cases de la grille 0,5 m existante) ; tir simple 3, visé 4 (+1 zone), rafale 5, recharger 2, objet 2, se baisser 1 (couvert +).
 - **Portée / couverture / ligne de vue** : rayon sur la grille de collisions existante (bâtiments, meubles, props) ; couvert partiel (props bas : caisses, sacs de sable, épave) −20 %, total = pas de tir ; ligne de vue rouge si bloquée.
 - **Visée de zone** : torse / tête / bras / jambes [leçon : maquette] ; tête −30 % mais critique ; jambes ralentit ; bras désarme.
 - **Fluidité** : déplacement continu (aucun pas à pas) ; **tours ennemis en simultané visuel** quand ils n'interagissent pas entre eux ; vitesse ×1/×2/×4 (option, et maintien d'une touche) ; aucune pause ni confirmation hors action risquée ; fin de tour automatique à 0 PA ; caméra ne bouge que si l'action sort de l'écran.
