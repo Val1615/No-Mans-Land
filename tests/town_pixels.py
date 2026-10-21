@@ -32,7 +32,7 @@ with sync_playwright() as p:
         pg = ctx.new_page(); errs = []
         pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and errs.append(m.text))
         pg.on('response', lambda r: r.status >= 400 and errs.append(f'{r.status} {r.url}'))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); time.sleep(2.5)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         VW, VH = (1280, 800) if prof == 'desktop' else (390, 844)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         E = pg.evaluate
@@ -93,9 +93,9 @@ with sync_playwright() as p:
             check(f'{prof}: {name} : arrivée dans {dest} par la marche', ok and s['location'] == dest, s['location'])
             s = st(); pl, c = s['player'], s['companion']
             check(f'{prof}: {name} : joueur au bout de rue correspondant', np.hypot(pl['x'] - arr['x'], pl['z'] - arr['z']) < 1.3, (round(pl['x'], 1), round(pl['z'], 1), arr))
-            check(f'{prof}: {name} : Nilo suit', c['location'] == dest and c['mode'] == 'follow' and np.hypot(c['x'] - pl['x'], c['z'] - pl['z']) < 3.5, (c['location'], c['mode']))
+            check(f'{prof}: {name} : Nilo absent (retiré du début)', c['mode'] == 'absent' and c['location'] != dest, (c['location'], c['mode']))
             v = bvis(bid); check(f'{prof}: {name} : bâtiment {bid} rendu à l\'écran (pixels)', v[0] >= 0.35 and v[1] > 3000 * dpr * dpr * 0.3, v)
-            a = actors_visible(); check(f'{prof}: {name} : joueur et Nilo visibles (pixels)', a[0] >= 0.5 and a[1] >= 0.4, a)
+            a = actors_visible(); check(f'{prof}: {name} : joueur visible, Nilo non rendu (pixels)', a[0] >= 0.5 and a[1] == 0, a)
             hud = E('document.getElementById("loc").textContent'); check(f'{prof}: {name} : HUD = quartier', E(f'window.__nml.game.world.LOCATIONS["{dest}"].name') == hud, hud)
             for pd in E(f"window.__nml.doors.filter(d=>d.painted && d.location==='{dest}' && !['dusk_q1'].includes(d.location)).map(d=>d.id)"):
                 e = E(f"window.__nml.view.paintedDoorError('{pd}')"); check(f'{prof}: {pd} : porte peinte alignée sur l\'ouverture (< 0,8 m)', e < 0.8, f'{e} m')

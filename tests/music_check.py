@@ -13,7 +13,7 @@ with sync_playwright() as p:
     for prof in ('desktop', 'mobile'):
         ctx = br.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else br.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
         pg = ctx.new_page(); errs = []; pg.on('pageerror', lambda e: errs.append(str(e)))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); time.sleep(2)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2)
         E = pg.evaluate; gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         M = lambda: E('(()=>{const a=window.__nml.music;return {paused:a.paused,t:a.currentTime,loop:a.loop,muted:a.muted,vol:a.volume,src:a.currentSrc,dur:a.duration,n:document.querySelectorAll("audio").length}})()')
         P = lambda x, z: E(f'window.__nml.project({x},0,{z})')
@@ -41,7 +41,7 @@ with sync_playwright() as p:
         tapel('#k-son'); m5 = M()
         check(f'{prof}: bouton Son : coupe (muted), libellé « Muet »', m5['muted'] and 'Muet' in pg.locator('#k-son').inner_text() and E("localStorage.getItem('nml_muted')") == '1', m5['muted'])
         pg.screenshot(path=OUT + f'{prof}-son-coupe.png')
-        pg.reload(); pg.wait_for_function('window.__nml', timeout=60000); time.sleep(1.5)
+        pg.reload(); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(1.5)
         check(f'{prof}: réglage mémorisé après rechargement', M()['muted'] and 'Muet' in pg.locator('#k-son').inner_text())
         tapel('#k-son'); time.sleep(1.5); m6 = M()
         check(f'{prof}: rétabli par geste, lecture (le geste démarre la musique)', not m6['muted'] and not m6['paused'] and E("localStorage.getItem('nml_muted')") == '0', m6)

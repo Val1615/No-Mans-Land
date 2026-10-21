@@ -38,7 +38,7 @@ with sync_playwright() as p:
         pg = ctx.new_page(); errs = []
         pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and errs.append(m.text))
         pg.on('response', lambda r: r.status >= 400 and errs.append(f'{r.status} {r.url}'))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); time.sleep(2.5)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         P = lambda x, y, z: pg.evaluate(f'window.__nml.project({x},{y},{z})')
         def tap_world(x, y, z): pt = P(x, y, z); gesture(pt['x'], pt['y'])

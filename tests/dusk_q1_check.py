@@ -16,7 +16,7 @@ def wait(pg, js, t=20):
         if pg.evaluate(js): return True
         time.sleep(0.1)
     return False
-def comp_ok(s): c = s['companion']; return c['mode'] == 'follow' and c['location'] == s['location'] and ((c['x']-s['player']['x'])**2+(c['z']-s['player']['z'])**2)**.5 < 2.5
+def comp_ok(s): c = s['companion']; return c['mode'] == 'absent' and c['location'] != s['location']  # v10 : Nilo retiré du début (code gardé, désactivé)
 
 with sync_playwright() as p:
     b = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
@@ -24,7 +24,7 @@ with sync_playwright() as p:
         ctx = b.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else b.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
         pg = ctx.new_page(); errs = []
         pg.on('response', lambda r: r.status >= 400 and errs.append(f'{r.status} {r.url}')); pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and errs.append(m.text))
-        pg.goto(URL); pg.wait_for_function('window.__nml'); time.sleep(2.5)
+        pg.goto(URL); pg.wait_for_function('window.__nml'); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         def gesture(x, y): (pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click)(x, y)
         def tap_world(x, y, z): pt = pg.evaluate(f'window.__nml.project({x},{y},{z})'); gesture(pt['x'], pt['y'])
         VW, VH = (1280, 800) if prof == 'desktop' else (390, 844)
@@ -56,10 +56,10 @@ with sync_playwright() as p:
         # --- Orientation : miroir selon le sens de marche à l'écran
         sp = st(pg)['player']; walk_to(sp['x'] + 6, sp['z']); time.sleep(0.6)
         check(f'{prof}: joueur tourné vers la droite en marchant vers la droite', pg.evaluate("window.__nml.view.facingOf('player')") == 1)
-        check(f'{prof}: compagnon tourné vers la droite en suivant', pg.evaluate("window.__nml.view.facingOf('companion')") == 1)
+        check(f'{prof}: Nilo absent de la scène (0 pixel rendu)', (lambda u: 0 if not u else int((abs(__import__('numpy').asarray(__import__('PIL.Image',fromlist=['Image']).open(__import__('io').BytesIO(__import__('base64').b64decode(u.split(',')[1]))).convert('RGB')).astype(int)-[255,0,255]).sum(2)>90).sum()))(pg.evaluate("window.__nml.view.isolate('companion')")) == 0)
         walk_to(sp['x'], sp['z']); time.sleep(0.6)
         check(f'{prof}: joueur retourné (miroir) en marchant vers la gauche', pg.evaluate("window.__nml.view.facingOf('player')") == -1)
-        check(f'{prof}: compagnon retourné en marchant vers la gauche', pg.evaluate("window.__nml.view.facingOf('companion')") == -1)
+        check(f'{prof}: joueur retourné en marchant vers la gauche (Nilo toujours absent)', pg.evaluate("window.__nml.view.facingOf('player')") == -1 and (lambda u: 0 if not u else int((abs(__import__('numpy').asarray(__import__('PIL.Image',fromlist=['Image']).open(__import__('io').BytesIO(__import__('base64').b64decode(u.split(',')[1]))).convert('RGB')).astype(int)-[255,0,255]).sum(2)>90).sum()))(pg.evaluate("window.__nml.view.isolate('companion')")) == 0)
         def npc_faces_player(n):
             s = st(pg); N = pg.evaluate(f'window.__nml.npcs.find(x=>x.id==="{n}")')
             sx = pg.evaluate(f"window.__nml.view.screenRightOf({s['player']['x']-N['x']},{s['player']['z']-N['z']})")
@@ -87,7 +87,7 @@ with sync_playwright() as p:
             r_ok = all([walk_to(*w) for w in approach[bid]]); (not r_ok) and print('  approche ratée', bid, st(pg)['player']['x'], st(pg)['player']['z'], st(pg)['log'][-2:]); tap_world(*pt)
             ok = wait(pg, f'window.__nml.state.location==="{inside}"', 25)
             s = st(pg); check(f'{prof}: {bid} -> entrée ({"tap porte" if prof=="mobile" else "clic façade"})', ok, s['location'])
-            check(f'{prof}: {bid} -> compagnon entré', comp_ok(s))
+            check(f'{prof}: {bid} -> Nilo absent (pas de compagnon)', comp_ok(s))
             time.sleep(0.6)
             tap_world(*npos)
             check(f'{prof}: {bid} -> dialogue {npc} ouvert', wait(pg, f'window.__nml.state.dialogue && window.__nml.state.dialogue.npc==="{npc}"'))
@@ -131,7 +131,7 @@ with sync_playwright() as p:
             ok = wait(pg, 'window.__nml.state.location==="dusk_q1"', 25); s = st(pg)
             d = pg.evaluate(f'window.__nml.doors.find(d=>d.buildingId==="{bid}")')
             check(f'{prof}: {bid} -> sortie au seuil extérieur', ok and abs(s['player']['x']-d['threshold']['x']) < .05 and abs(s['player']['z']-d['threshold']['z']) < .05, f"({s['player']['x']},{s['player']['z']})")
-            check(f'{prof}: {bid} -> compagnon ressorti', comp_ok(s))
+            check(f'{prof}: {bid} -> Nilo toujours absent', comp_ok(s))
             if prof == 'desktop' and bid == 'bar':
                 time.sleep(0.5); pg.evaluate(f"window.__nml.setCamera({{x:{d['threshold']['x']},z:{d['threshold']['z']-2},ppm:70}})"); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-09-porte-peinte-bar.png'); pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.4)
             time.sleep(0.2); v = vis()

@@ -24,7 +24,7 @@
 <div id="msg" class="mono" role="status" aria-live="polite"></div>
 <div id="actions"><button id="act" class="rp" hidden></button></div>
 <nav id="keys" aria-label="Menus">
-  <button id="k-sac" class="rp" data-panel="sac"><u>I</u> Sac</button><button id="k-journal" class="rp" data-panel="journal"><u>J</u> Journal</button><button id="k-carte" class="rp" data-panel="carte"><u>M</u> Carte</button><button id="k-son" class="rp" aria-pressed="false"><u>S</u> <span>Son</span></button><button id="k-mini" class="rp"><u>H</u> <span>Discret</span></button>
+  <button id="k-menu" class="rp" aria-label="Menu"><u>Échap</u> <span>Menu</span></button><button id="k-sac" class="rp" data-panel="sac"><u>I</u> Sac</button><button id="k-journal" class="rp" data-panel="journal"><u>J</u> Journal</button><button id="k-carte" class="rp" data-panel="carte"><u>M</u> Carte</button><button id="k-son" class="rp" aria-pressed="false"><u>S</u> <span>Son</span></button><button id="k-mini" class="rp"><u>H</u> <span>Discret</span></button>
 </nav>
 <section id="panel" class="rp" hidden><button id="panel-close" aria-label="Fermer">×</button><div id="panel-body"></div></section>
 <div id="dialogue" class="rp" hidden role="dialog" aria-modal="false">
@@ -32,6 +32,23 @@
   <p id="dlg-text"></p>
   <div id="dlg-options"></div>
   <button id="dlg-close" aria-label="Fermer">×</button>
+</div>
+<!-- v10 lot 1 : menu principal / pause, sauvegardes, options -->
+<div id="menu" hidden>
+  <div class="m-bg"></div>
+  <div class="m-main rp">
+    <h1>NO MAN'S LAND</h1><div class="lbl">Dusk-Town · 2175</div>
+    <button id="m-resume" class="btn" hidden><span>Reprendre</span></button>
+    <button id="m-continue" class="btn"><span>Continuer</span><small id="m-continue-info"></small></button>
+    <button id="m-new" class="btn"><span>Nouveau jeu</span></button>
+    <button id="m-load" class="btn" data-sub="load"><span>Charger</span></button>
+    <button id="m-options" class="btn" data-sub="options"><span>Options</span></button>
+    <button id="m-codex" class="btn" data-sub="codex"><span>Codex</span></button>
+    <button id="m-credits" class="btn" data-sub="credits"><span>Crédits</span></button>
+    <button id="m-quit" class="btn"><span>Quitter</span><small>retour à l'écran titre</small></button>
+    <div id="menu-note" class="muted" role="status"></div>
+  </div>
+  <section id="menu-sub" class="rp" hidden></section>
 </div>
 <script type="module" src="./src/main.js"></script>
 <audio id="music" src="./assets/audio/dusk_town_ambiance.mp3" loop preload="auto"></audio>

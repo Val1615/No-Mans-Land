@@ -68,4 +68,4 @@ export const NPCS = [
 ];
 
 export const START = { location: 'dusk_q1', hp: 27, maxHp: 40, money: 40 };
-export const COMPANION = { id: 'nilo', name: 'Nilo', sprite: 'nilo' };
+export const COMPANION = { id: 'nilo', name: 'Nilo', sprite: 'nilo', enabled: false }; // v10 : retiré du début, débloqué plus tard par une quête

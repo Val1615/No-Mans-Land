@@ -20,7 +20,7 @@ with sync_playwright() as p:
         pg = ctx.new_page(); errs = []
         pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and errs.append(m.text))
         pg.on('response', lambda r: r.status >= 400 and errs.append(f'{r.status} {r.url}'))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); time.sleep(2.5)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         pg.evaluate("import('./src/core/path.js').then(m => window.__findPath = m.findPath)"); time.sleep(0.4)
         VW, VH = (1280, 800) if prof == 'desktop' else (390, 844)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
@@ -92,9 +92,9 @@ with sync_playwright() as p:
         check(f'{T}: fond de panneau non teinté en ambre (équilibre des couleurs conservé)', tint < 0.25, round(tint, 3))
         E('window.__nml.setCamera(null)'); time.sleep(0.8)
         cv = cover(['#hud', '#locbox', '#keys button', '#act']); check(f'{T}: exploration : UI ≤ {12 if prof == "desktop" else 22} % de l\'écran', cv <= (0.12 if prof == 'desktop' else 0.22), cv)
-        check(f'{T}: exploration : joueur et Nilo visibles (pixels)', vis('player') >= 0.6 and vis('companion') >= 0.5, (vis('player'), vis('companion')))
-        hud = E('[document.getElementById("hp").textContent, document.getElementById("money").textContent, document.getElementById("loc").textContent, document.getElementById("nilo").textContent]')
-        check(f'{T}: HUD : PV, $, quartier, Nilo', hud[0] == '27/40' and hud[1] == '40 $' and 'Pompe' in hud[2] and 'NILO' in hud[3], hud)
+        check(f'{T}: exploration : joueur visible, Nilo non rendu (pixels)', vis('player') >= 0.6 and vis('companion') == 0, (vis('player'), vis('companion')))
+        hud = E('[document.getElementById("hp").textContent, document.getElementById("money").textContent, document.getElementById("loc").textContent, document.getElementById("nilo").closest(".cell").hidden]')
+        check(f'{T}: HUD : PV, $, quartier ; case Nilo masquée', hud[0] == '27/40' and hud[1] == '40 $' and 'Pompe' in hud[2] and hud[3] is True, hud)
         pg.screenshot(path=OUT + f'{prof}-exploration.png')
         # 2. Minimal (bouton Discret / touche H)
         h0 = crop(shot(), rect('#hud'))

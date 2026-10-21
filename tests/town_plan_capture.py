@@ -9,7 +9,7 @@ Q = {'dusk_q1': 'La Pompe', 'dusk_q2': 'Le Transit', 'dusk_q3': 'Le Scellé', 'd
 ims = {}
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
-    pg = br.new_page(viewport={'width': 1280, 'height': 800}); pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); time.sleep(2)
+    pg = br.new_page(viewport={'width': 1280, 'height': 800}); pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2)
     pg.evaluate("document.getElementById('hud').style.visibility='hidden'; document.getElementById('act').style.visibility='hidden'")
     for i, (loc, name) in enumerate(Q.items()):
         pg.evaluate(f"()=>{{const s=__nml.state; s.location='{loc}'; s.junctionLock='x'; Object.assign(s.player,{{x:24,z:19,path:[]}}); Object.assign(s.companion,{{x:25,z:19.5,path:[],location:'{loc}'}})}}"); time.sleep(1.2)

@@ -34,21 +34,21 @@ with sync_playwright() as p:
     for prof in ['desktop', 'mobile']:
         dpr = 1 if prof == 'desktop' else 2
         ctx = br.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else br.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
-        pg = ctx.new_page(); pg.goto(URL); pg.wait_for_function('window.__nml'); time.sleep(2.5)
+        pg = ctx.new_page(); pg.goto(URL); pg.wait_for_function('window.__nml'); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         def walk(x, z):
             pt = pg.evaluate(f'window.__nml.project({x},0,{z})'); gesture(pt['x'], pt['y']); time.sleep(0.3)
-            pg.wait_for_function('window.__nml.state.player.path.length===0 && window.__nml.state.companion.path.length===0', timeout=20000); time.sleep(0.8)
+            pg.wait_for_function('window.__nml.state.player.path.length===0', timeout=20000); time.sleep(0.8)
         s = pg.evaluate('window.__nml.state.player')
         walk(s['x'] + 5, s['z'])   # vers la droite de l'écran
-        A = {w: grab(pg, w, dpr) for w in ['player', 'companion']}; shot(pg, 'player', f'/tmp/{prof}_pR.png', dpr); shot(pg, 'companion', f'/tmp/{prof}_cR.png', dpr)
+        A = {w: grab(pg, w, dpr) for w in ['player']}; shot(pg, 'player', f'/tmp/{prof}_pR.png', dpr)
         walk(s['x'] + 1, s['z'])   # vers la gauche
-        B = {w: grab(pg, w, dpr) for w in ['player', 'companion']}; shot(pg, 'player', f'/tmp/{prof}_pL.png', dpr); shot(pg, 'companion', f'/tmp/{prof}_cL.png', dpr)
-        for w in ['player', 'companion']:
+        B = {w: grab(pg, w, dpr) for w in ['player']}; shot(pg, 'player', f'/tmp/{prof}_pL.png', dpr)
+        check(f'{prof}: Nilo absent (0 pixel rendu)', (lambda u: 0 if not u else int((abs(__import__('numpy').asarray(__import__('PIL.Image',fromlist=['Image']).open(__import__('io').BytesIO(__import__('base64').b64decode(u.split(',')[1]))).convert('RGB')).astype(int)-[255,0,255]).sum(2)>90).sum()))(pg.evaluate("window.__nml.view.isolate('companion')")) == 0)
+        for w in ['player']:
             same, mir = mirror_score(A[w], B[w]); check(f'{prof}: {w} image rendue en miroir (droite vs gauche)', mir < 0.6 * same, f'écart direct {same}, écart miroir {mir}')
         if prof == 'desktop':
             pair(f'/tmp/{prof}_pR.png', f'/tmp/{prof}_pL.png', OUT + 'joueur-droite-vs-gauche.png', 'marche vers la droite', 'marche vers la gauche')
-            pair(f'/tmp/{prof}_cR.png', f'/tmp/{prof}_cL.png', OUT + 'compagnon-droite-vs-gauche.png', 'compagnon : droite', 'compagnon : gauche')
             A['player'].save(OUT + 'isole-joueur-droite.png'); B['player'].save(OUT + 'isole-joueur-gauche.png')
         # PNJ : Vera regarde l'armoire (à droite) puis se tourne vers le joueur pendant le dialogue
         pg.evaluate("(()=>{const g=window.__nml.game,d=g.doorById('clinic_door');Object.assign(g.state.player,{x:d.threshold.x,z:d.threshold.z,path:[]});Object.assign(g.state.companion,{x:d.threshold.x+1,z:d.threshold.z,path:[]});g.useDoor('clinic_door')})()")

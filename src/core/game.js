@@ -11,8 +11,10 @@ export function createGame(world, sprites) {
   const state = {
     location: START.location,
     player: { x: sp.player.x, z: sp.player.z, path: [], pending: null, hp: START.hp, maxHp: START.maxHp, money: START.money, inv: {} },
-    companion: { x: sp.companion.x, z: sp.companion.z, path: [], mode: 'follow', location: START.location, name: COMPANION?.name },
-    dialogue: null, flags: {}, discovered: {}, junctionLock: null,
+    // v10 : Nilo retiré du début (décision). Son code reste : COMPANION.enabled = true le réactivera (future quête).
+    companion: COMPANION?.enabled ? { x: sp.companion.x, z: sp.companion.z, path: [], mode: 'follow', location: START.location, name: COMPANION?.name }
+                                  : { x: -99, z: -99, path: [], mode: 'absent', location: '_none', name: COMPANION?.name },
+    dialogue: null, flags: {}, discovered: {}, seen: {}, junctionLock: null,
     npcs: Object.fromEntries(NPCS.map(n => [n.id, { heading: n.faceTo ? Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z) : 0 }])), log: [], transitions: 0
   };
   const listeners = new Set();
@@ -134,9 +136,9 @@ export function createGame(world, sprites) {
         const [i, j] = g.toCell(cand.x, cand.z); if (g.free(i, j)) { pos = g.toWorld(i, j); break; } }
       pos = pos || { x: t.x, z: t.z };
       Object.assign(c, { x: pos.x, z: pos.z, path: [], location: dest });
-    } else c.mode = 'left_behind';
+    } else if (c.mode !== 'absent') c.mode = 'left_behind';
     state.transitions++;
-    emit({ type: 'transition', from: door.location, to: dest, withCompanion, text: LOCATIONS[dest].name + (withCompanion ? '' : ' (compagnon resté derrière)') });
+    emit({ type: 'transition', from: door.location, to: dest, withCompanion, text: LOCATIONS[dest].name + (withCompanion || c.mode === 'absent' ? '' : ' (compagnon resté derrière)') });
   }
 
   function step(dt) {
@@ -164,7 +166,27 @@ export function createGame(world, sprites) {
       if (d <= sp) { a.x = n.x; a.z = n.z; a.path.shift(); sp -= d; } else { a.x += dx / d * sp; a.z += dz / d * sp; sp = 0; }
     }
   }
-  return { state, step, moveTo, useDoor, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
+  // v10 : sauvegarde. Instantané de tout l'état durable (jamais chemins, attentes, dialogue en cours).
+  function snapshot() {
+    const p = state.player, c = state.companion;
+    return JSON.parse(JSON.stringify({ location: state.location, player: { x: p.x, z: p.z, heading: p.heading || 0, hp: p.hp, maxHp: p.maxHp, money: p.money, inv: p.inv },
+      companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions }));
+  }
+  function restore(snap, quiet) {
+    if (!snap || !LOCATIONS[snap.location]) return false;
+    closeDialogue();
+    const p = state.player, sp0 = snap.player || {};
+    state.location = snap.location;
+    Object.assign(p, { x: +sp0.x || 0, z: +sp0.z || 0, heading: +sp0.heading || 0, hp: sp0.hp ?? START.hp, maxHp: sp0.maxHp ?? START.maxHp, money: sp0.money ?? START.money, inv: { ...(sp0.inv || {}) }, path: [], pending: null });
+    const g = grids[state.location], [i, j] = g.toCell(p.x, p.z); if (!g.free(i, j)) { const w = nearestFree(g, p, p); if (w) Object.assign(p, w); }
+    Object.assign(state.companion, { ...(snap.companion || {}), path: [] });
+    state.flags = { ...(snap.flags || {}) }; state.discovered = { ...(snap.discovered || {}) }; state.seen = { ...(snap.seen || {}) }; state.transitions = snap.transitions || 0;
+    // pas de franchissement immédiat si l'on a sauvegardé sur un seuil de jonction
+    const jd = DOORS.find(d => (d.junction || d.edge) && d.location === state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.5); state.junctionLock = jd ? jd.id : null;
+    if (!quiet) emit({ type: 'restore', text: 'Partie chargée : ' + LOCATIONS[state.location].name });
+    return true;
+  }
+  return { state, step, snapshot, restore, moveTo, useDoor, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
     on: f => listeners.add(f), get location() { return LOCATIONS[state.location]; } };
 }
 function nearestFree(g, target, from) {

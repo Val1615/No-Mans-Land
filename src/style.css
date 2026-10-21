@@ -87,3 +87,44 @@ body.mini #keys{opacity:.55}
 #panel .quest{margin:4px 0 8px}#panel .quest li.done span:first-child{text-decoration:line-through;opacity:.7}#panel .quest li.cur span:first-child{color:var(--c)}
 #panel .quest li.blk span:last-child{font-size:11px}
 @media (max-width:600px){#obj{top:calc(100px + var(--pad));right:8px;max-width:62vw;font-size:11.5px}#keys button{padding:4px 9px}}
+
+/* v10 lot 1 : menu principal / pause, options. Panneaux sur les bords, voile fin, ambre en accent. */
+#menu{position:fixed;inset:0;z-index:20}
+#menu[hidden],#menu-sub[hidden],#menu [hidden]{display:none}
+#menu .m-bg{position:absolute;inset:0;background:url(../assets/ui/menu-fond.jpg) center/cover;}
+#menu .m-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,4,2,.6),rgba(6,4,2,0) 50%)}
+#menu.pause .m-bg{background:rgba(8,6,3,.35);backdrop-filter:blur(2px)}#menu.pause .m-bg::after{display:none}
+#menu .m-main{position:absolute;left:clamp(12px,4vw,56px);top:50%;transform:translateY(-50%);width:min(340px,calc(100vw - 24px));padding:22px 22px 16px;display:flex;flex-direction:column;gap:7px}
+#menu h1{font-family:'VT';font-weight:400;font-size:48px;line-height:.9;color:var(--c);margin:0;letter-spacing:.05em}
+#menu .m-main>.lbl{margin:2px 0 14px}
+#menu .btn{position:relative;z-index:1;text-align:left;background:rgba(8,6,3,.8);border:1px solid var(--d);color:#fff2d8;padding:8px 12px;font-size:15px;min-height:40px}
+#menu .btn small{display:block;font-size:11px;opacity:.7;margin-top:2px}
+#menu .btn:hover:not(:disabled),#menu .btn:focus-visible,#menu .btn.sel{border-color:var(--c);color:var(--c);outline:0;background:rgba(40,28,10,.85)}
+#menu .btn:disabled{opacity:.45;cursor:default}
+#menu-note{min-height:16px;font-size:12px;color:var(--c)}
+#menu-sub{position:absolute;left:calc(clamp(12px,4vw,56px) + min(340px,calc(100vw - 24px)) + 16px);top:50%;transform:translateY(-50%);width:min(560px,calc(100vw - 440px));max-height:calc(100vh - 60px);overflow:auto;padding:16px 20px;font-size:13.5px;line-height:1.55}
+#menu-sub h2{font-family:'VT';font-weight:400;font-size:28px;color:var(--c);margin:0 0 8px}
+#menu-sub .lbl{display:block;margin-top:12px}
+#menu-sub .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:7px}
+#menu-sub .seg{display:flex;gap:4px;flex-wrap:wrap}#menu-sub .seg .btn{padding:4px 9px;font-size:12.5px;min-height:32px}
+#menu-sub input[type=range]{accent-color:#f2b44a;width:160px;vertical-align:middle}
+#menu-sub .slots{list-style:none;padding:0;margin:0}#menu-sub .slots li{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px dashed rgba(242,180,74,.3);padding:8px 2px}
+#menu-sub .slots b{display:block;color:var(--c);font-weight:500}#menu-sub .slots .acts{display:flex;gap:6px}#menu-sub .slots .btn{font-size:13px;padding:5px 10px;min-height:34px}
+#menu-sub .muted{opacity:.65}
+body.menu-open #hud,body.menu-open #locbox,body.menu-open #keys,body.menu-open #obj,body.menu-open #msg,body.menu-open #actions,body.menu-open #labels,body.menu-open #dialogue,body.menu-open #panel,body.menu-open #mini{visibility:hidden}
+@media (max-width:600px){
+  #menu .m-main{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0));transform:none;left:12px;width:calc(100vw - 24px);gap:5px;padding:16px}
+  #menu h1{font-size:38px}#menu .btn{min-height:42px;padding:7px 12px}
+  #menu-sub{left:12px;right:12px;width:auto;top:calc(12px + var(--pad));transform:none;max-height:calc(100vh - 24px)}
+  #menu.sub-open .m-main{display:none}
+  #menu-sub .row{flex-wrap:wrap}
+}
+/* options appliquées */
+body.contrast{--bg:rgba(6,4,2,.86)}
+body.readable #hud b,body.readable #loc,body.readable #panel h3,body.readable #mini,body.readable .wlabel,body.readable #menu h1,body.readable #menu-sub h2{font-family:'Plex'}
+body.ts-115 #dlg-text,body.ts-115 #dlg-options button,body.ts-115 #panel-body,body.ts-115 #msg,body.ts-115 #obj{font-size:115%}
+body.ts-130 #dlg-text,body.ts-130 #dlg-options button,body.ts-130 #panel-body,body.ts-130 #msg,body.ts-130 #obj{font-size:130%}
+body.reduce-motion *{transition:none!important;animation:none!important}
+#keys #k-menu u{margin-right:3px}
+@media (max-width:600px){#keys #k-menu u{display:none}}
+#menu-sub .m-back{float:right;min-height:30px;padding:3px 10px;font-size:12px}
