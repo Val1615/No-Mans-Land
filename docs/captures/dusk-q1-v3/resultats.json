@@ -1,0 +1,532 @@
+[
+ {
+  "test": "desktop: aucune étiquette de service avant découverte",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "desktop: joueur tourné vers la droite en marchant vers la droite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: compagnon tourné vers la droite en suivant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: joueur retourné (miroir) en marchant vers la gauche",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: compagnon retourné en marchant vers la gauche",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: aucun PNJ dans les rues",
+  "ok": true,
+  "detail": "0 PNJ dehors"
+ },
+ {
+  "test": "desktop: mara_house -> entrée (clic façade)",
+  "ok": true,
+  "detail": "mara_in"
+ },
+ {
+  "test": "desktop: mara_house -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: mara_house -> dialogue mara ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: mara tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-0.35, -1)"
+ },
+ {
+  "test": "desktop: Mara évoque les soldats de la capitale",
+  "ok": true,
+  "detail": "Des soldats de la capitale. Ils passent par ici po"
+ },
+ {
+  "test": "desktop: piste de la pompe notée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: dialogue Bruno (mutant caché) ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bruno tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-2.26, -1)"
+ },
+ {
+  "test": "desktop: Bruno raconte la rafle puis ferme",
+  "ok": true,
+  "detail": "Depuis deux saisons. Avant, j'étais au nord, avec "
+ },
+ {
+  "test": "desktop: mara_house -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(4,13)"
+ },
+ {
+  "test": "desktop: mara_house -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: étiquette mara_house affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'mara_house']"
+ },
+ {
+  "test": "desktop: étiquette clinique affichée car Mara en a parlé (avant d'y entrer), épicerie et bar toujours masqués",
+  "ok": true,
+  "detail": "['clinic', 'mara_house']"
+ },
+ {
+  "test": "desktop: grocery -> entrée (clic façade)",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "desktop: grocery -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: grocery -> dialogue anselme ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: anselme tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(2.12, 1)"
+ },
+ {
+  "test": "desktop: service anselme effectué",
+  "ok": true,
+  "detail": "argent 40->36, PV 27, inv {'water': 1}"
+ },
+ {
+  "test": "desktop: dialogue anselme fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: grocery -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(23,26.5)"
+ },
+ {
+  "test": "desktop: grocery -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: étiquette grocery affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "desktop: bar -> entrée (clic façade)",
+  "ok": true,
+  "detail": "bar_in"
+ },
+ {
+  "test": "desktop: bar -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bar -> dialogue hector ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: hector tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-1.84, -1)"
+ },
+ {
+  "test": "desktop: service hector effectué",
+  "ok": true,
+  "detail": "argent 36->30, PV 32, inv {'water': 1}"
+ },
+ {
+  "test": "desktop: dialogue hector fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: dialogue Ileana (Invictos) ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Ileana parcourue puis fermée",
+  "ok": true,
+  "detail": "Ranch Liberté, avant. Les Invictos. On m'a laissée"
+ },
+ {
+  "test": "desktop: bar -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(39.5,14)"
+ },
+ {
+  "test": "desktop: bar -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: étiquette bar affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'bar', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "desktop: clinic -> entrée (clic façade)",
+  "ok": true,
+  "detail": "clinic_in"
+ },
+ {
+  "test": "desktop: clinic -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: clinic -> dialogue vera ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: vera tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-2.19, -1)"
+ },
+ {
+  "test": "desktop: soin Vera payé (PV au max, -15 $)",
+  "ok": true,
+  "detail": "PV 32->40, 30->15 $"
+ },
+ {
+  "test": "desktop: fermeture par le bouton ×",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: clinic -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(13,14)"
+ },
+ {
+  "test": "desktop: clinic -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: étiquette clinic affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'bar', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "desktop: les 4 étiquettes persistent après sortie",
+  "ok": true,
+  "detail": "['clinic', 'bar', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "desktop: tour effondrée non visitable (pas de transition)",
+  "ok": true,
+  "detail": "Tour effondrée : fermé."
+ },
+ {
+  "test": "desktop: sortie est barrée par éboulis et épave (commande vers x=47,6)",
+  "ok": true,
+  "detail": "x final=40"
+ },
+ {
+  "test": "desktop: bar transparent quand le joueur est derrière",
+  "ok": true,
+  "detail": "opacité=0.22"
+ },
+ {
+  "test": "desktop: aucune erreur console",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: aucune étiquette de service avant découverte",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile: joueur tourné vers la droite en marchant vers la droite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: compagnon tourné vers la droite en suivant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: joueur retourné (miroir) en marchant vers la gauche",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: compagnon retourné en marchant vers la gauche",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: aucun PNJ dans les rues",
+  "ok": true,
+  "detail": "0 PNJ dehors"
+ },
+ {
+  "test": "mobile: mara_house -> entrée (tap porte)",
+  "ok": true,
+  "detail": "mara_in"
+ },
+ {
+  "test": "mobile: mara_house -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: mara_house -> dialogue mara ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: mara tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-0.35, -1)"
+ },
+ {
+  "test": "mobile: Mara évoque les soldats de la capitale",
+  "ok": true,
+  "detail": "Des soldats de la capitale. Ils passent par ici po"
+ },
+ {
+  "test": "mobile: piste de la pompe notée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: dialogue Bruno (mutant caché) ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bruno tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-2.26, -1)"
+ },
+ {
+  "test": "mobile: Bruno raconte la rafle puis ferme",
+  "ok": true,
+  "detail": "Depuis deux saisons. Avant, j'étais au nord, avec "
+ },
+ {
+  "test": "mobile: mara_house -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(4,13)"
+ },
+ {
+  "test": "mobile: mara_house -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: étiquette mara_house affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'mara_house']"
+ },
+ {
+  "test": "mobile: étiquette clinique affichée car Mara en a parlé (avant d'y entrer), épicerie et bar toujours masqués",
+  "ok": true,
+  "detail": "['clinic', 'mara_house']"
+ },
+ {
+  "test": "mobile: grocery -> entrée (tap porte)",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "mobile: grocery -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: grocery -> dialogue anselme ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: anselme tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(2.12, 1)"
+ },
+ {
+  "test": "mobile: service anselme effectué",
+  "ok": true,
+  "detail": "argent 40->36, PV 27, inv {'water': 1}"
+ },
+ {
+  "test": "mobile: dialogue anselme fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: grocery -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(23,26.5)"
+ },
+ {
+  "test": "mobile: grocery -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: étiquette grocery affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "mobile: bar -> entrée (tap porte)",
+  "ok": true,
+  "detail": "bar_in"
+ },
+ {
+  "test": "mobile: bar -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bar -> dialogue hector ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: hector tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-1.84, -1)"
+ },
+ {
+  "test": "mobile: service hector effectué",
+  "ok": true,
+  "detail": "argent 36->30, PV 32, inv {'water': 1}"
+ },
+ {
+  "test": "mobile: dialogue hector fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: dialogue Ileana (Invictos) ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Ileana parcourue puis fermée",
+  "ok": true,
+  "detail": "Ranch Liberté, avant. Les Invictos. On m'a laissée"
+ },
+ {
+  "test": "mobile: bar -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(39.5,14)"
+ },
+ {
+  "test": "mobile: bar -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: étiquette bar affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'bar', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "mobile: clinic -> entrée (tap porte)",
+  "ok": true,
+  "detail": "clinic_in"
+ },
+ {
+  "test": "mobile: clinic -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: clinic -> dialogue vera ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: vera tourné vers le joueur pendant le dialogue",
+  "ok": true,
+  "detail": "(-2.19, -1)"
+ },
+ {
+  "test": "mobile: soin Vera payé (PV au max, -15 $)",
+  "ok": true,
+  "detail": "PV 32->40, 30->15 $"
+ },
+ {
+  "test": "mobile: fermeture par le bouton ×",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: clinic -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(13,14)"
+ },
+ {
+  "test": "mobile: clinic -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: étiquette clinic affichée après être entré",
+  "ok": true,
+  "detail": "['clinic', 'bar', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "mobile: les 4 étiquettes persistent après sortie",
+  "ok": true,
+  "detail": "['clinic', 'bar', 'mara_house', 'grocery']"
+ },
+ {
+  "test": "mobile: tour effondrée non visitable (pas de transition)",
+  "ok": true,
+  "detail": "Tour effondrée : fermé."
+ },
+ {
+  "test": "mobile: sortie est barrée par éboulis et épave (commande vers x=47,6)",
+  "ok": true,
+  "detail": "x final=40"
+ },
+ {
+  "test": "mobile: bar transparent quand le joueur est derrière",
+  "ok": true,
+  "detail": "opacité=0.22"
+ },
+ {
+  "test": "mobile: aucune erreur console",
+  "ok": true,
+  "detail": ""
+ }
+]

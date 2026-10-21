@@ -1,0 +1,365 @@
+{
+ "cottage_s": {
+  "source": "settlement-v9-dusk.png",
+  "quad": [
+   [
+    65,
+    255
+   ],
+   [
+    68,
+    390
+   ],
+   [
+    325,
+    478
+   ],
+   [
+    325,
+    350
+   ]
+  ],
+  "px": [
+   512,
+   256
+  ]
+ },
+ "cottage_e": {
+  "source": "settlement-v9-dusk.png",
+  "quad": [
+   [
+    330,
+    350
+   ],
+   [
+    330,
+    478
+   ],
+   [
+    452,
+    400
+   ],
+   [
+    450,
+    232
+   ]
+  ],
+  "px": [
+   256,
+   256
+  ]
+ },
+ "palazzo_s": {
+  "source": "buildings-v6.png",
+  "quad": [
+   [
+    50,
+    160
+   ],
+   [
+    50,
+    405
+   ],
+   [
+    265,
+    488
+   ],
+   [
+    265,
+    210
+   ]
+  ],
+  "px": [
+   512,
+   512
+  ]
+ },
+ "palazzo_e": {
+  "source": "buildings-v6.png",
+  "quad": [
+   [
+    265,
+    210
+   ],
+   [
+    265,
+    488
+   ],
+   [
+    470,
+    390
+   ],
+   [
+    470,
+    130
+   ]
+  ],
+  "px": [
+   512,
+   512
+  ]
+ },
+ "ruin_s": {
+  "source": "settlement-v9-dusk.png",
+  "quad": [
+   [
+    1100,
+    635
+   ],
+   [
+    1100,
+    850
+   ],
+   [
+    1420,
+    940
+   ],
+   [
+    1420,
+    695
+   ]
+  ],
+  "px": [
+   512,
+   256
+  ]
+ },
+ "ruin_e": {
+  "source": "settlement-v9-dusk.png",
+  "quad": [
+   [
+    1420,
+    660
+   ],
+   [
+    1420,
+    945
+   ],
+   [
+    1505,
+    920
+   ],
+   [
+    1505,
+    650
+   ]
+  ],
+  "px": [
+   128,
+   256
+  ]
+ },
+ "yellow_s": {
+  "source": "buildings-v6.png",
+  "quad": [
+   [
+    25,
+    635
+   ],
+   [
+    25,
+    870
+   ],
+   [
+    240,
+    960
+   ],
+   [
+    240,
+    680
+   ]
+  ],
+  "px": [
+   512,
+   512
+  ]
+ },
+ "yellow_e": {
+  "source": "buildings-v6.png",
+  "quad": [
+   [
+    240,
+    680
+   ],
+   [
+    240,
+    960
+   ],
+   [
+    455,
+    870
+   ],
+   [
+    455,
+    640
+   ]
+  ],
+  "px": [
+   512,
+   512
+  ]
+ },
+ "shop_s": {
+  "source": "settlement-v9-dusk.png",
+  "quad": [
+   [
+    590,
+    140
+   ],
+   [
+    590,
+    450
+   ],
+   [
+    782,
+    480
+   ],
+   [
+    782,
+    215
+   ]
+  ],
+  "px": [
+   384,
+   512
+  ]
+ },
+ "shop_e": {
+  "source": "settlement-v9-dusk.png",
+  "quad": [
+   [
+    782,
+    215
+   ],
+   [
+    782,
+    480
+   ],
+   [
+    932,
+    410
+   ],
+   [
+    932,
+    130
+   ]
+  ],
+  "px": [
+   320,
+   512
+  ]
+ },
+ "garage_s": {
+  "source": "settlement-v9-dusk.png",
+  "quad": [
+   [
+    1058,
+    140
+   ],
+   [
+    1058,
+    395
+   ],
+   [
+    1410,
+    510
+   ],
+   [
+    1410,
+    325
+   ]
+  ],
+  "px": [
+   640,
+   384
+  ]
+ },
+ "roof_tiles": {
+  "source": "settlement-v9-dusk.png",
+  "crop": [
+   150,
+   170,
+   330,
+   250
+  ]
+ },
+ "roof_palazzo": {
+  "source": "buildings-v6.png",
+  "crop": [
+   170,
+   115,
+   360,
+   175
+  ]
+ },
+ "roof_ruin": {
+  "source": "settlement-v9-dusk.png",
+  "crop": [
+   1220,
+   610,
+   1420,
+   690
+  ]
+ },
+ "roof_flat": {
+  "source": "buildings-v6.png",
+  "crop": [
+   250,
+   600,
+   410,
+   650
+  ]
+ },
+ "g_sand": {
+  "source": "terrain-v4.png",
+  "tile512": [
+   0,
+   0
+  ]
+ },
+ "g_asphalt": {
+  "source": "terrain-v4.png",
+  "tile512": [
+   1,
+   0
+  ]
+ },
+ "g_dirt": {
+  "source": "terrain-nature-v4.png",
+  "tile512": [
+   0,
+   0
+  ]
+ },
+ "g_gravel": {
+  "source": "terrain-nature-v4.png",
+  "tile512": [
+   1,
+   0
+  ]
+ },
+ "g_grass": {
+  "source": "terrain-nature-v4.png",
+  "tile512": [
+   2,
+   0
+  ]
+ },
+ "g_concrete": {
+  "source": "terrain-nature-v4.png",
+  "tile512": [
+   1,
+   1
+  ]
+ },
+ "g_stone": {
+  "source": "terrain-nature-v4.png",
+  "tile512": [
+   2,
+   1
+  ]
+ },
+ "g_wood": {
+  "source": "interior-wood-v10.png"
+ }
+}

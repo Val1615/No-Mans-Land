@@ -3,9 +3,11 @@ import { DIALOGUES, ITEMS } from './data/dialogues_q1.js';
 import { createGame } from './core/game.js';
 import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
+import { loadSkins } from './render/textures.js';
 
 const sprites = await (await fetch('./assets/reused/manifest.json')).json();
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
+await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood','cottage_s','cottage_e','palazzo_s','palazzo_e','ruin_s','ruin_e','yellow_s','yellow_e','shop_s','shop_e','garage_s','roof_tiles','roof_palazzo','roof_ruin','roof_flat']);
 const view = createView(document.getElementById('view'), game, sprites, document.getElementById('labels'));
 const $ = id => document.getElementById(id);
 let msgTimer;
@@ -30,7 +32,7 @@ function renderDialogue() {
   const n = game.currentNode(), key = n && game.state.dialogue.npc + ':' + game.state.dialogue.node + ':' + game.state.player.money;
   $('dialogue').hidden = !n; if (!n || key === shownNode) { if (!n) shownNode = null; return; }
   shownNode = key;
-  $('dlg-portrait').src = `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
+  $("dlg-portrait").src = n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
   $('dlg-name').textContent = n.npc.name; $('dlg-text').textContent = n.text;
   const box = $('dlg-options'); box.replaceChildren();
   for (const o of n.options) { const b = document.createElement('button'); b.textContent = o.label; b.dataset.index = o.index; b.addEventListener('click', () => game.choose(o.index)); box.appendChild(b); }
@@ -50,4 +52,4 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
-window.__nml = { game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, doors: world.DOORS, npcs: world.NPCS };
+window.__nml = { game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS };

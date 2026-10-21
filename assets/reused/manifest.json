@@ -334,5 +334,61 @@
    480,
    310
   ]
+ },
+ "gen_mara": {
+  "file": "generated/gen_mara.webp",
+  "source": "GenerateImage (cursor), 8356fda47aac4d6a9d7a99c706d056886cf34092d4faa7028b52830d4f83ee76.jpg",
+  "height_m": 1.66,
+  "px": [
+   205,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, provisoire"
+ },
+ "gen_vera": {
+  "file": "generated/gen_vera.webp",
+  "source": "GenerateImage (cursor), b394c8cbf61fcc492e9850aca3284eecbc48f49b5b94eeae0e25f8f462c74845.jpg",
+  "height_m": 1.68,
+  "px": [
+   210,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, provisoire"
+ },
+ "gen_hector": {
+  "file": "generated/gen_hector.webp",
+  "source": "GenerateImage (cursor), 81808778394e70b7f6066d70ac5eb432b1570ec4a0336acd3e25a4904fda968d.jpg",
+  "height_m": 1.82,
+  "px": [
+   241,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, provisoire"
+ },
+ "gen_pump": {
+  "file": "generated/gen_pump.webp",
+  "source": "GenerateImage (cursor), da92d40565f53b4fd9b4d2cdf2e4c9ae27533c9b9b5242ce8967da2594122244.jpg",
+  "height_m": 1.5,
+  "px": [
+   297,
+   512
+  ],
+  "footprint_m": [
+   0.9,
+   0.9
+  ],
+  "status": "généré, provisoire"
  }
 }

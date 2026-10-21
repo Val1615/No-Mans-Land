@@ -12,7 +12,8 @@ export function createGame(world, sprites) {
     location: START.location,
     player: { x: sp.player.x, z: sp.player.z, path: [], pending: null, hp: START.hp, maxHp: START.maxHp, money: START.money, inv: {} },
     companion: { x: sp.companion.x, z: sp.companion.z, path: [], mode: 'follow', location: START.location, name: COMPANION?.name },
-    dialogue: null, flags: {}, discovered: {}, log: [], transitions: 0
+    dialogue: null, flags: {}, discovered: {},
+    npcs: Object.fromEntries(NPCS.map(n => [n.id, { heading: n.faceTo ? Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z) : 0 }])), log: [], transitions: 0
   };
   const listeners = new Set();
   const emit = ev => { state.log.push(ev); if (state.log.length > 80) state.log.shift(); listeners.forEach(f => f(ev)); };
@@ -73,6 +74,7 @@ export function createGame(world, sprites) {
     const n = npcById(npcId);
     state.dialogue = { npc: npcId, node: 'start' };
     state.player.heading = Math.atan2(n.x - state.player.x, n.z - state.player.z);
+    state.npcs[npcId].heading = Math.atan2(state.player.x - n.x, state.player.z - n.z); // le PNJ se tourne vers le joueur
     emit({ type: 'dialogue_open', npc: npcId });
   }
   function currentNode() {
@@ -102,7 +104,7 @@ export function createGame(world, sprites) {
       emit({ type: 'service', what: x, text: `${it.name} : −${cost} $` }); return { ok: true }; }
     return { ok: false };
   }
-  function closeDialogue() { if (state.dialogue) { emit({ type: 'dialogue_close', npc: state.dialogue.npc }); state.dialogue = null; } }
+  function closeDialogue() { if (state.dialogue) { const n = npcById(state.dialogue.npc); if (n.faceTo) state.npcs[n.id].heading = Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z); emit({ type: 'dialogue_close', npc: state.dialogue.npc }); state.dialogue = null; } }
 
   // Transition de groupe atomique.
   function enter(door) {

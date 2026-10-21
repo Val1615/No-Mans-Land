@@ -1,6 +1,21 @@
 import * as THREE from 'three';
 // Textures peintes procéduralement (faites pour ce projet). Statut : provisoire stylisé.
-const PPM = 32; // pixels par mètre de texture
+const PPM = 32;
+// Skins issus de la maquette (assets/mockup, voir tools_assets.py). Chargés avant la construction des scènes.
+export const SKIN = {};
+export async function loadSkins(names) {
+  await Promise.all(names.map(n => new Promise((ok, ko) => { const i = new Image(); i.onload = () => { SKIN[n] = i; ok(); }; i.onerror = ko; i.src = `./assets/mockup/${n}.webp`; })));
+}
+function pattern(x, name, metres, P) {
+  const img = SKIN[name]; if (!img) return null; const c = document.createElement('canvas'); c.width = c.height = Math.round(metres * P);
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return x.createPattern(c, 'repeat');
+}
+function cueMark(x, cue, cx, cy) { x.strokeStyle = 'rgba(235,225,200,.85)'; x.lineWidth = 3; x.beginPath();
+  if (cue === 'cross') { x.moveTo(cx, cy - 10); x.lineTo(cx, cy + 10); x.moveTo(cx - 10, cy); x.lineTo(cx + 10, cy); }
+  if (cue === 'bottle') { x.rect(cx - 4, cy - 2, 8, 14); x.moveTo(cx, cy - 2); x.lineTo(cx, cy - 10); }
+  if (cue === 'drop') { x.moveTo(cx, cy - 11); x.quadraticCurveTo(cx + 9, cy + 2, cx, cy + 8); x.quadraticCurveTo(cx - 9, cy + 2, cx, cy - 11); }
+  if (cue === 'jar') { x.rect(cx - 7, cy - 6, 14, 16); x.moveTo(cx - 9, cy - 8); x.lineTo(cx + 9, cy - 8); }
+  x.stroke(); } // pixels par mètre de texture
 function rng(seed) { let s = seed >>> 0 || 1; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; }
 function hash(str) { let h = 2166136261; for (const c of str) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return h >>> 0; }
 const tex = (c) => { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t; };
@@ -9,6 +24,17 @@ function shade(hex, f) { const c = new THREE.Color(hex); c.multiplyScalar(f); re
 export function facadeTexture(b, faceW, faceH, opts) {
   const c = document.createElement('canvas'); c.width = Math.max(64, Math.round(faceW * PPM)); c.height = Math.max(64, Math.round(faceH * PPM));
   const x = c.getContext('2d'), r = rng(hash(b.id + opts.face)), W = c.width, H = c.height, m = PPM;
+  const skin = b.skin?.[opts.face];
+  if (skin && SKIN[skin]) { // la texture s'applique au volume mesuré, elle ne le définit pas
+    x.drawImage(SKIN[skin], 0, 0, W, H);
+    for (const [fx, fy, fw, fh] of b.skin.cover?.[opts.face] || []) {
+      const x0 = fx * W, y0 = fy * H, w = fw * W, h = fh * H; x.fillStyle = '#3a2c1f'; x.fillRect(x0, y0, w, h);
+      for (let yy = y0; yy < y0 + h; yy += 0.22 * m) { x.save(); x.translate(x0 + w / 2, yy + 0.1 * m); x.rotate((r() - .5) * 0.08); x.fillStyle = shade('#7a6248', 0.7 + r() * 0.4); x.fillRect(-w / 2 - 3, -0.09 * m, w + 6, 0.18 * m); x.restore(); } }
+    x.fillStyle = 'rgba(40,28,18,.18)'; x.fillRect(0, 0, W, H);
+    const g = x.createLinearGradient(0, H - 1.2 * m, 0, H); g.addColorStop(0, 'rgba(160,130,90,0)'); g.addColorStop(1, 'rgba(176,146,100,.9)'); x.fillStyle = g; x.fillRect(0, H - 1.2 * m, W, 1.2 * m);
+    if (opts.cue && opts.doorX != null) cueMark(x, opts.cue, opts.doorX * m + 0.85 * m, H - 1.7 * m);
+    return tex(c);
+  }
   x.fillStyle = b.color; x.fillRect(0, 0, W, H);
   for (let i = 0; i < W * H / 60; i++) { x.fillStyle = `rgba(${r() < .5 ? '0,0,0' : '255,240,220'},${r() * 0.06})`; x.fillRect(r() * W, r() * H, 1 + r() * 3, 1 + r() * 3); }
   // enduit écaillé et coulures de sable
@@ -69,6 +95,9 @@ export function roofTexture(b, w, d) {
   const c = document.createElement('canvas'); c.width = Math.round(w * 16); c.height = Math.round(d * 16);
   const x = c.getContext('2d'), r = rng(hash(b.id + 'roof'));
   x.fillStyle = b.ruin === true ? '#6e6255' : shade(b.trim, 0.55); x.fillRect(0, 0, c.width, c.height);
+  const pr = b.roof && SKIN[b.roof]; if (pr) { x.drawImage(pr, 0, 0, c.width, c.height);
+    if (b.roofHoles) for (let i = 0; i < 3; i++) { x.fillStyle = 'rgba(18,14,10,.85)'; x.beginPath(); x.ellipse(r() * c.width, r() * c.height, 8 + r() * 20, 6 + r() * 12, r() * 3, 0, 7); x.fill(); }
+    x.fillStyle = 'rgba(190,160,110,.22)'; x.fillRect(0, 0, c.width, c.height); return tex(c); }
   if (b.roofHoles) for (let i = 0; i < 4; i++) { x.fillStyle = '#120e0a'; x.beginPath(); const hx = r() * c.width, hy = r() * c.height; x.ellipse(hx, hy, 8 + r() * 26, 6 + r() * 16, r() * 3, 0, 7); x.fill(); }
   if (b.ruin !== true) { for (let i = 0; i < c.width; i += 6) { x.fillStyle = `rgba(0,0,0,${0.08 + r() * 0.1})`; x.fillRect(i, 0, 2, c.height); }
     for (let i = 0; i < 6; i++) { x.fillStyle = `rgba(120,70,30,${0.2 + r() * 0.3})`; x.fillRect(r() * c.width, r() * c.height, 10 + r() * 30, 8 + r() * 20); } }
@@ -78,13 +107,16 @@ export function roofTexture(b, w, d) {
 export function groundTexture(loc, doors = []) {
   const P = 24, W = Math.round(loc.size.w * P), H = Math.round(loc.size.d * P);
   const c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d'), r = rng(hash(loc.id));
-  x.fillStyle = loc.ground.base; x.fillRect(0, 0, W, H);
+  x.fillStyle = pattern(x, loc.ground.skin, 4, P) || loc.ground.base; x.fillRect(0, 0, W, H);
   for (let i = 0; i < W * H / 40; i++) { x.fillStyle = `rgba(${r() < .5 ? '60,45,30' : '230,210,170'},${r() * 0.08})`; x.fillRect(r() * W, r() * H, 1 + r() * 2, 1 + r() * 2); }
-  if (loc.ground.tiles) { x.strokeStyle = 'rgba(0,0,0,.15)'; for (let i = 0; i <= loc.size.w; i += 0.5) { x.beginPath(); x.moveTo(i * P, 0); x.lineTo(i * P, H); x.stroke(); } for (let j = 0; j <= loc.size.d; j += 0.5) { x.beginPath(); x.moveTo(0, j * P); x.lineTo(W, j * P); x.stroke(); } }
-  if (loc.ground.planks) { for (let j = 0; j < loc.size.d; j += 0.25) { x.fillStyle = `rgba(0,0,0,${0.05 + r() * 0.12})`; x.fillRect(0, j * P, W, 1.5); } }
+  if (loc.ground.tiles && !loc.ground.skin) { x.strokeStyle = 'rgba(0,0,0,.15)'; for (let i = 0; i <= loc.size.w; i += 0.5) { x.beginPath(); x.moveTo(i * P, 0); x.lineTo(i * P, H); x.stroke(); } for (let j = 0; j <= loc.size.d; j += 0.5) { x.beginPath(); x.moveTo(0, j * P); x.lineTo(W, j * P); x.stroke(); } }
+  if (loc.ground.planks && !loc.ground.skin) { for (let j = 0; j < loc.size.d; j += 0.25) { x.fillStyle = `rgba(0,0,0,${0.05 + r() * 0.12})`; x.fillRect(0, j * P, W, 1.5); } }
   for (const z of loc.ground.zones || []) {
     const zx = z.x * P, zy = z.z * P, zw = z.w * P, zh = z.d * P;
-    if (z.kind === 'asphalt') { x.fillStyle = '#4b4743'; x.fillRect(zx, zy, zw, zh);
+    const zp = pattern(x, { asphalt: 'g_asphalt', packed: 'g_dirt', track: 'g_gravel', grass: 'g_grass' }[z.kind], 4, P);
+    if (zp) { x.fillStyle = zp; x.globalAlpha = z.kind === 'grass' ? 0.75 : 1; x.fillRect(zx, zy, zw, zh); x.globalAlpha = 1;
+      if (z.kind === 'asphalt') { x.fillStyle = 'rgba(205,180,130,.5)'; for (let i = 0; i < 26; i++) { const ex = zx + r() * zw, top = r() < .5; x.beginPath(); x.ellipse(ex, top ? zy + 6 : zy + zh - 6, 30 + r() * 70, 6 + r() * 14, 0, 0, Math.PI * 2); x.fill(); } }
+    } else if (z.kind === 'asphalt') { x.fillStyle = '#4b4743'; x.fillRect(zx, zy, zw, zh);
       for (let i = 0; i < zw * zh / 30; i++) { x.fillStyle = `rgba(255,255,255,${r() * 0.05})`; x.fillRect(zx + r() * zw, zy + r() * zh, 2, 2); }
       x.strokeStyle = 'rgba(20,18,16,.6)'; x.lineWidth = 1.2; for (let i = 0; i < 40; i++) { let px = zx + r() * zw, py = zy + r() * zh; x.beginPath(); x.moveTo(px, py); for (let k = 0; k < 5; k++) { px += (r() - .5) * 40; py += (r() - .5) * 20; x.lineTo(px, py); } x.stroke(); }
       x.fillStyle = 'rgba(205,180,130,.55)'; for (let i = 0; i < 26; i++) { const ex = zx + r() * zw, top = r() < .5; x.beginPath(); x.ellipse(ex, top ? zy + 6 : zy + zh - 6, 30 + r() * 70, 6 + r() * 14, 0, 0, Math.PI * 2); x.fill(); }
@@ -100,7 +132,7 @@ export function groundTexture(loc, doors = []) {
       x.fillStyle = 'rgba(60,45,30,.35)'; for (let k = 0; k < 7; k++) x.fillRect((d.threshold.x + (r() - .5) * 1.4) * P, (d.threshold.z + (r() - .5) * 1.2) * P, 4, 7); }
   }
   // herbes mortes (Ch. I §71)
-  if (loc.kind === 'exterior') { x.strokeStyle = 'rgba(150,130,70,.8)'; for (let i = 0; i < 700; i++) { const px = r() * W, py = r() * H; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 8, py - 4 - r() * 6); x.stroke(); } } }
+  if (loc.kind === 'exterior') { x.strokeStyle = 'rgba(150,130,70,.8)'; for (let i = 0; i < (loc.ground.skin ? 250 : 700); i++) { const px = r() * W, py = r() * H; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 8, py - 4 - r() * 6); x.stroke(); } } }
   return tex(c);
 }
 

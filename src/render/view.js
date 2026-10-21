@@ -15,11 +15,11 @@ export function createView(canvas, game, sprites, labelLayer) {
   const yaw = THREE.MathUtils.degToRad(UNITS.camera.yawDeg), pitch = THREE.MathUtils.degToRad(UNITS.camera.pitchDeg);
   const camDir = new THREE.Vector3(-Math.sin(yaw) * Math.cos(pitch), -Math.sin(pitch), -Math.cos(yaw) * Math.cos(pitch)).normalize();
   const loader = new THREE.TextureLoader(), texCache = {};
-  const spriteTex = id => texCache[id] ||= Object.assign(loader.load(`./assets/reused/${id}.webp`), { colorSpace: THREE.SRGBColorSpace });
+  const spriteTex = id => texCache[id] ||= Object.assign(loader.load('./assets/' + (sprites[id].file || `reused/${id}.webp`)), { colorSpace: THREE.SRGBColorSpace });
   function spriteMesh(id, heightOverride) {
     const m = sprites[id], h = heightOverride || m.height_m, w = h * m.px[0] / m.px[1];
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: spriteTex(id), alphaTest: 0.5, transparent: false }));
-    s.center.set(0.5, 0.02); s.scale.set(w, h, 1); return s;
+    s.center.set(0.5, 0.02); s.scale.set(w, h, 1); s.userData.base = sprites[id].faces || 1; s.userData.facing = 1; return s;
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], builtFor = null;
@@ -84,6 +84,13 @@ export function createView(canvas, game, sprites, labelLayer) {
     }
     builtFor = locId;
   }
+  // Miroir horizontal : l'image regarde à droite de l'écran par défaut (manifest.faces = -1 sinon).
+  const screenRight = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0, 1, 0)).normalize();
+  function face(s, heading) {
+    if (heading == null) return; const sx = Math.sin(heading) * screenRight.x + Math.cos(heading) * screenRight.z;
+    if (Math.abs(sx) > 0.2) s.userData.facing = sx > 0 ? 1 : -1; // mouvement quasi vertical à l'écran : on garde le sens précédent
+    s.scale.x = Math.abs(s.scale.x) * s.userData.facing * s.userData.base;
+  }
   const ray = new THREE.Raycaster();
   function updateOcclusion() {
     for (const m of solids) m.userData.targetOpacity = 1;
@@ -110,6 +117,8 @@ export function createView(canvas, game, sprites, labelLayer) {
     player.position.set(s.player.x, 0, s.player.z);
     companion.visible = s.companion.mode === 'follow' && s.companion.location === s.location;
     companion.position.set(s.companion.x, 0, s.companion.z);
+    face(player, s.player.heading); face(companion, s.companion.heading);
+    for (const n of npcSprites) face(n, s.npcs[n.userData.npc]?.heading);
     const loc = LOCATIONS[s.location];
     const target = camOverride ? new THREE.Vector3(camOverride.x, 0, camOverride.z) : new THREE.Vector3(s.player.x, 0, s.player.z);
     if (loc.kind === 'interior' && !camOverride) target.set(loc.size.w / 2, 0, loc.size.d / 2);
@@ -139,5 +148,7 @@ export function createView(canvas, game, sprites, labelLayer) {
   }
   function project(x, y, z) { render(); const v = new THREE.Vector3(x, y, z).project(cam), r = canvas.getBoundingClientRect(); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; }
   return { render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
+    facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
+    screenRightOf: (x, z) => x * screenRight.x + z * screenRight.z,
     opacityOf: id => [].concat(solids.find(m => m.userData.buildingId === id)?.material ?? [])[0]?.opacity };
 }

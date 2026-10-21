@@ -180,3 +180,10 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - Vérifié (navigateur, desktop 1280x800 et mobile 390x844) : 88/88 contrôles, dont 14 nouveaux sur les étiquettes (aucune au départ ; chacune apparaît après entrée ; Clinique apparaît après le dialogue de Mara avant toute entrée, Épicerie et Bar encore masqués ; les 4 persistent après sortie).
 - Captures : captures/dusk-q1-v2/desktop-06-avant-decouverte.png, desktop-07-apres-decouverte.png.
 - Ouvert : pas de sauvegarde, donc persistance limitée à la session.
+
+## 2026-10-21 15:30 · v3 : assets de la maquette, sprites générés, orientation
+- Fait : sols en tuiles de la maquette ; façades redressées depuis settlement-v9-dusk et buildings-v6, appliquées aux volumes mesurés (la géométrie ne vient jamais de l'image) ; portes réelles alignées sur les portes peintes ; vitrine de l'épicerie condamnée ; 4 assets générés (Mara, Vera, Hector sans arme, pompe à bras) et 3 portraits. Inventaire et raisons dans ASSETS_CATALOGUE.md.
+- Orientation : miroir horizontal des sprites selon le sens de marche à l'écran (joueur, compagnon) ; PNJ statiques orientés vers un point qui a du sens (`faceTo` : Mara vers la porte, Bruno vers la table, Vera vers l'armoire, Hector vers la salle, Ileana vers la porte, Anselme vers sa porte) ; PNJ tourné vers le joueur pendant le dialogue, puis retour à sa pose.
+- Vérifié (navigateur, desktop 1280x800 et mobile 390x844) : 106/106 contrôles, dont orientation (joueur et compagnon à droite puis miroir à gauche) et PNJ tourné vers le joueur à chaque dialogue (Mara, Bruno, Anselme, Hector, Vera).
+- Captures : captures/dusk-q1-v3/ (vue d'ensemble, détail rue, intérieurs, dialogues, mobile, comparaison-vue-ensemble-v2-v3.png).
+- À vérifier : les toits sont plats (les sprites ont des toits à deux pans) ; murs intérieurs encore unis ; sprites générés à valider par Valentin ; le miroir inverse aussi les détails asymétriques (sacoche, fusil).

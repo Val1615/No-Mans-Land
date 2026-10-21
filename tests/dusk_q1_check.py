@@ -2,7 +2,7 @@
 # Gestes réels : clics souris (bureau) et taps tactiles (mobile). Captures = rendu réel du jeu.
 import json, time
 from playwright.sync_api import sync_playwright
-URL = 'http://127.0.0.1:8765/'; OUT = '/workspace/nml/docs/captures/dusk-q1-v2/'
+URL = 'http://127.0.0.1:8765/'; OUT = '/workspace/nml/docs/captures/dusk-q1-v3/'
 R = []
 import os
 DEBUG = os.environ.get('DEBUG')
@@ -23,7 +23,7 @@ with sync_playwright() as p:
     for prof in PROFILES:
         ctx = b.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else b.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
         pg = ctx.new_page(); errs = []
-        pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and errs.append(m.text))
+        pg.on('response', lambda r: r.status >= 400 and errs.append(f'{r.status} {r.url}')); pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and errs.append(m.text))
         pg.goto(URL); pg.wait_for_function('window.__nml'); time.sleep(2.5)
         def gesture(x, y): (pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click)(x, y)
         def tap_world(x, y, z): pt = pg.evaluate(f'window.__nml.project({x},{y},{z})'); gesture(pt['x'], pt['y'])
@@ -53,18 +53,29 @@ with sync_playwright() as p:
         check(f'{prof}: aucune étiquette de service avant découverte', vis() == [], vis())
         if prof == 'desktop':
             pg.evaluate('window.__nml.setCamera({x:24,z:18,ppm:22})'); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-06-avant-decouverte.png'); pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.4)
+        # --- Orientation : miroir selon le sens de marche à l'écran
+        sp = st(pg)['player']; walk_to(sp['x'] + 4, sp['z']); time.sleep(0.6)
+        check(f'{prof}: joueur tourné vers la droite en marchant vers la droite', pg.evaluate("window.__nml.view.facingOf('player')") == 1)
+        check(f'{prof}: compagnon tourné vers la droite en suivant', pg.evaluate("window.__nml.view.facingOf('companion')") == 1)
+        walk_to(sp['x'], sp['z']); time.sleep(0.6)
+        check(f'{prof}: joueur retourné (miroir) en marchant vers la gauche', pg.evaluate("window.__nml.view.facingOf('player')") == -1)
+        check(f'{prof}: compagnon retourné en marchant vers la gauche', pg.evaluate("window.__nml.view.facingOf('companion')") == -1)
+        def npc_faces_player(n):
+            s = st(pg); N = pg.evaluate(f'window.__nml.npcs.find(x=>x.id==="{n}")')
+            sx = pg.evaluate(f"window.__nml.view.screenRightOf({s['player']['x']-N['x']},{s['player']['z']-N['z']})")
+            f = pg.evaluate(f"window.__nml.view.facingOf('{n}')"); return abs(sx) < 0.2 or f == (1 if sx > 0 else -1), (round(sx, 2), f)
         # --- Rues vides (décision de Valentin)
         n_out = pg.evaluate('window.__nml.npcs.filter(n=>n.location==="dusk_q1").length')
         check(f'{prof}: aucun PNJ dans les rues', n_out == 0, f'{n_out} PNJ dehors')
         # --- Services : (bâtiment, point de geste, intérieur, PNJ, action, vérif)
         services = [
-            ('mara_house', (4.5, 1.2, 12.0) if prof == 'mobile' else (2.5, 2.0, 12.0), 'mara_in', 'mara', (1.0, 1.0, 2.0), None, None),
-            ('grocery', (22.0, 1.2, 27.5), 'grocery_in', 'anselme', (2.2, 1.0, 4.2), 'bouteille', lambda a, z: z['player']['inv'].get('water') == 1 and z['player']['money'] == a['player']['money'] - 4),
-            ('bar', (36.0, 1.2, 13.0) if prof == 'mobile' else (34.0, 2.0, 13.0), 'bar_in', 'hector', (4.0, 1.0, 1.4), 'Un repas', lambda a, z: z['player']['money'] == a['player']['money'] - 6 and z['player']['hp'] == min(40, a['player']['hp'] + 5)),
-            ('clinic', (11.0, 1.2, 13.0) if prof == 'mobile' else (8.5, 1.5, 13.0), 'clinic_in', 'vera', (6.2, 1.0, 1.6), None, None)]
-        approach = {'mara_house': (5, 16), 'grocery': (25, 26), 'bar': (36, 17), 'clinic': (12, 17)}
+            ('mara_house', (4.0, 1.2, 12.0) if prof == 'mobile' else (2.5, 2.0, 12.0), 'mara_in', 'mara', (1.0, 1.0, 2.0), None, None),
+            ('grocery', (22.0, 1.2, 26.5), 'grocery_in', 'anselme', (2.2, 1.0, 4.2), 'bouteille', lambda a, z: z['player']['inv'].get('water') == 1 and z['player']['money'] == a['player']['money'] - 4),
+            ('bar', (39.5, 1.2, 13.0) if prof == 'mobile' else (34.0, 2.0, 13.0), 'bar_in', 'hector', (4.0, 1.0, 1.4), 'Un repas', lambda a, z: z['player']['money'] == a['player']['money'] - 6 and z['player']['hp'] == min(40, a['player']['hp'] + 5)),
+            ('clinic', (13.0, 1.2, 13.0) if prof == 'mobile' else (8.5, 1.5, 13.0), 'clinic_in', 'vera', (6.2, 1.0, 1.6), None, None)]
+        approach = {'mara_house': [(5, 16)], 'grocery': [(25, 26)], 'bar': [(26, 19), (39, 17)], 'clinic': [(13, 17)]}
         for bid, pt, inside, npc, npos, opt, verify in services:
-            walk_to(*approach[bid]); tap_world(*pt)
+            r_ok = all([walk_to(*w) for w in approach[bid]]); (not r_ok) and print('  approche ratée', bid, st(pg)['player']['x'], st(pg)['player']['z'], st(pg)['log'][-2:]); tap_world(*pt)
             ok = wait(pg, f'window.__nml.state.location==="{inside}"', 25)
             s = st(pg); check(f'{prof}: {bid} -> entrée ({"tap porte" if prof=="mobile" else "clic façade"})', ok, s['location'])
             check(f'{prof}: {bid} -> compagnon entré', comp_ok(s))
@@ -72,6 +83,7 @@ with sync_playwright() as p:
             tap_world(*npos)
             check(f'{prof}: {bid} -> dialogue {npc} ouvert', wait(pg, f'window.__nml.state.dialogue && window.__nml.state.dialogue.npc==="{npc}"'))
             time.sleep(0.4)
+            ok_f, det = npc_faces_player(npc); check(f'{prof}: {npc} tourné vers le joueur pendant le dialogue', ok_f, det)
             if bid == 'clinic': pg.screenshot(path=f'{OUT}{prof}-04-interieur-clinique-dialogue.png')
             if bid == 'mara_house': pg.screenshot(path=f'{OUT}{prof}-02-chez-mara.png')
             before = st(pg)
@@ -82,6 +94,7 @@ with sync_playwright() as p:
                 check(f'{prof}: piste de la pompe notée', st(pg)['flags'].get('pompe_aide') is True); option('Promis')
                 time.sleep(0.4); tap_world(3.8, 1.0, 1.6)
                 check(f'{prof}: dialogue Bruno (mutant caché) ouvert', wait(pg, 'window.__nml.state.dialogue && window.__nml.state.dialogue.npc==="bruno"'))
+                time.sleep(0.3); ok_f, det = npc_faces_player('bruno'); check(f'{prof}: bruno tourné vers le joueur pendant le dialogue', ok_f, det)
                 time.sleep(0.3); pg.screenshot(path=f'{OUT}{prof}-02-dialogue-bruno.png')
                 option('Tu vis ici'); txt = pg.locator('#dlg-text').inner_text(); option('emmené'); option('Merci')
                 check(f'{prof}: Bruno raconte la rafle puis ferme', 'patrouille' in txt and not st(pg)['dialogue'], txt[:50])

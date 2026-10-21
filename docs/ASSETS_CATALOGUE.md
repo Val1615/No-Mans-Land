@@ -101,3 +101,42 @@ Civils sans arme longue en v2 : Bruno, Anselme, Vera. **Mara porte encore une ar
 - **Décrépitude** : briques à nu, fissures, coulures, congères de sable, toits percés, fenêtres condamnées ou crevées.
 - **Sol** : 700 touffes d'herbe morte, traces de pas devant les seules vraies entrées.
 - **Retirés de l'extérieur** : étal, linge, bacs, banc, deuxième réverbère, sacs de sable. Le linge et les bacs sont déplacés chez Mara.
+
+## v3 (2026-10-21) : assets réels de la maquette et sprites générés
+
+Règle : la géométrie reste le volume mesuré (data/dusk_q1.js, en mètres). Les images ne servent que de texture appliquée sur ses faces ; elles ne définissent jamais la taille, la collision ni la porte. Les sources restent intactes : `game/tools_assets.py` lit `src/a/.../art-source/` et écrit dans `game/assets/mockup/` et `game/assets/generated/` (reproductible).
+
+### Inventaire des planches pertinentes (src/a/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/)
+| Fichier | Contenu | Retenu ? | Pourquoi |
+|---|---|---|---|
+| terrain-v4.png (3x2 tuiles 512 px) | sable, asphalte, mousse ; panneaux bleus, marbre, grille | sable, asphalte | les 2 premiers collent à Dusk-Town ; panneaux, marbre et grille sont de style IO / ville |
+| terrain-nature-v4.png | terre craquelée, gravier, herbe sèche ; béton moussu, béton, pierre | terre, gravier, herbe sèche, béton | sols de ruine à échelle humaine |
+| settlement-v9-dusk.png | 6 maisons de village (tuiles, enduit ocre), dont boutique à store, maison à garages, ruine en brique | maison basse, boutique, maison à garages, ruine | planche faite pour Dusk ; maison à escalier et atelier ouvert écartés (portes ouvertes peintes = faux accès) |
+| buildings-v6.png | 6 bâtiments anciens en ruine (palazzo rose, halle, entrepôt, maison jaune, marché, cinéma) | palazzo rose, maison jaune | bonne patine de ruine ; halle, marché et cinéma trop monumentaux pour le quartier |
+| exterior-buildings-v4.png, buildings.png | serre, cabanes, temple, bloc néon | non | style IO / néon, ou hors échelle |
+| interior-wood-v10.png | parquet | oui | sol intérieur bar, Mara, épicerie |
+| props-v9-*, service-v10-* | mobilier, étals | déjà utilisés en v2 (reused/) | inchangé |
+
+### Façades redressées (vue iso -> rectangle par transformation de quadrilatère), assets/mockup/
+| Asset | Source | Appliqué à | Volume mesuré (l x p x h) |
+|---|---|---|---|
+| cottage_s / cottage_e | settlement-v9-dusk, maison basse | Maison de Mara | 5 x 7 x 3,5 m |
+| yellow_s / yellow_e | buildings-v6, maison jaune | Clinique | 9 x 8 x 6 m |
+| palazzo_s / palazzo_e | buildings-v6, palazzo rose | Le Passage (bar) | 10 x 9 x 6,5 m |
+| shop_s / shop_e | settlement-v9-dusk, boutique à store | Épicerie (vitrine sud condamnée par des planches peintes) | 8 x 7 x 6 m |
+| ruin_s / ruin_e | settlement-v9-dusk, ruine en brique | Ruine | 7 x 7 x 3,5 m |
+| garage_s | settlement-v9-dusk, maison à garages (garages condamnés) | Atelier (face sud) | 8 x 9 x 3,5 m |
+| roof_tiles, roof_palazzo, roof_flat, roof_ruin | recadrages des toits des mêmes planches | toits plats des volumes | |
+| g_sand, g_asphalt, g_dirt, g_gravel, g_grass, g_concrete, g_wood | tuiles de sol (1 tuile = 4 m) | sols extérieurs et intérieurs | |
+
+Portes : les portes réelles (cadre, battant, seuil) sont posées sur la porte peinte de la façade (Mara x=4, Clinique x=13, Bar x=39,5, Épicerie z=26,5). Pas de porte peinte ailleurs sans planches.
+Restent en texture procédurale : Maison A, Maison B, Tour effondrée, face est de l'Atelier reprise de cottage_e, murs intérieurs (couleur unie). Aucun bâtiment identique répété.
+
+### Générés (GenerateImage), assets/generated/ : ce sont des assets, pas des captures du jeu
+| Asset | Remplace | Hauteur | Statut |
+|---|---|---|---|
+| gen_mara (+ portrait) | mara (maquette) | 1,66 m | civile sans arme, seau ; provisoire |
+| gen_vera (+ portrait) | vera (blouse de labo, trop IO) | 1,68 m | infirmière de terrain, tablier, sacoche à croix ; provisoire |
+| gen_hector (+ portrait) | hector (fusil) | 1,82 m | barman sans arme ; provisoire |
+| gen_pump | pump (machine industrielle) | 1,5 m | pompe à bras sur socle ; provisoire |
+Écarts connus : angle de caméra des sprites générés un peu plus bas que celui de la maquette ; liseré rose léger possible sur les cheveux (détourage d'un fond uni).
