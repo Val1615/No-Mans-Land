@@ -5,6 +5,7 @@ export function solidsOf(loc, doors, sprites) {
   const out = [...loc.buildings.map(b => ({ x: b.x, z: b.z, w: b.w, d: b.d }))];
   for (const p of loc.props) {
     if (p.box) out.push(p);
+    else if (p.furn) { const [w, d] = sprites[p.furn].footprint_m; out.push({ x: p.x, z: p.z, w, d }); } // mobilier : x, z = coin min de l'emprise
     else if (p.sprite) { const m = sprites[p.sprite]; const s = p.solid ?? null;
       const [w, d] = p.fp || (s ? [s, s] : m.footprint_m); out.push({ x: p.x - w / 2, z: p.z - d / 2, w, d }); }
   }

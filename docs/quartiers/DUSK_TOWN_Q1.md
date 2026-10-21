@@ -104,7 +104,7 @@ Un clic dessus donne « fermé ».
   - enduits tombés, briques à nu, fissures, coulures ;
   - toits percés, fenêtres condamnées ou crevées ;
   - éboulis, pneus, buissons morts, épave.
-- **Dedans** : linge, bacs de culture, paillasse, rideau derrière lequel se tient Bruno.
+- **Dedans** : linge, bacs de culture, paillasse, rideau derrière lequel se tient Bruno. (v6 : paillasse et rideau réalisés ; linge et bacs à produire, voir « Intérieurs ».)
 
 ## 8. Accroches de quête (**propositions**)
 - **La pompe** : son joint siffle et trahit le pompage nocturne. Il faut trouver du caoutchouc pour Nilo.
@@ -196,3 +196,15 @@ Mécanicien de Dusk-Town. Il suit le joueur et commente peu.
 
 ## Noms des lieux (décision de Valentin)
 Aucun nom n'est affiché au-dessus d'une façade tant que le lieu n'est pas découvert. Un lieu est découvert quand le joueur y est entré, ou quand un personnage l'a nommé explicitement en dialogue (exemple : Mara parle de Vera et de la porte à la croix, la Clinique est alors nommée). Pas d'affichage à l'approche. Une fois découvert, le nom reste affiché.
+
+## Intérieurs (v6, 21/10/2026) : réalisés en assets réels
+Grille en mètres, origine au coin nord-ouest de la pièce. Murs du fond (nord, ouest) à 3 m, murs avant (sud, est) en coupe à 0,9 m. Mobilier posé par son emprise ; objets longs le long de l'axe x (seule orientation dessinée).
+
+| Intérieur | Taille | Sol / murs | Mobilier (coin min x, z) | Personnes | Porte(s) |
+|---|---|---|---|---|---|
+| Clinique (Vera) | 9 × 8 | carrelage fissuré / chaux écaillée | 2 lits de camp (0,4 ; 0,4) et (0,4 ; 2,1) ; étagère métallique (3 ; 0,25) ; armoire à pharmacie (7,4 ; 0,25) ; table de soins (4,4 ; 2,6) ; bureau (7 ; 3,7) ; **civière derrière la porte** (6,1 ; 6,7) | Vera (6,2 ; 1,6) | sud (5 ; 8) |
+| Le Passage (Hector) | 10 × 9 | planches (maquette) / brique à nu | étagère basse et radio (3 ; 0,25) ; comptoir 3,8 m (2,1 ; 2) ; 2 tables à tabourets (6,4 ; 4,6) et (1,2 ; 5,4) ; étagère métallique (7,6 ; 0,25) | Hector derrière le comptoir (4 ; 1,4), Ileana (8,9 ; 3,6) | sud (5 ; 9) |
+| Épicerie (Anselme) | 8 × 7 | béton (maquette) / planches et tôle | 2 étagères de conserves (0,4 ; 0,25) et (2,6 ; 0,25) ; étagère métallique (5,2 ; 0,25) ; comptoir et balance (1,2 ; 4,9) ; seaux et jerrican (5,6 ; 1,6) | Anselme (2,2 ; 4,2) | sud (5,5 ; 7) et est (8 ; 3,5) |
+| Chez Mara | 5 × 7 | terre battue / enduit d'argile | paillasse (0,3 ; 0,3) ; **rideau** (2,5 ; 2,7) devant Bruno ; table et deux chaises (0,3 ; 3,4) ; seaux et jerrican (3,4 ; 4) | Mara (1 ; 2), Bruno derrière le rideau (3,8 ; 1,6) | sud (3,5 ; 7) |
+
+Écarts au §7 : le linge et les bacs de culture ne sont plus chez Mara (aucun sprite à l'angle v4) ; les sacs de rations d'Anselme et son filtre à eau sont à produire. Toutes les entrées camouflées existantes (5 portes peintes, 4 bâtiments) mènent à un intérieur réalisé ; les autres façades restent fermées par décision (§5).

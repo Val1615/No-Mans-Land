@@ -1,0 +1,281 @@
+{
+ "clinic_cabinet": {
+  "file": "interiors/clinic_cabinet.webp",
+  "px": [
+   216,
+   386
+  ],
+  "footprint_m": [
+   0.9,
+   0.5
+  ],
+  "height_m": 1.8,
+  "origin": "généré",
+  "source": "généré art-gen/gen_clinic_sheet.jpg #2",
+  "mirrored_from_source": true
+ },
+ "clinic_table": {
+  "file": "interiors/clinic_table.webp",
+  "px": [
+   383,
+   375
+  ],
+  "footprint_m": [
+   1.3,
+   0.7
+  ],
+  "height_m": 1.15,
+  "origin": "généré",
+  "source": "généré art-gen/gen_clinic_sheet.jpg #3",
+  "mirrored_from_source": false
+ },
+ "shop_shelf": {
+  "file": "interiors/shop_shelf.webp",
+  "px": [
+   313,
+   407
+  ],
+  "footprint_m": [
+   1.9,
+   0.5
+  ],
+  "height_m": 1.9,
+  "origin": "généré",
+  "source": "généré art-gen/gen_grocery_sheet.jpg #0",
+  "mirrored_from_source": true
+ },
+ "shop_counter": {
+  "file": "interiors/shop_counter.webp",
+  "px": [
+   390,
+   364
+  ],
+  "footprint_m": [
+   2.2,
+   0.7
+  ],
+  "height_m": 1.6,
+  "origin": "généré",
+  "source": "généré art-gen/gen_grocery_sheet.jpg #1",
+  "mirrored_from_source": false
+ },
+ "home_curtain": {
+  "file": "interiors/home_curtain.webp",
+  "px": [
+   350,
+   426
+  ],
+  "footprint_m": [
+   2.4,
+   0.15
+  ],
+  "height_m": 2.1,
+  "origin": "généré",
+  "source": "généré art-gen/gen_home_sheet.jpg #1",
+  "mirrored_from_source": false
+ },
+ "home_table": {
+  "file": "interiors/home_table.webp",
+  "px": [
+   409,
+   292
+  ],
+  "footprint_m": [
+   1.7,
+   1.0
+  ],
+  "height_m": 1.0,
+  "origin": "généré",
+  "source": "généré art-gen/gen_home_sheet.jpg #2",
+  "mirrored_from_source": false
+ },
+ "home_water": {
+  "file": "interiors/home_water.webp",
+  "px": [
+   302,
+   248
+  ],
+  "footprint_m": [
+   1.3,
+   0.8
+  ],
+  "height_m": 0.75,
+  "origin": "généré",
+  "source": "généré art-gen/gen_home_sheet.jpg #3",
+  "mirrored_from_source": false
+ },
+ "bar_counter_b": {
+  "file": "interiors/bar_counter_b.webp",
+  "px": [
+   445,
+   356
+  ],
+  "footprint_m": [
+   3.8,
+   0.8
+  ],
+  "height_m": 1.4,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sheet2.jpg #0",
+  "mirrored_from_source": false
+ },
+ "bar_backshelf_b": {
+  "file": "interiors/bar_backshelf_b.webp",
+  "px": [
+   398,
+   325
+  ],
+  "footprint_m": [
+   2.0,
+   0.6
+  ],
+  "height_m": 1.05,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sheet2.jpg #1",
+  "mirrored_from_source": false
+ },
+ "clinic_cot_b": {
+  "file": "interiors/clinic_cot_b.webp",
+  "px": [
+   423,
+   303
+  ],
+  "footprint_m": [
+   2.0,
+   0.9
+  ],
+  "height_m": 0.95,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sheet2.jpg #2",
+  "mirrored_from_source": false
+ },
+ "clinic_stretcher_b": {
+  "file": "interiors/clinic_stretcher_b.webp",
+  "px": [
+   428,
+   259
+  ],
+  "footprint_m": [
+   2.0,
+   0.6
+  ],
+  "height_m": 0.6,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sheet2.jpg #3",
+  "mirrored_from_source": false
+ },
+ "bar_table_b": {
+  "file": "interiors/bar_table_b.webp",
+  "px": [
+   400,
+   321
+  ],
+  "footprint_m": [
+   1.6,
+   1.2
+  ],
+  "height_m": 0.9,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sheet3.jpg #1",
+  "mirrored_from_source": false
+ },
+ "home_mattress_d": {
+  "file": "interiors/home_mattress_d.webp",
+  "px": [
+   640,
+   365
+  ],
+  "footprint_m": [
+   1.9,
+   0.9
+  ],
+  "height_m": 0.45,
+  "origin": "généré",
+  "source": "généré art-gen/gen_mattress_d.jpg #-1",
+  "mirrored_from_source": false
+ },
+ "m_archive_shelf": {
+  "file": "interiors/m_archive_shelf.webp",
+  "px": [
+   369,
+   512
+  ],
+  "footprint_m": [
+   1.6,
+   0.5
+  ],
+  "height_m": 1.9,
+  "origin": "maquette",
+  "source": "maquette art-source/interiors-v2.png #2",
+  "mirrored_from_source": false
+ },
+ "m_desk": {
+  "file": "interiors/m_desk.webp",
+  "px": [
+   488,
+   476
+  ],
+  "footprint_m": [
+   1.5,
+   0.7
+  ],
+  "height_m": 1.0,
+  "origin": "maquette",
+  "source": "maquette art-source/service-v10-B.png #3",
+  "mirrored_from_source": false
+ },
+ "w_plaster": {
+  "file": "interiors/w_plaster.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_walls_sheet.jpg #0"
+ },
+ "w_brick": {
+  "file": "interiors/w_brick.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_walls_sheet.jpg #1"
+ },
+ "w_clay": {
+  "file": "interiors/w_clay.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_walls_sheet.jpg #2"
+ },
+ "w_planks": {
+  "file": "interiors/w_planks.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_walls_sheet.jpg #3"
+ },
+ "f_tiles": {
+  "file": "interiors/f_tiles.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_floors_sheet.jpg #0"
+ },
+ "f_earth": {
+  "file": "interiors/f_earth.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_floors_sheet.jpg #2"
+ },
+ "f_wood": {
+  "file": "interiors/f_wood.webp",
+  "texture": true,
+  "origin": "maquette",
+  "source": "maquette art-source/interior-wood-v10.png"
+ },
+ "f_concrete": {
+  "file": "interiors/f_concrete.webp",
+  "texture": true,
+  "origin": "maquette",
+  "source": "maquette art-source/terrain-nature-v4.png (tuile béton)"
+ },
+ "door_in": {
+  "file": "interiors/door_in.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_door_in.jpg"
+ }
+}

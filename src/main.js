@@ -6,10 +6,14 @@ import { bindPointer } from './input/pointer.js';
 import { loadSkins } from './render/textures.js';
 
 const sprites = await (await fetch('./assets/reused/manifest.json')).json();
+// v6 : mobilier et textures d'intérieur (tools_interiors.py : maquette d'abord, sinon générés ; angle v4 contrôlé)
+const iman = await (await fetch('./assets/interiors/manifest.json')).json();
+Object.assign(sprites, iman);
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
+await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
 const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'));
 const $ = id => document.getElementById(id);
 let msgTimer;

@@ -13,7 +13,7 @@ export const LOCATIONS = {
     // v4 : sprites entiers de la maquette ; emprise, ancre et portes mesurées sur l'image (tools_buildings.py).
     buildings: BUILDINGS_Q1,
     props: [
-      { sprite: 'gen_pump', x: 28.2, z: 11.6 }, { sprite: 'board', x: 29.6, z: 9 }, { sprite: 'barrel', x: 27, z: 9.6 },
+      { sprite: 'gen_pump', x: 28.2, z: 11.6 }, { sprite: 'board', x: 29.6, z: 9 }, { sprite: 'barrel', x: 27.6, z: 7.4 },
       { sprite: 'lamp', x: 20, z: 14.3, solid: 0.3 },
       // sortie est : éboulis et épave (plus de barricade de milice)
       { sprite: 'wreck', x: 45.5, z: 17.2, fp: [4.6, 2.4] }, { sprite: 'rubble', x: 46.6, z: 20.4, fp: [2.6, 2.4] }, { sprite: 'rubble', x: 46.6, z: 14.9, fp: [2.6, 1.8] }, { sprite: 'rubble', x: 46.6, z: 22.8, fp: [2.6, 2.4] },
@@ -24,31 +24,27 @@ export const LOCATIONS = {
     ],
     spawn: { player: { x: 2.5, z: 18 }, companion: { x: 2.5, z: 19.5 } }
   },
-  clinic_in: { id: 'clinic_in', name: 'Clinique', kind: 'interior', size: { w: 9, d: 8 }, ground: { base: '#a39a88', tiles: true, skin: 'g_concrete' },
-    wall: '#cfc6b4', buildings: [], props: [
-      { box: true, label: 'Lit', x: 0.6, z: 0.6, w: 2.2, d: 1.0, h: 0.6, color: '#d8d4ca' },
-      { box: true, label: 'Lit', x: 0.6, z: 2.6, w: 2.2, d: 1.0, h: 0.6, color: '#d8d4ca' },
-      { box: true, label: 'Armoire', x: 6.6, z: 0.3, w: 2.0, d: 0.6, h: 2.0, color: '#7d8f8c' },
-      { box: true, label: 'Table', x: 5.4, z: 2.4, w: 1.6, d: 0.9, h: 0.9, color: '#8b7356' },
-      { sprite: 'crate', x: 8.2, z: 6.8 } ] },
-  bar_in: { id: 'bar_in', name: 'Le Passage', kind: 'interior', size: { w: 10, d: 9 }, ground: { base: '#6e5039', planks: true, skin: 'g_wood' },
-    wall: '#8d6446', buildings: [], props: [
-      { box: true, label: 'Comptoir', x: 1.5, z: 2.0, w: 5.0, d: 0.8, h: 1.1, color: '#4a2f1d' },
-      { sprite: 'stove', x: 8.6, z: 0.9 }, { sprite: 'kitchen', x: 4.0, z: 0.6 },
-      { box: true, label: 'Table', x: 6.8, z: 4.8, w: 1.2, d: 1.2, h: 0.75, color: '#5c3d27' },
-      { box: true, label: 'Table', x: 1.6, z: 5.6, w: 1.2, d: 1.2, h: 0.75, color: '#5c3d27' },
-      { sprite: 'barrel', x: 9.3, z: 7.5 }, { box: true, label: 'Table', x: 8.4, z: 2.2, w: 1.0, d: 1.0, h: 0.75, color: '#5c3d27' } ] },
-  mara_in: { id: 'mara_in', name: 'Chez Mara', kind: 'interior', size: { w: 5, d: 7 }, ground: { base: '#7d6a52', planks: true, skin: 'g_wood' },
-    wall: '#9a8466', buildings: [], props: [
-      { box: true, label: 'Rideau', x: 2.6, z: 0.2, w: 0.1, d: 2.6, h: 2.0, color: '#6b4a3a' },
-      { box: true, label: 'Paillasse', x: 3.0, z: 0.3, w: 1.8, d: 0.9, h: 0.3, color: '#8a7a5c' },
-      { box: true, label: 'Table', x: 0.4, z: 3.2, w: 1.2, d: 0.9, h: 0.75, color: '#5c3d27' },
-      { sprite: 'laundry', x: 1.4, z: 0.4 }, { sprite: 'barrel', x: 4.4, z: 6.4 }, { sprite: 'planters', x: 1.0, z: 6.3 } ] },
-  grocery_in: { id: 'grocery_in', name: 'Épicerie d\'Anselme', kind: 'interior', size: { w: 8, d: 7 }, ground: { base: '#857055', planks: true, skin: 'g_wood' },
-    wall: '#b89c74', buildings: [], props: [
-      { sprite: 'shelves', x: 1.6, z: 0.6 }, { sprite: 'shelves', x: 4.0, z: 0.6 },
-      { box: true, label: 'Comptoir', x: 3.0, z: 3.0, w: 0.8, d: 2.6, h: 1.0, color: '#6b4a2c' },
-      { sprite: 'crate', x: 0.8, z: 5.8 }, { sprite: 'barrel', x: 1.8, z: 6.2 } ] }
+  // v6 : intérieurs en assets réels. Sols et murs = textures (maquette ou générées) sur la géométrie en mètres ;
+  // mobilier = sprites dont l'angle a été contrôlé (tools_interiors.py), posés par leur emprise (x, z = coin min, en m).
+  // Les objets longs sont tous orientés le long de l'axe x : c'est la seule orientation que les sprites montrent.
+  clinic_in: { id: 'clinic_in', name: 'Clinique', kind: 'interior', size: { w: 9, d: 8 }, ground: { base: '#a39a88', skin: 'f_tiles', tileM: 2 },
+    wall: '#cfc6b4', wallSkin: 'w_plaster', buildings: [], props: [
+      { furn: 'clinic_cot_b', x: 0.4, z: 0.4 }, { furn: 'clinic_cot_b', x: 0.4, z: 2.1 },
+      { furn: 'm_archive_shelf', x: 3.0, z: 0.25 }, { furn: 'clinic_cabinet', x: 7.4, z: 0.25 },
+      { furn: 'clinic_table', x: 4.4, z: 2.6 }, { furn: 'm_desk', x: 7.0, z: 3.7 },
+      { furn: 'clinic_stretcher_b', x: 6.1, z: 6.7 } ] },
+  bar_in: { id: 'bar_in', name: 'Le Passage', kind: 'interior', size: { w: 10, d: 9 }, ground: { base: '#6e5039', skin: 'f_wood', tileM: 2.5 },
+    wall: '#8d6446', wallSkin: 'w_brick', buildings: [], props: [
+      { furn: 'bar_backshelf_b', x: 3.0, z: 0.25 }, { furn: 'bar_counter_b', x: 2.1, z: 2.0 },
+      { furn: 'bar_table_b', x: 6.4, z: 4.6 }, { furn: 'bar_table_b', x: 1.2, z: 5.4 }, { furn: 'm_archive_shelf', x: 7.6, z: 0.25 } ] },
+  mara_in: { id: 'mara_in', name: 'Chez Mara', kind: 'interior', size: { w: 5, d: 7 }, ground: { base: '#7d6a52', skin: 'f_earth', tileM: 2 },
+    wall: '#9a8466', wallSkin: 'w_clay', buildings: [], props: [
+      { furn: 'home_mattress_d', x: 0.3, z: 0.3 }, { furn: 'home_curtain', x: 2.5, z: 2.7 },
+      { furn: 'home_table', x: 0.3, z: 3.4 }, { furn: 'home_water', x: 3.4, z: 4.0 } ] },
+  grocery_in: { id: 'grocery_in', name: 'Épicerie d\'Anselme', kind: 'interior', size: { w: 8, d: 7 }, ground: { base: '#857055', skin: 'f_concrete', tileM: 3 },
+    wall: '#b89c74', wallSkin: 'w_planks', buildings: [], props: [
+      { furn: 'shop_shelf', x: 0.4, z: 0.25 }, { furn: 'shop_shelf', x: 2.6, z: 0.25 }, { furn: 'm_archive_shelf', x: 5.2, z: 0.25 },
+      { furn: 'shop_counter', x: 1.2, z: 4.9 }, { furn: 'home_water', x: 5.6, z: 1.6 } ] }
 };
 
 const T = { mara_house_door: 'mara_in_door', clinic_door: 'clinic_in_door', bar_door: 'bar_in_door', grocery_door: 'grocery_in_door2', grocery_door2: 'grocery_in_door' };

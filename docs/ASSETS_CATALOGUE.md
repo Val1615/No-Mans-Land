@@ -170,3 +170,95 @@ Règles (contre les défauts racines de la maquette) :
 
 Épicerie : deux portes peintes (boutique au sud, porte latérale à l'est), toutes deux réelles et menant au même intérieur (deux ouvertures dans grocery_in).
 Non retenus : maison à garages ouverte (workshop), halle-entrepôt aux portes ouvertes réutilisée seulement comme Entrepôt éventré (non visitable, clic = fermé). Sols : tuiles de la maquette (inchangées depuis v3).
+
+
+## v6 (2026-10-21) : intérieurs en assets réels (clinique, bar, épicerie, maison de Mara)
+
+Exigence de Valentin : pas de volumes ni de couleurs en code dans les intérieurs. Sols et murs portent des textures réelles ; le mobilier est en sprites.
+Ordre des sources : maquette (`src/a/.../art-source/`, jamais modifiée) d'abord, génération (GenerateImage) sinon. Tout est reproductible par `game/tools_interiors.py`
+(lit `art-source/` et `game/art-gen/`, écrit `game/assets/interiors/` + `manifest.json` + `rapport_angles.json`). Les générations brutes sont gardées dans `game/art-gen/`
+(avec `guide_v4.png`, la grille de boîtes filaires à l'angle v4 donnée en référence au générateur).
+
+**Contrôle d'angle (rejet automatique).** Caméra v4 : l'axe x monde apparaît avec une pente de 0,33 (vers le bas-droite), l'axe z avec 0,70. Pour chaque sprite :
+Hough sur les contours ; accepté si la pente dominante est dans [0,25 ; 0,42] (bande mesurée sur les 10 planches de bâtiments v4 : 0,30 à 0,40) et si moins de 12 %
+des arêtes opposées sont à 0,45-0,55 (signature de la projection 2:1 classique). **Contrôle d'échelle** : la largeur écran est imposée par l'emprise en mètres
+(w·0,824 + d·0,566) ; la hauteur qui en découle doit rester à ± (30 % + 0,15 m) de la hauteur réelle attendue. Un sprite « miroir » (axe long vers le bas-gauche)
+est retourné pour revenir à l'orientation canonique ; son éclairage vient alors de la droite (noté). Les objets longs ne peuvent être posés que le long de l'axe x.
+Limite : mesure statistique sur les contours ; elle a départagé correctement la planche témoin (meubles 2:1 de la maquette rejetés), mais reste sensible au détourage.
+
+**Pose en jeu** (`view.js`, `furniture`) : sprite posé par son emprise (x, z = coin min, en m) ; largeur = largeur projetée de l'emprise, bas de l'image sur le coin avant.
+Collision = emprise (`grid.js`). Ordre du peintre par emprise (comme dehors) ; un meuble qui cache un personnage (joueur, Nilo, PNJ en dialogue) passe à 35 %.
+Murs : la texture couvre 3 m × 3 m de mur et se répète selon la taille de chaque face. Sols : texture seule, sans bruit peint.
+
+### Retenus en jeu
+| Asset | Provenance | Emprise (m) | Hauteur (m) | Où |
+|---|---|---|---|---|
+| f_wood | **maquette** art-source/interior-wood-v10.png | tuile 2,5 m | | sol du bar |
+| f_concrete | **maquette** art-source/terrain-nature-v4.png (tuile béton) | tuile 3 m | | sol de l'épicerie |
+| m_archive_shelf | **maquette** art-source/interiors-v2.png, n° 2 (étagère métallique) | 1,6 × 0,5 | 1,9 | clinique, bar, épicerie |
+| m_desk | **maquette** art-source/service-v10-B.png, n° 3 (bureau métallique) | 1,5 × 0,7 | 1,0 | clinique (bureau de Vera) |
+| f_tiles | généré (gen_floors_sheet, carrelage fissuré) | tuile 2 m | | sol de la clinique |
+| f_earth | généré (gen_floors_sheet, terre battue) | tuile 2 m | | sol chez Mara |
+| w_plaster / w_brick / w_clay / w_planks | généré (gen_walls_sheet : chaux écaillée, brique à nu, enduit d'argile, planches et tôle) | 3 m × 3 m | | murs clinique / bar / Mara / épicerie |
+| door_in | généré (gen_door_in : planches clouées, écharpe, verrou, filet de lumière) | 1,0 × 2,2 | | porte de sortie des 4 intérieurs (5 ouvertures) |
+| clinic_cot_b | généré (gen_sheet2) | 2,0 × 0,9 | 0,95 | clinique × 2 |
+| clinic_stretcher_b | généré (gen_sheet2) | 2,0 × 0,6 | 0,6 | civière derrière la porte (accroche « rafles ») |
+| clinic_cabinet | généré (gen_clinic_sheet), retourné | 0,9 × 0,5 | 1,8 | armoire à pharmacie (Vera la regarde) |
+| clinic_table | généré (gen_clinic_sheet) | 1,3 × 0,7 | 1,15 | table de soins |
+| bar_counter_b | généré (gen_sheet2) | 3,8 × 0,8 | 1,4 (bouteilles comprises) | comptoir d'Hector |
+| bar_backshelf_b | généré (gen_sheet2) | 2,0 × 0,6 | 1,05 | étagère basse et radio derrière Hector |
+| bar_table_b | généré (gen_sheet3) | 1,6 × 1,2 | 0,9 | 2 tables à tabourets |
+| shop_shelf | généré (gen_grocery_sheet), retourné | 1,9 × 0,5 | 1,9 | épicerie × 2 |
+| shop_counter | généré (gen_grocery_sheet) | 2,2 × 0,7 | 1,6 | comptoir et balance d'Anselme |
+| home_water | généré (gen_home_sheet) | 1,3 × 0,8 | 0,75 | seaux et jerrican (Mara, épicerie) |
+| home_mattress_d | généré (gen_mattress_d, objet seul) | 1,9 × 0,9 | 0,45 | paillasse chez Mara |
+| home_curtain | généré (gen_home_sheet) | 2,4 × 0,15 | 2,1 | rideau derrière lequel se tient Bruno |
+| home_table | généré (gen_home_sheet) | 1,7 × 1,0 | 1,0 | table et deux chaises chez Mara |
+
+Retirés des intérieurs (mesurés et rejetés à l'angle v4, ou non mesurables) : lits, comptoirs, cuisinière, étagères et tables de la maquette (2:1),
+`reused/` laundry, planters, stove, kitchen, shelves (rejetés), barrel (cylindre, angle non mesurable), toutes les boîtes de couleur (`box`) de v2-v5.
+Conséquence : le linge et les bacs de culture de Mara ne sont plus à l'intérieur (aucune variante à l'angle v4) ; les sacs de rations d'Anselme et son filtre à eau
+ont été rejetés trois fois chacun (générateur resté en 2:1).
+
+### Rapport d'angle complet (`assets/interiors/rapport_angles.json`)
+| Id | Source | Pente dominante | Part 2:1 opposée | Hauteur implicite / attendue (m) | Verdict |
+|---|---|---|---|---|---|
+| clinic_cot | généré art-gen/gen_clinic_sheet.jpg #0 | 0.5 (direct) | 0.08 | 1.47 / 0.95 | REJETÉ |
+| clinic_stretcher | généré art-gen/gen_clinic_sheet.jpg #1 | 0.45 (direct) | 0 | 0.68 / 0.6 | REJETÉ |
+| clinic_cabinet | généré art-gen/gen_clinic_sheet.jpg #2 | 0.25 (miroir) | 0 | 1.58 / 1.8 | accepté |
+| clinic_table | généré art-gen/gen_clinic_sheet.jpg #3 | 0.35 (direct) | 0 | 0.92 / 1.15 | accepté |
+| bar_counter | généré art-gen/gen_bar_sheet.jpg #0 | 0.5 (direct) | 0.03 | 2.12 / 1.35 | REJETÉ |
+| bar_backshelf | généré art-gen/gen_bar_sheet.jpg #1 | 0.4 (direct) | 0 | 1.46 / 2.1 | **non exporté** : pan de mur en ruine peint avec l étagère : double le vrai mur, remplacé par bar_backshelf_b |
+| bar_table | généré art-gen/gen_bar_sheet.jpg #2 | 0.5 (direct) | 0.25 | 0.65 / 0.9 | REJETÉ |
+| bar_reel | généré art-gen/gen_bar_sheet.jpg #3 | 0.6 (miroir) | 0.04 | 0.65 / 0.85 | REJETÉ |
+| shop_shelf | généré art-gen/gen_grocery_sheet.jpg #0 | 0.35 (miroir) | 0.02 | 1.93 / 1.9 | accepté |
+| shop_counter | généré art-gen/gen_grocery_sheet.jpg #1 | 0.35 (direct) | 0.02 | 1.35 / 1.6 | accepté |
+| shop_filter | généré art-gen/gen_grocery_sheet.jpg #2 | 0.5 (miroir) | 0.15 | 1.56 / 1.4 | REJETÉ |
+| shop_sacks | généré art-gen/gen_grocery_sheet.jpg #3 | 0.5 (direct) | 0.29 | 0.88 / 1.1 | REJETÉ |
+| home_mattress | généré art-gen/gen_home_sheet.jpg #0 | 0.5 (direct) | 0 | 0.47 / 0.35 | REJETÉ |
+| home_curtain | généré art-gen/gen_home_sheet.jpg #1 | 0.4 (direct) | 0 | 2.05 / 2.1 | accepté |
+| home_table | généré art-gen/gen_home_sheet.jpg #2 | 0.4 (direct) | 0 | 0.62 / 1.0 | accepté |
+| home_water | généré art-gen/gen_home_sheet.jpg #3 | 0.35 (direct) | 0 | 0.66 / 0.75 | accepté |
+| bar_counter_b | généré art-gen/gen_sheet2.jpg #0 | 0.3 (direct) | 0.11 | 1.73 / 1.4 | accepté |
+| bar_backshelf_b | généré art-gen/gen_sheet2.jpg #1 | 0.35 (direct) | 0 | 0.96 / 1.05 | accepté |
+| clinic_cot_b | généré art-gen/gen_sheet2.jpg #2 | 0.4 (direct) | 0 | 0.73 / 0.95 | accepté |
+| clinic_stretcher_b | généré art-gen/gen_sheet2.jpg #3 | 0.4 (direct) | 0.06 | 0.48 / 0.6 | accepté |
+| home_mattress_b | généré art-gen/gen_sheet3.jpg #0 | 0.5 (direct) | 0.02 | 1.0 / 0.35 | REJETÉ |
+| bar_table_b | généré art-gen/gen_sheet3.jpg #1 | 0.35 (direct) | 0.05 | 0.79 / 0.9 | accepté |
+| shop_filter_b | généré art-gen/gen_sheet3.jpg #2 | 0.45 (direct) | 0.1 | 1.21 / 1.4 | REJETÉ |
+| shop_sacks_b | généré art-gen/gen_sheet3.jpg #3 | 0.45 (direct) | 0.16 | 0.77 / 1.0 | REJETÉ |
+| clinic_cot_c | généré art-gen/gen_sheet4.jpg #0 | 0.45 (direct) | 0.07 | 0.96 / 0.95 | REJETÉ |
+| home_mattress_c | généré art-gen/gen_sheet4.jpg #1 | 0.5 (direct) | 0.09 | 0.4 / 0.35 | REJETÉ |
+| shop_filter_c | généré art-gen/gen_sheet4.jpg #2 | 0.5 (direct) | 0.07 | 0.79 / 1.2 | REJETÉ |
+| shop_sacks_c | généré art-gen/gen_sheet4.jpg #3 | 0.45 (direct) | 0 | 0.64 / 1.0 | REJETÉ |
+| home_mattress_d | généré art-gen/gen_mattress_d.jpg #-1 | 0.4 (direct) | 0 | 0.35 / 0.45 | accepté |
+| m_archive_shelf | maquette art-source/interiors-v2.png #2 | 0.4 (direct) | 0.05 | 1.81 / 1.9 | accepté |
+| m_desk | maquette art-source/service-v10-B.png #3 | 0.25 (direct) | 0 | 1.03 / 1.0 | accepté |
+| m_locker | maquette art-source/service-v10-B.png #5 | 0.35 (direct) | 0.21 | 1.48 / 1.9 | REJETÉ |
+| m_stove | maquette art-source/props-v9-domestic.png #3 | 0.3 (miroir) | 0.15 | 1.1 / 1.3 | REJETÉ |
+| m_cooktable | maquette art-source/Props-v6.png #3 | 0.45 (direct) | 0.16 | 1.07 / 1.0 | REJETÉ |
+| m_bed | maquette art-source/interiors-v2.png #0 | 0.5 (direct) | 0 | 1.03 / 0.9 | REJETÉ |
+| m_bar_counter | maquette art-source/service-v10-A.png #0 | 0.45 (direct) | 0 | 1.73 / 1.2 | REJETÉ |
+| m_shop_shelf | maquette art-source/service-v10-A.png #1 | 0.45 (direct) | 0 | 1.62 / 1.9 | REJETÉ |
+| m_medchair | maquette art-source/service-v10-A.png #5 | 0.55 (direct) | 0 | 1.21 / 1.6 | REJETÉ |
+| m_desk2 | maquette art-source/interiors-v2.png #3 | 0.45 (direct) | 0.05 | 0.88 / 1.0 | REJETÉ |

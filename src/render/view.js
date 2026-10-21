@@ -25,7 +25,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     s.center.set(0.5, 0.02); s.scale.set(w, h, 1); Object.assign(s.userData, { base: sprites[id].faces || 1, facing: 1, shown: 1, w, h, turn: 1, phase: Math.random() * 6.28 }); return s;
   }
   let world = new THREE.Group(); scene.add(world);
-  let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], bills = [], builtFor = null, exterior = false;
+  let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -66,27 +66,47 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const door = DOORS.find(d => d.buildingId === b.id);
     if (b.visitable) { addLabel(b.label, 'service', () => new THREE.Vector3(door.opening.x, 3.4, door.opening.z), () => !!game.state.discovered[b.id]); labels[labels.length - 1].el.dataset.building = b.id; }
   }
-  function box(p, color) {
-    const m = new THREE.Mesh(new THREE.BoxGeometry(p.w, p.h, p.d), mat(null, color));
+  // v6 : mur d'intérieur = texture réelle (1 image = 3 m x 3 m de mur), répétée selon la taille de chaque face.
+  function wallMats(p, skin) {
+    const img = SKIN[skin]; if (!img) return null;
+    const face = (u, v) => { const t = new THREE.Texture(img); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(u / 3, v / 3); t.anisotropy = 4;
+      return new THREE.MeshStandardMaterial({ map: t, transparent: true, opacity: 1, roughness: 0.95 }); };
+    return [face(p.d, p.h), face(p.d, p.h), face(p.w, p.d), face(p.w, p.d), face(p.w, p.h), face(p.w, p.h)]; // +x -x +y -y +z -z
+  }
+  // v6 : mobilier = sprite contrôlé (angle v4), posé par son emprise. Largeur écran = largeur projetée de l'emprise ;
+  // le bas de l'image tombe sur le coin avant (x+w, z+d). Aucune taille ne vient des pixels.
+  function furniture(p) {
+    const m = sprites[p.furn], [w, d] = m.footprint_m;
+    const sw = w * Math.abs(screenRight.x) + d * Math.abs(screenRight.z), sh = sw * m.px[1] / m.px[0];
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: spriteTex(p.furn), transparent: true, alphaTest: 0.3, depthTest: false, depthWrite: false }));
+    const dyFront = -(w / 2 * camUp.x + d / 2 * camUp.z); // le coin avant est plus bas à l'écran que le centre
+    s.center.set(0.5, dyFront / sh); s.scale.set(sw, sh, 1); s.position.set(p.x + w / 2, 0, p.z + d / 2);
+    Object.assign(s.userData, { furn: p.furn, img: p.furn, targetOpacity: 1 });
+    world.add(s); fsprites.push(s); bills.push({ obj: s, x0: p.x, x1: p.x + w, z0: p.z, z1: p.z + d, extra: [] });
+  }
+  function box(p, color, skin) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(p.w, p.h, p.d), (skin && wallMats(p, skin)) || mat(null, color));
     m.position.set(p.x + p.w / 2, p.h / 2, p.z + p.d / 2); m.userData.targetOpacity = 1; m.userData.solid = true;
     world.add(m); solids.push(m); pickables.push(m); return m;
   }
   function build(locId) {
-    scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; bills = [];
+    scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
     const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior';
-    for (const a of [player, companion]) { a.material.depthTest = !exterior; a.material.transparent = exterior; }
+    for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true;
     world.add(ground); pickables.push(ground);
     for (const b of loc.buildings) building(b);
     for (const p of loc.props) {
-      if (p.box) box(p, p.color);
+      if (p.furn) furniture(p);
+      else if (p.box) box(p, p.color);
       else { const s = spriteMesh(p.sprite); s.position.set(p.x, 0, p.z); world.add(s);
         if (exterior) { s.material.depthTest = false; s.material.transparent = true; const [w, d] = p.fp || sprites[p.sprite].footprint_m || [0.6, 0.6];
           bills.push({ obj: s, x0: p.x - w / 2, x1: p.x + w / 2, z0: p.z - d / 2, z1: p.z + d / 2, extra: [] }); } }
     }
-    for (const w of wallsOf(loc, DOORS)) box(w, loc.wall);
+    ground.renderOrder = 0;
+    for (const w of wallsOf(loc, DOORS)) { const m = box(w, loc.wall, loc.wallSkin); const front = w.h < UNITS.storey; m.renderOrder = front ? 100000 : 1; m.userData.front = front; }
     for (const d of DOORS.filter(d => d.location === locId)) {
       const o = d.opening, south = o.side === 'south';
       const g = new THREE.Group(); if (exterior) g.visible = false;
@@ -95,14 +115,16 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       if (!south) leaf.rotation.y = Math.PI / 2;
       leaf.position.set(south ? 0 : 0.07, 0, south ? 0.07 : 0);
       g.add(frame, leaf); g.position.set(o.x, UNITS.door.height / 2, o.z);
-      if (loc.kind === 'interior') { frame.visible = false; leaf.material.transparent = true; leaf.material.opacity = 0.55; }
+      if (loc.kind === 'interior') { frame.visible = false; // v6 : porte de sortie = texture réelle (planches clouées, filet de lumière), comme la porte peinte dehors
+        const dt = SKIN.door_in && new THREE.Texture(SKIN.door_in); if (dt) { dt.needsUpdate = true; dt.colorSpace = THREE.SRGBColorSpace; leaf.material = new THREE.MeshStandardMaterial({ map: dt, side: THREE.DoubleSide, roughness: 0.9 }); }
+        leaf.material.transparent = true; leaf.material.opacity = 1; leaf.renderOrder = 100001; leaf.userData.targetOpacity = 1; solids.push(leaf); }
       frame.userData.doorId = d.id; leaf.userData.doorId = d.id; world.add(g); if (!exterior) pickables.push(frame, leaf);
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.32, 0.4, 28), new THREE.MeshBasicMaterial({ color: '#e0b04a', transparent: true, opacity: 0.7 }));
       ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(d.threshold.x, 0.03, d.threshold.z); ring.userData.doorId = d.id; world.add(ring); pickables.push(ring);
-      if (loc.kind === 'interior') addLabel('Sortie', 'exit', () => new THREE.Vector3(d.threshold.x, 0.2, d.threshold.z));
+      if (loc.kind === 'interior') addLabel('Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
     for (const n of NPCS.filter(n => n.location === locId)) {
-      const s = spriteMesh(n.sprite, null, true); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; world.add(s); pickables.push(s); npcSprites.push(s);
+      const s = spriteMesh(n.sprite, null, true); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
       addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z));
     }
     builtFor = locId;
@@ -127,6 +149,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     s.scale.set(u.w * width * sx, u.h * sy, 1); s.position.y = bob; s.material.rotation = rot;
   }
   const camUp = new THREE.Vector3().crossVectors(screenRight, camDir).normalize();
+  const scr0 = p => p.x * camDir.x + p.y * camDir.y + p.z * camDir.z;
   const scr = p => ({ x: p.x * screenRight.x + p.y * screenRight.y + p.z * screenRight.z, y: p.x * camUp.x + p.y * camUp.y + p.z * camUp.z });
   function rectOf(o) { const a = scr(o.position), sx = Math.abs(o.scale.x), sy = o.scale.y; return { x0: a.x - o.center.x * sx, x1: a.x + (1 - o.center.x) * sx, y0: a.y - o.center.y * sy, y1: a.y + (1 - o.center.y) * sy }; }
   function uvOf(o, p) { const r = rectOf(o); let u = (p.x - r.x0) / (r.x1 - r.x0); if (o.material.map?.repeat.x < 0) u = 1 - u; return { u, v: (p.y - r.y0) / (r.y1 - r.y0) }; }
@@ -134,7 +157,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   function inFront(b, a) { if (b.x0 >= a.x1 - 1e-6 || b.z0 >= a.z1 - 1e-6) return true; if (a.x0 >= b.x1 - 1e-6 || a.z0 >= b.z1 - 1e-6) return false; return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1; }
   const actorItem = a => ({ obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [] });
   function painter() {
-    const items = bills.concat([player, companion].filter(a => a.visible).map(actorItem)); const n = items.length;
+    const items = bills.concat([player, companion].filter(a => a.visible).concat(npcSprites).map(actorItem)); const n = items.length;
     const R = items.map(i => rectOf(i.obj)), indeg = new Array(n).fill(0), out = items.map(() => []);
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
       const a = R[i], b = R[j]; if (a.x1 < b.x0 || b.x1 < a.x0 || a.y1 < b.y0 || b.y1 < a.y0) continue; // pas de recouvrement à l'écran
@@ -158,14 +181,23 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
         for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(a.position.x, hy, a.position.z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { s.userData.targetOpacity = 0.3; break; } } } }
     for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) e.material.opacity = Math.min(0.9, m.opacity); }
   }
+  // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
+  function furnitureOcclusion() {
+    const who = [player, companion].filter(a => a.visible); const dn = game.state.dialogue && npcSprites.find(n => n.userData.npc === game.state.dialogue.npc); if (dn) who.push(dn);
+    for (const s of fsprites) { s.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === s);
+      for (const a of who) { if (!inFront(bi, actorItem(a))) continue; let hit = false;
+        for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(a.position.x, hy, a.position.z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { hit = true; break; } }
+        if (hit) { s.userData.targetOpacity = 0.35; break; } }
+      s.material.opacity += (s.userData.targetOpacity - s.material.opacity) * 0.3; }
+  }
   const ray = new THREE.Raycaster();
   function updateOcclusion() {
     for (const m of solids) m.userData.targetOpacity = 1;
     for (const a of [player, companion]) {
       if (!a.visible) continue;
-      for (const hy of [0.5, 1.0, 1.6]) {
-        const p = a.position.clone(); p.y = hy; ray.set(p.clone().addScaledVector(camDir, -200), camDir);
-        for (const hit of ray.intersectObjects(solids, false)) if (hit.distance < 199.9) hit.object.userData.targetOpacity = 0.22;
+      for (const hy of [0.5, 1.0, 1.6]) for (const lat of [-0.25, 0, 0.25]) { // v6 : aussi sur les bords du sprite (porte de sortie devant le joueur)
+        const p = a.position.clone(); p.y = hy; p.addScaledVector(screenRight, lat); ray.set(p.clone().addScaledVector(camDir, -200), camDir);
+        for (const hit of ray.intersectObjects(solids, false)) if (hit.distance < 199.9) hit.object.userData.targetOpacity = 0.15;
       }
     }
     for (const m of solids) for (const mt of [].concat(m.material)) { const o = mt.opacity; mt.opacity = o + (m.userData.targetOpacity - o) * 0.3; mt.depthWrite = mt.opacity > 0.9; }
@@ -196,7 +228,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const zoom = camOverride?.ppm || (loc.kind === 'interior' ? Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6)) : ppm);
     if (zoom !== cam.userData.zoom) { cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; cam.left = -w / 2 / zoom; cam.right = w / 2 / zoom; cam.top = h / 2 / zoom; cam.bottom = -h / 2 / zoom; cam.updateProjectionMatrix(); }
     if (false) { const w = innerWidth, h = innerHeight; cam.left = -w / 2 / camOverride.ppm; cam.right = w / 2 / camOverride.ppm; cam.top = h / 2 / camOverride.ppm; cam.bottom = -h / 2 / camOverride.ppm; cam.updateProjectionMatrix(); }
-    if (exterior) { painter(); spriteOcclusion(); } else updateOcclusion();
+    if (exterior) { painter(); spriteOcclusion(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
     for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); l.el.style.transform = `translate(-50%,-100%) translate(${r.left + (v.x + 1) / 2 * r.width}px,${r.top + (1 - v.y) / 2 * r.height}px)`; }
@@ -221,7 +253,9 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const h of ray.intersectObjects(pickables, false)) {
       const u = h.object.userData, op = [].concat(h.object.material)[0].opacity;
       if (u.npc) return { kind: 'npc', npcId: u.npc };
-      if (u.doorId) return { kind: 'door', doorId: u.doorId };
+      if (u.front) continue; // v6 : mur avant bas (coupe) : le clic passe au sol derrière
+      if (u.doorId && !(h.object.isMesh && h.object.geometry.type === 'PlaneGeometry' && op < 0.5)) return { kind: 'door', doorId: u.doorId }; // porte estompée : le clic passe
+      if (u.doorId) continue;
       if (op < 0.5) continue; // volume devenu transparent : le clic passe au travers
       if (u.buildingId) return u.visitable ? { kind: 'building', buildingId: u.buildingId } : { kind: 'closed', label: u.label };
       if (u.solid) return { kind: 'solid' };
@@ -243,8 +277,18 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
       hidden.forEach(o => o.visible = true); scene.background = bg; return url; },
+    isolateFurn: i => { const keep = fsprites[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
+      const bg = scene.background, op = keep.material.opacity; keep.material.opacity = 1; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
+      hidden.forEach(o => o.visible = true); scene.background = bg; keep.material.opacity = op; return url; },
+    furnCount: () => { render(); return fsprites.length; },
+    leafOpacity: () => { render(); let o = null; world.traverse(m => { if (m.isMesh && m.userData.doorId && m.material.map && !exterior && m.geometry.type === 'PlaneGeometry') o = +m.material.opacity.toFixed(2); }); return o; },
     screenRightOf: (x, z) => x * screenRight.x + z * screenRight.z,
     opacityOf: id => bsprites.find(s => s.userData.buildingId === id)?.material.opacity,
+    furnitureOf: () => { render(); return fsprites.map(s => ({ id: s.userData.furn, x: s.position.x, z: s.position.z, opacity: +s.material.opacity.toFixed(2), order: s.renderOrder })); },
+    // contrôle au pixel : rectangle écran (px CSS) d'un meuble (index dans l'ordre de la pièce)
+    furnRect: i => { render(); const s = fsprites[i], r = rectOf(s), c = canvas.getBoundingClientRect();
+      const P = (x, y) => { const v = new THREE.Vector3().addScaledVector(screenRight, x).addScaledVector(camUp, y).addScaledVector(camDir, scr0(s.position)).project(cam); return { x: c.left + (v.x + 1) / 2 * c.width, y: c.top + (1 - v.y) / 2 * c.height }; };
+      const A = P(r.x0, r.y1), B = P(r.x1, r.y0); return { x: A.x, y: A.y, w: B.x - A.x, h: B.y - A.y }; },
     // contrôle : alpha du sprite aux coins de l'emprise déclarée (coin avant, coin gauche, coin droit), légèrement à l'intérieur
     baseAlpha: id => { render(); const s = bsprites.find(s => s.userData.buildingId === id), b = LOCATIONS[builtFor].buildings.find(b => b.id === id);
       return [[b.x + b.w - 0.4, b.z + b.d - 0.4], [b.x + 0.4, b.z + b.d - 0.4], [b.x + b.w - 0.4, b.z + 0.4]].map(([x, z]) => { const q = uvOf(s, scr(new THREE.Vector3(x, 0.3, z))); return +alphaAt(s.userData.img, q.u, q.v).toFixed(2); }); },

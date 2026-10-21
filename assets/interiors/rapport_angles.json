@@ -1,0 +1,627 @@
+{
+ "clinic_cot": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.08,
+  "accepte": false,
+  "source": "généré art-gen/gen_clinic_sheet.jpg #0",
+  "role": "lit de camp en fer, clinique",
+  "emprise_m": [
+   2.0,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.95,
+  "hauteur_implicite_m": 1.47,
+  "echelle_ok": false
+ },
+ "clinic_stretcher": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.06,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "source": "généré art-gen/gen_clinic_sheet.jpg #1",
+  "role": "civière derrière la porte (accroche quête rafles)",
+  "emprise_m": [
+   2.0,
+   0.6
+  ],
+  "hauteur_attendue_m": 0.6,
+  "hauteur_implicite_m": 0.68,
+  "echelle_ok": true
+ },
+ "clinic_cabinet": {
+  "pente_dominante": 0.25,
+  "sens": "miroir",
+  "part_bande_v4": 0.72,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_clinic_sheet.jpg #2",
+  "role": "armoire à pharmacie",
+  "emprise_m": [
+   0.9,
+   0.5
+  ],
+  "hauteur_attendue_m": 1.8,
+  "hauteur_implicite_m": 1.58,
+  "echelle_ok": true
+ },
+ "clinic_table": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.7,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_clinic_sheet.jpg #3",
+  "role": "table de soins, cuvette, lampe",
+  "emprise_m": [
+   1.3,
+   0.7
+  ],
+  "hauteur_attendue_m": 1.15,
+  "hauteur_implicite_m": 0.92,
+  "echelle_ok": true
+ },
+ "bar_counter": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0.14,
+  "part_2_1_opposee": 0.03,
+  "accepte": false,
+  "source": "généré art-gen/gen_bar_sheet.jpg #0",
+  "role": "comptoir de récupération",
+  "emprise_m": [
+   3.8,
+   0.8
+  ],
+  "hauteur_attendue_m": 1.35,
+  "hauteur_implicite_m": 2.12,
+  "echelle_ok": false
+ },
+ "bar_backshelf": {
+  "pente_dominante": 0.4,
+  "sens": "direct",
+  "part_bande_v4": 0.55,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_bar_sheet.jpg #1",
+  "role": "étagère à bouteilles contre le mur",
+  "emprise_m": [
+   1.8,
+   0.6
+  ],
+  "hauteur_attendue_m": 2.1,
+  "hauteur_implicite_m": 1.46,
+  "echelle_ok": true,
+  "non_exporte": "pan de mur en ruine peint avec l étagère : double le vrai mur, remplacé par bar_backshelf_b"
+ },
+ "bar_table": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.25,
+  "accepte": false,
+  "source": "généré art-gen/gen_bar_sheet.jpg #2",
+  "role": "table carrée et deux tabourets",
+  "emprise_m": [
+   1.7,
+   1.3
+  ],
+  "hauteur_attendue_m": 0.9,
+  "hauteur_implicite_m": 0.65,
+  "echelle_ok": true
+ },
+ "bar_reel": {
+  "pente_dominante": 0.6,
+  "sens": "miroir",
+  "part_bande_v4": 0.07,
+  "part_2_1_opposee": 0.04,
+  "accepte": false,
+  "source": "généré art-gen/gen_bar_sheet.jpg #3",
+  "role": "touret de câble en table, caisses",
+  "emprise_m": [
+   1.9,
+   1.3
+  ],
+  "hauteur_attendue_m": 0.85,
+  "hauteur_implicite_m": 0.65,
+  "echelle_ok": true
+ },
+ "shop_shelf": {
+  "pente_dominante": 0.35,
+  "sens": "miroir",
+  "part_bande_v4": 0.95,
+  "part_2_1_opposee": 0.02,
+  "accepte": true,
+  "source": "généré art-gen/gen_grocery_sheet.jpg #0",
+  "role": "étagère de conserves",
+  "emprise_m": [
+   1.9,
+   0.5
+  ],
+  "hauteur_attendue_m": 1.9,
+  "hauteur_implicite_m": 1.93,
+  "echelle_ok": true
+ },
+ "shop_counter": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.85,
+  "part_2_1_opposee": 0.02,
+  "accepte": true,
+  "source": "généré art-gen/gen_grocery_sheet.jpg #1",
+  "role": "comptoir et balance d Anselme",
+  "emprise_m": [
+   2.2,
+   0.7
+  ],
+  "hauteur_attendue_m": 1.6,
+  "hauteur_implicite_m": 1.35,
+  "echelle_ok": true
+ },
+ "shop_filter": {
+  "pente_dominante": 0.5,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.15,
+  "accepte": false,
+  "source": "généré art-gen/gen_grocery_sheet.jpg #2",
+  "role": "filtre à eau en fûts, bouteilles",
+  "emprise_m": [
+   1.3,
+   0.9
+  ],
+  "hauteur_attendue_m": 1.4,
+  "hauteur_implicite_m": 1.56,
+  "echelle_ok": true
+ },
+ "shop_sacks": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.29,
+  "accepte": false,
+  "source": "généré art-gen/gen_grocery_sheet.jpg #3",
+  "role": "sacs et caisses de rations (stock caché)",
+  "emprise_m": [
+   1.6,
+   1.0
+  ],
+  "hauteur_attendue_m": 1.1,
+  "hauteur_implicite_m": 0.88,
+  "echelle_ok": true
+ },
+ "home_mattress": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0.08,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "source": "généré art-gen/gen_home_sheet.jpg #0",
+  "role": "paillasse sur palettes",
+  "emprise_m": [
+   1.9,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.35,
+  "hauteur_implicite_m": 0.47,
+  "echelle_ok": true
+ },
+ "home_curtain": {
+  "pente_dominante": 0.4,
+  "sens": "direct",
+  "part_bande_v4": 0.33,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_home_sheet.jpg #1",
+  "role": "rideau derrière lequel se tient Bruno",
+  "emprise_m": [
+   2.4,
+   0.15
+  ],
+  "hauteur_attendue_m": 2.1,
+  "hauteur_implicite_m": 2.05,
+  "echelle_ok": true
+ },
+ "home_table": {
+  "pente_dominante": 0.4,
+  "sens": "direct",
+  "part_bande_v4": 0.78,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_home_sheet.jpg #2",
+  "role": "table et deux chaises",
+  "emprise_m": [
+   1.7,
+   1.0
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.62,
+  "echelle_ok": true
+ },
+ "home_water": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.55,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_home_sheet.jpg #3",
+  "role": "seaux, jerrican, jarres",
+  "emprise_m": [
+   1.3,
+   0.8
+  ],
+  "hauteur_attendue_m": 0.75,
+  "hauteur_implicite_m": 0.66,
+  "echelle_ok": true
+ },
+ "bar_counter_b": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.89,
+  "part_2_1_opposee": 0.11,
+  "accepte": true,
+  "source": "généré art-gen/gen_sheet2.jpg #0",
+  "role": "comptoir de récupération, bouteilles comprises (2e génération)",
+  "emprise_m": [
+   3.8,
+   0.8
+  ],
+  "hauteur_attendue_m": 1.4,
+  "hauteur_implicite_m": 1.73,
+  "echelle_ok": true
+ },
+ "bar_backshelf_b": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.86,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_sheet2.jpg #1",
+  "role": "étagère basse à bouteilles et radio (2e génération)",
+  "emprise_m": [
+   2.0,
+   0.6
+  ],
+  "hauteur_attendue_m": 1.05,
+  "hauteur_implicite_m": 0.96,
+  "echelle_ok": true
+ },
+ "clinic_cot_b": {
+  "pente_dominante": 0.4,
+  "sens": "direct",
+  "part_bande_v4": 0.81,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_sheet2.jpg #2",
+  "role": "lit de camp en fer (2e génération)",
+  "emprise_m": [
+   2.0,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.95,
+  "hauteur_implicite_m": 0.73,
+  "echelle_ok": true
+ },
+ "clinic_stretcher_b": {
+  "pente_dominante": 0.4,
+  "sens": "direct",
+  "part_bande_v4": 0.81,
+  "part_2_1_opposee": 0.06,
+  "accepte": true,
+  "source": "généré art-gen/gen_sheet2.jpg #3",
+  "role": "civière (2e génération)",
+  "emprise_m": [
+   2.0,
+   0.6
+  ],
+  "hauteur_attendue_m": 0.6,
+  "hauteur_implicite_m": 0.48,
+  "echelle_ok": true
+ },
+ "home_mattress_b": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0.14,
+  "part_2_1_opposee": 0.02,
+  "accepte": false,
+  "source": "généré art-gen/gen_sheet3.jpg #0",
+  "role": "paillasse sur palettes (2e génération)",
+  "emprise_m": [
+   1.9,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.35,
+  "hauteur_implicite_m": 1.0,
+  "echelle_ok": false
+ },
+ "bar_table_b": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.87,
+  "part_2_1_opposee": 0.05,
+  "accepte": true,
+  "source": "généré art-gen/gen_sheet3.jpg #1",
+  "role": "table et tabourets (2e génération)",
+  "emprise_m": [
+   1.6,
+   1.2
+  ],
+  "hauteur_attendue_m": 0.9,
+  "hauteur_implicite_m": 0.79,
+  "echelle_ok": true
+ },
+ "shop_filter_b": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.06,
+  "part_2_1_opposee": 0.1,
+  "accepte": false,
+  "source": "généré art-gen/gen_sheet3.jpg #2",
+  "role": "filtre à eau, caisse de bouteilles (2e génération)",
+  "emprise_m": [
+   1.5,
+   0.8
+  ],
+  "hauteur_attendue_m": 1.4,
+  "hauteur_implicite_m": 1.21,
+  "echelle_ok": true
+ },
+ "shop_sacks_b": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.25,
+  "part_2_1_opposee": 0.16,
+  "accepte": false,
+  "source": "généré art-gen/gen_sheet3.jpg #3",
+  "role": "sacs et caisses de rations (2e génération)",
+  "emprise_m": [
+   1.6,
+   0.9
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.77,
+  "echelle_ok": true
+ },
+ "clinic_cot_c": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.28,
+  "part_2_1_opposee": 0.07,
+  "accepte": false,
+  "source": "généré art-gen/gen_sheet4.jpg #0",
+  "role": "lit de camp en fer (3e génération)",
+  "emprise_m": [
+   2.0,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.95,
+  "hauteur_implicite_m": 0.96,
+  "echelle_ok": true
+ },
+ "home_mattress_c": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0.11,
+  "part_2_1_opposee": 0.09,
+  "accepte": false,
+  "source": "généré art-gen/gen_sheet4.jpg #1",
+  "role": "paillasse sur palette (3e génération)",
+  "emprise_m": [
+   1.9,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.35,
+  "hauteur_implicite_m": 0.4,
+  "echelle_ok": true
+ },
+ "shop_filter_c": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.07,
+  "accepte": false,
+  "source": "généré art-gen/gen_sheet4.jpg #2",
+  "role": "filtre à eau en fûts (3e génération)",
+  "emprise_m": [
+   1.5,
+   0.8
+  ],
+  "hauteur_attendue_m": 1.2,
+  "hauteur_implicite_m": 0.79,
+  "echelle_ok": true
+ },
+ "shop_sacks_c": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.31,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "source": "généré art-gen/gen_sheet4.jpg #3",
+  "role": "sacs et caisses de rations (3e génération)",
+  "emprise_m": [
+   1.6,
+   0.9
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.64,
+  "echelle_ok": true
+ },
+ "home_mattress_d": {
+  "pente_dominante": 0.4,
+  "sens": "direct",
+  "part_bande_v4": 1.0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "généré art-gen/gen_mattress_d.jpg #-1",
+  "role": "paillasse sur cadre bas (4e génération, objet seul)",
+  "emprise_m": [
+   1.9,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.45,
+  "hauteur_implicite_m": 0.35,
+  "echelle_ok": true
+ },
+ "m_archive_shelf": {
+  "pente_dominante": 0.4,
+  "sens": "direct",
+  "part_bande_v4": 0.86,
+  "part_2_1_opposee": 0.05,
+  "accepte": true,
+  "source": "maquette art-source/interiors-v2.png #2",
+  "role": "étagère métallique (maquette)",
+  "emprise_m": [
+   1.6,
+   0.5
+  ],
+  "hauteur_attendue_m": 1.9,
+  "hauteur_implicite_m": 1.81,
+  "echelle_ok": true
+ },
+ "m_desk": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.8,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "maquette art-source/service-v10-B.png #3",
+  "role": "bureau métallique (maquette)",
+  "emprise_m": [
+   1.5,
+   0.7
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 1.03,
+  "echelle_ok": true
+ },
+ "m_locker": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.6,
+  "part_2_1_opposee": 0.21,
+  "accepte": false,
+  "source": "maquette art-source/service-v10-B.png #5",
+  "role": "casier (maquette)",
+  "emprise_m": [
+   0.9,
+   0.5
+  ],
+  "hauteur_attendue_m": 1.9,
+  "hauteur_implicite_m": 1.48,
+  "echelle_ok": true
+ },
+ "m_stove": {
+  "pente_dominante": 0.3,
+  "sens": "miroir",
+  "part_bande_v4": 0.74,
+  "part_2_1_opposee": 0.15,
+  "accepte": false,
+  "source": "maquette art-source/props-v9-domestic.png #3",
+  "role": "cuisinière à bois (maquette)",
+  "emprise_m": [
+   0.9,
+   0.7
+  ],
+  "hauteur_attendue_m": 1.3,
+  "hauteur_implicite_m": 1.1,
+  "echelle_ok": true
+ },
+ "m_cooktable": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.31,
+  "part_2_1_opposee": 0.16,
+  "accepte": false,
+  "source": "maquette art-source/Props-v6.png #3",
+  "role": "table de cuisine et marmites (maquette)",
+  "emprise_m": [
+   1.6,
+   0.7
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 1.07,
+  "echelle_ok": true
+ },
+ "m_bed": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "source": "maquette art-source/interiors-v2.png #0",
+  "role": "lit d hôpital (maquette)",
+  "emprise_m": [
+   2.0,
+   0.9
+  ],
+  "hauteur_attendue_m": 0.9,
+  "hauteur_implicite_m": 1.03,
+  "echelle_ok": true
+ },
+ "m_bar_counter": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "source": "maquette art-source/service-v10-A.png #0",
+  "role": "comptoir de bar (maquette)",
+  "emprise_m": [
+   3.0,
+   0.8
+  ],
+  "hauteur_attendue_m": 1.2,
+  "hauteur_implicite_m": 1.73,
+  "echelle_ok": false
+ },
+ "m_shop_shelf": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.03,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "source": "maquette art-source/service-v10-A.png #1",
+  "role": "étagère d épicerie (maquette)",
+  "emprise_m": [
+   1.9,
+   0.5
+  ],
+  "hauteur_attendue_m": 1.9,
+  "hauteur_implicite_m": 1.62,
+  "echelle_ok": true
+ },
+ "m_medchair": {
+  "pente_dominante": 0.55,
+  "sens": "direct",
+  "part_bande_v4": 0.07,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "source": "maquette art-source/service-v10-A.png #5",
+  "role": "fauteuil médical (maquette)",
+  "emprise_m": [
+   1.0,
+   1.4
+  ],
+  "hauteur_attendue_m": 1.6,
+  "hauteur_implicite_m": 1.21,
+  "echelle_ok": true
+ },
+ "m_desk2": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.13,
+  "part_2_1_opposee": 0.05,
+  "accepte": false,
+  "source": "maquette art-source/interiors-v2.png #3",
+  "role": "bureau (maquette)",
+  "emprise_m": [
+   1.6,
+   0.8
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.88,
+  "echelle_ok": true
+ }
+}
