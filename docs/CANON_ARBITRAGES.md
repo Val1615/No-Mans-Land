@@ -163,3 +163,10 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 6. Dates de travail : Grand Exode 2075, début de la guerre 2081, cryogénisation de Luis en août 2065 (avant la guerre). Les durées dites par les personnages sont approximatives.
 7. Monnaie : dollar dans les No Man's Land (dont Dusk-Town), crédit à Steel-Megalopolis.
 8. Dusk-Town : rues vides, habitants et mutants cachés, aucune milice, point de passage des rafles du Service Militarisé.
+
+## 9 quater. Entrée à Steel-Megalopolis (décisions de Valentin, 21/10/2026)
+- **[décision]** L'entrée dépend de la race choisie par le joueur : **humain** refusé à la douane ; **mutant** attaqué à vue ; **augmenté ou cyborg** possède l'implant et passe la douane.
+- **[décision]** Humain ou mutant : un villageois de Dusk-Town conseille de passer par la **Sous-Ville** et oriente vers un contact (proposition : Sol, et le frère de Bruno comme contact, voir `docs/villes/STEEL_MEGALOPOLIS_PLAN.md`).
+- **[décision]** La quête s'arrête une fois entré dans la ville ; la carte d'abord, la quête ensuite.
+- **[décision]** Premier quartier après la douane : **Center-Town**.
+- Appuis canon : contrôle par « implants d'immatriculation » (Ch. VII §1652) ; sans implant, inconnu d'IO (Ch. I §157) ; mutants abattus sans sommation hors Sous-Ville (Ch. I §105, Ch. VII §1716) ; mutants capturés « balancés dans la Sous Ville » (Ch. IV §1087) ; routes propres pour sortir de la Sous-Ville (Ch. VII §1716).

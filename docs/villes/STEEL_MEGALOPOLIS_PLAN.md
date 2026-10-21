@@ -3,6 +3,13 @@
 Légende : **[canon]** roman tome 1 (§ = ligne de l'extraction texte, mêmes numéros que `CANON_ARBITRAGES.md`) · **[décision]** décision de Valentin · **[proposition]** à valider · **[leçon]** tirée de la maquette `src/a` ou du dossier de conception `src/b`, jamais repris tel quel.
 Jeu : **2175**. Roman : **5 octobre 2202** (Ch. I §288). Un fait du roman décrit 2202.
 
+## 0. Décisions de Valentin (21/10/2026)
+- **[décision] L'entrée dépend de la race choisie** : humain = **refusé** à la douane ; mutant = **attaqué à vue** ; augmenté ou cyborg = **possède l'implant**, passe la douane.
+- **[décision]** Humain ou mutant : un villageois de Dusk-Town conseille de passer **par la Sous-Ville** et oriente vers un contact.
+- **[décision]** La quête **s'arrête une fois entré dans la ville**. D'abord la carte, la quête ensuite.
+- **[décision]** Premier quartier après la douane : **Center-Town**.
+Cohérent avec le canon : contrôle par implants d'immatriculation (Ch. VII §1652), mutants abattus sans sommation (Ch. I §105, Ch. VII §1716), routes de sortie de la Sous-Ville (§1716).
+
 ## 1. Canon et décisions retenus
 | Fait | Source |
 |---|---|
@@ -24,50 +31,49 @@ Jeu : **2175**. Roman : **5 octobre 2202** (Ch. I §288). Un fait du roman décr
 
 **Leçons de la maquette / conception** [leçon] : 18 secteurs dont 11 protégés = trop, identité et raccords insuffisants (`02_Etat-reel-et-ecarts` l.41) ; les cartes de niveaux étaient des schémas, pas une géométrie ; les transitions doivent être des ascenseurs, escaliers, contrôles **réciproques** ; « plus de 100 km² » non couvert par le roman ; valider un quartier avant d'étendre (`04_Reconstruction` l.32).
 
-## 2. Y arriver depuis Dusk-Town [proposition]
-1. **Départ** : le bord est du Transit (« Route des patrouilles », v7) devient praticable une fois l'objectif Steel actif. Deux façons :
-   - **à pied**, une journée (le régiment met « une bonne journée », Ch. I §61 [canon]) : coûte eau et rations (Sol, Anselme servent enfin), un événement de route (patrouille à éviter, abri) ;
-   - **avec la caravane d'Ileana** (elle « attend une caravane qui ne vient pas », v2) : elle arrive enfin, place payante en $, plus sûr, mais un convoi se fait contrôler.
-2. **Le périmètre** : désert, route, **guérite** à plusieurs km du dôme [canon], puis la **porte** [canon].
-3. **Papiers** : le joueur n'a pas d'implant IO (à trancher, Q2). Au guichet de la douane : **laissez-passer temporaire** (plaque ou bracelet scanné) contre $, durée limitée, motif déclaré. Mentir sur le motif = choix. Alternative : un passeur par une **route de la Sous-Ville** [canon : routes de sortie §1716], illégal, pas de papiers, recherché si contrôlé.
-4. **Change** : comptoir de change à la douane : dollars → crédits à un taux mauvais et à frais fixes ; meilleur taux au marché noir (Asia-Ground ou Sous-Ville), avec risque. Les crédits sont **liés au laissez-passer** (pas de pièces) : un clandestin ne paie qu'en liquide via intermédiaires.
-5. **Nilo** : statut à fixer (Q2). S'il n'a pas de papiers, il doit rester à la caravane, ou passer avec toi par la Sous-Ville.
+## 2. Y arriver depuis Dusk-Town
+1. **Route** [proposition] : le bord est du Transit (« Route des patrouilles ») devient praticable quand l'objectif Steel est actif. À pied, une journée (Ch. I §61 [canon]) : eau et rations consommées. La caravane d'Ileana est gardée pour plus tard.
+2. **Guérite puis douane** [canon guérite §535, §1652] :
+   - **augmenté / cyborg** [décision] : l'implant est lu, passage. Le change dollar → crédit se fait au comptoir de la douane, à un taux mauvais [proposition] ;
+   - **humain** [décision] : refusé (« pas d'implant, pas de ville »), renvoyé sur la route. Aucun combat ;
+   - **mutant** [décision] : attaqué à vue. Sans système de combat, voir Q2.
+3. **Conseil à Dusk-Town** [décision : un villageois ; choix du villageois = proposition] : **Sol** (la citerne, Les Sables). Elle cache déjà quelque chose sous son foulard (v7 : « ils regardent les mains, le cou, les yeux ») et vit au bord du désert : elle sait par où sortent ceux qu'on a jetés en dessous.
+   - Elle parle si le joueur est mutant (elle reconnaît les siens), ou s'il a gardé son secret (`sol_vue`) ; sinon il faut revenir après le refus de la douane (« Tu as vu leur porte. Maintenant écoute-moi. »).
+   - **Contact** [proposition] : le **frère de Bruno**, emmené par une patrouille « avec des lampes qui voient sous la peau » (v2). Le roman dit que les mutants capturés peuvent être « balancés dans la Sous Ville » (Ch. IV §1087 [canon]) : il est vivant, en bas, et fait passer des gens. Bruno donne son nom et un signe que lui seul connaît. Lien Sol ↔ Bruno : il porte l'eau la nuit (v2), elle tient l'eau des Sables.
+   - Route : une sortie de service dans le désert, loin de la guérite, qui descend dans la Sous-Ville [canon : routes propres §1716 ; emplacement = proposition].
+4. **Sous-Ville → Center-Town** [proposition] : le contact fait monter le joueur par un escalier ou monte-charge de service jusqu'à Center-Town, sans papiers. **Fin de la quête à l'arrivée en ville** [décision].
+## 3. Ordre de production révisé [proposition]
+Même règle que Dusk-Town : zones de 48×36 m, jonctions par bouts de rue, transitions verticales réciproques (escalier, monte-charge, contrôle).
 
-## 3. Zones reliées à pied, ordre de production réaliste [proposition]
-Même règle que Dusk-Town : 48×36 m par zone, bouts de rue = jonctions, bords annoncés ; transitions verticales = ascenseur / escalier / contrôle, toujours dans les deux sens.
-
-| Lot | Zones | Contenu jouable |
+| Lot | Contenu | Remarque |
 |---|---|---|
-| **P1 (premier périmètre)** | **S0 Périmètre** (route, guérite, douane, porte) · **S1 Lower-Town · La Porte** (rue d'arrivée sous le dôme, nuit, industrie, bureau de change, foyer de travailleurs) | entrée, papiers, change, 2 intérieurs, 4 PNJ, suite de quête étape 1 |
-| P2 | **S2 Asia-Ground** (marché, stands, marché noir) · **S3 Center-Town** (néons, écrans, tours, portiques scanner, bureau d'IO accessible au public) | surveillance, contrôles, quête étape 2 |
-| P3 | **S4 Sous-Ville** (sous S1, par une entrée de service) | mutants, précarité, braseros, route clandestine retour vers l'extérieur |
-| P4 | **S5 Upper-Town** (ascenseur contrôlé depuis S3) · **S6 China Lake** | accès rare, mafia, conclusion de la piste choisie |
+| **L0 Race** | choix de race au début de partie (voir §3 bis) ; Dusk-Town réagit au minimum (2-3 répliques) | prérequis de tout le reste |
+| **L1 Premier lot** | **S0 Extérieur** (route, guérite, douane, porte) + **S1 Center-Town** (première zone sous le dôme : néons, écrans, portiques, tours en fond) ; voyage depuis le bord est du Transit | chemin augmenté / cyborg complet ; humain refusé ; mutant : Q2 |
+| **L2 Entrée alternative** | **S4 Sous-Ville** (une zone) reliée à S0 par la sortie de service et à S1 par l'escalier de service ; Sol + Bruno à Dusk-Town | chemin humain / mutant complet |
+| L3+ | Lower-Town (industrie), Asia-Ground, Upper-Town, China Lake ; puis la quête « quelqu'un répond encore » | après validation de la carte |
 
-Un lot n'est commencé que quand le précédent est validé sur ordinateur et téléphone [leçon].
-
+### 3 bis. Introduire la race, impact minimal [proposition]
+- **Où** : un écran unique avant la première scène de Dusk-Town, dans le style UI v8 : 4 cartes (Humain, Mutant, Augmenté, Cyborg), une phrase chacune, aucune statistique. Le sprite du joueur reste le même au début (variante visuelle ensuite, si assets).
+- **Effet** : un seul champ d'état `player.race` + drapeau dérivé `has_implant` (augmenté, cyborg). Utilisé à la douane, par Sol, et par 2-3 répliques existantes (ex. Hector : « Avec ta tête, ne traîne pas sur l'avenue »).
+- **Tests** : les suites actuelles démarrent avec une race par défaut (humain) via le même écran, cliqué par geste.
 ## 4. Conséquences de système [proposition]
-- **Crédit** : deuxième solde dans le HUD v8 (« 120 cr ») affiché seulement à Steel ; le dollar reste dans le Sac.
+- **Crédit** : crédits liés à l'implant ; un clandestin n'en a qu'en liquide, via intermédiaires [proposition]. Deuxième solde dans le HUD v8 (« 120 cr ») affiché seulement à Steel ; le dollar reste dans le Sac.
 - **Surveillance** : jauge discrète « Repérage » (0-3) dans la cellule HUD, montée par portiques, caméras, actes visibles (courir, parler à un mutant devant une caméra) ; baisse avec le temps et dans les zones aveugles (Sous-Ville, arrière-cours). À 3 : contrôle par une patrouille.
-- **Contrôles** : portiques et patrouilles lisent le laissez-passer ; expiré ou absent = choix : payer une amende en crédits, mentir, fuir (combat hors périmètre de cette proposition).
+- **Contrôles** : portiques et patrouilles lisent l'implant [décision : seuls augmentés et cyborgs en ont]. Un humain ou mutant entré par la Sous-Ville est clandestin : un contrôle = choix (payer en crédits via un intermédiaire, mentir, fuir). Pas de combat dans ce périmètre.
 - **Statut humain / mutant** : le Service Militarisé abat les mutants identifiés [canon] ; un PNJ mutant ne se montre que dans la Sous-Ville ou derrière une porte. Être vu à l'aider monte le Repérage.
 - **Pas de nouvelle mécanique lourde** dans P1 : Repérage et crédit seulement ; le combat n'est pas prévu ici.
 
-## 5. Suite de « quelqu'un répond encore sous Dusk-Town » (choisir 1, Q3) [proposition]
-Contrainte de fond : **le labo ne s'ouvre pas avant 2202** et **l'homme n'en sort jamais** (en 2202, Luis sort seul, capsules vides, Prélude [canon]). Toute piste finit sans ouvrir la porte.
-- **A. Le guichet** : déclarer le survivant au bureau public d'IO (Center-Town). Formulaires, crédits, file d'attente ; un employé trouve la fiche : « Site de Dusk-Town : scellé, sans personnel, dossier clos ». Choix final : insister (Repérage +, on te remarque), ou vendre l'information à un acheteur discret. Humour noir administratif ; IO sait, ou ne veut pas savoir.
-- **B. Ceux qui l'ont construit** : à Asia-Ground, une vieille pharmacienne ou un réparateur a travaillé jadis pour un sous-traitant de Human Corporation. Il reconnaît le message « confinement ». Il ne peut pas ouvrir (« ça s'ouvre de l'intérieur ») mais donne une fréquence ou un code d'interphone : retour possible à Dusk-Town pour **parler encore** à l'homme, qui finit par ne plus répondre.
-- **C. Ceux d'en bas** : dans la Sous-Ville, des mutants qui travaillent dans les machineries savent qu'un vieux réseau de câbles relie encore des sites d'avant-guerre. Fabriquer un relais radio (pièces, crédits ou service rendu). Choix : le relais sert au survivant, ou les mutants le gardent pour eux (et te le revaudront).
-Recommandation : **B** (petite, sans faction datée, prolonge la voix sans rien révéler), **C** en extension P3.
-
+## 5. Quête : pour l'instant [décision]
+La quête « La porte d'acier » mène jusqu'à **l'entrée dans la ville** (douane ou Sous-Ville) puis s'arrête. L'objectif devient « Arrivé à Steel-Megalopolis ». Les pistes A/B/C de la suite (guichet d'IO, ancien réparateur HC, relais radio de la Sous-Ville) sont **mises en attente** jusqu'à ce que la carte soit faite. Contrainte maintenue : le labo ne s'ouvre pas avant 2202 et l'homme n'en sort jamais.
 ## 6. PNJ clés (nouveaux, aucun personnage du roman) [proposition]
 | PNJ | Lieu | Désir | Peur | Secret | Voix |
 |---|---|---|---|---|---|
 | **Odile Varga**, guichetière de la douane | S0 | finir sa journée sans incident | une erreur à son nom | laisse passer un cousin par mois contre des dollars | phrases en formulaire, « motif ? » |
 | **Teng**, changeur | S1 / S2 | les dollars, valeur refuge | qu'IO interdise le change | taux truqué sur les petites sommes | compte à voix haute, aimable, rapide |
 | **Sergent Halloran**, Service Militarisé | S0 / S3 | une promotion vers l'intérieur | être renvoyé en patrouille désert | a perdu un frère dans une rafle « ratée » | sec, ironique, ne finit jamais ses menaces |
-| **Mère Ruiz**, foyer de travailleurs | S1 | loger tout le monde au chaud | le contrôle de nuit | cache une famille mutante dans la cave | chaleureuse, autoritaire, tutoie |
+| **Mère Ruiz**, foyer de travailleurs | Lower-Town (L3) | loger tout le monde au chaud | le contrôle de nuit | cache une famille mutante dans la cave | chaleureuse, autoritaire, tutoie |
 | **Ansel Pike**, ex-réparateur sous-traitant HC | S2 | être cru une fois | qu'on le cherche pour ce qu'il sait | a entendu le même message il y a des années | décousu, précis sur les détails techniques |
-| **Corbeau**, passeur mutant | S4 | une route sûre pour les siens | les lampes « qui voient sous la peau » (écho de Bruno) | travaille aussi pour une gang de China Lake | murmure, humour très noir |
+| **Le frère de Bruno** (nom à donner), passeur mutant, remplace « Corbeau » | S4 | une route sûre pour les siens | les lampes « qui voient sous la peau » (écho de Bruno) | travaille aussi pour une gang de China Lake | murmure, humour très noir |
 
 ## 7. Besoins d'assets
 **Existants dans la maquette** (`src/a/.../art-source`, à **contrôler à l'angle v4** comme pour Dusk-Town, rejets probables) :
@@ -92,3 +98,8 @@ Recommandation : **B** (petite, sans faction datée, prolonge la voix sans rien 
 
 ## 9. Planches d'ambiance (**pistes**, pas des assets du jeu)
 `docs/villes/steel/ambiance/` : `01-entree-sarcophage.jpg` (le dôme y paraît trop petit), `02-centre-neons.jpg` (contient du faux texte et un bâtiment-dôme : à ignorer), `03-sous-ville.jpg` (vue plus basse que v4), `04-upper-town.jpg` (angle v4), `04b-upper-town-ciel-artificiel.jpg` (vue frontale pour le ciel synthétique, angle non v4).
+
+## 10. Questions restantes pour Valentin
+1. **Nilo selon la race.** (a) Nilo suit toujours, il passe là où passe le joueur ; (b) Nilo n'a pas d'implant : avec un joueur augmenté ou cyborg, il doit passer par la Sous-Ville ou attendre à Dusk-Town ; (c) Nilo est mutant caché. **Recommandation : (a)** pour le premier lot (zéro système en plus), (b) plus tard si on veut une séparation.
+2. **Mutant attaqué à vue, sans système de combat.** (a) Scène : sommation, tirs, le joueur s'enfuit vers le désert, PV perdus, retour à la route ; (b) écran « capturé » puis relâché dans la Sous-Ville (§1087) : ça devient l'entrée elle-même ; (c) le joueur est repéré de loin et ne peut pas approcher (avertissement de Sol). **Recommandation : (a)**, simple, lisible, et Sol prend le relais.
+3. **Le choix de race au début.** (a) écran de choix avant Dusk-Town, modifiable seulement en nouvelle partie ; (b) race tirée de l'origine ou d'un dialogue d'ouverture ; (c) choix tardif, au moment du départ pour Steel. **Recommandation : (a)**.
