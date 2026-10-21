@@ -1,0 +1,133 @@
+# Recette navigateur réelle du quartier Dusk-Town Q1 (Chrome headless, WebGL logiciel).
+# Gestes réels : clics souris (bureau) et taps tactiles (mobile). Captures = rendu réel du jeu.
+import json, time
+from playwright.sync_api import sync_playwright
+URL = 'http://127.0.0.1:8765/'; OUT = '/workspace/nml/docs/captures/dusk-q1-v2/'
+R = []
+import os
+DEBUG = os.environ.get('DEBUG')
+PROFILES = os.environ.get('PROFILES','desktop,mobile').split(',')
+def check(name, ok, detail=''):
+    R.append({'test': name, 'ok': bool(ok), 'detail': str(detail)}); print(('OK    ' if ok else 'ECHEC ') + name, detail)
+def st(pg): return pg.evaluate('JSON.parse(JSON.stringify(window.__nml.state))')
+def wait(pg, js, t=20):
+    t0 = time.time()
+    while time.time() - t0 < t:
+        if pg.evaluate(js): return True
+        time.sleep(0.1)
+    return False
+def comp_ok(s): c = s['companion']; return c['mode'] == 'follow' and c['location'] == s['location'] and ((c['x']-s['player']['x'])**2+(c['z']-s['player']['z'])**2)**.5 < 2.5
+
+with sync_playwright() as p:
+    b = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
+    for prof in PROFILES:
+        ctx = b.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else b.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
+        pg = ctx.new_page(); errs = []
+        pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and errs.append(m.text))
+        pg.goto(URL); pg.wait_for_function('window.__nml'); time.sleep(2.5)
+        def gesture(x, y): (pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click)(x, y)
+        def tap_world(x, y, z): pt = pg.evaluate(f'window.__nml.project({x},{y},{z})'); gesture(pt['x'], pt['y'])
+        VW, VH = (1280, 800) if prof == 'desktop' else (390, 844)
+        cmd_moves = []
+        def walk_to(x, z):
+            # Marche par gestes réels au sol, par étapes visibles à l'écran.
+            for _ in range(8):
+                s = st(pg); px, pz = s['player']['x'], s['player']['z']
+                if ((px-x)**2 + (pz-z)**2) ** .5 < 1.0: return True
+                for f in (1.0, 0.7, 0.5, 0.35, 0.2):
+                    tx, tz = px + (x-px)*f, pz + (z-pz)*f
+                    pt = pg.evaluate(f'window.__nml.project({tx},0,{tz})')
+                    if 30 < pt['x'] < VW-30 and 120 < pt['y'] < VH-90 and (pg.evaluate(f"(window.__nml.pick({pt['x']},{pt['y']})||{{}}).kind") == 'ground'): break
+                gesture(pt['x'], pt['y']); time.sleep(0.2)
+                if DEBUG: print('  walk', (round(px,1), round(pz,1)), '->', (round(tx,1), round(tz,1)), pt, st(pg)['player']['path'][:1], st(pg)['log'][-1:] )
+                wait(pg, 'window.__nml.state.player.path.length===0', 20); time.sleep(0.3)
+            return False
+        def press(sel): (pg.locator(sel).first.tap() if prof == 'mobile' else pg.locator(sel).first.click())
+        def option(text): press(f'#dlg-options button:has-text("{text}")'); time.sleep(0.3)
+        pg.screenshot(path=f'{OUT}{prof}-01-arrivee.png')
+        if prof == 'desktop':
+            pg.evaluate('window.__nml.setCamera({x:24,z:18,ppm:22})'); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-00-vue-ensemble.png')
+            pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.5)
+        # --- Étiquettes : aucune avant découverte
+        vis = lambda: pg.evaluate('[...document.querySelectorAll(".wlabel.service")].filter(e=>!e.hidden).map(e=>e.dataset.building)')
+        check(f'{prof}: aucune étiquette de service avant découverte', vis() == [], vis())
+        if prof == 'desktop':
+            pg.evaluate('window.__nml.setCamera({x:24,z:18,ppm:22})'); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-06-avant-decouverte.png'); pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.4)
+        # --- Rues vides (décision de Valentin)
+        n_out = pg.evaluate('window.__nml.npcs.filter(n=>n.location==="dusk_q1").length')
+        check(f'{prof}: aucun PNJ dans les rues', n_out == 0, f'{n_out} PNJ dehors')
+        # --- Services : (bâtiment, point de geste, intérieur, PNJ, action, vérif)
+        services = [
+            ('mara_house', (4.5, 1.2, 12.0) if prof == 'mobile' else (2.5, 2.0, 12.0), 'mara_in', 'mara', (1.0, 1.0, 2.0), None, None),
+            ('grocery', (22.0, 1.2, 27.5), 'grocery_in', 'anselme', (2.2, 1.0, 4.2), 'bouteille', lambda a, z: z['player']['inv'].get('water') == 1 and z['player']['money'] == a['player']['money'] - 4),
+            ('bar', (36.0, 1.2, 13.0) if prof == 'mobile' else (34.0, 2.0, 13.0), 'bar_in', 'hector', (4.0, 1.0, 1.4), 'Un repas', lambda a, z: z['player']['money'] == a['player']['money'] - 6 and z['player']['hp'] == min(40, a['player']['hp'] + 5)),
+            ('clinic', (11.0, 1.2, 13.0) if prof == 'mobile' else (8.5, 1.5, 13.0), 'clinic_in', 'vera', (6.2, 1.0, 1.6), None, None)]
+        approach = {'mara_house': (5, 16), 'grocery': (25, 26), 'bar': (36, 17), 'clinic': (12, 17)}
+        for bid, pt, inside, npc, npos, opt, verify in services:
+            walk_to(*approach[bid]); tap_world(*pt)
+            ok = wait(pg, f'window.__nml.state.location==="{inside}"', 25)
+            s = st(pg); check(f'{prof}: {bid} -> entrée ({"tap porte" if prof=="mobile" else "clic façade"})', ok, s['location'])
+            check(f'{prof}: {bid} -> compagnon entré', comp_ok(s))
+            time.sleep(0.6)
+            tap_world(*npos)
+            check(f'{prof}: {bid} -> dialogue {npc} ouvert', wait(pg, f'window.__nml.state.dialogue && window.__nml.state.dialogue.npc==="{npc}"'))
+            time.sleep(0.4)
+            if bid == 'clinic': pg.screenshot(path=f'{OUT}{prof}-04-interieur-clinique-dialogue.png')
+            if bid == 'mara_house': pg.screenshot(path=f'{OUT}{prof}-02-chez-mara.png')
+            before = st(pg)
+            if bid == 'mara_house':
+                option('Il n\'y avait personne'); option('qui'); txt = pg.locator('#dlg-text').inner_text(); option('accord')
+                check(f'{prof}: Mara évoque les soldats de la capitale', 'soldats' in txt and not st(pg)['dialogue'], txt[:50])
+                tap_world(1.0, 1.0, 2.0); wait(pg, 'window.__nml.state.dialogue', 10); option('pompe'); option('chercher')
+                check(f'{prof}: piste de la pompe notée', st(pg)['flags'].get('pompe_aide') is True); option('Promis')
+                time.sleep(0.4); tap_world(3.8, 1.0, 1.6)
+                check(f'{prof}: dialogue Bruno (mutant caché) ouvert', wait(pg, 'window.__nml.state.dialogue && window.__nml.state.dialogue.npc==="bruno"'))
+                time.sleep(0.3); pg.screenshot(path=f'{OUT}{prof}-02-dialogue-bruno.png')
+                option('Tu vis ici'); txt = pg.locator('#dlg-text').inner_text(); option('emmené'); option('Merci')
+                check(f'{prof}: Bruno raconte la rafle puis ferme', 'patrouille' in txt and not st(pg)['dialogue'], txt[:50])
+            elif bid == 'clinic':
+                option('aplomb'); option('Payer 15'); after = st(pg)
+                check(f'{prof}: soin Vera payé (PV au max, -15 $)', after['player']['hp'] == 40 and after['player']['money'] == before['player']['money'] - 15, f"PV {before['player']['hp']}->{after['player']['hp']}, {before['player']['money']}->{after['player']['money']} $")
+                press('#dlg-close'); check(f'{prof}: fermeture par le bouton ×', wait(pg, '!window.__nml.state.dialogue', 3))
+            else:
+                option(opt); after = st(pg)
+                check(f'{prof}: service {npc} effectué', verify(before, after), f"argent {before['player']['money']}->{after['player']['money']}, PV {after['player']['hp']}, inv {after['player']['inv']}")
+                press('#dlg-options button:last-child'); wait(pg, '!window.__nml.state.dialogue', 3)
+                check(f'{prof}: dialogue {npc} fermé', not st(pg)['dialogue'])
+            if bid == 'bar':
+                tap_world(8.9, 1.0, 3.6)
+                check(f'{prof}: dialogue Ileana (Invictos) ouvert', wait(pg, 'window.__nml.state.dialogue && window.__nml.state.dialogue.npc==="ileana"'))
+                option('pas d\'ici'); txt = pg.locator('#dlg-text').inner_text(); time.sleep(0.3); pg.screenshot(path=f'{OUT}{prof}-03-interieur-bar-ileana.png'); option('Et tu fais quoi'); option('Bonne attente')
+                check(f'{prof}: Ileana parcourue puis fermée', 'Invictos' in txt and not st(pg)['dialogue'], txt[:50])
+            # sortie
+            d = pg.evaluate(f'window.__nml.doors.find(d=>d.location==="{inside}")')
+            if prof == 'mobile':
+                walk_to(d['threshold']['x'] - (1 if d['opening']['side'] == 'east' else 0), d['threshold']['z'] - (1 if d['opening']['side'] == 'south' else 0))
+                wait(pg, '!document.getElementById("act").hidden', 5); press('#act')
+            else:
+                d = pg.evaluate(f'window.__nml.doors.find(d=>d.location==="{inside}")'); tap_world(d['opening']['x'], 1.0, d['opening']['z'])
+            ok = wait(pg, 'window.__nml.state.location==="dusk_q1"', 25); s = st(pg)
+            d = pg.evaluate(f'window.__nml.doors.find(d=>d.buildingId==="{bid}")')
+            check(f'{prof}: {bid} -> sortie au seuil extérieur', ok and abs(s['player']['x']-d['threshold']['x']) < .05 and abs(s['player']['z']-d['threshold']['z']) < .05, f"({s['player']['x']},{s['player']['z']})")
+            check(f'{prof}: {bid} -> compagnon ressorti', comp_ok(s))
+            time.sleep(0.2); v = vis()
+            check(f'{prof}: étiquette {bid} affichée après être entré', bid in v, v)
+            if bid == 'mara_house': check(f'{prof}: étiquette clinique affichée car Mara en a parlé (avant d\'y entrer), épicerie et bar toujours masqués', 'clinic' in v and 'grocery' not in v and 'bar' not in v, v)
+        v = vis(); check(f'{prof}: les 4 étiquettes persistent après sortie', sorted(v) == ['bar', 'clinic', 'grocery', 'mara_house'], v)
+        if prof == 'desktop':
+            pg.evaluate('window.__nml.setCamera({x:24,z:18,ppm:22})'); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-07-apres-decouverte.png'); pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.4)
+        # --- Bâtiment non visitable : retour neutre, pas de transition
+        walk_to(40, 17); n0 = st(pg)['transitions']; tap_world(45, 3, 13.0)
+        time.sleep(0.5); check(f'{prof}: tour effondrée non visitable (pas de transition)', st(pg)['transitions'] == n0 and 'fermé' in pg.locator('#msg').inner_text(), pg.locator('#msg').inner_text())
+        # --- Restriction : sortie est barrée
+        pg.evaluate('window.__nml.game.moveTo(47.6, 18)'); time.sleep(0.2); wait(pg, 'window.__nml.state.player.path.length===0', 20)
+        s = st(pg); check(f'{prof}: sortie est barrée par éboulis et épave (commande vers x=47,6)', s['player']['x'] < 43.5, f"x final={s['player']['x']}")
+        # --- Occultation derrière le bar
+        pg.evaluate('window.__nml.game.moveTo(36, 2)'); wait(pg, 'Math.hypot(window.__nml.state.player.x-36, window.__nml.state.player.z-2)<0.3', 30); time.sleep(1.2)
+        op = pg.evaluate("window.__nml.opacityOf('bar')"); check(f'{prof}: bar transparent quand le joueur est derrière', op < 0.5, f'opacité={op:.2f}')
+        pg.screenshot(path=f'{OUT}{prof}-05-occultation.png')
+        check(f'{prof}: aucune erreur console', not errs, '; '.join(errs)[:300])
+        ctx.close()
+    b.close()
+json.dump(R, open(OUT + 'resultats.json', 'w'), ensure_ascii=False, indent=1)
+print(sum(r['ok'] for r in R), '/', len(R))

@@ -1,0 +1,338 @@
+{
+ "player": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/actors-v2-0.webp",
+  "height_m": 1.8,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   265,
+   479
+  ]
+ },
+ "nilo": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/actors-v2-4.webp",
+  "height_m": 1.75,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   261,
+   480
+  ]
+ },
+ "mara": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/actor-1.webp",
+  "height_m": 1.68,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   224,
+   477
+  ]
+ },
+ "vera": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/city-people-v3-2.webp",
+  "height_m": 1.7,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   162,
+   491
+  ]
+ },
+ "hector": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/actors-v2-2.webp",
+  "height_m": 1.85,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   265,
+   476
+  ]
+ },
+ "anselme": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/actor-4.webp",
+  "height_m": 1.7,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   269,
+   487
+  ]
+ },
+ "pump": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-detail-v4-2.webp",
+  "height_m": 1.6,
+  "footprint_m": [
+   1.6,
+   1.2
+  ],
+  "px": [
+   422,
+   403
+  ]
+ },
+ "workbench": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v2-0.webp",
+  "height_m": 1.2,
+  "footprint_m": [
+   1.8,
+   0.8
+  ],
+  "px": [
+   472,
+   445
+  ]
+ },
+ "crate": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v2-1.webp",
+  "height_m": 0.7,
+  "footprint_m": [
+   1.0,
+   0.6
+  ],
+  "px": [
+   460,
+   362
+  ]
+ },
+ "barrel": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v2-2.webp",
+  "height_m": 0.95,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   206,
+   354
+  ]
+ },
+ "stall": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/street-detail-v9-5.webp",
+  "height_m": 2.3,
+  "footprint_m": [
+   2.0,
+   1.2
+  ],
+  "px": [
+   459,
+   512
+  ]
+ },
+ "laundry": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-0.webp",
+  "height_m": 1.9,
+  "footprint_m": [
+   2.4,
+   0.3
+  ],
+  "px": [
+   512,
+   445
+  ]
+ },
+ "cart": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-1.webp",
+  "height_m": 1.1,
+  "footprint_m": [
+   1.8,
+   0.9
+  ],
+  "px": [
+   461,
+   312
+  ]
+ },
+ "sandbags": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-10.webp",
+  "height_m": 0.9,
+  "footprint_m": [
+   2.2,
+   0.8
+  ],
+  "px": [
+   512,
+   352
+  ]
+ },
+ "bush": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-19.webp",
+  "height_m": 1.1,
+  "footprint_m": [
+   1.0,
+   1.0
+  ],
+  "px": [
+   512,
+   445
+  ]
+ },
+ "board": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-detail-v4-4.webp",
+  "height_m": 1.9,
+  "footprint_m": [
+   1.4,
+   0.3
+  ],
+  "px": [
+   382,
+   444
+  ]
+ },
+ "bench": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/street-detail-v9-0.webp",
+  "height_m": 0.9,
+  "footprint_m": [
+   1.6,
+   0.6
+  ],
+  "px": [
+   487,
+   421
+  ]
+ },
+ "lamp": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/street-detail-v9-4.webp",
+  "height_m": 3.2,
+  "footprint_m": [
+   0.4,
+   0.4
+  ],
+  "px": [
+   225,
+   492
+  ]
+ },
+ "firewood": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-2.webp",
+  "height_m": 1.4,
+  "footprint_m": [
+   1.8,
+   0.8
+  ],
+  "px": [
+   423,
+   437
+  ]
+ },
+ "stove": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-3.webp",
+  "height_m": 1.3,
+  "footprint_m": [
+   0.9,
+   0.7
+  ],
+  "px": [
+   385,
+   501
+  ]
+ },
+ "planters": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-5.webp",
+  "height_m": 0.6,
+  "footprint_m": [
+   1.6,
+   1.0
+  ],
+  "px": [
+   496,
+   483
+  ]
+ },
+ "rubble": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-9.webp",
+  "height_m": 0.7,
+  "footprint_m": [
+   2.0,
+   1.6
+  ],
+  "px": [
+   512,
+   407
+  ]
+ },
+ "tires": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v9-20.webp",
+  "height_m": 0.8,
+  "footprint_m": [
+   1.2,
+   1.0
+  ],
+  "px": [
+   416,
+   398
+  ]
+ },
+ "shelves": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/street-detail-v9-3.webp",
+  "height_m": 1.9,
+  "footprint_m": [
+   1.8,
+   0.6
+  ],
+  "px": [
+   463,
+   512
+  ]
+ },
+ "kitchen": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v6-3.webp",
+  "height_m": 1.0,
+  "footprint_m": [
+   1.6,
+   0.7
+  ],
+  "px": [
+   506,
+   486
+  ]
+ },
+ "bruno": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/actor-2.webp",
+  "height_m": 1.9,
+  "footprint_m": [
+   0.7,
+   0.7
+  ],
+  "px": [
+   259,
+   512
+  ]
+ },
+ "ileana": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/actors-v2-5.webp",
+  "height_m": 1.72,
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "px": [
+   237,
+   480
+  ]
+ },
+ "wreck": {
+  "src": "src/a/.../07_MAQUETTE_ARCHIVE_v0.13/dist/assets/props-v2-5.webp",
+  "height_m": 1.5,
+  "footprint_m": [
+   4.2,
+   2.0
+  ],
+  "px": [
+   480,
+   310
+  ]
+ }
+}

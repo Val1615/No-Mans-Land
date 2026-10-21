@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No Man's Land 2175 · Dusk-Town</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./src/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="labels"></div>
+<div id="hud">
+  <div class="row"><span id="loc"></span><span class="tag" title="Volumes et textures de bâtiments provisoires">PROVISOIRE</span></div>
+  <div class="row stats"><span id="hp"></span><span id="money"></span><span id="inv"></span></div>
+  <div id="msg" role="status" aria-live="polite"></div>
+</div>
+<div id="actions"><button id="act" hidden></button></div>
+<div id="dialogue" hidden role="dialog" aria-modal="false">
+  <img id="dlg-portrait" alt="">
+  <div class="dlg-body">
+    <div id="dlg-name"></div>
+    <p id="dlg-text"></p>
+    <div id="dlg-options"></div>
+  </div>
+  <button id="dlg-close" aria-label="Fermer">×</button>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+[
+ {
+  "test": "desktop: clic façade -> trajet au seuil puis entrée",
+  "ok": true,
+  "detail": "lieu=shop_interior"
+ },
+ {
+  "test": "desktop: aucun point du trajet dans l'emprise du bâtiment",
+  "ok": true,
+  "detail": "38 échantillons"
+ },
+ {
+  "test": "desktop: compagnon entré avec le joueur",
+  "ok": true,
+  "detail": "mode=follow dist=1.00m"
+ },
+ {
+  "test": "desktop: sortie vers la rue au seuil extérieur",
+  "ok": true,
+  "detail": "pos=(8,11)"
+ },
+ {
+  "test": "desktop: compagnon ressorti avec le joueur",
+  "ok": true,
+  "detail": "dist=1.00m"
+ },
+ {
+  "test": "desktop: réentrée immédiate après sortie",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: compagnon suit après déplacement au sol (clic réel)",
+  "ok": true,
+  "detail": "dist=1.46m"
+ },
+ {
+  "test": "desktop: destination dans l'emprise refusée (commande)",
+  "ok": true,
+  "detail": "{\"ok\": false, \"reason\": \"chemin_bloque\"}"
+ },
+ {
+  "test": "desktop: volume occultant transparent quand le joueur est derrière",
+  "ok": true,
+  "detail": "opacité=0.25"
+ },
+ {
+  "test": "desktop: volume redevenu opaque quand le joueur est devant",
+  "ok": true,
+  "detail": "opacité=1.00"
+ },
+ {
+  "test": "desktop: aucune erreur console",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: tap porte -> trajet au seuil puis entrée",
+  "ok": true,
+  "detail": "lieu=shop_interior"
+ },
+ {
+  "test": "mobile: aucun point du trajet dans l'emprise du bâtiment",
+  "ok": true,
+  "detail": "38 échantillons"
+ },
+ {
+  "test": "mobile: compagnon entré avec le joueur",
+  "ok": true,
+  "detail": "mode=follow dist=1.00m"
+ },
+ {
+  "test": "mobile: sortie vers la rue au seuil extérieur",
+  "ok": true,
+  "detail": "pos=(8,11)"
+ },
+ {
+  "test": "mobile: compagnon ressorti avec le joueur",
+  "ok": true,
+  "detail": "dist=1.00m"
+ },
+ {
+  "test": "mobile: réentrée immédiate après sortie",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: compagnon suit après déplacement au sol (clic réel)",
+  "ok": true,
+  "detail": "dist=1.46m"
+ },
+ {
+  "test": "mobile: destination dans l'emprise refusée (commande)",
+  "ok": true,
+  "detail": "{\"ok\": false, \"reason\": \"chemin_bloque\"}"
+ },
+ {
+  "test": "mobile: volume occultant transparent quand le joueur est derrière",
+  "ok": true,
+  "detail": "opacité=0.25"
+ },
+ {
+  "test": "mobile: volume redevenu opaque quand le joueur est devant",
+  "ok": true,
+  "detail": "opacité=1.00"
+ },
+ {
+  "test": "mobile: aucune erreur console",
+  "ok": true,
+  "detail": ""
+ }
+]

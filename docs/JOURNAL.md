@@ -1,0 +1,182 @@
+# Journal de reconstruction NML
+
+## 2026-10-21 (heure de Paris)
+
+### Décisions
+- Le tome 1 est la seule source canonique. Arbitrages dans `CANON_ARBITRAGES.md`.
+- Technique : 3D orthographique avec Three.js 0.170, en modules ES servis statiquement, avec une interface HTML. Voir `DECISION_TECHNIQUE.md`.
+- Référentiel : 1 unité = 1 m, cases de 0,5 m, personnage de 1,8 m, porte de 1,0 × 2,2 m, seuil à 1 m.
+- Aucun code repris de la v0.13.
+
+### Fait
+- `ETAT_DES_LIEUX.md`, `CANON_ARBITRAGES.md`, `DECISION_TECHNIQUE.md`.
+- `/workspace/nml/game/` : scène d'étalonnage avec :
+  - une rue de 24 × 20 m ;
+  - une boutique placeholder de 8 × 6 m, avec une porte réelle et un seuil marqué ;
+  - un intérieur de 8 × 6 m avec murs, porte de sortie et comptoir ;
+  - une tour placeholder de 12 m qui sert de volume occultant ;
+  - une caisse ;
+  - un joueur (bleu) et un compagnon (vert).
+- Contrôles : clic ou tap sur le sol (déplacement), sur la façade ou sur la porte (trajet jusqu'au seuil puis entrée), et bouton contextuel « Entrer » ou « Sortir ».
+- Bandeau « GÉOMÉTRIE PROVISOIRE (PLACEHOLDER) » et étiquettes sur chaque volume provisoire.
+
+### Vérifié
+`tests/browser_check.py` dans Chrome headless (WebGL logiciel SwiftShader), avec de vrais événements souris (1280×800) et tactiles (390×844, `has_touch`). Résultat : **22 sur 22**, détail dans `captures/resultats-verification.json`.
+- Clic sur la façade (bureau) et tap sur la porte (mobile) : trajet jusqu'au seuil puis entrée dans l'intérieur. Aucun échantillon du trajet n'est passé dans l'emprise du bâtiment (38 échantillons).
+- Le compagnon entre avec le joueur, à 1,0 m.
+- Sortie : par clic sur la porte intérieure (bureau) et par tap sur le bouton « Sortir » (mobile). Arrivée exacte au seuil extérieur (8 ; 11), compagnon ressorti à 1,0 m.
+- Réentrée immédiate après sortie. C'est la régression du bug historique de Nilo, réécrite pour ce nouveau code.
+- Le compagnon suit après un clic réel sur le sol, et s'arrête à 1,48 m.
+- Une destination dans l'emprise du bâtiment est refusée avec le motif `chemin_bloque`. Testé par appel de commande, pas par clic.
+- Occultation : la tour passe à une opacité de 0,25 quand le joueur est derrière, puis revient à 1,0 quand il est devant. Le déplacement derrière la tour se fait par commande, pas par clic.
+- Aucune erreur console après ajout d'une favicon vide (l'erreur 404 initiale venait de la favicon).
+
+### Non vérifié
+- Vrai téléphone, vrai geste tactile, performance sur GPU mobile, Safari iOS, rotation, texte agrandi.
+- Le cas « compagnon trop loin » (resté derrière avec un message) est codé mais n'est pas testé.
+- Aucune condition de porte (serrure, combat) n'est implémentée.
+- Pas de sauvegarde ni de rechargement.
+
+### Corrigés en cours de route
+- Le compagnon visait une case à 2 m du joueur : il choisit maintenant l'anneau libre le plus proche.
+- La sélection et la projection pouvaient utiliser la scène de l'image précédente juste après une transition. Le rendu est maintenant forcé avant `pick` et `project`.
+
+### Problèmes ouverts
+- La grille d'aide déborde du sol (elle est carrée).
+- Les étiquettes sont peu lisibles sur mobile.
+- Pas de rotation ou de zoom de caméra.
+- Une seule porte, piétonne. Pas de porte de fret.
+- Pas de dépendances verrouillées hors `package-lock.json`. Pas encore de build.
+
+### Prochaine étape
+Faire valider le référentiel par Valentin sur les captures. Ajouter ensuite :
+- une porte verrouillée avec refus typé ;
+- une porte de fret ;
+- le cas « compagnon resté derrière » ;
+- sauvegarde et rechargement.
+
+Puis rédiger le programme du quartier de Dusk-Town.
+
+## 2026-10-21, 13 h 15 (heure de Paris)
+
+### Décisions de Valentin
+- Steel-Megalopolis est la capitale d'IO. L'ancienne capitale de l'UFSA est Buenos Aires. La question des deux capitales est close.
+
+### Vérifié dans le roman
+- Ch. I §250 dit bien « Qui ne connait pas SteelMegalopolis ? Oui… la capitale de l'Ex UFSA. » : pas d'erreur de lecture. Le roman est à corriger, la décision prévaut.
+- Ch. I §288 : cryogénisation en août 2065, réveil prévu en juillet 2165, « Nous voilà le 5 Octobre 2202 », « cent trente longues années ».
+- Inventaire verbatim des citations temporelles ajouté à `CANON_ARBITRAGES.md` §2.
+
+## 2026-10-21, 13 h 20 (heure de Paris)
+
+### Décisions de Valentin
+- Règle de lecture : seuls les faits posés par la narration sont des dates canoniques. Les durées dites par les personnages sont approximatives. « 130 ans » et « plus de deux cents ans » ne sont donc **pas** des contradictions : point retiré.
+- La cryogénisation de 2065 précède la guerre et est indépendante des autres dates.
+- 2075 (Grand Exode) et 2081 (début de la guerre) sont des dates de travail compatibles avec le roman.
+
+## 2026-10-21, après-midi (heure de Paris) : Dusk-Town, quartier 1 « La Pompe »
+
+### Décisions
+- Programme du quartier : `docs/quartiers/DUSK_TOWN_Q1.md`. Chaque détail canon est cité depuis le roman (Ch. I §61 à §107) ; PNJ et accroches sont marqués « proposition ».
+- Assets :
+  - bâtiments, sols et mobilier faits par code (volumes en mètres, textures peintes) ;
+  - personnages et accessoires repris de la maquette, dimensionnés par hauteur en mètres ;
+  - catalogue : `docs/ASSETS_CATALOGUE.md`.
+- Monnaie affichée en dollars : **proposition** (le roman cite des dollars en 2202, Ch. VII §1691).
+- La scène d'étalonnage est archivée (`src/data/archive_calibration.js`, `tests/archive/`). `main.js` charge désormais Dusk-Town.
+
+### Fait
+- Zone de 48 × 36 m :
+  - avenue de 8 m, ruelles de 6 m, place de la pompe ;
+  - 9 bâtiments tous différents, dont 3 visitables (clinique, bar, épicerie) avec intérieurs ;
+  - 5 PNJ avec dialogues (Mara, Ruth, Vera, Hector, Anselme) ;
+  - services : soin, repas, verre, eau, ration ;
+  - piste de quête notée (pompe) ;
+  - sortie est barrée ; retour « fermé » sur les bâtiments non visitables, sans marqueur.
+- Défauts d'étalonnage corrigés :
+  - la grille d'aide qui débordait est supprimée (sol texturé limité à la zone) ;
+  - les étiquettes sont en HTML, 12 à 13 px, sur fond opaque ;
+  - les intérieurs sont zoomés.
+- Ajout : un clic sur une case occupée vise la case libre la plus proche (1,5 m maximum). Ce cas bloquait la marche sur mobile, à cause d'un banc.
+
+### Vérifié
+`tests/dusk_q1_check.py` dans Chrome headless (WebGL logiciel), avec de vrais clics (1280×800) et de vrais taps (390×844). Résultat : **62 sur 62**, détail dans `docs/captures/dusk-q1/resultats.json`.
+- Les 3 portes : entrée par clic sur la façade (bureau) ou tap sur la porte (mobile), sortie par clic sur la porte intérieure (bureau) ou bouton « Sortir » (mobile), arrivée exacte au seuil.
+- Le compagnon entre et ressort à chaque passage, et suit jusqu'à la pompe.
+- Les 5 dialogues s'ouvrent par geste sur le PNJ. Les branches sont parcourues et le dialogue se ferme (y compris par le bouton ×).
+- Services : eau (−4 $, inventaire +1), repas (−6 $, +5 PV), soin (−15 $, PV au maximum).
+- Le poste de milice ne déclenche pas de transition.
+- La sortie est est barrée (déplacement par commande, arrêt avant les sacs).
+- Le bar devient transparent quand le joueur est derrière (déplacement par commande).
+- Aucune erreur console.
+
+### Non vérifié
+- Vrai téléphone et vrai geste, performance sur GPU mobile, Safari iOS.
+- Les branches « pas assez d'argent » des dialogues.
+- Lisibilité réelle pour un humain ; seul Valentin peut juger la qualité visuelle.
+
+### Problèmes ouverts
+- Personnages sans animation, avec armes longues pour des civils.
+- Ruine trop schématique ; pompe non conforme (machinerie, pas pompe à bras).
+- Message de transition laissé affiché 3,5 s.
+- PNJ fixes, sans routine.
+- Pas de sauvegarde.
+
+### Prochaine étape
+Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
+- sprites civils animés ;
+- sauvegarde et rechargement ;
+- routines simples (Mara à la pompe le soir) ;
+- atelier de Nilo visitable.
+
+## 2026-10-21, 14 h 05 (heure de Paris)
+- Décision de Valentin : la monnaie est le dollar (ancienne monnaie de l'UFSA) dans les No Man's Land, et le crédit uniquement à Steel-Megalopolis. Les dollars restent à Dusk-Town. Consigné dans `CANON_ARBITRAGES.md` §9 bis.
+- Recherche dans tout le roman sur Dusk-Town : le nom n'apparaît que dans le chapitre I (8 occurrences, §61 à §351). Aucune milice ni aucun défenseur local n'est mentionné. Jeu inchangé.
+
+## 2026-10-21, après-midi (heure de Paris) : Dusk-Town Q1 v2 (« ville morte habitée »)
+
+### Décisions de Valentin
+- Rues vides : habitants cachés dans les ruines.
+- Aucune milice.
+- Mutants cachés parmi les villageois.
+- Quelques Invictos isolés.
+- Les rafles anti-mutants du Service Militarisé, qui fait de Dusk-Town un point de passage, s'apprennent par les personnages.
+- Consigné dans `CANON_ARBITRAGES.md` §9 ter et dans `DUSK_TOWN_Q1.md`.
+
+### Fait
+- Plus aucun PNJ dehors. Ruth (milice) est supprimée ; le poste de milice devient une tour effondrée ; les sacs de sable sont remplacés par des éboulis et une épave.
+- Maison de Mara visitable, avec Mara et Bruno (mutant caché). Ileana (Invicta) est au bar.
+- Entrées camouflées : planches, filet de lumière, symbole gravé, seuil dégagé, anneau discret. Enseignes supprimées, aucune fenêtre éclairée dehors.
+- Décrépitude renforcée ; traces de vie déplacées à l'intérieur.
+- Dialogues réécrits : l'histoire des rafles est répartie entre Mara, Bruno, Hector, Vera, Anselme et Ileana.
+- Sprites sans arme longue pour Bruno, Anselme et Vera.
+
+### Vérifié
+`tests/dusk_q1_check.py` en Chrome headless, avec de vrais clics (1280×800) et de vrais taps (390×844). Résultat : **74 sur 74**, détail dans `docs/captures/dusk-q1-v2/resultats.json`.
+- Aucun PNJ dehors.
+- Les 4 portes camouflées entrent et ressortent, compagnon compris.
+- Les 6 dialogues s'ouvrent, se parcourent et se ferment.
+- Services : eau, repas, soin.
+- Piste de la pompe notée.
+- Tour effondrée sans transition.
+- Sortie est bloquée (déplacement par commande).
+- Occultation du bar (déplacement par commande).
+- Aucune erreur console.
+
+### Non vérifié
+- Vrai téléphone.
+- Lisibilité réelle des entrées camouflées pour un joueur humain, à juger par Valentin.
+- Branches « pas assez d'argent ».
+
+### Problèmes ouverts
+- Mara (actor-1) porte encore une arme ; Vera a un sprite trop propre (style IO).
+- L'épave paraît petite.
+- Pas de cycle jour-nuit : la pompe nocturne n'est qu'évoquée.
+- Les étiquettes HTML des services restent affichées au-dessus de façades qui se veulent mortes. Choix d'ergonomie à confirmer avec Valentin : afficher seulement à proximité ?
+
+## 2026-10-21 14:40 · Étiquettes de services après découverte (décision de Valentin)
+- Règle retenue : le nom d'un service n'apparaît au-dessus de sa façade qu'une fois le lieu découvert. Découvert = le joueur y est entré, OU un personnage l'a nommé explicitement (action de dialogue `reveal:<bâtiment>`). Rien à l'approche, rien avant. Une découverte est définitive (persiste après la sortie).
+- Implémenté : `state.discovered` (game.js), entrée par une porte de bâtiment et action `reveal`, étiquettes masquées tant que non découvertes (view.js). Seul cas « raconté » pour l'instant : Mara, réplique « Il n'y avait personne. », mentionne Vera et la porte à la croix, ce qui révèle la Clinique.
+- Vérifié (navigateur, desktop 1280x800 et mobile 390x844) : 88/88 contrôles, dont 14 nouveaux sur les étiquettes (aucune au départ ; chacune apparaît après entrée ; Clinique apparaît après le dialogue de Mara avant toute entrée, Épicerie et Bar encore masqués ; les 4 persistent après sortie).
+- Captures : captures/dusk-q1-v2/desktop-06-avant-decouverte.png, desktop-07-apres-decouverte.png.
+- Ouvert : pas de sauvegarde, donc persistance limitée à la session.

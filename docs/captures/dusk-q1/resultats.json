@@ -1,0 +1,312 @@
+[
+ {
+  "test": "desktop: geste sur Mara -> approche puis dialogue ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: compagnon a suivi jusqu'à la pompe",
+  "ok": true,
+  "detail": "comp=(23.1,11.4) joueur=(24.0,10.0)"
+ },
+ {
+  "test": "desktop: choix Mara -> piste notée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: dialogue Mara fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: dialogue Ruth ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: branche Ruth parcourue puis fermée",
+  "ok": true,
+  "detail": "Fermée. La dernière fois qu'on l'a laiss"
+ },
+ {
+  "test": "desktop: grocery -> entrée (clic façade)",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "desktop: grocery -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: grocery -> dialogue anselme ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: service anselme effectué",
+  "ok": true,
+  "detail": "argent 40->36, PV 27, inv {'water': 1}"
+ },
+ {
+  "test": "desktop: dialogue anselme fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: grocery -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(23,27.5)"
+ },
+ {
+  "test": "desktop: grocery -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bar -> entrée (clic façade)",
+  "ok": true,
+  "detail": "bar_in"
+ },
+ {
+  "test": "desktop: bar -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bar -> dialogue hector ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: service hector effectué",
+  "ok": true,
+  "detail": "argent 36->30, PV 32, inv {'water': 1}"
+ },
+ {
+  "test": "desktop: dialogue hector fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bar -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(36,14)"
+ },
+ {
+  "test": "desktop: bar -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: clinic -> entrée (clic façade)",
+  "ok": true,
+  "detail": "clinic_in"
+ },
+ {
+  "test": "desktop: clinic -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: clinic -> dialogue vera ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: soin Vera payé (PV au max, -15 $)",
+  "ok": true,
+  "detail": "PV 32->40, 30->15 $"
+ },
+ {
+  "test": "desktop: fermeture par le bouton ×",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: clinic -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(11,14)"
+ },
+ {
+  "test": "desktop: clinic -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: poste de milice non visitable (pas de transition)",
+  "ok": true,
+  "detail": "Poste de milice : fermé."
+ },
+ {
+  "test": "desktop: sortie est barrée (commande vers x=47,6 ; arrêt avant les sacs)",
+  "ok": true,
+  "detail": "x final=40"
+ },
+ {
+  "test": "desktop: bar transparent quand le joueur est derrière",
+  "ok": true,
+  "detail": "opacité=0.22"
+ },
+ {
+  "test": "desktop: aucune erreur console",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: geste sur Mara -> approche puis dialogue ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: compagnon a suivi jusqu'à la pompe",
+  "ok": true,
+  "detail": "comp=(22.7,11.3) joueur=(24.0,10.0)"
+ },
+ {
+  "test": "mobile: choix Mara -> piste notée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: dialogue Mara fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: dialogue Ruth ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: branche Ruth parcourue puis fermée",
+  "ok": true,
+  "detail": "Fermée. La dernière fois qu'on l'a laiss"
+ },
+ {
+  "test": "mobile: grocery -> entrée (tap porte)",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "mobile: grocery -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: grocery -> dialogue anselme ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: service anselme effectué",
+  "ok": true,
+  "detail": "argent 40->36, PV 27, inv {'water': 1}"
+ },
+ {
+  "test": "mobile: dialogue anselme fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: grocery -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(23,27.5)"
+ },
+ {
+  "test": "mobile: grocery -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bar -> entrée (tap porte)",
+  "ok": true,
+  "detail": "bar_in"
+ },
+ {
+  "test": "mobile: bar -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bar -> dialogue hector ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: service hector effectué",
+  "ok": true,
+  "detail": "argent 36->30, PV 32, inv {'water': 1}"
+ },
+ {
+  "test": "mobile: dialogue hector fermé",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bar -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(36,14)"
+ },
+ {
+  "test": "mobile: bar -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: clinic -> entrée (tap porte)",
+  "ok": true,
+  "detail": "clinic_in"
+ },
+ {
+  "test": "mobile: clinic -> compagnon entré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: clinic -> dialogue vera ouvert",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: soin Vera payé (PV au max, -15 $)",
+  "ok": true,
+  "detail": "PV 32->40, 30->15 $"
+ },
+ {
+  "test": "mobile: fermeture par le bouton ×",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: clinic -> sortie au seuil extérieur",
+  "ok": true,
+  "detail": "(11,14)"
+ },
+ {
+  "test": "mobile: clinic -> compagnon ressorti",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: poste de milice non visitable (pas de transition)",
+  "ok": true,
+  "detail": "Poste de milice : fermé."
+ },
+ {
+  "test": "mobile: sortie est barrée (commande vers x=47,6 ; arrêt avant les sacs)",
+  "ok": true,
+  "detail": "x final=40"
+ },
+ {
+  "test": "mobile: bar transparent quand le joueur est derrière",
+  "ok": true,
+  "detail": "opacité=0.22"
+ },
+ {
+  "test": "mobile: aucune erreur console",
+  "ok": true,
+  "detail": ""
+ }
+]

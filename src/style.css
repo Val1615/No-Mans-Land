@@ -1,0 +1,25 @@
+html,body{margin:0;height:100%;overflow:hidden;background:#2a2420;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#f1e8d8;touch-action:none;-webkit-user-select:none;user-select:none}
+#view{display:block;width:100vw;height:100vh}
+#labels{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.wlabel{position:absolute;left:0;top:0;white-space:nowrap;font-size:13px;line-height:1;padding:4px 7px;border-radius:4px;background:rgba(24,18,14,.82);color:#f3e6c8;border:1px solid rgba(242,193,78,.5);will-change:transform}
+.wlabel.npc{font-size:12px;border-color:rgba(255,255,255,.25);padding:3px 6px}
+.wlabel.exit{border-color:#f2c14e}
+#hud{position:fixed;top:env(safe-area-inset-top,0);left:0;right:0;pointer-events:none;padding:8px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+#loc,.stats span,#msg{background:rgba(20,15,12,.78);padding:5px 9px;border-radius:5px;font-size:14px}
+.tag{background:#b8860b;color:#111;font-weight:700;font-size:11px;padding:3px 6px;border-radius:4px;letter-spacing:.04em}
+#msg:empty,#inv:empty{display:none}
+#actions{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0));left:0;right:0;display:flex;justify-content:center;pointer-events:none}
+#act{pointer-events:auto;min-width:180px;min-height:48px;font-size:16px;border-radius:8px;border:1px solid #f2c14e;background:#3b2a1d;color:#f3e6c8}
+#dialogue{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0));width:min(720px,calc(100vw - 16px));box-sizing:border-box;display:flex;gap:12px;background:rgba(22,17,13,.95);border:1px solid #6b5536;border-radius:10px;padding:12px}
+#dialogue[hidden]{display:none}
+#dlg-portrait{width:96px;height:96px;border-radius:6px;object-fit:cover;flex:none}
+.dlg-body{flex:1;min-width:0}
+#dlg-name{font-weight:700;color:#f2c14e;margin-bottom:4px}
+#dlg-text{margin:0 0 10px;font-size:16px;line-height:1.4}
+#dlg-options{display:flex;flex-direction:column;gap:6px}
+#dlg-options button{min-height:44px;text-align:left;font-size:15px;padding:8px 12px;border-radius:6px;border:1px solid #6b5536;background:#33261b;color:#f1e8d8}
+#dlg-options button:hover{background:#4a3726}
+#dlg-close{position:absolute;top:4px;right:6px;width:44px;height:44px;font-size:24px;background:none;border:0;color:#c9b38a}
+@media (max-width:600px){#dlg-portrait{width:64px;height:64px}#dlg-text{font-size:15px}}
+.wlabel[hidden]{display:none}
