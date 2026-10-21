@@ -58,7 +58,7 @@ Bouts de rue sans voisin (bords) : Q1 ouest (la piste, existante), Q2 est (route
 
 ### Q2 · Le Transit (est)
 Fonction : l'avenue où passent les camions. C'est le quartier le plus mort : ici, on ne vit pas, on guette.
-Bâtiments (sprites entiers de la maquette, aucun en double dans le quartier) : Le guet (maison à escalier, **visitable**, entrée camouflée par la porte du bas, indice : miroir), Cinéma muré, Dépôt pillé, Relais routier, Ancien marché, Maison basse, Ruine, Station effondrée.
+Bâtiments (sprites entiers de la maquette, aucun en double dans le quartier) : Le guet (maison à escalier, **visitable**, entrée camouflée par la porte du bas, indice : miroir), Cinéma muré, Dépôt pillé, Relais routier, Ancien marché, Maison murée (renommée v7.1 : « Maison basse » faisait croire à l'indice de Teo), Ruine, Station effondrée.
 Sol : avenue en asphalte (tuile maquette), bas-côtés ensablés, piste au bout est.
 Intérieur `guet_in` (5 × 6 m) : sol en terre, murs enduits, matelas, bureau sous la fente du volet, bac à eau.
 
@@ -70,7 +70,7 @@ Intérieur `guet_in` (5 × 6 m) : sol en terre, murs enduits, matelas, bureau so
 
 ### Q3 · Le Scellé (nord)
 Fonction : une place de terre battue devant l'accès scellé du labo. Une rue part vers le sud et La Pompe, un chemin traverse d'ouest en est.
-Bâtiments : Accès Human Corporation (blockhaus, **généré**, cliquable : message, aucune entrée), Halle, L'atelier (maison basse, **visitable**, indice : clé), Palais muré, Entrepôt, Bâtisse jaune, Ruine, Maison aux garages.
+Bâtiments : Accès Human Corporation (blockhaus, **généré**, cliquable : message, aucune entrée), Halle, L'atelier (maison au toit de tuiles à gauche de la place, **visitable**, indice : clé), Palais muré, Entrepôt, Bâtisse jaune, Ruine, Maison aux garages.
 Intérieur `atelier_in` (7 × 6 m) : béton, briques, étagères, brancard, table.
 
 **Ezequiel**, récupérateur, la cinquantaine, boiteux. Voix lente et sèche, il appelle tout le monde « petit ».

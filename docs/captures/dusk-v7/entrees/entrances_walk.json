@@ -1,0 +1,242 @@
+[
+ {
+  "test": "desktop: indice de Teo : nomme L'atelier et son quartier, aucun autre bâtiment homonyme",
+  "ok": true,
+  "detail": "{'named': True, 'quartier': True, 'faux': []}"
+ },
+ {
+  "test": "desktop: mara_house_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('mara_in', 3.5, 6)"
+ },
+ {
+  "test": "desktop: mara_house_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('mara_in', 3.5, 6)"
+ },
+ {
+  "test": "desktop: clinic_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('clinic_in', 5, 7)"
+ },
+ {
+  "test": "desktop: clinic_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('clinic_in', 5, 7)"
+ },
+ {
+  "test": "desktop: grocery_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 5.5, 6)"
+ },
+ {
+  "test": "desktop: grocery_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 5.5, 6)"
+ },
+ {
+  "test": "desktop: grocery_door2 (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 7, 3.5)"
+ },
+ {
+  "test": "desktop: grocery_door2 (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 7, 3.5)"
+ },
+ {
+  "test": "desktop: bar_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('bar_in', 5, 8)"
+ },
+ {
+  "test": "desktop: bar_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('bar_in', 5, 8)"
+ },
+ {
+  "test": "desktop: jonction vers dusk_q2 par la marche",
+  "ok": true,
+  "detail": "dusk_q2"
+ },
+ {
+  "test": "desktop: t_guet_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('guet_in', 2.5, 5)"
+ },
+ {
+  "test": "desktop: t_guet_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('guet_in', 2.5, 5)"
+ },
+ {
+  "test": "desktop: jonction vers dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "desktop: jonction vers dusk_q3 par la marche",
+  "ok": true,
+  "detail": "dusk_q3"
+ },
+ {
+  "test": "desktop: s_atelier_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('atelier_in', 3.5, 5)"
+ },
+ {
+  "test": "desktop: s_atelier_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('atelier_in', 3.5, 5)"
+ },
+ {
+  "test": "desktop: jonction vers dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "desktop: jonction vers dusk_q4 par la marche",
+  "ok": true,
+  "detail": "dusk_q4"
+ },
+ {
+  "test": "desktop: d_citerne_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('citerne_in', 7, 3)"
+ },
+ {
+  "test": "desktop: d_citerne_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('citerne_in', 7, 3)"
+ },
+ {
+  "test": "desktop: jonction vers dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "desktop: aucune erreur page",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile: indice de Teo : nomme L'atelier et son quartier, aucun autre bâtiment homonyme",
+  "ok": true,
+  "detail": "{'named': True, 'quartier': True, 'faux': []}"
+ },
+ {
+  "test": "mobile: mara_house_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('mara_in', 3.5, 6)"
+ },
+ {
+  "test": "mobile: mara_house_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('mara_in', 3.5, 6)"
+ },
+ {
+  "test": "mobile: clinic_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('clinic_in', 5, 7)"
+ },
+ {
+  "test": "mobile: clinic_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('clinic_in', 5, 7)"
+ },
+ {
+  "test": "mobile: grocery_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 5.5, 6)"
+ },
+ {
+  "test": "mobile: grocery_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 5.5, 6)"
+ },
+ {
+  "test": "mobile: grocery_door2 (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 7, 3.5)"
+ },
+ {
+  "test": "mobile: grocery_door2 (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('grocery_in', 7, 3.5)"
+ },
+ {
+  "test": "mobile: bar_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('bar_in', 5, 8)"
+ },
+ {
+  "test": "mobile: bar_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('bar_in', 5, 8)"
+ },
+ {
+  "test": "mobile: jonction vers dusk_q2 par la marche",
+  "ok": true,
+  "detail": "dusk_q2"
+ },
+ {
+  "test": "mobile: t_guet_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('guet_in', 2.5, 5)"
+ },
+ {
+  "test": "mobile: t_guet_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('guet_in', 2.5, 5)"
+ },
+ {
+  "test": "mobile: jonction vers dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile: jonction vers dusk_q3 par la marche",
+  "ok": true,
+  "detail": "dusk_q3"
+ },
+ {
+  "test": "mobile: s_atelier_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('atelier_in', 3.5, 5)"
+ },
+ {
+  "test": "mobile: s_atelier_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('atelier_in', 3.5, 5)"
+ },
+ {
+  "test": "mobile: jonction vers dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile: jonction vers dusk_q4 par la marche",
+  "ok": true,
+  "detail": "dusk_q4"
+ },
+ {
+  "test": "mobile: d_citerne_door (geste porte peinte) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('citerne_in', 7, 3)"
+ },
+ {
+  "test": "mobile: d_citerne_door (tap seuil + bouton) : entré depuis le trajet réel",
+  "ok": true,
+  "detail": "('citerne_in', 7, 3)"
+ },
+ {
+  "test": "mobile: jonction vers dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile: aucune erreur page",
+  "ok": true,
+  "detail": "[]"
+ }
+]

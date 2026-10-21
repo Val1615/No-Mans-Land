@@ -40,7 +40,7 @@ DISTRICTS = {
   't_entrepot': ('entrepot', 24.0, None, 'Dépôt pillé', False, [], None),
   't_garages':  ('garages', 35.0, None, 'Relais routier', False, [], None),
   't_marche':   ('marche', 3.0, 24.0, 'Ancien marché', False, [], None),
-  't_maison':   ('mara_house', 15.0, 24.0, 'Maison basse', False, [], None),
+  't_maison':   ('mara_house', 15.0, 24.0, 'Maison murée', False, [], None),
   't_ruin':     ('ruin', 26.0, 25.0, 'Ruine', False, [], None),
   't_halle':    ('halle', 38.5, 24.0, 'Station effondrée', False, [], None)},
  'q3': {  # Le Scellé (nord) : l'accès au laboratoire

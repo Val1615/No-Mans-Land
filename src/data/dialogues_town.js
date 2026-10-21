@@ -15,7 +15,7 @@ export const DIALOGUES = {
     paie: { text: 'Hector me donne à manger. Mara me recoud. Moi je voudrais des dollars, des vrais, comme un adulte. Un jour je me paierai la place sur une caravane, et quelqu\'un d\'autre tiendra le miroir.', options: [ { label: 'Ça viendra.', next: 'end' } ] },
     vente: { text: 'Cinq dollars, je te dis où il y a quelqu\'un de vivant au nord. Pas de remise, j\'ai des projets.', options: [
       { label: 'Marché conclu (5 $)', action: 'buy:tip:5', next: 'tuyau' }, { label: 'Non.', next: 'end' } ] },
-    tuyau: { text: 'Au Scellé, la maison basse à gauche de la place. Ezequiel. Il tape sur la porte du labo depuis des semaines. Il boite. Dis-lui que tu viens de ma part, il te jettera peut-être moins vite.', options: [
+    tuyau: { text: 'Au Scellé. À La Pompe, tu prends la ruelle de la pompe vers le nord, tout droit. Tu tombes sur une place devant une porte d\'acier. La maison au toit de tuiles juste à gauche de la place, porte sur le chemin, une clé gravée au-dessus : l\'atelier. Ezequiel. Il boite. Dis-lui que tu viens de ma part.', options: [
       { label: 'Noté.', action: 'reveal:s_atelier', next: 'end' } ] },
     pauvre: { text: 'Pas de dollars, pas de nouvelles. C\'est la règle, elle est de moi.', options: [ { label: 'D\'accord.', next: 'end' } ] }
   },
