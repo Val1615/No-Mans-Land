@@ -1,0 +1,222 @@
+{
+ "b_mara_house": {
+  "file": "buildings/b_mara_house.webp",
+  "source": "settlement-v9-dusk.png",
+  "crop": [
+   47,
+   118,
+   480,
+   482
+  ],
+  "px": [
+   433,
+   364
+  ],
+  "anchor": [
+   287,
+   363
+  ],
+  "footprint_m": [
+   7.0,
+   5.0
+  ]
+ },
+ "b_clinic": {
+  "file": "buildings/b_clinic.webp",
+  "source": "buildings-v6.png",
+  "crop": [
+   16,
+   540,
+   498,
+   970
+  ],
+  "px": [
+   482,
+   430
+  ],
+  "anchor": [
+   324,
+   429
+  ],
+  "footprint_m": [
+   8.0,
+   5.5
+  ]
+ },
+ "b_grocery": {
+  "file": "buildings/b_grocery.webp",
+  "source": "settlement-v9-dusk.png",
+  "crop": [
+   566,
+   17,
+   940,
+   493
+  ],
+  "px": [
+   374,
+   476
+  ],
+  "anchor": [
+   231,
+   475
+  ],
+  "footprint_m": [
+   5.5,
+   5.0
+  ]
+ },
+ "b_bar": {
+  "file": "buildings/b_bar.webp",
+  "source": "buildings-v6.png",
+  "crop": [
+   23,
+   36,
+   475,
+   493
+  ],
+  "px": [
+   452,
+   457
+  ],
+  "anchor": [
+   270,
+   456
+  ],
+  "footprint_m": [
+   6.5,
+   6.5
+  ]
+ },
+ "b_halle": {
+  "file": "buildings/b_halle.webp",
+  "source": "buildings-v6.png",
+  "crop": [
+   514,
+   33,
+   1018,
+   479
+  ],
+  "px": [
+   504,
+   446
+  ],
+  "anchor": [
+   309,
+   445
+  ],
+  "footprint_m": [
+   7.5,
+   7.0
+  ]
+ },
+ "b_house_a": {
+  "file": "buildings/b_house_a.webp",
+  "source": "settlement-v9-dusk.png",
+  "crop": [
+   638,
+   529,
+   1036,
+   981
+  ],
+  "px": [
+   398,
+   452
+  ],
+  "anchor": [
+   201,
+   451
+  ],
+  "footprint_m": [
+   4.0,
+   7.0
+  ]
+ },
+ "b_marche": {
+  "file": "buildings/b_marche.webp",
+  "source": "buildings-v6.png",
+  "crop": [
+   507,
+   515,
+   1045,
+   981
+  ],
+  "px": [
+   538,
+   466
+  ],
+  "anchor": [
+   345,
+   465
+  ],
+  "footprint_m": [
+   8.5,
+   6.5
+  ]
+ },
+ "b_ruin": {
+  "file": "buildings/b_ruin.webp",
+  "source": "settlement-v9-dusk.png",
+  "crop": [
+   1092,
+   535,
+   1520,
+   984
+  ],
+  "px": [
+   428,
+   449
+  ],
+  "anchor": [
+   324,
+   448
+  ],
+  "footprint_m": [
+   8.0,
+   3.5
+  ]
+ },
+ "b_garages": {
+  "file": "buildings/b_garages.webp",
+  "source": "settlement-v9-dusk.png",
+  "crop": [
+   1041,
+   7,
+   1515,
+   522
+  ],
+  "px": [
+   474,
+   515
+  ],
+  "anchor": [
+   368,
+   514
+  ],
+  "footprint_m": [
+   9.0,
+   3.5
+  ]
+ },
+ "b_entrepot": {
+  "file": "buildings/b_entrepot.webp",
+  "source": "buildings-v6.png",
+  "crop": [
+   1049,
+   47,
+   1521,
+   489
+  ],
+  "px": [
+   472,
+   442
+  ],
+  "anchor": [
+   323,
+   441
+  ],
+  "footprint_m": [
+   8.0,
+   4.5
+  ]
+ }
+}

@@ -2,7 +2,7 @@
 # Gestes réels : clics souris (bureau) et taps tactiles (mobile). Captures = rendu réel du jeu.
 import json, time
 from playwright.sync_api import sync_playwright
-URL = 'http://127.0.0.1:8765/'; OUT = '/workspace/nml/docs/captures/dusk-q1-v3/'
+URL = 'http://127.0.0.1:8765/'; OUT = '/workspace/nml/docs/captures/dusk-q1-v4/'
 R = []
 import os
 DEBUG = os.environ.get('DEBUG')
@@ -54,7 +54,7 @@ with sync_playwright() as p:
         if prof == 'desktop':
             pg.evaluate('window.__nml.setCamera({x:24,z:18,ppm:22})'); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-06-avant-decouverte.png'); pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.4)
         # --- Orientation : miroir selon le sens de marche à l'écran
-        sp = st(pg)['player']; walk_to(sp['x'] + 4, sp['z']); time.sleep(0.6)
+        sp = st(pg)['player']; walk_to(sp['x'] + 6, sp['z']); time.sleep(0.6)
         check(f'{prof}: joueur tourné vers la droite en marchant vers la droite', pg.evaluate("window.__nml.view.facingOf('player')") == 1)
         check(f'{prof}: compagnon tourné vers la droite en suivant', pg.evaluate("window.__nml.view.facingOf('companion')") == 1)
         walk_to(sp['x'], sp['z']); time.sleep(0.6)
@@ -68,12 +68,21 @@ with sync_playwright() as p:
         n_out = pg.evaluate('window.__nml.npcs.filter(n=>n.location==="dusk_q1").length')
         check(f'{prof}: aucun PNJ dans les rues', n_out == 0, f'{n_out} PNJ dehors')
         # --- Services : (bâtiment, point de geste, intérieur, PNJ, action, vérif)
+        D = {d['buildingId']: d for d in reversed(pg.evaluate('window.__nml.doors.filter(d=>d.buildingId)'))}
+        door_pt = lambda b: (D[b]['opening']['x'], 1.0, D[b]['opening']['z'])  # geste sur la porte peinte
         services = [
-            ('mara_house', (4.0, 1.2, 12.0) if prof == 'mobile' else (2.5, 2.0, 12.0), 'mara_in', 'mara', (1.0, 1.0, 2.0), None, None),
-            ('grocery', (22.0, 1.2, 26.5), 'grocery_in', 'anselme', (2.2, 1.0, 4.2), 'bouteille', lambda a, z: z['player']['inv'].get('water') == 1 and z['player']['money'] == a['player']['money'] - 4),
-            ('bar', (39.5, 1.2, 13.0) if prof == 'mobile' else (34.0, 2.0, 13.0), 'bar_in', 'hector', (4.0, 1.0, 1.4), 'Un repas', lambda a, z: z['player']['money'] == a['player']['money'] - 6 and z['player']['hp'] == min(40, a['player']['hp'] + 5)),
-            ('clinic', (13.0, 1.2, 13.0) if prof == 'mobile' else (8.5, 1.5, 13.0), 'clinic_in', 'vera', (6.2, 1.0, 1.6), None, None)]
-        approach = {'mara_house': [(5, 16)], 'grocery': [(25, 26)], 'bar': [(26, 19), (39, 17)], 'clinic': [(13, 17)]}
+            ('mara_house', door_pt('mara_house'), 'mara_in', 'mara', (1.0, 1.0, 2.0), None, None),
+            ('grocery', door_pt('grocery'), 'grocery_in', 'anselme', (2.2, 1.0, 4.2), 'bouteille', lambda a, z: z['player']['inv'].get('water') == 1 and z['player']['money'] == a['player']['money'] - 4),
+            ('bar', door_pt('bar'), 'bar_in', 'hector', (4.0, 1.0, 1.4), 'Un repas', lambda a, z: z['player']['money'] == a['player']['money'] - 6 and z['player']['hp'] == min(40, a['player']['hp'] + 5)),
+            ('clinic', door_pt('clinic'), 'clinic_in', 'vera', (6.2, 1.0, 1.6), None, None)]
+        approach = {'mara_house': [(5, 16.5)], 'grocery': [(23.5, 17)], 'bar': [(26, 19), (36, 17)], 'clinic': [(14, 17)]}
+        # --- v4 : sprites entiers ; base visible = emprise déclarée ; porte peinte = ouverture monde
+        for bb in pg.evaluate('window.__nml.game.location.buildings.map(b=>b.id)'):
+            a = pg.evaluate(f"window.__nml.view.baseAlpha('{bb}')"); check(f'{prof}: {bb} base du sprite opaque aux 3 coins de l emprise', min(a) > 0.5, a)
+        for d in pg.evaluate('window.__nml.doors.filter(d=>d.painted).map(d=>d.id)'):
+            e = pg.evaluate(f"window.__nml.view.paintedDoorError('{d}')"); check(f'{prof}: {d} porte peinte alignée sur l ouverture (< 0,8 m)', e < 0.8, f'{e} m')
+        g = pg.evaluate('(()=>{const g=window.__nml.game.grids.dusk_q1;return window.__nml.game.location.buildings.every(b=>{const [i,j]=g.toCell(b.x+b.w/2,b.z+b.d/2);return !g.free(i,j)})})()')
+        check(f'{prof}: centre de chaque emprise bloqué (collision = base)', g)
         for bid, pt, inside, npc, npos, opt, verify in services:
             r_ok = all([walk_to(*w) for w in approach[bid]]); (not r_ok) and print('  approche ratée', bid, st(pg)['player']['x'], st(pg)['player']['z'], st(pg)['log'][-2:]); tap_world(*pt)
             ok = wait(pg, f'window.__nml.state.location==="{inside}"', 25)
@@ -123,6 +132,8 @@ with sync_playwright() as p:
             d = pg.evaluate(f'window.__nml.doors.find(d=>d.buildingId==="{bid}")')
             check(f'{prof}: {bid} -> sortie au seuil extérieur', ok and abs(s['player']['x']-d['threshold']['x']) < .05 and abs(s['player']['z']-d['threshold']['z']) < .05, f"({s['player']['x']},{s['player']['z']})")
             check(f'{prof}: {bid} -> compagnon ressorti', comp_ok(s))
+            if prof == 'desktop' and bid == 'bar':
+                time.sleep(0.5); pg.evaluate(f"window.__nml.setCamera({{x:{d['threshold']['x']},z:{d['threshold']['z']-2},ppm:70}})"); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-09-porte-peinte-bar.png'); pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.4)
             time.sleep(0.2); v = vis()
             check(f'{prof}: étiquette {bid} affichée après être entré', bid in v, v)
             if bid == 'mara_house': check(f'{prof}: étiquette clinique affichée car Mara en a parlé (avant d\'y entrer), épicerie et bar toujours masqués', 'clinic' in v and 'grocery' not in v and 'bar' not in v, v)
@@ -130,13 +141,13 @@ with sync_playwright() as p:
         if prof == 'desktop':
             pg.evaluate('window.__nml.setCamera({x:24,z:18,ppm:22})'); time.sleep(0.8); pg.screenshot(path=f'{OUT}desktop-07-apres-decouverte.png'); pg.evaluate('window.__nml.setCamera(null)'); time.sleep(0.4)
         # --- Bâtiment non visitable : retour neutre, pas de transition
-        walk_to(40, 17); n0 = st(pg)['transitions']; tap_world(45, 3, 13.0)
-        time.sleep(0.5); check(f'{prof}: tour effondrée non visitable (pas de transition)', st(pg)['transitions'] == n0 and 'fermé' in pg.locator('#msg').inner_text(), pg.locator('#msg').inner_text())
+        walk_to(40, 17); n0 = st(pg)['transitions']; tap_world(44, 2.5, 13.0)
+        time.sleep(0.5); check(f'{prof}: immeuble muré non visitable (pas de transition)', st(pg)['transitions'] == n0 and 'fermé' in pg.locator('#msg').inner_text(), pg.locator('#msg').inner_text())
         # --- Restriction : sortie est barrée
         pg.evaluate('window.__nml.game.moveTo(47.6, 18)'); time.sleep(0.2); wait(pg, 'window.__nml.state.player.path.length===0', 20)
         s = st(pg); check(f'{prof}: sortie est barrée par éboulis et épave (commande vers x=47,6)', s['player']['x'] < 43.5, f"x final={s['player']['x']}")
         # --- Occultation derrière le bar
-        pg.evaluate('window.__nml.game.moveTo(36, 2)'); wait(pg, 'Math.hypot(window.__nml.state.player.x-36, window.__nml.state.player.z-2)<0.3', 30); time.sleep(1.2)
+        pg.evaluate('window.__nml.game.moveTo(34, 5)'); wait(pg, 'Math.hypot(window.__nml.state.player.x-34, window.__nml.state.player.z-5)<0.3', 30); time.sleep(1.2)
         op = pg.evaluate("window.__nml.opacityOf('bar')"); check(f'{prof}: bar transparent quand le joueur est derrière', op < 0.5, f'opacité={op:.2f}')
         pg.screenshot(path=f'{OUT}{prof}-05-occultation.png')
         check(f'{prof}: aucune erreur console', not errs, '; '.join(errs)[:300])

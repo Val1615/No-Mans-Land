@@ -7,7 +7,7 @@ export const UNITS = {
   wall: 0.2,              // épaisseur de mur
   street: { minWidth: 6.0, sidewalk: 1.5 },
   plotModule: 4.0,        // les parcelles sont des multiples de 4 m
-  camera: { yawDeg: 45, pitchDeg: 35.264, pxPerMeterDesktop: 30, pxPerMeterMobile: 24 },
+  camera: { yawDeg: 34.5, pitchDeg: 28.8, artPxPerMeter: 50, pxPerMeterDesktop: 30, pxPerMeterMobile: 24 },
   companion: { followDistance: 1.5, maxDoorDistance: 6.0 },
   walkSpeed: 3.0          // m/s
 };

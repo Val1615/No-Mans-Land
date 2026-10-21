@@ -187,3 +187,10 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - Vérifié (navigateur, desktop 1280x800 et mobile 390x844) : 106/106 contrôles, dont orientation (joueur et compagnon à droite puis miroir à gauche) et PNJ tourné vers le joueur à chaque dialogue (Mara, Bruno, Anselme, Hector, Vera).
 - Captures : captures/dusk-q1-v3/ (vue d'ensemble, détail rue, intérieurs, dialogues, mobile, comparaison-vue-ensemble-v2-v3.png).
 - À vérifier : les toits sont plats (les sprites ont des toits à deux pans) ; murs intérieurs encore unis ; sprites générés à valider par Valentin ; le miroir inverse aussi les détails asymétriques (sacoche, fusil).
+
+## 2026-10-21 16:20 · v4 : bâtiments en sprites entiers de la maquette (correction de Valentin)
+- Retiré : volumes de code texturés (façades redressées v3). Les fichiers assets/mockup/*_s|_e et toits ne sont plus utilisés.
+- Fait : 10 bâtiments distincts, chacun l'image complète d'une planche (settlement-v9-dusk, buildings-v6), posés en billboard ; caméra recalée sur la projection des planches (lacet 34,5°, tangage 28,8°) ; échelle unique K = 50 px/m ; emprise, ancre et portes mesurées sur l'image par tools_buildings.py ; ordre du peintre par emprise ; occultation au pixel ; pictogramme sur la porte peinte. Détail par bâtiment dans ASSETS_CATALOGUE.md (section v4).
+- Vérifié (navigateur, desktop 1280x800 et mobile 390x844) : 138/138 contrôles, dont : base opaque aux 3 coins de chaque emprise (10 bâtiments), écart porte peinte / ouverture < 0,8 m (5 portes), centre de chaque emprise bloqué, toutes les portes entrent et sortent au seuil devant la porte peinte, bar transparent quand le joueur est derrière, aucune erreur console.
+- Captures : captures/dusk-q1-v4/.
+- À vérifier : planches dessinées avec un lacet un peu variable (bases pas parfaitement sur la grille, emprises de la maison à escalier, du marché et de l'entrepôt réduites) ; pas de partie arrière visible quand on contourne (sprite unique) ; décor du marché et de l'entrepôt plus monumental que le reste ; exterior-buildings-v4 écarté.

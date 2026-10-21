@@ -7,8 +7,10 @@ import { loadSkins } from './render/textures.js';
 
 const sprites = await (await fetch('./assets/reused/manifest.json')).json();
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
-await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood','cottage_s','cottage_e','palazzo_s','palazzo_e','ruin_s','ruin_e','yellow_s','yellow_e','shop_s','shop_e','garage_s','roof_tiles','roof_palazzo','roof_ruin','roof_flat']);
-const view = createView(document.getElementById('view'), game, sprites, document.getElementById('labels'));
+await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
+const bman = await (await fetch('./assets/buildings/manifest.json')).json();
+await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
+const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'));
 const $ = id => document.getElementById(id);
 let msgTimer;
 const say = t => { $('msg').textContent = t; clearTimeout(msgTimer); msgTimer = setTimeout(() => $('msg').textContent = '', 3500); };

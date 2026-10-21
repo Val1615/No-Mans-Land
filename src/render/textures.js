@@ -3,8 +3,8 @@ import * as THREE from 'three';
 const PPM = 32;
 // Skins issus de la maquette (assets/mockup, voir tools_assets.py). Chargés avant la construction des scènes.
 export const SKIN = {};
-export async function loadSkins(names) {
-  await Promise.all(names.map(n => new Promise((ok, ko) => { const i = new Image(); i.onload = () => { SKIN[n] = i; ok(); }; i.onerror = ko; i.src = `./assets/mockup/${n}.webp`; })));
+export async function loadSkins(names, path = n => `./assets/mockup/${n}.webp`) {
+  await Promise.all(names.map(n => new Promise((ok, ko) => { const i = new Image(); i.onload = () => { SKIN[n] = i; ok(); }; i.onerror = ko; i.src = path(n); })));
 }
 function pattern(x, name, metres, P) {
   const img = SKIN[name]; if (!img) return null; const c = document.createElement('canvas'); c.width = c.height = Math.round(metres * P);

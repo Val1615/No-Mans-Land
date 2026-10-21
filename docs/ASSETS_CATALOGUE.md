@@ -140,3 +140,33 @@ Restent en texture procédurale : Maison A, Maison B, Tour effondrée, face est 
 | gen_hector (+ portrait) | hector (fusil) | 1,82 m | barman sans arme ; provisoire |
 | gen_pump | pump (machine industrielle) | 1,5 m | pompe à bras sur socle ; provisoire |
 Écarts connus : angle de caméra des sprites générés un peu plus bas que celui de la maquette ; liseré rose léger possible sur les cheveux (détourage d'un fond uni).
+
+## v4 (2026-10-21) : bâtiments = sprites entiers de la maquette (décision de Valentin)
+
+Les volumes texturés de la v3 sont retirés. Chaque bâtiment est l'image complète de la planche, posée en billboard dans la scène 3D orthographique.
+Règles (contre les défauts racines de la maquette) :
+- Caméra accordée aux planches : lacet 34,5°, tangage 28,8°, mesurés sur les pentes des arêtes de base (pente face gauche ≈ 0,33, face droite ≈ 0,70). Les planches ne sont pas en 2:1 symétrique.
+- Une seule échelle pour tous les bâtiments : K = 50 px d'image par mètre à l'écran (tirée de la hauteur de la porte de la maison basse, environ 2,1 m). Personnages et accessoires : hauteur réelle × cos(tangage).
+- Ancre = coin de base avant (pixel opaque le plus bas), posée sur le coin monde (x+w, z+d).
+- Emprise = mesurée sur l'image (extrêmes gauche/droite de la base / K), puis réduite tant qu'un coin (rentré de 0,4 m) ne tombe pas sur un pixel opaque : la collision ne dépasse jamais la base visible. Collision = cette emprise.
+- Porte = pixel de la porte peinte, ramené au point monde sur la façade ; seuil à 1 m devant. Indice discret (pictogramme) posé sur la porte peinte.
+- Ordre de dessin : peintre topologique par emprise (séparés sur x ou z : le plus grand est devant), seulement entre objets qui se recouvrent à l'écran.
+- Occultation : un bâtiment passe à 30 % d'opacité quand un acteur est derrière lui et qu'un point de son corps (0,3, 0,9 ou 1,5 m) tombe sur un pixel opaque du sprite ; un bâtiment transparent laisse passer le clic.
+- Planche exterior-buildings-v4.png écartée : projection différente (emprises réduites à 2 m sur 11 m, incohérentes).
+- Reproductible : game/tools_buildings.py (lit les planches, écrit assets/buildings/ et src/data/buildings_q1.js).
+
+| Bâtiment | Sprite (planche) | Recadrage source (px) | Ancre dans le recadrage (px) | Emprise w x d (m) | Coin min (x, z) | Porte(s) : pixel peint -> ouverture monde (seuil) |
+|---|---|---|---|---|---|---|
+| Maison de Mara | assets/buildings/b_mara_house.webp (settlement-v9-dusk.png) | [47, 118, 480, 482] | [287, 363] | 7.0 x 5.0 | (1.0, 8.0) | [210, 418] -> (4.99, 13.0) face sud (seuil 4.99, 14.0) |
+| Clinique | assets/buildings/b_clinic.webp (buildings-v6.png) | [16, 540, 498, 970] | [324, 429] | 8.0 x 5.5 | (10.0, 7.5) | [170, 890] -> (13.87, 13.0) face sud (seuil 13.87, 14.0) |
+| Épicerie | assets/buildings/b_grocery.webp (settlement-v9-dusk.png) | [566, 17, 940, 493] | [231, 475] | 5.5 x 5.0 | (20.0, 8.0) | [718, 450] -> (23.58, 13.0) face sud (seuil 23.58, 14.0); [893, 440] -> (25.5, 9.61) face est (seuil 26.5, 9.61) |
+| Le Passage | assets/buildings/b_bar.webp (buildings-v6.png) | [23, 36, 475, 493] | [270, 456] | 6.5 x 6.5 | (31.0, 6.5) | [225, 460] -> (35.85, 13.0) face sud (seuil 35.85, 14.0) |
+| Halle effondrée | assets/buildings/b_halle.webp (buildings-v6.png) | [514, 33, 1018, 479] | [309, 445] | 7.5 x 7.0 | (40.0, 6.0) | aucune (non visitable) |
+| Maison à escalier | assets/buildings/b_house_a.webp (settlement-v9-dusk.png) | [638, 529, 1036, 981] | [201, 451] | 4.0 x 7.0 | (3.0, 24.0) | aucune (non visitable) |
+| Marché couvert | assets/buildings/b_marche.webp (buildings-v6.png) | [507, 515, 1045, 981] | [345, 465] | 8.5 x 6.5 | (9.0, 24.0) | aucune (non visitable) |
+| Ruine | assets/buildings/b_ruin.webp (settlement-v9-dusk.png) | [1092, 535, 1520, 984] | [324, 448] | 8.0 x 3.5 | (19.0, 25.0) | aucune (non visitable) |
+| Maison aux garages | assets/buildings/b_garages.webp (settlement-v9-dusk.png) | [1041, 7, 1515, 522] | [368, 514] | 9.0 x 3.5 | (29.0, 25.0) | aucune (non visitable) |
+| Entrepôt éventré | assets/buildings/b_entrepot.webp (buildings-v6.png) | [1049, 47, 1521, 489] | [323, 441] | 8.0 x 4.5 | (39.5, 25.0) | aucune (non visitable) |
+
+Épicerie : deux portes peintes (boutique au sud, porte latérale à l'est), toutes deux réelles et menant au même intérieur (deux ouvertures dans grocery_in).
+Non retenus : maison à garages ouverte (workshop), halle-entrepôt aux portes ouvertes réutilisée seulement comme Entrepôt éventré (non visitable, clic = fermé). Sols : tuiles de la maquette (inchangées depuis v3).
