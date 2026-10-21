@@ -17,12 +17,12 @@
  {
   "test": "desktop: clinic murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
   "ok": true,
-  "detail": "{'mur nord': 5.6, 'mur ouest': 5.0, 'sol': 24.3}"
+  "detail": "{'mur nord': 5.6, 'mur ouest': 5.0, 'sol': 24.2}"
  },
  {
   "test": "desktop: vera dans clinic_in et visible au pixel",
   "ok": true,
-  "detail": "clinic_in, visible 0.87 (seuil 0.6)"
+  "detail": "clinic_in, visible 0.83 (seuil 0.6)"
  },
  {
   "test": "desktop: clinic joueur visible au seuil malgré la porte et le mur avant",
@@ -37,12 +37,12 @@
  {
   "test": "desktop: clinic miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
   "ok": true,
-  "detail": "écart direct 200.6, écart miroir 27.2"
+  "detail": "écart direct 201.1, écart miroir 28.8"
  },
  {
   "test": "desktop: clinic animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
   "ok": true,
-  "detail": "hauteurs rendues pendant la marche [82, 82, 80, 83, 83, 80, 83] px, au repos 81 px"
+  "detail": "hauteurs rendues pendant la marche [80, 83, 83, 80, 82, 83, 79] px, au repos 83 px"
  },
  {
   "test": "desktop: clinic sortie par clic sur la porte, arrivée au seuil devant la porte peinte",
@@ -57,7 +57,7 @@
  {
   "test": "desktop: gif entrée/sortie écrit",
   "ok": true,
-  "detail": "23 images"
+  "detail": "22 images"
  },
  {
   "test": "desktop: bar entrée par clic sur la porte peinte",
@@ -82,12 +82,12 @@
  {
   "test": "desktop: hector dans bar_in et visible au pixel",
   "ok": true,
-  "detail": "bar_in, visible 0.5 (seuil 0.4)"
+  "detail": "bar_in, visible 0.49 (seuil 0.4)"
  },
  {
   "test": "desktop: ileana dans bar_in et visible au pixel",
   "ok": true,
-  "detail": "bar_in, visible 0.79 (seuil 0.6)"
+  "detail": "bar_in, visible 0.88 (seuil 0.6)"
  },
  {
   "test": "desktop: bar joueur visible au seuil malgré la porte et le mur avant",
@@ -132,12 +132,12 @@
  {
   "test": "desktop: grocery murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
   "ok": true,
-  "detail": "{'mur nord': 9.4, 'mur ouest': 7.9, 'sol': 27.7}"
+  "detail": "{'mur nord': 9.4, 'mur ouest': 7.9, 'sol': 27.8}"
  },
  {
   "test": "desktop: anselme dans grocery_in et visible au pixel",
   "ok": true,
-  "detail": "grocery_in, visible 0.81 (seuil 0.6)"
+  "detail": "grocery_in, visible 0.8 (seuil 0.6)"
  },
  {
   "test": "desktop: grocery joueur visible au seuil malgré la porte et le mur avant",
@@ -152,12 +152,12 @@
  {
   "test": "desktop: grocery miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
   "ok": true,
-  "detail": "écart direct 197.7, écart miroir 29.3"
+  "detail": "écart direct 198.0, écart miroir 34.8"
  },
  {
   "test": "desktop: grocery animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
   "ok": true,
-  "detail": "hauteurs rendues pendant la marche [82, 82, 80, 84, 80, 80, 84] px, au repos 81 px"
+  "detail": "hauteurs rendues pendant la marche [80, 82, 84, 81, 81, 83, 79] px, au repos 81 px"
  },
  {
   "test": "desktop: grocery sortie par clic sur la porte, arrivée au seuil devant la porte peinte",
@@ -187,7 +187,7 @@
  {
   "test": "desktop: mara_house murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
   "ok": true,
-  "detail": "{'mur nord': 6.8, 'mur ouest': 9.8, 'sol': 17.2}"
+  "detail": "{'mur nord': 6.8, 'mur ouest': 9.8, 'sol': 17.1}"
  },
  {
   "test": "desktop: mara dans mara_in et visible au pixel",
@@ -197,7 +197,7 @@
  {
   "test": "desktop: bruno dans mara_in et visible au pixel",
   "ok": true,
-  "detail": "mara_in, visible 0.58 (seuil 0.25)"
+  "detail": "mara_in, visible 0.57 (seuil 0.25)"
  },
  {
   "test": "desktop: mara_house joueur visible au seuil malgré la porte et le mur avant",
@@ -242,7 +242,7 @@
  {
   "test": "desktop: anselme dans grocery_in et visible au pixel",
   "ok": true,
-  "detail": "grocery_in, visible 0.81 (seuil 0.6)"
+  "detail": "grocery_in, visible 0.83 (seuil 0.6)"
  },
  {
   "test": "desktop: grocery joueur visible au seuil malgré la porte et le mur avant",
@@ -287,12 +287,12 @@
  {
   "test": "mobile: clinic murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
   "ok": true,
-  "detail": "{'mur nord': 40.5, 'mur ouest': 4.8, 'sol': 24.1}"
+  "detail": "{'mur nord': 40.5, 'mur ouest': 4.8, 'sol': 24.3}"
  },
  {
   "test": "mobile: vera dans clinic_in et visible au pixel",
   "ok": true,
-  "detail": "clinic_in, visible 0.79 (seuil 0.6)"
+  "detail": "clinic_in, visible 0.9 (seuil 0.6)"
  },
  {
   "test": "mobile: clinic joueur visible au seuil malgré la porte et le mur avant",
@@ -307,12 +307,12 @@
  {
   "test": "mobile: clinic miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
   "ok": true,
-  "detail": "écart direct 198.1, écart miroir 28.1"
+  "detail": "écart direct 208.0, écart miroir 35.2"
  },
  {
   "test": "mobile: clinic animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
   "ok": true,
-  "detail": "hauteurs rendues pendant la marche [83, 82, 80, 84, 80, 83, 81] px, au repos 82 px"
+  "detail": "hauteurs rendues pendant la marche [83, 80, 82, 84, 80, 83, 82] px, au repos 82 px"
  },
  {
   "test": "mobile: clinic sortie par bouton Sortir (tap), arrivée au seuil devant la porte peinte",
@@ -347,17 +347,17 @@
  {
   "test": "mobile: hector dans bar_in et visible au pixel",
   "ok": true,
-  "detail": "bar_in, visible 0.48 (seuil 0.4)"
+  "detail": "bar_in, visible 0.52 (seuil 0.4)"
  },
  {
   "test": "mobile: ileana dans bar_in et visible au pixel",
   "ok": true,
-  "detail": "bar_in, visible 0.83 (seuil 0.6)"
+  "detail": "bar_in, visible 0.86 (seuil 0.6)"
  },
  {
   "test": "mobile: bar joueur visible au seuil malgré la porte et le mur avant",
   "ok": true,
-  "detail": "visible 0.88, opacité porte 0.15"
+  "detail": "visible 0.89, opacité porte 0.15"
  },
  {
   "test": "mobile: bar découvert en entrant",
@@ -397,12 +397,12 @@
  {
   "test": "mobile: grocery murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
   "ok": true,
-  "detail": "{'mur nord': 9.3, 'mur ouest': 8.5, 'sol': 29.9}"
+  "detail": "{'mur nord': 9.3, 'mur ouest': 8.5, 'sol': 29.3}"
  },
  {
   "test": "mobile: anselme dans grocery_in et visible au pixel",
   "ok": true,
-  "detail": "grocery_in, visible 0.76 (seuil 0.6)"
+  "detail": "grocery_in, visible 0.68 (seuil 0.6)"
  },
  {
   "test": "mobile: grocery joueur visible au seuil malgré la porte et le mur avant",
@@ -417,12 +417,12 @@
  {
   "test": "mobile: grocery miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
   "ok": true,
-  "detail": "écart direct 204.5, écart miroir 18.5"
+  "detail": "écart direct 203.2, écart miroir 16.9"
  },
  {
   "test": "mobile: grocery animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
   "ok": true,
-  "detail": "hauteurs rendues pendant la marche [91, 93, 92, 93, 94, 89, 94] px, au repos 93 px"
+  "detail": "hauteurs rendues pendant la marche [92, 95, 90, 93, 92, 91, 95] px, au repos 93 px"
  },
  {
   "test": "mobile: grocery sortie par bouton Sortir (tap), arrivée au seuil devant la porte peinte",
@@ -452,17 +452,17 @@
  {
   "test": "mobile: mara_house murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
   "ok": true,
-  "detail": "{'mur nord': 6.5, 'mur ouest': 11.0, 'sol': 9.2}"
+  "detail": "{'mur nord': 6.5, 'mur ouest': 11.0, 'sol': 9.6}"
  },
  {
   "test": "mobile: mara dans mara_in et visible au pixel",
   "ok": true,
-  "detail": "mara_in, visible 0.88 (seuil 0.6)"
+  "detail": "mara_in, visible 0.93 (seuil 0.6)"
  },
  {
   "test": "mobile: bruno dans mara_in et visible au pixel",
   "ok": true,
-  "detail": "mara_in, visible 0.46 (seuil 0.25)"
+  "detail": "mara_in, visible 0.5 (seuil 0.25)"
  },
  {
   "test": "mobile: mara_house joueur visible au seuil malgré la porte et le mur avant",
@@ -507,7 +507,7 @@
  {
   "test": "mobile: anselme dans grocery_in et visible au pixel",
   "ok": true,
-  "detail": "grocery_in, visible 0.69 (seuil 0.6)"
+  "detail": "grocery_in, visible 0.68 (seuil 0.6)"
  },
  {
   "test": "mobile: grocery joueur visible au seuil malgré la porte et le mur avant",

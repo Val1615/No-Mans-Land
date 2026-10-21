@@ -12,7 +12,7 @@
  {
   "test": "desktop: contraste #k-sac sur sable clair ≥ 4,5:1 (pixels)",
   "ok": true,
-  "detail": "contraste 11.68, luminance du sable dessous 0.255 (vue 30,2)"
+  "detail": "contraste 12.47, luminance du sable dessous 0.204 (vue 6,2)"
  },
  {
   "test": "desktop: fond de panneau non teinté en ambre (équilibre des couleurs conservé)",
@@ -22,12 +22,12 @@
  {
   "test": "desktop: exploration : UI ≤ 12 % de l'écran",
   "ok": true,
-  "detail": "0.042"
+  "detail": "0.044"
  },
  {
   "test": "desktop: exploration : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "(0.86, 0.86)"
+  "detail": "(0.86, 0.85)"
  },
  {
   "test": "desktop: HUD : PV, $, quartier, Nilo",
@@ -42,7 +42,7 @@
  {
   "test": "desktop: minimal : UI ≤ 4 % de l'écran",
   "ok": true,
-  "detail": "0.005"
+  "detail": "0.007"
  },
  {
   "test": "desktop: retour à l'interface complète (touche H)",
@@ -82,7 +82,7 @@
  {
   "test": "desktop: pendant le dialogue : Hector et le joueur visibles (pixels)",
   "ok": true,
-  "detail": "(0.65, 0.81)"
+  "detail": "(0.66, 0.8)"
  },
  {
   "test": "desktop: choix numérotés (1> …)",
@@ -157,7 +157,7 @@
  {
   "test": "mobile: contraste #k-sac sur sable clair ≥ 4,5:1 (pixels)",
   "ok": true,
-  "detail": "contraste 15.12, luminance du sable dessous 0.187 (vue 6,18)"
+  "detail": "contraste 15.12, luminance du sable dessous 0.188 (vue 6,18)"
  },
  {
   "test": "mobile: fond de panneau non teinté en ambre (équilibre des couleurs conservé)",
@@ -167,12 +167,12 @@
  {
   "test": "mobile: exploration : UI ≤ 22 % de l'écran",
   "ok": true,
-  "detail": "0.126"
+  "detail": "0.129"
  },
  {
   "test": "mobile: exploration : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "(0.89, 0.89)"
+  "detail": "(0.9, 0.89)"
  },
  {
   "test": "mobile: HUD : PV, $, quartier, Nilo",
@@ -187,7 +187,7 @@
  {
   "test": "mobile: minimal : UI ≤ 4 % de l'écran",
   "ok": true,
-  "detail": "0.018"
+  "detail": "0.022"
  },
  {
   "test": "mobile: retour à l'interface complète (tap)",

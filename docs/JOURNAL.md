@@ -236,3 +236,10 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - Polices OFL : IBM Plex Mono, VT323.
 - Nouveau test `tests/ui_pixels.py` (53/53) : contraste sur sable clair ≥4,5:1, scène visible, couverture, gestes réels. Masques UI des suites existantes adaptés au nouveau HUD.
 - Détails : `docs/ui/INTERFACE_V8.md`.
+
+## v9 : quête test « La porte d'acier » + musique de Dusk-Town
+- Déroulé, textes, canon vs propositions : `docs/quetes/QUETE_TEST_LABO.md`. 4 étapes (Ezequiel, Anselme, Teo, la porte), 2 vrais choix à conséquence visible (mentir à Anselme, vendre le secret d'Ezequiel à Teo), fin imposée : la voix derrière la porte, la porte ne s'ouvre pas, objectif « Aller à Steel-Megalopolis » hors de portée.
+- Moteur : conditions `a&!b`, variantes de texte `alt`, actions multiples `a;b`, `pay:N`, scènes sans PNJ visible (`game.startScene`). Drapeaux dans `state.flags`.
+- UI v8 : section Quêtes dans le Journal (J), objectif suivi sous le lieu (`#obj`), bouton Son (S).
+- Musique : `game/assets/audio/dusk_town_ambiance.mp3`, copie octet-identique du fichier de Valentin (SHA-256 `ae1d8ee9…6b12`, 250 s). Un seul lecteur pour toute la partie (pas de coupure entre quartiers), boucle, démarre au premier geste, 0,55 dehors / 0,25 en intérieur, coupure mémorisée (`localStorage nml_muted`).
+- Tests : `tests/quest_walk.py` (2 branches × bureau/mobile, gestes réels depuis le départ), `tests/music_check.py`.

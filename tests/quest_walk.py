@@ -105,6 +105,12 @@ with sync_playwright() as p:
         def journal(tag):
             tapel('#k-journal'); time.sleep(0.4); h = E("document.getElementById('panel-body').innerText"); pg.screenshot(path=OUT + f'{prof}-{branch}-journal-{tag}.png'); tapel('#panel-close'); return h
         flags = lambda: st()['flags']
+        def find_lab():
+            for dy in (1.5, 2.5, 1.0, 3.0):
+                for dx in (0, -1.5, 1.5):
+                    q = P(28 + dx, dy, 3.5); k = E(f'window.__nml.pick({q["x"]},{q["y"]})')
+                    if k and k.get('kind') == 'closed' and k.get('buildingId') == 's_lab': return q
+            return None
         # --- Prérequis v7 : Teo vend le chemin de l'atelier
         talk('teo', ['Tu vends des nouvelles', 'Marché conclu', 'Noté.'], None)
         if branch == 'B':  # apprendre le secret de la jambe d'Ezequiel
@@ -154,7 +160,7 @@ with sync_playwright() as p:
                 q = P(28 + dx, dy, 3.5); k = E(f'window.__nml.pick({q["x"]},{q["y"]})')
                 if k and k.get('kind') == 'closed' and k.get('buildingId') == 's_lab': pt = q; break
             if pt: break
-        gesture(pt['x'], pt['y'])
+        time.sleep(0.5); pt = find_lab(); gesture(pt['x'], pt['y'])
         ok = waitjs('window.__nml.state.dialogue && window.__nml.state.dialogue.npc==="porte" && !document.getElementById("dialogue").hidden', 25)
         pl = st()['player']; check(f'{T}: étape 4 : marche au pied de la porte et scène ouverte', ok and abs(pl['x'] - 28) < 1.2 and pl['z'] < 7.5, (round(pl['x'], 1), round(pl['z'], 1)))
         t0 = text(); check(f'{T}: scène : le signal du miroir{" et le battant gauche (Ezequiel)" if branch == "B" else ""}', 'miroir' in t0 and (('battant gauche' in t0) == (branch == 'B')), t0[:120])
@@ -185,8 +191,9 @@ with sync_playwright() as p:
         check(f'{T}: HUD : objectif Steel-Megalopolis (hors de portée)', 'Steel-Megalopolis' in E("document.getElementById('obj').innerText"))
         if branch == 'B': check(f'{T}: journal : notes des choix (mensonge, trahison)', 'pour Mara' in jf and 'secret d' in jf)
         # rejouer la porte : elle ne s'ouvre toujours pas
-        walk(28, 9, tol=1.2); gesture(pt['x'], pt['y']); waitjs('window.__nml.state.dialogue', 20); t = text()
-        check(f'{T}: porte retentée : plus de voix, toujours fermée', 'ne grésille plus' in t, t[:80]); tapel('#dlg-close')
+        walk(28, 9, tol=1.2); time.sleep(0.5); pt = find_lab(); gesture(pt['x'], pt['y']); o = waitjs('window.__nml.state.dialogue', 20); t = text()
+        check(f'{T}: porte retentée : plus de voix, toujours fermée', o and 'ne grésille plus' in t, t[:80])
+        while st()['dialogue']: tapel('#dlg-close')
         check(f'{T}: aucune erreur console', not errs, errs[:2])
         ctx.close()
     br.close()

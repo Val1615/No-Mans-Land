@@ -31,3 +31,8 @@ IBM Plex Mono (Regular, Medium) — IBM ; VT323 — Peter Hull. Fichiers dans `g
 
 ## Test
 `game/tests/ui_pixels.py` (53 vérifications, gestes réels bureau + mobile), captures `docs/captures/ui-v8/`.
+
+## Ajouts v9
+- `#obj` : objectif de quête courant, sous le lieu, même voile que les touches.
+- `#k-son` (touche S) : coupe / rétablit la musique ; état mémorisé ; reste visible en mode minimal.
+- Journal : section « Quête · … » avec étapes `[x]`, étape courante `>` en ambre, étape hors de portée annoncée.

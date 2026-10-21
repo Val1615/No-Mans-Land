@@ -283,3 +283,8 @@ Portes peintes nouvelles (pixel source → ouverture monde) : maison à escalier
 **Intérieurs** (guet, atelier, citerne) : uniquement des meubles et textures déjà contrôlés en v6 (aucun nouvel asset d'intérieur).
 
 **Écartés v7** : scenery-waste-v4 (bus, mur, pylône, arbre, tuyau, sacs : 0/6 accepté), landmarks-v4 (navire et wagonnet acceptés en pente mais en miroir, les autres rejetés), utility-v9 (1/6, écran, sans usage), settlement-v9-city (néons de Steel, hors ton Dusk), settlement-v9-dusk case (0,1) atelier ouvert (projection différente, déjà écarté en v4).
+
+## v9 : audio
+| Fichier | Origine | Usage |
+|---|---|---|
+| `game/assets/audio/dusk_town_ambiance.mp3` | fourni par Valentin (`incoming/dusk_town_ambiance.mp3`), copié tel quel, SHA-256 `ae1d8ee965840781fa5c5ed46f8489d34bdf70a10ec461ffb1ec0788ca166b12` | musique d'ambiance, 4 quartiers + intérieurs |
