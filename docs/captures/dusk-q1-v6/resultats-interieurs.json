@@ -1,0 +1,537 @@
+[
+ {
+  "test": "desktop: clinic entrée par clic sur la porte peinte",
+  "ok": true,
+  "detail": "clinic_in"
+ },
+ {
+  "test": "desktop: clinic mobilier en sprites présent",
+  "ok": true,
+  "detail": "7 meubles"
+ },
+ {
+  "test": "desktop: clinic chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "7/7"
+ },
+ {
+  "test": "desktop: clinic murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 5.6, 'mur ouest': 5.0, 'sol': 24.3}"
+ },
+ {
+  "test": "desktop: vera dans clinic_in et visible au pixel",
+  "ok": true,
+  "detail": "clinic_in, visible 0.83 (seuil 0.6)"
+ },
+ {
+  "test": "desktop: clinic joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.88, opacité porte 0.15"
+ },
+ {
+  "test": "desktop: clinic découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: clinic miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
+  "ok": true,
+  "detail": "écart direct 201.0, écart miroir 28.2"
+ },
+ {
+  "test": "desktop: clinic animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
+  "ok": true,
+  "detail": "hauteurs rendues pendant la marche [83, 81, 81, 84, 82, 80, 82] px, au repos 83 px"
+ },
+ {
+  "test": "desktop: clinic sortie par clic sur la porte, arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(13.87, 14)"
+ },
+ {
+  "test": "desktop: clinic nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['clinic']"
+ },
+ {
+  "test": "desktop: gif entrée/sortie écrit",
+  "ok": true,
+  "detail": "21 images"
+ },
+ {
+  "test": "desktop: bar entrée par clic sur la porte peinte",
+  "ok": true,
+  "detail": "bar_in"
+ },
+ {
+  "test": "desktop: bar mobilier en sprites présent",
+  "ok": true,
+  "detail": "5 meubles"
+ },
+ {
+  "test": "desktop: bar chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "5/5"
+ },
+ {
+  "test": "desktop: bar murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 17.2, 'mur ouest': 12.5, 'sol': 5.8}"
+ },
+ {
+  "test": "desktop: hector dans bar_in et visible au pixel",
+  "ok": true,
+  "detail": "bar_in, visible 0.51 (seuil 0.4)"
+ },
+ {
+  "test": "desktop: ileana dans bar_in et visible au pixel",
+  "ok": true,
+  "detail": "bar_in, visible 0.79 (seuil 0.6)"
+ },
+ {
+  "test": "desktop: bar joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.89, opacité porte 0.15"
+ },
+ {
+  "test": "desktop: bar découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: comptoir du bar transparent quand le joueur est derrière, joueur visible au pixel",
+  "ok": true,
+  "detail": "opacité comptoir 0.35, joueur visible 0.74"
+ },
+ {
+  "test": "desktop: bar sortie par clic sur la porte, arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(35.85, 14)"
+ },
+ {
+  "test": "desktop: bar nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['clinic', 'bar']"
+ },
+ {
+  "test": "desktop: grocery entrée par clic sur la porte peinte",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "desktop: grocery mobilier en sprites présent",
+  "ok": true,
+  "detail": "5 meubles"
+ },
+ {
+  "test": "desktop: grocery chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "5/5"
+ },
+ {
+  "test": "desktop: grocery murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 9.4, 'mur ouest': 7.9, 'sol': 27.8}"
+ },
+ {
+  "test": "desktop: anselme dans grocery_in et visible au pixel",
+  "ok": true,
+  "detail": "grocery_in, visible 0.79 (seuil 0.6)"
+ },
+ {
+  "test": "desktop: grocery joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.89, opacité porte 1"
+ },
+ {
+  "test": "desktop: grocery découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: grocery miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
+  "ok": true,
+  "detail": "écart direct 197.7, écart miroir 29.6"
+ },
+ {
+  "test": "desktop: grocery animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
+  "ok": true,
+  "detail": "hauteurs rendues pendant la marche [81, 83, 80, 82, 84, 81, 81] px, au repos 81 px"
+ },
+ {
+  "test": "desktop: grocery sortie par clic sur la porte, arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(23.58, 14)"
+ },
+ {
+  "test": "desktop: grocery nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['clinic', 'grocery', 'bar']"
+ },
+ {
+  "test": "desktop: mara_house entrée par clic sur la porte peinte",
+  "ok": true,
+  "detail": "mara_in"
+ },
+ {
+  "test": "desktop: mara_house mobilier en sprites présent",
+  "ok": true,
+  "detail": "4 meubles"
+ },
+ {
+  "test": "desktop: mara_house chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "4/4"
+ },
+ {
+  "test": "desktop: mara_house murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 6.8, 'mur ouest': 9.8, 'sol': 17.3}"
+ },
+ {
+  "test": "desktop: mara dans mara_in et visible au pixel",
+  "ok": true,
+  "detail": "mara_in, visible 0.88 (seuil 0.6)"
+ },
+ {
+  "test": "desktop: bruno dans mara_in et visible au pixel",
+  "ok": true,
+  "detail": "mara_in, visible 0.61 (seuil 0.25)"
+ },
+ {
+  "test": "desktop: mara_house joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.88, opacité porte 0.15"
+ },
+ {
+  "test": "desktop: mara_house découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: mara_house sortie par clic sur la porte, arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(4.99, 14)"
+ },
+ {
+  "test": "desktop: mara_house nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['mara_house', 'clinic', 'grocery', 'bar']"
+ },
+ {
+  "test": "desktop: grocery entrée par clic sur la porte peinte",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "desktop: grocery mobilier en sprites présent",
+  "ok": true,
+  "detail": "5 meubles"
+ },
+ {
+  "test": "desktop: grocery chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "5/5"
+ },
+ {
+  "test": "desktop: grocery murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 9.4, 'mur ouest': 7.9, 'sol': 14.5}"
+ },
+ {
+  "test": "desktop: anselme dans grocery_in et visible au pixel",
+  "ok": true,
+  "detail": "grocery_in, visible 0.79 (seuil 0.6)"
+ },
+ {
+  "test": "desktop: grocery joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.87, opacité porte 1"
+ },
+ {
+  "test": "desktop: grocery découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: grocery sortie par clic sur la porte, arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(26.5, 9.61)"
+ },
+ {
+  "test": "desktop: grocery nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['mara_house', 'clinic', 'grocery', 'bar']"
+ },
+ {
+  "test": "desktop: aucune erreur console (intérieurs)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: clinic entrée par tap sur la porte peinte",
+  "ok": true,
+  "detail": "clinic_in"
+ },
+ {
+  "test": "mobile: clinic mobilier en sprites présent",
+  "ok": true,
+  "detail": "7 meubles"
+ },
+ {
+  "test": "mobile: clinic chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "7/7"
+ },
+ {
+  "test": "mobile: clinic murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 32.6, 'mur ouest': 4.8, 'sol': 24.3}"
+ },
+ {
+  "test": "mobile: vera dans clinic_in et visible au pixel",
+  "ok": true,
+  "detail": "clinic_in, visible 0.86 (seuil 0.6)"
+ },
+ {
+  "test": "mobile: clinic joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.88, opacité porte 0.15"
+ },
+ {
+  "test": "mobile: clinic découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: clinic miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
+  "ok": true,
+  "detail": "écart direct 196.8, écart miroir 28.3"
+ },
+ {
+  "test": "mobile: clinic animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
+  "ok": true,
+  "detail": "hauteurs rendues pendant la marche [81, 84, 81, 82, 83, 80, 84] px, au repos 82 px"
+ },
+ {
+  "test": "mobile: clinic sortie par bouton Sortir (tap), arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(13.87, 14)"
+ },
+ {
+  "test": "mobile: clinic nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['clinic']"
+ },
+ {
+  "test": "mobile: bar entrée par tap sur la porte peinte",
+  "ok": true,
+  "detail": "bar_in"
+ },
+ {
+  "test": "mobile: bar mobilier en sprites présent",
+  "ok": true,
+  "detail": "5 meubles"
+ },
+ {
+  "test": "mobile: bar chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "5/5"
+ },
+ {
+  "test": "mobile: bar murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 17.2, 'mur ouest': 12.2, 'sol': 5.6}"
+ },
+ {
+  "test": "mobile: hector dans bar_in et visible au pixel",
+  "ok": true,
+  "detail": "bar_in, visible 0.55 (seuil 0.4)"
+ },
+ {
+  "test": "mobile: ileana dans bar_in et visible au pixel",
+  "ok": true,
+  "detail": "bar_in, visible 0.85 (seuil 0.6)"
+ },
+ {
+  "test": "mobile: bar joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.88, opacité porte 0.15"
+ },
+ {
+  "test": "mobile: bar découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: comptoir du bar transparent quand le joueur est derrière, joueur visible au pixel",
+  "ok": true,
+  "detail": "opacité comptoir 0.35, joueur visible 0.74"
+ },
+ {
+  "test": "mobile: bar sortie par bouton Sortir (tap), arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(35.85, 14)"
+ },
+ {
+  "test": "mobile: bar nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['clinic', 'bar']"
+ },
+ {
+  "test": "mobile: grocery entrée par tap sur la porte peinte",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "mobile: grocery mobilier en sprites présent",
+  "ok": true,
+  "detail": "5 meubles"
+ },
+ {
+  "test": "mobile: grocery chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "5/5"
+ },
+ {
+  "test": "mobile: grocery murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 9.3, 'mur ouest': 8.5, 'sol': 29.6}"
+ },
+ {
+  "test": "mobile: anselme dans grocery_in et visible au pixel",
+  "ok": true,
+  "detail": "grocery_in, visible 0.76 (seuil 0.6)"
+ },
+ {
+  "test": "mobile: grocery joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.89, opacité porte 1"
+ },
+ {
+  "test": "mobile: grocery découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: grocery miroir du joueur rendu en intérieur (geste vers la droite puis la gauche)",
+  "ok": true,
+  "detail": "écart direct 203.3, écart miroir 12.2"
+ },
+ {
+  "test": "mobile: grocery animation de marche en intérieur (hauteur rendue du sprite varie au pas)",
+  "ok": true,
+  "detail": "hauteurs rendues pendant la marche [93, 90, 95, 93, 90, 94, 90] px, au repos 94 px"
+ },
+ {
+  "test": "mobile: grocery sortie par bouton Sortir (tap), arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(23.58, 14)"
+ },
+ {
+  "test": "mobile: grocery nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['clinic', 'grocery', 'bar']"
+ },
+ {
+  "test": "mobile: mara_house entrée par tap sur la porte peinte",
+  "ok": true,
+  "detail": "mara_in"
+ },
+ {
+  "test": "mobile: mara_house mobilier en sprites présent",
+  "ok": true,
+  "detail": "4 meubles"
+ },
+ {
+  "test": "mobile: mara_house chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "4/4"
+ },
+ {
+  "test": "mobile: mara_house murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 6.5, 'mur ouest': 11.0, 'sol': 9.2}"
+ },
+ {
+  "test": "mobile: mara dans mara_in et visible au pixel",
+  "ok": true,
+  "detail": "mara_in, visible 0.89 (seuil 0.6)"
+ },
+ {
+  "test": "mobile: bruno dans mara_in et visible au pixel",
+  "ok": true,
+  "detail": "mara_in, visible 0.55 (seuil 0.25)"
+ },
+ {
+  "test": "mobile: mara_house joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.91, opacité porte 0.15"
+ },
+ {
+  "test": "mobile: mara_house découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: mara_house sortie par bouton Sortir (tap), arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(4.99, 14)"
+ },
+ {
+  "test": "mobile: mara_house nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['mara_house', 'clinic', 'grocery', 'bar']"
+ },
+ {
+  "test": "mobile: grocery entrée par tap sur la porte peinte",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "mobile: grocery mobilier en sprites présent",
+  "ok": true,
+  "detail": "5 meubles"
+ },
+ {
+  "test": "mobile: grocery chaque meuble est visible au pixel (>= 50 % de son image à l écran)",
+  "ok": true,
+  "detail": "5/5"
+ },
+ {
+  "test": "mobile: grocery murs et sol texturés (écart-type local des pixels > 3 ; une couleur unie éclairée donne < 1)",
+  "ok": true,
+  "detail": "{'mur nord': 9.3, 'mur ouest': 8.5, 'sol': 14.0}"
+ },
+ {
+  "test": "mobile: anselme dans grocery_in et visible au pixel",
+  "ok": true,
+  "detail": "grocery_in, visible 0.74 (seuil 0.6)"
+ },
+ {
+  "test": "mobile: grocery joueur visible au seuil malgré la porte et le mur avant",
+  "ok": true,
+  "detail": "visible 0.89, opacité porte 1"
+ },
+ {
+  "test": "mobile: grocery découvert en entrant",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: grocery sortie par bouton Sortir (tap), arrivée au seuil devant la porte peinte",
+  "ok": true,
+  "detail": "(26.5, 9.61)"
+ },
+ {
+  "test": "mobile: grocery nom du service affiché dehors après découverte",
+  "ok": true,
+  "detail": "['mara_house', 'clinic', 'grocery', 'bar']"
+ },
+ {
+  "test": "mobile: aucune erreur console (intérieurs)",
+  "ok": true,
+  "detail": ""
+ }
+]
