@@ -69,6 +69,12 @@ export function createGame(world, sprites) {
     const p = state.player.pending; state.player.pending = null; if (!p) return;
     if (p.kind === 'door') { const d = doorById(p.id); if (d.edge) { state.junctionLock = d.id; refuse('bord', d.edge); } else enter(d); }
     if (p.kind === 'talk') openDialogue(p.id);
+    if (p.kind === 'scene') openDialogue(p.id);
+  }
+  // v9 : scène sans PNJ visible (ex. la voix derrière la porte d'acier) : marcher jusqu'au point, puis ouvrir le dialogue
+  function startScene(npcId, at) {
+    const b = busy(); if (b) return b;
+    return goThen(at, { kind: 'scene', id: npcId }) || refuse('chemin_bloque', 'Impossible d\'approcher.');
   }
   function openDialogue(npcId) {
     const n = npcById(npcId);
@@ -80,22 +86,30 @@ export function createGame(world, sprites) {
   function currentNode() {
     if (!state.dialogue) return null;
     const tree = DIALOGUES[npcById(state.dialogue.npc).dialogue]; const node = tree[state.dialogue.node];
-    return { npc: npcById(state.dialogue.npc), text: node.text,
+    const alt = (node.alt || []).find(a => cond(a.if));
+    return { npc: npcById(state.dialogue.npc), text: alt ? alt.text : node.text,
       options: node.options.map((o, i) => ({ ...o, index: i })).filter(o => !o.if || cond(o.if)) };
   }
-  const cond = c => c === 'hurt' ? state.player.hp < state.player.maxHp : !!state.flags[c];
+  // v9 : conditions composées « a&!b » ; « hurt » = blessé
+  const cond1 = c => c.startsWith('!') ? !cond1(c.slice(1)) : c === 'hurt' ? state.player.hp < state.player.maxHp : !!state.flags[c];
+  const cond = c => c.split('&').every(cond1);
   function choose(index) {
     const node = currentNode(); if (!node) return { ok: false };
     const opt = node.options.find(o => o.index === index); if (!opt) return { ok: false };
     let next = opt.next;
-    if (opt.action) { const r = act(opt.action); if (!r.ok) next = r.next || next; }
+    if (opt.action) { // v9 : plusieurs actions « a;b », on s'arrête au premier refus (pas assez de $)
+      const acts = opt.action.split(';');
+      if (acts.some(a => /^(buy|pay|heal)/.test(a))) { const cost = acts.reduce((t, a) => t + (/^(pay|heal)/.test(a) ? +a.split(':')[1] : /^buy/.test(a) ? +a.split(':')[2] : 0), 0);
+        if (state.player.money < cost) { next = 'pauvre'; acts.length = 0; } }
+      for (const a of acts) { const r = act(a); if (!r.ok) { next = r.next || next; break; } } }
     if (!next || next === 'end') { closeDialogue(); return { ok: true, closed: true }; }
     state.dialogue.node = next; return { ok: true };
   }
   function act(a) {
     const [k, x, y] = a.split(':'), pl = state.player;
     if (k === 'reveal') { if (!state.discovered[x]) { state.discovered[x] = true; emit({ type: 'discover', building: x, how: 'dialogue', text: 'Lieu repéré.' }); } return { ok: true }; }
-    if (k === 'flag') { state.flags[x] = true; emit({ type: 'flag', flag: x, text: 'Journal : piste notée.' }); return { ok: true }; }
+    if (k === 'flag') { state.flags[x] = true; emit({ type: 'flag', flag: x, text: x.startsWith('q_') ? 'Journal : quête mise à jour.' : 'Journal : piste notée.' }); return { ok: true }; }
+    if (k === 'pay') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' }; pl.money -= cost; emit({ type: 'service', what: 'pay', text: `−${cost} $` }); return { ok: true }; }
     if (k === 'heal') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' };
       pl.money -= cost; pl.hp = pl.maxHp; emit({ type: 'service', what: 'heal', text: `Soigné. −${cost} $` }); return { ok: true }; }
     if (k === 'buy') { const cost = +y, it = ITEMS[x]; if (pl.money < cost) return { ok: false, next: 'pauvre' };
@@ -150,7 +164,7 @@ export function createGame(world, sprites) {
       if (d <= sp) { a.x = n.x; a.z = n.z; a.path.shift(); sp -= d; } else { a.x += dx / d * sp; a.z += dz / d * sp; sp = 0; }
     }
   }
-  return { state, step, moveTo, useDoor, talkTo, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
+  return { state, step, moveTo, useDoor, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
     on: f => listeners.add(f), get location() { return LOCATIONS[state.location]; } };
 }
 function nearestFree(g, target, from) {

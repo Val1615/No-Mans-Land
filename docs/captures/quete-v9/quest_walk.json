@@ -1,0 +1,177 @@
+[
+ {
+  "test": "desktop/B: rejoint teo par la marche et lui parle par geste",
+  "ok": true,
+  "detail": "guet_in"
+ },
+ {
+  "test": "desktop/B: rejoint ezequiel par la marche et lui parle par geste",
+  "ok": true,
+  "detail": "atelier_in"
+ },
+ {
+  "test": "desktop/B: journal : quête visible, objectif 1 courant",
+  "ok": false,
+  "detail": "JOURNAL\nQUÊTE · LA PORTE D'ACIER\n> Demander à Ezequiel (l'atelier, Le Scellé) qui a tenté la porte\n[ ] Trouver de quoi forcer : le cric d'Anselme (épicerie, La "
+ },
+ {
+  "test": "desktop/B: objectif suivi affiché dans le HUD",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: rejoint ezequiel par la marche et lui parle par geste",
+  "ok": true,
+  "detail": "atelier_in"
+ },
+ {
+  "test": "desktop/B: étape 1 : Ezequiel dit la vérité (battant gauche)",
+  "ok": true,
+  "detail": "[\"Toi, je ne vais pas te raconter la bande de sept. La grille du toit est un leurre, elle donne sur un puits bouché. J'y ai laissé un genou pour rien. Le seul endroit qui bouge, c'est le bas du battant gauche. Un cric de camion glissé dessous. Anselme en cache un sous son comptoir.\"]"
+ },
+ {
+  "test": "desktop/B: drapeaux étape 1",
+  "ok": true,
+  "detail": "{'ezequiel_toit': True, 'q_start': True, 'q_battant': True}"
+ },
+ {
+  "test": "desktop/B: blockhaus HC cliquable à l'écran",
+  "ok": true,
+  "detail": "{'x': 733.4570290925974, 'y': 295.0569392148297}"
+ },
+ {
+  "test": "desktop/B: porte avant d'être prêt : message, pas de scène",
+  "ok": true,
+  "detail": "Pas à mains nues, et pas sans savoir où sont les camions."
+ },
+ {
+  "test": "desktop/B: rejoint anselme par la marche et lui parle par geste",
+  "ok": true,
+  "detail": "grocery_in"
+ },
+ {
+  "test": "desktop/B: étape 2 : cric obtenu, coût 5 $",
+  "ok": true,
+  "detail": "(35, 30, {'cric': 1})"
+ },
+ {
+  "test": "desktop/B: HUD $ à jour",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: rejoint teo par la marche et lui parle par geste",
+  "ok": true,
+  "detail": "guet_in"
+ },
+ {
+  "test": "desktop/B: étape 3 : signal obtenu, coût 0 (secret vendu) $",
+  "ok": true,
+  "detail": "(30, 30, [\"La porte d'acier ? Tu es le quatrième ce mois-ci. Les trois autres, je les ai vus partir à l'arrière d'un camion, et pas à l'avant. Je peux te faire signe depuis le toit quand la route est vide. Ça a un prix.\", \"Tombé du toit ? Tout seul ? Et le combat à six ? (Il se mord la manche pour n"
+ },
+ {
+  "test": "desktop/B: conséquence : Anselme sait que le cric n'était pas pour Mara",
+  "ok": true,
+  "detail": "Entre, et ferme. J'ai croisé Mara à la pompe. Elle n'a jamais entendu parler de mon cric, "
+ },
+ {
+  "test": "desktop/B: conséquence : Ezequiel, Teo miaule quand il passe",
+  "ok": true,
+  "detail": "Le gamin du Transit miaule quand je passe sous son volet. Un chat qui tombe d'un toit, il "
+ },
+ {
+  "test": "desktop/B: journal : 3 étapes cochées, objectif courant = forcer la porte",
+  "ok": true,
+  "detail": "JOURNAL\nQUÊTE · LA PORTE D'ACIER\n[x] Demander à Ezequiel (l'atelier, Le Scellé) qui a tenté la porte\n[x] Trouver de quoi forcer : le cric d'Anselme (épicerie, La Pompe)\n[x] Choisir le moment : Teo (le guet, Le Transit)\n> Forcer la porte d'acier du Scellé\n[ ] Aller à Steel-Megalopolis\nLIEUX REPÉRÉS\nÉ"
+ },
+ {
+  "test": "desktop/B: étape 4 : marche au pied de la porte et scène ouverte",
+  "ok": true,
+  "detail": "(28, 6)"
+ },
+ {
+  "test": "desktop/B: scène : le signal du miroir et le battant gauche (Ezequiel)",
+  "ok": true,
+  "detail": "Au loin, sur le toit du guet, un seul éclat de miroir : la route est vide. Le cric tient sous le bas du battant gauche, "
+ },
+ {
+  "test": "desktop/B: scène : pas de portrait affiché (personne de visible)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: scène finale au pixel : blockhaus visible hors UI, dialogue en bas à gauche",
+  "ok": true,
+  "detail": "((np.float64(0.69), 24007), {'x': 12, 'y': 572, 'width': 560, 'height': 214})"
+ },
+ {
+  "test": "desktop/B: scène finale au pixel : le dialogue est rendu (texte clair sur voile)",
+  "ok": true,
+  "detail": "(np.float64(0.020952937249666223), np.float64(34.666666666666664))"
+ },
+ {
+  "test": "desktop/B: scène : « confinement »",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: scène : « mal tourné »",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: scène : « les autres sont là »",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: scène : « Steel-Megalopolis »",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: scène : « La porte reste fermée »",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: scène : branche coups / humour",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: fin : q_fin, la porte ne s'ouvre pas",
+  "ok": true,
+  "detail": "{'ezequiel_toit': True, 'q_start': True, 'q_battant': True, 'q_cric': True, 'q_menti_anselme': True, 'q_signal': True, 'q_trahi': True, 'q_fin': True}"
+ },
+ {
+  "test": "desktop/B: aucune porte vers un intérieur du labo",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: journal final : 4 étapes cochées, Steel-Megalopolis courant et hors de portée",
+  "ok": true,
+  "detail": "JOURNAL\nQUÊTE · LA PORTE D'ACIER\n[x] Demander à Ezequiel (l'atelier, Le Scellé) qui a tenté la porte\n[x] Trouver de quoi forcer : le cric d'Anselme (épicerie, La Pompe)\n[x] Choisir le moment : Teo (le guet, Le Transit)\n[x] Forcer la porte d'acier du Scellé\n> Aller à Steel-Megalopolis\nHors de portée "
+ },
+ {
+  "test": "desktop/B: HUD : objectif Steel-Megalopolis (hors de portée)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: journal : notes des choix (mensonge, trahison)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/B: porte retentée : plus de voix, toujours fermée",
+  "ok": true,
+  "detail": "La porte d'acier. La grille au-dessus ne grésille plus. Tu attends. Rien."
+ },
+ {
+  "test": "desktop/B: aucune erreur console",
+  "ok": true,
+  "detail": "[]"
+ }
+]

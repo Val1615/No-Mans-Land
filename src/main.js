@@ -1,6 +1,7 @@
 import * as world from './data/dusk_town.js'; // v7 : toute la ville (Q1 + Q2-Q4)
 import { DIALOGUES, ITEMS } from './data/dialogues_town.js';
 import { createGame } from './core/game.js';
+import { QUESTS, QUEST_NOTES } from './data/quests.js';
 import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
 import { loadSkins } from './render/textures.js';
@@ -26,6 +27,10 @@ bindPointer($('view'), (x, y) => {
   if (p.kind === 'npc') game.talkTo(p.npcId);
   else if (p.kind === 'door') game.useDoor(p.doorId);
   else if (p.kind === 'building') { const d = game.doorOfBuilding(p.buildingId); if (d) game.useDoor(d.id); }
+  else if (p.kind === 'closed' && p.buildingId === 's_lab' && game.state.flags.q_start) { // v9 : la porte d'acier
+    const f = game.state.flags;
+    if (f.q_fin || (f.q_cric && f.q_signal)) game.startScene('porte', { x: 28, z: 5.8 });
+    else say(!f.q_cric && !f.q_signal ? 'Pas à mains nues, et pas sans savoir où sont les camions.' : !f.q_cric ? 'Pas à mains nues. Le cric d\u2019Anselme.' : 'Pas sans savoir où sont les camions. Teo, au guet.'); }
   else if (p.kind === 'closed') say(world.CLOSED_TEXT[p.buildingId] || `${p.label} : fermé.`);
   else if (p.kind === 'ground') { // v7 : un tap au bout d'une rue vise la jonction (on marche jusqu'au seuil)
     const j = world.DOORS.find(d => (d.junction || d.edge) && d.location === game.state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.6);
@@ -40,7 +45,7 @@ function renderDialogue() {
   const n = game.currentNode(), key = n && game.state.dialogue.npc + ':' + game.state.dialogue.node + ':' + game.state.player.money;
   $('dialogue').hidden = !n; if (!n || key === shownNode) { if (!n) shownNode = null; return; }
   shownNode = key;
-  $("dlg-portrait").src = n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
+  $('dlg-portrait').hidden = n.npc.portrait === false; if (n.npc.portrait !== false) $("dlg-portrait").src = n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
   $('dlg-name').textContent = n.npc.name; $('dlg-text').textContent = n.text;
   const box = $('dlg-options'); box.replaceChildren();
   for (const [k, o] of n.options.entries()) { const b = document.createElement('button'); b.textContent = o.label; b.dataset.index = o.index; b.dataset.n = k + 1; b.addEventListener('click', () => game.choose(o.index)); box.appendChild(b); }
@@ -57,6 +62,8 @@ function frame(now) {
   $('inv').textContent = Object.entries(s.player.inv).map(([k, v]) => `${ITEMS[k].name} ×${v}`).join(' · ');
   const c = s.companion; $('nilo').textContent = c.mode === 'follow' && c.location === s.location ? 'NILO · suit' : 'NILO · resté en arrière';
   $('mini').textContent = `PV ${s.player.hp}/${s.player.maxHp} · ${s.player.money} $`;
+  const q = currentObjective(); $('obj').hidden = !q; if (q) $('obj-text').textContent = q;
+  music.update();
   seen[s.location] = true; if (panelOpen) renderPanel();
   renderDialogue();
   view.render();
@@ -73,7 +80,7 @@ const allBuildings = () => Object.values(world.LOCATIONS).flatMap(l => (l.buildi
 const FLAGS = { teo_secret: 'Teo : la nuit où il dormait. Promis de me taire.', ezequiel_toit: 'Ezequiel : la jambe, le toit du blockhaus. Je n\u2019en dirai rien.', sol_vue: 'Sol : le foulard. Je n\u2019en dirai rien.' };
 function renderPanel() {
   const s = game.state, n = game.currentNode();
-  const key = panelOpen + JSON.stringify([s.player.inv, s.player.money, s.discovered, s.flags, s.location, n && n.options.length, Object.keys(seen)]);
+  const key = panelOpen + JSON.stringify([s.flags, s.player.inv, s.player.money, s.discovered, s.flags, s.location, n && n.options.length, Object.keys(seen)]);
   if (key === panelKey) return; panelKey = key; const B = $('panel-body');
   if (panelOpen === 'sac') {
     const items = Object.entries(s.player.inv);
@@ -85,8 +92,12 @@ function renderPanel() {
   } else if (panelOpen === 'journal') {
     const places = allBuildings().filter(b => s.discovered[b.id]);
     const notes = Object.keys(s.flags).filter(f => FLAGS[f]);
-    B.innerHTML = `<h3>JOURNAL</h3><div class="lbl">Lieux repérés</div><ul>${places.length ? places.map(b => `<li><span>${b.label}</span><span class="muted">${short(b.loc)}</span></li>`).join('') : '<li class="muted">Aucun. Les entrées sont cachées derrière les façades.</li>'}</ul>
-      <div class="desc"><div class="lbl">Notes</div>${notes.length ? notes.map(f => FLAGS[f]).join('<br>') : '<span class="muted">Rien de noté.</span>'}</div>`;
+    const qs = QUESTS.filter(qq => qq.visible(s)).map(qq => { let cur = false; return `<div class="lbl">Quête · ${qq.title}</div><ul class="quest">` + qq.steps.map(st => {
+        const done = st.done && s.flags[st.done], isCur = !done && !cur; if (isCur) cur = true;
+        return `<li class="${done ? 'done' : isCur ? 'cur' : ''} ${st.blocked ? 'blk' : ''}"><span>${done ? '[x]' : isCur ? '>' : '[ ]'} ${st.text}</span>${st.blocked && isCur ? `<span class="muted">${st.blocked}</span>` : ''}</li>`; }).join('') + '</ul>'; }).join('');
+    notes.push(...Object.keys(QUEST_NOTES).filter(f => s.flags[f]));
+    B.innerHTML = `<h3>JOURNAL</h3>${qs}<div class="lbl">Lieux repérés</div><ul>${places.length ? places.map(b => `<li><span>${b.label}</span><span class="muted">${short(b.loc)}</span></li>`).join('') : '<li class="muted">Aucun. Les entrées sont cachées derrière les façades.</li>'}</ul>
+      <div class="desc"><div class="lbl">Notes</div>${notes.length ? notes.map(f => FLAGS[f] || QUEST_NOTES[f]).join('<br>') : '<span class="muted">Rien de noté.</span>'}</div>`;
   } else if (panelOpen === 'carte') {
     const cells = Array(9).fill('<div></div>');
     for (const [id, c, r] of QUARTERS) { const here = s.location === id || world.LOCATIONS[s.location].kind === 'interior' && false, known = seen[id];
@@ -109,3 +120,24 @@ addEventListener('keydown', e => {
   if (k === 'escape') { if (panelOpen) openPanel(panelOpen); else game.closeDialogue(); }
   if (k === 'i') openPanel('sac'); if (k === 'j') openPanel('journal'); if (k === 'm') openPanel('carte'); if (k === 'h') toggleMini();
 });
+
+// ---------- v9 : objectif suivi, musique de Dusk-Town ----------
+function currentObjective() {
+  const s = game.state; for (const q of QUESTS) { if (!q.visible(s)) continue;
+    const st = q.steps.find(x => !x.done || !s.flags[x.done]); if (st) return st.text + (st.blocked ? ' (hors de portée pour l\u2019instant)' : ''); }
+  return null;
+}
+// Un seul élément <audio> pour toute la partie : jamais recréé au changement de quartier, donc aucune coupure.
+// Démarre au premier geste (règles autoplay). Atténuée en intérieur. Coupure mémorisée (localStorage).
+var music = (() => {
+  const a = $('music'), KEY = 'nml_muted'; let started = false;
+  const muted = () => localStorage.getItem(KEY) === '1';
+  const sync = () => { a.muted = muted(); $('k-son').classList.toggle('on', a.muted); $('k-son').setAttribute('aria-pressed', a.muted); $('k-son').querySelector('span').textContent = a.muted ? 'Muet' : 'Son'; };
+  const start = () => { if (started) return; started = true; a.play().catch(() => { started = false; }); };
+  addEventListener('pointerdown', start, true); addEventListener('keydown', start, true); addEventListener('touchstart', start, { capture: true, passive: true });
+  $('k-son').addEventListener('click', () => { localStorage.setItem(KEY, muted() ? '0' : '1'); sync(); });
+  addEventListener('keydown', e => { if (e.key.toLowerCase() === 's' && !e.repeat) $('k-son').click(); });
+  sync();
+  return { el: a, update() { const v = game.location.kind === 'interior' ? 0.25 : 0.55; if (Math.abs(a.volume - v) > 0.01) a.volume += Math.sign(v - a.volume) * 0.01; } };
+})();
+window.__nml.music = music.el;

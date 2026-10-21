@@ -1,0 +1,127 @@
+[
+ {
+  "test": "fichier servi octet-identique à l'original (SHA-256)",
+  "ok": true,
+  "detail": "ae1d8ee965840781fa5c5ed46f8489d34bdf70a10ec461ffb1ec0788ca166b12"
+ },
+ {
+  "test": "desktop: muette avant tout geste (règle autoplay)",
+  "ok": true,
+  "detail": "{'paused': True, 't': 0, 'loop': True, 'muted': False, 'vol': 0.5599999999999996, 'src': 'http://127.0.0.1:8765/assets/audio/dusk_town_ambiance.mp3', 'dur': 249.9735, 'n': 1}"
+ },
+ {
+  "test": "desktop: lecture effective après le premier geste (le temps avance)",
+  "ok": true,
+  "detail": "(2.520412, 4.023281)"
+ },
+ {
+  "test": "desktop: activée par défaut (non coupée), en boucle, un seul lecteur",
+  "ok": true,
+  "detail": "{'paused': False, 't': 4.023281, 'loop': True, 'muted': False, 'vol': 0.5599999999999996, 'src': 'http://127.0.0.1:8765/assets/audio/dusk_town_ambiance.mp3', 'dur': 249.9735, 'n': 1}"
+ },
+ {
+  "test": "desktop: volume extérieur",
+  "ok": true,
+  "detail": "0.5599999999999996"
+ },
+ {
+  "test": "desktop: boucle : repart au début après la fin, toujours en lecture",
+  "ok": true,
+  "detail": "(3.431532, 249.9735)"
+ },
+ {
+  "test": "desktop: changement de quartier par la marche : pas de coupure (même lecteur, temps continu)",
+  "ok": true,
+  "detail": "('dusk_q2', 3.435223, 21.14037)"
+ },
+ {
+  "test": "desktop: bouton Son : coupe (muted), libellé « Muet »",
+  "ok": true,
+  "detail": "True"
+ },
+ {
+  "test": "desktop: réglage mémorisé après rechargement",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: rétabli par geste, lecture (le geste démarre la musique)",
+  "ok": true,
+  "detail": "{'paused': False, 't': 1.750023, 'loop': True, 'muted': False, 'vol': 0.5599999999999996, 'src': 'http://127.0.0.1:8765/assets/audio/dusk_town_ambiance.mp3', 'dur': 249.9735, 'n': 1}"
+ },
+ {
+  "test": "desktop: touche S coupe",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: touche S rétablit",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: intérieur : musique continue et atténuée",
+  "ok": true,
+  "detail": "('mara_in', 0.25999999999999934)"
+ },
+ {
+  "test": "desktop: aucune erreur page",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile: muette avant tout geste (règle autoplay)",
+  "ok": true,
+  "detail": "{'paused': True, 't': 0, 'loop': True, 'muted': False, 'vol': 0.5599999999999996, 'src': 'http://127.0.0.1:8765/assets/audio/dusk_town_ambiance.mp3', 'dur': 249.9735, 'n': 1}"
+ },
+ {
+  "test": "mobile: lecture effective après le premier geste (le temps avance)",
+  "ok": true,
+  "detail": "(2.521559, 4.024335)"
+ },
+ {
+  "test": "mobile: activée par défaut (non coupée), en boucle, un seul lecteur",
+  "ok": true,
+  "detail": "{'paused': False, 't': 4.024335, 'loop': True, 'muted': False, 'vol': 0.5599999999999996, 'src': 'http://127.0.0.1:8765/assets/audio/dusk_town_ambiance.mp3', 'dur': 249.9735, 'n': 1}"
+ },
+ {
+  "test": "mobile: volume extérieur",
+  "ok": true,
+  "detail": "0.5599999999999996"
+ },
+ {
+  "test": "mobile: boucle : repart au début après la fin, toujours en lecture",
+  "ok": true,
+  "detail": "(3.435077, 249.9735)"
+ },
+ {
+  "test": "mobile: changement de quartier par la marche : pas de coupure (même lecteur, temps continu)",
+  "ok": true,
+  "detail": "('dusk_q2', 3.438461, 21.728323)"
+ },
+ {
+  "test": "mobile: bouton Son : coupe (muted), libellé « Muet »",
+  "ok": true,
+  "detail": "True"
+ },
+ {
+  "test": "mobile: réglage mémorisé après rechargement",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: rétabli par geste, lecture (le geste démarre la musique)",
+  "ok": true,
+  "detail": "{'paused': False, 't': 1.750867, 'loop': True, 'muted': False, 'vol': 0.5599999999999996, 'src': 'http://127.0.0.1:8765/assets/audio/dusk_town_ambiance.mp3', 'dur': 249.9735, 'n': 1}"
+ },
+ {
+  "test": "mobile: intérieur : musique continue et atténuée",
+  "ok": true,
+  "detail": "('mara_in', 0.25999999999999934)"
+ },
+ {
+  "test": "mobile: aucune erreur page",
+  "ok": true,
+  "detail": "[]"
+ }
+]

@@ -19,11 +19,12 @@
   <span id="inv" hidden></span>
 </div>
 <div id="locbox" class="rp"><span id="loc"></span><span class="tag" title="Prototype">PROTO</span></div>
+<div id="obj" class="rp" hidden><span class="lbl">OBJECTIF</span> <span id="obj-text"></span></div>
 <div id="mini" class="mono" hidden></div>
 <div id="msg" class="mono" role="status" aria-live="polite"></div>
 <div id="actions"><button id="act" class="rp" hidden></button></div>
 <nav id="keys" aria-label="Menus">
-  <button id="k-sac" class="rp" data-panel="sac"><u>I</u> Sac</button><button id="k-journal" class="rp" data-panel="journal"><u>J</u> Journal</button><button id="k-carte" class="rp" data-panel="carte"><u>M</u> Carte</button><button id="k-mini" class="rp"><u>H</u> <span>Discret</span></button>
+  <button id="k-sac" class="rp" data-panel="sac"><u>I</u> Sac</button><button id="k-journal" class="rp" data-panel="journal"><u>J</u> Journal</button><button id="k-carte" class="rp" data-panel="carte"><u>M</u> Carte</button><button id="k-son" class="rp" aria-pressed="false"><u>S</u> <span>Son</span></button><button id="k-mini" class="rp"><u>H</u> <span>Discret</span></button>
 </nav>
 <section id="panel" class="rp" hidden><button id="panel-close" aria-label="Fermer">×</button><div id="panel-body"></div></section>
 <div id="dialogue" class="rp" hidden role="dialog" aria-modal="false">
@@ -33,5 +34,6 @@
   <button id="dlg-close" aria-label="Fermer">×</button>
 </div>
 <script type="module" src="./src/main.js"></script>
+<audio id="music" src="./assets/audio/dusk_town_ambiance.mp3" loop preload="auto"></audio>
 </body>
 </html>

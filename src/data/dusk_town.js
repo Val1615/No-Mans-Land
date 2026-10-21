@@ -74,6 +74,8 @@ export const NPCS = [
   ...Q1.NPCS,
   { id: 'teo', name: 'Teo', sprite: 'gen_teo', location: 'guet_in', x: 3.9, z: 1.6, faceTo: [3.9, 0], dialogue: 'teo' },
   { id: 'ezequiel', name: 'Ezequiel', sprite: 'gen_ezequiel', location: 'atelier_in', x: 2.6, z: 2.2, faceTo: [3.5, 6], dialogue: 'ezequiel' },
+  // v9 : la voix derrière la porte d'acier. Aucun sprite, aucun lieu rendu : ouverte par game.startScene au pied du blockhaus.
+  { id: 'porte', name: 'Porte d\'acier', sprite: null, portrait: false, location: '_scene', x: 28, z: 4.6, dialogue: 'porte' },
   { id: 'sol', name: 'Sol', sprite: 'gen_sol', location: 'citerne_in', x: 3.4, z: 2.6, faceTo: [8, 3], dialogue: 'sol' }
 ];
 export const START = Q1.START, COMPANION = Q1.COMPANION;

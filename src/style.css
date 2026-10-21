@@ -60,7 +60,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 #panel .q.here{border-color:var(--c);color:var(--c)}
 #panel .q.unk{opacity:.4}
 #panel .q b{font-family:'VT';font-weight:400;font-size:18px;display:block}
-body.mini #hud,body.mini #locbox,body.mini #keys button:not(#k-mini){display:none}
+body.mini #hud,body.mini #locbox,body.mini #obj,body.mini #keys button:not(#k-mini):not(#k-son){display:none}
 body.mini #keys{opacity:.55}
 @media (max-width:600px){
   #hud{left:8px;right:8px;gap:10px;padding:6px 8px;flex-wrap:wrap}
@@ -79,3 +79,11 @@ body.mini #keys{opacity:.55}
 }
 /* petites commandes : voile un peu plus dense et texte plus clair (contraste mesuré ≥ 4,5:1 sur le sable le plus clair, tests/ui_pixels.py) */
 #keys button,#act{background:rgba(8,6,3,.8);color:#fff2d8}
+
+/* v9 : objectif de quête suivi, sous le lieu ; bouton son */
+#obj{position:fixed;top:calc(48px + var(--pad));right:12px;max-width:min(320px,60vw);padding:4px 10px;font-size:12px;line-height:1.35;color:#fff2d8;background:rgba(8,6,3,.8);pointer-events:none}
+#obj[hidden]{display:none}#obj .lbl{font-size:10px;letter-spacing:.08em}
+#k-son.on{color:var(--c);border-color:var(--c)}
+#panel .quest{margin:4px 0 8px}#panel .quest li.done span:first-child{text-decoration:line-through;opacity:.7}#panel .quest li.cur span:first-child{color:var(--c)}
+#panel .quest li.blk span:last-child{font-size:11px}
+@media (max-width:600px){#obj{top:calc(100px + var(--pad));right:8px;max-width:62vw;font-size:11.5px}#keys button{padding:4px 9px}}
