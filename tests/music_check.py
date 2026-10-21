@@ -13,12 +13,14 @@ with sync_playwright() as p:
     for prof in ('desktop', 'mobile'):
         ctx = br.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else br.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
         pg = ctx.new_page(); errs = []; pg.on('pageerror', lambda e: errs.append(str(e)))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); time.sleep(2)
         E = pg.evaluate; gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         M = lambda: E('(()=>{const a=window.__nml.music;return {paused:a.paused,t:a.currentTime,loop:a.loop,muted:a.muted,vol:a.volume,src:a.currentSrc,dur:a.duration,n:document.querySelectorAll("audio").length}})()')
         P = lambda x, z: E(f'window.__nml.project({x},0,{z})')
         def tapel(sel): b = pg.locator(sel).bounding_box(); gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.3)
         m = M(); check(f'{prof}: muette avant tout geste (règle autoplay)', m['paused'], m)
+        check(f'{prof}: écran titre affiché, musique muette tant qu\'aucun geste', E('document.body.classList.contains("menu-open")') and m['paused'])
+        tapel('#m-new'); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(0.5)  # premier geste réel : Nouveau jeu
         pl = E('window.__nml.state.player'); pt = P(pl['x'] + 1.5, pl['z']); gesture(pt['x'], pt['y']); time.sleep(2.5)
         m1 = M(); time.sleep(1.5); m2 = M()
         check(f'{prof}: lecture effective après le premier geste (le temps avance)', not m1['paused'] and m2['t'] - m1['t'] > 1.0, (m1['t'], m2['t']))

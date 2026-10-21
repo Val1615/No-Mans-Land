@@ -10,7 +10,7 @@
   "detail": ""
  },
  {
-  "test": "desktop: compagnon tourné vers la droite en suivant",
+  "test": "desktop: Nilo absent de la scène (0 pixel rendu)",
   "ok": true,
   "detail": ""
  },
@@ -20,7 +20,7 @@
   "detail": ""
  },
  {
-  "test": "desktop: compagnon retourné en marchant vers la gauche",
+  "test": "desktop: joueur retourné en marchant vers la gauche (Nilo toujours absent)",
   "ok": true,
   "detail": ""
  },
@@ -115,7 +115,7 @@
   "detail": "mara_in"
  },
  {
-  "test": "desktop: mara_house -> compagnon entré",
+  "test": "desktop: mara_house -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -160,7 +160,7 @@
   "detail": "(4.99,14)"
  },
  {
-  "test": "desktop: mara_house -> compagnon ressorti",
+  "test": "desktop: mara_house -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },
@@ -180,7 +180,7 @@
   "detail": "grocery_in"
  },
  {
-  "test": "desktop: grocery -> compagnon entré",
+  "test": "desktop: grocery -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -210,7 +210,7 @@
   "detail": "(23.58,14)"
  },
  {
-  "test": "desktop: grocery -> compagnon ressorti",
+  "test": "desktop: grocery -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },
@@ -225,7 +225,7 @@
   "detail": "bar_in"
  },
  {
-  "test": "desktop: bar -> compagnon entré",
+  "test": "desktop: bar -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -265,7 +265,7 @@
   "detail": "(35.85,14)"
  },
  {
-  "test": "desktop: bar -> compagnon ressorti",
+  "test": "desktop: bar -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },
@@ -280,7 +280,7 @@
   "detail": "clinic_in"
  },
  {
-  "test": "desktop: clinic -> compagnon entré",
+  "test": "desktop: clinic -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -310,7 +310,7 @@
   "detail": "(13.87,14)"
  },
  {
-  "test": "desktop: clinic -> compagnon ressorti",
+  "test": "desktop: clinic -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },
@@ -355,7 +355,7 @@
   "detail": ""
  },
  {
-  "test": "mobile: compagnon tourné vers la droite en suivant",
+  "test": "mobile: Nilo absent de la scène (0 pixel rendu)",
   "ok": true,
   "detail": ""
  },
@@ -365,7 +365,7 @@
   "detail": ""
  },
  {
-  "test": "mobile: compagnon retourné en marchant vers la gauche",
+  "test": "mobile: joueur retourné en marchant vers la gauche (Nilo toujours absent)",
   "ok": true,
   "detail": ""
  },
@@ -460,7 +460,7 @@
   "detail": "mara_in"
  },
  {
-  "test": "mobile: mara_house -> compagnon entré",
+  "test": "mobile: mara_house -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -505,7 +505,7 @@
   "detail": "(4.99,14)"
  },
  {
-  "test": "mobile: mara_house -> compagnon ressorti",
+  "test": "mobile: mara_house -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },
@@ -525,7 +525,7 @@
   "detail": "grocery_in"
  },
  {
-  "test": "mobile: grocery -> compagnon entré",
+  "test": "mobile: grocery -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -555,7 +555,7 @@
   "detail": "(23.58,14)"
  },
  {
-  "test": "mobile: grocery -> compagnon ressorti",
+  "test": "mobile: grocery -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },
@@ -570,7 +570,7 @@
   "detail": "bar_in"
  },
  {
-  "test": "mobile: bar -> compagnon entré",
+  "test": "mobile: bar -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -610,7 +610,7 @@
   "detail": "(35.85,14)"
  },
  {
-  "test": "mobile: bar -> compagnon ressorti",
+  "test": "mobile: bar -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },
@@ -625,7 +625,7 @@
   "detail": "clinic_in"
  },
  {
-  "test": "mobile: clinic -> compagnon entré",
+  "test": "mobile: clinic -> Nilo absent (pas de compagnon)",
   "ok": true,
   "detail": ""
  },
@@ -655,7 +655,7 @@
   "detail": "(13.87,14)"
  },
  {
-  "test": "mobile: clinic -> compagnon ressorti",
+  "test": "mobile: clinic -> Nilo toujours absent",
   "ok": true,
   "detail": ""
  },

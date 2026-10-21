@@ -243,3 +243,13 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - UI v8 : section Quêtes dans le Journal (J), objectif suivi sous le lieu (`#obj`), bouton Son (S).
 - Musique : `game/assets/audio/dusk_town_ambiance.mp3`, copie octet-identique du fichier de Valentin (SHA-256 `ae1d8ee9…6b12`, 250 s). Un seul lecteur pour toute la partie (pas de coupure entre quartiers), boucle, démarre au premier geste, 0,55 dehors / 0,25 en intérieur, coupure mémorisée (`localStorage nml_muted`).
 - Tests : `tests/quest_walk.py` (2 branches × bureau/mobile, gestes réels depuis le départ), `tests/music_check.py`.
+
+## v10 · lot 1 : menu principal, sauvegardes, options, Nilo retiré du début
+- **Décision (Valentin)** : menu principal (Continuer, Nouveau jeu, Charger/Sauvegarder, Options, Codex, Crédits, Quitter vers l'écran titre) ; Échap = pause ; Nilo retiré du début.
+- Code : `game/src/ui/shell.js` (menu, sauvegardes, options), `game/src/core/game.js` (`snapshot()` / `restore()`, compagnon piloté par `COMPANION.enabled`), `game/src/main.js` (pause, autosave, application des options), fond `game/assets/ui/menu-fond.jpg` (copie de `systemes/maquettes/menu-fond-genere.jpg`).
+- Sauvegardes : `localStorage` `nml_save_1..3` + `nml_save_auto` au format `{ v: 1, t, label, state }`. Contenu : quartier/lieu, position, PV, $, inventaire, drapeaux de quête, lieux découverts, quartiers vus. Autosave à chaque changement de lieu. Migration sûre : JSON abîmé ou version future ignorés (affichés « Vide »), instantané nu v0 converti. Sauvegarde impossible pendant un dialogue et depuis l'écran titre.
+- Options (`nml_options`, v1, hors sauvegardes) : musique, effets, mode minimal au démarrage, taille du texte 100/115/130 %, contraste renforcé, police lisible, texte instantané/défilant, moins d'animations. Le volume « Effets » est enregistré mais n'agit sur rien : aucun effet sonore pour l'instant (arrivera avec le combat).
+- **Nouveau jeu** lance directement Dusk-Town (La Pompe) avec le perso par défaut (27/40 PV, 40 $). La création viendra au lot 2.
+- Nilo : `COMPANION.enabled = false` (dusk_q1.js). Tout le code de suivi est gardé, désactivé, pour sa future quête. La case Nilo du HUD est masquée.
+- Proposition : sur mobile, un bouton « Menu » dans la barre du bas ouvre la pause (pas de touche Échap).
+- Tests : `tests/lot1_menu.py` (nouveau) et les suites existantes, qui passent par « Nouveau jeu » et vérifient maintenant que Nilo est absent (0 pixel rendu). Captures : `captures/lot1-v10/`.

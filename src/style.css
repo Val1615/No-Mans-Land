@@ -128,3 +128,4 @@ body.reduce-motion *{transition:none!important;animation:none!important}
 #keys #k-menu u{margin-right:3px}
 @media (max-width:600px){#keys #k-menu u{display:none}}
 #menu-sub .m-back{float:right;min-height:30px;padding:3px 10px;font-size:12px}
+#hud .cell[hidden]{display:none}

@@ -131,3 +131,6 @@ Tests au pixel et par gestes comme pour v8-v9 à chaque étape.
 
 ## 8. Maquettes (pistes, `docs/systemes/maquettes/`)
 `menu.png` (fond généré `menu-fond-genere.jpg`) · `creation-1-identite.png` · `creation-2-attributs.png` · `combat-desktop.png` · `combat-mobile.png` (390×844) · `options.png` · `codex.png`. Fonds de combat, d'options et de codex = vraies captures du jeu (Le Transit, La Pompe), Nilo retiré. Soldats = sprite provisoire de la maquette (`city-people-v3-0`), à remplacer. Script : `generer_maquettes.py`.
+
+## Lot 1 codé (v10)
+Menu principal, pause, sauvegardes et options sont en jeu (voir JOURNAL, v10). Écarts / propositions : Codex = panneau vide propre ; « Charger » devient « Charger / Sauvegarder » en pause ; bouton « Menu » mobile. La création (lot 2) n'est pas commencée.

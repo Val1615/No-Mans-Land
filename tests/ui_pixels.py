@@ -93,7 +93,7 @@ with sync_playwright() as p:
         E('window.__nml.setCamera(null)'); time.sleep(0.8)
         cv = cover(['#hud', '#locbox', '#keys button', '#act']); check(f'{T}: exploration : UI ≤ {12 if prof == "desktop" else 22} % de l\'écran', cv <= (0.12 if prof == 'desktop' else 0.22), cv)
         check(f'{T}: exploration : joueur visible, Nilo non rendu (pixels)', vis('player') >= 0.6 and vis('companion') == 0, (vis('player'), vis('companion')))
-        hud = E('[document.getElementById("hp").textContent, document.getElementById("money").textContent, document.getElementById("loc").textContent, document.getElementById("nilo").closest(".cell").hidden]')
+        hud = E('[document.getElementById("hp").textContent, document.getElementById("money").textContent, document.getElementById("loc").textContent, getComputedStyle(document.getElementById("nilo").closest(".cell")).display==="none"]')
         check(f'{T}: HUD : PV, $, quartier ; case Nilo masquée', hud[0] == '27/40' and hud[1] == '40 $' and 'Pompe' in hud[2] and hud[3] is True, hud)
         pg.screenshot(path=OUT + f'{prof}-exploration.png')
         # 2. Minimal (bouton Discret / touche H)

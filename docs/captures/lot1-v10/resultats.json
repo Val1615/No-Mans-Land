@@ -1,0 +1,332 @@
+[
+ {
+  "test": "desktop: écran titre affiché au lancement",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: fond de menu (image) rendu plein écran, pixels variés",
+  "ok": true,
+  "detail": "([1280, 800], np.float64(33.3))"
+ },
+ {
+  "test": "desktop: titre ambre v8 visible (pixels)",
+  "ok": true,
+  "detail": "6691"
+ },
+ {
+  "test": "desktop: bouton m-continue accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bouton m-new accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bouton m-load accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bouton m-options accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bouton m-codex accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bouton m-credits accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: bouton m-quit accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Continuer désactivé sans sauvegarde",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Codex : panneau propre (placeholder)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Crédits",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: options enregistrées (versionnées)",
+  "ok": true,
+  "detail": "{'v': 1, 'music': 50, 'sfx': 100, 'minimal': False, 'textSize': 130, 'contrast': True, 'readable': True, 'textMode': 'defilant', 'reduceMotion': True}"
+ },
+ {
+  "test": "desktop: options appliquées (classes)",
+  "ok": true,
+  "detail": "menu-open ts-130 contrast readable reduce-motion"
+ },
+ {
+  "test": "desktop: Nouveau jeu : Dusk-Town, perso par défaut",
+  "ok": true,
+  "detail": "('dusk_q1', 40)"
+ },
+ {
+  "test": "desktop: Nilo absent (état + case HUD masquée)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Nilo : 0 pixel rendu",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: volume musique = base x option (≈0.55 x 0.5)",
+  "ok": true,
+  "detail": "0.28"
+ },
+ {
+  "test": "desktop: texte défilant actif (option)",
+  "ok": true,
+  "detail": "(8, 85)"
+ },
+ {
+  "test": "desktop: autosave au changement de lieu",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "desktop: pause ouverte (Échap)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: jeu figé en pause",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: sauvegarde emplacement 1",
+  "ok": true,
+  "detail": "La Pompe"
+ },
+ {
+  "test": "desktop: reprise",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: après rechargement : écran titre, Continuer actif",
+  "ok": true,
+  "detail": "Emplacement 1 · La Pompe · 22/10 00:15"
+ },
+ {
+  "test": "desktop: options persistées après rechargement",
+  "ok": true,
+  "detail": "{'music': 50, 'sfx': 100, 'minimal': False, 'textSize': 130, 'contrast': True, 'readable': True, 'textMode': 'defilant', 'reduceMotion': True}"
+ },
+ {
+  "test": "desktop: Continuer restaure tout ($, inventaire, drapeaux, lieux, quartier, position)",
+  "ok": true,
+  "detail": "('dusk_q1', 73, {'cric': 1}, 6.5, 6.5)"
+ },
+ {
+  "test": "desktop: HUD restauré (pixels du texte rendus)",
+  "ok": true,
+  "detail": "['73 $', 'Dusk-Town · La Pompe', 'Cric de camion ×1']"
+ },
+ {
+  "test": "desktop: joueur rendu à la position restaurée (pixels)",
+  "ok": true,
+  "detail": "0.87"
+ },
+ {
+  "test": "desktop: sauvegardes abîmée / version future ignorées proprement",
+  "ok": true,
+  "detail": "‹ RetourCHARGER / SAUVEGARDERAutoLa Pompe · 22/10 00:15 · 73 $\n          ChargerEmplacement 1La Pompe · 22/10 00:15 · 73"
+ },
+ {
+  "test": "desktop: Quitter -> écran titre",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile: écran titre affiché au lancement",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: fond de menu (image) rendu plein écran, pixels variés",
+  "ok": true,
+  "detail": "([390, 844], np.float64(30.0))"
+ },
+ {
+  "test": "mobile: titre ambre v8 visible (pixels)",
+  "ok": true,
+  "detail": "6417"
+ },
+ {
+  "test": "mobile: bouton m-continue accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bouton m-new accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bouton m-load accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bouton m-options accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bouton m-codex accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bouton m-credits accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: bouton m-quit accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Continuer désactivé sans sauvegarde",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Codex : panneau propre (placeholder)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Crédits",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: options enregistrées (versionnées)",
+  "ok": true,
+  "detail": "{'v': 1, 'music': 50, 'sfx': 100, 'minimal': False, 'textSize': 130, 'contrast': True, 'readable': True, 'textMode': 'defilant', 'reduceMotion': True}"
+ },
+ {
+  "test": "mobile: options appliquées (classes)",
+  "ok": true,
+  "detail": "menu-open ts-130 contrast readable reduce-motion"
+ },
+ {
+  "test": "mobile: Nouveau jeu : Dusk-Town, perso par défaut",
+  "ok": true,
+  "detail": "('dusk_q1', 40)"
+ },
+ {
+  "test": "mobile: Nilo absent (état + case HUD masquée)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Nilo : 0 pixel rendu",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: volume musique = base x option (≈0.55 x 0.5)",
+  "ok": true,
+  "detail": "0.28"
+ },
+ {
+  "test": "mobile: texte défilant actif (option)",
+  "ok": true,
+  "detail": "(8, 85)"
+ },
+ {
+  "test": "mobile: autosave au changement de lieu",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile: pause ouverte (bouton Menu)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: jeu figé en pause",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: sauvegarde emplacement 1",
+  "ok": true,
+  "detail": "La Pompe"
+ },
+ {
+  "test": "mobile: reprise",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: après rechargement : écran titre, Continuer actif",
+  "ok": true,
+  "detail": "Emplacement 1 · La Pompe · 22/10 00:15"
+ },
+ {
+  "test": "mobile: options persistées après rechargement",
+  "ok": true,
+  "detail": "{'music': 50, 'sfx': 100, 'minimal': False, 'textSize': 130, 'contrast': True, 'readable': True, 'textMode': 'defilant', 'reduceMotion': True}"
+ },
+ {
+  "test": "mobile: Continuer restaure tout ($, inventaire, drapeaux, lieux, quartier, position)",
+  "ok": true,
+  "detail": "('dusk_q1', 73, {'cric': 1}, 6.5, 6.5)"
+ },
+ {
+  "test": "mobile: HUD restauré (pixels du texte rendus)",
+  "ok": true,
+  "detail": "['73 $', 'Dusk-Town · La Pompe', 'Cric de camion ×1']"
+ },
+ {
+  "test": "mobile: joueur rendu à la position restaurée (pixels)",
+  "ok": true,
+  "detail": "0.9"
+ },
+ {
+  "test": "mobile: sauvegardes abîmée / version future ignorées proprement",
+  "ok": true,
+  "detail": "‹ RetourCHARGER / SAUVEGARDERAutoLa Pompe · 22/10 00:15 · 73 $\n          ChargerEmplacement 1La Pompe · 22/10 00:15 · 73"
+ },
+ {
+  "test": "mobile: Quitter -> écran titre",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ }
+]

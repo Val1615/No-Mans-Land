@@ -92,7 +92,7 @@
  {
   "test": "desktop/A: scène finale au pixel : blockhaus visible hors UI, dialogue en bas à gauche",
   "ok": true,
-  "detail": "((np.float64(0.69), 24007), {'x': 12, 'y': 572, 'width': 560, 'height': 214})"
+  "detail": "((np.float64(0.7), 24007), {'x': 12, 'y': 572, 'width': 560, 'height': 214})"
  },
  {
   "test": "desktop/A: scène finale au pixel : le dialogue est rendu (texte clair sur voile)",
@@ -257,7 +257,7 @@
  {
   "test": "desktop/B: scène finale au pixel : blockhaus visible hors UI, dialogue en bas à gauche",
   "ok": true,
-  "detail": "((np.float64(0.69), 24007), {'x': 12, 'y': 572, 'width': 560, 'height': 214})"
+  "detail": "((np.float64(0.7), 24007), {'x': 12, 'y': 572, 'width': 560, 'height': 214})"
  },
  {
   "test": "desktop/B: scène finale au pixel : le dialogue est rendu (texte clair sur voile)",
@@ -422,7 +422,7 @@
  {
   "test": "mobile/A: scène finale au pixel : blockhaus visible hors UI, dialogue en bas",
   "ok": true,
-  "detail": "((np.float64(0.69), 61196), {'x': 8, 'y': 491, 'width': 374, 'height': 297})"
+  "detail": "((np.float64(0.7), 61196), {'x': 8, 'y': 491, 'width': 374, 'height': 297})"
  },
  {
   "test": "mobile/A: scène finale au pixel : le dialogue est rendu (texte clair sur voile)",
@@ -531,13 +531,18 @@
  },
  {
   "test": "mobile/B: rejoint anselme par la marche et lui parle par geste",
-  "ok": true,
-  "detail": "grocery_in"
+  "ok": false,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile/B: option « Le cric sous ton comptoir » présente chez anselme",
+  "ok": false,
+  "detail": "[\"J'y vais.\"]"
  },
  {
   "test": "mobile/B: étape 2 : cric obtenu, coût 5 $",
-  "ok": true,
-  "detail": "(35, 30, {'cric': 1})"
+  "ok": false,
+  "detail": "(35, 35, {})"
  },
  {
   "test": "mobile/B: HUD $ à jour",
@@ -552,12 +557,12 @@
  {
   "test": "mobile/B: étape 3 : signal obtenu, coût 0 (secret vendu) $",
   "ok": true,
-  "detail": "(30, 30, [\"La porte d'acier ? Tu es le quatrième ce mois-ci. Les trois autres, je les ai vus partir à l'arrière d'un camion, et pas à l'avant. Je peux te faire signe depuis le toit quand la route est vide. Ça a un prix.\", \"Tombé du toit ? Tout seul ? Et le combat à six ? (Il se mord la manche pour n"
+  "detail": "(35, 35, [\"La porte d'acier ? Tu es le quatrième ce mois-ci. Les trois autres, je les ai vus partir à l'arrière d'un camion, et pas à l'avant. Je peux te faire signe depuis le toit quand la route est vide. Ça a un prix.\", \"Tombé du toit ? Tout seul ? Et le combat à six ? (Il se mord la manche pour n"
  },
  {
   "test": "mobile/B: conséquence : Anselme sait que le cric n'était pas pour Mara",
-  "ok": true,
-  "detail": "Entre, et ferme. J'ai croisé Mara à la pompe. Elle n'a jamais entendu parler de mon cric, "
+  "ok": false,
+  "detail": "Entre, entre, et ferme. Eau filtrée, quatre dollars. Rations, cinq. Je compte devant toi, "
  },
  {
   "test": "mobile/B: conséquence : Ezequiel, Teo miaule quand il passe",
@@ -566,18 +571,18 @@
  },
  {
   "test": "mobile/B: journal : 3 étapes cochées, objectif courant = forcer la porte",
-  "ok": true,
-  "detail": "JOURNAL\nQUÊTE · LA PORTE D'ACIER\n[x] Demander à Ezequiel (l'atelier, Le Scellé) qui a tenté la porte\n[x] Trouver de quoi forcer : le cric d'Anselme (épicerie, La Pompe)\n[x] Choisir le moment : Teo (le guet, Le Transit)\n> Forcer la porte d'acier du Scellé\n[ ] Aller à Steel-Megalopolis\nLIEUX REPÉRÉS\nÉ"
+  "ok": false,
+  "detail": "JOURNAL\nQUÊTE · LA PORTE D'ACIER\n[x] Demander à Ezequiel (l'atelier, Le Scellé) qui a tenté la porte\n> Trouver de quoi forcer : le cric d'Anselme (épicerie, La Pompe)\n[x] Choisir le moment : Teo (le guet, Le Transit)\n[ ] Forcer la porte d'acier du Scellé\n[ ] Aller à Steel-Megalopolis\nLIEUX REPÉRÉS\nÉ"
  },
  {
   "test": "mobile/B: étape 4 : marche au pied de la porte et scène ouverte",
-  "ok": true,
-  "detail": "(28, 6)"
+  "ok": false,
+  "detail": "(28, 9)"
  },
  {
   "test": "mobile/B: scène : le signal du miroir et le battant gauche (Ezequiel)",
-  "ok": true,
-  "detail": "Au loin, sur le toit du guet, un seul éclat de miroir : la route est vide. Le cric tient sous le bas du battant gauche, "
+  "ok": false,
+  "detail": "Le gamin du Transit miaule quand je passe sous son volet. Un chat qui tombe d'un toit, il appelle ça. Tu ne saurais pas "
  },
  {
   "test": "mobile/B: scène : pas de portrait affiché (personne de visible)",
@@ -585,49 +590,44 @@
   "detail": ""
  },
  {
-  "test": "mobile/B: scène finale au pixel : blockhaus visible hors UI, dialogue en bas",
-  "ok": true,
-  "detail": "((np.float64(0.69), 61196), {'x': 8, 'y': 491, 'width': 374, 'height': 297})"
- },
- {
-  "test": "mobile/B: scène finale au pixel : le dialogue est rendu (texte clair sur voile)",
-  "ok": true,
-  "detail": "(np.float64(0.029891157564954356), np.float64(32.666666666666664))"
+  "test": "mobile/B: scène : option « Pomper. »",
+  "ok": false,
+  "detail": "[\"Qu'est-ce qu'il y a derrière ?\", 'Ta jambe ?', 'Je ne fais que passer.']"
  },
  {
   "test": "mobile/B: scène : « confinement »",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: scène : « mal tourné »",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: scène : « les autres sont là »",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: scène : « Steel-Megalopolis »",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: scène : « La porte reste fermée »",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: scène : branche coups / humour",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: fin : q_fin, la porte ne s'ouvre pas",
-  "ok": true,
-  "detail": "{'ezequiel_toit': True, 'q_start': True, 'q_battant': True, 'q_cric': True, 'q_menti_anselme': True, 'q_signal': True, 'q_trahi': True, 'q_fin': True}"
+  "ok": false,
+  "detail": "{'ezequiel_toit': True, 'q_start': True, 'q_battant': True, 'q_signal': True, 'q_trahi': True}"
  },
  {
   "test": "mobile/B: aucune porte vers un intérieur du labo",
@@ -636,23 +636,23 @@
  },
  {
   "test": "mobile/B: journal final : 4 étapes cochées, Steel-Megalopolis courant et hors de portée",
-  "ok": true,
-  "detail": "JOURNAL\nQUÊTE · LA PORTE D'ACIER\n[x] Demander à Ezequiel (l'atelier, Le Scellé) qui a tenté la porte\n[x] Trouver de quoi forcer : le cric d'Anselme (épicerie, La Pompe)\n[x] Choisir le moment : Teo (le guet, Le Transit)\n[x] Forcer la porte d'acier du Scellé\n> Aller à Steel-Megalopolis\nHors de portée "
+  "ok": false,
+  "detail": "JOURNAL\nQUÊTE · LA PORTE D'ACIER\n[x] Demander à Ezequiel (l'atelier, Le Scellé) qui a tenté la porte\n> Trouver de quoi forcer : le cric d'Anselme (épicerie, La Pompe)\n[x] Choisir le moment : Teo (le guet, Le Transit)\n[ ] Forcer la porte d'acier du Scellé\n[ ] Aller à Steel-Megalopolis\nLIEUX REPÉRÉS\nÉ"
  },
  {
   "test": "mobile/B: HUD : objectif Steel-Megalopolis (hors de portée)",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: journal : notes des choix (mensonge, trahison)",
-  "ok": true,
+  "ok": false,
   "detail": ""
  },
  {
   "test": "mobile/B: porte retentée : plus de voix, toujours fermée",
-  "ok": true,
-  "detail": "La porte d'acier. La grille au-dessus ne grésille plus. Tu attends. Rien."
+  "ok": false,
+  "detail": "Le gamin du Transit miaule quand je passe sous son volet. Un chat qui tombe d'un"
  },
  {
   "test": "mobile/B: aucune erreur console",
