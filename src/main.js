@@ -1,5 +1,5 @@
-import * as world from './data/dusk_q1.js';
-import { DIALOGUES, ITEMS } from './data/dialogues_q1.js';
+import * as world from './data/dusk_town.js'; // v7 : toute la ville (Q1 + Q2-Q4)
+import { DIALOGUES, ITEMS } from './data/dialogues_town.js';
 import { createGame } from './core/game.js';
 import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
@@ -26,8 +26,10 @@ bindPointer($('view'), (x, y) => {
   if (p.kind === 'npc') game.talkTo(p.npcId);
   else if (p.kind === 'door') game.useDoor(p.doorId);
   else if (p.kind === 'building') { const d = game.doorOfBuilding(p.buildingId); if (d) game.useDoor(d.id); }
-  else if (p.kind === 'closed') say(`${p.label} : fermé.`);
-  else if (p.kind === 'ground') game.moveTo(p.x, p.z);
+  else if (p.kind === 'closed') say(world.CLOSED_TEXT[p.buildingId] || `${p.label} : fermé.`);
+  else if (p.kind === 'ground') { // v7 : un tap au bout d'une rue vise la jonction (on marche jusqu'au seuil)
+    const j = world.DOORS.find(d => (d.junction || d.edge) && d.location === game.state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.6);
+    if (j) game.useDoor(j.id); else game.moveTo(p.x, p.z); }
 });
 
 let nearDoor = null;
@@ -49,7 +51,7 @@ function frame(now) {
   game.step(dt);
   const s = game.state, D = world.DOORS;
   nearDoor = s.dialogue ? null : D.find(d => d.location === s.location && Math.hypot(d.threshold.x - s.player.x, d.threshold.z - s.player.z) < 2.5) || null;
-  $('act').hidden = !nearDoor; if (nearDoor) $('act').textContent = game.location.kind === 'interior' ? 'Sortir' : 'Entrer : ' + game.location.buildings.find(b => b.id === nearDoor.buildingId).label;
+  $('act').hidden = !nearDoor; if (nearDoor) $('act').textContent = game.location.kind === 'interior' ? 'Sortir' : nearDoor.junction ? nearDoor.label : nearDoor.edge ? nearDoor.label : 'Entrer : ' + game.location.buildings.find(b => b.id === nearDoor.buildingId).label;
   $('loc').textContent = game.location.name;
   $('hp').textContent = `PV ${s.player.hp}/${s.player.maxHp}`; $('money').textContent = `${s.player.money} $`;
   $('inv').textContent = Object.entries(s.player.inv).map(([k, v]) => `${ITEMS[k].name} ×${v}`).join(' · ');

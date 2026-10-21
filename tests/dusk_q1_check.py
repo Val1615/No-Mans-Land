@@ -79,7 +79,7 @@ with sync_playwright() as p:
         # --- v4 : sprites entiers ; base visible = emprise déclarée ; porte peinte = ouverture monde
         for bb in pg.evaluate('window.__nml.game.location.buildings.map(b=>b.id)'):
             a = pg.evaluate(f"window.__nml.view.baseAlpha('{bb}')"); check(f'{prof}: {bb} base du sprite opaque aux 3 coins de l emprise', min(a) > 0.5, a)
-        for d in pg.evaluate('window.__nml.doors.filter(d=>d.painted).map(d=>d.id)'):
+        for d in pg.evaluate('window.__nml.doors.filter(d=>d.painted && d.location==="dusk_q1").map(d=>d.id)'):
             e = pg.evaluate(f"window.__nml.view.paintedDoorError('{d}')"); check(f'{prof}: {d} porte peinte alignée sur l ouverture (< 0,8 m)', e < 0.8, f'{e} m')
         g = pg.evaluate('(()=>{const g=window.__nml.game.grids.dusk_q1;return window.__nml.game.location.buildings.every(b=>{const [i,j]=g.toCell(b.x+b.w/2,b.z+b.d/2);return !g.free(i,j)})})()')
         check(f'{prof}: centre de chaque emprise bloqué (collision = base)', g)
@@ -143,9 +143,10 @@ with sync_playwright() as p:
         # --- Bâtiment non visitable : retour neutre, pas de transition
         walk_to(40, 17); n0 = st(pg)['transitions']; tap_world(44, 2.5, 13.0)
         time.sleep(0.5); check(f'{prof}: immeuble muré non visitable (pas de transition)', st(pg)['transitions'] == n0 and 'fermé' in pg.locator('#msg').inner_text(), pg.locator('#msg').inner_text())
-        # --- Restriction : sortie est barrée
-        pg.evaluate('window.__nml.game.moveTo(47.6, 18)'); time.sleep(0.2); wait(pg, 'window.__nml.state.player.path.length===0', 20)
-        s = st(pg); check(f'{prof}: sortie est barrée par éboulis et épave (commande vers x=47,6)', s['player']['x'] < 43.5, f"x final={s['player']['x']}")
+        # --- Restriction : sortie est. v7 : l'épave barre toujours l'avenue ; seul le passage piéton côté sud (z 20) mène au Transit
+        pg.evaluate('window.__nml.game.moveTo(45.5, 16.6)'); time.sleep(0.2); wait(pg, 'window.__nml.state.player.path.length===0', 20)
+        s = st(pg); inw = 43.2 <= s['player']['x'] <= 47.8 and 15.4 <= s['player']['z'] <= 17.8
+        check(f'{prof}: sortie est : épave infranchissable, passage piéton seulement (v7)', not inw and s['location'] == 'dusk_q1', f"final=({s['player']['x']:.1f},{s['player']['z']:.1f}) {s['location']}")
         # --- Occultation derrière le bar
         pg.evaluate('window.__nml.game.moveTo(34, 5)'); wait(pg, 'Math.hypot(window.__nml.state.player.x-34, window.__nml.state.player.z-5)<0.3', 30); time.sleep(1.2)
         op = pg.evaluate("window.__nml.opacityOf('bar')"); check(f'{prof}: bar transparent quand le joueur est derrière', op < 0.5, f'opacité={op:.2f}')

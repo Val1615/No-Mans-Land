@@ -14,6 +14,8 @@ function cueMark(x, cue, cx, cy) { x.strokeStyle = 'rgba(235,225,200,.85)'; x.li
   if (cue === 'cross') { x.moveTo(cx, cy - 10); x.lineTo(cx, cy + 10); x.moveTo(cx - 10, cy); x.lineTo(cx + 10, cy); }
   if (cue === 'bottle') { x.rect(cx - 4, cy - 2, 8, 14); x.moveTo(cx, cy - 2); x.lineTo(cx, cy - 10); }
   if (cue === 'drop') { x.moveTo(cx, cy - 11); x.quadraticCurveTo(cx + 9, cy + 2, cx, cy + 8); x.quadraticCurveTo(cx - 9, cy + 2, cx, cy - 11); }
+  if (cue === 'mirror') { x.arc(cx, cy, 8, 0, Math.PI * 2); x.moveTo(cx - 3, cy - 3); x.lineTo(cx + 2, cy - 5); }
+  if (cue === 'key') { x.arc(cx - 5, cy, 5, 0, Math.PI * 2); x.moveTo(cx, cy); x.lineTo(cx + 11, cy); x.moveTo(cx + 8, cy); x.lineTo(cx + 8, cy + 5); }
   if (cue === 'jar') { x.rect(cx - 7, cy - 6, 14, 16); x.moveTo(cx - 9, cy - 8); x.lineTo(cx + 9, cy - 8); }
   x.stroke(); } // pixels par mètre de texture
 function rng(seed) { let s = seed >>> 0 || 1; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; }
@@ -129,7 +131,7 @@ export function groundTexture(loc, doors = []) {
     for (const b of loc.buildings) for (let i = 0; i < b.w + b.d; i++) { const side = r(); x.fillStyle = `rgba(200,172,120,${0.35 + r() * 0.3})`; x.beginPath();
       const px = side < .5 ? (b.x + r() * b.w) * P : (b.x + b.w) * P, py = side < .5 ? (b.z + b.d) * P : (b.z + r() * b.d) * P;
       x.ellipse(px, py, (0.6 + r() * 1.4) * P, (0.3 + r() * 0.7) * P, side < .5 ? 0 : Math.PI / 2, 0, 7); x.fill(); }
-    for (const d of doors.filter(d => d.location === loc.id)) { x.fillStyle = 'rgba(90,70,50,.35)'; x.beginPath(); x.ellipse(d.threshold.x * P, d.threshold.z * P, 0.9 * P, 0.7 * P, 0, 0, 7); x.fill();
+    for (const d of doors.filter(d => d.location === loc.id && !d.junction && !d.edge)) { x.fillStyle = 'rgba(90,70,50,.35)'; x.beginPath(); x.ellipse(d.threshold.x * P, d.threshold.z * P, 0.9 * P, 0.7 * P, 0, 0, 7); x.fill();
       x.fillStyle = 'rgba(60,45,30,.35)'; for (let k = 0; k < 7; k++) x.fillRect((d.threshold.x + (r() - .5) * 1.4) * P, (d.threshold.z + (r() - .5) * 1.2) * P, 4, 7); }
   }
   // herbes mortes (Ch. I §71)

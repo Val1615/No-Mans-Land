@@ -1,0 +1,617 @@
+[
+ {
+  "test": "desktop: départ La Pompe, 40 $, 27 PV",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q1>Q2 est : arrivée dans dusk_q2 par la marche",
+  "ok": true,
+  "detail": "dusk_q2"
+ },
+ {
+  "test": "desktop: Q1>Q2 est : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(1, 20, {'x': 1, 'z': 20})"
+ },
+ {
+  "test": "desktop: Q1>Q2 est : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q2', 'follow')"
+ },
+ {
+  "test": "desktop: Q1>Q2 est : bâtiment t_guet rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.89), 43407)"
+ },
+ {
+  "test": "desktop: Q1>Q2 est : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.68), np.float64(0.45)]"
+ },
+ {
+  "test": "desktop: Q1>Q2 est : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · Le Transit"
+ },
+ {
+  "test": "desktop: Q1>Q2 est : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q2 : sprite joueur retourné en miroir selon le sens (pixels)",
+  "ok": true,
+  "detail": "(np.float64(168.0), np.float64(40.6))"
+ },
+ {
+  "test": "desktop: Q2 : entrée camouflée du guet par geste sur la porte peinte",
+  "ok": true,
+  "detail": "guet_in"
+ },
+ {
+  "test": "desktop: guet_in : mobilier réel visible (pixels)",
+  "ok": true,
+  "detail": "(3, [])"
+ },
+ {
+  "test": "desktop: dialogue teo ouvert par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Teo : 5 $ payés, L'atelier découvert par dialogue",
+  "ok": true,
+  "detail": "(35, {'t_guet': True, 's_atelier': True})"
+ },
+ {
+  "test": "desktop: sortie du guet",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q2 : bout est = route des patrouilles, annoncée, sans passage",
+  "ok": true,
+  "detail": "La route file vers l'est, celle des camions. Personne ne la prend à pied."
+ },
+ {
+  "test": "desktop: Q2>Q1 ouest : arrivée dans dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "desktop: Q2>Q1 ouest : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(47, 20, {'x': 47, 'z': 20})"
+ },
+ {
+  "test": "desktop: Q2>Q1 ouest : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q1', 'follow')"
+ },
+ {
+  "test": "desktop: Q2>Q1 ouest : bâtiment halle rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.97), 47344)"
+ },
+ {
+  "test": "desktop: Q2>Q1 ouest : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.86), np.float64(0.83)]"
+ },
+ {
+  "test": "desktop: Q2>Q1 ouest : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · La Pompe"
+ },
+ {
+  "test": "desktop: Q2>Q1 ouest : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: argent conservé entre quartiers (HUD)",
+  "ok": true,
+  "detail": "35 $"
+ },
+ {
+  "test": "desktop: Q1>Q3 nord : arrivée dans dusk_q3 par la marche",
+  "ok": true,
+  "detail": "dusk_q3"
+ },
+ {
+  "test": "desktop: Q1>Q3 nord : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 35, {'x': 28, 'z': 35})"
+ },
+ {
+  "test": "desktop: Q1>Q3 nord : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q3', 'follow')"
+ },
+ {
+  "test": "desktop: Q1>Q3 nord : bâtiment s_garages rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.98), 62178)"
+ },
+ {
+  "test": "desktop: Q1>Q3 nord : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.86), np.float64(0.86)]"
+ },
+ {
+  "test": "desktop: Q1>Q3 nord : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · Le Scellé"
+ },
+ {
+  "test": "desktop: Q1>Q3 nord : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q3 : accès Human Corporation rendu (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.71), 24006)"
+ },
+ {
+  "test": "desktop: Q3 : « L'atelier » affiché (découvert au Transit)",
+  "ok": true,
+  "detail": "True"
+ },
+ {
+  "test": "desktop: Q3 : porte scellée : message, pas d'entrée",
+  "ok": true,
+  "detail": "Porte d'acier, soudée de l'intérieur. Des marques de pied-de-biche partout autour. Aucune n'est allée plus loin que la peinture."
+ },
+ {
+  "test": "desktop: Q3>Q1 sud : arrivée dans dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "desktop: Q3>Q1 sud : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 1, {'x': 28, 'z': 1})"
+ },
+ {
+  "test": "desktop: Q3>Q1 sud : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q1', 'follow')"
+ },
+ {
+  "test": "desktop: Q3>Q1 sud : bâtiment grocery rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.97), 47582)"
+ },
+ {
+  "test": "desktop: Q3>Q1 sud : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.69), np.float64(0.62)]"
+ },
+ {
+  "test": "desktop: Q3>Q1 sud : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · La Pompe"
+ },
+ {
+  "test": "desktop: Q3>Q1 sud : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q1>Q4 sud : arrivée dans dusk_q4 par la marche",
+  "ok": true,
+  "detail": "dusk_q4"
+ },
+ {
+  "test": "desktop: Q1>Q4 sud : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 1, {'x': 28, 'z': 1})"
+ },
+ {
+  "test": "desktop: Q1>Q4 sud : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q4', 'follow')"
+ },
+ {
+  "test": "desktop: Q1>Q4 sud : bâtiment d_citerne rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.98), 62182)"
+ },
+ {
+  "test": "desktop: Q1>Q4 sud : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.83), np.float64(0.85)]"
+ },
+ {
+  "test": "desktop: Q1>Q4 sud : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · Les Sables"
+ },
+ {
+  "test": "desktop: Q1>Q4 sud : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q4 : entrée camouflée de la citerne (porte latérale est)",
+  "ok": true,
+  "detail": "citerne_in"
+ },
+ {
+  "test": "desktop: dialogue sol ouvert par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Sol : eau achetée 3 $, inventaire",
+  "ok": true,
+  "detail": "(32, {'water': 1})"
+ },
+ {
+  "test": "desktop: sortie de la citerne",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q4 : « La citerne » nommée après découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: Q4 : bout sud = terres dévastées, annoncé, sans passage",
+  "ok": true,
+  "detail": "Au-delà, les terres dévastées. Pas sans eau, pas sans arme, pas aujourd'hui."
+ },
+ {
+  "test": "desktop: Q4>Q1 nord : arrivée dans dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "desktop: Q4>Q1 nord : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 35, {'x': 28, 'z': 35})"
+ },
+ {
+  "test": "desktop: Q4>Q1 nord : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q1', 'follow')"
+ },
+ {
+  "test": "desktop: Q4>Q1 nord : bâtiment garages rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.95), 61848)"
+ },
+ {
+  "test": "desktop: Q4>Q1 nord : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.86), np.float64(0.86)]"
+ },
+ {
+  "test": "desktop: Q4>Q1 nord : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · La Pompe"
+ },
+ {
+  "test": "desktop: Q4>Q1 nord : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop: état conservé au retour (32 $, PV 27, eau, lieux)",
+  "ok": true,
+  "detail": "('32 $', 27, {'t_guet': True, 's_atelier': True, 'd_citerne': True})"
+ },
+ {
+  "test": "desktop: aucune erreur console/réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile: départ La Pompe, 40 $, 27 PV",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q1>Q2 est : arrivée dans dusk_q2 par la marche",
+  "ok": true,
+  "detail": "dusk_q2"
+ },
+ {
+  "test": "mobile: Q1>Q2 est : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(1, 20, {'x': 1, 'z': 20})"
+ },
+ {
+  "test": "mobile: Q1>Q2 est : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q2', 'follow')"
+ },
+ {
+  "test": "mobile: Q1>Q2 est : bâtiment t_guet rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.98), 42867)"
+ },
+ {
+  "test": "mobile: Q1>Q2 est : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.53), np.float64(0.49)]"
+ },
+ {
+  "test": "mobile: Q1>Q2 est : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · Le Transit"
+ },
+ {
+  "test": "mobile: Q1>Q2 est : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q2 : sprite joueur retourné en miroir selon le sens (pixels)",
+  "ok": true,
+  "detail": "(np.float64(192.9), np.float64(14.7))"
+ },
+ {
+  "test": "mobile: Q2 : entrée camouflée du guet par geste sur la porte peinte",
+  "ok": true,
+  "detail": "guet_in"
+ },
+ {
+  "test": "mobile: guet_in : mobilier réel visible (pixels)",
+  "ok": true,
+  "detail": "(3, [])"
+ },
+ {
+  "test": "mobile: dialogue teo ouvert par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Teo : 5 $ payés, L'atelier découvert par dialogue",
+  "ok": true,
+  "detail": "(35, {'t_guet': True, 's_atelier': True})"
+ },
+ {
+  "test": "mobile: sortie du guet",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q2>Q1 ouest : arrivée dans dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile: Q2>Q1 ouest : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(47, 20, {'x': 47, 'z': 20})"
+ },
+ {
+  "test": "mobile: Q2>Q1 ouest : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q1', 'follow')"
+ },
+ {
+  "test": "mobile: Q2>Q1 ouest : bâtiment halle rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.97), 137308)"
+ },
+ {
+  "test": "mobile: Q2>Q1 ouest : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.92), np.float64(0.9)]"
+ },
+ {
+  "test": "mobile: Q2>Q1 ouest : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · La Pompe"
+ },
+ {
+  "test": "mobile: Q2>Q1 ouest : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: argent conservé entre quartiers (HUD)",
+  "ok": true,
+  "detail": "35 $"
+ },
+ {
+  "test": "mobile: Q1>Q3 nord : arrivée dans dusk_q3 par la marche",
+  "ok": true,
+  "detail": "dusk_q3"
+ },
+ {
+  "test": "mobile: Q1>Q3 nord : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 35, {'x': 28, 'z': 35})"
+ },
+ {
+  "test": "mobile: Q1>Q3 nord : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q3', 'follow')"
+ },
+ {
+  "test": "mobile: Q1>Q3 nord : bâtiment s_garages rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.97), 25955)"
+ },
+ {
+  "test": "mobile: Q1>Q3 nord : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.9), np.float64(0.88)]"
+ },
+ {
+  "test": "mobile: Q1>Q3 nord : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · Le Scellé"
+ },
+ {
+  "test": "mobile: Q1>Q3 nord : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q3 : accès Human Corporation rendu (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.71), 61187)"
+ },
+ {
+  "test": "mobile: Q3 : « L'atelier » affiché (découvert au Transit)",
+  "ok": true,
+  "detail": "True"
+ },
+ {
+  "test": "mobile: Q3 : porte scellée : message, pas d'entrée",
+  "ok": true,
+  "detail": "Porte d'acier, soudée de l'intérieur. Des marques de pied-de-biche partout autour. Aucune n'est allée plus loin que la peinture."
+ },
+ {
+  "test": "mobile: Q3>Q1 sud : arrivée dans dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile: Q3>Q1 sud : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 1, {'x': 28, 'z': 1})"
+ },
+ {
+  "test": "mobile: Q3>Q1 sud : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q1', 'follow')"
+ },
+ {
+  "test": "mobile: Q3>Q1 sud : bâtiment grocery rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.97), 30621)"
+ },
+ {
+  "test": "mobile: Q3>Q1 sud : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.7), np.float64(0.6)]"
+ },
+ {
+  "test": "mobile: Q3>Q1 sud : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · La Pompe"
+ },
+ {
+  "test": "mobile: Q3>Q1 sud : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q1>Q4 sud : arrivée dans dusk_q4 par la marche",
+  "ok": true,
+  "detail": "dusk_q4"
+ },
+ {
+  "test": "mobile: Q1>Q4 sud : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 1, {'x': 28, 'z': 1})"
+ },
+ {
+  "test": "mobile: Q1>Q4 sud : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q4', 'follow')"
+ },
+ {
+  "test": "mobile: Q1>Q4 sud : bâtiment d_citerne rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.98), 48057)"
+ },
+ {
+  "test": "mobile: Q1>Q4 sud : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.87), np.float64(0.9)]"
+ },
+ {
+  "test": "mobile: Q1>Q4 sud : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · Les Sables"
+ },
+ {
+  "test": "mobile: Q1>Q4 sud : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q4 : entrée camouflée de la citerne (porte latérale est)",
+  "ok": true,
+  "detail": "citerne_in"
+ },
+ {
+  "test": "mobile: dialogue sol ouvert par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Sol : eau achetée 3 $, inventaire",
+  "ok": true,
+  "detail": "(32, {'water': 1})"
+ },
+ {
+  "test": "mobile: sortie de la citerne",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q4 : « La citerne » nommée après découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Q4 : bout sud = terres dévastées, annoncé, sans passage",
+  "ok": true,
+  "detail": "Au-delà, les terres dévastées. Pas sans eau, pas sans arme, pas aujourd'hui."
+ },
+ {
+  "test": "mobile: Q4>Q1 nord : arrivée dans dusk_q1 par la marche",
+  "ok": true,
+  "detail": "dusk_q1"
+ },
+ {
+  "test": "mobile: Q4>Q1 nord : joueur au bout de rue correspondant",
+  "ok": true,
+  "detail": "(28, 35, {'x': 28, 'z': 35})"
+ },
+ {
+  "test": "mobile: Q4>Q1 nord : Nilo suit",
+  "ok": true,
+  "detail": "('dusk_q1', 'follow')"
+ },
+ {
+  "test": "mobile: Q4>Q1 nord : bâtiment garages rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(np.float64(0.98), 56102)"
+ },
+ {
+  "test": "mobile: Q4>Q1 nord : joueur et Nilo visibles (pixels)",
+  "ok": true,
+  "detail": "[np.float64(0.9), np.float64(0.89)]"
+ },
+ {
+  "test": "mobile: Q4>Q1 nord : HUD = quartier",
+  "ok": true,
+  "detail": "Dusk-Town · La Pompe"
+ },
+ {
+  "test": "mobile: Q4>Q1 nord : pas de rebond sur la jonction d'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: état conservé au retour (32 $, PV 27, eau, lieux)",
+  "ok": true,
+  "detail": "('32 $', 27, {'t_guet': True, 's_atelier': True, 'd_citerne': True})"
+ },
+ {
+  "test": "mobile: aucune erreur console/réseau",
+  "ok": true,
+  "detail": "[]"
+ }
+]

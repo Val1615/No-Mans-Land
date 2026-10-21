@@ -15,8 +15,8 @@ export const LOCATIONS = {
     props: [
       { sprite: 'gen_pump', x: 28.2, z: 11.6 }, { sprite: 'board', x: 29.6, z: 9 }, { sprite: 'barrel', x: 27.6, z: 7.4 },
       { sprite: 'lamp', x: 20, z: 14.3, solid: 0.3 },
-      // sortie est : éboulis et épave (plus de barricade de milice)
-      { sprite: 'wreck', x: 45.5, z: 17.2, fp: [4.6, 2.4] }, { sprite: 'rubble', x: 46.6, z: 20.4, fp: [2.6, 2.4] }, { sprite: 'rubble', x: 46.6, z: 14.9, fp: [2.6, 1.8] }, { sprite: 'rubble', x: 46.6, z: 22.8, fp: [2.6, 2.4] },
+      // sortie est : éboulis et épave ; v7 : un passage à pied reste ouvert côté sud de l'avenue (jonction vers Le Transit, z 20)
+      { sprite: 'wreck', x: 45.5, z: 16.6, fp: [4.6, 2.4] }, { sprite: 'rubble', x: 46.6, z: 14.6, fp: [2.6, 1.4] }, { sprite: 'rubble', x: 46.6, z: 23.0, fp: [2.6, 2.0] },
       { sprite: 'tires', x: 38.6, z: 23 }, { sprite: 'cart', x: 23.6, z: 33 }, { sprite: 'rubble', x: 33.5, z: 31 },
       { sprite: 'rubble', x: 18, z: 18.6 }, { sprite: 'rubble', x: 39, z: 4 }, { sprite: 'tires', x: 12.5, z: 20.8 },
       { sprite: 'bush', x: 2, z: 33 }, { sprite: 'bush', x: 45.5, z: 3 }, { sprite: 'bush', x: 12, z: 2 }, { sprite: 'bush', x: 29, z: 16 }, { sprite: 'bush', x: 8, z: 15.3 },

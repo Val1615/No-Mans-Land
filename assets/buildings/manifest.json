@@ -218,5 +218,49 @@
    8.0,
    4.5
   ]
+ },
+ "b_cinema": {
+  "file": "buildings/b_cinema.webp",
+  "source": "buildings-v6.png",
+  "crop": [
+   1060,
+   518,
+   1519,
+   981
+  ],
+  "px": [
+   459,
+   463
+  ],
+  "anchor": [
+   337,
+   462
+  ],
+  "footprint_m": [
+   8.0,
+   4.5
+  ]
+ },
+ "b_lab": {
+  "file": "buildings/b_lab.webp",
+  "source": "art-gen/gen_lab_bunker.jpg",
+  "crop": [
+   10,
+   10,
+   370,
+   260
+  ],
+  "px": [
+   360,
+   250
+  ],
+  "anchor": [
+   257,
+   249
+  ],
+  "footprint_m": [
+   6.0,
+   3.5
+  ]
  }
 }

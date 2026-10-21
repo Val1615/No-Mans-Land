@@ -262,3 +262,24 @@ ont été rejetés trois fois chacun (générateur resté en 2:1).
 | m_shop_shelf | maquette art-source/service-v10-A.png #1 | 0.45 (direct) | 0 | 1.62 / 1.9 | REJETÉ |
 | m_medchair | maquette art-source/service-v10-A.png #5 | 0.55 (direct) | 0 | 1.21 / 1.6 | REJETÉ |
 | m_desk2 | maquette art-source/interiors-v2.png #3 | 0.45 (direct) | 0.05 | 0.88 / 1.0 | REJETÉ |
+
+## v7 (2026-10-21) : toute la ville (Le Transit, Le Scellé, Les Sables)
+
+Plan et fiches : `quartiers/DUSK_TOWN_PLAN.md`. Même ordre des sources : maquette d'abord, génération sinon, contrôle d'angle `judge()` de `tools_interiors.py`.
+
+**Bâtiments.** `tools_buildings.py` est passé en multi-quartiers : `CELLS` (un sprite par case de planche, recadrage et emprise mesurés une seule fois) et `DISTRICTS`
+(placement par quartier). Sortie : `src/data/buildings_q1.js` (identique octet pour octet à la v6, vérifié par diff) et `src/data/buildings_town.js`.
+Les planches dusk de la maquette n'ont que 12 bâtiments : les 10 de La Pompe sont réutilisés dans les autres quartiers, **jamais deux fois dans le même quartier**,
+jamais en miroir. Les rangées et les voisinages changent d'un quartier à l'autre.
+| Sprite | Provenance | Emprise (m) | Quartiers |
+|---|---|---|---|
+| b_cinema | **maquette** buildings-v6.png, case (2,1), seule case dusk encore inutilisée | 8 × 4,5 | Transit (cinéma muré), Sables (cinéma ensablé) |
+| b_lab | **généré** (`art-gen/gen_lab_bunker.jpg` : blockhaus de béton, porte d'acier soudée, pochoir « HUMAN CORPORATION »). Aucune case de la maquette ne convient : les bâtiments de `settlement-v9-city` sont rejetés par `judge` (projection 2:1 ou miroir) ou trop « Steel » (néons). 1er essai rejeté à l'œil (face est à 0,3 au lieu de 0,7) ; 2e accepté (pente dominante 0,30, 2:1 opposée 0,00). Mis à l'échelle K = 50 px/m d'après l'emprise voulue (× 0,347) | 6 × 3,5 | Scellé |
+| b_house_a, b_garages, b_mara_house, … (10) | maquette, déjà au catalogue v4 | inchangées | voir DUSK_TOWN_PLAN.md § 4 |
+Portes peintes nouvelles (pixel source → ouverture monde) : maison à escalier, porte du bas (713, 919, face sud) ; maison aux garages, petite porte latérale (1453, 487, face est).
+
+**Personnages générés** (`tools_npcs_v7.py`, même détourage que `tools_assets.py`, portrait recadré) : `gen_teo` (1,70 m), `gen_ezequiel` (1,78 m), `gen_sol` (1,80 m ; 1er essai écarté : trop proche de Mara).
+
+**Intérieurs** (guet, atelier, citerne) : uniquement des meubles et textures déjà contrôlés en v6 (aucun nouvel asset d'intérieur).
+
+**Écartés v7** : scenery-waste-v4 (bus, mur, pylône, arbre, tuyau, sacs : 0/6 accepté), landmarks-v4 (navire et wagonnet acceptés en pente mais en miroir, les autres rejetés), utility-v9 (1/6, écran, sans usage), settlement-v9-city (néons de Steel, hors ton Dusk), settlement-v9-dusk case (0,1) atelier ouvert (projection différente, déjà écarté en v4).

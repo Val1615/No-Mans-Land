@@ -4,6 +4,8 @@ html,body{margin:0;height:100%;overflow:hidden;background:#2a2420;font-family:sy
 .wlabel{position:absolute;left:0;top:0;white-space:nowrap;font-size:13px;line-height:1;padding:4px 7px;border-radius:4px;background:rgba(24,18,14,.82);color:#f3e6c8;border:1px solid rgba(242,193,78,.5);will-change:transform}
 .wlabel.npc{font-size:12px;border-color:rgba(255,255,255,.25);padding:3px 6px}
 .wlabel.exit{border-color:#f2c14e}
+.wlabel.junction{border-color:#f2c14e;color:#f2c14e}
+.wlabel.edge{opacity:.75;border-color:rgba(255,255,255,.2);font-style:italic}
 #hud{position:fixed;top:env(safe-area-inset-top,0);left:0;right:0;pointer-events:none;padding:8px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 #loc,.stats span,#msg{background:rgba(20,15,12,.78);padding:5px 9px;border-radius:5px;font-size:14px}

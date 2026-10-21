@@ -12,7 +12,7 @@ export function createGame(world, sprites) {
     location: START.location,
     player: { x: sp.player.x, z: sp.player.z, path: [], pending: null, hp: START.hp, maxHp: START.maxHp, money: START.money, inv: {} },
     companion: { x: sp.companion.x, z: sp.companion.z, path: [], mode: 'follow', location: START.location, name: COMPANION?.name },
-    dialogue: null, flags: {}, discovered: {},
+    dialogue: null, flags: {}, discovered: {}, junctionLock: null,
     npcs: Object.fromEntries(NPCS.map(n => [n.id, { heading: n.faceTo ? Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z) : 0 }])), log: [], transitions: 0
   };
   const listeners = new Set();
@@ -67,7 +67,7 @@ export function createGame(world, sprites) {
   }
   function finishPending() {
     const p = state.player.pending; state.player.pending = null; if (!p) return;
-    if (p.kind === 'door') enter(doorById(p.id));
+    if (p.kind === 'door') { const d = doorById(p.id); if (d.edge) { state.junctionLock = d.id; refuse('bord', d.edge); } else enter(d); }
     if (p.kind === 'talk') openDialogue(p.id);
   }
   function openDialogue(npcId) {
@@ -109,7 +109,8 @@ export function createGame(world, sprites) {
   // Transition de groupe atomique.
   function enter(door) {
     const target = doorById(door.target.doorId), dest = target.location, c = state.companion;
-    const withCompanion = c.mode === 'follow' && Math.hypot(c.x - state.player.x, c.z - state.player.z) <= UNITS.companion.maxDoorDistance;
+    const withCompanion = c.mode === 'follow' && c.location === state.location && Math.hypot(c.x - state.player.x, c.z - state.player.z) <= (door.junction ? 8 : UNITS.companion.maxDoorDistance);
+    state.junctionLock = target.junction ? target.id : null; // pas de rebond immédiat sur la jonction d'arrivée
     const t = target.threshold, o = target.opening, dl = Math.hypot(t.x - o.x, t.z - o.z) || 1, dir = { x: (t.x - o.x) / dl, z: (t.z - o.z) / dl };
     if (door.buildingId) state.discovered[door.buildingId] = true; // découverte en entrant
     state.location = dest; Object.assign(state.player, { x: t.x, z: t.z, path: [], pending: null });
@@ -128,6 +129,10 @@ export function createGame(world, sprites) {
     const pl = state.player, sp = UNITS.walkSpeed * dt;
     advance(pl, sp);
     if (!pl.path.length && pl.pending) finishPending();
+    // Jonctions de rue : franchies dès que le joueur s'arrête sur le seuil (marche réelle).
+    if (state.junctionLock) { const l = doorById(state.junctionLock); if (!l || l.location !== state.location || Math.hypot(l.threshold.x - pl.x, l.threshold.z - pl.z) > 1.5) state.junctionLock = null; }
+    if (!pl.path.length && !state.dialogue) for (const d of DOORS) if ((d.junction || d.edge) && d.location === state.location && d.id !== state.junctionLock && Math.hypot(d.threshold.x - pl.x, d.threshold.z - pl.z) < 0.8) {
+      if (d.edge) { state.junctionLock = d.id; refuse('bord', d.edge); } else enter(d); break; }
     const c = state.companion;
     if (c.mode === 'follow' && c.location === state.location) {
       c._t = (c._t || 0) + dt;

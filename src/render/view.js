@@ -121,6 +121,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       frame.userData.doorId = d.id; leaf.userData.doorId = d.id; world.add(g); if (!exterior) pickables.push(frame, leaf);
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.32, 0.4, 28), new THREE.MeshBasicMaterial({ color: '#e0b04a', transparent: true, opacity: 0.7 }));
       ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(d.threshold.x, 0.03, d.threshold.z); ring.userData.doorId = d.id; world.add(ring); pickables.push(ring);
+      if (d.junction || d.edge) { ring.material.color.set(d.junction ? '#e0b04a' : '#b9a68a'); ring.material.opacity = d.junction ? 0.8 : 0.5; // v7 : bout de rue
+        addLabel(d.label, d.junction ? 'junction' : 'edge', () => new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte : ne cache jamais le joueur au seuil
       if (loc.kind === 'interior') addLabel('Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
     for (const n of NPCS.filter(n => n.location === locId)) {
@@ -245,7 +247,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
         if (!u.visitable) { // clic sur un bâtiment fermé : si le sol visé est hors de son emprise (rue cachée derrière), on marche
           const g = hits.find(h => h.object.userData.ground), b = LOCATIONS[builtFor].buildings.find(b => b.id === u.buildingId);
           if (g && (g.point.x < b.x - 1 || g.point.x > b.x + b.w + 1 || g.point.z < b.z - 1 || g.point.z > b.z + b.d + 1)) return { kind: 'ground', x: g.point.x, z: g.point.z };
-          return { kind: 'closed', label: u.label }; }
+          return { kind: 'closed', label: u.label, buildingId: u.buildingId }; }
         const ds = DOORS.filter(d => d.buildingId === u.buildingId).map(d => ({ d, p: scr(new THREE.Vector3(d.opening.x, 1, d.opening.z)) }));
         ds.sort((a, b) => Math.hypot(a.p.x - c.x, a.p.y - c.y) - Math.hypot(b.p.x - c.x, b.p.y - c.y)); return { kind: 'door', doorId: ds[0].d.id }; }
       const g = hits.find(h => h.object.userData.ground); return g ? { kind: 'ground', x: g.point.x, z: g.point.z } : null;
@@ -278,6 +280,10 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
       hidden.forEach(o => o.visible = true); scene.background = bg; return url; },
     isolateFurn: i => { const keep = fsprites[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
+      const bg = scene.background, op = keep.material.opacity; keep.material.opacity = 1; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
+      hidden.forEach(o => o.visible = true); scene.background = bg; keep.material.opacity = op; return url; },
+    // v7 : rendu isolé d'un bâtiment (sprite entier) pour les contrôles au pixel des quartiers
+    isolateBuilding: id => { render(); const keep = bsprites.find(s => s.userData.buildingId === id); if (!keep) return null; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
       const bg = scene.background, op = keep.material.opacity; keep.material.opacity = 1; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
       hidden.forEach(o => o.visible = true); scene.background = bg; keep.material.opacity = op; return url; },
     furnCount: () => { render(); return fsprites.length; },
