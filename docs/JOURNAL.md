@@ -194,3 +194,11 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - Vérifié (navigateur, desktop 1280x800 et mobile 390x844) : 138/138 contrôles, dont : base opaque aux 3 coins de chaque emprise (10 bâtiments), écart porte peinte / ouverture < 0,8 m (5 portes), centre de chaque emprise bloqué, toutes les portes entrent et sortent au seuil devant la porte peinte, bar transparent quand le joueur est derrière, aucune erreur console.
 - Captures : captures/dusk-q1-v4/.
 - À vérifier : planches dessinées avec un lacet un peu variable (bases pas parfaitement sur la grille, emprises de la maison à escalier, du marché et de l'entrepôt réduites) ; pas de partie arrière visible quand on contourne (sprite unique) ; décor du marché et de l'entrepôt plus monumental que le reste ; exterior-buildings-v4 écarté.
+
+## 2026-10-21 16:20 · v5 : miroir réellement visible, animation procédurale
+- Cause du miroir invisible : THREE.Sprite ignore le signe de scale.x (le shader de sprite calcule l'échelle par la longueur de la colonne de la matrice, toujours positive). Le code mettait scale.x à -1 et l'état interne `facing` changeait, mais l'image rendue ne se retournait jamais. Les tests v3/v4 lisaient `facing` (état) : ils ne pouvaient pas voir le défaut.
+- Correctif : chaque personnage a sa propre texture ; le miroir se fait par les UV (map.repeat.x = -1, offset.x = 1). Le clic et l'occultation au pixel tiennent compte du miroir.
+- Animation (sans toucher aux assets) : demi-tour rapide (la largeur passe à 0 puis revient en 0,14 s, l'image bascule au milieu) ; marche : rebond de 4,5 cm, léger tassement et balancement (1,9 pas/s) ; repos : respiration de 1,2 % en hauteur, phase propre à chaque personnage. Amplitudes en mètres, donc identiques sur mobile.
+- Règle de test retenue : un effet visuel se vérifie sur les pixels rendus, jamais sur l'état. tests/flip_pixels.py rend le personnage isolé (même pipeline, fond magenta) face à droite puis à gauche et exige écart(A, miroir(B)) < 0,6 × écart(A, B).
+- Vérifié : flip_pixels 8/8 (joueur, Nilo, Vera qui se tourne vers le joueur ; desktop et mobile ; rebond présent) ; suite complète 138/138.
+- Captures : captures/dusk-q1-v5/.

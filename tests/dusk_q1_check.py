@@ -2,7 +2,7 @@
 # Gestes réels : clics souris (bureau) et taps tactiles (mobile). Captures = rendu réel du jeu.
 import json, time
 from playwright.sync_api import sync_playwright
-URL = 'http://127.0.0.1:8765/'; OUT = '/workspace/nml/docs/captures/dusk-q1-v4/'
+URL = 'http://127.0.0.1:8765/'; OUT = '/workspace/nml/docs/captures/dusk-q1-v5/'
 R = []
 import os
 DEBUG = os.environ.get('DEBUG')
