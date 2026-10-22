@@ -1004,35 +1004,37 @@
   "echelle_ok": true
  },
  "sv_cardtable_b": {
-  "pente_dominante": 0.6,
+  "pente_dominante": 0.7,
   "sens": "direct",
   "part_bande_v4": 0,
   "part_2_1_opposee": 0,
   "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.76,
-    0.78
+    0.66,
+    0.66
    ],
    "cisaillement": [
-    0.668,
-    -0.178
+    0.781,
+    -0.182
    ],
    "miroir": false,
    "pentes_apres": [
     0.33,
     0.7
-   ]
+   ],
+   "mesure": "enveloppe convexe (pieds)"
   },
-  "regle": "arête basse v4",
-  "source": "généré art-gen/gen_sv_cardtable3.jpg #-1",
-  "role": "table de jeu rectangulaire sur caisses, cartes et jetons (généré, angle corrigé ; remplace sv_cardtable rejetée)",
+  "lampe_suspendue": "incluse dans le sprite, hors calcul d angle et d échelle",
+  "regle": "arête basse v4 (enveloppe)",
+  "source": "généré art-gen/gen_sv_cardtable5.jpg #-1",
+  "role": "table de jeu à tapis vert sur pieds de caisses, cartes, jetons, lampe suspendue (généré, angle corrigé ; remplace sv_cardtable rejetée)",
   "emprise_m": [
    1.2,
    1.2
   ],
   "hauteur_attendue_m": 0.9,
-  "hauteur_implicite_m": 0.84,
+  "hauteur_implicite_m": 0.94,
   "echelle_ok": true
  }
 }

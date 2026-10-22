@@ -94,19 +94,41 @@ def key_green_obj(path):
     hard = ndimage.binary_fill_holes(al > 0.5); al = np.where(hard, np.maximum(al, (ex < 60)), al)
     return TI.clean(np.dstack([np.clip(a, 0, 255), al * 255]).astype('uint8'), 4000)
 
+CUT = (520, 280)  # (ligne de début, nombre de lignes retirées)
 def cardtable():
     aid, w, d, h = 'sv_cardtable_b', 1.2, 1.2, 0.9
-    rgba, fix = TI.v4fix(key_green_obj(G + 'gen_sv_cardtable3.jpg'))
-    j = TI.judge(rgba); hh = rgba.shape[0] / rgba.shape[1]; j['correction_v4'] = fix; j['sens'] = 'direct'
-    if abs(fix['pentes_apres'][0] - 0.33) <= 0.06 and abs(fix['pentes_apres'][1] - 0.70) <= 0.06: j['accepte'] = True; j['regle'] = 'arête basse v4'
+    # v15b : table + suspension. Angle et échelle jugés sur la table seule (la lampe suspendue est un composant séparé) ;
+    # la même correction (pentes mesurées sur la table) est appliquée à l'image entière, lampe comprise.
+    full = key_green_obj(G + 'gen_sv_cardtable5.jpg')
+    # pieds trop longs dans la génération (hauteur implicite 1,68 m) : on retire une bande horizontale qui ne coupe que les pieds
+    # (entre le bas du plateau et le bas des pieds arrière, en px de l'image détourée), largeur choisie pour 0,9 m
+    full = np.concatenate([full[:CUT[0]], full[CUT[0] + CUT[1]:]], 0); a = full[..., 3] > 100
+    lab, n = ndimage.label(ndimage.binary_dilation(a, iterations=3)); sz = ndimage.sum(a, lab, range(1, n + 1))
+    tab = full.copy(); tab[lab != int(np.argmax(sz)) + 1, 3] = 0; tab = TI.clean(tab, 4000)
+    # halo de l'ampoule : le vert du fond reste dans le dégradé lumineux -> repeint en jaune chaud (lampe seulement, pas le tapis)
+    W = full.shape[1]; ytop = int(np.nonzero((full[..., 3] > 100).sum(1) > 0.35 * W)[0][0]); lamp = (full[..., 3] > 0); lamp[ytop:] = False; p = full[..., :3].astype(float); ex = p[..., 1] - np.maximum(p[..., 0], p[..., 2])
+    m = lamp & (ex > 8); v = p[..., 1][m]; p[m] = np.stack([np.minimum(255, v * 1.05), v * 0.78, v * 0.32], 1)
+    full = full.copy(); full[..., :3] = np.clip(p, 0, 255).astype('uint8')
+    # pieds séparés : l'arête basse se mesure sur l'enveloppe convexe de la table (lignes entre les pieds)
+    import cv2
+    ys, xs = np.nonzero(tab[..., 3] > 100); hull = cv2.convexHull(np.stack([xs, ys], 1).astype(np.int32))
+    hm = np.zeros(tab.shape[:2], np.uint8); cv2.fillPoly(hm, [hull.reshape(-1, 2)], 1)
+    sl, sr, _, _ = TI.base_slopes(np.dstack([tab[..., :3], hm * 255]).astype('uint8')); print('  pentes enveloppe', round(sl, 2), round(sr, 2))
+    rgba, fix = TI.v4fix(tab, force=(sl, sr), mirror=False)
+    whole, _ = TI.v4fix(full, force=(sl, sr), mirror=False)
+    hm2, _ = TI.v4fix(np.dstack([tab[..., :3], hm * 255]).astype('uint8'), force=(sl, sr), mirror=False)
+    fix['pentes_apres'] = [round(v, 2) for v in TI.base_slopes(hm2)[:2]]; fix['mesure'] = 'enveloppe convexe (pieds)'
+    j = TI.judge(rgba); hh = rgba.shape[0] / rgba.shape[1]; j['correction_v4'] = fix; j['sens'] = 'direct'; j['lampe_suspendue'] = 'incluse dans le sprite, hors calcul d angle et d échelle'
+    if abs(fix['pentes_apres'][0] - 0.33) <= 0.06 and abs(fix['pentes_apres'][1] - 0.70) <= 0.06: j['accepte'] = True; j['regle'] = 'arête basse v4 (enveloppe)'
     R, U = TI.R, TI.U; sw = w * abs(R[0]) + d * abs(R[2]); implied = (sw * hh - w * abs(U[0]) - d * abs(U[2])) / U[1]
-    j.update({'source': 'généré art-gen/gen_sv_cardtable3.jpg #-1', 'role': 'table de jeu rectangulaire sur caisses, cartes et jetons (généré, angle corrigé ; remplace sv_cardtable rejetée)',
+    j.update({'source': 'généré art-gen/gen_sv_cardtable5.jpg #-1', 'role': 'table de jeu à tapis vert sur pieds de caisses, cartes, jetons, lampe suspendue (généré, angle corrigé ; remplace sv_cardtable rejetée)',
               'emprise_m': [w, d], 'hauteur_attendue_m': h, 'hauteur_implicite_m': round(implied, 2)})
     j['echelle_ok'] = bool(abs(implied - h) <= 0.3 * h + 0.15)
     rep = json.load(open(A + 'interiors/rapport_angles.json')); rep[aid] = j; json.dump(rep, open(A + 'interiors/rapport_angles.json', 'w'), ensure_ascii=False, indent=1)
     print(aid, j)
     if j['accepte'] and j['echelle_ok']:
-        im = Image.fromarray(rgba, 'RGBA'); im.thumbnail((640, 640)); im.save(A + 'interiors/' + aid + '.webp', quality=90)
+        # largeur identique à la table seule : le rendu (emprise -> largeur écran) garde l'échelle, la lampe dépasse vers le haut
+        im = Image.fromarray(whole, 'RGBA'); print('  largeur table / sprite', rgba.shape[1], whole.shape[1]); im.thumbnail((640, 900)); im.save(A + 'interiors/' + aid + '.webp', quality=90)
         man = json.load(open(A + 'interiors/manifest.json'))
         man[aid] = {'file': f'interiors/{aid}.webp', 'px': list(im.size), 'footprint_m': [w, d], 'height_m': h, 'origin': 'généré', 'source': j['source'], 'mirrored_from_source': False}
         json.dump(man, open(A + 'interiors/manifest.json', 'w'), ensure_ascii=False, indent=1); print('exporté', man[aid])
