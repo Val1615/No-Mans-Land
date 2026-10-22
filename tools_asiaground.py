@@ -13,7 +13,7 @@ G, A = HERE + '/art-gen/', HERE + '/assets/buildings/'
 MAQ = 'reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/'
 # Asia-Ground (PLAN_IMPLEMENTATION.md §2, ASIA_GROUND.md) : 6 bâtiments (+2 variantes de façade) et 11 props, préfixe ag_.
 LT = {
- 'ag_restaurant': ('gen_ag_restaurant.jpg', [8.0, 6.0], 10.0, 'restaurant (Pavillon du Dragon), enseigne bilingue RESTAURANT 餐馆, lanternes'),
+ 'ag_restaurant': ('gen_ag_restaurant.jpg', [8.0, 6.0], 10.0, 'restaurant « Chez Lin 林记 », enseigne bilingue RESTAURANT 餐馆, lanternes'),
  'ag_restaurant_b': ('gen_ag_restaurant_b.jpg', [8.0, 6.0], 10.0, 'variante : échoppe de nouilles NOUILLES 面馆'),
  'ag_halle_module': ('gen_ag_halle_module.jpg', [8.0, 16.0], 3.0, 'module de la halle du marché (travée répétable, toit à deux pans)'),
  'ag_boutique': ('gen_ag_boutique.jpg', [6.0, 5.0], 4.0, 'boutique Lau, pharmacie PHARMACIE 药房'),

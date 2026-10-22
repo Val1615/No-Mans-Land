@@ -1170,7 +1170,8 @@
   ],
   "height_m": 10.0,
   "lot": "asia-ground v1 (creation/asia-ground-sprites)",
-  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)",
+  "description": "restaurant « Chez Lin 林记 », enseigne bilingue RESTAURANT 餐馆, lanternes"
  },
  "ag_restaurant_b": {
   "file": "buildings/ag_restaurant_b.webp",

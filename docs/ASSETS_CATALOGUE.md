@@ -307,7 +307,7 @@ Source : `PLAN_IMPLEMENTATION.md` §2, fiche `ASIA_GROUND.md`, planche validée 
 
 | id | origine | source | emprise m | h m | px | pivot | judge | arête basse v4 | h implicite |
 |---|---|---|---|---|---|---|---|---|---|
-| `ag_restaurant` | **généré** | `art-gen/gen_ag_restaurant.jpg` | 8 × 6 | 10 | 500×569 | [330, 568] | oui | True | 7.77 |
+| `ag_restaurant` (« Chez Lin 林记 ») | **généré** | `art-gen/gen_ag_restaurant.jpg` | 8 × 6 | 10 | 500×569 | [330, 568] | oui | True | 7.77 |
 | `ag_restaurant_b` | **généré** | `art-gen/gen_ag_restaurant_b.jpg` | 8 × 6 | 10 | 500×667 | [330, 666] | oui | True | 10.02 |
 | `ag_halle_module` | **généré** | `art-gen/gen_ag_halle_module.jpg` | 8 × 16 | 3 | 783×551 | [330, 550] | oui | True | 2.84 |
 | `ag_boutique` | **généré** | `art-gen/gen_ag_boutique.jpg` | 6 × 5 | 4 | 389×330 | [247, 329] | oui | True | 3.41 |
