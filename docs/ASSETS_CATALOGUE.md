@@ -311,20 +311,20 @@ Source : `PLAN_IMPLEMENTATION.md` §2, fiche `ASIA_GROUND.md`, planche validée 
 | `ag_restaurant_b` | **généré** | `art-gen/gen_ag_restaurant_b.jpg` | 8 × 6 | 10 | 500×667 | [330, 666] | oui | True | 10.02 |
 | `ag_halle_module` | **généré** | `art-gen/gen_ag_halle_module.jpg` | 8 × 16 | 3 | 783×551 | [330, 550] | oui | True | 2.84 |
 | `ag_boutique` | **généré** | `art-gen/gen_ag_boutique.jpg` | 6 × 5 | 4 | 389×330 | [247, 329] | oui | True | 3.41 |
-| `ag_boutique_b` | **généré** | `art-gen/gen_ag_boutique_b.jpg` | 6 × 5 | 4 | 389×331 | [247, 330] | oui | True | 3.43 |
+| `ag_boutique_b` (rév. 2) | **généré** | `art-gen/gen_ag_boutique_b2.jpg` | 6 × 5 | 4 | 389×325 | [247, 324] | oui | True | 3.29 |
 | `ag_bureau` | **généré** | `art-gen/gen_ag_bureau.jpg` | 6 × 5 | 7 | 389×440 | [247, 439] | oui | True | 5.92 |
 | `ag_escalier` | **généré** | `art-gen/gen_ag_escalier.jpg` | 8 × 14 | 10 | 726×866 | [330, 865] | oui | True | 10.93 |
 | `ag_monte_charge` | **généré** | `art-gen/gen_ag_monte_charge.jpg` | 4 × 4 | 9 | 278×545 | [165, 544] | oui | True | 9.39 |
 | `ag_stand_nouilles` | **généré** | `art-gen/gen_ag_stand_nouilles.jpg` | 2.5 × 1.5 | 2.5 | 145×164 | [103, 163] | oui | True | 2.28 |
-| `ag_stand_poisson` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/Props-v6.png 543,84,1020,506` | 2 × 1.2 | 1.3 | 116×103 | [82, 102] | non | None | 1.18 |
+| `ag_stand_poisson` (rév. 2) | **généré** | `art-gen/gen_ag_stand_poisson.jpg` | 3.5 × 3 | 1.1 | 229×154 | [144, 153] | oui | True | 1.08 |
 | `ag_stand_pieces` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/street-detail-v9.png 1038,520,1499,988` | 4 × 2 | 2.2 | 221×182 | [165, 181] | oui | True | 1.99 |
 | `ag_lanterne_cable` | **généré** | `art-gen/gen_ag_lanterne_cable.jpg` | 5 × 1 | 3 | 234×212 | [206, 211] | oui | True | 2.84 |
 | `ag_auvent` | **généré** | `art-gen/gen_ag_auvent.jpg` | 5 × 2.5 | 2.4 | 277×218 | [206, 217] | oui | True | 2.29 |
-| `ag_caisses_legumes` | **généré** | `art-gen/gen_ag_caisses_legumes.jpg` | 1.2 × 0.8 | 0.7 | 72×48 | [49, 47] | oui | True | 0.36 |
+| `ag_caisses_legumes` (rév. 2) | **généré** | `art-gen/gen_ag_caisses_legumes.jpg` | 1.2 × 0.8 | 0.7 | 72×48 | [49, 47] | oui | True | 0.36 |
 | `ag_glaciere` | **généré** | `art-gen/gen_ag_glaciere.jpg` | 1 × 0.6 | 0.9 | 58×57 | [41, 56] | oui | True | 0.72 |
-| `ag_wok` | **généré** | `art-gen/gen_ag_wok.jpg` | 1 × 1 | 1.8 | 70×113 | [41, 112] | non | None | 1.82 |
+| `ag_wok` (rév. 2) | **généré** | `art-gen/gen_ag_wok2.jpg` | 1 × 1 | 0.9 | 70×71 | [41, 70] | oui | True | 0.86 |
 | `ag_chariot` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-domestic.png 554,127,1009,432` | 1.8 × 0.9 | 1 | 100×49 | [74, 48] | oui | True | 0.15 |
 | `ag_hautparleur_io` | **généré** | `art-gen/gen_ag_hautparleur_io.jpg` | 0.6 × 0.6 | 4.5 | 42×166 | [25, 165] | oui | None | 3.33 |
 | `ag_neon_io` | **généré** | `art-gen/gen_ag_neon_io.jpg` | 1.2 × 0.3 | 1 | 58×57 | [49, 56] | oui | False | 0.79 |
 
-Maquette réutilisée (origine `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/`, étalonnage nuit) : `ag_stand_poisson` (Props-v6), `ag_stand_pieces` (street-detail-v9), `ag_chariot` (props-v9-domestic). Réserves : `ag_wok` et `ag_stand_poisson` refusés par judge (objet de révolution / maquette non cisaillée) ; `ag_chariot` hauteur implicite non significative (objet bas et long) ; `ag_boutique_b` idéogrammes 电机 (« moteurs ») au lieu de 电器 ; légumes de `ag_caisses_legumes` désaturés par le despill.
+Maquette réutilisée (origine `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/`, étalonnage nuit) : `ag_stand_pieces` (street-detail-v9), `ag_chariot` (props-v9-domestic). Rév. 2 : `ag_boutique_b` enseigne corrigée ÉLECTRONIQUE 电器 (retouche par régénération de la même image, `gen_ag_boutique_b2.jpg`, mêmes px/pivot en largeur, hauteur 331 → 325 px) ; `ag_stand_poisson` régénéré sur socle (la version maquette Props-v6, écrasée par le cisaillement, est abandonnée) ; `ag_wok` posé sur une plaque carrée rivetée (arêtes v4 mesurables) ; `ag_caisses_legumes` despill limité à la bande de bord, verts des légumes conservés. Réserve restante : `ag_chariot` hauteur implicite non significative (objet bas et long).

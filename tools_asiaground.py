@@ -17,18 +17,18 @@ LT = {
  'ag_restaurant_b': ('gen_ag_restaurant_b.jpg', [8.0, 6.0], 10.0, 'variante : échoppe de nouilles NOUILLES 面馆'),
  'ag_halle_module': ('gen_ag_halle_module.jpg', [8.0, 16.0], 3.0, 'module de la halle du marché (travée répétable, toit à deux pans)'),
  'ag_boutique': ('gen_ag_boutique.jpg', [6.0, 5.0], 4.0, 'boutique Lau, pharmacie PHARMACIE 药房'),
- 'ag_boutique_b': ('gen_ag_boutique_b.jpg', [6.0, 5.0], 4.0, 'variante : électronique Okafor ÉLECTRONIQUE (idéogrammes 电机, cf. critique)'),
+ 'ag_boutique_b': ('gen_ag_boutique_b2.jpg', [6.0, 5.0], 4.0, 'variante : électronique Okafor ÉLECTRONIQUE (enseigne corrigée 电器, rév. 2)'),
  'ag_bureau': ('gen_ag_bureau.jpg', [6.0, 5.0], 7.0, 'bureau des emplacements EMPLACEMENTS 摊位 (Zhou / Seng)'),
  'ag_escalier': ('gen_ag_escalier.jpg', [8.0, 14.0], 10.0, 'Mille Marches, large escalier vers Center-Town, caméra IO en haut'),
  'ag_monte_charge': ('gen_ag_monte_charge.jpg', [4.0, 4.0], 9.0, 'monte-charge de quai (Cour des Porteurs)'),
  'ag_stand_nouilles': ('gen_ag_stand_nouilles.jpg', [2.5, 1.5], 2.5, 'stand de nouilles, vapeur'),
- 'ag_stand_poisson': ('MAQ:Props-v6.png:543,84,1020,506', [2.0, 1.2], 1.3, 'étal de poisson et caisses (maquette Props-v6)'),
+ 'ag_stand_poisson': ('gen_ag_stand_poisson.jpg', [3.5, 3.0], 1.1, 'étal de poisson sur socle, glace, balance, caisses (rév. 2 générée : la version maquette Props-v6 était écrasée par le cisaillement)'),
  'ag_stand_pieces': ('MAQ:street-detail-v9.png:1038,520,1499,988', [4.0, 2.0], 2.2, 'étal de pièces détachées sous bâche (maquette street-detail-v9)'),
  'ag_lanterne_cable': ('gen_ag_lanterne_cable.jpg', [5.0, 1.0], 3.0, 'câble à lanternes rouges entre deux poteaux'),
  'ag_auvent': ('gen_ag_auvent.jpg', [5.0, 2.5], 2.4, 'auvent de toile sur perches'),
  'ag_caisses_legumes': ('gen_ag_caisses_legumes.jpg', [1.2, 0.8], 0.7, 'caisses de légumes'),
  'ag_glaciere': ('gen_ag_glaciere.jpg', [1.0, 0.6], 0.9, 'glacière à poisson sur palette'),
- 'ag_wok': ('gen_ag_wok.jpg', [1.0, 1.0], 1.8, 'wok sur brasero (fût découpé)'),
+ 'ag_wok': ('gen_ag_wok2.jpg', [1.0, 1.0], 0.9, 'wok sur brasero (fût découpé) sur plaque carrée rivetée (rév. 2 : arêtes v4 mesurables)'),
  'ag_chariot': ('MAQ:props-v9-domestic.png:554,127,1009,432', [1.8, 0.9], 1.0, 'charrette à bras (maquette props-v9-domestic)'),
  'ag_hautparleur_io': ('gen_ag_hautparleur_io.jpg', [0.6, 0.6], 4.5, 'haut-parleur IO sur poteau'),
  'ag_neon_io': ('gen_ag_neon_io.jpg', [1.2, 0.3], 1.0, 'néon IO cyan, le seul cyan du quartier (au-dessus du marché)'),
@@ -57,7 +57,8 @@ def zcut(rgba, f0, f1, tz=0.70):
     right = np.zeros((H, W - x2, 4), np.uint8); right[dy:] = rgba[:H - dy, x2:]
     m = right[..., 3] > 0; seg = out[:, x1:]; seg[m] = right[m]
     return TI.clean(out, 200)
-NOFIX = {'ag_wok', 'ag_hautparleur_io', 'ag_stand_poisson'}  # révolution ; étal de poisson : sprite de maquette déjà à l angle du jeu, le cisaillement l écrasait
+NOFIX = {'ag_hautparleur_io'}  # révolution ; étal de poisson : sprite de maquette déjà à l angle du jeu, le cisaillement l écrasait
+KEEPGREEN = {'ag_caisses_legumes'}  # légumes : despill limité à la bande de bord (4 px), verts intérieurs conservés
 FULLDESPILL = {'ag_stand_nouilles', 'ag_wok', 'ag_monte_charge'}  # vapeur / halo verdis par le fond : despill complet
 def load_maq(spec):
     _, f, bb = spec.split(':'); x0, y0, x1, y1 = map(int, bb.split(','))
@@ -88,7 +89,7 @@ def build(aid):
     # modifiait ~90 % des pixels (gris neutres légèrement verts assombris), créait de faux contours (tôle ondulée) et faisait basculer judge.
     from scipy import ndimage
     p = rgba[..., :3].astype(float); op = rgba[..., 3] > 0; ex = p[..., 1] - np.maximum(p[..., 0], p[..., 2])
-    m = (op & ~ndimage.binary_erosion(op, iterations=4)) | (ex > 8)
+    m = (op & ~ndimage.binary_erosion(op, iterations=4)) | ((ex > 8) & (aid not in KEEPGREEN))
     p[..., 1] = np.where(m, np.minimum(p[..., 1], np.maximum(p[..., 0], p[..., 2]) * 1.05 + 2), p[..., 1]); rgba = rgba.copy(); rgba[..., :3] = p.astype('uint8')
     if aid in FULLDESPILL: p = rgba[..., :3].astype(float); p[..., 1] = np.minimum(p[..., 1], np.maximum(p[..., 0], p[..., 2])); rgba[..., :3] = p.astype('uint8')
     if aid in NOFIX: fix = {'v4fix': 'non applicable (' + ('maquette déjà à l angle' if aid == 'ag_stand_poisson' else 'révolution') + ')', 'pentes_apres': [None, None]}
