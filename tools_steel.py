@@ -10,27 +10,31 @@ OUT = '/workspace/nml/game/'
 YAW, PITCH, K = 34.5, 28.8, 50
 cy, sy = math.cos(math.radians(YAW)), math.sin(math.radians(YAW))
 r05 = lambda v: round(v * 2) / 2
+FP = {'st_porte2': (30.0, 8.0), 'st_poste': (9.0, 8.0), 'st_ct_dome': (15.0, 12.0), 'st_ct_shop': (8.0, 8.0), 'st_ct_tower': (9.0, 9.0)}  # v13 : emprises imposées (images générées non boîtes)
 CELLS = {
  'st_tour': ('settlement-v9-city.png', 0, 0), 'st_boutiques': ('settlement-v9-city.png', 1, 0), 'st_neon': ('settlement-v9-city.png', 2, 0),
  'st_usine': ('settlement-v9-city.png', 0, 1), 'st_verre': ('settlement-v9-city.png', 1, 1), 'st_immeuble': ('settlement-v9-city.png', 2, 1),
  'st_jumelles': ('city-v3.png', 0, 0), 'st_galerie': ('city-v3.png', 1, 0), 'st_blanc': ('city-v3.png', 2, 0), 'st_douane': ('city-v3.png', 2, 1),
  'st_porte': ('GEN:art-gen/gen_steel_gate.jpg', 30.0, 7.0), 'st_service': ('GEN:art-gen/gen_service_exit.jpg', 5.0, 3.0),
+ # v13 : place forte IO et Center-Town de nuit (générés d'après le concept art ; FIX = cisaillement v4 de tools_interiors.v4fix)
+ 'st_porte2': ('GEN:art-gen/gen_steel_gate2.jpg', 30.0, 9.0), 'st_poste': ('GENFIX:art-gen/gen_douane_post.jpg', 9.0, 9.0),
+ 'st_ct_dome': ('GENFIX:art-gen/gen_ct_dome.jpg', 15.0, 13.0), 'st_ct_shop': ('GENFIX:art-gen/gen_ct_shop.jpg', 9.0, 9.0), 'st_ct_tower': ('GENFIX:art-gen/gen_ct_tower.jpg', 10.0, 10.0),
 }
 FRONT_Z = 13.0
 # quartier -> id: (case, x, z (None = FRONT_Z - d), label, visitable, portes peintes [(px, py, face)] en px source, indice)
 DISTRICTS = {
- 'route': {
-  'r_porte':   ('st_porte', 1.5, 3.0, 'Porte du sarcophage', False, [], None),
-  'r_douane':  ('st_douane', 22.0, 11.0, 'Douane', True, [], 'card'),
+ 'route': {  # v13 : place forte. Porte du sarcophage en haut à droite (la route y monte), poste de douane à gauche.
+  'r_porte':   ('st_porte2', 17.0, 0.0, 'Porte du sarcophage', False, [], None),
+  'r_douane':  ('st_poste', 2.0, 20.0, 'Douane', True, [], 'card'),
   'r_service': ('st_service', 40.0, 29.5, 'Sortie de service', False, [], None)},
- 'center': {
-  'c_tour':      ('st_tour', 1.0, None, 'Tour d\'habitation', False, [], None),
-  'c_change':    ('st_boutiques', 11.0, None, 'Change de Teng', True, [], 'coin'),
-  'c_neon':      ('st_neon', 24.0, None, 'Galerie Néon', False, [], None),
-  'c_arcadius':  ('st_verre', 36.0, None, 'Arcadius Center', False, [], None),
+ 'center': {  # v13 : Center-Town de nuit (concept art) : rotonde, change, tour Arcadius au nord ; rangée sud de la maquette
+  'c_tour':      ('st_ct_dome', 16.0, 1.0, 'La Rotonde', False, [], None),
+  'c_change':    ('st_ct_shop', 4.0, 5.0, 'Change de Teng', True, [], 'coin'),
+  'c_arcadius':  ('st_ct_tower', 35.0, 3.0, 'Arcadius Center', False, [], None),
   'c_immeuble':  ('st_immeuble', 2.0, 24.0, 'Immeuble aux escaliers', False, [], None),
-  'c_galerie':   ('st_galerie', 13.0, 24.0, 'Passage couvert', False, [], None),
-  'c_jumelles':  ('st_jumelles', 26.0, 24.0, 'Tours jumelles', False, [], None),
+  'c_galerie':   ('st_galerie', 10.0, 24.0, 'Passage couvert', False, [], None),
+  'c_neon':      ('st_neon', 21.0, 24.0, 'Galerie Néon', False, [], None),
+  'c_jumelles':  ('st_jumelles', 28.0, 24.0, 'Tours jumelles', False, [], None),
   'c_blanc':     ('st_blanc', 37.0, 24.0, 'Bureau des permis', False, [], None)},
 }
 DOORS_PX = json.load(open(OUT + 'art-gen/steel_doors_px.json')) if len(sys.argv) < 2 else {}
@@ -38,14 +42,30 @@ for q in DISTRICTS:
   for bid in DISTRICTS[q]:
     if bid in DOORS_PX:
       c, x, z, l, v, _, cue = DISTRICTS[q][bid]; DISTRICTS[q][bid] = (c, x, z, l, v, [tuple(p) for p in DOORS_PX[bid]], cue)
+def key_green(path):  # v13 : porte générée sur fond vert sombre uni (0, 24, 0) ; l'objet, très sombre, est gris neutre
+  a = np.asarray(Image.open(path).convert('RGB')).astype(float); r, g, b = a[..., 0], a[..., 1], a[..., 2]
+  ex = g - np.maximum(r, b); al = np.clip((15 - ex) / 8, 0, 1); al = ndimage.binary_opening(al > 0.5, iterations=2) * al
+  a[..., 1] = np.minimum(g, np.maximum(r, b) + 4)  # retire le voile vert des bords
+  import tools_interiors as TI
+  return TI.clean(np.dstack([a, al * 255]).astype('uint8'), 4000)
+def key_bg(path):  # v13 : fond uni (magenta) retiré par distance à la couleur du fond seulement : garde les néons violets de l'objet
+  a = np.asarray(Image.open(path).convert('RGB')).astype(float)
+  bg = np.median(np.concatenate([a[:10, :10].reshape(-1, 3), a[:10, -10:].reshape(-1, 3), a[-10:, :10].reshape(-1, 3), a[-10:, -10:].reshape(-1, 3)]), 0)
+  d = np.sqrt(((a - bg) ** 2).sum(2)); al = np.clip((d - 45) / 45, 0, 1)
+  al = ndimage.binary_erosion(ndimage.binary_opening(al > 0.5, iterations=2), iterations=2) * al  # v13 : on rogne 2 px de bord (liseré violet du fond)
+  k = np.clip(al, 0.05, 1)[..., None]; a = np.clip((a - (1 - k) * bg) / k, 0, 255)  # retire la part de fond des bords
+  import tools_interiors as TI
+  return TI.clean(np.dstack([a, al * 255]).astype('uint8'), 4000)
 def load_cell(cell):
   f, c, r = CELLS[cell]
-  if f.startswith('GEN:'):
+  if f.startswith('GEN'):
     sys.path.insert(0, OUT); import tools_interiors as TI
-    rgba = TI.quad(OUT + f[4:], -1).copy()
-    # dé-contamination du magenta résiduel (liserés roses au pied du mur) : on ramène rouge et bleu vers le vert
-    px = rgba[..., :3].astype(float); spill = np.clip((px[..., 0] + px[..., 2]) / 2 - px[..., 1] - 18, 0, None)
-    px[..., 0] -= spill * 0.9; px[..., 2] -= spill; rgba[..., :3] = np.clip(px, 0, 255).astype('uint8')
+    fix = f.startswith('GENFIX:'); f = 'GEN:' + f.split(':', 1)[1]
+    rgba = key_green(OUT + f[4:]) if cell == 'st_porte2' else key_bg(OUT + f[4:]) if fix else TI.quad(OUT + f[4:], -1).copy()
+    if fix: rgba, info = TI.v4fix(rgba, **({'force': (0.5, 0.5), 'mirror': False} if cell == 'st_ct_tower' else {})); print(f'  {cell}: correction v4', info)
+    if cell == 'st_porte':  # v12 : dé-contamination du magenta (la v13 st_porte2 est générée sur fond vert sombre : rien à corriger)
+      px = rgba[..., :3].astype(float); spill = np.clip((px[..., 0] + px[..., 2]) / 2 - px[..., 1] - 18, 0, None)
+      px[..., 0] -= spill * 0.9; px[..., 2] -= spill; rgba[..., :3] = np.clip(px, 0, 255).astype('uint8')
     a = rgba[..., 3] > 100
     ys, xs = np.nonzero(a)
     sc = K * (c * cy + r * sy) / (xs.max() - xs.min() + 1)
@@ -71,9 +91,11 @@ for cell in CELLS:
     px = ax + K * (-a * cy + b * sy); py = ay - K * (a * sy * sp + b * cy * sp) - K * 0.3 * cp
     px, py = int(round(px)), int(round(py)); return 0 <= py < M.shape[0] and 0 <= px < M.shape[1] and M[py, px]
   w0, d0 = w, d
+  if cell in FP: w = d = 0  # pas d'ajustement au masque
   while w > 2 and not opaque(w - 0.4, 0.4): w -= 0.5
   while d > 2 and not opaque(0.4, d - 0.4): d -= 0.5
   while (w > 2 or d > 2) and not opaque(w - 0.4, d - 0.4): w, d = (w - 0.5, d) if w >= d else (w, d - 0.5)
+  if cell in FP: w, d = FP[cell]
   print(f'  {cell}: emprise {w0}x{d0} -> {w}x{d}, source {f}')
   m = ndimage.binary_dilation(lab == li, iterations=2)[y0:y1 + 1, x0:x1 + 1]
   sub = full.crop((x0, y0, x1 + 1, y1 + 1)); sub.putalpha(Image.fromarray(np.minimum(np.asarray(sub)[..., 3], m * 255).astype('uint8')))

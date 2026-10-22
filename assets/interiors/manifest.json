@@ -391,5 +391,11 @@
   "texture": true,
   "origin": "généré",
   "source": "généré art-gen/gen_door_in.jpg"
+ },
+ "door_io": {
+  "file": "interiors/door_io.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_io_door.jpg"
  }
 }

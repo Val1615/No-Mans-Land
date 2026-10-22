@@ -474,5 +474,271 @@
    0.6
   ],
   "status": "généré v12"
+ },
+ "st_civil0": {
+  "file": "generated/st_civil0.webp",
+  "height_m": 1.84,
+  "px": [
+   178,
+   492
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : passant / file d attente (maquette city-people-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_civil1": {
+  "file": "generated/st_civil1.webp",
+  "height_m": 1.68,
+  "px": [
+   157,
+   475
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : passant / file d attente (maquette city-people-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_civil2": {
+  "file": "generated/st_civil2.webp",
+  "height_m": 1.72,
+  "px": [
+   154,
+   483
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : passant / file d attente (maquette city-people-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_civil3": {
+  "file": "generated/st_civil3.webp",
+  "height_m": 1.66,
+  "px": [
+   137,
+   490
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : passant / file d attente (maquette city-people-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_civil4": {
+  "file": "generated/st_civil4.webp",
+  "height_m": 1.7,
+  "px": [
+   159,
+   497
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : passant / file d attente (maquette city-people-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_civil5": {
+  "file": "generated/st_civil5.webp",
+  "height_m": 1.82,
+  "px": [
+   165,
+   501
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : passant / file d attente (maquette city-people-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_mirador": {
+  "file": "generated/st_mirador.webp",
+  "height_m": 7.5,
+  "px": [
+   187,
+   398
+  ],
+  "footprint_m": [
+   2.4,
+   2.4
+  ],
+  "status": "v13 Steel : mirador (généré)",
+  "src": "art-gen/gen_fort_sheet.jpg #0"
+ },
+ "st_tourelle": {
+  "file": "generated/st_tourelle.webp",
+  "height_m": 2.8,
+  "px": [
+   237,
+   281
+  ],
+  "footprint_m": [
+   2.0,
+   2.0
+  ],
+  "status": "v13 Steel : tourelle automatique (généré)",
+  "src": "art-gen/gen_fort_sheet.jpg #1"
+ },
+ "st_barricade": {
+  "file": "generated/st_barricade.webp",
+  "height_m": 1.9,
+  "px": [
+   350,
+   280
+  ],
+  "footprint_m": [
+   3.4,
+   0.8
+  ],
+  "status": "v13 Steel : barricade béton et barbelés (généré)",
+  "src": "art-gen/gen_fort_sheet.jpg #2"
+ },
+ "st_projecteur": {
+  "file": "generated/st_projecteur.webp",
+  "height_m": 6.5,
+  "px": [
+   112,
+   381
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : mât de projecteur (généré)",
+  "src": "art-gen/gen_fort_sheet.jpg #3"
+ },
+ "st_echoppe": {
+  "file": "generated/st_echoppe.webp",
+  "height_m": 2.7,
+  "px": [
+   350,
+   370
+  ],
+  "footprint_m": [
+   2.6,
+   1.4
+  ],
+  "status": "v13 Steel : échoppe de rue éclairée (généré)",
+  "src": "art-gen/gen_ct_props.jpg #0"
+ },
+ "st_drone": {
+  "file": "generated/st_drone.webp",
+  "height_m": 0.55,
+  "px": [
+   420,
+   237
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "v13 Steel : drone de surveillance (généré)",
+  "src": "art-gen/gen_ct_props.jpg #1"
+ },
+ "st_kiosque": {
+  "file": "generated/st_kiosque.webp",
+  "height_m": 2.6,
+  "px": [
+   305,
+   385
+  ],
+  "footprint_m": [
+   1.4,
+   1.2
+  ],
+  "status": "v13 Steel : kiosque néon (généré)",
+  "src": "art-gen/gen_ct_props.jpg #2"
+ },
+ "st_holo": {
+  "file": "generated/st_holo.webp",
+  "height_m": 3.4,
+  "px": [
+   244,
+   382
+  ],
+  "footprint_m": [
+   0.4,
+   0.4
+  ],
+  "status": "v13 Steel : panneau holographique (généré)",
+  "src": "art-gen/gen_ct_props.jpg #3"
+ },
+ "st_borne": {
+  "file": "generated/st_borne.webp",
+  "height_m": 1.9,
+  "px": [
+   214,
+   421
+  ],
+  "footprint_m": [
+   0.8,
+   0.6
+  ],
+  "status": "v13 Steel : borne holographique (maquette city-props-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_lampadaire": {
+  "file": "generated/st_lampadaire.webp",
+  "height_m": 4.6,
+  "px": [
+   290,
+   500
+  ],
+  "footprint_m": [
+   0.4,
+   0.4
+  ],
+  "status": "v13 Steel : lampadaire néon (maquette city-props-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_voiture": {
+  "file": "generated/st_voiture.webp",
+  "height_m": 1.4,
+  "px": [
+   512,
+   327
+  ],
+  "footprint_m": [
+   4.4,
+   2.0
+  ],
+  "status": "v13 Steel : voiture (maquette city-props-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_banc": {
+  "file": "generated/st_banc.webp",
+  "height_m": 0.95,
+  "px": [
+   183,
+   445
+  ],
+  "footprint_m": [
+   1.8,
+   0.6
+  ],
+  "status": "v13 Steel : banc lumineux (maquette city-props-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
+ },
+ "st_pylone": {
+  "file": "generated/st_pylone.webp",
+  "height_m": 2.7,
+  "px": [
+   414,
+   339
+  ],
+  "footprint_m": [
+   0.7,
+   0.7
+  ],
+  "status": "v13 Steel : pylône lumineux (maquette city-props-v3)",
+  "src": "maquette art-source (planche city-*-v3)"
  }
 }

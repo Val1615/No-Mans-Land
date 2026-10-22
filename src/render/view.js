@@ -9,8 +9,12 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   const scene = new THREE.Scene(); scene.background = new THREE.Color('#2a2420');
-  scene.add(new THREE.HemisphereLight('#ffe9cf', '#4a3a2a', 1.5));
+  const hemi = new THREE.HemisphereLight('#ffe9cf', '#4a3a2a', 1.5); scene.add(hemi);
   const sun = new THREE.DirectionalLight('#ffd2a0', 1.6); sun.position.set(-12, 18, 20); scene.add(sun);
+  // v13 : éclairage par lieu (nuit de Steel). Par défaut : celui de Dusk-Town, inchangé.
+  const LIGHT0 = { bg: '#2a2420', hemi: ['#ffe9cf', '#4a3a2a', 1.5], sun: ['#ffd2a0', 1.6], tint: null, actor: null };
+  function applyLight(l) { l = { ...LIGHT0, ...(l || {}) }; scene.background = new THREE.Color(l.bg); hemi.color.set(l.hemi[0]); hemi.groundColor.set(l.hemi[1]); hemi.intensity = l.hemi[2];
+    sun.color.set(l.sun[0]); sun.intensity = l.sun[1]; for (const a of [player, companion]) a.material.color.set(l.actor || '#ffffff'); return l; }
   const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 500);
   const yaw = THREE.MathUtils.degToRad(UNITS.camera.yawDeg), pitch = THREE.MathUtils.degToRad(UNITS.camera.pitchDeg);
   const camDir = new THREE.Vector3(-Math.sin(yaw) * Math.cos(pitch), -Math.sin(pitch), -Math.cos(yaw) * Math.cos(pitch)).normalize();
@@ -26,6 +30,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
+  let decor = [], walkers = [], drones = [], flick = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -53,7 +58,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   }
   function building(b) {
     const m = bman[b.sprite]; const t = new THREE.Texture(SKIN[b.sprite]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
-    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false }));
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, color: b.tint || light?.tint || '#ffffff' }));
     s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K, m.px[1] / K, 1);
     s.position.set(b.x + b.w, 0, b.z + b.d);
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
@@ -93,7 +98,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   function build(locId) {
     scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior';
+    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true;
@@ -102,7 +107,10 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const p of loc.props) {
       if (p.furn) furniture(p);
       else if (p.box) box(p, p.color);
-      else { const s = spriteMesh(p.sprite); s.position.set(p.x, 0, p.z); world.add(s);
+      else { const s = spriteMesh(p.sprite); s.position.set(p.x, p.y || 0, p.z); world.add(s);
+        if (p.tint || light.tint) s.material.color.set(p.tint || light.tint);
+        if (p.glow) { s.material.blending = THREE.AdditiveBlending; s.material.opacity = p.glow; flick.push({ m: s.material, base: p.glow, ph: Math.random() * 6 }); } // hologramme : additif, scintille
+        if (p.flip) { s.material.map = actorTex(p.sprite); s.material.map.repeat.x = -1; s.material.map.offset.x = 1; }
         if (exterior) { s.material.depthTest = false; s.material.transparent = true; const [w, d] = p.fp || sprites[p.sprite].footprint_m || [0.6, 0.6];
           bills.push({ obj: s, x0: p.x - w / 2, x1: p.x + w / 2, z0: p.z - d / 2, z1: p.z + d / 2, extra: [] }); } }
     }
@@ -117,7 +125,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       leaf.position.set(south ? 0 : 0.07, 0, south ? 0.07 : 0);
       g.add(frame, leaf); g.position.set(o.x, UNITS.door.height / 2, o.z);
       if (loc.kind === 'interior') { frame.visible = false; // v6 : porte de sortie = texture réelle (planches clouées, filet de lumière), comme la porte peinte dehors
-        const dt = SKIN.door_in && new THREE.Texture(SKIN.door_in); if (dt) { dt.needsUpdate = true; dt.colorSpace = THREE.SRGBColorSpace; leaf.material = new THREE.MeshStandardMaterial({ map: dt, side: THREE.DoubleSide, roughness: 0.9 }); }
+        const dimg = SKIN[loc.doorSkin || 'door_in'], dt = dimg && new THREE.Texture(dimg); // v13 : porte IO dans Steel if (dt) { dt.needsUpdate = true; dt.colorSpace = THREE.SRGBColorSpace; leaf.material = new THREE.MeshStandardMaterial({ map: dt, side: THREE.DoubleSide, roughness: 0.9 }); }
         leaf.material.transparent = true; leaf.material.opacity = 1; leaf.renderOrder = 100001; leaf.userData.targetOpacity = 1; solids.push(leaf); }
       frame.userData.doorId = d.id; leaf.userData.doorId = d.id; world.add(g); if (!exterior) pickables.push(frame, leaf);
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.32, 0.4, 28), new THREE.MeshBasicMaterial({ color: '#e0b04a', transparent: true, opacity: 0.7 }));
@@ -126,12 +134,34 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
         addLabel(d.label, d.junction ? 'junction' : 'edge', () => new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte : ne cache jamais le joueur au seuil
       if (loc.kind === 'interior') addLabel(d.label || 'Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
+    // v13 : lumières au sol (néons reflétés sur la chaussée mouillée, pinceaux des projecteurs) : disques additifs étirés
+    for (const g of loc.glows || []) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
+      m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02, g.z); m.renderOrder = 2; world.add(m); if (g.flicker) flick.push({ m: m.material, base: g.i ?? 0.6, ph: Math.random() * 6 }); }
+    // v13 : figurants immobiles (file d'attente, soldats) et passants qui marchent : mêmes sprites animés que les PNJ, sans dialogue
+    for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
+      if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; world.add(s); decor.push(s); }
+    for (const w of loc.walkers || []) { const s = spriteMesh(w.sprite, null, true); s.material.depthTest = false; s.material.transparent = true; if (light.actor) s.material.color.set(light.actor);
+      s.userData.role = 'passant'; s.userData.route = w.path; s.userData.speed = w.speed || 1.1; s.userData.t = w.t0 || 0; world.add(s); decor.push(s); walkers.push(s); }
+    for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
-      const s = spriteMesh(n.sprite, null, true); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
+      const s = spriteMesh(n.sprite, null, true); if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
       addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z));
     }
     builtFor = locId;
   }
+  let glowT = null;
+  function glowTex() { if (glowT) return glowT; const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128); return glowT = new THREE.CanvasTexture(c); }
+  // v13 : passants le long d'une boucle de points (vitesse m/s), drones en orbite au-dessus de la rue, néons qui scintillent
+  function ambient(dt, t) {
+    for (const s of walkers) { const u = s.userData, P = u.route, seg = []; let L = 0;
+      for (let i = 0; i < P.length; i++) { const a = P[i], b = P[(i + 1) % P.length], l = Math.hypot(b[0] - a[0], b[1] - a[1]); seg.push([a, b, l]); L += l; }
+      u.t = (u.t + dt * u.speed) % L; let r = u.t;
+      for (const [a, b, l] of seg) { if (r <= l) { const k = r / l; s.position.set(a[0] + (b[0] - a[0]) * k, 0, a[1] + (b[1] - a[1]) * k); face(s, Math.atan2(b[0] - a[0], b[1] - a[1])); break; } r -= l; }
+      animate(s, true, dt, t); }
+    for (const s of decor) if (!walkers.includes(s)) animate(s, false, dt, t);
+    for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
+    for (const f of flick) f.m.opacity = f.base * (0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2)); }
   // Miroir horizontal : l'image regarde à droite de l'écran par défaut (manifest.faces = -1 sinon).
   const screenRight = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0, 1, 0)).normalize();
   function face(s, heading) {
@@ -160,7 +190,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   function inFront(b, a) { if (b.x0 >= a.x1 - 1e-6 || b.z0 >= a.z1 - 1e-6) return true; if (a.x0 >= b.x1 - 1e-6 || a.z0 >= b.z1 - 1e-6) return false; return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1; }
   const actorItem = a => ({ obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [] });
   function painter() {
-    const items = bills.concat([player, companion].filter(a => a.visible).concat(npcSprites).map(actorItem)); const n = items.length;
+    const items = bills.concat([player, companion].filter(a => a.visible).concat(npcSprites, decor, drones).map(actorItem)); const n = items.length;
     const R = items.map(i => rectOf(i.obj)), indeg = new Array(n).fill(0), out = items.map(() => []);
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
       const a = R[i], b = R[j]; if (a.x1 < b.x0 || b.x1 < a.x0 || a.y1 < b.y0 || b.y1 < a.y0) continue; // pas de recouvrement à l'écran
@@ -224,6 +254,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const tNow = performance.now() / 1000, dt = Math.min(0.1, tNow - tPrev); tPrev = tNow;
     animate(player, s.player.path.length > 0, dt, tNow); animate(companion, s.companion.path.length > 0 && s.companion.location === s.location, dt, tNow);
     for (const n of npcSprites) animate(n, false, dt, tNow);
+    ambient(dt, tNow);
     const loc = LOCATIONS[s.location];
     const target = camOverride ? new THREE.Vector3(camOverride.x, 0, camOverride.z) : new THREE.Vector3(s.player.x, 0, s.player.z);
     if (loc.kind === 'interior' && !camOverride) target.set(loc.size.w / 2, 0, loc.size.d / 2);
@@ -304,5 +335,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     paintedDoorError: doorId => { render(); const d = DOORS.find(d => d.id === doorId), s = bsprites.find(s => s.userData.buildingId === d.buildingId), m = bman[s.userData.img];
       const r = rectOf(s), c = m.crop, u = (d.painted[0] - c[0]) / m.px[0], v = 1 - (d.painted[1] - c[1]) / m.px[1];
       const p = { x: r.x0 + u * (r.x1 - r.x0), y: r.y0 + v * (r.y1 - r.y0) }, o = scr(new THREE.Vector3(d.opening.x, 0, d.opening.z)); return +Math.hypot(p.x - o.x, p.y - o.y).toFixed(2); },
+    // v13 : figurants (rôle, position monde) et rendu isolé d'un figurant, pour les contrôles au pixel (comptage à l'écran)
+    decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing })); },
+    isolateDecor: i => { render(); const keep = decor.concat(drones)[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
+      const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
+      hidden.forEach(o => o.visible = true); scene.background = bg; return url; },
+    lightOf: () => light,
     orderOf: id => id === 'player' ? player.renderOrder : bsprites.find(s => s.userData.buildingId === id)?.renderOrder };
 }

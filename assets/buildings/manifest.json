@@ -538,5 +538,120 @@
    3.0
   ],
   "lot": "steel-l1 v12"
+ },
+ "b_st_porte2": {
+  "file": "buildings/b_st_porte2.webp",
+  "source": "art-gen/gen_steel_gate2.jpg",
+  "crop": [
+   10,
+   10,
+   1501,
+   839
+  ],
+  "px": [
+   1491,
+   829
+  ],
+  "anchor": [
+   1486,
+   828
+  ],
+  "footprint_m": [
+   30.0,
+   8.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_poste": {
+  "file": "buildings/b_st_poste.webp",
+  "source": "art-gen/gen_douane_post.jpg",
+  "crop": [
+   10,
+   89,
+   635,
+   658
+  ],
+  "px": [
+   625,
+   569
+  ],
+  "anchor": [
+   295,
+   568
+  ],
+  "footprint_m": [
+   9.0,
+   8.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_ct_dome": {
+  "file": "buildings/b_st_ct_dome.webp",
+  "source": "art-gen/gen_ct_dome.jpg",
+  "crop": [
+   10,
+   10,
+   996,
+   1168
+  ],
+  "px": [
+   986,
+   1158
+  ],
+  "anchor": [
+   660,
+   1157
+  ],
+  "footprint_m": [
+   15.0,
+   12.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_ct_shop": {
+  "file": "buildings/b_st_ct_shop.webp",
+  "source": "art-gen/gen_ct_shop.jpg",
+  "crop": [
+   10,
+   19,
+   635,
+   650
+  ],
+  "px": [
+   625,
+   631
+  ],
+  "anchor": [
+   308,
+   630
+  ],
+  "footprint_m": [
+   8.0,
+   8.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_ct_tower": {
+  "file": "buildings/b_st_ct_tower.webp",
+  "source": "art-gen/gen_ct_tower.jpg",
+  "crop": [
+   10,
+   10,
+   705,
+   1230
+  ],
+  "px": [
+   695,
+   1220
+  ],
+  "anchor": [
+   286,
+   1219
+  ],
+  "footprint_m": [
+   9.0,
+   9.0
+  ],
+  "lot": "steel-l1 v12"
  }
 }

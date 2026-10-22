@@ -187,6 +187,8 @@ def run():
     man['f_concrete'] = {'file': 'interiors/f_concrete.webp', 'texture': True, 'origin': 'maquette', 'source': 'maquette art-source/terrain-nature-v4.png (tuile béton)'}
     d = Image.open(GEN + 'gen_door_in.jpg').convert('RGB'); W, H = d.size; d.crop((6, 6, W-6, H-6)).resize((256, 563)).save(OUT + 'door_in.webp', quality=90)
     man['door_in'] = {'file': 'interiors/door_in.webp', 'texture': True, 'origin': 'généré', 'source': 'généré art-gen/gen_door_in.jpg'}
+    d = Image.open(GEN + 'gen_io_door.jpg').convert('RGB'); W, H = d.size; d.crop((6, 6, W-6, H-6)).resize((256, 563)).save(OUT + 'door_io.webp', quality=90)  # v13 Steel
+    man['door_io'] = {'file': 'interiors/door_io.webp', 'texture': True, 'origin': 'généré', 'source': 'généré art-gen/gen_io_door.jpg'}
     json.dump(man, open(OUT + 'manifest.json', 'w'), ensure_ascii=False, indent=1)
     json.dump(rep, open(OUT + 'rapport_angles.json', 'w'), ensure_ascii=False, indent=1)
 if __name__ == '__main__': run()

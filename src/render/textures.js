@@ -111,14 +111,15 @@ export function groundTexture(loc, doors = []) {
   const c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d'), r = rng(hash(loc.id));
   x.fillStyle = pattern(x, loc.ground.skin, loc.ground.tileM || 4, P) || loc.ground.base; x.fillRect(0, 0, W, H);
   if (loc.kind === 'interior' && loc.ground.skin) return tex(c); // v6 : sol d'intérieur = texture réelle seule, rien de peint par code
-  for (let i = 0; i < W * H / 40; i++) { x.fillStyle = `rgba(${r() < .5 ? '60,45,30' : '230,210,170'},${r() * 0.08})`; x.fillRect(r() * W, r() * H, 1 + r() * 2, 1 + r() * 2); }
+  if (!loc.ground.clean) for (let i = 0; i < W * H / 40; i++) { x.fillStyle = `rgba(${r() < .5 ? '60,45,30' : '230,210,170'},${r() * 0.08})`; x.fillRect(r() * W, r() * H, 1 + r() * 2, 1 + r() * 2); }
   if (loc.ground.tiles && !loc.ground.skin) { x.strokeStyle = 'rgba(0,0,0,.15)'; for (let i = 0; i <= loc.size.w; i += 0.5) { x.beginPath(); x.moveTo(i * P, 0); x.lineTo(i * P, H); x.stroke(); } for (let j = 0; j <= loc.size.d; j += 0.5) { x.beginPath(); x.moveTo(0, j * P); x.lineTo(W, j * P); x.stroke(); } }
   if (loc.ground.planks && !loc.ground.skin) { for (let j = 0; j < loc.size.d; j += 0.25) { x.fillStyle = `rgba(0,0,0,${0.05 + r() * 0.12})`; x.fillRect(0, j * P, W, 1.5); } }
   for (const z of loc.ground.zones || []) {
     const zx = z.x * P, zy = z.z * P, zw = z.w * P, zh = z.d * P;
-    const zp = pattern(x, { asphalt: 'g_asphalt', packed: 'g_dirt', track: 'g_gravel', grass: 'g_grass' }[z.kind], 4, P);
+    const zp = pattern(x, { asphalt: 'g_asphalt', packed: 'g_dirt', track: 'g_gravel', grass: 'g_grass', wet: 'g_wet', plate: 'g_concrete' }[z.kind], z.tileM || 4, P); // v13 : wet = chaussée mouillée de Steel
     if (zp) { x.fillStyle = zp; x.globalAlpha = z.kind === 'grass' ? 0.75 : 1; x.fillRect(zx, zy, zw, zh); x.globalAlpha = 1;
-      if (z.kind === 'asphalt') { x.fillStyle = 'rgba(205,180,130,.5)'; for (let i = 0; i < 26; i++) { const ex = zx + r() * zw, top = r() < .5; x.beginPath(); x.ellipse(ex, top ? zy + 6 : zy + zh - 6, 30 + r() * 70, 6 + r() * 14, 0, 0, Math.PI * 2); x.fill(); } }
+      if (z.tint) { x.fillStyle = z.tint; x.fillRect(zx, zy, zw, zh); }
+      if (z.kind === 'asphalt' && !loc.ground.clean) { x.fillStyle = 'rgba(205,180,130,.5)'; for (let i = 0; i < 26; i++) { const ex = zx + r() * zw, top = r() < .5; x.beginPath(); x.ellipse(ex, top ? zy + 6 : zy + zh - 6, 30 + r() * 70, 6 + r() * 14, 0, 0, Math.PI * 2); x.fill(); } }
     } else if (z.kind === 'asphalt') { x.fillStyle = '#4b4743'; x.fillRect(zx, zy, zw, zh);
       for (let i = 0; i < zw * zh / 30; i++) { x.fillStyle = `rgba(255,255,255,${r() * 0.05})`; x.fillRect(zx + r() * zw, zy + r() * zh, 2, 2); }
       x.strokeStyle = 'rgba(20,18,16,.6)'; x.lineWidth = 1.2; for (let i = 0; i < 40; i++) { let px = zx + r() * zw, py = zy + r() * zh; x.beginPath(); x.moveTo(px, py); for (let k = 0; k < 5; k++) { px += (r() - .5) * 40; py += (r() - .5) * 20; x.lineTo(px, py); } x.stroke(); }
@@ -127,7 +128,7 @@ export function groundTexture(loc, doors = []) {
     } else if (z.kind === 'track') { x.fillStyle = '#9b8463'; x.fillRect(zx, zy, zw, zh); x.fillStyle = 'rgba(80,60,40,.25)'; x.fillRect(zx, zy + zh * 0.3, zw, 6); x.fillRect(zx, zy + zh * 0.65, zw, 6); }
     else if (z.kind === 'packed') { x.fillStyle = 'rgba(120,100,75,.45)'; x.fillRect(zx, zy, zw, zh); }
   }
-  if (loc.kind === 'exterior') {
+  if (loc.kind === 'exterior' && !loc.ground.clean) {
     for (const b of loc.buildings) for (let i = 0; i < b.w + b.d; i++) { const side = r(); x.fillStyle = `rgba(200,172,120,${0.35 + r() * 0.3})`; x.beginPath();
       const px = side < .5 ? (b.x + r() * b.w) * P : (b.x + b.w) * P, py = side < .5 ? (b.z + b.d) * P : (b.z + r() * b.d) * P;
       x.ellipse(px, py, (0.6 + r() * 1.4) * P, (0.3 + r() * 0.7) * P, side < .5 ? 0 : Math.PI / 2, 0, 7); x.fill(); }
@@ -135,7 +136,8 @@ export function groundTexture(loc, doors = []) {
       x.fillStyle = 'rgba(60,45,30,.35)'; for (let k = 0; k < 7; k++) x.fillRect((d.threshold.x + (r() - .5) * 1.4) * P, (d.threshold.z + (r() - .5) * 1.2) * P, 4, 7); }
   }
   // herbes mortes (Ch. I §71)
-  if (loc.kind === 'exterior') { x.strokeStyle = 'rgba(150,130,70,.8)'; for (let i = 0; i < (loc.ground.skin ? 250 : 700); i++) { const px = r() * W, py = r() * H; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 8, py - 4 - r() * 6); x.stroke(); } } }
+  if (loc.ground.tint) { x.fillStyle = loc.ground.tint; x.fillRect(0, 0, W, H); } // v13 : voile de nuit
+  if (loc.kind === 'exterior' && !loc.ground.clean) { x.strokeStyle = 'rgba(150,130,70,.8)'; for (let i = 0; i < (loc.ground.skin ? 250 : 700); i++) { const px = r() * W, py = r() * H; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 8, py - 4 - r() * 6); x.stroke(); } } }
   return tex(c);
 }
 
