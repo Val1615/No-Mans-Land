@@ -9,7 +9,7 @@ const named = list => list.map(b => ({ ...b, named: true }));
 const SOLDAT = 'gen_halloran';
 const civ = i => `st_civil${i % 6}`;
 const NIGHT_ROUTE = { bg: '#0c0f18', hemi: ['#8090b8', '#2a2430', 0.95], sun: ['#a8b8ff', 0.55], tint: '#c4c8d8', actor: '#c9cddc' };
-const NIGHT_CITY = { bg: '#06070c', hemi: ['#8c98ff', '#3a1c4a', 0.8], sun: ['#b4a6ff', 0.4], tint: '#6e7090', actor: '#c4c4dc' };
+const NIGHT_CITY = { bg: '#0b0a16', hemi: ['#aab4ff', '#4a2a5c', 1.35], sun: ['#c0b0ff', 0.7], tint: '#9092b8', actor: '#d4d4ea' };
 const NEON_V = '#c247ff', NEON_C = '#2fd8ff', WARM = '#ffae55', FLOOD = '#d8ecff';
 export const LOCATIONS = {
   // S0 : place forte d'IO devant le sarcophage [décision v13] : porte en haut à droite au bout de la route, poste de douane à gauche,
@@ -58,11 +58,13 @@ export const LOCATIONS = {
       { sprite: 'st_borne', x: 35.8, z: 22.6, fp: [0.8, 0.6] }, { sprite: 'st_banc', x: 26.0, z: 22.8, fp: [1.8, 0.6] }, { sprite: 'st_pylone', x: 2.6, z: 13.8, fp: [0.7, 0.7] },
       { sprite: 'st_voiture', x: 41.5, z: 20.4, fp: [4.4, 2.0] } ],
     glows: [
-      { x: 10, z: 16, rx: 1.6, rz: 3.4, color: NEON_V, i: 0.55 }, { x: 14.6, z: 16.2, rx: 1.4, rz: 3, color: NEON_V, i: 0.6, flicker: true }, { x: 21, z: 15.6, rx: 2.4, rz: 3.2, color: NEON_C, i: 0.55 },
-      { x: 27.6, z: 16.6, rx: 2, rz: 3.4, color: NEON_C, i: 0.7, flicker: true }, { x: 33.2, z: 15.8, rx: 2.2, rz: 2.4, color: WARM, i: 0.55 }, { x: 40, z: 16, rx: 1.8, rz: 3, color: NEON_C, i: 0.5 },
-      { x: 44.8, z: 16.4, rx: 2, rz: 3, color: NEON_V, i: 0.6, flicker: true }, { x: 15, z: 20.2, rx: 1.8, rz: 3, color: NEON_C, i: 0.5 }, { x: 20.2, z: 20.4, rx: 2, rz: 3.2, color: NEON_V, i: 0.65, flicker: true },
-      { x: 31, z: 20.2, rx: 1.8, rz: 3, color: NEON_C, i: 0.5 }, { x: 46, z: 20.6, rx: 2, rz: 2.4, color: WARM, i: 0.5 }, { x: 6, z: 18, rx: 2.6, rz: 3.4, color: NEON_V, i: 0.35 },
-      { x: 24, z: 9, rx: 7, rz: 4, color: NEON_C, i: 0.2 }, { x: 39.5, z: 13.4, rx: 3.6, rz: 1.6, color: NEON_C, i: 0.55 }, { x: 13.4, z: 9.2, rx: 1.6, rz: 2.2, color: WARM, i: 0.5 } ],
+      { x: 10, z: 16, rx: 2.1, rz: 4.4, color: NEON_V, i: 0.8 }, { x: 14.6, z: 16.2, rx: 1.8, rz: 3.9, color: NEON_V, i: 0.85, flicker: true }, { x: 21, z: 15.6, rx: 3.1, rz: 4.2, color: NEON_C, i: 0.8 },
+      { x: 27.6, z: 16.6, rx: 2.6, rz: 4.4, color: NEON_C, i: 0.95, flicker: true }, { x: 33.2, z: 15.8, rx: 2.9, rz: 3.1, color: WARM, i: 0.8 }, { x: 40, z: 16, rx: 2.3, rz: 3.9, color: NEON_C, i: 0.75 },
+      { x: 44.8, z: 16.4, rx: 2.6, rz: 3.9, color: NEON_V, i: 0.85, flicker: true }, { x: 15, z: 20.2, rx: 2.3, rz: 3.9, color: NEON_C, i: 0.75 }, { x: 20.2, z: 20.4, rx: 2.6, rz: 4.2, color: NEON_V, i: 0.9, flicker: true },
+      { x: 31, z: 20.2, rx: 2.3, rz: 3.9, color: NEON_C, i: 0.75 }, { x: 46, z: 20.6, rx: 2.6, rz: 3.1, color: WARM, i: 0.75 }, { x: 6, z: 18, rx: 3.4, rz: 4.4, color: NEON_V, i: 0.6 },
+      { x: 24, z: 9, rx: 9.1, rz: 5.2, color: NEON_C, i: 0.45 }, { x: 39.5, z: 13.4, rx: 4.7, rz: 2.1, color: NEON_C, i: 0.8 }, { x: 9, z: 15.2, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 24, z: 15.2, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 40, z: 15.2, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 },
+      { x: 15, z: 21.4, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 31, z: 21.4, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 2.5, z: 18, rx: 2.4, rz: 3.6, color: NEON_C, i: 0.6, flicker: true },
+      { x: 13.4, z: 9.2, rx: 2.1, rz: 2.9, color: WARM, i: 0.75 } ],
     extras: [ { sprite: SOLDAT, x: 34.0, z: 13.6, face: -1, role: 'soldat' }, { sprite: SOLDAT, x: 44.2, z: 12.9, face: -1, role: 'soldat' },
       { sprite: civ(2), x: 32.0, z: 15.4, face: 1, role: 'client' }, { sprite: civ(4), x: 34.6, z: 15.6, face: -1, role: 'client' } ],
     walkers: [ { sprite: civ(0), path: [[2, 14.2], [46, 14.2], [46, 14.8], [2, 14.8]], speed: 1.1, t0: 5 }, { sprite: civ(1), path: [[46, 22.4], [2, 22.4], [2, 23.0], [46, 23.0]], speed: 0.9, t0: 30 },
@@ -113,7 +115,7 @@ export const CLOSED_TEXT = {
 // Crochet du futur combat [décision : mutant à la douane = premier combat ; fuite vers le désert ; 0 PV = capture, Sous-Ville].
 // Le combat n'existe pas encore : la scène « halloran » le remplace par deux choix scriptés (provisoire, documenté).
 // Le jour où le combat existe : l'action « hook:douane_mutant » lancera le combat, et ses deux issues remplaceront ces choix.
-export const COMBAT_HOOKS = { douane_mutant: { status: 'provisoire', fuite: 'warp:steel_route:34:35', capture: 'warp:steel_route:42:34', note: 'L2 : la capture mènera dans la Sous-Ville' } };
+export const COMBAT_HOOKS = { douane_mutant: { status: 'provisoire', fuite: 'warp:steel_route:29:34', capture: 'warp:steel_route:42:34', note: 'L2 : la capture mènera dans la Sous-Ville' } };
 export const DIALOGUES = {
   odile: {
     start: { text: 'Suivant. Motif ?', options: [
@@ -138,7 +140,7 @@ export const DIALOGUES = {
         { if: 'race_mutant', text: 'Hé. Toi. Les mains où je les vois. Non. Le col. Baisse le col.' },
         { if: 'steel_refuse', text: 'Refoulé ? Alors la route, c\u2019est par là. Ne traîne pas sous les tourelles.' },
         { if: 'steel_passe', text: 'Implant lu, tu es en règle. Avance.' } ], options: [
-      { label: 'Courir vers le désert.', if: 'race_mutant', action: 'hook:douane_mutant;hurt:9;flag:steel_attaque;flag:steel_fui;warp:steel_route:34:35', next: 'fui' },
+      { label: 'Courir vers le désert.', if: 'race_mutant', action: 'hook:douane_mutant;hurt:9;flag:steel_attaque;flag:steel_fui;warp:steel_route:29:34', next: 'fui' },
       { label: 'Rester. Lever les mains.', if: 'race_mutant', next: 'insiste' },
       { label: 'Je passe juste.', if: '!race_mutant', next: 'end' } ] },
     fui: { text: 'Deux tirs. Le premier soulève le sable, le second t\u2019ouvre l\u2019épaule. Tu cours jusqu\u2019à n\u2019entendre plus que ton souffle.', options: [ { label: 'Reprendre mon souffle.', next: 'end' } ] },

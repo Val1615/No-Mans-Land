@@ -341,5 +341,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
       hidden.forEach(o => o.visible = true); scene.background = bg; return url; },
     lightOf: () => light,
+    // v13 : décor seul (personnages masqués), pour mesurer la palette d'un lieu sans les vêtements des personnages
+    envShot: () => { render(); const hid = [player, companion, ...npcSprites, ...decor].filter(o => o.visible); hid.forEach(o => o.visible = false); renderer.render(scene, cam);
+      const url = canvas.toDataURL('image/png'); hid.forEach(o => o.visible = true); return url; },
     orderOf: id => id === 'player' ? player.renderOrder : bsprites.find(s => s.userData.buildingId === id)?.renderOrder };
 }

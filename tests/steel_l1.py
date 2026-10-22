@@ -18,6 +18,18 @@ def aligned(A, B, r=4):  # même mesure que flip_pixels (recalage ±r px), pour 
     a = pad(A)
     def best(I): return min(np.abs(a - pad(I, dx, dy)).sum(2)[MAG(a) | MAG(pad(I, dx, dy))].mean() for dx in range(-r, r + 1) for dy in range(-r, r + 1))
     return round(best(B), 1), round(best(B[:, ::-1]), 1)
+# v13 : mesures d'image (canvas rendu, bandeaux HUD exclus) : saturation moyenne, part de pixels néon, luminance des zones éclairées
+def hsv(a):
+    a = a / 255.0; mx, mn = a.max(2), a.min(2); return mx, np.where(mx > 0, (mx - mn) / np.maximum(mx, 1e-6), 0)
+def mood(a):
+    v, sat = hsv(a); r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    neon = (sat > 0.45) & (v > 0.45) & ((b > r + 10) | ((b > g) & (r > g + 10)))  # néons froids : cyan, bleu, violet (le sable orangé n'en est pas)
+    return {'sat': round(float(sat.mean()), 3), 'neon': round(float(neon.mean()), 4), 'v95': round(float(np.percentile(v, 95)), 3), 'v': round(float(v.mean()), 3)}
+def crop_hud(a): h = a.shape[0]; return a[int(h * 0.1):int(h * 0.9)]
+REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../docs/captures/steel-l1-v12/live/')
+def rgb_file(p): return np.asarray(Image.open(p).convert('RGB')).astype(int)
+def centroid(u):
+    a = png(u); m = MAG(a); ys, xs = np.nonzero(m); return (float(xs.mean()), float(ys.mean()), int(m.sum())) if len(xs) else (0, 0, 0)
 RACES = os.environ.get('RACES', 'augmente,cyborg,humain,mutant').split(',')
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
@@ -97,11 +109,45 @@ with sync_playwright() as p:
         ok = waitjs("window.__nml.state.location==='steel_route'", 15); time.sleep(1.2)
         check(f'{T}: jonction à pied Transit -> route de Steel', ok, st()['location'])
         check(f'{T}: texte d\'arrivée (une journée de marche)', 'journée de marche' in E("document.getElementById('msg').textContent"))
+        ROUTE_MOOD = mood(crop_hud(shot()))
         check(f'{T}: HUD : lieu, dollars hors de la ville', 'LA DOUANE' in E("document.getElementById('loc').textContent").upper() and E("document.getElementById('money').textContent").endswith('$'))
-        for b in ['r_porte', 'r_douane']:
+        for b in (['r_porte'] if mob else ['r_porte', 'r_douane']):  # mobile : vue étroite, le poste (à gauche) est mesuré dans la vue d'ensemble
             v = bvis(b); check(f'{T}: {b} rendu à l\'écran (pixels)', v[0] > 0.3 and v[1] > 4000 * dpr * dpr * 0.25, v)
         a = st(); check(f'{T}: autosave à l\'arrivée', E("JSON.parse(localStorage.getItem('nml_save_auto')).state.location") == 'steel_route')
         if race == 'augmente' and not mob: pg.screenshot(path=OUT + f'{prof}-01-route.png')
+        if race == 'augmente':
+            # v13 : disposition de la place forte, vue d'ensemble (caméra de contrôle), mesurée sur les pixels rendus
+            ppm = 15 if not mob else 7.5
+            E(f"window.__nml.view.setCamera({{x:24,z:18,ppm:{ppm}}})"); time.sleep(0.6)
+            pg.screenshot(path=OUT + f'{prof}-02-place-forte.png')
+            c0 = P(24, 0, 18); cx, cy_ = c0['x'] * dpr, c0['y'] * dpr
+            gx, gy, gn = centroid(E("window.__nml.view.isolateBuilding('r_porte')")); px_, py_, pn = centroid(E("window.__nml.view.isolateBuilding('r_douane')"))
+            check(f'{T}: porte du sarcophage en haut à droite de la place', gn > 0 and gx > cx and gy < cy_, (round(gx), round(gy), round(cx), round(cy_)))
+            check(f'{T}: poste de douane à gauche', pn > 0 and px_ < cx - 0.25 * VW * dpr / 2, (round(px_), round(cx)))
+            # la route mène à la porte : chemin marchable depuis l'arrivée jusqu'au pied de la porte, chaussée continue, et le bout de route tombe sur le sprite de la porte
+            path = E("(()=>{const g=window.__nml.game; return window.__findPath(g.grids['steel_route'], {x:34,z:34}, {x:34,z:9})})()")
+            W = E("window.__nml.game.world.LOCATIONS.steel_route")
+            road = [z for z in W['ground']['zones'] if z['kind'] == 'asphalt' and z['x'] <= 34 <= z['x'] + z['w']]
+            check(f'{T}: route reliée à la porte (chemin + chaussée continue)', path and len(path) > 2 and road and road[0]['z'] <= 8 and road[0]['z'] + road[0]['d'] >= 36, (len(path or []), road))
+            end = P(34, 0.6, 8.0); gate = png(E("window.__nml.view.isolateBuilding('r_porte')"))
+            ex, ey = int(end['x'] * dpr), int(end['y'] * dpr); win = gate[max(0, ey - 6):ey + 6, max(0, ex - 6):ex + 6]
+            check(f'{T}: le bout de la route entre dans la porte (pixels du sprite)', MAG(win).mean() > 0.5, round(float(MAG(win).mean()), 2))
+            dec = E("window.__nml.view.decor()")
+            def seen(i):
+                a = png(E(f'window.__nml.view.isolateDecor({i})')); return int(MAG(a).sum())
+            sold = [d for d in dec if d['role'] == 'soldat']; queue = [d for d in dec if d['role'] == 'file']
+            ns = sum(seen(d['i']) > 40 for d in sold) + 1  # + Halloran ; > 40 px d'écran = personnage effectivement rendu dans le champ
+            nq = sum(seen(d['i']) > 40 for d in queue)
+            check(f'{T}: beaucoup de soldats visibles (>= 10)', ns >= 10, ns)
+            dz = E("window.__nml.game.doorById('r_douane_door').threshold")
+            first = min(queue, key=lambda d: np.hypot(d['x'] - dz['x'], d['z'] - dz['z']))
+            xs = sorted(d['x'] for d in queue); zs = [d['z'] for d in queue]
+            check(f'{T}: file d\'attente visible devant le poste (>= 6, alignée)', nq >= 6 and np.hypot(first['x'] - dz['x'], first['z'] - dz['z']) < 3.5 and max(zs) - min(zs) < 1.0 and max(np.diff(xs)) < 1.6, (nq, first, round(max(zs) - min(zs), 2)))
+            props = [p.get('sprite') for p in W['props']]
+            cnt = {k: props.count(k) for k in ['st_mirador', 'st_tourelle', 'st_barricade', 'st_projecteur', 'sandbags']}
+            check(f'{T}: fortifications (miradors, tourelles, barbelés, projecteurs, sacs)', cnt['st_mirador'] >= 3 and cnt['st_tourelle'] >= 3 and cnt['st_barricade'] >= 6 and cnt['st_projecteur'] >= 3 and cnt['sandbags'] >= 2, cnt)
+            E("window.__nml.view.setCamera(null)"); time.sleep(0.5)
+            check(f'{T}: nuit sur la place (fond et éclairage du lieu)', E("window.__nml.view.lightOf().bg") == '#0c0f18')
         if race == 'mutant':
             # 2m. attaqué à vue : le soldat interpelle dès qu'on approche (scène provisoire, crochet du futur combat)
             h = E("window.__nml.npcs.find(n=>n.id==='halloran')"); walk(h['x'] + 3, h['z'] + 5, tol=1.2)
@@ -119,12 +165,25 @@ with sync_playwright() as p:
                 check(f'{T}: texte de capture sans mécanique', 'Sous-Ville' in dtext())
             check(f'{T}: crochet combat signalé (hook douane_mutant)', 'douane_mutant' in (st().get('hooks') or []))
             close_dlg(); time.sleep(0.4)
-            check(f'{T}: la porte de la douane reste interdite', E("(()=>{const r=window.__nml.game.useDoor('r_douane_door');return r && r.ok===false && r.reason==='mutant'})()"))
+            r = E("window.__nml.game.useDoor('r_douane_door')"); check(f'{T}: la porte de la douane reste interdite', r and r.get('ok') is False and r.get('reason') == 'mutant', (r, st()['location'], st()['player']))
             pg.screenshot(path=OUT + f'{prof}-mutant-apres.png')
         else:
             # 2. douane : entrer par la porte peinte, parler à Odile au geste
             ok = enter_door('r_douane_door'); check(f'{T}: entrée dans le poste de douane', ok and st()['location'] == 'douane_in', st()['location'])
             check(f'{T}: lieu « Douane » repéré, nommé dehors ensuite', st()['discovered'].get('r_douane'))
+            if race == 'augmente':
+                # v13 : intérieur cohérent avec l'extérieur (IO) : mobilier io_*, murs/sol IO, porte IO ; palette froide, aucun ton sable
+                L = E("window.__nml.game.world.LOCATIONS.douane_in"); fur = [p['furn'] for p in L['props']]
+                check(f'{T}: intérieur douane : mobilier IO seulement (>= 5, dont scanner)', all(f.startswith('io_') for f in fur) and len(fur) >= 5 and 'io_scanner' in fur, fur)
+                check(f'{T}: intérieur douane : murs, sol et porte IO', L['wallSkin'] == 'w_io_dark' and L['ground']['skin'].startswith('f_io') and L['doorSkin'] == 'door_io')
+                time.sleep(0.6); a = png(E("window.__nml.view.envShot()")); v, sat = hsv(a); r_, g_, b_ = a[..., 0], a[..., 1], a[..., 2]
+                lit = v > 0.15; warm = lit & (r_ - b_ > 35) & (g_ - b_ > 15); cool = lit & (b_ >= r_)
+                check(f'{T}: intérieur douane : palette froide, pas de sable (pixels)', warm.sum() / max(1, lit.sum()) < 0.08 and cool.sum() / max(1, lit.sum()) > 0.5, (round(float(warm.sum() / max(1, lit.sum())), 3), round(float(cool.sum() / max(1, lit.sum())), 3)))
+                vis = 0
+                for k in range(E("window.__nml.view.furnCount()")):
+                    vis += MAG(png(E(f'window.__nml.view.isolateFurn({k})'))).sum() > 400 * dpr * dpr
+                check(f'{T}: intérieur douane : chaque meuble IO rendu à l\'écran', vis == len(fur), (vis, len(fur)))
+                pg.screenshot(path=OUT + f'{prof}-03-douane-interieur.png')
             check(f'{T}: Odile parle par geste', tap_npc('odile') and 'Motif' in dtext())
             option('Entrer. Je cherche du travail.')
             if race in ('augmente', 'cyborg'):
@@ -142,6 +201,32 @@ with sync_playwright() as p:
                 lbl = lambda b: E(f"(()=>{{const e=document.querySelector('.wlabel[data-building=\"{b}\"]');return !!e && !e.hidden && getComputedStyle(e).display!=='none'}})()")
                 check(f'{T}: services non nommés avant découverte', not lbl('c_change') and not lbl('c_arcadius'))
                 pg.screenshot(path=OUT + f'{prof}-{race}-center.png')
+                if race == 'augmente':
+                    # v13 : Center-Town vivant, mesuré sur les pixels : saturation, néons, zones éclairées, contre la v12 et contre l'approche
+                    time.sleep(0.5); M = mood(crop_hud(shot())); ref = REF + f'{prof}-augmente-center.png'  # écran réel, à l'arrivée (même cadrage que la capture v12)
+                    R12 = mood(crop_hud(rgb_file(ref))) if os.path.exists(ref) else None
+                    check(f'{T}: Center-Town : saturation et néons nettement supérieurs à la v12', R12 and M['sat'] > 1.4 * R12['sat'] and M['neon'] > 2 * max(R12['neon'], 0.002), (M, R12))
+                    check(f'{T}: Center-Town : lumières (p95) et néons nettement au-dessus de l\'approche', M['v95'] > 1.3 * ROUTE_MOOD['v95'] and M['neon'] > 3 * max(ROUTE_MOOD['neon'], 0.002) and M['sat'] > 1.1 * ROUTE_MOOD['sat'], (M, ROUTE_MOOD))
+                    check(f'{T}: Center-Town : sol mouillé, nuit', E("window.__nml.game.world.LOCATIONS.steel_center.ground.skin") == 'g_wet' and E("window.__nml.view.lightOf().bg") == '#0b0a16')
+                    d0 = {d['i']: d for d in E("window.__nml.view.decor()")}; time.sleep(1.2); d1 = E("window.__nml.view.decor()")
+                    moved = [d for d in d1 if d['role'] == 'passant' and np.hypot(d['x'] - d0[d['i']]['x'], d['z'] - d0[d['i']]['z']) > 0.4]
+                    drones = [d for d in d1 if d['role'] == 'drone' and np.hypot(d['x'] - d0[d['i']]['x'], d['z'] - d0[d['i']]['z']) > 0.1]
+                    check(f'{T}: passants qui marchent (>= 5) et drones en vol (>= 3)', len(moved) >= 5 and len(drones) >= 3, (len(moved), len(drones)))
+                    ok_f, sides = 0, set()
+                    for d in d1:
+                        if d['role'] != 'passant': continue
+                        a0 = d0[d['i']]; sr = E(f"window.__nml.view.screenRightOf({d['x'] - a0['x']},{d['z'] - a0['z']})")
+                        if abs(sr) > 0.2: ok_f += (sr > 0) == (d['facing'] > 0); sides.add(d['facing'])
+                    check(f'{T}: passants tournés dans leur sens de marche (miroir), dans les deux sens', ok_f >= 4 and sides == {1, -1}, (ok_f, sides))
+                    W = E("window.__nml.game.world.LOCATIONS.steel_center"); sp = [p.get('sprite') for p in W['props']]
+                    check(f'{T}: échoppes, hologrammes, lampadaires néon, reflets au sol', sp.count('st_echoppe') >= 2 and sp.count('st_holo') >= 3 and sp.count('st_lampadaire') >= 4 and len(W['glows']) >= 10, (sp.count('st_echoppe'), sp.count('st_holo'), len(W['glows'])))
+                    fps = E("new Promise(r=>{let n=0;const t=performance.now();(function f(){n++;if(performance.now()-t<2000)requestAnimationFrame(f);else r(n/2)})()})")
+                    check(f'{T}: perf Center-Town (rendu logiciel SwiftShader) >= 8 i/s', fps >= 8, fps)
+                    if not mob:  # vue comparable au concept art : la rotonde, la rue mouillée, les néons
+                        E("window.__nml.view.setCamera({x:24,z:13.5,ppm:38})"); time.sleep(0.8); pg.screenshot(path=OUT + 'desktop-04-vue-concept.png')
+                        C = mood(crop_hud(shot())); A = mood(rgb_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../docs/villes/steel/ambiance/concept_center_town.jpg')))
+                        check(f'{T}: vue concept : ambiance proche du concept art (néons et saturation du même ordre)', 0.5 * A['sat'] < C['sat'] < 2.2 * A['sat'] and C['neon'] > 0.3 * A['neon'], (C, A))
+                        E("window.__nml.view.setCamera(null)"); time.sleep(0.5)
                 # PNJ animé / miroir : le patrouilleur regarde l'avenue, puis se tourne vers le joueur
                 n = E("window.__nml.npcs.find(n=>n.id==='patrouilleur')"); walk(n['x'] + 1.8, n['z'] + 0.6, tol=1.2); time.sleep(0.5)
                 f0 = E("window.__nml.view.facingOf('patrouilleur')"); V0 = png(E("window.__nml.view.isolate('patrouilleur')"))
