@@ -1,4 +1,5 @@
 // v15 [proposition] Scènes de menace avec test de Volonté (peur, douleur, intimidation).
+// paycr:N = paiement en crédits (Steel, côté ville). [proposition] action à créer dans game.js, sur le modèle de pay.
 // Format : test 'attribut:seuil' sur 10, pass/fail remplacent next ; if 'volonte>=7' = réplique sans jet.
 // Personnages : Odile (douane de Steel), Nane (guetteuse, Les Poutres), Pic (dealer, Le Tripot). Monnaie Sous-Ville : dollar.
 export const DIALOGUES_VOLONTE = {
@@ -12,7 +13,7 @@ export const DIALOGUES_VOLONTE = {
       { label: 'Ça ne vous regarde pas.', next: 'formulaire' } ] },
     formulaire: { text: 'Voilà le formulaire 12-B. Vous déclarez avoir quitté le parcours de transit. Vous signez, je classe, vous partez. Vous ne signez pas, j\'appelle le poste.', options: [
       { label: 'Je ne signerai rien.', test: 'volonte:6', pass: 'tient', fail: 'cede' },
-      { label: 'Appelez le poste. Et dites-leur pour votre cousin.', if: 'volonte>=7', next: 'cousin' },
+      { label: 'Appelez le poste. Et dites-leur pour votre cousin.', if: 'info_cousin_odile&volonte>=7', next: 'cousin' },
       { label: 'Bon. Je signe.', action: 'flag:odile_signe;flag:steel_fiche', next: 'signe' },
       { label: 'Il y a des frais pour éviter le poste ?', next: 'frais' } ] },
     tient: { text: 'Elle vous regarde longtemps. Puis elle regarde l\'heure. Il est seize heures cinquante.', options: [
@@ -27,12 +28,12 @@ export const DIALOGUES_VOLONTE = {
       { label: 'Une fois par mois, c\'est ça ?', next: 'cousin2' } ] },
     cousin2: { text: 'Je ne sais pas de quoi vous parlez. Faux contact. Ça arrive. Partez avant que je sache de quoi vous parlez.', options: [
       { label: 'Je pars.', action: 'flag:odile_tenu;flag:odile_menacee', next: 'end' } ] },
-    frais: { text: 'Il y a des frais de régularisation. Quinze dollars. Il n\'y a pas de reçu, parce que le formulaire de reçu, c\'est aussi le 12-B.', options: [
-      { label: 'Payer 15 $.', action: 'pay:15;flag:odile_payee', next: 'payee' },
+    frais: { text: 'Il y a des frais de régularisation. Huit crédits. Il n\'y a pas de reçu, parce que le formulaire de reçu, c\'est aussi le 12-B.', options: [
+      { label: 'Payer 8 cr.', action: 'paycr:8;flag:odile_payee', next: 'payee' },
       { label: 'Non. Faites votre 12-B.', test: 'volonte:6', pass: 'tient', fail: 'cede' } ] },
     payee: { text: 'Faux contact. Ça arrive. Ne repassez pas avec le même implant la même semaine.', options: [
       { label: 'Compris.', next: 'end' } ] },
-    pauvre: { text: 'Il manque des dollars. Le 12-B, lui, ne manque jamais.', options: [
+    pauvre: { text: 'Il manque des crédits. Le 12-B, lui, ne manque jamais.', options: [
       { label: 'Je signe.', action: 'flag:odile_signe;flag:steel_fiche', next: 'signe' } ] },
   },
 
@@ -98,5 +99,16 @@ export const DIALOGUES_VOLONTE = {
       { label: 'Non. Salut.', action: 'flag:pic_tenu;flag:pic_rancune', next: 'end' } ] },
     pauvre: { text: 'Pas les dollars ? Alors on prend le manteau. Il te va mal, de toute façon.', options: [
       { label: 'Donner le manteau.', action: 'flag:pic_paie;flag:pic_depouille', next: 'end' } ] },
+  },
+};
+
+// Source de l'info sur le cousin d'Odile : Halloran, au poste de la douane. Option à ajouter à halloran.start, par ex. if: '!race_mutant&!info_cousin_odile'.
+export const DIALOGUES_INFO = {
+  halloran_cousin: {
+    start: { text: 'La guichetière ? Elle compte tout. Sauf un gars, le premier du mois. Il passe sans faire la queue, et il repart avec le même sourire qu\'elle.', options: [
+      { label: 'Un parent ?', next: 'cousin' },
+      { label: 'Ça ne me regarde pas.', next: 'end' } ] },
+    cousin: { text: 'Un cousin, d\'après elle. Moi, je regarde. Je ne fais pas de rapport sur ce que je regarde, sinon j\'écrirais toute la journée.', options: [
+      { label: 'Merci, sergent.', action: 'flag:info_cousin_odile', next: 'end' } ] },
   },
 };
