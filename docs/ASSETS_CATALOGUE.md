@@ -343,3 +343,30 @@ Rév. 2 (2026-10-22) : `lt_tuyau_coude` : correction d'angle par pentes forcées
 Branche rebasée sur e92b1c8 (aucune modification de `src/` ni `tests/`). `tools_lowertown.reconcile()` : les 17 emprises du manifest étaient déjà celles du tableau ; largeurs px = K (w cos 34,5° + d sin 34,5°) à ±0,7 % près ; pivot x recalé sur le coin avant de l'emprise (K w cos 34,5°) : `lt_tuyau_coude` 37 → 103, `lt_passerelle` 31 → 62, `lt_sodium` 17 → 33, `lt_bidons` 20 → 25, `lt_atelier_petit` / `lt_immeuble_ouvrier` 325 → 330, `lt_horloge_pointage` 37 → 41, `lt_ferraille` 58 → 62, autres ±3 px ; `lt_atelier_petit` hauteur 5,0 → 4,5 m (lower_town.js).
 
 `lt_dalle_center` (nouveau, généré `art-gen/gen_lt_dalle_module.jpg`, `build_dalle()`) : bord et sous-face de la dalle de Center-Town (béton, poutres, chemins de câbles, tuyaux, feux de service ambre), 5 pylônes en x = 2 + 10,5 i, z 0,6 (comme les `solid` de lower_town.js), sous-face à 15 m. Une travée générée, détourée (despill complet), cisaillée 0,162 → 0,331 (axe x v4), mise à l'échelle (pylône = 15 m, ×1,13), répétée 5 fois par le vecteur écran exact de 10,5 m (432,7 px) avec fondu de 24 px ; coupes aux bornes x = 0 et 48. 2048 × 1648 px, pivot [1977, 1646] = sol (48, 2,5). judge accepté (pente 0,30, part bande v4 1,0). Licence de DA : la caméra v4 plonge, la sous-face n'est géométriquement pas visible ; elle est montrée en bord de dalle, comme sur les planches validées.
+## Asia-Ground — lot 1 (branche `creation/asia-ground-sprites`, 2026-10-22)
+
+Source : `PLAN_IMPLEMENTATION.md` §2, fiche `ASIA_GROUND.md`, planche validée `art-gen/concepts/quartier_asia_ground_*` (nml-quartiers). Pipeline `tools_asiaground.py` (dérivé de `tools_lowertown.py`) : fond vert, `key_green_obj` + despill de bord, `v4fix`, `keystone` auto, `judge`, 50 px/m, pivot = coin avant bas géométrique. Rapport : `assets/buildings/rapport_angles_asiaground.json`. Planche : `nml-shots/asiaground_sprites.png` (planche d'assets, pas une capture). Canon : enseignes bilingues lisibles, pas de pagode, pas de rose, un seul cyan (`ag_neon_io`).
+
+| id | origine | source | emprise m | h m | px | pivot | judge | arête basse v4 | h implicite |
+|---|---|---|---|---|---|---|---|---|---|
+| `ag_restaurant` (« Chez Lin 林记 ») | **généré** | `art-gen/gen_ag_restaurant.jpg` | 8 × 6 | 10 | 500×569 | [330, 568] | oui | True | 7.77 |
+| `ag_restaurant_b` | **généré** | `art-gen/gen_ag_restaurant_b.jpg` | 8 × 6 | 10 | 500×667 | [330, 666] | oui | True | 10.02 |
+| `ag_halle_module` | **généré** | `art-gen/gen_ag_halle_module.jpg` | 8 × 16 | 3 | 783×551 | [330, 550] | oui | True | 2.84 |
+| `ag_boutique` | **généré** | `art-gen/gen_ag_boutique.jpg` | 6 × 5 | 4 | 389×330 | [247, 329] | oui | True | 3.41 |
+| `ag_boutique_b` (rév. 2) | **généré** | `art-gen/gen_ag_boutique_b2.jpg` | 6 × 5 | 4 | 389×325 | [247, 324] | oui | True | 3.29 |
+| `ag_bureau` | **généré** | `art-gen/gen_ag_bureau.jpg` | 6 × 5 | 7 | 389×440 | [247, 439] | oui | True | 5.92 |
+| `ag_escalier` | **généré** | `art-gen/gen_ag_escalier.jpg` | 8 × 14 | 10 | 726×866 | [330, 865] | oui | True | 10.93 |
+| `ag_monte_charge` | **généré** | `art-gen/gen_ag_monte_charge.jpg` | 4 × 4 | 9 | 278×545 | [165, 544] | oui | True | 9.39 |
+| `ag_stand_nouilles` | **généré** | `art-gen/gen_ag_stand_nouilles.jpg` | 2.5 × 1.5 | 2.5 | 145×164 | [103, 163] | oui | True | 2.28 |
+| `ag_stand_poisson` (rév. 2) | **généré** | `art-gen/gen_ag_stand_poisson.jpg` | 3.5 × 3 | 1.1 | 229×154 | [144, 153] | oui | True | 1.08 |
+| `ag_stand_pieces` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/street-detail-v9.png 1038,520,1499,988` | 4 × 2 | 2.2 | 221×182 | [165, 181] | oui | True | 1.99 |
+| `ag_lanterne_cable` | **généré** | `art-gen/gen_ag_lanterne_cable.jpg` | 5 × 1 | 3 | 234×212 | [206, 211] | oui | True | 2.84 |
+| `ag_auvent` | **généré** | `art-gen/gen_ag_auvent.jpg` | 5 × 2.5 | 2.4 | 277×218 | [206, 217] | oui | True | 2.29 |
+| `ag_caisses_legumes` (rév. 2) | **généré** | `art-gen/gen_ag_caisses_legumes.jpg` | 1.2 × 0.8 | 0.7 | 72×48 | [49, 47] | oui | True | 0.36 |
+| `ag_glaciere` | **généré** | `art-gen/gen_ag_glaciere.jpg` | 1 × 0.6 | 0.9 | 58×57 | [41, 56] | oui | True | 0.72 |
+| `ag_wok` (rév. 2) | **généré** | `art-gen/gen_ag_wok2.jpg` | 1 × 1 | 0.9 | 70×71 | [41, 70] | oui | True | 0.86 |
+| `ag_chariot` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-domestic.png 554,127,1009,432` | 1.8 × 0.9 | 1 | 100×49 | [74, 48] | oui | True | 0.15 |
+| `ag_hautparleur_io` | **généré** | `art-gen/gen_ag_hautparleur_io.jpg` | 0.6 × 0.6 | 4.5 | 42×166 | [25, 165] | oui | None | 3.33 |
+| `ag_neon_io` | **généré** | `art-gen/gen_ag_neon_io.jpg` | 1.2 × 0.3 | 1 | 58×57 | [49, 56] | oui | False | 0.79 |
+
+Maquette réutilisée (origine `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/`, étalonnage nuit) : `ag_stand_pieces` (street-detail-v9), `ag_chariot` (props-v9-domestic). Rév. 2 : `ag_boutique_b` enseigne corrigée ÉLECTRONIQUE 电器 (retouche par régénération de la même image, `gen_ag_boutique_b2.jpg`, mêmes px/pivot en largeur, hauteur 331 → 325 px) ; `ag_stand_poisson` régénéré sur socle (la version maquette Props-v6, écrasée par le cisaillement, est abandonnée) ; `ag_wok` posé sur une plaque carrée rivetée (arêtes v4 mesurables) ; `ag_caisses_legumes` despill limité à la bande de bord, verts des légumes conservés. Réserve restante : `ag_chariot` hauteur implicite non significative (objet bas et long).
