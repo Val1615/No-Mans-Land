@@ -99,7 +99,8 @@ export const LOCATIONS = {
   tripot_in: { id: 'tripot_in', name: 'Sous-Ville · Le Tripot', kind: 'interior', size: { w: 8, d: 6 },
     light: { bg: '#0a0604', hemi: ['#ffb070', '#2a1208', 1.15], sun: ['#ff9a50', 0.95] },
     ground: { base: '#3a3028', skin: 'f_sv_plates', tileM: 2 }, wall: '#3a2a20', wallSkin: 'w_sv_tin', buildings: [], props: [
-      { furn: 'sv_bar', x: 0.3, z: 0.3 }, { furn: 'sv_shelf', x: 5.8, z: 0.2 }, { furn: 'sv_cardtable_b', x: 5.0, z: 2.6 } ], city: null },
+      { furn: 'sv_bar', x: 0.3, z: 0.3 }, { furn: 'sv_shelf', x: 5.8, z: 0.2 }, { furn: 'sv_cardtable_b', x: 5.0, z: 2.6 } ],
+    glows: [{ x: 5.6, z: 3.2, rx: 1.4, rz: 1.4, color: WARM, i: 0.6 }], city: null },
   // v14 [proposition] la Cuve : atelier d'Elio, monte-charge vers Center-Town (au nord-est).
   sv_cuve: { id: 'sv_cuve', name: 'Sous-Ville · La Cuve', kind: 'exterior', size: { w: 36, d: 28 }, light: UNDER,
     ground: { base: '#3a2c20', skin: 'g_sv', tileM: 5, clean: true, zones: [ { x: 0, z: 11, w: 36, d: 7, kind: 'plate', tint: 'rgba(20,10,0,.35)' } ] },
