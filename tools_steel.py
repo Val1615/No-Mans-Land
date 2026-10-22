@@ -66,6 +66,10 @@ def key_bg(path, q=None):  # v13 : fond uni (magenta) retiré par distance à la
   d = np.sqrt(((a - bg) ** 2).sum(2)); al = np.clip((d - 45) / 45, 0, 1)
   al = ndimage.binary_erosion(ndimage.binary_opening(al > 0.5, iterations=2), iterations=2) * al  # v13 : on rogne 2 px de bord (liseré violet du fond)
   k = np.clip(al, 0.05, 1)[..., None]; a = np.clip((a - (1 - k) * bg) / k, 0, 255)  # retire la part de fond des bords
+  if 'gen_sv_' in path:  # v14 : Sous-Ville (tons chauds, aucun violet voulu) : liseré magenta du fond retiré sur 8 px de bord
+    edge = (al > 0) & ~ndimage.binary_erosion(al > 0, iterations=8); mag = (a[..., 0] > a[..., 1] + 40) & (a[..., 2] > a[..., 1] + 25)
+    al = np.where(edge & mag, 0, al); al = ndimage.binary_opening(al > 0.5, iterations=1) * al
+    mag = (a[..., 0] > a[..., 1] + 20) & (a[..., 2] > a[..., 1] + 12); gg = a[..., 1][mag]; a[mag] = np.stack([gg * 1.25, gg, gg * 0.85], 1)  # ombres teintées de rose -> brun
   import tools_interiors as TI
   return TI.clean(np.dstack([a, al * 255]).astype('uint8'), 4000)
 def load_cell(cell):
