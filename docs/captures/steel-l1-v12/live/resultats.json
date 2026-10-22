@@ -1,0 +1,1067 @@
+[
+ {
+  "test": "desktop/augmente: perso créé (augmente)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "desktop/augmente: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 84702)"
+ },
+ {
+  "test": "desktop/augmente: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.93, 35655)"
+ },
+ {
+  "test": "desktop/augmente: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: entrée dans le poste de douane",
+  "ok": true,
+  "detail": "douane_in"
+ },
+ {
+  "test": "desktop/augmente: lieu « Douane » repéré, nommé dehors ensuite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: Odile parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: implant lu, passage accordé",
+  "ok": true,
+  "detail": "Poignet. Plus près. Voilà. Implant lu, aucune dette, aucun s"
+ },
+ {
+  "test": "desktop/augmente: drapeau steel_passe",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: change à la douane 20 $ -> 11 cr",
+  "ok": true,
+  "detail": "(15, 11)"
+ },
+ {
+  "test": "desktop/augmente: barrière franchie -> Center-Town",
+  "ok": true,
+  "detail": "steel_center"
+ },
+ {
+  "test": "desktop/augmente: quête : arrivé en ville (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: HUD en crédits dans Steel",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: services non nommés avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: patrouilleur parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: patrouilleur tourné vers le joueur, image en miroir",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(133.6), np.float64(36.3))"
+ },
+ {
+  "test": "desktop/augmente: le change est repéré par la conversation",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: « Change de Teng » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: c_change rendu devant le joueur (pixels)",
+  "ok": true,
+  "detail": "(0.9, 33017)"
+ },
+ {
+  "test": "desktop/augmente: entrée chez Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: Teng parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: change chez Teng 10 $ -> 6 cr",
+  "ok": true,
+  "detail": "(5, 17)"
+ },
+ {
+  "test": "desktop/augmente: Arcadius repéré par Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: c_arcadius rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.92, 28612)"
+ },
+ {
+  "test": "desktop/augmente: c_neon rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.97, 43285)"
+ },
+ {
+  "test": "desktop/augmente: c_tour rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.96, 50318)"
+ },
+ {
+  "test": "desktop/augmente: Arcadius Center nommé dehors",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/augmente: journal : arrivé à Steel, la suite attend",
+  "ok": true,
+  "detail": "olis. La suite attendra : d'abord, apprendre la ville.\nLIEUX REPÉRÉS\nDouane\nLa douane\nChange de Teng\nCenter-Town\nArcadius Center\nCenter-Town\nNOTES\nRien de noté."
+ },
+ {
+  "test": "desktop/augmente: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "desktop/cyborg: perso créé (cyborg)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "desktop/cyborg: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 84702)"
+ },
+ {
+  "test": "desktop/cyborg: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.93, 35655)"
+ },
+ {
+  "test": "desktop/cyborg: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: entrée dans le poste de douane",
+  "ok": true,
+  "detail": "douane_in"
+ },
+ {
+  "test": "desktop/cyborg: lieu « Douane » repéré, nommé dehors ensuite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: Odile parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: implant lu, passage accordé",
+  "ok": true,
+  "detail": "Poignet. Plus près. Voilà. Implant lu, aucune dette, aucun s"
+ },
+ {
+  "test": "desktop/cyborg: drapeau steel_passe",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: change à la douane 20 $ -> 11 cr",
+  "ok": true,
+  "detail": "(10, 11)"
+ },
+ {
+  "test": "desktop/cyborg: barrière franchie -> Center-Town",
+  "ok": true,
+  "detail": "steel_center"
+ },
+ {
+  "test": "desktop/cyborg: quête : arrivé en ville (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: HUD en crédits dans Steel",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: services non nommés avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: patrouilleur parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: patrouilleur tourné vers le joueur, image en miroir",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(132.9), np.float64(38.0))"
+ },
+ {
+  "test": "desktop/cyborg: le change est repéré par la conversation",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: « Change de Teng » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: c_change rendu devant le joueur (pixels)",
+  "ok": true,
+  "detail": "(0.9, 33017)"
+ },
+ {
+  "test": "desktop/cyborg: entrée chez Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: Teng parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: change chez Teng 10 $ -> 6 cr",
+  "ok": true,
+  "detail": "(0, 17)"
+ },
+ {
+  "test": "desktop/cyborg: Arcadius repéré par Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: c_arcadius rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.92, 28612)"
+ },
+ {
+  "test": "desktop/cyborg: c_neon rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.97, 43285)"
+ },
+ {
+  "test": "desktop/cyborg: c_tour rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.96, 50318)"
+ },
+ {
+  "test": "desktop/cyborg: Arcadius Center nommé dehors",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/cyborg: journal : arrivé à Steel, la suite attend",
+  "ok": true,
+  "detail": "olis. La suite attendra : d'abord, apprendre la ville.\nLIEUX REPÉRÉS\nDouane\nLa douane\nChange de Teng\nCenter-Town\nArcadius Center\nCenter-Town\nNOTES\nRien de noté."
+ },
+ {
+  "test": "desktop/cyborg: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "desktop/humain: perso créé (humain)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "desktop/humain: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 84702)"
+ },
+ {
+  "test": "desktop/humain: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.93, 35655)"
+ },
+ {
+  "test": "desktop/humain: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: entrée dans le poste de douane",
+  "ok": true,
+  "detail": "douane_in"
+ },
+ {
+  "test": "desktop/humain: lieu « Douane » repéré, nommé dehors ensuite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: Odile parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: humain refusé (pas d'implant)",
+  "ok": true,
+  "detail": "Je ne lis rien. Pas d’implant, pas de fiche. Pour IO, vous n"
+ },
+ {
+  "test": "desktop/humain: barrière refusée",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'douane'}"
+ },
+ {
+  "test": "desktop/humain: journal : demander à Sol",
+  "ok": true,
+  "detail": "ne. Sol (la citerne, Les Sables) connaît peut-être un autre chemin\nLIEUX REPÉRÉS\nDouane\nLa douane\nNOTES\nDouane de Steel : pas d’implant, pas d’entrée."
+ },
+ {
+  "test": "desktop/humain: Sol parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: option Steel chez Sol",
+  "ok": true,
+  "detail": "['Merci, Sol.']"
+ },
+ {
+  "test": "desktop/humain: Sol indique une autre porte et Bruno",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: trappe repérée, drapeau sol_passage",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: Bruno parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: Bruno donne le nom de son frère (Elio, provisoire) et un mot",
+  "ok": true,
+  "detail": "Elio. Il s'appelle Elio. S'il est en vie, il est en bas, et il fait passer des g"
+ },
+ {
+  "test": "desktop/humain: journal : Elio, Sous-Ville au prochain lot",
+  "ok": true,
+  "detail": "iendra au prochain lot.\nLIEUX REPÉRÉS\nDouane\nLa douane\nSortie de service\nLa douane\nNOTES\nDouane de Steel : pas d’implant, pas d’entrée.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/humain: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "desktop/mutant: perso créé (mutant)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "desktop/mutant: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 84702)"
+ },
+ {
+  "test": "desktop/mutant: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.93, 35655)"
+ },
+ {
+  "test": "desktop/mutant: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: mutant repéré à vue par le soldat",
+  "ok": true,
+  "detail": "Hé. Toi. Les mains où je les vois. Non. Le col. Baisse le col."
+ },
+ {
+  "test": "desktop/mutant: choix fuir / se rendre, pas de passage",
+  "ok": true,
+  "detail": "['Courir vers le désert.', 'Rester. Lever les mains.']"
+ },
+ {
+  "test": "desktop/mutant: fuite vers le désert : blessé, renvoyé loin de la douane",
+  "ok": true,
+  "detail": "(20, 34)"
+ },
+ {
+  "test": "desktop/mutant: crochet combat signalé (hook douane_mutant)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: la porte de la douane reste interdite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: journal : demander à Sol",
+  "ok": true,
+  "detail": "nnaît peut-être un autre chemin\nLIEUX REPÉRÉS\nAucun. Les entrées sont cachées derrière les façades.\nNOTES\nDouane de Steel : un soldat m’a tiré dessus."
+ },
+ {
+  "test": "desktop/mutant: Sol parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: option Steel chez Sol",
+  "ok": true,
+  "detail": "['Merci, Sol.']"
+ },
+ {
+  "test": "desktop/mutant: Sol indique une autre porte et Bruno",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: trappe repérée, drapeau sol_passage",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: Bruno parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: Bruno donne le nom de son frère (Elio, provisoire) et un mot",
+  "ok": true,
+  "detail": "Elio. Il s'appelle Elio. S'il est en vie, il est en bas, et il fait passer des g"
+ },
+ {
+  "test": "desktop/mutant: journal : Elio, Sous-Ville au prochain lot",
+  "ok": true,
+  "detail": "ane\nLa Sous-Ville viendra au prochain lot.\nLIEUX REPÉRÉS\nSortie de service\nLa douane\nNOTES\nDouane de Steel : un soldat m’a tiré dessus.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/mutant: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile/augmente: perso créé (augmente)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "mobile/augmente: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 187815)"
+ },
+ {
+  "test": "mobile/augmente: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.33, 110785)"
+ },
+ {
+  "test": "mobile/augmente: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: entrée dans le poste de douane",
+  "ok": true,
+  "detail": "douane_in"
+ },
+ {
+  "test": "mobile/augmente: lieu « Douane » repéré, nommé dehors ensuite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: Odile parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: implant lu, passage accordé",
+  "ok": true,
+  "detail": "Poignet. Plus près. Voilà. Implant lu, aucune dette, aucun s"
+ },
+ {
+  "test": "mobile/augmente: drapeau steel_passe",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: change à la douane 20 $ -> 11 cr",
+  "ok": true,
+  "detail": "(15, 11)"
+ },
+ {
+  "test": "mobile/augmente: barrière franchie -> Center-Town",
+  "ok": true,
+  "detail": "steel_center"
+ },
+ {
+  "test": "mobile/augmente: quête : arrivé en ville (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: HUD en crédits dans Steel",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: services non nommés avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: patrouilleur parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: patrouilleur tourné vers le joueur, image en miroir",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(146.2), np.float64(27.0))"
+ },
+ {
+  "test": "mobile/augmente: le change est repéré par la conversation",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: « Change de Teng » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: c_change rendu devant le joueur (pixels)",
+  "ok": true,
+  "detail": "(0.88, 84269)"
+ },
+ {
+  "test": "mobile/augmente: entrée chez Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: Teng parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: change chez Teng 10 $ -> 6 cr",
+  "ok": true,
+  "detail": "(5, 17)"
+ },
+ {
+  "test": "mobile/augmente: Arcadius repéré par Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: c_arcadius rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.0, 0)"
+ },
+ {
+  "test": "mobile/augmente: c_neon rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.94, 7029)"
+ },
+ {
+  "test": "mobile/augmente: c_tour rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.94, 44903)"
+ },
+ {
+  "test": "mobile/augmente: Arcadius Center nommé dehors",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/augmente: journal : arrivé à Steel, la suite attend",
+  "ok": true,
+  "detail": "olis. La suite attendra : d'abord, apprendre la ville.\nLIEUX REPÉRÉS\nDouane\nLa douane\nChange de Teng\nCenter-Town\nArcadius Center\nCenter-Town\nNOTES\nRien de noté."
+ },
+ {
+  "test": "mobile/augmente: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile/cyborg: perso créé (cyborg)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "mobile/cyborg: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 187815)"
+ },
+ {
+  "test": "mobile/cyborg: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.33, 110785)"
+ },
+ {
+  "test": "mobile/cyborg: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: entrée dans le poste de douane",
+  "ok": true,
+  "detail": "douane_in"
+ },
+ {
+  "test": "mobile/cyborg: lieu « Douane » repéré, nommé dehors ensuite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: Odile parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: implant lu, passage accordé",
+  "ok": true,
+  "detail": "Poignet. Plus près. Voilà. Implant lu, aucune dette, aucun s"
+ },
+ {
+  "test": "mobile/cyborg: drapeau steel_passe",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: change à la douane 20 $ -> 11 cr",
+  "ok": true,
+  "detail": "(10, 11)"
+ },
+ {
+  "test": "mobile/cyborg: barrière franchie -> Center-Town",
+  "ok": true,
+  "detail": "steel_center"
+ },
+ {
+  "test": "mobile/cyborg: quête : arrivé en ville (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: HUD en crédits dans Steel",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: services non nommés avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: patrouilleur parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: patrouilleur tourné vers le joueur, image en miroir",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(146.8), np.float64(18.4))"
+ },
+ {
+  "test": "mobile/cyborg: le change est repéré par la conversation",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: « Change de Teng » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: c_change rendu devant le joueur (pixels)",
+  "ok": true,
+  "detail": "(0.88, 84269)"
+ },
+ {
+  "test": "mobile/cyborg: entrée chez Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: Teng parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: change chez Teng 10 $ -> 6 cr",
+  "ok": true,
+  "detail": "(0, 17)"
+ },
+ {
+  "test": "mobile/cyborg: Arcadius repéré par Teng",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: c_arcadius rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.0, 0)"
+ },
+ {
+  "test": "mobile/cyborg: c_neon rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.94, 7029)"
+ },
+ {
+  "test": "mobile/cyborg: c_tour rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.94, 44903)"
+ },
+ {
+  "test": "mobile/cyborg: Arcadius Center nommé dehors",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/cyborg: journal : arrivé à Steel, la suite attend",
+  "ok": true,
+  "detail": "olis. La suite attendra : d'abord, apprendre la ville.\nLIEUX REPÉRÉS\nDouane\nLa douane\nChange de Teng\nCenter-Town\nArcadius Center\nCenter-Town\nNOTES\nRien de noté."
+ },
+ {
+  "test": "mobile/cyborg: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile/humain: perso créé (humain)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "mobile/humain: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 187815)"
+ },
+ {
+  "test": "mobile/humain: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.33, 110785)"
+ },
+ {
+  "test": "mobile/humain: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: entrée dans le poste de douane",
+  "ok": true,
+  "detail": "douane_in"
+ },
+ {
+  "test": "mobile/humain: lieu « Douane » repéré, nommé dehors ensuite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: Odile parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: humain refusé (pas d'implant)",
+  "ok": true,
+  "detail": "Je ne lis rien. Pas d’implant, pas de fiche. Pour IO, vous n"
+ },
+ {
+  "test": "mobile/humain: barrière refusée",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'douane'}"
+ },
+ {
+  "test": "mobile/humain: journal : demander à Sol",
+  "ok": true,
+  "detail": "ne. Sol (la citerne, Les Sables) connaît peut-être un autre chemin\nLIEUX REPÉRÉS\nDouane\nLa douane\nNOTES\nDouane de Steel : pas d’implant, pas d’entrée."
+ },
+ {
+  "test": "mobile/humain: Sol parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: option Steel chez Sol",
+  "ok": true,
+  "detail": "['Merci, Sol.']"
+ },
+ {
+  "test": "mobile/humain: Sol indique une autre porte et Bruno",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: trappe repérée, drapeau sol_passage",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: Bruno parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: Bruno donne le nom de son frère (Elio, provisoire) et un mot",
+  "ok": true,
+  "detail": "Elio. Il s'appelle Elio. S'il est en vie, il est en bas, et il fait passer des g"
+ },
+ {
+  "test": "mobile/humain: journal : Elio, Sous-Ville au prochain lot",
+  "ok": true,
+  "detail": "iendra au prochain lot.\nLIEUX REPÉRÉS\nDouane\nLa douane\nSortie de service\nLa douane\nNOTES\nDouane de Steel : pas d’implant, pas d’entrée.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "mobile/humain: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile/mutant: perso créé (mutant)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: jonction à pied Transit -> route de Steel",
+  "ok": true,
+  "detail": "steel_route"
+ },
+ {
+  "test": "mobile/mutant: texte d'arrivée (une journée de marche)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: HUD : lieu, dollars hors de la ville",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: r_porte rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.6, 187815)"
+ },
+ {
+  "test": "mobile/mutant: r_douane rendu à l'écran (pixels)",
+  "ok": true,
+  "detail": "(0.33, 110785)"
+ },
+ {
+  "test": "mobile/mutant: autosave à l'arrivée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: mutant repéré à vue par le soldat",
+  "ok": true,
+  "detail": "Hé. Toi. Les mains où je les vois. Non. Le col. Baisse le col."
+ },
+ {
+  "test": "mobile/mutant: choix fuir / se rendre, pas de passage",
+  "ok": true,
+  "detail": "['Courir vers le désert.', 'Rester. Lever les mains.']"
+ },
+ {
+  "test": "mobile/mutant: capture : blessé, jeté près de la trappe (Sous-Ville = L2)",
+  "ok": true,
+  "detail": "(14, 42)"
+ },
+ {
+  "test": "mobile/mutant: texte de capture sans mécanique",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: crochet combat signalé (hook douane_mutant)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: la porte de la douane reste interdite",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: journal : demander à Sol",
+  "ok": true,
+  "detail": "bles) connaît peut-être un autre chemin\nLIEUX REPÉRÉS\nSortie de service\nLa douane\nNOTES\nDouane de Steel : capturé, puis jeté dehors près d’une trappe."
+ },
+ {
+  "test": "mobile/mutant: Sol parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: option Steel chez Sol",
+  "ok": true,
+  "detail": "['Merci, Sol.']"
+ },
+ {
+  "test": "mobile/mutant: Sol indique une autre porte et Bruno",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: trappe repérée, drapeau sol_passage",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: Bruno parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: Bruno donne le nom de son frère (Elio, provisoire) et un mot",
+  "ok": true,
+  "detail": "Elio. Il s'appelle Elio. S'il est en vie, il est en bas, et il fait passer des g"
+ },
+ {
+  "test": "mobile/mutant: journal : Elio, Sous-Ville au prochain lot",
+  "ok": true,
+  "detail": "viendra au prochain lot.\nLIEUX REPÉRÉS\nSortie de service\nLa douane\nNOTES\nDouane de Steel : capturé, puis jeté dehors près d’une trappe.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "mobile/mutant: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ }
+]

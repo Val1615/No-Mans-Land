@@ -277,3 +277,4 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 
 ### Vérifié
 - `tests/steel_l1.py` (gestes réels 1280×800 et 390×844 dpr 2, quatre races). Captures : `captures/steel-l1-v12/` et `captures/steel-l1-v12/live/`.
+- Live (GitHub Pages) : `steel_l1` **213/213**. Local : lot1_menu 66/66, lot2_creation 101/101, dusk_q1_check, flip_pixels, interiors_pixels, town_pixels 129/129, entrances_walk 48/48, ui_pixels 53/53, quest_walk 132/132 (contrôle du journal final adapté : la route de Steel est ouverte), music_check 64/64.
