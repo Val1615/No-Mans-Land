@@ -1,0 +1,7 @@
+/workspace/scratch/00d29d1aab63/scene-dusk.png
+/workspace/scratch/00d29d1aab63/scene-under.png
+/workspace/scratch/00d29d1aab63/scene-farm.png
+/workspace/scratch/00d29d1aab63/scene-nova.png
+/workspace/scratch/00d29d1aab63/scene-port.png
+/workspace/scratch/00d29d1aab63/scene-steel.png
+/workspace/scratch/00d29d1aab63/scene-cliniccity.png

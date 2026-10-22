@@ -1,0 +1,344 @@
+[
+  {
+    "original": "exec-02bfbec1-3f03-48d1-a53d-e9e8a8846ccf.png",
+    "sha256": "2565a9c301cf04ae9d8eef379f59a8e644207aa685dec3d025b4b91ff5dae7ff",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-urban.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-02c32c94-04c8-40e2-9ce1-8185fa124da7.png",
+    "sha256": "deddd7c44c0b351bb27b08e3acdcd01e7d6abd6a3cabd6a6645ee5526038ea45",
+    "chemin": "05_REFERENCES_VISUELLES/Generations-originales/exec-02c32c94-04c8-40e2-9ce1-8185fa124da7.png",
+    "dedoublonne": false
+  },
+  {
+    "original": "exec-03104996-8c82-4807-aa7c-cd2b3cfbdbb6.png",
+    "sha256": "06b78b806358b921c8e72d6f2c854ce8fee2957f7e127f48506681454a130b46",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/skybridge-v9.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-09100924-07d0-4f72-a8f9-584fea1f8b8f.png",
+    "sha256": "0fc6e055bd5fd96e48d8ce4b1f8d28a5ca804f9cdd8eaecb30634b41d940d3c4",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/forest-tree-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-09e4c427-0875-4acd-b62b-b788b4afecb2.png",
+    "sha256": "c76a796f543c6511f81c3b85b29370c0c7e8c8dcae29b9af6332bb4b54dd5362",
+    "chemin": "05_REFERENCES_VISUELLES/Generations-originales/exec-09e4c427-0875-4acd-b62b-b788b4afecb2.png",
+    "dedoublonne": false
+  },
+  {
+    "original": "exec-10a28900-73d0-4893-9364-3d5ffdf5df87.png",
+    "sha256": "dcfdffbbf6a5d6b757721f9018839f578a5db3e228fd814f60c49974a2290a38",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/buildings.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-12aa3b9a-01b6-452c-ac7c-acfa3cc853b6.png",
+    "sha256": "e3d49b07d8127acf5e1ef3e080f6a275af97a235e17c829653403567e11036df",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/terrain-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-19fb027e-b374-41c7-9cfe-8ce7c370f1fd.png",
+    "sha256": "60968d5aab6330db6d05415542977a45bb3557ed296ef7f30438f40720423a0d",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/portraits-v2.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-220a3406-c469-4259-8930-bbc05173e65d.png",
+    "sha256": "101a10f7157ca73715da7ff989e9ad114230c4bdaf2bd6bb9c5be727e80463f6",
+    "chemin": "05_REFERENCES_VISUELLES/Generations-originales/exec-220a3406-c469-4259-8930-bbc05173e65d.png",
+    "dedoublonne": false
+  },
+  {
+    "original": "exec-29cfdb2f-02c6-4c26-9f79-b96a34635012.png",
+    "sha256": "f29692d5003ee7729815b01abc130a2b8eb526d82dcec596025c1ed8be55f4b7",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/interiors-v2.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-38f16d81-9223-4e08-a6ad-618404f490be.png",
+    "sha256": "bc7bb501b560c69dcbb36b36950fd13f1c8467bb527be190759d06fa97917c5f",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/io-interiors-v10.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-3a541b1e-e8d5-4ba3-942c-897e09ae4081.png",
+    "sha256": "64652a208932933178b4a0f378bd28ffa1fc1f818fb72baf827fc9c663a58a48",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Atlas/concepts/ufsa.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-3dde2ec0-f5e7-49dd-a6f6-14a692007988.png",
+    "sha256": "3c57b7cb84b2172f84f39f6a983ae904a628193e4d0eaf17614b6cdd3457a4c3",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M03.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-42dc5bfc-ebcf-4bd8-b000-2a79e5328822.png",
+    "sha256": "b0eade3117273c4ac185248f453d44ffa30d1ce1bad808326d4454a03582c302",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Atlas/concepts/exterieur.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-56724654-f811-4628-b4a7-93135162d662.png",
+    "sha256": "35101c9bf05d58a90af2ec8a8922942a8a3b8d16ddd2f571216073fb1c840271",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/io-freighter-v10.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-5a10cefa-da8b-4368-8877-218ce0c39c54.png",
+    "sha256": "994727555f61735471c1bc81d7f1d0a5c2c42de13f1df82e50c49d8af0ae25eb",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/props-detail-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-5a8846fb-f445-496b-a42e-cd00844757c9.png",
+    "sha256": "a3662ce236ddc7c7583eca686a8b1135a4b114c9d1bb6969bb3b79cd044799cc",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/linear-v12.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-60913eea-027e-44a3-a03d-dff00b3fa6e3.png",
+    "sha256": "00a283f9e44ffbcb885892096179c255a0ba97f51ce27f9593c9413b0005d99a",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/characters.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-6337302c-ab03-4978-bc2d-b5f36a0a7cbe.png",
+    "sha256": "70e90a0e6bd92c215d66888559119ec0319051c87ed3683cbcf9e11742fb1f3e",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/titan-prone-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-6763930d-f5b7-47bb-ade4-2c939b7e8e55.png",
+    "sha256": "69568534fcfa0c00043aaf5480e364a5b33e6ce0eab747698452302a6129ebf9",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/settlement-v9-dusk.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-68852e24-6de0-422e-b9fa-e005c8014a0d.png",
+    "sha256": "deab4026808efb99809adac92e3cd815051def85ff5dacfd8781f2fd49cf83c1",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/Props-v6.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-6b751d37-1bee-4920-aac4-c08f68a1047a.png",
+    "sha256": "39167b4c3fa04be46c88e7a517f6ad877768c1122d476c537256a8823c407299",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/settlement-v9-upper.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-704f2358-7211-40b5-af45-6458cdc315d1.png",
+    "sha256": "76bd3e7d0c6d93dd8f0943b9e9252a241f414ff66b019bf222d64a47bc10e09a",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M04.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-73b32906-39d6-49ba-b15d-80c65f17c767.png",
+    "sha256": "0075a35f8e92565b34ab43fae82895d8b5f5a62e0cf06ba7bd52609cefef22f1",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/titan.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-7637948a-8a40-42f7-9850-5010c65cbd91.png",
+    "sha256": "e31586eb93db2cbc5c2677d4932ff05dc7d98f6d64bb5885cc9196fc5da45a7c",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-salvage.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-796263a9-9177-40bd-a29f-349c1abfb048.png",
+    "sha256": "89c56f3278baf1f19b530cc41d5a231ecb3daa47dccba678c78662817c1d7661",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/terrain-nature-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-7e8d9366-61d0-4fe2-97fa-7482c3e46f3b.png",
+    "sha256": "877f9d902477f55e5700cbf4aae30d6eb5bd6e4a4dcaee02100460ed18d1171a",
+    "chemin": "05_REFERENCES_VISUELLES/Generations-originales/exec-7e8d9366-61d0-4fe2-97fa-7482c3e46f3b.png",
+    "dedoublonne": false
+  },
+  {
+    "original": "exec-7f6c638d-a8d6-4350-80e2-431d30d2a296.png",
+    "sha256": "715b4ac72b513006291e32da3601ad6107a19b9669ab0ba98925dc8a632f1750",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M06.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-834e0256-bbc7-48e1-89cf-3215cf5d150a.png",
+    "sha256": "48b65fac9fac2178de65fbbe64253d4590f363ec9e63ef1b3704d041e099e960",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v2.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-90a50dbe-dad7-4cd8-afba-47a37b9915f1.png",
+    "sha256": "a5d5fd48e03e52107d3e1dba9615d1b4316baf3eba9752c7cfbbbcaef98a6c56",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M01.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-9ac42996-80fa-4050-bd9c-9cfc1bd079d0.png",
+    "sha256": "c648746b8f662f183e1f5b0fb8a1dbda8537eb2f73fb42c5ee1cae51e046c611",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/service-v10-B.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-9cbdd7d8-ea31-4bfc-811b-b3a93b75fcef.png",
+    "sha256": "785f552f82f7965862ad149f881bdd8e72b7cfa5218b6c65f44199f6adca997c",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/scenery-city-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-9d2a7b02-c133-4be9-851e-8c9109c14155.png",
+    "sha256": "946384ee5fa2578412c45b7eedc8d7467b85f7e689b7d2d76bec15806f9775bf",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/city-props-v3.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-9f07eaf4-a5b4-4396-ad28-c38a1cb201bd.png",
+    "sha256": "8dc91908633f9039dccf02566f02d2b919150d75d19d5254de09494c102691b7",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M07.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-a66edf63-c3b9-4449-8ccb-6a68cdd3f170.png",
+    "sha256": "b4472e4b221a0f4f78d2d3febb2b180d872e24b3d3c28404ee9e76f852b14cea",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/actors-v2.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-a817a6d5-82a1-491e-9fef-ee9d66decf03.png",
+    "sha256": "a6eeadbe3845794c7b65fff472bca27fc92938cbffab1b741606aa23a92b766a",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M08.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-a88072c0-381e-4f19-a151-476ae4bba0a6.png",
+    "sha256": "9315977e59d81a267aaaebf3af8a85c7982cfbac824e2420911ae1e3b3ded52c",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/city-people-v3.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-abb60b96-d6bf-40dc-9a61-8e91e4999f5d.png",
+    "sha256": "907b5701e665599d19ebdfcba655cd9154d0ce140f73e7aeeb2dd81830e73112",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/settlement-v9-city.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-af933ae4-06bc-47e5-b116-c355f8eb41c3.png",
+    "sha256": "1f795f1e218b99c677f432e70b5956f721063069a86f48d0e06903590e12731a",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/buildings-v6.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-be37ef18-dcc2-4a16-95f5-bc05f7fcae0d.png",
+    "sha256": "af662d17087a71739ab5e5991fd070848ad33feb614c028a43a69bd85c8d8ed0",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-domestic.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-bfc5ee7e-8a27-4661-8145-3d253806e248.png",
+    "sha256": "d3207e5ec50b9d240ff1413049aa9c6695b3c210bb8a607c5c127c712830db72",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M10.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-c5566182-e1eb-445f-942b-99385d9964e0.png",
+    "sha256": "6e4fa915bb8fc74a2740be226c41539d608b1a74ed902b2fa97284a09d33b627",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Atlas/concepts/steel.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-cd8e2a3b-2cc2-40cf-931c-294294f7782a.png",
+    "sha256": "6dc9698af0be682920fea253765b88a608cdc94ab66e1cb2ad7690ee864fdfa8",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/city-upper-v3.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-d07b05b8-3319-42a5-8e79-20ccda0e6ae3.png",
+    "sha256": "2cfc8ef5a35510fe515689e9394b2a0d0c1ab3907cba85731ce0da5fca539a2b",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/exterior-buildings-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-d1532ff2-6a32-41be-a6f3-6d40f8d9cd06.png",
+    "sha256": "7ce9f71739b7a37c1fef3ecbc855c7faacf5725843bbe886fb43613aa9f3bcf6",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/scenery-waste-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-d38970e1-e8f2-409e-ac08-32fd92dcf4ba.png",
+    "sha256": "3145f52b12f959c8f70697e34be6396a0b34ca41ccb4d8cbc33bd4b666134501",
+    "chemin": "05_REFERENCES_VISUELLES/Generations-originales/exec-d38970e1-e8f2-409e-ac08-32fd92dcf4ba.png",
+    "dedoublonne": false
+  },
+  {
+    "original": "exec-ddbf2a88-babd-4364-b379-43af2413c422.png",
+    "sha256": "2039cc4a040a8c9795935df8dee03308f69f6d04f8092343b3ffaee6513d7973",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/interior-wood-v10.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-df4031ea-166e-444b-b9be-e9e87c26b88f.png",
+    "sha256": "0eed4c5ca20a7eaec4bb165f1e8dfc2864faa129b5fa74b15ecdc1d9b8ceac0f",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/city-v3.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-e0cd0c05-6c64-40e9-b6a9-33384b11ecf8.png",
+    "sha256": "3ccf3859c1f25f9d6fcc85a0fad9934b93769d9e83b7f5712dea37bd456de81e",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-natural.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-e0f262b3-b619-42ba-8ce3-8bb67f1dd11a.png",
+    "sha256": "dd6f7c758c83987a1b65558bc956afd146104d26e4e60633a5a8f39865c497f0",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M05.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-e135e580-af0c-4256-8a01-dee94537ae4b.png",
+    "sha256": "cd4c69fc5bb2343a664512d881fc2d4a7bf6a7e47c6e122bbf31d837c59bda66",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/items-v2.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-e2e1ae00-e11a-473a-af3d-474c056de76e.png",
+    "sha256": "b91d6c191db42e1bac684587f918480a7b7f0644a294fccde793899b078439b6",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/utility-v9.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-e42ef5a7-69cb-46d5-ad56-3277b9e2cbc7.png",
+    "sha256": "8553baa6d2b2fb192792c9ba7ff44d28a516b4160e97d2fe39b6c2f3446f9262",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/landmarks-v4.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-e7f8f6e3-15ac-47bd-812c-a351e16c7558.png",
+    "sha256": "e63201ae17e9d7c8004c21ceab28604f6712e25dcd59d2df9d5f5eb1723b5a98",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/street-detail-v9.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-f3ce0a96-3d2c-42b0-9990-4b875cff37f0.png",
+    "sha256": "99d6e0aa5174c4f1f67639b35dae30e789ae7bb9488e8c7b9b966f4cd6033aa8",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M02.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-f8e71516-6347-4f84-8264-7ddfc3b3fad0.png",
+    "sha256": "3ccb1c04bcfdfe3d0c48c4bc2751479aa3a407fad02033aba78eeed233dcac31",
+    "chemin": "03_DOCUMENTS_PRECEDENTS/Interface/reference-images/M09.png",
+    "dedoublonne": true
+  },
+  {
+    "original": "exec-fd48145e-6223-4758-a5f2-64c0534eeb34.png",
+    "sha256": "f865546f2f8a5b51a28ccd425ba4d003892db3c35d7d648f5221a5e6cf18109f",
+    "chemin": "07_MAQUETTE_ARCHIVE_v0.13/art-source/service-v10-A.png",
+    "dedoublonne": true
+  }
+]

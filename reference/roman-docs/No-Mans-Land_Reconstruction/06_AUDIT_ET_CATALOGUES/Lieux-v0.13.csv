@@ -1,0 +1,57 @@
+﻿id,nom,interieur,parent,faction,radiation,danger,pnj,objets,description
+farm,Granja Altruista,False,,Indépendants,1,1,2,4,"Des serres bricolées, une clôture fatiguée. Ici, on essaie encore de faire pousser autre chose que des tombes."
+dusk,Dusk-Town,False,,Indépendants,0,0,3,12,"Les fenêtres sont noires. Derrière chaque volet, quelqu’un vous regarde. Cette ville fantôme a seulement appris à ne plus faire de bruit."
+crater,Big Larry Area,False,,Aucune,16,3,0,2,Un immense impact a vitrifié le désert. Le verre noir se fend sous une poussière grise ; les compteurs saturent vers le centre. Une ancienne mine désaffectée subsiste au bord sud. Aucune habitation ne tient sur ce site.
+buenos,Buenos Aires,False,,Los Nativos,6,2,3,7,Des façades administratives éventrées entourent la place. Quelques salles restent utilisables. Les familles des quartiers voisins y conservent des papiers dont les tampons ont survécu aux administrations.
+customs,Douane ouest,False,,IO,1,1,3,6,"La route se resserre entre les guérites et les préfabriqués de contrôle. Au-delà du barrage, le désert continue jusqu’aux portes du sarcophage, encore loin derrière la poussière."
+steel,Forum de Lower-Town,False,,IO,0,0,3,6,Les façades vitrées renvoient les enseignes des coursives. Des navettes passent au-dessus de la place ; la file du service IO déborde jusque sous les écrans.
+under,La Sous-Ville,False,,IO,0,1,3,7,"Sous les fondations de la cité, des baraques de tôle se serrent contre les conduites et les piliers. Les passerelles vibrent au passage des équipes. Les habitants gardent leurs réserves dans des pièces sans fenêtre."
+junk,Junk-Burgh,False,,Protectores,1,1,6,10,"Les portes sont ouvertes. Les fusils aussi. Ici, on vous sourit tant que vous valez quelque chose."
+titan,Le Titan échoué,False,,Aucune,7,2,1,5,Le Mecha-Colossus gît à plat ventre au nord du sarcophage. Une brèche éventre son flanc. Les plaques et les câbles arrachés couvrent le sable autour des accès de maintenance.
+relay,Station de répartition,False,,IO,4,2,1,6,Des canalisations enfouies relient les terres à la ville. Une décision prise ici peut faire vivre une région et en assoiffer une autre.
+temple,Le temple du couchant,False,,Inconnue,0,1,2,4,"Le chemin est étroit, le silence immense. Les pierres sont plus anciennes que les sociétés qui prétendaient posséder le monde."
+port,Nœud maritime IO,False,,IO,2,1,3,5,Des cargos aveugles entrent dans les eaux grises. Leur chargement nourrit le sarcophage. Peu de choses quittent ces quais gratuitement.
+nova,Novo Córdoba,False,,UFSA,0,1,4,7,"Un drapeau, des uniformes rapiécés, une radio qui promet la reconquête. L’UFSA se souvient de frontières que personne ne voit plus."
+coast,Waste Coast,False,,Aucune,10,3,2,4,La mer rejette des conteneurs et des corps. Certains corps se relèvent.
+dusk-courts,Cours habitées,False,,Indépendants,0,0,3,4,Des maisons aux volets clos sur la rue ouvrent sur des cuisines et des cours occupées.
+dusk-workshops,Ateliers et veille,False,,Indépendants,0,0,3,7,"Le dépôt et les ateliers desservent la ville. Au nord, les installations anciennes restent scellées."
+clinic,Clinique de Dusk-Town,True,dusk,Indépendants,0,0,3,4,"Des lits, des rideaux et une stérilité qui relève surtout du règlement intérieur."
+backroom,L’arrière-salle des comptes,True,junk,Protectores,0,0,1,4,"Le parfum du papier ancien. Et celui, bien plus tenace, des gens qu’on a ruinés."
+bunker,Coursives du Striker Oméga,True,titan,Aucune,2,1,0,5,Le passage traverse les conduites du bras droit avant de rejoindre les volumes couchés du torse. Les commandes auxiliaires restent accessibles ; une cloison blindée isole le cœur.
+china,China Lake,False,,IO,0,0,2,5,Un lac pollué occupe le cœur du quartier. Des lanternes rouges sont suspendues au-dessus de l’eau et des stands bordent les quais. Les ruelles des ateliers passent sous les logements éclairés par les enseignes.
+asia,Asia-Ground,False,,IO,0,0,4,4,"Les galeries couvertes sont pleines de vendeurs et de familles. Les vitrines superposent tissus, modules et repas à emporter. Un stand fermé attire l’attention de la commerçante voisine."
+blocks,Blocs résidentiels,False,,IO,0,0,3,4,"Les tours d’habitation s’élèvent derrière des portiques d’accès. La laverie est ouverte, les ascenseurs beaucoup moins. Au pied du bloc 41, des locataires attendent une réponse."
+center,Avenue Centrale,False,,IO,0,0,3,4,Les quatre tours de l’Arcadius Center dominent les voies de navettes. Les passerelles relient les bureaux au-dessus des vitrines de l’avenue ; les chaussées sont entretenues et les éclairages ne s’arrêtent jamais.
+cliniccity,Pôle des augmentations,False,,IO,0,0,1,5,"Les cliniques se partagent une esplanade blanche. On peut comparer les prothèses en vitrine, vérifier son contrat ou attendre derrière des parois opaques."
+civic,Registre civique,False,,IO,0,0,1,5,Les guichets suivent une courbe sous une verrière lumineuse. Chaque file dessert un service différent. Une employée efface une erreur de classement au crayon avant de vous recevoir.
+smpd,Préfecture SMPD,False,,IO,0,0,1,5,"Les véhicules d’intervention occupent une rampe en contrebas. Le hall public est clair, calme et surveillé. Les portes du secteur de garde ne portent aucun nom."
+upper,Jardins suspendus,False,,IO,0,0,2,4,"Sous un ciel bleu artificiel, des allées de pierre claire traversent des jardins taillés à la main. Les immeubles mêlent colonnes, verre et métal doré. On entend couler une fontaine."
+spire,Atrium du siège IO,False,,IO,0,0,2,4,"Le pilier cylindrique du siège rejoint la voûte. Dans l’atrium, des ascenseurs disparaissent au-dessus des corniches blanches. Le public est admis jusqu’aux bureaux de consultation."
+industry,IO Industries,False,,IO,0,0,2,4,"Des halles composites, des bras de manutention et des convois guidés occupent le parc industriel. La poussière couvre les aires de service entre les halles. Une livraison médicale attend dans un casier réfrigéré."
+northcustoms,Douane nord,False,,IO,0,0,2,4,"Les convois franchissent des arches de contrôle avant d’atteindre le sarcophage. Les files de personnes suivent un couloir distinct, bordé de vitrages blindés."
+eastcustoms,Douane est,False,,IO,0,0,2,4,Les marchandises venues de Junk-Burgh sont inspectées dans des sas de transit. Des employés font circuler les palettes entre deux contrôles.
+northbase,Avant-poste nord,False,,IO,0,0,2,4,Les abris de surveillance dominent les routes du nord. Les convois s’arrêtent à une aire de service avant le périmètre réservé aux unités militaires.
+eastbase,Avant-poste est,False,,IO,0,0,2,4,"Des antennes suivent les voies d’approvisionnement orientales. Le poste de liaison reçoit les chauffeurs, les fournisseurs et les demandes de maintenance."
+southbase,Avant-poste sud,False,,IO,0,0,2,4,"Au bout de la rocade, une caserne protège les routes du sud. Les soldats contrôlent les véhicules à l’ombre de hangars lisses, sans interrompre le trafic de ravitaillement."
+ba-avenues,Avenues du nord,False,,Los Nativos,2,0,3,2,"Une chaussée fendue relie la gare au barrage des Nativos. Les citernes attendent devant les balances. Plus loin, des voyageurs dorment sous la verrière."
+ba-habitat,Patios habités,False,,Los Nativos,2,0,4,4,"Des logements occupés, une cuisine collective et un dispensaire entourent des cours protégées du vent. Les portes ouvertes sont habitées ; les accès condamnés portent des dates."
+ba-ateliers,Ateliers du rail,False,,Los Nativos,2,0,3,3,Les voies entrent dans des ateliers réoccupés. Des mécaniciens récupèrent les bogies ; une équipe entretient le treuil qui dessert les quartiers habités.
+ba-front,Lisière évacuée,False,,Los Nativos,3,2,2,2,"Une opération IO a atteint des blocs évacués. Les Nativos gardent le passage vers les patios. Entre les deux postes, une caisse attend toujours son destinataire."
+ba-cinema,Cinéma des Patios,True,ba-habitat,Indépendants,0,0,1,3,"Les rangées dépareillées font face à une toile rapiécée. Dans la cabine, un moteur tourne sans entraîner la bobine."
+dusk-hotel,Hôtel des Volets,True,dusk,Indépendants,0,0,1,2,Elvira garde les clés derrière le comptoir. Deux chambres donnent sur une cour fermée ; les voyageurs laissent leurs bottes à l’entrée.
+dusk-bar,Bar du Passage,True,dusk,Indépendants,0,0,1,2,Une cuisine ouverte chauffe la salle. Beto a rapproché les tables du mur qui ne fuit pas.
+dusk-grocery,Épicerie de la pompe,True,dusk,Indépendants,0,0,1,1,Les conserves sont classées par date. Les boîtes sans étiquette occupent une étagère à part.
+dusk-repair,Atelier de Nilo,True,dusk-workshops,Indépendants,0,0,1,2,"Une travée pour les moteurs, une table pour les petits composants. Les outils portent tous une marque de peinture jaune."
+junk-bazaar,Bazar de Roque,True,junk,Protectores,0,0,1,2,Les articles les plus chers sont derrière un grillage. Le prix des autres dépend surtout de qui pose la question.
+junk-surgery,Clinique du comptant,True,junk,Protectores,0,0,1,1,"Un fauteuil, une réserve fermée et une liste de tarifs très visible. On encaisse avant de sortir les instruments."
+forum-service,Agence de services du Forum,True,steel,IO,0,0,1,1,Des bornes distribuent les tickets. Une agente trie les demandes qui nécessitent encore une signature humaine.
+lin-workshop,Électronique Lin,True,china,IO,0,0,2,2,Les écrans de diagnostic éclairent des rangées de pièces numérotées. La zone de soudure est séparée de l’accueil.
+sen-clinic,Consultations K-12,True,cliniccity,IO,0,0,3,1,Le sas filtre l’air de l’avenue. Un rideau isole les soins du comptoir de la pharmacie.
+civic-hall,Hall du registre civique,True,civic,IO,0,0,2,1,Les visiteurs patientent devant les guichets. Les casiers des dossiers récents sont à portée du personnel.
+smpd-reception,Bureau de garde SMPD,True,smpd,IO,0,0,2,1,L’accueil public s’arrête à une porte blindée. Les retenues et les quartiers de la troupe restent hors d’accès.
+ba-reading,Salle de lecture des archives,True,buenos,Los Nativos,0,0,1,1,Les rayonnages sauvés de l’humidité sont regroupés autour de grandes tables. Les documents fragiles se consultent sur place.
+ba-dispensary,Dispensaire des Patios,True,ba-habitat,Los Nativos,0,0,1,1,Humains et mutants attendent sur les mêmes bancs. Les lits sont séparés par des cloisons de toile lavée.
+nova-surplus,Intendance de Novo Córdoba,True,nova,UFSA,0,0,1,1,Les surplus civils sont disposés près du comptoir. Le matériel de dotation reste dans une réserve distincte.
+nova-infirmary,Infirmerie de campagne UFSA,True,nova,UFSA,0,0,1,1,Le personnel soigne les civils dans la première salle. Des couchettes occupent l’ancienne pièce de consultation.
+port-office,Capitainerie du nœud maritime,True,port,IO,0,0,1,1,Une carte des approches couvre le bureau de quart. Les manifestes attendent dans des casiers séparés par destination.
+relay-control,Salle de conduite 07,True,relay,IO,0,0,1,2,Des pupitres de mesure font face au schéma de la station. La table de maintenance est isolée des armoires électriques.

@@ -1,0 +1,114 @@
+﻿id,nom,role,faction,population,lieux,positions,routine,dialogue,apparence,commerce
+mara,Mara Gálvez,Responsable de Dusk-Town,Indépendants,humain,Dusk-Town,"dusk:[11, 15]","{""loc"": ""dusk"", ""points"": [[11, 15], [16, 19], [11, 15]], ""job"": ""Contrôle la pompe et reçoit les habitants.""}",mara,Une voix grave. Les mains d’une ouvrière. Elle n’a pas dormi.,[]
+vera,Dr Vera Solis,Clinique indépendante,Indépendants,humain,Clinique de Dusk-Town,"clinic:[12, 12]","{""loc"": ""clinic"", ""points"": [[12, 12], [14, 13], [15, 12]], ""job"": ""Reçoit à la clinique et surveille les patients."", ""legacyLoc"": ""dusk""}",vera,Une blouse reprisée et des lunettes retenues par un fil de cuivre.,[]
+ezequiel,Ezequiel,Marchand de passage,Indépendants,humain,Dusk-Town,"dusk:[23, 14]","{""loc"": ""dusk"", ""points"": [[23, 14], [26, 18], [23, 14]], ""job"": ""Tient le comptoir, puis vérifie ses sacs.""}",merchant,Il compte vos pas comme d’autres comptent leurs billets.,"[""water"", ""medkit"", ""antirad"", ""ammo"", ""scrap"", ""coat"", ""knife"", ""grenade"", ""smoke"", ""cloth"", ""chemical"", ""lockpick""]"
+nilo,Nilo,Mécanicien · recrutable,Indépendants,humain,Ateliers et veille,"dusk-workshops:[18, 32]","{""loc"": ""dusk-workshops"", ""points"": [[18, 32], [18, 37], [18, 32]], ""job"": ""Travaille au diagnostic et trie ses pièces ; absent après recrutement.""}",nilo,Un exosquelette de travail mal ajusté. Un humour encore en état de marche.,[]
+inesguard,Garde du quartier,Milice de Dusk-Town,Indépendants,humain,Dusk-Town,"dusk:[24, 30]","{""loc"": ""dusk"", ""points"": [[24, 30], [30, 24], [30, 42], [24, 30]], ""job"": ""Patrouille entre les services et l’arrivée des caravanes.""}",guard,La crosse de son arme a été remplacée par un pied de chaise.,[]
+ines,Inés Araya,Maraîchère,Indépendants,humain,Granja Altruista,"farm:[14, 16]",null,ines,Une cicatrice barre son masque antipoussière.,[]
+prospector,Le Doseur,Prospecteur,Aucune,humain,,,null,prospector,Son dosimètre pend au bout d’un collier de dents.,[]
+tomas,Tomás Varela,Délégué de Los Nativos,Los Nativos,mutant,Buenos Aires,"buenos:[11, 13]",null,tomas,"La peau marbrée, la diction d’un instituteur. Son œil gauche vous jauge.",[]
+celia,Celia,Ravitailleuse,Los Nativos,mutant,Buenos Aires,"buenos:[12, 20]",null,native,"Une prothèse bricolée, une main qui ne tremble jamais.","[""medicine"", ""water"", ""ammo"", ""medkit"", ""antirad""]"
+vidal,Agent Vidal,Contrôle des accès IO,IO,augmente,Douane ouest,"customs:[9, 10]",null,vidal,Une moitié du visage est sertie de céramique blanche.,[]
+luz,Luz Herrera,Sans matricule,Indépendants,humain,Douane ouest,"customs:[6, 15]",null,luz,Elle serre une vieille carte d’ouvrière contre sa poitrine.,[]
+ada,Ada Voss,Intermédiaire IO,IO,augmente,Forum de Lower-Town,"steel:[18, 11]",null,ada,Des implants discrets. Un manteau beaucoup trop propre.,[]
+broker,Dr Célian Rusk,Chirurgien des augmentations · K-12,IO,augmente,Consultations K-12,"sen-clinic:[12, 14]",null,broker,Le chirurgien vous salue sans lever les yeux de son écran.,"[""laser"", ""cell"", ""armor"", ""medkit"", ""antirad"", ""vest"", ""grenade"", ""smoke"", ""cloth"", ""chemical"", ""lockpick""]"
+security,Agent SMPD,Police de Lower-Town,IO,augmente,Forum de Lower-Town,"steel:[6, 13]",null,security,Un avertissement lumineux remplace son badge.,[]
+salma,Salma Ruiz,Ouvrière de la Sous-Ville,Sine Vincula,humain,La Sous-Ville,"under:[17, 16]",null,salma,"Le rouge de ses yeux vient de la poussière, dit-elle.",[]
+inspector,Inspecteur H-6,Audit des ressources,IO,augmente,La Sous-Ville,"under:[7, 4]",null,inspector,Son sourire est une ligne dans un protocole.,[]
+roque,Roque Santoro,Courtier des Protectores,Protectores,humain,Junk-Burgh,"junk:[18, 8]",null,roque,"Des bagues, une dent en or. Toutes ses poches ferment à clé.","[""rifle"", ""ammo"", ""vest"", ""medicine"", ""regulator"", ""scrap"", ""water"", ""medkit"", ""grenade"", ""smoke"", ""cloth"", ""chemical"", ""lockpick""]"
+alma,Alma,Comptable des bazars,Protectores,humain,Junk-Burgh,"junk:[13, 19]",null,alma,Elle écrit les noms des vivants dans des livres reliés de noir.,[]
+debtor,Diego,Une dette sur deux jambes,Indépendants,humain,Junk-Burgh,"junk:[7, 19]",null,diego,Il évite de regarder les gardes. Les gardes le regardent.,[]
+scrapper,Sœur Ferraille,Armurière,Protectores,humain,Junk-Burgh,"junk:[17, 16]",null,scrapper,Une collection de vis dans les cheveux. « Sœur » n’est pas son prénom.,"[""pistol"", ""rifle"", ""knife"", ""ammo"", ""coat"", ""scrap"", ""cell"", ""grenade"", ""smoke"", ""cloth"", ""chemical"", ""lockpick""]"
+otero,Otero,Récupérateur indépendant,Aucune,humain,Le Titan échoué,"titan:[10, 34]",null,otero,Il se cache derrière une plaque trois fois plus grande que lui.,[]
+veiled,La Veilleuse,Gardienne du silence,Inconnue,humain,Le temple du couchant,"temple:[14, 16]",null,veiled,Vous ne distinguez pas son visage. Rien ici n’émet le moindre signal.,[]
+marin,Yuna Marin,Manutentionnaire du port,Sine Vincula,humain,Nœud maritime IO,"port:[28, 14]",null,marin,Un gilet de quai. Un œil sur les caméras.,[]
+deserter,Sergent Esteban Ríos,Déserteur UFSA,UFSA,humain,Nœud maritime IO,"port:[17, 36]",null,deserter,Il a arraché ses insignes. Leurs coutures sont encore visibles.,[]
+ortiz,Commandante Ortiz,Garnison UFSA,UFSA,humain,Novo Córdoba,"nova:[10, 7]",null,ortiz,Elle parle de territoires quand ses hommes parlent de repas.,[]
+quartermaster,Intendant,Surplus UFSA,UFSA,humain,Novo Córdoba,"nova:[16, 10]",null,quartermaster,Un uniforme gris. Un livre de comptes plus propre que son fusil.,"[""rifle"", ""ammo"", ""vest"", ""water"", ""medkit"", ""scrap"", ""grenade"", ""smoke"", ""cloth"", ""chemical"", ""lockpick""]"
+courier,Lucero,Courrière de Los Nativos,Los Nativos,mutant,Waste Coast,"coast:[19, 17]",null,courier,"Sous le sang et le sel, son foulard porte les couleurs de Buenos Aires.",[]
+dusk-host,Elvira,Hôtelière,Indépendants,humain,Hôtel des Volets,"dusk-hotel:[12, 11]","{""loc"": ""dusk-hotel"", ""points"": [[12, 11], [14, 11], [15, 16]], ""job"": ""Accueille à la réception et vérifie le linge."", ""legacyLoc"": ""dusk""}",dusk-v7,Elle recoud la même manche entre deux arrivées.,[]
+dusk-bartender,Beto,Cuisinier du passage,Indépendants,humain,Bar du Passage,"dusk-bar:[14, 8]","{""loc"": ""dusk-bar"", ""points"": [[14, 8], [12, 8], [9, 10]], ""job"": ""Travaille derrière le bar et retourne aux fourneaux."", ""legacyLoc"": ""dusk""}",dusk-v7,"Un torchon sur l’épaule, il garde un œil sur sa casserole.","[""water"", ""medkit""]"
+dusk-washer,Elisa,Habitante des cours,Indépendants,humain,Cours habitées,"dusk-courts:[36, 41]","{""loc"": ""dusk-courts"", ""points"": [[36, 41], [35, 39], [36, 41]], ""job"": ""Étend le linge à proximité de la laverie.""}",dusk-v7,Elle essore un drap sans interrompre la conversation.,[]
+dusk-watch,Raúl,Milicien de veille,Indépendants,humain,Ateliers et veille,"dusk-workshops:[32, 21]","{""loc"": ""dusk-workshops"", ""points"": [[32, 21], [31, 18], [32, 21]], ""job"": ""Ronde courte entre la veille et la barrière du site condamné.""}",dusk-v7,"Sa chaise fait face à l’ancienne porte, loin des établis.",[]
+dusk-driver,Ofelia,Chauffeuse de ravitaillement,Indépendants,humain,Ateliers et veille,"dusk-workshops:[26, 30]","{""loc"": ""dusk-workshops"", ""points"": [[26, 30], [31, 39], [26, 30]], ""job"": ""Contrôle son véhicule puis accompagne le déchargement.""}",dusk-v7,Elle tient un carnet de livraison plié en quatre.,[]
+patient,Ardo Funes,Patient · résident involontaire,Los Nativos,mutant,Clinique de Dusk-Town,"clinic:[13, 9]",null,patient,Sa peau a changé plus souvent que son sens de l’humour.,[]
+rita,Rita Acosta,Chauffeuse indépendante,Indépendants,humain,China Lake,"china:[4, 20]",null,city,Elle vérifie son rétroviseur même lorsque sa voiture est à l’arrêt.,[]
+lin,Lin Qiao,Réparateur d’électronique,Indépendants,humain,Électronique Lin,"lin-workshop:[12, 11]",null,city,Des pinces fines alignées sur une serviette. Il les déplace avant de vous faire une place.,"[""cell"", ""scrap"", ""chemical"", ""lockpick""]"
+leda,Leda Mansour,Commerçante d’Asia-Ground,Indépendants,humain,Asia-Ground,"asia:[15, 13]",null,city,Une manche retroussée et un sachet de repas devenu froid.,[]
+hassan,Hassan Mourad,Marchand de la galerie,Indépendants,humain,Asia-Ground,"asia:[17, 12]",null,city,Il range ses articles par usage et se souvient des commandes de ses clients.,"[""water"", ""cloth"", ""medkit"", ""coat"", ""vest""]"
+cora,Cora Beltrán,Gestionnaire du bloc 41,Indépendants,humain,Blocs résidentiels,"blocks:[7, 11]",null,city,Les clés des appartements sont rangées dans un boîtier sur sa manche.,[]
+elias,Elías Mena,Agent du réseau de transport,IO,augmente,Blocs résidentiels,"blocks:[19, 17]",null,city,"Un uniforme propre, des chaussures usées, une attention constante au quai.",[]
+berenice,Bérénice Lema,Tailleur et équipement civil,IO,augmente,Avenue Centrale,"center:[21, 13]",null,city,Elle examine les coutures de votre manteau avant de vous regarder en face.,"[""coat"", ""vest"", ""armor""]"
+central-host,Accueil Central,Information urbaine,IO,androide,Avenue Centrale,"center:[12, 10]",null,city,Une unité de service au visage synthétique tient le comptoir d’information. Les jonctions de céramique restent visibles derrière les oreilles.,[]
+sen,Dr Iman Sen,Médecin des bioprothèses,IO,augmente,Consultations K-12,"sen-clinic:[15, 11]",null,city,Elle garde un petit schéma anatomique ouvert à côté de ses commandes de stock.,[]
+eva,Eva Serra,Employée du registre,IO,augmente,Hall du registre civique,"civic-hall:[25, 10]",null,city,"Ses annotations sont petites, datées et faciles à lire.",[]
+leal,Agent Leal,Bureau de garde SMPD,IO,augmente,Bureau de garde SMPD,"smpd-reception:[21, 9]",null,city,Il vous laisse terminer avant de poser la question suivante.,[]
+maelle,Maëlle Soria,Entretien des jardins,IO,augmente,Jardins suspendus,"upper:[14, 12]",null,city,Elle vérifie l’humidité d’un bac sans interrompre la conversation.,[]
+valen,Valen Echeverría,Chargé des consultations IO,IO,cyborg,Atrium du siège IO,"spire:[8, 13]",null,city,Une silhouette de céramique claire. Les mains restent immobiles sur le comptoir.,[]
+avel,Avel Costa,Responsable des expéditions,IO,augmente,IO Industries,"industry:[17, 15]",null,city,Il compare le numéro de votre commande à celui de son lecteur.,[]
+north-agent,Agente Rivas,Douane nord,IO,augmente,Douane nord,"northcustoms:[9, 8]",null,city,"Elle attend les documents, lecteur tendu.",[]
+east-agent,Agent Paz,Douane est,IO,augmente,Douane est,"eastcustoms:[12, 8]",null,city,Il fait signe à un chariot d’avancer avant de vous recevoir.,[]
+north-officer,Lieutenante Sanz,Liaison militaire nord,IO,augmente,Avant-poste nord,"northbase:[10, 8]",null,city,"Un casque posé près de son écran, les sangles soigneusement repliées.",[]
+east-officer,Lieutenant Baeza,Liaison militaire est,IO,augmente,Avant-poste est,"eastbase:[9, 6]",null,city,Il écoute la fréquence des convois pendant que vous parlez.,[]
+south-officer,Adjudante Ferreyra,Liaison militaire sud,IO,augmente,Avant-poste sud,"southbase:[18, 13]",null,city,"Ses réponses sont brèves, sa carte des routes annotée à la main.",[]
+sami,Sami Mansour,Aide au marché,Indépendants,humain,Asia-Ground,"asia:[15, 15]",null,city,Il garde le reçu de sortie plié dans sa poche.,[]
+nadia,Nadia,Intendante des cuisines,Indépendants,humain,Cours habitées,"dusk-courts:[10, 15]","{""loc"": ""dusk-courts"", ""points"": [[10, 15], [10, 19], [14, 21], [10, 15]], ""job"": ""Prépare les repas et contrôle les quantités reçues.""}",expanse,Un torchon propre repose sur son épaule.,[]
+abel,Abel,Menuisier,Indépendants,humain,Cours habitées,"dusk-courts:[42, 16]","{""loc"": ""dusk-courts"", ""points"": [[42, 16], [43, 20], [42, 16]], ""job"": ""Répare les portes dans sa cour de travail.""}",expanse,De petites vis sont rangées dans les poches de son tablier.,[]
+irisfarm,Iris,Gardienne des semences,Indépendants,humain,Granja Altruista,"farm:[36, 36]",null,expanse,Ses bottes portent la marque des bacs de désinfection.,[]
+silas,Silas,Acheteur de pièces,Indépendants,humain,Junk-Burgh,"junk:[35, 43]",null,expanse,Il conserve la facture sous un couvercle de caisse.,[]
+noemi,Noémi,Vendeuse de joints,Protectores,humain,Junk-Burgh,"junk:[37, 9]",null,expanse,Des joints de différentes tailles pendent derrière son comptoir.,"[""scrap"", ""chemical"", ""lockpick"", ""water"", ""ammo"", ""medkit""]"
+pilar,Pilar,Mécanicienne des filtres,Indépendants,humain,Station de répartition,"relay:[40, 14]",null,expanse,Elle garde une clé de vanne accrochée à la ceinture.,[]
+senda,Senda,Gardienne des terrasses,Indépendants,humain,Le temple du couchant,"temple:[30, 24]",null,expanse,Ses manches sont retroussées au-dessus des coudes.,[]
+celso,Celso,Ajusteur de grues,Indépendants,humain,Nœud maritime IO,"port:[16, 34]",null,expanse,Il surveille le câble de levage entre deux réponses.,[]
+ramos,Lieutenant Ramos,Responsable du dépôt,UFSA,humain,Novo Córdoba,"nova:[33, 23]",null,expanse,"Son registre est tenu à jour, jusque dans les marges.",[]
+bruna,Bruna,Porte-parole du camp civil,Indépendants,humain,Novo Córdoba,"nova:[22, 36]",null,expanse,Plusieurs cartes de ration sont attachées à son poignet.,[]
+leoncoast,León,Récupérateur du rivage,Indépendants,humain,Waste Coast,"coast:[33, 34]",null,expanse,Une boîte de petits outils est calée dans le sable.,[]
+astor,Astor,Livreur des coursives,IO,augmente,Forum de Lower-Town,"steel:[31, 37]",null,expanse,Son chariot dépasse à peine entre les bornes de la coursive.,[]
+yu,Yu,Réparatrice de filets,Indépendants,humain,China Lake,"china:[11, 39]",null,expanse,Ses doigts tirent le fil sans qu’elle regarde ses mains.,[]
+nour,Nour,Cuisinière de nuit,Indépendants,humain,Asia-Ground,"asia:[33, 37]",null,expanse,Elle garde une pile de bols propres à portée.,[]
+tala,Tala,Gardienne de la cour,Indépendants,humain,Blocs résidentiels,"blocks:[20, 36]",null,expanse,Des clés et des petites pièces de jouets occupent ses poches.,[]
+enid,Enid,Trieuse à la bande,Indépendants,humain,La Sous-Ville,"under:[30, 38]",null,expanse,Des références refusées couvrent la tablette de sa balance.,[]
+odette,Odette,Entretien des galeries,IO,augmente,Avenue Centrale,"center:[31, 38]",null,expanse,Elle a garé sa machine pour laisser le passage libre.,[]
+yuna,Yuna,Technicienne de rééducation,IO,augmente,Pôle des augmentations,"cliniccity:[18, 36]",null,expanse,Son dossier reste ouvert sur une série d’exercices.,[]
+ivo,Ivo,Demandeur de rectification,Indépendants,humain,Registre civique,"civic:[19, 36]",null,expanse,Le numéro de son ticket est devenu presque illisible.,[]
+aural,Aural,Agent du vestiaire,IO,augmente,Préfecture SMPD,"smpd:[20, 36]",null,expanse,Les casiers sont fermés ; chaque clé porte un numéro.,[]
+eilin,Eilin,Horticultrice,IO,augmente,Jardins suspendus,"upper:[39, 40]",null,expanse,De la terre reste sous ses ongles malgré ses gants.,[]
+sem,Sem,Commis aux archives du siège,IO,augmente,Atrium du siège IO,"spire:[31, 39]",null,expanse,Les demandes sont classées dans deux piles distinctes.,[]
+mirek,Mirek,Chauffeur en attente,Indépendants,humain,Douane ouest,"customs:[32, 23]",null,expanse,Ses manches portent la poussière des sacs ouverts.,[]
+delta,Delta,Contrôleuse de chaîne,IO,augmente,IO Industries,"industry:[38, 37]",null,expanse,Son outil de contrôle reste relié au banc d’essai.,[]
+reina,Reina,Peseuse,IO,augmente,Douane nord,"northcustoms:[12, 37]",null,expanse,Une ligne peinte protège les accès aux plateaux.,[]
+dario,Darío,Emballeur de transit,Protectores,humain,Douane est,"eastcustoms:[11, 37]",null,expanse,Il garde les bons signés dans une pochette fermée.,[]
+pavel,Pavel,Opérateur de liaison,IO,augmente,Avant-poste nord,"northbase:[37, 35]",null,expanse,Son casque repose sur une seule oreille.,[]
+cielo,Cielo,Mécanicienne militaire,IO,augmente,Avant-poste est,"eastbase:[37, 38]",null,expanse,Deux roues sont calées près de son établi.,[]
+grisel,Grisel,Responsable du parc,IO,augmente,Avant-poste sud,"southbase:[37, 36]",null,expanse,Elle note les départs sur une feuille fixée au poignet.,[]
+paz,Pía,Aide-soignante,Indépendants,humain,Clinique de Dusk-Town,"clinic:[25, 30]",null,expanse,Son tablier a été lavé et recousu plusieurs fois.,[]
+beltra,Beltrán,Employé aux étiquettes,Protectores,humain,L’arrière-salle des comptes,"backroom:[14, 29]",null,expanse,Un couteau à étiquettes reste posé à côté de sa feuille.,[]
+vesta,Vesta,Gardienne des dossiers,Los Nativos,mutant,Buenos Aires,"buenos:[34, 20]",null,expanse,Les rayonnages derrière elle sont étayés par des montants neufs.,[]
+candela,Candela,Responsable du barrage,Los Nativos,mutant,Avenues du nord,"ba-avenues:[22, 24]",null,expanse,Elle garde les deux bons de livraison dans la même main.,[]
+mauro,Mauro,Chauffeur de citerne,Indépendants,humain,Avenues du nord,"ba-avenues:[27, 34]",null,expanse,Ses vêtements portent les mêmes traces de poussière que la cabine.,[]
+isma,Isma,Veilleur de la gare,Los Nativos,mutant,Avenues du nord,"ba-avenues:[10, 38]",null,expanse,Il surveille la verrière et le passage des voyageurs.,[]
+esme,Esmé,Infirmière des Patios,Los Nativos,mutant,Patios habités,"ba-habitat:[37, 12]",null,expanse,Une chaise est installée près de sa table de soins.,[]
+mila,Mila,Organisatrice des séances,Indépendants,humain,Patios habités,"ba-habitat:[34, 38]",null,expanse,Son rouleau de colle est presque vide.,[]
+gaspar,Gaspar,Cuisinier des Patios,Los Nativos,mutant,Patios habités,"ba-habitat:[12, 22]",null,expanse,Il tourne la marmite avec une longue cuillère de bois.,"[""water"", ""cloth""]"
+teo,Teo,Facteur des cours,Los Nativos,mutant,Patios habités,"ba-habitat:[27, 27]",null,expanse,Une sangle retient ses lettres dans une sacoche fermée.,[]
+vico,Vico,Ajusteur du treuil,Los Nativos,mutant,Ateliers du rail,"ba-ateliers:[31, 23]",null,expanse,Il a débranché la commande avant de commencer son examen.,[]
+rocio,Rocío,Responsable des pesées,Los Nativos,mutant,Ateliers du rail,"ba-ateliers:[36, 38]",null,expanse,Des masses de contrôle sont rangées sous le comptoir.,[]
+sergio,Sergio,Réceptionnaire des lots,Indépendants,humain,Ateliers du rail,"ba-ateliers:[19, 26]",null,expanse,Le livre des lots tient ouvert sous une pièce de métal.,"[""scrap"", ""cell"", ""chemical"", ""antirad""]"
+lian,Lian,Responsable du poste des Nativos,Los Nativos,mutant,Lisière évacuée,"ba-front:[21, 37]",null,expanse,Sa radio reste réglée sur le canal des deux postes.,[]
+alder,Alder,Chef de détachement IO,IO,augmente,Lisière évacuée,"ba-front:[39, 22]",null,expanse,Un voyant indique que son ordre de mission est toujours ouvert.,[]
+renzo,Renzo,Projectionniste,Indépendants,humain,Cinéma des Patios,"ba-cinema:[28, 8]",null,expanse,Des pièces nettoyées attendent sur un linge près du projecteur.,[]
+shop-olga,Olga Ferreyra,Épicière,Indépendants,humain,Épicerie de la pompe,"dusk-grocery:[19, 12]",null,service,Épicière,"[""water"", ""medkit"", ""antirad"", ""cloth"", ""coat""]"
+repair-lidia,Lidia Soto,Ajusteuse · atelier de Nilo,Indépendants,humain,Atelier de Nilo,"dusk-repair:[24, 10]",null,service,Ajusteuse · atelier de Nilo,"[""scrap"", ""chemical"", ""lockpick"", ""ammo""]"
+bazaar-zoe,Zoé Mena,Vendeuse du bazar,Protectores,humain,Bazar de Roque,"junk-bazaar:[23, 11]",null,service,Vendeuse du bazar,"[""water"", ""ammo"", ""grenade"", ""smoke"", ""knife"", ""coat"", ""chemical"", ""lockpick""]"
+doctor-lagos,Simón Lagos,Chirurgien du comptant,Protectores,humain,Clinique du comptant,"junk-surgery:[12, 12]",null,service,Chirurgien du comptant,"[""medkit"", ""antirad"", ""chemical""]"
+clerk-iris,Iris Dorn,Accueil des services IO,IO,augmente,Agence de services du Forum,"forum-service:[22, 9]",null,service,Accueil des services IO,"[""water"", ""cell"", ""medkit""]"
+repair-wei,Wei Sanz,Électronicien,IO,augmente,Électronique Lin,"lin-workshop:[24, 15]",null,service,Électronicien,"[""scrap"", ""cell"", ""chemical"", ""lockpick""]"
+nurse-daria,Daria Velez,Infirmière K-12,IO,augmente,Consultations K-12,"sen-clinic:[12, 13]",null,service,Infirmière K-12,"[""medkit"", ""antirad"", ""chemical""]"
+clerk-noe,Noé Ferrer,Assistant au registre,IO,augmente,Hall du registre civique,"civic-hall:[24, 16]",null,service,Assistant au registre,[]
+officer-aubin,Aubin Rey,Agent d’accueil SMPD,IO,augmente,Bureau de garde SMPD,"smpd-reception:[14, 19]",null,service,Agent d’accueil SMPD,[]
+archivist-maia,Maia Funes,Conservatrice,Los Nativos,mutant,Salle de lecture des archives,"ba-reading:[24, 11]",null,service,Conservatrice,[]
+doctor-inesa,Inesa Cruz,Médecin des Patios,Los Nativos,mutant,Dispensaire des Patios,"ba-dispensary:[12, 12]",null,service,Médecin des Patios,"[""medkit"", ""antirad"", ""water""]"
+supply-beltran,Beltrán Cobo,Magasinier des surplus,UFSA,humain,Intendance de Novo Córdoba,"nova-surplus:[23, 9]",null,service,Magasinier des surplus,"[""ammo"", ""coat"", ""knife"", ""medkit"", ""water"", ""grenade""]"
+medic-ruth,Ruth Vidal,Infirmière de campagne,UFSA,humain,Infirmerie de campagne UFSA,"nova-infirmary:[23, 12]",null,service,Infirmière de campagne,"[""medkit"", ""antirad"", ""cloth""]"
+harbour-inara,Inara Silva,Agente de quart,IO,augmente,Capitainerie du nœud maritime,"port-office:[24, 9]",null,service,Agente de quart,[]
+tech-lazaro,Lázaro Gil,Technicien de conduite,IO,augmente,Salle de conduite 07,"relay-control:[24, 16]",null,service,Technicien de conduite,"[""scrap"", ""chemical"", ""water""]"

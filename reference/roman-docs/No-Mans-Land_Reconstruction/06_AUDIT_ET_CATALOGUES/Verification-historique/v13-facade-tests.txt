@@ -1,0 +1,22 @@
+✔ small houses, services and larger structures receive the intended additional scale (0.913885ms)
+✔ each real interior can be approached from the actual zone arrival and entered with or without Nilo (391.853096ms)
+✔ door approach uses a real free threshold when it gives the shortest route (1.100575ms)
+✔ a blocked door reports its obstruction and combat refusal in the dialogue (1.072182ms)
+✔ whole-world scale audit honours every authored height and shrinks collisions inside the original parcels (314.487854ms)
+✔ all 21 door thresholds stay close to their visible facade and remain walkable (61.971236ms)
+✔ building access badges distinguish real entrances, locks and nonvisitable structures without guessing (8.73468ms)
+✔ proximity restores whole-building transparency on every facade and stays opaque at a distance (0.236326ms)
+✔ the actual renderer draws the complete model once with proximity opacity, including when the player is in front (4.562323ms)
+✔ entrance badges stay readable and tappable at every supported zoom and target the actual door (3.467126ms)
+✔ a save on a newly freed courtyard remains valid without moving the character or changing inventory (2.250135ms)
+✔ v13 enlarges small model families by 25 to 50 percent with fixed ground baselines (15.831686ms)
+✔ inaccessible buildings draw no badge while all real entrances keep their marker (1.439315ms)
+✔ visible facade pixels open their real doors while transparent margins and unvisitable buildings do not (19.048385ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 868.27921

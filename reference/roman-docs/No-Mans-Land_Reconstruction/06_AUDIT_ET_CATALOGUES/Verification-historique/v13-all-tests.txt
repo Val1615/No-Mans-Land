@@ -1,0 +1,994 @@
+TAP version 13
+# Subtest: small houses, services and larger structures receive the intended additional scale
+ok 1 - small houses, services and larger structures receive the intended additional scale
+  ---
+  duration_ms: 1.107547
+  type: 'test'
+  ...
+# Subtest: each real interior can be approached from the actual zone arrival and entered with or without Nilo
+ok 2 - each real interior can be approached from the actual zone arrival and entered with or without Nilo
+  ---
+  duration_ms: 380.496785
+  type: 'test'
+  ...
+# Subtest: door approach uses a real free threshold when it gives the shortest route
+ok 3 - door approach uses a real free threshold when it gives the shortest route
+  ---
+  duration_ms: 1.059504
+  type: 'test'
+  ...
+# Subtest: a blocked door reports its obstruction and combat refusal in the dialogue
+ok 4 - a blocked door reports its obstruction and combat refusal in the dialogue
+  ---
+  duration_ms: 1.185023
+  type: 'test'
+  ...
+# Subtest: whole-world scale audit honours every authored height and shrinks collisions inside the original parcels
+ok 5 - whole-world scale audit honours every authored height and shrinks collisions inside the original parcels
+  ---
+  duration_ms: 315.590419
+  type: 'test'
+  ...
+# Subtest: all 21 door thresholds stay close to their visible facade and remain walkable
+ok 6 - all 21 door thresholds stay close to their visible facade and remain walkable
+  ---
+  duration_ms: 61.363585
+  type: 'test'
+  ...
+# Subtest: building access badges distinguish real entrances, locks and nonvisitable structures without guessing
+ok 7 - building access badges distinguish real entrances, locks and nonvisitable structures without guessing
+  ---
+  duration_ms: 7.283279
+  type: 'test'
+  ...
+# Subtest: proximity restores whole-building transparency on every facade and stays opaque at a distance
+ok 8 - proximity restores whole-building transparency on every facade and stays opaque at a distance
+  ---
+  duration_ms: 0.238389
+  type: 'test'
+  ...
+# Subtest: the actual renderer draws the complete model once with proximity opacity, including when the player is in front
+ok 9 - the actual renderer draws the complete model once with proximity opacity, including when the player is in front
+  ---
+  duration_ms: 4.220309
+  type: 'test'
+  ...
+# Subtest: entrance badges stay readable and tappable at every supported zoom and target the actual door
+ok 10 - entrance badges stay readable and tappable at every supported zoom and target the actual door
+  ---
+  duration_ms: 3.179504
+  type: 'test'
+  ...
+# Subtest: a save on a newly freed courtyard remains valid without moving the character or changing inventory
+ok 11 - a save on a newly freed courtyard remains valid without moving the character or changing inventory
+  ---
+  duration_ms: 2.202905
+  type: 'test'
+  ...
+# Subtest: v13 enlarges small model families by 25 to 50 percent with fixed ground baselines
+ok 12 - v13 enlarges small model families by 25 to 50 percent with fixed ground baselines
+  ---
+  duration_ms: 15.781905
+  type: 'test'
+  ...
+# Subtest: inaccessible buildings draw no badge while all real entrances keep their marker
+ok 13 - inaccessible buildings draw no badge while all real entrances keep their marker
+  ---
+  duration_ms: 1.331884
+  type: 'test'
+  ...
+# Subtest: visible facade pixels open their real doors while transparent margins and unvisitable buildings do not
+ok 14 - visible facade pixels open their real doors while transparent margins and unvisitable buildings do not
+  ---
+  duration_ms: 19.059416
+  type: 'test'
+  ...
+# Subtest: city has its own eighteen-sector atlas and three urban levels and a separate undercity
+ok 15 - city has its own eighteen-sector atlas and three urban levels and a separate undercity
+  ---
+  duration_ms: 1.141408
+  type: 'test'
+  ...
+# Subtest: all city gates preserve identification, clandestine limits and Upper-Town invitations
+ok 16 - all city gates preserve identification, clandestine limits and Upper-Town invitations
+  ---
+  duration_ms: 2.431388
+  type: 'test'
+  ...
+# Subtest: indoor trips spend minutes and a fare without water, radiation or wasteland encounters
+ok 17 - indoor trips spend minutes and a fare without water, radiation or wasteland encounters
+  ---
+  duration_ms: 3.285624
+  type: 'test'
+  ...
+# Subtest: housing appeal crosses actual districts and pays once while opening a justified consultation
+ok 18 - housing appeal crosses actual districts and pays once while opening a justified consultation
+  ---
+  duration_ms: 78.632357
+  type: 'test'
+  ...
+# Subtest: medical shipment has mutually exclusive clinic and worker outcomes preserved on load
+ok 19 - medical shipment has mutually exclusive clinic and worker outcomes preserved on load
+  ---
+  duration_ms: 57.35221
+  type: 'test'
+  ...
+# Subtest: detention review needs evidence, releases a persistent person and closes at the family
+ok 20 - detention review needs evidence, releases a persistent person and closes at the family
+  ---
+  duration_ms: 44.141624
+  type: 'test'
+  ...
+# Subtest: repairing the transport line consumes a real part and grants permanent fare relief
+ok 21 - repairing the transport line consumes a real part and grants permanent fare relief
+  ---
+  duration_ms: 29.106482
+  type: 'test'
+  ...
+# Subtest: perimeter liaison contracts cannot pay twice or duplicate another post reward
+ok 22 - perimeter liaison contracts cannot pay twice or duplicate another post reward
+  ---
+  duration_ms: 15.909077
+  type: 'test'
+  ...
+# Subtest: Mara reacts to the observed water outcome, including endings that do not restore her supply
+ok 23 - Mara reacts to the observed water outcome, including endings that do not restore her supply
+  ---
+  duration_ms: 0.741105
+  type: 'test'
+  ...
+# Subtest: authored follow-up conversations retain the speaker and do not reveal an unrelated quest
+ok 24 - authored follow-up conversations retain the speaker and do not reveal an unrelated quest
+  ---
+  duration_ms: 11.999154
+  type: 'test'
+  ...
+# Subtest: an old city save keeps its quests and inventory when a new building occupies its previous position
+ok 25 - an old city save keeps its quests and inventory when a new building occupies its previous position
+  ---
+  duration_ms: 1.690984
+  type: 'test'
+  ...
+# Subtest: Rita charges the stated private fare even when the public network is free
+ok 26 - Rita charges the stated private fare even when the public network is free
+  ---
+  duration_ms: 31.329361
+  type: 'test'
+  ...
+# Subtest: all 21 interiors support repeated door round trips with Nilo alongside the player
+ok 27 - all 21 interiors support repeated door round trips with Nilo alongside the player
+  ---
+  duration_ms: 41.622834
+  type: 'test'
+  ...
+# Subtest: old saves with Nilo stranded at the parent spawn repair once, while waiting companions stay put
+ok 28 - old saves with Nilo stranded at the parent spawn repair once, while waiting companions stay put
+  ---
+  duration_ms: 3.305514
+  type: 'test'
+  ...
+# Subtest: an actual door choice explains why an entry is refused instead of silently closing
+ok 29 - an actual door choice explains why an entry is refused instead of silently closing
+  ---
+  duration_ms: 1.463682
+  type: 'test'
+  ...
+# Subtest: the deployed HTML loads a versioned module graph identical to the tested production sources
+ok 30 - the deployed HTML loads a versioned module graph identical to the tested production sources
+  ---
+  duration_ms: 3.402229
+  type: 'test'
+  ...
+# Subtest: 56 authored scenes use 50² cells, valid arrivals and functional furnishing
+ok 31 - 56 authored scenes use 50² cells, valid arrivals and functional furnishing
+  ---
+  duration_ms: 18.863631
+  type: 'test'
+  ...
+# Subtest: world furnishing is fixed across save seeds, event selection remains separate
+ok 32 - world furnishing is fixed across save seeds, event selection remains separate
+  ---
+  duration_ms: 7.296588
+  type: 'test'
+  ...
+# Subtest: Buenos districts share regional position but walk locally with no transit fare
+ok 33 - Buenos districts share regional position but walk locally with no transit fare
+  ---
+  duration_ms: 4.377777
+  type: 'test'
+  ...
+# Subtest: cistern evidence requires two sites; three allocations have distinct durable consequences
+ok 34 - cistern evidence requires two sites; three allocations have distinct durable consequences
+  ---
+  duration_ms: 7.115405
+  type: 'test'
+  ...
+# Subtest: tram parts are physical and unique; both repair routes consume the stated cost
+ok 35 - tram parts are physical and unique; both repair routes consume the stated cost
+  ---
+  duration_ms: 3.654157
+  type: 'test'
+  ...
+# Subtest: parts dispute cannot be resolved before a signed record and pays only once
+ok 36 - parts dispute cannot be resolved before a signed record and pays only once
+  ---
+  duration_ms: 1.018532
+  type: 'test'
+  ...
+# Subtest: depot evidence opens three mutually exclusive distributions
+ok 37 - depot evidence opens three mutually exclusive distributions
+  ---
+  duration_ms: 2.847764
+  type: 'test'
+  ...
+# Subtest: cinema quest changes the actual persistent projector state and consumes one reel
+ok 38 - cinema quest changes the actual persistent projector state and consumes one reel
+  ---
+  duration_ms: 1.649091
+  type: 'test'
+  ...
+# Subtest: front starts as a standoff, evidence permits peace with all guards alive
+ok 39 - front starts as a standoff, evidence permits peace with all guards alive
+  ---
+  duration_ms: 1.376832
+  type: 'test'
+  ...
+# Subtest: faction units fire at each other, persist casualties and do not give the player loot for AI kills
+ok 40 - faction units fire at each other, persist casualties and do not give the player loot for AI kills
+  ---
+  duration_ms: 215.415205
+  type: 'test'
+  ...
+# Subtest: positions beyond the old 25 cell boundary and new quest flags survive a save
+ok 41 - positions beyond the old 25 cell boundary and new quest flags survive a save
+  ---
+  duration_ms: 1.570784
+  type: 'test'
+  ...
+# Subtest: door hit geometry follows the visible building or Titan arm within one ground cell
+ok 42 - door hit geometry follows the visible building or Titan arm within one ground cell
+  ---
+  duration_ms: 532.031273
+  type: 'test'
+  ...
+# Subtest: v1 saves migrate without granting a second character background or equipment
+ok 43 - v1 saves migrate without granting a second character background or equipment
+  ---
+  duration_ms: 3.872576
+  type: 'test'
+  ...
+# Subtest: backgrounds and tradeoff quirks have concrete, persistent effects
+ok 44 - backgrounds and tradeoff quirks have concrete, persistent effects
+  ---
+  duration_ms: 2.315062
+  type: 'test'
+  ...
+# Subtest: all three interiors are real reachable scenes and return to their doors
+ok 45 - all three interiors are real reachable scenes and return to their doors
+  ---
+  duration_ms: 7.579302
+  type: 'test'
+  ...
+# Subtest: crafting needs actual bench proximity and consumes only available inputs
+ok 46 - crafting needs actual bench proximity and consumes only available inputs
+  ---
+  duration_ms: 4.049361
+  type: 'test'
+  ...
+# Subtest: dismantling cannot consume equipped gear or manufacture sale value
+ok 47 - dismantling cannot consume equipped gear or manufacture sale value
+  ---
+  duration_ms: 1.553147
+  type: 'test'
+  ...
+# Subtest: locks consume a pick once and do not award repeat money or loot
+ok 48 - locks consume a pick once and do not award repeat money or loot
+  ---
+  duration_ms: 0.516146
+  type: 'test'
+  ...
+# Subtest: circuit puzzle can be solved manually and enables the durable bunker reward
+ok 49 - circuit puzzle can be solved manually and enables the durable bunker reward
+  ---
+  duration_ms: 1.673327
+  type: 'test'
+  ...
+# Subtest: circuit security lockout persists and cannot be reset by reopening the UI
+ok 50 - circuit security lockout persists and cannot be reset by reopening the UI
+  ---
+  duration_ms: 0.674345
+  type: 'test'
+  ...
+# Subtest: the energy quest has mutually exclusive commune and corporate outcomes
+ok 51 - the energy quest has mutually exclusive commune and corporate outcomes
+  ---
+  duration_ms: 2.472911
+  type: 'test'
+  ...
+# Subtest: defensive posture spends PA and mitigates damage for exactly the enemy turn
+ok 52 - defensive posture spends PA and mitigates damage for exactly the enemy turn
+  ---
+  duration_ms: 2.227772
+  type: 'test'
+  ...
+# Subtest: reaction fire reserves the turn, consumes one round and resolves before hostile fire
+ok 53 - reaction fire reserves the turn, consumes one round and resolves before hostile fire
+  ---
+  duration_ms: 1.073686
+  type: 'test'
+  ...
+# Subtest: smoke degrades both lines of fire and expires after three enemy phases
+ok 54 - smoke degrades both lines of fire and expires after three enemy phases
+  ---
+  duration_ms: 1.339935
+  type: 'test'
+  ...
+# Subtest: fragmentation is an area attack, spends PA and harms the thrower in its blast
+ok 55 - fragmentation is an area attack, spends PA and harms the thrower in its blast
+  ---
+  duration_ms: 0.85731
+  type: 'test'
+  ...
+# Subtest: malformed circuit or appearance payloads are rejected before state installation
+ok 56 - malformed circuit or appearance payloads are rejected before state installation
+  ---
+  duration_ms: 0.748075
+  type: 'test'
+  ...
+# Subtest: loading a saved NPC death removes its collision and minimap contact
+ok 57 - loading a saved NPC death removes its collision and minimap contact
+  ---
+  duration_ms: 0.75743
+  type: 'test'
+  ...
+# Subtest: all origins have working starts and distinct mechanical restrictions
+ok 58 - all origins have working starts and distinct mechanical restrictions
+  ---
+  duration_ms: 4.001
+  type: 'test'
+  ...
+# Subtest: every scene entity and exit can be reached from spawn
+ok 59 - every scene entity and exit can be reached from spawn
+  ---
+  duration_ms: 210.027331
+  type: 'test'
+  ...
+# Subtest: pacifist main route is complete and all four endings remain explorable
+ok 60 - pacifist main route is complete and all four endings remain explorable
+  ---
+  duration_ms: 126.325668
+  type: 'test'
+  ...
+# Subtest: IO route opens alternate authorization without municipal archive
+ok 61 - IO route opens alternate authorization without municipal archive
+  ---
+  duration_ms: 30.116968
+  type: 'test'
+  ...
+# Subtest: side quests have persistent rewards and cannot be farmed
+ok 62 - side quests have persistent rewards and cannot be farmed
+  ---
+  duration_ms: 25.618058
+  type: 'test'
+  ...
+# Subtest: survivor and corporate quest branches produce different world flags
+ok 63 - survivor and corporate quest branches produce different world flags
+  ---
+  duration_ms: 30.14546
+  type: 'test'
+  ...
+# Subtest: aura respects organic origin and is actually usable after learning
+ok 64 - aura respects organic origin and is actually usable after learning
+  ---
+  duration_ms: 5.474696
+  type: 'test'
+  ...
+# Subtest: movement uses PA, obstruction blocks shooting, ammo and targeted attacks work
+ok 65 - movement uses PA, obstruction blocks shooting, ammo and targeted attacks work
+  ---
+  duration_ms: 1.988792
+  type: 'test'
+  ...
+# Subtest: enemy turns, cover, consumables, combat completion and checkpoint survive
+ok 66 - enemy turns, cover, consumables, combat completion and checkpoint survive
+  ---
+  duration_ms: 30.59792
+  type: 'test'
+  ...
+# Subtest: violence persists NPC death and fails relevant side quest, main has repair fallback
+ok 67 - violence persists NPC death and fails relevant side quest, main has repair fallback
+  ---
+  duration_ms: 10.786888
+  type: 'test'
+  ...
+# Subtest: trade cannot create money by reselling, or sell equipped and quest items
+ok 68 - trade cannot create money by reselling, or sell equipped and quest items
+  ---
+  duration_ms: 0.553974
+  type: 'test'
+  ...
+# Subtest: save/import preserves quests, combat enemies, inventory and flags; rejects invalid inputs
+ok 69 - save/import preserves quests, combat enemies, inventory and flags; rejects invalid inputs
+  ---
+  duration_ms: 2.640893
+  type: 'test'
+  ...
+# Subtest: new game does not inherit previous enemy states or quest flags
+ok 70 - new game does not inherit previous enemy states or quest flags
+  ---
+  duration_ms: 0.463678
+  type: 'test'
+  ...
+# Subtest: mutant resistance and contamination ceiling follow the same clock
+ok 71 - mutant resistance and contamination ceiling follow the same clock
+  ---
+  duration_ms: 12.945364
+  type: 'test'
+  ...
+# Subtest: main route works through actual walking interactions, without teleporting around threats
+ok 72 - main route works through actual walking interactions, without teleporting around threats
+  ---
+  duration_ms: 39.504339
+  type: 'test'
+  ...
+# Subtest: stealth changes detection and weapon tuning consumes materials once
+ok 73 - stealth changes detection and weapon tuning consumes materials once
+  ---
+  duration_ms: 1.184592
+  type: 'test'
+  ...
+# Subtest: import rejects malformed quest tables and tampered enemy payloads
+ok 74 - import rejects malformed quest tables and tampered enemy payloads
+  ---
+  duration_ms: 0.936289
+  type: 'test'
+  ...
+# Subtest: fixed infrastructure routes join short upright panels in both axes without moving their endpoints
+ok 75 - fixed infrastructure routes join short upright panels in both axes without moving their endpoints
+  ---
+  duration_ms: 21.491241
+  type: 'test'
+  ...
+# Subtest: all six measured raster variants render actual textured panels without broad placeholder strokes
+ok 76 - all six measured raster variants render actual textured panels without broad placeholder strokes
+  ---
+  duration_ms: 42.188442
+  type: 'test'
+  ...
+# Subtest: all city districts have different circulation and building footprints
+ok 77 - all city districts have different circulation and building footprints
+  ---
+  duration_ms: 5.648728
+  type: 'test'
+  ...
+# Subtest: Big Larry is an uninhabited vitrified impact, including when an old encounter is loaded
+ok 78 - Big Larry is an uninhabited vitrified impact, including when an old encounter is loaded
+  ---
+  duration_ms: 4.022711
+  type: 'test'
+  ...
+# Subtest: the exterior perimeter stays arid and uses no interior cyberpunk tower assets
+ok 79 - the exterior perimeter stays arid and uses no interior cyberpunk tower assets
+  ---
+  duration_ms: 1.611324
+  type: 'test'
+  ...
+# Subtest: China Lake water blocks movement and the shoreline remains connected
+ok 80 - China Lake water blocks movement and the shoreline remains connected
+  ---
+  duration_ms: 6.832188
+  type: 'test'
+  ...
+# Subtest: solid dressing blocks movement, inhabitants avoid scenery and every building has a model
+ok 81 - solid dressing blocks movement, inhabitants avoid scenery and every building has a model
+  ---
+  duration_ms: 35.709065
+  type: 'test'
+  ...
+# Subtest: migration repositions obsolete enemy coordinates without resurrecting or healing them
+ok 82 - migration repositions obsolete enemy coordinates without resurrecting or healing them
+  ---
+  duration_ms: 3.186875
+  type: 'test'
+  ...
+# Subtest: new battlefield barriers provide real cover
+ok 83 - new battlefield barriers provide real cover
+  ---
+  duration_ms: 0.60469
+  type: 'test'
+  ...
+# Subtest: 17 new service interiors have unique furnishing, one real anchored door and a reachable round trip
+ok 84 - 17 new service interiors have unique furnishing, one real anchored door and a reachable round trip
+  ---
+  duration_ms: 29.586148
+  type: 'test'
+  ...
+# Subtest: interior doors are local entrances and cannot bypass combat or parent access
+ok 85 - interior doors are local entrances and cannot bypass combat or parent access
+  ---
+  duration_ms: 1.014216
+  type: 'test'
+  ...
+# Subtest: every service NPC exists once and indoor saves preserve inventory and location
+ok 86 - every service NPC exists once and indoor saves preserve inventory and location
+  ---
+  duration_ms: 19.733977
+  type: 'test'
+  ...
+# Subtest: shop counters open the actual stock and purchases consume money
+ok 87 - shop counters open the actual stock and purchases consume money
+  ---
+  duration_ms: 1.74827
+  type: 'test'
+  ...
+# Subtest: clinic treatment and decontamination debit their stated price and reject insufficient funds
+ok 88 - clinic treatment and decontamination debit their stated price and reject insufficient funds
+  ---
+  duration_ms: 2.639631
+  type: 'test'
+  ...
+# Subtest: hotel bedroom and bar menu have material rest and food effects
+ok 89 - hotel bedroom and bar menu have material rest and food effects
+  ---
+  duration_ms: 4.401572
+  type: 'test'
+  ...
+# Subtest: new workbenches support real crafting near any bench type
+ok 90 - new workbenches support real crafting near any bench type
+  ---
+  duration_ms: 0.808777
+  type: 'test'
+  ...
+# Subtest: Nilo follows through an anchored service door and returns without duplication
+ok 91 - Nilo follows through an anchored service door and returns without duplication
+  ---
+  duration_ms: 1.322389
+  type: 'test'
+  ...
+# Subtest: old Elvira and Beto routine saves remain valid and their new routines are walkable
+ok 92 - old Elvira and Beto routine saves remain valid and their new routines are walkable
+  ---
+  duration_ms: 5.800526
+  type: 'test'
+  ...
+# Subtest: harbour has one continuous east basin, cranes on the quay and no warehouse or freight in water
+ok 93 - harbour has one continuous east basin, cranes on the quay and no warehouse or freight in water
+  ---
+  duration_ms: 0.680213
+  type: 'test'
+  ...
+# Subtest: screenshots provisional arches and disconnected pipe elbows are replaced by real raster models
+ok 94 - screenshots provisional arches and disconnected pipe elbows are replaced by real raster models
+  ---
+  duration_ms: 2.593221
+  type: 'test'
+  ...
+# Subtest: authored interior furniture has no overlapping collision footprints or furniture embedded in walls
+ok 95 - authored interior furniture has no overlapping collision footprints or furniture embedded in walls
+  ---
+  duration_ms: 8.269195
+  type: 'test'
+  ...
+# Subtest: every solid scenery type has a real raster asset; no box fallback can conceal a missing model
+ok 96 - every solid scenery type has a real raster asset; no box fallback can conceal a missing model
+  ---
+  duration_ms: 30.289476
+  type: 'test'
+  ...
+# Subtest: reconstructed quarters have distinct non-overlapping building footprints and decor stays outside structures
+ok 97 - reconstructed quarters have distinct non-overlapping building footprints and decor stays outside structures
+  ---
+  duration_ms: 5.864583
+  type: 'test'
+  ...
+# Subtest: Dusk structures use small physical footprints and each quarter retains reachable circulation
+ok 98 - Dusk structures use small physical footprints and each quarter retains reachable circulation
+  ---
+  duration_ms: 3.15721
+  type: 'test'
+  ...
+# Subtest: mirror variants move the visual doorway with the facade while leaving its vertical position intact
+ok 99 - mirror variants move the visual doorway with the facade while leaving its vertical position intact
+  ---
+  duration_ms: 0.38575
+  type: 'test'
+  ...
+# Subtest: UI boots, creates a character, opens and resolves a real dialogue
+ok 100 - UI boots, creates a character, opens and resolves a real dialogue
+  ---
+  duration_ms: 93.094247
+  type: 'test'
+  ...
+# Subtest: all main UI panels render and trade is connected to inventory
+ok 101 - all main UI panels render and trade is connected to inventory
+  ---
+  duration_ms: 29.013076
+  type: 'test'
+  ...
+# Subtest: map travel selects destinations and keeps the interface alive
+ok 102 - map travel selects destinations and keeps the interface alive
+  ---
+  duration_ms: 81.048446
+  type: 'test'
+  ...
+# Subtest: character customization tabs preserve identity, background and tradeoff choices
+ok 103 - character customization tabs preserve identity, background and tradeoff choices
+  ---
+  duration_ms: 41.121792
+  type: 'test'
+  ...
+# Subtest: physical workbench opens the workshop and recipe buttons consume materials once
+ok 104 - physical workbench opens the workshop and recipe buttons consume materials once
+  ---
+  duration_ms: 89.809937
+  type: 'test'
+  ...
+# Subtest: manual circuit UI rotates the persistent circuit rather than a decorative puzzle
+ok 105 - manual circuit UI rotates the persistent circuit rather than a decorative puzzle
+  ---
+  duration_ms: 223.146063
+  type: 'test'
+  ...
+# Subtest: docked target and quickbar smoke are connected to actual canvas targeting
+ok 106 - docked target and quickbar smoke are connected to actual canvas targeting
+  ---
+  duration_ms: 157.448926
+  type: 'test'
+  ...
+# Subtest: city atlas switches floors, enforces access and travels to the selected actual district
+ok 107 - city atlas switches floors, enforces access and travels to the selected actual district
+  ---
+  duration_ms: 97.037461
+  type: 'test'
+  ...
+# Subtest: city transit terminal opens the city plan without leaving an empty dialogue over it
+ok 108 - city transit terminal opens the city plan without leaving an empty dialogue over it
+  ---
+  duration_ms: 126.572029
+  type: 'test'
+  ...
+# Subtest: undercity has a separate map floor and reports confined air
+ok 109 - undercity has a separate map floor and reports confined air
+  ---
+  duration_ms: 25.219419
+  type: 'test'
+  ...
+# Subtest: regional squares can be selected and opened as actual wilderness terrain
+ok 110 - regional squares can be selected and opened as actual wilderness terrain
+  ---
+  duration_ms: 96.192982
+  type: 'test'
+  ...
+# Subtest: closing the moving atlas pauses on the current square and can resume the saved route
+ok 111 - closing the moving atlas pauses on the current square and can resume the saved route
+  ---
+  duration_ms: 339.6777
+  type: 'test'
+  ...
+# Subtest: the atlas timer actually advances the route and stops when the map is closed
+ok 112 - the atlas timer actually advances the route and stops when the map is closed
+  ---
+  duration_ms: 630.198759
+  type: 'test'
+  ...
+# Subtest: Buenos atlas shows five real districts and its map and travel buttons are connected
+ok 113 - Buenos atlas shows five real districts and its map and travel buttons are connected
+  ---
+  duration_ms: 96.573995
+  type: 'test'
+  ...
+# Subtest: interface options apply scales and action order while cancel keeps current preferences
+ok 114 - interface options apply scales and action order while cancel keeps current preferences
+  ---
+  duration_ms: 12.207708
+  type: 'test'
+  ...
+# Subtest: developer workshop launches a test copy and returns to the exact campaign without writing over it
+ok 115 - developer workshop launches a test copy and returns to the exact campaign without writing over it
+  ---
+  duration_ms: 277.5974
+  type: 'test'
+  ...
+# Subtest: companion screen connects hold orders and finite personal inventory to Nilo
+ok 116 - companion screen connects hold orders and finite personal inventory to Nilo
+  ---
+  duration_ms: 73.598756
+  type: 'test'
+  ...
+# Subtest: population codex exposes the five distinct populations and all faction references
+ok 117 - population codex exposes the five distinct populations and all faction references
+  ---
+  duration_ms: 0.763098
+  type: 'test'
+  ...
+# Subtest: inventory search preserves the input node and favorites filter real items
+ok 118 - inventory search preserves the input node and favorites filter real items
+  ---
+  duration_ms: 1.463262
+  type: 'test'
+  ...
+# Subtest: character uses a body view and distinct working skills and reputation tabs
+ok 119 - character uses a body view and distinct working skills and reputation tabs
+  ---
+  duration_ms: 21.335511
+  type: 'test'
+  ...
+# Subtest: atlas zoom changes the real board while the 167 square interactions remain available
+ok 120 - atlas zoom changes the real board while the 167 square interactions remain available
+  ---
+  duration_ms: 49.931546
+  type: 'test'
+  ...
+# Subtest: inventory category tabs filter real items and companion transfer conserves the selected stack
+ok 121 - inventory category tabs filter real items and companion transfer conserves the selected stack
+  ---
+  duration_ms: 64.701474
+  type: 'test'
+  ...
+# Subtest: exploration dock offers conversation, sheet access and rest through the actions drawer
+ok 122 - exploration dock offers conversation, sheet access and rest through the actions drawer
+  ---
+  duration_ms: 35.983981
+  type: 'test'
+  ...
+# Subtest: roof entry badges open, leave and reopen three Dusk interiors with Nilo through the actual UI
+ok 123 - roof entry badges open, leave and reopen three Dusk interiors with Nilo through the actual UI
+  ---
+  duration_ms: 5626.035832
+  type: 'test'
+  ...
+# Subtest: a mobile-sized facade tap approaches the building and enters without relying on the roof badge
+ok 124 - a mobile-sized facade tap approaches the building and enters without relying on the roof badge
+  ---
+  duration_ms: 1151.53235
+  type: 'test'
+  ...
+# Subtest: the live interface loads one stylesheet rather than conflicting historical layers
+ok 125 - the live interface loads one stylesheet rather than conflicting historical layers
+  ---
+  duration_ms: 1.516612
+  type: 'test'
+  ...
+# Subtest: the footer contains exactly one complete player portrait and one companion anchor
+ok 126 - the footer contains exactly one complete player portrait and one companion anchor
+  ---
+  duration_ms: 0.218969
+  type: 'test'
+  ...
+# Subtest: font and illustrated atlas assets are local and the vector atlas retains exact geography
+ok 127 - font and illustrated atlas assets are local and the vector atlas retains exact geography
+  ---
+  duration_ms: 3.035947
+  type: 'test'
+  ...
+# Subtest: all Dusk inhabitants, objects and district passages have reachable adjacent cells
+ok 128 - all Dusk inhabitants, objects and district passages have reachable adjacent cells
+  ---
+  duration_ms: 36.159669
+  type: 'test'
+  ...
+# Subtest: the Dusk map has working free local travel and the sealed site has no entrance action
+ok 129 - the Dusk map has working free local travel and the sealed site has no entrance action
+  ---
+  duration_ms: 4.560822
+  type: 'test'
+  ...
+# Subtest: twelve routines move by reachable cells, preserve positions and pause during combat
+ok 130 - twelve routines move by reachable cells, preserve positions and pause during combat
+  ---
+  duration_ms: 16.094859
+  type: 'test'
+  ...
+# Subtest: legacy recruited Nilo migrates once and import does not heal or refill him
+ok 131 - legacy recruited Nilo migrates once and import does not heal or refill him
+  ---
+  duration_ms: 1.120506
+  type: 'test'
+  ...
+# Subtest: Nilo waits in a unique saved location and resumes only nearby
+ok 132 - Nilo waits in a unique saved location and resumes only nearby
+  ---
+  duration_ms: 1.32923
+  type: 'test'
+  ...
+# Subtest: companion follows a route around a wall, never occupies the player and cannot cross a sealed wall
+ok 133 - companion follows a route around a wall, never occupies the player and cannot cross a sealed wall
+  ---
+  duration_ms: 5.68969
+  type: 'test'
+  ...
+# Subtest: Nilo uses his PA and own ammunition before the hostile phase; hold fires nothing
+ok 134 - Nilo uses his PA and own ammunition before the hostile phase; hold fires nothing
+  ---
+  duration_ms: 2.082182
+  type: 'test'
+  ...
+# Subtest: companion fire respects line of sight and empty ammunition instead of automatic damage
+ok 135 - companion fire respects line of sight and empty ammunition instead of automatic damage
+  ---
+  duration_ms: 0.848306
+  type: 'test'
+  ...
+# Subtest: enemy can wound the companion; downed Nilo needs proximity, a kit and 3 PA
+ok 136 - enemy can wound the companion; downed Nilo needs proximity, a kit and 3 PA
+  ---
+  duration_ms: 0.966024
+  type: 'test'
+  ...
+# Subtest: companion transfers conserve inventory and refuse quest objects, worn equipment and overweight
+ok 137 - companion transfers conserve inventory and refuse quest objects, worn equipment and overweight
+  ---
+  duration_ms: 0.567294
+  type: 'test'
+  ...
+# Subtest: test saves, auto saves and loads cannot write to the campaign namespace
+ok 138 - test saves, auto saves and loads cannot write to the campaign namespace
+  ---
+  duration_ms: 3.498803
+  type: 'test'
+  ...
+# Subtest: workshop snapshots restore enemies, dynamic definitions, routes, RNG and companion together
+ok 139 - workshop snapshots restore enemies, dynamic definitions, routes, RNG and companion together
+  ---
+  duration_ms: 3.244541
+  type: 'test'
+  ...
+# Subtest: dialogue previews restore resources, quest state, discovery, contacts and random counter
+ok 140 - dialogue previews restore resources, quest state, discovery, contacts and random counter
+  ---
+  duration_ms: 12.50975
+  type: 'test'
+  ...
+# Subtest: registered commands reject unknown syntax and rollback an invalid mutation atomically
+ok 141 - registered commands reject unknown syntax and rollback an invalid mutation atomically
+  ---
+  duration_ms: 9.127982
+  type: 'test'
+  ...
+# Subtest: all scenario recipes load real scenes; main conclusions stay exclusive and rewards do not repeat
+ok 142 - all scenario recipes load real scenes; main conclusions stay exclusive and rewards do not repeat
+  ---
+  duration_ms: 42.084769
+  type: 'test'
+  ...
+# Subtest: the custody scenario uses real paperwork and front evidence is a flag rather than invented loot
+ok 143 - the custody scenario uses real paperwork and front evidence is a flag rather than invented loot
+  ---
+  duration_ms: 6.186237
+  type: 'test'
+  ...
+# Subtest: bad companion and routine imports are rejected before changing the current campaign
+ok 144 - bad companion and routine imports are rejected before changing the current campaign
+  ---
+  duration_ms: 0.955297
+  type: 'test'
+  ...
+# Subtest: preferences clamp extreme scales, repair corrupted action order and keep image references local
+ok 145 - preferences clamp extreme scales, repair corrupted action order and keep image references local
+  ---
+  duration_ms: 3.425273
+  type: 'test'
+  ...
+# Subtest: developer invulnerability, unlimited PA and ammo are independent and absent from normal campaigns
+ok 146 - developer invulnerability, unlimited PA and ammo are independent and absent from normal campaigns
+  ---
+  duration_ms: 3.175688
+  type: 'test'
+  ...
+# Subtest: regional routes link all landmarks and all 167 land squares without crossing sea
+ok 147 - regional routes link all landmarks and all 167 land squares without crossing sea
+  ---
+  duration_ms: 143.61445
+  type: 'test'
+  ...
+# Subtest: a regional trip advances one square at a time and reaches its intended city
+ok 148 - a regional trip advances one square at a time and reaches its intended city
+  ---
+  duration_ms: 3.799526
+  type: 'test'
+  ...
+# Subtest: pausing opens the actual square and resuming preserves the remaining route
+ok 149 - pausing opens the actual square and resuming preserves the remaining route
+  ---
+  duration_ms: 4.44684
+  type: 'test'
+  ...
+# Subtest: travel consumes water cumulatively across short legs rather than resetting at a stop
+ok 150 - travel consumes water cumulatively across short legs rather than resetting at a stop
+  ---
+  duration_ms: 1.218894
+  type: 'test'
+  ...
+# Subtest: an empty square creates a quiet explorable terrain with no inhabitants
+ok 151 - an empty square creates a quiet explorable terrain with no inhabitants
+  ---
+  duration_ms: 0.876088
+  type: 'test'
+  ...
+# Subtest: a fresh encounter stops the route before the destination and is announced only once
+ok 152 - a fresh encounter stops the route before the destination and is announced only once
+  ---
+  duration_ms: 4.165767
+  type: 'test'
+  ...
+# Subtest: salvage is physical, pays once and stays empty after saving and revisiting
+ok 153 - salvage is physical, pays once and stays empty after saving and revisiting
+  ---
+  duration_ms: 27.093771
+  type: 'test'
+  ...
+# Subtest: the caravan sells finite stock and keeps the purchased amount on load
+ok 154 - the caravan sells finite stock and keeps the purchased amount on load
+  ---
+  duration_ms: 10.405204
+  type: 'test'
+  ...
+# Subtest: helping the injured survivor consumes the stated materials and cannot pay twice
+ok 155 - helping the injured survivor consumes the stated materials and cannot pay twice
+  ---
+  duration_ms: 10.37539
+  type: 'test'
+  ...
+# Subtest: a hostile encounter cannot be skipped from its starting position; a paid passage clears it
+ok 156 - a hostile encounter cannot be skipped from its starting position; a paid passage clears it
+  ---
+  duration_ms: 1.025563
+  type: 'test'
+  ...
+# Subtest: hostile encounters use real combat and allow withdrawal through the exit
+ok 157 - hostile encounters use real combat and allow withdrawal through the exit
+  ---
+  duration_ms: 0.692472
+  type: 'test'
+  ...
+# Subtest: storm choices have consequences and cannot be replayed
+ok 158 - storm choices have consequences and cannot be replayed
+  ---
+  duration_ms: 0.510498
+  type: 'test'
+  ...
+# Subtest: combat damage, kills and square event state survive manual saves
+ok 159 - combat damage, kills and square event state survive manual saves
+  ---
+  duration_ms: 1.22318
+  type: 'test'
+  ...
+# Subtest: loading during transit pauses on the traveled square and retains the route
+ok 160 - loading during transit pauses on the traveled square and retains the route
+  ---
+  duration_ms: 3.913238
+  type: 'test'
+  ...
+# Subtest: old saves gain a regional position without resetting inventory or quests
+ok 161 - old saves gain a regional position without resetting inventory or quests
+  ---
+  duration_ms: 0.865532
+  type: 'test'
+  ...
+# Subtest: malformed or teleporting regional routes are rejected before replacing the game
+ok 162 - malformed or teleporting regional routes are rejected before replacing the game
+  ---
+  duration_ms: 0.650939
+  type: 'test'
+  ...
+# Subtest: urban trips keep their existing fare and bypass regional encounters
+ok 163 - urban trips keep their existing fare and bypass regional encounters
+  ---
+  duration_ms: 0.843349
+  type: 'test'
+  ...
+# Subtest: all wilderness compositions keep NPCs, objects and exits reachable for every event
+ok 164 - all wilderness compositions keep NPCs, objects and exits reachable for every event
+  ---
+  duration_ms: 900.44769
+  type: 'test'
+  ...
+1..164
+# tests 164
+# suites 0
+# pass 164
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16066.928649
