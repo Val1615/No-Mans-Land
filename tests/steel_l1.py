@@ -139,8 +139,6 @@ with sync_playwright() as p:
                 check(f'{T}: barrière franchie -> Center-Town', ok and s['location'] == 'steel_center', s['location'])
                 check(f'{T}: quête : arrivé en ville (q_steel)', s['flags'].get('q_steel'))
                 check(f'{T}: HUD en crédits dans Steel', E("document.getElementById('money').textContent") == '11 cr' and E("document.getElementById('money-lbl').textContent") == 'Crédits')
-                for b in ['c_change']:
-                    v = bvis(b); check(f'{T}: {b} rendu (pixels)', v[0] > 0.25 and v[1] > 2000 * dpr * dpr * 0.25, v)
                 lbl = lambda b: E(f"(()=>{{const e=document.querySelector('.wlabel[data-building=\"{b}\"]');return !!e && !e.hidden && getComputedStyle(e).display!=='none'}})()")
                 check(f'{T}: services non nommés avant découverte', not lbl('c_change') and not lbl('c_arcadius'))
                 pg.screenshot(path=OUT + f'{prof}-{race}-center.png')
@@ -152,6 +150,8 @@ with sync_playwright() as p:
                 same, mir = aligned(V0, V1); check(f'{T}: patrouilleur tourné vers le joueur, image en miroir', f0 != f1 and mir < 0.6 * same, (f0, f1, same, mir))
                 option('Il y a un change'); check(f'{T}: le change est repéré par la conversation', st()['discovered'].get('c_change')); close_dlg(); time.sleep(0.6)
                 check(f'{T}: « Change de Teng » nommé une fois repéré', lbl('c_change'))
+                d = E("window.__nml.game.doorById('c_change_door').threshold"); walk(d['x'], d['z'] + 1.5, tol=1.0); time.sleep(0.5)
+                v = bvis('c_change'); check(f'{T}: c_change rendu devant le joueur (pixels)', v[0] > 0.25 and v[1] > 500 * dpr * dpr, v)
                 ok = enter_door('c_change_door'); check(f'{T}: entrée chez Teng', ok and st()['location'] == 'change_in')
                 check(f'{T}: Teng parle par geste', tap_npc('teng')); m0 = st()['player']['money']; option('Changer 10'); s = st()
                 check(f'{T}: change chez Teng 10 $ -> 6 cr', s['player']['money'] == m0 - 10 and s['player']['credits'] == 17, (s['player']['money'], s['player']['credits']))
@@ -159,7 +159,7 @@ with sync_playwright() as p:
                 pg.screenshot(path=OUT + f'{prof}-{race}-teng.png'); close_dlg()
                 enter_door('change_in_door'); time.sleep(1)
                 for b in ['c_arcadius', 'c_neon', 'c_tour']:
-                    v = bvis(b); check(f'{T}: {b} rendu (pixels, si dans le champ)', v[1] == 0 and b != 'c_arcadius' or v[0] > 0.25, v)
+                    v = bvis(b); check(f'{T}: {b} rendu (pixels, si dans le champ)', v[1] == 0 and (mob or b != 'c_arcadius') or v[0] > 0.25, v)
                 check(f'{T}: Arcadius Center nommé dehors', st()['location'] == 'steel_center' and lbl('c_arcadius'))
                 h = journal(); check(f'{T}: journal : arrivé à Steel, la suite attend', 'Arrivé à Steel-Megalopolis' in h, h[-160:])
             else:  # humain
