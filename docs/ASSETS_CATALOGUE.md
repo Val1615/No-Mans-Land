@@ -306,10 +306,12 @@ Générés (GenerateImage) sur fond vert uni, références : `nml-quartiers/art-
 
 | id | source | emprise x × z (m) | hauteur (m) | contrôle |
 |---|---|---|---|---|
-| `buildings/lt_portique_io.webp` | `art-gen/gen_lt_portique_io.jpg` | 3.5 × 7.0 | 6.5 | arête basse [0.5, 0.69] → [0.33, 0.7] ; judge Hough rejeté (pente dominante 0.5) ; hauteur implicite 2.58 m ; bord magenta 0.03 % |
-| `buildings/lt_atelier_usine.webp` | `art-gen/gen_lt_atelier_usine.jpg` | 7.0 × 14.0 | 9.0 | arête basse [0.51, 0.61] → [0.33, 0.7] ; judge Hough accepté (pente dominante 0.7) ; hauteur implicite 4.16 m ; bord magenta 0.04 % |
-| `buildings/lt_immeuble_ouvrier.webp` | `art-gen/gen_lt_immeuble_ouvrier.jpg` | 4.5 × 8.0 | 13.0 | arête basse [0.47, 0.64] → [0.33, 0.7] ; judge Hough rejeté (pente dominante 0.6) ; hauteur implicite 6.7 m ; bord magenta 0.01 % |
-| `buildings/lt_foyer_ruiz.webp` | `art-gen/gen_lt_foyer_ruiz.jpg` | 10.0 × 7.0 | 5.5 | arête basse [0.32, 0.66] → [0.33, 0.7] ; judge Hough rejeté (pente dominante 0.15) ; hauteur implicite 3.97 m ; bord magenta 0.0 % |
+| `buildings/lt_portique_io.webp` | `art-gen/gen_lt_portique_io_p2.jpg` | 7.0 × 2.5 | 7.0 | arête basse [0.42, 0.57] → [0.35, 0.72] ; keystone k=0.1 ; judge Hough accepté (pente dominante 0.3, part bande v4 0.95) ; hauteur implicite 7.84 m |
+| `buildings/lt_atelier_usine.webp` | `art-gen/gen_lt_atelier_usine.jpg` | 7.0 × 14.0 | 9.0 | arête basse [0.51, 0.61] → [0.33, 0.7] ; judge Hough accepté (pente dominante 0.7, part bande v4 0) ; hauteur implicite 4.16 m |
+| `buildings/lt_immeuble_ouvrier.webp` | `art-gen/gen_lt_immeuble_ouvrier_p2.jpg` | 8.0 × 6.5 | 13.0 | arête basse [0.36, 0.78] → [0.35, 0.72] ; keystone k=0.1 ; judge Hough accepté (pente dominante 0.25, part bande v4 0.78) ; hauteur implicite 9.46 m |
+| `buildings/lt_foyer_ruiz.webp` | `art-gen/gen_lt_foyer_ruiz.jpg` | 10.0 × 7.0 | 5.5 | arête basse [0.32, 0.66] → [0.33, 0.7] ; judge Hough accepté (pente dominante 0.7, part bande v4 0) ; hauteur implicite 3.97 m |
 
 
 Notes : la hauteur implicite (formule de `tools_interiors`) sous-estime nettement ces bâtiments (génération plus plongeante que la caméra v4, socles débordants) ; `height_m` du manifest est la hauteur visée. Despill vert global (aucun vert voulu dans la palette). Écartés : `gen_lt_atelier_usine` essais 1-2 (toits à pignons, pas de vrais sheds), portique essai 2 (perspective frontale à point de fuite, halo vert). Planche : `nml-shots/lowertown_sprites.png` (planche d'assets, pas une capture du jeu).
+
+Passe 2 (2026-10-22) : portique et immeuble régénérés (`*_p2.jpg` : portique élancé, socle réduit, poutre parallèle à l'arête x). Le générateur dessine des fuyantes (arêtes hautes plus plates que la base) : ajout de `keystone()` dans `tools_lowertown.py`, redressement vertical nul à la base et égal à k au sommet, proportionnel à |x - coin avant| (k = 0,10 pour les deux). Foyer Ruiz : le despill vert global de la passe 1 modifiait ~91 % des pixels et créait de faux contours sur la tôle ondulée (pente 0,15 dominante) ; despill désormais limité à la bande de bord de 4 px et aux pixels nettement verts : accepté. Contrôles couleur : 0 pixel vert, bleu ou violet sur les quatre sprites. Écartés passe 2 : `gen_lt_portique_io_p2b` (vue frontale), `gen_lt_immeuble_p2b` (identique, fuyantes inchangées).

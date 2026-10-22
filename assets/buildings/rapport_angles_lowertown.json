@@ -1,36 +1,37 @@
 {
  "lt_portique_io": {
-  "pente_dominante": 0.5,
-  "sens": "miroir",
-  "part_bande_v4": 0,
-  "part_2_1_opposee": 0.08,
-  "accepte": false,
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.95,
+  "part_2_1_opposee": 0.03,
+  "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.5,
-    0.69
+    0.42,
+    0.57
    ],
    "cisaillement": [
-    0.864,
-    -0.106
+    1.032,
+    -0.107
    ],
    "miroir": false,
    "pentes_apres": [
-    0.33,
-    0.7
-   ]
+    0.35,
+    0.72
+   ],
+   "keystone_k": 0.1
   },
   "accepte_arete_basse": true,
-  "source": "art-gen/gen_lt_portique_io.jpg",
+  "source": "art-gen/gen_lt_portique_io_p2.jpg",
   "role": "portique de contrôle IO sur la rampe de La Descente, scanner, voyants ambre, guérite vide",
   "emprise_m": [
-   3.5,
-   7.0
+   7.0,
+   2.5
   ],
-  "hauteur_attendue_m": 6.5,
-  "hauteur_implicite_m": 2.58,
-  "echelle_ok": false,
-  "magenta_bord_pct": 0.03
+  "hauteur_attendue_m": 7.0,
+  "hauteur_implicite_m": 7.84,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
  },
  "lt_atelier_usine": {
   "pente_dominante": 0.7,
@@ -66,44 +67,45 @@
   "magenta_bord_pct": 0.04
  },
  "lt_immeuble_ouvrier": {
-  "pente_dominante": 0.6,
-  "sens": "miroir",
-  "part_bande_v4": 0,
-  "part_2_1_opposee": 0,
-  "accepte": false,
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.78,
+  "part_2_1_opposee": 0.06,
+  "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.47,
-    0.64
+    0.36,
+    0.78
    ],
    "cisaillement": [
-    0.921,
-    -0.107
+    0.903,
+    0.005
    ],
    "miroir": false,
    "pentes_apres": [
-    0.33,
-    0.7
-   ]
+    0.35,
+    0.72
+   ],
+   "keystone_k": 0.1
   },
   "accepte_arete_basse": true,
-  "source": "art-gen/gen_lt_immeuble_ouvrier.jpg",
+  "source": "art-gen/gen_lt_immeuble_ouvrier_p2.jpg",
   "role": "immeuble ouvrier, 4 niveaux, coursives extérieures, linge, rez-de-chaussée à rideau",
   "emprise_m": [
-   4.5,
-   8.0
+   8.0,
+   6.5
   ],
   "hauteur_attendue_m": 13.0,
-  "hauteur_implicite_m": 6.7,
-  "echelle_ok": false,
+  "hauteur_implicite_m": 9.46,
+  "echelle_ok": true,
   "magenta_bord_pct": 0.01
  },
  "lt_foyer_ruiz": {
-  "pente_dominante": 0.15,
-  "sens": "direct",
-  "part_bande_v4": 0.34,
+  "pente_dominante": 0.7,
+  "sens": "miroir",
+  "part_bande_v4": 0,
   "part_2_1_opposee": 0,
-  "accepte": false,
+  "accepte": true,
   "correction_v4": {
    "pentes_source": [
     0.32,

@@ -818,20 +818,20 @@
  },
  "lt_portique_io": {
   "file": "buildings/lt_portique_io.webp",
-  "source": "art-gen/gen_lt_portique_io.jpg",
+  "source": "art-gen/gen_lt_portique_io_p2.jpg",
   "px": [
-   342,
-   300
+   359,
+   489
   ],
   "anchor": [
-   142,
-   299
+   287,
+   488
   ],
   "footprint_m": [
-   3.5,
-   7.0
+   7.0,
+   2.5
   ],
-  "height_m": 6.5,
+  "height_m": 7.0,
   "lot": "lower-town v1 (creation/lower-town-sprites)",
   "anchor_note": "coin avant bas (pivot), emprises provisoires à réconcilier avec Rivet"
  },
@@ -856,18 +856,18 @@
  },
  "lt_immeuble_ouvrier": {
   "file": "buildings/lt_immeuble_ouvrier.webp",
-  "source": "art-gen/gen_lt_immeuble_ouvrier.jpg",
+  "source": "art-gen/gen_lt_immeuble_ouvrier_p2.jpg",
   "px": [
-   412,
-   514
+   514,
+   652
   ],
   "anchor": [
-   186,
-   513
+   325,
+   651
   ],
   "footprint_m": [
-   4.5,
-   8.0
+   8.0,
+   6.5
   ],
   "height_m": 13.0,
   "lot": "lower-town v1 (creation/lower-town-sprites)",

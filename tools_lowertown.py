@@ -11,17 +11,35 @@ K, cy, sy = TF.K, TF.cy, TF.sy
 G, A = HERE + '/art-gen/', HERE + '/assets/buildings/'
 # id: (source, emprise indicative [x, z] m (seule la plus grande dimension compte, cf. build), hauteur m, rôle)
 LT = {
- 'lt_portique_io': ('gen_lt_portique_io.jpg', [7.0, 5.0], 6.5, 'portique de contrôle IO sur la rampe de La Descente, scanner, voyants ambre, guérite vide'),
+ 'lt_portique_io': ('gen_lt_portique_io_p2.jpg', [7.0, 2.0], 7.0, 'portique de contrôle IO sur la rampe de La Descente, scanner, voyants ambre, guérite vide'),
  'lt_atelier_usine': ('gen_lt_atelier_usine.jpg', [14.0, 10.0], 9.0, 'atelier-usine à toit en sheds (Usine 7 / Atelier Bastide), porte coulissante entrouverte, lueur de four, cheminée'),
- 'lt_immeuble_ouvrier': ('gen_lt_immeuble_ouvrier.jpg', [8.0, 6.0], 13.0, 'immeuble ouvrier, 4 niveaux, coursives extérieures, linge, rez-de-chaussée à rideau'),
+ 'lt_immeuble_ouvrier': ('gen_lt_immeuble_ouvrier_p2.jpg', [8.0, 6.0], 13.0, 'immeuble ouvrier, 4 niveaux, coursives extérieures, linge, rez-de-chaussée à rideau'),
  'lt_foyer_ruiz': ('gen_lt_foyer_ruiz.jpg', [10.0, 7.0], 5.5, 'Foyer Ruiz, ancienne cantine d usine, porte basse, vitre embuée, soupirail à barreaux au ras de la rue'),
 }
+# passe 2 : redressement de perspective. Le générateur dessine les arêtes hautes plus plates que l'arête basse (fuyantes) ;
+# v4fix (cisaillement affine) ne corrige que la base. keystone() écarte verticalement les points selon |x - coin avant|,
+# d'un coefficient nul à la base et égal à k au sommet (k choisi par balayage 0..0,3 : plus petit k où judge accepte avec pente ~0,30).
+import cv2
+def keystone(rgba, k):
+    a = rgba[...,3]>100; ys,xs=np.nonzero(a); ay=ys.max(); ax=int(np.median(xs[ys>=ay-3])); yt=ys.min()
+    H,W=a.shape; pad=int(k*W)+2
+    X,Yo=np.meshgrid(np.arange(W),np.arange(-pad,H)); Y=Yo.astype(float); dist=np.abs(X-ax)
+    for _ in range(6):
+        t=np.clip((ay-Y)/(ay-yt),0,1); Y=Yo + k*t*dist
+    out=cv2.remap(rgba,X.astype(np.float32),Y.astype(np.float32),cv2.INTER_CUBIC,borderMode=cv2.BORDER_CONSTANT,borderValue=0)
+    return TI.clean(out,200)
+KS = {'lt_portique_io': 0.10, 'lt_immeuble_ouvrier': 0.10}
 def build(aid):
     src, (w, d), h, role = LT[aid]
     rgba = TF.key_green_obj(G + src)
-    # despill vert global : le vert résiduel (rambardes fines, tuyaux) est ramené au max(R, B) ; la palette Lower-Town n'a aucun vert voulu
-    p = rgba[..., :3].astype(float); p[..., 1] = np.minimum(p[..., 1], np.maximum(p[..., 0], p[..., 2]) * 1.05 + 2); rgba = rgba.copy(); rgba[..., :3] = p.astype('uint8')
+    # despill vert ciblé (passe 2) : seulement la bande de bord (4 px) et les pixels nettement verts. Le despill global de la passe 1
+    # modifiait ~90 % des pixels (gris neutres légèrement verts assombris), créait de faux contours (tôle ondulée) et faisait basculer judge.
+    from scipy import ndimage
+    p = rgba[..., :3].astype(float); op = rgba[..., 3] > 0; ex = p[..., 1] - np.maximum(p[..., 0], p[..., 2])
+    m = (op & ~ndimage.binary_erosion(op, iterations=4)) | (ex > 8)
+    p[..., 1] = np.where(m, np.minimum(p[..., 1], np.maximum(p[..., 0], p[..., 2]) * 1.05 + 2), p[..., 1]); rgba = rgba.copy(); rgba[..., :3] = p.astype('uint8')
     rgba, fix = TI.v4fix(rgba)
+    if KS.get(aid): rgba = keystone(rgba, KS[aid]); fix['keystone_k'] = KS[aid]; fix['pentes_apres'] = [round(v, 2) for v in TI.base_slopes(rgba)[:2]]
     # emprise : proportions x/z mesurées sur l'arête basse corrigée (coin avant = point le plus bas), échelle fixée par la plus grande dimension
     m = rgba[..., 3] > 100; ys, xs = np.nonzero(m); by = ys.max(); bx = int(np.median(xs[ys >= by - 3]))
     lw, ld = (bx - xs.min()) / cy, (xs.max() - bx) / sy; s = max(w, d) / max(lw, ld)
