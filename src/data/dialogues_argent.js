@@ -75,13 +75,15 @@ export const DIALOGUES_ARGENT = {
       { label: 'J\'y vais.', action: 'flag:b_debut', next: 'end' } ] },
     pourquoi: { text: 'Parce que si je monte au Scellé lui réclamer de l\'argent, il ne remettra plus les pieds ici. Et c\'est lui qui me répare l\'alambic. Toi, il peut te détester, ça ne me coûte rien.', options: [
       { label: 'Merci pour moi.', action: 'flag:b_debut', next: 'end' } ] },
-    // Retours (options à ajouter à hector.start selon les drapeaux)
+    // Retours (options à ajouter à hector.start selon les drapeaux ; echec : if 'b_echec&!b_fini')
     paye: { text: 'Quinze. Il a craché ou il a pleuré ? Peu importe. Voilà ta part, quinze aussi. Les comptes sont ronds, j\'aime ça.', options: [
       { label: 'Merci, Hector.', action: 'pay:15;gain:15;flag:b_fini', next: 'end' } ] },
     outils: { text: 'Des clés ? Qu\'est-ce que tu veux que j\'en fasse, que je serre le ragoût ? Garde-les. Va les vendre chez Anselme, il achète tout ce qui brille. Moi, je rouvre l\'ardoise d\'Ezequiel à zéro et je ne te dois rien.', options: [
       { label: 'Tant pis.', action: 'flag:b_fini', next: 'end' } ] },
     toi: { text: 'Tu paies sa dette avec ton argent ? Tu es un saint ou un idiot, et je n\'ai jamais eu besoin de savoir la différence. L\'ardoise est effacée.', options: [
-      { label: 'Elle l\'est.', action: 'flag:b_fini', next: 'end' } ] }
+      { label: 'Elle l\'est.', action: 'flag:b_fini', next: 'end' } ] },
+    echec: { text: 'Il t\'a eu avec la canne ? Je t\'avais dit qu\'il était rapide. Non, je ne te l\'avais pas dit. Assieds-toi, la soupe est offerte. L\'argent, je l\'oublie, et toi aussi.', options: [
+      { label: 'Merci pour la soupe.', action: 'flag:b_fini', next: 'end' } ] }
   },
   // Option à ajouter à ezequiel.start : { label: 'Hector m\'envoie. Pour ton ardoise.', next: 'dette_ezequiel/start', if: 'b_debut&!b_regle' }
   dette_ezequiel: {
