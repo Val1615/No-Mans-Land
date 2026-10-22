@@ -16,6 +16,34 @@ LT = {
  'lt_immeuble_ouvrier': ('gen_lt_immeuble_ouvrier_p2.jpg', [8.0, 6.0], 13.0, 'immeuble ouvrier, 4 niveaux, coursives extérieures, linge, rez-de-chaussée à rideau'),
  'lt_foyer_ruiz': ('gen_lt_foyer_ruiz.jpg', [10.0, 7.0], 5.5, 'Foyer Ruiz, ancienne cantine d usine, porte basse, vitre embuée, soupirail à barreaux au ras de la rue'),
 }
+# lot props (2026-10-22) : bâtiments/props de PLAN_IMPLEMENTATION.md §1. 'MAQ:fichier:x0,y0,x1,y1' = sprite repris de la maquette
+# (reference/maquette/.../art-source/, fond transparent), recadré, étalonné nuit Lower-Town, puis même correction/contrôle.
+MAQ = 'reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/'
+LT.update({
+ 'lt_atelier_petit': ('gen_lt_atelier_petit.jpg', [8.0, 6.0], 5.0, 'Atelier Bastide, petit atelier de ferrailleur, rideau ouvert, établi éclairé'),
+ 'lt_comptoir_moss': ('gen_lt_comptoir_moss.jpg', [6.0, 5.0], 7.0, 'Chez Moss, comptoir sans enseigne au rez d un immeuble, guichet éclairé ambre'),
+ 'lt_tuyau': ('MAQ:linear-v12.png:512,512,1024,1024', [3.0, 0.8], 1.3, 'tuyau suspendu droit, brides boulonnées, sur pieds'),
+ 'lt_tuyau_coude': ('gen_lt_tuyau_coude.jpg', [2.5, 2.5], 1.3, 'tuyau, coude à 90° (variante de lt_tuyau)'),
+ 'lt_sodium': ('MAQ:street-detail-v9.png:692,486,917,980', [0.8, 0.8], 4.5, 'poteau d éclairage à lanterne chaude (lampe sodium)'),
+ 'lt_horloge_pointage': ('gen_lt_horloge_pointage.jpg', [1.2, 0.8], 2.0, 'horloge de pointage de l Usine 7, casier à cartes'),
+ 'lt_voiture_panne': ('MAQ:props-v2.png:930,540,1525,940', [4.2, 1.8], 1.5, 'voiture en panne, roue manquante, vitres cassées'),
+ 'lt_bidons': ('MAQ:props-v2.png:1198,87,1413,453', [0.6, 0.6], 0.9, 'bidon (fût de 200 L) rouillé'),
+ 'lt_ferraille': ('gen_lt_ferraille.jpg', [1.5, 1.2], 1.0, 'caisse de ferraille'),
+ 'lt_palettes': ('gen_lt_palettes.jpg', [1.2, 1.0], 0.6, 'pile de palettes'),
+ 'lt_grille_fosse': ('gen_lt_grille_fosse.jpg', [2.0, 2.0], 1.2, 'grille cadenassée de l Escalier de la Fosse (vers la Sous-Ville)'),
+ 'lt_flaque': ('gen_lt_flaque.jpg', [2.5, 1.5], 0.0, 'flaque huileuse (décalque au sol)'),
+ 'lt_passerelle': ('gen_lt_passerelle.jpg', [6.0, 1.5], 3.8, 'passerelle grillagée sur poteaux avec escalier'),
+})
+HULL = {'lt_tuyau', 'lt_tuyau_coude', 'lt_voiture_panne', 'lt_passerelle'}  # objets à pieds/roues : arête basse mesurée sur l enveloppe convexe (comme sv_cardtable_b)
+GRADE = {'lt_tuyau': 0.55, 'lt_tuyau_coude': 0.5}  # métal trop clair pour la nuit de Lower-Town : assombri vers le gris acier
+NOFIX = {'lt_sodium', 'lt_bidons', 'lt_flaque'}  # objets de révolution / décalque : pas de cisaillement (l arête basse n est pas une arête)
+def load_maq(spec):
+    _, f, bb = spec.split(':'); x0, y0, x1, y1 = map(int, bb.split(','))
+    rgba = np.asarray(Image.open(HERE + '/' + MAQ + f).convert('RGBA'))[y0:y1, x0:x1].copy()
+    # étalonnage nuit Lower-Town : désaturation partielle, assombrissement, dominante chaude (sprites de maquette éclairés plein jour)
+    p = rgba[..., :3].astype(float); g = p.mean(2, keepdims=True); p = (0.55 * p + 0.45 * g) * 0.62 * np.array([1.06, 0.97, 0.86])
+    rgba[..., :3] = np.clip(p, 0, 255).astype('uint8')
+    return TI.clean(rgba, 400)
 # passe 2 : redressement de perspective. Le générateur dessine les arêtes hautes plus plates que l'arête basse (fuyantes) ;
 # v4fix (cisaillement affine) ne corrige que la base. keystone() écarte verticalement les points selon |x - coin avant|,
 # d'un coefficient nul à la base et égal à k au sommet (k choisi par balayage 0..0,3 : plus petit k où judge accepte avec pente ~0,30).
@@ -31,26 +59,42 @@ def keystone(rgba, k):
 KS = {'lt_portique_io': 0.10, 'lt_immeuble_ouvrier': 0.10}
 def build(aid):
     src, (w, d), h, role = LT[aid]
-    rgba = TF.key_green_obj(G + src)
+    maq = src.startswith('MAQ:')
+    rgba = load_maq(src) if maq else TF.key_green_obj(G + src)
+    if aid in GRADE: rgba = rgba.copy(); rgba[..., :3] = np.clip(rgba[..., :3].astype(float) * GRADE[aid] * np.array([1.0, 0.98, 0.95]), 0, 255).astype('uint8')
     # despill vert ciblé (passe 2) : seulement la bande de bord (4 px) et les pixels nettement verts. Le despill global de la passe 1
     # modifiait ~90 % des pixels (gris neutres légèrement verts assombris), créait de faux contours (tôle ondulée) et faisait basculer judge.
     from scipy import ndimage
     p = rgba[..., :3].astype(float); op = rgba[..., 3] > 0; ex = p[..., 1] - np.maximum(p[..., 0], p[..., 2])
     m = (op & ~ndimage.binary_erosion(op, iterations=4)) | (ex > 8)
     p[..., 1] = np.where(m, np.minimum(p[..., 1], np.maximum(p[..., 0], p[..., 2]) * 1.05 + 2), p[..., 1]); rgba = rgba.copy(); rgba[..., :3] = p.astype('uint8')
-    rgba, fix = TI.v4fix(rgba)
+    if aid in NOFIX: fix = {'v4fix': 'non applicable (' + ('révolution' if aid != 'lt_flaque' else 'décalque') + ')', 'pentes_apres': [None, None]}
+    elif aid in HULL:
+        ys, xs = np.nonzero(rgba[..., 3] > 100); hull = cv2.convexHull(np.stack([xs, ys], 1).astype(np.int32))
+        hm = np.zeros(rgba.shape[:2], np.uint8); cv2.fillPoly(hm, [hull.reshape(-1, 2)], 1); hrgba = np.dstack([rgba[..., :3], hm * 255]).astype('uint8')
+        sl, sr, _, _ = TI.base_slopes(hrgba); mir = sr < sl
+        rgba, fix = TI.v4fix(rgba, force=(sl, sr), mirror=mir); h2, _ = TI.v4fix(hrgba, force=(sl, sr), mirror=mir)
+        fix['pentes_apres'] = [round(v, 2) for v in TI.base_slopes(h2)[:2]]; fix['mesure'] = 'enveloppe convexe'
+    else: rgba, fix = TI.v4fix(rgba)
     if KS.get(aid): rgba = keystone(rgba, KS[aid]); fix['keystone_k'] = KS[aid]; fix['pentes_apres'] = [round(v, 2) for v in TI.base_slopes(rgba)[:2]]
+    elif aid not in KS and aid not in NOFIX and not TI.judge(rgba)['accepte']:
+        # lot props : balayage automatique du redressement (k > 0 si arêtes hautes trop plates, k < 0 si trop raides), plus petit |k| accepté
+        for k in (0.05, -0.05, 0.1, -0.1, 0.15, -0.15, 0.2, -0.2, 0.25, 0.3):
+            o = keystone(rgba, k)
+            if TI.judge(o)['accepte']: rgba = o; fix['keystone_k'] = k; break
     # emprise : proportions x/z mesurées sur l'arête basse corrigée (coin avant = point le plus bas), échelle fixée par la plus grande dimension
     m = rgba[..., 3] > 100; ys, xs = np.nonzero(m); by = ys.max(); bx = int(np.median(xs[ys >= by - 3]))
-    lw, ld = (bx - xs.min()) / cy, (xs.max() - bx) / sy; s = max(w, d) / max(lw, ld)
-    w, d = round(lw * s * 2) / 2, round(ld * s * 2) / 2
+    if aid not in NOFIX:
+        lw, ld = (bx - xs.min()) / cy, (xs.max() - bx) / sy; s = max(w, d) / max(lw, ld)
+        w, d = max(0.5, round(lw * s * 2) / 2), max(0.5, round(ld * s * 2) / 2)
     j = TI.judge(rgba); j['correction_v4'] = fix
     pa = fix['pentes_apres']
-    if abs(pa[0] - 0.33) <= 0.06 and abs(pa[1] - 0.70) <= 0.08: j['accepte_arete_basse'] = True
+    if pa[0] is None: j['accepte_arete_basse'] = None
+    elif abs(pa[0] - 0.33) <= 0.06 and abs(pa[1] - 0.70) <= 0.08: j['accepte_arete_basse'] = True
     else: j['accepte_arete_basse'] = False
     R, U = TI.R, TI.U; hh = rgba.shape[0] / rgba.shape[1]; sw = w * abs(R[0]) + d * abs(R[2])
     implied = (sw * hh - w * abs(U[0]) - d * abs(U[2])) / U[1]
-    j.update({'source': 'art-gen/' + src, 'role': role, 'emprise_m': [w, d], 'hauteur_attendue_m': h, 'hauteur_implicite_m': round(implied, 2),
+    j.update({'source': (MAQ + src.split(':')[1] + ' ' + src.split(':')[2]) if maq else 'art-gen/' + src, 'origine': 'maquette' if maq else 'généré', 'role': role, 'emprise_m': [w, d], 'hauteur_attendue_m': h, 'hauteur_implicite_m': round(implied, 2),
               'echelle_ok': bool(abs(implied - h) <= 0.3 * h + 0.15)})
     sc = K * (w * cy + d * sy) / rgba.shape[1]
     im = Image.fromarray(rgba, 'RGBA').resize((round(rgba.shape[1] * sc), round(rgba.shape[0] * sc)), Image.LANCZOS)
@@ -58,7 +102,7 @@ def build(aid):
     j['magenta_bord_pct'] = TF.mag_edge_pct(np.asarray(im))[0]
     im.save(A + aid + '.webp', quality=90)
     man = json.load(open(A + 'manifest.json'))
-    man[aid] = {'file': 'buildings/' + aid + '.webp', 'source': 'art-gen/' + src, 'px': list(im.size), 'anchor': [ax, int(ay)],
+    man[aid] = {'file': 'buildings/' + aid + '.webp', 'source': (MAQ + src.split(':')[1] + ' ' + src.split(':')[2]) if maq else 'art-gen/' + src, 'origine': 'maquette' if maq else 'généré', 'px': list(im.size), 'anchor': [ax, int(ay)],
                 'footprint_m': [w, d], 'height_m': h, 'lot': 'lower-town v1 (creation/lower-town-sprites)',
                 'anchor_note': 'coin avant bas (pivot), emprises provisoires à réconcilier avec Rivet'}
     json.dump(man, open(A + 'manifest.json', 'w'), ensure_ascii=False, indent=1)

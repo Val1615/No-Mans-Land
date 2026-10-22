@@ -132,5 +132,431 @@
   "hauteur_implicite_m": 3.97,
   "echelle_ok": true,
   "magenta_bord_pct": 0.0
+ },
+ "lt_atelier_petit": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.81,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.24,
+    0.52
+   ],
+   "cisaillement": [
+    1.349,
+    0.007
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": 0.2
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_atelier_petit.jpg",
+  "origine": "généré",
+  "role": "Atelier Bastide, petit atelier de ferrailleur, rideau ouvert, établi éclairé",
+  "emprise_m": [
+   8.0,
+   6.0
+  ],
+  "hauteur_attendue_m": 5.0,
+  "hauteur_implicite_m": 6.68,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.03
+ },
+ "lt_comptoir_moss": {
+  "pente_dominante": 0.3,
+  "sens": "miroir",
+  "part_bande_v4": 0.49,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.2,
+    0.4
+   ],
+   "cisaillement": [
+    1.713,
+    -0.017
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_comptoir_moss.jpg",
+  "origine": "généré",
+  "role": "Chez Moss, comptoir sans enseigne au rez d un immeuble, guichet éclairé ambre",
+  "emprise_m": [
+   6.0,
+   5.0
+  ],
+  "hauteur_attendue_m": 7.0,
+  "hauteur_implicite_m": 11.13,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_tuyau": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.51,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.61,
+    0.61
+   ],
+   "cisaillement": [
+    0.846,
+    -0.182
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/linear-v12.png 512,512,1024,1024",
+  "origine": "maquette",
+  "role": "tuyau suspendu droit, brides boulonnées, sur pieds",
+  "emprise_m": [
+   3.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 1.3,
+  "hauteur_implicite_m": 0.57,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_tuyau_coude": {
+  "pente_dominante": 0.95,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "pentes_source": [
+    0.07,
+    0.48
+   ],
+   "cisaillement": [
+    1.901,
+    0.204
+   ],
+   "miroir": true,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_tuyau_coude.jpg",
+  "origine": "généré",
+  "role": "tuyau, coude à 90° (variante de lt_tuyau)",
+  "emprise_m": [
+   2.5,
+   1.0
+  ],
+  "hauteur_attendue_m": 1.3,
+  "hauteur_implicite_m": 1.69,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.05
+ },
+ "lt_sodium": {
+  "pente_dominante": 0.5,
+  "sens": "direct",
+  "part_bande_v4": 0.26,
+  "part_2_1_opposee": 0.32,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (révolution)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/street-detail-v9.png 692,486,917,980",
+  "origine": "maquette",
+  "role": "poteau d éclairage à lanterne chaude (lampe sodium)",
+  "emprise_m": [
+   0.8,
+   0.8
+  ],
+  "hauteur_attendue_m": 4.5,
+  "hauteur_implicite_m": 2.23,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_horloge_pointage": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.5,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.46,
+    0.6
+   ],
+   "cisaillement": [
+    0.98,
+    -0.116
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": 0.05
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_horloge_pointage.jpg",
+  "origine": "généré",
+  "role": "horloge de pointage de l Usine 7, casier à cartes",
+  "emprise_m": [
+   1.0,
+   1.0
+  ],
+  "hauteur_attendue_m": 2.0,
+  "hauteur_implicite_m": 2.06,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_voiture_panne": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.85,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.37,
+    0.78
+   ],
+   "cisaillement": [
+    0.898,
+    0.001
+   ],
+   "miroir": true,
+   "pentes_apres": [
+    0.33,
+    0.68
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v2.png 930,540,1525,940",
+  "origine": "maquette",
+  "role": "voiture en panne, roue manquante, vitres cassées",
+  "emprise_m": [
+   4.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 1.5,
+  "hauteur_implicite_m": 0.82,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_bidons": {
+  "pente_dominante": 1.0,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (révolution)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v2.png 1198,87,1413,453",
+  "origine": "maquette",
+  "role": "bidon (fût de 200 L) rouillé",
+  "emprise_m": [
+   0.6,
+   0.6
+  ],
+  "hauteur_attendue_m": 0.9,
+  "hauteur_implicite_m": 1.23,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_ferraille": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.61,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.43,
+    0.78
+   ],
+   "cisaillement": [
+    0.847,
+    -0.038
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": 0.05
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_ferraille.jpg",
+  "origine": "généré",
+  "role": "caisse de ferraille",
+  "emprise_m": [
+   1.5,
+   1.0
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.46,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_palettes": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.61,
+  "part_2_1_opposee": 0.02,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.44,
+    0.83
+   ],
+   "cisaillement": [
+    0.809,
+    -0.029
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": 0.05
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_palettes.jpg",
+  "origine": "généré",
+  "role": "pile de palettes",
+  "emprise_m": [
+   1.0,
+   1.0
+  ],
+  "hauteur_attendue_m": 0.6,
+  "hauteur_implicite_m": 0.33,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "lt_grille_fosse": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.48,
+  "part_2_1_opposee": 0.05,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.57,
+    1.24
+   ],
+   "cisaillement": [
+    0.569,
+    0.003
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_grille_fosse.jpg",
+  "origine": "généré",
+  "role": "grille cadenassée de l Escalier de la Fosse (vers la Sous-Ville)",
+  "emprise_m": [
+   2.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 1.2,
+  "hauteur_implicite_m": 0.22,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.04
+ },
+ "lt_flaque": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 1.0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "v4fix": "non applicable (décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_lt_flaque.jpg",
+  "origine": "généré",
+  "role": "flaque huileuse (décalque au sol)",
+  "emprise_m": [
+   2.5,
+   1.5
+  ],
+  "hauteur_attendue_m": 0.0,
+  "hauteur_implicite_m": 0.01,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.24
+ },
+ "lt_passerelle": {
+  "pente_dominante": 0.7,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.01,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.5,
+    0.57
+   ],
+   "cisaillement": [
+    0.962,
+    -0.151
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.5,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": false,
+  "source": "art-gen/gen_lt_passerelle.jpg",
+  "origine": "généré",
+  "role": "passerelle grillagée sur poteaux avec escalier",
+  "emprise_m": [
+   0.5,
+   6.0
+  ],
+  "hauteur_attendue_m": 3.8,
+  "hauteur_implicite_m": 1.15,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.02
  }
 }
