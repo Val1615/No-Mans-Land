@@ -8,8 +8,8 @@ const SODIUM = '#e8a13a', FOUR = '#c9541e';
 // assets/buildings/manifest.json (view.js n'utilise le volume `ph` que si le sprite est absent). Emprise x, z, w, d = mètres.
 const B = (id, label, sprite, x, z, w, d, ph, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: true, ph, ...extra });
 export const BUILDINGS_LOWER = [
-  // [décision] la dalle de Center-Town au-dessus des toits : dessous, pylônes, feux ambrés. Seuls les pylônes sont pleins. PROVISOIRE: volume (pas de sprite prévu au plan)
-  B('lt_dalle', 'Dalle de Center-Town', 'lt_dalle_center', 0, 0, 48, 2.5, { kind: 'dalle', h: 15 }, { named: false, solid: [0, 1, 2, 3, 4].map(i => ({ x: 2 + i * 10.5, z: 0.6, w: 1.4, d: 1.4 })) }),
+  // [décision] la dalle de Center-Town au-dessus des toits : dessous, pylônes, feux ambrés. Seuls les pylônes sont pleins. sprite Ocre lt_dalle_center (d02551d)
+  B('lt_dalle', 'Dalle de Center-Town', 'lt_dalle_center', 0, 0, 48, 2.5, { kind: 'dalle', h: 15 }, { named: false, solid: [0, 1, 2, 3, 4].map(i => ({ x: 1 + i * 10.5, z: 0, w: 3.4, d: 2.5 })) }), // socles des pylônes mesurés sur le sprite (≈ 244 px = 3,5 m ; centres alignés à 2,7 + 10,5 i)
   B('lt_usine7', 'Pointage Usine 7', 'lt_atelier_usine', 25, 1, 7, 14, { h: 9, color: '#3d3a36', roof: 'sheds', chimney: [2, 2] }, { visitable: true }), // sprite Ocre da01a62
   B('lt_bastide', 'Atelier Bastide', 'lt_atelier_petit', 36, 7, 8, 6, { h: 4.5, color: '#43362c', roof: 'sheds' }, { visitable: true }),
   B('lt_immeuble', 'Immeuble ouvrier', 'lt_immeuble_ouvrier', 5, 5, 8, 6.5, { h: 13, floors: 4 }),                    // sprite Ocre da01a62
