@@ -102,3 +102,9 @@ La quête « La porte d'acier » mène jusqu'à **l'entrée dans la ville** (dou
 
 ## 10. Questions restantes pour Valentin
 Toutes closes le 21/10/2026 [décision] : Nilo retiré dès le début ; race choisie à la création ; mutant à la douane = premier combat, fuite vers le désert, 0 PV = capturé et jeté dans la Sous-Ville.
+
+## L1 codé (v12, 22/10/2026)
+- **Canon** : douane à l'entrée, implant requis, mutants indésirables, quartier Center-Town, monnaie crédit.
+- **Décision** (Valentin) : augmenté/cyborg passent, humain refusé, mutant attaqué à vue ; combat absent, scène provisoire.
+- **Proposition** : Odile (douanière), Halloran (soldat), Teng (changeur), Elio (frère de Bruno, nom provisoire), mot de passe « quatorze poutres », taux 20 $ → 11 cr et 10 $ → 6 cr, trappe de service comme entrée de la Sous-Ville (L2), Arcadius Center nommé par Teng.
+- Crochet combat : `COMBAT_HOOKS.douane_mutant` dans `src/data/steel.js`. Quand le combat existera, remplacer les actions `hurt:` de Halloran par l'ouverture du combat ; les drapeaux `steel_attaque`, `steel_fui`, `steel_capture` restent.

@@ -262,3 +262,18 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - Effets de race stockés dans `state.character` (implant, radiations, soins réduits du cyborg appliqués chez Vera, douane de Steel : refusé / attaqué / passe) et dans des drapeaux (`race_*`, `origine_*`, `implant`) pour les réactions futures des PNJ et de la douane. Les répliques de PNJ par origine ne sont pas encore écrites (chaque origine désigne son PNJ).
 - Sauvegarde v2 : contient le personnage. Une sauvegarde v1 est migrée avec le perso par défaut, sans toucher aux PV, dollars, inventaire et drapeaux.
 - Fiche du perso en tête du Sac. Tests : `tests/lot2_creation.py` ; captures `captures/lot2-v11/` (et `live/`).
+
+## 2026-10-22 (heure de Paris) : v12, Steel-Megalopolis lot L1
+
+### Fait
+- Codex reporté. Lot L1 de Steel : route depuis Dusk-Town (jonction à pied au bout du Transit, ouverte une fois la porte d'acier forcée), poste de douane, Center-Town, comptoir de change de Teng.
+- Sprites de bâtiments entiers `b_st_*` (`tools_steel.py`) : maquettes `settlement-v9-city.png` et `city-v3.png`, plus deux images générées à l'échelle caméra v4 (`gen_steel_gate.jpg` pour le mur et la porte, `gen_service_exit.jpg` pour la trappe de service). PNJ générés : Odile (douanière), Halloran (soldat, réutilisé pour le patrouilleur), Teng (changeur).
+- Douane selon `state.character.race` : augmenté et cyborg passent (implant lu) ; humain refusé ; mutant interpellé à vue par Halloran, scène provisoire (fuite vers le désert ou capture) avec crochet `COMBAT_HOOKS.douane_mutant` et action `hook:` (aucun système de combat inventé).
+- Humain et mutant : Sol oriente vers un autre passage et vers Bruno ; Bruno donne le nom de son frère, **Elio (nom provisoire)**, et un mot de passe. L'entrée de la Sous-Ville (trappe de service) est seulement repérée et verrouillée : L2.
+- Monnaie : crédit dans Steel (HUD « Crédits »), dollars ailleurs. Taux provisoires : douane 20 $ → 11 cr, Teng 10 $ → 6 cr.
+- La quête s'arrête à l'arrivée en ville (`q_steel`) : « carte d'abord ».
+- Captures anciennes écrasées restaurées depuis git ; toutes les suites écrivent désormais dans `/tmp/nml-test-out/<suite>/` par défaut.
+- `flip_pixels` : mesure du miroir Vera recalée à ±4 px (`aligned_score`), même seuil 0,6.
+
+### Vérifié
+- `tests/steel_l1.py` (gestes réels 1280×800 et 390×844 dpr 2, quatre races). Captures : `captures/steel-l1-v12/` et `captures/steel-l1-v12/live/`.

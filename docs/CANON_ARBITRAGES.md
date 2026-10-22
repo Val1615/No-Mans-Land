@@ -181,3 +181,7 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 - **[décision]** (2e série) Attributs = les 7 de la maquette v0.13 : Force, Perception, Endurance, Charisme, Intelligence, Agilité, Volonté. Volonté y valait « sensibilité à l'Aura » : redéfinie [proposition] en résistance à la peur, à la douleur et à l'intimidation.
 - **[décision]** Aura absente de la création, débloquée plus tard par une quête.
 - **[décision]** Mutant à la douane de Steel : premier combat, fuite vers le désert ; 0 PV = capturé et jeté dans la Sous-Ville.
+
+## 9 sexies. Steel L1 en jeu (22/10/2026)
+- Décision : douane selon la race (cf. 9 quater) ; mutant = scène provisoire en attendant le combat.
+- Proposition : Elio, nom provisoire du frère de Bruno (contact de la Sous-Ville). Taux de change provisoires 20 $ → 11 cr (douane), 10 $ → 6 cr (Teng).
