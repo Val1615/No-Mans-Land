@@ -1,0 +1,22 @@
+Mode : outil intégré image_gen ; nouveaux visuels, pas de retouche du jeu.
+Usage commun : stylized-concept / architectural concept board / mature original CRPG / No Man's Land / 2175. Réalisme illustré, architecture détaillée, espaces habités et logiques, aucun HUD ni ressource d'un autre jeu.
+
+01 - STEEL-MEGALOPOLIS
+Une planche paysage en trois panneaux verticaux égaux.
+LOWER-TOWN : cité cyberpunk très dense sous un sarcophage fermé, nuit artificielle permanente, logements au-dessus des commerces, ruelles piétonnes, navettes en hauteur et réseaux techniques. Foule à plusieurs niveaux. Groupe administratif lointain : quatre tours, une centrale plus haute et trois plus basses. Bâtiments entretenus, aucune ville en ruine.
+UPPER-TOWN : niveau privilégié sous ciel bleu synthétique, marbre blanc et or, jardins entretenus, résidents contrôlés, ascenseurs. Un pilier cylindrique unique du siège IO rejoint la voûte. Luxe néoclassique moderne.
+PERIMETRE : désert de sable et de poussière, contrôle de douane avec circuits séparés pour poids lourds et voyageurs. Préfabriqués blindés, barrières, convoi de ravitaillement, sarcophage lointain. Pas de gratte-ciel ni de pelouse à l'extérieur.
+Seuls les trois courts titres des panneaux ; pas de placement aléatoire de barils ou de caisses.
+
+02 - VILLES DES TERRES
+Une planche paysage en trois panneaux verticaux égaux.
+DUSK-TOWN : vieille ville à façades délabrées et volets fermés, sable et herbes mortes, cours intérieures discrètement habitées. Atelier et repas commun, petite milice civile. Échelle humaine, ocre et bleu poussiéreux, pas de néons.
+JUNK-BURGH : bourg marchand dense et fortifié, métal récupéré et béton réemployé. Bazars couverts, ateliers organisés, cour de fret séparée des clients, motel et clinique, gardes aux seuils commerciaux. Lumière chaude, matériaux réparés, pas un tas de débris sans usage.
+BUENOS AIRES : ancienne capitale sud-américaine partiellement ruinée, maçonnerie ornée, avenues anciennes, voie de tram abandonnée coupée. Familles de mutants conscients aux variations physiques subtiles, patio partagé, eau et ateliers actifs. Cinéma réemployé, blocs évacués séparés. Pas de tours futuristes ni de horde de mutants déments.
+Correction de lecture pour le projet : végétation concentrée dans les cours entretenues, moins présente sur les avenues sèches.
+
+03 - IMPLANTATIONS UFSA
+Une planche paysage en trois panneaux verticaux égaux. Identités proposées à partir du croquis, sans nouvelle doctrine politique canonique.
+NOVO CORDOBA : garnison régionale modeste près de piémonts secs, maçonnerie basse réparée, marché civil distinct des réserves militaires, file de rationnement ombragée, radio, atelier et château d'eau. Olive délavé et brique, pas une seconde Steel-Megalopolis.
+PORT UFSA : ancien port réoccupé autour d'un quai exploitable et d'une digue, une grue récupérée et un cargo modeste. Contrôle, atelier, route du fret, maisons de pêcheurs adjacentes. Mer froide, gris et bleu passé, ni station balnéaire ni flotte futuriste géante.
+SIEGE UFSA : ensemble civique ancien adapté sur une petite crête côtière australe. Cour administrative gardée, habitations des travailleurs en contrebas, toit de communications et demandeurs civils sous un porche. Pierre claire réparée et toits rouillés, climat froid et venteux. Pas un palais royal ou une puissance technologique égale à IO.

@@ -1,0 +1,8 @@
+Validation du dossier v0.1
+104 pages PDF rendues et contrôlées visuellement.
+51 SVG valides.
+351 emprises bâties vérifiées.
+Aucun chevauchement des volumes bâtis ; aucune traversée de bâtiment par un corridor de voie au sol ; seuils hors des autres volumes et de l’eau.
+Les voies élevées occupent un autre niveau, signalé.
+Ce contrôle de composition ne remplace pas un test d’avatar après volumétrie.
+Aucun fichier du jeu modifié.

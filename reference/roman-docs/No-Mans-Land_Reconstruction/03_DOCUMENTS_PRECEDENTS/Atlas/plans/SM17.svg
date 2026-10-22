@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM17 Jardins suspendus</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM17 | Jardins suspendus</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polygon points="40,44 59,44 59,54 40,54" fill="#a8c0bf" stroke="#80927d" stroke-width=".2"/>
+<polygon points="7,29 29,29 29,46 7,46" fill="#a0b48c" stroke="#80927d" stroke-width=".2"/>
+<polyline points="0,47 30,47 34,37 58,34 65,44 100,47" fill="none" stroke="#d7c59c" stroke-width="5"><title>Promenade courbe / pieton</title></polyline>
+<polyline points="32,64 34,59 63,59 66,64" fill="none" stroke="#d7c59c" stroke-width="3"><title>Allée basse / pieton</title></polyline>
+<polyline points="47,80 47,77" fill="none" stroke="#b4afa0" stroke-width="3"><title>Desserte horticole / service</title></polyline>
+<rect x="5" y="7" width="24" height="17" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Pavillon d’accueil | OUVERT | Recevoir les visiteurs autorisés.</title></rect>
+<text x="5.7" y="9.1" class="id" fill="#287260">B01 O</text>
+<polygon points="17.0,24 16.4,25.3 17.6,25.3" fill="#287260"/>
+<rect x="37" y="5" width="25" height="19" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Résidence A | CONDITIONNEL | Habitat de l’élite augmentée.</title></rect>
+<text x="37.7" y="7.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="49.5,24 48.9,25.3 50.1,25.3" fill="#aa772c"/>
+<rect x="72" y="8" width="24" height="21" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B03 | Résidence B | FERMÉ | Habitat privilégié, accès fermé.</title></rect>
+<text x="72.7" y="10.1" class="id" fill="#68716c">B03 N</text>
+<rect x="66" y="52" width="29" height="23" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Orangerie | OUVERT | Jardin couvert et entretien visible.</title></rect>
+<text x="66.7" y="54.1" class="id" fill="#287260">B04 O</text>
+<polygon points="80.5,52 81.1,50.7 79.9,50.7" fill="#287260"/>
+<rect x="8" y="54" width="24" height="20" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Pavillon de repos | OUVERT | Salon et café de promenade.</title></rect>
+<text x="8.7" y="56.1" class="id" fill="#287260">B05 O</text>
+<polygon points="32,64.0 33.3,64.6 33.3,63.4" fill="#287260"/>
+<rect x="38" y="64" width="20" height="13" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B06 | Horticulture | CONDITIONNEL | Entretenir les végétaux et l’arrosage.</title></rect>
+<text x="38.7" y="66.1" class="id" fill="#aa772c">B06 C</text>
+<polygon points="48.0,64 48.6,62.7 47.4,62.7" fill="#aa772c"/>
+<rect x="78" y="34" width="17" height="9" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B07 | Machinerie du ciel | RÉSERVÉ | Piloter l’éclairage synthétique.</title></rect>
+<text x="78.7" y="36.1" class="id" fill="#984b44">B07 R</text>
+<rect x="30" y="26" width="12" height="7" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B08 | Contrôle des terrasses | FERMÉ | Surveiller les déplacements autorisés.</title></rect>
+<text x="30.7" y="28.1" class="id" fill="#68716c">B08 N</text>
+<rect x="39" y="43" width="21" height="12" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bassin | Eau propre, margelle accessible, franchissement interdit au centre.</title></rect>
+<text x="48.3" y="49.4" class="small" fill="#44664c">D01</text>
+<rect x="8" y="30" width="20" height="16" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Parterres hauts | Massifs entretenus ; pas une végétation sauvage.</title></rect>
+<text x="16.8" y="38.4" class="small" fill="#44664c">D02</text>
+<rect x="34" y="49" width="4" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bancs du bassin | Deux bancs avec vue, hors de la voie principale.</title></rect>
+<text x="34.8" y="54.4" class="small" fill="#44664c">D03</text>
+<rect x="60" y="63" width="4" height="6" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Horloge d’arrosage | Terminal discret près de l’horticulture.</title></rect>
+<text x="60.8" y="66.4" class="small" fill="#44664c">D04</text>
+<rect x="65" y="31" width="10" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Belvédère | Garde-corps et vue intérieure du dôme, pas sur le désert.</title></rect>
+<text x="68.8" y="36.4" class="small" fill="#44664c">D05</text>
+<rect x="50" y="27" width="10" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Statues et éclairage | Groupe sobre lié à l’allée, pas à chaque case libre.</title></rect>
+<text x="53.8" y="29.9" class="small" fill="#44664c">D06</text>
+<rect x="36" y="78" width="26" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour de livraison | Desserte arrière sous la promenade.</title></rect>
+<text x="47.8" y="79.4" class="small" fill="#44664c">D07</text>
+<rect x="65" y="73" width="27" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Treillage | Plantes guidées sur l’orangerie ; pas de ruine.</title></rect>
+<text x="77.3" y="74.9" class="small" fill="#44664c">D08</text>
+<circle cx="48" cy="66" r=".5" fill="#a75932"><title>Maëlle Soria | Prépare l’entretien au B06.</title></circle>
+<text x="49" y="66.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="68" cy="50" r=".5" fill="#a75932"><title>Eilin | Surveille l’orangerie.</title></circle>
+<text x="69" y="50.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="17" cy="21" r=".5" fill="#a75932"><title>Hôte des jardins | Accueil des visiteurs.</title></circle>
+<text x="18" y="21.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="60" cy="31" r=".5" fill="#a75932"><title>Résidente cyborg | Promenade encadrée.</title></circle>
+<text x="61" y="31.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="71" cy="36" r=".5" fill="#a75932"><title>Deux gardes | Contrôlent la liaison vers le siège.</title></circle>
+<circle cx="71" cy="39" r=".5" fill="#a75932"><title>Deux gardes | Contrôlent la liaison vers le siège.</title></circle>
+<text x="73" y="37.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

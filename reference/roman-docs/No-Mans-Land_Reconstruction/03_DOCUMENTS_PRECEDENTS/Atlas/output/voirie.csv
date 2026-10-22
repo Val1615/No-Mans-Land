@@ -1,0 +1,140 @@
+﻿ville;quartier_id;quartier;name;points;w;kind
+Steel-Megalopolis;SM01;Douane ouest;Transit des convois;[[0, 42], [100, 42]];9;route
+Steel-Megalopolis;SM01;Douane ouest;Accès piétons;[[0, 59], [33, 59], [33, 57], [39, 57]];4;pieton
+Steel-Megalopolis;SM01;Douane ouest;Voie de service;[[59, 42], [66, 34], [66, 6], [100, 6]];4;route
+Steel-Megalopolis;SM01;Douane ouest;Recours;[[48, 62], [48, 66]];3;pieton
+Steel-Megalopolis;SM02;Douane nord;Axe nord;[[49, 0], [49, 27], [49, 63], [49, 80]];9;route
+Steel-Megalopolis;SM02;Douane nord;Inspection;[[49, 26], [58, 26], [58, 39], [95, 39], [95, 64], [58, 64], [49, 62]];5;route
+Steel-Megalopolis;SM02;Douane nord;Trottoir ouest;[[0, 43], [34, 43], [34, 12]];4;pieton
+Steel-Megalopolis;SM02;Douane nord;Chemin des scellés;[[58, 56], [68, 56]];3;pieton
+Steel-Megalopolis;SM03;Douane est;Route du bazar;[[100, 50], [80, 50], [52, 43], [0, 43]];8;route
+Steel-Megalopolis;SM03;Douane est;Desserte de halle;[[52, 43], [52, 35], [96, 35], [96, 40]];5;route
+Steel-Megalopolis;SM03;Douane est;Trottoir civil;[[0, 50], [10, 50], [54, 50], [54, 72]];4;pieton
+Steel-Megalopolis;SM03;Douane est;Boucle sud;[[79, 50], [97, 54], [97, 80]];5;route
+Steel-Megalopolis;SM04;IO Industries;Boucle poids lourds;[[0, 39], [63, 39], [96, 33], [96, 75], [64, 75], [64, 39], [100, 39]];7;route
+Steel-Megalopolis;SM04;IO Industries;Voie ouvrière;[[34, 80], [34, 64], [34, 43], [34, 35]];3;pieton
+Steel-Megalopolis;SM04;IO Industries;Accès chaîne;[[32, 29], [32, 35]];4;pieton
+Steel-Megalopolis;SM05;Avant-poste nord;Route de liaison;[[0, 75], [34, 75], [38, 61], [38, 28], [100, 28]];6;route
+Steel-Megalopolis;SM05;Avant-poste nord;Patrouille;[[31, 46], [31, 24], [50, 24], [50, 15], [57, 15]];3;service
+Steel-Megalopolis;SM06;Avant-poste est;Transit est;[[0, 40], [38, 40], [59, 44], [100, 44]];7;route
+Steel-Megalopolis;SM06;Avant-poste est;Garage et relève;[[38, 40], [38, 51], [57, 51], [57, 76]];5;route
+Steel-Megalopolis;SM06;Avant-poste est;Accueil;[[20, 25], [20, 29], [38, 29], [38, 40]];3;pieton
+Steel-Megalopolis;SM07;Avant-poste sud;Axe de convoi;[[58, 0], [58, 80]];8;route
+Steel-Megalopolis;SM07;Avant-poste sud;Boucle du parc;[[58, 47], [96, 47], [96, 34], [58, 34]];5;route
+Steel-Megalopolis;SM07;Avant-poste sud;Accès civil;[[100, 60], [88, 60]];3;pieton
+Steel-Megalopolis;SM07;Avant-poste sud;Accès atelier;[[76, 28], [76, 34]];4;service
+Steel-Megalopolis;SM08;Sous-Ville;Allée des équipes;[[0, 33], [32, 33], [49, 33], [49, 41], [69, 41], [100, 41]];4;pieton
+Steel-Megalopolis;SM08;Sous-Ville;Ruelle des logements;[[29, 33], [29, 72], [40, 72]];3;pieton
+Steel-Megalopolis;SM08;Sous-Ville;Liaison haute;[[49, 33], [49, 28], [68, 28]];3;pieton
+Steel-Megalopolis;SM08;Sous-Ville;Passerelle basse;[[52, 41], [67, 41]];4;pont
+Steel-Megalopolis;SM08;Sous-Ville;Passerelle haute;[[52, 29], [67, 29]];3;pont
+Steel-Megalopolis;SM09;Forum de Lower-Town;Flux piéton du forum;[[0, 35], [35, 35], [41, 46], [73, 46], [73, 35], [100, 35]];6;pieton
+Steel-Megalopolis;SM09;Forum de Lower-Town;Rue de livraison;[[0, 76], [29, 76], [29, 47], [37, 28], [77, 28], [100, 28]];4;service
+Steel-Megalopolis;SM09;Forum de Lower-Town;Navettes élevées;[[0, 37], [100, 37]];5;sureleve
+Steel-Megalopolis;SM09;Forum de Lower-Town;Vers les fondations;[[67, 62], [67, 68]];3;pieton
+Steel-Megalopolis;SM10;China Lake;Rive ouest;[[0, 63], [26, 63], [26, 27], [35, 21], [65, 21], [65, 50], [93, 50], [93, 52], [100, 52]];4;pieton
+Steel-Megalopolis;SM10;China Lake;Boucle sud;[[0, 80], [66, 80], [66, 52], [100, 52]];4;service
+Steel-Megalopolis;SM10;China Lake;Pont;[[25, 57], [70, 57]];4;pont
+Steel-Megalopolis;SM11;Asia-Ground;Galerie transversale;[[0, 29], [100, 29]];5;pieton
+Steel-Megalopolis;SM11;Asia-Ground;Allée des arrière-cours;[[37, 0], [37, 29], [32, 33], [32, 58], [62, 58], [62, 80]];4;pieton
+Steel-Megalopolis;SM11;Asia-Ground;Boucle des fournisseurs;[[100, 58], [71, 58], [71, 35], [100, 35]];4;service
+Steel-Megalopolis;SM12;Blocs résidentiels;Cour résidentielle;[[0, 51], [32, 51], [32, 38], [63, 38], [63, 51], [100, 51]];4;pieton
+Steel-Megalopolis;SM12;Blocs résidentiels;Desserte arrière;[[0, 32], [35, 32], [35, 0]];4;service
+Steel-Megalopolis;SM12;Blocs résidentiels;Vers la station;[[49, 38], [49, 36]];3;pieton
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Avenue Centrale;[[0, 45], [34, 45], [50, 43], [70, 45], [100, 45]];8;route
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Promenade des tours;[[34, 0], [34, 35], [33, 52], [34, 80]];4;pieton
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Allée est;[[69, 0], [69, 35], [70, 53], [70, 80]];4;pieton
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Navettes supérieures;[[0, 39], [100, 39]];5;sureleve
+Steel-Megalopolis;SM14;Pôle des augmentations;Allée de consultation;[[0, 45], [100, 45]];6;pieton
+Steel-Megalopolis;SM14;Pôle des augmentations;Desserte médicale;[[98, 0], [98, 78], [61, 78]];5;service
+Steel-Megalopolis;SM14;Pôle des augmentations;Chemin calme;[[37, 39], [41, 28], [61, 28], [65, 39]];3;pieton
+Steel-Megalopolis;SM15;Registre civique;Galerie publique;[[0, 35], [22, 35], [50, 39], [78, 35], [100, 35]];5;pieton
+Steel-Megalopolis;SM15;Registre civique;Chemin de recours;[[50, 39], [50, 54], [69, 54]];4;pieton
+Steel-Megalopolis;SM15;Registre civique;Services arrière;[[0, 76], [30, 76], [30, 80]];4;service
+Steel-Megalopolis;SM16;Préfecture SMPD;Avenue publique;[[0, 48], [100, 48]];7;route
+Steel-Megalopolis;SM16;Préfecture SMPD;Galerie civile;[[0, 39], [38, 39], [45, 50], [45, 54]];4;pieton
+Steel-Megalopolis;SM16;Préfecture SMPD;Sortie intervention;[[77, 51], [77, 48], [100, 48]];6;service
+Steel-Megalopolis;SM17;Jardins suspendus;Promenade courbe;[[0, 47], [30, 47], [34, 37], [58, 34], [65, 44], [100, 47]];5;pieton
+Steel-Megalopolis;SM17;Jardins suspendus;Allée basse;[[32, 64], [34, 59], [63, 59], [66, 64]];3;pieton
+Steel-Megalopolis;SM17;Jardins suspendus;Desserte horticole;[[47, 80], [47, 77]];3;service
+Steel-Megalopolis;SM18;Atrium du siège IO;Promenade du siège;[[0, 38], [31, 38], [31, 65], [68, 65], [68, 38], [100, 38]];5;pieton
+Steel-Megalopolis;SM18;Atrium du siège IO;Accès consulté;[[50, 65], [50, 61]];4;pieton
+Steel-Megalopolis;SM18;Atrium du siège IO;Quai;[[0, 47], [28, 47]];4;service
+Dusk-Town;DT01;Avenue des services;Avenue des services;[[62, 80], [62, 44], [60, 35], [60, 0]];5;route
+Dusk-Town;DT01;Avenue des services;Traverse du bourg;[[0, 42], [55, 42], [100, 42]];5;route
+Dusk-Town;DT01;Avenue des services;Cour des services;[[27, 25], [27, 33], [67, 33]];3;pieton
+Dusk-Town;DT02;Cours habitées;Passage central;[[0, 38], [38, 38], [69, 42], [100, 38]];4;pieton
+Dusk-Town;DT02;Cours habitées;Venelle des cuisines;[[38, 0], [38, 60], [34, 80]];3;pieton
+Dusk-Town;DT02;Cours habitées;Retour est;[[70, 0], [70, 61], [73, 80]];3;pieton
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Piste de livraison;[[0, 42], [40, 42], [61, 45], [100, 45]];6;route
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Accès garage;[[50, 80], [50, 75]];5;route
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Chemin de veille;[[61, 45], [61, 30], [38, 30]];3;pieton
+Junk-Burgh;JB01;Porte et bazar extérieur;Galerie d’entrée;[[0, 36], [30, 36], [32, 38], [68, 38], [100, 36]];5;pieton
+Junk-Burgh;JB01;Porte et bazar extérieur;Contournement fret;[[0, 76], [29, 76], [29, 50], [68, 50], [100, 50]];5;route
+Junk-Burgh;JB01;Porte et bazar extérieur;Vers les ateliers;[[68, 50], [68, 80]];5;route
+Junk-Burgh;JB02;Halles et comptes;Passage public;[[0, 46], [31, 46], [31, 49], [65, 49], [65, 39], [100, 39]];5;pieton
+Junk-Burgh;JB02;Halles et comptes;Rue des porteurs;[[0, 80], [65, 80], [65, 31], [100, 31]];4;service
+Junk-Burgh;JB03;Ruelles des séjours;Ruelle centrale;[[35, 0], [35, 29], [35, 37], [35, 48], [61, 48], [61, 80]];5;pieton
+Junk-Burgh;JB03;Ruelles des séjours;Traverse des séjours;[[0, 45], [35, 45], [61, 39], [100, 45]];4;pieton
+Junk-Burgh;JB03;Ruelles des séjours;Services arrière;[[0, 78], [32, 78], [32, 80]];4;service
+Junk-Burgh;JB04;Enclos et ateliers;Allée client;[[0, 46], [33, 46], [63, 46], [100, 46]];5;pieton
+Junk-Burgh;JB04;Enclos et ateliers;Cour de fret;[[63, 80], [63, 49], [62, 34], [62, 0]];7;route
+Junk-Burgh;JB04;Enclos et ateliers;Dessertes atelier;[[33, 46], [33, 34], [49, 34]];4;service
+Buenos Aires;BA01;Avenues du nord;Ancienne avenue;[[0, 76], [33, 76], [34, 50], [67, 31], [100, 0]];8;route
+Buenos Aires;BA01;Avenues du nord;Traverse du centre;[[0, 47], [31, 47], [64, 42], [71, 40], [100, 40]];5;route
+Buenos Aires;BA01;Avenues du nord;Vers les patios;[[69, 52], [69, 80]];5;route
+Buenos Aires;BA01;Avenues du nord;Vestige ferroviaire;[[40, 0], [40, 27]];2;rail_mort
+Buenos Aires;BA02;Patios habités;Passage des patios;[[63, 0], [63, 29], [61, 34], [61, 57], [61, 80]];4;pieton
+Buenos Aires;BA02;Patios habités;Traverse des habitants;[[0, 39], [28, 39], [31, 42], [63, 47], [100, 47]];4;pieton
+Buenos Aires;BA02;Patios habités;Desserte médicale;[[100, 30], [95, 30]];4;service
+Buenos Aires;BA03;Centre administratif;Place et traversée;[[0, 46], [33, 46], [67, 44], [100, 46]];6;pieton
+Buenos Aires;BA03;Centre administratif;Desserte sud;[[0, 78], [34, 78], [34, 54], [66, 54], [66, 80]];5;route
+Buenos Aires;BA03;Centre administratif;Passage nord;[[37, 0], [37, 35], [34, 46]];3;pieton
+Buenos Aires;BA04;Ateliers du rail;Cour des ateliers;[[0, 46], [33, 46], [63, 46], [100, 46]];6;route
+Buenos Aires;BA04;Ateliers du rail;Voie morte 1;[[0, 30], [54, 30]];2;rail_mort
+Buenos Aires;BA04;Ateliers du rail;Voie morte 2;[[0, 35], [32, 35], [32, 27]];2;rail_mort
+Buenos Aires;BA04;Ateliers du rail;Départ sud;[[63, 46], [63, 80]];5;route
+Buenos Aires;BA04;Ateliers du rail;Accès atelier;[[34, 46], [34, 77]];3;pieton
+Buenos Aires;BA05;Lisière évacuée;Axe évacué;[[0, 40], [35, 40], [67, 35], [100, 35]];7;route
+Buenos Aires;BA05;Lisière évacuée;Accès des ateliers;[[35, 80], [35, 54], [39, 50]];4;route
+Buenos Aires;BA05;Lisière évacuée;Cour IO;[[67, 35], [67, 47], [100, 47]];4;service
+Novo Córdoba;NC01;Place civile;Rue de la place;[[0, 40], [32, 40], [65, 40], [100, 40]];6;route
+Novo Córdoba;NC01;Place civile;Vers le dépôt;[[63, 40], [63, 80]];5;route
+Novo Córdoba;NC01;Place civile;Passage du marché;[[38, 0], [38, 29], [33, 31]];3;pieton
+Novo Córdoba;NC02;Garnison et radio;Voie de la garnison;[[0, 40], [35, 40], [72, 49], [100, 49]];6;route
+Novo Córdoba;NC02;Garnison et radio;Relève sud;[[73, 49], [73, 80]];5;route
+Novo Córdoba;NC02;Garnison et radio;Accès commandement;[[20, 29], [20, 30.5], [24, 30.5], [24, 40]];3;pieton
+Novo Córdoba;NC03;Dépôt et points de puisage;Route du dépôt;[[0, 40], [41, 40], [63, 40], [100, 40]];6;route
+Novo Córdoba;NC03;Dépôt et points de puisage;Chemin des camps;[[35, 80], [35, 58], [39, 48]];4;pieton
+Novo Córdoba;NC03;Dépôt et points de puisage;Circuit des citernes;[[64, 80], [64, 48], [100, 48]];6;route
+Port UFSA;PU01;Quai exploitable;Route portuaire;[[0, 47], [70, 47], [70, 80]];6;route
+Port UFSA;PU01;Quai exploitable;Desserte des halles;[[40, 0], [40, 47]];5;route
+Port UFSA;PU01;Quai exploitable;Quai public;[[70, 7], [70, 75]];4;pieton
+Port UFSA;PU01;Quai exploitable;Manutention interne proposée;[[43.5, 4], [43.5, 76]];1;rail_propose
+Port UFSA;PU02;Ville portuaire et chantier;Rue du port;[[0, 39], [37, 39], [68, 39], [95, 39]];5;route
+Port UFSA;PU02;Ville portuaire et chantier;Passage des maisons;[[34, 0], [34, 51], [34, 80]];3;pieton
+Port UFSA;PU02;Ville portuaire et chantier;Route du chantier;[[68, 39], [68, 49]];5;service
+Siège UFSA;SU01;Ensemble civique fortifié;Voie d’arrivée;[[0, 61], [32, 61], [32, 52], [68, 52], [68, 61], [100, 61]];6;route
+Siège UFSA;SU01;Ensemble civique fortifié;Approche du hall;[[50, 57], [50, 34]];5;pieton
+Siège UFSA;SU01;Ensemble civique fortifié;Desserte arrière;[[24, 0], [24, 30], [0, 30]];4;service
+Siège UFSA;SU02;Faubourg des services;Rue de pente;[[68, 0], [68, 31], [68, 49], [100, 49]];5;route
+Siège UFSA;SU02;Faubourg des services;Route des réserves;[[0, 49], [34, 49], [35, 80]];6;route
+Siège UFSA;SU02;Faubourg des services;Passage des résidents;[[34, 0], [34, 48], [64, 49], [64, 80]];3;pieton
+Sites isolés;AN01;Granja Altruista;Piste de livraison;[[0, 40], [33, 40], [33, 80]];6;route
+Sites isolés;AN01;Granja Altruista;Chemin agricole;[[33, 47], [67, 47], [100, 47]];4;route
+Sites isolés;AN01;Granja Altruista;Allée des serres;[[33, 0], [33, 35], [67, 35], [67, 0]];3;service
+Sites isolés;AN02;Big Larry Area;Contournement sud;[[0, 62], [34, 62], [50, 72], [100, 72]];4;piste
+Sites isolés;AN02;Big Larry Area;Raccord de mine;[[18, 62], [18, 64]];3;pieton
+Sites isolés;AN02;Big Larry Area;Ancienne voie de mine;[[5, 61], [18, 61], [18, 64]];1;rail_mort
+Sites isolés;AN03;Striker Oméga / MC n°12;Piste de récupération;[[0, 43], [16, 43], [16, 22], [14, 17], [20, 17]];4;piste
+Sites isolés;AN03;Striker Oméga / MC n°12;Desserte du treuil;[[16, 43], [16, 79], [40, 79]];4;piste
+Sites isolés;AN04;Station de répartition;Accès de service;[[0, 45], [35, 45], [64, 45], [100, 45]];6;route
+Sites isolés;AN04;Station de répartition;Commande;[[51, 45], [51, 26]];3;pieton
+Sites isolés;AN04;Station de répartition;Entrée sud;[[51, 80], [51, 77]];4;route
+Sites isolés;AN05;Temple du couchant;Sentier des visiteurs;[[63, 80], [63, 48], [61, 41], [61, 36], [78, 36], [78, 34]];3;pieton
+Sites isolés;AN05;Temple du couchant;Accueil;[[0, 42], [35, 42], [36, 38]];3;pieton
+Sites isolés;AN06;Nœud maritime IO;Route IO;[[0, 47], [72, 47], [72, 80]];7;route
+Sites isolés;AN06;Nœud maritime IO;Desserte intérieure;[[39, 0], [39, 80]];5;route
+Sites isolés;AN06;Nœud maritime IO;Quai technique;[[72, 0], [72, 75]];4;service
+Sites isolés;AN07;Waste Coast;Piste côtière;[[0, 42], [43, 42], [60, 49], [60, 80]];5;piste
+Sites isolés;AN07;Waste Coast;Chemin de plage;[[60, 49], [65, 56], [70, 60]];3;pieton

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>JB04 Enclos et ateliers</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">JB04 | Enclos et ateliers</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,46 33,46 63,46 100,46" fill="none" stroke="#d7c59c" stroke-width="5"><title>Allée client / pieton</title></polyline>
+<polyline points="63,80 63,49 62,34 62,0" fill="none" stroke="#b4afa0" stroke-width="7"><title>Cour de fret / route</title></polyline>
+<polyline points="33,46 33,34 49,34" fill="none" stroke="#b4afa0" stroke-width="4"><title>Dessertes atelier / service</title></polyline>
+<rect x="6" y="6" width="41" height="24" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Démontage | CONDITIONNEL | Désassembler les récupérations.</title></rect>
+<text x="6.7" y="8.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="26.5,30 25.9,31.3 27.1,31.3" fill="#aa772c"/>
+<rect x="66" y="6" width="28" height="23" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Armurerie | OUVERT | Vendre et réparer les armes.</title></rect>
+<text x="66.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="80.0,29 79.4,30.3 80.6,30.3" fill="#287260"/>
+<rect x="7" y="49" width="25" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Magasin des moteurs | OUVERT | Vendre des ensembles vérifiés.</title></rect>
+<text x="7.7" y="51.1" class="id" fill="#287260">B03 O</text>
+<polygon points="32,61.0 33.3,61.6 33.3,60.4" fill="#287260"/>
+<rect x="67" y="49" width="27" height="25" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B04 | Enclos des lots sensibles | CONDITIONNEL | Marchandises dangereuses et saisies.</title></rect>
+<text x="67.7" y="51.1" class="id" fill="#aa772c">B04 C</text>
+<polygon points="67,61.5 65.7,60.9 65.7,62.1" fill="#aa772c"/>
+<rect x="37" y="54" width="22" height="21" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Vente aux récupérateurs | OUVERT | Acheter le métal trié.</title></rect>
+<text x="37.7" y="56.1" class="id" fill="#287260">B05 O</text>
+<polygon points="48.0,54 48.6,52.7 47.4,52.7" fill="#287260"/>
+<rect x="51" y="6" width="6" height="21" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B06 | Abri des équipes | FERMÉ | Repos des ouvriers du démontage.</title></rect>
+<text x="51.7" y="8.1" class="id" fill="#68716c">B06 N</text>
+<rect x="6" y="34" width="25" height="9" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Atelier des roues | OUVERT | Pneus et trains roulants.</title></rect>
+<text x="6.7" y="36.1" class="id" fill="#287260">B07 O</text>
+<polygon points="31,38.5 32.3,39.1 32.3,37.9" fill="#287260"/>
+<rect x="80" y="34" width="14" height="9" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B08 | Garde des enclos | RÉSERVÉ | Contrôler les stocks de valeur.</title></rect>
+<text x="80.7" y="36.1" class="id" fill="#984b44">B08 R</text>
+<rect x="9" y="31" width="35" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pièces par famille | Râteliers de moteurs, plaques et câbles, séparés.</title></rect>
+<text x="25.3" y="32.9" class="small" fill="#44664c">D01</text>
+<rect x="36" y="36" width="26" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour d’essai | Moteur fixe et protection contre projections.</title></rect>
+<text x="47.8" y="41.4" class="small" fill="#44664c">D02</text>
+<rect x="8" y="74" width="22" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Véhicule donneur | Carcasse identifiée, reliée au démontage.</title></rect>
+<text x="17.8" y="76.4" class="small" fill="#44664c">D03</text>
+<rect x="65" y="30" width="28" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Tir d’essai | Mur de protection derrière l’armurerie.</title></rect>
+<text x="77.8" y="31.9" class="small" fill="#44664c">D04</text>
+<rect x="38" y="49" width="17" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Balance | Plateau à l’entrée du comptoir.</title></rect>
+<text x="45.3" y="50.9" class="small" fill="#44664c">D05</text>
+<rect x="69" y="51" width="22" height="20" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cages | Cloisons liées au bâtiment sensible, pas des cages dans le marché public.</title></rect>
+<text x="78.8" y="61.4" class="small" fill="#44664c">D06</text>
+<rect x="53" y="67" width="8" height="11" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Fret entrant | Palettes en attente et accès large côté sud.</title></rect>
+<text x="55.8" y="72.9" class="small" fill="#44664c">D07</text>
+<rect x="95" y="52" width="4" height="22" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Rebut non vendu | Benne commune attenante aux ateliers.</title></rect>
+<text x="95.8" y="63.4" class="small" fill="#44664c">D08</text>
+<circle cx="78" cy="26" r=".5" fill="#a75932"><title>Sœur Ferraille | Tient l’armurerie.</title></circle>
+<text x="79" y="26.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="22" cy="27" r=".5" fill="#a75932"><title>Mécanicienne Alba | Travaille dans la travée ouverte.</title></circle>
+<text x="23" y="27.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="47" cy="57" r=".5" fill="#a75932"><title>Acheteur Damián | Pèse les récupérations.</title></circle>
+<text x="48" y="57.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="64" cy="60" r=".5" fill="#a75932"><title>Garde des lots | Vérifie l’autorisation des cages.</title></circle>
+<text x="65" y="60.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="35" cy="48" r=".5" fill="#a75932"><title>Récupératrice | Apporte un lot au comptoir.</title></circle>
+<text x="36" y="48.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

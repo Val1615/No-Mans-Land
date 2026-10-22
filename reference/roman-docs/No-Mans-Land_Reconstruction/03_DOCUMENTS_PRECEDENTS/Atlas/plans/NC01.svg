@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>NC01 Place civile</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">NC01 | Place civile</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,40 32,40 65,40 100,40" fill="none" stroke="#b4afa0" stroke-width="6"><title>Rue de la place / route</title></polyline>
+<polyline points="63,40 63,80" fill="none" stroke="#b4afa0" stroke-width="5"><title>Vers le dépôt / route</title></polyline>
+<polyline points="38,0 38,29 33,31" fill="none" stroke="#d7c59c" stroke-width="3"><title>Passage du marché / pieton</title></polyline>
+<rect x="5" y="6" width="31" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Marché couvert | OUVERT | Vendre nourriture, vêtements et outils.</title></rect>
+<text x="5.7" y="8.1" class="id" fill="#287260">B01 O</text>
+<polygon points="20.5,28 19.9,29.3 21.1,29.3" fill="#287260"/>
+<rect x="64" y="6" width="30" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Maison des requêtes | OUVERT | Recevoir les demandes civiles adressées à l’UFSA.</title></rect>
+<text x="64.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="79.0,28 78.4,29.3 79.6,29.3" fill="#287260"/>
+<rect x="5" y="50" width="25" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Dispensaire civil | OUVERT | Soins à petite échelle.</title></rect>
+<text x="5.7" y="52.1" class="id" fill="#287260">B03 O</text>
+<polygon points="30,62.0 31.3,62.6 31.3,61.4" fill="#287260"/>
+<rect x="67" y="50" width="27" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Auberge | OUVERT | Repos des voyageurs et chauffeurs.</title></rect>
+<text x="67.7" y="52.1" class="id" fill="#287260">B04 O</text>
+<polygon points="67,62.0 65.7,61.4 65.7,62.6" fill="#287260"/>
+<rect x="42" y="6" width="16" height="20" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B05 | Logements nord | FERMÉ | Résidences modestes réparées.</title></rect>
+<text x="42.7" y="8.1" class="id" fill="#68716c">B05 N</text>
+<rect x="38" y="61" width="22" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B06 | École et courrier | OUVERT | Correspondance et cours.</title></rect>
+<text x="38.7" y="63.1" class="id" fill="#287260">B06 O</text>
+<polygon points="49.0,61 49.6,59.7 48.4,59.7" fill="#287260"/>
+<rect x="5" y="31" width="22" height="5" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Atelier civil | OUVERT | Réparer les outils quotidiens.</title></rect>
+<text x="5.7" y="33.1" class="id" fill="#287260">B07 O</text>
+<polygon points="27,33.5 28.3,34.1 28.3,32.9" fill="#287260"/>
+<rect x="38" y="48" width="22" height="9" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B08 | Habitat sud | CONDITIONNEL | Logements d’habitants.</title></rect>
+<text x="38.7" y="50.1" class="id" fill="#aa772c">B08 C</text>
+<polygon points="49.0,48 49.6,46.7 48.4,46.7" fill="#aa772c"/>
+<rect x="76" y="31" width="18" height="5" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B09 | Bureau des transports | OUVERT | Affecter les départs civils.</title></rect>
+<text x="76.7" y="33.1" class="id" fill="#287260">B09 O</text>
+<polygon points="76,33.5 74.7,32.9 74.7,34.1" fill="#287260"/>
+<rect x="33" y="31" width="32" height="14" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Place de marché | Deux tables temporaires et axe central libre.</title></rect>
+<text x="47.8" y="38.4" class="small" fill="#44664c">D01</text>
+<rect x="33" y="49" width="5" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Point d’eau | Borne alimentée depuis NC03 ; débit visible.</title></rect>
+<text x="34.3" y="53.4" class="small" fill="#44664c">D02</text>
+<rect x="7" y="29" width="27" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Auvents | Tissus au droit de la halle, pas partout sur les rues.</title></rect>
+<text x="19.3" y="30.9" class="small" fill="#44664c">D03</text>
+<rect x="66" y="29" width="25" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Banc des requêtes | Assises avant le guichet civil.</title></rect>
+<text x="77.3" y="30.9" class="small" fill="#44664c">D04</text>
+<rect x="67" y="75" width="26" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Parc des voyageurs | Deux emplacements hors du marché.</title></rect>
+<text x="78.8" y="77.4" class="small" fill="#44664c">D05</text>
+<rect x="2" y="49" width="2" height="19" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Réparations de voirie | Un chantier local lié à la conduite, déviation indiquée.</title></rect>
+<text x="1.8" y="58.9" class="small" fill="#44664c">D06</text>
+<rect x="62" y="66" width="3" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Boîtes aux lettres | Devant le courrier.</title></rect>
+<text x="62.3" y="71.4" class="small" fill="#44664c">D07</text>
+<rect x="96" y="8" width="3" height="64" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Habitat hors cadre | Façades fermées marquant la continuité de ville.</title></rect>
+<text x="96.3" y="40.4" class="small" fill="#44664c">D08</text>
+<circle cx="62" cy="51" r=".5" fill="#a75932"><title>Bruna | Porte-parole des familles.</title></circle>
+<text x="63" y="51.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="28" cy="61" r=".5" fill="#a75932"><title>Soignant Salo | Soins au B03.</title></circle>
+<text x="29" y="61.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="50" cy="64" r=".5" fill="#a75932"><title>Courrière UFSA | Reçoit le courrier civil.</title></circle>
+<text x="51" y="64.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="20" cy="25" r=".5" fill="#a75932"><title>Marchande Elva | Vend les récoltes locales.</title></circle>
+<text x="21" y="25.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="80" cy="25" r=".5" fill="#a75932"><title>Agent des requêtes | Accueille au B02.</title></circle>
+<text x="81" y="25.4" class="small" fill="#9b4f2c">P05</text>
+<circle cx="35" cy="49" r=".5" fill="#a75932"><title>Deux habitants | Attendent sur la place.</title></circle>
+<circle cx="36" cy="51" r=".5" fill="#a75932"><title>Deux habitants | Attendent sur la place.</title></circle>
+<text x="36" y="49.4" class="small" fill="#9b4f2c">P06</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

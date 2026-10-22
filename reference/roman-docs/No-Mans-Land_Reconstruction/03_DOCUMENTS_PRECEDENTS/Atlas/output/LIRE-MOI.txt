@@ -1,0 +1,43 @@
+NO MAN'S LAND - ATLAS DE CONCEPTION URBAINE v0.1
+20 octobre 2026. Dossier de travail, avant intégration au jeu.
+
+CONTENU
+- Atlas PDF de 104 pages, avec sommaire cliquable et signets.
+- 7 schémas de desserte des villes dans le PDF.
+- 44 plans locaux SVG : 37 secteurs urbains et 7 sites isolés.
+- 7 schémas d’ensemble SVG : soit 51 planches vectorielles au total.
+- 351 volumes bâtis, avec fonction, emprise, statut de visite et seuil.
+- 206 repères PNJ/groupes ; les petits groupes ont aussi leurs coordonnées par membre.
+- 339 groupes de décors, avec contenu et emprise.
+- 3 planches de concepts : Steel-Megalopolis ; Dusk-Town/Junk-Burgh/Buenos Aires ; implantations UFSA.
+- Un index CSV des plans et pages du PDF, plus 4 fichiers CSV à séparateur point-virgule : bâtiments, personnages, décors, voirie.
+- atlas_positions.json : les mêmes données structurées, sans code du jeu.
+
+STATUTS DES BÂTIMENTS
+O = ouvert au public.
+C = accès conditionnel : accord, documents, paiement, contrat ou quête selon la fiche.
+N = non visitable : logement occupé fermé, structure condamnée ou décor de continuité.
+R = réservé : pas de promesse d'accès dans la proposition de 2175.
+Les triangles sont les seuils proposés des seuls bâtiments O et C.
+
+COORDONNÉES
+Origine nord-ouest ; x vers l'est, y vers le sud.
+Les emprises se lisent x, y, largeur, profondeur dans un repère 100 x 80.
+Ce repère de composition n'est ni la grille du jeu ni la superficie complète d'une ville.
+Les quartiers de la mégalopole continuent au-delà des noyaux jouables représentés.
+La conversion métrique, les hauteurs et la navigation d'un avatar restent à établir après validation.
+Les petits groupes D représentent des ensembles précis : leur détail est décrit, pas dispersé au hasard.
+
+LORE
+Le livre et le lore priment sur les propositions. Les trois implantations UFSA sont surtout connues par le croquis : leur architecture détaillée est proposée, pas affirmée comme canon.
+Big Larry reste sans ville et sans population permanente.
+Human Corporation reste scellé.
+Le Titan est couché ; entrée par le bras droit ; cœur inaccessible dans ce dossier.
+Les rails de Buenos Aires sont hors service. La courte manutention interne du port UFSA est facultative et à valider.
+
+IMAGES
+Concepts réalisés avec l'outil intégré de génération d'images. Ce sont des intentions d'architecture et d'ambiance, non des plans d'implantation précis.
+Les plans SVG et les fiches constituent la référence des placements.
+Les prompts finaux de conception sont regroupés dans PROMPTS-CONCEPTS.txt.
+Aucun asset d'un autre jeu n'est utilisé. Aucun texte complet du manuscrit n'est distribué.
+Aucun fichier du jeu ou du site publié n'a été modifié pour produire ce dossier.

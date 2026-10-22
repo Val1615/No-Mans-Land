@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM08 Sous-Ville</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM08 | Sous-Ville</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polygon points="55,30 63,30 63,80 55,80" fill="#789b99" stroke="#80927d" stroke-width=".2"/>
+<polyline points="0,33 32,33 49,33 49,41 69,41 100,41" fill="none" stroke="#d7c59c" stroke-width="4"><title>Allée des équipes / pieton</title></polyline>
+<polyline points="29,33 29,72 40,72" fill="none" stroke="#d7c59c" stroke-width="3"><title>Ruelle des logements / pieton</title></polyline>
+<polyline points="49,33 49,28 68,28" fill="none" stroke="#d7c59c" stroke-width="3"><title>Liaison haute / pieton</title></polyline>
+<polyline points="52,41 67,41" fill="none" stroke="#b4afa0" stroke-width="4"><title>Passerelle basse / pont</title></polyline>
+<polyline points="52,29 67,29" fill="none" stroke="#b4afa0" stroke-width="3"><title>Passerelle haute / pont</title></polyline>
+<rect x="8" y="8" width="22" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Atelier de Salma | OUVERT | Entretenir les filtres et les conduites.</title></rect>
+<text x="8.7" y="10.1" class="id" fill="#287260">B01 O</text>
+<polygon points="19.0,26 18.4,27.3 19.6,27.3" fill="#287260"/>
+<rect x="8" y="39" width="18" height="15" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Habitat A | CONDITIONNEL | Logements d’ouvriers.</title></rect>
+<text x="8.7" y="41.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="26,46.5 27.3,47.1 27.3,45.9" fill="#aa772c"/>
+<rect x="31" y="44" width="15" height="22" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B03 | Habitat B | FERMÉ | Logements occupés visibles aux fenêtres.</title></rect>
+<text x="31.7" y="46.1" class="id" fill="#68716c">B03 N</text>
+<rect x="8" y="61" width="18" height="15" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Cantine de travée | OUVERT | Repas des équipes et petites annonces.</title></rect>
+<text x="8.7" y="63.1" class="id" fill="#287260">B04 O</text>
+<polygon points="26,68.5 27.3,69.1 27.3,67.9" fill="#287260"/>
+<rect x="36" y="9" width="24" height="15" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Tri des pièces | OUVERT | Peser les pièces rejetées par IO.</title></rect>
+<text x="36.7" y="11.1" class="id" fill="#287260">B05 O</text>
+<polygon points="48.0,24 47.4,25.3 48.6,25.3" fill="#287260"/>
+<rect x="69" y="7" width="23" height="21" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B06 | Sous-station | RÉSERVÉ | Maintenir les réseaux du dôme.</title></rect>
+<text x="69.7" y="9.1" class="id" fill="#984b44">B06 R</text>
+<rect x="66" y="47" width="25" height="14" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Infirmerie de travée | OUVERT | Soins de proximité et repos.</title></rect>
+<text x="66.7" y="49.1" class="id" fill="#287260">B07 O</text>
+<polygon points="66,54.0 64.7,53.4 64.7,54.6" fill="#287260"/>
+<rect x="67" y="67" width="25" height="10" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B08 | Baraques C | FERMÉ | Habitat dense hors du chemin technique.</title></rect>
+<text x="67.7" y="69.1" class="id" fill="#68716c">B08 N</text>
+<rect x="1" y="23" width="6" height="8" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B09 | Accès clandestin | CONDITIONNEL | Passage humain par une conduite sèche.</title></rect>
+<text x="1.7" y="25.1" class="id" fill="#aa772c">B09 C</text>
+<polygon points="7,27.0 8.3,27.6 8.3,26.4" fill="#aa772c"/>
+<rect x="85" y="30" width="12" height="8" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B10 | Monte-charge | CONDITIONNEL | Transport vers Lower-Town.</title></rect>
+<text x="85.7" y="32.1" class="id" fill="#aa772c">B10 C</text>
+<polygon points="85,34.0 83.7,33.4 83.7,34.6" fill="#aa772c"/>
+<rect x="40" y="67" width="15" height="9" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B11 | Inspection IO | CONDITIONNEL | Auditer les consommations.</title></rect>
+<text x="40.7" y="69.1" class="id" fill="#aa772c">B11 C</text>
+<polygon points="47.5,67 48.1,65.7 46.9,65.7" fill="#aa772c"/>
+<rect x="31" y="29" width="8" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Piliers porteurs | Un groupe de gros appuis ; passage sur deux côtés.</title></rect>
+<text x="33.8" y="33.4" class="small" fill="#44664c">D01</text>
+<rect x="55" y="28" width="8" height="52" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Collecteur | Canal technique bas ; deux passerelles seulement.</title></rect>
+<text x="57.8" y="54.4" class="small" fill="#44664c">D02</text>
+<rect x="52" y="39" width="15" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Passerelle basse | Franchissement entre habitat et infirmerie.</title></rect>
+<text x="58.3" y="41.4" class="small" fill="#44664c">D03</text>
+<rect x="52" y="27" width="15" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Passerelle haute | Franchissement vers la sous-station.</title></rect>
+<text x="58.3" y="29.4" class="small" fill="#44664c">D04</text>
+<rect x="28" y="57" width="7" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Linge et cuisine | Linge au-dessus d’un coin de cuisine, sans couper la voie.</title></rect>
+<text x="30.3" y="61.4" class="small" fill="#44664c">D05</text>
+<rect x="38" y="25" width="14" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pièces refusées | Bacs au pied de la trieuse, classés par poids.</title></rect>
+<text x="43.8" y="27.4" class="small" fill="#44664c">D06</text>
+<rect x="2" y="2" width="89" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Conduites aériennes | Réseaux fixés au plafond ; leurs appuis sont sur les murs.</title></rect>
+<text x="45.3" y="3.9" class="small" fill="#44664c">D07</text>
+<rect x="28" y="38" width="14" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour habitée | Bancs, table de réparation et jouets dans une cour protégée.</title></rect>
+<text x="33.8" y="40.9" class="small" fill="#44664c">D08</text>
+<circle cx="17" cy="23" r=".5" fill="#a75932"><title>Salma Ruiz | Parle depuis son atelier B01.</title></circle>
+<text x="18" y="23.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="47" cy="22" r=".5" fill="#a75932"><title>Enid | Trie les numéros au B05.</title></circle>
+<text x="48" y="22.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="48" cy="69" r=".5" fill="#a75932"><title>Inspecteur H-6 | Consulte les relevés au B11.</title></circle>
+<text x="49" y="69.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="67" cy="54" r=".5" fill="#a75932"><title>Soignante Dena | Accueil de l’infirmerie.</title></circle>
+<text x="68" y="54.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="27" cy="63" r=".5" fill="#a75932"><title>Luz Herrera | Habitante accueillie après son arrivée éventuelle.</title></circle>
+<text x="28" y="63.4" class="small" fill="#9b4f2c">P05</text>
+<circle cx="77" cy="37" r=".5" fill="#a75932"><title>Deux manutentionnaires | Chargent les colis au monte-charge.</title></circle>
+<text x="78" y="37.4" class="small" fill="#9b4f2c">P06</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>JB01 Porte et bazar extérieur</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">JB01 | Porte et bazar extérieur</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,36 30,36 32,38 68,38 100,36" fill="none" stroke="#d7c59c" stroke-width="5"><title>Galerie d’entrée / pieton</title></polyline>
+<polyline points="0,76 29,76 29,50 68,50 100,50" fill="none" stroke="#b4afa0" stroke-width="5"><title>Contournement fret / route</title></polyline>
+<polyline points="68,50 68,80" fill="none" stroke="#b4afa0" stroke-width="5"><title>Vers les ateliers / route</title></polyline>
+<rect x="7" y="24" width="13" height="8" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Porte des Protectores | CONDITIONNEL | Contrôler les arrivants et les armes visibles.</title></rect>
+<text x="7.7" y="26.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="20,28.0 21.3,28.6 21.3,27.4" fill="#aa772c"/>
+<polygon points="32,6 52.150000000000006,6 52.150000000000006,11.5 63,11.5 63,28 32,28" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Bazar de Roque | OUVERT | Courtage et vente de fournitures.</title></polygon>
+<text x="32.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="47.5,28 46.9,29.3 48.1,29.3" fill="#287260"/>
+<rect x="72" y="8" width="21" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Change et pesées | OUVERT | Évaluer les marchandises et les devises.</title></rect>
+<text x="72.7" y="10.1" class="id" fill="#287260">B03 O</text>
+<polygon points="72,17.0 70.7,16.4 70.7,17.6" fill="#287260"/>
+<rect x="5" y="6" width="22" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Étal couvert ouest | OUVERT | Nourriture, vêtements usagés et filtres.</title></rect>
+<text x="5.7" y="8.1" class="id" fill="#287260">B04 O</text>
+<polygon points="27,15.0 28.3,15.6 28.3,14.4" fill="#287260"/>
+<rect x="6" y="49" width="19" height="20" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B05 | Consigne armée | CONDITIONNEL | Garder les biens déposés.</title></rect>
+<text x="6.7" y="51.1" class="id" fill="#aa772c">B05 C</text>
+<polygon points="25,59.0 26.3,59.6 26.3,58.4" fill="#aa772c"/>
+<rect x="33" y="57" width="29" height="20" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B06 | Baraques des porteurs | FERMÉ | Habitat des manutentionnaires.</title></rect>
+<text x="33.7" y="59.1" class="id" fill="#68716c">B06 N</text>
+<rect x="74" y="54" width="20" height="20" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Atelier de bâches | OUVERT | Réparer tentes et couvertures.</title></rect>
+<text x="74.7" y="56.1" class="id" fill="#287260">B07 O</text>
+<polygon points="74,64.0 72.7,63.4 72.7,64.6" fill="#287260"/>
+<rect x="36" y="41" width="15" height="6" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B08 | Poste des gardes | RÉSERVÉ | Réserve des gardiens du marché.</title></rect>
+<text x="36.7" y="43.1" class="id" fill="#984b44">B08 R</text>
+<rect x="72" y="27" width="21" height="7" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B09 | Bureau des trajets | OUVERT | Trouver un convoyeur.</title></rect>
+<text x="72.7" y="29.1" class="id" fill="#287260">B09 O</text>
+<polygon points="72,30.5 70.7,29.9 70.7,31.1" fill="#287260"/>
+<rect x="1" y="30" width="5" height="12" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Barrières d’approche | Chicane d’entrée avec ligne de vue des gardes.</title></rect>
+<text x="2.3" y="36.4" class="small" fill="#44664c">D01</text>
+<rect x="32" y="29" width="30" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bazar ouvert | Tables de vente sous l’auvent de Roque.</title></rect>
+<text x="45.8" y="30.9" class="small" fill="#44664c">D02</text>
+<rect x="33" y="48" width="28" height="6" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Attente chargements | Deux chariots face à l’est, hors de la galerie piétonne.</title></rect>
+<text x="45.8" y="51.4" class="small" fill="#44664c">D03</text>
+<rect x="71" y="27" width="21" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Vérification du poids | Plateau et masses près du change.</title></rect>
+<text x="80.3" y="28.9" class="small" fill="#44664c">D04</text>
+<rect x="5" y="25" width="88" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Auvents | Couvertures tendues entre façades, pas des mats aléatoires.</title></rect>
+<text x="47.8" y="26.4" class="small" fill="#44664c">D05</text>
+<rect x="65" y="66" width="6" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Eau payante | Borne à côté de l’atelier de bâches.</title></rect>
+<text x="66.8" y="69.9" class="small" fill="#44664c">D06</text>
+<rect x="21" y="29" width="5" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Affiches des tarifs | Visibles avant d’entrer, sur le montant de la porte.</title></rect>
+<text x="22.3" y="32.9" class="small" fill="#44664c">D07</text>
+<rect x="2" y="74" width="26" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Tôle de clôture | Récupération utilisée pour la défense, pas un dépôt sans fonction.</title></rect>
+<text x="13.8" y="75.9" class="small" fill="#44664c">D08</text>
+<circle cx="47" cy="25" r=".5" fill="#a75932"><title>Roque Santoro | Tient le bazar B02.</title></circle>
+<text x="48" y="25.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="17" cy="39" r=".5" fill="#a75932"><title>Contrôleuse Ana | Filtre l’accès au marché.</title></circle>
+<text x="18" y="39.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="82" cy="23" r=".5" fill="#a75932"><title>Peseur | Pèse au B03.</title></circle>
+<text x="83" y="23.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="62" cy="53" r=".5" fill="#a75932"><title>Porteur local | Travaille entre consigne et halles.</title></circle>
+<text x="63" y="53.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="16" cy="21" r=".5" fill="#a75932"><title>Marchande de filtres | Vend au B04.</title></circle>
+<text x="17" y="21.4" class="small" fill="#9b4f2c">P05</text>
+<circle cx="76" cy="41" r=".5" fill="#a75932"><title>Convoyeuse | Annonce son trajet au B09.</title></circle>
+<text x="77" y="41.4" class="small" fill="#9b4f2c">P06</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

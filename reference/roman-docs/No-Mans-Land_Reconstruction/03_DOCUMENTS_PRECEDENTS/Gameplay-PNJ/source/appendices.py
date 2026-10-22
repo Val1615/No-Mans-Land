@@ -1,0 +1,47 @@
+EXTRA_PAGES=[
+ dict(section='Compagnons',title='Valeurs de départ à essayer',intro='PROPOSÉ. Fiches d’équilibrage pour un seul compagnon actif. Les valeurs ci-dessous sont finales pour le prototype de niveau 1 ; elles ne reçoivent pas une seconde fois les bonus d’origine. Aucun de ces profils statistiques n’est déjà appliqué.',
+ table=(['Candidat','Profil initial proposé','Apport et contrepartie'],[
+ ['Nilo','46 PV ; 7 PA ; Armes 50 ; Technologie 65 ; Médecine 25. Pistolet, 12 cartouches, manteau ; charge utile 22 kg.','Réparation en temps calme et un tir utile par tour ; aucune attaque gratuite après la phase ennemie. Budget modeste à préserver.'],
+ ['Esteban','64 PV ; 8 PA ; Armes 68 ; Survie 50 ; Médecine 30. Carabine, 18 cartouches, gilet ; 26 kg.','Protection et couverture ; matériel plus lourd, entretien et réapprovisionnement. Son statut de déserteur limite les destinations.'],
+ ['Lucero','50 PV ; 9 PA ; Discrétion 70 ; Survie 65 ; Armes 52. Pistolet, 12 cartouches, une trousse, manteau ; 18 kg.','Reconnaissance des pistes, repli mobile. Origine mutante proposée : résistance radioactive de 65 %, seuil de tolérance conservé ; aucun accès légal au dôme.'],
+ ['Noa','52 PV ; 8 PA ; Technologie 70 ; Sciences 50 ; Armes 48. Pistolet, 12 cartouches, manteau ; 20 kg.','Diagnostic de capteurs et soutien de précision limitée. Augmentation proposée, pas d’Aura ; ses accès de fret ne valent pas passe universel.']
+ ]),blocks=[('Progression proposée','Les résolutions importantes de missions du groupe font progresser le compagnon présent avec un plafond par chapitre. Une montée de niveau de départ proposée : +4 PV et +5 à une compétence prioritaire, pas de PA supplémentaire automatique. Recruter tard donne un profil de chapitre annoncé, jamais un adversaire artificiellement calé sur l’équipement du joueur.'),('Inventaire et expérience','Le kit initial est attribué une fois à l’identité du PNJ. Séparation et nouveau recrutement ne le recréent pas. L’XP de résolution est partagée au niveau du groupe sans être multipliée par le nombre d’alliés ; les tirs entre factions sans contribution du groupe restent sans prime de combat automatique.')],note='À mesurer : dégâts utiles, munitions par affrontement, coût de soin, durée d’un tour et autonomie. Un compagnon ne doit pas rendre la négociation moins rentable ni gagner seul chaque combat de départ.'),
+ dict(section='Registre PNJ',title='Fonctions collectives et adversaires',intro='Ces groupes complètent les personnes nommées. Leur composition et leurs points de travail sont ceux des plans. Les routines sont proposées, même lorsque des silhouettes sont déjà visibles dans le jeu.',
+ table=(['Fonction','Activité et déplacement','Réaction et connaissance'],[
+ ['Habitants et familles','Domicile réel, cour, cuisine ou école ; trajet court à horaire décalé. Accès privé sur invitation.','Abri familier en alerte ; témoigne seulement de sa propre présence. Pas de foule qui tourne en boucle au hasard.'],
+ ['Ouvriers et porteurs','Quai → réserve → poste de travail avec objet transporté. Pause dans un réfectoire ; poste de nuit si justifié.','Pose ou sécurise la charge avant évacuation. Stock et transfert comptabilisés une seule fois.'],
+ ['Commis et copistes','Comptoir, archive autorisée, copie puis remise. Un demandeur reste distinct du personnel.','Ne résout pas le dossier privé d’un collègue absent. Ferme les originaux en alerte.'],
+ ['Personnel de santé','Salle de soins, réserve, garde et relais identifiés ; ne s’éloigne pas d’une urgence sans relève.','Triage et refuge avec patients. Le fait d’aider Salma ou un mutant ne révèle aucune cellule clandestine.'],
+ ['Milice de Dusk','Boucle courte entre hôtel, pompe et poste ; vigie dans les ateliers, rotation réelle.','Avertit, couvre une entrée et protège les habitants. Ne fonce pas au centre d’une scène de guerre pour poursuivre un voleur isolé.'],
+ ['Gardes Protectores','Porte, stock, contrat ou enclos assigné ; patrouille entre ces points, sans barrer les maisons sans cause.','Défend commerce et propriété. Peut accepter une médiation prévue ; les frais et l’exclusion sont des conséquences possibles.'],
+ ['SMPD et armée IO','SMPD sur rues intérieures ; militaires dans périmètre et convois. Autorisations et relève propres au service.','Renfort sur rapport, évacuation et objectifs locaux. Les unités d’élite restent rares et liées à une mission écrite.'],
+ ['Équipes du front','3 IO et 3 Nativos existent déjà à BA05 ; positions liées aux postes et couverts.','Avant provocation, restent en poste. Futur : retirer les blessés, garder un objectif, respecter un cessez-le-feu reçu.'],
+ ['Menaces sauvages','Déments, pillards et drones actuels ; variantes adaptées à une implantation et à un enjeu précis.','Pillards veulent fret ou péage ; drone contrôle une zone ; dément réagit selon comportement décrit. Pas de groupe aléatoire dans toute cour habitée.']
+ ]),blocks=[],note='Les rôles “Technicienne M-4” et “Mécanicien L-2” de l’atlas restent des fonctions locales à développer ; ils ne sont pas comptés parmi les 26 nouveaux personnages nommés de ce dossier.'),
+ dict(section='Traçabilité',title='Correspondance des lieux',intro='Référence de conversion pour la future réalisation. Une ligne peut correspondre à un découpage de plusieurs plans. Les points exacts figurent sur chaque fiche et dans l’atlas ; ils ne constituent pas une migration déjà faite.',
+ table=(['Scène actuelle','Plan ou ensemble proposé'],[
+ ['dusk ; clinic','DT01 services et clinique ; DT02 cours ; DT03 ateliers.'],
+ ['farm ; crater ; titan ; bunker','AN01 Granja ; AN02 Big Larry ; AN03 Titan, bunker auxiliaire rattaché à la brèche.'],
+ ['junk ; backroom','JB01 bazar extérieur ; JB02 halles et comptes ; JB03 séjours ; JB04 ateliers.'],
+ ['buenos','BA03 centre administratif.'],
+ ['ba-avenues ; ba-habitat','BA01 avenues du nord ; BA02 Patios.'],
+ ['ba-cinema ; ba-ateliers ; ba-front','Cinéma intégré à BA02 ; BA04 ateliers du rail ; BA05 lisière.'],
+ ['customs ; northcustoms ; eastcustoms','SM01 douane ouest ; SM02 nord ; SM03 est.'],
+ ['industry ; northbase ; eastbase ; southbase','SM04 Industries ; SM05/SM06/SM07 avant-postes nord/est/sud.'],
+ ['under ; steel ; china ; asia ; blocks','SM08 Sous-Ville ; SM09 Forum ; SM10 China Lake ; SM11 Asia-Ground ; SM12 blocs.'],
+ ['center ; cliniccity ; civic ; smpd','SM13 Arcadius et Avenue ; SM14 augmentations ; SM15 registre ; SM16 SMPD.'],
+ ['upper ; spire','SM17 jardins ; SM18 atrium du siège IO.'],
+ ['relay ; temple ; port ; coast','AN04 répartition ; AN05 temple ; AN06 nœud maritime IO ; AN07 Waste Coast.'],
+ ['nova','NC01 place civile ; NC02 garnison ; NC03 dépôt.'],
+ ['Pas de scène dédiée actuelle','PU01/PU02 Port UFSA ; SU01/SU02 siège UFSA. Propositions d’extension du sud.']
+ ]),blocks=[],note='Important : port désigne le nœud maritime IO dans les données actuelles. Il ne faut ni le renommer comme Port UFSA, ni lui attribuer les PNJ Tessa, Elsa, Daro ou Neri.'),
+ dict(section='Sources',title='Sources et limites de la revue',intro='Dossier rédigé en français pour No Man’s Land, univers de Valentin. Les créations de jeu et propositions de conception restent identifiées comme telles.',
+ blocks=[
+ ('Sources de fonctionnement','Dépôt /workspace/sites/no-mans-land-2175, instantané 07724023af4978a5c99d9c281c6f76d1cb746e2f : dist/engine.js, data.js, expansion-data.js, city-data.js, city-play.js, expanse-data.js, expanse-play.js, voices.js, overland.js, world.js, scenes.js, render.js et app.js. Définitions chargées sous Node pour vérifier lieux, personnes, objets et quêtes.'),
+ ('Sources de conception','Atlas de conception v0.1 : 44 plans, dont 37 secteurs urbains et 7 sites ; atlas_positions.json et registre des positions. Les coordonnées de conception reproduites ici proviennent de cet atlas. Les horaires détaillés et règles de simulation du présent dossier sont des ajouts proposés.'),
+ ('Univers et écriture','Lore fourni dans la conversation et repères établis pour le roman No Man’s Land Un réveil tardif. Les principes d’écriture utilisés sont ceux consignés dans WRITING.md à partir de la Bible maîtresse Sylvinia V1.1 : voix distinctes, échanges situés, connaissances limitées et humour propre à la personne. Aucun personnage ou système cosmologique de Sylvinia n’est transposé.'),
+ ('Validation actuelle','95 tests de logique et de branchements d’interface exécutés le 20 octobre 2026 : 95 réussites, aucun échec. L’audit n’atteste pas la qualité finale des constructions, la jouabilité tactile ou une validation navigateur réelle. Les nouvelles fiches et systèmes ne sont pas couverts par ces tests avant intégration.'),
+ ('Choix encore ouverts','Tracé final des convois aux douanes du nouvel atlas ; coordonnées de route des nouvelles villes UFSA ; origine biologique non explicitée de nombreux habitants ; contrats d’entretien des compagnons et réglages d’équilibrage. Ces points sont signalés sans inventer une vérité canonique.'),
+ ('Statut de livraison','Version de conception 0.1. Aucun code de jeu, sauvegarde utilisateur ou déploiement n’a été modifié pour produire ce dossier. La prochaine application doit commencer par la revue des plans, puis par un lot pilote restreint et vérifiable.')
+ ],table=None,note='Les références de fichiers servent à retrouver les mécanismes audités. Le document n’embarque ni le manuscrit du roman, ni la bible Sylvinia, ni les ressources du jeu.')
+]

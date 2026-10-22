@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>NC03 Dépôt et points de puisage</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">NC03 | Dépôt et points de puisage</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,40 41,40 63,40 100,40" fill="none" stroke="#b4afa0" stroke-width="6"><title>Route du dépôt / route</title></polyline>
+<polyline points="35,80 35,58 39,48" fill="none" stroke="#d7c59c" stroke-width="4"><title>Chemin des camps / pieton</title></polyline>
+<polyline points="64,80 64,48 100,48" fill="none" stroke="#b4afa0" stroke-width="6"><title>Circuit des citernes / route</title></polyline>
+<rect x="8" y="6" width="31" height="24" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Réservoir ancien | CONDITIONNEL | Conserver une réserve partagée, sous réquisition.</title></rect>
+<text x="8.7" y="8.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="23.5,30 22.9,31.3 24.1,31.3" fill="#aa772c"/>
+<rect x="66" y="6" width="29" height="21" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Bureau Ramos | OUVERT | Négocier les volumes et les justificatifs.</title></rect>
+<text x="66.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="80.5,27 79.9,28.3 81.1,28.3" fill="#287260"/>
+<rect x="68" y="52" width="27" height="24" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B03 | Entrepôt UFSA | RÉSERVÉ | Stock militaire de consommables.</title></rect>
+<text x="68.7" y="54.1" class="id" fill="#984b44">B03 R</text>
+<rect x="7" y="51" width="25" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Abri des campements | OUVERT | Attendre et remplir les bidons civils.</title></rect>
+<text x="7.7" y="53.1" class="id" fill="#287260">B04 O</text>
+<polygon points="32,63.0 33.3,63.6 33.3,62.4" fill="#287260"/>
+<rect x="42" y="7" width="17" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Maintenance des pompes | OUVERT | Entretenir les lignes et les compteurs.</title></rect>
+<text x="42.7" y="9.1" class="id" fill="#287260">B05 O</text>
+<polygon points="50.5,29 49.9,30.3 51.1,30.3" fill="#287260"/>
+<rect x="39" y="56" width="21" height="22" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B06 | Garage des citernes | CONDITIONNEL | Réparer et charger les citernes locales.</title></rect>
+<text x="39.7" y="58.1" class="id" fill="#aa772c">B06 C</text>
+<polygon points="49.5,56 50.1,54.7 48.9,54.7" fill="#aa772c"/>
+<rect x="6" y="32" width="15" height="4" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B07 | Local des gardes | RÉSERVÉ | Contrôler la réserve sans tenir tout le marché.</title></rect>
+<text x="6.7" y="34.1" class="id" fill="#984b44">B07 R</text>
+<rect x="79" y="32" width="16" height="5" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B08 | Ancien logement du fontainier | CONDITIONNEL | Habitat lié au réseau.</title></rect>
+<text x="79.7" y="34.1" class="id" fill="#aa772c">B08 C</text>
+<polygon points="79,34.5 77.7,33.9 77.7,35.1" fill="#aa772c"/>
+<rect x="30" y="48" width="8" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pompe civile | Puisage à hauteur de bidon, alimenté par le réseau existant.</title></rect>
+<text x="32.8" y="52.4" class="small" fill="#44664c">D01</text>
+<rect x="67" y="47" width="26" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Quai militaire | Réserve des convois, hors de la file civile.</title></rect>
+<text x="78.8" y="48.9" class="small" fill="#44664c">D02</text>
+<rect x="8" y="46" width="20" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>File ombragée | Auvent devant l’abri, pas devant le bureau Ramos.</title></rect>
+<text x="16.8" y="47.9" class="small" fill="#44664c">D03</text>
+<rect x="34" y="24" width="4" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Jauge | Lecture depuis le sas du réservoir.</title></rect>
+<text x="34.8" y="26.9" class="small" fill="#44664c">D04</text>
+<rect x="40" y="30" width="3" height="18" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Conduite commune | Trappe et départ vers les deux usages.</title></rect>
+<text x="40.3" y="39.4" class="small" fill="#44664c">D05</text>
+<rect x="43" y="49" width="13" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Citerne | Arrêt aligné sur la travée du garage.</title></rect>
+<text x="48.3" y="51.9" class="small" fill="#44664c">D06</text>
+<rect x="63" y="8" width="2" height="17" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Relevé public | Tableau des volumes devant le bureau, après décision.</title></rect>
+<text x="62.8" y="16.9" class="small" fill="#44664c">D07</text>
+<rect x="2" y="52" width="3" height="24" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Évacuation des eaux | Rigole vers l’extérieur, évite l’eau au pied des lits.</title></rect>
+<text x="2.3" y="64.4" class="small" fill="#44664c">D08</text>
+<circle cx="81" cy="24" r=".5" fill="#a75932"><title>Lieutenant Ramos | Responsable de la réserve, au B02.</title></circle>
+<text x="82" y="24.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="34" cy="57" r=".5" fill="#a75932"><title>Bruna | Représente la file des campements.</title></circle>
+<text x="35" y="57.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="50" cy="26" r=".5" fill="#a75932"><title>Fontainier | Travaille à la maintenance.</title></circle>
+<text x="51" y="26.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="59" cy="53" r=".5" fill="#a75932"><title>Chauffeur de citerne | Attend le chargement du garage.</title></circle>
+<text x="60" y="53.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="29" cy="39" r=".5" fill="#a75932"><title>Garde de réserve | Contrôle les retraits militaires.</title></circle>
+<text x="30" y="39.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

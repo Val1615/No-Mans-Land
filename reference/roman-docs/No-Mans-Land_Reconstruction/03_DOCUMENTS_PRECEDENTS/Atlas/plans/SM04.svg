@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM04 IO Industries</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM04 | IO Industries</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,39 63,39 96,33 96,75 64,75 64,39 100,39" fill="none" stroke="#b4afa0" stroke-width="7"><title>Boucle poids lourds / route</title></polyline>
+<polyline points="34,80 34,64 34,43 34,35" fill="none" stroke="#d7c59c" stroke-width="3"><title>Voie ouvrière / pieton</title></polyline>
+<polyline points="32,29 32,35" fill="none" stroke="#d7c59c" stroke-width="4"><title>Accès chaîne / pieton</title></polyline>
+<rect x="8" y="5" width="50" height="24" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Assemblage | CONDITIONNEL | Production mécanique et montage.</title></rect>
+<text x="8.7" y="7.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="33.0,29 32.4,30.3 33.6,30.3" fill="#aa772c"/>
+<rect x="69" y="8" width="23" height="19" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Expéditions | OUVERT | Remise des commandes aux prestataires.</title></rect>
+<text x="69.7" y="10.1" class="id" fill="#287260">B02 O</text>
+<polygon points="80.5,27 79.9,28.3 81.1,28.3" fill="#287260"/>
+<rect x="9" y="46" width="23" height="16" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Métrologie | CONDITIONNEL | Contrôler la qualité des pièces.</title></rect>
+<text x="9.7" y="48.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="20.5,46 21.1,44.7 19.9,44.7" fill="#aa772c"/>
+<rect x="36" y="49" width="24" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Pièces et maintenance | OUVERT | Réparer outillages et machines de chaîne.</title></rect>
+<text x="36.7" y="51.1" class="id" fill="#287260">B04 O</text>
+<polygon points="48.0,49 48.6,47.7 47.4,47.7" fill="#287260"/>
+<rect x="72" y="50" width="20" height="20" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B05 | Centrale locale | RÉSERVÉ | Énergie et transformation ; site sécurisé.</title></rect>
+<text x="72.7" y="52.1" class="id" fill="#984b44">B05 R</text>
+<rect x="5" y="66" width="25" height="10" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B06 | Réfectoire | OUVERT | Pause des équipes.</title></rect>
+<text x="5.7" y="68.1" class="id" fill="#287260">B06 O</text>
+<polygon points="17.5,66 18.1,64.7 16.9,64.7" fill="#287260"/>
+<rect x="63" y="5" width="3" height="20" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B07 | Bureaux | FERMÉ | Volume de liaison vertical hors champ.</title></rect>
+<text x="63.7" y="7.1" class="id" fill="#68716c">B07 N</text>
+<rect x="2" y="28" width="5" height="7" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Vérification des accès | OUVERT | Enregistrement des fournisseurs.</title></rect>
+<text x="2.7" y="30.1" class="id" fill="#287260">B08 O</text>
+<polygon points="7,31.5 8.3,32.1 8.3,30.9" fill="#287260"/>
+<rect x="14" y="30" width="43" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Quai de chargement | Portes numérotées, palettes classées par destination.</title></rect>
+<text x="34.3" y="32.9" class="small" fill="#44664c">D01</text>
+<rect x="80" y="29" width="5" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Casier K-12 | Frigo de transport au mur d’expédition.</title></rect>
+<text x="81.3" y="31.4" class="small" fill="#44664c">D02</text>
+<rect x="62" y="31" width="5" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Chariot élévateur | Stationné en dehors de la boucle.</title></rect>
+<text x="63.3" y="34.9" class="small" fill="#44664c">D03</text>
+<rect x="76" y="42" width="13" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cuves | Deux cuves sur rétention près de la centrale.</title></rect>
+<text x="81.3" y="44.9" class="small" fill="#44664c">D04</text>
+<rect x="12" y="2" width="28" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Fumées et extraction | Conduites fixées au toit, pas des cheminées isolées.</title></rect>
+<text x="24.8" y="3.4" class="small" fill="#44664c">D05</text>
+<rect x="37" y="69" width="23" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Stock métallique | Râteliers couverts attenants à l’atelier.</title></rect>
+<text x="47.3" y="72.9" class="small" fill="#44664c">D06</text>
+<rect x="5" y="44" width="3" height="13" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Vestiaires extérieurs | Armoire de protections devant l’accès employé.</title></rect>
+<text x="5.3" y="50.9" class="small" fill="#44664c">D07</text>
+<rect x="94" y="10" width="5" height="59" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Butte périphérique | Poussière et fossé d’isolement visibles.</title></rect>
+<text x="95.3" y="39.9" class="small" fill="#44664c">D08</text>
+<circle cx="78" cy="24" r=".5" fill="#a75932"><title>Avel Costa | Confie les colis au B02.</title></circle>
+<text x="79" y="24.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="20" cy="48" r=".5" fill="#a75932"><title>Delta | Contrôle une série au B03.</title></circle>
+<text x="21" y="48.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="46" cy="52" r=".5" fill="#a75932"><title>Technicienne M-4 | Fournit outils et pièces au B04.</title></circle>
+<text x="47" y="52.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="22" cy="68" r=".5" fill="#a75932"><title>Ouvriers en relève | Attendent devant le réfectoire.</title></circle>
+<circle cx="24" cy="68" r=".5" fill="#a75932"><title>Ouvriers en relève | Attendent devant le réfectoire.</title></circle>
+<circle cx="22" cy="71" r=".5" fill="#a75932"><title>Ouvriers en relève | Attendent devant le réfectoire.</title></circle>
+<circle cx="25" cy="71" r=".5" fill="#a75932"><title>Ouvriers en relève | Attendent devant le réfectoire.</title></circle>
+<text x="23" y="68.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="69" cy="59" r=".5" fill="#a75932"><title>Garde de centrale | Interdit B05 sans autorisation.</title></circle>
+<text x="70" y="59.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

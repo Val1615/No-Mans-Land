@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>AN05 Temple du couchant</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">AN05 | Temple du couchant</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polygon points="8,3 34,3 34,9 8,9" fill="#6c8466" stroke="#80927d" stroke-width=".2"/>
+<polyline points="63,80 63,48 61,41 61,36 78,36 78,34" fill="none" stroke="#d7c59c" stroke-width="3"><title>Sentier des visiteurs / pieton</title></polyline>
+<polyline points="0,42 35,42 36,38" fill="none" stroke="#d7c59c" stroke-width="3"><title>Accueil / pieton</title></polyline>
+<rect x="7" y="48" width="27" height="23" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Salle des voyageurs | OUVERT | Recevoir les visiteurs et se reposer.</title></rect>
+<text x="7.7" y="50.1" class="id" fill="#287260">B01 O</text>
+<polygon points="34,59.5 35.3,60.1 35.3,58.9" fill="#287260"/>
+<rect x="64" y="12" width="28" height="22" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Salle de la Veilleuse | CONDITIONNEL | Rencontre et apprentissage de l’Aura.</title></rect>
+<text x="64.7" y="14.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="78.0,34 77.4,35.3 78.6,35.3" fill="#aa772c"/>
+<rect x="7" y="12" width="24" height="22" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Réserve et cuisine | CONDITIONNEL | Nourriture et matériel d’entretien.</title></rect>
+<text x="7.7" y="14.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="19.0,34 18.4,35.3 19.6,35.3" fill="#aa772c"/>
+<rect x="67" y="53" width="25" height="22" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B04 | Cellules anciennes | FERMÉ | Ruines inutilisables en l’état.</title></rect>
+<text x="67.7" y="55.1" class="id" fill="#68716c">B04 N</text>
+<rect x="40" y="58" width="19" height="17" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Abri de pierre | OUVERT | Attendre les voyageurs.</title></rect>
+<text x="40.7" y="60.1" class="id" fill="#287260">B05 O</text>
+<polygon points="49.5,58 50.1,56.7 48.9,56.7" fill="#287260"/>
+<rect x="43" y="11" width="13" height="15" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Autel ancien | Élément patrimonial, pas une machine technologique.</title></rect>
+<text x="48.3" y="18.9" class="small" fill="#44664c">D01</text>
+<rect x="36" y="31" width="25" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Escaliers | Marches réparées reliant les deux terrasses.</title></rect>
+<text x="47.3" y="34.9" class="small" fill="#44664c">D02</text>
+<rect x="36" y="43" width="28" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Muret et assises | Pause sous les arbres, chemin central libre.</title></rect>
+<text x="48.8" y="45.9" class="small" fill="#44664c">D03</text>
+<rect x="5" y="36" width="25" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Rigoles | Évacuent l’eau loin des pierres.</title></rect>
+<text x="16.3" y="38.4" class="small" fill="#44664c">D04</text>
+<rect x="2" y="2" width="94" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Lisière dense | Arbres en masses périphériques, jamais aléatoires sur le sentier.</title></rect>
+<text x="47.8" y="4.9" class="small" fill="#44664c">D05</text>
+<rect x="95" y="51" width="4" height="24" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pierres cassées | Stock de réparation près des cellules, pas du faux butin.</title></rect>
+<text x="95.8" y="63.4" class="small" fill="#44664c">D06</text>
+<circle cx="78" cy="31" r=".5" fill="#a75932"><title>La Veilleuse | Gardienne du site, création de jeu.</title></circle>
+<text x="79" y="31.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="30" cy="58" r=".5" fill="#a75932"><title>Senda | Entretient les marches.</title></circle>
+<text x="31" y="58.4" class="small" fill="#9b4f2c">P02</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

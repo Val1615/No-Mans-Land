@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM05 Avant-poste nord</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM05 | Avant-poste nord</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,75 34,75 38,61 38,28 100,28" fill="none" stroke="#b4afa0" stroke-width="6"><title>Route de liaison / route</title></polyline>
+<polyline points="31,46 31,24 50,24 50,15 57,15" fill="none" stroke="#b4afa0" stroke-width="3"><title>Patrouille / service</title></polyline>
+<rect x="10" y="52" width="23" height="14" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Liaison publique | OUVERT | Recevoir prestataires et signalements.</title></rect>
+<text x="10.7" y="54.1" class="id" fill="#287260">B01 O</text>
+<polygon points="21.5,66 20.9,67.3 22.1,67.3" fill="#287260"/>
+<rect x="42" y="43" width="33" height="15" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B02 | Casernement | RÉSERVÉ | Loger la garnison.</title></rect>
+<text x="42.7" y="45.1" class="id" fill="#984b44">B02 R</text>
+<rect x="57" y="10" width="24" height="14" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B03 | Communications | RÉSERVÉ | Surveiller les axes du nord.</title></rect>
+<text x="57.7" y="12.1" class="id" fill="#984b44">B03 R</text>
+<rect x="43" y="64" width="31" height="12" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B04 | Garage | CONDITIONNEL | Entretenir les véhicules de liaison.</title></rect>
+<text x="43.7" y="66.1" class="id" fill="#aa772c">B04 C</text>
+<polygon points="43,70.0 41.7,69.4 41.7,70.6" fill="#aa772c"/>
+<rect x="10" y="31" width="19" height="14" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B05 | Infirmerie | CONDITIONNEL | Soins du personnel et urgences contrôlées.</title></rect>
+<text x="10.7" y="33.1" class="id" fill="#aa772c">B05 C</text>
+<polygon points="19.5,45 18.9,46.3 20.1,46.3" fill="#aa772c"/>
+<rect x="83" y="49" width="12" height="17" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B06 | Munitions | RÉSERVÉ | Stockage sécurisé séparé du repos.</title></rect>
+<text x="83.7" y="51.1" class="id" fill="#984b44">B06 R</text>
+<rect x="14" y="6" width="13" height="14" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B07 | Poste d’observation | RÉSERVÉ | Guetter depuis la crête.</title></rect>
+<text x="14.7" y="8.1" class="id" fill="#984b44">B07 R</text>
+<rect x="24" y="68" width="8" height="4" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B08 | Filtrage | FERMÉ | Commander l’entrée de cour.</title></rect>
+<text x="24.7" y="70.1" class="id" fill="#68716c">B08 N</text>
+<rect x="36" y="7" width="13" height="18" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Antennes de crête | Deux mats alignés sur la crête ; câbles vers B03.</title></rect>
+<text x="41.3" y="16.4" class="small" fill="#44664c">D01</text>
+<rect x="10" y="22" width="24" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Sacs de tir | Couvert orienté vers le nord, ouvert à l’arrière.</title></rect>
+<text x="20.8" y="23.9" class="small" fill="#44664c">D02</text>
+<rect x="41" y="32" width="33" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Parc véhicules | Deux véhicules face à la sortie de garage.</title></rect>
+<text x="56.3" y="35.9" class="small" fill="#44664c">D03</text>
+<rect x="35" y="48" width="5" height="25" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour de relève | Voie dégagée vers le casernement.</title></rect>
+<text x="36.3" y="60.9" class="small" fill="#44664c">D04</text>
+<rect x="20" y="70" width="17" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Portail | Sépare route de liaison et cour réservée.</title></rect>
+<text x="27.3" y="71.9" class="small" fill="#44664c">D05</text>
+<rect x="78" y="33" width="7" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Réserve d’eau | Cuve protégée, derrière le portail.</title></rect>
+<text x="80.3" y="38.4" class="small" fill="#44664c">D06</text>
+<rect x="4" y="2" width="89" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Glacis | Terrain nu surveillé au nord.</title></rect>
+<text x="47.3" y="3.9" class="small" fill="#44664c">D07</text>
+<rect x="10" y="67" width="20" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Auvent visiteurs | Banc et panneau des horaires sous l’accueil.</title></rect>
+<text x="18.8" y="68.4" class="small" fill="#44664c">D08</text>
+<circle cx="22" cy="62" r=".5" fill="#a75932"><title>Lieutenante Sanz | Traite les demandes au B01.</title></circle>
+<text x="23" y="62.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="54" cy="20" r=".5" fill="#a75932"><title>Pavel | Opérateur détaché au seuil technique.</title></circle>
+<text x="55" y="20.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="45" cy="68" r=".5" fill="#a75932"><title>Mécanicien L-2 | Vérifie le véhicule de liaison.</title></circle>
+<text x="46" y="68.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="25" cy="23" r=".5" fill="#a75932"><title>Sentinelle | Observe la piste depuis la crête.</title></circle>
+<text x="26" y="23.4" class="small" fill="#9b4f2c">P04</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

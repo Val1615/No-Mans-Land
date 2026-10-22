@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>PU01 Quai exploitable</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">PU01 | Quai exploitable</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polygon points="83,0 100,0 100,80 83,80" fill="#a8c0bf" stroke="#80927d" stroke-width=".2"/>
+<polyline points="0,47 70,47 70,80" fill="none" stroke="#b4afa0" stroke-width="6"><title>Route portuaire / route</title></polyline>
+<polyline points="40,0 40,47" fill="none" stroke="#b4afa0" stroke-width="5"><title>Desserte des halles / route</title></polyline>
+<polyline points="70,7 70,75" fill="none" stroke="#d7c59c" stroke-width="4"><title>Quai public / pieton</title></polyline>
+<polyline points="43.5,4 43.5,76" fill="none" stroke="#887e66" stroke-width="1" stroke-dasharray="1 .6"><title>Manutention interne proposée / rail_propose</title></polyline>
+<rect x="8" y="7" width="29" height="23" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Halle de réception | CONDITIONNEL | Trier le fret débarqué.</title></rect>
+<text x="8.7" y="9.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="22.5,30 21.9,31.3 23.1,31.3" fill="#aa772c"/>
+<rect x="45" y="7" width="22" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Contrôle portuaire | OUVERT | Enregistrer passagers et cargaisons.</title></rect>
+<text x="45.7" y="9.1" class="id" fill="#287260">B02 O</text>
+<polygon points="56.0,29 55.4,30.3 56.6,30.3" fill="#287260"/>
+<rect x="8" y="51" width="26" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Atelier de grue | OUVERT | Réparer les équipements de quai.</title></rect>
+<text x="8.7" y="53.1" class="id" fill="#287260">B03 O</text>
+<polygon points="34,63.0 35.3,63.6 35.3,62.4" fill="#287260"/>
+<rect x="47" y="53" width="20" height="23" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B04 | Capitainerie | CONDITIONNEL | Affecter les accostages et les départs.</title></rect>
+<text x="47.7" y="55.1" class="id" fill="#aa772c">B04 C</text>
+<polygon points="57.0,53 57.6,51.7 56.4,51.7" fill="#aa772c"/>
+<rect x="8" y="34" width="25" height="10" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B05 | Entrepôt de valeur | RÉSERVÉ | Stock sous surveillance UFSA.</title></rect>
+<text x="8.7" y="36.1" class="id" fill="#984b44">B05 R</text>
+<rect x="45" y="34" width="23" height="9" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B06 | Sauvetage et premiers soins | OUVERT | Accueillir les blessés de mer.</title></rect>
+<text x="45.7" y="36.1" class="id" fill="#287260">B06 O</text>
+<polygon points="56.5,43 55.9,44.3 57.1,44.3" fill="#287260"/>
+<rect x="6" y="2" width="23" height="3" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B07 | Local carburant | RÉSERVÉ | Alimenter les bateaux, réserve isolée.</title></rect>
+<text x="6.7" y="4.1" class="id" fill="#984b44">B07 R</text>
+<rect x="72" y="8" width="10" height="65" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Quai de travail | Bord protégé ; trois points d’amarrage identifiés.</title></rect>
+<text x="75.8" y="40.9" class="small" fill="#44664c">D01</text>
+<rect x="70" y="30" width="8" height="11" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Grue de récupération | Base hors du passage, rayon de charge marqué.</title></rect>
+<text x="72.8" y="35.9" class="small" fill="#44664c">D02</text>
+<rect x="86" y="19" width="11" height="29" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cargo modeste | Unique navire visible à quai ; pas de flotte présumée.</title></rect>
+<text x="90.3" y="33.9" class="small" fill="#44664c">D03</text>
+<rect x="41" y="31" width="24" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Déchargement | Lot devant la halle, en attente de contrôle.</title></rect>
+<text x="51.8" y="32.4" class="small" fill="#44664c">D04</text>
+<rect x="68" y="42" width="4" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Rampe de soins | Accès continu du quai au local sanitaire.</title></rect>
+<text x="68.8" y="44.9" class="small" fill="#44664c">D05</text>
+<rect x="73" y="62" width="7" height="12" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bittes et filets | Accastillage lié au quai, pas au centre de la route.</title></rect>
+<text x="75.3" y="68.4" class="small" fill="#44664c">D06</text>
+<rect x="43" y="4" width="1" height="72" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Voie interne proposée | Petite manutention portuaire, sans raccordement régional affirmé.</title></rect>
+<text x="42.3" y="40.4" class="small" fill="#44664c">D07</text>
+<rect x="70" y="49" width="12" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Barrage du fret | Sépare les équipes du quai des visiteurs de capitainerie.</title></rect>
+<text x="74.8" y="50.4" class="small" fill="#44664c">D08</text>
+<circle cx="56" cy="26" r=".5" fill="#a75932"><title>Lieutenante Tessa Vela | Contrôle portuaire ; nouvelle personne proposée.</title></circle>
+<text x="57" y="26.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="72" cy="35" r=".5" fill="#a75932"><title>Grutier Daro | Travaille sur le quai.</title></circle>
+<text x="73" y="35.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="32" cy="63" r=".5" fill="#a75932"><title>Mécanicienne Neri | Reçoit les réparations au B03.</title></circle>
+<text x="33" y="63.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="55" cy="43" r=".5" fill="#a75932"><title>Soignant du port | Reçoit au B06.</title></circle>
+<text x="56" y="43.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="51" cy="55" r=".5" fill="#a75932"><title>Capitaine civil | Déclare son départ.</title></circle>
+<text x="52" y="55.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

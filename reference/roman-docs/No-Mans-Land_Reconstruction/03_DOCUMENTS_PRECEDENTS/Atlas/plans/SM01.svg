@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM01 Douane ouest</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM01 | Douane ouest</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,42 100,42" fill="none" stroke="#b4afa0" stroke-width="9"><title>Transit des convois / route</title></polyline>
+<polyline points="0,59 33,59 33,57 39,57" fill="none" stroke="#d7c59c" stroke-width="4"><title>Accès piétons / pieton</title></polyline>
+<polyline points="59,42 66,34 66,6 100,6" fill="none" stroke="#b4afa0" stroke-width="4"><title>Voie de service / route</title></polyline>
+<polyline points="48,62 48,66" fill="none" stroke="#d7c59c" stroke-width="3"><title>Recours / pieton</title></polyline>
+<rect x="39" y="49" width="18" height="13" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Identification | OUVERT | Contrôler les voyageurs et leurs documents.</title></rect>
+<text x="39.7" y="51.1" class="id" fill="#287260">B01 O</text>
+<polygon points="48.0,62 47.4,63.3 48.6,63.3" fill="#287260"/>
+<rect x="37" y="10" width="27" height="20" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Inspection poids lourds | CONDITIONNEL | Inspection du fret et déchargement ciblé.</title></rect>
+<text x="37.7" y="12.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="37,20.0 35.7,19.4 35.7,20.6" fill="#aa772c"/>
+<rect x="84" y="8" width="12" height="20" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Quarantaine | CONDITIONNEL | Isolement sanitaire des personnes signalées.</title></rect>
+<text x="84.7" y="10.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="90.0,28 89.4,29.3 90.6,29.3" fill="#aa772c"/>
+<rect x="70" y="53" width="20" height="12" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Consignes civiles | OUVERT | Stockage temporaire des effets refusés.</title></rect>
+<text x="70.7" y="55.1" class="id" fill="#287260">B04 O</text>
+<polygon points="70,59.0 68.7,58.4 68.7,59.6" fill="#287260"/>
+<rect x="18" y="29" width="10" height="7" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B05 | Guérite ouest | FERMÉ | Observer le premier barrage.</title></rect>
+<text x="18.7" y="31.1" class="id" fill="#68716c">B05 N</text>
+<rect x="73" y="28" width="10" height="8" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B06 | Guérite est | FERMÉ | Contrôler la sortie vers la cité.</title></rect>
+<text x="73.7" y="30.1" class="id" fill="#68716c">B06 N</text>
+<rect x="8" y="10" width="20" height="14" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Repos chauffeurs | OUVERT | Attente et eau payante.</title></rect>
+<text x="8.7" y="12.1" class="id" fill="#287260">B07 O</text>
+<polygon points="18.0,24 17.4,25.3 18.6,25.3" fill="#287260"/>
+<rect x="40" y="66" width="18" height="10" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B08 | Administration | CONDITIONNEL | Recours et registre des entrées.</title></rect>
+<text x="40.7" y="68.1" class="id" fill="#aa772c">B08 C</text>
+<polygon points="49.0,66 49.6,64.7 48.4,64.7" fill="#aa772c"/>
+<rect x="82" y="68" width="12" height="9" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B09 | Local énergie | FERMÉ | Alimenter les portiques.</title></rect>
+<text x="82.7" y="70.1" class="id" fill="#68716c">B09 N</text>
+<rect x="4" y="62" width="16" height="12" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B10 | Poste armé | RÉSERVÉ | Réserve de la garde IO.</title></rect>
+<text x="4.7" y="64.1" class="id" fill="#984b44">B10 R</text>
+<rect x="8" y="32" width="23" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Aire de convoi | Deux camions en file, nez vers l’est ; aucun véhicule dans le couloir civil.</title></rect>
+<text x="18.3" y="36.4" class="small" fill="#44664c">D01</text>
+<rect x="10" y="49" width="23" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>File civile | Auvents, bancs et garde-corps parallèles au trottoir.</title></rect>
+<text x="20.3" y="51.9" class="small" fill="#44664c">D02</text>
+<rect x="31" y="36" width="5" height="12" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Portiques | Deux lecteurs et une barrière sur la route.</title></rect>
+<text x="32.3" y="42.4" class="small" fill="#44664c">D03</text>
+<rect x="40" y="32" width="20" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Déchargement | Palettes uniquement devant les portes du hangar.</title></rect>
+<text x="48.8" y="34.4" class="small" fill="#44664c">D04</text>
+<rect x="65" y="36" width="7" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pesée | Plateaux encastrés dans la chaussée.</title></rect>
+<text x="67.3" y="41.4" class="small" fill="#44664c">D05</text>
+<rect x="23" y="67" width="9" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Eau et déchets | Point d’eau, poubelles fermées ; hors de la file.</title></rect>
+<text x="26.3" y="70.9" class="small" fill="#44664c">D06</text>
+<rect x="3" y="3" width="94" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Clôture | Limite grillagée ; passages ouverts seulement sur les voies.</title></rect>
+<text x="48.8" y="4.4" class="small" fill="#44664c">D07</text>
+<rect x="92" y="39" width="5" height="18" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Sable de bordure | Accumulation contre la clôture, pas au milieu du passage.</title></rect>
+<text x="93.3" y="48.4" class="small" fill="#44664c">D08</text>
+<circle cx="47" cy="57" r=".5" fill="#a75932"><title>Agent Vidal | Traite les identifications au B01.</title></circle>
+<text x="48" y="57.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="31" cy="59" r=".5" fill="#a75932"><title>Luz Herrera | Attend près du recours, à l’écart du fret.</title></circle>
+<text x="32" y="59.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="23" cy="19" r=".5" fill="#a75932"><title>Mirek | Chauffeur du convoi immobilisé.</title></circle>
+<text x="24" y="19.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="34" cy="40" r=".5" fill="#a75932"><title>Deux douaniers | Vérifient la barrière centrale.</title></circle>
+<circle cx="36" cy="43" r=".5" fill="#a75932"><title>Deux douaniers | Vérifient la barrière centrale.</title></circle>
+<text x="37" y="40.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="90" cy="26" r=".5" fill="#a75932"><title>Médecin de contrôle | Filtre les entrées en quarantaine.</title></circle>
+<text x="91" y="26.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

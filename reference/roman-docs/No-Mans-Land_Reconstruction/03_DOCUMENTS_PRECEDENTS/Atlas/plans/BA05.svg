@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>BA05 Lisière évacuée</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">BA05 | Lisière évacuée</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,40 35,40 67,35 100,35" fill="none" stroke="#b4afa0" stroke-width="7"><title>Axe évacué / route</title></polyline>
+<polyline points="35,80 35,54 39,50" fill="none" stroke="#b4afa0" stroke-width="4"><title>Accès des ateliers / route</title></polyline>
+<polyline points="67,35 67,47 100,47" fill="none" stroke="#b4afa0" stroke-width="4"><title>Cour IO / service</title></polyline>
+<rect x="38" y="6" width="25" height="22" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Ancien atelier contesté | CONDITIONNEL | Matériel encore utile aux patios.</title></rect>
+<text x="38.7" y="8.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="50.5,28 49.9,29.3 51.1,29.3" fill="#aa772c"/>
+<rect x="72" y="8" width="23" height="20" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Liaison IO | CONDITIONNEL | Point d’arrêt du détachement de récupération.</title></rect>
+<text x="72.7" y="10.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="83.5,28 82.9,29.3 84.1,29.3" fill="#aa772c"/>
+<rect x="7" y="49" width="25" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Abri des Nativos | OUVERT | Protéger l’approche des logements habités.</title></rect>
+<text x="7.7" y="51.1" class="id" fill="#287260">B03 O</text>
+<polygon points="32,61.0 33.3,61.6 33.3,60.4" fill="#287260"/>
+<rect x="6" y="6" width="25" height="21" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B04 | Logements évacués ouest | FERMÉ | Ruines sans familles ni commerces.</title></rect>
+<text x="6.7" y="8.1" class="id" fill="#68716c">B04 N</text>
+<rect x="73" y="50" width="22" height="24" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B05 | Logements évacués est | FERMÉ | Ruines instables, présence hostile possible au-delà.</title></rect>
+<text x="73.7" y="52.1" class="id" fill="#68716c">B05 N</text>
+<rect x="39" y="56" width="24" height="20" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B06 | Dépôt abandonné | CONDITIONNEL | Caisse du frein de treuil et pièces utiles.</title></rect>
+<text x="39.7" y="58.1" class="id" fill="#aa772c">B06 C</text>
+<polygon points="51.0,56 51.6,54.7 50.4,54.7" fill="#aa772c"/>
+<rect x="6" y="31" width="19" height="5" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B07 | Ancienne boutique | FERMÉ | Façade de couvert, intérieur condamné.</title></rect>
+<text x="6.7" y="33.1" class="id" fill="#68716c">B07 N</text>
+<rect x="76" y="39" width="18" height="5" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B08 | Préfabriqué technique IO | RÉSERVÉ | Matériel de transmission du détachement.</title></rect>
+<text x="76.7" y="41.1" class="id" fill="#984b44">B08 R</text>
+<rect x="26" y="44" width="14" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Couvert Nativos | Muret et sacs orientés vers le nord-est.</title></rect>
+<text x="31.8" y="45.9" class="small" fill="#44664c">D01</text>
+<rect x="63" y="29" width="12" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Couvert IO | Barrière orientée vers le sud-ouest.</title></rect>
+<text x="67.8" y="30.9" class="small" fill="#44664c">D02</text>
+<rect x="39" y="35" width="23" height="14" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Rue de discussion | Volume vide voulu : permet approche, lecture et médiation.</title></rect>
+<text x="49.3" y="42.4" class="small" fill="#44664c">D03</text>
+<rect x="44" y="59" width="6" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Caisse du frein | À l’intérieur du dépôt, près de son vrai seuil.</title></rect>
+<text x="45.8" y="61.9" class="small" fill="#44664c">D04</text>
+<rect x="33" y="64" width="5" height="12" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bretelle sûre | Chemin de récupération sans traverser les deux lignes de tir.</title></rect>
+<text x="34.3" y="70.4" class="small" fill="#44664c">D05</text>
+<rect x="7" y="43" width="15" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Autobus calciné | Couvert physique sur le côté de la rue, pas en plein passage.</title></rect>
+<text x="13.3" y="45.4" class="small" fill="#44664c">D06</text>
+<rect x="96" y="6" width="3" height="68" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Périmètre instable | Clôture et décombres marquant les blocs non accessibles.</title></rect>
+<text x="96.3" y="40.4" class="small" fill="#44664c">D07</text>
+<rect x="9" y="53" width="4" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Radio commune | Dans l’abri, permet un contact cohérent entre postes.</title></rect>
+<text x="9.8" y="55.4" class="small" fill="#44664c">D08</text>
+<circle cx="30" cy="59" r=".5" fill="#a75932"><title>Lian | Responsable du poste Nativos.</title></circle>
+<text x="31" y="59.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="80" cy="25" r=".5" fill="#a75932"><title>Alder | Chef IO au B02.</title></circle>
+<text x="81" y="25.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="31" cy="48" r=".5" fill="#a75932"><title>Équipe Nativos, 3 | Couvre la rue depuis le sud-ouest.</title></circle>
+<circle cx="34" cy="49" r=".5" fill="#a75932"><title>Équipe Nativos, 3 | Couvre la rue depuis le sud-ouest.</title></circle>
+<circle cx="36" cy="48" r=".5" fill="#a75932"><title>Équipe Nativos, 3 | Couvre la rue depuis le sud-ouest.</title></circle>
+<text x="35" y="46.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="66" cy="28" r=".5" fill="#a75932"><title>Équipe IO, 3 | Protège l’approche de l’atelier.</title></circle>
+<circle cx="68" cy="30" r=".5" fill="#a75932"><title>Équipe IO, 3 | Protège l’approche de l’atelier.</title></circle>
+<circle cx="70" cy="28" r=".5" fill="#a75932"><title>Équipe IO, 3 | Protège l’approche de l’atelier.</title></circle>
+<text x="68" y="31.4" class="small" fill="#9b4f2c">P04</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

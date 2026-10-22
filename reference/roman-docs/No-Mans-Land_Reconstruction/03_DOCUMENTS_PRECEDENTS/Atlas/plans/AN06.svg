@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>AN06 Nœud maritime IO</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">AN06 | Nœud maritime IO</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polygon points="84,0 100,0 100,80 84,80" fill="#a8c0bf" stroke="#80927d" stroke-width=".2"/>
+<polyline points="0,47 72,47 72,80" fill="none" stroke="#b4afa0" stroke-width="7"><title>Route IO / route</title></polyline>
+<polyline points="39,0 39,80" fill="none" stroke="#b4afa0" stroke-width="5"><title>Desserte intérieure / route</title></polyline>
+<polyline points="72,0 72,75" fill="none" stroke="#b4afa0" stroke-width="4"><title>Quai technique / service</title></polyline>
+<rect x="8" y="6" width="28" height="23" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Halle IO | CONDITIONNEL | Recevoir et vérifier le fret.</title></rect>
+<text x="8.7" y="8.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="22.0,29 21.4,30.3 22.6,30.3" fill="#aa772c"/>
+<rect x="44" y="6" width="25" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Contrôle des équipes | OUVERT | Accréditer manutentionnaires et prestataires.</title></rect>
+<text x="44.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="56.5,28 55.9,29.3 57.1,29.3" fill="#287260"/>
+<rect x="8" y="51" width="27" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Atelier des grues | OUVERT | Entretenir les engins de levage.</title></rect>
+<text x="8.7" y="53.1" class="id" fill="#287260">B03 O</text>
+<polygon points="35,63.0 36.3,63.6 36.3,62.4" fill="#287260"/>
+<rect x="44" y="53" width="24" height="22" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B04 | Réserve sensible | RÉSERVÉ | Équipements sous contrat IO.</title></rect>
+<text x="44.7" y="55.1" class="id" fill="#984b44">B04 R</text>
+<rect x="8" y="34" width="24" height="9" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Repos des équipes | OUVERT | Pause du personnel.</title></rect>
+<text x="8.7" y="36.1" class="id" fill="#287260">B05 O</text>
+<polygon points="32,38.5 33.3,39.1 33.3,37.9" fill="#287260"/>
+<rect x="45" y="34" width="24" height="9" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B06 | Inspection sanitaire | CONDITIONNEL | Contrôler les lots organiques.</title></rect>
+<text x="45.7" y="36.1" class="id" fill="#aa772c">B06 C</text>
+<polygon points="57.0,43 56.4,44.3 57.6,44.3" fill="#aa772c"/>
+<rect x="73" y="22" width="8" height="13" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Grue | Rayon de charge séparé des travailleurs.</title></rect>
+<text x="75.8" y="28.9" class="small" fill="#44664c">D01</text>
+<rect x="85" y="14" width="13" height="37" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cargo IO | Bâtiment de fret lié à un quai, pas un décor échoué.</title></rect>
+<text x="90.3" y="32.9" class="small" fill="#44664c">D02</text>
+<rect x="72" y="6" width="11" height="68" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Quai | Bornes, garde-corps aux endroits hors manutention.</title></rect>
+<text x="76.3" y="40.4" class="small" fill="#44664c">D03</text>
+<rect x="42" y="30" width="26" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Contrôle des colis | Palettes ordonnées par destination.</title></rect>
+<text x="53.8" y="31.9" class="small" fill="#44664c">D04</text>
+<rect x="6" y="46" width="25" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Câbles et freins | Atelier mobile adossé au bâtiment de Celso.</title></rect>
+<text x="17.3" y="47.9" class="small" fill="#44664c">D05</text>
+<rect x="75" y="55" width="9" height="20" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bassin de réparation | Zone d’eau fermée pendant les opérations.</title></rect>
+<text x="78.3" y="65.4" class="small" fill="#44664c">D06</text>
+<circle cx="57" cy="25" r=".5" fill="#a75932"><title>Yuna Marin | Manutentionnaire du port, distincte de la technicienne de Steel.</title></circle>
+<text x="58" y="25.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="32" cy="61" r=".5" fill="#a75932"><title>Celso | Ajusteur des grues.</title></circle>
+<text x="33" y="61.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="39" cy="58" r=".5" fill="#a75932"><title>Esteban Ríos | Déserteur UFSA dissimulé près des équipes.</title></circle>
+<text x="40" y="58.4" class="small" fill="#9b4f2c">P03</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

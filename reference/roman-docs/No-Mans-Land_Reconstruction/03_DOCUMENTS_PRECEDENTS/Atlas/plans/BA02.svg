@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>BA02 Patios habités</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">BA02 | Patios habités</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="63,0 63,29 61,34 61,57 61,80" fill="none" stroke="#d7c59c" stroke-width="4"><title>Passage des patios / pieton</title></polyline>
+<polyline points="0,39 28,39 31,42 63,47 100,47" fill="none" stroke="#d7c59c" stroke-width="4"><title>Traverse des habitants / pieton</title></polyline>
+<polyline points="100,30 95,30" fill="none" stroke="#b4afa0" stroke-width="4"><title>Desserte médicale / service</title></polyline>
+<rect x="66" y="5" width="29" height="21" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Dispensaire Esmé | OUVERT | Soigner et recevoir les livraisons.</title></rect>
+<text x="66.7" y="7.1" class="id" fill="#287260">B01 O</text>
+<polygon points="80.5,26 79.9,27.3 81.1,27.3" fill="#287260"/>
+<rect x="7" y="6" width="29" height="19" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Halle commune | OUVERT | Cuisiner et distribuer les repas.</title></rect>
+<text x="7.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="21.5,25 20.9,26.3 22.1,26.3" fill="#287260"/>
+<polygon points="43,6 54.05,6 54.05,11.0 60,11.0 60,26 43,26" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Habitat nord | CONDITIONNEL | Logements de familles mutantes conscientes.</title></polygon>
+<text x="43.7" y="8.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="51.5,26 50.9,27.3 52.1,27.3" fill="#aa772c"/>
+<rect x="5" y="41" width="21" height="22" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B04 | Habitat ouest | FERMÉ | Résidences donnant sur la cour.</title></rect>
+<text x="5.7" y="43.1" class="id" fill="#68716c">B04 N</text>
+<rect x="65" y="53" width="30" height="25" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Ancien cinéma | OUVERT | Lieu de réunion et de projection.</title></rect>
+<text x="65.7" y="55.1" class="id" fill="#287260">B05 O</text>
+<polygon points="80.0,53 80.6,51.7 79.4,51.7" fill="#287260"/>
+<rect x="6" y="67" width="25" height="12" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B06 | Petite école | OUVERT | Apprentissages et courrier local.</title></rect>
+<text x="6.7" y="69.1" class="id" fill="#287260">B06 O</text>
+<polygon points="31,73.0 32.3,73.6 32.3,72.4" fill="#287260"/>
+<rect x="37" y="62" width="22" height="18" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B07 | Habitat sud | CONDITIONNEL | Logements proches des ateliers.</title></rect>
+<text x="37.7" y="64.1" class="id" fill="#aa772c">B07 C</text>
+<polygon points="48.0,62 48.6,60.7 47.4,60.7" fill="#aa772c"/>
+<rect x="78" y="34" width="17" height="9" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Réparation domestique | OUVERT | Réparer outils et petits appareils.</title></rect>
+<text x="78.7" y="36.1" class="id" fill="#287260">B08 O</text>
+<polygon points="78,38.5 76.7,37.9 76.7,39.1" fill="#287260"/>
+<rect x="5" y="28" width="19" height="9" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B09 | Maison condamnée | FERMÉ | Ancien logement muré, hors du circuit des familles.</title></rect>
+<text x="5.7" y="30.1" class="id" fill="#68716c">B09 N</text>
+<rect x="9" y="27" width="25" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cuisine extérieure | Marmites, réserve de combustible et table de lavage liées à Gaspar.</title></rect>
+<text x="20.3" y="30.9" class="small" fill="#44664c">D01</text>
+<rect x="38" y="34" width="9" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Point d’eau | Puits réparé, file protégée du passage principal.</title></rect>
+<text x="41.3" y="38.4" class="small" fill="#44664c">D02</text>
+<rect x="30" y="45" width="25" height="9" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Tables communes | Repas ; une allée libre pour les brancards.</title></rect>
+<text x="41.3" y="49.9" class="small" fill="#44664c">D03</text>
+<rect x="68" y="28" width="25" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Accueil médical | Banc, petite rampe et zone de dépose.</title></rect>
+<text x="79.3" y="30.4" class="small" fill="#44664c">D04</text>
+<rect x="61" y="54" width="3" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Affiche du cinéma | Programme au mur du foyer, lisible avant l’entrée.</title></rect>
+<text x="61.3" y="58.4" class="small" fill="#44664c">D05</text>
+<rect x="28" y="56" width="6" height="6" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Linge des patios | Cordes au-dessus du sol, à l’abri du vent.</title></rect>
+<text x="29.8" y="59.4" class="small" fill="#44664c">D06</text>
+<rect x="48" y="38" width="10" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Jardin réduit | Quelques cultures arrosées ; pas une avenue transformée en jungle.</title></rect>
+<text x="51.8" y="41.9" class="small" fill="#44664c">D07</text>
+<rect x="59" y="66" width="4" height="9" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Mémorial domestique | Photos et fleurs devant les logements, sans borne futuriste.</title></rect>
+<text x="59.8" y="70.9" class="small" fill="#44664c">D08</text>
+<circle cx="80" cy="23" r=".5" fill="#a75932"><title>Esmé | Travaille au dispensaire.</title></circle>
+<text x="81" y="23.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="23" cy="22" r=".5" fill="#a75932"><title>Gaspar | Cuisine au B02.</title></circle>
+<text x="24" y="22.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="66" cy="57" r=".5" fill="#a75932"><title>Mila | Prépare la séance au cinéma.</title></circle>
+<text x="67" y="57.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="88" cy="61" r=".5" fill="#a75932"><title>Renzo | Travaille à l’intérieur de la régie du B05.</title></circle>
+<text x="89" y="61.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="27" cy="70" r=".5" fill="#a75932"><title>Teo | Trie le courrier près de l’école.</title></circle>
+<text x="28" y="70.4" class="small" fill="#9b4f2c">P05</text>
+<circle cx="49" cy="29" r=".5" fill="#a75932"><title>Famille du patio | Entre chez elle au B03.</title></circle>
+<text x="50" y="29.4" class="small" fill="#9b4f2c">P06</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

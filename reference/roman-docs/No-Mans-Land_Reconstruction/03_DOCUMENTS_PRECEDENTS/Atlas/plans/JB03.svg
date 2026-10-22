@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>JB03 Ruelles des séjours</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">JB03 | Ruelles des séjours</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="35,0 35,29 35,37 35,48 61,48 61,80" fill="none" stroke="#d7c59c" stroke-width="5"><title>Ruelle centrale / pieton</title></polyline>
+<polyline points="0,45 35,45 61,39 100,45" fill="none" stroke="#d7c59c" stroke-width="4"><title>Traverse des séjours / pieton</title></polyline>
+<polyline points="0,78 32,78 32,80" fill="none" stroke="#b4afa0" stroke-width="4"><title>Services arrière / service</title></polyline>
+<rect x="5" y="5" width="27" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Motel des passageurs | OUVERT | Louer des chambres.</title></rect>
+<text x="5.7" y="7.1" class="id" fill="#287260">B01 O</text>
+<polygon points="18.5,29 17.9,30.3 19.1,30.3" fill="#287260"/>
+<rect x="64" y="6" width="30" height="21" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Bar des tôles | OUVERT | Boire, trouver une mission et écouter la musique.</title></rect>
+<text x="64.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="79.0,27 78.4,28.3 79.6,28.3" fill="#287260"/>
+<rect x="6" y="49" width="26" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Clinique commerciale | OUVERT | Soins payants, implants et marché médical.</title></rect>
+<text x="6.7" y="51.1" class="id" fill="#287260">B03 O</text>
+<polygon points="32,61.0 33.3,61.6 33.3,60.4" fill="#287260"/>
+<rect x="64" y="49" width="30" height="25" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Maison des plaisirs | OUVERT | Établissement adulte, distinct du bar.</title></rect>
+<text x="64.7" y="51.1" class="id" fill="#287260">B04 O</text>
+<polygon points="64,61.5 62.7,60.9 62.7,62.1" fill="#287260"/>
+<rect x="38" y="6" width="20" height="20" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B05 | Logements des employés | FERMÉ | Habitat permanent des travailleurs.</title></rect>
+<text x="38.7" y="8.1" class="id" fill="#68716c">B05 N</text>
+<rect x="38" y="55" width="20" height="21" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B06 | Cuisine et blanchisserie | CONDITIONNEL | Services du motel et de l’établissement.</title></rect>
+<text x="38.7" y="57.1" class="id" fill="#aa772c">B06 C</text>
+<polygon points="48.0,55 48.6,53.7 47.4,53.7" fill="#aa772c"/>
+<rect x="5" y="33" width="17" height="10" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B07 | Pièces à louer | CONDITIONNEL | Petits logements indépendants.</title></rect>
+<text x="5.7" y="35.1" class="id" fill="#aa772c">B07 C</text>
+<polygon points="22,38.0 23.3,38.6 23.3,37.4" fill="#aa772c"/>
+<rect x="78" y="33" width="16" height="6" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Poste des médiateurs | OUVERT | Recueillir les litiges de service.</title></rect>
+<text x="78.7" y="35.1" class="id" fill="#287260">B08 O</text>
+<polygon points="78,36.0 76.7,35.4 76.7,36.6" fill="#287260"/>
+<rect x="64" y="29" width="28" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Terrasse de bar | Tables et cendriers rangés au mur.</title></rect>
+<text x="76.8" y="30.9" class="small" fill="#44664c">D01</text>
+<rect x="6" y="30" width="24" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour du motel | Linge étendu et arrivée des clients sous galerie.</title></rect>
+<text x="16.8" y="31.4" class="small" fill="#44664c">D02</text>
+<rect x="66" y="9" width="7" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Musique | Petite scène dans le bar, pas une borne au milieu de la rue.</title></rect>
+<text x="68.3" y="11.9" class="small" fill="#44664c">D03</text>
+<rect x="7" y="74" width="23" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Récupération médicale | Déchets fermés et accès arrière de la clinique.</title></rect>
+<text x="17.3" y="75.9" class="small" fill="#44664c">D04</text>
+<rect x="60" y="54" width="3" height="19" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Patio privé | Écran de tissu et assises, rattachés au salon.</title></rect>
+<text x="60.3" y="63.9" class="small" fill="#44664c">D05</text>
+<rect x="33" y="8" width="4" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Panneau des chambres | Tarifs à l’extérieur de l’accueil.</title></rect>
+<text x="33.8" y="12.4" class="small" fill="#44664c">D06</text>
+<rect x="43" y="44" width="8" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Fontaine payante | Unique point d’eau au carrefour.</title></rect>
+<text x="45.8" y="46.9" class="small" fill="#44664c">D07</text>
+<rect x="24" y="35" width="3" height="9" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Éclairage des ruelles | Câbles et lampes fixés au-dessus du passage.</title></rect>
+<text x="24.3" y="39.9" class="small" fill="#44664c">D08</text>
+<circle cx="18" cy="26" r=".5" fill="#a75932"><title>Hôtelière Cira Lobo | Accueil du motel.</title></circle>
+<text x="19" y="26.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="79" cy="24" r=".5" fill="#a75932"><title>Tenancier Iago | Tient le bar.</title></circle>
+<text x="80" y="24.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="28" cy="61" r=".5" fill="#a75932"><title>Chirurgienne Sol | Reçoit à la clinique.</title></circle>
+<text x="29" y="61.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="67" cy="61" r=".5" fill="#a75932"><title>Responsable du salon | Accueil de l’établissement adulte.</title></circle>
+<text x="68" y="61.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="36" cy="45" r=".5" fill="#a75932"><title>Diego | Attend près du poste public.</title></circle>
+<text x="37" y="45.4" class="small" fill="#9b4f2c">P05</text>
+<circle cx="80" cy="40" r=".5" fill="#a75932"><title>Médiateur | Intervient sur les transactions locales.</title></circle>
+<text x="81" y="40.4" class="small" fill="#9b4f2c">P06</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

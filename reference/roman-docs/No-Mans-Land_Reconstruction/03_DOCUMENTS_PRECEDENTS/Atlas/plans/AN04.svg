@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>AN04 Station de répartition</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">AN04 | Station de répartition</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polygon points="8,33 31,33 31,46 8,46" fill="#a8c0bf" stroke="#80927d" stroke-width=".2"/>
+<polygon points="70,34 94,34 94,47 70,47" fill="#a8c0bf" stroke="#80927d" stroke-width=".2"/>
+<polyline points="0,45 35,45 64,45 100,45" fill="none" stroke="#b4afa0" stroke-width="6"><title>Accès de service / route</title></polyline>
+<polyline points="51,45 51,26" fill="none" stroke="#d7c59c" stroke-width="3"><title>Commande / pieton</title></polyline>
+<polyline points="51,80 51,77" fill="none" stroke="#b4afa0" stroke-width="4"><title>Entrée sud / route</title></polyline>
+<rect x="39" y="6" width="25" height="20" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Commande | CONDITIONNEL | Modifier les allocations du réseau.</title></rect>
+<text x="39.7" y="8.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="51.5,26 50.9,27.3 52.1,27.3" fill="#aa772c"/>
+<rect x="7" y="7" width="25" height="21" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B02 | Filtration | RÉSERVÉ | Traiter les volumes entrants.</title></rect>
+<text x="7.7" y="9.1" class="id" fill="#984b44">B02 R</text>
+<rect x="69" y="6" width="25" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Maintenance | OUVERT | Entretenir les pompes.</title></rect>
+<text x="69.7" y="8.1" class="id" fill="#287260">B03 O</text>
+<polygon points="81.5,28 80.9,29.3 82.1,29.3" fill="#287260"/>
+<rect x="69" y="52" width="26" height="23" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B04 | Pompes aval | RÉSERVÉ | Distribuer l’eau vers plusieurs destinations.</title></rect>
+<text x="69.7" y="54.1" class="id" fill="#984b44">B04 R</text>
+<rect x="7" y="51" width="25" height="24" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Dépôt des pièces | OUVERT | Stock et établi de réparation.</title></rect>
+<text x="7.7" y="53.1" class="id" fill="#287260">B05 O</text>
+<polygon points="32,63.0 33.3,63.6 33.3,62.4" fill="#287260"/>
+<rect x="40" y="61" width="23" height="16" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B06 | Poste d’accès | OUVERT | Contrôler l’accès de service.</title></rect>
+<text x="40.7" y="63.1" class="id" fill="#287260">B06 O</text>
+<polygon points="51.5,61 52.1,59.7 50.9,59.7" fill="#287260"/>
+<rect x="8" y="33" width="23" height="13" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bassin de décantation | Bassin technique clôturé, pas une piscine traversable.</title></rect>
+<text x="18.3" y="39.9" class="small" fill="#44664c">D01</text>
+<rect x="70" y="34" width="24" height="13" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bassin aval | Sépare les pompes du passage public.</title></rect>
+<text x="80.8" y="40.9" class="small" fill="#44664c">D02</text>
+<rect x="35" y="32" width="29" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Trappes des vannes | Trois trappes reliées au terminal.</title></rect>
+<text x="48.3" y="34.9" class="small" fill="#44664c">D03</text>
+<rect x="35" y="42" width="29" height="14" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour de manœuvre | Place nécessaire pour lever un moteur, sans mobilier parasite.</title></rect>
+<text x="48.3" y="49.4" class="small" fill="#44664c">D04</text>
+<rect x="3" y="76" width="92" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Ligne vers les communes | Collecteur enterré, quelques regards seulement.</title></rect>
+<text x="47.8" y="77.9" class="small" fill="#44664c">D05</text>
+<rect x="40" y="28" width="24" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Relève des compteurs | Relevés utiles aux contrats du dépôt UFSA.</title></rect>
+<text x="50.8" y="29.9" class="small" fill="#44664c">D06</text>
+<circle cx="81" cy="25" r=".5" fill="#a75932"><title>Pilar | Mécanicienne du réseau.</title></circle>
+<text x="82" y="25.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="29" cy="60" r=".5" fill="#a75932"><title>Agent d’entretien | Gère les pièces au B05.</title></circle>
+<text x="30" y="60.4" class="small" fill="#9b4f2c">P02</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

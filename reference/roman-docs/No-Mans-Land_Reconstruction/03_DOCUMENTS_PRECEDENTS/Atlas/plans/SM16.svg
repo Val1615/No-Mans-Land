@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM16 Préfecture SMPD</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM16 | Préfecture SMPD</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,48 100,48" fill="none" stroke="#b4afa0" stroke-width="7"><title>Avenue publique / route</title></polyline>
+<polyline points="0,39 38,39 45,50 45,54" fill="none" stroke="#d7c59c" stroke-width="4"><title>Galerie civile / pieton</title></polyline>
+<polyline points="77,51 77,48 100,48" fill="none" stroke="#b4afa0" stroke-width="6"><title>Sortie intervention / service</title></polyline>
+<rect x="8" y="8" width="29" height="23" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Hall public | OUVERT | Signalements et renseignements.</title></rect>
+<text x="8.7" y="10.1" class="id" fill="#287260">B01 O</text>
+<polygon points="22.5,31 21.9,32.3 23.1,32.3" fill="#287260"/>
+<rect x="42" y="8" width="23" height="23" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Bureau des retenues | CONDITIONNEL | Traiter une retenue administrative.</title></rect>
+<text x="42.7" y="10.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="53.5,31 52.9,32.3 54.1,32.3" fill="#aa772c"/>
+<rect x="71" y="7" width="24" height="27" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B03 | Secteur de détention | RÉSERVÉ | Garder les personnes retenues.</title></rect>
+<text x="71.7" y="9.1" class="id" fill="#984b44">B03 R</text>
+<rect x="56" y="53" width="39" height="22" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B04 | Garage d’intervention | RÉSERVÉ | Départ des véhicules de police.</title></rect>
+<text x="56.7" y="55.1" class="id" fill="#984b44">B04 R</text>
+<rect x="7" y="52" width="25" height="23" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B05 | Objets et scellés | CONDITIONNEL | Rendre ou consigner les objets saisis.</title></rect>
+<text x="7.7" y="54.1" class="id" fill="#aa772c">B05 C</text>
+<polygon points="32,63.5 33.3,64.1 33.3,62.9" fill="#aa772c"/>
+<rect x="1" y="53" width="4" height="22" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B06 | Bureaux opérationnels | RÉSERVÉ | Gestion des patrouilles.</title></rect>
+<text x="1.7" y="55.1" class="id" fill="#984b44">B06 R</text>
+<rect x="80" y="38" width="14" height="6" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B07 | Contrôle du parc | RÉSERVÉ | Autoriser les sorties motorisées.</title></rect>
+<text x="80.7" y="40.1" class="id" fill="#984b44">B07 R</text>
+<rect x="37" y="54" width="13" height="19" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Vestiaire public | OUVERT | Déposer les armes avant accès aux bureaux.</title></rect>
+<text x="37.7" y="56.1" class="id" fill="#287260">B08 O</text>
+<polygon points="43.5,54 44.1,52.7 42.9,52.7" fill="#287260"/>
+<rect x="20" y="34" width="33" height="11" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Parvis | Panneaux et bancs ; aucune voiture au milieu.</title></rect>
+<text x="35.3" y="39.9" class="small" fill="#44664c">D01</text>
+<rect x="36" y="32" width="7" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Portique armes | Lien contrôlé entre accueil et bureaux.</title></rect>
+<text x="38.3" y="33.9" class="small" fill="#44664c">D02</text>
+<rect x="57" y="41" width="20" height="6" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Véhicules | Deux places tournées vers le garage.</title></rect>
+<text x="65.8" y="44.4" class="small" fill="#44664c">D03</text>
+<rect x="95" y="47" width="3" height="12" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Barrage motorisé | Accès indépendant du hall civil.</title></rect>
+<text x="95.3" y="53.4" class="small" fill="#44664c">D04</text>
+<rect x="8" y="72" width="22" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Coffrets des scellés | Rangement intérieur fermé et lié au guichet.</title></rect>
+<text x="17.8" y="73.9" class="small" fill="#44664c">D05</text>
+<rect x="34" y="43" width="16" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Rampe accessible | Permet de rejoindre le vestiaire depuis le hall.</title></rect>
+<text x="40.8" y="45.4" class="small" fill="#44664c">D06</text>
+<rect x="71" y="35" width="23" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Caméras | Fixées à l’aile de garde ; zones de vue vers les portillons.</title></rect>
+<text x="81.3" y="36.4" class="small" fill="#44664c">D07</text>
+<rect x="7" y="32" width="20" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Affichage des recherches | Façade du hall, consultation depuis le trottoir.</title></rect>
+<text x="15.8" y="33.4" class="small" fill="#44664c">D08</text>
+<circle cx="25" cy="28" r=".5" fill="#a75932"><title>Agent Leal | Reçoit les demandes liées à la retenue.</title></circle>
+<text x="26" y="28.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="44" cy="57" r=".5" fill="#a75932"><title>Aural | Gère le vestiaire B08.</title></circle>
+<text x="45" y="57.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="30" cy="62" r=".5" fill="#a75932"><title>Greffier des scellés | Traite les objets du B05.</title></circle>
+<text x="31" y="62.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="66" cy="34" r=".5" fill="#a75932"><title>Deux agents de garde | Séparent le hall de la détention.</title></circle>
+<circle cx="68" cy="35" r=".5" fill="#a75932"><title>Deux agents de garde | Séparent le hall de la détention.</title></circle>
+<text x="68" y="34.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="30" cy="36" r=".5" fill="#a75932"><title>Témoin en attente | Attend une audition au hall.</title></circle>
+<text x="31" y="36.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM07 Avant-poste sud</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM07 | Avant-poste sud</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="58,0 58,80" fill="none" stroke="#b4afa0" stroke-width="8"><title>Axe de convoi / route</title></polyline>
+<polyline points="58,47 96,47 96,34 58,34" fill="none" stroke="#b4afa0" stroke-width="5"><title>Boucle du parc / route</title></polyline>
+<polyline points="100,60 88,60" fill="none" stroke="#d7c59c" stroke-width="3"><title>Accès civil / pieton</title></polyline>
+<polyline points="76,28 76,34" fill="none" stroke="#b4afa0" stroke-width="4"><title>Accès atelier / service</title></polyline>
+<rect x="6" y="8" width="43" height="23" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B01 | Dépôt principal | RÉSERVÉ | Rations et matériel du service militarisé.</title></rect>
+<text x="6.7" y="10.1" class="id" fill="#984b44">B01 R</text>
+<rect x="63" y="10" width="29" height="18" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Atelier de parc | CONDITIONNEL | Maintenance des camions de liaison.</title></rect>
+<text x="63.7" y="12.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="77.5,28 76.9,29.3 78.1,29.3" fill="#aa772c"/>
+<rect x="64" y="52" width="24" height="15" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Liaison civile | OUVERT | Signaler besoins et incidents.</title></rect>
+<text x="64.7" y="54.1" class="id" fill="#287260">B03 O</text>
+<polygon points="64,59.5 62.7,58.9 62.7,60.1" fill="#287260"/>
+<rect x="7" y="56" width="29" height="18" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B04 | Casernement | RÉSERVÉ | Loger les équipes de relève.</title></rect>
+<text x="7.7" y="58.1" class="id" fill="#984b44">B04 R</text>
+<rect x="6" y="36" width="20" height="13" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B05 | Réserve carburant | RÉSERVÉ | Ravitaillement sur aire protégée.</title></rect>
+<text x="6.7" y="38.1" class="id" fill="#984b44">B05 R</text>
+<rect x="41" y="61" width="11" height="12" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B06 | Contrôle du parc | FERMÉ | Autoriser les sorties de véhicules.</title></rect>
+<text x="41.7" y="63.1" class="id" fill="#68716c">B06 N</text>
+<rect x="80" y="70" width="13" height="7" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B07 | Sous-station | RÉSERVÉ | Alimentation locale.</title></rect>
+<text x="80.7" y="72.1" class="id" fill="#984b44">B07 R</text>
+<rect x="35" y="4" width="13" height="3" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Abri des voyageurs | OUVERT | Attente hors de la base.</title></rect>
+<text x="35.7" y="6.1" class="id" fill="#287260">B08 O</text>
+<polygon points="41.5,4 42.1,2.7 40.9,2.7" fill="#287260"/>
+<rect x="32" y="34" width="26" height="6" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Attente camions | Deux voies ; véhicules orientés vers la sortie nord.</title></rect>
+<text x="43.8" y="37.4" class="small" fill="#44664c">D01</text>
+<rect x="7" y="31" width="39" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Quai de dépôt | Trois travées numérotées liées au grand hangar.</title></rect>
+<text x="25.3" y="32.9" class="small" fill="#44664c">D02</text>
+<rect x="64" y="29" width="21" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pneus classés | Pneus réparables et rebuts sur deux râteliers distincts.</title></rect>
+<text x="73.3" y="30.9" class="small" fill="#44664c">D03</text>
+<rect x="28" y="35" width="3" height="13" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Ravitaillement | Pompe sur rétention, hors du chemin piéton.</title></rect>
+<text x="28.3" y="41.9" class="small" fill="#44664c">D04</text>
+<rect x="89" y="51" width="4" height="15" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Passage public | Couloir protégé vers le bureau de liaison.</title></rect>
+<text x="89.8" y="58.9" class="small" fill="#44664c">D05</text>
+<rect x="53" y="3" width="12" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Portail nord | Contrôle de tous les départs.</title></rect>
+<text x="57.8" y="4.9" class="small" fill="#44664c">D06</text>
+<rect x="54" y="73" width="12" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Barrière sud | Connexion directe à la route des terres.</title></rect>
+<text x="58.8" y="74.9" class="small" fill="#44664c">D07</text>
+<rect x="38" y="64" width="3" height="9" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour de repos | Bancs dans le seul angle autorisé au personnel.</title></rect>
+<text x="38.3" y="68.9" class="small" fill="#44664c">D08</text>
+<circle cx="66" cy="59" r=".5" fill="#a75932"><title>Adjudante Ferreyra | Distribue les missions de liaison.</title></circle>
+<text x="67" y="59.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="59" cy="43" r=".5" fill="#a75932"><title>Grisel | Organise les départs du parc.</title></circle>
+<text x="60" y="43.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="76" cy="31" r=".5" fill="#a75932"><title>Chauffeur Milo | Attend ses pneus de remplacement.</title></circle>
+<text x="77" y="31.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="28" cy="44" r=".5" fill="#a75932"><title>Garde carburant | Surveille les retraits.</title></circle>
+<text x="29" y="44.4" class="small" fill="#9b4f2c">P04</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

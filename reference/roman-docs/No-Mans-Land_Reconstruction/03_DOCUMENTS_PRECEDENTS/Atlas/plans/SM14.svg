@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM14 Pôle des augmentations</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM14 | Pôle des augmentations</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,45 100,45" fill="none" stroke="#d7c59c" stroke-width="6"><title>Allée de consultation / pieton</title></polyline>
+<polyline points="98,0 98,78 61,78" fill="none" stroke="#b4afa0" stroke-width="5"><title>Desserte médicale / service</title></polyline>
+<polyline points="37,39 41,28 61,28 65,39" fill="none" stroke="#d7c59c" stroke-width="3"><title>Chemin calme / pieton</title></polyline>
+<rect x="6" y="7" width="31" height="23" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Clínica K-12 | OUVERT | Consultations et vente d’augmentations.</title></rect>
+<text x="6.7" y="9.1" class="id" fill="#287260">B01 O</text>
+<polygon points="21.5,30 20.9,31.3 22.1,31.3" fill="#287260"/>
+<rect x="61" y="6" width="31" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Rééducation Sen | OUVERT | Rééducation et suivi des bioprothèses.</title></rect>
+<text x="61.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="76.5,28 75.9,29.3 77.1,29.3" fill="#287260"/>
+<rect x="7" y="48" width="30" height="27" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Chirurgie | CONDITIONNEL | Interventions sur les implants.</title></rect>
+<text x="7.7" y="50.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="22.0,48 22.6,46.7 21.4,46.7" fill="#aa772c"/>
+<rect x="66" y="49" width="27" height="25" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B04 | Laboratoires | RÉSERVÉ | Analyses réservées aux équipes IO.</title></rect>
+<text x="66.7" y="51.1" class="id" fill="#984b44">B04 R</text>
+<rect x="42" y="6" width="13" height="19" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Pharmacie | OUVERT | Consommables et ordonnances.</title></rect>
+<text x="42.7" y="8.1" class="id" fill="#287260">B05 O</text>
+<polygon points="48.5,25 47.9,26.3 49.1,26.3" fill="#287260"/>
+<rect x="42" y="54" width="18" height="21" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B06 | Admissions | OUVERT | Contrats, droits et règlements.</title></rect>
+<text x="42.7" y="56.1" class="id" fill="#287260">B06 O</text>
+<polygon points="51.0,54 51.6,52.7 50.4,52.7" fill="#287260"/>
+<rect x="76" y="32" width="17" height="9" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B07 | Dépôt médical | CONDITIONNEL | Réception des lots sous température contrôlée.</title></rect>
+<text x="76.7" y="34.1" class="id" fill="#aa772c">B07 C</text>
+<polygon points="76,36.5 74.7,35.9 74.7,37.1" fill="#aa772c"/>
+<rect x="7" y="34" width="20" height="7" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Station sanitaire | OUVERT | Navettes et dépose des personnes.</title></rect>
+<text x="7.7" y="36.1" class="id" fill="#287260">B08 O</text>
+<polygon points="27,37.5 28.3,38.1 28.3,36.9" fill="#287260"/>
+<rect x="41" y="31" width="21" height="16" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Jardin d’attente | Petit espace calme, bancs et plantes, passage périphérique libre.</title></rect>
+<text x="50.3" y="39.4" class="small" fill="#44664c">D01</text>
+<rect x="28" y="35" width="10" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Accès ambulance | Dépose latérale sans stationnement permanent.</title></rect>
+<text x="31.8" y="38.9" class="small" fill="#44664c">D02</text>
+<rect x="40" y="49" width="5" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Borne de contrats | Documents consultables avant l’entrée en admissions.</title></rect>
+<text x="41.3" y="50.9" class="small" fill="#44664c">D03</text>
+<rect x="63" y="31" width="9" height="14" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Exercices extérieurs | Rampe et prises d’appui près de Sen.</title></rect>
+<text x="66.3" y="38.4" class="small" fill="#44664c">D04</text>
+<rect x="75" y="44" width="17" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Fret froid | Deux colis sous témoin thermique rattachés au dépôt.</title></rect>
+<text x="82.3" y="45.9" class="small" fill="#44664c">D05</text>
+<rect x="94" y="8" width="4" height="63" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Accès technique | Cour arrière fermée, réservée aux laboratoires.</title></rect>
+<text x="94.8" y="39.9" class="small" fill="#44664c">D06</text>
+<rect x="9" y="2" width="25" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Publicité prothèses | Vitrine de démonstration attachée à la clinique.</title></rect>
+<text x="20.3" y="3.9" class="small" fill="#44664c">D07</text>
+<rect x="63" y="8" width="4" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Dossiers patients | Armoire intérieure à la rééducation, jamais butin public.</title></rect>
+<text x="63.8" y="10.4" class="small" fill="#44664c">D08</text>
+<circle cx="21" cy="27" r=".5" fill="#a75932"><title>Clínica K-12 | Intermédiaire d’équipements au B01.</title></circle>
+<text x="22" y="27.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="76" cy="25" r=".5" fill="#a75932"><title>Dr Iman Sen | Suit les patients au B02.</title></circle>
+<text x="77" y="25.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="65" cy="19" r=".5" fill="#a75932"><title>Yuna | Technicienne de rééducation.</title></circle>
+<text x="66" y="19.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="50" cy="57" r=".5" fill="#a75932"><title>Gestionnaire | Explique les coûts au B06.</title></circle>
+<text x="51" y="57.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="72" cy="37" r=".5" fill="#a75932"><title>Livreur du lot K-12 | Attend devant le dépôt.</title></circle>
+<text x="73" y="37.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM02 Douane nord</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM02 | Douane nord</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="49,0 49,27 49,63 49,80" fill="none" stroke="#b4afa0" stroke-width="9"><title>Axe nord / route</title></polyline>
+<polyline points="49,26 58,26 58,39 95,39 95,64 58,64 49,62" fill="none" stroke="#b4afa0" stroke-width="5"><title>Inspection / route</title></polyline>
+<polyline points="0,43 34,43 34,12" fill="none" stroke="#d7c59c" stroke-width="4"><title>Trottoir ouest / pieton</title></polyline>
+<polyline points="58,56 68,56" fill="none" stroke="#d7c59c" stroke-width="3"><title>Chemin des scellés / pieton</title></polyline>
+<rect x="8" y="9" width="24" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Hall des accréditations | OUVERT | Recevoir chauffeurs et voyageurs.</title></rect>
+<text x="8.7" y="11.1" class="id" fill="#287260">B01 O</text>
+<polygon points="32,18.0 33.3,18.6 33.3,17.4" fill="#287260"/>
+<rect x="63" y="9" width="28" height="23" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Halle de fouille | CONDITIONNEL | Inspection des convois longs.</title></rect>
+<text x="63.7" y="11.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="77.0,32 76.4,33.3 77.6,33.3" fill="#aa772c"/>
+<rect x="68" y="48" width="23" height="13" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Bureau des scellés | CONDITIONNEL | Certifier les marchandises.</title></rect>
+<text x="68.7" y="50.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="68,54.5 66.7,53.9 66.7,55.1" fill="#aa772c"/>
+<rect x="8" y="48" width="21" height="17" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Attente chauffeurs | OUVERT | Repos court et réclamations.</title></rect>
+<text x="8.7" y="50.1" class="id" fill="#287260">B04 O</text>
+<polygon points="29,56.5 30.3,57.1 30.3,55.9" fill="#287260"/>
+<rect x="36" y="6" width="8" height="10" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B05 | Poste nord | FERMÉ | Commander le premier barrage.</title></rect>
+<text x="36.7" y="8.1" class="id" fill="#68716c">B05 N</text>
+<rect x="30" y="67" width="10" height="9" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B06 | Poste sud | FERMÉ | Vérifier le dernier feu vert.</title></rect>
+<text x="30.7" y="69.1" class="id" fill="#68716c">B06 N</text>
+<rect x="8" y="30" width="20" height="11" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B07 | Atelier balances | CONDITIONNEL | Calibrer et réparer les pesées.</title></rect>
+<text x="8.7" y="32.1" class="id" fill="#aa772c">B07 C</text>
+<polygon points="28,35.5 29.3,36.1 29.3,34.9" fill="#aa772c"/>
+<rect x="70" y="67" width="23" height="9" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B08 | Stock bloqué | FERMÉ | Entreposer les lots refusés.</title></rect>
+<text x="70.7" y="69.1" class="id" fill="#68716c">B08 N</text>
+<rect x="43" y="29" width="12" height="17" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Balance | Long plateau, arrêt sur ligne avant la pesée.</title></rect>
+<text x="47.8" y="37.9" class="small" fill="#44664c">D01</text>
+<rect x="57" y="35" width="8" height="24" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Boucle de fret | Flèches de circulation et deux bornes anti-intrusion.</title></rect>
+<text x="59.8" y="47.4" class="small" fill="#44664c">D02</text>
+<rect x="74" y="35" width="12" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Camion saisi | Bâche ouverte côté halle ; cargaison retenue à portée.</title></rect>
+<text x="78.8" y="37.9" class="small" fill="#44664c">D03</text>
+<rect x="19" y="34" width="4" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Masses étalons | Coffret au banc de Reina, pas une caisse de butin.</title></rect>
+<text x="19.8" y="35.9" class="small" fill="#44664c">D04</text>
+<rect x="30" y="49" width="5" height="14" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Attente abritée | Bancs et auvent devant le bâtiment civil.</title></rect>
+<text x="31.3" y="56.4" class="small" fill="#44664c">D05</text>
+<rect x="4" y="69" width="4" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pylône | Éclairage du parking, avec coffret au pied.</title></rect>
+<text x="4.8" y="71.9" class="small" fill="#44664c">D06</text>
+<rect x="38" y="21" width="20" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Barrière nord | Arrêt avant la balance ; passage piéton contournant le poste.</title></rect>
+<text x="46.8" y="22.4" class="small" fill="#44664c">D07</text>
+<rect x="94" y="9" width="5" height="52" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Désert visible | Talus sableux en bordure, sans immeuble.</title></rect>
+<text x="95.3" y="35.4" class="small" fill="#44664c">D08</text>
+<circle cx="26" cy="19" r=".5" fill="#a75932"><title>Agente Rivas | Accueil B01 et transit nord.</title></circle>
+<text x="27" y="19.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="26" cy="35" r=".5" fill="#a75932"><title>Reina | Calibre les balances au B07.</title></circle>
+<text x="27" y="35.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="33" cy="56" r=".5" fill="#a75932"><title>Conductrice Aro | Conteste le poids de son véhicule.</title></circle>
+<text x="34" y="56.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="67" cy="35" r=".5" fill="#a75932"><title>Chef de quai | Oriente les camions après inspection.</title></circle>
+<text x="68" y="35.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="47" cy="19" r=".5" fill="#a75932"><title>Garde nord | Surveille l’accès routier.</title></circle>
+<text x="48" y="19.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

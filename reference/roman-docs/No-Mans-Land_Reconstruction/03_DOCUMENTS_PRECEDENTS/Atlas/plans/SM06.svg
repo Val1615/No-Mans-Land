@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM06 Avant-poste est</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM06 | Avant-poste est</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,40 38,40 59,44 100,44" fill="none" stroke="#b4afa0" stroke-width="7"><title>Transit est / route</title></polyline>
+<polyline points="38,40 38,51 57,51 57,76" fill="none" stroke="#b4afa0" stroke-width="5"><title>Garage et relève / route</title></polyline>
+<polyline points="20,25 20,29 38,29 38,40" fill="none" stroke="#d7c59c" stroke-width="3"><title>Accueil / pieton</title></polyline>
+<rect x="8" y="8" width="24" height="17" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Bureau de liaison | OUVERT | Traiter fournisseurs et incidents de route.</title></rect>
+<text x="8.7" y="10.1" class="id" fill="#287260">B01 O</text>
+<polygon points="20.0,25 19.4,26.3 20.6,26.3" fill="#287260"/>
+<rect x="60" y="6" width="29" height="20" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B02 | Salle radio | RÉSERVÉ | Recevoir les signaux du territoire.</title></rect>
+<text x="60.7" y="8.1" class="id" fill="#984b44">B02 R</text>
+<rect x="60" y="48" width="28" height="18" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Garage A | CONDITIONNEL | Maintenance des véhicules.</title></rect>
+<text x="60.7" y="50.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="60,57.0 58.7,56.4 58.7,57.6" fill="#aa772c"/>
+<rect x="31" y="57" width="23" height="16" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B04 | Garage B | RÉSERVÉ | Réserve motorisée.</title></rect>
+<text x="31.7" y="59.1" class="id" fill="#984b44">B04 R</text>
+<rect x="9" y="47" width="17" height="25" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B05 | Casernement | RÉSERVÉ | Logement militaire.</title></rect>
+<text x="9.7" y="49.1" class="id" fill="#984b44">B05 R</text>
+<rect x="86" y="32" width="10" height="7" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B06 | Arsenal | RÉSERVÉ | Munitions et équipements.</title></rect>
+<text x="86.7" y="34.1" class="id" fill="#984b44">B06 R</text>
+<rect x="34" y="10" width="11" height="10" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B07 | Poste d’accès | FERMÉ | Filtrer la cour.</title></rect>
+<text x="34.7" y="12.1" class="id" fill="#68716c">B07 N</text>
+<rect x="64" y="32" width="17" height="7" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B08 | Atelier antennes | CONDITIONNEL | Vérifier les modules radio.</title></rect>
+<text x="64.7" y="34.1" class="id" fill="#aa772c">B08 C</text>
+<polygon points="64,35.5 62.7,34.9 62.7,36.1" fill="#aa772c"/>
+<rect x="45" y="27" width="12" height="19" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Antenne principale | Emprise clôturée, haubans ramenés aux quatre angles.</title></rect>
+<text x="49.8" y="36.9" class="small" fill="#44664c">D01</text>
+<rect x="75" y="68" width="15" height="6" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Carcasse donneuse | Véhicule brûlé lié à la demande de pièces.</title></rect>
+<text x="81.3" y="71.4" class="small" fill="#44664c">D02</text>
+<rect x="57" y="65" width="3" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Roues déposées | Paire de roues à portée du garage A.</title></rect>
+<text x="57.3" y="68.9" class="small" fill="#44664c">D03</text>
+<rect x="59" y="28" width="26" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Plateforme radio | Chemin de câbles entre atelier et salle.</title></rect>
+<text x="70.8" y="29.9" class="small" fill="#44664c">D04</text>
+<rect x="34" y="22" width="13" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Barrage | Passage autorisé après liaison.</title></rect>
+<text x="39.3" y="23.9" class="small" fill="#44664c">D05</text>
+<rect x="8" y="30" width="25" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Parc de transit | Un véhicule arrêté, capot tourné vers l’atelier.</title></rect>
+<text x="19.3" y="34.4" class="small" fill="#44664c">D06</text>
+<rect x="29" y="48" width="5" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Eau | Réserve clôturée attenante au casernement.</title></rect>
+<text x="30.3" y="51.9" class="small" fill="#44664c">D07</text>
+<rect x="95" y="50" width="4" height="24" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Désert | Talus externe et sable, sans mobilier urbain luxueux.</title></rect>
+<text x="95.8" y="62.4" class="small" fill="#44664c">D08</text>
+<circle cx="20" cy="23" r=".5" fill="#a75932"><title>Lieutenant Baeza | Reçoit les prestataires.</title></circle>
+<text x="21" y="23.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="61" cy="57" r=".5" fill="#a75932"><title>Cielo | Monte les pièces au garage.</title></circle>
+<text x="62" y="57.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="61" cy="37" r=".5" fill="#a75932"><title>Technicien radio | Collecte les modules défaillants.</title></circle>
+<text x="62" y="37.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="44" cy="44" r=".5" fill="#a75932"><title>Patrouille de cour | Deux soldats suivent le grillage interne.</title></circle>
+<text x="45" y="44.4" class="small" fill="#9b4f2c">P04</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

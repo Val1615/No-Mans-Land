@@ -1,0 +1,4859 @@
+{
+  "sha": "07724023af4978a5c99d9c281c6f76d1cb746e2f",
+  "scenes": [
+    {
+      "id": "farm",
+      "name": "Granja Altruista",
+      "desc": "Des serres bricolées, une clôture fatiguée. Ici, on essaie encore de faire pousser autre chose que des tombes.",
+      "npcs": [
+        {
+          "id": "ines",
+          "q": 14,
+          "r": 16
+        },
+        {
+          "id": "irisfarm",
+          "q": 36,
+          "r": 36
+        }
+      ],
+      "objects": [
+        {
+          "id": "irrigation",
+          "q": 15,
+          "r": 9
+        },
+        {
+          "id": "farmcache",
+          "q": 18,
+          "r": 21
+        },
+        {
+          "id": "sealed-farm",
+          "q": 22,
+          "r": 10
+        },
+        {
+          "id": "farm-seedboard",
+          "q": 27,
+          "r": 23
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "dusk",
+      "name": "Dusk-Town",
+      "desc": "Les fenêtres sont noires. Derrière chaque volet, quelqu’un vous regarde. Cette ville fantôme a seulement appris à ne plus faire de bruit.",
+      "npcs": [
+        {
+          "id": "mara",
+          "q": 10,
+          "r": 12
+        },
+        {
+          "id": "vera",
+          "q": 5,
+          "r": 7
+        },
+        {
+          "id": "ezequiel",
+          "q": 8,
+          "r": 17
+        },
+        {
+          "id": "nilo",
+          "q": 19,
+          "r": 12
+        },
+        {
+          "id": "inesguard",
+          "q": 5,
+          "r": 20
+        },
+        {
+          "id": "nadia",
+          "q": 30,
+          "r": 23
+        },
+        {
+          "id": "abel",
+          "q": 35,
+          "r": 35
+        }
+      ],
+      "objects": [
+        {
+          "id": "pump",
+          "q": 11,
+          "r": 12
+        },
+        {
+          "id": "pharmacy",
+          "q": 2,
+          "r": 7
+        },
+        {
+          "id": "duskcache",
+          "q": 16,
+          "r": 20
+        },
+        {
+          "id": "notice",
+          "q": 6,
+          "r": 9
+        },
+        {
+          "id": "workbench",
+          "q": 20,
+          "r": 12
+        },
+        {
+          "id": "clinicdoor",
+          "q": 5,
+          "r": 6
+        },
+        {
+          "id": "sealed-dusk",
+          "q": 22,
+          "r": 16
+        },
+        {
+          "id": "dusk-kitchen",
+          "q": 29,
+          "r": 23
+        },
+        {
+          "id": "dusk-cinema-note",
+          "q": 8,
+          "r": 36
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "crater",
+      "name": "Big Larry Area",
+      "desc": "Un immense impact a vitrifié le désert. Le verre noir se fend sous une poussière grise ; les compteurs saturent vers le centre. Une ancienne mine désaffectée subsiste au bord sud. Aucune habitation ne tient sur ce site.",
+      "npcs": [],
+      "objects": [
+        {
+          "id": "cratercache",
+          "q": 5,
+          "r": 21
+        },
+        {
+          "id": "impactterminal",
+          "q": 42,
+          "r": 40
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "buenos",
+      "name": "Buenos Aires",
+      "desc": "Des façades administratives éventrées entourent la place. Quelques salles restent utilisables. Les familles des quartiers voisins y conservent des papiers dont les tampons ont survécu aux administrations.",
+      "npcs": [
+        {
+          "id": "tomas",
+          "q": 11,
+          "r": 13
+        },
+        {
+          "id": "celia",
+          "q": 12,
+          "r": 20
+        },
+        {
+          "id": "vesta",
+          "q": 34,
+          "r": 20
+        }
+      ],
+      "objects": [
+        {
+          "id": "archive",
+          "q": 9,
+          "r": 8
+        },
+        {
+          "id": "memorial",
+          "q": 29,
+          "r": 21
+        },
+        {
+          "id": "nativecache",
+          "q": 8,
+          "r": 36
+        },
+        {
+          "id": "sealed-buenos",
+          "q": 45,
+          "r": 35
+        },
+        {
+          "id": "ba-charter",
+          "q": 34,
+          "r": 21
+        },
+        {
+          "id": "ba-filmbox",
+          "q": 42,
+          "r": 35
+        }
+      ],
+      "enemies": [
+        {
+          "id": "buenos-0",
+          "name": "Mutant dément"
+        }
+      ]
+    },
+    {
+      "id": "customs",
+      "name": "Douane ouest",
+      "level": "perimeter",
+      "dome": false,
+      "desc": "La route se resserre entre les guérites et les préfabriqués de contrôle. Au-delà du barrage, le désert continue jusqu’aux portes du sarcophage, encore loin derrière la poussière.",
+      "npcs": [
+        {
+          "id": "vidal",
+          "q": 9,
+          "r": 10
+        },
+        {
+          "id": "luz",
+          "q": 6,
+          "r": 15
+        },
+        {
+          "id": "mirek",
+          "q": 32,
+          "r": 23
+        }
+      ],
+      "objects": [
+        {
+          "id": "gate",
+          "q": 12,
+          "r": 10
+        },
+        {
+          "id": "customsterminal",
+          "q": 9,
+          "r": 9
+        },
+        {
+          "id": "customscache",
+          "q": 17,
+          "r": 22
+        },
+        {
+          "id": "sealed-customs",
+          "q": 3,
+          "r": 12
+        },
+        {
+          "id": "transit-customs",
+          "q": 6,
+          "r": 20
+        },
+        {
+          "id": "customs-queue",
+          "q": 32,
+          "r": 24
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "steel",
+      "name": "Forum de Lower-Town",
+      "level": "lower",
+      "dome": true,
+      "desc": "Les façades vitrées renvoient les enseignes des coursives. Des navettes passent au-dessus de la place ; la file du service IO déborde jusque sous les écrans.",
+      "npcs": [
+        {
+          "id": "ada",
+          "q": 18,
+          "r": 11
+        },
+        {
+          "id": "security",
+          "q": 6,
+          "r": 13
+        },
+        {
+          "id": "astor",
+          "q": 31,
+          "r": 37
+        }
+      ],
+      "objects": [
+        {
+          "id": "steelterminal",
+          "q": 18,
+          "r": 10
+        },
+        {
+          "id": "streetcache",
+          "q": 7,
+          "r": 19
+        },
+        {
+          "id": "advert",
+          "q": 11,
+          "r": 8
+        },
+        {
+          "id": "transit-steel",
+          "q": 4,
+          "r": 20
+        },
+        {
+          "id": "steel-delivery",
+          "q": 31,
+          "r": 38
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "under",
+      "name": "La Sous-Ville",
+      "level": "under",
+      "dome": true,
+      "desc": "Sous les fondations de la cité, des baraques de tôle se serrent contre les conduites et les piliers. Les passerelles vibrent au passage des équipes. Les habitants gardent leurs réserves dans des pièces sans fenêtre.",
+      "npcs": [
+        {
+          "id": "salma",
+          "q": 17,
+          "r": 16
+        },
+        {
+          "id": "inspector",
+          "q": 7,
+          "r": 4
+        },
+        {
+          "id": "enid",
+          "q": 30,
+          "r": 38
+        }
+      ],
+      "objects": [
+        {
+          "id": "records",
+          "q": 18,
+          "r": 7
+        },
+        {
+          "id": "conveyor",
+          "q": 16,
+          "r": 4
+        },
+        {
+          "id": "undercache",
+          "q": 4,
+          "r": 16
+        },
+        {
+          "id": "underbench",
+          "q": 18,
+          "r": 16
+        },
+        {
+          "id": "sealed-under",
+          "q": 14,
+          "r": 21
+        },
+        {
+          "id": "transit-under",
+          "q": 3,
+          "r": 20
+        },
+        {
+          "id": "under-weight",
+          "q": 30,
+          "r": 39
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "junk",
+      "name": "Junk-Burgh",
+      "desc": "Les portes sont ouvertes. Les fusils aussi. Ici, on vous sourit tant que vous valez quelque chose.",
+      "npcs": [
+        {
+          "id": "roque",
+          "q": 18,
+          "r": 8
+        },
+        {
+          "id": "alma",
+          "q": 13,
+          "r": 19
+        },
+        {
+          "id": "debtor",
+          "q": 7,
+          "r": 19
+        },
+        {
+          "id": "scrapper",
+          "q": 17,
+          "r": 16
+        },
+        {
+          "id": "silas",
+          "q": 35,
+          "r": 43
+        },
+        {
+          "id": "noemi",
+          "q": 37,
+          "r": 9
+        }
+      ],
+      "objects": [
+        {
+          "id": "ledger",
+          "q": 13,
+          "r": 18
+        },
+        {
+          "id": "junkcache",
+          "q": 22,
+          "r": 17
+        },
+        {
+          "id": "jukebox",
+          "q": 11,
+          "r": 12
+        },
+        {
+          "id": "junkbench",
+          "q": 18,
+          "r": 16
+        },
+        {
+          "id": "backdoor",
+          "q": 13,
+          "r": 21
+        },
+        {
+          "id": "sealed-junk",
+          "q": 5,
+          "r": 9
+        },
+        {
+          "id": "junk-lot",
+          "q": 35,
+          "r": 42
+        },
+        {
+          "id": "junk-packing",
+          "q": 41,
+          "r": 32
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "titan",
+      "name": "Le Titan échoué",
+      "desc": "Le Mecha-Colossus gît à plat ventre au nord du sarcophage. Une brèche éventre son flanc. Les plaques et les câbles arrachés couvrent le sable autour des accès de maintenance.",
+      "npcs": [
+        {
+          "id": "otero",
+          "q": 10,
+          "r": 34
+        }
+      ],
+      "objects": [
+        {
+          "id": "regulator",
+          "q": 27,
+          "r": 25
+        },
+        {
+          "id": "titanlog",
+          "q": 22,
+          "r": 27
+        },
+        {
+          "id": "titancache",
+          "q": 12,
+          "r": 31
+        },
+        {
+          "id": "bunkerdoor",
+          "q": 24,
+          "r": 20
+        },
+        {
+          "id": "sealed-titan",
+          "q": 43,
+          "r": 40
+        }
+      ],
+      "enemies": [
+        {
+          "id": "titan-0",
+          "name": "Récupérateur armé"
+        },
+        {
+          "id": "titan-1",
+          "name": "Récupérateur armé"
+        }
+      ]
+    },
+    {
+      "id": "relay",
+      "name": "Station de répartition",
+      "desc": "Des canalisations enfouies relient les terres à la ville. Une décision prise ici peut faire vivre une région et en assoiffer une autre.",
+      "npcs": [
+        {
+          "id": "pilar",
+          "q": 32,
+          "r": 38
+        }
+      ],
+      "objects": [
+        {
+          "id": "distributor",
+          "q": 13,
+          "r": 9
+        },
+        {
+          "id": "relaycache",
+          "q": 20,
+          "r": 20
+        },
+        {
+          "id": "relayaccess",
+          "q": 7,
+          "r": 18
+        },
+        {
+          "id": "sealed-relay",
+          "q": 3,
+          "r": 10
+        },
+        {
+          "id": "relay-maintenance",
+          "q": 31,
+          "r": 38
+        }
+      ],
+      "enemies": [
+        {
+          "id": "relay-0",
+          "name": "Drone sentinelle IO"
+        },
+        {
+          "id": "relay-1",
+          "name": "Drone sentinelle IO"
+        }
+      ]
+    },
+    {
+      "id": "temple",
+      "name": "Le temple du couchant",
+      "desc": "Le chemin est étroit, le silence immense. Les pierres sont plus anciennes que les sociétés qui prétendaient posséder le monde.",
+      "npcs": [
+        {
+          "id": "veiled",
+          "q": 14,
+          "r": 16
+        },
+        {
+          "id": "senda",
+          "q": 30,
+          "r": 24
+        }
+      ],
+      "objects": [
+        {
+          "id": "altar",
+          "q": 12,
+          "r": 16
+        },
+        {
+          "id": "templecache",
+          "q": 8,
+          "r": 8
+        },
+        {
+          "id": "sealed-temple",
+          "q": 21,
+          "r": 18
+        },
+        {
+          "id": "temple-stones",
+          "q": 34,
+          "r": 24
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "port",
+      "name": "Nœud maritime IO",
+      "desc": "Des cargos aveugles entrent dans les eaux grises. Leur chargement nourrit le sarcophage. Peu de choses quittent ces quais gratuitement.",
+      "npcs": [
+        {
+          "id": "marin",
+          "q": 9,
+          "r": 11
+        },
+        {
+          "id": "deserter",
+          "q": 3,
+          "r": 16
+        },
+        {
+          "id": "celso",
+          "q": 13,
+          "r": 39
+        }
+      ],
+      "objects": [
+        {
+          "id": "manifest",
+          "q": 8,
+          "r": 8
+        },
+        {
+          "id": "portcache",
+          "q": 18,
+          "r": 16
+        },
+        {
+          "id": "sealed-port",
+          "q": 22,
+          "r": 7
+        },
+        {
+          "id": "port-crane-book",
+          "q": 13,
+          "r": 38
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "nova",
+      "name": "Novo Córdoba",
+      "desc": "Un drapeau, des uniformes rapiécés, une radio qui promet la reconquête. L’UFSA se souvient de frontières que personne ne voit plus.",
+      "npcs": [
+        {
+          "id": "ortiz",
+          "q": 10,
+          "r": 7
+        },
+        {
+          "id": "quartermaster",
+          "q": 16,
+          "r": 10
+        },
+        {
+          "id": "ramos",
+          "q": 33,
+          "r": 23
+        },
+        {
+          "id": "bruna",
+          "q": 22,
+          "r": 36
+        }
+      ],
+      "objects": [
+        {
+          "id": "ufsatower",
+          "q": 10,
+          "r": 6
+        },
+        {
+          "id": "novacache",
+          "q": 16,
+          "r": 11
+        },
+        {
+          "id": "sealed-nova",
+          "q": 22,
+          "r": 15
+        },
+        {
+          "id": "nova-reserve",
+          "q": 35,
+          "r": 13
+        },
+        {
+          "id": "nova-title",
+          "q": 29,
+          "r": 23
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "coast",
+      "name": "Waste Coast",
+      "desc": "La mer rejette des conteneurs et des corps. Certains corps se relèvent.",
+      "npcs": [
+        {
+          "id": "courier",
+          "q": 19,
+          "r": 17
+        },
+        {
+          "id": "leoncoast",
+          "q": 33,
+          "r": 34
+        }
+      ],
+      "objects": [
+        {
+          "id": "wreck",
+          "q": 20,
+          "r": 16
+        },
+        {
+          "id": "coastcache",
+          "q": 6,
+          "r": 17
+        },
+        {
+          "id": "sealed-coast",
+          "q": 17,
+          "r": 9
+        },
+        {
+          "id": "coast-fridge",
+          "q": 40,
+          "r": 22
+        }
+      ],
+      "enemies": [
+        {
+          "id": "coast-0",
+          "name": "Mutant dément"
+        },
+        {
+          "id": "coast-1",
+          "name": "Mutant dément"
+        },
+        {
+          "id": "coast-2",
+          "name": "Récupérateur armé"
+        }
+      ]
+    },
+    {
+      "id": "clinic",
+      "name": "Clinique de Dusk-Town",
+      "interior": true,
+      "desc": "Des lits, des rideaux et une stérilité qui relève surtout du règlement intérieur.",
+      "npcs": [
+        {
+          "id": "patient",
+          "q": 13,
+          "r": 9
+        },
+        {
+          "id": "paz",
+          "q": 25,
+          "r": 30
+        }
+      ],
+      "objects": [
+        {
+          "id": "cliniccabinet",
+          "q": 7,
+          "r": 8
+        },
+        {
+          "id": "clinicnote",
+          "q": 9,
+          "r": 6
+        },
+        {
+          "id": "clinicbench",
+          "q": 17,
+          "r": 16
+        },
+        {
+          "id": "clinic-intake",
+          "q": 8,
+          "r": 31
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "backroom",
+      "name": "L’arrière-salle des comptes",
+      "interior": true,
+      "desc": "Le parfum du papier ancien. Et celui, bien plus tenace, des gens qu’on a ruinés.",
+      "npcs": [
+        {
+          "id": "beltra",
+          "q": 14,
+          "r": 29
+        }
+      ],
+      "objects": [
+        {
+          "id": "blackvault",
+          "q": 7,
+          "r": 7
+        },
+        {
+          "id": "contracts",
+          "q": 10,
+          "r": 11
+        },
+        {
+          "id": "backbench",
+          "q": 16,
+          "r": 7
+        },
+        {
+          "id": "backroom-labels",
+          "q": 14,
+          "r": 30
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "bunker",
+      "name": "Coursives du Striker Oméga",
+      "interior": true,
+      "desc": "Le passage traverse les conduites du bras droit avant de rejoindre les volumes couchés du torse. Les commandes auxiliaires restent accessibles ; une cloison blindée isole le cœur.",
+      "npcs": [],
+      "objects": [
+        {
+          "id": "bunkerconsole",
+          "q": 11,
+          "r": 6
+        },
+        {
+          "id": "coilcase",
+          "q": 17,
+          "r": 7
+        },
+        {
+          "id": "bunkercache",
+          "q": 17,
+          "r": 16
+        },
+        {
+          "id": "bunker-crew",
+          "q": 21,
+          "r": 36
+        },
+        {
+          "id": "bunker-isolation",
+          "q": 34,
+          "r": 28
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "china",
+      "name": "China Lake",
+      "level": "lower",
+      "dome": true,
+      "desc": "Un lac pollué occupe le cœur du quartier. Des lanternes rouges sont suspendues au-dessus de l’eau et des stands bordent les quais. Les ruelles des ateliers passent sous les logements éclairés par les enseignes.",
+      "npcs": [
+        {
+          "id": "rita",
+          "q": 4,
+          "r": 20
+        },
+        {
+          "id": "lin",
+          "q": 5,
+          "r": 12
+        },
+        {
+          "id": "yu",
+          "q": 11,
+          "r": 39
+        }
+      ],
+      "objects": [
+        {
+          "id": "china-menu",
+          "q": 5,
+          "r": 8
+        },
+        {
+          "id": "china-repair",
+          "q": 5,
+          "r": 13
+        },
+        {
+          "id": "transit-china",
+          "q": 3,
+          "r": 19
+        },
+        {
+          "id": "china-waterline",
+          "q": 24,
+          "r": 16
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "asia",
+      "name": "Asia-Ground",
+      "level": "lower",
+      "dome": true,
+      "desc": "Les galeries couvertes sont pleines de vendeurs et de familles. Les vitrines superposent tissus, modules et repas à emporter. Un stand fermé attire l’attention de la commerçante voisine.",
+      "npcs": [
+        {
+          "id": "leda",
+          "q": 15,
+          "r": 13
+        },
+        {
+          "id": "hassan",
+          "q": 17,
+          "r": 12
+        },
+        {
+          "id": "sami",
+          "q": 15,
+          "r": 15
+        },
+        {
+          "id": "nour",
+          "q": 33,
+          "r": 37
+        }
+      ],
+      "objects": [
+        {
+          "id": "asia-receipt",
+          "q": 15,
+          "r": 12
+        },
+        {
+          "id": "asia-market",
+          "q": 9,
+          "r": 9
+        },
+        {
+          "id": "transit-asia",
+          "q": 11,
+          "r": 21
+        },
+        {
+          "id": "asia-kettle",
+          "q": 33,
+          "r": 38
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "blocks",
+      "name": "Blocs résidentiels",
+      "level": "lower",
+      "dome": true,
+      "desc": "Les tours d’habitation s’élèvent derrière des portiques d’accès. La laverie est ouverte, les ascenseurs beaucoup moins. Au pied du bloc 41, des locataires attendent une réponse.",
+      "npcs": [
+        {
+          "id": "cora",
+          "q": 7,
+          "r": 11
+        },
+        {
+          "id": "elias",
+          "q": 19,
+          "r": 17
+        },
+        {
+          "id": "tala",
+          "q": 20,
+          "r": 36
+        }
+      ],
+      "objects": [
+        {
+          "id": "housing-notice",
+          "q": 6,
+          "r": 11
+        },
+        {
+          "id": "residential-net",
+          "q": 20,
+          "r": 16
+        },
+        {
+          "id": "transit-blocks",
+          "q": 20,
+          "r": 18
+        },
+        {
+          "id": "blocks-playground",
+          "q": 18,
+          "r": 36
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "center",
+      "name": "Avenue Centrale",
+      "level": "center",
+      "dome": true,
+      "desc": "Les quatre tours de l’Arcadius Center dominent les voies de navettes. Les passerelles relient les bureaux au-dessus des vitrines de l’avenue ; les chaussées sont entretenues et les éclairages ne s’arrêtent jamais.",
+      "npcs": [
+        {
+          "id": "berenice",
+          "q": 21,
+          "r": 13
+        },
+        {
+          "id": "central-host",
+          "q": 12,
+          "r": 10
+        },
+        {
+          "id": "odette",
+          "q": 31,
+          "r": 38
+        }
+      ],
+      "objects": [
+        {
+          "id": "central-ad",
+          "q": 20,
+          "r": 13
+        },
+        {
+          "id": "central-view",
+          "q": 11,
+          "r": 16
+        },
+        {
+          "id": "transit-center",
+          "q": 3,
+          "r": 21
+        },
+        {
+          "id": "center-bench",
+          "q": 31,
+          "r": 39
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "cliniccity",
+      "name": "Pôle des augmentations",
+      "level": "center",
+      "dome": true,
+      "desc": "Les cliniques se partagent une esplanade blanche. On peut comparer les prothèses en vitrine, vérifier son contrat ou attendre derrière des parois opaques.",
+      "npcs": [
+        {
+          "id": "broker",
+          "q": 8,
+          "r": 6
+        },
+        {
+          "id": "sen",
+          "q": 16,
+          "r": 6
+        },
+        {
+          "id": "yuna",
+          "q": 18,
+          "r": 36
+        }
+      ],
+      "objects": [
+        {
+          "id": "cliniccity-info",
+          "q": 8,
+          "r": 7
+        },
+        {
+          "id": "cliniccity-terminal",
+          "q": 16,
+          "r": 7
+        },
+        {
+          "id": "transit-cliniccity",
+          "q": 11,
+          "r": 21
+        },
+        {
+          "id": "cliniccity-patient-note",
+          "q": 18,
+          "r": 37
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "civic",
+      "name": "Registre civique",
+      "level": "center",
+      "dome": true,
+      "desc": "Les guichets suivent une courbe sous une verrière lumineuse. Chaque file dessert un service différent. Une employée efface une erreur de classement au crayon avant de vous recevoir.",
+      "npcs": [
+        {
+          "id": "eva",
+          "q": 11,
+          "r": 9
+        },
+        {
+          "id": "ivo",
+          "q": 19,
+          "r": 36
+        }
+      ],
+      "objects": [
+        {
+          "id": "civic-index",
+          "q": 10,
+          "r": 10
+        },
+        {
+          "id": "civic-court",
+          "q": 15,
+          "r": 9
+        },
+        {
+          "id": "transit-civic",
+          "q": 13,
+          "r": 21
+        },
+        {
+          "id": "civic-waiting",
+          "q": 19,
+          "r": 37
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "smpd",
+      "name": "Préfecture SMPD",
+      "level": "center",
+      "dome": true,
+      "desc": "Les véhicules d’intervention occupent une rampe en contrebas. Le hall public est clair, calme et surveillé. Les portes du secteur de garde ne portent aucun nom.",
+      "npcs": [
+        {
+          "id": "leal",
+          "q": 7,
+          "r": 8
+        },
+        {
+          "id": "aural",
+          "q": 20,
+          "r": 36
+        }
+      ],
+      "objects": [
+        {
+          "id": "smpd-custody",
+          "q": 7,
+          "r": 9
+        },
+        {
+          "id": "smpd-board",
+          "q": 11,
+          "r": 9
+        },
+        {
+          "id": "transit-smpd",
+          "q": 3,
+          "r": 20
+        },
+        {
+          "id": "smpd-evidence",
+          "q": 37,
+          "r": 35
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "upper",
+      "name": "Jardins suspendus",
+      "level": "upper",
+      "dome": true,
+      "desc": "Sous un ciel bleu artificiel, des allées de pierre claire traversent des jardins taillés à la main. Les immeubles mêlent colonnes, verre et métal doré. On entend couler une fontaine.",
+      "npcs": [
+        {
+          "id": "maelle",
+          "q": 14,
+          "r": 12
+        },
+        {
+          "id": "eilin",
+          "q": 39,
+          "r": 40
+        }
+      ],
+      "objects": [
+        {
+          "id": "upper-garden",
+          "q": 12,
+          "r": 12
+        },
+        {
+          "id": "upper-terrace",
+          "q": 22,
+          "r": 11
+        },
+        {
+          "id": "transit-upper",
+          "q": 3,
+          "r": 19
+        },
+        {
+          "id": "upper-clock",
+          "q": 39,
+          "r": 41
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "spire",
+      "name": "Atrium du siège IO",
+      "level": "upper",
+      "dome": true,
+      "desc": "Le pilier cylindrique du siège rejoint la voûte. Dans l’atrium, des ascenseurs disparaissent au-dessus des corniches blanches. Le public est admis jusqu’aux bureaux de consultation.",
+      "npcs": [
+        {
+          "id": "valen",
+          "q": 8,
+          "r": 13
+        },
+        {
+          "id": "sem",
+          "q": 31,
+          "r": 39
+        }
+      ],
+      "objects": [
+        {
+          "id": "spire-directory",
+          "q": 8,
+          "r": 14
+        },
+        {
+          "id": "spire-window",
+          "q": 17,
+          "r": 12
+        },
+        {
+          "id": "transit-spire",
+          "q": 13,
+          "r": 21
+        },
+        {
+          "id": "spire-records",
+          "q": 31,
+          "r": 40
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "industry",
+      "name": "IO Industries",
+      "level": "perimeter",
+      "dome": false,
+      "desc": "Des halles composites, des bras de manutention et des convois guidés occupent le parc industriel. La poussière couvre les aires de service entre les halles. Une livraison médicale attend dans un casier réfrigéré.",
+      "npcs": [
+        {
+          "id": "avel",
+          "q": 17,
+          "r": 15
+        },
+        {
+          "id": "delta",
+          "q": 38,
+          "r": 37
+        }
+      ],
+      "objects": [
+        {
+          "id": "cold-locker",
+          "q": 18,
+          "r": 15
+        },
+        {
+          "id": "industrial-board",
+          "q": 11,
+          "r": 9
+        },
+        {
+          "id": "transit-industry",
+          "q": 4,
+          "r": 19
+        },
+        {
+          "id": "industry-shift",
+          "q": 38,
+          "r": 38
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "northcustoms",
+      "name": "Douane nord",
+      "level": "perimeter",
+      "dome": false,
+      "desc": "Les convois franchissent des arches de contrôle avant d’atteindre le sarcophage. Les files de personnes suivent un couloir distinct, bordé de vitrages blindés.",
+      "npcs": [
+        {
+          "id": "north-agent",
+          "q": 9,
+          "r": 8
+        },
+        {
+          "id": "reina",
+          "q": 12,
+          "r": 37
+        }
+      ],
+      "objects": [
+        {
+          "id": "north-gate",
+          "q": 11,
+          "r": 8
+        },
+        {
+          "id": "north-manifest",
+          "q": 8,
+          "r": 8
+        },
+        {
+          "id": "transit-northcustoms",
+          "q": 8,
+          "r": 20
+        },
+        {
+          "id": "northcustoms-scale",
+          "q": 38,
+          "r": 36
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "eastcustoms",
+      "name": "Douane est",
+      "level": "perimeter",
+      "dome": false,
+      "desc": "Les marchandises venues de Junk-Burgh sont inspectées dans des sas de transit. Des employés font circuler les palettes entre deux contrôles.",
+      "npcs": [
+        {
+          "id": "east-agent",
+          "q": 12,
+          "r": 8
+        },
+        {
+          "id": "dario",
+          "q": 11,
+          "r": 37
+        }
+      ],
+      "objects": [
+        {
+          "id": "east-gate",
+          "q": 13,
+          "r": 10
+        },
+        {
+          "id": "east-inspection",
+          "q": 14,
+          "r": 9
+        },
+        {
+          "id": "transit-eastcustoms",
+          "q": 3,
+          "r": 10
+        },
+        {
+          "id": "eastcustoms-rejects",
+          "q": 39,
+          "r": 36
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "northbase",
+      "name": "Avant-poste nord",
+      "level": "perimeter",
+      "dome": false,
+      "desc": "Les abris de surveillance dominent les routes du nord. Les convois s’arrêtent à une aire de service avant le périmètre réservé aux unités militaires.",
+      "npcs": [
+        {
+          "id": "north-officer",
+          "q": 10,
+          "r": 8
+        },
+        {
+          "id": "pavel",
+          "q": 37,
+          "r": 35
+        }
+      ],
+      "objects": [
+        {
+          "id": "north-post",
+          "q": 10,
+          "r": 9
+        },
+        {
+          "id": "north-supplies",
+          "q": 16,
+          "r": 14
+        },
+        {
+          "id": "transit-northbase",
+          "q": 5,
+          "r": 19
+        },
+        {
+          "id": "northbase-signal",
+          "q": 37,
+          "r": 36
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "eastbase",
+      "name": "Avant-poste est",
+      "level": "perimeter",
+      "dome": false,
+      "desc": "Des antennes suivent les voies d’approvisionnement orientales. Le poste de liaison reçoit les chauffeurs, les fournisseurs et les demandes de maintenance.",
+      "npcs": [
+        {
+          "id": "east-officer",
+          "q": 9,
+          "r": 6
+        },
+        {
+          "id": "cielo",
+          "q": 37,
+          "r": 38
+        }
+      ],
+      "objects": [
+        {
+          "id": "east-post",
+          "q": 9,
+          "r": 7
+        },
+        {
+          "id": "east-supplies",
+          "q": 15,
+          "r": 16
+        },
+        {
+          "id": "transit-eastbase",
+          "q": 4,
+          "r": 10
+        },
+        {
+          "id": "eastbase-parts",
+          "q": 37,
+          "r": 39
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "southbase",
+      "name": "Avant-poste sud",
+      "level": "perimeter",
+      "dome": false,
+      "desc": "Au bout de la rocade, une caserne protège les routes du sud. Les soldats contrôlent les véhicules à l’ombre de hangars lisses, sans interrompre le trafic de ravitaillement.",
+      "npcs": [
+        {
+          "id": "south-officer",
+          "q": 18,
+          "r": 13
+        },
+        {
+          "id": "grisel",
+          "q": 37,
+          "r": 36
+        }
+      ],
+      "objects": [
+        {
+          "id": "south-post",
+          "q": 18,
+          "r": 12
+        },
+        {
+          "id": "south-supplies",
+          "q": 9,
+          "r": 16
+        },
+        {
+          "id": "transit-southbase",
+          "q": 20,
+          "r": 5
+        },
+        {
+          "id": "southbase-wheels",
+          "q": 37,
+          "r": 37
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "ba-avenues",
+      "name": "Avenues du nord",
+      "desc": "Une chaussée fendue relie la gare au barrage des Nativos. Les citernes attendent devant les balances. Plus loin, des voyageurs dorment sous la verrière.",
+      "npcs": [
+        {
+          "id": "candela",
+          "q": 22,
+          "r": 24
+        },
+        {
+          "id": "mauro",
+          "q": 27,
+          "r": 34
+        },
+        {
+          "id": "isma",
+          "q": 10,
+          "r": 38
+        }
+      ],
+      "objects": [
+        {
+          "id": "ba-cistern",
+          "q": 23,
+          "r": 32
+        },
+        {
+          "id": "ba-roadboard",
+          "q": 10,
+          "r": 39
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "ba-habitat",
+      "name": "Patios habités",
+      "desc": "Des logements occupés, une cuisine collective et un dispensaire entourent des cours protégées du vent. Les portes ouvertes sont habitées ; les accès condamnés portent des dates.",
+      "npcs": [
+        {
+          "id": "esme",
+          "q": 37,
+          "r": 12
+        },
+        {
+          "id": "mila",
+          "q": 34,
+          "r": 38
+        },
+        {
+          "id": "gaspar",
+          "q": 12,
+          "r": 22
+        },
+        {
+          "id": "teo",
+          "q": 27,
+          "r": 27
+        }
+      ],
+      "objects": [
+        {
+          "id": "ba-clinic-ledger",
+          "q": 36,
+          "r": 12
+        },
+        {
+          "id": "ba-cinema-door",
+          "q": 36,
+          "r": 48
+        },
+        {
+          "id": "ba-pot",
+          "q": 12,
+          "r": 13
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "ba-ateliers",
+      "name": "Ateliers du rail",
+      "desc": "Les voies entrent dans des ateliers réoccupés. Des mécaniciens récupèrent les bogies ; une équipe entretient le treuil qui dessert les quartiers habités.",
+      "npcs": [
+        {
+          "id": "vico",
+          "q": 31,
+          "r": 23
+        },
+        {
+          "id": "rocio",
+          "q": 36,
+          "r": 38
+        },
+        {
+          "id": "sergio",
+          "q": 19,
+          "r": 26
+        }
+      ],
+      "objects": [
+        {
+          "id": "ba-tram-winch",
+          "q": 32,
+          "r": 23
+        },
+        {
+          "id": "ba-weights",
+          "q": 35,
+          "r": 38
+        },
+        {
+          "id": "ba-lot-book",
+          "q": 20,
+          "r": 26
+        }
+      ],
+      "enemies": []
+    },
+    {
+      "id": "ba-front",
+      "name": "Lisière évacuée",
+      "desc": "Une opération IO a atteint des blocs évacués. Les Nativos gardent le passage vers les patios. Entre les deux postes, une caisse attend toujours son destinataire.",
+      "npcs": [
+        {
+          "id": "lian",
+          "q": 21,
+          "r": 37
+        },
+        {
+          "id": "alder",
+          "q": 39,
+          "r": 22
+        }
+      ],
+      "objects": [
+        {
+          "id": "ba-front-crate",
+          "q": 28,
+          "r": 40
+        },
+        {
+          "id": "ba-front-radio",
+          "q": 22,
+          "r": 37
+        }
+      ],
+      "enemies": [
+        {
+          "id": "front-native-1",
+          "name": "Vigie Nativos",
+          "team": "Los Nativos"
+        },
+        {
+          "id": "front-native-2",
+          "name": "Milicienne Nativos",
+          "team": "Los Nativos"
+        },
+        {
+          "id": "front-native-3",
+          "name": "Tireur Nativos",
+          "team": "Los Nativos"
+        },
+        {
+          "id": "front-io-1",
+          "name": "Récupérateur militaire IO",
+          "team": "IO"
+        },
+        {
+          "id": "front-io-2",
+          "name": "Escorte IO",
+          "team": "IO"
+        },
+        {
+          "id": "front-io-3",
+          "name": "Technicien armé IO",
+          "team": "IO"
+        }
+      ]
+    },
+    {
+      "id": "ba-cinema",
+      "name": "Cinéma des Patios",
+      "interior": true,
+      "desc": "Les rangées dépareillées font face à une toile rapiécée. Dans la cabine, un moteur tourne sans entraîner la bobine.",
+      "npcs": [
+        {
+          "id": "renzo",
+          "q": 28,
+          "r": 8
+        }
+      ],
+      "objects": [
+        {
+          "id": "ba-projector",
+          "q": 9,
+          "r": 7
+        },
+        {
+          "id": "ba-reel-case",
+          "q": 38,
+          "r": 23
+        },
+        {
+          "id": "ba-cinema-poster",
+          "q": 8,
+          "r": 36
+        }
+      ],
+      "enemies": []
+    }
+  ],
+  "roster": [
+    {
+      "id": "mara",
+      "name": "Mara Gálvez",
+      "role": "Responsable de Dusk-Town",
+      "faction": "Indépendants",
+      "look": "Une voix grave. Les mains d’une ouvrière. Elle n’a pas dormi.",
+      "color": "#b49c72",
+      "dialog": "mara",
+      "locations": [
+        "dusk"
+      ],
+      "anchors": [
+        {
+          "loc": "dusk",
+          "q": 10,
+          "r": 12
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "vera",
+      "name": "Dr Vera Solis",
+      "role": "Clinique indépendante",
+      "faction": "Indépendants",
+      "look": "Une blouse reprisée et des lunettes retenues par un fil de cuivre.",
+      "color": "#bfc5b8",
+      "dialog": "vera",
+      "locations": [
+        "dusk"
+      ],
+      "anchors": [
+        {
+          "loc": "dusk",
+          "q": 5,
+          "r": 7
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "ezequiel",
+      "name": "Ezequiel",
+      "role": "Marchand de passage",
+      "faction": "Indépendants",
+      "look": "Il compte vos pas comme d’autres comptent leurs billets.",
+      "color": "#b9936b",
+      "shop": [
+        "water",
+        "medkit",
+        "antirad",
+        "ammo",
+        "scrap",
+        "coat",
+        "knife",
+        "grenade",
+        "smoke",
+        "cloth",
+        "chemical",
+        "lockpick"
+      ],
+      "dialog": "merchant",
+      "locations": [
+        "dusk"
+      ],
+      "anchors": [
+        {
+          "loc": "dusk",
+          "q": 8,
+          "r": 17
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "nilo",
+      "name": "Nilo",
+      "role": "Mécanicien · recrutable",
+      "faction": "Indépendants",
+      "look": "Un exosquelette de travail mal ajusté. Un humour encore en état de marche.",
+      "color": "#90a4b6",
+      "dialog": "nilo",
+      "locations": [
+        "dusk"
+      ],
+      "anchors": [
+        {
+          "loc": "dusk",
+          "q": 19,
+          "r": 12
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "inesguard",
+      "name": "Garde du quartier",
+      "role": "Milice de Dusk-Town",
+      "faction": "Indépendants",
+      "look": "La crosse de son arme a été remplacée par un pied de chaise.",
+      "color": "#899680",
+      "dialog": "guard",
+      "locations": [
+        "dusk"
+      ],
+      "anchors": [
+        {
+          "loc": "dusk",
+          "q": 5,
+          "r": 20
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "ines",
+      "name": "Inés Araya",
+      "role": "Maraîchère",
+      "faction": "Indépendants",
+      "look": "Une cicatrice barre son masque antipoussière.",
+      "color": "#a3a77c",
+      "dialog": "ines",
+      "locations": [
+        "farm"
+      ],
+      "anchors": [
+        {
+          "loc": "farm",
+          "q": 14,
+          "r": 16
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "prospector",
+      "name": "Le Doseur",
+      "role": "Prospecteur",
+      "faction": "Aucune",
+      "look": "Son dosimètre pend au bout d’un collier de dents.",
+      "color": "#b3a06c",
+      "dialog": "prospector",
+      "locations": [],
+      "anchors": [],
+      "extra": null
+    },
+    {
+      "id": "tomas",
+      "name": "Tomás Varela",
+      "role": "Délégué de Los Nativos",
+      "faction": "Los Nativos",
+      "look": "La peau marbrée, la diction d’un instituteur. Son œil gauche vous jauge.",
+      "color": "#99a77c",
+      "dialog": "tomas",
+      "locations": [
+        "buenos"
+      ],
+      "anchors": [
+        {
+          "loc": "buenos",
+          "q": 11,
+          "r": 13
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "celia",
+      "name": "Celia",
+      "role": "Ravitailleuse",
+      "faction": "Los Nativos",
+      "look": "Une prothèse bricolée, une main qui ne tremble jamais.",
+      "color": "#a49e7e",
+      "shop": [
+        "medicine",
+        "water",
+        "ammo",
+        "medkit",
+        "antirad"
+      ],
+      "dialog": "native",
+      "locations": [
+        "buenos"
+      ],
+      "anchors": [
+        {
+          "loc": "buenos",
+          "q": 12,
+          "r": 20
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "vidal",
+      "name": "Agent Vidal",
+      "role": "Contrôle des accès IO",
+      "faction": "IO",
+      "look": "Une moitié du visage est sertie de céramique blanche.",
+      "color": "#89b6b8",
+      "dialog": "vidal",
+      "locations": [
+        "customs"
+      ],
+      "anchors": [
+        {
+          "loc": "customs",
+          "q": 9,
+          "r": 10
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "luz",
+      "name": "Luz Herrera",
+      "role": "Sans matricule",
+      "faction": "Indépendants",
+      "look": "Elle serre une vieille carte d’ouvrière contre sa poitrine.",
+      "color": "#b49a91",
+      "dialog": "luz",
+      "locations": [
+        "customs"
+      ],
+      "anchors": [
+        {
+          "loc": "customs",
+          "q": 6,
+          "r": 15
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "ada",
+      "name": "Ada Voss",
+      "role": "Intermédiaire IO",
+      "faction": "IO",
+      "look": "Des implants discrets. Un manteau beaucoup trop propre.",
+      "color": "#a3c1c4",
+      "dialog": "ada",
+      "cityLook": 4,
+      "locations": [
+        "steel"
+      ],
+      "anchors": [
+        {
+          "loc": "steel",
+          "q": 18,
+          "r": 11
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "broker",
+      "name": "Clínica K-12",
+      "role": "Chirurgie et équipements",
+      "faction": "IO",
+      "look": "Le chirurgien vous salue sans lever les yeux de son écran.",
+      "color": "#99b8ba",
+      "shop": [
+        "laser",
+        "cell",
+        "armor",
+        "medkit",
+        "antirad",
+        "vest",
+        "grenade",
+        "smoke",
+        "cloth",
+        "chemical",
+        "lockpick"
+      ],
+      "dialog": "broker",
+      "cityLook": 5,
+      "locations": [
+        "cliniccity"
+      ],
+      "anchors": [
+        {
+          "loc": "cliniccity",
+          "q": 8,
+          "r": 6
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "security",
+      "name": "Agent SMPD",
+      "role": "Police de Lower-Town",
+      "faction": "IO",
+      "look": "Un avertissement lumineux remplace son badge.",
+      "color": "#8ba4ae",
+      "dialog": "security",
+      "locations": [
+        "steel"
+      ],
+      "anchors": [
+        {
+          "loc": "steel",
+          "q": 6,
+          "r": 13
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "salma",
+      "name": "Salma Ruiz",
+      "role": "Ouvrière de la Sous-Ville",
+      "faction": "Sine Vincula",
+      "look": "Le rouge de ses yeux vient de la poussière, dit-elle.",
+      "color": "#b89479",
+      "dialog": "salma",
+      "cityLook": 1,
+      "locations": [
+        "under"
+      ],
+      "anchors": [
+        {
+          "loc": "under",
+          "q": 17,
+          "r": 16
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "inspector",
+      "name": "Inspecteur H-6",
+      "role": "Audit des ressources",
+      "faction": "IO",
+      "look": "Son sourire est une ligne dans un protocole.",
+      "color": "#94aab3",
+      "dialog": "inspector",
+      "cityLook": 5,
+      "locations": [
+        "under"
+      ],
+      "anchors": [
+        {
+          "loc": "under",
+          "q": 7,
+          "r": 4
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "roque",
+      "name": "Roque Santoro",
+      "role": "Courtier des Protectores",
+      "faction": "Protectores",
+      "look": "Des bagues, une dent en or. Toutes ses poches ferment à clé.",
+      "color": "#c29268",
+      "shop": [
+        "rifle",
+        "ammo",
+        "vest",
+        "medicine",
+        "regulator",
+        "scrap",
+        "water",
+        "medkit",
+        "grenade",
+        "smoke",
+        "cloth",
+        "chemical",
+        "lockpick"
+      ],
+      "dialog": "roque",
+      "locations": [
+        "junk"
+      ],
+      "anchors": [
+        {
+          "loc": "junk",
+          "q": 18,
+          "r": 8
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "alma",
+      "name": "Alma",
+      "role": "Comptable des bazars",
+      "faction": "Protectores",
+      "look": "Elle écrit les noms des vivants dans des livres reliés de noir.",
+      "color": "#bba681",
+      "dialog": "alma",
+      "locations": [
+        "junk"
+      ],
+      "anchors": [
+        {
+          "loc": "junk",
+          "q": 13,
+          "r": 19
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "debtor",
+      "name": "Diego",
+      "role": "Une dette sur deux jambes",
+      "faction": "Indépendants",
+      "look": "Il évite de regarder les gardes. Les gardes le regardent.",
+      "color": "#a89176",
+      "dialog": "diego",
+      "locations": [
+        "junk"
+      ],
+      "anchors": [
+        {
+          "loc": "junk",
+          "q": 7,
+          "r": 19
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "scrapper",
+      "name": "Sœur Ferraille",
+      "role": "Armurière",
+      "faction": "Protectores",
+      "look": "Une collection de vis dans les cheveux. « Sœur » n’est pas son prénom.",
+      "color": "#b59671",
+      "shop": [
+        "pistol",
+        "rifle",
+        "knife",
+        "ammo",
+        "coat",
+        "scrap",
+        "cell",
+        "grenade",
+        "smoke",
+        "cloth",
+        "chemical",
+        "lockpick"
+      ],
+      "dialog": "scrapper",
+      "locations": [
+        "junk"
+      ],
+      "anchors": [
+        {
+          "loc": "junk",
+          "q": 17,
+          "r": 16
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "otero",
+      "name": "Otero",
+      "role": "Récupérateur indépendant",
+      "faction": "Aucune",
+      "look": "Il se cache derrière une plaque trois fois plus grande que lui.",
+      "color": "#b3a18b",
+      "dialog": "otero",
+      "locations": [
+        "titan"
+      ],
+      "anchors": [
+        {
+          "loc": "titan",
+          "q": 10,
+          "r": 34
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "veiled",
+      "name": "La Veilleuse",
+      "role": "Gardienne du silence",
+      "faction": "Inconnue",
+      "look": "Vous ne distinguez pas son visage. Rien ici n’émet le moindre signal.",
+      "color": "#b6a7ba",
+      "dialog": "veiled",
+      "locations": [
+        "temple"
+      ],
+      "anchors": [
+        {
+          "loc": "temple",
+          "q": 14,
+          "r": 16
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "marin",
+      "name": "Yuna Marin",
+      "role": "Manutentionnaire du port",
+      "faction": "Sine Vincula",
+      "look": "Un gilet de quai. Un œil sur les caméras.",
+      "color": "#98adb3",
+      "dialog": "marin",
+      "locations": [
+        "port"
+      ],
+      "anchors": [
+        {
+          "loc": "port",
+          "q": 9,
+          "r": 11
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "deserter",
+      "name": "Sergent Esteban Ríos",
+      "role": "Déserteur UFSA",
+      "faction": "UFSA",
+      "look": "Il a arraché ses insignes. Leurs coutures sont encore visibles.",
+      "color": "#a8ad90",
+      "dialog": "deserter",
+      "locations": [
+        "port"
+      ],
+      "anchors": [
+        {
+          "loc": "port",
+          "q": 3,
+          "r": 16
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "ortiz",
+      "name": "Commandante Ortiz",
+      "role": "Garnison UFSA",
+      "faction": "UFSA",
+      "look": "Elle parle de territoires quand ses hommes parlent de repas.",
+      "color": "#9daa89",
+      "dialog": "ortiz",
+      "locations": [
+        "nova"
+      ],
+      "anchors": [
+        {
+          "loc": "nova",
+          "q": 10,
+          "r": 7
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "quartermaster",
+      "name": "Intendant",
+      "role": "Surplus UFSA",
+      "faction": "UFSA",
+      "look": "Un uniforme gris. Un livre de comptes plus propre que son fusil.",
+      "color": "#98a18f",
+      "shop": [
+        "rifle",
+        "ammo",
+        "vest",
+        "water",
+        "medkit",
+        "scrap",
+        "grenade",
+        "smoke",
+        "cloth",
+        "chemical",
+        "lockpick"
+      ],
+      "dialog": "quartermaster",
+      "locations": [
+        "nova"
+      ],
+      "anchors": [
+        {
+          "loc": "nova",
+          "q": 16,
+          "r": 10
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "courier",
+      "name": "Lucero",
+      "role": "Courrière de Los Nativos",
+      "faction": "Los Nativos",
+      "look": "Sous le sang et le sel, son foulard porte les couleurs de Buenos Aires.",
+      "color": "#a8ab84",
+      "dialog": "courier",
+      "locations": [
+        "coast"
+      ],
+      "anchors": [
+        {
+          "loc": "coast",
+          "q": 19,
+          "r": 17
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "patient",
+      "name": "Ardo Funes",
+      "role": "Patient · résident involontaire",
+      "faction": "Los Nativos",
+      "color": "#a9a781",
+      "look": "Sa peau a changé plus souvent que son sens de l’humour.",
+      "dialog": "patient",
+      "locations": [
+        "clinic"
+      ],
+      "anchors": [
+        {
+          "loc": "clinic",
+          "q": 13,
+          "r": 9
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "rita",
+      "name": "Rita Acosta",
+      "role": "Chauffeuse indépendante",
+      "look": "Elle vérifie son rétroviseur même lorsque sa voiture est à l’arrêt.",
+      "faction": "Indépendants",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 1,
+      "locations": [
+        "china"
+      ],
+      "anchors": [
+        {
+          "loc": "china",
+          "q": 4,
+          "r": 20
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "lin",
+      "name": "Lin Qiao",
+      "role": "Réparateur d’électronique",
+      "look": "Des pinces fines alignées sur une serviette. Il les déplace avant de vous faire une place.",
+      "faction": "Indépendants",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "shop": [
+        "cell",
+        "scrap",
+        "chemical",
+        "lockpick"
+      ],
+      "locations": [
+        "china"
+      ],
+      "anchors": [
+        {
+          "loc": "china",
+          "q": 5,
+          "r": 12
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "leda",
+      "name": "Leda Mansour",
+      "role": "Commerçante d’Asia-Ground",
+      "look": "Une manche retroussée et un sachet de repas devenu froid.",
+      "faction": "Indépendants",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 1,
+      "locations": [
+        "asia"
+      ],
+      "anchors": [
+        {
+          "loc": "asia",
+          "q": 15,
+          "r": 13
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "hassan",
+      "name": "Hassan Mourad",
+      "role": "Marchand de la galerie",
+      "look": "Il range ses articles par usage et se souvient des commandes de ses clients.",
+      "faction": "Indépendants",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "shop": [
+        "water",
+        "cloth",
+        "medkit",
+        "coat",
+        "vest"
+      ],
+      "cityLook": 0,
+      "locations": [
+        "asia"
+      ],
+      "anchors": [
+        {
+          "loc": "asia",
+          "q": 17,
+          "r": 12
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "cora",
+      "name": "Cora Beltrán",
+      "role": "Gestionnaire du bloc 41",
+      "look": "Les clés des appartements sont rangées dans un boîtier sur sa manche.",
+      "faction": "Indépendants",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 3,
+      "locations": [
+        "blocks"
+      ],
+      "anchors": [
+        {
+          "loc": "blocks",
+          "q": 7,
+          "r": 11
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "elias",
+      "name": "Elías Mena",
+      "role": "Agent du réseau de transport",
+      "look": "Un uniforme propre, des chaussures usées, une attention constante au quai.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 0,
+      "locations": [
+        "blocks"
+      ],
+      "anchors": [
+        {
+          "loc": "blocks",
+          "q": 19,
+          "r": 17
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "berenice",
+      "name": "Bérénice Lema",
+      "role": "Tailleur et équipement civil",
+      "look": "Elle examine les coutures de votre manteau avant de vous regarder en face.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "shop": [
+        "coat",
+        "vest",
+        "armor"
+      ],
+      "cityLook": 4,
+      "locations": [
+        "center"
+      ],
+      "anchors": [
+        {
+          "loc": "center",
+          "q": 21,
+          "r": 13
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "central-host",
+      "name": "Accueil Central",
+      "role": "Information urbaine",
+      "look": "Une employée en veste claire, occupée à renseigner deux voyageurs à la fois.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 3,
+      "locations": [
+        "center"
+      ],
+      "anchors": [
+        {
+          "loc": "center",
+          "q": 12,
+          "r": 10
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "sen",
+      "name": "Dr Iman Sen",
+      "role": "Médecin des bioprothèses",
+      "look": "Elle garde un petit schéma anatomique ouvert à côté de ses commandes de stock.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 2,
+      "locations": [
+        "cliniccity"
+      ],
+      "anchors": [
+        {
+          "loc": "cliniccity",
+          "q": 16,
+          "r": 6
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "eva",
+      "name": "Eva Serra",
+      "role": "Employée du registre",
+      "look": "Ses annotations sont petites, datées et faciles à lire.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 3,
+      "locations": [
+        "civic"
+      ],
+      "anchors": [
+        {
+          "loc": "civic",
+          "q": 11,
+          "r": 9
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "leal",
+      "name": "Agent Leal",
+      "role": "Bureau de garde SMPD",
+      "look": "Il vous laisse terminer avant de poser la question suivante.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "locations": [
+        "smpd"
+      ],
+      "anchors": [
+        {
+          "loc": "smpd",
+          "q": 7,
+          "r": 8
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "maelle",
+      "name": "Maëlle Soria",
+      "role": "Entretien des jardins",
+      "look": "Elle vérifie l’humidité d’un bac sans interrompre la conversation.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 4,
+      "locations": [
+        "upper"
+      ],
+      "anchors": [
+        {
+          "loc": "upper",
+          "q": 14,
+          "r": 12
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "valen",
+      "name": "Valen Echeverría",
+      "role": "Chargé des consultations IO",
+      "look": "Une silhouette de céramique claire. Les mains restent immobiles sur le comptoir.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 5,
+      "locations": [
+        "spire"
+      ],
+      "anchors": [
+        {
+          "loc": "spire",
+          "q": 8,
+          "r": 13
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "avel",
+      "name": "Avel Costa",
+      "role": "Responsable des expéditions",
+      "look": "Il compare le numéro de votre commande à celui de son lecteur.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "cityLook": 0,
+      "locations": [
+        "industry"
+      ],
+      "anchors": [
+        {
+          "loc": "industry",
+          "q": 17,
+          "r": 15
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "north-agent",
+      "name": "Agente Rivas",
+      "role": "Douane nord",
+      "look": "Elle attend les documents, lecteur tendu.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "locations": [
+        "northcustoms"
+      ],
+      "anchors": [
+        {
+          "loc": "northcustoms",
+          "q": 9,
+          "r": 8
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "east-agent",
+      "name": "Agent Paz",
+      "role": "Douane est",
+      "look": "Il fait signe à un chariot d’avancer avant de vous recevoir.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "locations": [
+        "eastcustoms"
+      ],
+      "anchors": [
+        {
+          "loc": "eastcustoms",
+          "q": 12,
+          "r": 8
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "north-officer",
+      "name": "Lieutenante Sanz",
+      "role": "Liaison militaire nord",
+      "look": "Un casque posé près de son écran, les sangles soigneusement repliées.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "locations": [
+        "northbase"
+      ],
+      "anchors": [
+        {
+          "loc": "northbase",
+          "q": 10,
+          "r": 8
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "east-officer",
+      "name": "Lieutenant Baeza",
+      "role": "Liaison militaire est",
+      "look": "Il écoute la fréquence des convois pendant que vous parlez.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "locations": [
+        "eastbase"
+      ],
+      "anchors": [
+        {
+          "loc": "eastbase",
+          "q": 9,
+          "r": 6
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "south-officer",
+      "name": "Adjudante Ferreyra",
+      "role": "Liaison militaire sud",
+      "look": "Ses réponses sont brèves, sa carte des routes annotée à la main.",
+      "faction": "IO",
+      "color": "#9cc8d2",
+      "dialog": "city",
+      "locations": [
+        "southbase"
+      ],
+      "anchors": [
+        {
+          "loc": "southbase",
+          "q": 18,
+          "r": 13
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "sami",
+      "name": "Sami Mansour",
+      "role": "Aide au marché",
+      "look": "Il garde le reçu de sortie plié dans sa poche.",
+      "faction": "Indépendants",
+      "color": "#8cb7be",
+      "dialog": "city",
+      "cityLook": 0,
+      "locations": [
+        "asia"
+      ],
+      "anchors": [
+        {
+          "loc": "asia",
+          "q": 15,
+          "r": 15
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": "nadia",
+      "name": "Nadia",
+      "role": "Intendante des cuisines",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Un torchon propre repose sur son épaule.",
+      "color": "#b3a084",
+      "locations": [
+        "dusk"
+      ],
+      "anchors": [
+        {
+          "loc": "dusk",
+          "q": 30,
+          "r": 23
+        }
+      ],
+      "extra": [
+        "Nadia",
+        "Intendante des cuisines",
+        "Indépendants",
+        1,
+        "« Posez votre sac à côté, pas sur la table. Je viens de la laver. Vous avez faim ou vous cherchez quelqu’un ? »",
+        "Le convoi de Buenos Aires ?",
+        "« On avait réservé quatre fûts. Voilà le reçu. Je garde les copies depuis qu’un fournisseur m’a expliqué que ses dettes avaient brûlé mais que les miennes, quelle chance, étaient intactes. »"
+      ]
+    },
+    {
+      "id": "abel",
+      "name": "Abel",
+      "role": "Menuisier",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "De petites vis sont rangées dans les poches de son tablier.",
+      "color": "#b3a084",
+      "locations": [
+        "dusk"
+      ],
+      "anchors": [
+        {
+          "loc": "dusk",
+          "q": 35,
+          "r": 35
+        }
+      ],
+      "extra": [
+        "Abel",
+        "Menuisier",
+        "Indépendants",
+        0,
+        "Abel serre une charnière entre ses dents. Il vous fait signe d’attendre, la pose enfin. « Bon. Qu’est-ce qui tient mal ? »",
+        "Vous réparez tout le quartier ?",
+        "« Les portes, surtout. Les gens emménagent derrière des façades qu’on croirait vides. Alors il faut une porte qui ferme, et une fenêtre qui ne siffle pas toute la nuit. »"
+      ]
+    },
+    {
+      "id": "irisfarm",
+      "name": "Iris",
+      "role": "Gardienne des semences",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Ses bottes portent la marque des bacs de désinfection.",
+      "color": "#b3a084",
+      "locations": [
+        "farm"
+      ],
+      "anchors": [
+        {
+          "loc": "farm",
+          "q": 36,
+          "r": 36
+        }
+      ],
+      "extra": [
+        "Iris",
+        "Gardienne des semences",
+        "Indépendants",
+        1,
+        "« Essuyez vos semelles sur le grillage. On a isolé deux bacs ce matin, j’aimerais éviter le troisième. »",
+        "Vous avez perdu une récolte ?",
+        "« Une rangée. J’ai mis les graines de côté avant. Inès s’occupe de l’eau ; moi, j’essaie qu’on ait encore quelque chose à arroser dans six mois. »"
+      ]
+    },
+    {
+      "id": "silas",
+      "name": "Silas",
+      "role": "Acheteur de pièces",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Il conserve la facture sous un couvercle de caisse.",
+      "color": "#b3a084",
+      "locations": [
+        "junk"
+      ],
+      "anchors": [
+        {
+          "loc": "junk",
+          "q": 35,
+          "r": 43
+        }
+      ],
+      "extra": [
+        "Silas",
+        "Acheteur de pièces",
+        "Indépendants",
+        0,
+        "Silas aligne deux réducteurs sur une caisse. « Trois sur la facture. Deux dans le sac. Roque me conseille de recompter. Vous savez compter jusqu’à trois ? »",
+        "Vous attendez une pièce ?",
+        "« Un réducteur. Le colis est passé par les ateliers de Buenos Aires. Leur livre des lots dira s’il en manquait déjà un avant le départ. »"
+      ]
+    },
+    {
+      "id": "noemi",
+      "name": "Noémi",
+      "role": "Vendeuse de joints",
+      "faction": "Protectores",
+      "dialog": "expanse",
+      "look": "Des joints de différentes tailles pendent derrière son comptoir.",
+      "color": "#b3a084",
+      "shop": [
+        "scrap",
+        "chemical",
+        "lockpick",
+        "water",
+        "ammo",
+        "medkit"
+      ],
+      "locations": [
+        "junk"
+      ],
+      "anchors": [
+        {
+          "loc": "junk",
+          "q": 37,
+          "r": 9
+        }
+      ],
+      "extra": [
+        "Noémi",
+        "Vendeuse de joints",
+        "Protectores",
+        4,
+        "« Si vous avez apporté la pièce cassée, je peux vous donner la bonne taille. Si vous l’avez jetée, je peux vous vendre trois tailles. »",
+        "Vous acceptez les retours ?",
+        "« Oui. J’accepte que vous reveniez. Pour le remboursement, il faut voir avec mon mari. Il est parti en 2168. »"
+      ]
+    },
+    {
+      "id": "pilar",
+      "name": "Pilar",
+      "role": "Mécanicienne des filtres",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Elle garde une clé de vanne accrochée à la ceinture.",
+      "color": "#b3a084",
+      "locations": [
+        "relay"
+      ],
+      "anchors": [
+        {
+          "loc": "relay",
+          "q": 32,
+          "r": 38
+        }
+      ],
+      "extra": [
+        "Pilar",
+        "Mécanicienne des filtres",
+        "Indépendants",
+        1,
+        "« Vous avez touché à la vanne bleue ? Non ? Bien. La dernière personne a dit non aussi, mais elle avait la main bleue. »",
+        "À qui appartient le relais ?",
+        "« J’entretiens les filtres. Pour la propriété, demandez aux gens qui n’entretiennent rien. Le registre est sur ma desserte : les hameaux venaient déjà se servir avant la garnison. »"
+      ]
+    },
+    {
+      "id": "senda",
+      "name": "Senda",
+      "role": "Gardienne des terrasses",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Ses manches sont retroussées au-dessus des coudes.",
+      "color": "#b3a084",
+      "locations": [
+        "temple"
+      ],
+      "anchors": [
+        {
+          "loc": "temple",
+          "q": 30,
+          "r": 24
+        }
+      ],
+      "extra": [
+        "Senda",
+        "Gardienne des terrasses",
+        "Indépendants",
+        1,
+        "Senda ramasse les éclats d’une coupe. « Si vous venez pour des miracles, attendez qu’Asha ait fini de manger. Elle devient désagréable à jeun. »",
+        "Vous pratiquez l’Aura ?",
+        "« Non. J’entretiens les marches et j’accueille les voyageurs. Ça ne demande aucun don, seulement des genoux. »"
+      ]
+    },
+    {
+      "id": "celso",
+      "name": "Celso",
+      "role": "Ajusteur de grues",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Il surveille le câble de levage entre deux réponses.",
+      "color": "#b3a084",
+      "locations": [
+        "port"
+      ],
+      "anchors": [
+        {
+          "loc": "port",
+          "q": 13,
+          "r": 39
+        }
+      ],
+      "extra": [
+        "Celso",
+        "Ajusteur de grues",
+        "Indépendants",
+        0,
+        "« Restez derrière la ligne. La charge est vide, mais elle pèse quand même quatre tonnes. »",
+        "La grue fonctionne ?",
+        "« Elle lève. C’est pour redescendre qu’elle hésite. Je change le frein avant qu’un contremaître décide que l’hésitation est acceptable. »"
+      ]
+    },
+    {
+      "id": "ramos",
+      "name": "Lieutenant Ramos",
+      "role": "Responsable du dépôt",
+      "faction": "UFSA",
+      "dialog": "expanse",
+      "look": "Son registre est tenu à jour, jusque dans les marges.",
+      "color": "#b3a084",
+      "locations": [
+        "nova"
+      ],
+      "anchors": [
+        {
+          "loc": "nova",
+          "q": 33,
+          "r": 23
+        }
+      ],
+      "extra": [
+        "Lieutenant Ramos",
+        "Responsable du dépôt",
+        "UFSA",
+        3,
+        "Ramos ferme son registre en gardant un doigt à la page. « Le dépôt reste sous réquisition. J’écoute les demandes de retrait une par une. »",
+        "Les habitants contestent la réquisition.",
+        "« Ils utilisaient les pompes avant notre arrivée. Je ne le conteste pas. Le réservoir, en revanche, figure sur mon inventaire. Apportez les relevés, on parlera de volumes. »"
+      ]
+    },
+    {
+      "id": "bruna",
+      "name": "Bruna",
+      "role": "Porte-parole du camp civil",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Plusieurs cartes de ration sont attachées à son poignet.",
+      "color": "#b3a084",
+      "locations": [
+        "nova"
+      ],
+      "anchors": [
+        {
+          "loc": "nova",
+          "q": 22,
+          "r": 36
+        }
+      ],
+      "extra": [
+        "Bruna",
+        "Porte-parole du camp civil",
+        "Indépendants",
+        1,
+        "« Vous avez une gourde vide ? Mettez-vous derrière moi. Ça évitera au lieutenant d’inventer un deuxième rang prioritaire. »",
+        "Pourquoi cette file ?",
+        "« Le dépôt alimente trois campements. L’armée vient d’en réserver la moitié. Avant de discuter, il nous faut leur titre et le vieux carnet des pompes, au relais. »"
+      ]
+    },
+    {
+      "id": "leoncoast",
+      "name": "León",
+      "role": "Récupérateur du rivage",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Une boîte de petits outils est calée dans le sable.",
+      "color": "#b3a084",
+      "locations": [
+        "coast"
+      ],
+      "anchors": [
+        {
+          "loc": "coast",
+          "q": 33,
+          "r": 34
+        }
+      ],
+      "extra": [
+        "León",
+        "Récupérateur du rivage",
+        "Indépendants",
+        0,
+        "León nettoie un hameçon sur sa manche. « Si vous cherchez un bateau, choisissez celui qui a encore deux côtés. »",
+        "Vous pêchez ici ?",
+        "« Je récupère les filets. Pour les poissons, demandez à Celso au port. Moi, j’aime voir ce que je mange avant que ça me voie. »"
+      ]
+    },
+    {
+      "id": "astor",
+      "name": "Astor",
+      "role": "Livreur des coursives",
+      "faction": "IO",
+      "cityLook": 0,
+      "dialog": "expanse",
+      "look": "Son chariot dépasse à peine entre les bornes de la coursive.",
+      "color": "#7caabd",
+      "locations": [
+        "steel"
+      ],
+      "anchors": [
+        {
+          "loc": "steel",
+          "q": 31,
+          "r": 37
+        }
+      ],
+      "extra": [
+        "Astor",
+        "Livreur des coursives",
+        "IO",
+        0,
+        "« Le quai 6 ? Je l’ai trouvé. Maintenant, je cherche le quai 6 de cette semaine. Ils ont déplacé les panneaux. »",
+        "Vous livrez quoi ?",
+        "« Des panneaux. Je sais. » Il regarde sa feuille. « Attendez, ça explique le quai 6. »"
+      ]
+    },
+    {
+      "id": "yu",
+      "name": "Yu",
+      "role": "Réparatrice de filets",
+      "faction": "Indépendants",
+      "cityLook": 1,
+      "dialog": "expanse",
+      "look": "Ses doigts tirent le fil sans qu’elle regarde ses mains.",
+      "color": "#b3a084",
+      "locations": [
+        "china"
+      ],
+      "anchors": [
+        {
+          "loc": "china",
+          "q": 11,
+          "r": 39
+        }
+      ],
+      "extra": [
+        "Yu",
+        "Réparatrice de filets",
+        "Indépendants",
+        1,
+        "« Ne posez pas le pied sur la corde. Merci. Les pêcheurs jurent qu’ils l’ont coupée par accident. Ils ont des accidents très propres. »",
+        "On pêche vraiment dans le lac ?",
+        "« Oui. Le tri se fait après. Les clients préfèrent ne pas assister à cette partie-là. »"
+      ]
+    },
+    {
+      "id": "nour",
+      "name": "Nour",
+      "role": "Cuisinière de nuit",
+      "faction": "Indépendants",
+      "cityLook": 1,
+      "dialog": "expanse",
+      "look": "Elle garde une pile de bols propres à portée.",
+      "color": "#b3a084",
+      "locations": [
+        "asia"
+      ],
+      "anchors": [
+        {
+          "loc": "asia",
+          "q": 33,
+          "r": 37
+        }
+      ],
+      "extra": [
+        "Nour",
+        "Cuisinière de nuit",
+        "Indépendants",
+        1,
+        "« La soupe est prête. Le pain arrive. Pour les nouvelles, voyez le stand d’en face, ils en inventent à la demande. »",
+        "Vous fermez quand ?",
+        "« Quand Hassan finit son service. Il me rend les bols, je peux enfin compter ce qu’il a mangé. »"
+      ]
+    },
+    {
+      "id": "tala",
+      "name": "Tala",
+      "role": "Gardienne de la cour",
+      "faction": "Indépendants",
+      "cityLook": 1,
+      "dialog": "expanse",
+      "look": "Des clés et des petites pièces de jouets occupent ses poches.",
+      "color": "#b3a084",
+      "locations": [
+        "blocks"
+      ],
+      "anchors": [
+        {
+          "loc": "blocks",
+          "q": 20,
+          "r": 36
+        }
+      ],
+      "extra": [
+        "Tala",
+        "Gardienne de la cour",
+        "Indépendants",
+        1,
+        "Tala retire une petite roue d’un caniveau. « Vous avez vu un gamin avec le reste de cette voiture ? »",
+        "La cour est ouverte à tout le monde ?",
+        "« Aux habitants, oui. Au service des accès, apparemment non. Ils ont demandé le matricule de la balançoire. J’attends de voir où ils vont lui poser la puce. »"
+      ]
+    },
+    {
+      "id": "enid",
+      "name": "Enid",
+      "role": "Trieuse à la bande",
+      "faction": "Indépendants",
+      "cityLook": 0,
+      "dialog": "expanse",
+      "look": "Des références refusées couvrent la tablette de sa balance.",
+      "color": "#b3a084",
+      "locations": [
+        "under"
+      ],
+      "anchors": [
+        {
+          "loc": "under",
+          "q": 30,
+          "r": 38
+        }
+      ],
+      "extra": [
+        "Enid",
+        "Trieuse à la bande",
+        "Indépendants",
+        0,
+        "« Ne ramassez pas ça. Ça repart au contrôle. Oui, même si ça a l’air neuf. »",
+        "Pourquoi jeter des pièces neuves ?",
+        "« Une série de numéros mal imprimés. Salma cherche à faire lever le refus. En attendant, on les stocke. J’ai plus de place pour les dossiers de rebut que pour les pièces. »"
+      ]
+    },
+    {
+      "id": "odette",
+      "name": "Odette",
+      "role": "Entretien des galeries",
+      "faction": "IO",
+      "cityLook": 1,
+      "dialog": "expanse",
+      "look": "Elle a garé sa machine pour laisser le passage libre.",
+      "color": "#7caabd",
+      "locations": [
+        "center"
+      ],
+      "anchors": [
+        {
+          "loc": "center",
+          "q": 31,
+          "r": 38
+        }
+      ],
+      "extra": [
+        "Odette",
+        "Entretien des galeries",
+        "IO",
+        1,
+        "Odette arrête sa machine pour vous laisser passer. « Attention, c’est mouillé. L’affiche arrive derrière vous, j’ai seulement deux bras. »",
+        "Vous travaillez ici depuis longtemps ?",
+        "« Dix-neuf ans. Le monsieur du septième me redemande mon nom tous les lundis. Je lui dis Odette. Il trouve ça charmant à chaque fois. »"
+      ]
+    },
+    {
+      "id": "yuna",
+      "name": "Yuna",
+      "role": "Technicienne de rééducation",
+      "faction": "IO",
+      "cityLook": 2,
+      "dialog": "expanse",
+      "look": "Son dossier reste ouvert sur une série d’exercices.",
+      "color": "#7caabd",
+      "locations": [
+        "cliniccity"
+      ],
+      "anchors": [
+        {
+          "loc": "cliniccity",
+          "q": 18,
+          "r": 36
+        }
+      ],
+      "extra": [
+        "Yuna",
+        "Technicienne de rééducation",
+        "IO",
+        2,
+        "« La salle de suivi ouvre dans dix minutes. Vous pouvez vous asseoir, je termine avec cette patiente. »",
+        "Les prothèses demandent tant d’entretien ?",
+        "« Le modèle de base, non. Les options exigent chacune leur contrat. Certaines personnes désactivent leur main pour économiser l’abonnement. On apprend à faire les exercices avec l’autre. »"
+      ]
+    },
+    {
+      "id": "ivo",
+      "name": "Ivo",
+      "role": "Demandeur de rectification",
+      "faction": "Indépendants",
+      "cityLook": 0,
+      "dialog": "expanse",
+      "look": "Le numéro de son ticket est devenu presque illisible.",
+      "color": "#b3a084",
+      "locations": [
+        "civic"
+      ],
+      "anchors": [
+        {
+          "loc": "civic",
+          "q": 19,
+          "r": 36
+        }
+      ],
+      "extra": [
+        "Ivo",
+        "Demandeur de rectification",
+        "Indépendants",
+        0,
+        "« Vous êtes là pour quel guichet ? J’en ai essayé quatre, je peux vous éviter un étage. »",
+        "Votre dossier avance ?",
+        "« On a confirmé que j’existe. Il reste à confirmer que j’existe à la bonne adresse. Je vais me déplacer avec mon lit, ça simplifiera les constatations. »"
+      ]
+    },
+    {
+      "id": "aural",
+      "name": "Aural",
+      "role": "Agent du vestiaire",
+      "faction": "IO",
+      "cityLook": 3,
+      "dialog": "expanse",
+      "look": "Les casiers sont fermés ; chaque clé porte un numéro.",
+      "color": "#7caabd",
+      "locations": [
+        "smpd"
+      ],
+      "anchors": [
+        {
+          "loc": "smpd",
+          "q": 20,
+          "r": 36
+        }
+      ],
+      "extra": [
+        "Aural",
+        "Agent du vestiaire",
+        "IO",
+        3,
+        "« Déposez les armes dans un casier avant d’entrer dans les bureaux. Gardez le ticket. On ne remet rien sur description. »",
+        "Vous perdez souvent les tickets ?",
+        "« Moi, jamais. Les visiteurs, souvent. Le dernier décrivait son fusil comme “le noir”. Il était très sûr de lui. »"
+      ]
+    },
+    {
+      "id": "eilin",
+      "name": "Eilin",
+      "role": "Horticultrice",
+      "faction": "IO",
+      "cityLook": 1,
+      "dialog": "expanse",
+      "look": "De la terre reste sous ses ongles malgré ses gants.",
+      "color": "#7caabd",
+      "locations": [
+        "upper"
+      ],
+      "anchors": [
+        {
+          "loc": "upper",
+          "q": 39,
+          "r": 40
+        }
+      ],
+      "extra": [
+        "Eilin",
+        "Horticultrice",
+        "IO",
+        1,
+        "« Ne cueillez rien. Même les fruits tombés sont comptés. Pour vous asseoir, le banc est libre. Pour le moment. »",
+        "Ces arbres sont naturels ?",
+        "« Les arbres, oui. La lumière, les saisons et l’autorisation de pousser viennent du même bureau. Je préfère travailler avec les arbres. »"
+      ]
+    },
+    {
+      "id": "sem",
+      "name": "Sem",
+      "role": "Commis aux archives du siège",
+      "faction": "IO",
+      "cityLook": 4,
+      "dialog": "expanse",
+      "look": "Les demandes sont classées dans deux piles distinctes.",
+      "color": "#7caabd",
+      "locations": [
+        "spire"
+      ],
+      "anchors": [
+        {
+          "loc": "spire",
+          "q": 31,
+          "r": 39
+        }
+      ],
+      "extra": [
+        "Sem",
+        "Commis aux archives du siège",
+        "IO",
+        4,
+        "« Consultations sur rendez-vous. Remise de documents à ce comptoir. Pour une réclamation, l’ascenseur de gauche redescend au registre civique. »",
+        "On peut consulter les archives ?",
+        "« Les documents ouverts, oui. La liste des documents ouverts est en cours de révision. Je peux vous donner l’ancienne, elle ne contient plus grand-chose. »"
+      ]
+    },
+    {
+      "id": "mirek",
+      "name": "Mirek",
+      "role": "Chauffeur en attente",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Ses manches portent la poussière des sacs ouverts.",
+      "color": "#b3a084",
+      "locations": [
+        "customs"
+      ],
+      "anchors": [
+        {
+          "loc": "customs",
+          "q": 32,
+          "r": 23
+        }
+      ],
+      "extra": [
+        "Mirek",
+        "Chauffeur en attente",
+        "Indépendants",
+        0,
+        "« Ils ont ouvert chaque sac. Maintenant, ils attendent que je les referme. J’ai demandé une pelle, on m’a donné un formulaire. »",
+        "Vous livrez du sable ?",
+        "« Des granulats calibrés. Du sable qui a un diplôme, en somme. Je ne connais pas la différence, mais elle coûte cher. »"
+      ]
+    },
+    {
+      "id": "delta",
+      "name": "Delta",
+      "role": "Contrôleuse de chaîne",
+      "faction": "IO",
+      "dialog": "expanse",
+      "look": "Son outil de contrôle reste relié au banc d’essai.",
+      "color": "#7caabd",
+      "locations": [
+        "industry"
+      ],
+      "anchors": [
+        {
+          "loc": "industry",
+          "q": 38,
+          "r": 37
+        }
+      ],
+      "extra": [
+        "Delta",
+        "Contrôleuse de chaîne",
+        "IO",
+        2,
+        "« Les expéditions sont de l’autre côté. Ici, tout est en attente de contrôle. Vous aussi, si vous restez au milieu. »",
+        "Quel contrôle ?",
+        "« Couple, tension, étanchéité. Le fabricant a coché les trois. J’aime vérifier avant qu’une pompe arrive chez quelqu’un. »"
+      ]
+    },
+    {
+      "id": "reina",
+      "name": "Reina",
+      "role": "Peseuse",
+      "faction": "IO",
+      "dialog": "expanse",
+      "look": "Une ligne peinte protège les accès aux plateaux.",
+      "color": "#7caabd",
+      "locations": [
+        "northcustoms"
+      ],
+      "anchors": [
+        {
+          "loc": "northcustoms",
+          "q": 12,
+          "r": 37
+        }
+      ],
+      "extra": [
+        "Reina",
+        "Peseuse",
+        "IO",
+        2,
+        "« Une roue sur chaque plateau. Coupez le moteur. Si vous n’avez pas de véhicule, évitez de rester devant la balance. »",
+        "Les balances sont fiables ?",
+        "« Celle-ci, oui. Je la vérifie avec des masses. La douane vérifie ensuite mes masses avec un certificat. »"
+      ]
+    },
+    {
+      "id": "dario",
+      "name": "Darío",
+      "role": "Emballeur de transit",
+      "faction": "Protectores",
+      "dialog": "expanse",
+      "look": "Il garde les bons signés dans une pochette fermée.",
+      "color": "#b3a084",
+      "locations": [
+        "eastcustoms"
+      ],
+      "anchors": [
+        {
+          "loc": "eastcustoms",
+          "q": 11,
+          "r": 37
+        }
+      ],
+      "extra": [
+        "Darío",
+        "Emballeur de transit",
+        "Protectores",
+        0,
+        "« Vous êtes le destinataire ? Non ? Alors, ne signez pas. Le dernier était juste poli et il a hérité d’une tonne de joints. »",
+        "Une tonne ?",
+        "« C’était moins lourd avant le contrôle. Ils ont ajouté les palettes et les frais de stockage. »"
+      ]
+    },
+    {
+      "id": "pavel",
+      "name": "Pavel",
+      "role": "Opérateur de liaison",
+      "faction": "IO",
+      "dialog": "expanse",
+      "look": "Son casque repose sur une seule oreille.",
+      "color": "#7caabd",
+      "locations": [
+        "northbase"
+      ],
+      "anchors": [
+        {
+          "loc": "northbase",
+          "q": 37,
+          "r": 35
+        }
+      ],
+      "extra": [
+        "Pavel",
+        "Opérateur de liaison",
+        "IO",
+        3,
+        "« Éloignez votre émetteur du tableau, s’il vous plaît. J’écoute un convoi. » Il attend une réponse, puis baisse le volume. « Allez-y. »",
+        "Les convois ont des problèmes ?",
+        "« Une balise répond avec trois heures de retard. Le chauffeur est arrivé avant son appel de détresse. Il l’a trouvé assez alarmant. »"
+      ]
+    },
+    {
+      "id": "cielo",
+      "name": "Cielo",
+      "role": "Mécanicienne militaire",
+      "faction": "IO",
+      "dialog": "expanse",
+      "look": "Deux roues sont calées près de son établi.",
+      "color": "#7caabd",
+      "locations": [
+        "eastbase"
+      ],
+      "anchors": [
+        {
+          "loc": "eastbase",
+          "q": 37,
+          "r": 38
+        }
+      ],
+      "extra": [
+        "Cielo",
+        "Mécanicienne militaire",
+        "IO",
+        2,
+        "« Si c’est pour le véhicule de liaison, il attend ses roues. Si c’est pour les roues, elles attendent une autorisation. »",
+        "Vous ne pouvez pas les monter ?",
+        "« Elles viennent d’un autre service. Il faut prouver qu’ils ne s’en servent plus. Le véhicule donneur a brûlé, ça devrait aider. »"
+      ]
+    },
+    {
+      "id": "grisel",
+      "name": "Grisel",
+      "role": "Responsable du parc",
+      "faction": "IO",
+      "dialog": "expanse",
+      "look": "Elle note les départs sur une feuille fixée au poignet.",
+      "color": "#7caabd",
+      "locations": [
+        "southbase"
+      ],
+      "anchors": [
+        {
+          "loc": "southbase",
+          "q": 37,
+          "r": 36
+        }
+      ],
+      "extra": [
+        "Grisel",
+        "Responsable du parc",
+        "IO",
+        3,
+        "« Restez sur le chemin balisé. Les véhicules reculent sans vous demander votre avis. »",
+        "Ça circule beaucoup ?",
+        "« Trop pour l’état des routes. Pas assez pour ceux qui attendent au bout. Je fais partir ce qui peut rouler et je garde le reste ici. »"
+      ]
+    },
+    {
+      "id": "paz",
+      "name": "Pía",
+      "role": "Aide-soignante",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Son tablier a été lavé et recousu plusieurs fois.",
+      "color": "#b3a084",
+      "locations": [
+        "clinic"
+      ],
+      "anchors": [
+        {
+          "loc": "clinic",
+          "q": 25,
+          "r": 30
+        }
+      ],
+      "extra": [
+        "Pía",
+        "Aide-soignante",
+        "Indépendants",
+        1,
+        "« Si vous vous sentez partir, asseyez-vous avant de me le dire. J’ai déjà quelqu’un sur le brancard. »",
+        "Vera vous a formée ?",
+        "« Elle me forme encore. Je sais faire les pansements et reconnaître mes limites. Pour le reste, je vais la chercher. »"
+      ]
+    },
+    {
+      "id": "beltra",
+      "name": "Beltrán",
+      "role": "Employé aux étiquettes",
+      "faction": "Protectores",
+      "dialog": "expanse",
+      "look": "Un couteau à étiquettes reste posé à côté de sa feuille.",
+      "color": "#b3a084",
+      "locations": [
+        "backroom"
+      ],
+      "anchors": [
+        {
+          "loc": "backroom",
+          "q": 14,
+          "r": 29
+        }
+      ],
+      "extra": [
+        "Beltrán",
+        "Employé aux étiquettes",
+        "Protectores",
+        4,
+        "« Ne mélangez pas les étiquettes rouges et les jaunes. Les rouges sont payées. Les jaunes vont donner lieu à une conversation désagréable. »",
+        "Et les colis sans étiquette ?",
+        "« C’est une conversation qu’on a déjà eue. » Il garde les yeux sur sa feuille."
+      ]
+    },
+    {
+      "id": "vesta",
+      "name": "Vesta",
+      "role": "Gardienne des dossiers",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Les rayonnages derrière elle sont étayés par des montants neufs.",
+      "color": "#9caa75",
+      "locations": [
+        "buenos"
+      ],
+      "anchors": [
+        {
+          "loc": "buenos",
+          "q": 34,
+          "r": 20
+        }
+      ],
+      "extra": [
+        "Vesta",
+        "Gardienne des dossiers",
+        "Los Nativos",
+        1,
+        "« Dites-moi ce que vous cherchez avant de sortir les boîtes. Les papiers tiennent encore, les rayonnages beaucoup moins. »",
+        "À quoi servent ces archives ?",
+        "« À savoir qui travaillait où et quelles conduites allaient à quelles maisons. Les titres de propriété, ça dépend surtout de qui les lit. »"
+      ]
+    },
+    {
+      "id": "candela",
+      "name": "Candela",
+      "role": "Responsable du barrage",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Elle garde les deux bons de livraison dans la même main.",
+      "color": "#9caa75",
+      "locations": [
+        "ba-avenues"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-avenues",
+          "q": 22,
+          "r": 24
+        }
+      ],
+      "extra": [
+        "Candela",
+        "Responsable du barrage",
+        "Los Nativos",
+        1,
+        "Candela tient le chauffeur à l’écart de la citerne. « Il m’a promis six fûts. Son papier en promet quatre ailleurs. J’aimerais rencontrer les deux fûts restants. »",
+        "Vous retenez le convoi ?",
+        "« Tant qu’on n’a pas vérifié les volumes. Les poids se trouvent aux ateliers. Et je veux voir ce que Dusk-Town a vraiment commandé. »"
+      ]
+    },
+    {
+      "id": "mauro",
+      "name": "Mauro",
+      "role": "Chauffeur de citerne",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Ses vêtements portent les mêmes traces de poussière que la cabine.",
+      "color": "#b3a084",
+      "locations": [
+        "ba-avenues"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-avenues",
+          "q": 27,
+          "r": 34
+        }
+      ],
+      "extra": [
+        "Mauro",
+        "Chauffeur de citerne",
+        "Indépendants",
+        0,
+        "« Je devais faire deux livraisons. Quelqu’un a vendu deux fois la même réserve. Je conduis, moi. Je ne multiplie rien. »",
+        "Vous pouvez encore rouler ?",
+        "« Oui. Le moteur tient. Le chargement aussi. Si vous trouvez un accord, je le livre ; si vous cherchez le vendeur, prenez un autre véhicule. »"
+      ]
+    },
+    {
+      "id": "isma",
+      "name": "Isma",
+      "role": "Veilleur de la gare",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Il surveille la verrière et le passage des voyageurs.",
+      "color": "#9caa75",
+      "locations": [
+        "ba-avenues"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-avenues",
+          "q": 10,
+          "r": 38
+        }
+      ],
+      "extra": [
+        "Isma",
+        "Veilleur de la gare",
+        "Los Nativos",
+        0,
+        "« La verrière ne tient plus côté est. Installez-vous sous les arches, si vous devez dormir. »",
+        "Il passe encore des trains ?",
+        "« Non. Des gens arrivent par les rails. On a gardé le panneau des horaires pour leur donner de l’espoir. Puis on l’a décroché, ça devenait cruel. »"
+      ]
+    },
+    {
+      "id": "esme",
+      "name": "Esmé",
+      "role": "Infirmière des Patios",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Une chaise est installée près de sa table de soins.",
+      "color": "#9caa75",
+      "locations": [
+        "ba-habitat"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-habitat",
+          "q": 37,
+          "r": 12
+        }
+      ],
+      "extra": [
+        "Esmé",
+        "Infirmière des Patios",
+        "Los Nativos",
+        1,
+        "« Entrez si vous avez besoin de soins. Si vous venez porter une caisse, laissez-la en bas, le treuil est bloqué. »",
+        "Le treuil peut se réparer ?",
+        "« Vico, aux ateliers, connaît la panne. Il manque un frein. Monter les bouteilles à la main nous prend toute la matinée ; pour les patients, c’est pire. »"
+      ]
+    },
+    {
+      "id": "mila",
+      "name": "Mila",
+      "role": "Organisatrice des séances",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Son rouleau de colle est presque vide.",
+      "color": "#b3a084",
+      "locations": [
+        "ba-habitat"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-habitat",
+          "q": 34,
+          "r": 38
+        }
+      ],
+      "extra": [
+        "Mila",
+        "Organisatrice des séances",
+        "Indépendants",
+        1,
+        "Mila colle une affiche sur l’ancienne sans la recouvrir tout à fait. « Séance ce soir. Si vous avez déjà vu le programme, vous connaissez l’heure. »",
+        "C’est toujours le même film ?",
+        "« Le 17 mars, bulletin de midi. Depuis huit mois. Renzo répare le projecteur, je cherche une bobine qui n’annonce pas un avenir radieux. Les archives avaient une réserve. »"
+      ]
+    },
+    {
+      "id": "gaspar",
+      "name": "Gaspar",
+      "role": "Cuisinier des Patios",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Il tourne la marmite avec une longue cuillère de bois.",
+      "color": "#9caa75",
+      "shop": [
+        "water",
+        "cloth"
+      ],
+      "locations": [
+        "ba-habitat"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-habitat",
+          "q": 12,
+          "r": 22
+        }
+      ],
+      "extra": [
+        "Gaspar",
+        "Cuisinier des Patios",
+        "Los Nativos",
+        0,
+        "« Prenez un bol propre. Les autres sont ceux de la file qui revient. Ça se voit mal, mais ça compte. »",
+        "Tout le monde mange ici ?",
+        "« Ceux qui passent. On contribue en légumes, en travail ou en mauvaise humeur. La dernière catégorie déborde, si vous avez le choix. »"
+      ]
+    },
+    {
+      "id": "teo",
+      "name": "Teo",
+      "role": "Facteur des cours",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Une sangle retient ses lettres dans une sacoche fermée.",
+      "color": "#9caa75",
+      "locations": [
+        "ba-habitat"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-habitat",
+          "q": 27,
+          "r": 27
+        }
+      ],
+      "extra": [
+        "Teo",
+        "Facteur des cours",
+        "Los Nativos",
+        0,
+        "« Vous avez une lettre ? Avec un nom, de préférence. “La dame près du puits”, j’en connais six. »",
+        "Vous connaissez tous les habitants ?",
+        "« Assez pour savoir chez qui laisser une lettre. Pas assez pour savoir ce qu’ils ont écrit dedans. Ils aiment cette différence. »"
+      ]
+    },
+    {
+      "id": "vico",
+      "name": "Vico",
+      "role": "Ajusteur du treuil",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Il a débranché la commande avant de commencer son examen.",
+      "color": "#9caa75",
+      "locations": [
+        "ba-ateliers"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-ateliers",
+          "q": 31,
+          "r": 23
+        }
+      ],
+      "extra": [
+        "Vico",
+        "Ajusteur du treuil",
+        "Los Nativos",
+        0,
+        "Vico pose un pied sur le moteur arrêté. « Ne l’alimentez pas. Il tourne très bien. C’est ce qui m’inquiète : sans frein, il ne s’arrête plus. »",
+        "La pièce est où ?",
+        "« Une caisse sur la lisière évacuée. Près du passage entre les postes. Pas besoin d’aller saluer les fusils : la caisse est restée côté sud. »"
+      ]
+    },
+    {
+      "id": "rocio",
+      "name": "Rocío",
+      "role": "Responsable des pesées",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Des masses de contrôle sont rangées sous le comptoir.",
+      "color": "#9caa75",
+      "locations": [
+        "ba-ateliers"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-ateliers",
+          "q": 36,
+          "r": 38
+        }
+      ],
+      "extra": [
+        "Rocío",
+        "Responsable des pesées",
+        "Los Nativos",
+        1,
+        "« Le plateau est libre. Retirez ce qui dépasse du chargement, sinon je pèserai votre ami avec. »",
+        "Vous avez gardé les derniers relevés ?",
+        "« Oui. Ils sont sur le comptoir. Les volumes sont corrigés de la tare. Il faut lire la deuxième colonne, même si la première arrange davantage de monde. »"
+      ]
+    },
+    {
+      "id": "sergio",
+      "name": "Sergio",
+      "role": "Réceptionnaire des lots",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Le livre des lots tient ouvert sous une pièce de métal.",
+      "color": "#b3a084",
+      "shop": [
+        "scrap",
+        "cell",
+        "chemical",
+        "antirad"
+      ],
+      "locations": [
+        "ba-ateliers"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-ateliers",
+          "q": 19,
+          "r": 26
+        }
+      ],
+      "extra": [
+        "Sergio",
+        "Réceptionnaire des lots",
+        "Indépendants",
+        0,
+        "« Le livre reste ici. Vous pouvez copier une page, mais pas l’emporter. C’est le seul exemplaire et j’ai déjà perdu assez de mémoire. »",
+        "Vous notez tout ?",
+        "« Ce qui entre, ce qui sort, et qui a signé. Pour les raisons, j’évite. Ça doublerait le nombre de pages. »"
+      ]
+    },
+    {
+      "id": "lian",
+      "name": "Lian",
+      "role": "Responsable du poste des Nativos",
+      "faction": "Los Nativos",
+      "dialog": "expanse",
+      "look": "Sa radio reste réglée sur le canal des deux postes.",
+      "color": "#9caa75",
+      "locations": [
+        "ba-front"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-front",
+          "q": 21,
+          "r": 37
+        }
+      ],
+      "extra": [
+        "Lian",
+        "Responsable du poste des Nativos",
+        "Los Nativos",
+        1,
+        "Lian garde une main sur la radio. « Les logements derrière nous sont occupés. L’atelier devant, non. IO a décidé que ça lui donnait le droit d’y entrer. »",
+        "Vous pouvez discuter avec eux ?",
+        "« Alder veut une preuve que le matériel sert encore aux quartiers. Le registre des ateliers est au centre administratif. Apportez-le avant qu’un nerveux décide à notre place. »"
+      ]
+    },
+    {
+      "id": "alder",
+      "name": "Alder",
+      "role": "Chef de détachement IO",
+      "faction": "IO",
+      "dialog": "expanse",
+      "look": "Un voyant indique que son ordre de mission est toujours ouvert.",
+      "color": "#7caabd",
+      "locations": [
+        "ba-front"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-front",
+          "q": 39,
+          "r": 22
+        }
+      ],
+      "extra": [
+        "Alder",
+        "Chef de détachement IO",
+        "IO",
+        3,
+        "« Opération de récupération. La voie reste fermée. Vous pouvez repartir par le sud. »",
+        "L’atelier est utilisé par les Patios.",
+        "« On m’a signalé un site vacant. Si vous avez un registre récent, je le transmettrai. Une affirmation ne suffit pas à modifier mon ordre de mission. »"
+      ]
+    },
+    {
+      "id": "renzo",
+      "name": "Renzo",
+      "role": "Projectionniste",
+      "faction": "Indépendants",
+      "dialog": "expanse",
+      "look": "Des pièces nettoyées attendent sur un linge près du projecteur.",
+      "color": "#b3a084",
+      "locations": [
+        "ba-cinema"
+      ],
+      "anchors": [
+        {
+          "loc": "ba-cinema",
+          "q": 28,
+          "r": 8
+        }
+      ],
+      "extra": [
+        "Renzo",
+        "Projectionniste",
+        "Indépendants",
+        0,
+        "Renzo coupe le moteur. « Vous entendez ? » Il laisse passer le silence. « Voilà. C’est comme ça qu’il devrait sonner quand on l’arrête. »",
+        "Il manque quoi ?",
+        "« Un entraînement propre et un réglage. Et une bobine qui donne envie de finir. Mila s’occupe de ça. »"
+      ]
+    }
+  ],
+  "ITEMS": {
+    "pistol": {
+      "name": "Pistolet de récupération",
+      "kind": "weapon",
+      "desc": "Une culasse rafistolée. Le premier tir est le vôtre.",
+      "damage": [
+        7,
+        12
+      ],
+      "ap": 4,
+      "range": 7,
+      "ammo": "ammo",
+      "skill": "armes",
+      "weight": 1.5,
+      "value": 85,
+      "icon": "⌁"
+    },
+    "rifle": {
+      "name": "Carabine de convoyeur",
+      "kind": "weapon",
+      "desc": "Précise, lourde et absolument dépourvue de subtilité.",
+      "damage": [
+        11,
+        19
+      ],
+      "ap": 5,
+      "range": 11,
+      "ammo": "ammo",
+      "skill": "armes",
+      "weight": 3.5,
+      "value": 220,
+      "icon": "⌁"
+    },
+    "laser": {
+      "name": "Émetteur IO M-9",
+      "kind": "weapon",
+      "desc": "Une arme corporatiste. L’entretien ne figure pas dans la garantie.",
+      "damage": [
+        16,
+        25
+      ],
+      "ap": 5,
+      "range": 9,
+      "ammo": "cell",
+      "skill": "armes",
+      "weight": 2.5,
+      "value": 480,
+      "icon": "⌁"
+    },
+    "knife": {
+      "name": "Lame de ferrailleur",
+      "kind": "weapon",
+      "desc": "Pas de munitions. Il faut en revanche s’approcher.",
+      "damage": [
+        5,
+        10
+      ],
+      "ap": 3,
+      "range": 1,
+      "skill": "melee",
+      "weight": 0.6,
+      "value": 28,
+      "icon": "†"
+    },
+    "coat": {
+      "name": "Manteau doublé",
+      "kind": "armor",
+      "desc": "La poussière passe. Les petits éclats, moins.",
+      "armor": 2,
+      "weight": 2,
+      "value": 55,
+      "icon": "♜"
+    },
+    "vest": {
+      "name": "Gilet balistique",
+      "kind": "armor",
+      "desc": "Les plaques ont déjà servi. Elles tiendront encore.",
+      "armor": 5,
+      "weight": 4,
+      "value": 190,
+      "icon": "♜"
+    },
+    "armor": {
+      "name": "Carapace SMPD",
+      "kind": "armor",
+      "desc": "Des plaques en céramique, marquées d’un numéro effacé.",
+      "armor": 8,
+      "weight": 7,
+      "value": 420,
+      "icon": "♜"
+    },
+    "ammo": {
+      "name": "Cartouches 9 × 33",
+      "kind": "ammo",
+      "desc": "Munitions pour armes cinétiques.",
+      "weight": 0.02,
+      "value": 3,
+      "icon": "⁝"
+    },
+    "cell": {
+      "name": "Cellule énergétique",
+      "kind": "ammo",
+      "desc": "Charge compatible avec les émetteurs IO.",
+      "weight": 0.03,
+      "value": 6,
+      "icon": "▥"
+    },
+    "medkit": {
+      "name": "Trousse de soin",
+      "kind": "consumable",
+      "desc": "Restaure 25 points de vie. 3 PA en combat.",
+      "heal": 25,
+      "weight": 0.5,
+      "value": 42,
+      "icon": "✚"
+    },
+    "antirad": {
+      "name": "Chélateur R-8",
+      "kind": "consumable",
+      "desc": "Élimine 35 unités de radiation. Ne guérit pas les mutations.",
+      "rad": -35,
+      "weight": 0.2,
+      "value": 35,
+      "icon": "☣"
+    },
+    "water": {
+      "name": "Eau filtrée",
+      "kind": "consumable",
+      "desc": "Réduit fatigue et soif. Une ration est utilisée pendant un long trajet.",
+      "fatigue": -18,
+      "weight": 0.4,
+      "value": 6,
+      "icon": "◊"
+    },
+    "scrap": {
+      "name": "Pièces mécaniques",
+      "kind": "material",
+      "desc": "Le peu qui fonctionne encore mérite d’être réparé.",
+      "weight": 0.3,
+      "value": 10,
+      "icon": "⚙"
+    },
+    "medicine": {
+      "name": "Antibiotiques scellés",
+      "kind": "quest",
+      "desc": "Un lot pharmaceutique préservé. Demandé à la clinique de Dusk-Town.",
+      "weight": 0.2,
+      "value": 90,
+      "icon": "✚"
+    },
+    "regulator": {
+      "name": "Régulateur de condensateur",
+      "kind": "quest",
+      "desc": "Une pièce industrielle rare. Peut sauver le réseau d’eau de Dusk-Town.",
+      "weight": 2,
+      "value": 380,
+      "icon": "⚙"
+    },
+    "archive": {
+      "name": "Mémoire hydraulique",
+      "kind": "quest",
+      "desc": "Clé de répartition des eaux détenue avant la guerre par les autorités de Buenos Aires.",
+      "weight": 0.1,
+      "value": 0,
+      "icon": "▣"
+    },
+    "pass": {
+      "name": "Laissez-passer IO",
+      "kind": "quest",
+      "desc": "Un transit de maintenance valide. Il ne dissimule pas une mutation visible.",
+      "weight": 0,
+      "value": 0,
+      "icon": "▤"
+    },
+    "ledger": {
+      "name": "Registre des dettes",
+      "kind": "quest",
+      "desc": "Les comptes des Protectores. Une colonne de noms ; une autre de prix.",
+      "weight": 0.2,
+      "value": 0,
+      "icon": "▤"
+    },
+    "letter": {
+      "name": "Dossier des disparus",
+      "kind": "quest",
+      "desc": "Les identités des captifs déplacés depuis l’ancienne capitale.",
+      "weight": 0.1,
+      "value": 0,
+      "icon": "▤"
+    },
+    "parcel": {
+      "name": "Module non déclaré",
+      "kind": "quest",
+      "desc": "Un relais radio miniature destiné à Sine Vincula.",
+      "weight": 0.4,
+      "value": 0,
+      "icon": "▣"
+    },
+    "proof": {
+      "name": "Relevés de la Sous-Ville",
+      "kind": "quest",
+      "desc": "IO détourne des rations d’eau des travailleurs non enregistrés.",
+      "weight": 0,
+      "value": 0,
+      "icon": "▤"
+    },
+    "focus": {
+      "name": "Fragment gravé",
+      "kind": "quest",
+      "desc": "Une pierre tiède, bien trop loin de toute source de chaleur.",
+      "weight": 0.1,
+      "value": 0,
+      "icon": "◇"
+    },
+    "chemical": {
+      "name": "Réactifs scellés",
+      "kind": "material",
+      "desc": "Solvants, sels et charges stabilisées. Ne pas confondre avec les épices.",
+      "weight": 0.3,
+      "value": 14,
+      "icon": "⚗"
+    },
+    "cloth": {
+      "name": "Tissu propre",
+      "kind": "material",
+      "desc": "« Propre » reste un terme comparatif.",
+      "weight": 0.15,
+      "value": 8,
+      "icon": "▱"
+    },
+    "grenade": {
+      "name": "Grenade à fragmentation",
+      "kind": "throwable",
+      "desc": "4 PA · portée 6 · rayon 2 · 18–26 dégâts. Les proches aussi sont proches.",
+      "damage": [
+        18,
+        26
+      ],
+      "ap": 4,
+      "range": 6,
+      "radius": 2,
+      "weight": 0.4,
+      "value": 58,
+      "icon": "◉"
+    },
+    "smoke": {
+      "name": "Fumigène",
+      "kind": "throwable",
+      "desc": "3 PA · portée 6 · brouille la visée dans un rayon de 2 pendant 3 tours.",
+      "ap": 3,
+      "range": 6,
+      "radius": 2,
+      "weight": 0.3,
+      "value": 40,
+      "icon": "≋"
+    },
+    "lockpick": {
+      "name": "Crochet de récupération",
+      "kind": "material",
+      "desc": "Un outil consommé par ouverture. Discrétion 50 requise.",
+      "weight": 0.05,
+      "value": 20,
+      "icon": "⌐"
+    },
+    "coil": {
+      "name": "Bobine de conversion",
+      "kind": "quest",
+      "desc": "Un module énergétique récupéré dans le bunker de maintenance. Choisissez qui recevra le courant.",
+      "weight": 1.2,
+      "value": 0,
+      "icon": "▣"
+    },
+    "claim": {
+      "name": "Dossier du bloc 41",
+      "kind": "quest",
+      "desc": "L’historique des loyers et les signatures des locataires. Cora vous l’a confié pour le registre civique.",
+      "weight": 0.1,
+      "value": 0,
+      "icon": "▤"
+    },
+    "coldpack": {
+      "name": "Lot de régulateurs biologiques",
+      "kind": "quest",
+      "desc": "Modules destinés au suivi de prothèses. Le scellé maintient leur température.",
+      "weight": 0.7,
+      "value": 0,
+      "icon": "▣"
+    },
+    "receipt": {
+      "name": "Reçu d’Asia-Ground",
+      "kind": "quest",
+      "desc": "L’heure de vente et le numéro de la caisse situent Sami sur le marché lors de son contrôle.",
+      "weight": 0,
+      "value": 0,
+      "icon": "▤"
+    },
+    "bridge": {
+      "name": "Pont de commande du métro",
+      "kind": "quest",
+      "desc": "Une pièce de remplacement pour le répartiteur des blocs résidentiels.",
+      "weight": 0.4,
+      "value": 0,
+      "icon": "⚙"
+    },
+    "tramcoil": {
+      "name": "Frein de treuil",
+      "kind": "quest",
+      "weight": 1,
+      "value": 0,
+      "desc": "Frein récupéré dans une caisse destinée aux ateliers."
+    },
+    "film": {
+      "name": "Bobine de dessins animés",
+      "kind": "quest",
+      "weight": 1,
+      "value": 0,
+      "desc": "Une étiquette propose trois courts métrages. Le boîtier est sec."
+    }
+  },
+  "QUESTS": {
+    "main": {
+      "name": "La dette des vivants",
+      "faction": "Dusk-Town",
+      "stages": [
+        "Parlez à Mara, près de la pompe de Dusk-Town.",
+        "Trouvez un régulateur au Titan échoué ou dans les bazars de Junk-Burgh.",
+        "Rapportez le régulateur à Mara.",
+        "Obtenez la mémoire hydraulique de Buenos Aires, ou l’accès administratif d’Ada Voss à Steel-Megalopolis.",
+        "Rejoignez la station de répartition. Décidez qui contrôlera l’eau.",
+        "Votre décision a changé le réseau. Retournez voir ceux qui devront vivre avec elle."
+      ]
+    },
+    "medicine": {
+      "name": "Le prix d’un poumon",
+      "faction": "Dusk-Town",
+      "stages": [
+        "La clinique de Dusk-Town manque de médicaments.",
+        "Trouvez des antibiotiques scellés et rapportez-les à Vera.",
+        "La clinique dispose enfin de médicaments."
+      ]
+    },
+    "farm": {
+      "name": "La terre a soif",
+      "faction": "Indépendants",
+      "stages": [
+        "Inés lutte contre la panne de ses serres.",
+        "Réparez la pompe d’irrigation ou donnez trois rations d’eau à Inés.",
+        "Les serres de Granja Altruista sont sauvées."
+      ]
+    },
+    "luz": {
+      "name": "Une porte, un numéro",
+      "faction": "IO",
+      "stages": [
+        "Une ouvrière attend à la douane ouest.",
+        "Obtenez l’admission de Luz auprès de Vidal.",
+        "Le sort de Luz est réglé."
+      ]
+    },
+    "debt": {
+      "name": "Une ligne dans un livre",
+      "faction": "Protectores",
+      "stages": [
+        "À Junk-Burgh, Diego doit plus qu’il ne possède.",
+        "Faites effacer sa dette par Alma, ou accédez au registre du bazar.",
+        "Diego peut quitter le bazar."
+      ]
+    },
+    "courier": {
+      "name": "Les noms qu’on efface",
+      "faction": "Los Nativos",
+      "stages": [
+        "Tomás attend des nouvelles de sa courrière.",
+        "Retrouvez Lucero sur Waste Coast.",
+        "Rapportez son dossier à Tomás.",
+        "La nouvelle est arrivée à Buenos Aires."
+      ]
+    },
+    "workers": {
+      "name": "Le dessous du marbre",
+      "faction": "Sous-Ville",
+      "stages": [
+        "Les ouvriers manquent d’eau sous le sarcophage.",
+        "Récupérez les relevés sur le terminal industriel.",
+        "Choisissez : transmettre les preuves à Salma ou les vendre à l’inspecteur H-6.",
+        "Les relevés ont trouvé leur destinataire."
+      ]
+    },
+    "parcel": {
+      "name": "Un bruit dans le réseau",
+      "faction": "Sine Vincula",
+      "stages": [
+        "Yuna Marin cherche une personne discrète.",
+        "Livrez le module à Salma, ou dénoncez le trafic à Vidal.",
+        "Le module a changé de mains."
+      ]
+    },
+    "deserter": {
+      "name": "Le drapeau et la peau",
+      "faction": "UFSA",
+      "stages": [
+        "Un déserteur se cache au port.",
+        "Offrez-lui une issue à Dusk-Town ou livrez sa position à Ortiz.",
+        "Le sort d’Esteban est scellé."
+      ]
+    },
+    "aura": {
+      "name": "Ce que le métal étouffe",
+      "faction": "Inconnue",
+      "stages": [
+        "Un temple demeure dans les montagnes de l’ouest.",
+        "Écoutez la Veilleuse et examinez l’autel sans implant actif.",
+        "Vous avez éveillé une perception que le vieux monde avait oubliée."
+      ]
+    },
+    "power": {
+      "name": "Une lumière dans la facture",
+      "faction": "Dusk-Town / IO",
+      "stages": [
+        "Nilo cherche de quoi alimenter les lampes du dispensaire.",
+        "Récupérez la bobine dans le bunker du Titan. Son coffre dépend de la console de maintenance.",
+        "Apportez la bobine à Nilo ou vendez-la à Ada Voss.",
+        "La bobine est installée à Dusk-Town.",
+        "IO a récupéré la bobine. Le confort des abonnés est préservé."
+      ]
+    },
+    "housing": {
+      "name": "Le bloc reste habité",
+      "faction": "Résidents / IO",
+      "stages": [
+        "Cora cherche de l’aide pour un recours.",
+        "Déposez le dossier du bloc 41 auprès d’Eva au registre civique.",
+        "Rapportez à Cora la décision concernant les logements.",
+        "Le recours est appliqué. Les locataires gardent leurs appartements."
+      ]
+    },
+    "cold": {
+      "name": "Livraison sous contrôle",
+      "faction": "Clinique / Sous-Ville",
+      "stages": [
+        "La clinique attend un lot de régulateurs.",
+        "Récupérez le lot chez IO Industries avec la référence fournie par Sen.",
+        "Livrez le lot à Sen ou proposez-le à Salma pour les ouvriers hors registre.",
+        "La livraison a été effectuée."
+      ]
+    },
+    "custody": {
+      "name": "L’heure sur le reçu",
+      "faction": "Asia-Ground / SMPD",
+      "stages": [
+        "Leda cherche son frère Sami.",
+        "Interrogez le bureau de garde SMPD au sujet de Sami Mansour.",
+        "Apportez le reçu du marché et demandez la révision de sa retenue.",
+        "Sami a été libéré. Prévenez Leda à Asia-Ground.",
+        "Leda et Sami sont réunis."
+      ]
+    },
+    "transit": {
+      "name": "Dernière correspondance",
+      "faction": "Réseau de transport",
+      "stages": [
+        "Elías attend une équipe de maintenance.",
+        "Le répartiteur des blocs doit être réparé. Un pont de commande est disponible à China Lake.",
+        "La ligne des blocs fonctionne. Retournez voir Elías.",
+        "Le réseau vous accorde la gratuité des trajets urbains."
+      ]
+    },
+    "cistern": {
+      "name": "Une citerne pour deux",
+      "stages": [
+        "Parler à Candela, aux avenues du nord.",
+        "Vérifier les pesées aux ateliers et le reçu de Nadia à Dusk-Town.",
+        "Les deux relevés sont disponibles. Négocier au barrage.",
+        "Le partage de la citerne est décidé."
+      ],
+      "faction": "Communautés"
+    },
+    "tram": {
+      "name": "La montée du dispensaire",
+      "stages": [
+        "Parler à Esmé dans les Patios.",
+        "Vico attend un frein de treuil à récupérer dans la lisière évacuée.",
+        "Réparer le treuil aux ateliers.",
+        "Le treuil fonctionne. Prévenir Esmé.",
+        "Le dispensaire peut recevoir ses livraisons."
+      ],
+      "faction": "Communautés"
+    },
+    "lot": {
+      "name": "Le poids du lot",
+      "stages": [
+        "Parler à Silas à Junk-Burgh.",
+        "Consulter le livre des lots aux ateliers de Buenos Aires.",
+        "Le bordereau est signé. Trouver une compensation à Junk-Burgh.",
+        "Le litige du lot est réglé."
+      ],
+      "faction": "Communautés"
+    },
+    "depot": {
+      "name": "Réserve de propriété",
+      "stages": [
+        "Écouter Bruna au dépôt de Novo Córdoba.",
+        "Comparer le titre UFSA et le registre de maintenance du relais.",
+        "Les usages antérieurs sont documentés. Négocier avec Ramos.",
+        "Une décision est appliquée au dépôt."
+      ],
+      "faction": "Communautés"
+    },
+    "front": {
+      "name": "La rue entre les fusils",
+      "stages": [
+        "Parler à Lian à la lisière de Buenos Aires.",
+        "Consulter le registre des ateliers au centre administratif.",
+        "Présenter le registre à Alder ou prendre parti.",
+        "La confrontation de la lisière est terminée."
+      ],
+      "faction": "Communautés"
+    },
+    "reel": {
+      "name": "Encore le 17 mars",
+      "stages": [
+        "Parler à Mila dans les Patios.",
+        "Chercher une bobine au centre administratif.",
+        "Réparer le projecteur du cinéma.",
+        "La séance peut enfin changer."
+      ],
+      "faction": "Communautés"
+    }
+  },
+  "STATS": {
+    "force": "Force",
+    "perception": "Perception",
+    "endurance": "Endurance",
+    "charisme": "Charisme",
+    "intelligence": "Intelligence",
+    "agilite": "Agilité",
+    "volonte": "Volonté"
+  },
+  "SKILLS": {
+    "armes": "Armes à feu",
+    "melee": "Corps à corps",
+    "tech": "Technologie",
+    "science": "Sciences",
+    "soin": "Médecine",
+    "parole": "Éloquence",
+    "troc": "Marchandage",
+    "furtif": "Discrétion",
+    "survie": "Survie",
+    "aura": "Aura"
+  },
+  "PERKS": [
+    {
+      "id": "tireur",
+      "name": "Main stable",
+      "desc": "+12 % de précision à distance."
+    },
+    {
+      "id": "souffle",
+      "name": "Second souffle",
+      "desc": "+10 PV maximum, +1 PA."
+    },
+    {
+      "id": "diplomate",
+      "name": "Les bons mots",
+      "desc": "+15 Éloquence et Marchandage."
+    },
+    {
+      "id": "resistant",
+      "name": "Peau de cendre",
+      "desc": "Radiations reçues réduites de 40 %."
+    },
+    {
+      "id": "canal",
+      "name": "Résonance profonde",
+      "desc": "Les soins et frappes d’Aura coûtent 1 PA de moins."
+    }
+  ],
+  "BACKGROUNDS": {
+    "road": {
+      "name": "Enfant des routes",
+      "desc": "+10 Survie · 2 eaux supplémentaires",
+      "skills": {
+        "survie": 10
+      },
+      "items": {
+        "water": 2
+      }
+    },
+    "guard": {
+      "name": "Ancienne gâchette",
+      "desc": "+10 Armes · 12 cartouches · IO −5",
+      "skills": {
+        "armes": 10
+      },
+      "items": {
+        "ammo": 12
+      },
+      "rep": {
+        "IO": -5
+      }
+    },
+    "scrapper": {
+      "name": "Récupération et petites combines",
+      "desc": "+10 Technologie · 3 pièces mécaniques",
+      "skills": {
+        "tech": 10
+      },
+      "items": {
+        "scrap": 3
+      }
+    },
+    "clerk": {
+      "name": "Employé modèle révoqué",
+      "desc": "+10 Éloquence · +10 Marchandage · 25 $",
+      "skills": {
+        "parole": 10,
+        "troc": 10
+      },
+      "money": 25
+    },
+    "medic": {
+      "name": "Médecine de bord de route",
+      "desc": "+10 Médecine · une trousse de soin",
+      "skills": {
+        "soin": 10
+      },
+      "items": {
+        "medkit": 1
+      }
+    }
+  },
+  "QUIRKS": {
+    "none": {
+      "name": "Pas de particularité",
+      "desc": "Une existence déjà suffisamment compliquée."
+    },
+    "steady": {
+      "name": "Méticuleux",
+      "desc": "+12 précision à distance · −1 PA maximum"
+    },
+    "brutal": {
+      "name": "Main lourde",
+      "desc": "+3 dégâts au corps à corps · −10 Armes à feu"
+    },
+    "scarred": {
+      "name": "Dur à enterrer",
+      "desc": "+10 PV · −10 Éloquence"
+    },
+    "owl": {
+      "name": "Oiseau de nuit",
+      "desc": "+15 Discrétion la nuit · −8 Armes en plein jour"
+    }
+  },
+  "RECIPES": {
+    "fieldmed": {
+      "name": "Pansements stériles",
+      "out": "medkit",
+      "qty": 1,
+      "inputs": {
+        "cloth": 2,
+        "chemical": 1
+      },
+      "skill": "soin",
+      "need": 45,
+      "desc": "Du tissu désinfecté, des agrafes et une foi modérée dans les microbes."
+    },
+    "frag": {
+      "name": "Grenade artisanale",
+      "out": "grenade",
+      "qty": 1,
+      "inputs": {
+        "scrap": 2,
+        "chemical": 1
+      },
+      "skill": "tech",
+      "need": 45,
+      "desc": "La précision, mais répartie sur tout le voisinage."
+    },
+    "smoke": {
+      "name": "Charge fumigène",
+      "out": "smoke",
+      "qty": 1,
+      "inputs": {
+        "scrap": 1,
+        "chemical": 1,
+        "cloth": 1
+      },
+      "skill": "tech",
+      "need": 35,
+      "desc": "Échapper aux regards. Aux responsabilités, résultats variables."
+    },
+    "rad": {
+      "name": "Chélateur R-8",
+      "out": "antirad",
+      "qty": 1,
+      "inputs": {
+        "chemical": 2,
+        "water": 1
+      },
+      "skill": "science",
+      "need": 55,
+      "desc": "En cas de doute sur votre lueur naturelle."
+    },
+    "ammo": {
+      "name": "Lot de 6 cartouches",
+      "out": "ammo",
+      "qty": 6,
+      "inputs": {
+        "scrap": 2,
+        "chemical": 1
+      },
+      "skill": "tech",
+      "need": 40,
+      "desc": "Douilles récupérées et charge stabilisée. Ne pas tester avec les dents."
+    },
+    "pick": {
+      "name": "Crochet de récupération",
+      "out": "lockpick",
+      "qty": 1,
+      "inputs": {
+        "scrap": 2
+      },
+      "skill": "tech",
+      "need": 30,
+      "desc": "Une clé qui ne croit pas à la propriété privée."
+    }
+  },
+  "ROAD_EVENTS": {
+    "salvage": {
+      "name": "Convoi ensablé",
+      "text": "Un autobus a quitté la piste. Les portières ont été arrachées, mais un coffret est encore fixé sous les sièges.",
+      "hostile": false
+    },
+    "caravan": {
+      "name": "Caravane des Protectores",
+      "text": "Deux véhicules sont arrêtés à l’abri d’un talus. Une marchande montre ses bidons sans lâcher votre arme des yeux. « L’eau est filtrée. Le tarif aussi : j’ai retiré les scrupules. »",
+      "hostile": false
+    },
+    "injured": {
+      "name": "Une voix derrière les tôles",
+      "text": "Une récupératrice vous appelle depuis une conduite éventrée. Sa jambe est bandée avec une manche. « J’ai essayé de marcher. C’était une idée de merde. Vous avez mieux ? »",
+      "hostile": false
+    },
+    "raiders": {
+      "name": "Péage improvisé",
+      "text": "Trois silhouettes occupent les restes d’une bretelle. Le plus proche lève une main. L’autre reste sur son fusil. « Vingt dollars pour passer. On entretient la route. Surtout cette partie-là. »",
+      "hostile": true
+    },
+    "mutants": {
+      "name": "Mouvements dans la poussière",
+      "text": "Des silhouettes déformées remuent derrière les carcasses. Elles ont repéré votre bruit. Vous pouvez encore chercher un détour.",
+      "hostile": true
+    },
+    "drone": {
+      "name": "Balayage d’un drone IO",
+      "text": "Un drone inspecte les conduites au ras du sol. Une voix enregistrée exige une accréditation de maintenance. Le canon pivote avant la fin du message.",
+      "hostile": true
+    },
+    "storm": {
+      "name": "Front de poussière",
+      "text": "Le vent efface la piste en quelques secondes. Une conduite rompue pourrait vous abriter. La balise municipale annonce une visibilité « conforme aux conditions extérieures ».",
+      "hostile": false
+    }
+  },
+  "worldCellCount": 167
+}

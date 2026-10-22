@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM12 Blocs résidentiels</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM12 | Blocs résidentiels</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,51 32,51 32,38 63,38 63,51 100,51" fill="none" stroke="#d7c59c" stroke-width="4"><title>Cour résidentielle / pieton</title></polyline>
+<polyline points="0,32 35,32 35,0" fill="none" stroke="#b4afa0" stroke-width="4"><title>Desserte arrière / service</title></polyline>
+<polyline points="49,38 49,36" fill="none" stroke="#d7c59c" stroke-width="3"><title>Vers la station / pieton</title></polyline>
+<rect x="5" y="6" width="27" height="24" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B01 | Bloc 41 | CONDITIONNEL | Habitat concerné par l’erreur de registre.</title></rect>
+<text x="5.7" y="8.1" class="id" fill="#aa772c">B01 C</text>
+<polygon points="18.5,30 17.9,31.3 19.1,31.3" fill="#aa772c"/>
+<rect x="66" y="5" width="29" height="24" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B02 | Bloc 42 | FERMÉ | Logements occupés.</title></rect>
+<text x="66.7" y="7.1" class="id" fill="#68716c">B02 N</text>
+<rect x="5" y="54" width="27" height="26" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Bloc 43 | CONDITIONNEL | Habitat et local des locataires.</title></rect>
+<text x="5.7" y="56.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="18.5,54 19.1,52.7 17.9,52.7" fill="#aa772c"/>
+<rect x="66" y="55" width="29" height="25" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B04 | Bloc 44 | FERMÉ | Résidences ; fenêtres et vie visible.</title></rect>
+<text x="66.7" y="57.1" class="id" fill="#68716c">B04 N</text>
+<rect x="5" y="35" width="17" height="13" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Laverie | OUVERT | Service du quartier.</title></rect>
+<text x="5.7" y="37.1" class="id" fill="#287260">B05 O</text>
+<polygon points="22,41.5 23.3,42.1 23.3,40.9" fill="#287260"/>
+<rect x="79" y="34" width="16" height="14" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B06 | Réparation des ascenseurs | CONDITIONNEL | Maintenance du réseau vertical.</title></rect>
+<text x="79.7" y="36.1" class="id" fill="#aa772c">B06 C</text>
+<polygon points="79,41.0 77.7,40.4 77.7,41.6" fill="#aa772c"/>
+<rect x="36" y="65" width="24" height="13" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Épicerie | OUVERT | Ravitaillement des résidents.</title></rect>
+<text x="36.7" y="67.1" class="id" fill="#287260">B07 O</text>
+<polygon points="48.0,65 48.6,63.7 47.4,63.7" fill="#287260"/>
+<rect x="39" y="5" width="21" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Salle d’étude | OUVERT | Travail, soutien et annonces.</title></rect>
+<text x="39.7" y="7.1" class="id" fill="#287260">B08 O</text>
+<polygon points="49.5,23 48.9,24.3 50.1,24.3" fill="#287260"/>
+<rect x="42" y="28" width="15" height="8" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B09 | Station | OUVERT | Rejoindre les navettes du Forum.</title></rect>
+<text x="42.7" y="30.1" class="id" fill="#287260">B09 O</text>
+<polygon points="49.5,36 48.9,37.3 50.1,37.3" fill="#287260"/>
+<rect x="37" y="42" width="14" height="11" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Aire de jeu | Balançoire et craie, dans la cour protégée.</title></rect>
+<text x="42.8" y="47.9" class="small" fill="#44664c">D01</text>
+<rect x="53" y="44" width="9" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bancs | Deux bancs orientés vers le jeu.</title></rect>
+<text x="56.3" y="47.9" class="small" fill="#44664c">D02</text>
+<rect x="37" y="55" width="23" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Jardin commun | Bacs de cultures entretenus par les habitants.</title></rect>
+<text x="47.3" y="57.9" class="small" fill="#44664c">D03</text>
+<rect x="24" y="37" width="6" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Chariots | Remisage près de la laverie.</title></rect>
+<text x="25.8" y="41.4" class="small" fill="#44664c">D04</text>
+<rect x="14" y="31" width="7" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Panneau d’expulsion | Fixé au hall B01, source de la quête.</title></rect>
+<text x="16.3" y="32.4" class="small" fill="#44664c">D05</text>
+<rect x="73" y="32" width="5" height="17" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Local déchets | Bacs derrière une cloison de service.</title></rect>
+<text x="74.3" y="40.9" class="small" fill="#44664c">D06</text>
+<rect x="33" y="60" width="28" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Auvent des résidents | Réunions à l’abri du passage.</title></rect>
+<text x="45.8" y="61.9" class="small" fill="#44664c">D07</text>
+<rect x="31" y="12" width="35" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Passerelle haute | Relie les blocs au-dessus de la cour ; appuis intégrés.</title></rect>
+<text x="47.3" y="14.4" class="small" fill="#44664c">D08</text>
+<circle cx="17" cy="28" r=".5" fill="#a75932"><title>Cora Beltrán | Gère les clés au B01.</title></circle>
+<text x="18" y="28.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="80" cy="41" r=".5" fill="#a75932"><title>Elías Mena | Répare les accès au B06.</title></circle>
+<text x="81" y="41.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="36" cy="50" r=".5" fill="#a75932"><title>Tala | Garde la cour et les enfants.</title></circle>
+<text x="37" y="50.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="48" cy="67" r=".5" fill="#a75932"><title>Commerçant | Tient l’épicerie.</title></circle>
+<text x="49" y="67.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="28" cy="33" r=".5" fill="#a75932"><title>Deux locataires | Attendent le suivi du recours.</title></circle>
+<text x="29" y="33.4" class="small" fill="#9b4f2c">P05</text>
+<circle cx="64" cy="46" r=".5" fill="#a75932"><title>Agent de nettoyage | Longe l’allée de service.</title></circle>
+<text x="65" y="46.4" class="small" fill="#9b4f2c">P06</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

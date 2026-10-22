@@ -1,0 +1,45 @@
+﻿id;ville;quartier;page_plan;page_fiche;fichier_svg
+SM01;Steel-Megalopolis;Douane ouest;9;10;SM01.svg
+SM02;Steel-Megalopolis;Douane nord;11;12;SM02.svg
+SM03;Steel-Megalopolis;Douane est;13;14;SM03.svg
+SM04;Steel-Megalopolis;IO Industries;15;16;SM04.svg
+SM05;Steel-Megalopolis;Avant-poste nord;17;18;SM05.svg
+SM06;Steel-Megalopolis;Avant-poste est;19;20;SM06.svg
+SM07;Steel-Megalopolis;Avant-poste sud;21;22;SM07.svg
+SM08;Steel-Megalopolis;Sous-Ville;23;24;SM08.svg
+SM09;Steel-Megalopolis;Forum de Lower-Town;25;26;SM09.svg
+SM10;Steel-Megalopolis;China Lake;27;28;SM10.svg
+SM11;Steel-Megalopolis;Asia-Ground;29;30;SM11.svg
+SM12;Steel-Megalopolis;Blocs résidentiels;31;32;SM12.svg
+SM13;Steel-Megalopolis;Arcadius et Avenue Centrale;33;34;SM13.svg
+SM14;Steel-Megalopolis;Pôle des augmentations;35;36;SM14.svg
+SM15;Steel-Megalopolis;Registre civique;37;38;SM15.svg
+SM16;Steel-Megalopolis;Préfecture SMPD;39;40;SM16.svg
+SM17;Steel-Megalopolis;Jardins suspendus;41;42;SM17.svg
+SM18;Steel-Megalopolis;Atrium du siège IO;43;44;SM18.svg
+DT01;Dusk-Town;Avenue des services;46;47;DT01.svg
+DT02;Dusk-Town;Cours habitées;48;49;DT02.svg
+DT03;Dusk-Town;Ateliers et sous-sols scellés;50;51;DT03.svg
+JB01;Junk-Burgh;Porte et bazar extérieur;53;54;JB01.svg
+JB02;Junk-Burgh;Halles et comptes;55;56;JB02.svg
+JB03;Junk-Burgh;Ruelles des séjours;57;58;JB03.svg
+JB04;Junk-Burgh;Enclos et ateliers;59;60;JB04.svg
+BA01;Buenos Aires;Avenues du nord;62;63;BA01.svg
+BA02;Buenos Aires;Patios habités;64;65;BA02.svg
+BA03;Buenos Aires;Centre administratif;66;67;BA03.svg
+BA04;Buenos Aires;Ateliers du rail;68;69;BA04.svg
+BA05;Buenos Aires;Lisière évacuée;70;71;BA05.svg
+NC01;Novo Córdoba;Place civile;73;74;NC01.svg
+NC02;Novo Córdoba;Garnison et radio;75;76;NC02.svg
+NC03;Novo Córdoba;Dépôt et points de puisage;77;78;NC03.svg
+PU01;Port UFSA;Quai exploitable;80;81;PU01.svg
+PU02;Port UFSA;Ville portuaire et chantier;82;83;PU02.svg
+SU01;Siège UFSA;Ensemble civique fortifié;85;86;SU01.svg
+SU02;Siège UFSA;Faubourg des services;87;88;SU02.svg
+AN01;Sites isolés;Granja Altruista;90;91;AN01.svg
+AN02;Sites isolés;Big Larry Area;92;93;AN02.svg
+AN03;Sites isolés;Striker Oméga / MC n°12;94;95;AN03.svg
+AN04;Sites isolés;Station de répartition;96;97;AN04.svg
+AN05;Sites isolés;Temple du couchant;98;99;AN05.svg
+AN06;Sites isolés;Nœud maritime IO;100;101;AN06.svg
+AN07;Sites isolés;Waste Coast;102;103;AN07.svg

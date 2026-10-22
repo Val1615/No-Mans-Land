@@ -1,0 +1,340 @@
+﻿ville;quartier_id;quartier;name;x;y;w;h;contenu;id
+Steel-Megalopolis;SM01;Douane ouest;Aire de convoi;8;32;23;8;"Deux camions en file, nez vers l’est ; aucun véhicule dans le couloir civil.";D01
+Steel-Megalopolis;SM01;Douane ouest;File civile;10;49;23;5;Auvents, bancs et garde-corps parallèles au trottoir.;D02
+Steel-Megalopolis;SM01;Douane ouest;Portiques;31;36;5;12;Deux lecteurs et une barrière sur la route.;D03
+Steel-Megalopolis;SM01;Douane ouest;Déchargement;40;32;20;4;Palettes uniquement devant les portes du hangar.;D04
+Steel-Megalopolis;SM01;Douane ouest;Pesée;65;36;7;10;Plateaux encastrés dans la chaussée.;D05
+Steel-Megalopolis;SM01;Douane ouest;Eau et déchets;23;67;9;7;"Point d’eau, poubelles fermées ; hors de la file.";D06
+Steel-Megalopolis;SM01;Douane ouest;Clôture;3;3;94;2;"Limite grillagée ; passages ouverts seulement sur les voies.";D07
+Steel-Megalopolis;SM01;Douane ouest;Sable de bordure;92;39;5;18;Accumulation contre la clôture, pas au milieu du passage.;D08
+Steel-Megalopolis;SM02;Douane nord;Balance;43;29;12;17;Long plateau, arrêt sur ligne avant la pesée.;D01
+Steel-Megalopolis;SM02;Douane nord;Boucle de fret;57;35;8;24;Flèches de circulation et deux bornes anti-intrusion.;D02
+Steel-Megalopolis;SM02;Douane nord;Camion saisi;74;35;12;5;"Bâche ouverte côté halle ; cargaison retenue à portée.";D03
+Steel-Megalopolis;SM02;Douane nord;Masses étalons;19;34;4;3;Coffret au banc de Reina, pas une caisse de butin.;D04
+Steel-Megalopolis;SM02;Douane nord;Attente abritée;30;49;5;14;Bancs et auvent devant le bâtiment civil.;D05
+Steel-Megalopolis;SM02;Douane nord;Pylône;4;69;4;5;Éclairage du parking, avec coffret au pied.;D06
+Steel-Megalopolis;SM02;Douane nord;Barrière nord;38;21;20;2;"Arrêt avant la balance ; passage piéton contournant le poste.";D07
+Steel-Megalopolis;SM02;Douane nord;Désert visible;94;9;5;52;Talus sableux en bordure, sans immeuble.;D08
+Steel-Megalopolis;SM03;Douane est;Convoi marchand;20;35;30;6;Trois véhicules répartis en travées, accès cabine préservé.;D01
+Steel-Megalopolis;SM03;Douane est;Manutention;77;35;8;12;Diable, attaches et palette devant la halle.;D02
+Steel-Megalopolis;SM03;Douane est;File des litiges;15;47;18;4;Bancs et tickets face au bureau, sans couper la chaussée.;D03
+Steel-Megalopolis;SM03;Douane est;Échantillons;40;35;5;2;Bac de prélèvements devant le local d’analyse.;D04
+Steel-Megalopolis;SM03;Douane est;Lots refusés;60;73;28;4;"Dépôt clôturé rattaché à B04 ; aucun déchet aléatoire.";D05
+Steel-Megalopolis;SM03;Douane est;Contrôle routier;84;47;12;3;Herse escamotable et barrière.;D06
+Steel-Megalopolis;SM03;Douane est;Point d’eau;36;70;6;4;Pour les personnes en attente, hors des tests de fret.;D07
+Steel-Megalopolis;SM03;Douane est;Muret séparateur;8;45;44;1;Le trottoir civil longe le sud du parvis.;D08
+Steel-Megalopolis;SM04;IO Industries;Quai de chargement;14;30;43;5;Portes numérotées, palettes classées par destination.;D01
+Steel-Megalopolis;SM04;IO Industries;Casier K-12;80;29;5;4;Frigo de transport au mur d’expédition.;D02
+Steel-Megalopolis;SM04;IO Industries;Chariot élévateur;62;31;5;7;Stationné en dehors de la boucle.;D03
+Steel-Megalopolis;SM04;IO Industries;Cuves;76;42;13;5;Deux cuves sur rétention près de la centrale.;D04
+Steel-Megalopolis;SM04;IO Industries;Fumées et extraction;12;2;28;2;Conduites fixées au toit, pas des cheminées isolées.;D05
+Steel-Megalopolis;SM04;IO Industries;Stock métallique;37;69;23;7;Râteliers couverts attenants à l’atelier.;D06
+Steel-Megalopolis;SM04;IO Industries;Vestiaires extérieurs;5;44;3;13;Armoire de protections devant l’accès employé.;D07
+Steel-Megalopolis;SM04;IO Industries;Butte périphérique;94;10;5;59;Poussière et fossé d’isolement visibles.;D08
+Steel-Megalopolis;SM05;Avant-poste nord;Antennes de crête;36;7;13;18;"Deux mats alignés sur la crête ; câbles vers B03.";D01
+Steel-Megalopolis;SM05;Avant-poste nord;Sacs de tir;10;22;24;3;Couvert orienté vers le nord, ouvert à l’arrière.;D02
+Steel-Megalopolis;SM05;Avant-poste nord;Parc véhicules;41;32;33;7;Deux véhicules face à la sortie de garage.;D03
+Steel-Megalopolis;SM05;Avant-poste nord;Cour de relève;35;48;5;25;Voie dégagée vers le casernement.;D04
+Steel-Megalopolis;SM05;Avant-poste nord;Portail;20;70;17;3;Sépare route de liaison et cour réservée.;D05
+Steel-Megalopolis;SM05;Avant-poste nord;Réserve d’eau;78;33;7;10;Cuve protégée, derrière le portail.;D06
+Steel-Megalopolis;SM05;Avant-poste nord;Glacis;4;2;89;3;Terrain nu surveillé au nord.;D07
+Steel-Megalopolis;SM05;Avant-poste nord;Auvent visiteurs;10;67;20;2;Banc et panneau des horaires sous l’accueil.;D08
+Steel-Megalopolis;SM06;Avant-poste est;Antenne principale;45;27;12;19;Emprise clôturée, haubans ramenés aux quatre angles.;D01
+Steel-Megalopolis;SM06;Avant-poste est;Carcasse donneuse;75;68;15;6;Véhicule brûlé lié à la demande de pièces.;D02
+Steel-Megalopolis;SM06;Avant-poste est;Roues déposées;57;65;3;7;Paire de roues à portée du garage A.;D03
+Steel-Megalopolis;SM06;Avant-poste est;Plateforme radio;59;28;26;3;Chemin de câbles entre atelier et salle.;D04
+Steel-Megalopolis;SM06;Avant-poste est;Barrage;34;22;13;3;Passage autorisé après liaison.;D05
+Steel-Megalopolis;SM06;Avant-poste est;Parc de transit;8;30;25;8;Un véhicule arrêté, capot tourné vers l’atelier.;D06
+Steel-Megalopolis;SM06;Avant-poste est;Eau;29;48;5;7;Réserve clôturée attenante au casernement.;D07
+Steel-Megalopolis;SM06;Avant-poste est;Désert;95;50;4;24;Talus externe et sable, sans mobilier urbain luxueux.;D08
+Steel-Megalopolis;SM07;Avant-poste sud;Attente camions;32;34;26;6;"Deux voies ; véhicules orientés vers la sortie nord.";D01
+Steel-Megalopolis;SM07;Avant-poste sud;Quai de dépôt;7;31;39;3;Trois travées numérotées liées au grand hangar.;D02
+Steel-Megalopolis;SM07;Avant-poste sud;Pneus classés;64;29;21;3;Pneus réparables et rebuts sur deux râteliers distincts.;D03
+Steel-Megalopolis;SM07;Avant-poste sud;Ravitaillement;28;35;3;13;Pompe sur rétention, hors du chemin piéton.;D04
+Steel-Megalopolis;SM07;Avant-poste sud;Passage public;89;51;4;15;Couloir protégé vers le bureau de liaison.;D05
+Steel-Megalopolis;SM07;Avant-poste sud;Portail nord;53;3;12;3;Contrôle de tous les départs.;D06
+Steel-Megalopolis;SM07;Avant-poste sud;Barrière sud;54;73;12;3;Connexion directe à la route des terres.;D07
+Steel-Megalopolis;SM07;Avant-poste sud;Cour de repos;38;64;3;9;Bancs dans le seul angle autorisé au personnel.;D08
+Steel-Megalopolis;SM08;Sous-Ville;Piliers porteurs;31;29;8;8;"Un groupe de gros appuis ; passage sur deux côtés.";D01
+Steel-Megalopolis;SM08;Sous-Ville;Collecteur;55;28;8;52;"Canal technique bas ; deux passerelles seulement.";D02
+Steel-Megalopolis;SM08;Sous-Ville;Passerelle basse;52;39;15;4;Franchissement entre habitat et infirmerie.;D03
+Steel-Megalopolis;SM08;Sous-Ville;Passerelle haute;52;27;15;4;Franchissement vers la sous-station.;D04
+Steel-Megalopolis;SM08;Sous-Ville;Linge et cuisine;28;57;7;8;Linge au-dessus d’un coin de cuisine, sans couper la voie.;D05
+Steel-Megalopolis;SM08;Sous-Ville;Pièces refusées;38;25;14;4;Bacs au pied de la trieuse, classés par poids.;D06
+Steel-Megalopolis;SM08;Sous-Ville;Conduites aériennes;2;2;89;3;"Réseaux fixés au plafond ; leurs appuis sont sur les murs.";D07
+Steel-Megalopolis;SM08;Sous-Ville;Cour habitée;28;38;14;5;Bancs, table de réparation et jouets dans une cour protégée.;D08
+Steel-Megalopolis;SM09;Forum de Lower-Town;Écran municipal;9;29;22;3;"Suspendu à la façade de B01 ; pas un panneau dans la chaussée.";D01
+Steel-Megalopolis;SM09;Forum de Lower-Town;Arrêt navette;78;29;17;5;Deux portes d’embarquement et file matérialisée.;D02
+Steel-Megalopolis;SM09;Forum de Lower-Town;Coursive élevée;26;36;48;5;"Au-dessus du sol ; appuis hors des voies principales.";D03
+Steel-Megalopolis;SM09;Forum de Lower-Town;Livraisons;64;25;10;6;Deux chariots rangés contre la galerie.;D04
+Steel-Megalopolis;SM09;Forum de Lower-Town;Bancs et recharge;31;45;12;4;Le long d’un renfoncement, à l’écart des correspondances.;D05
+Steel-Megalopolis;SM09;Forum de Lower-Town;Ventilation;62;62;10;5;Coffrets et trappes intégrés à la réserve technique.;D06
+Steel-Megalopolis;SM09;Forum de Lower-Town;Étal de soir;28;68;5;8;Petit stand adossé au bar, pas une nouvelle ruine.;D07
+Steel-Megalopolis;SM09;Forum de Lower-Town;Boîtes des résidents;27;46;4;10;Panneau d’accès et boîtes près de la porte des tours.;D08
+Steel-Megalopolis;SM10;China Lake;Lanternes;26;21;42;3;"Deux lignes aériennes entre les façades ; attaches sur bâtiments.";D01
+Steel-Megalopolis;SM10;China Lake;Quai de réparation;24;39;5;14;Bobines et filet tendu au-dessus de la pierre.;D02
+Steel-Megalopolis;SM10;China Lake;Pont public;26;55;44;5;Passage libre, garde-corps des deux côtés.;D03
+Steel-Megalopolis;SM10;China Lake;Tables du quai;64;27;5;15;Trois tables liées au restaurant, sans occuper le quai entier.;D04
+Steel-Megalopolis;SM10;China Lake;Débris flottants;42;42;10;7;Petit amas au fond du lac, pas partout dans l’eau.;D05
+Steel-Megalopolis;SM10;China Lake;Borne de crue;29;51;3;3;Repères peints sur la rive, proches de Yu.;D06
+Steel-Megalopolis;SM10;China Lake;Cour de fret;65;62;6;12;Chariot et palettes rattachés à l’entrepôt.;D07
+Steel-Megalopolis;SM10;China Lake;Climatiseurs;8;2;18;3;Équipement fixé aux façades arrière, non isolé au sol.;D08
+Steel-Megalopolis;SM11;Asia-Ground;Couverture;7;26;85;3;Toiles et bandeaux fixés aux galeries, passage permanent en dessous.;D01
+Steel-Megalopolis;SM11;Asia-Ground;Tables de repas;72;27;18;6;Quatre tables entre cuisine et galerie.;D02
+Steel-Megalopolis;SM11;Asia-Ground;Étal fermé;36;7;5;17;Volet abaissé près de Leda, trace du contrôle de Sami.;D03
+Steel-Megalopolis;SM11;Asia-Ground;Bouilloire;58;66;3;4;Rattachée à la cuisine de Nour.;D04
+Steel-Megalopolis;SM11;Asia-Ground;Bacs de livraison;70;59;24;3;Deux bacs par boutique, étiquetés.;D05
+Steel-Megalopolis;SM11;Asia-Ground;Linge haut;33;37;3;14;Cordes au-dessus de l’allée, jamais en collision au sol.;D06
+Steel-Megalopolis;SM11;Asia-Ground;Armoire de recyclage;29;69;5;8;Bacs triés à proximité des logements.;D07
+Steel-Megalopolis;SM11;Asia-Ground;Affichages de location;62;26;5;6;Panneau adossé au mur du stand, sans écran géant.;D08
+Steel-Megalopolis;SM12;Blocs résidentiels;Aire de jeu;37;42;14;11;Balançoire et craie, dans la cour protégée.;D01
+Steel-Megalopolis;SM12;Blocs résidentiels;Bancs;53;44;9;7;Deux bancs orientés vers le jeu.;D02
+Steel-Megalopolis;SM12;Blocs résidentiels;Jardin commun;37;55;23;5;Bacs de cultures entretenus par les habitants.;D03
+Steel-Megalopolis;SM12;Blocs résidentiels;Chariots;24;37;6;8;Remisage près de la laverie.;D04
+Steel-Megalopolis;SM12;Blocs résidentiels;Panneau d’expulsion;14;31;7;2;Fixé au hall B01, source de la quête.;D05
+Steel-Megalopolis;SM12;Blocs résidentiels;Local déchets;73;32;5;17;Bacs derrière une cloison de service.;D06
+Steel-Megalopolis;SM12;Blocs résidentiels;Auvent des résidents;33;60;28;3;Réunions à l’abri du passage.;D07
+Steel-Megalopolis;SM12;Blocs résidentiels;Passerelle haute;31;12;35;4;"Relie les blocs au-dessus de la cour ; appuis intégrés.";D08
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Arcadius Gate;32;38;40;4;Portique monumental intégré à l’avenue, sans cinquième tour.;D01
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Signalétique;35;47;5;6;Totem d’orientation au bord du parvis.;D02
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Bancs de pause;30;59;7;13;Trois bancs sous des plantations entretenues.;D03
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Contrôle des halls;62;28;8;7;Bornes de lecture aux portes, pas sur la voie des navettes.;D04
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Balcons et passerelles;29;18;43;4;Relient les quatre tours à un niveau supérieur.;D05
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Vitrines;4;53;22;3;Façade de la boutique et éclairage bas.;D06
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Arrêt technique;74;50;21;3;Une navette de service, moteur coupé.;D07
+Steel-Megalopolis;SM13;Arcadius et Avenue Centrale;Jardinières;64;59;7;15;Séparation entre piétons et rampe des services.;D08
+Steel-Megalopolis;SM14;Pôle des augmentations;Jardin d’attente;41;31;21;16;Petit espace calme, bancs et plantes, passage périphérique libre.;D01
+Steel-Megalopolis;SM14;Pôle des augmentations;Accès ambulance;28;35;10;7;Dépose latérale sans stationnement permanent.;D02
+Steel-Megalopolis;SM14;Pôle des augmentations;Borne de contrats;40;49;5;3;Documents consultables avant l’entrée en admissions.;D03
+Steel-Megalopolis;SM14;Pôle des augmentations;Exercices extérieurs;63;31;9;14;Rampe et prises d’appui près de Sen.;D04
+Steel-Megalopolis;SM14;Pôle des augmentations;Fret froid;75;44;17;3;Deux colis sous témoin thermique rattachés au dépôt.;D05
+Steel-Megalopolis;SM14;Pôle des augmentations;Accès technique;94;8;4;63;Cour arrière fermée, réservée aux laboratoires.;D06
+Steel-Megalopolis;SM14;Pôle des augmentations;Publicité prothèses;9;2;25;3;Vitrine de démonstration attachée à la clinique.;D07
+Steel-Megalopolis;SM14;Pôle des augmentations;Dossiers patients;63;8;4;4;Armoire intérieure à la rééducation, jamais butin public.;D08
+Steel-Megalopolis;SM15;Registre civique;Files de guichets;27;28;49;3;Trois départs distincts et panneaux de fonction.;D01
+Steel-Megalopolis;SM15;Registre civique;Attente;36;43;28;9;Bancs en deux rangées, allée centrale dégagée.;D02
+Steel-Megalopolis;SM15;Registre civique;Distributeur de tickets;33;33;3;5;À l’entrée de la salle d’attente.;D03
+Steel-Megalopolis;SM15;Registre civique;Panneau des recours;66;42;3;9;Liste des pièces demandées, au mur de l’aile est.;D04
+Steel-Megalopolis;SM15;Registre civique;Tables de lecture;31;62;4;10;Table publique devant la certification.;D05
+Steel-Megalopolis;SM15;Registre civique;Verrière;24;2;52;2;"Éclairage du grand hall ; structure liée au bâtiment.";D06
+Steel-Megalopolis;SM15;Registre civique;Portillons;79;27;15;3;Séparent ascenseurs visiteurs et circulation publique.;D07
+Steel-Megalopolis;SM15;Registre civique;Bacs de traitement;8;69;20;4;Documents transportés par l’arrière, sous garde.;D08
+Steel-Megalopolis;SM16;Préfecture SMPD;Parvis;20;34;33;11;"Panneaux et bancs ; aucune voiture au milieu.";D01
+Steel-Megalopolis;SM16;Préfecture SMPD;Portique armes;36;32;7;3;Lien contrôlé entre accueil et bureaux.;D02
+Steel-Megalopolis;SM16;Préfecture SMPD;Véhicules;57;41;20;6;Deux places tournées vers le garage.;D03
+Steel-Megalopolis;SM16;Préfecture SMPD;Barrage motorisé;95;47;3;12;Accès indépendant du hall civil.;D04
+Steel-Megalopolis;SM16;Préfecture SMPD;Coffrets des scellés;8;72;22;3;Rangement intérieur fermé et lié au guichet.;D05
+Steel-Megalopolis;SM16;Préfecture SMPD;Rampe accessible;34;43;16;4;Permet de rejoindre le vestiaire depuis le hall.;D06
+Steel-Megalopolis;SM16;Préfecture SMPD;Caméras;71;35;23;2;"Fixées à l’aile de garde ; zones de vue vers les portillons.";D07
+Steel-Megalopolis;SM16;Préfecture SMPD;Affichage des recherches;7;32;20;2;Façade du hall, consultation depuis le trottoir.;D08
+Steel-Megalopolis;SM17;Jardins suspendus;Bassin;39;43;21;12;Eau propre, margelle accessible, franchissement interdit au centre.;D01
+Steel-Megalopolis;SM17;Jardins suspendus;Parterres hauts;8;30;20;16;"Massifs entretenus ; pas une végétation sauvage.";D02
+Steel-Megalopolis;SM17;Jardins suspendus;Bancs du bassin;34;49;4;10;Deux bancs avec vue, hors de la voie principale.;D03
+Steel-Megalopolis;SM17;Jardins suspendus;Horloge d’arrosage;60;63;4;6;Terminal discret près de l’horticulture.;D04
+Steel-Megalopolis;SM17;Jardins suspendus;Belvédère;65;31;10;10;Garde-corps et vue intérieure du dôme, pas sur le désert.;D05
+Steel-Megalopolis;SM17;Jardins suspendus;Statues et éclairage;50;27;10;5;Groupe sobre lié à l’allée, pas à chaque case libre.;D06
+Steel-Megalopolis;SM17;Jardins suspendus;Cour de livraison;36;78;26;2;Desserte arrière sous la promenade.;D07
+Steel-Megalopolis;SM17;Jardins suspendus;Treillage;65;73;27;3;"Plantes guidées sur l’orangerie ; pas de ruine.";D08
+Steel-Megalopolis;SM18;Atrium du siège IO;Escalier monumental;38;37;25;10;Marche basse reliant portique et vrai seuil de la tour.;D01
+Steel-Megalopolis;SM18;Atrium du siège IO;Jardin encadré;29;53;5;18;Bacs entretenus entre salon et contrôle.;D02
+Steel-Megalopolis;SM18;Atrium du siège IO;Jardin est;66;54;5;17;Même fonction de séparation, sans produire un passage clandestin.;D03
+Steel-Megalopolis;SM18;Atrium du siège IO;Ascenseurs visibles;40;7;21;4;Cages intégrées au volume principal, départs intérieurs.;D04
+Steel-Megalopolis;SM18;Atrium du siège IO;Annuaire;67;37;4;6;Écran accroché au mur des archives.;D05
+Steel-Megalopolis;SM18;Atrium du siège IO;Quai des navettes;4;43;23;6;Stationnement autorisé, accès au salon.;D06
+Steel-Megalopolis;SM18;Atrium du siège IO;Bancs du hall;39;32;22;3;Assises dans l’atrium, sans gêner la réception.;D07
+Steel-Megalopolis;SM18;Atrium du siège IO;Contrôle du niveau 0;43;2;15;1;Mention sur la coupe verticale seulement : aucune porte au sol.;D08
+Dusk-Town;DT01;Avenue des services;Pompe publique;35;28;8;7;"Point de puisage raccordé à B01 ; file courte sur le côté.";D01
+Dusk-Town;DT01;Avenue des services;Arrêt caravane;35;74;25;6;Deux emplacements sur stabilisé, entrée depuis le sud.;D02
+Dusk-Town;DT01;Avenue des services;Puits de lumière;6;2;22;3;Ouvertures protégées sur les toits, rues peu éclairées.;D03
+Dusk-Town;DT01;Avenue des services;Terrasse abritée;30;48;6;13;Deux tables du bar derrière le muret.;D04
+Dusk-Town;DT01;Avenue des services;Déchargement médical;79;30;13;3;Desserte de la clinique, réservée aux livraisons.;D05
+Dusk-Town;DT01;Avenue des services;Mur d’annonces;59;54;3;14;"Affiches contre le poste ; une partie arrachée.";D06
+Dusk-Town;DT01;Avenue des services;Herbes mortes;1;7;3;32;Bande au pied des murs anciens.;D07
+Dusk-Town;DT01;Avenue des services;Volets et linge;80;45;14;2;Le linge se voit depuis la cour, pas au milieu de l’avenue.;D08
+Dusk-Town;DT02;Cours habitées;Cour de repas;9;28;25;9;Tables, marmites et vaisselle près de la cuisine.;D01
+Dusk-Town;DT02;Cours habitées;Petit jardin;44;29;22;10;Cultures de survie peu abondantes, entretien manuel.;D02
+Dusk-Town;DT02;Cours habitées;Cour de bois;76;29;18;9;Portes démontées et planches classées devant Abel.;D03
+Dusk-Town;DT02;Cours habitées;Jeu tracé;34;44;6;8;Craie et petite roue, sans nouvelle aire luxueuse.;D04
+Dusk-Town;DT02;Cours habitées;Séchage;68;65;5;13;Cordes entre deux murs, accès au sol libre.;D05
+Dusk-Town;DT02;Cours habitées;Réserve d’eau;30;66;6;10;Cuves fermées contre l’école.;D06
+Dusk-Town;DT02;Cours habitées;Four commun;35;13;5;8;Adossé à la cuisine, fumée sortant au-dessus du toit.;D07
+Dusk-Town;DT02;Cours habitées;Façade aveugle;1;6;3;68;"Volets clos côté extérieur ; ouvertures sur cour.";D08
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Ancien parvis;9;31;47;8;"Sable, plaques fendues et clôture légère ; zone dégagée pour voir l’accès.";D01
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Porte scellée;47;27;11;2;Au mur de B05, sans halo d’entrée ni flèche de visite.;D02
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Pièces triées;8;43;25;3;Râteliers liés à Nilo, ferraille utile plutôt que caisses dispersées.;D03
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Déchargement;66;69;25;4;Palettes rassemblées au quai du dépôt.;D04
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Véhicule en réparation;44;49;12;5;Véhicule sur cales, nez vers la travée.;D05
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Cour de rebut;37;71;3;7;Ferraille non utilisable sous bâche.;D06
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Barrière de veille;61;31;2;11;Limite claire entre atelier et ancien site.;D07
+Dusk-Town;DT03;Ateliers et sous-sols scellés;Affiche ancienne;5;10;1;9;Panneau effacé, pas une exposition sur l’intrigue future.;D08
+Junk-Burgh;JB01;Porte et bazar extérieur;Barrières d’approche;1;30;5;12;Chicane d’entrée avec ligne de vue des gardes.;D01
+Junk-Burgh;JB01;Porte et bazar extérieur;Bazar ouvert;32;29;30;3;Tables de vente sous l’auvent de Roque.;D02
+Junk-Burgh;JB01;Porte et bazar extérieur;Attente chargements;33;48;28;6;Deux chariots face à l’est, hors de la galerie piétonne.;D03
+Junk-Burgh;JB01;Porte et bazar extérieur;Vérification du poids;71;27;21;3;Plateau et masses près du change.;D04
+Junk-Burgh;JB01;Porte et bazar extérieur;Auvents;5;25;88;2;Couvertures tendues entre façades, pas des mats aléatoires.;D05
+Junk-Burgh;JB01;Porte et bazar extérieur;Eau payante;65;66;6;7;Borne à côté de l’atelier de bâches.;D06
+Junk-Burgh;JB01;Porte et bazar extérieur;Affiches des tarifs;21;29;5;7;Visibles avant d’entrer, sur le montant de la porte.;D07
+Junk-Burgh;JB01;Porte et bazar extérieur;Tôle de clôture;2;74;26;3;Récupération utilisée pour la défense, pas un dépôt sans fonction.;D08
+Junk-Burgh;JB02;Halles et comptes;Allée de troc;8;29;85;3;Stands complémentaires dans les renfoncements, axe central libre.;D01
+Junk-Burgh;JB02;Halles et comptes;Lots exposés;36;48;21;4;Trois lots identifiés devant les enchères.;D02
+Junk-Burgh;JB02;Halles et comptes;Passage gardé;31;49;3;23;Portillon donnant aux comptes et aux lots, pas un accès depuis le désert.;D03
+Junk-Burgh;JB02;Halles et comptes;Tables de comparaison;8;44;22;3;Client et vendeur peuvent poser leurs pièces.;D04
+Junk-Burgh;JB02;Halles et comptes;Réducteurs de Silas;60;47;5;5;Deux pièces et une facture, situées ensemble.;D05
+Junk-Burgh;JB02;Halles et comptes;Registre de lots;39;56;4;4;Posé à l’intérieur de la salle d’étiquetage.;D06
+Junk-Burgh;JB02;Halles et comptes;Coffres de réserve;88;56;4;14;Alignés à un mur sous garde.;D07
+Junk-Burgh;JB02;Halles et comptes;Évacuation;60;69;5;10;Couloir de sécurité sans stand ni caisse.;D08
+Junk-Burgh;JB03;Ruelles des séjours;Terrasse de bar;64;29;28;3;Tables et cendriers rangés au mur.;D01
+Junk-Burgh;JB03;Ruelles des séjours;Cour du motel;6;30;24;2;Linge étendu et arrivée des clients sous galerie.;D02
+Junk-Burgh;JB03;Ruelles des séjours;Musique;66;9;7;5;Petite scène dans le bar, pas une borne au milieu de la rue.;D03
+Junk-Burgh;JB03;Ruelles des séjours;Récupération médicale;7;74;23;3;Déchets fermés et accès arrière de la clinique.;D04
+Junk-Burgh;JB03;Ruelles des séjours;Patio privé;60;54;3;19;Écran de tissu et assises, rattachés au salon.;D05
+Junk-Burgh;JB03;Ruelles des séjours;Panneau des chambres;33;8;4;8;Tarifs à l’extérieur de l’accueil.;D06
+Junk-Burgh;JB03;Ruelles des séjours;Fontaine payante;43;44;8;5;Unique point d’eau au carrefour.;D07
+Junk-Burgh;JB03;Ruelles des séjours;Éclairage des ruelles;24;35;3;9;Câbles et lampes fixés au-dessus du passage.;D08
+Junk-Burgh;JB04;Enclos et ateliers;Pièces par famille;9;31;35;3;Râteliers de moteurs, plaques et câbles, séparés.;D01
+Junk-Burgh;JB04;Enclos et ateliers;Cour d’essai;36;36;26;10;Moteur fixe et protection contre projections.;D02
+Junk-Burgh;JB04;Enclos et ateliers;Véhicule donneur;8;74;22;4;Carcasse identifiée, reliée au démontage.;D03
+Junk-Burgh;JB04;Enclos et ateliers;Tir d’essai;65;30;28;3;Mur de protection derrière l’armurerie.;D04
+Junk-Burgh;JB04;Enclos et ateliers;Balance;38;49;17;3;Plateau à l’entrée du comptoir.;D05
+Junk-Burgh;JB04;Enclos et ateliers;Cages;69;51;22;20;Cloisons liées au bâtiment sensible, pas des cages dans le marché public.;D06
+Junk-Burgh;JB04;Enclos et ateliers;Fret entrant;53;67;8;11;Palettes en attente et accès large côté sud.;D07
+Junk-Burgh;JB04;Enclos et ateliers;Rebut non vendu;95;52;4;22;Benne commune attenante aux ateliers.;D08
+Buenos Aires;BA01;Avenues du nord;Citerne;58;43;13;7;"Véhicule arrêté face au nord-est ; scellé et roue accessibles.";D01
+Buenos Aires;BA01;Avenues du nord;Quai abandonné;7;28;29;3;Ancien bord de quai, sans train décoratif habité.;D02
+Buenos Aires;BA01;Avenues du nord;Balances;44;41;11;3;Plateaux et jauges devant le poste.;D03
+Buenos Aires;BA01;Avenues du nord;Barrage démontable;65;34;11;3;Sacs et barrière orientés vers le convoi.;D04
+Buenos Aires;BA01;Avenues du nord;Cour des voyageurs;7;45;23;3;Bancs et marmite abrités, pas d’installation au centre de l’avenue.;D05
+Buenos Aires;BA01;Avenues du nord;Rails morts;39;2;2;24;"Vestiges de raccordement vers les ateliers ; rupture matérialisée.";D06
+Buenos Aires;BA01;Avenues du nord;Affiches de route;32;52;3;12;Informations déposées par les voyageurs.;D07
+Buenos Aires;BA01;Avenues du nord;Arches fragiles;2;8;3;19;Périmètre interdit à l’intérieur de la gare.;D08
+Buenos Aires;BA02;Patios habités;Cuisine extérieure;9;27;25;7;Marmites, réserve de combustible et table de lavage liées à Gaspar.;D01
+Buenos Aires;BA02;Patios habités;Point d’eau;38;34;9;8;Puits réparé, file protégée du passage principal.;D02
+Buenos Aires;BA02;Patios habités;Tables communes;30;45;25;9;"Repas ; une allée libre pour les brancards.";D03
+Buenos Aires;BA02;Patios habités;Accueil médical;68;28;25;4;Banc, petite rampe et zone de dépose.;D04
+Buenos Aires;BA02;Patios habités;Affiche du cinéma;61;54;3;8;Programme au mur du foyer, lisible avant l’entrée.;D05
+Buenos Aires;BA02;Patios habités;Linge des patios;28;56;6;6;Cordes au-dessus du sol, à l’abri du vent.;D06
+Buenos Aires;BA02;Patios habités;Jardin réduit;48;38;10;7;"Quelques cultures arrosées ; pas une avenue transformée en jungle.";D07
+Buenos Aires;BA02;Patios habités;Mémorial domestique;59;66;4;9;Photos et fleurs devant les logements, sans borne futuriste.;D08
+Buenos Aires;BA03;Centre administratif;Mémorial de la place;53;37;10;11;"Statue brisée et noms ; centre de rassemblement avec pourtour libre.";D01
+Buenos Aires;BA03;Centre administratif;Tables de lecture;8;30;26;3;Livres seulement sous l’auvent des archives.;D02
+Buenos Aires;BA03;Centre administratif;Bennes de gravats;5;74;25;4;Gravats rassemblés contre la ruine, sans dispersion dans toute la ville.;D03
+Buenos Aires;BA03;Centre administratif;Étais;39;31;21;2;Périmètre physique au pied du tribunal dangereux.;D04
+Buenos Aires;BA03;Centre administratif;Bancs publics;33;52;34;4;Bancs face à la place, pas sur la voie des livraisons.;D05
+Buenos Aires;BA03;Centre administratif;Livre des ateliers;68;9;6;4;Pièce intérieure accessible via Vesta, utile à la confrontation.;D06
+Buenos Aires;BA03;Centre administratif;Bobines sèches;40;63;6;6;Boîtes dans l’ancien musée, pas dans une caisse au hasard.;D07
+Buenos Aires;BA03;Centre administratif;Affiches locales;66;46;3;12;Mises à jour par l’imprimerie, nouvelles limitées au quartier.;D08
+Buenos Aires;BA04;Ateliers du rail;Deux voies;5;28;49;3;Rails raccordés à la remise, terminés sur butoir.;D01
+Buenos Aires;BA04;Ateliers du rail;Tram donneur;26;28;17;5;Carcasse sur la voie morte, sans habitants permanents.;D02
+Buenos Aires;BA04;Ateliers du rail;Butoirs;52;28;3;6;Fin physique de ligne, ne laisse pas croire à un train invisible.;D03
+Buenos Aires;BA04;Ateliers du rail;Câble du treuil;71;2;20;2;Départ vers le quartier des patios, réception contrôlée là-bas.;D04
+Buenos Aires;BA04;Ateliers du rail;Tri des essieux;7;44;22;3;Pièces lourdes au pied de la remise.;D05
+Buenos Aires;BA04;Ateliers du rail;Balance publique;62;51;3;15;Plateforme attenante au comptoir.;D06
+Buenos Aires;BA04;Ateliers du rail;Pièces de fabrication;38;49;20;3;Établis et chutes, organisés autour d’un travail.;D07
+Buenos Aires;BA04;Ateliers du rail;Rupture de rail;1;29;3;4;Liaison vers la gare impraticable tant qu’une reconstruction n’est pas décidée.;D08
+Buenos Aires;BA05;Lisière évacuée;Couvert Nativos;26;44;14;3;Muret et sacs orientés vers le nord-est.;D01
+Buenos Aires;BA05;Lisière évacuée;Couvert IO;63;29;12;3;Barrière orientée vers le sud-ouest.;D02
+Buenos Aires;BA05;Lisière évacuée;Rue de discussion;39;35;23;14;Volume vide voulu : permet approche, lecture et médiation.;D03
+Buenos Aires;BA05;Lisière évacuée;Caisse du frein;44;59;6;5;À l’intérieur du dépôt, près de son vrai seuil.;D04
+Buenos Aires;BA05;Lisière évacuée;Bretelle sûre;33;64;5;12;Chemin de récupération sans traverser les deux lignes de tir.;D05
+Buenos Aires;BA05;Lisière évacuée;Autobus calciné;7;43;15;4;Couvert physique sur le côté de la rue, pas en plein passage.;D06
+Buenos Aires;BA05;Lisière évacuée;Périmètre instable;96;6;3;68;Clôture et décombres marquant les blocs non accessibles.;D07
+Buenos Aires;BA05;Lisière évacuée;Radio commune;9;53;4;4;Dans l’abri, permet un contact cohérent entre postes.;D08
+Novo Córdoba;NC01;Place civile;Place de marché;33;31;32;14;Deux tables temporaires et axe central libre.;D01
+Novo Córdoba;NC01;Place civile;Point d’eau;33;49;5;8;"Borne alimentée depuis NC03 ; débit visible.";D02
+Novo Córdoba;NC01;Place civile;Auvents;7;29;27;3;Tissus au droit de la halle, pas partout sur les rues.;D03
+Novo Córdoba;NC01;Place civile;Banc des requêtes;66;29;25;3;Assises avant le guichet civil.;D04
+Novo Córdoba;NC01;Place civile;Parc des voyageurs;67;75;26;4;Deux emplacements hors du marché.;D05
+Novo Córdoba;NC01;Place civile;Réparations de voirie;2;49;2;19;Un chantier local lié à la conduite, déviation indiquée.;D06
+Novo Córdoba;NC01;Place civile;Boîtes aux lettres;62;66;3;10;Devant le courrier.;D07
+Novo Córdoba;NC01;Place civile;Habitat hors cadre;96;8;3;64;Façades fermées marquant la continuité de ville.;D08
+Novo Córdoba;NC02;Garnison et radio;Cour de relève;35;33;35;16;Formation et service, axe traversant maintenu.;D01
+Novo Córdoba;NC02;Garnison et radio;Mat radio;73;5;4;22;Haubans et alimentation reliés à la salle radio.;D02
+Novo Córdoba;NC02;Garnison et radio;Portail;25;33;7;14;Séparation physique public / militaire.;D03
+Novo Córdoba;NC02;Garnison et radio;Réserve d’eau;5;48;23;3;Cuve protégée près de l’infirmerie.;D04
+Novo Córdoba;NC02;Garnison et radio;Véhicule de liaison;72;34;7;13;Stationné face à la sortie, pas au milieu des soldats.;D05
+Novo Córdoba;NC02;Garnison et radio;Banc d’intendance;39;50;29;3;File hors du quai de stock.;D06
+Novo Córdoba;NC02;Garnison et radio;Panneau de patrouilles;9;30;20;2;Visible depuis la liaison, détails sensibles masqués.;D07
+Novo Córdoba;NC02;Garnison et radio;Mur d’enceinte;3;2;94;2;Enveloppe gardée, ouverte uniquement sur la route principale.;D08
+Novo Córdoba;NC03;Dépôt et points de puisage;Pompe civile;30;48;8;8;Puisage à hauteur de bidon, alimenté par le réseau existant.;D01
+Novo Córdoba;NC03;Dépôt et points de puisage;Quai militaire;67;47;26;3;Réserve des convois, hors de la file civile.;D02
+Novo Córdoba;NC03;Dépôt et points de puisage;File ombragée;8;46;20;3;Auvent devant l’abri, pas devant le bureau Ramos.;D03
+Novo Córdoba;NC03;Dépôt et points de puisage;Jauge;34;24;4;5;Lecture depuis le sas du réservoir.;D04
+Novo Córdoba;NC03;Dépôt et points de puisage;Conduite commune;40;30;3;18;Trappe et départ vers les deux usages.;D05
+Novo Córdoba;NC03;Dépôt et points de puisage;Citerne;43;49;13;5;Arrêt aligné sur la travée du garage.;D06
+Novo Córdoba;NC03;Dépôt et points de puisage;Relevé public;63;8;2;17;Tableau des volumes devant le bureau, après décision.;D07
+Novo Córdoba;NC03;Dépôt et points de puisage;Évacuation des eaux;2;52;3;24;Rigole vers l’extérieur, évite l’eau au pied des lits.;D08
+Port UFSA;PU01;Quai exploitable;Quai de travail;72;8;10;65;"Bord protégé ; trois points d’amarrage identifiés.";D01
+Port UFSA;PU01;Quai exploitable;Grue de récupération;70;30;8;11;Base hors du passage, rayon de charge marqué.;D02
+Port UFSA;PU01;Quai exploitable;Cargo modeste;86;19;11;29;"Unique navire visible à quai ; pas de flotte présumée.";D03
+Port UFSA;PU01;Quai exploitable;Déchargement;41;31;24;2;Lot devant la halle, en attente de contrôle.;D04
+Port UFSA;PU01;Quai exploitable;Rampe de soins;68;42;4;5;Accès continu du quai au local sanitaire.;D05
+Port UFSA;PU01;Quai exploitable;Bittes et filets;73;62;7;12;Accastillage lié au quai, pas au centre de la route.;D06
+Port UFSA;PU01;Quai exploitable;Voie interne proposée;43;4;1;72;Petite manutention portuaire, sans raccordement régional affirmé.;D07
+Port UFSA;PU01;Quai exploitable;Barrage du fret;70;49;12;2;Sépare les équipes du quai des visiteurs de capitainerie.;D08
+Port UFSA;PU02;Ville portuaire et chantier;Cour des filets;73;29;21;7;Séchage sur cadres devant la voilerie.;D01
+Port UFSA;PU02;Ville portuaire et chantier;Cale;84;45;11;29;Pente vers l’eau, accès restreint pendant les manœuvres.;D02
+Port UFSA;PU02;Ville portuaire et chantier;Coque sur bers;62;45;16;4;Pièce en réparation face à la vraie porte du chantier.;D03
+Port UFSA;PU02;Ville portuaire et chantier;Tables du marché;7;27;24;3;Trois petits bancs de vente.;D04
+Port UFSA;PU02;Ville portuaire et chantier;Cour domestique;32;54;4;20;Eau, linge et assises, protégés de la cale.;D05
+Port UFSA;PU02;Ville portuaire et chantier;Récupération marine;56;78;25;2;Bois trié en limite de chantier.;D06
+Port UFSA;PU02;Ville portuaire et chantier;Boîte de courrier;38;33;3;10;Rattachée à la permanence.;D07
+Port UFSA;PU02;Ville portuaire et chantier;Escalier de marée;96;51;3;18;Accès à l’eau, sans transition de ville.;D08
+Siège UFSA;SU01;Ensemble civique fortifié;Escalier principal;34;29;32;5;Seuil monumental aligné sur la vraie porte du hall.;D01
+Siège UFSA;SU01;Ensemble civique fortifié;Parvis;32;36;36;13;Dégagé pour contrôles et discussions, pas une place marchande.;D02
+Siège UFSA;SU01;Ensemble civique fortifié;Mât institutionnel;69;31;4;9;Drapeau proposé sans emblème inventé comme canon.;D03
+Siège UFSA;SU01;Ensemble civique fortifié;File des pétitions;6;58;21;4;Auvent latéral, hors des marches.;D04
+Siège UFSA;SU01;Ensemble civique fortifié;Casiers des visiteurs;39;60;7;12;À l’intérieur de l’accueil, accès en présence du préposé.;D05
+Siège UFSA;SU01;Ensemble civique fortifié;Antennes;7;2;14;3;Fixées à l’aile communications.;D06
+Siège UFSA;SU01;Ensemble civique fortifié;Évacuation neige;97;6;2;70;Rigole et zone de dépôt, sans montagnes de neige dans les portes.;D07
+Siège UFSA;SU01;Ensemble civique fortifié;Mur de garde;2;2;96;2;Ceinture du site, percée seulement aux arrivées prévues.;D08
+Siège UFSA;SU02;Faubourg des services;Place encaissée;31;32;41;16;Placette abritée du vent, halte des résidents.;D01
+Siège UFSA;SU02;Faubourg des services;Bornes de chauffage;65;60;1;14;Conduites isolées au mur technique, pas au centre de la place.;D02
+Siège UFSA;SU02;Faubourg des services;Cour du marché;8;29;23;3;Étals temporaires sous auvent.;D03
+Siège UFSA;SU02;Faubourg des services;Réserve combustible;72;77;22;3;Stock couvert et classé, lié à la chaufferie.;D04
+Siège UFSA;SU02;Faubourg des services;Escalier civil;66;4;5;25;Relie les logements au quartier supérieur.;D05
+Siège UFSA;SU02;Faubourg des services;Traîne de livraison;33;66;4;10;Petit matériel manuel des équipes, sans technologie nouvelle supposée.;D06
+Siège UFSA;SU02;Faubourg des services;Table des courriers;75;35;5;6;À l’intérieur de B08, rassemble les lettres.;D07
+Siège UFSA;SU02;Faubourg des services;Végétation rase;1;55;3;22;Bordure froide et pauvre, pas un jardin entretenu de Steel.;D08
+Sites isolés;AN01;Granja Altruista;Cuves d’eau;34;35;27;8;Réserves reliées aux serres et à la pompe.;D01
+Sites isolés;AN01;Granja Altruista;Quai des récoltes;8;74;23;4;Chargement côté piste, pas au milieu des cultures.;D02
+Sites isolés;AN01;Granja Altruista;Compost;95;55;4;17;Déchets organiques à l’écart des semences.;D03
+Sites isolés;AN01;Granja Altruista;Outils rangés;7;44;23;3;Râtelier contre le tri.;D04
+Sites isolés;AN01;Granja Altruista;Bacs de quarantaine;64;7;4;20;Réserve séparée, aucun passage de visiteurs.;D05
+Sites isolés;AN01;Granja Altruista;Corde de lavage;64;57;4;17;Cour domestique, pas une seconde serre.;D06
+Sites isolés;AN02;Big Larry Area;Verre vitrifié;25;14;54;48;Plaques et fractures concentrées autour de l’impact, sans marché ni habitation.;D01
+Sites isolés;AN02;Big Larry Area;Faille du rebord;15;51;16;7;Couvert rocheux interrompu, à contourner.;D02
+Sites isolés;AN02;Big Larry Area;Balise muette;83;58;4;7;Instrument ancien isolé, sans technicien résident.;D03
+Sites isolés;AN02;Big Larry Area;Ancienne piste minière;5;58;25;4;Rails morts limités au vestibule, aucun train.;D04
+Sites isolés;AN02;Big Larry Area;Point de retrait;38;69;11;5;"Zone de lecture du dosimètre ; pas un camp permanent.";D05
+Sites isolés;AN02;Big Larry Area;Bord dangereux;82;16;8;34;Fragments tranchants et rupture du relief.;D06
+Sites isolés;AN03;Striker Oméga / MC n°12;Approche de brèche;14;15;5;7;Chemin et ancrage devant la vraie façade du bras droit.;D01
+Sites isolés;AN03;Striker Oméga / MC n°12;Crâne enseveli;27;31;14;23;Tête face au sol, sans porte frontale.;D02
+Sites isolés;AN03;Striker Oméga / MC n°12;Liaisons d’épaule;46;23;8;6;Raccord entre bras droit et torse, à l’intérieur de la masse.;D03
+Sites isolés;AN03;Striker Oméga / MC n°12;Câble de treuil;16;56;12;5;Arrimage vers une plaque déposée, pas vers un moteur miracle.;D04
+Sites isolés;AN03;Striker Oméga / MC n°12;Pièces déposées;5;50;14;7;Petit stock trié près de l’abri.;D05
+Sites isolés;AN03;Striker Oméga / MC n°12;Dunes du corps;53;61;40;13;Ensevelissement sur le bas du torse et les appuis.;D06
+Sites isolés;AN03;Striker Oméga / MC n°12;Mémoire de l’équipage;35;16;4;4;"Élément intérieur de la coursive ; pas un panneau touristique extérieur.";D07
+Sites isolés;AN04;Station de répartition;Bassin de décantation;8;33;23;13;Bassin technique clôturé, pas une piscine traversable.;D01
+Sites isolés;AN04;Station de répartition;Bassin aval;70;34;24;13;Sépare les pompes du passage public.;D02
+Sites isolés;AN04;Station de répartition;Trappes des vannes;35;32;29;5;Trois trappes reliées au terminal.;D03
+Sites isolés;AN04;Station de répartition;Cour de manœuvre;35;42;29;14;Place nécessaire pour lever un moteur, sans mobilier parasite.;D04
+Sites isolés;AN04;Station de répartition;Ligne vers les communes;3;76;92;3;Collecteur enterré, quelques regards seulement.;D05
+Sites isolés;AN04;Station de répartition;Relève des compteurs;40;28;24;3;Relevés utiles aux contrats du dépôt UFSA.;D06
+Sites isolés;AN05;Temple du couchant;Autel ancien;43;11;13;15;Élément patrimonial, pas une machine technologique.;D01
+Sites isolés;AN05;Temple du couchant;Escaliers;36;31;25;7;Marches réparées reliant les deux terrasses.;D02
+Sites isolés;AN05;Temple du couchant;Muret et assises;36;43;28;5;Pause sous les arbres, chemin central libre.;D03
+Sites isolés;AN05;Temple du couchant;Rigoles;5;36;25;4;Évacuent l’eau loin des pierres.;D04
+Sites isolés;AN05;Temple du couchant;Lisière dense;2;2;94;5;Arbres en masses périphériques, jamais aléatoires sur le sentier.;D05
+Sites isolés;AN05;Temple du couchant;Pierres cassées;95;51;4;24;Stock de réparation près des cellules, pas du faux butin.;D06
+Sites isolés;AN06;Nœud maritime IO;Grue;73;22;8;13;Rayon de charge séparé des travailleurs.;D01
+Sites isolés;AN06;Nœud maritime IO;Cargo IO;85;14;13;37;Bâtiment de fret lié à un quai, pas un décor échoué.;D02
+Sites isolés;AN06;Nœud maritime IO;Quai;72;6;11;68;Bornes, garde-corps aux endroits hors manutention.;D03
+Sites isolés;AN06;Nœud maritime IO;Contrôle des colis;42;30;26;3;Palettes ordonnées par destination.;D04
+Sites isolés;AN06;Nœud maritime IO;Câbles et freins;6;46;25;3;Atelier mobile adossé au bâtiment de Celso.;D05
+Sites isolés;AN06;Nœud maritime IO;Bassin de réparation;75;55;9;20;Zone d’eau fermée pendant les opérations.;D06
+Sites isolés;AN07;Waste Coast;Échouage;69;37;21;15;Coque ancienne sur le rivage, à distance de l’abri.;D01
+Sites isolés;AN07;Waste Coast;Réfrigérateur;57;67;5;6;Unique clin d’œil : essai de protection non concluant, aucun nom d’œuvre.;D02
+Sites isolés;AN07;Waste Coast;Filets récupérés;47;56;13;7;Outils de León groupés pour une activité précise.;D03
+Sites isolés;AN07;Waste Coast;Débris de marée;84;58;10;15;Bande cohérente le long de la laisse de mer.;D04
+Sites isolés;AN07;Waste Coast;Relief dangereux;63;28;26;4;Rupture du terrain à contourner.;D05
+Sites isolés;AN07;Waste Coast;Signal du passage;37;35;5;5;Traces de route laissées à hauteur de la piste.;D06

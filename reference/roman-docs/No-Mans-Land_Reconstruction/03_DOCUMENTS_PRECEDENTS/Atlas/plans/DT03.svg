@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>DT03 Ateliers et sous-sols scellés</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">DT03 | Ateliers et sous-sols scellés</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,42 40,42 61,45 100,45" fill="none" stroke="#b4afa0" stroke-width="6"><title>Piste de livraison / route</title></polyline>
+<polyline points="50,80 50,75" fill="none" stroke="#b4afa0" stroke-width="5"><title>Accès garage / route</title></polyline>
+<polyline points="61,45 61,30 38,30" fill="none" stroke="#d7c59c" stroke-width="3"><title>Chemin de veille / pieton</title></polyline>
+<rect x="8" y="47" width="28" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Atelier Nilo | OUVERT | Réparer pompes et machines de la ville.</title></rect>
+<text x="8.7" y="49.1" class="id" fill="#287260">B01 O</text>
+<polygon points="36,58.0 37.3,58.6 37.3,57.4" fill="#287260"/>
+<rect x="65" y="49" width="28" height="19" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Dépôt de livraison | OUVERT | Recevoir nourriture, outils et pièces.</title></rect>
+<text x="65.7" y="51.1" class="id" fill="#287260">B02 O</text>
+<polygon points="65,58.5 63.7,57.9 63.7,59.1" fill="#287260"/>
+<rect x="40" y="55" width="20" height="20" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Garage communal | CONDITIONNEL | Réparer les véhicules de ravitaillement.</title></rect>
+<text x="40.7" y="57.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="50.0,55 50.6,53.7 49.4,53.7" fill="#aa772c"/>
+<rect x="7" y="7" width="29" height="23" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B04 | Ancien bâtiment technique | FERMÉ | Ruine de surface ; accès souterrain scellé.</title></rect>
+<text x="7.7" y="9.1" class="id" fill="#68716c">B04 N</text>
+<rect x="44" y="8" width="17" height="18" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B05 | Accès Human Corporation | RÉSERVÉ | Porte ancienne indéverrouillable en 2175.</title></rect>
+<text x="44.7" y="10.1" class="id" fill="#984b44">B05 R</text>
+<rect x="73" y="6" width="22" height="24" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B06 | Annexe industrielle | FERMÉ | Structure instable reliée à l’ancien site.</title></rect>
+<text x="73.7" y="8.1" class="id" fill="#68716c">B06 N</text>
+<rect x="66" y="34" width="13" height="7" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Poste de veille | OUVERT | Surveiller les tentatives d’intrusion.</title></rect>
+<text x="66.7" y="36.1" class="id" fill="#287260">B07 O</text>
+<polygon points="66,37.5 64.7,36.9 64.7,38.1" fill="#287260"/>
+<rect x="5" y="72" width="29" height="8" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B08 | Habitat des ouvriers | FERMÉ | Logements occupés liés à l’atelier.</title></rect>
+<text x="5.7" y="74.1" class="id" fill="#68716c">B08 N</text>
+<rect x="9" y="31" width="47" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Ancien parvis | Sable, plaques fendues et clôture légère ; zone dégagée pour voir l’accès.</title></rect>
+<text x="31.3" y="35.4" class="small" fill="#44664c">D01</text>
+<rect x="47" y="27" width="11" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Porte scellée | Au mur de B05, sans halo d’entrée ni flèche de visite.</title></rect>
+<text x="51.3" y="28.4" class="small" fill="#44664c">D02</text>
+<rect x="8" y="43" width="25" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Pièces triées | Râteliers liés à Nilo, ferraille utile plutôt que caisses dispersées.</title></rect>
+<text x="19.3" y="44.9" class="small" fill="#44664c">D03</text>
+<rect x="66" y="69" width="25" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Déchargement | Palettes rassemblées au quai du dépôt.</title></rect>
+<text x="77.3" y="71.4" class="small" fill="#44664c">D04</text>
+<rect x="44" y="49" width="12" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Véhicule en réparation | Véhicule sur cales, nez vers la travée.</title></rect>
+<text x="48.8" y="51.9" class="small" fill="#44664c">D05</text>
+<rect x="37" y="71" width="3" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour de rebut | Ferraille non utilisable sous bâche.</title></rect>
+<text x="37.3" y="74.9" class="small" fill="#44664c">D06</text>
+<rect x="61" y="31" width="2" height="11" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Barrière de veille | Limite claire entre atelier et ancien site.</title></rect>
+<text x="60.8" y="36.9" class="small" fill="#44664c">D07</text>
+<rect x="5" y="10" width="1" height="9" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Affiche ancienne | Panneau effacé, pas une exposition sur l’intrigue future.</title></rect>
+<text x="4.3" y="14.9" class="small" fill="#44664c">D08</text>
+<circle cx="33" cy="57" r=".5" fill="#a75932"><title>Nilo | Travaille dans l’atelier ; compagnon possible.</title></circle>
+<text x="34" y="57.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="67" cy="40" r=".5" fill="#a75932"><title>Milicien de veille | Interdit les travaux au seuil scellé.</title></circle>
+<text x="68" y="40.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="67" cy="58" r=".5" fill="#a75932"><title>Manutentionnaire | Réceptionne les livraisons.</title></circle>
+<text x="68" y="58.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="53" cy="52" r=".5" fill="#a75932"><title>Chauffeuse | Attend la réparation au garage.</title></circle>
+<text x="54" y="52.4" class="small" fill="#9b4f2c">P04</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

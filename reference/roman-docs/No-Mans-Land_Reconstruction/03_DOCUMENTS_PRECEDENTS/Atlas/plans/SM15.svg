@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM15 Registre civique</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM15 | Registre civique</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,35 22,35 50,39 78,35 100,35" fill="none" stroke="#d7c59c" stroke-width="5"><title>Galerie publique / pieton</title></polyline>
+<polyline points="50,39 50,54 69,54" fill="none" stroke="#d7c59c" stroke-width="4"><title>Chemin de recours / pieton</title></polyline>
+<polyline points="0,76 30,76 30,80" fill="none" stroke="#b4afa0" stroke-width="4"><title>Services arrière / service</title></polyline>
+<rect x="22" y="5" width="56" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Registre principal | OUVERT | Identités, adresses et décisions civiles.</title></rect>
+<text x="22.7" y="7.1" class="id" fill="#287260">B01 O</text>
+<polygon points="50.0,27 49.4,28.3 50.6,28.3" fill="#287260"/>
+<rect x="5" y="40" width="25" height="28" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B02 | Archives des baux | CONDITIONNEL | Conserver loyers et titres d’occupation.</title></rect>
+<text x="5.7" y="42.1" class="id" fill="#aa772c">B02 C</text>
+<polygon points="30,54.0 31.3,54.6 31.3,53.4" fill="#aa772c"/>
+<rect x="70" y="40" width="25" height="29" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B03 | Service des recours | OUVERT | Recevoir les contestations.</title></rect>
+<text x="70.7" y="42.1" class="id" fill="#287260">B03 O</text>
+<polygon points="70,54.5 68.7,53.9 68.7,55.1" fill="#287260"/>
+<rect x="36" y="57" width="28" height="19" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Copies et certifications | OUVERT | Obtenir des copies vérifiées.</title></rect>
+<text x="36.7" y="59.1" class="id" fill="#287260">B04 O</text>
+<polygon points="50.0,57 50.6,55.7 49.4,55.7" fill="#287260"/>
+<rect x="82" y="7" width="13" height="18" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B05 | Ascenseurs visiteurs | CONDITIONNEL | Monter vers Upper-Town sur convocation.</title></rect>
+<text x="82.7" y="9.1" class="id" fill="#aa772c">B05 C</text>
+<polygon points="88.5,25 87.9,26.3 89.1,26.3" fill="#aa772c"/>
+<rect x="5" y="8" width="13" height="20" fill="#e6d1cc" stroke="#984b44" stroke-width=".22"><title>B06 | Sûreté des archives | RÉSERVÉ | Surveiller les dossiers restreints.</title></rect>
+<text x="5.7" y="10.1" class="id" fill="#984b44">B06 R</text>
+<rect x="33" y="28" width="10" height="5" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B07 | Entretien | FERMÉ | Nettoyage et maintenance de la verrière.</title></rect>
+<text x="33.7" y="30.1" class="id" fill="#68716c">B07 N</text>
+<rect x="57" y="28" width="9" height="5" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B08 | Local personnel | FERMÉ | Pause des employés.</title></rect>
+<text x="57.7" y="30.1" class="id" fill="#68716c">B08 N</text>
+<rect x="27" y="28" width="49" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Files de guichets | Trois départs distincts et panneaux de fonction.</title></rect>
+<text x="50.3" y="29.9" class="small" fill="#44664c">D01</text>
+<rect x="36" y="43" width="28" height="9" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Attente | Bancs en deux rangées, allée centrale dégagée.</title></rect>
+<text x="48.8" y="47.9" class="small" fill="#44664c">D02</text>
+<rect x="33" y="33" width="3" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Distributeur de tickets | À l’entrée de la salle d’attente.</title></rect>
+<text x="33.3" y="35.9" class="small" fill="#44664c">D03</text>
+<rect x="66" y="42" width="3" height="9" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Panneau des recours | Liste des pièces demandées, au mur de l’aile est.</title></rect>
+<text x="66.3" y="46.9" class="small" fill="#44664c">D04</text>
+<rect x="31" y="62" width="4" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Tables de lecture | Table publique devant la certification.</title></rect>
+<text x="31.8" y="67.4" class="small" fill="#44664c">D05</text>
+<rect x="24" y="2" width="52" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Verrière | Éclairage du grand hall ; structure liée au bâtiment.</title></rect>
+<text x="48.8" y="3.4" class="small" fill="#44664c">D06</text>
+<rect x="79" y="27" width="15" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Portillons | Séparent ascenseurs visiteurs et circulation publique.</title></rect>
+<text x="85.3" y="28.9" class="small" fill="#44664c">D07</text>
+<rect x="8" y="69" width="20" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bacs de traitement | Documents transportés par l’arrière, sous garde.</title></rect>
+<text x="16.8" y="71.4" class="small" fill="#44664c">D08</text>
+<circle cx="49" cy="24" r=".5" fill="#a75932"><title>Eva Serra | Traite les erreurs de logement au B01.</title></circle>
+<text x="50" y="24.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="45" cy="48" r=".5" fill="#a75932"><title>Ivo | Attend sa rectification d’adresse.</title></circle>
+<text x="46" y="48.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="72" cy="52" r=".5" fill="#a75932"><title>Greffière | Reçoit les dossiers au B03.</title></circle>
+<text x="73" y="52.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="48" cy="60" r=".5" fill="#a75932"><title>Copiste | Authentifie les copies au B04.</title></circle>
+<text x="49" y="60.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="88" cy="24" r=".5" fill="#a75932"><title>Contrôleur visiteurs | Vérifie la convocation Upper-Town.</title></circle>
+<text x="89" y="24.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

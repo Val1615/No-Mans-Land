@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>SM09 Forum de Lower-Town</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">SM09 | Forum de Lower-Town</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polyline points="0,35 35,35 41,46 73,46 73,35 100,35" fill="none" stroke="#d7c59c" stroke-width="6"><title>Flux piéton du forum / pieton</title></polyline>
+<polyline points="0,76 29,76 29,47 37,28 77,28 100,28" fill="none" stroke="#b4afa0" stroke-width="4"><title>Rue de livraison / service</title></polyline>
+<polyline points="0,37 100,37" fill="none" stroke="#b4afa0" stroke-width="5" stroke-dasharray="1 .6"><title>Navettes élevées / sureleve</title></polyline>
+<polyline points="67,62 67,68" fill="none" stroke="#d7c59c" stroke-width="3"><title>Vers les fondations / pieton</title></polyline>
+<rect x="8" y="8" width="27" height="19" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Service municipal IO | OUVERT | Allocations et dossiers de service.</title></rect>
+<text x="8.7" y="10.1" class="id" fill="#287260">B01 O</text>
+<polygon points="21.5,27 20.9,28.3 22.1,28.3" fill="#287260"/>
+<rect x="43" y="8" width="32" height="15" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Galerie de commerces | OUVERT | Vente généraliste et réparations rapides.</title></rect>
+<text x="43.7" y="10.1" class="id" fill="#287260">B02 O</text>
+<polygon points="59.0,23 58.4,24.3 59.6,24.3" fill="#287260"/>
+<rect x="5" y="41" width="20" height="31" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Tours d’habitat ouest | CONDITIONNEL | Logements superposés, densité hors champ.</title></rect>
+<text x="5.7" y="43.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="25,56.5 26.3,57.1 26.3,55.9" fill="#aa772c"/>
+<rect x="76" y="38" width="20" height="35" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B04 | Tours d’habitat est | FERMÉ | Résidences occupées et parties communes fermées.</title></rect>
+<text x="76.7" y="40.1" class="id" fill="#68716c">B04 N</text>
+<rect x="34" y="51" width="24" height="17" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B05 | Bar de coursive | OUVERT | Pause des livreurs et point de rencontre.</title></rect>
+<text x="34.7" y="53.1" class="id" fill="#287260">B05 O</text>
+<polygon points="46.0,51 46.6,49.7 45.4,49.7" fill="#287260"/>
+<rect x="34" y="72" width="24" height="8" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B06 | Équipement civil | OUVERT | Vêtements et protections autorisées.</title></rect>
+<text x="34.7" y="74.1" class="id" fill="#287260">B06 O</text>
+<polygon points="46.0,72 46.6,70.7 45.4,70.7" fill="#287260"/>
+<rect x="80" y="8" width="16" height="18" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Station de navettes | OUVERT | Correspondances de surface.</title></rect>
+<text x="80.7" y="10.1" class="id" fill="#287260">B07 O</text>
+<polygon points="88.0,26 87.4,27.3 88.6,27.3" fill="#287260"/>
+<rect x="45" y="30" width="14" height="12" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B08 | Ascenseurs centraux | CONDITIONNEL | Relier les étages urbains.</title></rect>
+<text x="45.7" y="32.1" class="id" fill="#aa772c">B08 C</text>
+<polygon points="52.0,42 51.4,43.3 52.6,43.3" fill="#aa772c"/>
+<rect x="63" y="68" width="10" height="10" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B09 | Escalier de service | OUVERT | Descendre vers la Sous-Ville.</title></rect>
+<text x="63.7" y="70.1" class="id" fill="#287260">B09 O</text>
+<polygon points="68.0,68 68.6,66.7 67.4,66.7" fill="#287260"/>
+<rect x="61" y="50" width="10" height="12" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B10 | Réserve du réseau | FERMÉ | Matériel d’entretien des coursives.</title></rect>
+<text x="61.7" y="52.1" class="id" fill="#68716c">B10 N</text>
+<rect x="9" y="29" width="22" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Écran municipal | Suspendu à la façade de B01 ; pas un panneau dans la chaussée.</title></rect>
+<text x="18.8" y="30.9" class="small" fill="#44664c">D01</text>
+<rect x="78" y="29" width="17" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Arrêt navette | Deux portes d’embarquement et file matérialisée.</title></rect>
+<text x="85.3" y="31.9" class="small" fill="#44664c">D02</text>
+<rect x="26" y="36" width="48" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Coursive élevée | Au-dessus du sol ; appuis hors des voies principales.</title></rect>
+<text x="48.8" y="38.9" class="small" fill="#44664c">D03</text>
+<rect x="64" y="25" width="10" height="6" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Livraisons | Deux chariots rangés contre la galerie.</title></rect>
+<text x="67.8" y="28.4" class="small" fill="#44664c">D04</text>
+<rect x="31" y="45" width="12" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Bancs et recharge | Le long d’un renfoncement, à l’écart des correspondances.</title></rect>
+<text x="35.8" y="47.4" class="small" fill="#44664c">D05</text>
+<rect x="62" y="62" width="10" height="5" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Ventilation | Coffrets et trappes intégrés à la réserve technique.</title></rect>
+<text x="65.8" y="64.9" class="small" fill="#44664c">D06</text>
+<rect x="28" y="68" width="5" height="8" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Étal de soir | Petit stand adossé au bar, pas une nouvelle ruine.</title></rect>
+<text x="29.3" y="72.4" class="small" fill="#44664c">D07</text>
+<rect x="27" y="46" width="4" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Boîtes des résidents | Panneau d’accès et boîtes près de la porte des tours.</title></rect>
+<text x="27.8" y="51.4" class="small" fill="#44664c">D08</text>
+<circle cx="20" cy="24" r=".5" fill="#a75932"><title>Ada Voss | Reçoit dans le service IO.</title></circle>
+<text x="21" y="24.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="59" cy="44" r=".5" fill="#a75932"><title>Agent SMPD | Surveille le hall d’ascenseurs.</title></circle>
+<text x="60" y="44.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="72" cy="29" r=".5" fill="#a75932"><title>Astor | Cherche sa livraison au quai de la station.</title></circle>
+<text x="73" y="29.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="40" cy="55" r=".5" fill="#a75932"><title>Cliente augmentée | Attend une commande au bar.</title></circle>
+<text x="41" y="55.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="86" cy="24" r=".5" fill="#a75932"><title>Agent de réseau | Oriente les correspondances.</title></circle>
+<text x="87" y="24.4" class="small" fill="#9b4f2c">P05</text>
+<circle cx="27" cy="60" r=".5" fill="#a75932"><title>Couple de résidents | Rentre dans les tours ouest.</title></circle>
+<circle cx="27" cy="62" r=".5" fill="#a75932"><title>Couple de résidents | Rentre dans les tours ouest.</title></circle>
+<text x="28" y="61.4" class="small" fill="#9b4f2c">P06</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>

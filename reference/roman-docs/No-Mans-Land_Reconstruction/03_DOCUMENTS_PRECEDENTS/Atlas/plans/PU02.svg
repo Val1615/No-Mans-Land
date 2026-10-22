@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="-4 -7 110 93"><style>text{font-family:DejaVu Sans,sans-serif}.id{font-size:1.5px;font-weight:bold}.small{font-size:1.1px}</style>
+<title>PU02 Ville portuaire et chantier</title>
+<rect x="-4" y="-7" width="110" height="93" fill="#f4f0e6"/>
+<text x="0" y="-4" font-size="2.5" font-weight="bold" fill="#203d40">PU02 | Ville portuaire et chantier</text>
+<rect width="100" height="80" fill="#e5e5d8" stroke="#89988b" stroke-width=".2"/>
+<path d="M0 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="0" y="-1" class="small" fill="#62716b">0</text>
+<path d="M10 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="10" y="-1" class="small" fill="#62716b">10</text>
+<path d="M20 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="20" y="-1" class="small" fill="#62716b">20</text>
+<path d="M30 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="30" y="-1" class="small" fill="#62716b">30</text>
+<path d="M40 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="40" y="-1" class="small" fill="#62716b">40</text>
+<path d="M50 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="50" y="-1" class="small" fill="#62716b">50</text>
+<path d="M60 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="60" y="-1" class="small" fill="#62716b">60</text>
+<path d="M70 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="70" y="-1" class="small" fill="#62716b">70</text>
+<path d="M80 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="80" y="-1" class="small" fill="#62716b">80</text>
+<path d="M90 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="90" y="-1" class="small" fill="#62716b">90</text>
+<path d="M100 0V80" stroke="#c4c5b6" stroke-width=".06"/><text x="100" y="-1" class="small" fill="#62716b">100</text>
+<path d="M0 0H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="0" class="small" fill="#62716b">0</text>
+<path d="M0 10H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="10" class="small" fill="#62716b">10</text>
+<path d="M0 20H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="20" class="small" fill="#62716b">20</text>
+<path d="M0 30H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="30" class="small" fill="#62716b">30</text>
+<path d="M0 40H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="40" class="small" fill="#62716b">40</text>
+<path d="M0 50H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="50" class="small" fill="#62716b">50</text>
+<path d="M0 60H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="60" class="small" fill="#62716b">60</text>
+<path d="M0 70H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="70" class="small" fill="#62716b">70</text>
+<path d="M0 80H100" stroke="#c4c5b6" stroke-width=".06"/><text x="-3" y="80" class="small" fill="#62716b">80</text>
+<polygon points="96,0 100,0 100,80 96,80" fill="#a8c0bf" stroke="#80927d" stroke-width=".2"/>
+<polyline points="0,39 37,39 68,39 95,39" fill="none" stroke="#b4afa0" stroke-width="5"><title>Rue du port / route</title></polyline>
+<polyline points="34,0 34,51 34,80" fill="none" stroke="#d7c59c" stroke-width="3"><title>Passage des maisons / pieton</title></polyline>
+<polyline points="68,39 68,49" fill="none" stroke="#b4afa0" stroke-width="5"><title>Route du chantier / service</title></polyline>
+<rect x="5" y="6" width="27" height="20" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B01 | Marché des pêcheurs | OUVERT | Échanger prises et denrées.</title></rect>
+<text x="5.7" y="8.1" class="id" fill="#287260">B01 O</text>
+<polygon points="18.5,26 17.9,27.3 19.1,27.3" fill="#287260"/>
+<rect x="42" y="6" width="25" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B02 | Maison des travailleurs | OUVERT | Repas et organisation des équipes.</title></rect>
+<text x="42.7" y="8.1" class="id" fill="#287260">B02 O</text>
+<polygon points="54.5,28 53.9,29.3 55.1,29.3" fill="#287260"/>
+<rect x="57" y="51" width="25" height="25" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B03 | Chantier de coques | CONDITIONNEL | Réparer de petites unités.</title></rect>
+<text x="57.7" y="53.1" class="id" fill="#aa772c">B03 C</text>
+<polygon points="69.5,51 70.1,49.7 68.9,49.7" fill="#aa772c"/>
+<rect x="6" y="49" width="24" height="26" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B04 | Auberge du chenal | OUVERT | Louer des lits aux voyageurs.</title></rect>
+<text x="6.7" y="51.1" class="id" fill="#287260">B04 O</text>
+<polygon points="30,62.0 31.3,62.6 31.3,61.4" fill="#287260"/>
+<rect x="5" y="32" width="24" height="4" fill="#d7d8d1" stroke="#68716c" stroke-width=".22"><title>B05 | Logements ouest | FERMÉ | Résidences de pêcheurs et manutentionnaires.</title></rect>
+<text x="5.7" y="34.1" class="id" fill="#68716c">B05 N</text>
+<rect x="38" y="54" width="14" height="23" fill="#f1e4c5" stroke="#aa772c" stroke-width=".22"><title>B06 | Logements hauts | CONDITIONNEL | Habitat familial en retrait du quai.</title></rect>
+<text x="38.7" y="56.1" class="id" fill="#aa772c">B06 C</text>
+<polygon points="38,65.5 36.7,64.9 36.7,66.1" fill="#aa772c"/>
+<rect x="74" y="6" width="21" height="22" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B07 | Voilerie | OUVERT | Entretenir cordages, filets et bâches.</title></rect>
+<text x="74.7" y="8.1" class="id" fill="#287260">B07 O</text>
+<polygon points="84.5,28 83.9,29.3 85.1,29.3" fill="#287260"/>
+<rect x="75" y="32" width="20" height="4" fill="#d9e7dd" stroke="#287260" stroke-width=".22"><title>B08 | Bureau civil UFSA | OUVERT | Relations civiles avec la garnison.</title></rect>
+<text x="75.7" y="34.1" class="id" fill="#287260">B08 O</text>
+<polygon points="85.0,36 84.4,37.3 85.6,37.3" fill="#287260"/>
+<rect x="73" y="29" width="21" height="7" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour des filets | Séchage sur cadres devant la voilerie.</title></rect>
+<text x="82.3" y="32.9" class="small" fill="#44664c">D01</text>
+<rect x="84" y="45" width="11" height="29" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cale | Pente vers l’eau, accès restreint pendant les manœuvres.</title></rect>
+<text x="88.3" y="59.9" class="small" fill="#44664c">D02</text>
+<rect x="62" y="45" width="16" height="4" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Coque sur bers | Pièce en réparation face à la vraie porte du chantier.</title></rect>
+<text x="68.8" y="47.4" class="small" fill="#44664c">D03</text>
+<rect x="7" y="27" width="24" height="3" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Tables du marché | Trois petits bancs de vente.</title></rect>
+<text x="17.8" y="28.9" class="small" fill="#44664c">D04</text>
+<rect x="32" y="54" width="4" height="20" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Cour domestique | Eau, linge et assises, protégés de la cale.</title></rect>
+<text x="32.8" y="64.4" class="small" fill="#44664c">D05</text>
+<rect x="56" y="78" width="25" height="2" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Récupération marine | Bois trié en limite de chantier.</title></rect>
+<text x="67.3" y="79.4" class="small" fill="#44664c">D06</text>
+<rect x="38" y="33" width="3" height="10" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Boîte de courrier | Rattachée à la permanence.</title></rect>
+<text x="38.3" y="38.4" class="small" fill="#44664c">D07</text>
+<rect x="96" y="51" width="3" height="18" fill="none" stroke="#6e8977" stroke-width=".13" stroke-dasharray=".5 .4"><title>Escalier de marée | Accès à l’eau, sans transition de ville.</title></rect>
+<text x="96.3" y="60.4" class="small" fill="#44664c">D08</text>
+<circle cx="20" cy="23" r=".5" fill="#a75932"><title>Elsa Voss | Poissonnière proposée, distincte de Leda Mansour.</title></circle>
+<text x="21" y="23.4" class="small" fill="#9b4f2c">P01</text>
+<circle cx="68" cy="54" r=".5" fill="#a75932"><title>Charpentier Ulmo | Répare les coques.</title></circle>
+<text x="69" y="54.4" class="small" fill="#9b4f2c">P02</text>
+<circle cx="85" cy="25" r=".5" fill="#a75932"><title>Voilière | Tient le B07.</title></circle>
+<text x="86" y="25.4" class="small" fill="#9b4f2c">P03</text>
+<circle cx="28" cy="61" r=".5" fill="#a75932"><title>Aubergiste | Reçoit les visiteurs.</title></circle>
+<text x="29" y="61.4" class="small" fill="#9b4f2c">P04</text>
+<circle cx="54" cy="41" r=".5" fill="#a75932"><title>Délégué du port | Permanence B08.</title></circle>
+<text x="55" y="41.4" class="small" fill="#9b4f2c">P05</text>
+<text x="0" y="84" class="small" fill="#62716b">O ouvert · C conditionnel · N fermé · R réservé | P personnages · D décors | Nord en haut</text></svg>
