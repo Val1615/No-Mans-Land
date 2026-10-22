@@ -466,5 +466,20 @@
   "texture": true,
   "origin": "généré",
   "source": "généré art-gen/gen_io_door.jpg"
+ },
+ "sv_cardtable_b": {
+  "file": "interiors/sv_cardtable_b.webp",
+  "px": [
+   640,
+   592
+  ],
+  "footprint_m": [
+   1.2,
+   1.2
+  ],
+  "height_m": 0.9,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_cardtable3.jpg #-1",
+  "mirrored_from_source": false
  }
 }

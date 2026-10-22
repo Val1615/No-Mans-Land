@@ -288,3 +288,14 @@ Portes peintes nouvelles (pixel source → ouverture monde) : maison à escalier
 | Fichier | Origine | Usage |
 |---|---|---|
 | `game/assets/audio/dusk_town_ambiance.mp3` | fourni par Valentin (`incoming/dusk_town_ambiance.mp3`), copié tel quel, SHA-256 `ae1d8ee965840781fa5c5ed46f8489d34bdf70a10ec461ffb1ec0788ca166b12` | musique d'ambiance, 4 quartiers + intérieurs |
+
+## v15 (2026-10-22) : finitions visuelles (branche `creation/finitions-visuelles`)
+
+Script : `tools_finitions.py` (n'écrit rien dans `src/`). Toutes les images nouvelles sont **générées** (GenerateImage), sources gardées dans `art-gen/`.
+| Asset | Provenance | Contrôle |
+|---|---|---|
+| `buildings/b_st_porte2.webp` | **généré** `art-gen/gen_steel_gate3_raw.jpg` (référence : `gen_steel_gate2.jpg`, même angle v4), fond vert uni. Dôme entier ; marge haute brute 4,7 % portée à 18 % par ajout de 140 px de fond uni en haut (`gen_steel_gate3.jpg`). Détourage `key_green` de `tools_steel.py`, échelle K (× 1,10 pour que l'arche ait la taille de l'ancien sprite). Ancre recalée par corrélation sur l'arche de l'ancien sprite (score 0,73) : l'image ne grandit que vers le haut. Manifeste : px 1640 × 1084, crop [10, 10, 1650, 1094], ancre [1491, 1067] (coin bas détecté [1527, 1083]), emprise 30 × 8 inchangée | capture `nml-shots/v2/apres_porte_dome*.png` |
+| `generated/st_projecteur.webp` | même source (`gen_fort_sheet.jpg` #3) ; matte refait : alpha durci, érosion 1 px, bord (1 px) recoloré depuis les voisins opaques, despill magenta sur la bande de bord | pixels de bord magenta 4,53 % → 0,03 % |
+| `buildings/b_st_ct_dome.webp` | sprite v14 d'origine (`art-gen/matte-src/b_st_ct_dome_v14.webp`) ; même matte (érosion 2 px, bande 3 px), trous intérieurs bouchés ; néons violets intérieurs intacts | pixels de bord magenta 5,06 % → 0,02 % |
+| `interiors/sv_cardtable_b.webp` | **généré** `art-gen/gen_sv_cardtable3.jpg` : table de jeu rectangulaire sur caisses, cartes et jetons, sans tabouret. 1er essai `gen_sv_cardtable2.jpg` écarté (trop bas : hauteur implicite 0,46 m pour 0,9). Angle corrigé `v4fix` (pentes 0,76/0,78 → 0,33/0,70) | `rapport_angles.json` : accepté (arête basse v4), hauteur implicite 0,84 / 0,9 m, emprise 1,2 × 1,2 |
+| `portraits/portraits-v3-mutant-0..2.webp`, `portraits-v3-cyborg-0..2.webp` | **générés** (`art-gen/portraits-v3/*.jpg`, 1024 → 480 px), cadrage buste, lumière chaude ; références : `Population-Mutants.png` / `Population-Cyborgs.png` (roman-docs) et `portraits-v2-0`. Mutants : homme ~55 ans (excroissances osseuses), femme ~20 ans (peau marbrée, nodules), aînée ~70 ans (cicatrices, talisman). Cyborgs : femme ~35 ans cadre d'IO (céramique blanche et or), officier ~45 ans (plaques graphite, capteurs rouges), déserteur ~60 ans (chrome usé, foulard rouge). 1er essai mutant-0 écarté (copie de portraits-v2-0) | planche `nml-shots/v2/portraits_v3_planche.png` |

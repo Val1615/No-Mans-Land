@@ -541,26 +541,27 @@
  },
  "b_st_porte2": {
   "file": "buildings/b_st_porte2.webp",
-  "source": "art-gen/gen_steel_gate2.jpg",
+  "source": "art-gen/gen_steel_gate3.jpg",
   "crop": [
    10,
    10,
-   1501,
-   839
+   1650,
+   1094
   ],
   "px": [
-   1491,
-   829
+   1640,
+   1084
   ],
   "anchor": [
-   1486,
-   828
+   1491,
+   1067
   ],
   "footprint_m": [
    30.0,
    8.0
   ],
-  "lot": "steel-l1 v12"
+  "lot": "steel-l1 v12 ; finitions v15 : dôme entier",
+  "anchor_note": "ancre recalée sur l ancien sprite (arche au même point monde) ; coin bas détecté [1527, 1083]"
  },
  "b_st_poste": {
   "file": "buildings/b_st_poste.webp",
