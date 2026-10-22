@@ -11,12 +11,17 @@ export const BUILDINGS_LOWER = [
   // [décision] la dalle de Center-Town au-dessus des toits : dessous, pylônes, feux ambrés. Seuls les pylônes sont pleins. PROVISOIRE: volume (pas de sprite prévu au plan)
   B('lt_dalle', 'Dalle de Center-Town', 'lt_dalle_center', 0, 0, 48, 2.5, { kind: 'dalle', h: 15 }, { named: false, solid: [0, 1, 2, 3, 4].map(i => ({ x: 2 + i * 10.5, z: 0.6, w: 1.4, d: 1.4 })) }),
   B('lt_usine7', 'Pointage Usine 7', 'lt_atelier_usine', 25, 1, 7, 14, { h: 9, color: '#3d3a36', roof: 'sheds', chimney: [2, 2] }, { visitable: true }), // sprite Ocre da01a62
-  // Atelier Bastide : lt_atelier_petit pas encore livré -> réemploi tel quel de b_sv_atelier (atelier de tôle d'Elio, Sous-Ville). PROVISOIRE: sprite Ocre attendu (lt_atelier_petit)
-  B('lt_bastide', 'Atelier Bastide', 'b_sv_atelier', 37, 7.5, 6.5, 5.5, { h: 4.5, color: '#43362c', roof: 'sheds' }, { visitable: true }),
+  B('lt_bastide', 'Atelier Bastide', 'lt_atelier_petit', 36, 7, 8, 6, { h: 4.5, color: '#43362c', roof: 'sheds' }, { visitable: true }),
   B('lt_immeuble', 'Immeuble ouvrier', 'lt_immeuble_ouvrier', 5, 5, 8, 6.5, { h: 13, floors: 4 }),                    // sprite Ocre da01a62
   B('lt_immeuble3', 'Immeuble ouvrier', 'lt_immeuble_ouvrier', 14.5, 5, 8, 6.5, { h: 13, floors: 4 }),                // idem (flip non géré pour les bâtiments)
-  // Chez Moss : rez de l'immeuble ouvrier ; lt_comptoir_moss pas encore livré. PROVISOIRE: sprite Ocre attendu (lt_comptoir_moss)
-  B('lt_moss', 'Chez Moss', 'lt_immeuble_ouvrier', 36, 23, 8, 6.5, { h: 13, floors: 4 }, { visitable: true }),
+  B('lt_moss', 'Chez Moss', 'lt_comptoir_moss', 37, 24.5, 6, 5, { h: 7 }, { visitable: true }),                         // sprite Ocre 711de0a
+  // Props d'Ocre (lot 2, 711de0a) : sprites ancrés du manifeste des bâtiments, posés comme bâtiments anonymes (x, z = coin min, emprise du manifeste).
+  ...[['lt_tuyau', 18.5, 13, 3, 2], ['lt_tuyau', 33, 13, 3, 2], ['lt_sodium', 9.6, 14.8, 0.8, 0.8], ['lt_sodium', 25.6, 15.6, 0.8, 0.8], ['lt_sodium', 39.6, 20.6, 0.8, 0.8],
+    ['lt_sodium', 20.6, 28.2, 0.8, 0.8], ['lt_horloge_pointage', 24, 20.9, 1, 1], ['lt_voiture_panne', 30, 19.4, 4, 2], ['lt_voiture_panne', 1.5, 32.5, 4, 2],
+    ['lt_bidons', 33.3, 15.4, 0.6, 0.6], ['lt_bidons', 34.1, 15.6, 0.6, 0.6], ['lt_ferraille', 44.6, 13.4, 1.5, 1], ['lt_palettes', 46.5, 11, 1, 1], ['lt_palettes', 17.6, 30, 1, 1],
+    ['lt_grille_fosse', 44.5, 33.6, 2, 2, []], ['lt_flaque', 11, 20.6, 2.5, 1.5, []], ['lt_flaque', 34, 21.6, 2.5, 1.5, []], ['lt_tuyau_coude', 32.5, 3, 2.5, 2.5], ['lt_passerelle', 23.4, 2.5, 1.5, 6]]
+    .map(([sp, x, z, w, d, solid], i) => ({ id: `lt_prop${i}`, label: '', sprite: sp, x, z, w, d, visitable: false, cue: null, ...(solid ? { solid } : {}) })),
+  // lt_tuyau_coude et lt_passerelle : version corrigée d'Ocre (37d3cbb) ; passerelle = Passerelle haute [fiche], décor (pas d'étage praticable)
   B('lt_foyer', 'Le Foyer Ruiz', 'lt_foyer_ruiz', 3, 24, 10, 7, { h: 5.5, roof: 'pitched' }, { visitable: true }),     // sprite Ocre da01a62
   // Portique de La Descente : sprite 7 x 2,5 m (arche ouverte vers le sud) ; posé au nord du bas de rampe, la rampe (z 16-20) passe devant.
   B('lt_portique', 'Portique de contrôle', 'lt_portique_io', 1.5, 13.5, 7, 2.5, { kind: 'arch', h: 7 }, { named: false }), // sprite Ocre da01a62
@@ -32,14 +37,9 @@ export const LOCATIONS_LOWER = {
       { x: 20, z: 21, w: 10, d: 8, kind: 'plate', tint: 'rgba(30,24,18,.3)' },             // Place de la Relève [fiche]
       { x: 13.4, z: 21, w: 2, d: 12, kind: 'plate', tint: 'rgba(0,0,0,.45)' } ] },         // Allée du Foyer, 2 m [fiche]
     buildings: BUILDINGS_LOWER, props: [
-      { sprite: 'sv_tuyau', x: 14, z: 14.4, fp: [4.2, 1.2] }, { sprite: 'sv_tuyau', x: 20, z: 14.4, fp: [4.2, 1.2], flip: true }, // réemplois tels quels : sv_tuyau -> lt_tuyau, lamp -> lt_sodium (PROVISOIRE: props Ocre attendus)
-      { sprite: 'lamp', x: 10, z: 15.2, solid: 0.4 }, { sprite: 'lamp', x: 26, z: 15.2, solid: 0.4 }, { sprite: 'lamp', x: 40, z: 21, solid: 0.4 },
-      { sprite: 'lamp', x: 21, z: 28.6, solid: 0.4 },
-      { sprite: 'st_voiture', x: 30, z: 20.2, fp: [4.4, 2.0], tint: '#8a7462' }, { sprite: 'wreck', x: 44, z: 33, fp: [4.2, 2.0] }, // réemplois : st_voiture, wreck -> lt_voiture_panne (PROVISOIRE)
-      { sprite: 'barrel', x: 33.6, z: 13.6 }, { sprite: 'barrel', x: 34.3, z: 13.9 }, { sprite: 'crate', x: 45.5, z: 12.6, fp: [1.0, 0.6] }, // réemplois : barrel -> lt_bidons, crate -> lt_ferraille (PROVISOIRE)
       { sprite: 'rubble', x: 45, z: 9, fp: [2.0, 1.6] }, { sprite: 'tires', x: 16, z: 31, fp: [1.2, 1.0] }, { sprite: 'sv_brasero', x: 31, z: 24, fp: [0.8, 0.8] },
       { box: true, x: 15.4, z: 22, w: 2.2, d: 11, h: 2.6, color: '#2f2a25' },        // palissade de tôle : ferme l'Allée du Foyer à l'est [inventé]
-      { box: true, x: 24.6, z: 21.4, w: 0.5, d: 0.4, h: 2.2, color: '#4a4f53' } ],    // PROVISOIRE: prop Ocre attendu (lt_horloge_pointage)
+    ],
     glows: [ { x: 10, z: 16.6, rx: 3, rz: 3, color: SODIUM, i: 0.7 }, { x: 26, z: 16.6, rx: 3, rz: 3, color: SODIUM, i: 0.7 }, { x: 40, z: 22.4, rx: 3, rz: 3, color: SODIUM, i: 0.65 },
       { x: 21, z: 30, rx: 3, rz: 3, color: SODIUM, i: 0.6 }, { x: 28.5, z: 15.6, rx: 3, rz: 2.2, color: FOUR, i: 0.85, flicker: true }, { x: 39, z: 14, rx: 2.2, rz: 1.6, color: FOUR, i: 0.75, flicker: true },
       { x: 31.4, z: 24.4, rx: 2.4, rz: 2.4, color: FOUR, i: 0.6, flicker: true }, { x: 6.4, z: 32, rx: 2, rz: 1.2, color: SODIUM, i: 0.45 }, { x: 4.5, z: 18, rx: 1.4, rz: 3, color: SODIUM, i: 0.5, flicker: true },
