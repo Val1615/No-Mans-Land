@@ -1,0 +1,68 @@
+{
+ "lt_portique_io": {
+  "pente_dominante": 0.5,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.17,
+  "accepte": false,
+  "correction_v4": {
+   "pentes_source": [
+    0.5,
+    0.69
+   ],
+   "cisaillement": [
+    0.864,
+    -0.106
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_portique_io.jpg",
+  "role": "portique de contrôle IO sur la rampe de La Descente, scanner, voyants ambre, guérite vide",
+  "emprise_m": [
+   3.5,
+   7.0
+  ],
+  "hauteur_attendue_m": 6.5,
+  "hauteur_implicite_m": 2.58,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.05
+ },
+ "lt_atelier_usine": {
+  "pente_dominante": 0.7,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.51,
+    0.61
+   ],
+   "cisaillement": [
+    0.924,
+    -0.137
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_lt_atelier_usine.jpg",
+  "role": "atelier-usine à toit en sheds (Usine 7 / Atelier Bastide), porte coulissante entrouverte, lueur de four, cheminée",
+  "emprise_m": [
+   7.0,
+   14.0
+  ],
+  "hauteur_attendue_m": 9.0,
+  "hauteur_implicite_m": 4.16,
+  "echelle_ok": false,
+  "magenta_bord_pct": 1.23
+ }
+}
