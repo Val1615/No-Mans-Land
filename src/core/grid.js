@@ -2,7 +2,7 @@ import { UNITS } from '../data/units.js';
 const C = UNITS.cell;
 // Grille de collision dérivée des mêmes volumes que le rendu. Centre de case i = i * C.
 export function solidsOf(loc, doors, sprites) {
-  const out = [...loc.buildings.map(b => ({ x: b.x, z: b.z, w: b.w, d: b.d }))];
+  const out = [...loc.buildings.flatMap(b => b.solid || [{ x: b.x, z: b.z, w: b.w, d: b.d }])]; // Lower-Town v1 : b.solid = parties pleines (portique, dalle)
   for (const p of loc.props) {
     if (p.box) out.push(p);
     else if (p.furn) { const [w, d] = sprites[p.furn].footprint_m; out.push({ x: p.x, z: p.z, w, d }); } // mobilier : x, z = coin min de l'emprise

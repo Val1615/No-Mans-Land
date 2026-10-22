@@ -182,6 +182,7 @@ shell = createShell({ game, world, $, applyOptions, onStart(rec, draft) {
 game.on(ev => {
   if (ev.type !== 'transition') return;
   const L = world.LOCATIONS[ev.to];
+  if (ev.from === 'sv_poutres' && ev.to === 'steel_lower') game.state.flags.lt_fosse_ouverte = true; // Lower-Town : la Fosse s'ouvre depuis le bas [plan]
   if (L.arrive && L.arrive.from === ev.from) setTimeout(() => say(L.arrive.text), 50);
   if (ev.to === 'steel_center' && !game.state.flags.q_steel) { game.state.flags.q_steel = true; setTimeout(() => say('Journal : quête mise à jour. Tu es dans Steel-Megalopolis.'), 3600); }
   if (!shell.isOpen()) shell.autosave();

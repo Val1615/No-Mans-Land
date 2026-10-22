@@ -815,5 +815,81 @@
    3.5
   ],
   "lot": "steel-l1 v12"
+ },
+ "lt_atelier_usine": {
+  "file": "buildings/lt_atelier_usine.webp",
+  "source": "art-gen/gen_lt_atelier_usine.jpg",
+  "px": [
+   685,
+   556
+  ],
+  "anchor": [
+   288,
+   555
+  ],
+  "footprint_m": [
+   7.0,
+   14.0
+  ],
+  "height_m": 9.0,
+  "lot": "lower-town v1 (creation/lower-town-sprites)",
+  "anchor_note": "coin avant bas (pivot), emprises provisoires à réconcilier avec Rivet"
+ },
+ "lt_portique_io": {
+  "file": "buildings/lt_portique_io.webp",
+  "source": "art-gen/gen_lt_portique_io_p2.jpg",
+  "px": [
+   359,
+   489
+  ],
+  "anchor": [
+   287,
+   488
+  ],
+  "footprint_m": [
+   7.0,
+   2.5
+  ],
+  "height_m": 7.0,
+  "lot": "lower-town v1 (creation/lower-town-sprites)",
+  "anchor_note": "coin avant bas (pivot), emprises provisoires à réconcilier avec Rivet"
+ },
+ "lt_immeuble_ouvrier": {
+  "file": "buildings/lt_immeuble_ouvrier.webp",
+  "source": "art-gen/gen_lt_immeuble_ouvrier_p2.jpg",
+  "px": [
+   514,
+   652
+  ],
+  "anchor": [
+   325,
+   651
+  ],
+  "footprint_m": [
+   8.0,
+   6.5
+  ],
+  "height_m": 13.0,
+  "lot": "lower-town v1 (creation/lower-town-sprites)",
+  "anchor_note": "coin avant bas (pivot), emprises provisoires à réconcilier avec Rivet"
+ },
+ "lt_foyer_ruiz": {
+  "file": "buildings/lt_foyer_ruiz.webp",
+  "source": "art-gen/gen_lt_foyer_ruiz.jpg",
+  "px": [
+   610,
+   449
+  ],
+  "anchor": [
+   412,
+   448
+  ],
+  "footprint_m": [
+   10.0,
+   7.0
+  ],
+  "height_m": 5.5,
+  "lot": "lower-town v1 (creation/lower-town-sprites)",
+  "anchor_note": "coin avant bas (pivot), emprises provisoires à réconcilier avec Rivet"
  }
 }

@@ -1,6 +1,7 @@
 // v12 Steel-Megalopolis, lot L1 : la route et la douane (S0), puis Center-Town (S1). Voir docs/villes/STEEL_MEGALOPOLIS_PLAN.md.
 // [décision] Valentin : entrée selon la race (augmenté / cyborg passent avec l'implant, humain refusé, mutant attaqué à vue) ;
 // premier quartier = Center-Town ; la quête s'arrête une fois en ville. Le reste (PNJ, textes, plan, taux) = [proposition].
+import { LOCATIONS_LOWER, DOORS_LOWER, NPCS_LOWER, DIALOGUES_LOWER } from './lower_town.js';
 import { BUILDINGS_ROUTE, PAINTED_DOORS_ROUTE, BUILDINGS_CENTER, PAINTED_DOORS_CENTER, BUILDINGS_SV1, PAINTED_DOORS_SV1, BUILDINGS_SV2, PAINTED_DOORS_SV2 } from './buildings_steel.js';
 
 const named = list => list.map(b => ({ ...b, named: true }));
@@ -117,6 +118,7 @@ export const LOCATIONS = {
     light: { bg: '#0a0604', hemi: ['#ffc080', '#2a1408', 1.2], sun: ['#ffa860', 1.0] },
     ground: { base: '#3a3430', skin: 'f_sv_concrete', tileM: 2 }, wall: '#3a2a20', wallSkin: 'w_sv_planks', buildings: [], props: [
       { furn: 'sv_workbench', x: 0.3, z: 0.3 }, { furn: 'sv_shelf', x: 4.9, z: 0.2 } ], city: null },
+  ...LOCATIONS_LOWER, // Lower-Town v1 (lower_town.js)
 };
 const painted = (list, loc, T) => list.map(d => ({ id: d.id, buildingId: d.buildingId, location: loc, opening: { x: d.opening[0], z: d.opening[1], side: d.face === 's' ? 'south' : 'east' },
   threshold: { x: d.threshold[0], z: d.threshold[1] }, target: { doorId: T[d.id] }, conditions: [] }));
@@ -136,7 +138,9 @@ export const DOORS = [
   J('c_ouest', 'steel_center', 0, 18, 1, 18, 'douane_in_est', 'Vers la douane'),
   ...painted(PAINTED_DOORS_CENTER, 'steel_center', { c_change_door: 'change_in_door' }),
   { id: 'change_in_door', location: 'change_in', opening: { x: 3, z: 5, side: 'south' }, threshold: { x: 3, z: 4 }, target: { doorId: 'c_change_door' }, conditions: [] },
-  E('c_est', 'steel_center', 48, 18, 47, 18, 'Vers les autres quartiers', 'L\u2019avenue continue vers Lower-Town et Asia-Ground. Plus tard. D\u2019abord, apprendre celui-ci.'),
+  // Lower-Town v1 : La Descente. c_est vérifié libre (aucun bâtiment ni prop sur x 47-48, z 18 ; test lower_town.py).
+  J('c_est', 'steel_center', 48, 18, 47, 18, 'l_ouest', 'La Descente (Lower-Town)'),
+  ...DOORS_LOWER,
   // v14 : la trappe de service ouvre sur la Sous-Ville pour qui connaît Elio (ou qu'on y a jeté)
   { id: 'r_trappe', buildingId: 'r_service', location: 'steel_route', opening: { x: 42.2, z: 32.5, side: 'south' }, threshold: { x: 42.2, z: 33.5 }, target: { doorId: 'v_trappe' },
     conditions: [{ test: s => !!(s.flags.bruno_frere || s.flags.sv_jete), reason: 'trappe', text: s => CLOSED_TEXT.r_service(s) }] },
@@ -161,6 +165,7 @@ export const NPCS = [
   { id: 'dealer', name: 'Pic', sprite: 'gen_sv_dealer', location: 'tripot_in', x: 3.2, z: 2.2, faceTo: [4, 6], dialogue: 'dealer' },
   { id: 'elio', name: 'Elio', sprite: 'gen_elio', location: 'elio_in', x: 2.6, z: 1.9, faceTo: [3.5, 5], dialogue: 'elio' },
   { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 30.5, z: 19.8, faceTo: [22, 18], dialogue: 'patrouilleur' },
+  ...NPCS_LOWER,
 ];
 export const CLOSED_TEXT = {
   r_porte: 'La route entre dans le noir entre deux battants grands comme des immeubles. Sans passer la douane, les tourelles s\u2019en chargent.',
@@ -178,6 +183,7 @@ export const CLOSED_TEXT = {
 // Le jour où le combat existe : l'action « hook:douane_mutant » lancera le combat, et ses deux issues remplaceront ces choix.
 export const COMBAT_HOOKS = { douane_mutant: { status: 'provisoire', fuite: 'warp:steel_route:29:34', capture: 'warp:sv_poutres:3:13', note: 'v14 : capture = jeté dans la Sous-Ville (Les Poutres)' } };
 export const DIALOGUES = {
+  ...DIALOGUES_LOWER,
   odile: {
     start: { text: 'Suivant. Motif ?', options: [
       { label: 'Je repasse. Il paraît que mon implant a sonné.', next: 'odile_volonte/start', if: 'steel_passe&!race_humain&!race_mutant&!odile_tenu&!odile_signe&!odile_payee' },

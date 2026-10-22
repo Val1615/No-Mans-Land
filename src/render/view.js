@@ -56,7 +56,43 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     if (cue === 'jar') { x.rect(21, 24, 22, 24); x.moveTo(18, 20); x.lineTo(46, 20); }
     x.stroke(); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
   }
+  // PROVISOIRE (Lower-Town v1) : tant que le sprite b.sprite n'existe pas dans le manifeste, le bâtiment est un volume simple
+  // (b.ph = { h, color, roof: 'sheds'|'pitched'|'flat', glow, kind }). Dès que le sprite existe, le chemin normal reprend.
+  const phOf = [];
+  function placeholder(b) {
+    const ph = b.ph || {}, h = ph.h || 6, M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.95, transparent: true, opacity: 1, depthTest: false, depthWrite: false });
+    const add = (w, hh, d, x, y, z, c, geo) => { const m = new THREE.Mesh(geo || new THREE.BoxGeometry(w, hh, d), M(c)); m.position.set(x, y, z); world.add(m); return m; };
+    const extra = []; let main;
+    if (ph.kind === 'dalle') { // dalle haute de Center-Town : tablier en hauteur, pylônes, feux ambrés en sous-face
+      main = add(b.w, 1.6, b.d + 2, b.x + b.w / 2, h, b.z + (b.d + 2) / 2 - 2, '#2a2826');
+      for (const s of b.solid || []) extra.push(add(s.w, h, s.d, s.x + s.w / 2, h / 2, s.z + s.d / 2, '#34312d'));
+      for (let x = 1.5; x < b.w; x += 3) { const l = add(0.5, 0.15, 0.3, b.x + x, h - 0.9, b.z + b.d - 0.2, '#e8a13a'); extra.push(l); }
+      extra.push(add(b.w, 0.5, 0.3, b.x + b.w / 2, h - 1.0, b.z + b.d - 0.6, '#1c1a18'));
+    } else if (ph.kind === 'arch') { // portique IO : deux montants, traverse au scanner, voyant ambre, guérite
+      const z0 = b.z + 1.6, z1 = b.z + b.d - 0.8;
+      main = add(1.8, 2.4, 1.5, b.x + 1, 1.2, b.z + 0.8, '#3a3d40');
+      extra.push(add(0.6, h, 0.6, b.x + 1, h / 2, z1 + 0.3, '#45484b'), add(0.6, h, 0.6, b.x + 1, h / 2, z0 + 0.1, '#45484b'),
+        add(0.7, 0.6, z1 - z0 + 0.6, b.x + 1, h, (z0 + z1) / 2 + 0.2, '#3a3d40'), add(0.2, 0.25, 0.8, b.x + 1.4, h - 0.2, (z0 + z1) / 2, '#e8a13a'),
+        add(0.08, 0.6, 0.9, b.x + 1.92, 1.6, b.z + 0.8, '#c98a3a'));
+    } else main = add(b.w, h, b.d, b.x + b.w / 2, h / 2, b.z + b.d / 2, ph.color || '#3a3632');
+    main.userData.box = { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, h: ph.kind === 'dalle' ? h + 1 : h + 2 }; main.userData.buildingId = b.id; main.userData.targetOpacity = 1;
+    if (ph.roof === 'sheds') { const n = Math.max(2, Math.round(b.w / 3)), sw = b.w / n; // toit en dents de scie : prismes + vitrage nord
+      for (let i = 0; i < n; i++) { const sh = new THREE.Shape(); sh.moveTo(0, 0); sh.lineTo(sw, 0); sh.lineTo(sw, 1.7); sh.lineTo(0, 0);
+        const g = new THREE.ExtrudeGeometry(sh, { depth: b.d, bevelEnabled: false }); const t = new THREE.Mesh(g, M(ph.roofColor || '#2b2a28'));
+        t.position.set(b.x + sw * i, h, b.z); world.add(t); extra.push(t);
+        extra.push(add(0.08, 1.1, b.d * 0.85, b.x + sw * (i + 1) + 0.04, h + 0.75, b.z + b.d / 2, '#7a5226')); } } // vitrage du shed, lueur sodium
+    if (ph.roof === 'pitched') extra.push(add(b.w + 0.3, 0.6, b.d + 0.3, b.x + b.w / 2, h + 0.3, b.z + b.d / 2, ph.roofColor || '#4a3a2e'));
+    if (ph.chimney) extra.push(add(1.2, h + 6, 1.2, b.x + ph.chimney[0], (h + 6) / 2, b.z + ph.chimney[1], '#5a3a2a'));
+    for (const f of ph.floors ? Array.from({ length: ph.floors - 1 }, (_, i) => i + 1) : []) // coursives : dalles en saillie sur la façade sud
+      extra.push(add(b.w, 0.18, 0.9, b.x + b.w / 2, f * h / ph.floors, b.z + b.d + 0.45, '#4a4f53'));
+    for (const g of ph.lights || []) extra.push(add(g.w || 1.2, g.h || 0.8, 0.08, b.x + g.x, g.y, b.z + b.d + 0.05, g.c || '#e8a13a')); // fenêtres / portes éclairées (face sud)
+    for (const g of ph.lightsE || []) extra.push(add(0.08, g.h || 0.8, g.w || 1.2, b.x + b.w + 0.05, g.y, b.z + g.z, g.c || '#e8a13a')); // face est
+    for (const e of extra) { const c = e.material.color.getHex(); if ([0xe8a13a, 0xc9541e, 0xc98a3a].includes(c)) e.material.emissive.set(c); }
+    bills.push({ obj: main, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra }); phOf.push(main);
+    if (b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4, b.z + b.d), () => !!game.state.discovered[b.id]); labels[labels.length - 1].el.dataset.building = b.id; }
+  }
   function building(b) {
+    if (!bman[b.sprite]) return placeholder(b);
     const m = bman[b.sprite]; const t = new THREE.Texture(SKIN[b.sprite]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, color: b.tint || light?.tint || '#ffffff' }));
     s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K, m.px[1] / K, 1);
@@ -96,7 +132,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     world.add(m); solids.push(m); pickables.push(m); return m;
   }
   function build(locId) {
-    scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; fsprites = []; bills = [];
+    scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
     const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
@@ -184,7 +220,9 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   const camUp = new THREE.Vector3().crossVectors(screenRight, camDir).normalize();
   const scr0 = p => p.x * camDir.x + p.y * camDir.y + p.z * camDir.z;
   const scr = p => ({ x: p.x * screenRight.x + p.y * screenRight.y + p.z * screenRight.z, y: p.x * camUp.x + p.y * camUp.y + p.z * camUp.z });
-  function rectOf(o) { const a = scr(o.position), sx = Math.abs(o.scale.x), sy = o.scale.y; return { x0: a.x - o.center.x * sx, x1: a.x + (1 - o.center.x) * sx, y0: a.y - o.center.y * sy, y1: a.y + (1 - o.center.y) * sy }; }
+  function rectOf(o) { if (o.userData.box) { const B = o.userData.box, P = [B.x0, B.x1].flatMap(x => [B.z0, B.z1].flatMap(z => [0, B.h].map(y => scr({ x, y, z }))));
+      return { x0: Math.min(...P.map(p => p.x)), x1: Math.max(...P.map(p => p.x)), y0: Math.min(...P.map(p => p.y)), y1: Math.max(...P.map(p => p.y)) }; }
+    const a = scr(o.position), sx = Math.abs(o.scale.x), sy = o.scale.y; return { x0: a.x - o.center.x * sx, x1: a.x + (1 - o.center.x) * sx, y0: a.y - o.center.y * sy, y1: a.y + (1 - o.center.y) * sy }; }
   function uvOf(o, p) { const r = rectOf(o); let u = (p.x - r.x0) / (r.x1 - r.x0); if (o.material.map?.repeat.x < 0) u = 1 - u; return { u, v: (p.y - r.y0) / (r.y1 - r.y0) }; }
   // Ordre de dessin : A avant B si B est devant (séparés sur x ou z, le plus grand est devant, la caméra regardant vers -x et -z).
   function inFront(b, a) { if (b.x0 >= a.x1 - 1e-6 || b.z0 >= a.z1 - 1e-6) return true; if (a.x0 >= b.x1 - 1e-6 || a.z0 >= b.z1 - 1e-6) return false; return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1; }
@@ -212,6 +250,10 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const a of [player, companion]) { if (!a.visible) continue; const ai = actorItem(a);
       for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!inFront(bi, ai)) continue;
         for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(a.position.x, hy, a.position.z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { s.userData.targetOpacity = 0.3; break; } } } }
+    for (const o of phOf) { o.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === o), r = rectOf(o);
+      for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
+        if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
+      const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) e.material.opacity = m.opacity; }
     for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) e.material.opacity = Math.min(0.9, m.opacity); }
   }
   // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
