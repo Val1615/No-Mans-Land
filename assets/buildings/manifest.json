@@ -1151,5 +1151,605 @@
   "height_m": 3.8,
   "lot": "lower-town v1 (creation/lower-town-sprites)",
   "anchor_note": "coin avant bas (pivot), emprises provisoires à réconcilier avec Rivet"
+ },
+ "cl_maison_the": {
+  "file": "buildings/cl_maison_the.webp",
+  "source": "art-gen/gen_cl_maison_the.jpg",
+  "origine": "généré",
+  "px": [
+   568,
+   588
+  ],
+  "anchor": [
+   412,
+   587
+  ],
+  "footprint_m": [
+   10.0,
+   5.5
+  ],
+  "height_m": 8.5,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_immeuble_fond": {
+  "file": "buildings/cl_immeuble_fond.webp",
+  "source": "art-gen/gen_cl_immeuble_fond.jpg",
+  "origine": "généré",
+  "px": [
+   515,
+   655
+  ],
+  "anchor": [
+   288,
+   654
+  ],
+  "footprint_m": [
+   7.0,
+   8.0
+  ],
+  "height_m": 9.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_immeuble_fond_b": {
+  "file": "buildings/cl_immeuble_fond_b.webp",
+  "source": "art-gen/gen_cl_immeuble_fond_b2.jpg",
+  "origine": "généré",
+  "px": [
+   474,
+   543
+  ],
+  "anchor": [
+   247,
+   542
+  ],
+  "footprint_m": [
+   6.0,
+   8.0
+  ],
+  "height_m": 8.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_pilotis": {
+  "file": "buildings/cl_pilotis.webp",
+  "source": "art-gen/gen_cl_pilotis.jpg",
+  "origine": "généré",
+  "px": [
+   417,
+   361
+  ],
+  "anchor": [
+   247,
+   360
+  ],
+  "footprint_m": [
+   6.0,
+   6.0
+  ],
+  "height_m": 4.5,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_cabane": {
+  "file": "buildings/cl_cabane.webp",
+  "source": "art-gen/gen_cl_cabane2.jpg",
+  "origine": "généré",
+  "px": [
+   386,
+   295
+  ],
+  "anchor": [
+   330,
+   294
+  ],
+  "footprint_m": [
+   8.0,
+   2.0
+  ],
+  "height_m": 3.5,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_ponton": {
+  "file": "buildings/cl_ponton.webp",
+  "source": "art-gen/gen_cl_ponton.jpg",
+  "origine": "généré",
+  "px": [
+   291,
+   248
+  ],
+  "anchor": [
+   206,
+   247
+  ],
+  "footprint_m": [
+   5.0,
+   3.0
+  ],
+  "height_m": 3.5,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_stand_implants": {
+  "file": "buildings/cl_stand_implants.webp",
+  "source": "art-gen/gen_cl_stand_implants2.jpg",
+  "origine": "généré",
+  "px": [
+   131,
+   161
+  ],
+  "anchor": [
+   103,
+   160
+  ],
+  "footprint_m": [
+   2.5,
+   1.0
+  ],
+  "height_m": 2.6,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_stand_puces": {
+  "file": "buildings/cl_stand_puces.webp",
+  "source": "art-gen/gen_cl_stand_puces2.jpg",
+  "origine": "généré",
+  "px": [
+   131,
+   152
+  ],
+  "anchor": [
+   103,
+   151
+  ],
+  "footprint_m": [
+   2.5,
+   1.0
+  ],
+  "height_m": 2.6,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_stand_armes": {
+  "file": "buildings/cl_stand_armes.webp",
+  "source": "art-gen/gen_cl_stand_armes3.jpg",
+  "origine": "généré",
+  "px": [
+   160,
+   193
+  ],
+  "anchor": [
+   103,
+   192
+  ],
+  "footprint_m": [
+   2.5,
+   2.0
+  ],
+  "height_m": 2.6,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_stand_papiers": {
+  "file": "buildings/cl_stand_papiers.webp",
+  "source": "art-gen/gen_cl_stand_papiers2.jpg",
+  "origine": "généré",
+  "px": [
+   131,
+   159
+  ],
+  "anchor": [
+   103,
+   158
+  ],
+  "footprint_m": [
+   2.5,
+   1.0
+  ],
+  "height_m": 2.4,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_stand_medocs": {
+  "file": "buildings/cl_stand_medocs.webp",
+  "source": "art-gen/gen_cl_stand_medocs2.jpg",
+  "origine": "généré",
+  "px": [
+   145,
+   181
+  ],
+  "anchor": [
+   103,
+   180
+  ],
+  "footprint_m": [
+   2.5,
+   1.5
+  ],
+  "height_m": 2.6,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_cable_lanternes": {
+  "file": "buildings/cl_cable_lanternes.webp",
+  "source": "art-gen/gen_cl_cable_lanternes.jpg",
+  "origine": "généré",
+  "px": [
+   591,
+   419
+  ],
+  "anchor": [
+   577,
+   418
+  ],
+  "footprint_m": [
+   14.0,
+   0.5
+  ],
+  "height_m": 5.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_ballon_dragon": {
+  "file": "buildings/cl_ballon_dragon.webp",
+  "source": "art-gen/gen_cl_sheet_ballons_0.jpg",
+  "origine": "généré",
+  "px": [
+   166,
+   172
+  ],
+  "anchor": [
+   124,
+   171
+  ],
+  "footprint_m": [
+   3.0,
+   1.5
+  ],
+  "height_m": 3.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_ballon_carpe": {
+  "file": "buildings/cl_ballon_carpe.webp",
+  "source": "art-gen/gen_cl_sheet_ballons_1.jpg",
+  "origine": "généré",
+  "px": [
+   152,
+   160
+  ],
+  "anchor": [
+   124,
+   159
+  ],
+  "footprint_m": [
+   3.0,
+   1.0
+  ],
+  "height_m": 3.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_ballon_tigre": {
+  "file": "buildings/cl_ballon_tigre.webp",
+  "source": "art-gen/gen_cl_sheet_ballons_2.jpg",
+  "origine": "généré",
+  "px": [
+   158,
+   151
+  ],
+  "anchor": [
+   124,
+   150
+  ],
+  "footprint_m": [
+   3.0,
+   1.2
+  ],
+  "height_m": 3.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_ballon_phenix": {
+  "file": "buildings/cl_ballon_phenix.webp",
+  "source": "art-gen/gen_cl_sheet_ballons_3.jpg",
+  "origine": "généré",
+  "px": [
+   166,
+   185
+  ],
+  "anchor": [
+   124,
+   184
+  ],
+  "footprint_m": [
+   3.0,
+   1.5
+  ],
+  "height_m": 3.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_bache": {
+  "file": "buildings/cl_bache.webp",
+  "source": "art-gen/gen_cl_sheet_props_a_0.jpg",
+  "origine": "généré",
+  "px": [
+   209,
+   198
+  ],
+  "anchor": [
+   124,
+   197
+  ],
+  "footprint_m": [
+   3.0,
+   3.0
+  ],
+  "height_m": 2.4,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_treteaux": {
+  "file": "buildings/cl_treteaux.webp",
+  "source": "art-gen/gen_cl_sheet_props_a_1.jpg",
+  "origine": "généré",
+  "px": [
+   99,
+   79
+  ],
+  "anchor": [
+   82,
+   78
+  ],
+  "footprint_m": [
+   2.0,
+   0.6
+  ],
+  "height_m": 0.8,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_caisse_armes": {
+  "file": "buildings/cl_caisse_armes.webp",
+  "source": "art-gen/gen_cl_sheet_props_a_2.jpg",
+  "origine": "généré",
+  "px": [
+   66,
+   54
+  ],
+  "anchor": [
+   49,
+   53
+  ],
+  "footprint_m": [
+   1.2,
+   0.6
+  ],
+  "height_m": 0.6,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_bac_puces": {
+  "file": "buildings/cl_bac_puces.webp",
+  "source": "art-gen/gen_cl_sheet_props_a_3.jpg",
+  "origine": "généré",
+  "px": [
+   36,
+   29
+  ],
+  "anchor": [
+   25,
+   28
+  ],
+  "footprint_m": [
+   0.6,
+   0.4
+  ],
+  "height_m": 0.4,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_presse_papiers": {
+  "file": "buildings/cl_presse_papiers.webp",
+  "source": "art-gen/gen_cl_sheet_props_b_0.jpg",
+  "origine": "généré",
+  "px": [
+   58,
+   67
+  ],
+  "anchor": [
+   41,
+   66
+  ],
+  "footprint_m": [
+   1.0,
+   0.6
+  ],
+  "height_m": 1.2,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_bocaux": {
+  "file": "buildings/cl_bocaux.webp",
+  "source": "art-gen/gen_cl_sheet_props_b_1.jpg",
+  "origine": "généré",
+  "px": [
+   44,
+   39
+  ],
+  "anchor": [
+   33,
+   38
+  ],
+  "footprint_m": [
+   0.8,
+   0.4
+  ],
+  "height_m": 0.8,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_friture": {
+  "file": "buildings/cl_friture.webp",
+  "source": "art-gen/gen_cl_sheet_props_b_2.jpg",
+  "origine": "généré",
+  "px": [
+   61,
+   71
+  ],
+  "anchor": [
+   41,
+   70
+  ],
+  "footprint_m": [
+   1.0,
+   0.7
+  ],
+  "height_m": 1.1,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_mahjong": {
+  "file": "buildings/cl_mahjong.webp",
+  "source": "art-gen/gen_cl_sheet_props_b_3.jpg",
+  "origine": "généré",
+  "px": [
+   111,
+   95
+  ],
+  "anchor": [
+   66,
+   94
+  ],
+  "footprint_m": [
+   1.6,
+   1.6
+  ],
+  "height_m": 1.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_barriere_caisses": {
+  "file": "buildings/cl_barriere_caisses.webp",
+  "source": "art-gen/gen_cl_sheet_props_c_0.jpg",
+  "origine": "généré",
+  "px": [
+   187,
+   151
+  ],
+  "anchor": [
+   165,
+   150
+  ],
+  "footprint_m": [
+   4.0,
+   0.8
+  ],
+  "height_m": 2.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_pieux": {
+  "file": "buildings/cl_pieux.webp",
+  "source": "art-gen/gen_cl_sheet_props_c_1.jpg",
+  "origine": "généré",
+  "px": [
+   56,
+   102
+  ],
+  "anchor": [
+   33,
+   101
+  ],
+  "footprint_m": [
+   0.8,
+   0.8
+  ],
+  "height_m": 2.0,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_pieux_b": {
+  "file": "buildings/cl_pieux_b.webp",
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/utility-v9.png 588,512,977,961",
+  "origine": "maquette",
+  "px": [
+   56,
+   54
+  ],
+  "anchor": [
+   33,
+   53
+  ],
+  "footprint_m": [
+   0.8,
+   0.8
+  ],
+  "height_m": 0.9,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_dechets_a": {
+  "file": "buildings/cl_dechets_a.webp",
+  "source": "art-gen/gen_cl_sheet_dechets_0.jpg",
+  "origine": "généré",
+  "px": [
+   139,
+   100
+  ],
+  "anchor": [
+   82,
+   99
+  ],
+  "footprint_m": [
+   2.0,
+   2.0
+  ],
+  "height_m": 0.2,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_dechets_b": {
+  "file": "buildings/cl_dechets_b.webp",
+  "source": "art-gen/gen_cl_sheet_dechets_1.jpg",
+  "origine": "généré",
+  "px": [
+   139,
+   106
+  ],
+  "anchor": [
+   82,
+   105
+  ],
+  "footprint_m": [
+   2.0,
+   2.0
+  ],
+  "height_m": 0.2,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
+ },
+ "cl_dechets_c": {
+  "file": "buildings/cl_dechets_c.webp",
+  "source": "art-gen/gen_cl_sheet_dechets_2.jpg",
+  "origine": "généré",
+  "px": [
+   139,
+   98
+  ],
+  "anchor": [
+   82,
+   97
+  ],
+  "footprint_m": [
+   2.0,
+   2.0
+  ],
+  "height_m": 0.2,
+  "lot": "china-lake v1 (creation/china-lake-sprites)",
+  "anchor_note": "pivot = coin avant bas géométrique (K w cos34,5 depuis le bord gauche, ligne opaque la plus basse)"
  }
 }
