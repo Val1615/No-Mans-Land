@@ -1,3 +1,4 @@
+import { rollVolonte } from '../data/volonte.js';
 import { UNITS } from '../data/units.js';
 import { buildGrid } from './grid.js';
 import { findPath } from './path.js';
@@ -87,24 +88,31 @@ export function createGame(world, sprites) {
   }
   function currentNode() {
     if (!state.dialogue) return null;
-    const tree = DIALOGUES[npcById(state.dialogue.npc).dialogue]; const node = tree[state.dialogue.node];
+    const tree = DIALOGUES[state.dialogue.tree || npcById(state.dialogue.npc).dialogue]; const node = tree[state.dialogue.node];
     const alt = (node.alt || []).find(a => cond(a.if));
     return { npc: npcById(state.dialogue.npc), text: alt ? alt.text : node.text,
       options: node.options.map((o, i) => ({ ...o, index: i })).filter(o => !o.if || cond(o.if)) };
   }
   // v9 : conditions composées « a&!b » ; « hurt » = blessé
-  const cond1 = c => c.startsWith('!') ? !cond1(c.slice(1)) : c === 'hurt' ? state.player.hp < state.player.maxHp : !!state.flags[c];
+  const attrOf = k => state.character?.attrs?.[k] ?? 0;
+  const cond1 = c => { const m = /^(\w+)(>=|<=|>|<)(\d+)$/.exec(c); if (m) { const v = attrOf(m[1]), n = +m[3]; return m[2] === '>=' ? v >= n : m[2] === '<=' ? v <= n : m[2] === '>' ? v > n : v < n; }
+    return c.startsWith('!') ? !cond1(c.slice(1)) : c === 'hurt' ? state.player.hp < state.player.maxHp : !!state.flags[c]; };
   const cond = c => c.split('&').every(cond1);
   function choose(index) {
     const node = currentNode(); if (!node) return { ok: false };
     const opt = node.options.find(o => o.index === index); if (!opt) return { ok: false };
     let next = opt.next;
+    if (opt.test) { const [k, n] = opt.test.split(':'), r = rollVolonte(attrOf(k), +n); next = r.ok ? opt.pass : opt.fail;
+      emit({ type: 'test', attr: k, ok: r.ok, text: r.ok ? 'Tu tiens bon.' : 'Tu flanches.' }); }
     if (opt.action) { // v9 : plusieurs actions « a;b », on s'arrête au premier refus (pas assez de $)
       const acts = opt.action.split(';');
-      if (acts.some(a => /^(buy|pay|heal)/.test(a))) { const cost = acts.reduce((t, a) => t + (/^(pay|heal)/.test(a) ? +a.split(':')[1] : /^buy/.test(a) ? +a.split(':')[2] : 0), 0);
+      if (acts.some(a => /^paycr:/.test(a))) { const cr = acts.reduce((t, a) => t + (/^paycr:/.test(a) ? +a.split(':')[1] : 0), 0);
+        if ((state.player.credits || 0) < cr) { next = 'pauvre'; acts.length = 0; } }
+      if (acts.some(a => /^(buy|pay:|heal)/.test(a))) { const cost = acts.reduce((t, a) => t + (/^(pay:|heal)/.test(a) ? +a.split(':')[1] : /^buy/.test(a) ? +a.split(':')[2] : 0), 0);
         if (state.player.money < cost) { next = 'pauvre'; acts.length = 0; } }
       for (const a of acts) { const r = act(a); if (!r.ok) { next = r.next || next; break; } } }
     if (!next || next === 'end') { closeDialogue(); return { ok: true, closed: true }; }
+    if (next.includes('/')) { const [t, n] = next.split('/'); if (DIALOGUES[t]) { state.dialogue.tree = t; next = n; } }
     state.dialogue.node = next; return { ok: true };
   }
   function act(a) {
@@ -112,6 +120,8 @@ export function createGame(world, sprites) {
     if (k === 'reveal') { if (!state.discovered[x]) { state.discovered[x] = true; emit({ type: 'discover', building: x, how: 'dialogue', text: 'Lieu repéré.' }); } return { ok: true }; }
     if (k === 'flag') { state.flags[x] = true; emit({ type: 'flag', flag: x, text: x.startsWith('q_') ? 'Journal : quête mise à jour.' : 'Journal : piste notée.' }); return { ok: true }; }
     if (k === 'pay') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' }; pl.money -= cost; emit({ type: 'service', what: 'pay', text: `−${cost} $` }); return { ok: true }; }
+    if (k === 'paycr') { const cost = +x; if ((pl.credits || 0) < cost) return { ok: false, next: 'pauvre' }; pl.credits -= cost; emit({ type: 'service', what: 'paycr', text: `−${cost} cr` }); return { ok: true }; }
+    if (k === 'take') { if (!pl.inv[x]) return { ok: true }; pl.inv[x]--; if (!pl.inv[x]) delete pl.inv[x]; emit({ type: 'service', what: 'take', text: `${ITEMS[x]?.name || x} perdu` }); return { ok: true }; }
     if (k === 'heal') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' };
       pl.money -= cost; pl.hp = Math.min(pl.maxHp, pl.hp + Math.ceil((pl.maxHp - pl.hp) * (state.character?.effects?.healFactor ?? 1))); emit({ type: 'service', what: 'heal', text: `Soigné. −${cost} $` }); return { ok: true }; }
     if (k === 'buy') { const cost = +y, it = ITEMS[x]; if (pl.money < cost) return { ok: false, next: 'pauvre' };

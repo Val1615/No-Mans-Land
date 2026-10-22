@@ -69,6 +69,7 @@ export const DIALOGUES = {
   }
 };
 import { DIALOGUES as STEEL_DIALOGUES } from './steel.js';
+import { DIALOGUES_VOLONTE, DIALOGUES_INFO } from './dialogues_volonte.js';
 export const ITEMS = { ...I1, tip: { name: 'Tuyau', consumeNow: true }, cric: { name: 'Cric de camion' } };
 // v9 : Anselme (étape 2, choix : payer ou mentir) et la voix derrière la porte (scène finale, sans PNJ visible)
 DIALOGUES.anselme = { ...DIALOGUES.anselme,
@@ -107,7 +108,7 @@ DIALOGUES.porte = {
 };
 
 // v12 Steel L1 : dialogues de la route et de Center-Town ; Sol et Bruno orientent humain et mutant vers la Sous-Ville [décision ; contact = proposition]
-Object.assign(DIALOGUES, STEEL_DIALOGUES);
+Object.assign(DIALOGUES, STEEL_DIALOGUES, DIALOGUES_VOLONTE, DIALOGUES_INFO);
 DIALOGUES.sol = { ...DIALOGUES.sol,
   start: { ...DIALOGUES.sol.start, options: [
     { label: 'Steel. Ils m\'ont refoulé à la douane.', next: 'steel_refuse', if: 'steel_refuse&!race_mutant&!sol_passage' },

@@ -178,6 +178,7 @@ export const COMBAT_HOOKS = { douane_mutant: { status: 'provisoire', fuite: 'war
 export const DIALOGUES = {
   odile: {
     start: { text: 'Suivant. Motif ?', options: [
+      { label: 'Je repasse. Il paraît que mon implant a sonné.', next: 'odile_volonte/start', if: 'steel_passe&!odile_tenu&!odile_signe&!odile_payee' },
       { label: 'Entrer. Je cherche du travail.', next: 'lu', if: 'implant&!steel_passe' },
       { label: 'Entrer. Je cherche du travail.', next: 'refus', if: '!implant', action: 'flag:steel_refuse' },
       { label: 'Changer des dollars (20 $ contre 11 cr)', action: 'change:20:11', next: 'change', if: 'implant' },
@@ -201,6 +202,7 @@ export const DIALOGUES = {
         { if: 'steel_passe', text: 'Implant lu, tu es en règle. Avance.' } ], options: [
       { label: 'Courir vers le désert.', if: 'race_mutant', action: 'hook:douane_mutant;hurt:9;flag:steel_attaque;flag:steel_fui;warp:steel_route:29:34', next: 'fui' },
       { label: 'Rester. Lever les mains.', if: 'race_mutant', next: 'insiste' },
+      { label: 'La guichetière a l\u2019air de bien vous connaître.', if: '!race_mutant&!info_cousin_odile', next: 'halloran_cousin/start' },
       { label: 'Je passe juste.', if: '!race_mutant', next: 'end' } ] },
     fui: { text: 'Deux tirs. Le premier soulève le sable, le second t\u2019ouvre l\u2019épaule. Tu cours jusqu\u2019à n\u2019entendre plus que ton souffle.', options: [ { label: 'Reprendre mon souffle.', next: 'end' } ] },
     insiste: { text: 'Il ne tire pas. Il parle dans son col, et deux autres arrivent avec une cagoule et des liens.', options: [
@@ -223,6 +225,7 @@ export const DIALOGUES = {
     start: { text: 'T\u2019es perdu, ou tu cherches quelqu\u2019un ?', alt: [
         { if: 'sv_mot', text: 'Tu connais le chemin. La Cuve, après le passage.' },
         { if: 'sv_jete', text: 'Les soldats t\u2019ont balancé par le trou, hein. Ils font ça quand ils ont la flemme de remplir des papiers.' } ], options: [
+      { label: 'Tu me regardes depuis tout à l\u2019heure.', next: 'guetteuse_volonte/start', if: 'sv_passage&!nane_tenu&!nane_paie&!nane_cede' },
       { label: 'Quatorze poutres.', if: 'bruno_frere&!sv_mot', action: 'flag:sv_mot;reveal:v_tripot', next: 'mot' },
       { label: 'Et maintenant, je vais où ?', if: 'sv_jete&!sv_mot', action: 'flag:sv_mot;reveal:v_tripot', next: 'jete' },
       { label: 'Je cherche Elio.', if: '!sv_mot', next: 'qui' },
@@ -238,6 +241,7 @@ export const DIALOGUES = {
   },
   dealer: {
     start: { text: 'Une puce de mémoire, un œil qui voit la nuit, un truc pour dormir. Ici on ne demande pas d\u2019où ça sort.', options: [
+      { label: 'Tu voulais me voir ?', next: 'dealer_volonte/start', if: '!pic_tenu&!pic_paie&!pic_cede' },
       { label: 'Ça sort d\u2019où ?', next: 'ou' }, { label: 'Non merci.', next: 'end' } ] },
     ou: { text: 'De gens qui n\u2019en avaient plus besoin. Tu veux une table, ou tu veux partir ?', options: [ { label: 'Partir.', next: 'end' } ] },
   },
