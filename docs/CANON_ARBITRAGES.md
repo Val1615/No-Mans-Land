@@ -189,3 +189,9 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 ## 9 septies. Steel L1 v13 (22/10/2026)
 - Décision (Valentin) : Steel de nuit, dense, néons violet et cyan, hologrammes, drones ; la douane est une place forte d'IO.
 - Proposition : la Rotonde (nom provisoire du bâtiment à dôme de Center-Town).
+
+## 9 octies. Steel L2 v14, la Sous-Ville (22/10/2026)
+- Décision (Valentin) : bidonville souterrain sous la ville, gros tuyaux et poutres, tôle rouillée, braseros, lumière orange (concept `villes/steel/ambiance/concept_sous_ville.jpg`) ; criminalité visible ; la trappe de service s'ouvre pour qui connaît Elio ; le mutant capturé est jeté dans la Sous-Ville ; la quête s'arrête à Center-Town.
+- Proposition : monnaie de la Sous-Ville = le **dollar** (ville basse, proche des No Man's Land ; le crédit reste la monnaie du dessus). Prix du passage d'Elio : 20 $, ou porter une caisse (blessure légère).
+- Proposition (noms provisoires) : quartiers « Les Poutres » et « La Cuve », Le Tripot, Nane (guetteuse), Pic (dealer), le receleur, Elio (frère de Bruno, déjà provisoire).
+- Canon inchangé : année 2175 ; pas de système de combat (crochet `douane_mutant`, issue « capture » = Sous-Ville).
