@@ -562,5 +562,32 @@
   "hauteur_implicite_m": 1.41,
   "echelle_ok": false,
   "magenta_bord_pct": 0.08
+ },
+ "lt_dalle_center": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 1.0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "source": "art-gen/gen_lt_dalle_module.jpg (module ×5)",
+  "origine": "généré",
+  "role": "sous-face de la dalle de Center-Town, 5 pylônes",
+  "emprise_m": [
+   48.0,
+   2.5
+  ],
+  "hauteur_attendue_m": 15.0,
+  "correction_v4": {
+   "pente_source": 0.162,
+   "cisaillement": 0.169,
+   "pente_cible": 0.331,
+   "echelle": 1.129,
+   "periode_px": 432.7,
+   "pentes_apres": [
+    0.331,
+    null
+   ]
+  },
+  "magenta_bord_pct": 0.0
  }
 }
