@@ -294,7 +294,7 @@ Concept art de référence : `villes/steel/ambiance/concept_center_town.jpg` (co
 - Logique inchangée : douane par race, crédits, Sol, Bruno et Elio, crochet du combat mutant. La fuite du mutant renvoie en (29 ; 34) : en (34 ; 35), on tombait sur le seuil de la jonction et on repartait à Dusk-Town.
 
 ### Vérifié
-- Live (GitHub Pages fc0e685) : `steel_l1` 250/250 ; anciennes suites vertes (lot1 66/66, lot2 101/101, town 129/129, entrances 48/48, ui 53/53, quest_walk 132/132, music 27/27, dusk_q1, flip, interiors). Captures `captures/steel-l1-v13/live/` (vue concept : `desktop-04-vue-concept.png`).
+- Live (GitHub Pages fc0e685) : `steel_l1` 249/250 (seul échec : mobile/mutant, le texte d’arrivée de 3,5 s déjà effacé au moment de la lecture ; passé dans les 7 autres parcours live et en local) ; anciennes suites vertes (lot1 66/66, lot2 101/101, town 129/129, entrances 48/48, ui 53/53, quest_walk 132/132, music 27/27, dusk_q1, flip, interiors). Captures `captures/steel-l1-v13/live/` (vue concept : `desktop-04-vue-concept.png`).
 - `tests/steel_l1.py` étendue : disposition mesurée sur les pixels (porte en haut à droite, poste à gauche, bout de route sur le sprite de la porte, chemin marchable), soldats et file comptés à l'écran, fortifications, métal de la porte sans voile violet, cohérence de l'intérieur (mobilier IO rendu, palette froide sans sable), Center-Town contre la v12 et contre l'approche (saturation, néons froids, zones éclairées), passants et drones animés, perf, vue comparable au concept art.
 
 ### À vérifier
