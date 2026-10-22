@@ -284,7 +284,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     cam.userData.zoom = null;
   }
   addEventListener('resize', resize); resize();
-  let camOverride = null;
+  let camOverride = null, camShift = 0;
   function render() {
     const s = game.state;
     if (builtFor !== s.location) build(s.location);
@@ -300,14 +300,23 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const loc = LOCATIONS[s.location];
     const target = camOverride ? new THREE.Vector3(camOverride.x, 0, camOverride.z) : new THREE.Vector3(s.player.x, 0, s.player.z);
     if (loc.kind === 'interior' && !camOverride) target.set(loc.size.w / 2, 0, loc.size.d / 2);
+    // mobile : quand le dialogue est ouvert, le cadre remonte pour garder joueur et PNJ visibles au-dessus du panneau
+    const dlg = document.getElementById('dialogue');
+    let wantShift = 0;
+    if (!camOverride && innerWidth <= 600 && dlg && !dlg.hidden && dlg.offsetHeight) {
+      const top = dlg.getBoundingClientRect().top;
+      wantShift = Math.max(0, innerHeight / 2 - top / 2 - 20);
+      if (loc.kind === 'interior') target.set((target.x + s.player.x) / 2, 0, (target.z + s.player.z) / 2);
+    }
+    camShift += (wantShift - camShift) * Math.min(1, dt * 8); if (Math.abs(wantShift - camShift) < 0.5) camShift = wantShift;
     cam.position.copy(target).addScaledVector(camDir, -80); cam.lookAt(target);
     const zoom = camOverride?.ppm || (loc.kind === 'interior' ? Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6)) : ppm);
-    if (zoom !== cam.userData.zoom) { cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; cam.left = -w / 2 / zoom; cam.right = w / 2 / zoom; cam.top = h / 2 / zoom; cam.bottom = -h / 2 / zoom; cam.updateProjectionMatrix(); }
+    if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; cam.left = -w / 2 / zoom; cam.right = w / 2 / zoom; cam.top = (h / 2 - camShift) / zoom; cam.bottom = (-h / 2 - camShift) / zoom; cam.updateProjectionMatrix(); }
     if (false) { const w = innerWidth, h = innerHeight; cam.left = -w / 2 / camOverride.ppm; cam.right = w / 2 / camOverride.ppm; cam.top = h / 2 / camOverride.ppm; cam.bottom = -h / 2 / camOverride.ppm; cam.updateProjectionMatrix(); }
     if (exterior) { painter(); spriteOcclusion(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
-    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); l.el.style.transform = `translate(-50%,-100%) translate(${r.left + (v.x + 1) / 2 * r.width}px,${r.top + (1 - v.y) / 2 * r.height}px)`; }
+    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0; let lx = r.left + (v.x + 1) / 2 * r.width; if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); l.el.style.transform = `translate(-50%,-100%) translate(${lx}px,${r.top + (1 - v.y) / 2 * r.height}px)`; }
   }
   function pick(clientX, clientY) {
     render();

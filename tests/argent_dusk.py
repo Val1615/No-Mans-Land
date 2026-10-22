@@ -33,7 +33,7 @@ def centroid(u):
 
 # Argent à Dusk-Town (docs/ARGENT_DUSKTOWN.md) : quêtes A (Sol, 12 $ / 8 $) et B (Hector/Ezequiel : intimidation, clés, paiement, échec),
 # ferraille (7 points, 22 $, une seule fois), Trois Os (RNG forcé, plafond 15 $ persistant), total hors dés = 49 $. Desktop 1280x800 et mobile.
-CAP = os.environ.get('CAP', os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/captures/argent-v1/')); os.makedirs(CAP, exist_ok=True)
+CAP = os.environ.get('CAP', '/tmp/nml-test-out/argent_dusk/'); os.makedirs(CAP, exist_ok=True)
 GAINS = {}
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
