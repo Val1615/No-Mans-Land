@@ -33,15 +33,25 @@ D = [
  ('st_voiture', ('arr', cprops[3]), 1.4, [4.4, 2.0], 'voiture (maquette city-props-v3)'),
  ('st_banc', ('arr', cprops[4]), 0.95, [1.8, 0.6], 'banc lumineux (maquette city-props-v3)'),
  ('st_pylone', ('arr', cprops[5]), 2.7, [0.7, 0.7], 'pylône lumineux (maquette city-props-v3)'),
+ # v14 Sous-Ville
+ ('sv_brasero', ('gen', 'gen_sv_props.jpg', 0), 1.3, [0.8, 0.8], 'fût brasero (généré)'),
+ ('sv_linge', ('gen', 'gen_sv_props.jpg', 1), 2.4, [3.0, 0.3], 'corde à linge (généré)'),
+ ('sv_tuyau', ('gen', 'gen_sv_props.jpg', 2), 1.8, [4.2, 1.2], 'gros tuyau sur supports (généré)'),
+ ('sv_ecrans', ('gen', 'gen_sv_props.jpg', 3), 2.4, [2.6, 1.2], 'mur de télés en neige (généré)'),
+ ('sv_panneau', ('gen', 'gen_sv_props2.jpg', 0), 2.0, [0.4, 0.4], 'panneau bricolé (généré)'),
+ ('sv_armes', ('gen', 'gen_sv_props2.jpg', 1), 1.1, [1.4, 1.0], 'caisse d armes (généré)'),
+ ('sv_pneus', ('gen', 'gen_sv_props2.jpg', 2), 1.0, [2.0, 1.6], 'tas de pneus (généré)'),
+ ('sv_implants', ('gen', 'gen_sv_props2.jpg', 3), 1.6, [1.8, 0.9], 'étal d implants volés (généré)'),
 ]
-man = json.load(open(HERE + '/assets/reused/manifest.json')); before = json.dumps({k: v for k, v in man.items() if not k.startswith('st_')}, sort_keys=True)
+man = json.load(open(HERE + '/assets/reused/manifest.json')); before = json.dumps({k: v for k, v in man.items() if not k.startswith(('st_', 'sv_'))}, sort_keys=True)
 for aid, (kind, *src), h, fp, role in D:
     rgba = src[0] if kind == 'arr' else TI.quad(GEN + src[0], src[1])
     im = Image.fromarray(rgba, 'RGBA'); im.thumbnail((512, 512)); im.save(OUT + aid + '.webp', quality=88)
     man[aid] = {'file': 'generated/' + aid + '.webp', 'height_m': h, 'px': list(im.size), 'footprint_m': fp, 'status': 'v13 Steel : ' + role,
                 'src': ('art-gen/' + src[0] + f' #{src[1]}') if kind == 'gen' else 'maquette art-source (planche city-*-v3)'}
     print(aid, im.size)
-assert json.dumps({k: v for k, v in man.items() if not k.startswith('st_')}, sort_keys=True) == before
+assert json.dumps({k: v for k, v in man.items() if not k.startswith(('st_', 'sv_'))}, sort_keys=True) == before
 json.dump(man, open(HERE + '/assets/reused/manifest.json', 'w'), indent=1, ensure_ascii=False)
 # sol mouillé (vue de dessus, tuile) : 1 image = 6 m
 Image.open(GEN + 'gen_wet_ground.jpg').convert('RGB').resize((512, 512)).save(OUT + 'g_wet.webp', quality=88)
+Image.open(GEN + 'gen_sv_ground.jpg').convert('RGB').resize((512, 512)).save(OUT + 'g_sv.webp', quality=88)  # v14 : sol de la Sous-Ville

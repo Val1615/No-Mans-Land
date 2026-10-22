@@ -653,5 +653,166 @@
    9.0
   ],
   "lot": "steel-l1 v12"
+ },
+ "b_sv_cab0": {
+  "file": "buildings/b_sv_cab0.webp",
+  "source": "art-gen/gen_sv_shacks.jpg",
+  "crop": [
+   10,
+   10,
+   329,
+   311
+  ],
+  "px": [
+   319,
+   301
+  ],
+  "anchor": [
+   140,
+   300
+  ],
+  "footprint_m": [
+   5.0,
+   4.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_sv_cab1": {
+  "file": "buildings/b_sv_cab1.webp",
+  "source": "art-gen/gen_sv_shacks.jpg",
+  "crop": [
+   10,
+   10,
+   329,
+   333
+  ],
+  "px": [
+   319,
+   323
+  ],
+  "anchor": [
+   165,
+   322
+  ],
+  "footprint_m": [
+   5.0,
+   4.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_sv_cab2": {
+  "file": "buildings/b_sv_cab2.webp",
+  "source": "art-gen/gen_sv_shacks.jpg",
+  "crop": [
+   10,
+   10,
+   329,
+   300
+  ],
+  "px": [
+   319,
+   290
+  ],
+  "anchor": [
+   151,
+   289
+  ],
+  "footprint_m": [
+   5.0,
+   4.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_sv_cab3": {
+  "file": "buildings/b_sv_cab3.webp",
+  "source": "art-gen/gen_sv_shacks.jpg",
+  "crop": [
+   10,
+   10,
+   329,
+   353
+  ],
+  "px": [
+   319,
+   343
+  ],
+  "anchor": [
+   164,
+   342
+  ],
+  "footprint_m": [
+   5.0,
+   4.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_sv_tripot": {
+  "file": "buildings/b_sv_tripot.webp",
+  "source": "art-gen/gen_sv_tripot.jpg",
+  "crop": [
+   10,
+   10,
+   535,
+   439
+  ],
+  "px": [
+   525,
+   429
+  ],
+  "anchor": [
+   309,
+   428
+  ],
+  "footprint_m": [
+   8.0,
+   7.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_sv_atelier": {
+  "file": "buildings/b_sv_atelier.webp",
+  "source": "art-gen/gen_sv_atelier.jpg",
+  "crop": [
+   10,
+   10,
+   432,
+   397
+  ],
+  "px": [
+   422,
+   387
+  ],
+  "anchor": [
+   225,
+   386
+  ],
+  "footprint_m": [
+   6.5,
+   5.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_sv_lift": {
+  "file": "buildings/b_sv_lift.webp",
+  "source": "art-gen/gen_sv_lift.jpg",
+  "crop": [
+   10,
+   10,
+   253,
+   622
+  ],
+  "px": [
+   243,
+   612
+  ],
+  "anchor": [
+   118,
+   611
+  ],
+  "footprint_m": [
+   3.5,
+   3.5
+  ],
+  "lot": "steel-l1 v12"
  }
 }

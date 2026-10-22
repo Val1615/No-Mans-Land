@@ -10,14 +10,17 @@ OUT = '/workspace/nml/game/'
 YAW, PITCH, K = 34.5, 28.8, 50
 cy, sy = math.cos(math.radians(YAW)), math.sin(math.radians(YAW))
 r05 = lambda v: round(v * 2) / 2
-FP = {'st_porte2': (30.0, 8.0), 'st_poste': (9.0, 8.0), 'st_ct_dome': (15.0, 12.0), 'st_ct_shop': (8.0, 8.0), 'st_ct_tower': (9.0, 9.0)}  # v13 : emprises imposées (images générées non boîtes)
+FP = {'sv_cab0': (5.0, 4.0), 'sv_cab1': (5.0, 4.0), 'sv_cab2': (5.0, 4.0), 'sv_cab3': (5.0, 4.5), 'sv_tripot': (8.0, 7.0), 'sv_atelier': (6.5, 5.5), 'sv_lift': (3.5, 3.5), 'st_porte2': (30.0, 8.0), 'st_poste': (9.0, 8.0), 'st_ct_dome': (15.0, 12.0), 'st_ct_shop': (8.0, 8.0), 'st_ct_tower': (9.0, 9.0)}  # v13 : emprises imposées (images générées non boîtes)
 CELLS = {
  'st_tour': ('settlement-v9-city.png', 0, 0), 'st_boutiques': ('settlement-v9-city.png', 1, 0), 'st_neon': ('settlement-v9-city.png', 2, 0),
  'st_usine': ('settlement-v9-city.png', 0, 1), 'st_verre': ('settlement-v9-city.png', 1, 1), 'st_immeuble': ('settlement-v9-city.png', 2, 1),
  'st_jumelles': ('city-v3.png', 0, 0), 'st_galerie': ('city-v3.png', 1, 0), 'st_blanc': ('city-v3.png', 2, 0), 'st_douane': ('city-v3.png', 2, 1),
  'st_porte': ('GEN:art-gen/gen_steel_gate.jpg', 30.0, 7.0), 'st_service': ('GEN:art-gen/gen_service_exit.jpg', 5.0, 3.0),
  # v13 : place forte IO et Center-Town de nuit (générés d'après le concept art ; FIX = cisaillement v4 de tools_interiors.v4fix)
- 'st_porte2': ('GEN:art-gen/gen_steel_gate2.jpg', 30.0, 9.0), 'st_poste': ('GENFIX:art-gen/gen_douane_post.jpg', 9.0, 9.0),
+ 'st_porte2': ('GEN:art-gen/gen_steel_gate2.jpg', 30.0, 9.0),
+ # v14 : Sous-Ville (concept_sous_ville.jpg) : cabanes de tôle (planche 2x2), tripot, atelier d'Elio, monte-charge
+ **{f'sv_cab{q}': (f'GENFIXQ:art-gen/gen_sv_shacks.jpg:{q}', 5.0, 4.0) for q in range(4)},
+ 'sv_tripot': ('GENFIX:art-gen/gen_sv_tripot.jpg', 8.0, 7.0), 'sv_atelier': ('GENFIX:art-gen/gen_sv_atelier.jpg', 6.5, 5.5), 'sv_lift': ('GENFIX:art-gen/gen_sv_lift.jpg', 3.5, 3.5), 'st_poste': ('GENFIX:art-gen/gen_douane_post.jpg', 9.0, 9.0),
  'st_ct_dome': ('GENFIX:art-gen/gen_ct_dome.jpg', 15.0, 13.0), 'st_ct_shop': ('GENFIX:art-gen/gen_ct_shop.jpg', 9.0, 9.0), 'st_ct_tower': ('GENFIX:art-gen/gen_ct_tower.jpg', 10.0, 10.0),
 }
 FRONT_Z = 13.0
@@ -27,6 +30,14 @@ DISTRICTS = {
   'r_porte':   ('st_porte2', 17.0, 0.0, 'Porte du sarcophage', False, [], None),
   'r_douane':  ('st_poste', 2.0, 20.0, 'Douane', True, [], 'card'),
   'r_service': ('st_service', 40.0, 29.5, 'Sortie de service', False, [], None)},
+ 'sv1': {  # v14 : Sous-Ville, quartier des Poutres (arrivée par la trappe) : cabanes, tripot
+  'v_cab_a': ('sv_cab0', 2.0, 3.0, 'Cabane', False, [], None), 'v_cab_b': ('sv_cab1', 9.0, 2.5, 'Cabane', False, [], None),
+  'v_tripot': ('sv_tripot', 16.0, 2.0, 'Le Tripot', True, [], 'dice'), 'v_cab_c': ('sv_cab2', 27.0, 3.0, 'Cabane', False, [], None),
+  'v_cab_d': ('sv_cab3', 3.0, 20.0, 'Cabane', False, [], None), 'v_cab_e': ('sv_cab1', 22.0, 21.0, 'Cabane', False, [], None), 'v_cab_f': ('sv_cab0', 30.0, 20.5, 'Cabane', False, [], None)},
+ 'sv2': {  # v14 : Sous-Ville, la Cuve : atelier d'Elio, monte-charge vers Center-Town
+  'v_cab_g': ('sv_cab2', 2.0, 3.0, 'Cabane', False, [], None), 'v_atelier': ('sv_atelier', 10.0, 2.5, 'Atelier d\'Elio', True, [], 'key'),
+  'v_cab_h': ('sv_cab3', 19.0, 2.0, 'Cabane', False, [], None), 'v_lift': ('sv_lift', 30.0, 4.0, 'Monte-charge', False, [], None),
+  'v_cab_i': ('sv_cab0', 4.0, 20.0, 'Cabane', False, [], None), 'v_cab_j': ('sv_cab1', 18.0, 20.5, 'Cabane', False, [], None)},
  'center': {  # v13 : Center-Town de nuit (concept art) : rotonde, change, tour Arcadius au nord ; rangée sud de la maquette
   'c_tour':      ('st_ct_dome', 16.0, 1.0, 'La Rotonde', False, [], None),
   'c_change':    ('st_ct_shop', 4.0, 5.0, 'Change de Teng', True, [], 'coin'),
@@ -48,8 +59,9 @@ def key_green(path):  # v13 : porte générée sur fond vert sombre uni (0, 24, 
   a[..., 1] = np.minimum(g, np.maximum(r, b) + 4)  # retire le voile vert des bords
   import tools_interiors as TI
   return TI.clean(np.dstack([a, al * 255]).astype('uint8'), 4000)
-def key_bg(path):  # v13 : fond uni (magenta) retiré par distance à la couleur du fond seulement : garde les néons violets de l'objet
+def key_bg(path, q=None):  # v13 : fond uni (magenta) retiré par distance à la couleur du fond seulement : garde les néons violets de l'objet
   a = np.asarray(Image.open(path).convert('RGB')).astype(float)
+  if q is not None: H, W = a.shape[:2]; c, r = q % 2, q // 2; a = a[r * H // 2:(r + 1) * H // 2, c * W // 2:(c + 1) * W // 2]  # v14 : planche 2x2
   bg = np.median(np.concatenate([a[:10, :10].reshape(-1, 3), a[:10, -10:].reshape(-1, 3), a[-10:, :10].reshape(-1, 3), a[-10:, -10:].reshape(-1, 3)]), 0)
   d = np.sqrt(((a - bg) ** 2).sum(2)); al = np.clip((d - 45) / 45, 0, 1)
   al = ndimage.binary_erosion(ndimage.binary_opening(al > 0.5, iterations=2), iterations=2) * al  # v13 : on rogne 2 px de bord (liseré violet du fond)
@@ -60,8 +72,8 @@ def load_cell(cell):
   f, c, r = CELLS[cell]
   if f.startswith('GEN'):
     sys.path.insert(0, OUT); import tools_interiors as TI
-    fix = f.startswith('GENFIX:'); f = 'GEN:' + f.split(':', 1)[1]
-    rgba = key_green(OUT + f[4:]) if cell == 'st_porte2' else key_bg(OUT + f[4:]) if fix else TI.quad(OUT + f[4:], -1).copy()
+    fix = f.startswith('GENFIX'); q = int(f.split(':')[2]) if f.startswith('GENFIXQ:') else None; f = 'GEN:' + f.split(':')[1]
+    rgba = key_green(OUT + f[4:]) if cell == 'st_porte2' else key_bg(OUT + f[4:], q) if fix else TI.quad(OUT + f[4:], -1).copy()
     if fix: rgba, info = TI.v4fix(rgba, **({'force': (0.5, 0.5), 'mirror': False} if cell == 'st_ct_tower' else {})); print(f'  {cell}: correction v4', info)
     if cell == 'st_porte':  # v12 : dé-contamination du magenta (la v13 st_porte2 est générée sur fond vert sombre : rien à corriger)
       px = rgba[..., :3].astype(float); spill = np.clip((px[..., 0] + px[..., 2]) / 2 - px[..., 1] - 18, 0, None)
@@ -122,7 +134,7 @@ for q, B in DISTRICTS.items():
       doors.append({'id': f'{bid}_door' + ('' if k == 0 else str(k + 1)), 'buildingId': bid, 'painted_px': [px, py], 'face': face, 'opening': o, 'threshold': th})
   out[q] = (blds, doors)
 json.dump(man, open(OUT + 'assets/buildings/manifest.json', 'w'), indent=1, ensure_ascii=False)
-js = '// Généré par tools_steel.py : ne pas éditer à la main. v12 Steel-Megalopolis L1 (route + douane, Center-Town).\n'
+js = '// Généré par tools_steel.py : ne pas éditer à la main. v12-v14 Steel-Megalopolis (route + douane, Center-Town, Sous-Ville).\n'
 for q in out:
   js += f'export const BUILDINGS_{q.upper()} = ' + json.dumps(out[q][0], ensure_ascii=False) + ';\n'
   js += f'export const PAINTED_DOORS_{q.upper()} = ' + json.dumps(out[q][1], ensure_ascii=False) + ';\n'

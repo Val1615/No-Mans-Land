@@ -143,6 +143,11 @@ ASSETS = [
   ('io_scanner',     ('genfix', 'gen_douane_furn.jpg', 0, {'force': (0.5, 0.5), 'mirror': False}), 1.7, 0.75, 2.3, 'portique scanner corporel (généré, angle corrigé)'),
   ('io_turnstile',   ('genfix', 'gen_douane_furn.jpg', 1, {'force': (0.5, 0.5), 'mirror': False}), 1.45, 2.1, 1.0, 'tourniquet de contrôle (généré, angle corrigé)'),
   ('io_console',     ('genfix', 'gen_douane_furn.jpg', 2, {}), 1.1, 0.55, 1.5, 'console de surveillance à trois écrans (généré, angle corrigé)'),
+  # v14 Sous-Ville : atelier d'Elio, tripot (générés, angle corrigé)
+  ('sv_workbench',   ('genfix', 'gen_sv_furn.jpg', 0, {}), 1.9, 0.9, 1.6, 'établi d Elio, implant ouvert, lampe (généré, angle corrigé)'),
+  ('sv_cardtable',   ('genfix', 'gen_sv_furn.jpg', 1, {}), 1.9, 1.2, 0.9, 'table de jeu sur touret, tabourets (généré, angle corrigé)'),
+  ('sv_bar',         ('genfix', 'gen_sv_furn.jpg', 2, {}), 2.2, 0.7, 1.4, 'comptoir de caisses et bouteilles (généré, angle corrigé)'),
+  ('sv_shelf',       ('genfix', 'gen_sv_furn.jpg', 3, {}), 1.6, 0.6, 1.9, 'étagère d électronique de récup (généré, angle corrigé)'),
   ('io_locker',      ('genfix', 'gen_douane_furn.jpg', 3, {}), 1.4, 0.85, 2.0, 'armoire forte à armes (généré, angle corrigé)'),
 ]
 # acceptés par l'angle mais non retenus pour le canon ou le rendu
@@ -179,6 +184,7 @@ def run():
         man[name] = {'file': f'interiors/{name}.webp', 'texture': True, 'origin': 'généré', 'source': 'généré art-gen/' + f + f' #{q}'}
     tile('gen_walls_sheet.jpg', 0, 'w_plaster'); tile('gen_walls_sheet.jpg', 1, 'w_brick'); tile('gen_walls_sheet.jpg', 2, 'w_clay'); tile('gen_walls_sheet.jpg', 3, 'w_planks')
     tile('gen_io_surfaces.jpg', 0, 'w_io_dark'); tile('gen_io_surfaces.jpg', 1, 'w_io_white'); tile('gen_io_surfaces.jpg', 2, 'f_io_grate'); tile('gen_io_surfaces.jpg', 3, 'f_io_dark')  # v13 Steel
+    tile('gen_sv_surfaces.jpg', 0, 'w_sv_tin'); tile('gen_sv_surfaces.jpg', 1, 'w_sv_planks'); tile('gen_sv_surfaces.jpg', 2, 'f_sv_concrete'); tile('gen_sv_surfaces.jpg', 3, 'f_sv_plates')  # v14
     tile('gen_floors_sheet.jpg', 0, 'f_tiles'); tile('gen_floors_sheet.jpg', 2, 'f_earth')
     Image.open(SRC + 'interior-wood-v10.png').convert('RGB').resize((512, 512)).save(OUT + 'f_wood.webp', quality=88)
     man['f_wood'] = {'file': 'interiors/f_wood.webp', 'texture': True, 'origin': 'maquette', 'source': 'maquette art-source/interior-wood-v10.png'}

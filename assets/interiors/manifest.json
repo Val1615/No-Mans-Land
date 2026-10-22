@@ -299,6 +299,51 @@
   "source": "généré art-gen/gen_douane_furn.jpg #2",
   "mirrored_from_source": false
  },
+ "sv_workbench": {
+  "file": "interiors/sv_workbench.webp",
+  "px": [
+   386,
+   417
+  ],
+  "footprint_m": [
+   1.9,
+   0.9
+  ],
+  "height_m": 1.6,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_furn.jpg #0",
+  "mirrored_from_source": false
+ },
+ "sv_bar": {
+  "file": "interiors/sv_bar.webp",
+  "px": [
+   400,
+   316
+  ],
+  "footprint_m": [
+   2.2,
+   0.7
+  ],
+  "height_m": 1.4,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_furn.jpg #2",
+  "mirrored_from_source": false
+ },
+ "sv_shelf": {
+  "file": "interiors/sv_shelf.webp",
+  "px": [
+   314,
+   333
+  ],
+  "footprint_m": [
+   1.6,
+   0.6
+  ],
+  "height_m": 1.9,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_furn.jpg #3",
+  "mirrored_from_source": false
+ },
  "io_locker": {
   "file": "interiors/io_locker.webp",
   "px": [
@@ -361,6 +406,30 @@
   "texture": true,
   "origin": "généré",
   "source": "généré art-gen/gen_io_surfaces.jpg #3"
+ },
+ "w_sv_tin": {
+  "file": "interiors/w_sv_tin.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_surfaces.jpg #0"
+ },
+ "w_sv_planks": {
+  "file": "interiors/w_sv_planks.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_surfaces.jpg #1"
+ },
+ "f_sv_concrete": {
+  "file": "interiors/f_sv_concrete.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_surfaces.jpg #2"
+ },
+ "f_sv_plates": {
+  "file": "interiors/f_sv_plates.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_sv_surfaces.jpg #3"
  },
  "f_tiles": {
   "file": "interiors/f_tiles.webp",

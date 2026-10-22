@@ -844,6 +844,133 @@
   "hauteur_implicite_m": 1.47,
   "echelle_ok": true
  },
+ "sv_workbench": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.71,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.38,
+    0.5
+   ],
+   "cisaillement": [
+    1.17,
+    -0.112
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "regle": "arête basse v4",
+  "source": "généré art-gen/gen_sv_furn.jpg #0",
+  "role": "établi d Elio, implant ouvert, lampe (généré, angle corrigé)",
+  "emprise_m": [
+   1.9,
+   0.9
+  ],
+  "hauteur_attendue_m": 1.6,
+  "hauteur_implicite_m": 1.56,
+  "echelle_ok": true
+ },
+ "sv_cardtable": {
+  "pente_dominante": null,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "pentes_source": [
+    -0.03,
+    0.5
+   ],
+   "cisaillement": [
+    2.171,
+    0.386
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.5
+   ]
+  },
+  "source": "généré art-gen/gen_sv_furn.jpg #1",
+  "role": "table de jeu sur touret, tabourets (généré, angle corrigé)",
+  "emprise_m": [
+   1.9,
+   1.2
+  ],
+  "hauteur_attendue_m": 0.9,
+  "hauteur_implicite_m": 3.03,
+  "echelle_ok": false
+ },
+ "sv_bar": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.62,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.35,
+    0.76
+   ],
+   "cisaillement": [
+    0.924,
+    0.003
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "regle": "arête basse v4",
+  "source": "généré art-gen/gen_sv_furn.jpg #2",
+  "role": "comptoir de caisses et bouteilles (généré, angle corrigé)",
+  "emprise_m": [
+   2.2,
+   0.7
+  ],
+  "hauteur_attendue_m": 1.4,
+  "hauteur_implicite_m": 0.99,
+  "echelle_ok": true
+ },
+ "sv_shelf": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.7,
+  "part_2_1_opposee": 0.01,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.35,
+    0.95
+   ],
+   "cisaillement": [
+    0.789,
+    0.053
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "regle": "arête basse v4",
+  "source": "généré art-gen/gen_sv_furn.jpg #3",
+  "role": "étagère d électronique de récup (généré, angle corrigé)",
+  "emprise_m": [
+   1.6,
+   0.6
+  ],
+  "hauteur_attendue_m": 1.9,
+  "hauteur_implicite_m": 1.24,
+  "echelle_ok": true
+ },
  "io_locker": {
   "pente_dominante": 0.2,
   "sens": "direct",
