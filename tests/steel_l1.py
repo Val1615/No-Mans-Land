@@ -260,7 +260,7 @@ with sync_playwright() as p:
                 r = E("window.__nml.game.useDoor('douane_in_est')"); check(f'{T}: barrière refusée', r and r['ok'] is False and r['reason'] == 'douane', r)
         if race in ('humain', 'mutant'):
             # 3. Dusk-Town : Sol oriente vers la Sous-Ville, Bruno donne le nom (provisoire) de son frère
-            h = journal(); check(f'{T}: journal : demander à Sol', 'Sol' in h, h[-150:])
+            h = journal(); check(f'{T}: journal : demander à Sol (capturé v14 : trouver Elio)', ('Elio' in h) if (mob and race == 'mutant') else ('Sol' in h), h[-150:])
             E("(()=>{const g=window.__nml.game,s=g.snapshot(),d=g.doorById('citerne_in_door');s.location='citerne_in';s.player.x=d.threshold.x-0.6;s.player.z=d.threshold.z;g.restore(s,true)})()"); time.sleep(1)
             check(f'{T}: Sol parle par geste', tap_npc('sol'))
             lab = "Steel. Ils m'ont refoulé" if race == 'humain' else "Steel. Ils m'ont tiré dessus"
