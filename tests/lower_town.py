@@ -30,7 +30,7 @@ REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/captures
 def rgb_file(p): return np.asarray(Image.open(p).convert('RGB')).astype(int)
 def centroid(u):
     a = png(u); m = MAG(a); ys, xs = np.nonzero(m); return (float(xs.mean()), float(ys.mean()), int(m.sum())) if len(xs) else (0, 0, 0)
-CAP = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/captures/lower-town-v1/'); os.makedirs(CAP, exist_ok=True)
+CAP = os.environ.get('CAP', '/tmp/nml-test-out/lower_town/'); os.makedirs(CAP, exist_ok=True)
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
     mob = False; VW, VH = 1280, 800; T = 'desktop'

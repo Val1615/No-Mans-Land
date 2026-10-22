@@ -316,7 +316,10 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     if (exterior) { painter(); spriteOcclusion(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
-    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0; let lx = r.left + (v.x + 1) / 2 * r.width; if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); l.el.style.transform = `translate(-50%,-100%) translate(${lx}px,${r.top + (1 - v.y) / 2 * r.height}px)`; }
+    const placed = []; // étiquettes : bornées à l'écran, puis décalées vers le haut si elles se chevauchent (mobile étroit)
+    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = r.left + (v.x + 1) / 2 * r.width; if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); placed.push({ l, lx, ly: r.top + (1 - v.y) / 2 * r.height, lw, lh }); }
+    placed.sort((a, b) => b.ly - a.ly);
+    for (let i = 0; i < placed.length; i++) { const a = placed[i]; for (let pass = 0; pass < 4; pass++) { let moved = false; for (let j = 0; j < i; j++) { const b = placed[j]; if (Math.abs(a.lx - b.lx) < (a.lw + b.lw) / 2 + 2 && a.ly > b.ly - b.lh - 2 && a.ly - a.lh < b.ly + 2) { a.ly = b.ly - b.lh - 3; moved = true; } } if (!moved) break; } a.l.el.style.transform = `translate(-50%,-100%) translate(${a.lx}px,${a.ly}px)`; }
   }
   function pick(clientX, clientY) {
     render();

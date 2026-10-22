@@ -61,7 +61,11 @@ with sync_playwright() as p:
             if not loc.count(): return False
             b = loc.first.bounding_box()
             if not b: return False
-            gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.5); return True
+            n0 = E("JSON.stringify(window.__nml.state.dialogue)")
+            gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.5)
+            if E("JSON.stringify(window.__nml.state.dialogue)") == n0 and loc.count():  # clic perdu pendant le re-rendu du nœud (desktop swiftshader lent) : un seul nouvel essai
+                b = loc.first.bounding_box(); b and gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.5)
+            return True
         def opts(): return E("[...document.querySelectorAll('#dlg-options button')].map(b=>b.textContent)")
         def dtext(): return E("document.getElementById('dlg-text').textContent")
         def close_dlg():
