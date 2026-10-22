@@ -6,6 +6,9 @@ import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
 import { loadSkins } from './render/textures.js';
 import { createShell } from './ui/shell.js';
+import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
+import { portraitUrl } from './ui/creation.js';
+Object.assign(ITEMS, ORIGIN_ITEMS); // v11 : objets d'origine
 
 const sprites = await (await fetch('./assets/reused/manifest.json')).json();
 // v6 : mobilier et textures d'intérieur (tools_interiors.py : maquette d'abord, sinon générés ; angle v4 contrôlé)
@@ -94,7 +97,9 @@ function renderPanel() {
   if (panelOpen === 'sac') {
     const items = Object.entries(s.player.inv);
     const offers = n ? n.options.filter(o => o.action && o.action.startsWith('buy:')) : [];
-    B.innerHTML = `<div class="cols"><div><h3>SAC · ${s.player.money} $</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].name}</span><span>×${v}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
+    const ch = s.character, RN = { humain: 'Humain', mutant: 'Mutant', augmente: 'Augmenté', cyborg: 'Cyborg' };
+    const fiche = ch ? `<div class="fiche"><img src="${portraitUrl(ch.portrait)}" alt=""><div><h3>${ch.name.toUpperCase()}</h3><span class="muted">${RN[ch.race]} · PA ${ch.ap} · ${ch.implant ? 'implant d\u2019IO' : 'sans implant'}</span><div class="attrs">${Object.entries(ch.attrs).map(([k, v]) => `<span>${k.slice(0, 3).toUpperCase()} <b>${v}</b></span>`).join('')}</div></div></div>` : '';
+    B.innerHTML = fiche + `<div class="cols"><div><h3>SAC · ${s.player.money} $</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].name}</span><span>×${v}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
       <div><h3>${n ? 'ACHAT · ' + n.npc.name.toUpperCase() : 'ACHAT'}</h3>${offers.length ? '<ul>' + offers.map(o => `<li><button data-buy="${o.index}"><span>${o.label.replace(/ \(\d+ \$\)/, '')}</span><span>${o.action.split(':')[2]} $</span></button></li>`).join('') + '</ul>' : '<p class="muted">Parle à un marchand pour voir ses prix. Le troc d\u2019objets n\u2019existe pas encore.</p>'}</div></div>
       <div class="desc">${items.length ? 'Ce que tu portes reste avec toi d\u2019un quartier à l\u2019autre.' : 'Rien à porter pour l\u2019instant.'}</div>`;
     B.querySelectorAll('[data-buy]').forEach(b => b.addEventListener('click', () => { game.choose(+b.dataset.buy); panelKey = ''; }));
@@ -160,8 +165,12 @@ function applyOptions(o) {
   B.toggle('contrast', o.contrast); B.toggle('readable', o.readable); B.toggle('reduce-motion', o.reduceMotion);
   B.toggle('ts-115', o.textSize === 115); B.toggle('ts-130', o.textSize === 130);
 }
-shell = createShell({ game, world, $, applyOptions, onStart(rec) {
-  if (!rec) game.restore(START_SNAP, true);
+shell = createShell({ game, world, $, applyOptions, onStart(rec, draft) {
+  if (!rec) { // nouveau jeu : création -> Dusk-Town ; PV, PA et dollars dérivés du personnage
+    game.restore(START_SNAP, true);
+    if (draft) { const c = buildCharacter(draft), dv = derived(draft), s = game.state;
+      s.character = c; Object.assign(s.player, { maxHp: dv.maxHp, hp: dv.hp, money: dv.money, inv: { [originOf(draft).item]: 1 } }); Object.assign(s.flags, raceFlags(c)); }
+  }
   if (panelOpen) openPanel(panelOpen); shownNode = null;
   const wantMini = shell.options.minimal; if (wantMini !== document.body.classList.contains('mini')) toggleMini();
 } });

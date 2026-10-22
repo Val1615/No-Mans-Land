@@ -51,7 +51,7 @@ with sync_playwright() as p:
         pg.screenshot(path=OUT + f'{prof}-05-options-modifiees.png')
         if mob: press('#menu-sub .m-back')
         # 3. nouveau jeu : Dusk-Town direct, perso par défaut, sans Nilo
-        press('#m-new', 1.2); s = st()
+        press('#m-new', 0.8); press('#cr-next'); press('#cr-enter', 1.2); s = st()
         check(f'{prof}: Nouveau jeu : Dusk-Town, perso par défaut', not menu_open() and s['location'] == 'dusk_q1' and s['player']['money'] == 40 and s['player']['hp'] == 27, (s['location'], s['player']['money']))
         check(f'{prof}: Nilo absent (état + case HUD masquée)', s['companion']['mode'] == 'absent' and E('getComputedStyle(document.getElementById("nilo").closest(".cell")).display==="none"'))
         iso = np.asarray(Image.open(io.BytesIO(__import__('base64').b64decode(E("window.__nml.view.isolate('companion')").split(',')[1]))).convert('RGB')).astype(int)
@@ -75,7 +75,7 @@ with sync_playwright() as p:
         if st()['location'] == loc0: press('#act')  # bouton « Sortir » au seuil, par geste
         pg.wait_for_function(f"window.__nml.state.location !== '{loc0}'", timeout=40000); time.sleep(1)
         a = E('JSON.parse(localStorage.getItem("nml_save_auto"))'); s = st()
-        check(f'{prof}: autosave au changement de lieu', a and a['v'] == 1 and a['state']['location'] == s['location'] and a['state']['player']['money'] == 73, a and a['state']['location'])
+        check(f'{prof}: autosave au changement de lieu', a and a['v'] == 2 and a['state']['location'] == s['location'] and a['state']['player']['money'] == 73, a and a['state']['location'])
         # 5. pause (Échap au bureau, bouton Menu sur mobile) -> sauvegarde emplacement 1
         E("(()=>{const g=window.__nml.game;g.moveTo(g.state.player.x+1.5,g.state.player.z)})()"); pg.wait_for_function('window.__nml.state.player.path.length===0', timeout=20000); time.sleep(0.5)
         if mob: press('#k-menu')
@@ -85,7 +85,7 @@ with sync_playwright() as p:
         pg.screenshot(path=OUT + f'{prof}-07-pause.png')
         press('#m-load'); press('#menu-sub [data-act="save"][data-slot="1"]')
         sv = E('JSON.parse(localStorage.getItem("nml_save_1"))'); ref = st()
-        check(f'{prof}: sauvegarde emplacement 1', sv and sv['v'] == 1 and sv['state']['location'] == ref['location'] and abs(sv['state']['player']['x'] - ref['player']['x']) < 1e-6, sv and sv['label'])
+        check(f'{prof}: sauvegarde emplacement 1', sv and sv['v'] == 2 and sv['state']['location'] == ref['location'] and abs(sv['state']['player']['x'] - ref['player']['x']) < 1e-6, sv and sv['label'])
         pg.screenshot(path=OUT + f'{prof}-08-sauvegarde.png')
         if mob: press('#menu-sub .m-back')
         if not mob: pg.keyboard.press('Escape'); time.sleep(0.3); pg.keyboard.press('Escape'); time.sleep(0.4)

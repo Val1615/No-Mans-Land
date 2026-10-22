@@ -34,7 +34,7 @@ with sync_playwright() as p:
     for prof in ['desktop', 'mobile']:
         dpr = 1 if prof == 'desktop' else 2
         ctx = br.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else br.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
-        pg = ctx.new_page(); pg.goto(URL); pg.wait_for_function('window.__nml'); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
+        pg = ctx.new_page(); pg.goto(URL); pg.wait_for_function('window.__nml'); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         def walk(x, z):
             pt = pg.evaluate(f'window.__nml.project({x},0,{z})'); gesture(pt['x'], pt['y']); time.sleep(0.3)

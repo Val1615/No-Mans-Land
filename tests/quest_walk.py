@@ -25,7 +25,7 @@ with sync_playwright() as p:
         ctx = br.new_context(viewport={'width': 1280, 'height': 800}) if prof == 'desktop' else br.new_context(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True, device_scale_factor=2)
         pg = ctx.new_page(); errs = []
         pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and errs.append(m.text))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); (pg.locator('#m-new').tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator('#m-new').click)(); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         pg.evaluate("import('./src/core/path.js').then(m => window.__findPath = m.findPath)"); time.sleep(0.5)
         VW, VH = (1280, 800) if prof == 'desktop' else (390, 844)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click

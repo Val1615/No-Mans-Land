@@ -113,7 +113,7 @@ export function createGame(world, sprites) {
     if (k === 'flag') { state.flags[x] = true; emit({ type: 'flag', flag: x, text: x.startsWith('q_') ? 'Journal : quête mise à jour.' : 'Journal : piste notée.' }); return { ok: true }; }
     if (k === 'pay') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' }; pl.money -= cost; emit({ type: 'service', what: 'pay', text: `−${cost} $` }); return { ok: true }; }
     if (k === 'heal') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' };
-      pl.money -= cost; pl.hp = pl.maxHp; emit({ type: 'service', what: 'heal', text: `Soigné. −${cost} $` }); return { ok: true }; }
+      pl.money -= cost; pl.hp = Math.min(pl.maxHp, pl.hp + Math.ceil((pl.maxHp - pl.hp) * (state.character?.effects?.healFactor ?? 1))); emit({ type: 'service', what: 'heal', text: `Soigné. −${cost} $` }); return { ok: true }; }
     if (k === 'buy') { const cost = +y, it = ITEMS[x]; if (pl.money < cost) return { ok: false, next: 'pauvre' };
       pl.money -= cost;
       if (it.consumeNow) pl.hp = Math.min(pl.maxHp, pl.hp + (it.heal || 0)); else pl.inv[x] = (pl.inv[x] || 0) + 1;
@@ -170,7 +170,7 @@ export function createGame(world, sprites) {
   function snapshot() {
     const p = state.player, c = state.companion;
     return JSON.parse(JSON.stringify({ location: state.location, player: { x: p.x, z: p.z, heading: p.heading || 0, hp: p.hp, maxHp: p.maxHp, money: p.money, inv: p.inv },
-      companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions }));
+      companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions, character: state.character || null }));
   }
   function restore(snap, quiet) {
     if (!snap || !LOCATIONS[snap.location]) return false;
@@ -181,6 +181,7 @@ export function createGame(world, sprites) {
     const g = grids[state.location], [i, j] = g.toCell(p.x, p.z); if (!g.free(i, j)) { const w = nearestFree(g, p, p); if (w) Object.assign(p, w); }
     Object.assign(state.companion, { ...(snap.companion || {}), path: [] });
     state.flags = { ...(snap.flags || {}) }; state.discovered = { ...(snap.discovered || {}) }; state.seen = { ...(snap.seen || {}) }; state.transitions = snap.transitions || 0;
+    state.character = snap.character ? JSON.parse(JSON.stringify(snap.character)) : null; // v11 : personnage créé (lot 2)
     // pas de franchissement immédiat si l'on a sauvegardé sur un seuil de jonction
     const jd = DOORS.find(d => (d.junction || d.edge) && d.location === state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.5); state.junctionLock = jd ? jd.id : null;
     if (!quiet) emit({ type: 'restore', text: 'Partie chargée : ' + LOCATIONS[state.location].name });
