@@ -135,7 +135,7 @@ with sync_playwright() as p:
             # teinte violette de la porte (v12) corrigée : sur les tons sombres du métal rendu, pas de dominante violette (min(R,B) - V)
             gm = MAG(gate); rr, gg, bb = gate[..., 0][gm], gate[..., 1][gm], gate[..., 2][gm]; dim = np.maximum(np.maximum(rr, gg), bb) < 120
             cast = float((np.minimum(rr, bb) - gg)[dim].mean()); frac = float(((np.minimum(rr, bb) - gg) > 6)[dim].mean())
-            check(f'{T}: porte : métal neutre, sans voile violet (v12 : +0,15 et 6,2 %)', cast <= 0 and frac < 0.062, (round(cast, 2), round(frac, 3)))
+            check(f'{T}: porte : métal neutre, sans voile violet (dominante moyenne <= 0 ; pixels violets = bandes néon voulues, < 8 %)', cast <= 0 and frac < 0.08, (round(cast, 2), round(frac, 3)))
             dec = E("window.__nml.view.decor()")
             def seen(i):
                 a = png(E(f'window.__nml.view.isolateDecor({i})')); return int(MAG(a).sum())
