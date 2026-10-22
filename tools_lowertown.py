@@ -19,6 +19,8 @@ LT = {
 def build(aid):
     src, (w, d), h, role = LT[aid]
     rgba = TF.key_green_obj(G + src)
+    # despill vert global : le vert résiduel (rambardes fines, tuyaux) est ramené au max(R, B) ; la palette Lower-Town n'a aucun vert voulu
+    p = rgba[..., :3].astype(float); p[..., 1] = np.minimum(p[..., 1], np.maximum(p[..., 0], p[..., 2]) * 1.05 + 2); rgba = rgba.copy(); rgba[..., :3] = p.astype('uint8')
     rgba, fix = TI.v4fix(rgba)
     # emprise : proportions x/z mesurées sur l'arête basse corrigée (coin avant = point le plus bas), échelle fixée par la plus grande dimension
     m = rgba[..., 3] > 100; ys, xs = np.nonzero(m); by = ys.max(); bx = int(np.median(xs[ys >= by - 3]))

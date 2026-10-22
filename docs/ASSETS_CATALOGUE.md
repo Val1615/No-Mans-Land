@@ -306,5 +306,10 @@ Générés (GenerateImage) sur fond vert uni, références : `nml-quartiers/art-
 
 | id | source | emprise x × z (m) | hauteur (m) | contrôle |
 |---|---|---|---|---|
-| `buildings/lt_portique_io.webp` | `art-gen/gen_lt_portique_io.jpg` | 3.5 × 7.0 | 6.5 | arête basse [0.5, 0.69] → [0.33, 0.7] ; judge Hough rejeté (pente dominante 0.5) ; hauteur implicite 2.58 m ; bord magenta 0.05 % |
-| `buildings/lt_atelier_usine.webp` | `art-gen/gen_lt_atelier_usine.jpg` | 7.0 × 14.0 | 9.0 | arête basse [0.51, 0.61] → [0.33, 0.7] ; judge Hough accepté (pente dominante 0.7) ; hauteur implicite 4.16 m ; bord magenta 1.23 % |
+| `buildings/lt_portique_io.webp` | `art-gen/gen_lt_portique_io.jpg` | 3.5 × 7.0 | 6.5 | arête basse [0.5, 0.69] → [0.33, 0.7] ; judge Hough rejeté (pente dominante 0.5) ; hauteur implicite 2.58 m ; bord magenta 0.03 % |
+| `buildings/lt_atelier_usine.webp` | `art-gen/gen_lt_atelier_usine.jpg` | 7.0 × 14.0 | 9.0 | arête basse [0.51, 0.61] → [0.33, 0.7] ; judge Hough accepté (pente dominante 0.7) ; hauteur implicite 4.16 m ; bord magenta 0.04 % |
+| `buildings/lt_immeuble_ouvrier.webp` | `art-gen/gen_lt_immeuble_ouvrier.jpg` | 4.5 × 8.0 | 13.0 | arête basse [0.47, 0.64] → [0.33, 0.7] ; judge Hough rejeté (pente dominante 0.6) ; hauteur implicite 6.7 m ; bord magenta 0.01 % |
+| `buildings/lt_foyer_ruiz.webp` | `art-gen/gen_lt_foyer_ruiz.jpg` | 10.0 × 7.0 | 5.5 | arête basse [0.32, 0.66] → [0.33, 0.7] ; judge Hough rejeté (pente dominante 0.15) ; hauteur implicite 3.97 m ; bord magenta 0.0 % |
+
+
+Notes : la hauteur implicite (formule de `tools_interiors`) sous-estime nettement ces bâtiments (génération plus plongeante que la caméra v4, socles débordants) ; `height_m` du manifest est la hauteur visée. Despill vert global (aucun vert voulu dans la palette). Écartés : `gen_lt_atelier_usine` essais 1-2 (toits à pignons, pas de vrais sheds), portique essai 2 (perspective frontale à point de fuite, halo vert). Planche : `nml-shots/lowertown_sprites.png` (planche d'assets, pas une capture du jeu).
