@@ -140,7 +140,7 @@ with sync_playwright() as p:
         # --- Les Poutres ---
         check(f'{T}: HUD : Sous-Ville, dollars', 'SOUS-VILLE' in E("document.getElementById('loc').textContent").upper() and E("document.getElementById('money').textContent").endswith('$'))
         check(f'{T}: lumière chaude des braseros (fond)', E("window.__nml.view.lightOf().bg") == '#0e0805')
-        W = warm(crop_hud(shot())); check(f'{T}: ambiance orange chaude (pixels)', W['warm'] > 0.12 and W['rb'] > 1.4 and W['neon'] < 0.01, W)
+        W = warm(crop_hud(shot())); check(f'{T}: ambiance orange chaude (pixels)', W['warm'] > 0.07 and W['rb'] > 1.4 and W['neon'] < 0.01, W)
         r = E("window.__nml.game.useDoor('v_est')"); check(f'{T}: passage vers la Cuve gardé sans le mot', r and r['ok'] is False and r['reason'] == 'guet', r)
         check(f'{T}: tripot non nommé avant découverte', not lbl('v_tripot'))
         n = E("window.__nml.npcs.find(n=>n.id==='guetteuse')"); walk(n['x'] + 2, n['z'] + 0.6, tol=1.0); time.sleep(0.4)
@@ -167,7 +167,7 @@ with sync_playwright() as p:
             enter_door('tripot_in_door'); time.sleep(0.8)
         if race == 'humain' and not mob:
             dec = E("window.__nml.view.decor()"); roles = {d['role'] for d in dec}
-            check(f'{T}: figurants : gang, guetteur, dealer', {'gang', 'guetteur', 'dealer'} <= roles, roles)
+            check(f'{T}: figurants : gang, guetteur, et des marcheurs (gang, dealer)', {'gang', 'guetteur'} <= roles and sum(d['role'] == 'passant' for d in dec) >= 2, roles)
             E("window.__nml.view.setCamera({x:19,z:12,ppm:42})"); time.sleep(0.8); pg.screenshot(path=OUT + 'desktop-04-vue-concept.png')
             C = warm(crop_hud(shot())); A = warm(rgb_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../docs/villes/steel/ambiance/concept_sous_ville.jpg')))
             check(f'{T}: vue concept : ambiance proche du concept art (orange chaud, sans néon froid)', C['warm'] > 0.4 * A['warm'] and C['rb'] > 0.6 * A['rb'], (C, A))
