@@ -70,7 +70,7 @@ export function createGame(world, sprites) {
   }
   function finishPending() {
     const p = state.player.pending; state.player.pending = null; if (!p) return;
-    if (p.kind === 'door') { const d = doorById(p.id), bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else enter(d); }
+    if (p.kind === 'door') { const d = doorById(p.id), bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else if (!interrupt(d)) enter(d); }
     if (p.kind === 'talk') openDialogue(p.id);
     if (p.kind === 'scene') openDialogue(p.id);
   }
@@ -79,6 +79,8 @@ export function createGame(world, sprites) {
     const b = busy(); if (b) return b;
     return goThen(at, { kind: 'scene', id: npcId }) || refuse('chemin_bloque', 'Impossible d\'approcher.');
   }
+  // Scène qui coupe un passage une seule fois (door.interrupt = { npc, tree, if: s => bool }).
+  function interrupt(d) { const it = d.interrupt; if (!it || !it.if(state)) return false; openDialogue(it.npc); if (it.tree) state.dialogue.tree = it.tree; return true; }
   function openDialogue(npcId) {
     const n = npcById(npcId);
     state.dialogue = { npc: npcId, node: 'start' };
@@ -167,7 +169,7 @@ export function createGame(world, sprites) {
     // Jonctions de rue : franchies dès que le joueur s'arrête sur le seuil (marche réelle).
     if (state.junctionLock) { const l = doorById(state.junctionLock); if (!l || l.location !== state.location || Math.hypot(l.threshold.x - pl.x, l.threshold.z - pl.z) > 1.5) state.junctionLock = null; }
     if (!pl.path.length && !state.dialogue) for (const d of DOORS) if ((d.junction || d.edge) && d.location === state.location && d.id !== state.junctionLock && Math.hypot(d.threshold.x - pl.x, d.threshold.z - pl.z) < 0.8) {
-      const bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else enter(d); break; }
+      const bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else if (!interrupt(d)) enter(d); break; }
     const c = state.companion;
     if (c.mode === 'follow' && c.location === state.location) {
       c._t = (c._t || 0) + dt;

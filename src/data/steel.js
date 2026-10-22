@@ -130,6 +130,7 @@ export const DOORS = [
     conditions: [{ test: s => !s.flags.race_mutant, reason: 'mutant', text: 'Le soldat lève son arme avant que tu touches la porte.' }] })),
   { id: 'douane_in_sud', location: 'douane_in', opening: { x: 2, z: 7, side: 'south' }, threshold: { x: 2, z: 6 }, target: { doorId: 'r_douane_door' }, conditions: [] },
   { id: 'douane_in_est', location: 'douane_in', label: 'Vers Center-Town', opening: { x: 10, z: 4, side: 'east' }, threshold: { x: 9, z: 4 }, target: { doorId: 'c_ouest' },
+    interrupt: { npc: 'odile', tree: 'odile_volonte', if: s => !!(s.flags.race_augmente || s.flags.race_cyborg) && !s.flags.odile_tenu && !s.flags.odile_signe && !s.flags.odile_payee },
     conditions: [{ test: s => !!s.flags.steel_passe, reason: 'douane', text: 'La barrière reste baissée. Il faut d\u2019abord passer au guichet.' }] },
   J('c_ouest', 'steel_center', 0, 18, 1, 18, 'douane_in_est', 'Vers la douane'),
   ...painted(PAINTED_DOORS_CENTER, 'steel_center', { c_change_door: 'change_in_door' }),
@@ -178,7 +179,7 @@ export const COMBAT_HOOKS = { douane_mutant: { status: 'provisoire', fuite: 'war
 export const DIALOGUES = {
   odile: {
     start: { text: 'Suivant. Motif ?', options: [
-      { label: 'Je repasse. Il paraît que mon implant a sonné.', next: 'odile_volonte/start', if: 'steel_passe&!odile_tenu&!odile_signe&!odile_payee' },
+      { label: 'Je repasse. Il paraît que mon implant a sonné.', next: 'odile_volonte/start', if: 'steel_passe&!race_humain&!race_mutant&!odile_tenu&!odile_signe&!odile_payee' },
       { label: 'Entrer. Je cherche du travail.', next: 'lu', if: 'implant&!steel_passe' },
       { label: 'Entrer. Je cherche du travail.', next: 'refus', if: '!implant', action: 'flag:steel_refuse' },
       { label: 'Changer des dollars (20 $ contre 11 cr)', action: 'change:20:11', next: 'change', if: 'implant' },
