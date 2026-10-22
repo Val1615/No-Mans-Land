@@ -13,7 +13,7 @@ def mirror_score(A, B):  # même mesure que tests/flip_pixels.py
     mask_ = lambda x: np.abs(x - [255, 0, 255]).sum(2) > 60
     m1 = mask_(a) | mask_(b); m2 = mask_(a) | mask_(bm)
     return round(np.abs(a - b).sum(2)[m1].mean(), 1), round(np.abs(a - bm).sum(2)[m2].mean(), 1)
-URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/workspace/nml/docs/captures/dusk-q1-v6/'); os.makedirs(OUT, exist_ok=True)
+URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/tmp/nml-test-out/interiors_pixels/'); os.makedirs(OUT, exist_ok=True)
 GIF = os.environ.get('GIF', '1') == '1'
 R = []
 def check(n, ok, d=''): R.append({'test': n, 'ok': bool(ok), 'detail': str(d)}); print(('OK    ' if ok else 'ECHEC ') + n, d)

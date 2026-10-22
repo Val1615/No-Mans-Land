@@ -2,7 +2,7 @@
 # atténuation en intérieur, fichier livré octet-identique (SHA-256) à celui fourni par Valentin.
 import sys, os, time, json, hashlib, urllib.request
 from playwright.sync_api import sync_playwright
-URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/workspace/nml/docs/captures/quete-v9/'); os.makedirs(OUT, exist_ok=True)
+URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/tmp/nml-test-out/music_check/'); os.makedirs(OUT, exist_ok=True)
 REF = 'ae1d8ee965840781fa5c5ed46f8489d34bdf70a10ec461ffb1ec0788ca166b12'
 R = []
 def check(n, ok, d=''): R.append({'test': n, 'ok': bool(ok), 'detail': str(d)[:200]}); print(('OK    ' if ok else 'ECHEC ') + n, str(d)[:200], flush=True)

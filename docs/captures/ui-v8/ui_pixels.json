@@ -2,7 +2,7 @@
  {
   "test": "desktop: contraste #hud .cell sur sable clair ≥ 4,5:1 (pixels)",
   "ok": true,
-  "detail": "contraste 7.33, luminance du sable dessous 0.257 (vue 22,32)"
+  "detail": "contraste 7.23, luminance du sable dessous 0.24 (vue 44,10)"
  },
  {
   "test": "desktop: contraste #locbox sur sable clair ≥ 4,5:1 (pixels)",
@@ -17,22 +17,22 @@
  {
   "test": "desktop: fond de panneau non teinté en ambre (équilibre des couleurs conservé)",
   "ok": true,
-  "detail": "0.146"
+  "detail": "0.114"
  },
  {
   "test": "desktop: exploration : UI ≤ 12 % de l'écran",
   "ok": true,
-  "detail": "0.039"
+  "detail": "0.044"
  },
  {
-  "test": "desktop: exploration : joueur visible, Nilo non rendu (pixels)",
+  "test": "desktop: exploration : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "(0.86, 0.0)"
+  "detail": "(0.86, 0.85)"
  },
  {
-  "test": "desktop: HUD : PV, $, quartier ; case Nilo masquée",
+  "test": "desktop: HUD : PV, $, quartier, Nilo",
   "ok": true,
-  "detail": "['27/40', '40 $', 'Dusk-Town · La Pompe', True]"
+  "detail": "['27/40', '40 $', 'Dusk-Town · La Pompe', 'NILO · suit']"
  },
  {
   "test": "desktop: interface minimale par clic : HUD retiré, scène rendue à la place (pixels)",
@@ -82,7 +82,7 @@
  {
   "test": "desktop: pendant le dialogue : Hector et le joueur visibles (pixels)",
   "ok": true,
-  "detail": "(0.65, 0.9)"
+  "detail": "(0.66, 0.8)"
  },
  {
   "test": "desktop: choix numérotés (1> …)",
@@ -97,7 +97,7 @@
  {
   "test": "desktop: sac et dialogue sans chevauchement",
   "ok": true,
-  "detail": "([12, 520, 572, 786], [688, 511.875, 1268, 742])"
+  "detail": "([12, 520, 572, 786], [688, 585.875, 1268, 742])"
  },
  {
   "test": "desktop: achat par geste dans le sac (−3 $, HUD à jour)",
@@ -157,27 +157,27 @@
  {
   "test": "mobile: contraste #k-sac sur sable clair ≥ 4,5:1 (pixels)",
   "ok": true,
-  "detail": "contraste 14.96, luminance du sable dessous 0.198 (vue 30,18)"
+  "detail": "contraste 15.12, luminance du sable dessous 0.188 (vue 6,18)"
  },
  {
   "test": "mobile: fond de panneau non teinté en ambre (équilibre des couleurs conservé)",
   "ok": true,
-  "detail": "0.11"
+  "detail": "0.109"
  },
  {
   "test": "mobile: exploration : UI ≤ 22 % de l'écran",
   "ok": true,
-  "detail": "0.135"
+  "detail": "0.129"
  },
  {
-  "test": "mobile: exploration : joueur visible, Nilo non rendu (pixels)",
+  "test": "mobile: exploration : joueur et Nilo visibles (pixels)",
   "ok": true,
-  "detail": "(0.9, 0.0)"
+  "detail": "(0.9, 0.89)"
  },
  {
-  "test": "mobile: HUD : PV, $, quartier ; case Nilo masquée",
+  "test": "mobile: HUD : PV, $, quartier, Nilo",
   "ok": true,
-  "detail": "['27/40', '40 $', 'Dusk-Town · La Pompe', True]"
+  "detail": "['27/40', '40 $', 'Dusk-Town · La Pompe', 'NILO · suit']"
  },
  {
   "test": "mobile: interface minimale par tap : HUD retiré, scène rendue à la place (pixels)",
@@ -227,7 +227,7 @@
  {
   "test": "mobile: pendant le dialogue : Hector et le joueur visibles (pixels)",
   "ok": true,
-  "detail": "(0.64, 0.9)"
+  "detail": "(0.65, 0.8)"
  },
  {
   "test": "mobile: choix numérotés (1> …)",

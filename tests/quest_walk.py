@@ -5,7 +5,7 @@ import sys, os, time, io, base64, json
 import numpy as np
 from PIL import Image
 from playwright.sync_api import sync_playwright
-URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/workspace/nml/docs/captures/quete-v9/'); os.makedirs(OUT, exist_ok=True)
+URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/tmp/nml-test-out/quest_walk/'); os.makedirs(OUT, exist_ok=True)
 R = []
 def check(n, ok, d=''): R.append({'test': n, 'ok': bool(ok), 'detail': str(d)[:300]}); print(('OK    ' if ok else 'ECHEC ') + n, str(d)[:300], flush=True)
 def png(url): return np.asarray(Image.open(io.BytesIO(base64.b64decode(url.split(',')[1]))).convert('RGB')).astype(int)

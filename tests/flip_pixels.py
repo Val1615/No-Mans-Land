@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 from playwright.sync_api import sync_playwright
 URL = sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:8765/'
-OUT = sys.argv[2] if len(sys.argv) > 2 else '/workspace/nml/docs/captures/dusk-q1-v5/'
+OUT = sys.argv[2] if len(sys.argv) > 2 else '/tmp/nml-test-out/flip_pixels/'; __import__('os').makedirs(OUT, exist_ok=True)
 R = []
 def check(n, ok, d=''): R.append({'name': n, 'ok': bool(ok), 'detail': str(d)}); print(('OK   ' if ok else 'ECHEC ') + n, d)
 def grab(pg, who, dpr):
@@ -21,6 +21,20 @@ def mirror_score(A, B):
     mask = lambda x: np.abs(x - [255, 0, 255]).sum(2) > 60
     m1 = mask(a) | mask(b); m2 = mask(a) | mask(bm)
     same = np.abs(a - b).sum(2)[m1].mean(); mir = np.abs(a - bm).sum(2)[m2].mean(); return round(same, 1), round(mir, 1)
+def aligned_score(A, B, r=4):
+    # v12 : même seuil, mesure fiabilisée. Le PNJ respire (rebond) et son sprite tombe sur une grille de pixels différente
+    # entre les deux instants : on compare au meilleur recalage (±r px), pour l'image directe COMME pour l'image miroir.
+    A = content(A); B = content(B); W, H = max(A.width, B.width) + 2 * r, max(A.height, B.height) + 2 * r
+    def pad(I, dx=0, dy=0):
+        c = Image.new('RGB', (W, H), (255, 0, 255)); c.paste(I, (r + dx, r + dy)); return np.asarray(c).astype(float)
+    a = pad(A); mask = lambda x: np.abs(x - [255, 0, 255]).sum(2) > 60
+    def best(I):
+        out = 1e9
+        for dx in range(-r, r + 1):
+            for dy in range(-r, r + 1):
+                b = pad(I, dx, dy); m = mask(a) | mask(b); out = min(out, np.abs(a - b).sum(2)[m].mean())
+        return out
+    return round(best(B), 1), round(best(B.transpose(Image.FLIP_LEFT_RIGHT)), 1)
 def shot(pg, who, path, dpr):
     r = pg.evaluate(f"window.__nml.view.actorRect('{who}')"); pad = 30
     pg.screenshot(path='/tmp/_full.png'); im = Image.open('/tmp/_full.png')
@@ -56,7 +70,7 @@ with sync_playwright() as p:
         V0 = grab(pg, 'vera', dpr); f0 = pg.evaluate("window.__nml.view.facingOf('vera')"); shot(pg, 'vera', f'/tmp/{prof}_v0.png', dpr)
         pg.evaluate("window.__nml.game.talkTo('vera')"); pg.wait_for_function('window.__nml.state.dialogue', timeout=20000); time.sleep(0.8)
         V1 = grab(pg, 'vera', dpr); f1 = pg.evaluate("window.__nml.view.facingOf('vera')"); shot(pg, 'vera', f'/tmp/{prof}_v1.png', dpr)
-        same, mir = mirror_score(V0, V1)
+        same, mir = aligned_score(V0, V1)
         check(f'{prof}: Vera tournée vers le joueur, image rendue en miroir', f0 != f1 and mir < 0.6 * same, f'sens {f0}->{f1}, écart direct {same}, écart miroir {mir}')
         if prof == 'desktop':
             pg.screenshot(path=OUT + 'desktop-pnj-face-au-joueur.png'); pair(f'/tmp/{prof}_v0.png', f'/tmp/{prof}_v1.png', OUT + 'vera-repos-vs-dialogue.png', 'Vera au repos', 'Vera face au joueur')

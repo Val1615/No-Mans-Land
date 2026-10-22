@@ -3,7 +3,7 @@
 import sys, os, time, io
 from PIL import Image, ImageDraw, ImageFont
 from playwright.sync_api import sync_playwright
-URL = sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:8765/'; OUT = sys.argv[2] if len(sys.argv) > 2 else '/workspace/nml/docs/captures/dusk-v7/'
+URL = sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:8765/'; OUT = sys.argv[2] if len(sys.argv) > 2 else '/tmp/nml-test-out/town_plan_capture/'
 os.makedirs(OUT, exist_ok=True)
 Q = {'dusk_q1': 'La Pompe', 'dusk_q2': 'Le Transit', 'dusk_q3': 'Le Scellé', 'dusk_q4': 'Les Sables'}
 ims = {}

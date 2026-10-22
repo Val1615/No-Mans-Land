@@ -4,7 +4,7 @@ import sys, os, time, io, json, re
 import numpy as np
 from PIL import Image
 from playwright.sync_api import sync_playwright
-URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/workspace/nml/docs/captures/lot2-v11/'); os.makedirs(OUT, exist_ok=True)
+URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/tmp/nml-test-out/lot2_creation/'); os.makedirs(OUT, exist_ok=True)
 R = []
 def check(n, ok, d=''): R.append({'test': n, 'ok': bool(ok), 'detail': str(d)}); print(('OK    ' if ok else 'ECHEC ') + n, d, flush=True)
 with sync_playwright() as p:
