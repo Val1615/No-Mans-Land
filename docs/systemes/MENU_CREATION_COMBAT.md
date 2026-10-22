@@ -73,7 +73,7 @@ Deux écrans + récapitulatif. Bouton « Profil prêt » pour sauter la réparti
 | Charisme | négociation |
 | Intelligence | technologie et points de compétence |
 | Agilité | PA et discrétion |
-| Volonté | ~~sensibilité à l'Aura~~ → **résistance à la peur, à la douleur et à l'intimidation** [proposition : l'Aura est retirée de la création, décision du 21/10 ; remplacement minimal] |
+| Volonté | ~~sensibilité à l'Aura~~ → **résistance à la peur, à la douleur et à l'intimidation** [décision provisoire de Valentin, 22/10 ; l'Aura est retirée de la création] |
 Aucun des 7 n'était ISIO ni Aura ; seule la définition de Volonté renvoyait à l'Aura.
 
 **Compétences (11)**, 0-100, 3 **favorites** (+15 au départ, progression plus rapide) ; usages concrets **déjà** dans Dusk-Town :
@@ -134,3 +134,11 @@ Tests au pixel et par gestes comme pour v8-v9 à chaque étape.
 
 ## Lot 1 codé (v10)
 Menu principal, pause, sauvegardes et options sont en jeu (voir JOURNAL, v10). Écarts / propositions : Codex = panneau vide propre ; « Charger » devient « Charger / Sauvegarder » en pause ; bouton « Menu » mobile. La création (lot 2) n'est pas commencée.
+
+## Lot 2 codé (v11)
+Création en jeu (voir JOURNAL, v11) : `game/src/data/character.js`, `game/src/ui/creation.js`. Écarts / propositions :
+- Portraits : seuls les portraits réels de la maquette sont utilisés. Humain 4, augmenté 4, mutant 1, cyborg 1 (il manque 3 visages mutant et 3 cyborg).
+- Profil « L'Égarée » : sa compétence Aura devient Observation.
+- Formules PV / PA / compétences / dollars : propositions, à équilibrer avec le combat.
+- Traits : Œil de pillard (prix +10 %), Gueule cassée, Pieds de sable sont stockés, sans effet en jeu tant que commerce négocié, intimidation et désert n'existent pas. Insomniaque et Pas de nerfs agissent déjà (PV, PA, Volonté).
+- Bouton « ‹ Menu » dans l'en-tête de la création (mobile sans Échap).

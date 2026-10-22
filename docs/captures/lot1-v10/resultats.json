@@ -117,7 +117,7 @@
  {
   "test": "desktop: sauvegarde emplacement 1",
   "ok": true,
-  "detail": "La Pompe"
+  "detail": "Rafael Quintero · La Pompe"
  },
  {
   "test": "desktop: reprise",
@@ -127,7 +127,7 @@
  {
   "test": "desktop: après rechargement : écran titre, Continuer actif",
   "ok": true,
-  "detail": "Emplacement 1 · La Pompe · 22/10 01:02"
+  "detail": "Emplacement 1 · Rafael Quintero · La Pompe · 22/10 04:01"
  },
  {
   "test": "desktop: options persistées après rechargement",
@@ -147,12 +147,12 @@
  {
   "test": "desktop: joueur rendu à la position restaurée (pixels)",
   "ok": true,
-  "detail": "0.86"
+  "detail": "0.87"
  },
  {
   "test": "desktop: sauvegardes abîmée / version future ignorées proprement",
   "ok": true,
-  "detail": "‹ RetourCHARGER / SAUVEGARDERAutoLa Pompe · 22/10 01:02 · 73 $\n          ChargerEmplacement 1La Pompe · 22/10 01:02 · 73"
+  "detail": "‹ RetourCHARGER / SAUVEGARDERAutoRafael Quintero · La Pompe · 22/10 04:01 · 73 $\n          ChargerEmplacement 1Rafael Qu"
  },
  {
   "test": "desktop: Quitter -> écran titre",
@@ -262,7 +262,7 @@
  {
   "test": "mobile: texte défilant actif (option)",
   "ok": true,
-  "detail": "(10, 85)"
+  "detail": "(8, 85)"
  },
  {
   "test": "mobile: autosave au changement de lieu",
@@ -282,7 +282,7 @@
  {
   "test": "mobile: sauvegarde emplacement 1",
   "ok": true,
-  "detail": "La Pompe"
+  "detail": "Rafael Quintero · La Pompe"
  },
  {
   "test": "mobile: reprise",
@@ -292,7 +292,7 @@
  {
   "test": "mobile: après rechargement : écran titre, Continuer actif",
   "ok": true,
-  "detail": "Emplacement 1 · La Pompe · 22/10 01:02"
+  "detail": "Emplacement 1 · Rafael Quintero · La Pompe · 22/10 04:01"
  },
  {
   "test": "mobile: options persistées après rechargement",
@@ -317,7 +317,7 @@
  {
   "test": "mobile: sauvegardes abîmée / version future ignorées proprement",
   "ok": true,
-  "detail": "‹ RetourCHARGER / SAUVEGARDERAutoLa Pompe · 22/10 01:02 · 73 $\n          ChargerEmplacement 1La Pompe · 22/10 01:02 · 73"
+  "detail": "‹ RetourCHARGER / SAUVEGARDERAutoRafael Quintero · La Pompe · 22/10 04:01 · 73 $\n          ChargerEmplacement 1Rafael Qu"
  },
  {
   "test": "mobile: Quitter -> écran titre",

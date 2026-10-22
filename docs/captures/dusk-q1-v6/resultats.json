@@ -197,7 +197,7 @@
  {
   "test": "desktop: service anselme effectué",
   "ok": true,
-  "detail": "argent 40->36, PV 27, inv {'water': 1}"
+  "detail": "argent 40->36, PV 27, inv {'pince': 1, 'water': 1}"
  },
  {
   "test": "desktop: dialogue anselme fermé",
@@ -242,7 +242,7 @@
  {
   "test": "desktop: service hector effectué",
   "ok": true,
-  "detail": "argent 36->30, PV 32, inv {'water': 1}"
+  "detail": "argent 36->30, PV 32, inv {'pince': 1, 'water': 1}"
  },
  {
   "test": "desktop: dialogue hector fermé",
@@ -542,7 +542,7 @@
  {
   "test": "mobile: service anselme effectué",
   "ok": true,
-  "detail": "argent 40->36, PV 27, inv {'water': 1}"
+  "detail": "argent 40->36, PV 27, inv {'pince': 1, 'water': 1}"
  },
  {
   "test": "mobile: dialogue anselme fermé",
@@ -587,7 +587,7 @@
  {
   "test": "mobile: service hector effectué",
   "ok": true,
-  "detail": "argent 36->30, PV 32, inv {'water': 1}"
+  "detail": "argent 36->30, PV 32, inv {'pince': 1, 'water': 1}"
  },
  {
   "test": "mobile: dialogue hector fermé",

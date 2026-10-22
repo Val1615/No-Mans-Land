@@ -253,3 +253,12 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 - Nilo : `COMPANION.enabled = false` (dusk_q1.js). Tout le code de suivi est gardé, désactivé, pour sa future quête. La case Nilo du HUD est masquée.
 - Proposition : sur mobile, un bouton « Menu » dans la barre du bas ouvre la pause (pas de touche Échap).
 - Tests : `tests/lot1_menu.py` (nouveau) et les suites existantes, qui passent par « Nouveau jeu » et vérifient maintenant que Nilo est absent (0 pixel rendu). Captures : `captures/lot1-v10/`.
+
+## v11 · lot 2 : création de personnage
+- **Décision (Valentin)** : GO lot 2. Nouveau jeu -> création (2 écrans) -> Dusk-Town. Les 7 attributs exacts de la maquette v0.13, Aura absente. **Décision provisoire** : Volonté = résistance à la peur, à la douleur, à l'intimidation (la maquette disait « sensibilité à l'Aura »).
+- Code : `game/src/data/character.js` (données et calculs), `game/src/ui/creation.js` (écrans), branchement dans `ui/shell.js` et `main.js`, champ `character` dans `core/game.js` (`snapshot` / `restore`). Portraits réels de la maquette copiés dans `game/assets/portraits/` (rien d'écrasé).
+- Écran 1 : nom (16 caractères), race (humain, mutant, augmenté, cyborg), 3 origines par race, portrait. Écran 2 : 40 points sur les 7 attributs (1 à 10), 11 compétences dont 3 favorites (+15, celle de l'origine imposée), traits 0 à 2, 4 profils prêts (ceux de la maquette ; la compétence Aura de L'Égarée devient Observation).
+- **Propositions chiffrées** : PV max = 25 + 3 x Endurance (+5 cyborg, −3 Insomniaque) ; on démarre blessé à 68 % ; PA = 5 + Agilité / 2 (maquette) ; dollars = selon l'origine ; compétence = 5 + 2 x (deux attributs). Le perso par défaut (humain, récupératrice) redonne 27/40 PV et 40 $.
+- Effets de race stockés dans `state.character` (implant, radiations, soins réduits du cyborg appliqués chez Vera, douane de Steel : refusé / attaqué / passe) et dans des drapeaux (`race_*`, `origine_*`, `implant`) pour les réactions futures des PNJ et de la douane. Les répliques de PNJ par origine ne sont pas encore écrites (chaque origine désigne son PNJ).
+- Sauvegarde v2 : contient le personnage. Une sauvegarde v1 est migrée avec le perso par défaut, sans toucher aux PV, dollars, inventaire et drapeaux.
+- Fiche du perso en tête du Sac. Tests : `tests/lot2_creation.py` ; captures `captures/lot2-v11/` (et `live/`).

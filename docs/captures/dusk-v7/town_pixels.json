@@ -47,7 +47,7 @@
  {
   "test": "desktop: Q2 : sprite joueur retourné en miroir selon le sens (pixels)",
   "ok": true,
-  "detail": "(np.float64(141.5), np.float64(44.3))"
+  "detail": "(np.float64(167.4), np.float64(41.7))"
  },
  {
   "test": "desktop: Q2 : entrée camouflée du guet par geste sur la porte peinte",
@@ -142,7 +142,7 @@
  {
   "test": "desktop: Q1>Q3 nord : joueur visible, Nilo non rendu (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.87), 0]"
+  "detail": "[np.float64(0.86), 0]"
  },
  {
   "test": "desktop: Q1>Q3 nord : HUD = quartier",
@@ -197,7 +197,7 @@
  {
   "test": "desktop: Q3>Q1 sud : joueur visible, Nilo non rendu (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.7), 0]"
+  "detail": "[np.float64(0.71), 0]"
  },
  {
   "test": "desktop: Q3>Q1 sud : HUD = quartier",
@@ -262,7 +262,7 @@
  {
   "test": "desktop: Sol : eau achetée 3 $, inventaire",
   "ok": true,
-  "detail": "(32, {'water': 1})"
+  "detail": "(32, {'pince': 1, 'water': 1})"
  },
  {
   "test": "desktop: sortie de la citerne",
@@ -302,7 +302,7 @@
  {
   "test": "desktop: Q4>Q1 nord : joueur visible, Nilo non rendu (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.86), 0]"
+  "detail": "[np.float64(0.87), 0]"
  },
  {
   "test": "desktop: Q4>Q1 nord : HUD = quartier",
@@ -372,7 +372,7 @@
  {
   "test": "mobile: Q2 : sprite joueur retourné en miroir selon le sens (pixels)",
   "ok": true,
-  "detail": "(np.float64(194.1), np.float64(3.5))"
+  "detail": "(np.float64(193.3), np.float64(16.8))"
  },
  {
   "test": "mobile: Q2 : entrée camouflée du guet par geste sur la porte peinte",
@@ -422,7 +422,7 @@
  {
   "test": "mobile: Q2>Q1 ouest : joueur visible, Nilo non rendu (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.91), 0]"
+  "detail": "[np.float64(0.92), 0]"
  },
  {
   "test": "mobile: Q2>Q1 ouest : HUD = quartier",
@@ -517,7 +517,7 @@
  {
   "test": "mobile: Q3>Q1 sud : joueur visible, Nilo non rendu (pixels)",
   "ok": true,
-  "detail": "[np.float64(0.7), 0]"
+  "detail": "[np.float64(0.71), 0]"
  },
  {
   "test": "mobile: Q3>Q1 sud : HUD = quartier",
@@ -582,7 +582,7 @@
  {
   "test": "mobile: Sol : eau achetée 3 $, inventaire",
   "ok": true,
-  "detail": "(32, {'water': 1})"
+  "detail": "(32, {'pince': 1, 'water': 1})"
  },
  {
   "test": "mobile: sortie de la citerne",

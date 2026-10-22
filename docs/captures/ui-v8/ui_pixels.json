@@ -97,7 +97,7 @@
  {
   "test": "desktop: sac et dialogue sans chevauchement",
   "ok": true,
-  "detail": "([12, 520, 572, 786], [688, 585.875, 1268, 742])"
+  "detail": "([12, 520, 572, 786], [688, 511.875, 1268, 742])"
  },
  {
   "test": "desktop: achat par geste dans le sac (−3 $, HUD à jour)",
@@ -227,7 +227,7 @@
  {
   "test": "mobile: pendant le dialogue : Hector et le joueur visibles (pixels)",
   "ok": true,
-  "detail": "(0.65, 0.9)"
+  "detail": "(0.64, 0.9)"
  },
  {
   "test": "mobile: choix numérotés (1> …)",
