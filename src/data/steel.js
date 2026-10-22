@@ -1,7 +1,7 @@
 // v12 Steel-Megalopolis, lot L1 : la route et la douane (S0), puis Center-Town (S1). Voir docs/villes/STEEL_MEGALOPOLIS_PLAN.md.
 // [décision] Valentin : entrée selon la race (augmenté / cyborg passent avec l'implant, humain refusé, mutant attaqué à vue) ;
 // premier quartier = Center-Town ; la quête s'arrête une fois en ville. Le reste (PNJ, textes, plan, taux) = [proposition].
-import { BUILDINGS_ROUTE, PAINTED_DOORS_ROUTE, BUILDINGS_CENTER, PAINTED_DOORS_CENTER } from './buildings_steel.js';
+import { BUILDINGS_ROUTE, PAINTED_DOORS_ROUTE, BUILDINGS_CENTER, PAINTED_DOORS_CENTER, BUILDINGS_SV1, PAINTED_DOORS_SV1, BUILDINGS_SV2, PAINTED_DOORS_SV2 } from './buildings_steel.js';
 
 const named = list => list.map(b => ({ ...b, named: true }));
 // v13 : nuit de Steel (concept art docs/villes/steel/ambiance/concept_center_town.jpg). light = éclairage du lieu (view.js),
@@ -10,6 +10,9 @@ const SOLDAT = 'gen_halloran';
 const civ = i => `st_civil${i % 6}`;
 const NIGHT_ROUTE = { bg: '#0c0f18', hemi: ['#8090b8', '#2a2430', 0.95], sun: ['#a8b8ff', 0.55], tint: '#c4c8d8', actor: '#c9cddc' };
 const NIGHT_CITY = { bg: '#0b0a16', hemi: ['#aab4ff', '#4a2a5c', 1.35], sun: ['#c0b0ff', 0.7], tint: '#9092b8', actor: '#d4d4ea' };
+// v14 : Sous-Ville (concept docs/villes/steel/ambiance/concept_sous_ville.jpg) : lumière orange des braseros, fumée, tôle rouillée.
+const UNDER = { bg: '#0e0805', hemi: ['#ffb27a', '#2a1408', 1.05], sun: ['#ff9c55', 0.62], tint: '#dcae86', actor: '#e6c4a2' };
+const FIRE = '#ff8a2a';
 const NEON_V = '#c247ff', NEON_C = '#2fd8ff', WARM = '#ffae55', FLOOD = '#d8ecff';
 export const LOCATIONS = {
   // S0 : place forte d'IO devant le sarcophage [décision v13] : porte en haut à droite au bout de la route, poste de douane à gauche,
@@ -17,7 +20,7 @@ export const LOCATIONS = {
   steel_route: { id: 'steel_route', name: 'Steel-Megalopolis · La douane', kind: 'exterior', size: { w: 48, d: 36 }, light: NIGHT_ROUTE,
     ground: { base: '#5d5446', skin: 'g_sand', tint: 'rgba(8,12,30,.45)', zones: [
       { x: 31, z: 8, w: 6, d: 28, kind: 'asphalt' }, { x: 17, z: 8, w: 30, d: 4, kind: 'plate', tint: 'rgba(0,0,0,.25)' }, { x: 2, z: 28, w: 35, d: 5, kind: 'plate', tint: 'rgba(0,0,0,.2)' } ] },
-    buildings: named(BUILDINGS_ROUTE).map(b => b.id === 'r_service' ? b : { ...b, tint: '#ffffff' }), props: [
+    buildings: named(BUILDINGS_ROUTE).map(b => b.id === 'r_service' ? { ...b, visitable: true } : { ...b, tint: '#ffffff' }), props: [
       // check-point : barricades de part et d'autre de la route, passage gardé au milieu
       { sprite: 'st_barricade', x: 29.4, z: 26.2, fp: [3.4, 0.8] }, { sprite: 'st_barricade', x: 39.0, z: 26.2, fp: [3.4, 0.8] },
       { sprite: 'st_barricade', x: 25.8, z: 26.2, fp: [3.4, 0.8] }, { sprite: 'st_barricade', x: 42.6, z: 26.2, fp: [3.4, 0.8] },
@@ -77,6 +80,42 @@ export const LOCATIONS = {
     light: { bg: '#07090e', hemi: ['#ffd9b0', '#2a2030', 1.2], sun: ['#ffc890', 1.0] },
     ground: { base: '#22232a', skin: 'f_io_dark', tileM: 2 }, wall: '#2a2e36', wallSkin: 'w_io_dark', doorSkin: 'door_io', buildings: [], props: [
       { furn: 'io_console', x: 1.4, z: 0.3 }, { furn: 'io_locker', x: 4.3, z: 0.2 } ], city: 'steel' },
+  // v14 [proposition] Sous-Ville, quartier des Poutres : arrivée par la trappe (échelle à l'ouest), guetteuse, cabanes, tripot.
+  sv_poutres: { id: 'sv_poutres', name: 'Sous-Ville · Les Poutres', kind: 'exterior', size: { w: 36, d: 28 }, light: UNDER,
+    ground: { base: '#3a2c20', skin: 'g_sv', tileM: 5, clean: true, zones: [ { x: 0, z: 11, w: 36, d: 7, kind: 'plate', tint: 'rgba(20,10,0,.35)' } ] },
+    buildings: named(BUILDINGS_SV1), props: [
+      { sprite: 'sv_tuyau', x: 6, z: 9.6, fp: [4.2, 1.2] }, { sprite: 'sv_tuyau', x: 31, z: 9.4, fp: [4.2, 1.2] }, { sprite: 'sv_tuyau', x: 12, z: 19.4, fp: [4.2, 1.2], flip: true },
+      { sprite: 'sv_ecrans', x: 33.4, z: 2.4, fp: [2.6, 1.2], glow: 0.35 }, { sprite: 'sv_linge', x: 10.4, z: 8.2, fp: [3.0, 0.3] }, { sprite: 'sv_linge', x: 28.6, z: 19.6, fp: [3.0, 0.3], flip: true },
+      { sprite: 'sv_brasero', x: 8.2, z: 15.6, fp: [0.8, 0.8] }, { sprite: 'sv_brasero', x: 20.6, z: 11.4, fp: [0.8, 0.8] }, { sprite: 'sv_brasero', x: 27.4, z: 16.8, fp: [0.8, 0.8] },
+      { sprite: 'sv_panneau', x: 14.8, z: 10.6, solid: 0.3 }, { sprite: 'sv_armes', x: 30.8, z: 12.2, fp: [1.4, 1.0] }, { sprite: 'sv_pneus', x: 2.2, z: 18.4, fp: [2.0, 1.6] },
+      { sprite: 'sv_implants', x: 11.2, z: 17.6, fp: [1.8, 0.9] } ],
+    glows: [ { x: 8.6, z: 16, rx: 3.4, rz: 3.4, color: FIRE, i: 0.85, flicker: true }, { x: 21, z: 11.8, rx: 3.4, rz: 3.4, color: FIRE, i: 0.85, flicker: true },
+      { x: 27.8, z: 17.2, rx: 3.4, rz: 3.4, color: FIRE, i: 0.8, flicker: true }, { x: 22.7, z: 10.4, rx: 2, rz: 1.4, color: WARM, i: 0.7 }, { x: 34.6, z: 4.4, rx: 2.4, rz: 1.6, color: '#c8d4ff', i: 0.35, flicker: true },
+      { x: 18, z: 14, rx: 14, rz: 6, color: WARM, i: 0.3 } ],
+    extras: [ { sprite: 'gen_sv_gang', x: 29.6, z: 13.0, face: -1, role: 'gang' }, { sprite: 'gen_sv_gang', x: 25.0, z: 10.6, face: 1, role: 'gang' }, { sprite: 'gen_sv_guetteuse', x: 33.8, z: 18.2, face: -1, role: 'guetteur' } ],
+    walkers: [ { sprite: 'gen_sv_gang', path: [[4, 13], [34, 13], [34, 15.5], [4, 15.5]], speed: 0.7, role: 'gang' }, { sprite: 'gen_sv_dealer', path: [[16, 16], [24, 16]], speed: 0.5, t0: 8, role: 'dealer' } ],
+    spawn: { player: { x: 2, z: 13 }, companion: { x: 2, z: 14 } }, city: null,
+    arrive: { from: 'steel_route', text: 'En bas, ça sent la tôle chaude et la friture. Personne ne lève les yeux.' } },
+  tripot_in: { id: 'tripot_in', name: 'Sous-Ville · Le Tripot', kind: 'interior', size: { w: 8, d: 6 },
+    light: { bg: '#0a0604', hemi: ['#ffb070', '#2a1208', 1.15], sun: ['#ff9a50', 0.95] },
+    ground: { base: '#3a3028', skin: 'f_sv_plates', tileM: 2 }, wall: '#3a2a20', wallSkin: 'w_sv_tin', buildings: [], props: [
+      { furn: 'sv_bar', x: 0.3, z: 0.3 }, { furn: 'sv_shelf', x: 5.8, z: 0.2 } ], city: null },
+  // v14 [proposition] la Cuve : atelier d'Elio, monte-charge vers Center-Town (au nord-est).
+  sv_cuve: { id: 'sv_cuve', name: 'Sous-Ville · La Cuve', kind: 'exterior', size: { w: 36, d: 28 }, light: UNDER,
+    ground: { base: '#3a2c20', skin: 'g_sv', tileM: 5, clean: true, zones: [ { x: 0, z: 11, w: 36, d: 7, kind: 'plate', tint: 'rgba(20,10,0,.35)' } ] },
+    buildings: named(BUILDINGS_SV2).map(b => b.id === 'v_lift' ? { ...b, visitable: true } : b), props: [
+      { sprite: 'sv_tuyau', x: 22, z: 9.4, fp: [4.2, 1.2] }, { sprite: 'sv_tuyau', x: 26, z: 19.8, fp: [4.2, 1.2], flip: true }, { sprite: 'sv_ecrans', x: 3.0, z: 9.0, fp: [2.6, 1.2], glow: 0.35 },
+      { sprite: 'sv_linge', x: 24.6, z: 5.4, fp: [3.0, 0.3] }, { sprite: 'sv_brasero', x: 18.4, z: 14.8, fp: [0.8, 0.8] }, { sprite: 'sv_brasero', x: 6.6, z: 17.0, fp: [0.8, 0.8] },
+      { sprite: 'sv_panneau', x: 34.4, z: 9.4, solid: 0.3 }, { sprite: 'sv_pneus', x: 12.4, z: 19.6, fp: [2.0, 1.6] }, { sprite: 'sv_armes', x: 24.4, z: 16.2, fp: [1.4, 1.0] } ],
+    glows: [ { x: 18.8, z: 15.2, rx: 3.4, rz: 3.4, color: FIRE, i: 0.85, flicker: true }, { x: 7, z: 17.4, rx: 3.4, rz: 3.4, color: FIRE, i: 0.8, flicker: true },
+      { x: 14.6, z: 9.2, rx: 2.2, rz: 1.4, color: WARM, i: 0.7 }, { x: 32, z: 8.4, rx: 2.2, rz: 1.6, color: WARM, i: 0.6, flicker: true }, { x: 18, z: 14, rx: 14, rz: 6, color: WARM, i: 0.3 } ],
+    extras: [ { sprite: 'gen_sv_gang', x: 31.0, z: 9.8, face: -1, role: 'gang' }, { sprite: 'gen_sv_dealer', x: 20.4, z: 16.6, face: 1, role: 'dealer' } ],
+    walkers: [ { sprite: 'gen_sv_guetteuse', path: [[2, 15], [30, 15]], speed: 0.6, role: 'guetteur' } ],
+    spawn: { player: { x: 1, z: 14 }, companion: { x: 1, z: 15 } }, city: null },
+  elio_in: { id: 'elio_in', name: 'Sous-Ville · Atelier d\u2019Elio', kind: 'interior', size: { w: 7, d: 5 },
+    light: { bg: '#0a0604', hemi: ['#ffc080', '#2a1408', 1.2], sun: ['#ffa860', 1.0] },
+    ground: { base: '#3a3430', skin: 'f_sv_concrete', tileM: 2 }, wall: '#3a2a20', wallSkin: 'w_sv_planks', buildings: [], props: [
+      { furn: 'sv_workbench', x: 0.3, z: 0.3 }, { furn: 'sv_shelf', x: 4.9, z: 0.2 } ], city: null },
 };
 const painted = (list, loc, T) => list.map(d => ({ id: d.id, buildingId: d.buildingId, location: loc, opening: { x: d.opening[0], z: d.opening[1], side: d.face === 's' ? 'south' : 'east' },
   threshold: { x: d.threshold[0], z: d.threshold[1] }, target: { doorId: T[d.id] }, conditions: [] }));
@@ -96,12 +135,29 @@ export const DOORS = [
   ...painted(PAINTED_DOORS_CENTER, 'steel_center', { c_change_door: 'change_in_door' }),
   { id: 'change_in_door', location: 'change_in', opening: { x: 3, z: 5, side: 'south' }, threshold: { x: 3, z: 4 }, target: { doorId: 'c_change_door' }, conditions: [] },
   E('c_est', 'steel_center', 48, 18, 47, 18, 'Vers les autres quartiers', 'L\u2019avenue continue vers Lower-Town et Asia-Ground. Plus tard. D\u2019abord, apprendre celui-ci.'),
+  // v14 : la trappe de service ouvre sur la Sous-Ville pour qui connaît Elio (ou qu'on y a jeté)
+  { id: 'r_trappe', buildingId: 'r_service', location: 'steel_route', opening: { x: 42.2, z: 32.5, side: 'south' }, threshold: { x: 42.2, z: 33.5 }, target: { doorId: 'v_trappe' },
+    conditions: [{ test: s => !!(s.flags.bruno_frere || s.flags.sv_jete), reason: 'trappe', text: s => CLOSED_TEXT.r_service(s) }] },
+  J('v_trappe', 'sv_poutres', 0, 13, 1, 13, 'r_trappe', 'Échelle vers la surface'),
+  J('v_est', 'sv_poutres', 36, 14, 35, 14, 'v_ouest', 'Vers la Cuve', [{ test: s => !!s.flags.sv_mot, reason: 'guet', text: 'Deux types se lèvent quand tu approches du passage. Ils ne disent rien. Ils attendent que tu repartes.' }]),
+  J('v_ouest', 'sv_cuve', 0, 14, 1, 14, 'v_est', 'Vers les Poutres'),
+  ...painted(PAINTED_DOORS_SV1, 'sv_poutres', { v_tripot_door: 'tripot_in_door' }),
+  { id: 'tripot_in_door', location: 'tripot_in', opening: { x: 4, z: 6, side: 'south' }, threshold: { x: 4, z: 5 }, target: { doorId: 'v_tripot_door' }, conditions: [] },
+  ...painted(PAINTED_DOORS_SV2, 'sv_cuve', { v_atelier_door: 'elio_in_door' }),
+  { id: 'elio_in_door', location: 'elio_in', opening: { x: 3.5, z: 5, side: 'south' }, threshold: { x: 3.5, z: 4 }, target: { doorId: 'v_atelier_door' }, conditions: [] },
+  { id: 'v_lift_door', buildingId: 'v_lift', location: 'sv_cuve', opening: { x: 32, z: 7.5, side: 'south' }, threshold: { x: 32, z: 8.5 }, target: { doorId: 'c_sud' },
+    conditions: [{ test: s => !!s.flags.sv_passage, reason: 'lift', text: 'Le monte-charge. Un boîtier à clé, et un type assis dessus qui ne bougera pas pour toi.' }] },
+  J('c_sud', 'steel_center', 19.5, 36, 19.5, 35, 'v_lift_door', 'Vers la Sous-Ville', [{ test: s => !!s.flags.sv_passage, reason: 'grille', text: 'Une grille entre deux galeries. Fermée de l’intérieur.' }]),
   E('r_ouest', 'steel_route', 0, 30, 1, 30, 'Désert', 'Du sable, et le mur du dôme qui ne finit pas.'),
 ];
 export const NPCS = [
   { id: 'odile', name: 'Odile Varga', sprite: 'gen_odile', location: 'douane_in', x: 2.1, z: 2.0, faceTo: [6, 2.4], dialogue: 'odile' },
   { id: 'halloran', name: 'Sergent Halloran', sprite: 'gen_halloran', location: 'steel_route', x: 36.2, z: 23.0, faceTo: [34, 34], dialogue: 'halloran' },
   { id: 'teng', name: 'Teng', sprite: 'gen_teng', location: 'change_in', x: 2.9, z: 1.6, faceTo: [3, 5], dialogue: 'teng' },
+  { id: 'guetteuse', name: 'Nane', sprite: 'gen_sv_guetteuse', location: 'sv_poutres', x: 33.2, z: 15.2, faceTo: [28, 14], dialogue: 'guetteuse' },
+  { id: 'receleur', name: 'Le receleur', sprite: 'gen_sv_receleur', location: 'sv_poutres', x: 31.6, z: 11.6, faceTo: [28, 14], dialogue: 'receleur' },
+  { id: 'dealer', name: 'Pic', sprite: 'gen_sv_dealer', location: 'tripot_in', x: 3.2, z: 2.2, faceTo: [4, 6], dialogue: 'dealer' },
+  { id: 'elio', name: 'Elio', sprite: 'gen_elio', location: 'elio_in', x: 2.6, z: 1.9, faceTo: [3.5, 5], dialogue: 'elio' },
   { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 30.5, z: 19.8, faceTo: [22, 18], dialogue: 'patrouilleur' },
 ];
 export const CLOSED_TEXT = {
@@ -111,11 +167,14 @@ export const CLOSED_TEXT = {
   c_arcadius: 'Arcadius Center. Les portes s\u2019ouvrent pour les implants qu\u2019elles reconnaissent, pas pour les autres.',
   c_blanc: 'Bureau des permis. Un écran annonce un délai d\u2019attente qui ne veut rien dire.',
   c_neon: 'Une galerie de néons. Tout y est à vendre, en crédits.',
+  v_cab_a: 'Une cabane de tôle. Quelqu’un tousse derrière le rideau.', v_cab_b: 'Rideau tiré. Une radio grésille un match qui date.', v_cab_c: 'Des chiens grognent derrière la porte.',
+  v_cab_d: 'Cadenas. Sur la tôle, une croix à la craie.', v_cab_e: 'Une odeur de soudure. On ne t’ouvre pas.', v_cab_f: 'Un gamin te regarde par une fente, puis plus rien.',
+  v_cab_g: 'Rideau tiré.', v_cab_h: 'On dort, là-dedans. Ou on fait semblant.', v_cab_i: 'Une cabane vide. Vide depuis peu.', v_cab_j: 'Quelqu’un compte des billets à voix basse.',
 };
 // Crochet du futur combat [décision : mutant à la douane = premier combat ; fuite vers le désert ; 0 PV = capture, Sous-Ville].
 // Le combat n'existe pas encore : la scène « halloran » le remplace par deux choix scriptés (provisoire, documenté).
 // Le jour où le combat existe : l'action « hook:douane_mutant » lancera le combat, et ses deux issues remplaceront ces choix.
-export const COMBAT_HOOKS = { douane_mutant: { status: 'provisoire', fuite: 'warp:steel_route:29:34', capture: 'warp:steel_route:42:34', note: 'L2 : la capture mènera dans la Sous-Ville' } };
+export const COMBAT_HOOKS = { douane_mutant: { status: 'provisoire', fuite: 'warp:steel_route:29:34', capture: 'warp:sv_poutres:3:13', note: 'v14 : capture = jeté dans la Sous-Ville (Les Poutres)' } };
 export const DIALOGUES = {
   odile: {
     start: { text: 'Suivant. Motif ?', options: [
@@ -145,8 +204,8 @@ export const DIALOGUES = {
       { label: 'Je passe juste.', if: '!race_mutant', next: 'end' } ] },
     fui: { text: 'Deux tirs. Le premier soulève le sable, le second t\u2019ouvre l\u2019épaule. Tu cours jusqu\u2019à n\u2019entendre plus que ton souffle.', options: [ { label: 'Reprendre mon souffle.', next: 'end' } ] },
     insiste: { text: 'Il ne tire pas. Il parle dans son col, et deux autres arrivent avec une cagoule et des liens.', options: [
-      { label: 'Ne pas résister.', action: 'hook:douane_mutant;hurt:15;flag:steel_attaque;flag:steel_capture;reveal:r_service;warp:steel_route:42:34', next: 'capture' } ] },
-    capture: { text: 'Le noir. Des marches. Une odeur d\u2019huile chaude et de machines. Puis on te jette dehors, à côté d\u2019une trappe enchaînée, avec une côte qui craque. Quelqu\u2019un a dit « Sous-Ville ». Ce sera pour une autre fois.', options: [ { label: 'Me relever.', next: 'end' } ] },
+      { label: 'Ne pas résister.', action: 'hook:douane_mutant;hurt:15;flag:steel_attaque;flag:steel_capture;flag:sv_jete;reveal:r_service;warp:sv_poutres:3:13', next: 'capture' } ] },
+    capture: { text: 'Le noir. Des marches, longtemps. On t\u2019enlève la cagoule au bord d\u2019un trou et on te pousse. Tu tombes sur de la tôle, une côte craque. Là-haut, quelqu\u2019un rigole : « Bienvenue en bas. »', options: [ { label: 'Me relever.', next: 'end' } ] },
   },
   teng: {
     start: { text: 'Des dollars ? J\u2019adore les dollars. Personne n\u2019en veut ici, alors je les prends tous. Dix dollars, six crédits, et je souris en prime.', options: [
@@ -158,6 +217,45 @@ export const DIALOGUES = {
     arcadius: { text: 'Arcadius Center. Tout ce qui porte un implant y a une fiche. La tienne aussi. N\u2019y entre pas sans y être appelé.', options: [ { label: 'Autre chose.', next: 'start' } ] },
     permis: { text: 'Le bureau blanc, de l\u2019autre côté de l\u2019avenue. Ils ouvrent quand l\u2019écran le décide. Prends un livre.', options: [ { label: 'Autre chose.', next: 'start' } ] },
     pauvre: { text: 'Pas de dollars, pas de sourire. C\u2019est la règle, désolé.', options: [ { label: 'Tant pis.', next: 'end' } ] },
+  },
+  // v14 [proposition] Sous-Ville. Monnaie : le dollar, comme dans les No Man's Land (city: null).
+  guetteuse: {
+    start: { text: 'T\u2019es perdu, ou tu cherches quelqu\u2019un ?', alt: [
+        { if: 'sv_mot', text: 'Tu connais le chemin. La Cuve, après le passage.' },
+        { if: 'sv_jete', text: 'Les soldats t\u2019ont balancé par le trou, hein. Ils font ça quand ils ont la flemme de remplir des papiers.' } ], options: [
+      { label: 'Quatorze poutres.', if: 'bruno_frere&!sv_mot', action: 'flag:sv_mot;reveal:v_tripot', next: 'mot' },
+      { label: 'Et maintenant, je vais où ?', if: 'sv_jete&!sv_mot', action: 'flag:sv_mot;reveal:v_tripot', next: 'jete' },
+      { label: 'Je cherche Elio.', if: '!sv_mot', next: 'qui' },
+      { label: 'Rien. Je passe.', next: 'end' } ] },
+    mot: { text: 'Bruno t\u2019envoie. Ça fait longtemps qu\u2019il n\u2019a envoyé personne. Elio bosse à la Cuve, l\u2019atelier sous les tuyaux. Passe, les garçons te laisseront tranquille.', options: [ { label: 'Merci.', next: 'end' } ] },
+    jete: { text: 'Va voir Elio, au fond, à la Cuve. Il fait remonter les gens, pas gratuitement. Et évite le tripot si tu tiens à ce qui te reste.', options: [ { label: 'Merci.', next: 'end' } ] },
+    qui: { text: 'Plein de gens cherchent plein de gens. Tu as un mot, ou juste un prénom ?', options: [ { label: 'Juste un prénom.', next: 'end' } ] },
+  },
+  receleur: {
+    start: { text: 'Montres, implants, papiers de transit. Tout est d\u2019occasion, surtout les papiers.', options: [
+      { label: 'Des papiers de transit ?', next: 'papiers' }, { label: 'Pas aujourd\u2019hui.', next: 'end' } ] },
+    papiers: { text: 'Trois cents dollars, et ils passent une fois sur deux. L\u2019autre fois, tu n\u2019as jamais acheté chez moi.', options: [ { label: 'Je repasserai.', next: 'end' } ] },
+  },
+  dealer: {
+    start: { text: 'Une puce de mémoire, un œil qui voit la nuit, un truc pour dormir. Ici on ne demande pas d\u2019où ça sort.', options: [
+      { label: 'Ça sort d\u2019où ?', next: 'ou' }, { label: 'Non merci.', next: 'end' } ] },
+    ou: { text: 'De gens qui n\u2019en avaient plus besoin. Tu veux une table, ou tu veux partir ?', options: [ { label: 'Partir.', next: 'end' } ] },
+  },
+  elio: {
+    start: { text: 'Ferme derrière toi. Qui t\u2019envoie ?', alt: [
+        { if: 'sv_passage', text: 'Le monte-charge est au fond à droite. Dis à Bruno que je mange.' },
+        { if: 'bruno_frere', text: 'Quatorze poutres, hein. Mon frère vend encore de l\u2019eau tiède à La Pompe ?' } ], options: [
+      { label: 'Il faut que je monte à Center-Town.', if: '!sv_passage', next: 'monter' },
+      { label: 'Merci, Elio.', if: 'sv_passage', next: 'end' },
+      { label: 'Plus tard.', if: '!sv_passage', next: 'end' } ] },
+    monter: { text: 'Tout le monde veut monter. Le monte-charge sert aux livraisons du marché, la nuit. Tu montes dans une caisse, tu ne bouges pas, tu ne parles pas. Vingt dollars.', options: [
+      { label: 'Payer 20 $.', action: 'pay:20;flag:sv_passage;reveal:v_lift', next: 'ok' },
+      { label: 'Je n\u2019ai pas vingt dollars.', next: 'risque' } ] },
+    risque: { text: 'Alors tu portes. Une caisse pour la Cuve d\u2019en face, chez des gens qui n\u2019aiment pas qu\u2019on les regarde. S\u2019ils sont de mauvaise humeur, tu le sauras.', options: [
+      { label: 'Porter la caisse.', action: 'hurt:6;flag:sv_passage;reveal:v_lift', next: 'porte' }, { label: 'Je reviendrai avec l\u2019argent.', next: 'end' } ] },
+    ok: { text: 'Le monte-charge est au fond à droite. Le gars dessus sait. En haut, tu sors entre deux galeries, et tu ne m\u2019as jamais vu.', options: [ { label: 'Merci.', next: 'end' } ] },
+    porte: { text: 'Ils étaient de mauvaise humeur. Tu reviens avec une lèvre ouverte et la caisse livrée. Elio hoche la tête : le monte-charge, au fond à droite.', options: [ { label: 'J\u2019y vais.', next: 'end' } ] },
+    pauvre: { text: 'Compte encore. Il manque des billets, et moi je ne fais pas crédit.', options: [ { label: 'Bon.', next: 'risque' } ] },
   },
   patrouilleur: {
     start: { text: 'Circulez. L\u2019avenue est à tout le monde, mais pas pour longtemps.', options: [

@@ -16,7 +16,7 @@ const iman = await (await fetch('./assets/interiors/manifest.json')).json();
 Object.assign(sprites, iman);
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
-await loadSkins(['g_wet'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
+await loadSkins(['g_wet', 'g_sv'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
 await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);

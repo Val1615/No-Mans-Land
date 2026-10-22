@@ -103,12 +103,14 @@ with sync_playwright() as p:
         press('#m-new', 0.6); press(f'[data-race="{race}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
         c = st()['character']; check(f'{T}: perso créé ({race})', c and c['race'] == race and not E('document.body.classList.contains("menu-open")'))
         # --- mise en place : la porte d'acier est forcée (quête v9 testée ailleurs), on est au bout du Transit ---
+        # v14 : historique des messages (le texte d'arrivée peut être remplacé avant la lecture en live)
+        E("(()=>{window.__msgs=[];const m=document.getElementById('msg');new MutationObserver(()=>window.__msgs.push(m.textContent)).observe(m,{childList:true,characterData:true,subtree:true})})()")
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='dusk_q2';s.player.x=42;s.player.z=18;Object.assign(s.flags,{q_start:true,q_cric:true,q_signal:true,q_fin:true});g.restore(s,true)})()"); time.sleep(1.2)
         # 1. jonction à pied vers la route de Steel
         j = E("window.__nml.game.doorById('j_q2_est').threshold"); walk(j['x'], j['z'], tol=0.5)
         ok = waitjs("window.__nml.state.location==='steel_route'", 15); time.sleep(1.2)
         check(f'{T}: jonction à pied Transit -> route de Steel', ok, st()['location'])
-        check(f'{T}: texte d\'arrivée (une journée de marche)', 'journée de marche' in E("document.getElementById('msg').textContent"))
+        check(f'{T}: texte d\'arrivée (une journée de marche)', waitjs("window.__msgs.some(t=>t.includes('journée de marche'))", 8))
         ROUTE_MOOD = mood(crop_hud(shot()))
         check(f'{T}: HUD : lieu, dollars hors de la ville', 'LA DOUANE' in E("document.getElementById('loc').textContent").upper() and E("document.getElementById('money').textContent").endswith('$'))
         for b in (['r_porte'] if mob else ['r_porte', 'r_douane']):  # mobile : vue étroite, le poste (à gauche) est mesuré dans la vue d'ensemble
@@ -165,11 +167,12 @@ with sync_playwright() as p:
                 check(f'{T}: fuite vers le désert : blessé, renvoyé loin de la douane', s['player']['hp'] == max(1, hp0 - 9) and s['player']['z'] > 30 and s['flags'].get('steel_fui'), (s['player']['hp'], s['player']['z']))
             else:
                 option('Rester. Lever les mains.'); option('Ne pas résister.'); s = st()
-                check(f'{T}: capture : blessé, jeté près de la trappe (Sous-Ville = L2)', s['player']['hp'] == max(1, hp0 - 15) and s['flags'].get('steel_capture') and s['player']['x'] > 38, (s['player']['hp'], s['player']['x']))
-                check(f'{T}: texte de capture sans mécanique', 'Sous-Ville' in dtext())
+                check(f'{T}: capture : blessé, jeté dans la Sous-Ville (v14)', s['player']['hp'] == max(1, hp0 - 15) and s['flags'].get('steel_capture') and s['location'] == 'sv_poutres', (s['player']['hp'], s['location']))
+                check(f'{T}: texte de capture sans mécanique', 'en bas' in dtext())
             check(f'{T}: crochet combat signalé (hook douane_mutant)', 'douane_mutant' in (st().get('hooks') or []))
             close_dlg(); time.sleep(0.4)
-            r = E("window.__nml.game.useDoor('r_douane_door')"); check(f'{T}: la porte de la douane reste interdite', r and r.get('ok') is False and r.get('reason') == 'mutant', (r, st()['location'], st()['player']))
+            if not mob: r = E("window.__nml.game.useDoor('r_douane_door')"); check(f'{T}: la porte de la douane reste interdite', r and r.get('ok') is False and r.get('reason') == 'mutant', (r, st()['location'], st()['player']))
+            else: check(f'{T}: capturé : dans la Sous-Ville, loin de la douane', st()['location'] == 'sv_poutres')
             pg.screenshot(path=OUT + f'{prof}-mutant-apres.png')
         else:
             # 2. douane : entrer par la porte peinte, parler à Odile au geste
@@ -266,7 +269,7 @@ with sync_playwright() as p:
             E("(()=>{const g=window.__nml.game,s=g.snapshot(),d=g.doorById('mara_in_door')||window.__nml.doors.find(d=>d.location==='mara_in');s.location='mara_in';s.player.x=d.threshold.x;s.player.z=d.threshold.z-0.6;g.restore(s,true)})()"); time.sleep(1)
             check(f'{T}: Bruno parle par geste', tap_npc('bruno')); option('Sol m'); t = dtext()
             check(f'{T}: Bruno donne le nom de son frère (Elio, provisoire) et un mot', 'Elio' in t and 'quatorze poutres' in t, t[:80]); option('Quatorze poutres'); close_dlg()
-            h = journal(); check(f'{T}: journal : Elio, Sous-Ville au prochain lot', 'Elio' in h and 'prochain lot' in h, h[-200:])
+            h = journal(); check(f'{T}: journal : trouver Elio dans la Sous-Ville (ouverte en v14)', 'Elio' in h and 'Sous-Ville' in h and 'prochain lot' not in h, h[-200:])
             pg.screenshot(path=OUT + f'{prof}-{race}-journal.png')
         check(f'{T}: aucune erreur console / réseau', not errs, errs[:3])
         ctx.close()

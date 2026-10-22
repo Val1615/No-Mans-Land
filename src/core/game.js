@@ -23,7 +23,7 @@ export function createGame(world, sprites) {
   const doorById = id => DOORS.find(d => d.id === id);
   const doorOfBuilding = bid => DOORS.filter(d => d.buildingId === bid && d.location === state.location).sort((a, b) => Math.hypot(a.threshold.x - state.player.x, a.threshold.z - state.player.z) - Math.hypot(b.threshold.x - state.player.x, b.threshold.z - state.player.z))[0];
   const npcById = id => NPCS.find(n => n.id === id);
-  const refuse = (reason, text) => { emit({ type: 'refus', reason, text }); return { ok: false, reason }; };
+  const refuse = (reason, text) => { if (typeof text === 'function') text = text(state); emit({ type: 'refus', reason, text }); // v14 : texte selon l'état return { ok: false, reason }; };
   const busy = () => state.dialogue ? refuse('dialogue_ouvert', 'Termine la conversation d\'abord.') : null;
 
   function moveTo(x, z) {
