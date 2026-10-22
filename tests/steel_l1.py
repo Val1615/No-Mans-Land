@@ -202,6 +202,14 @@ with sync_playwright() as p:
                 check(f'{T}: change à la douane 20 $ -> 11 cr', s['player']['money'] == m0 - 20 and s['player']['credits'] == 11, (s['player']['money'], s['player']['credits']))
                 close_dlg()
                 ok = enter_door('douane_in_est'); time.sleep(1.5); s = st()
+                if race in ('augmente', 'cyborg'):  # Odile arrête l'implant de dehors une fois (scène de Volonté)
+                    check(f'{T}: Odile interpelle au passage de la barrière', (st()['dialogue'] or {}).get('tree') == 'odile_volonte' and s['location'] == 'douane_in', st()['dialogue'])
+                    for l in ('Je veux juste passer.', 'Ça ne vous regarde pas.', 'Bon. Je signe.'): option(l)
+                    for _ in range(4):
+                        if not st()['dialogue']: break
+                        o = opts(); option(o[0]) if o else None
+                    check(f'{T}: issue d\'Odile enregistrée (odile_signe)', st()['flags'].get('odile_signe'))
+                    ok = enter_door('douane_in_est'); time.sleep(1.5); s = st()
                 check(f'{T}: barrière franchie -> Center-Town', ok and s['location'] == 'steel_center', s['location'])
                 check(f'{T}: quête : arrivé en ville (q_steel)', s['flags'].get('q_steel'))
                 check(f'{T}: HUD en crédits dans Steel', E("document.getElementById('money').textContent") == '11 cr' and E("document.getElementById('money-lbl').textContent") == 'Crédits')

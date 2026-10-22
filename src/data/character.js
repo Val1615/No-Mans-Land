@@ -33,13 +33,13 @@ export const RACES = {
     portraits: ['portraits-v2-0', 'portraits-v2-1', 'portraits-v2-2', 'portraits-v2-4'] },
   mutant: { name: 'Mutant', short: 'Changé par les radiations. Abattu à vue par le Service.', implant: false, attrs: { endurance: 1 }, skills: {}, hp: 0, radResist: true,
     effects: ['Endurance +1, résiste aux radiations', 'Pas d\u2019implant : inconnu d\u2019IO', 'Service Militarisé : tire à vue', 'Certains, à Dusk-Town, te parlent plus volontiers'],
-    portraits: ['portrait-2'] },
+    portraits: ['portrait-2', 'portraits-v3-mutant-0', 'portraits-v3-mutant-1', 'portraits-v3-mutant-2'] },
   augmente: { name: 'Augmenté', short: 'Implant d\u2019IO sous la peau. Passe la douane.', implant: true, attrs: {}, skills: { electronique: 15 }, hp: 0,
     effects: ['Électronique +15', 'Implant d\u2019IO : reconnu aux portiques', 'Douane de Steel : passe', 'Dusk-Town se méfie du matériel d\u2019IO'],
     portraits: ['portraits-v2-3', 'portraits-v2-5', 'portrait-0', 'portrait-1'] },
   cyborg: { name: 'Cyborg', short: 'Corps en partie mécanique, implant. Passe la douane.', implant: true, attrs: { force: 1 }, skills: {}, hp: 5, healFactor: 0.5,
     effects: ['Force +1, PV +5', 'Implant d\u2019IO, pièces de série', 'Douane de Steel : passe', 'Les soins d\u2019un médecin te réparent moins', 'Les gens des Sables t\u2019évitent'],
-    portraits: ['portrait-3'] },
+    portraits: ['portrait-3', 'portraits-v3-cyborg-0', 'portraits-v3-cyborg-1', 'portraits-v3-cyborg-2'] },
 };
 // Origines, 3 par race, en 2175 [proposition] : +1 attribut, 1 favorite imposée, 1 objet, des dollars, 1 PNJ qui s'en souviendra (réplique à écrire)
 export const ORIGINS = {
