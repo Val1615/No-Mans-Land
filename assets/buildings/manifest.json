@@ -262,5 +262,281 @@
    6.0,
    3.5
   ]
+ },
+ "b_st_tour": {
+  "file": "buildings/b_st_tour.webp",
+  "source": "settlement-v9-city.png",
+  "crop": [
+   59,
+   15,
+   419,
+   507
+  ],
+  "px": [
+   360,
+   492
+  ],
+  "anchor": [
+   168,
+   491
+  ],
+  "footprint_m": [
+   3.0,
+   6.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_boutiques": {
+  "file": "buildings/b_st_boutiques.webp",
+  "source": "settlement-v9-city.png",
+  "crop": [
+   538,
+   126,
+   1003,
+   456
+  ],
+  "px": [
+   465,
+   330
+  ],
+  "anchor": [
+   345,
+   329
+  ],
+  "footprint_m": [
+   8.5,
+   4.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_neon": {
+  "file": "buildings/b_st_neon.webp",
+  "source": "settlement-v9-city.png",
+  "crop": [
+   1089,
+   23,
+   1502,
+   482
+  ],
+  "px": [
+   413,
+   459
+  ],
+  "anchor": [
+   193,
+   458
+  ],
+  "footprint_m": [
+   4.5,
+   7.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_usine": {
+  "file": "buildings/b_st_usine.webp",
+  "source": "settlement-v9-city.png",
+  "crop": [
+   44,
+   557,
+   480,
+   960
+  ],
+  "px": [
+   436,
+   403
+  ],
+  "anchor": [
+   164,
+   402
+  ],
+  "footprint_m": [
+   2.0,
+   9.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_verre": {
+  "file": "buildings/b_st_verre.webp",
+  "source": "settlement-v9-city.png",
+  "crop": [
+   557,
+   501,
+   989,
+   992
+  ],
+  "px": [
+   432,
+   491
+  ],
+  "anchor": [
+   266,
+   490
+  ],
+  "footprint_m": [
+   6.5,
+   6.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_immeuble": {
+  "file": "buildings/b_st_immeuble.webp",
+  "source": "settlement-v9-city.png",
+  "crop": [
+   1105,
+   510,
+   1499,
+   1013
+  ],
+  "px": [
+   394,
+   503
+  ],
+  "anchor": [
+   177,
+   502
+  ],
+  "footprint_m": [
+   2.5,
+   7.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_jumelles": {
+  "file": "buildings/b_st_jumelles.webp",
+  "source": "city-v3.png",
+  "crop": [
+   65,
+   24,
+   441,
+   488
+  ],
+  "px": [
+   376,
+   464
+  ],
+  "anchor": [
+   271,
+   463
+  ],
+  "footprint_m": [
+   6.5,
+   3.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_galerie": {
+  "file": "buildings/b_st_galerie.webp",
+  "source": "city-v3.png",
+  "crop": [
+   514,
+   39,
+   1012,
+   475
+  ],
+  "px": [
+   498,
+   436
+  ],
+  "anchor": [
+   324,
+   435
+  ],
+  "footprint_m": [
+   8.0,
+   6.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_blanc": {
+  "file": "buildings/b_st_blanc.webp",
+  "source": "city-v3.png",
+  "crop": [
+   1051,
+   40,
+   1495,
+   486
+  ],
+  "px": [
+   444,
+   446
+  ],
+  "anchor": [
+   294,
+   445
+  ],
+  "footprint_m": [
+   7.0,
+   5.5
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_douane": {
+  "file": "buildings/b_st_douane.webp",
+  "source": "city-v3.png",
+  "crop": [
+   1046,
+   483,
+   1504,
+   995
+  ],
+  "px": [
+   458,
+   512
+  ],
+  "anchor": [
+   258,
+   511
+  ],
+  "footprint_m": [
+   4.0,
+   7.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_porte": {
+  "file": "buildings/b_st_porte.webp",
+  "source": "art-gen/gen_steel_gate.jpg",
+  "crop": [
+   10,
+   12,
+   1444,
+   832
+  ],
+  "px": [
+   1434,
+   820
+  ],
+  "anchor": [
+   498,
+   819
+  ],
+  "footprint_m": [
+   6.5,
+   29.0
+  ],
+  "lot": "steel-l1 v12"
+ },
+ "b_st_service": {
+  "file": "buildings/b_st_service.webp",
+  "source": "art-gen/gen_service_exit.jpg",
+  "crop": [
+   12,
+   10,
+   300,
+   211
+  ],
+  "px": [
+   288,
+   201
+  ],
+  "anchor": [
+   195,
+   200
+  ],
+  "footprint_m": [
+   4.5,
+   3.0
+  ],
+  "lot": "steel-l1 v12"
  }
 }

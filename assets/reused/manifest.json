@@ -432,5 +432,47 @@
    0.6
   ],
   "status": "généré v7"
+ },
+ "gen_odile": {
+  "file": "generated/gen_odile.webp",
+  "source": "GenerateImage (cursor), art-gen/gen_odile.jpg",
+  "height_m": 1.66,
+  "px": [
+   153,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré v12"
+ },
+ "gen_halloran": {
+  "file": "generated/gen_halloran.webp",
+  "source": "GenerateImage (cursor), art-gen/gen_halloran.jpg",
+  "height_m": 1.86,
+  "px": [
+   212,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré v12"
+ },
+ "gen_teng": {
+  "file": "generated/gen_teng.webp",
+  "source": "GenerateImage (cursor), art-gen/gen_teng.jpg",
+  "height_m": 1.76,
+  "px": [
+   187,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré v12"
  }
 }
