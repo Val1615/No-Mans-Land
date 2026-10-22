@@ -187,8 +187,8 @@ with sync_playwright() as p:
         check(f'{T}: fin : q_fin, la porte ne s\'ouvre pas', flags().get('q_fin') and st()['location'] == 'dusk_q3', flags())
         while st()['dialogue']: tapel('#dlg-close')
         check(f'{T}: aucune porte vers un intérieur du labo', not E("window.__nml.doors.some(d=>d.buildingId==='s_lab')"))
-        jf = journal('2-fin'); check(f'{T}: journal final : 4 étapes cochées, Steel-Megalopolis courant et hors de portée', jf.count('[x]') == 4 and '> Aller à Steel-Megalopolis' in jf and 'Hors de portée' in jf, jf[:400])
-        check(f'{T}: HUD : objectif Steel-Megalopolis (hors de portée)', 'Steel-Megalopolis' in E("document.getElementById('obj').innerText"))
+        jf = journal('2-fin'); check(f'{T}: journal final : 4 étapes cochées, Steel-Megalopolis courant (route ouverte depuis v12)', jf.count('[x]') == 4 and '> Aller à Steel-Megalopolis' in jf and 'route des patrouilles' in jf, jf[:400])
+        check(f'{T}: HUD : objectif Steel-Megalopolis', 'Steel-Megalopolis' in E("document.getElementById('obj').innerText"))
         if branch == 'B': check(f'{T}: journal : notes des choix (mensonge, trahison)', 'pour Mara' in jf and 'secret d' in jf)
         # rejouer la porte : elle ne s'ouvre toujours pas
         walk(28, 9, tol=1.2); time.sleep(0.5); pt = find_lab(); gesture(pt['x'], pt['y']); o = waitjs('window.__nml.state.dialogue', 20); t = text()
