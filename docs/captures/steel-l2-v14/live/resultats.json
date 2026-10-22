@@ -1,0 +1,722 @@
+[
+ {
+  "test": "desktop/humain: perso créé (humain)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: Dusk-Town -> route de Steel à pied",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: trappe fermée tant qu'on ne connaît personne",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'trappe'}"
+ },
+ {
+  "test": "desktop/humain: refoulé à la douane",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: Sol puis Bruno : le nom et le mot",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: journal : trouver Elio, plus de « prochain lot »",
+  "ok": true,
+  "detail": "uane\nLa douane\nSortie de service\nLa douane\nNOTES\nDouane de Steel : pas d’implant, pas d’entrée.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/humain: trappe nommée (Sortie de service)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: trappe ouverte -> Sous-Ville (les Poutres)",
+  "ok": true,
+  "detail": "sv_poutres"
+ },
+ {
+  "test": "desktop/humain: texte d'arrivée en bas",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: HUD : Sous-Ville, dollars",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: lumière chaude des braseros (fond)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: ambiance orange chaude (pixels)",
+  "ok": true,
+  "detail": "{'warm': 0.132, 'rb': 4.09, 'neon': 0.0}"
+ },
+ {
+  "test": "desktop/humain: passage vers la Cuve gardé sans le mot",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'guet'}"
+ },
+ {
+  "test": "desktop/humain: tripot non nommé avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: la guetteuse parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: guetteuse tournée vers le joueur (miroir, pixels)",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(99.8), np.float64(38.9))"
+ },
+ {
+  "test": "desktop/humain: option « Quatorze poutres. »",
+  "ok": true,
+  "detail": "['Merci.']"
+ },
+ {
+  "test": "desktop/humain: la guetteuse envoie à la Cuve, chez Elio",
+  "ok": true,
+  "detail": "Bruno t’envoie. Ça fait longtemps qu’il n’a envoyé personne. Elio bosse à la Cuv"
+ },
+ {
+  "test": "desktop/humain: « Le Tripot » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: tripot rendu (pixels)",
+  "ok": true,
+  "detail": "(0.96, 56881)"
+ },
+ {
+  "test": "desktop/humain: porte du tripot sur le sprite (pixels)",
+  "ok": true,
+  "detail": "1.0"
+ },
+ {
+  "test": "desktop/humain: entrée au tripot",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: le dealer parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: trafic (puces, yeux de nuit)",
+  "ok": true,
+  "detail": "Une puce de mémoire, un œil qui voit la nuit, un truc pour d"
+ },
+ {
+  "test": "desktop/humain: mobilier du tripot rendu",
+  "ok": true,
+  "detail": "2"
+ },
+ {
+  "test": "desktop/humain: figurants : gang, guetteur, et des marcheurs (gang, dealer)",
+  "ok": true,
+  "detail": "{'guetteur', 'gang', 'passant'}"
+ },
+ {
+  "test": "desktop/humain: vue concept : ambiance proche du concept art (orange chaud, sans néon froid)",
+  "ok": true,
+  "detail": "({'warm': 0.293, 'rb': 4.3, 'neon': 0.0}, {'warm': 0.121, 'rb': 2.2, 'neon': 0.0})"
+ },
+ {
+  "test": "desktop/humain: jonction à pied -> la Cuve",
+  "ok": true,
+  "detail": "sv_cuve"
+ },
+ {
+  "test": "desktop/humain: monte-charge refusé sans Elio",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'lift'}"
+ },
+ {
+  "test": "desktop/humain: atelier d'Elio rendu (pixels)",
+  "ok": true,
+  "detail": "(0.98, 43645)"
+ },
+ {
+  "test": "desktop/humain: entrée chez Elio",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: Elio parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: Elio : un prix (20 $)",
+  "ok": true,
+  "detail": "Tout le monde veut monter. Le monte-charge sert aux livraisons du marché, la nui"
+ },
+ {
+  "test": "desktop/humain: payé 20 $",
+  "ok": true,
+  "detail": "(40, 20)"
+ },
+ {
+  "test": "desktop/humain: passage accordé, monte-charge repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: journal : remonter par le monte-charge",
+  "ok": true,
+  "detail": " la guetteuse m’a laissé passer. Elio est à la Cuve.\nElio me fait remonter par le monte-charge.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/humain: monte-charge rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.85, 32738)"
+ },
+ {
+  "test": "desktop/humain: monte-charge -> Center-Town (entre deux galeries)",
+  "ok": true,
+  "detail": "('steel_center', 19.5, 35)"
+ },
+ {
+  "test": "desktop/humain: quête terminée : arrivé à Steel (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/humain: journal : arrivé, la suite attend",
+  "ok": true,
+  "detail": "t à la Cuve.\nElio me fait remonter par le monte-charge.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/humain: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "desktop/mutant: perso créé (mutant)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: Dusk-Town -> route de Steel à pied",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: trappe fermée tant qu'on ne connaît personne",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'trappe'}"
+ },
+ {
+  "test": "desktop/mutant: interpellé par le soldat",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: fuite (steel_fui)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: Sol puis Bruno : le nom et le mot",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: journal : trouver Elio, plus de « prochain lot »",
+  "ok": true,
+  "detail": "ne\nLIEUX REPÉRÉS\nSortie de service\nLa douane\nNOTES\nDouane de Steel : un soldat m’a tiré dessus.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/mutant: trappe nommée (Sortie de service)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: trappe ouverte -> Sous-Ville (les Poutres)",
+  "ok": true,
+  "detail": "sv_poutres"
+ },
+ {
+  "test": "desktop/mutant: texte d'arrivée en bas",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: HUD : Sous-Ville, dollars",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: lumière chaude des braseros (fond)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: ambiance orange chaude (pixels)",
+  "ok": true,
+  "detail": "{'warm': 0.132, 'rb': 4.11, 'neon': 0.0}"
+ },
+ {
+  "test": "desktop/mutant: passage vers la Cuve gardé sans le mot",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'guet'}"
+ },
+ {
+  "test": "desktop/mutant: tripot non nommé avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: la guetteuse parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: guetteuse tournée vers le joueur (miroir, pixels)",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(100.1), np.float64(38.3))"
+ },
+ {
+  "test": "desktop/mutant: option « Quatorze poutres. »",
+  "ok": true,
+  "detail": "['Merci.']"
+ },
+ {
+  "test": "desktop/mutant: la guetteuse envoie à la Cuve, chez Elio",
+  "ok": true,
+  "detail": "Bruno t’envoie. Ça fait longtemps qu’il n’a envoyé personne. Elio bosse à la Cuv"
+ },
+ {
+  "test": "desktop/mutant: « Le Tripot » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: jonction à pied -> la Cuve",
+  "ok": true,
+  "detail": "sv_cuve"
+ },
+ {
+  "test": "desktop/mutant: monte-charge refusé sans Elio",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'lift'}"
+ },
+ {
+  "test": "desktop/mutant: atelier d'Elio rendu (pixels)",
+  "ok": true,
+  "detail": "(0.98, 43645)"
+ },
+ {
+  "test": "desktop/mutant: entrée chez Elio",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: Elio parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: Elio : un prix (20 $)",
+  "ok": true,
+  "detail": "Tout le monde veut monter. Le monte-charge sert aux livraisons du marché, la nui"
+ },
+ {
+  "test": "desktop/mutant: le risque : blessé (-6 PV)",
+  "ok": true,
+  "detail": "(20, 14)"
+ },
+ {
+  "test": "desktop/mutant: passage accordé, monte-charge repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: journal : remonter par le monte-charge",
+  "ok": true,
+  "detail": " la guetteuse m’a laissé passer. Elio est à la Cuve.\nElio me fait remonter par le monte-charge.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/mutant: monte-charge rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.85, 32738)"
+ },
+ {
+  "test": "desktop/mutant: monte-charge -> Center-Town (entre deux galeries)",
+  "ok": true,
+  "detail": "('steel_center', 19.5, 35)"
+ },
+ {
+  "test": "desktop/mutant: quête terminée : arrivé à Steel (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "desktop/mutant: journal : arrivé, la suite attend",
+  "ok": true,
+  "detail": "t à la Cuve.\nElio me fait remonter par le monte-charge.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "desktop/mutant: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile/humain: perso créé (humain)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: Dusk-Town -> route de Steel à pied",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: trappe fermée tant qu'on ne connaît personne",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'trappe'}"
+ },
+ {
+  "test": "mobile/humain: refoulé à la douane",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: Sol puis Bruno : le nom et le mot",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: journal : trouver Elio, plus de « prochain lot »",
+  "ok": true,
+  "detail": "uane\nLa douane\nSortie de service\nLa douane\nNOTES\nDouane de Steel : pas d’implant, pas d’entrée.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "mobile/humain: trappe nommée (Sortie de service)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: trappe ouverte -> Sous-Ville (les Poutres)",
+  "ok": true,
+  "detail": "sv_poutres"
+ },
+ {
+  "test": "mobile/humain: texte d'arrivée en bas",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: HUD : Sous-Ville, dollars",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: lumière chaude des braseros (fond)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: ambiance orange chaude (pixels)",
+  "ok": true,
+  "detail": "{'warm': 0.086, 'rb': 3.33, 'neon': 0.0}"
+ },
+ {
+  "test": "mobile/humain: passage vers la Cuve gardé sans le mot",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'guet'}"
+ },
+ {
+  "test": "mobile/humain: tripot non nommé avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: la guetteuse parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: guetteuse tournée vers le joueur (miroir, pixels)",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(111.2), np.float64(13.2))"
+ },
+ {
+  "test": "mobile/humain: option « Quatorze poutres. »",
+  "ok": true,
+  "detail": "['Merci.']"
+ },
+ {
+  "test": "mobile/humain: la guetteuse envoie à la Cuve, chez Elio",
+  "ok": true,
+  "detail": "Bruno t’envoie. Ça fait longtemps qu’il n’a envoyé personne. Elio bosse à la Cuv"
+ },
+ {
+  "test": "mobile/humain: « Le Tripot » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: tripot rendu (pixels)",
+  "ok": true,
+  "detail": "(0.96, 145139)"
+ },
+ {
+  "test": "mobile/humain: porte du tripot sur le sprite (pixels)",
+  "ok": true,
+  "detail": "1.0"
+ },
+ {
+  "test": "mobile/humain: entrée au tripot",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: le dealer parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: trafic (puces, yeux de nuit)",
+  "ok": true,
+  "detail": "Une puce de mémoire, un œil qui voit la nuit, un truc pour d"
+ },
+ {
+  "test": "mobile/humain: mobilier du tripot rendu",
+  "ok": true,
+  "detail": "2"
+ },
+ {
+  "test": "mobile/humain: jonction à pied -> la Cuve",
+  "ok": true,
+  "detail": "sv_cuve"
+ },
+ {
+  "test": "mobile/humain: monte-charge refusé sans Elio",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'lift'}"
+ },
+ {
+  "test": "mobile/humain: atelier d'Elio rendu (pixels)",
+  "ok": true,
+  "detail": "(0.99, 111275)"
+ },
+ {
+  "test": "mobile/humain: entrée chez Elio",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: Elio parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: Elio : un prix (20 $)",
+  "ok": true,
+  "detail": "Tout le monde veut monter. Le monte-charge sert aux livraisons du marché, la nui"
+ },
+ {
+  "test": "mobile/humain: payé 20 $",
+  "ok": true,
+  "detail": "(40, 20)"
+ },
+ {
+  "test": "mobile/humain: passage accordé, monte-charge repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: journal : remonter par le monte-charge",
+  "ok": true,
+  "detail": " la guetteuse m’a laissé passer. Elio est à la Cuve.\nElio me fait remonter par le monte-charge.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "mobile/humain: monte-charge rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.0, 0)"
+ },
+ {
+  "test": "mobile/humain: monte-charge -> Center-Town (entre deux galeries)",
+  "ok": true,
+  "detail": "('steel_center', 19.5, 35)"
+ },
+ {
+  "test": "mobile/humain: quête terminée : arrivé à Steel (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/humain: journal : arrivé, la suite attend",
+  "ok": true,
+  "detail": "t à la Cuve.\nElio me fait remonter par le monte-charge.\nLe frère de Bruno s’appelle Elio. Le mot : « quatorze poutres »."
+ },
+ {
+  "test": "mobile/humain: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "test": "mobile/mutant: perso créé (mutant)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: Dusk-Town -> route de Steel à pied",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: trappe fermée tant qu'on ne connaît personne",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'trappe'}"
+ },
+ {
+  "test": "mobile/mutant: interpellé par le soldat",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: capturé, jeté dans la Sous-Ville (crochet douane_mutant)",
+  "ok": true,
+  "detail": "('sv_poutres', 14)"
+ },
+ {
+  "test": "mobile/mutant: journal : trouver Elio (sans passer par Sol)",
+  "ok": true,
+  "detail": "a douane\nLIEUX REPÉRÉS\nSortie de service\nLa douane\nNOTES\nDouane de Steel : capturé, puis jeté dehors près d’une trappe.\nJeté dans la Sous-Ville par les soldats."
+ },
+ {
+  "test": "mobile/mutant: HUD : Sous-Ville, dollars",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: lumière chaude des braseros (fond)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: ambiance orange chaude (pixels)",
+  "ok": true,
+  "detail": "{'warm': 0.109, 'rb': 3.47, 'neon': 0.0}"
+ },
+ {
+  "test": "mobile/mutant: passage vers la Cuve gardé sans le mot",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'guet'}"
+ },
+ {
+  "test": "mobile/mutant: tripot non nommé avant découverte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: la guetteuse parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: guetteuse tournée vers le joueur (miroir, pixels)",
+  "ok": true,
+  "detail": "(-1, 1, np.float64(113.5), np.float64(24.8))"
+ },
+ {
+  "test": "mobile/mutant: option « Et maintenant »",
+  "ok": true,
+  "detail": "['Merci.']"
+ },
+ {
+  "test": "mobile/mutant: la guetteuse envoie à la Cuve, chez Elio",
+  "ok": true,
+  "detail": "Va voir Elio, au fond, à la Cuve. Il fait remonter les gens, pas gratuitement. E"
+ },
+ {
+  "test": "mobile/mutant: « Le Tripot » nommé une fois repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: jonction à pied -> la Cuve",
+  "ok": true,
+  "detail": "sv_cuve"
+ },
+ {
+  "test": "mobile/mutant: monte-charge refusé sans Elio",
+  "ok": true,
+  "detail": "{'ok': False, 'reason': 'lift'}"
+ },
+ {
+  "test": "mobile/mutant: atelier d'Elio rendu (pixels)",
+  "ok": true,
+  "detail": "(0.99, 111275)"
+ },
+ {
+  "test": "mobile/mutant: entrée chez Elio",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: Elio parle par geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: Elio : un prix (20 $)",
+  "ok": true,
+  "detail": "Tout le monde veut monter. Le monte-charge sert aux livraisons du marché, la nui"
+ },
+ {
+  "test": "mobile/mutant: le risque : blessé (-6 PV)",
+  "ok": true,
+  "detail": "(14, 8)"
+ },
+ {
+  "test": "mobile/mutant: passage accordé, monte-charge repéré",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: journal : remonter par le monte-charge",
+  "ok": true,
+  "detail": "une trappe.\nJeté dans la Sous-Ville par les soldats.\nSous-Ville : la guetteuse m’a laissé passer. Elio est à la Cuve.\nElio me fait remonter par le monte-charge."
+ },
+ {
+  "test": "mobile/mutant: monte-charge rendu (pixels, si dans le champ)",
+  "ok": true,
+  "detail": "(0.0, 0)"
+ },
+ {
+  "test": "mobile/mutant: monte-charge -> Center-Town (entre deux galeries)",
+  "ok": true,
+  "detail": "('steel_center', 19.5, 35)"
+ },
+ {
+  "test": "mobile/mutant: quête terminée : arrivé à Steel (q_steel)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile/mutant: journal : arrivé, la suite attend",
+  "ok": true,
+  "detail": "les soldats.\nSous-Ville : la guetteuse m’a laissé passer. Elio est à la Cuve.\nElio me fait remonter par le monte-charge."
+ },
+ {
+  "test": "mobile/mutant: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ }
+]

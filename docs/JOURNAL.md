@@ -315,4 +315,9 @@ En humain, la quête bloquait (quart de quête manquant). Concept art : `villes/
 - `steel_l1` : texte d'arrivée lu dans un historique des messages (plus de lecture ratée en live) ; capture et journal adaptés à la v14.
 
 ### Vérifié
+- Live (Pages d315b14) : `steel_l2` **144/144** ; local : steel_l2 144/144, lot1 66/66, lot2 101/101, dusk_q1 138/138, flip 8/8, interiors 107/107, town 129/129, entrances 48/48, ui 53/53. Captures `captures/steel-l2-v14/live/` (vue concept : `desktop-04-vue-concept.png`).
 - Nouvelle suite `tests/steel_l2.py` : parcours complets humain et mutant (desktop : fuite ; mobile : capture), de Dusk-Town à Center-Town par la Sous-Ville, gestes réels 1280×800 et 390×844.
+
+### À vérifier
+- Monnaie de la Sous-Ville (dollar), noms des PNJ et quartiers : propositions.
+- Les bâtiments générés sont en 2:1 corrigé par cisaillement : arêtes basses justes, proportions du générateur.
