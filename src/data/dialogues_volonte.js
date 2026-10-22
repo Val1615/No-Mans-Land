@@ -8,17 +8,17 @@ export const DIALOGUES_VOLONTE = {
     start: { text: 'Attendez. Restez au guichet. Votre implant sort en orange. Motif de l\'entrée ?', options: [
       { label: 'Du travail. Il y a un problème ?', next: 'anomalie' },
       { label: 'Je veux juste passer.', next: 'anomalie' } ] },
-    anomalie: { text: 'Votre fiche dit que vous êtes entré il y a trois jours. Par cette porte. Je n\'ai aucune sortie. Alors soit vous êtes encore dedans, soit quelqu\'un porte votre poignet.', options: [
+    anomalie: { text: 'Lecture incomplète. Votre implant n\'est pas au registre. Version de dehors, je suppose. Il dit votre nom et votre âge, et après il bégaie.', options: [
       { label: 'J\'ai marché. J\'ai regardé les vitrines.', next: 'formulaire' },
       { label: 'Ça ne vous regarde pas.', next: 'formulaire' } ] },
-    formulaire: { text: 'Voilà le formulaire 12-B. Vous déclarez une sortie non enregistrée. Vous signez, je classe, vous passez. Vous ne signez pas, j\'appelle le poste.', options: [
+    formulaire: { text: 'Voilà le formulaire 12-B. Vous déclarez un implant non enregistré. Vous signez, je classe, vous passez. Vous ne signez pas, j\'appelle le poste.', options: [
       { label: 'Je ne signerai rien.', test: 'volonte:6', pass: 'tient', fail: 'cede' },
       { label: 'Appelez le poste. Et dites-leur pour votre cousin.', if: 'info_cousin_odile&volonte>=7', next: 'cousin' },
       { label: 'Bon. Je signe.', action: 'flag:odile_signe;flag:steel_fiche', next: 'signe' },
       { label: 'Il y a des frais pour éviter le poste ?', next: 'frais' } ] },
     tient: { text: 'Elle vous regarde longtemps. Puis elle regarde l\'heure. Il est seize heures cinquante.', options: [
       { label: 'Attendre sans rien dire.', next: 'tient2' } ] },
-    tient2: { text: 'Le 12-B, il faut le saisir en trois exemplaires. J\'ai dix minutes. Vous avez eu un faux contact. Ça arrive. Barrière à votre droite.', options: [
+    tient2: { text: 'Le 12-B, il faut le saisir en trois exemplaires. J\'ai dix minutes. Vous avez eu un faux contact. Ça arrive. La barrière est derrière vous.', options: [
       { label: 'Bonne soirée.', action: 'flag:odile_tenu', next: 'end' } ] },
     cede: { text: 'Elle décroche le combiné sans vous quitter des yeux. Votre main signe avant que vous ayez fini d\'y penser.', options: [
       { label: 'Rendre le stylo.', action: 'flag:odile_signe;flag:steel_fiche', next: 'signe' } ] },
@@ -31,7 +31,7 @@ export const DIALOGUES_VOLONTE = {
     frais: { text: 'Il y a des frais de régularisation. Huit crédits. Il n\'y a pas de reçu, parce que le formulaire de reçu, c\'est aussi le 12-B.', options: [
       { label: 'Payer 8 cr.', action: 'paycr:8;flag:odile_payee', next: 'payee' },
       { label: 'Non. Faites votre 12-B.', test: 'volonte:6', pass: 'tient', fail: 'cede' } ] },
-    payee: { text: 'Faux contact. Ça arrive. Barrière à votre droite. Et évitez mon guichet pendant un moment.', options: [
+    payee: { text: 'Faux contact. Ça arrive. La barrière est derrière vous. Et évitez mon guichet pendant un moment.', options: [
       { label: 'Compris.', next: 'end' } ] },
     pauvre: { text: 'Il manque des crédits. Le 12-B, lui, ne manque jamais.', options: [
       { label: 'Je signe.', action: 'flag:odile_signe;flag:steel_fiche', next: 'signe' } ] },
