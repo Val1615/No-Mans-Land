@@ -1,6 +1,8 @@
 // v7 : Dusk-Town entière. Quatre quartiers reliés à pied par leurs bouts de rue. Voir docs/quartiers/DUSK_TOWN_PLAN.md.
 // Q1 La Pompe (centre, inchangé hors passage est) ; Q2 Le Transit (est) ; Q3 Le Scellé (nord) ; Q4 Les Sables (sud).
 import * as Q1 from './dusk_q1.js';
+import { FERRAILLE } from './dialogues_argent.js';
+import { ARGENT } from './argent.js';
 import * as STEEL from './steel.js'; // v12 : Steel-Megalopolis L1
 import { BUILDINGS_Q2, PAINTED_DOORS_Q2, BUILDINGS_Q3, PAINTED_DOORS_Q3, BUILDINGS_Q4, PAINTED_DOORS_Q4 } from './buildings_town.js';
 
@@ -80,6 +82,10 @@ export const NPCS = [
   // v9 : la voix derrière la porte d'acier. Aucun sprite, aucun lieu rendu : ouverte par game.startScene au pied du blockhaus.
   { id: 'porte', name: 'Porte d\'acier', sprite: null, portrait: false, location: '_scene', x: 28, z: 4.6, dialogue: 'porte' },
   ...STEEL.NPCS,
+  // v15 argent : scènes sans sprite (rôdeur, camion, voix du poste du bord)
+  { id: 'rodeur', name: 'Rôdeur', sprite: null, portrait: false, location: '_scene', x: 0, z: 0, dialogue: 'rodeur' },
+  { id: 'raid', name: 'Service Militarisé', sprite: null, portrait: false, location: '_scene', x: 0, z: 0, dialogue: 'raid' },
+  { id: 'poste', name: 'Poste du bord', sprite: null, portrait: false, location: '_scene', x: 44.5, z: 13.2, dialogue: 'poste' },
   { id: 'sol', name: 'Sol', sprite: 'gen_sol', location: 'citerne_in', x: 3.4, z: 2.6, faceTo: [8, 3], dialogue: 'sol' }
 ];
 export const START = Q1.START, COMPANION = Q1.COMPANION;
@@ -89,3 +95,15 @@ export const CLOSED_TEXT = {
   t_cinema: 'Cinéma muré. Les affiches ont été arrachées pour faire du feu.',
   ...STEEL.CLOSED_TEXT
 };
+
+// v15 argent : points au sol (ferraille, une fois chacun ; sacs de sable du poste) et scènes déclenchées à l'entrée d'un quartier
+const F = s => s.flags;
+export const SPOTS = [
+  ...FERRAILLE.map(f => ({ ...f, kind: 'pickup', flag: 'ramasse_' + f.id, r: 1.4, if: s => !F(s)['ramasse_' + f.id], empty: 'Tu as déjà fouillé ici.' })),
+  { id: 'poste', kind: 'scene', scene: 'poste', location: 'dusk_q2', x: 44.5, z: 13.2, r: 1.8, if: s => F(s).a_debut && !F(s).a_fini, empty: 'Des sacs de sable. Derrière, personne ne répond.' }
+];
+export const TRIGGERS = [
+  { scene: 'rodeur', location: ['dusk_q1', 'dusk_q2'], if: s => F(s).a_debut && !F(s).a_fini && !F(s).a_rodeur_fait },
+  { scene: 'raid', location: ['dusk_q2'], if: (s, rng) => { const f = F(s); if (!f.a_debut || f.a_fini || f.a_raid_fait || f.a_raid_tire || !f.a_rodeur_fait || f.a_rodeur_paye) return false; // jamais deux bidons perdus
+      f.a_raid_tire = true; return rng() < ARGENT.raid.chance; } }
+];

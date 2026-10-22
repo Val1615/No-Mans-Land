@@ -173,7 +173,13 @@ with sync_playwright() as p:
             check(f'{T}: entrée chez Elio', enter_door('v_atelier_door') and st()['location'] == 'elio_in')
             check(f'{T}: Elio parle par geste', tap_npc('elio')); option('Il faut que je monte'); check(f'{T}: Elio demande 20 $', 'Vingt dollars' in dtext(), dtext()[:60])
             hp0 = st()['player']['hp']
-            check(f'{T}: option « Je n\'ai pas vingt dollars »', option('Je n'), opts()); check(f'{T}: option « Porter la caisse. »', option('Porter la caisse.'), opts())
+            o = opts(); mm = st()['player']['money']; check(f'{T}: offre de caisse visible d\'emblée ssi money<20 ({mm} $)', any('Je porte la caisse' in x for x in o) == (mm < 20), o)
+            if race == 'humain':  # ancien chemin : « Je n'ai pas vingt dollars. » -> risque
+                check(f'{T}: option « Je n\'ai pas vingt dollars »', option('Je n'), opts()); check(f'{T}: ancienne réplique (risque)', 'Alors tu portes' in dtext(), dtext()[:50]); check(f'{T}: option « Porter la caisse. »', option('Porter la caisse.'), opts())
+            else:  # nouvelle offre (nœud pauvre) : directe, ou via « Payer 20 $. » sans l'argent
+                if not mob: check(f'{T}: option directe « Je porte la caisse à la place. »', option('Je porte la caisse'), opts())
+                else: check(f'{T}: « Payer 20 $. » sans argent -> offre', option('Payer 20'), opts())
+                check(f'{T}: nouvelle offre d\'Elio (pauvre)', 'caisse à porter' in dtext(), dtext()[:60]); check(f'{T}: option « D\'accord, je porte la caisse. »', option('accord, je porte'), opts())
             s = st(); check(f'{T}: caisse portée : -6 PV, passage accordé', s['player']['hp'] == max(1, hp0 - 6) and s['flags'].get('sv_passage') and s['discovered'].get('v_lift'), (hp0, s['player']['hp']))
             close_dlg(); money_ok('Elio (caisse portée)'); MF, CF = M0, 0
             enter_door('elio_in_door'); time.sleep(0.8)

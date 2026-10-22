@@ -127,3 +127,25 @@ DIALOGUES.bruno = { ...DIALOGUES.bruno,
   frere: { text: 'Elio. Il s\'appelle Elio. S\'il est en vie, il est en bas, et il fait passer des gens, c\'est ce qu\'on raconte. Si tu le trouves, dis-lui « quatorze poutres ». Il saura que tu viens de moi.', options: [
     { label: 'Quatorze poutres. Je m\'en souviendrai.', action: 'flag:bruno_frere', next: 'end' } ] }
 };
+
+// v15 Argent à Dusk-Town (contenu : dialogues_argent.js, Création ; branchements : Développement, voir docs/ARGENT_DUSKTOWN.md)
+import { DIALOGUES_ARGENT, ITEMS_ARGENT, FERRAILLE } from './dialogues_argent.js';
+Object.assign(DIALOGUES, DIALOGUES_ARGENT);
+Object.assign(ITEMS, ITEMS_ARGENT);
+ITEMS.water = { ...ITEMS.water, use: { heal: 4, verb: 'Boire' } }; // décision (a) : le bidon gardé (give:water) rend 4 PV à l'usage
+const addOpts = (id, opts, first = false) => { const s = DIALOGUES[id].start; DIALOGUES[id] = { ...DIALOGUES[id], start: { ...s, options: first ? [...opts, ...s.options] : [...s.options.slice(0, -1), ...opts, s.options[s.options.length - 1]] } }; };
+addOpts('sol', [ { label: 'Tu as du travail ?', next: 'sol_eau/start', if: '!a_debut' }, { label: 'Le poste a eu son eau.', next: 'sol_eau/retour', if: 'a_fini' } ]);
+addOpts('hector', [ { label: 'Du travail pour moi ?', next: 'dette_hector/start', if: '!b_debut' },
+  { label: 'Ezequiel a payé.', next: 'dette_hector/paye', if: 'b_argent&!b_fini' },
+  { label: 'Il m\'a donné ses clés.', next: 'dette_hector/outils', if: 'b_outils&!b_fini' },
+  { label: 'J\'ai payé pour lui.', next: 'dette_hector/toi', if: 'b_paye_moi&!b_fini' },
+  { label: 'Ezequiel m\'a chassé.', next: 'dette_hector/echec', if: 'b_echec&!b_fini' } ]);
+addOpts('ezequiel', [ { label: 'Hector m\'envoie. Pour ton ardoise.', next: 'dette_ezequiel/start', if: 'b_debut&!b_regle' } ]);
+addOpts('anselme', [ { label: 'Tu achètes de la ferraille ?', next: 'ferraille/start' } ]);
+addOpts('teo', [ { label: 'Tu joues ?', next: 'trois_os/start' } ]);
+// Elio (Sous-Ville) : sans 20 $, l'offre de la caisse est proposée d'emblée (réplique de Création, nœud pauvre)
+DIALOGUES.elio = { ...DIALOGUES.elio, monter: { ...DIALOGUES.elio.monter, options: [ ...DIALOGUES.elio.monter.options,
+  { label: 'Je porte la caisse à la place.', if: 'money<20', next: 'pauvre' } ] } };
+// Ajustement technique (action seulement, réplique intacte) : « garder le dernier » retire les 4 bidons de livraison et donne l'eau gardée
+{ const o = DIALOGUES.poste.start.options.find(o => o.if === 'inv:bidon>=4' && /a_garde/.test(o.action)); if (o) o.action = 'take:bidon;' + o.action; }
+export { FERRAILLE };

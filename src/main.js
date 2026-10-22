@@ -29,6 +29,8 @@ game.on(ev => { if (ev.text) say(ev.text); });
 bindPointer($('view'), (x, y) => {
   if (game.state.dialogue || shell?.isOpen()) return;
   const p = view.pick(x, y); if (!p) return;
+  if (p.x !== undefined || p.kind === 'ground') { // v15 : ferraille / sacs du poste près du point visé
+    const sp = (world.SPOTS || []).find(q => q.location === game.state.location && Math.hypot(q.x - p.x, q.z - p.z) < (q.r || 1.4)); if (sp) { game.useSpot(sp.id); return; } }
   if (p.kind === 'npc') game.talkTo(p.npcId);
   else if (p.kind === 'door') game.useDoor(p.doorId);
   else if (p.kind === 'building') { const d = game.doorOfBuilding(p.buildingId); if (d) game.useDoor(d.id); }
@@ -47,7 +49,7 @@ $('act').addEventListener('click', () => nearDoor && game.useDoor(nearDoor.id));
 $('dlg-close').addEventListener('click', () => game.closeDialogue());
 let shownNode = null;
 function renderDialogue() {
-  const n = game.currentNode(), key = n && game.state.dialogue.npc + ':' + game.state.dialogue.node + ':' + game.state.player.money;
+  const n = game.currentNode(), key = n && [game.state.dialogue.npc, game.state.dialogue.tree, game.state.dialogue.node, game.state.player.money, n.text, n.options.length].join(':'); // v15 : sous-arbres (tree) et textes à gabarit
   $('dialogue').hidden = !n; if (!n || key === shownNode) { if (!n) shownNode = null; return; }
   shownNode = key;
   $('dlg-portrait').hidden = n.npc.portrait === false; if (n.npc.portrait !== false) $("dlg-portrait").src = n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
@@ -84,7 +86,7 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
-window.__nml = { game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS };
+window.__nml = { game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '';
@@ -101,9 +103,10 @@ function renderPanel() {
     const offers = n ? n.options.filter(o => o.action && o.action.startsWith('buy:')) : [];
     const ch = s.character, RN = { humain: 'Humain', mutant: 'Mutant', augmente: 'Augmenté', cyborg: 'Cyborg' };
     const fiche = ch ? `<div class="fiche"><img src="${portraitUrl(ch.portrait)}" alt=""><div><h3>${ch.name.toUpperCase()}</h3><span class="muted">${RN[ch.race]} · PA ${ch.ap} · ${ch.implant ? 'implant d\u2019IO' : 'sans implant'}</span><div class="attrs">${Object.entries(ch.attrs).map(([k, v]) => `<span>${k.slice(0, 3).toUpperCase()} <b>${v}</b></span>`).join('')}</div></div></div>` : '';
-    B.innerHTML = fiche + `<div class="cols"><div><h3>SAC · ${s.player.money} $${s.player.credits ? ' · ' + s.player.credits + ' cr' : ''}</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].name}</span><span>×${v}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
+    B.innerHTML = fiche + `<div class="cols"><div><h3>SAC · ${s.player.money} $${s.player.credits ? ' · ' + s.player.credits + ' cr' : ''}</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].name}</span><span>×${v}${ITEMS[k].use ? ` <button data-use="${k}">${ITEMS[k].use.verb || 'Utiliser'}</button>` : ''}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
       <div><h3>${n ? 'ACHAT · ' + n.npc.name.toUpperCase() : 'ACHAT'}</h3>${offers.length ? '<ul>' + offers.map(o => `<li><button data-buy="${o.index}"><span>${o.label.replace(/ \(\d+ \$\)/, '')}</span><span>${o.action.split(':')[2]} $</span></button></li>`).join('') + '</ul>' : '<p class="muted">Parle à un marchand pour voir ses prix. Le troc d\u2019objets n\u2019existe pas encore.</p>'}</div></div>
       <div class="desc">${items.length ? 'Ce que tu portes reste avec toi d\u2019un quartier à l\u2019autre.' : 'Rien à porter pour l\u2019instant.'}</div>`;
+    B.querySelectorAll('[data-use]').forEach(b => b.addEventListener('click', () => { game.useItem(b.dataset.use); panelKey = ''; }));
     B.querySelectorAll('[data-buy]').forEach(b => b.addEventListener('click', () => { game.choose(+b.dataset.buy); panelKey = ''; }));
   } else if (panelOpen === 'journal') {
     const places = allBuildings().filter(b => s.discovered[b.id]);
