@@ -64,6 +64,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       c.scale.set(0.42, 0.42, 1); c.position.set(d.opening.x, 2.5, d.opening.z); world.add(c); item.extra.push(c);
     }
     const door = DOORS.find(d => d.buildingId === b.id);
+    if (!b.visitable && b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4, b.z + b.d), () => !!game.state.discovered[b.id]); labels[labels.length - 1].el.dataset.building = b.id; } // v12 : lieu nommé une fois repéré
     if (b.visitable) { addLabel(b.label, 'service', () => new THREE.Vector3(door.opening.x, 3.4, door.opening.z), () => !!game.state.discovered[b.id]); labels[labels.length - 1].el.dataset.building = b.id; }
   }
   // v6 : mur d'intérieur = texture réelle (1 image = 3 m x 3 m de mur), répétée selon la taille de chaque face.
@@ -123,7 +124,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(d.threshold.x, 0.03, d.threshold.z); ring.userData.doorId = d.id; world.add(ring); pickables.push(ring);
       if (d.junction || d.edge) { ring.material.color.set(d.junction ? '#e0b04a' : '#b9a68a'); ring.material.opacity = d.junction ? 0.8 : 0.5; // v7 : bout de rue
         addLabel(d.label, d.junction ? 'junction' : 'edge', () => new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte : ne cache jamais le joueur au seuil
-      if (loc.kind === 'interior') addLabel('Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
+      if (loc.kind === 'interior') addLabel(d.label || 'Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
     for (const n of NPCS.filter(n => n.location === locId)) {
       const s = spriteMesh(n.sprite, null, true); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
@@ -241,6 +242,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     ray.setFromCamera(new THREE.Vector2(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1), cam);
     if (exterior) { // sprites : pixel opaque le plus haut dans l'ordre du peintre ; un bâtiment transparent laisse passer le clic
       const hits = ray.intersectObjects(pickables, false), ring = hits.find(h => h.object.userData.doorId); if (ring) return { kind: 'door', doorId: ring.object.userData.doorId };
+      const nh = hits.find(h => h.object.userData.npc); if (nh) return { kind: 'npc', npcId: nh.object.userData.npc }; // v12 : PNJ dehors (Steel)
       const c = scr(ray.ray.origin); let top = null;
       for (const s of bsprites) { if (s.material.opacity < 0.5) continue; const q = uvOf(s, c); if (alphaAt(s.userData.img, q.u, q.v) > 0.5 && (!top || s.renderOrder > top.renderOrder)) top = s; }
       if (top) { const u = top.userData;

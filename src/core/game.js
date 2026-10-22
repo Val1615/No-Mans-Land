@@ -69,7 +69,7 @@ export function createGame(world, sprites) {
   }
   function finishPending() {
     const p = state.player.pending; state.player.pending = null; if (!p) return;
-    if (p.kind === 'door') { const d = doorById(p.id); if (d.edge) { state.junctionLock = d.id; refuse('bord', d.edge); } else enter(d); }
+    if (p.kind === 'door') { const d = doorById(p.id), bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else enter(d); }
     if (p.kind === 'talk') openDialogue(p.id);
     if (p.kind === 'scene') openDialogue(p.id);
   }
@@ -118,6 +118,15 @@ export function createGame(world, sprites) {
       pl.money -= cost;
       if (it.consumeNow) pl.hp = Math.min(pl.maxHp, pl.hp + (it.heal || 0)); else pl.inv[x] = (pl.inv[x] || 0) + 1;
       emit({ type: 'service', what: x, text: `${it.name} : −${cost} $` }); return { ok: true }; }
+    if (k === 'hurt') { pl.hp = Math.max(1, pl.hp - +x); emit({ type: 'hurt', text: `−${x} PV` }); return { ok: true }; }
+    // v12 : change dollars -> crédits (Steel) ; « change:20:11 » = 20 $ contre 11 cr
+    if (k === 'change') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' }; pl.money -= cost; pl.credits = (pl.credits || 0) + +y; emit({ type: 'service', what: 'change', text: `−${cost} $ · +${y} cr` }); return { ok: true }; }
+    // v12 : déplacement scripté (fuite, capture) : « warp:lieu:x:z » ; compte comme un changement de lieu
+    if (k === 'warp') { const [, loc, wx, wz] = a.split(':'); if (!LOCATIONS[loc]) return { ok: false }; const from = state.location;
+      state.location = loc; Object.assign(pl, { x: +wx, z: +wz, path: [], pending: null }); const g = grids[loc], [i, j] = g.toCell(pl.x, pl.z); if (!g.free(i, j)) { const w = nearestFree(g, pl, pl); if (w) Object.assign(pl, w); }
+      state.junctionLock = null; state.transitions++; emit({ type: 'transition', from, to: loc, warp: true }); return { ok: true }; }
+    // v12 : crochet pour un système futur (combat) : signalé, sans effet propre
+    if (k === 'hook') { state.hooks = state.hooks || []; state.hooks.push(x); emit({ type: 'hook', id: x }); return { ok: true }; }
     return { ok: false };
   }
   function closeDialogue() { if (state.dialogue) { const n = npcById(state.dialogue.npc); if (n.faceTo) state.npcs[n.id].heading = Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z); emit({ type: 'dialogue_close', npc: state.dialogue.npc }); state.dialogue = null; } }
@@ -148,7 +157,7 @@ export function createGame(world, sprites) {
     // Jonctions de rue : franchies dès que le joueur s'arrête sur le seuil (marche réelle).
     if (state.junctionLock) { const l = doorById(state.junctionLock); if (!l || l.location !== state.location || Math.hypot(l.threshold.x - pl.x, l.threshold.z - pl.z) > 1.5) state.junctionLock = null; }
     if (!pl.path.length && !state.dialogue) for (const d of DOORS) if ((d.junction || d.edge) && d.location === state.location && d.id !== state.junctionLock && Math.hypot(d.threshold.x - pl.x, d.threshold.z - pl.z) < 0.8) {
-      if (d.edge) { state.junctionLock = d.id; refuse('bord', d.edge); } else enter(d); break; }
+      const bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else enter(d); break; }
     const c = state.companion;
     if (c.mode === 'follow' && c.location === state.location) {
       c._t = (c._t || 0) + dt;
@@ -169,7 +178,7 @@ export function createGame(world, sprites) {
   // v10 : sauvegarde. Instantané de tout l'état durable (jamais chemins, attentes, dialogue en cours).
   function snapshot() {
     const p = state.player, c = state.companion;
-    return JSON.parse(JSON.stringify({ location: state.location, player: { x: p.x, z: p.z, heading: p.heading || 0, hp: p.hp, maxHp: p.maxHp, money: p.money, inv: p.inv },
+    return JSON.parse(JSON.stringify({ location: state.location, player: { x: p.x, z: p.z, heading: p.heading || 0, hp: p.hp, maxHp: p.maxHp, money: p.money, credits: p.credits || 0, inv: p.inv },
       companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions, character: state.character || null }));
   }
   function restore(snap, quiet) {
@@ -177,7 +186,7 @@ export function createGame(world, sprites) {
     closeDialogue();
     const p = state.player, sp0 = snap.player || {};
     state.location = snap.location;
-    Object.assign(p, { x: +sp0.x || 0, z: +sp0.z || 0, heading: +sp0.heading || 0, hp: sp0.hp ?? START.hp, maxHp: sp0.maxHp ?? START.maxHp, money: sp0.money ?? START.money, inv: { ...(sp0.inv || {}) }, path: [], pending: null });
+    Object.assign(p, { x: +sp0.x || 0, z: +sp0.z || 0, heading: +sp0.heading || 0, hp: sp0.hp ?? START.hp, maxHp: sp0.maxHp ?? START.maxHp, money: sp0.money ?? START.money, credits: sp0.credits || 0, inv: { ...(sp0.inv || {}) }, path: [], pending: null });
     const g = grids[state.location], [i, j] = g.toCell(p.x, p.z); if (!g.free(i, j)) { const w = nearestFree(g, p, p); if (w) Object.assign(p, w); }
     Object.assign(state.companion, { ...(snap.companion || {}), path: [] });
     state.flags = { ...(snap.flags || {}) }; state.discovered = { ...(snap.discovered || {}) }; state.seen = { ...(snap.seen || {}) }; state.transitions = snap.transitions || 0;

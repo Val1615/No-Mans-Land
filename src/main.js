@@ -35,7 +35,7 @@ bindPointer($('view'), (x, y) => {
     const f = game.state.flags;
     if (f.q_fin || (f.q_cric && f.q_signal)) game.startScene('porte', { x: 28, z: 5.8 });
     else say(!f.q_cric && !f.q_signal ? 'Pas à mains nues, et pas sans savoir où sont les camions.' : !f.q_cric ? 'Pas à mains nues. Le cric d\u2019Anselme.' : 'Pas sans savoir où sont les camions. Teo, au guet.'); }
-  else if (p.kind === 'closed') say(world.CLOSED_TEXT[p.buildingId] || `${p.label} : fermé.`);
+  else if (p.kind === 'closed') { const t = world.CLOSED_TEXT[p.buildingId]; say((typeof t === 'function' ? t(game.state) : t) || `${p.label} : fermé.`); }
   else if (p.kind === 'ground') { // v7 : un tap au bout d'une rue vise la jonction (on marche jusqu'au seuil)
     const j = world.DOORS.find(d => (d.junction || d.edge) && d.location === game.state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.6);
     if (j) game.useDoor(j.id); else game.moveTo(p.x, p.z); }
@@ -70,10 +70,11 @@ function frame(now) {
   nearDoor = s.dialogue ? null : D.find(d => d.location === s.location && Math.hypot(d.threshold.x - s.player.x, d.threshold.z - s.player.z) < 2.5) || null;
   $('act').hidden = !nearDoor; if (nearDoor) $('act').textContent = game.location.kind === 'interior' ? 'Sortir' : nearDoor.junction ? nearDoor.label : nearDoor.edge ? nearDoor.label : 'Entrer : ' + game.location.buildings.find(b => b.id === nearDoor.buildingId).label;
   $('loc').textContent = game.location.name;
-  $('hp').textContent = `${s.player.hp}/${s.player.maxHp}`; $('hpbar').style.width = (100 * s.player.hp / s.player.maxHp) + '%'; $('money').textContent = `${s.player.money} $`;
+  $('hp').textContent = `${s.player.hp}/${s.player.maxHp}`; $('hpbar').style.width = (100 * s.player.hp / s.player.maxHp) + '%'; const inSteel = game.location.city === 'steel'; // v12 : crédit dans Steel, dollar ailleurs
+  $('money').textContent = inSteel ? `${s.player.credits || 0} cr` : `${s.player.money} $`; $('money-lbl').textContent = inSteel ? 'Crédits' : 'Dollars';
   $('inv').textContent = Object.entries(s.player.inv).map(([k, v]) => `${ITEMS[k].name} ×${v}`).join(' · ');
   const c = s.companion; $('nilo').closest('.cell').hidden = c.mode === 'absent'; if (c.mode !== 'absent') $('nilo').textContent = c.mode === 'follow' && c.location === s.location ? 'NILO · suit' : 'NILO · resté en arrière';
-  $('mini').textContent = `PV ${s.player.hp}/${s.player.maxHp} · ${s.player.money} $`;
+  $('mini').textContent = `PV ${s.player.hp}/${s.player.maxHp} · ` + (inSteel ? `${s.player.credits || 0} cr` : `${s.player.money} $`);
   const q = currentObjective(); $('obj').hidden = !q; if (q) $('obj-text').textContent = q;
   music.update();
   s.seen[s.location] = true; if (panelOpen) renderPanel();
@@ -99,14 +100,14 @@ function renderPanel() {
     const offers = n ? n.options.filter(o => o.action && o.action.startsWith('buy:')) : [];
     const ch = s.character, RN = { humain: 'Humain', mutant: 'Mutant', augmente: 'Augmenté', cyborg: 'Cyborg' };
     const fiche = ch ? `<div class="fiche"><img src="${portraitUrl(ch.portrait)}" alt=""><div><h3>${ch.name.toUpperCase()}</h3><span class="muted">${RN[ch.race]} · PA ${ch.ap} · ${ch.implant ? 'implant d\u2019IO' : 'sans implant'}</span><div class="attrs">${Object.entries(ch.attrs).map(([k, v]) => `<span>${k.slice(0, 3).toUpperCase()} <b>${v}</b></span>`).join('')}</div></div></div>` : '';
-    B.innerHTML = fiche + `<div class="cols"><div><h3>SAC · ${s.player.money} $</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].name}</span><span>×${v}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
+    B.innerHTML = fiche + `<div class="cols"><div><h3>SAC · ${s.player.money} $${s.player.credits ? ' · ' + s.player.credits + ' cr' : ''}</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].name}</span><span>×${v}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
       <div><h3>${n ? 'ACHAT · ' + n.npc.name.toUpperCase() : 'ACHAT'}</h3>${offers.length ? '<ul>' + offers.map(o => `<li><button data-buy="${o.index}"><span>${o.label.replace(/ \(\d+ \$\)/, '')}</span><span>${o.action.split(':')[2]} $</span></button></li>`).join('') + '</ul>' : '<p class="muted">Parle à un marchand pour voir ses prix. Le troc d\u2019objets n\u2019existe pas encore.</p>'}</div></div>
       <div class="desc">${items.length ? 'Ce que tu portes reste avec toi d\u2019un quartier à l\u2019autre.' : 'Rien à porter pour l\u2019instant.'}</div>`;
     B.querySelectorAll('[data-buy]').forEach(b => b.addEventListener('click', () => { game.choose(+b.dataset.buy); panelKey = ''; }));
   } else if (panelOpen === 'journal') {
     const places = allBuildings().filter(b => s.discovered[b.id]);
     const notes = Object.keys(s.flags).filter(f => FLAGS[f]);
-    const qs = QUESTS.filter(qq => qq.visible(s)).map(qq => { let cur = false; return `<div class="lbl">Quête · ${qq.title}</div><ul class="quest">` + qq.steps.map(st => {
+    const qs = QUESTS.filter(qq => qq.visible(s)).map(qq => { let cur = false; return `<div class="lbl">Quête · ${qq.title}</div><ul class="quest">` + qq.steps.filter(st => !st.show || st.show(s)).map(st => {
         const done = st.done && s.flags[st.done], isCur = !done && !cur; if (isCur) cur = true;
         return `<li class="${done ? 'done' : isCur ? 'cur' : ''} ${st.blocked ? 'blk' : ''}"><span>${done ? '[x]' : isCur ? '>' : '[ ]'} ${st.text}</span>${st.blocked && isCur ? `<span class="muted">${st.blocked}</span>` : ''}</li>`; }).join('') + '</ul>'; }).join('');
     notes.push(...Object.keys(QUEST_NOTES).filter(f => s.flags[f]));
@@ -139,7 +140,7 @@ addEventListener('keydown', e => {
 // ---------- v9 : objectif suivi, musique de Dusk-Town ----------
 function currentObjective() {
   const s = game.state; for (const q of QUESTS) { if (!q.visible(s)) continue;
-    const st = q.steps.find(x => !x.done || !s.flags[x.done]); if (st) return st.text + (st.blocked ? ' (hors de portée pour l\u2019instant)' : ''); }
+    const st = q.steps.filter(x => !x.show || x.show(s)).find(x => !x.done || !s.flags[x.done]); if (st) return st.text + (st.blocked ? ' (hors de portée pour l\u2019instant)' : ''); }
   return null;
 }
 // Un seul élément <audio> pour toute la partie : jamais recréé au changement de quartier, donc aucune coupure.
@@ -174,6 +175,20 @@ shell = createShell({ game, world, $, applyOptions, onStart(rec, draft) {
   if (panelOpen) openPanel(panelOpen); shownNode = null;
   const wantMini = shell.options.minimal; if (wantMini !== document.body.classList.contains('mini')) toggleMini();
 } });
-game.on(ev => { if (ev.type === 'transition' && !shell.isOpen()) shell.autosave(); });
+game.on(ev => {
+  if (ev.type !== 'transition') return;
+  const L = world.LOCATIONS[ev.to];
+  if (L.arrive && L.arrive.from === ev.from) setTimeout(() => say(L.arrive.text), 50);
+  if (ev.to === 'steel_center' && !game.state.flags.q_steel) { game.state.flags.q_steel = true; setTimeout(() => say('Journal : quête mise à jour. Tu es dans Steel-Megalopolis.'), 3600); }
+  if (!shell.isOpen()) shell.autosave();
+});
+// v12 : mutant à la douane de Steel. Le soldat le repère à vue et l'interpelle [décision] ; le combat n'existe pas : scène provisoire (steel.js, COMBAT_HOOKS)
+function steelWatch() {
+  const s = game.state; if (s.location !== 'steel_route' || !s.flags.race_mutant || s.dialogue || shell.isOpen()) return;
+  const h = world.NPCS.find(n => n.id === 'halloran'), d = Math.hypot(s.player.x - h.x, s.player.z - h.z);
+  if (d < 8 && !s.flags._halloran_near) { s.flags._halloran_near = true; s.player.path = []; s.player.pending = null; game.startScene('halloran', { x: s.player.x, z: s.player.z }); }
+  if (d > 11) s.flags._halloran_near = false;
+}
+setInterval(steelWatch, 200);
 $('k-menu').addEventListener('click', () => { if (game.state.dialogue) game.closeDialogue(); if (panelOpen) openPanel(panelOpen); shell.pause(); });
 window.__nml.shell = shell;

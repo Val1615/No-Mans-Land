@@ -68,6 +68,7 @@ export const DIALOGUES = {
     pauvre: { text: 'Le seau est gratuit à remonter. Pas à boire.', options: [ { label: 'Tant pis.', next: 'end' } ] }
   }
 };
+import { DIALOGUES as STEEL_DIALOGUES } from './steel.js';
 export const ITEMS = { ...I1, tip: { name: 'Tuyau', consumeNow: true }, cric: { name: 'Cric de camion' } };
 // v9 : Anselme (étape 2, choix : payer ou mentir) et la voix derrière la porte (scène finale, sans PNJ visible)
 DIALOGUES.anselme = { ...DIALOGUES.anselme,
@@ -103,4 +104,25 @@ DIALOGUES.porte = {
     { label: 'J\'irai.', action: 'flag:q_fin', next: 'v5' }, { label: 'Et si personne ne m\'écoute ?', next: 'v4b' } ] },
   v4b: { text: '« Alors dis-le plus fort. Moi, il me reste cette grille et ta voix. »', options: [ { label: 'J\'irai.', action: 'flag:q_fin', next: 'v5' } ] },
   v5: { text: 'Le grésillement se coupe. Le cric glisse, le battant retombe avec un bruit sourd, à sa place. La porte reste fermée.', options: [ { label: 'Partir.', next: 'end' } ] }
+};
+
+// v12 Steel L1 : dialogues de la route et de Center-Town ; Sol et Bruno orientent humain et mutant vers la Sous-Ville [décision ; contact = proposition]
+Object.assign(DIALOGUES, STEEL_DIALOGUES);
+DIALOGUES.sol = { ...DIALOGUES.sol,
+  start: { ...DIALOGUES.sol.start, options: [
+    { label: 'Steel. Ils m\'ont refoulé à la douane.', next: 'steel_refuse', if: 'steel_refuse&!race_mutant&!sol_passage' },
+    { label: 'Steel. Ils m\'ont tiré dessus.', next: 'steel_mutant', if: 'steel_attaque&!sol_passage' },
+    { label: 'Je pars pour Steel.', next: 'steel_mutant_avant', if: 'q_fin&race_mutant&!steel_attaque&!sol_passage' },
+    ...DIALOGUES.sol.start.options ] },
+  steel_refuse: { text: 'Tu as vu leur porte. Maintenant écoute-moi. Il y en a une autre, plus bas, dans le sable, au sud de la douane. Ceux qu\'ils jettent en dessous en connaissent le chemin. Bruno avait un frère. Va voir Bruno, chez Mara, et dis-lui que je t\'envoie.', options: [
+    { label: 'Merci, Sol.', action: 'flag:sol_passage;reveal:r_service', next: 'end' } ] },
+  steel_mutant_avant: { text: 'À visage découvert ? Ils tirent avant de demander, et ils visent le cou. Il y a une autre porte, plus bas, dans le sable, au sud de la douane. Bruno avait un frère, emmené là-dessous. Va voir Bruno, chez Mara. Dis-lui que je t\'envoie.', options: [
+    { label: 'Merci, Sol.', action: 'flag:sol_passage;reveal:r_service', next: 'end' } ] },
+  steel_mutant: { text: 'Montre. Ça a juste pris la peau, tu as de la chance. Écoute, la grande porte, oublie-la. Il y a une trappe dans le sable, au sud de la douane. Bruno avait un frère, emmené là-dessous. Va voir Bruno, chez Mara. Dis-lui que je t\'envoie.', options: [
+    { label: 'Merci, Sol.', action: 'flag:sol_passage;reveal:r_service', next: 'end' } ] }
+};
+DIALOGUES.bruno = { ...DIALOGUES.bruno,
+  start: { ...DIALOGUES.bruno.start, options: [ { label: 'Sol m\'envoie. Pour ton frère.', next: 'frere', if: 'sol_passage&!bruno_frere' }, ...DIALOGUES.bruno.start.options ] },
+  frere: { text: 'Elio. Il s\'appelle Elio. S\'il est en vie, il est en bas, et il fait passer des gens, c\'est ce qu\'on raconte. Si tu le trouves, dis-lui « quatorze poutres ». Il saura que tu viens de moi.', options: [
+    { label: 'Quatorze poutres. Je m\'en souviendrai.', action: 'flag:bruno_frere', next: 'end' } ] }
 };

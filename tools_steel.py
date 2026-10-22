@@ -42,7 +42,11 @@ def load_cell(cell):
   f, c, r = CELLS[cell]
   if f.startswith('GEN:'):
     sys.path.insert(0, OUT); import tools_interiors as TI
-    rgba = TI.quad(OUT + f[4:], -1); a = rgba[..., 3] > 100
+    rgba = TI.quad(OUT + f[4:], -1).copy()
+    # dé-contamination du magenta résiduel (liserés roses au pied du mur) : on ramène rouge et bleu vers le vert
+    px = rgba[..., :3].astype(float); spill = np.clip((px[..., 0] + px[..., 2]) / 2 - px[..., 1] - 18, 0, None)
+    px[..., 0] -= spill * 0.9; px[..., 2] -= spill; rgba[..., :3] = np.clip(px, 0, 255).astype('uint8')
+    a = rgba[..., 3] > 100
     ys, xs = np.nonzero(a)
     sc = K * (c * cy + r * sy) / (xs.max() - xs.min() + 1)
     im = Image.fromarray(rgba).resize((int(rgba.shape[1] * sc), int(rgba.shape[0] * sc)), Image.LANCZOS)

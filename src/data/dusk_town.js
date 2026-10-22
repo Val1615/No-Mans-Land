@@ -1,6 +1,7 @@
 // v7 : Dusk-Town entière. Quatre quartiers reliés à pied par leurs bouts de rue. Voir docs/quartiers/DUSK_TOWN_PLAN.md.
 // Q1 La Pompe (centre, inchangé hors passage est) ; Q2 Le Transit (est) ; Q3 Le Scellé (nord) ; Q4 Les Sables (sud).
 import * as Q1 from './dusk_q1.js';
+import * as STEEL from './steel.js'; // v12 : Steel-Megalopolis L1
 import { BUILDINGS_Q2, PAINTED_DOORS_Q2, BUILDINGS_Q3, PAINTED_DOORS_Q3, BUILDINGS_Q4, PAINTED_DOORS_Q4 } from './buildings_town.js';
 
 const ext = (id, name, buildings, zones, props, spawn) => ({ id, name, size: { w: 48, d: 36 }, kind: 'exterior',
@@ -42,7 +43,8 @@ export const LOCATIONS = {
   citerne_in: { id: 'citerne_in', name: 'La citerne', kind: 'interior', size: { w: 8, d: 6 }, ground: { base: '#857055', skin: 'f_concrete', tileM: 3 },
     wall: '#b89c74', wallSkin: 'w_planks', buildings: [], props: [
       { furn: 'home_water', x: 0.4, z: 0.4 }, { furn: 'home_water', x: 2.0, z: 0.4 }, { furn: 'home_water', x: 0.4, z: 1.6 },
-      { furn: 'bar_table_b', x: 4.6, z: 0.5 }, { furn: 'home_curtain', x: 4.6, z: 3.6 }, { furn: 'home_mattress_d', x: 4.8, z: 4.6 } ] }
+      { furn: 'bar_table_b', x: 4.6, z: 0.5 }, { furn: 'home_curtain', x: 4.6, z: 3.6 }, { furn: 'home_mattress_d', x: 4.8, z: 4.6 } ] },
+  ...STEEL.LOCATIONS
 };
 
 const painted = (list, loc, T) => list.map(d => ({ id: d.id, buildingId: d.buildingId, location: loc, opening: { x: d.opening[0], z: d.opening[1], side: d.face === 's' ? 'south' : 'east' },
@@ -65,9 +67,10 @@ export const DOORS = [
   J('j_q1_sud', 'dusk_q1', 28, 36, 28, 35, 'j_q4_nord', 'Vers Les Sables'),    J('j_q4_nord', 'dusk_q4', 28, 0, 28, 1, 'j_q1_sud', 'Vers La Pompe'),
   // Bords de ville (désert)
   E('b_q1_ouest', 'dusk_q1', 0, 18, 0.8, 18, 'Désert', 'La piste se perd dans le sable. Rien à pied par là.'),
-  E('b_q2_est', 'dusk_q2', 48, 18, 47, 18, 'Route des patrouilles', 'La route file vers l\'est, celle des camions. Personne ne la prend à pied.'),
+  // v12 : b_q2_est (bord) devient la jonction j_q2_est vers la route de Steel, ouverte après la porte d'acier (voir steel.js)
   E('b_q3_ouest', 'dusk_q3', 0, 17, 1, 17, 'Désert', 'Les murs s\'arrêtent, le sable commence.'),
   E('b_q3_est', 'dusk_q3', 48, 17, 47, 17, 'Désert', 'Plus une maison. Du sable jusqu\'à l\'horizon.'),
+  ...STEEL.DOORS,
   E('b_q4_sud', 'dusk_q4', 28, 36, 28, 35, 'Terres dévastées', 'Au-delà, les terres dévastées. Pas sans eau, pas sans arme, pas aujourd\'hui.')
 ];
 export const NPCS = [
@@ -76,11 +79,13 @@ export const NPCS = [
   { id: 'ezequiel', name: 'Ezequiel', sprite: 'gen_ezequiel', location: 'atelier_in', x: 2.6, z: 2.2, faceTo: [3.5, 6], dialogue: 'ezequiel' },
   // v9 : la voix derrière la porte d'acier. Aucun sprite, aucun lieu rendu : ouverte par game.startScene au pied du blockhaus.
   { id: 'porte', name: 'Porte d\'acier', sprite: null, portrait: false, location: '_scene', x: 28, z: 4.6, dialogue: 'porte' },
+  ...STEEL.NPCS,
   { id: 'sol', name: 'Sol', sprite: 'gen_sol', location: 'citerne_in', x: 3.4, z: 2.6, faceTo: [8, 3], dialogue: 'sol' }
 ];
 export const START = Q1.START, COMPANION = Q1.COMPANION;
 // Textes au clic sur les façades fermées qui en disent plus que « fermé ».
 export const CLOSED_TEXT = {
   s_lab: 'Porte d\'acier, soudée de l\'intérieur. Des marques de pied-de-biche partout autour. Aucune n\'est allée plus loin que la peinture.',
-  t_cinema: 'Cinéma muré. Les affiches ont été arrachées pour faire du feu.'
+  t_cinema: 'Cinéma muré. Les affiches ont été arrachées pour faire du feu.',
+  ...STEEL.CLOSED_TEXT
 };
