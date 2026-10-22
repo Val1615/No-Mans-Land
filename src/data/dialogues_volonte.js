@@ -5,13 +5,13 @@
 export const DIALOGUES_VOLONTE = {
   // Odile Varga : phrases de formulaire, « motif ? ». Peur : une erreur à son nom. Secret : un cousin par mois contre des dollars.
   odile_volonte: {
-    start: { text: 'Vous. Revenez au guichet. Votre implant a sonné en sortie. Motif ?', options: [
-      { label: 'Aucune idée. Il sonne souvent ?', next: 'anomalie' },
-      { label: 'Je repars, c\'est tout.', next: 'anomalie' } ] },
-    anomalie: { text: 'Il ne sonne jamais. Entrée de transit le matin, sortie l\'après-midi, et entre les deux, rien. Personne ne fait rien pendant six heures à Steel.', options: [
+    start: { text: 'Attendez. Restez au guichet. Votre implant sort en orange. Motif de l\'entrée ?', options: [
+      { label: 'Du travail. Il y a un problème ?', next: 'anomalie' },
+      { label: 'Je veux juste passer.', next: 'anomalie' } ] },
+    anomalie: { text: 'Votre fiche dit que vous êtes entré il y a trois jours. Par cette porte. Je n\'ai aucune sortie. Alors soit vous êtes encore dedans, soit quelqu\'un porte votre poignet.', options: [
       { label: 'J\'ai marché. J\'ai regardé les vitrines.', next: 'formulaire' },
       { label: 'Ça ne vous regarde pas.', next: 'formulaire' } ] },
-    formulaire: { text: 'Voilà le formulaire 12-B. Vous déclarez avoir quitté le parcours de transit. Vous signez, je classe, vous partez. Vous ne signez pas, j\'appelle le poste.', options: [
+    formulaire: { text: 'Voilà le formulaire 12-B. Vous déclarez une sortie non enregistrée. Vous signez, je classe, vous passez. Vous ne signez pas, j\'appelle le poste.', options: [
       { label: 'Je ne signerai rien.', test: 'volonte:6', pass: 'tient', fail: 'cede' },
       { label: 'Appelez le poste. Et dites-leur pour votre cousin.', if: 'info_cousin_odile&volonte>=7', next: 'cousin' },
       { label: 'Bon. Je signe.', action: 'flag:odile_signe;flag:steel_fiche', next: 'signe' },
@@ -26,12 +26,12 @@ export const DIALOGUES_VOLONTE = {
       { label: 'Super.', next: 'end' } ] },
     cousin: { text: 'Elle repose le combiné. Très doucement, comme s\'il était chaud.', options: [
       { label: 'Une fois par mois, c\'est ça ?', next: 'cousin2' } ] },
-    cousin2: { text: 'Je ne sais pas de quoi vous parlez. Faux contact. Ça arrive. Partez avant que je sache de quoi vous parlez.', options: [
+    cousin2: { text: 'Je ne sais pas de quoi vous parlez. Faux contact. Ça arrive. Passez avant que je sache de quoi vous parlez.', options: [
       { label: 'Je pars.', action: 'flag:odile_tenu;flag:odile_menacee', next: 'end' } ] },
     frais: { text: 'Il y a des frais de régularisation. Huit crédits. Il n\'y a pas de reçu, parce que le formulaire de reçu, c\'est aussi le 12-B.', options: [
       { label: 'Payer 8 cr.', action: 'paycr:8;flag:odile_payee', next: 'payee' },
       { label: 'Non. Faites votre 12-B.', test: 'volonte:6', pass: 'tient', fail: 'cede' } ] },
-    payee: { text: 'Faux contact. Ça arrive. Ne repassez pas avec le même implant la même semaine.', options: [
+    payee: { text: 'Faux contact. Ça arrive. Barrière à votre droite. Et évitez mon guichet pendant un moment.', options: [
       { label: 'Compris.', next: 'end' } ] },
     pauvre: { text: 'Il manque des crédits. Le 12-B, lui, ne manque jamais.', options: [
       { label: 'Je signe.', action: 'flag:odile_signe;flag:steel_fiche', next: 'signe' } ] },
