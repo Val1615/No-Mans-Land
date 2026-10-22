@@ -300,3 +300,19 @@ Concept art de référence : `villes/steel/ambiance/concept_center_town.jpg` (co
 ### À vérifier
 - Center-Town est plus saturé et bien plus riche en néons que la v12, mais c'est une scène de nuit : sa luminance moyenne est plus basse que celle de la v12 (jour sableux), au niveau du concept art. Si « luminosité » veut dire « plus clair », il faut relever l'éclairage.
 - Les images générées sont en isométrie 2:1 corrigée par cisaillement : les pentes de l'arête basse sont justes, les proportions des faces restent celles du générateur.
+
+## 2026-10-22 (heure de Paris) : v14, Steel L2, la Sous-Ville
+
+### Demande de Valentin
+En humain, la quête bloquait (quart de quête manquant). Concept art : `villes/steel/ambiance/concept_sous_ville.jpg` (copie non modifiée).
+
+### Fait
+- **Trappe de service** ouverte pour qui connaît Elio (`bruno_frere`) : humain refoulé et mutant en fuite passent par Sol puis Bruno. Mutant capturé (scène provisoire du crochet `douane_mutant`) : jeté directement dans la Sous-Ville (`sv_jete`).
+- **Deux quartiers reliés à pied** : Les Poutres (cabanes, Le Tripot avec intérieur, receleur, guetteuse, gang, dealer, braseros, linge, gros tuyaux, mur de télés en neige) et La Cuve (atelier d'Elio avec intérieur, monte-charge). Sortie par le monte-charge vers Center-Town (grille `c_sud` entre deux galeries). La quête s'arrête à l'arrivée.
+- **Assets** : 7 sprites de bâtiments générés et corrigés à l'angle v4 (pentes mesurées après correction : 0,33-0,36 / 0,62-0,70), liseré magenta et ombres roses retirés ; 5 PNJ générés avec portraits ; 8 props ; sol ; 3 meubles d'intérieur acceptés par le contrôle d'angle (table de jeu rejetée) ; 4 surfaces.
+- **Quête** : guetteuse (mot « quatorze poutres », ou « jeté par les soldats »), Elio (20 $ ou porter une caisse, -6 PV), monte-charge. Monnaie de la Sous-Ville : dollar (proposition).
+- Moteur : un texte de refus peut dépendre de l'état (fonction).
+- `steel_l1` : texte d'arrivée lu dans un historique des messages (plus de lecture ratée en live) ; capture et journal adaptés à la v14.
+
+### Vérifié
+- Nouvelle suite `tests/steel_l2.py` : parcours complets humain et mutant (desktop : fuite ; mobile : capture), de Dusk-Town à Center-Town par la Sous-Ville, gestes réels 1280×800 et 390×844.
