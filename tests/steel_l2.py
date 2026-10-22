@@ -26,7 +26,7 @@ def mood(a):
     neon = (sat > 0.45) & (v > 0.45) & ((b > r + 10) | ((b > g) & (r > g + 10)))  # néons froids : cyan, bleu, violet (le sable orangé n'en est pas)
     return {'sat': round(float(sat.mean()), 3), 'neon': round(float(neon.mean()), 4), 'v95': round(float(np.percentile(v, 95)), 3), 'v': round(float(v.mean()), 3)}
 def crop_hud(a): h = a.shape[0]; return a[int(h * 0.1):int(h * 0.9)]
-REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../docs/captures/steel-l1-v12/live/')
+REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/captures/steel-l1-v12/live/')
 def rgb_file(p): return np.asarray(Image.open(p).convert('RGB')).astype(int)
 def centroid(u):
     a = png(u); m = MAG(a); ys, xs = np.nonzero(m); return (float(xs.mean()), float(ys.mean()), int(m.sum())) if len(xs) else (0, 0, 0)
@@ -169,7 +169,7 @@ with sync_playwright() as p:
             dec = E("window.__nml.view.decor()"); roles = {d['role'] for d in dec}
             check(f'{T}: figurants : gang, guetteur, et des marcheurs (gang, dealer)', {'gang', 'guetteur'} <= roles and sum(d['role'] == 'passant' for d in dec) >= 2, roles)
             E("window.__nml.view.setCamera({x:19,z:12,ppm:42})"); time.sleep(0.8); pg.screenshot(path=OUT + 'desktop-04-vue-concept.png')
-            C = warm(crop_hud(shot())); A = warm(rgb_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../docs/villes/steel/ambiance/concept_sous_ville.jpg')))
+            C = warm(crop_hud(shot())); A = warm(rgb_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/villes/steel/ambiance/concept_sous_ville.jpg')))
             check(f'{T}: vue concept : ambiance proche du concept art (orange chaud, sans néon froid)', C['warm'] > 0.4 * A['warm'] and C['rb'] > 0.6 * A['rb'], (C, A))
             E("window.__nml.view.setCamera(null)"); time.sleep(0.5)
         ok = enter_door('v_est'); time.sleep(1); check(f'{T}: jonction à pied -> la Cuve', ok and st()['location'] == 'sv_cuve', st()['location'])

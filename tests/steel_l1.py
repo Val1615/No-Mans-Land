@@ -26,7 +26,7 @@ def mood(a):
     neon = (sat > 0.45) & (v > 0.45) & ((b > r + 10) | ((b > g) & (r > g + 10)))  # néons froids : cyan, bleu, violet (le sable orangé n'en est pas)
     return {'sat': round(float(sat.mean()), 3), 'neon': round(float(neon.mean()), 4), 'v95': round(float(np.percentile(v, 95)), 3), 'v': round(float(v.mean()), 3)}
 def crop_hud(a): h = a.shape[0]; return a[int(h * 0.1):int(h * 0.9)]
-REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../docs/captures/steel-l1-v12/live/')
+REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/captures/steel-l1-v12/live/')
 def rgb_file(p): return np.asarray(Image.open(p).convert('RGB')).astype(int)
 def centroid(u):
     a = png(u); m = MAG(a); ys, xs = np.nonzero(m); return (float(xs.mean()), float(ys.mean()), int(m.sum())) if len(xs) else (0, 0, 0)
@@ -231,7 +231,7 @@ with sync_playwright() as p:
                     check(f'{T}: perf Center-Town (rendu logiciel SwiftShader) >= 8 i/s', fps >= 8, fps)
                     if not mob:  # vue comparable au concept art : la rotonde, la rue mouillée, les néons
                         E("window.__nml.view.setCamera({x:24,z:13.5,ppm:38})"); time.sleep(0.8); pg.screenshot(path=OUT + 'desktop-04-vue-concept.png')
-                        C = mood(crop_hud(shot())); A = mood(rgb_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../docs/villes/steel/ambiance/concept_center_town.jpg')))
+                        C = mood(crop_hud(shot())); A = mood(rgb_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/villes/steel/ambiance/concept_center_town.jpg')))
                         check(f'{T}: vue concept : ambiance proche du concept art (néons et saturation du même ordre)', 0.5 * A['sat'] < C['sat'] < 2.2 * A['sat'] and C['neon'] > 0.3 * A['neon'], (C, A))
                         E("window.__nml.view.setCamera(null)"); time.sleep(0.5)
                 # PNJ animé / miroir : le patrouilleur regarde l'avenue, puis se tourne vers le joueur
