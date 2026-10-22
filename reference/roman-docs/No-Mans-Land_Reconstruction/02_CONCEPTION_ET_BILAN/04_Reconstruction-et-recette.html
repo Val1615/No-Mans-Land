@@ -1,0 +1,78 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reconstruction neuve et recette</title><link rel="stylesheet" href="../lecture.css"><main><a href="../INDEX.html">← Dossier de reprise</a><h1>Reconstruction neuve et recette</h1>
+<p>Proposition de méthode. Les critères ci-dessous sont à réaliser dans le nouveau projet ; ils ne constituent pas une validation de la maquette.</p>
+<h2>1. Décider et étalonner</h2>
+<p>Créer un dépôt neuf, conserver l’archive séparée. Choisir plateformes, perspective, caméra, déplacement et chaîne de fabrication après lecture des échecs. Éprouver le moteur sur échelle, porte, occlusion, intérieur, compagnon et performance mobile.</p>
+<p>Comparer si utile une scène 3D orthographique et une chaîne 2,5D avec les mêmes volumes et le même parcours. Le choix dépend de lisibilité, temps d’édition, cohérence et coût de production, pas de l’héritage du premier jet.</p>
+<div class="scroll"><table>
+<tr><th>Bloc</th><th>Contrat</th></tr>
+<tr><td>Canon</td><td>Références, invariants, contradictions et décisions visibles</td></tr>
+<tr><td>Contenu</td><td>Identifiants stables, définitions validées</td></tr>
+<tr><td>Partie</td><td>État sérialisable, schéma versionné, migrations</td></tr>
+<tr><td>Commandes</td><td>Préconditions, coût, résultat et refus explicites</td></tr>
+<tr><td>Simulation</td><td>Horloge de jeu, persistance et limites hors champ</td></tr>
+<tr><td>Présentation</td><td>Rendu et animation sans règles cachées</td></tr>
+<tr><td>Outils</td><td>Mêmes données et commandes que le jeu</td></tr>
+<tr><td>Livraison</td><td>Build reproductible, ressources identifiées et version connue</td></tr>
+</table></div>
+<p>La porte relie bâtiment, orientation, sélection, seuil, condition, cible, retour et groupe dans un seul contrat. La fiche PNJ relie identité, métier, lieux, horaires, connaissances, dialogue et réactions. L’événement relie région, prérequis, participants, plan écrit, issues et répétition.</p>
+<h2>2. Tranche initiale</h2>
+<p>Construire un quartier de Dusk-Town avec pompe, logements, clinique, bar, hôtel et atelier. Les voies piétonnes, accès de service, cours et limites sont prévues. Au moins trois services possèdent un intérieur fonctionnel ; l’hôtel permet de tester repos et passage du temps.</p>
+<p>Ajouter une courte route, une halte, une rencontre à plusieurs issues, une quête avec deux résolutions différentes et un compagnon. La quête traverse un intérieur et permet un retour après changement d’état.</p>
+<p>Le personnel interrompt et reprend son activité. Les soins consomment un paiement réel. Le compagnon suit, attend, combat et passe les portes. La sauvegarde conserve tous ces états.</p>
+<p>Valider cette tranche sur ordinateur et téléphone avant l’expansion. Ajouter ensuite douane désertique et quartier protégé de Steel pour tester le contraste avec la même échelle.</p>
+<h2>3. Étapes</h2>
+<div class="scroll"><table>
+<tr><th>Phase</th><th>Livrable</th><th>Condition de sortie</th></tr>
+<tr><td>A</td><td>Canon, moteur et référentiel</td><td>Porte et masquage lisibles dans la scène d’étalonnage</td></tr>
+<tr><td>B</td><td>Contrat d’asset et éditeur de quartier</td><td>Collisions, orientations et accès édités ensemble</td></tr>
+<tr><td>C</td><td>Dusk-Town et services</td><td>Parcours sans blocage, proportions et usages vérifiés</td></tr>
+<tr><td>D</td><td>Boucle RPG</td><td>Quête, route, combat, compagnon, conséquences et sauvegarde</td></tr>
+<tr><td>E</td><td>Contraste IO</td><td>Extérieur aride et intérieur entretenu, droits différenciés</td></tr>
+<tr><td>F</td><td>Monde vivant limité</td><td>Première caravane, routines et conflit inspectables</td></tr>
+<tr><td>G</td><td>Extension</td><td>Revue individuelle de chaque région et quartier</td></tr>
+<tr><td>H</td><td>Campagne et finition</td><td>Parcours complets, écriture, équilibre, audio et accessibilité</td></tr>
+</table></div>
+<p>La phase D valide une fondation, pas la densité finale de Fallout 1 ou 2. Cette ampleur exige ensuite un travail de contenu conséquent.</p>
+<h2>4. Critères spatiaux</h2>
+<div class="scroll"><table>
+<tr><th>ID</th><th>Vérification</th><th>Réussite</th></tr>
+<tr><td>GEO-01</td><td>Acteur, porte, étage</td><td>Proportions du référentiel respectées au zoom de jeu</td></tr>
+<tr><td>GEO-02</td><td>Emprise et passage</td><td>Aucun chemin ne semble traverser une façade ; passage visible utilisable</td></tr>
+<tr><td>GEO-03</td><td>Orientation</td><td>Porte, lumière, pivot et collision contrôlés pour chaque variante</td></tr>
+<tr><td>GEO-04</td><td>Seuil et intérieur</td><td>Arrivées, sorties et fonction cohérentes</td></tr>
+<tr><td>GEO-05</td><td>Masquage</td><td>Personnage lisible, fondu stable, collision conservée</td></tr>
+<tr><td>GEO-06</td><td>Réseaux</td><td>Continuité des voies et flux de fret/eau crédibles</td></tr>
+<tr><td>ART-01</td><td>Ressources</td><td>Aucun asset requis absent ou provisoire silencieusement publié</td></tr>
+<tr><td>ART-02</td><td>Sol</td><td>Échelle stable, transitions et raccords soignés</td></tr>
+<tr><td>ART-03</td><td>Quartier</td><td>Identité reconnaissable sans lire son nom</td></tr>
+<tr><td>ART-04</td><td>Décor</td><td>Fonction ou indice narratif, dégagements préservés</td></tr>
+<tr><td>LORE-01</td><td>Big Larry</td><td>Aucun habitant permanent ni ville sur l’impact</td></tr>
+<tr><td>LORE-02</td><td>Sarcophage</td><td>Frontière visuelle et sociale entre dehors et dedans</td></tr>
+<tr><td>LORE-03</td><td>Populations</td><td>Cyborg, androïde, mutant et Aura conformes au lore</td></tr>
+</table></div>
+<p>Les tolérances physiques sont fixées avec la projection choisie. Un écart arbitraire en pixels ne doit pas remplacer une mesure monde et une revue de lecture.</p>
+<h2>5. Accès, compagnie et états</h2>
+<p>Pour chaque porte réelle, tester l’arrivée générale et plusieurs directions locales ; ouverture, serrure, restriction, combat, obstruction et chargement à proximité. Vérifier façade, badge, liste et bouton, souris et toucher, avec plusieurs zooms.</p>
+<p>Répéter entrer-sortir-entrer avec compagnon proche, éloigné, en attente et à terre. Tout refus intentionnel est expliqué. Après sortie, l’allié ne reste pas au point d’arrivée général.</p>
+<p>Contrôler santé, munitions, matériel, état d’attente et objets de quête. Une interruption de transition reprend dans un état valide. Une ancienne sauvegarde est migrée ou refusée sans écraser la partie saine.</p>
+<div class="scroll"><table>
+<tr><th>Domaine</th><th>Scénarios indispensables</th></tr>
+<tr><td>Quête</td><td>Solutions différentes, refus, abandon, décès pertinent, retour après résolution</td></tr>
+<tr><td>Combat</td><td>Ligne bloquée, couvert, manque de PA/munitions, fumée, alliés et factions</td></tr>
+<tr><td>Commerce</td><td>Stock, argent, capacité, transfert et paiement unique</td></tr>
+<tr><td>Routine</td><td>Conversation, heure, combat, absence puis retour</td></tr>
+<tr><td>Caravane</td><td>Départ, retard, intervention, arrivée et stock sans duplication</td></tr>
+<tr><td>Réputation</td><td>Connaissance justifiée, effet local compréhensible</td></tr>
+<tr><td>Dialogue</td><td>Voix identifiable, information située et choix clair</td></tr>
+<tr><td>Progression</td><td>Styles viables et récompenses hors combat</td></tr>
+<tr><td>Sauvegarde</td><td>Conservation complète, migration et isolation de l’atelier</td></tr>
+</table></div>
+<h2>6. UI, technique et atelier</h2>
+<p>Tester téléphone étroit portrait, format intermédiaire et bureau ; paysage si supporté. Tâches : créer, lire une compétence, trouver une boutique, entrer, acheter, équiper, préparer une route, comprendre un refus, combattre et sauvegarder.</p>
+<p>Vérifier texte agrandi, contraste, mouvement réduit, clavier, focus, panneaux fermables et lecture sans couleur seule. Sur mobile, mesurer les zones tactiles, vérifier le clavier virtuel et empêcher qu’un glissement de carte déclenche un déplacement involontaire.</p>
+<p>Définir des budgets de chargement, mémoire et fluidité sur un appareil cible, puis mesurer. Charger les grandes images selon leur usage. Tester un rechargement après publication pour détecter les mélanges de versions.</p>
+<p>L’atelier prépare des états cohérents avec les mêmes règles que le jeu. Le retour à la campagne restaure exactement son état. Afficher collisions, seuils, masques, trajectoires, points de routine, quêtes et événements.</p>
+<p>Un rapport de bug comprend version, appareil/format, lieu, état de quête, ordre des actions, graine, porte et état du compagnon. Ces éléments doivent permettre une reproduction sans deviner.</p>
+<h2>7. Définition d’une livraison</h2>
+<p>Fournir contenu réalisé, scénarios exécutés, captures du vrai jeu, limites et écarts. Les propositions restent étiquetées. Une quantité de fichiers, sprites ou tests ne suffit pas à déclarer un quartier terminé.</p>
+<p>Les retours de Valentin sur identité, densité et proportions doivent provoquer une révision de conception lorsqu’ils révèlent un problème structurel. Le nouveau projet possède son identité et son hébergement ; l’ancien reste une référence.</p></main></html>

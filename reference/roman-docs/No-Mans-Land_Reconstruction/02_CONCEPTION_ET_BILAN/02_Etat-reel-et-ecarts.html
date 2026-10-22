@@ -1,0 +1,97 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>État réel et écarts de la maquette</title><link rel="stylesheet" href="../lecture.css"><main><a href="../INDEX.html">← Dossier de reprise</a><h1>État réel et écarts de la maquette</h1>
+<p>Relevé du commit 1fe00eb76e5b85c57e68a8a7530237cb8c352ab6 après chargement des installations de scènes et de services. « Présent » signifie retrouvé dans le code ; cela ne signifie ni équilibré, ni beau, ni validé sur téléphone.</p>
+<h2>Chiffres vérifiés</h2>
+<div class="scroll"><table>
+<tr><th>Élément</th><th>Nombre</th><th>Limite de lecture</th></tr>
+<tr><td>Lieux fixes</td><td>56</td><td>35 extérieurs et 21 intérieurs</td></tr>
+<tr><td>Bâtiments extérieurs placés</td><td>527</td><td>Pas 527 modèles uniques</td></tr>
+<tr><td>Cases terrestres régionales</td><td>167</td><td>Sept compositions de halte réutilisées</td></tr>
+<tr><td>Définitions de PNJ</td><td>113</td><td>Pas 113 biographies et routines profondes</td></tr>
+<tr><td>Placements fixes de PNJ</td><td>112</td><td>Pas une simulation permanente de population</td></tr>
+<tr><td>Routes locales de PNJ</td><td>12</td><td>Surtout Dusk-Town et services</td></tr>
+<tr><td>Fils de quête</td><td>21</td><td>Longueurs et profondeur inégales</td></tr>
+<tr><td>Objets d’inventaire</td><td>34</td><td>Types déclarés</td></tr>
+<tr><td>Objets du monde</td><td>216</td><td>Définitions interactives, pas des intérieurs</td></tr>
+<tr><td>Scénarios développeur</td><td>18</td><td>Pas toutes les branches de toutes les quêtes</td></tr>
+<tr><td>Tests historiques réexécutés</td><td>164</td><td>Logique et coordonnées, pas recette mobile</td></tr>
+</table></div>
+<h2>Fonctionnalités et limites</h2>
+<div class="scroll"><table>
+<tr><th>Domaine</th><th>Présent</th><th>Écart à traiter</th></tr>
+<tr><td>Exploration</td><td>Hexagones, chemins, caméra, zoom, sélection</td><td>Proportions, masquage et circulation à reconstruire</td></tr>
+<tr><td>Carte régionale</td><td>Cases, trajet, interruption, reprise</td><td>Peu de compositions locales distinctes</td></tr>
+<tr><td>Rencontres</td><td>Sept événements, coûts et persistance</td><td>Pas les 32 propositions du dossier historique</td></tr>
+<tr><td>Création</td><td>Quatre origines, attributs, compétences, passés, apparences</td><td>Personnalisation visuelle et équilibre limités</td></tr>
+<tr><td>Progression</td><td>XP, niveaux et aptitudes</td><td>Richesse des spécialisations non validée</td></tr>
+<tr><td>Combat</td><td>PA, portée, couvert, visée, fumée, garde et réaction</td><td>IA et objectifs limités</td></tr>
+<tr><td>Survie</td><td>Santé, fatigue, radiations et eau</td><td>Entretien corporel et matériel incomplet</td></tr>
+<tr><td>Dialogues</td><td>Voix, choix, conditions et variantes</td><td>Écriture inégale, conséquences souvent locales</td></tr>
+<tr><td>Quêtes</td><td>21 fils, quatre conclusions principales</td><td>Pas un monde réactif complet</td></tr>
+<tr><td>Services</td><td>Commerce, soins, repas, chambre et établis</td><td>Beaucoup de bâtiments non visitables</td></tr>
+<tr><td>Intérieurs</td><td>21 scènes reliées à des portes</td><td>Tests d’accès partiellement neutralisés</td></tr>
+<tr><td>Compagnie</td><td>Nilo, suivi, attente, ordres, ressources, incapacité</td><td>Un seul compagnon ; confiance détaillée absente</td></tr>
+<tr><td>Routines</td><td>Douze routes sauvegardées</td><td>Pas de mémoire sociale ou simulation régionale complète</td></tr>
+<tr><td>Caravanes</td><td>Rencontre avec marchand et stock limité</td><td>Six circuits persistants seulement proposés</td></tr>
+<tr><td>Conflits</td><td>Front local IO/Nativos à Buenos Aires</td><td>Pas de guerre régionale dynamique</td></tr>
+<tr><td>Factions/populations</td><td>Codex de sept factions et cinq populations</td><td>Codex ne signifie pas campagne ou région jouable</td></tr>
+<tr><td>Steel-Megalopolis</td><td>18 secteurs, dont 11 protégés</td><td>Identité, échelle perçue et raccord spatial insuffisants</td></tr>
+<tr><td>Buenos Aires</td><td>Cinq extérieurs, trois intérieurs</td><td>Revue de densité et d’identité nécessaire</td></tr>
+<tr><td>Dusk-Town</td><td>Trois extérieurs, cinq intérieurs</td><td>Retours persistants sur taille et accès</td></tr>
+<tr><td>Junk-Burgh</td><td>Un extérieur, trois intérieurs</td><td>Les quatre plans JB ne sont pas quatre quartiers jouables</td></tr>
+<tr><td>Novo Córdoba</td><td>Un extérieur, deux intérieurs</td><td>Les trois plans NC restent partiellement transposés</td></tr>
+<tr><td>Port/siège UFSA</td><td>Plans de conception</td><td>Implantations non jouables</td></tr>
+<tr><td>Ranch/Rakkens</td><td>Références de factions</td><td>Régions non réalisées</td></tr>
+<tr><td>Interface</td><td>HUD, inventaire, fiche, cartes, options</td><td>Fidélité visuelle et vrai tactile insuffisamment vérifiés</td></tr>
+<tr><td>Atelier</td><td>Copie de test, commandes, scénarios et annulation</td><td>Pas d’éditeur complet ni couverture exhaustive</td></tr>
+<tr><td>Sauvegarde</td><td>Locale, reprise, import/export et migrations</td><td>Aucun compte ni synchronisation distante</td></tr>
+<tr><td>Audio</td><td>Ambiance synthétisée</td><td>Bande originale non livrée</td></tr>
+</table></div>
+<h2>Intérieurs visitables</h2>
+<div class="scroll"><table>
+<tr><th>Identifiant</th><th>Fonction</th><th>Parent</th></tr>
+<tr><td>clinic</td><td>Clinique de Dusk-Town</td><td>dusk</td></tr>
+<tr><td>dusk-hotel</td><td>Hôtel des Volets</td><td>dusk</td></tr>
+<tr><td>dusk-bar</td><td>Bar du Passage</td><td>dusk</td></tr>
+<tr><td>dusk-grocery</td><td>Épicerie de la pompe</td><td>dusk</td></tr>
+<tr><td>dusk-repair</td><td>Atelier de Nilo</td><td>dusk-workshops</td></tr>
+<tr><td>backroom</td><td>Arrière-salle des comptes</td><td>junk</td></tr>
+<tr><td>junk-bazaar</td><td>Bazar de Roque</td><td>junk</td></tr>
+<tr><td>junk-surgery</td><td>Clinique du comptant</td><td>junk</td></tr>
+<tr><td>bunker</td><td>Coursives du Striker Oméga</td><td>titan</td></tr>
+<tr><td>forum-service</td><td>Agence de services du Forum</td><td>steel</td></tr>
+<tr><td>lin-workshop</td><td>Électronique Lin</td><td>china</td></tr>
+<tr><td>sen-clinic</td><td>Consultations K-12</td><td>cliniccity</td></tr>
+<tr><td>civic-hall</td><td>Hall du registre</td><td>civic</td></tr>
+<tr><td>smpd-reception</td><td>Bureau de garde SMPD</td><td>smpd</td></tr>
+<tr><td>ba-cinema</td><td>Cinéma des Patios</td><td>ba-habitat</td></tr>
+<tr><td>ba-reading</td><td>Archives</td><td>buenos</td></tr>
+<tr><td>ba-dispensary</td><td>Dispensaire des Patios</td><td>ba-habitat</td></tr>
+<tr><td>nova-surplus</td><td>Intendance UFSA</td><td>nova</td></tr>
+<tr><td>nova-infirmary</td><td>Infirmerie UFSA</td><td>nova</td></tr>
+<tr><td>port-office</td><td>Capitainerie</td><td>port</td></tr>
+<tr><td>relay-control</td><td>Salle de conduite 07</td><td>relay</td></tr>
+</table></div>
+<p>Une scène intérieure n’est pas forcément accessible sans condition : serrure, combat, autorisation et état du compagnon peuvent s’y opposer. Un refus intentionnel doit être distingué d’un clic défaillant ou d’un trajet impossible.</p>
+<h2>Architecture historique</h2>
+<p>Le jeu est une application statique HTML/CSS, JavaScript ES modules et Canvas. Le dossier dist contient sources principales et distribution. Aucun moteur 3D, modèle Blender ou serveur de monde n’est fourni.</p>
+<div class="scroll"><table>
+<tr><th>Ensemble</th><th>Responsabilité</th></tr>
+<tr><td>data.js et extensions</td><td>Lieux, objets, PNJ, règles, quêtes</td></tr>
+<tr><td>engine.js</td><td>État, actions, combat, dialogue, progression, sauvegarde</td></tr>
+<tr><td>scenes.js et modules de plans</td><td>Implantations et installation des transformations</td></tr>
+<tr><td>settlement-v9.js, infrastructure-v10.js, service-interiors.js</td><td>Corrections urbaines et services</td></tr>
+<tr><td>geometry.js, building-scale-v11.js, door-approaches-v11.js</td><td>Projection, tailles, emprises et seuils</td></tr>
+<tr><td>render.js, scenery.js, terrain.js</td><td>Rendu, ressources et matériaux</td></tr>
+<tr><td>world.js, overland.js, wild-plans.js</td><td>Cases, trajet, haltes et événements</td></tr>
+<tr><td>companions.js, residents.js</td><td>Nilo et routines locales</td></tr>
+<tr><td>app.js, interface.css et modules UI</td><td>Écrans, commandes, options et audio</td></tr>
+<tr><td>developer.js</td><td>Atelier et scénarios</td></tr>
+<tr><td>runtime-v13</td><td>Copie active de 39 modules chargée par index.html</td></tr>
+<tr><td>runtime-v12</td><td>Copie antérieure conservée dans l’archive</td></tr>
+<tr><td>art-source, tests, tools</td><td>Originaux raster, vérifications et outils historiques</td></tr>
+</table></div>
+<p>Des installations modifient des registres et des plans en place. Le catalogue est donc extrait après initialisation. Le JSON ne sérialise pas les fonctions ; les règles exécutables restent dans les sources.</p>
+<h2>Vérification et limites</h2>
+<p>Les 164 tests ont été réexécutés sur les sources récupérées. Les tests UI utilisent un adaptateur DOM et un Canvas natif, sans moteur de mise en page de navigateur. Les tests d’accès ouvrent parfois les serrures et retirent les adversaires pour isoler le cheminement.</p>
+<p>Les captures Canvas jointes sont historiques et hors navigateur. Cet export n’a pas effectué une nouvelle campagne complète, une recette Android/iOS, une mesure de performance sur appareil modeste ni un contrôle de toutes les anciennes sauvegardes.</p>
+<p>Les PDF antérieurs, le roman, les planches, les dix maquettes, les prompts et manifestes d’images disponibles sont conservés. Aucun fichier musical Suno historique ou sauvegarde personnelle n’a été retrouvé.</p></main></html>

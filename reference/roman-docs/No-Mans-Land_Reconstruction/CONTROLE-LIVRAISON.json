@@ -1,0 +1,40 @@
+{
+  "projet": "No Man’s Land",
+  "date_export": "2026-10-21",
+  "statut": "Maquette v0.13 pour reconstruction à zéro ; aucune reprise automatique de la base technique",
+  "commit_source": "1fe00eb76e5b85c57e68a8a7530237cb8c352ab6",
+  "verifications": {
+    "sources_identiques": 459,
+    "configuration_ancien_hebergement_exclue": true,
+    "tome_1_integral": true,
+    "bible_originale": true,
+    "images_generees_referencees": 57,
+    "doublons_exacts_evites": 52,
+    "maquettes_UI": 10,
+    "plans_detailles": 44,
+    "vues_ensemble": 7,
+    "planches_et_cartes": 9,
+    "captures_retours_utilisateur": 14,
+    "pdf_pages": {
+      "02_CONCEPTION_ET_BILAN/Dossier-de-reconstruction.pdf": 38,
+      "03_DOCUMENTS_PRECEDENTS/Gameplay-PNJ/output/No-Mans-Land_Gameplay-et-PNJ_Conception_v01.pdf": 90,
+      "03_DOCUMENTS_PRECEDENTS/Interface/output/No-Mans-Land_Interface-et-Mode-Developpeur_v01.pdf": 72,
+      "03_DOCUMENTS_PRECEDENTS/Atlas/output/No-Mans-Land_Atlas-Conception_v01.pdf": 104
+    },
+    "modules_runtime_v13_identiques": 39,
+    "liens_locaux_verifies": 75,
+    "recherche_secrets_connus": "Aucun motif détecté"
+  },
+  "tests_reexecutes": {
+    "reussis": 164,
+    "echecs": 0,
+    "journal": "06_AUDIT_ET_CATALOGUES/Tests-reexecutes-2026-10-21.txt"
+  },
+  "limites": [
+    "Aucune validation visuelle et tactile complète dans un vrai navigateur pendant cet export.",
+    "Les derniers cas précis signalés par le joueur ne sont pas tous reproduits individuellement.",
+    "Sauvegarde personnelle de navigateur et morceaux Suno non disponibles."
+  ],
+  "inventaire": "INVENTAIRE.csv et SHA256SUMS.txt couvrent tous les fichiers sauf ces deux inventaires eux-mêmes.",
+  "integrite_zip": "Contrôle CRC et empreintes de chaque entrée effectué après création ; résultat dans No-Mans-Land_Validation-export.json fourni avec le téléchargement."
+}

@@ -1,0 +1,9 @@
+NO MAN’S LAND : EXPORT EN DEUX ZIP
+
+Décompresser les deux ZIP dans le même dossier. Leurs contenus se réunissent dans No-Mans-Land_Reconstruction. Ouvrir ensuite INDEX.html.
+
+Partie 1 : documentation, roman, plans, références et audits.
+Partie 2 : jeu complet v0.13, sources, assets, tests et outils.
+
+ZIP standard, sans recomposition binaire. Aucun fichier original retiré ou modifié. Les inventaires d’origine s’appliquent au dossier réuni.
+La maquette est un premier jet pour une reconstruction à zéro.

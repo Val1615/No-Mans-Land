@@ -1,0 +1,138 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conception consolidée de No Man’s Land</title><link rel="stylesheet" href="../lecture.css"><main><a href="../INDEX.html">← Dossier de reprise</a><h1>Conception consolidée de No Man’s Land</h1>
+<p>Document de reprise du 21 octobre 2026. Il rassemble les exigences de Valentin, le contenu observé dans le premier jet et les contrats nécessaires au projet neuf. Les chiffres du prototype décrivent une expérience historique, pas un équilibrage imposé.</p>
+<h2>1. Vision et boucle de jeu</h2>
+<p>No Man’s Land est un RPG solo isométrique d’exploration, de dialogue, de choix et de combat au tour par tour. Le joueur est né sur une Terre abandonnée et circule entre communautés, autorités et régions hostiles. Ses compétences doivent offrir plusieurs façons d’agir ; le combat reste une option coûteuse.</p>
+<p>L’inspiration de Fallout 1 et 2 porte sur la liberté, les conséquences, les ressources, les personnages et la structure régionale. Les usages récents doivent améliorer commandes, accessibilité et information. Aucune copie de ressources ou de lore de Fallout n’est attendue.</p>
+<p>La boucle relie observer, parler, préparer, voyager, intervenir et revenir constater les effets. Une ville offre des services et des relations ; une expédition coûte du temps, de l’eau et des moyens. La technologie protège sous le sarcophage, mais soutient aussi surveillance, hiérarchie et exclusion.</p>
+<p>La satire doit venir de situations et d’intérêts concrets. Tout le monde ne plaisante pas devant une souffrance. L’ambition de densité exige des activités liées, des dilemmes et des retours perceptibles, pas un grand nombre de bâtiments ou de dialogues superficiels.</p>
+<p>La campagne de la maquette, « Les Héritiers du silence », met en jeu la distribution d’eau. Ce titre, les PNJ locaux et les quêtes sont des créations dérivées pour 2175, révisables lors du redémarrage.</p>
+<h2>2. Sources, canon et chronologie</h2>
+<div class="scroll"><table>
+<tr><th>Source</th><th>Usage</th><th>Limite</th></tr>
+<tr><td>Consignes explicites de Valentin</td><td>Exigences et corrections</td><td>Une correction récente peut remplacer une décision ancienne</td></tr>
+<tr><td>Tome 1, Un réveil tardif</td><td>Univers, lieux, société, technologies</td><td>Son intrigue se situe en 2202</td></tr>
+<tr><td>Planches et croquis fournis</td><td>Géographie, populations, matières, factions</td><td>Certaines légendes peuvent contredire le texte</td></tr>
+<tr><td>Atlas v0.1</td><td>44 plans, routes, accès prévus, PNJ, décors</td><td>Proposition, pas preuve de réalisation</td></tr>
+<tr><td>Gameplay et PNJ v0.1</td><td>Règles, fiches, événements, circuits, compagnie</td><td>Audit de la v0.6 et systèmes proposés</td></tr>
+<tr><td>Interface et atelier v0.1</td><td>Dix maquettes et spécifications</td><td>Images de référence, pas écrans exécutables</td></tr>
+<tr><td>Bible de Sylvinia V1.1</td><td>Principes d’écriture</td><td>Aucun transfert de sa cosmologie ou de ses personnages</td></tr>
+<tr><td>Code et captures v0.13</td><td>Fonctionnement et défauts du prototype</td><td>Aucun statut de canon ou de fondation technique</td></tr>
+</table></div>
+<p>Le jeu est situé en 2175, le Grand Exode en 2075. Le texte fourni place le début de la Dernière Grande Guerre en 2081, pour deux ans avant l’échange atomique. Le roman mentionne le 5 octobre 2202. La formule « cent ans plus tard » ne doit pas effacer cette distinction. Le réchauffement lié à l’Exode et l’hiver nucléaire ultérieur sont des phases du désastre, pas une raison de rendre tous les biomes identiques.</p>
+<p>Le nom à employer est Steel-Megalopolis ; « SteelCity » doit être corrigé dans les nouvelles productions. Le sarcophage protège plus de 100 km² selon le lore : c’est une surface, pas un rayon. Ne pas inventer des dimensions ou une population précises.</p>
+<p>Big Larry est un impact vitrifié sans ville ni résidents permanents. Les Titans sont des machines de dissuasion presque indestructibles, coûteuses et exceptionnelles. Une mission de récupération ne doit pas banaliser la remise en route de leur cœur. Le laboratoire Human Corporation sous Dusk-Town reste scellé en 2175 dans la conception actuelle pour préserver les révélations de 2202.</p>
+<p>L’Aura est ancienne, difficile, mystique et stigmatisée. Les implants l’entravent ; un cyborg ne peut pas la pratiquer. Les Érudits sont mystérieux : ne pas inventer leur explication définitive ou les transformer automatiquement en origine jouable.</p>
+<h3>Contradictions et décisions nécessaires</h3>
+<div class="scroll"><table>
+<tr><th>Sujet</th><th>Sources</th><th>Règle de travail</th></tr>
+<tr><td>Développement d’UFSA</td><td>Roman : United Federation of South America ; planche : United Federal Survivors Alliance</td><td>Utiliser UFSA sans développement jusqu’à arbitrage</td></tr>
+<tr><td>Cyborg et Aura</td><td>Planche : compatibilité réduite ; consigne : incapacité</td><td>Appliquer la consigne explicite</td></tr>
+<tr><td>Chronologie</td><td>Dates explicites et formules approximatives</td><td>Garder les dates, signaler les approximations</td></tr>
+<tr><td>Géographie détaillée</td><td>Croquis régionaux, plans inventés pour le jeu</td><td>Ne pas présenter chaque implantation comme issue du roman</td></tr>
+<tr><td>Ranch Liberté et Rakkens</td><td>Identités fournies, régions peu définies dans le jeu</td><td>Concevoir leurs territoires sans placement arbitraire</td></tr>
+</table></div>
+<h2>3. Populations et pouvoirs</h2>
+<p>Population, faction, profession et statut juridique sont des dimensions distinctes. Un mutant peut être commerçant, médecin ou combattant ; son apparence ne détermine pas son hostilité.</p>
+<div class="scroll"><table>
+<tr><th>Population</th><th>Définition</th><th>Conséquence</th></tr>
+<tr><td>Humains</td><td>Non augmentés, rares, vulnérables, souvent exclus</td><td>Survie, solidarité, précarité des droits</td></tr>
+<tr><td>Augmentés</td><td>Humains biologiques dotés d’ISIO et d’améliorations</td><td>Identification, entretien, contrôle et accès IO</td></tr>
+<tr><td>Cyborgs</td><td>Corps presque mécanique, cerveau humain conservé</td><td>Privilège ou déclassement, maintenance, absence d’Aura</td></tr>
+<tr><td>Androïdes</td><td>Entités entièrement synthétiques</td><td>Fonction et autonomie propres ; non jouables dans la maquette</td></tr>
+<tr><td>Mutants</td><td>Humains altérés, formes et capacités diverses</td><td>Communautés majoritaires dans les terres, exclusion violente du dôme</td></tr>
+</table></div>
+<p>Le dépassement du seuil de tolérance mène à une dégradation puis à la démence selon le lore. Cela ne rend pas tous les mutants déments. Les adaptations au milieu et les modifications mécaniques doivent être traitées individuellement.</p>
+<div class="scroll"><table>
+<tr><th>Faction</th><th>Intérêt</th><th>Expression locale</th></tr>
+<tr><td>IO</td><td>Contrôle, ressources et optimisation de la cité</td><td>Services performants, douanes, administration et ségrégation</td></tr>
+<tr><td>UFSA</td><td>Reconquête et autorité territoriale</td><td>Garnisons, réquisitions, tensions civiles/militaires</td></tr>
+<tr><td>Sine Vincula</td><td>Révolution clandestine contre IO et l’UFSA</td><td>Sabotage, entraide, armes et dilemmes sur les moyens</td></tr>
+<tr><td>Protectores del Nuevo Mundo</td><td>Tout récupérer et marchander</td><td>Bazar, dette, clinique payante, convois et exploitation</td></tr>
+<tr><td>Los Nativos</td><td>Défense du droit des mutants à vivre sur leurs terres</td><td>Buenos Aires, mémoire, entraide et résistances</td></tr>
+<tr><td>Los Invictos</td><td>Autonomie rurale au Ranch Liberté</td><td>Cultures, élevage, ateliers, accords et protection</td></tr>
+<tr><td>Les Rakkens</td><td>Tradition, spiritualité et transmission</td><td>Village, lac sacré, rites et masques</td></tr>
+</table></div>
+<p>Le SMPD maintient l’ordre quotidien ; les Interception Troupers interviennent en crise ; le service militarisé IO opère notamment hors de la cité ; la Dusk Forces mène des opérations exceptionnelles ; les Presidential Soldiers, androïdes, protègent le sommet du pouvoir. Ne pas distribuer les unités ultimes comme patrouilles ordinaires.</p>
+<h2>4. Cartes et organisation du monde</h2>
+<p>Trois échelles partagent des identifiants cohérents : région à cases, ville/quartiers, terrain local et intérieur. Le hasard peut sélectionner un événement admissible ; il ne remplit pas les villes. Chaque situation locale est composée pour ses usages.</p>
+<p>La maquette emploie 167 cases terrestres dans une grille de 22 × 20, et des scènes locales de 50 × 50 hexagones. Les haltes réutilisent sept compositions ; les cases ne sont pas 167 niveaux uniques. Les nouvelles dimensions doivent venir du temps de parcours, de la lisibilité et de la densité utile.</p>
+<p>L’agrandissement demandé visait des zones au moins quatre fois plus grandes que les premières, avec plus d’activités. Doubler une grille et éloigner les mêmes bâtiments ne suffit pas. Un quartier relie logement, travail, eau, commerce, voies de fret, espaces publics et lieux privés.</p>
+<h3>Steel-Megalopolis</h3>
+<p>Le périmètre comporte douanes ouest/nord/est, industries et avant-postes. Il reste désertique. Les voies de ravitaillement, contrôles et accès au sarcophage doivent être visibles.</p>
+<p>Sous le sarcophage, Lower-Town porte un tissu industriel et résidentiel, avec luminosité mécanique. China Lake possède son lac pollué et ses lanternes ; Asia-Ground son activité marchande ; les blocs leurs services et cours. Center-Town est très lumineux par ses néons et publicités malgré la nuit. Upper-Town utilise marbre, or, végétation entretenue et ciel artificiel. La Sous-Ville conserve habitat précaire, conduites et lumières chaudes de feu ou de braseros.</p>
+<p>La maquette présente 18 secteurs dont 11 protégés. Ses cartes de niveaux sont des schémas de desserte, pas une géométrie topographique complète. Les transitions futures doivent correspondre à ascenseurs, stations, escaliers ou contrôles, avec arrivées réciproques.</p>
+<h3>Identité des autres lieux</h3>
+<div class="scroll"><table>
+<tr><th>Lieu</th><th>Composition à viser</th><th>Défaut à éviter</th></tr>
+<tr><td>Dusk-Town</td><td>Services, cours habitées, ateliers/veille ; petites unités, pompe, clinique, hôtel, bar</td><td>Grands bâtiments isolés, ville vide malgré les habitants</td></tr>
+<tr><td>Junk-Burgh</td><td>Porte, bazar, halles/comptes, ruelles de séjour, enclos/ateliers</td><td>Grille de caisses sans logistique ni pouvoir marchand</td></tr>
+<tr><td>Buenos Aires</td><td>Avenues, patios, centre administratif, rail, lisière évacuée</td><td>Tout réduire à des ruines et des ennemis</td></tr>
+<tr><td>Novo Córdoba</td><td>Place civile, garnison/radio, dépôt et eau</td><td>Copier Dusk-Town avec d’autres drapeaux</td></tr>
+<tr><td>Port et siège UFSA</td><td>Quais, chantier, ensemble civique et faubourg</td><td>Les annoncer jouables parce que leurs plans existent</td></tr>
+<tr><td>Granja Altruista</td><td>Serres, eau, travail et distribution</td><td>Agriculture décorative sans usages</td></tr>
+<tr><td>Nœud maritime IO</td><td>Chenal, bassin, quais, grues, cour de fret, capitainerie</td><td>Bateaux dans de petites mares, hangars dans les voies</td></tr>
+<tr><td>Station hydraulique</td><td>Arrivée, traitement, pompage, vannes et maintenance</td><td>Machines et tuyaux sans continuité fonctionnelle</td></tr>
+<tr><td>Big Larry</td><td>Impact vitrifié, rebord, vestiges et risques</td><td>Ville ou résidents permanents</td></tr>
+<tr><td>Titan échoué</td><td>Monumentalité, accès de maintenance matérialisé</td><td>Porte détachée du bras ou cœur accessible par routine</td></tr>
+<tr><td>Temple</td><td>Chemin, ruines, milieu végétalisé et espace rituel</td><td>Arches provisoires, décoration sans composition</td></tr>
+<tr><td>Waste Coast</td><td>Littoral contaminé, débris marins et routes risquées</td><td>Désert simplement recoloré</td></tr>
+</table></div>
+<p>L’atlas original fournit les positions et registres de 44 plans, avec 7 vues d’ensemble SVG. Ils sont à revoir avant transcription ; leur existence ne prouve pas leur approbation artistique ou leur réalisation.</p>
+<h2>5. Contrat spatial et fabrication des assets</h2>
+<p>Chaque bâtiment possède fonction, dimensions monde, parcelle, orientation, façades, ouvertures, seuils, collision, masquage et intérieur éventuel. La porte n’est pas une coordonnée ajoutée après une image. Le plan, le rendu et le chemin doivent utiliser la même définition.</p>
+<p>Créer d’abord une scène d’étalonnage avec humain, porte piétonne, porte de fret, maison, boutique, immeuble, ruelle, voie de camion et couverture de combat. Fixer unité, projection et caméra. Vérifier à proximité et au zoom de jeu ; une vue générale peut cacher les défauts.</p>
+<p>Un kit comprend angles de rues, façades mitoyennes, entrées secondaires, variantes d’entretien et orientations contrôlées. Un miroir horizontal peut inverser porte et lumière ; il ne remplace pas une variante validée.</p>
+<p>Chaque groupe de décor a un usage : linge près des logements, outils à l’atelier, file au guichet, déchets au point de collecte, matériel de chargement au dépôt. Les dégagements restent praticables. Une zone vide est acceptable si cette absence est lisible et motivée.</p>
+<p>Les sols expriment l’entretien, le drainage et le passage : raccords, bordures, traces, fissures, végétation située. Les références de pop culture restent discrètes, sans nommer des œuvres. Les infrastructures linéaires doivent être raccordées et segmentées correctement.</p>
+<p>L’archive contient des atlas raster et des exports WebP, pas une bibliothèque de modèles 3D. Une reconstruction 3D suppose de fabriquer les volumes ; une reconstruction pré-rendue suppose une nouvelle chaîne de caméra, pivot, échelle et export.</p>
+<h2>6. Création, progression et survie</h2>
+<p>La maquette offre Humain, Augmenté, Mutant et Cyborg déclassé. Sept attributs : Force, Perception, Endurance, Charisme, Intelligence, Agilité, Volonté. Dix compétences : armes à feu, mêlée, technologie, sciences, médecine, éloquence, marchandage, discrétion, survie, Aura.</p>
+<p>Quatre profils, trois spécialités, cinq passés, quatre particularités avec contrepartie ou aucune, six apparences et trois difficultés complètent la création. La règle historique utilise 40 points d’attributs entre 1 et 10, des PV égaux à 35 + 3 × Endurance + bonus d’origine, et des PA égaux à 5 + partie entière d’Agilité/2.</p>
+<p>Ces formules doivent être rééquilibrées par parcours. L’exclusion des mutants, la précarité humaine, le contrôle ISIO et les coûts cybernétiques doivent produire des différences jouables, avec alternatives. Ils ne doivent pas devenir des impasses non expliquées.</p>
+<p>La personnalisation relie portrait, silhouette et équipement. Distinguer cosmétique, lisibilité tactique et effet de règles. Une transformation corporelle doit avoir un coût et une cohérence narrative.</p>
+<p>Santé, fatigue, radiations, eau et entretien structurent les voyages. Chaque état doit montrer cause, effet et solution. Les niveaux et aptitudes récompensent aussi exploration, discussion et réparation. Les règles de test de compétence, seuils et hasard doivent être uniformes avant d’écrire de nombreux contenus.</p>
+<h2>7. Combat et actions</h2>
+<p>Le combat comprend PA, mouvement, portée, ligne de vue, couvert, munitions, armes, ciblage torse/tête/bras/jambes, grenade, fumée, garde et réaction. Le joueur doit connaître coût et raison d’un refus avant de confirmer.</p>
+<p>La chaîne d’action relie sélection, prévisualisation, validation, coût, résolution, conséquences et animation. La présentation ne dépense pas une ressource une deuxième fois. Une sauvegarde ou une interruption doit laisser un état cohérent.</p>
+<p>Les objectifs peuvent être fuir, protéger, tenir un passage, négocier, détourner un équipement ou obtenir une preuve. Les relations de faction distinguent alliés, neutres et hostiles. Les victimes causées par une autre faction ne doivent pas être automatiquement attribuées au joueur.</p>
+<p>L’IA doit considérer portée, obstacles, munitions, exposition et mission locale. Les unités ultimes restent exceptionnelles. Les valeurs historiques de dégâts et précision sont à traiter comme des réglages de premier jet, pas comme un système équilibré.</p>
+<h2>8. Quêtes, dialogues et ton</h2>
+<p>La maquette contient 21 fils. La dette des vivants conduit de la pompe de Dusk-Town au régulateur, puis à une mémoire hydraulique ou un accès IO et à la station de répartition. Quatre conclusions existent : contrat IO, communes, priorité Nativos ou coupure. La bobine énergétique peut servir Dusk-Town ou IO. Les autres affaires touchent santé, dette, logement, détention, transport, réquisition, confrontation et cinéma.</p>
+<p>Chaque nouvelle quête doit préciser entrées, preuves, états, solutions, coûts, refus, décès pertinents, conséquences et clôture. L’information a une source : document, observation, rumeur ou personne. Un drapeau global n’accorde pas une connaissance universelle.</p>
+<p>Un PNJ a une activité, un besoin, un enjeu et une limite. Mara parle de distribution ; Vera de patients et de réserves ; Nilo de machines connues ; Roque vend et esquive les défauts ; Alma exige un contrat précis ; Eva distingue preuve et déclaration. Les fiches historiques et WRITING.md approfondissent ces voix.</p>
+<p>La conversation doit accepter interruption, hésitation ou refus. Les choix du joueur expriment une intention, pas un diagnostic du caractère de l’autre. L’humour vient du métier et de la situation ; il n’apparaît pas à chaque phrase. Éviter slogans, fausses oppositions et métaphores automatiques.</p>
+<p>Le journal conserve piste active, renseignements, provenance et lieux connus. Il aide la mémoire sans révéler une solution secrète. Une révision doit se faire en scène, car une bonne réplique isolée peut être incohérente avec le métier ou les connaissances du personnage.</p>
+<h2>9. PNJ, routines et réactions</h2>
+<p>Le relevé actuel contient 113 définitions de PNJ et 112 placements dans les lieux fixes. Douze routines locales sont programmées, surtout à Dusk-Town et dans ses services. Ces nombres ne signifient pas une simulation permanente de toute la population.</p>
+<p>La fiche complète doit inclure identité, population, faction, métier, domicile, travail, horaires, trajets, inventaire, besoins, relations, voix, connaissances, réactions et conditions de présence. Une dimension seulement descriptive doit être identifiée comme telle.</p>
+<p>Définir des états : travail, déplacement, repos, conversation, attente, fuite, défense, blessure, absence et mort. Préciser les priorités entre routine, dialogue, combat et événement. La simulation hors champ peut être simplifiée, mais le résultat doit rester cohérent au retour.</p>
+<p>Les déplacements utilisent les portes et transitions définies. Les points de routine doivent rester sur des espaces utilisables après changement de plan. Les délits dépendent de témoins, perception, territoire et autorités capables d’agir ; une réputation globale ne remplace pas la mémoire.</p>
+<p>Les régions imposent des usages : contrôles ISIO, entraide des patios, gardes de bazar, patrouilles UFSA, discrétion clandestine, hospitalité rurale conditionnelle. Écrire des individus, pas une seule personnalité par faction.</p>
+<h2>10. Compagnie</h2>
+<p>Nilo est le seul compagnon réalisé : 46 PV, 7 PA, pistolet, manteau, 12 cartouches, une trousse, charge de 22 kg. Cinq ordres : Prudent, Protéger, Cible désignée, Ne pas engager et Repli. Il suit, attend, reprend, transfère des objets et combat avec ses propres ressources.</p>
+<p>La stabilisation à deux cases coûte une trousse et 3 PA ; en Difficile, trois phases sans soin peuvent être mortelles. Ces valeurs sont historiques. La confiance détaillée et les compagnons Esteban, Lucero et Noa proposés restent à développer.</p>
+<p>Le contrat neuf couvre recrutement, refus, attente, séparation, portes, transport, incapacité, inventaire, ordres et départ. Joueur et compagnon traversent une porte dans une même transaction cohérente. Un refus de suivre est explicite.</p>
+<p>Le compagnon conserve sa personnalité et des ressources finies. Il ne doit être ni un sac illimité ni un obstacle de navigation. Ses objections doivent dépendre de ce qu’il a vécu ou appris.</p>
+<h2>11. Économie, caravanes et événements</h2>
+<p>Le prototype possède achat, marchandage, soins, décontamination, repas, chambre, fabrication, démontage, caches et piratage. Six recettes sont présentes. Il ne possède pas de réseau économique régional complet.</p>
+<p>Les six circuits du dossier historique sont proposés. Chacun doit définir origine, destination, cargaison, stock, fréquence, escorte, risque et route. États possibles : préparation, voyage, retard, attaque, détournement et arrivée. Les effets économiques dérivent de ces états.</p>
+<p>Une rencontre de marchand avec stock limité n’est pas une caravane persistante. Le fret doit correspondre aux routes et ports de la carte. L’eau doit avoir une origine, un traitement et une destination compréhensibles.</p>
+<p>Les sept rencontres actuelles sont convoi ensablé, caravane, personne blessée, péage, mutants déments, drone IO et tempête. Le dossier ancien propose 32 événements supplémentaires ou étendus. Pour chacun, fixer région admissible, prérequis, participants, implantation écrite, issues, coût, répétition et persistance.</p>
+<p>La confrontation actuelle de Buenos Aires oppose deux détachements de trois combattants ; ce n’est pas une guerre régionale. Le nouveau modèle distingue tension, incident, escalade, opération et cessez-le-feu. Les conflits internes peuvent opposer services, dirigeants et habitants d’une même faction.</p>
+<h2>12. Interface et accessibilité</h2>
+<p>Le terrain doit rester visible. Afficher en permanence ce qui sert la décision immédiate : santé, danger, action contextuelle et orientation. Le combat ajoute PA, coût, portée, cible, fin de tour et ordres ; les autres détails sont accessibles à la demande.</p>
+<p>Les dix références couvrent exploration extérieure et Steel, combat, dialogue, inventaire/compagnie, création, cartes, personnalisation, atelier et inspecteur. Elles servent à concevoir de vrais composants, pas à plaquer une image d’interface.</p>
+<p>Les portes ouvertes portent un repère d’entrée, les vraies portes verrouillées un cadenas expliqué. Les bâtiments non visitables n’ont aucun marqueur. Le repère et le toucher restent lisibles au zoom. La transparence rend le personnage visible sans annuler la collision.</p>
+<p>La fiche relie silhouette, équipement et progression. L’inventaire permet catégories, recherche, comparaison, quantités et transferts. La carte distingue connu, visité, trajet et danger. Le journal sépare objectif et historique.</p>
+<p>Les animations courtes expriment sélection, coût, changement de tour et transfert. Elles ne retardent pas la commande ; le mode de mouvements réduits conserve le retour essentiel. Personnaliser texte, HUD, contraste, panneaux, raccourcis et ordre des actions. Ne pas utiliser uniquement la couleur pour un état.</p>
+<p>Sur mobile, réorganiser plutôt que réduire un écran de bureau. Vérifier toucher, défilement, clavier virtuel, zones système et orientation. Le prototype possède des options, mais sa validation CSS et tactile demeure insuffisante.</p>
+<h2>13. Atelier développeur</h2>
+<p>Accessible dès le départ, il prépare lieu, origine, équipement, réputation, preuve, quête, compagnon, heure et événement sans devoir terminer la campagne. Il travaille dans une copie isolée et restitue la campagne intacte.</p>
+<p>La maquette contient 18 scénarios, téléportation, ressources, commandes enregistrées, annulation et aperçu de dialogues. Cela ne couvre pas toutes les branches de quêtes ni les systèmes futurs.</p>
+<p>Utiliser les mêmes règles que le jeu : cocher « quête terminée » ne suffit pas si ses objets, conséquences et participants sont incohérents. Prévoir graines reproductibles, journal de commandes et points de retour.</p>
+<p>L’atelier neuf doit inspecter seuils, collisions, sélection, occlusion, chemins, assets, états PNJ, témoins, quêtes et événements. Tester aussi les refus : serrure, accès politique, allié blessé, stock vide et preuve manquante.</p>
+<h2>14. Audio, sauvegarde et production</h2>
+<p>L’ambiance actuelle est synthétisée en Web Audio, désactivée par défaut. Aucun morceau ni fichier de prompts Suno historique n’a été retrouvé. La bande originale reste un chantier : menu, régions, tension et combat, avec transitions et volumes séparés.</p>
+<p>Séparer sauvegarde durable, préférences, animation transitoire et copie de test. Les identifiants sont stables, les schémas versionnés, les migrations vérifiées. La maquette n’inclut ni comptes ni serveur de monde ; synchronisation et multi-appareil ne sont pas acquis.</p>
+<p>La production doit relier exigence, maquette, plan, donnée, implémentation et preuve. Un catalogue d’assets précise dimensions, pivot, orientation, portes, collision, occlusion, source et état. Un substitut provisoire ne doit pas être publié silencieusement.</p>
+<p>Les documents historiques conservent les fiches détaillées, horaires proposés, plans et règles. Le dossier présent en fixe la lecture et les écarts actuels. Le volume de documents, d’images ou de tests ne démontre pas que la qualité attendue est atteinte.</p></main></html>
