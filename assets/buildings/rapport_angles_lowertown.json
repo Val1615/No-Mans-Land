@@ -238,39 +238,39 @@
   "magenta_bord_pct": 0.0
  },
  "lt_tuyau_coude": {
-  "pente_dominante": 0.95,
+  "pente_dominante": 0.65,
   "sens": "miroir",
   "part_bande_v4": 0,
   "part_2_1_opposee": 0,
-  "accepte": false,
+  "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.07,
-    0.48
+    0.6,
+    0.62
    ],
    "cisaillement": [
-    1.901,
-    0.204
+    0.844,
+    -0.177
    ],
-   "miroir": true,
+   "miroir": false,
    "pentes_apres": [
-    0.33,
-    0.7
+    -0.05,
+    -0.18
    ],
-   "mesure": "enveloppe convexe"
+   "mesure": "pentes forcées (axes mesurés par Hough sur la source)"
   },
-  "accepte_arete_basse": true,
+  "accepte_arete_basse": false,
   "source": "art-gen/gen_lt_tuyau_coude.jpg",
   "origine": "généré",
   "role": "tuyau, coude à 90° (variante de lt_tuyau)",
   "emprise_m": [
    2.5,
-   1.0
+   2.5
   ],
   "hauteur_attendue_m": 1.3,
-  "hauteur_implicite_m": 1.69,
-  "echelle_ok": true,
-  "magenta_bord_pct": 0.05
+  "hauteur_implicite_m": -0.06,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
  },
  "lt_sodium": {
   "pente_dominante": 0.5,
@@ -525,38 +525,42 @@
   "magenta_bord_pct": 0.24
  },
  "lt_passerelle": {
-  "pente_dominante": 0.7,
+  "pente_dominante": 0.65,
   "sens": "miroir",
   "part_bande_v4": 0,
-  "part_2_1_opposee": 0.01,
+  "part_2_1_opposee": 0,
   "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.5,
-    0.57
+    0.95,
+    0.58
    ],
    "cisaillement": [
-    0.962,
-    -0.151
+    0.673,
+    -0.31
    ],
    "miroir": false,
    "pentes_apres": [
     0.5,
-    0.7
+    0.75
    ],
-   "mesure": "enveloppe convexe"
+   "mesure": "pentes forcées (axes mesurés par Hough sur la source)",
+   "coupe_z": [
+    0.3,
+    0.86
+   ]
   },
   "accepte_arete_basse": false,
-  "source": "art-gen/gen_lt_passerelle.jpg",
+  "source": "art-gen/gen_lt_passerelle2.jpg",
   "origine": "généré",
-  "role": "passerelle grillagée sur poteaux avec escalier",
+  "role": "passerelle haute sur poteaux (tablier en tôle striée, garde-corps en tubes), escalier",
   "emprise_m": [
-   0.5,
+   1.5,
    6.0
   ],
   "hauteur_attendue_m": 3.8,
-  "hauteur_implicite_m": 1.15,
+  "hauteur_implicite_m": 1.41,
   "echelle_ok": false,
-  "magenta_bord_pct": 0.02
+  "magenta_bord_pct": 0.08
  }
 }

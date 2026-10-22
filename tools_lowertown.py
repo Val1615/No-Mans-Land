@@ -32,10 +32,32 @@ LT.update({
  'lt_palettes': ('gen_lt_palettes.jpg', [1.2, 1.0], 0.6, 'pile de palettes'),
  'lt_grille_fosse': ('gen_lt_grille_fosse.jpg', [2.0, 2.0], 1.2, 'grille cadenassée de l Escalier de la Fosse (vers la Sous-Ville)'),
  'lt_flaque': ('gen_lt_flaque.jpg', [2.5, 1.5], 0.0, 'flaque huileuse (décalque au sol)'),
- 'lt_passerelle': ('gen_lt_passerelle.jpg', [6.0, 1.5], 3.8, 'passerelle grillagée sur poteaux avec escalier'),
+ 'lt_passerelle': ('gen_lt_passerelle2.jpg', [1.5, 6.0], 3.8, 'passerelle haute sur poteaux (tablier en tôle striée, garde-corps en tubes), escalier'),
 })
 HULL = {'lt_tuyau', 'lt_tuyau_coude', 'lt_voiture_panne', 'lt_passerelle'}  # objets à pieds/roues : arête basse mesurée sur l enveloppe convexe (comme sv_cardtable_b)
-GRADE = {'lt_tuyau': 0.55, 'lt_tuyau_coude': 0.5}  # métal trop clair pour la nuit de Lower-Town : assombri vers le gris acier
+GRADE = {'lt_tuyau': 0.55, 'lt_tuyau_coude': 0.40}  # coude : 0,40 pour égaler la luminance moyenne du tuyau droit (~37)  # métal trop clair pour la nuit de Lower-Town : assombri vers le gris acier
+# correctifs 2026-10-22 : pentes source mesurées (Hough) sur les axes de l objet quand l arête basse n est pas mesurable
+# (coude : bras en V renversé, apex à l arrière ; passerelle : escalier et poteaux). (pente axe x, pente axe z), sans miroir.
+FORCE = {'lt_tuyau_coude': (0.60, 0.62), 'lt_passerelle': (0.95, 0.58)}
+FP = {'lt_passerelle': [1.5, 6.0], 'lt_tuyau_coude': [2.5, 2.5]}  # emprise imposée (le masque, escalier compris, ne donne pas la largeur du tablier)
+STRICT = {'lt_passerelle'}  # grillage : le vert du fond traverse les mailles -> détourage plus strict + despill complet
+def key_green_strict(path):
+    a = np.asarray(Image.open(path).convert('RGB')).astype(float); r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    ex = g - np.maximum(r, b); al = np.clip((45 - ex) / 25, 0, 1)
+    a[..., 1] = np.minimum(g, np.maximum(r, b))  # despill complet : aucun vert voulu
+    from scipy import ndimage
+    al = ndimage.binary_opening(al > 0.5, iterations=1) * al
+    return TI.clean(np.dstack([np.clip(a, 0, 255), al * 255]).astype('uint8'), 4000)
+# passerelle : la génération est trop longue pour sa hauteur (tablier ~0,9 m implicite pour 6 m). Le tablier est une extrusion
+# le long de l axe z (pente écran 0,70) : on retire un tronçon entre deux fractions de la largeur (poteau central compris) et on recolle
+# la partie arrière décalée le long de z (comme la bande retirée des pieds de sv_cardtable_b).
+ZCUT = {'lt_passerelle': (0.30, 0.86)}
+def zcut(rgba, f0, f1, tz=0.70):
+    H, W = rgba.shape[:2]; x1, x2 = int(W * f0), int(W * f1); L = x2 - x1; dy = int(round(tz * L))
+    out = np.zeros((H, W - L, 4), np.uint8); out[:, :x1] = rgba[:, :x1]
+    right = np.zeros((H, W - x2, 4), np.uint8); right[dy:] = rgba[:H - dy, x2:]
+    m = right[..., 3] > 0; seg = out[:, x1:]; seg[m] = right[m]
+    return TI.clean(out, 200)
 NOFIX = {'lt_sodium', 'lt_bidons', 'lt_flaque'}  # objets de révolution / décalque : pas de cisaillement (l arête basse n est pas une arête)
 def load_maq(spec):
     _, f, bb = spec.split(':'); x0, y0, x1, y1 = map(int, bb.split(','))
@@ -60,7 +82,7 @@ KS = {'lt_portique_io': 0.10, 'lt_immeuble_ouvrier': 0.10}
 def build(aid):
     src, (w, d), h, role = LT[aid]
     maq = src.startswith('MAQ:')
-    rgba = load_maq(src) if maq else TF.key_green_obj(G + src)
+    rgba = load_maq(src) if maq else key_green_strict(G + src) if aid in STRICT else TF.key_green_obj(G + src)
     if aid in GRADE: rgba = rgba.copy(); rgba[..., :3] = np.clip(rgba[..., :3].astype(float) * GRADE[aid] * np.array([1.0, 0.98, 0.95]), 0, 255).astype('uint8')
     # despill vert ciblé (passe 2) : seulement la bande de bord (4 px) et les pixels nettement verts. Le despill global de la passe 1
     # modifiait ~90 % des pixels (gris neutres légèrement verts assombris), créait de faux contours (tôle ondulée) et faisait basculer judge.
@@ -69,6 +91,9 @@ def build(aid):
     m = (op & ~ndimage.binary_erosion(op, iterations=4)) | (ex > 8)
     p[..., 1] = np.where(m, np.minimum(p[..., 1], np.maximum(p[..., 0], p[..., 2]) * 1.05 + 2), p[..., 1]); rgba = rgba.copy(); rgba[..., :3] = p.astype('uint8')
     if aid in NOFIX: fix = {'v4fix': 'non applicable (' + ('révolution' if aid != 'lt_flaque' else 'décalque') + ')', 'pentes_apres': [None, None]}
+    elif aid in FORCE:
+        rgba, fix = TI.v4fix(rgba, force=FORCE[aid], mirror=False); fix['mesure'] = 'pentes forcées (axes mesurés par Hough sur la source)'
+        fix['pentes_apres'] = [round(v, 2) for v in TI.base_slopes(rgba)[:2]]
     elif aid in HULL:
         ys, xs = np.nonzero(rgba[..., 3] > 100); hull = cv2.convexHull(np.stack([xs, ys], 1).astype(np.int32))
         hm = np.zeros(rgba.shape[:2], np.uint8); cv2.fillPoly(hm, [hull.reshape(-1, 2)], 1); hrgba = np.dstack([rgba[..., :3], hm * 255]).astype('uint8')
@@ -76,6 +101,7 @@ def build(aid):
         rgba, fix = TI.v4fix(rgba, force=(sl, sr), mirror=mir); h2, _ = TI.v4fix(hrgba, force=(sl, sr), mirror=mir)
         fix['pentes_apres'] = [round(v, 2) for v in TI.base_slopes(h2)[:2]]; fix['mesure'] = 'enveloppe convexe'
     else: rgba, fix = TI.v4fix(rgba)
+    if aid in ZCUT: rgba = zcut(rgba, *ZCUT[aid]); fix['coupe_z'] = list(ZCUT[aid])
     if KS.get(aid): rgba = keystone(rgba, KS[aid]); fix['keystone_k'] = KS[aid]; fix['pentes_apres'] = [round(v, 2) for v in TI.base_slopes(rgba)[:2]]
     elif aid not in KS and aid not in NOFIX and not TI.judge(rgba)['accepte']:
         # lot props : balayage automatique du redressement (k > 0 si arêtes hautes trop plates, k < 0 si trop raides), plus petit |k| accepté
@@ -84,7 +110,8 @@ def build(aid):
             if TI.judge(o)['accepte']: rgba = o; fix['keystone_k'] = k; break
     # emprise : proportions x/z mesurées sur l'arête basse corrigée (coin avant = point le plus bas), échelle fixée par la plus grande dimension
     m = rgba[..., 3] > 100; ys, xs = np.nonzero(m); by = ys.max(); bx = int(np.median(xs[ys >= by - 3]))
-    if aid not in NOFIX:
+    if aid in FP: w, d = FP[aid]
+    elif aid not in NOFIX:
         lw, ld = (bx - xs.min()) / cy, (xs.max() - bx) / sy; s = max(w, d) / max(lw, ld)
         w, d = max(0.5, round(lw * s * 2) / 2), max(0.5, round(ld * s * 2) / 2)
     j = TI.judge(rgba); j['correction_v4'] = fix

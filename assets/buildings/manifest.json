@@ -957,16 +957,16 @@
   "source": "art-gen/gen_lt_tuyau_coude.jpg",
   "origine": "généré",
   "px": [
-   131,
-   128
+   174,
+   81
   ],
   "anchor": [
-   101,
-   127
+   37,
+   80
   ],
   "footprint_m": [
    2.5,
-   1.0
+   2.5
   ],
   "height_m": 1.3,
   "lot": "lower-town v1 (creation/lower-town-sprites)",
@@ -1134,18 +1134,18 @@
  },
  "lt_passerelle": {
   "file": "buildings/lt_passerelle.webp",
-  "source": "art-gen/gen_lt_passerelle.jpg",
+  "source": "art-gen/gen_lt_passerelle2.jpg",
   "origine": "généré",
   "px": [
-   191,
-   176
+   232,
+   201
   ],
   "anchor": [
-   23,
-   175
+   31,
+   200
   ],
   "footprint_m": [
-   0.5,
+   1.5,
    6.0
   ],
   "height_m": 3.8,
