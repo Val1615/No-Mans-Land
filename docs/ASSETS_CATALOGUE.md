@@ -300,3 +300,31 @@ Script : `tools_finitions.py` (n'écrit rien dans `src/`). Toutes les images nou
 | `interiors/sv_cardtable_b.webp` (rév. 2) | **généré** `art-gen/gen_sv_cardtable5.jpg` : tapis vert, cartes, jetons, pieds en caisses, lampe conique suspendue (halo repeint en jaune chaud : le vert du fond restait dans le dégradé). Pieds trop longs à la génération (1,68 m implicite) : bande horizontale de 280 px retirée dans les pieds seulement. Angle mesuré sur l'enveloppe convexe des pieds (0,66/0,66 → 0,33/0,70), lampe hors calcul. Accepté, hauteur implicite 0,94 / 0,9 m. Écartés : `gen_sv_cardtable4.jpg` (0,37 m, trop basse), `gen_sv_cardtable3.jpg` (rév. 1, bloc de caisses peu lisible) | `nml-shots/v2/apres_tripot_table.png` |
 | ~~rév. 1~~ | `art-gen/gen_sv_cardtable3.jpg` : table de jeu rectangulaire sur caisses, cartes et jetons, sans tabouret. 1er essai `gen_sv_cardtable2.jpg` écarté (trop bas : hauteur implicite 0,46 m pour 0,9). Angle corrigé `v4fix` (pentes 0,76/0,78 → 0,33/0,70) | `rapport_angles.json` : accepté (arête basse v4), hauteur implicite 0,84 / 0,9 m, emprise 1,2 × 1,2 |
 | `portraits/portraits-v3-mutant-0..2.webp`, `portraits-v3-cyborg-0..2.webp` | **générés** (`art-gen/portraits-v3/*.jpg`, 1024 → 480 px), cadrage buste, lumière chaude ; références : `Population-Mutants.png` / `Population-Cyborgs.png` (roman-docs) et `portraits-v2-0`. Mutants : homme ~55 ans (excroissances osseuses), femme ~20 ans (peau marbrée, nodules), aînée ~70 ans (cicatrices, talisman). Cyborgs : femme ~35 ans cadre d'IO (céramique blanche et or), officier ~45 ans (plaques graphite, capteurs rouges), déserteur ~60 ans (chrome usé, foulard rouge). 1er essai mutant-0 écarté (copie de portraits-v2-0). Rév. 2 : mutant-1 (capuche, clé à molette), mutant-2 (aînée, excroissances calcifiées, yeux laiteux), cyborg-1 (bras croisés, fond brun chaud), cyborg-2 (capuche, câbles, fer à souder) régénérés : plus aucun fusil à l'épaule | planche `nml-shots/v2/portraits_v3_planche.png` |
+
+## Asia-Ground — lot 1 (branche `creation/asia-ground-sprites`, 2026-10-22)
+
+Source : `PLAN_IMPLEMENTATION.md` §2, fiche `ASIA_GROUND.md`, planche validée `art-gen/concepts/quartier_asia_ground_*` (nml-quartiers). Pipeline `tools_asiaground.py` (dérivé de `tools_lowertown.py`) : fond vert, `key_green_obj` + despill de bord, `v4fix`, `keystone` auto, `judge`, 50 px/m, pivot = coin avant bas géométrique. Rapport : `assets/buildings/rapport_angles_asiaground.json`. Planche : `nml-shots/asiaground_sprites.png` (planche d'assets, pas une capture). Canon : enseignes bilingues lisibles, pas de pagode, pas de rose, un seul cyan (`ag_neon_io`).
+
+| id | origine | source | emprise m | h m | px | pivot | judge | arête basse v4 | h implicite |
+|---|---|---|---|---|---|---|---|---|---|
+| `ag_restaurant` | **généré** | `art-gen/gen_ag_restaurant.jpg` | 8 × 6 | 10 | 500×569 | [330, 568] | oui | True | 7.77 |
+| `ag_restaurant_b` | **généré** | `art-gen/gen_ag_restaurant_b.jpg` | 8 × 6 | 10 | 500×667 | [330, 666] | oui | True | 10.02 |
+| `ag_halle_module` | **généré** | `art-gen/gen_ag_halle_module.jpg` | 8 × 16 | 3 | 783×551 | [330, 550] | oui | True | 2.84 |
+| `ag_boutique` | **généré** | `art-gen/gen_ag_boutique.jpg` | 6 × 5 | 4 | 389×330 | [247, 329] | oui | True | 3.41 |
+| `ag_boutique_b` | **généré** | `art-gen/gen_ag_boutique_b.jpg` | 6 × 5 | 4 | 389×331 | [247, 330] | oui | True | 3.43 |
+| `ag_bureau` | **généré** | `art-gen/gen_ag_bureau.jpg` | 6 × 5 | 7 | 389×440 | [247, 439] | oui | True | 5.92 |
+| `ag_escalier` | **généré** | `art-gen/gen_ag_escalier.jpg` | 8 × 14 | 10 | 726×866 | [330, 865] | oui | True | 10.93 |
+| `ag_monte_charge` | **généré** | `art-gen/gen_ag_monte_charge.jpg` | 4 × 4 | 9 | 278×545 | [165, 544] | oui | True | 9.39 |
+| `ag_stand_nouilles` | **généré** | `art-gen/gen_ag_stand_nouilles.jpg` | 2.5 × 1.5 | 2.5 | 145×164 | [103, 163] | oui | True | 2.28 |
+| `ag_stand_poisson` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/Props-v6.png 543,84,1020,506` | 2 × 1.2 | 1.3 | 116×103 | [82, 102] | non | None | 1.18 |
+| `ag_stand_pieces` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/street-detail-v9.png 1038,520,1499,988` | 4 × 2 | 2.2 | 221×182 | [165, 181] | oui | True | 1.99 |
+| `ag_lanterne_cable` | **généré** | `art-gen/gen_ag_lanterne_cable.jpg` | 5 × 1 | 3 | 234×212 | [206, 211] | oui | True | 2.84 |
+| `ag_auvent` | **généré** | `art-gen/gen_ag_auvent.jpg` | 5 × 2.5 | 2.4 | 277×218 | [206, 217] | oui | True | 2.29 |
+| `ag_caisses_legumes` | **généré** | `art-gen/gen_ag_caisses_legumes.jpg` | 1.2 × 0.8 | 0.7 | 72×48 | [49, 47] | oui | True | 0.36 |
+| `ag_glaciere` | **généré** | `art-gen/gen_ag_glaciere.jpg` | 1 × 0.6 | 0.9 | 58×57 | [41, 56] | oui | True | 0.72 |
+| `ag_wok` | **généré** | `art-gen/gen_ag_wok.jpg` | 1 × 1 | 1.8 | 70×113 | [41, 112] | non | None | 1.82 |
+| `ag_chariot` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-domestic.png 554,127,1009,432` | 1.8 × 0.9 | 1 | 100×49 | [74, 48] | oui | True | 0.15 |
+| `ag_hautparleur_io` | **généré** | `art-gen/gen_ag_hautparleur_io.jpg` | 0.6 × 0.6 | 4.5 | 42×166 | [25, 165] | oui | None | 3.33 |
+| `ag_neon_io` | **généré** | `art-gen/gen_ag_neon_io.jpg` | 1.2 × 0.3 | 1 | 58×57 | [49, 56] | oui | False | 0.79 |
+
+Maquette réutilisée (origine `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/`, étalonnage nuit) : `ag_stand_poisson` (Props-v6), `ag_stand_pieces` (street-detail-v9), `ag_chariot` (props-v9-domestic). Réserves : `ag_wok` et `ag_stand_poisson` refusés par judge (objet de révolution / maquette non cisaillée) ; `ag_chariot` hauteur implicite non significative (objet bas et long) ; `ag_boutique_b` idéogrammes 电机 (« moteurs ») au lieu de 电器 ; légumes de `ag_caisses_legumes` désaturés par le despill.

@@ -1,0 +1,634 @@
+{
+ "ag_restaurant": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.38,
+  "part_2_1_opposee": 0.08,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.4,
+    0.69
+   ],
+   "cisaillement": [
+    0.941,
+    -0.049
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_restaurant.jpg",
+  "origine": "généré",
+  "role": "restaurant (Pavillon du Dragon), enseigne bilingue RESTAURANT 餐馆, lanternes",
+  "emprise_m": [
+   8.0,
+   6.0
+  ],
+  "hauteur_attendue_m": 10.0,
+  "hauteur_implicite_m": 7.77,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.03
+ },
+ "ag_restaurant_b": {
+  "pente_dominante": 0.4,
+  "sens": "miroir",
+  "part_bande_v4": 0.34,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.43,
+    0.55
+   ],
+   "cisaillement": [
+    1.058,
+    -0.121
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_restaurant_b.jpg",
+  "origine": "généré",
+  "role": "variante : échoppe de nouilles NOUILLES 面馆",
+  "emprise_m": [
+   8.0,
+   6.0
+  ],
+  "hauteur_attendue_m": 10.0,
+  "hauteur_implicite_m": 10.02,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.04
+ },
+ "ag_halle_module": {
+  "pente_dominante": 0.7,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.44,
+    0.57
+   ],
+   "cisaillement": [
+    1.013,
+    -0.118
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_halle_module.jpg",
+  "origine": "généré",
+  "role": "module de la halle du marché (travée répétable, toit à deux pans)",
+  "emprise_m": [
+   8.0,
+   16.0
+  ],
+  "hauteur_attendue_m": 3.0,
+  "hauteur_implicite_m": 2.84,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.03
+ },
+ "ag_boutique": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.88,
+  "part_2_1_opposee": 0.06,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.31,
+    0.59
+   ],
+   "cisaillement": [
+    1.14,
+    -0.023
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": 0.05
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_boutique.jpg",
+  "origine": "généré",
+  "role": "boutique Lau, pharmacie PHARMACIE 药房",
+  "emprise_m": [
+   6.0,
+   5.0
+  ],
+  "hauteur_attendue_m": 4.0,
+  "hauteur_implicite_m": 3.41,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.07
+ },
+ "ag_boutique_b": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.8,
+  "part_2_1_opposee": 0.09,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.36,
+    0.64
+   ],
+   "cisaillement": [
+    1.033,
+    -0.043
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": 0.1
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_boutique_b.jpg",
+  "origine": "généré",
+  "role": "variante : électronique Okafor ÉLECTRONIQUE (idéogrammes 电机, cf. critique)",
+  "emprise_m": [
+   6.0,
+   5.0
+  ],
+  "hauteur_attendue_m": 4.0,
+  "hauteur_implicite_m": 3.43,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_bureau": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.24,
+  "part_2_1_opposee": 0.04,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.3,
+    0.5
+   ],
+   "cisaillement": [
+    1.286,
+    -0.056
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": -0.1
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_bureau.jpg",
+  "origine": "généré",
+  "role": "bureau des emplacements EMPLACEMENTS 摊位 (Zhou / Seng)",
+  "emprise_m": [
+   6.0,
+   5.0
+  ],
+  "hauteur_attendue_m": 7.0,
+  "hauteur_implicite_m": 5.92,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.05
+ },
+ "ag_escalier": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.48,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.33,
+    0.58
+   ],
+   "cisaillement": [
+    1.127,
+    -0.042
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_escalier.jpg",
+  "origine": "généré",
+  "role": "Mille Marches, large escalier vers Center-Town, caméra IO en haut",
+  "emprise_m": [
+   8.0,
+   14.0
+  ],
+  "hauteur_attendue_m": 10.0,
+  "hauteur_implicite_m": 10.93,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.09
+ },
+ "ag_monte_charge": {
+  "pente_dominante": 0.7,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.43,
+    0.57
+   ],
+   "cisaillement": [
+    1.028,
+    -0.116
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_monte_charge.jpg",
+  "origine": "généré",
+  "role": "monte-charge de quai (Cour des Porteurs)",
+  "emprise_m": [
+   4.0,
+   4.0
+  ],
+  "hauteur_attendue_m": 9.0,
+  "hauteur_implicite_m": 9.39,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.06
+ },
+ "ag_stand_nouilles": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.72,
+  "part_2_1_opposee": 0.03,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.35,
+    0.62
+   ],
+   "cisaillement": [
+    1.062,
+    -0.037
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_stand_nouilles.jpg",
+  "origine": "généré",
+  "role": "stand de nouilles, vapeur",
+  "emprise_m": [
+   2.5,
+   1.5
+  ],
+  "hauteur_attendue_m": 2.5,
+  "hauteur_implicite_m": 2.28,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_stand_poisson": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.09,
+  "part_2_1_opposee": 0.12,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (maquette déjà à l angle)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/Props-v6.png 543,84,1020,506",
+  "origine": "maquette",
+  "role": "étal de poisson et caisses (maquette Props-v6)",
+  "emprise_m": [
+   2.0,
+   1.2
+  ],
+  "hauteur_attendue_m": 1.3,
+  "hauteur_implicite_m": 1.18,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_stand_pieces": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.87,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.47,
+    0.77
+   ],
+   "cisaillement": [
+    0.829,
+    -0.062
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/street-detail-v9.png 1038,520,1499,988",
+  "origine": "maquette",
+  "role": "étal de pièces détachées sous bâche (maquette street-detail-v9)",
+  "emprise_m": [
+   4.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 2.2,
+  "hauteur_implicite_m": 1.99,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_lanterne_cable": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.8,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.56,
+    0.57
+   ],
+   "cisaillement": [
+    0.917,
+    -0.179
+   ],
+   "miroir": true,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_lanterne_cable.jpg",
+  "origine": "généré",
+  "role": "câble à lanternes rouges entre deux poteaux",
+  "emprise_m": [
+   5.0,
+   1.0
+  ],
+  "hauteur_attendue_m": 3.0,
+  "hauteur_implicite_m": 2.84,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_auvent": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.44,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.32,
+    0.72
+   ],
+   "cisaillement": [
+    0.988,
+    0.012
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_auvent.jpg",
+  "origine": "généré",
+  "role": "auvent de toile sur perches",
+  "emprise_m": [
+   5.0,
+   2.5
+  ],
+  "hauteur_attendue_m": 2.4,
+  "hauteur_implicite_m": 2.29,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.04
+ },
+ "ag_caisses_legumes": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.96,
+  "part_2_1_opposee": 0.04,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.48,
+    1.09
+   ],
+   "cisaillement": [
+    0.655,
+    0.014
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_caisses_legumes.jpg",
+  "origine": "généré",
+  "role": "caisses de légumes",
+  "emprise_m": [
+   1.2,
+   0.8
+  ],
+  "hauteur_attendue_m": 0.7,
+  "hauteur_implicite_m": 0.36,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_glaciere": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.48,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.39,
+    0.61
+   ],
+   "cisaillement": [
+    1.03,
+    -0.073
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.34,
+    0.68
+   ],
+   "keystone_k": 0.05
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_ag_glaciere.jpg",
+  "origine": "généré",
+  "role": "glacière à poisson sur palette",
+  "emprise_m": [
+   1.0,
+   0.6
+  ],
+  "hauteur_attendue_m": 0.9,
+  "hauteur_implicite_m": 0.72,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_wok": {
+  "pente_dominante": 1.0,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (révolution)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_ag_wok.jpg",
+  "origine": "généré",
+  "role": "wok sur brasero (fût découpé)",
+  "emprise_m": [
+   1.0,
+   1.0
+  ],
+  "hauteur_attendue_m": 1.8,
+  "hauteur_implicite_m": 1.82,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_chariot": {
+  "pente_dominante": 0.35,
+  "sens": "miroir",
+  "part_bande_v4": 0.75,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.29,
+    1.22
+   ],
+   "cisaillement": [
+    0.683,
+    0.133
+   ],
+   "miroir": true,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe",
+   "keystone_k": 0.05
+  },
+  "accepte_arete_basse": true,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/props-v9-domestic.png 554,127,1009,432",
+  "origine": "maquette",
+  "role": "charrette à bras (maquette props-v9-domestic)",
+  "emprise_m": [
+   1.8,
+   0.9
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.15,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "ag_hautparleur_io": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.35,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "v4fix": "non applicable (révolution)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_ag_hautparleur_io.jpg",
+  "origine": "généré",
+  "role": "haut-parleur IO sur poteau",
+  "emprise_m": [
+   0.6,
+   0.6
+  ],
+  "hauteur_attendue_m": 4.5,
+  "hauteur_implicite_m": 3.33,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.06
+ },
+ "ag_neon_io": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 1.0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.19,
+    0.5
+   ],
+   "cisaillement": [
+    1.491,
+    0.046
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.5
+   ]
+  },
+  "accepte_arete_basse": false,
+  "source": "art-gen/gen_ag_neon_io.jpg",
+  "origine": "généré",
+  "role": "néon IO cyan, le seul cyan du quartier (au-dessus du marché)",
+  "emprise_m": [
+   1.2,
+   0.3
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.79,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ }
+}
