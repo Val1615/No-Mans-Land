@@ -1,0 +1,302 @@
+{
+  "mode": "built-in image_gen; transparent_background=true",
+  "source_dimensions": [
+    1536,
+    1024
+  ],
+  "prompts": {
+    "generate": "Use case: stylized-concept. Asset type: transparent game sprite atlas. Create exactly SIX fully separated isolated modular architectural props in a strict 3-column by 2-row sprite sheet, with very wide transparent gutters. Detailed realistic pre-rendered isometric CRPG style, desaturated post-apocalyptic industrial materials, orthographic camera with 2:1 ground axes, consistent upper-left lighting. Row 1 left: straight chain-link security fence panel on two end posts, one continuous panel, ground endpoints oriented upper-left to lower-right. Row 1 middle: the SAME security fence design seen in its other isometric orientation, endpoints upper-right to lower-left. Row 1 right: straight pale stone balustrade section on a low plinth, four elegant carved balusters, orientation upper-left to lower-right. Row 2 left: same pale stone balustrade in the opposite isometric orientation, upper-right to lower-left. Row 2 middle: straight thick insulated industrial pipeline section, two short steel support feet, bolted metal flanges at both ends, weathered grey insulation with scratches and restrained rust, orientation upper-left to lower-right. Row 2 right: SAME pipeline design in opposite isometric orientation upper-right to lower-left. Each isolated object has a clean visible endpoint at each end and can be repeated end-to-end to form a continuous line. The chain mesh remains fine transparent mesh. Both pipeline supports meet the same ground plane. All props completely inside their cell with generous margin, no overlap, no detached debris. True transparent background. No ground tiles, no environment, no horizon, no floor, no people, no labels, no letters, no numbers, no watermark. High texture fidelity and coherent perspective, not line art, not wireframe, not simple geometric placeholders.",
+    "edit": "Edit this transparent 3-column by 2-row SIX-object game sprite sheet. Change ONLY the bottom-left stone balustrade: reverse its isometric direction so its LEFT endpoint is lower in the image and its RIGHT endpoint is higher, matching the direction of the bottom-right pipeline. Keep its same stone design, four carved balusters, plinth, dimensions and realistic materials, illuminated from upper-left. Keep the other FIVE objects unchanged in their cells. The bottom-left balustrade must slope visually UPWARDS toward the right, not downwards. Preserve actual alpha transparency, no background, no ground plane, no shadows beyond the sprite. All six objects remain separated with wide gutters. No text or additional objects."
+  },
+  "endpoint_note": "Manually estimated contact centres; normalized crop UV with origin at top-left. Intended for proportional rendering, without nonuniform stretching.",
+  "sprites": [
+    {
+      "index": 0,
+      "kind": "chainFenceQ",
+      "file": "dist/assets/linear-v12-0.webp",
+      "orientation": "q+",
+      "width": 403,
+      "height": 423,
+      "source": "art-source/linear-v12.png",
+      "source_bbox": [
+        77,
+        41,
+        472,
+        456
+      ],
+      "crop_padding_px": 4,
+      "ground_endpoints_uv": [
+        [
+          0.066998,
+          0.513002
+        ],
+        [
+          0.930521,
+          0.966903
+        ]
+      ],
+      "ground_endpoints_source_px": [
+        [
+          100,
+          254
+        ],
+        [
+          448,
+          446
+        ]
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "validation": "lossless decoded alpha and all RGB under nonzero alpha identical to source crop"
+    },
+    {
+      "index": 1,
+      "kind": "chainFenceR",
+      "file": "dist/assets/linear-v12-1.webp",
+      "orientation": "r+",
+      "width": 387,
+      "height": 426,
+      "source": "art-source/linear-v12.png",
+      "source_bbox": [
+        581,
+        43,
+        960,
+        461
+      ],
+      "crop_padding_px": 4,
+      "ground_endpoints_uv": [
+        [
+          0.069767,
+          0.964789
+        ],
+        [
+          0.932817,
+          0.525822
+        ]
+      ],
+      "ground_endpoints_source_px": [
+        [
+          604,
+          450
+        ],
+        [
+          938,
+          263
+        ]
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "validation": "lossless decoded alpha and all RGB under nonzero alpha identical to source crop"
+    },
+    {
+      "index": 2,
+      "kind": "stoneBalustradeQ",
+      "file": "dist/assets/linear-v12-2.webp",
+      "orientation": "q+",
+      "width": 432,
+      "height": 404,
+      "source": "art-source/linear-v12.png",
+      "source_bbox": [
+        1068,
+        66,
+        1492,
+        462
+      ],
+      "crop_padding_px": 4,
+      "ground_endpoints_uv": [
+        [
+          0.108796,
+          0.534653
+        ],
+        [
+          0.854167,
+          0.923267
+        ]
+      ],
+      "ground_endpoints_source_px": [
+        [
+          1111,
+          278
+        ],
+        [
+          1433,
+          435
+        ]
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "validation": "lossless decoded alpha and all RGB under nonzero alpha identical to source crop"
+    },
+    {
+      "index": 3,
+      "kind": "stoneBalustradeR",
+      "file": "dist/assets/linear-v12-3.webp",
+      "orientation": "r+",
+      "width": 424,
+      "height": 417,
+      "source": "art-source/linear-v12.png",
+      "source_bbox": [
+        48,
+        534,
+        464,
+        943
+      ],
+      "crop_padding_px": 4,
+      "ground_endpoints_uv": [
+        [
+          0.15566,
+          0.925659
+        ],
+        [
+          0.879717,
+          0.522782
+        ]
+      ],
+      "ground_endpoints_source_px": [
+        [
+          110,
+          916
+        ],
+        [
+          417,
+          748
+        ]
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "validation": "lossless decoded alpha and all RGB under nonzero alpha identical to source crop"
+    },
+    {
+      "index": 4,
+      "kind": "insulatedPipeQ",
+      "file": "dist/assets/linear-v12-4.webp",
+      "orientation": "q+",
+      "width": 473,
+      "height": 386,
+      "source": "art-source/linear-v12.png",
+      "source_bbox": [
+        527,
+        550,
+        992,
+        928
+      ],
+      "crop_padding_px": 4,
+      "ground_endpoints_uv": [
+        [
+          0.234672,
+          0.585492
+        ],
+        [
+          0.714588,
+          0.927461
+        ]
+      ],
+      "ground_endpoints_source_px": [
+        [
+          634,
+          772
+        ],
+        [
+          861,
+          904
+        ]
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "validation": "lossless decoded alpha and all RGB under nonzero alpha identical to source crop",
+      "pipe_center_endpoints_uv": [
+        [
+          0.139535,
+          0.196891
+        ],
+        [
+          0.866808,
+          0.676166
+        ]
+      ],
+      "pipe_center_endpoints_source_px": [
+        [
+          589,
+          622
+        ],
+        [
+          933,
+          807
+        ]
+      ],
+      "tiling_note": "Ground endpoints are inset support feet; use flange centre endpoints for end-to-end pipe joins."
+    },
+    {
+      "index": 5,
+      "kind": "insulatedPipeR",
+      "file": "dist/assets/linear-v12-5.webp",
+      "orientation": "r+",
+      "width": 456,
+      "height": 389,
+      "source": "art-source/linear-v12.png",
+      "source_bbox": [
+        1060,
+        555,
+        1508,
+        936
+      ],
+      "crop_padding_px": 4,
+      "ground_endpoints_uv": [
+        [
+          0.278509,
+          0.935733
+        ],
+        [
+          0.776316,
+          0.59383
+        ]
+      ],
+      "ground_endpoints_source_px": [
+        [
+          1183,
+          915
+        ],
+        [
+          1410,
+          782
+        ]
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "validation": "lossless decoded alpha and all RGB under nonzero alpha identical to source crop",
+      "pipe_center_endpoints_uv": [
+        [
+          0.149123,
+          0.678663
+        ],
+        [
+          0.883772,
+          0.190231
+        ]
+      ],
+      "pipe_center_endpoints_source_px": [
+        [
+          1124,
+          815
+        ],
+        [
+          1459,
+          625
+        ]
+      ],
+      "tiling_note": "Ground endpoints are inset support feet; use flange centre endpoints for end-to-end pipe joins."
+    }
+  ]
+}

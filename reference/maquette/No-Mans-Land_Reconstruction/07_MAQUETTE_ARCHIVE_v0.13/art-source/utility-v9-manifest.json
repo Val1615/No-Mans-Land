@@ -1,0 +1,104 @@
+[
+  {
+    "index": 0,
+    "kind": "fridge",
+    "file": "dist/assets/utility-v9-0.webp",
+    "width": 280,
+    "height": 481,
+    "source_bbox": [
+      132,
+      13,
+      404,
+      486
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 1,
+    "kind": "screen",
+    "file": "dist/assets/utility-v9-1.webp",
+    "width": 461,
+    "height": 521,
+    "source_bbox": [
+      548,
+      6,
+      1001,
+      519
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 2,
+    "kind": "component",
+    "file": "dist/assets/utility-v9-2.webp",
+    "width": 377,
+    "height": 466,
+    "source_bbox": [
+      1116,
+      37,
+      1485,
+      495
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 3,
+    "kind": "flag",
+    "file": "dist/assets/utility-v9-3.webp",
+    "width": 299,
+    "height": 516,
+    "source_bbox": [
+      146,
+      494,
+      437,
+      1002
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 4,
+    "kind": "bollard",
+    "file": "dist/assets/utility-v9-4.webp",
+    "width": 406,
+    "height": 397,
+    "source_bbox": [
+      583,
+      576,
+      981,
+      965
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 5,
+    "kind": "column",
+    "file": "dist/assets/utility-v9-5.webp",
+    "width": 358,
+    "height": 505,
+    "source_bbox": [
+      1123,
+      504,
+      1473,
+      1001
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  }
+]

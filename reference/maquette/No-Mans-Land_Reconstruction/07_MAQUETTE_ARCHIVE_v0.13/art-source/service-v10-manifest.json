@@ -1,0 +1,226 @@
+{
+  "mode": "built-in image_gen; transparent_background=true",
+  "prompts": {
+    "mode": "built-in image_gen; transparent_background:true",
+    "A": "Use case: stylized-concept. Asset type: transparent isometric CRPG sprite sheet for No Man's Land. Create one precisely laid-out sheet of SIX SEPARATE detailed prerendered game furniture objects in a 3 columns by 2 rows grid with very generous transparent gutters. Orthographic isometric camera, 2:1 ground axes, view from elevated southeast, lit from upper left. Realistic worn metal and wood, desaturated post-apocalyptic palette, tactile textures, fine 3D detail. Top row left: a compact wooden bar counter with brass beer taps and bottles. Top row middle: general-store grocery shelving stocked with food tins and cloth bags. Top row right: hotel reception counter with ledger and small key rack. Bottom row left: workshop diagnostic console with tool pegboard, integrated as one connected furniture unit. Bottom row middle: archive shelving with filing cabinets and paper folders. Bottom row right: a medical examination chair with attached instrument tray. Each object entirely visible, fully isolated, no shared floor, no background, no labels, no people, no text, no logos. Truly transparent RGBA background, including between objects. These will be cropped into individual game sprites so objects must not touch, overlap or cross their allotted cells.",
+    "B": "Use case: stylized-concept. Asset type: transparent isometric CRPG prop sheet for No Man's Land. One sheet containing EXACTLY SIX SEPARATE fully visible game props, 3 columns by 2 rows, generous transparent gutters. Orthographic isometric projection, 2:1 ground axes, camera elevated southeast about 30 degrees, upper-left light. Detailed realistic prerendered 3D art with tactile aged stone, oxidized metal, desaturated earthy palette. Top row left: a complete freestanding old mossy stone archway with two stone piers and curved arched lintel, doorway opening empty transparent, no surrounding floor. Top row middle: industrial valve manifold composed of connected metal pipes and three shutoff wheels on one low concrete plinth, one connected machine, no loose elbows. Top row right: one long straight insulated industrial pipeline segment along the isometric horizontal diagonal, supported by two low metal feet, fully visible flanges at both ends. Bottom row left: harbourmaster's metal desk with navigation chart, binoculars and radio, integrated furniture unit. Bottom row middle: mess hall dining table with two attached parallel benches, tin plates and mugs. Bottom row right: pair of weathered metal lockers, one partly open with a hanging coat, one connected unit. No people, no labels, no lettering, no environment, no floor tiles, no background, no logos. Truly transparent RGBA background including the arch opening. These will become six cropped game sprites so keep objects separate and comfortably inside cells."
+  },
+  "sprites": [
+    {
+      "index": 0,
+      "kind": "barCounter",
+      "file": "dist/assets/service-v10-0.webp",
+      "width": 468,
+      "height": 426,
+      "source": "art-source/service-v10-A.png",
+      "source_bbox": [
+        39,
+        32,
+        499,
+        450
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 1,
+      "kind": "groceryShelf",
+      "file": "dist/assets/service-v10-1.webp",
+      "width": 399,
+      "height": 458,
+      "source": "art-source/service-v10-A.png",
+      "source_bbox": [
+        569,
+        18,
+        960,
+        468
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 2,
+      "kind": "reception",
+      "file": "dist/assets/service-v10-2.webp",
+      "width": 500,
+      "height": 434,
+      "source": "art-source/service-v10-A.png",
+      "source_bbox": [
+        1020,
+        42,
+        1512,
+        468
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 3,
+      "kind": "diagnostic",
+      "file": "dist/assets/service-v10-3.webp",
+      "width": 482,
+      "height": 481,
+      "source": "art-source/service-v10-A.png",
+      "source_bbox": [
+        30,
+        505,
+        504,
+        978
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 4,
+      "kind": "archiveShelf",
+      "file": "dist/assets/service-v10-4.webp",
+      "width": 408,
+      "height": 510,
+      "source": "art-source/service-v10-A.png",
+      "source_bbox": [
+        571,
+        478,
+        971,
+        980
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 5,
+      "kind": "examChair",
+      "file": "dist/assets/service-v10-5.webp",
+      "width": 401,
+      "height": 466,
+      "source": "art-source/service-v10-A.png",
+      "source_bbox": [
+        1110,
+        507,
+        1503,
+        965
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 6,
+      "kind": "stoneArch",
+      "file": "dist/assets/service-v10-6.webp",
+      "width": 452,
+      "height": 517,
+      "source": "art-source/service-v10-B.png",
+      "source_bbox": [
+        23,
+        9,
+        467,
+        518
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 7,
+      "kind": "valveManifold",
+      "file": "dist/assets/service-v10-7.webp",
+      "width": 544,
+      "height": 381,
+      "source": "art-source/service-v10-B.png",
+      "source_bbox": [
+        503,
+        138,
+        1039,
+        511
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 8,
+      "kind": "pipeSegment",
+      "file": "dist/assets/service-v10-8.webp",
+      "width": 514,
+      "height": 361,
+      "source": "art-source/service-v10-B.png",
+      "source_bbox": [
+        1022,
+        100,
+        1528,
+        453
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 9,
+      "kind": "harbourDesk",
+      "file": "dist/assets/service-v10-9.webp",
+      "width": 505,
+      "height": 492,
+      "source": "art-source/service-v10-B.png",
+      "source_bbox": [
+        16,
+        512,
+        513,
+        996
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 10,
+      "kind": "messTable",
+      "file": "dist/assets/service-v10-10.webp",
+      "width": 613,
+      "height": 433,
+      "source": "art-source/service-v10-B.png",
+      "source_bbox": [
+        525,
+        567,
+        1130,
+        992
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 11,
+      "kind": "lockers",
+      "file": "dist/assets/service-v10-11.webp",
+      "width": 302,
+      "height": 499,
+      "source": "art-source/service-v10-B.png",
+      "source_bbox": [
+        1186,
+        477,
+        1480,
+        968
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    }
+  ]
+}

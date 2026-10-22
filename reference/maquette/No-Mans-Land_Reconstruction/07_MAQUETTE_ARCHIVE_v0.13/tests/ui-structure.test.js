@@ -1,0 +1,7 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const root=new URL('../dist/',import.meta.url),html=fs.readFileSync(new URL('index.html',root),'utf8');
+test('the live interface loads one stylesheet rather than conflicting historical layers',()=>{const sheets=[...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)].map(m=>m[1]);assert.deepEqual(sheets,['interface.css?v=13']);for(const path of sheets)assert.ok(fs.existsSync(new URL(path.split('?')[0],root)));});
+test('the footer contains exactly one complete player portrait and one companion anchor',()=>{const dock=html.slice(html.indexOf('<footer class="action-bar"'),html.indexOf('</footer>',html.indexOf('<footer class="action-bar"')));for(const id of ['avatar-small','player-name','hp-label','ap-number','companion-hud','weapon-btn','turn-btn'])assert.equal([...dock.matchAll(new RegExp('id="'+id+'"','g'))].length,1,id);assert.ok(!html.includes('LE CORPS CHANGE'));});
+test('font and illustrated atlas assets are local and the vector atlas retains exact geography',()=>{for(const file of ['nml-condensed-regular.otf','nml-condensed-bold.otf','FONT-LICENSE.txt','ui-frame.svg','world-map-v8.webp','world-map-v8.svg'])assert.ok(fs.existsSync(new URL('assets/'+file,root)),file);const svg=fs.readFileSync(new URL('assets/world-map-v8.svg',root),'utf8');assert.ok(svg.includes('M72 38 L1035 38'));assert.ok(svg.includes('clip-path="url(#land)"'));assert.ok(svg.includes('data:image/jpeg;base64,'));});

@@ -1,0 +1,308 @@
+[
+  {
+    "index": 0,
+    "kind": "house",
+    "file": "dist/assets/settlement-v9-0.webp",
+    "width": 449,
+    "height": 382,
+    "source_bbox": [
+      43,
+      113,
+      484,
+      487
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 1,
+    "kind": "shop",
+    "file": "dist/assets/settlement-v9-1.webp",
+    "width": 392,
+    "height": 494,
+    "source_bbox": [
+      561,
+      12,
+      945,
+      498
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 2,
+    "kind": "inn",
+    "file": "dist/assets/settlement-v9-2.webp",
+    "width": 491,
+    "height": 532,
+    "source_bbox": [
+      1037,
+      2,
+      1520,
+      526
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 3,
+    "kind": "workshop",
+    "file": "dist/assets/settlement-v9-3.webp",
+    "width": 575,
+    "height": 402,
+    "source_bbox": [
+      25,
+      566,
+      592,
+      960
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 4,
+    "kind": "stairhouse",
+    "file": "dist/assets/settlement-v9-4.webp",
+    "width": 416,
+    "height": 469,
+    "source_bbox": [
+      633,
+      525,
+      1041,
+      986
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 5,
+    "kind": "abandoned",
+    "file": "dist/assets/settlement-v9-5.webp",
+    "width": 450,
+    "height": 467,
+    "source_bbox": [
+      1086,
+      530,
+      1528,
+      989
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 6,
+    "kind": "apartment",
+    "file": "dist/assets/settlement-v9-6.webp",
+    "width": 376,
+    "height": 509,
+    "source_bbox": [
+      55,
+      11,
+      423,
+      512
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 7,
+    "kind": "shoprow",
+    "file": "dist/assets/settlement-v9-7.webp",
+    "width": 483,
+    "height": 349,
+    "source_bbox": [
+      533,
+      119,
+      1008,
+      460
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 8,
+    "kind": "neoncorner",
+    "file": "dist/assets/settlement-v9-8.webp",
+    "width": 430,
+    "height": 489,
+    "source_bbox": [
+      1084,
+      6,
+      1506,
+      487
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 9,
+    "kind": "substation",
+    "file": "dist/assets/settlement-v9-9.webp",
+    "width": 452,
+    "height": 420,
+    "source_bbox": [
+      40,
+      552,
+      484,
+      964
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 10,
+    "kind": "offices",
+    "file": "dist/assets/settlement-v9-10.webp",
+    "width": 449,
+    "height": 508,
+    "source_bbox": [
+      552,
+      497,
+      993,
+      997
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 11,
+    "kind": "serviceblock",
+    "file": "dist/assets/settlement-v9-11.webp",
+    "width": 412,
+    "height": 521,
+    "source_bbox": [
+      1100,
+      505,
+      1504,
+      1018
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 12,
+    "kind": "conservatory",
+    "file": "dist/assets/settlement-v9-12.webp",
+    "width": 577,
+    "height": 468,
+    "source_bbox": [
+      5,
+      4,
+      574,
+      464
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 13,
+    "kind": "residence",
+    "file": "dist/assets/settlement-v9-13.webp",
+    "width": 408,
+    "height": 471,
+    "source_bbox": [
+      581,
+      25,
+      981,
+      488
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 14,
+    "kind": "gallery",
+    "file": "dist/assets/settlement-v9-14.webp",
+    "width": 542,
+    "height": 367,
+    "source_bbox": [
+      1001,
+      120,
+      1535,
+      479
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 15,
+    "kind": "tower",
+    "file": "dist/assets/settlement-v9-15.webp",
+    "width": 322,
+    "height": 592,
+    "source_bbox": [
+      73,
+      434,
+      387,
+      1018
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 16,
+    "kind": "atrium",
+    "file": "dist/assets/settlement-v9-16.webp",
+    "width": 540,
+    "height": 391,
+    "source_bbox": [
+      488,
+      574,
+      1020,
+      957
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 17,
+    "kind": "villa",
+    "file": "dist/assets/settlement-v9-17.webp",
+    "width": 462,
+    "height": 412,
+    "source_bbox": [
+      1060,
+      576,
+      1514,
+      980
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  }
+]

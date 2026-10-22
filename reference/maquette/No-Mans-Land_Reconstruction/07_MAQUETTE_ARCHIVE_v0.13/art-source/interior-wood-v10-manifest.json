@@ -1,0 +1,12 @@
+{
+  "source": "art-source/interior-wood-v10.png",
+  "file": "dist/assets/interior-wood-v10.webp",
+  "width": 1254,
+  "height": 1254,
+  "alpha_extrema": [
+    255,
+    255
+  ],
+  "mode": "built-in image_gen; transparent_background=false",
+  "prompt_file": "art-source/interior-wood-v10-prompt.json"
+}

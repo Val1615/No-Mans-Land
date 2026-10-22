@@ -1,0 +1,109 @@
+{
+  "mode": "built-in image_gen; transparent_background=true",
+  "source": "art-source/io-interiors-v10.png",
+  "prompt_file": "art-source/io-interiors-v10-prompt.json",
+  "sprites": [
+    {
+      "index": 0,
+      "kind": "ioReception",
+      "file": "dist/assets/io-interior-v10-0.webp",
+      "width": 475,
+      "height": 401,
+      "source_bbox": [
+        56,
+        61,
+        523,
+        454
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 1,
+      "kind": "ioExamPod",
+      "file": "dist/assets/io-interior-v10-1.webp",
+      "width": 459,
+      "height": 446,
+      "source_bbox": [
+        591,
+        56,
+        1042,
+        494
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 2,
+      "kind": "ioMedicine",
+      "file": "dist/assets/io-interior-v10-2.webp",
+      "width": 298,
+      "height": 498,
+      "source_bbox": [
+        1186,
+        12,
+        1476,
+        502
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 3,
+      "kind": "ioServer",
+      "file": "dist/assets/io-interior-v10-3.webp",
+      "width": 297,
+      "height": 463,
+      "source_bbox": [
+        104,
+        525,
+        393,
+        980
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 4,
+      "kind": "ioSofa",
+      "file": "dist/assets/io-interior-v10-4.webp",
+      "width": 503,
+      "height": 390,
+      "source_bbox": [
+        545,
+        598,
+        1040,
+        980
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "index": 5,
+      "kind": "ioDisplay",
+      "file": "dist/assets/io-interior-v10-5.webp",
+      "width": 290,
+      "height": 478,
+      "source_bbox": [
+        1183,
+        521,
+        1465,
+        991
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    }
+  ]
+}

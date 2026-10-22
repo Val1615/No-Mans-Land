@@ -1,0 +1,18 @@
+{
+  "source": "art-source/io-freighter-v10.png",
+  "file": "dist/assets/io-freighter-v10.webp",
+  "width": 1540,
+  "height": 1035,
+  "source_bbox": [
+    6,
+    2,
+    1530,
+    1021
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "mode": "built-in image_gen; transparent_background=true",
+  "prompt_file": "art-source/io-freighter-v10-prompt.json"
+}

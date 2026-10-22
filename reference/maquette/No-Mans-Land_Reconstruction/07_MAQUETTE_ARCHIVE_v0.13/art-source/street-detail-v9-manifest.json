@@ -1,0 +1,104 @@
+[
+  {
+    "index": 0,
+    "kind": "oldBench",
+    "file": "dist/assets/street-detail-v9-0.webp",
+    "width": 495,
+    "height": 429,
+    "source_bbox": [
+      33,
+      59,
+      520,
+      480
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 1,
+    "kind": "foundationColumn",
+    "file": "dist/assets/street-detail-v9-1.webp",
+    "width": 320,
+    "height": 487,
+    "source_bbox": [
+      619,
+      0,
+      931,
+      479
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 2,
+    "kind": "canvasShelter",
+    "file": "dist/assets/street-detail-v9-2.webp",
+    "width": 482,
+    "height": 505,
+    "source_bbox": [
+      1031,
+      11,
+      1505,
+      508
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 3,
+    "kind": "salvageRack",
+    "file": "dist/assets/street-detail-v9-3.webp",
+    "width": 503,
+    "height": 554,
+    "source_bbox": [
+      38,
+      451,
+      533,
+      997
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 4,
+    "kind": "lamp",
+    "file": "dist/assets/street-detail-v9-4.webp",
+    "width": 233,
+    "height": 502,
+    "source_bbox": [
+      692,
+      486,
+      917,
+      980
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 5,
+    "kind": "junkStall",
+    "file": "dist/assets/street-detail-v9-5.webp",
+    "width": 479,
+    "height": 531,
+    "source_bbox": [
+      1033,
+      470,
+      1504,
+      993
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  }
+]

@@ -1,0 +1,7907 @@
+[
+  {
+    "location": "farm",
+    "index": 0,
+    "asset": "x0",
+    "label": "SERRE 1",
+    "boost": 1.35,
+    "before": {
+      "w": 198.83,
+      "h": 181.25
+    },
+    "after": {
+      "w": 268.42,
+      "h": 244.69
+    }
+  },
+  {
+    "location": "farm",
+    "index": 1,
+    "asset": "x0",
+    "label": "SERRE 2",
+    "boost": 1.35,
+    "before": {
+      "w": 198.83,
+      "h": 181.25
+    },
+    "after": {
+      "w": 268.42,
+      "h": 244.69
+    }
+  },
+  {
+    "location": "farm",
+    "index": 2,
+    "asset": "x0",
+    "label": "SERRE 3",
+    "boost": 1.35,
+    "before": {
+      "w": 198.83,
+      "h": 181.25
+    },
+    "after": {
+      "w": 268.42,
+      "h": 244.69
+    }
+  },
+  {
+    "location": "farm",
+    "index": 3,
+    "asset": "x3",
+    "label": "COOPÉRATIVE",
+    "boost": 1.35,
+    "before": {
+      "w": 259.94,
+      "h": 212.5
+    },
+    "after": {
+      "w": 350.92,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "farm",
+    "index": 4,
+    "asset": "x0",
+    "label": "SERRE 4",
+    "boost": 1.35,
+    "before": {
+      "w": 226.25,
+      "h": 206.25
+    },
+    "after": {
+      "w": 305.44,
+      "h": 278.44
+    }
+  },
+  {
+    "location": "farm",
+    "index": 5,
+    "asset": "x0",
+    "label": "SERRE 5",
+    "boost": 1.35,
+    "before": {
+      "w": 239.96,
+      "h": 218.75
+    },
+    "after": {
+      "w": 323.95,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "farm",
+    "index": 6,
+    "asset": "v3",
+    "label": "OUTILLAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 330.77,
+      "h": 231.25
+    },
+    "after": {
+      "w": 446.54,
+      "h": 312.19
+    }
+  },
+  {
+    "location": "farm",
+    "index": 7,
+    "asset": "b0",
+    "label": "LOGIS",
+    "boost": 1.35,
+    "before": {
+      "w": 233.43,
+      "h": 193.75
+    },
+    "after": {
+      "w": 315.14,
+      "h": 261.56
+    }
+  },
+  {
+    "location": "farm",
+    "index": 8,
+    "asset": "x0",
+    "label": "SERRE 6",
+    "boost": 1.35,
+    "before": {
+      "w": 219.4,
+      "h": 200
+    },
+    "after": {
+      "w": 296.19,
+      "h": 270
+    }
+  },
+  {
+    "location": "farm",
+    "index": 9,
+    "asset": "x0",
+    "label": "SERRE 7",
+    "boost": 1.35,
+    "before": {
+      "w": 219.4,
+      "h": 200
+    },
+    "after": {
+      "w": 296.19,
+      "h": 270
+    }
+  },
+  {
+    "location": "farm",
+    "index": 10,
+    "asset": "v2",
+    "label": "DORTOIR",
+    "boost": 1.25,
+    "before": {
+      "w": 196.12,
+      "h": 212.5
+    },
+    "after": {
+      "w": 245.15,
+      "h": 265.63
+    }
+  },
+  {
+    "location": "farm",
+    "index": 11,
+    "asset": "x3",
+    "label": "SEMENCES",
+    "boost": 1.35,
+    "before": {
+      "w": 259.94,
+      "h": 212.5
+    },
+    "after": {
+      "w": 350.92,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "farm",
+    "index": 12,
+    "asset": "x3",
+    "label": "TRI",
+    "boost": 1.35,
+    "before": {
+      "w": 267.58,
+      "h": 218.75
+    },
+    "after": {
+      "w": 361.24,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "farm",
+    "index": 13,
+    "asset": "n2",
+    "label": "EMBALLAGE",
+    "boost": 1.25,
+    "before": {
+      "w": 253.26,
+      "h": 237.5
+    },
+    "after": {
+      "w": 316.58,
+      "h": 296.88
+    }
+  },
+  {
+    "location": "farm",
+    "index": 14,
+    "asset": "v3",
+    "label": "CHARGEMENT",
+    "boost": 1.35,
+    "before": {
+      "w": 312.89,
+      "h": 218.75
+    },
+    "after": {
+      "w": 422.4,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 0,
+    "asset": "b0",
+    "label": "MAISON DE L’EAU",
+    "boost": 1.35,
+    "before": {
+      "w": 248.49,
+      "h": 206.25
+    },
+    "after": {
+      "w": 335.47,
+      "h": 278.44
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 1,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 2,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 138.59,
+      "h": 156.25
+    },
+    "after": {
+      "w": 207.89,
+      "h": 234.38
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 3,
+    "asset": "v1",
+    "label": "ÉPICERIE",
+    "boost": 1.35,
+    "before": {
+      "w": 163.66,
+      "h": 206.25
+    },
+    "after": {
+      "w": 220.95,
+      "h": 278.44
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 4,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 5,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 133.05,
+      "h": 150
+    },
+    "after": {
+      "w": 199.57,
+      "h": 225
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 6,
+    "asset": "b0",
+    "label": "CLINIQUE VERA",
+    "boost": 1.35,
+    "before": {
+      "w": 331.33,
+      "h": 275
+    },
+    "after": {
+      "w": 447.29,
+      "h": 371.25
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 7,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 160.77,
+      "h": 181.25
+    },
+    "after": {
+      "w": 241.15,
+      "h": 271.88
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 8,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 198.35,
+      "h": 168.75
+    },
+    "after": {
+      "w": 297.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 9,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 198.35,
+      "h": 168.75
+    },
+    "after": {
+      "w": 297.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 10,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 156.58,
+      "h": 162.5
+    },
+    "after": {
+      "w": 195.73,
+      "h": 203.13
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 11,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 205.69,
+      "h": 175
+    },
+    "after": {
+      "w": 308.54,
+      "h": 262.5
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 12,
+    "asset": "b1",
+    "label": "BAR DU PASSAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 245.9,
+      "h": 218.75
+    },
+    "after": {
+      "w": 331.97,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 13,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 138.59,
+      "h": 156.25
+    },
+    "after": {
+      "w": 207.89,
+      "h": 234.38
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 14,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 198.35,
+      "h": 168.75
+    },
+    "after": {
+      "w": 297.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 15,
+    "asset": "v2",
+    "label": "HÔTEL DES VOLETS",
+    "boost": 1.25,
+    "before": {
+      "w": 224.96,
+      "h": 243.75
+    },
+    "after": {
+      "w": 281.21,
+      "h": 304.69
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 16,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 17,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 18,
+    "asset": "x5",
+    "label": "MILICE",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 183.97
+    },
+    "after": {
+      "w": 381.6,
+      "h": 275.95
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 19,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 20,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 138.59,
+      "h": 156.25
+    },
+    "after": {
+      "w": 207.89,
+      "h": 234.38
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 21,
+    "asset": "v5",
+    "label": "ANCIENNE BOUTIQUE",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 22,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 23,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 191,
+      "h": 162.5
+    },
+    "after": {
+      "w": 286.5,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 24,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 0,
+    "asset": "b4",
+    "label": "ARCHIVES",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 261.12
+    },
+    "after": {
+      "w": 371,
+      "h": 326.4
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 192.72,
+      "h": 200
+    },
+    "after": {
+      "w": 240.9,
+      "h": 250
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 2,
+    "asset": "n0",
+    "label": "ANCIEN REGISTRE",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 257.15
+    },
+    "after": {
+      "w": 318,
+      "h": 321.44
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 3,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 4,
+    "asset": "x4",
+    "label": "TRIBUNAL ABANDONNÉ",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 268.57
+    },
+    "after": {
+      "w": 318,
+      "h": 335.71
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 5,
+    "asset": "n1",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 288.84,
+      "h": 256.25
+    },
+    "after": {
+      "w": 361.05,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 6,
+    "asset": "n0",
+    "label": "DÉLÉGUÉS",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 257.15
+    },
+    "after": {
+      "w": 318,
+      "h": 321.44
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 7,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 160.77,
+      "h": 181.25
+    },
+    "after": {
+      "w": 241.15,
+      "h": 271.88
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 8,
+    "asset": "n3",
+    "label": "COPIES",
+    "boost": 1.25,
+    "before": {
+      "w": 244.6,
+      "h": 218.75
+    },
+    "after": {
+      "w": 305.75,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 9,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 220.01
+    },
+    "after": {
+      "w": 265,
+      "h": 275.01
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 11,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 284.42,
+      "h": 287.5
+    },
+    "after": {
+      "w": 355.53,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 12,
+    "asset": "n0",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 302.97,
+      "h": 306.25
+    },
+    "after": {
+      "w": 302.97,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 13,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 210.79,
+      "h": 218.75
+    },
+    "after": {
+      "w": 263.48,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 14,
+    "asset": "n2",
+    "label": "ANCIEN MUSÉE",
+    "boost": 1.25,
+    "before": {
+      "w": 273.26,
+      "h": 256.25
+    },
+    "after": {
+      "w": 341.57,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 15,
+    "asset": "n2",
+    "label": "IMPRIMERIE",
+    "boost": 1.25,
+    "before": {
+      "w": 253.26,
+      "h": 237.5
+    },
+    "after": {
+      "w": 316.58,
+      "h": 296.88
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 16,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 210.79,
+      "h": 218.75
+    },
+    "after": {
+      "w": 263.48,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 17,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 290.6,
+      "h": 293.75
+    },
+    "after": {
+      "w": 363.26,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 182.94,
+      "h": 206.25
+    },
+    "after": {
+      "w": 274.41,
+      "h": 309.38
+    }
+  },
+  {
+    "location": "customs",
+    "index": 0,
+    "asset": "x5",
+    "label": "DOUANE OUEST",
+    "boost": 1.5,
+    "before": {
+      "w": 250.64,
+      "h": 181.25
+    },
+    "after": {
+      "w": 375.96,
+      "h": 271.88
+    }
+  },
+  {
+    "location": "customs",
+    "index": 1,
+    "asset": "x3",
+    "label": "QUARANTAINE",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "customs",
+    "index": 2,
+    "asset": "x5",
+    "label": "CONSIGNE",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 153.31
+    },
+    "after": {
+      "w": 318,
+      "h": 229.96
+    }
+  },
+  {
+    "location": "customs",
+    "index": 3,
+    "asset": "x5",
+    "label": "GUICHETS",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "customs",
+    "index": 4,
+    "asset": "v3",
+    "label": "INSPECTION 2",
+    "boost": 1.35,
+    "before": {
+      "w": 357.59,
+      "h": 250
+    },
+    "after": {
+      "w": 482.74,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "customs",
+    "index": 5,
+    "asset": "x5",
+    "label": "CONTRE-VISITE",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "customs",
+    "index": 6,
+    "asset": "x3",
+    "label": "CARGAISONS",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "customs",
+    "index": 7,
+    "asset": "x3",
+    "label": "QUARANTAINE B",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "customs",
+    "index": 8,
+    "asset": "x5",
+    "label": "SOINS",
+    "boost": 1.5,
+    "before": {
+      "w": 311.14,
+      "h": 225
+    },
+    "after": {
+      "w": 466.71,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "customs",
+    "index": 9,
+    "asset": "x5",
+    "label": "ATTENTE",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "customs",
+    "index": 10,
+    "asset": "v3",
+    "label": "DÉSINFECTION",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "customs",
+    "index": 11,
+    "asset": "x3",
+    "label": "CONSIGNE 2",
+    "boost": 1.35,
+    "before": {
+      "w": 298.16,
+      "h": 243.75
+    },
+    "after": {
+      "w": 402.52,
+      "h": 329.06
+    }
+  },
+  {
+    "location": "customs",
+    "index": 12,
+    "asset": "x3",
+    "label": "COLIS",
+    "boost": 1.35,
+    "before": {
+      "w": 298.16,
+      "h": 243.75
+    },
+    "after": {
+      "w": 402.52,
+      "h": 329.06
+    }
+  },
+  {
+    "location": "customs",
+    "index": 13,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "customs",
+    "index": 14,
+    "asset": "v3",
+    "label": "ENTRETIEN",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "steel",
+    "index": 0,
+    "asset": "v6",
+    "label": "BLOC OUEST",
+    "boost": 1,
+    "before": {
+      "w": 286.25,
+      "h": 387.5
+    },
+    "after": {
+      "w": 286.25,
+      "h": 387.5
+    }
+  },
+  {
+    "location": "steel",
+    "index": 1,
+    "asset": "v7",
+    "label": "COMMERCES DU FORUM",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 214.46
+    },
+    "after": {
+      "w": 400.68,
+      "h": 289.52
+    }
+  },
+  {
+    "location": "steel",
+    "index": 2,
+    "asset": "c5",
+    "label": "SERVICE MUNICIPAL",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 237.02
+    },
+    "after": {
+      "w": 265,
+      "h": 296.28
+    }
+  },
+  {
+    "location": "steel",
+    "index": 3,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 268.09
+    },
+    "after": {
+      "w": 265,
+      "h": 335.11
+    }
+  },
+  {
+    "location": "steel",
+    "index": 4,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 286.25,
+      "h": 387.5
+    },
+    "after": {
+      "w": 286.25,
+      "h": 387.5
+    }
+  },
+  {
+    "location": "steel",
+    "index": 5,
+    "asset": "v6",
+    "label": "TOURS D’HABITAT",
+    "boost": 1,
+    "before": {
+      "w": 295.48,
+      "h": 400
+    },
+    "after": {
+      "w": 295.48,
+      "h": 400
+    }
+  },
+  {
+    "location": "steel",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "steel",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "steel",
+    "index": 8,
+    "asset": "v8",
+    "label": "BAR DE COURSIVE",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 241.09
+    },
+    "after": {
+      "w": 265,
+      "h": 301.36
+    }
+  },
+  {
+    "location": "steel",
+    "index": 9,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 268.09
+    },
+    "after": {
+      "w": 265,
+      "h": 335.11
+    }
+  },
+  {
+    "location": "steel",
+    "index": 10,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "steel",
+    "index": 11,
+    "asset": "v9",
+    "label": "RÉSEAU",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 196.99
+    },
+    "after": {
+      "w": 265,
+      "h": 246.24
+    }
+  },
+  {
+    "location": "steel",
+    "index": 12,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "steel",
+    "index": 13,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "steel",
+    "index": 14,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 277.01,
+      "h": 375
+    },
+    "after": {
+      "w": 277.01,
+      "h": 375
+    }
+  },
+  {
+    "location": "steel",
+    "index": 15,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "steel",
+    "index": 16,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "steel",
+    "index": 17,
+    "asset": "v7",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "steel",
+    "index": 18,
+    "asset": "v8",
+    "label": "GALERIES",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 241.09
+    },
+    "after": {
+      "w": 265,
+      "h": 301.36
+    }
+  },
+  {
+    "location": "under",
+    "index": 0,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 1,
+    "asset": "v3",
+    "label": "TRI DES PIÈCES",
+    "boost": 1.35,
+    "before": {
+      "w": 268.19,
+      "h": 187.5
+    },
+    "after": {
+      "w": 362.06,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "under",
+    "index": 2,
+    "asset": "b3",
+    "label": "SOUS-STATION",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 241.18
+    },
+    "after": {
+      "w": 318,
+      "h": 301.47
+    }
+  },
+  {
+    "location": "under",
+    "index": 3,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 4,
+    "asset": "b1",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 203.75,
+      "h": 181.25
+    },
+    "after": {
+      "w": 275.06,
+      "h": 244.69
+    }
+  },
+  {
+    "location": "under",
+    "index": 5,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 6,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 7,
+    "asset": "b1",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 210.77,
+      "h": 187.5
+    },
+    "after": {
+      "w": 284.54,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "under",
+    "index": 8,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 9,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 10,
+    "asset": "v3",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 177.86
+    },
+    "after": {
+      "w": 343.44,
+      "h": 240.11
+    }
+  },
+  {
+    "location": "under",
+    "index": 11,
+    "asset": "b1",
+    "label": "CANTINE",
+    "boost": 1.35,
+    "before": {
+      "w": 212,
+      "h": 188.59
+    },
+    "after": {
+      "w": 286.2,
+      "h": 254.6
+    }
+  },
+  {
+    "location": "under",
+    "index": 12,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 13,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 14,
+    "asset": "b1",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 169.6,
+      "h": 150.87
+    },
+    "after": {
+      "w": 228.96,
+      "h": 203.68
+    }
+  },
+  {
+    "location": "under",
+    "index": 15,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 16,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 17,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "under",
+    "index": 18,
+    "asset": "b1",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 203.75,
+      "h": 181.25
+    },
+    "after": {
+      "w": 275.06,
+      "h": 244.69
+    }
+  },
+  {
+    "location": "under",
+    "index": 19,
+    "asset": "v3",
+    "label": "ATELIER DE TRAVÉE",
+    "boost": 1.35,
+    "before": {
+      "w": 286.07,
+      "h": 200
+    },
+    "after": {
+      "w": 386.19,
+      "h": 270
+    }
+  },
+  {
+    "location": "under",
+    "index": 20,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 21,
+    "asset": "b1",
+    "label": "INFIRMERIE",
+    "boost": 1.35,
+    "before": {
+      "w": 212,
+      "h": 188.59
+    },
+    "after": {
+      "w": 286.2,
+      "h": 254.6
+    }
+  },
+  {
+    "location": "under",
+    "index": 22,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 23,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 178.3
+    },
+    "after": {
+      "w": 254.4,
+      "h": 267.45
+    }
+  },
+  {
+    "location": "under",
+    "index": 24,
+    "asset": "b1",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 203.75,
+      "h": 181.25
+    },
+    "after": {
+      "w": 275.06,
+      "h": 244.69
+    }
+  },
+  {
+    "location": "junk",
+    "index": 0,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 208.08,
+      "h": 218.75
+    },
+    "after": {
+      "w": 312.12,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "junk",
+    "index": 1,
+    "asset": "v3",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 207.5
+    },
+    "after": {
+      "w": 400.68,
+      "h": 280.13
+    }
+  },
+  {
+    "location": "junk",
+    "index": 2,
+    "asset": "b1",
+    "label": "BAZAR",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 226.31
+    },
+    "after": {
+      "w": 343.44,
+      "h": 305.52
+    }
+  },
+  {
+    "location": "junk",
+    "index": 3,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 214.02,
+      "h": 225
+    },
+    "after": {
+      "w": 321.04,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "junk",
+    "index": 4,
+    "asset": "v2",
+    "label": "MOTEL",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 229.7
+    },
+    "after": {
+      "w": 265,
+      "h": 287.13
+    }
+  },
+  {
+    "location": "junk",
+    "index": 5,
+    "asset": "x1",
+    "label": "COMPTES",
+    "boost": 1.5,
+    "before": {
+      "w": 214.02,
+      "h": 225
+    },
+    "after": {
+      "w": 321.04,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "junk",
+    "index": 6,
+    "asset": "v1",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 163.66,
+      "h": 206.25
+    },
+    "after": {
+      "w": 220.95,
+      "h": 278.44
+    }
+  },
+  {
+    "location": "junk",
+    "index": 7,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 222.87
+    },
+    "after": {
+      "w": 318,
+      "h": 334.31
+    }
+  },
+  {
+    "location": "junk",
+    "index": 8,
+    "asset": "n4",
+    "label": "HALLES",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 224.69
+    },
+    "after": {
+      "w": 318,
+      "h": 280.86
+    }
+  },
+  {
+    "location": "junk",
+    "index": 9,
+    "asset": "v1",
+    "label": "MÉDICAMENTS",
+    "boost": 1.35,
+    "before": {
+      "w": 169.6,
+      "h": 213.73
+    },
+    "after": {
+      "w": 228.96,
+      "h": 288.54
+    }
+  },
+  {
+    "location": "junk",
+    "index": 10,
+    "asset": "v3",
+    "label": "TÔLES",
+    "boost": 1.35,
+    "before": {
+      "w": 330.77,
+      "h": 231.25
+    },
+    "after": {
+      "w": 446.54,
+      "h": 312.19
+    }
+  },
+  {
+    "location": "junk",
+    "index": 11,
+    "asset": "v0",
+    "label": "DORTOIR",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 216.44
+    },
+    "after": {
+      "w": 381.6,
+      "h": 324.66
+    }
+  },
+  {
+    "location": "junk",
+    "index": 12,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 222.87
+    },
+    "after": {
+      "w": 318,
+      "h": 334.31
+    }
+  },
+  {
+    "location": "junk",
+    "index": 13,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "junk",
+    "index": 14,
+    "asset": "x1",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 225.91,
+      "h": 237.5
+    },
+    "after": {
+      "w": 338.87,
+      "h": 356.25
+    }
+  },
+  {
+    "location": "junk",
+    "index": 15,
+    "asset": "v2",
+    "label": "BAR",
+    "boost": 1.25,
+    "before": {
+      "w": 201.89,
+      "h": 218.75
+    },
+    "after": {
+      "w": 252.36,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "junk",
+    "index": 16,
+    "asset": "n2",
+    "label": "ATELIERS",
+    "boost": 1.25,
+    "before": {
+      "w": 253.26,
+      "h": 237.5
+    },
+    "after": {
+      "w": 316.58,
+      "h": 296.88
+    }
+  },
+  {
+    "location": "junk",
+    "index": 17,
+    "asset": "x3",
+    "label": "LOTS SAISIS",
+    "boost": 1.35,
+    "before": {
+      "w": 290.52,
+      "h": 237.5
+    },
+    "after": {
+      "w": 392.2,
+      "h": 320.63
+    }
+  },
+  {
+    "location": "junk",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 210.66,
+      "h": 237.5
+    },
+    "after": {
+      "w": 315.99,
+      "h": 356.25
+    }
+  },
+  {
+    "location": "junk",
+    "index": 19,
+    "asset": "n4",
+    "label": "ENCHÈRES",
+    "boost": 1.25,
+    "before": {
+      "w": 275.98,
+      "h": 243.75
+    },
+    "after": {
+      "w": 344.98,
+      "h": 304.69
+    }
+  },
+  {
+    "location": "titan",
+    "index": 0,
+    "asset": "x5",
+    "label": "ABRI",
+    "boost": 1.5,
+    "before": {
+      "w": 207.43,
+      "h": 150
+    },
+    "after": {
+      "w": 311.14,
+      "h": 225
+    }
+  },
+  {
+    "location": "titan",
+    "index": 1,
+    "asset": "x5",
+    "label": "CAMP OTERO",
+    "boost": 1.5,
+    "before": {
+      "w": 293.86,
+      "h": 212.5
+    },
+    "after": {
+      "w": 440.79,
+      "h": 318.75
+    }
+  },
+  {
+    "location": "titan",
+    "index": 2,
+    "asset": "x3",
+    "label": "TREUILS",
+    "boost": 1.35,
+    "before": {
+      "w": 275.23,
+      "h": 225
+    },
+    "after": {
+      "w": 371.56,
+      "h": 303.75
+    }
+  },
+  {
+    "location": "titan",
+    "index": 3,
+    "asset": "n2",
+    "label": "DÉMONTAGE",
+    "boost": 1.25,
+    "before": {
+      "w": 253.26,
+      "h": 237.5
+    },
+    "after": {
+      "w": 316.58,
+      "h": 296.88
+    }
+  },
+  {
+    "location": "titan",
+    "index": 4,
+    "asset": "x3",
+    "label": "PIÈCES",
+    "boost": 1.35,
+    "before": {
+      "w": 282.87,
+      "h": 231.25
+    },
+    "after": {
+      "w": 381.88,
+      "h": 312.19
+    }
+  },
+  {
+    "location": "relay",
+    "index": 0,
+    "asset": "b3",
+    "label": "COMMANDE 07",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 281.37
+    },
+    "after": {
+      "w": 371,
+      "h": 351.72
+    }
+  },
+  {
+    "location": "relay",
+    "index": 1,
+    "asset": "b3",
+    "label": "FILTRATION",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 281.37
+    },
+    "after": {
+      "w": 371,
+      "h": 351.72
+    }
+  },
+  {
+    "location": "relay",
+    "index": 2,
+    "asset": "n2",
+    "label": "MAINTENANCE",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 238.57
+    },
+    "after": {
+      "w": 318,
+      "h": 298.21
+    }
+  },
+  {
+    "location": "relay",
+    "index": 3,
+    "asset": "b3",
+    "label": "POMPES AVAL",
+    "boost": 1.25,
+    "before": {
+      "w": 303.26,
+      "h": 287.5
+    },
+    "after": {
+      "w": 379.08,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "relay",
+    "index": 4,
+    "asset": "x3",
+    "label": "PIÈCES ET STOCK",
+    "boost": 1.35,
+    "before": {
+      "w": 328.74,
+      "h": 268.75
+    },
+    "after": {
+      "w": 443.8,
+      "h": 362.81
+    }
+  },
+  {
+    "location": "relay",
+    "index": 5,
+    "asset": "x5",
+    "label": "POSTE D’ACCÈS",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "temple",
+    "index": 0,
+    "asset": "b5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 218.61,
+      "h": 237.5
+    },
+    "after": {
+      "w": 273.27,
+      "h": 296.88
+    }
+  },
+  {
+    "location": "temple",
+    "index": 1,
+    "asset": "x4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 183.53,
+      "h": 193.75
+    },
+    "after": {
+      "w": 229.41,
+      "h": 242.19
+    }
+  },
+  {
+    "location": "temple",
+    "index": 2,
+    "asset": "x4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 142.09,
+      "h": 150
+    },
+    "after": {
+      "w": 177.61,
+      "h": 187.5
+    }
+  },
+  {
+    "location": "temple",
+    "index": 3,
+    "asset": "b5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 241.63,
+      "h": 262.5
+    },
+    "after": {
+      "w": 302.03,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "temple",
+    "index": 4,
+    "asset": "x4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 207.21,
+      "h": 218.75
+    },
+    "after": {
+      "w": 259.01,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "temple",
+    "index": 5,
+    "asset": "x4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 201.29,
+      "h": 212.5
+    },
+    "after": {
+      "w": 251.61,
+      "h": 265.63
+    }
+  },
+  {
+    "location": "temple",
+    "index": 6,
+    "asset": "x4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 207.21,
+      "h": 218.75
+    },
+    "after": {
+      "w": 259.01,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "temple",
+    "index": 7,
+    "asset": "b5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 230.12,
+      "h": 250
+    },
+    "after": {
+      "w": 287.65,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "temple",
+    "index": 8,
+    "asset": "x4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 213.13,
+      "h": 225
+    },
+    "after": {
+      "w": 266.41,
+      "h": 281.25
+    }
+  },
+  {
+    "location": "port",
+    "index": 0,
+    "asset": "x3",
+    "label": "HALLE IO",
+    "boost": 1,
+    "before": {
+      "w": 381.6,
+      "h": 311.96
+    },
+    "after": {
+      "w": 381.6,
+      "h": 311.96
+    }
+  },
+  {
+    "location": "port",
+    "index": 1,
+    "asset": "v3",
+    "label": "CAPITAINERIE",
+    "boost": 1.35,
+    "before": {
+      "w": 357.59,
+      "h": 250
+    },
+    "after": {
+      "w": 482.74,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "port",
+    "index": 2,
+    "asset": "n2",
+    "label": "ATELIER DES GRUES",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 278.33
+    },
+    "after": {
+      "w": 371,
+      "h": 347.91
+    }
+  },
+  {
+    "location": "port",
+    "index": 3,
+    "asset": "x3",
+    "label": "RÉSERVE IO",
+    "boost": 1.35,
+    "before": {
+      "w": 336.39,
+      "h": 275
+    },
+    "after": {
+      "w": 454.13,
+      "h": 371.25
+    }
+  },
+  {
+    "location": "port",
+    "index": 4,
+    "asset": "v3",
+    "label": "REPOS DES ÉQUIPES",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 207.5
+    },
+    "after": {
+      "w": 400.68,
+      "h": 280.13
+    }
+  },
+  {
+    "location": "port",
+    "index": 5,
+    "asset": "x5",
+    "label": "INSPECTION SANITAIRE",
+    "boost": 1.5,
+    "before": {
+      "w": 311.14,
+      "h": 225
+    },
+    "after": {
+      "w": 466.71,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "port",
+    "index": 6,
+    "asset": "x5",
+    "label": "GARDE",
+    "boost": 1.5,
+    "before": {
+      "w": 285.21,
+      "h": 206.25
+    },
+    "after": {
+      "w": 427.82,
+      "h": 309.38
+    }
+  },
+  {
+    "location": "nova",
+    "index": 0,
+    "asset": "x5",
+    "label": "GARNISON",
+    "boost": 1.5,
+    "before": {
+      "w": 293.86,
+      "h": 212.5
+    },
+    "after": {
+      "w": 440.79,
+      "h": 318.75
+    }
+  },
+  {
+    "location": "nova",
+    "index": 1,
+    "asset": "x5",
+    "label": "SURPLUS",
+    "boost": 1.5,
+    "before": {
+      "w": 293.86,
+      "h": 212.5
+    },
+    "after": {
+      "w": 440.79,
+      "h": 318.75
+    }
+  },
+  {
+    "location": "nova",
+    "index": 2,
+    "asset": "v2",
+    "label": "CASERNEMENT",
+    "boost": 1.25,
+    "before": {
+      "w": 184.59,
+      "h": 200
+    },
+    "after": {
+      "w": 230.73,
+      "h": 250
+    }
+  },
+  {
+    "location": "nova",
+    "index": 3,
+    "asset": "x3",
+    "label": "GARAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 275.23,
+      "h": 225
+    },
+    "after": {
+      "w": 371.56,
+      "h": 303.75
+    }
+  },
+  {
+    "location": "nova",
+    "index": 4,
+    "asset": "x3",
+    "label": "DÉPÔT 19",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "nova",
+    "index": 5,
+    "asset": "x3",
+    "label": "CARBURANT",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "nova",
+    "index": 6,
+    "asset": "x5",
+    "label": "LIAISON",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "nova",
+    "index": 7,
+    "asset": "x5",
+    "label": "DÉTACHEMENT",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "nova",
+    "index": 8,
+    "asset": "v4",
+    "label": "LOGIS",
+    "boost": 1.5,
+    "before": {
+      "w": 205.12,
+      "h": 231.25
+    },
+    "after": {
+      "w": 307.68,
+      "h": 346.88
+    }
+  },
+  {
+    "location": "nova",
+    "index": 9,
+    "asset": "x5",
+    "label": "DISPENSAIRE",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "nova",
+    "index": 10,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 216.44
+    },
+    "after": {
+      "w": 381.6,
+      "h": 324.66
+    }
+  },
+  {
+    "location": "nova",
+    "index": 11,
+    "asset": "b1",
+    "label": "CANTINE",
+    "boost": 1.35,
+    "before": {
+      "w": 252.93,
+      "h": 225
+    },
+    "after": {
+      "w": 341.45,
+      "h": 303.75
+    }
+  },
+  {
+    "location": "nova",
+    "index": 12,
+    "asset": "v3",
+    "label": "TRANSMISSIONS",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "nova",
+    "index": 13,
+    "asset": "x3",
+    "label": "RÉSERVES",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "nova",
+    "index": 14,
+    "asset": "x5",
+    "label": "CASERNE 2",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "nova",
+    "index": 15,
+    "asset": "x3",
+    "label": "VÉHICULES",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "coast",
+    "index": 0,
+    "asset": "n1",
+    "label": "ANCIENNE STATION",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 225.69
+    },
+    "after": {
+      "w": 318,
+      "h": 282.12
+    }
+  },
+  {
+    "location": "coast",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 204.76,
+      "h": 212.5
+    },
+    "after": {
+      "w": 255.96,
+      "h": 265.63
+    }
+  },
+  {
+    "location": "coast",
+    "index": 2,
+    "asset": "x4",
+    "label": "TOUR DE SIGNAL",
+    "boost": 1.25,
+    "before": {
+      "w": 248.65,
+      "h": 262.5
+    },
+    "after": {
+      "w": 310.82,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "coast",
+    "index": 3,
+    "asset": "v3",
+    "label": "ABRI DE RÉCUPÉRATION",
+    "boost": 1.35,
+    "before": {
+      "w": 286.07,
+      "h": 200
+    },
+    "after": {
+      "w": 386.19,
+      "h": 270
+    }
+  },
+  {
+    "location": "coast",
+    "index": 4,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 204.76,
+      "h": 212.5
+    },
+    "after": {
+      "w": 255.96,
+      "h": 265.63
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 0,
+    "asset": "v0",
+    "label": "CUISINE COMMUNE",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 180.37
+    },
+    "after": {
+      "w": 318,
+      "h": 270.55
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 1,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 155.22,
+      "h": 175
+    },
+    "after": {
+      "w": 232.84,
+      "h": 262.5
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 2,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 3,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 144.14,
+      "h": 162.5
+    },
+    "after": {
+      "w": 216.2,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 4,
+    "asset": "v0",
+    "label": "FAMILLES",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 5,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 6,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 144.14,
+      "h": 162.5
+    },
+    "after": {
+      "w": 216.2,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 7,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 198.35,
+      "h": 168.75
+    },
+    "after": {
+      "w": 297.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 8,
+    "asset": "v3",
+    "label": "CHEZ ABEL",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 177.86
+    },
+    "after": {
+      "w": 343.44,
+      "h": 240.11
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 9,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 191,
+      "h": 162.5
+    },
+    "after": {
+      "w": 286.5,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 144.14,
+      "h": 162.5
+    },
+    "after": {
+      "w": 216.2,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 11,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 12,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 13,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 191,
+      "h": 162.5
+    },
+    "after": {
+      "w": 286.5,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 14,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 144.14,
+      "h": 162.5
+    },
+    "after": {
+      "w": 216.2,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 15,
+    "asset": "v1",
+    "label": "RÉFECTOIRE",
+    "boost": 1.35,
+    "before": {
+      "w": 153.74,
+      "h": 193.75
+    },
+    "after": {
+      "w": 207.56,
+      "h": 261.56
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 16,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 17,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 198.35,
+      "h": 168.75
+    },
+    "after": {
+      "w": 297.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 18,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 19,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 20,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 180.37
+    },
+    "after": {
+      "w": 318,
+      "h": 270.55
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 21,
+    "asset": "v5",
+    "label": "ANCIENNE ÉCOLE",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 22,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 144.14,
+      "h": 162.5
+    },
+    "after": {
+      "w": 216.2,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 23,
+    "asset": "v5",
+    "label": "MAISON FERMÉE",
+    "boost": 1.25,
+    "before": {
+      "w": 180.67,
+      "h": 187.5
+    },
+    "after": {
+      "w": 225.84,
+      "h": 234.38
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 24,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 144.14,
+      "h": 162.5
+    },
+    "after": {
+      "w": 216.2,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 25,
+    "asset": "v0",
+    "label": "LAVERIE",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 180.37
+    },
+    "after": {
+      "w": 318,
+      "h": 270.55
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 0,
+    "asset": "b4",
+    "label": "ANCIEN SITE",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 223.81
+    },
+    "after": {
+      "w": 318,
+      "h": 279.77
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 2,
+    "asset": "x3",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 252.29,
+      "h": 206.25
+    },
+    "after": {
+      "w": 340.59,
+      "h": 278.44
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 3,
+    "asset": "b3",
+    "label": "ACCÈS SCELLÉ",
+    "boost": 1.25,
+    "before": {
+      "w": 243.93,
+      "h": 231.25
+    },
+    "after": {
+      "w": 304.91,
+      "h": 289.06
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 4,
+    "asset": "b4",
+    "label": "ANNEXE INSTABLE",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 223.81
+    },
+    "after": {
+      "w": 318,
+      "h": 279.77
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 5,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 198.74,
+      "h": 206.25
+    },
+    "after": {
+      "w": 248.43,
+      "h": 257.81
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 6,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 198.74,
+      "h": 206.25
+    },
+    "after": {
+      "w": 248.43,
+      "h": 257.81
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 7,
+    "asset": "x5",
+    "label": "VEILLE",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 153.31
+    },
+    "after": {
+      "w": 318,
+      "h": 229.96
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 8,
+    "asset": "v3",
+    "label": "ATELIER NILO",
+    "boost": 1.35,
+    "before": {
+      "w": 295.01,
+      "h": 206.25
+    },
+    "after": {
+      "w": 398.26,
+      "h": 278.44
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 9,
+    "asset": "n2",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 198.8
+    },
+    "after": {
+      "w": 265,
+      "h": 248.51
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 10,
+    "asset": "v3",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 286.07,
+      "h": 200
+    },
+    "after": {
+      "w": 386.19,
+      "h": 270
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 11,
+    "asset": "v3",
+    "label": "GARAGE COMMUNAL",
+    "boost": 1.35,
+    "before": {
+      "w": 312.89,
+      "h": 218.75
+    },
+    "after": {
+      "w": 422.4,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 12,
+    "asset": "x3",
+    "label": "DÉPÔT",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 13,
+    "asset": "v3",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 295.01,
+      "h": 206.25
+    },
+    "after": {
+      "w": 398.26,
+      "h": 278.44
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 14,
+    "asset": "v0",
+    "label": "OUVRIERS",
+    "boost": 1.5,
+    "before": {
+      "w": 198.35,
+      "h": 168.75
+    },
+    "after": {
+      "w": 297.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 15,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 144.14,
+      "h": 162.5
+    },
+    "after": {
+      "w": 216.2,
+      "h": 243.75
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 16,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 144.29
+    },
+    "after": {
+      "w": 254.4,
+      "h": 216.44
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 17,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 198.35,
+      "h": 168.75
+    },
+    "after": {
+      "w": 297.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 149.68,
+      "h": 168.75
+    },
+    "after": {
+      "w": 224.52,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "china",
+    "index": 0,
+    "asset": "c1",
+    "label": "MAISON DU THÉ",
+    "boost": 1.25,
+    "before": {
+      "w": 241.63,
+      "h": 212.5
+    },
+    "after": {
+      "w": 302.04,
+      "h": 265.63
+    }
+  },
+  {
+    "location": "china",
+    "index": 1,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 237.24,
+      "h": 300
+    },
+    "after": {
+      "w": 237.24,
+      "h": 300
+    }
+  },
+  {
+    "location": "china",
+    "index": 2,
+    "asset": "v6",
+    "label": "RÉSIDENCES DES QUAIS",
+    "boost": 1,
+    "before": {
+      "w": 267.78,
+      "h": 362.5
+    },
+    "after": {
+      "w": 267.78,
+      "h": 362.5
+    }
+  },
+  {
+    "location": "china",
+    "index": 3,
+    "asset": "v8",
+    "label": "LAVERIE",
+    "boost": 1.25,
+    "before": {
+      "w": 214.34,
+      "h": 243.75
+    },
+    "after": {
+      "w": 267.93,
+      "h": 304.69
+    }
+  },
+  {
+    "location": "china",
+    "index": 4,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 227.35,
+      "h": 287.5
+    },
+    "after": {
+      "w": 284.19,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "china",
+    "index": 5,
+    "asset": "v7",
+    "label": "ÉLECTRONIQUE LIN",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "china",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 268.09
+    },
+    "after": {
+      "w": 265,
+      "h": 335.11
+    }
+  },
+  {
+    "location": "china",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "china",
+    "index": 8,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "china",
+    "index": 9,
+    "asset": "v8",
+    "label": "RESTAURANT DES LANTERNES",
+    "boost": 1.25,
+    "before": {
+      "w": 225.33,
+      "h": 256.25
+    },
+    "after": {
+      "w": 281.67,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "china",
+    "index": 10,
+    "asset": "v7",
+    "label": "GALERIE DES QUAIS",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 183.82
+    },
+    "after": {
+      "w": 343.44,
+      "h": 248.16
+    }
+  },
+  {
+    "location": "china",
+    "index": 11,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "china",
+    "index": 12,
+    "asset": "v7",
+    "label": "CUISINE DE NUIT",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "china",
+    "index": 13,
+    "asset": "v8",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 241.09
+    },
+    "after": {
+      "w": 265,
+      "h": 301.36
+    }
+  },
+  {
+    "location": "china",
+    "index": 14,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "china",
+    "index": 15,
+    "asset": "v7",
+    "label": "HALLE ALIMENTAIRE",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "china",
+    "index": 16,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 268.09
+    },
+    "after": {
+      "w": 265,
+      "h": 335.11
+    }
+  },
+  {
+    "location": "china",
+    "index": 17,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "asia",
+    "index": 0,
+    "asset": "v7",
+    "label": "HALLE DES TISSUS",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 214.46
+    },
+    "after": {
+      "w": 400.68,
+      "h": 289.52
+    }
+  },
+  {
+    "location": "asia",
+    "index": 1,
+    "asset": "v8",
+    "label": "GALERIE MANSOUR",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 241.09
+    },
+    "after": {
+      "w": 265,
+      "h": 301.36
+    }
+  },
+  {
+    "location": "asia",
+    "index": 2,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 242.18,
+      "h": 306.25
+    },
+    "after": {
+      "w": 242.18,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "asia",
+    "index": 3,
+    "asset": "v7",
+    "label": "CANTINE MOURAD",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "asia",
+    "index": 4,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "asia",
+    "index": 5,
+    "asset": "v8",
+    "label": "PASSAGE DES MODULES",
+    "boost": 1.25,
+    "before": {
+      "w": 225.33,
+      "h": 256.25
+    },
+    "after": {
+      "w": 281.67,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "asia",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "asia",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "asia",
+    "index": 8,
+    "asset": "v8",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 230.83,
+      "h": 262.5
+    },
+    "after": {
+      "w": 288.54,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "asia",
+    "index": 9,
+    "asset": "v7",
+    "label": "CUISINE COLLECTIVE",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "asia",
+    "index": 10,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 237.24,
+      "h": 300
+    },
+    "after": {
+      "w": 237.24,
+      "h": 300
+    }
+  },
+  {
+    "location": "asia",
+    "index": 11,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 277.01,
+      "h": 375
+    },
+    "after": {
+      "w": 277.01,
+      "h": 375
+    }
+  },
+  {
+    "location": "asia",
+    "index": 12,
+    "asset": "v6",
+    "label": "LOGEMENTS NORD",
+    "boost": 1,
+    "before": {
+      "w": 277.01,
+      "h": 375
+    },
+    "after": {
+      "w": 277.01,
+      "h": 375
+    }
+  },
+  {
+    "location": "asia",
+    "index": 13,
+    "asset": "v8",
+    "label": "LAVERIE",
+    "boost": 1.25,
+    "before": {
+      "w": 230.83,
+      "h": 262.5
+    },
+    "after": {
+      "w": 288.54,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "asia",
+    "index": 14,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "asia",
+    "index": 15,
+    "asset": "v8",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 230.83,
+      "h": 262.5
+    },
+    "after": {
+      "w": 288.54,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "asia",
+    "index": 16,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 277.01,
+      "h": 375
+    },
+    "after": {
+      "w": 277.01,
+      "h": 375
+    }
+  },
+  {
+    "location": "asia",
+    "index": 17,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 237.24,
+      "h": 300
+    },
+    "after": {
+      "w": 237.24,
+      "h": 300
+    }
+  },
+  {
+    "location": "asia",
+    "index": 18,
+    "asset": "v7",
+    "label": "GALERIE DU QUAI",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "asia",
+    "index": 19,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 277.01,
+      "h": 375
+    },
+    "after": {
+      "w": 277.01,
+      "h": 375
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 0,
+    "asset": "v6",
+    "label": "BLOC 41",
+    "boost": 1,
+    "before": {
+      "w": 313.95,
+      "h": 425
+    },
+    "after": {
+      "w": 313.95,
+      "h": 425
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 1,
+    "asset": "c0",
+    "label": "BLOC 42",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 372.35
+    },
+    "after": {
+      "w": 296.8,
+      "h": 372.35
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 2,
+    "asset": "v6",
+    "label": "BLOC 44",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 401.79
+    },
+    "after": {
+      "w": 296.8,
+      "h": 401.79
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 3,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 252.06,
+      "h": 318.75
+    },
+    "after": {
+      "w": 252.06,
+      "h": 318.75
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 4,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 401.79
+    },
+    "after": {
+      "w": 296.8,
+      "h": 401.79
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 5,
+    "asset": "v6",
+    "label": "BLOC 43",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 401.79
+    },
+    "after": {
+      "w": 296.8,
+      "h": 401.79
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 247.12,
+      "h": 312.5
+    },
+    "after": {
+      "w": 247.12,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 8,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 242.18,
+      "h": 306.25
+    },
+    "after": {
+      "w": 242.18,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 9,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 10,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 11,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 401.79
+    },
+    "after": {
+      "w": 296.8,
+      "h": 401.79
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 12,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 268.09
+    },
+    "after": {
+      "w": 265,
+      "h": 335.11
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 13,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 401.79
+    },
+    "after": {
+      "w": 296.8,
+      "h": 401.79
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 14,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 242.18,
+      "h": 306.25
+    },
+    "after": {
+      "w": 242.18,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 15,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 16,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 242.18,
+      "h": 306.25
+    },
+    "after": {
+      "w": 242.18,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 17,
+    "asset": "v7",
+    "label": "ÉPICERIE ET LAVERIE",
+    "boost": 1.35,
+    "before": {
+      "w": 294.09,
+      "h": 212.5
+    },
+    "after": {
+      "w": 397.02,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 18,
+    "asset": "v9",
+    "label": "ASCENSEURS",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 196.99
+    },
+    "after": {
+      "w": 265,
+      "h": 246.24
+    }
+  },
+  {
+    "location": "center",
+    "index": 0,
+    "asset": "c3",
+    "label": "ARCADIUS RECHERCHE",
+    "boost": 1,
+    "before": {
+      "w": 276.03,
+      "h": 462.5
+    },
+    "after": {
+      "w": 276.03,
+      "h": 462.5
+    }
+  },
+  {
+    "location": "center",
+    "index": 1,
+    "asset": "c3",
+    "label": "ARCADIUS CENTRAL",
+    "boost": 1,
+    "before": {
+      "w": 380.48,
+      "h": 637.5
+    },
+    "after": {
+      "w": 380.48,
+      "h": 637.5
+    }
+  },
+  {
+    "location": "center",
+    "index": 2,
+    "asset": "c3",
+    "label": "ARCADIUS FINANCES",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 426.25
+    },
+    "after": {
+      "w": 254.4,
+      "h": 426.25
+    }
+  },
+  {
+    "location": "center",
+    "index": 3,
+    "asset": "c3",
+    "label": "ARCADIUS COMMUNICATIONS",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 426.25
+    },
+    "after": {
+      "w": 254.4,
+      "h": 426.25
+    }
+  },
+  {
+    "location": "center",
+    "index": 4,
+    "asset": "v7",
+    "label": "GALERIE BÉRÉNICE",
+    "boost": 1.35,
+    "before": {
+      "w": 311.39,
+      "h": 225
+    },
+    "after": {
+      "w": 420.38,
+      "h": 303.75
+    }
+  },
+  {
+    "location": "center",
+    "index": 5,
+    "asset": "v10",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 287.83
+    },
+    "after": {
+      "w": 318,
+      "h": 359.79
+    }
+  },
+  {
+    "location": "center",
+    "index": 6,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 244.7,
+      "h": 331.25
+    },
+    "after": {
+      "w": 244.7,
+      "h": 331.25
+    }
+  },
+  {
+    "location": "center",
+    "index": 7,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 227.35,
+      "h": 287.5
+    },
+    "after": {
+      "w": 284.19,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "center",
+    "index": 8,
+    "asset": "v10",
+    "label": "SERVICES CENTRAUX",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 335.8
+    },
+    "after": {
+      "w": 296.8,
+      "h": 335.8
+    }
+  },
+  {
+    "location": "center",
+    "index": 9,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 331.45,
+      "h": 375
+    },
+    "after": {
+      "w": 331.45,
+      "h": 375
+    }
+  },
+  {
+    "location": "center",
+    "index": 10,
+    "asset": "v7",
+    "label": "GALERIE EST",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 214.46
+    },
+    "after": {
+      "w": 400.68,
+      "h": 289.52
+    }
+  },
+  {
+    "location": "center",
+    "index": 11,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 335.8
+    },
+    "after": {
+      "w": 296.8,
+      "h": 335.8
+    }
+  },
+  {
+    "location": "center",
+    "index": 12,
+    "asset": "v7",
+    "label": "GALERIE DES SERVICES",
+    "boost": 1.35,
+    "before": {
+      "w": 311.39,
+      "h": 225
+    },
+    "after": {
+      "w": 420.38,
+      "h": 303.75
+    }
+  },
+  {
+    "location": "center",
+    "index": 13,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 335.8
+    },
+    "after": {
+      "w": 296.8,
+      "h": 335.8
+    }
+  },
+  {
+    "location": "center",
+    "index": 14,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 268.09
+    },
+    "after": {
+      "w": 265,
+      "h": 335.11
+    }
+  },
+  {
+    "location": "center",
+    "index": 15,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 335.8
+    },
+    "after": {
+      "w": 296.8,
+      "h": 335.8
+    }
+  },
+  {
+    "location": "center",
+    "index": 16,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 0,
+    "asset": "c2",
+    "label": "CLÍNICA K-12",
+    "boost": 1.25,
+    "before": {
+      "w": 243.89,
+      "h": 256.25
+    },
+    "after": {
+      "w": 304.87,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 1,
+    "asset": "c2",
+    "label": "RÉÉDUCATION SEN",
+    "boost": 1.25,
+    "before": {
+      "w": 237.95,
+      "h": 250
+    },
+    "after": {
+      "w": 297.43,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 2,
+    "asset": "v10",
+    "label": "PHARMACIE",
+    "boost": 1,
+    "before": {
+      "w": 276.21,
+      "h": 312.5
+    },
+    "after": {
+      "w": 276.21,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 3,
+    "asset": "c2",
+    "label": "CHIRURGIE",
+    "boost": 1.25,
+    "before": {
+      "w": 249.84,
+      "h": 262.5
+    },
+    "after": {
+      "w": 312.3,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 4,
+    "asset": "v10",
+    "label": "LABORATOIRES",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 287.83
+    },
+    "after": {
+      "w": 318,
+      "h": 359.79
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 5,
+    "asset": "c2",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 249.84,
+      "h": 262.5
+    },
+    "after": {
+      "w": 312.3,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 6,
+    "asset": "v16",
+    "label": "ADMISSIONS",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 214.91
+    },
+    "after": {
+      "w": 400.68,
+      "h": 290.12
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 7,
+    "asset": "c2",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 249.84,
+      "h": 262.5
+    },
+    "after": {
+      "w": 312.3,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 8,
+    "asset": "v10",
+    "label": "LABORATOIRE EST",
+    "boost": 1,
+    "before": {
+      "w": 292.78,
+      "h": 331.25
+    },
+    "after": {
+      "w": 292.78,
+      "h": 331.25
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 9,
+    "asset": "c2",
+    "label": "SUIVI",
+    "boost": 1.25,
+    "before": {
+      "w": 243.89,
+      "h": 256.25
+    },
+    "after": {
+      "w": 304.87,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 10,
+    "asset": "c2",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 249.84,
+      "h": 262.5
+    },
+    "after": {
+      "w": 312.3,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 11,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 276.21,
+      "h": 312.5
+    },
+    "after": {
+      "w": 276.21,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "civic",
+    "index": 0,
+    "asset": "v14",
+    "label": "REGISTRE CIVIQUE",
+    "boost": 1,
+    "before": {
+      "w": 461.51,
+      "h": 312.5
+    },
+    "after": {
+      "w": 461.51,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "civic",
+    "index": 1,
+    "asset": "v10",
+    "label": "ARCHIVES DES BAUX",
+    "boost": 1,
+    "before": {
+      "w": 276.21,
+      "h": 312.5
+    },
+    "after": {
+      "w": 276.21,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "civic",
+    "index": 2,
+    "asset": "v16",
+    "label": "RECOURS",
+    "boost": 1.35,
+    "before": {
+      "w": 319.37,
+      "h": 231.25
+    },
+    "after": {
+      "w": 431.15,
+      "h": 312.19
+    }
+  },
+  {
+    "location": "civic",
+    "index": 3,
+    "asset": "v10",
+    "label": "ASCENSEURS VISITEURS",
+    "boost": 1,
+    "before": {
+      "w": 320.4,
+      "h": 362.5
+    },
+    "after": {
+      "w": 320.4,
+      "h": 362.5
+    }
+  },
+  {
+    "location": "civic",
+    "index": 4,
+    "asset": "v11",
+    "label": "SÛRETÉ",
+    "boost": 1,
+    "before": {
+      "w": 237.24,
+      "h": 300
+    },
+    "after": {
+      "w": 237.24,
+      "h": 300
+    }
+  },
+  {
+    "location": "civic",
+    "index": 5,
+    "asset": "v14",
+    "label": "CERTIFICATIONS",
+    "boost": 1.25,
+    "before": {
+      "w": 381.6,
+      "h": 258.39
+    },
+    "after": {
+      "w": 477,
+      "h": 322.99
+    }
+  },
+  {
+    "location": "civic",
+    "index": 6,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 292.78,
+      "h": 331.25
+    },
+    "after": {
+      "w": 292.78,
+      "h": 331.25
+    }
+  },
+  {
+    "location": "civic",
+    "index": 7,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 242.18,
+      "h": 306.25
+    },
+    "after": {
+      "w": 242.18,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "civic",
+    "index": 8,
+    "asset": "v16",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 214.91
+    },
+    "after": {
+      "w": 400.68,
+      "h": 290.12
+    }
+  },
+  {
+    "location": "civic",
+    "index": 9,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 335.8
+    },
+    "after": {
+      "w": 296.8,
+      "h": 335.8
+    }
+  },
+  {
+    "location": "civic",
+    "index": 10,
+    "asset": "v14",
+    "label": "CONSULTATION",
+    "boost": 1.25,
+    "before": {
+      "w": 378.44,
+      "h": 256.25
+    },
+    "after": {
+      "w": 473.05,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "civic",
+    "index": 11,
+    "asset": "v16",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 214.91
+    },
+    "after": {
+      "w": 400.68,
+      "h": 290.12
+    }
+  },
+  {
+    "location": "civic",
+    "index": 12,
+    "asset": "v10",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 335.8
+    },
+    "after": {
+      "w": 296.8,
+      "h": 335.8
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 0,
+    "asset": "c5",
+    "label": "HALL PUBLIC SMPD",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 284.43
+    },
+    "after": {
+      "w": 318,
+      "h": 355.53
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 1,
+    "asset": "c5",
+    "label": "GARDE",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 237.02
+    },
+    "after": {
+      "w": 265,
+      "h": 296.28
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 2,
+    "asset": "v11",
+    "label": "RETENUES",
+    "boost": 1,
+    "before": {
+      "w": 252.06,
+      "h": 318.75
+    },
+    "after": {
+      "w": 252.06,
+      "h": 318.75
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 3,
+    "asset": "c5",
+    "label": "DÉTENTION",
+    "boost": 1,
+    "before": {
+      "w": 290.69,
+      "h": 325
+    },
+    "after": {
+      "w": 290.69,
+      "h": 325
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 4,
+    "asset": "v9",
+    "label": "GARAGE D’INTERVENTION",
+    "boost": 1.25,
+    "before": {
+      "w": 282.5,
+      "h": 262.5
+    },
+    "after": {
+      "w": 353.13,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 5,
+    "asset": "v11",
+    "label": "SCELLÉS",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 268.09
+    },
+    "after": {
+      "w": 265,
+      "h": 335.11
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 6,
+    "asset": "v6",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 254.4,
+      "h": 344.39
+    },
+    "after": {
+      "w": 254.4,
+      "h": 344.39
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 7,
+    "asset": "v9",
+    "label": "VESTIAIRES",
+    "boost": 1.25,
+    "before": {
+      "w": 242.14,
+      "h": 225
+    },
+    "after": {
+      "w": 302.68,
+      "h": 281.25
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 8,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 9,
+    "asset": "c5",
+    "label": "SERVICE DES PIÈCES",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 237.02
+    },
+    "after": {
+      "w": 265,
+      "h": 296.28
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 10,
+    "asset": "v11",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 232.29,
+      "h": 293.75
+    },
+    "after": {
+      "w": 290.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 11,
+    "asset": "v11",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 242.18,
+      "h": 306.25
+    },
+    "after": {
+      "w": 242.18,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 12,
+    "asset": "v9",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 248.87,
+      "h": 231.25
+    },
+    "after": {
+      "w": 311.09,
+      "h": 289.06
+    }
+  },
+  {
+    "location": "upper",
+    "index": 0,
+    "asset": "v13",
+    "label": "RÉSIDENCE ASTER",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 244.74
+    },
+    "after": {
+      "w": 265,
+      "h": 305.92
+    }
+  },
+  {
+    "location": "upper",
+    "index": 1,
+    "asset": "v17",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 238.29,
+      "h": 212.5
+    },
+    "after": {
+      "w": 321.69,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "upper",
+    "index": 2,
+    "asset": "v15",
+    "label": "BELVÉDÈRE",
+    "boost": 1,
+    "before": {
+      "w": 169.6,
+      "h": 311.81
+    },
+    "after": {
+      "w": 169.6,
+      "h": 311.81
+    }
+  },
+  {
+    "location": "upper",
+    "index": 3,
+    "asset": "v16",
+    "label": "ACCUEIL",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 214.91
+    },
+    "after": {
+      "w": 400.68,
+      "h": 290.12
+    }
+  },
+  {
+    "location": "upper",
+    "index": 4,
+    "asset": "v13",
+    "label": "RÉSIDENCE ORIEL",
+    "boost": 1.25,
+    "before": {
+      "w": 227.39,
+      "h": 262.5
+    },
+    "after": {
+      "w": 284.24,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "upper",
+    "index": 5,
+    "asset": "v12",
+    "label": "JARDIN D’HIVER",
+    "boost": 1.25,
+    "before": {
+      "w": 292.82,
+      "h": 237.5
+    },
+    "after": {
+      "w": 366.02,
+      "h": 296.88
+    }
+  },
+  {
+    "location": "upper",
+    "index": 6,
+    "asset": "v17",
+    "label": "PAVILLON DE REPOS",
+    "boost": 1.35,
+    "before": {
+      "w": 252.31,
+      "h": 225
+    },
+    "after": {
+      "w": 340.61,
+      "h": 303.75
+    }
+  },
+  {
+    "location": "upper",
+    "index": 7,
+    "asset": "v16",
+    "label": "HORTICULTURE",
+    "boost": 1.35,
+    "before": {
+      "w": 302.11,
+      "h": 218.75
+    },
+    "after": {
+      "w": 407.85,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "upper",
+    "index": 8,
+    "asset": "v14",
+    "label": "MUSIQUE",
+    "boost": 1.25,
+    "before": {
+      "w": 339.2,
+      "h": 229.68
+    },
+    "after": {
+      "w": 424,
+      "h": 287.1
+    }
+  },
+  {
+    "location": "upper",
+    "index": 9,
+    "asset": "v12",
+    "label": "ORANGERIE",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 240.73
+    },
+    "after": {
+      "w": 371,
+      "h": 300.92
+    }
+  },
+  {
+    "location": "upper",
+    "index": 10,
+    "asset": "v17",
+    "label": "TERRASSE EST",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 226.87
+    },
+    "after": {
+      "w": 343.44,
+      "h": 306.27
+    }
+  },
+  {
+    "location": "upper",
+    "index": 11,
+    "asset": "v14",
+    "label": "GALERIE DES JARDINS",
+    "boost": 1.25,
+    "before": {
+      "w": 339.2,
+      "h": 229.68
+    },
+    "after": {
+      "w": 424,
+      "h": 287.1
+    }
+  },
+  {
+    "location": "spire",
+    "index": 0,
+    "asset": "c7",
+    "label": "PILIER DU SIÈGE IO",
+    "boost": 1,
+    "before": {
+      "w": 291.75,
+      "h": 712.5
+    },
+    "after": {
+      "w": 291.75,
+      "h": 712.5
+    }
+  },
+  {
+    "location": "spire",
+    "index": 1,
+    "asset": "v14",
+    "label": "CONSULTATIONS",
+    "boost": 1.25,
+    "before": {
+      "w": 381.6,
+      "h": 258.39
+    },
+    "after": {
+      "w": 477,
+      "h": 322.99
+    }
+  },
+  {
+    "location": "spire",
+    "index": 2,
+    "asset": "v14",
+    "label": "ARCHIVES DE CONSULTATION",
+    "boost": 1.25,
+    "before": {
+      "w": 415.36,
+      "h": 281.25
+    },
+    "after": {
+      "w": 519.2,
+      "h": 351.56
+    }
+  },
+  {
+    "location": "spire",
+    "index": 3,
+    "asset": "v13",
+    "label": "SALON DES VISITEURS",
+    "boost": 1.25,
+    "before": {
+      "w": 227.39,
+      "h": 262.5
+    },
+    "after": {
+      "w": 284.24,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "spire",
+    "index": 4,
+    "asset": "v17",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 226.87
+    },
+    "after": {
+      "w": 343.44,
+      "h": 306.27
+    }
+  },
+  {
+    "location": "spire",
+    "index": 5,
+    "asset": "v16",
+    "label": "SÛRETÉ DE L’ATRIUM",
+    "boost": 1.35,
+    "before": {
+      "w": 362.53,
+      "h": 262.5
+    },
+    "after": {
+      "w": 489.42,
+      "h": 354.38
+    }
+  },
+  {
+    "location": "spire",
+    "index": 6,
+    "asset": "v14",
+    "label": "PORTIQUE DES VISITEURS",
+    "boost": 1.25,
+    "before": {
+      "w": 415.36,
+      "h": 281.25
+    },
+    "after": {
+      "w": 519.2,
+      "h": 351.56
+    }
+  },
+  {
+    "location": "spire",
+    "index": 7,
+    "asset": "v16",
+    "label": "SERVICES INTÉGRÉS",
+    "boost": 1.35,
+    "before": {
+      "w": 310.74,
+      "h": 225
+    },
+    "after": {
+      "w": 419.5,
+      "h": 303.75
+    }
+  },
+  {
+    "location": "spire",
+    "index": 8,
+    "asset": "v17",
+    "label": "",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 226.87
+    },
+    "after": {
+      "w": 343.44,
+      "h": 306.27
+    }
+  },
+  {
+    "location": "industry",
+    "index": 0,
+    "asset": "x3",
+    "label": "ASSEMBLAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 336.39,
+      "h": 275
+    },
+    "after": {
+      "w": 454.13,
+      "h": 371.25
+    }
+  },
+  {
+    "location": "industry",
+    "index": 1,
+    "asset": "b3",
+    "label": "IO INDUSTRIES",
+    "boost": 1,
+    "before": {
+      "w": 323.04,
+      "h": 306.25
+    },
+    "after": {
+      "w": 323.04,
+      "h": 306.25
+    }
+  },
+  {
+    "location": "industry",
+    "index": 2,
+    "asset": "x3",
+    "label": "EXPÉDITIONS",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "industry",
+    "index": 3,
+    "asset": "b3",
+    "label": "FONDERIE",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 281.37
+    },
+    "after": {
+      "w": 371,
+      "h": 351.72
+    }
+  },
+  {
+    "location": "industry",
+    "index": 4,
+    "asset": "v3",
+    "label": "MÉTAUX",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "industry",
+    "index": 5,
+    "asset": "b3",
+    "label": "OUTILS",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 281.37
+    },
+    "after": {
+      "w": 371,
+      "h": 351.72
+    }
+  },
+  {
+    "location": "industry",
+    "index": 6,
+    "asset": "x3",
+    "label": "MOTEURS",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "industry",
+    "index": 7,
+    "asset": "x3",
+    "label": "EXPÉDITIONS B",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "industry",
+    "index": 8,
+    "asset": "n2",
+    "label": "PALETTES",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 238.57
+    },
+    "after": {
+      "w": 318,
+      "h": 298.21
+    }
+  },
+  {
+    "location": "industry",
+    "index": 9,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "industry",
+    "index": 10,
+    "asset": "v3",
+    "label": "RETOURS",
+    "boost": 1.35,
+    "before": {
+      "w": 357.59,
+      "h": 250
+    },
+    "after": {
+      "w": 482.74,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "industry",
+    "index": 11,
+    "asset": "b3",
+    "label": "ESSAIS",
+    "boost": 1.25,
+    "before": {
+      "w": 296.8,
+      "h": 281.37
+    },
+    "after": {
+      "w": 371,
+      "h": 351.72
+    }
+  },
+  {
+    "location": "industry",
+    "index": 12,
+    "asset": "x5",
+    "label": "RÉPARATION",
+    "boost": 1.5,
+    "before": {
+      "w": 339.2,
+      "h": 245.29
+    },
+    "after": {
+      "w": 508.8,
+      "h": 367.93
+    }
+  },
+  {
+    "location": "industry",
+    "index": 13,
+    "asset": "x3",
+    "label": "STOCK 4",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "industry",
+    "index": 14,
+    "asset": "v3",
+    "label": "STOCK 5",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 0,
+    "asset": "x5",
+    "label": "CONTRÔLE NORD",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 183.97
+    },
+    "after": {
+      "w": 381.6,
+      "h": 275.95
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 1,
+    "asset": "x3",
+    "label": "INSPECTION",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 2,
+    "asset": "x5",
+    "label": "SERVICE",
+    "boost": 1.5,
+    "before": {
+      "w": 233.36,
+      "h": 168.75
+    },
+    "after": {
+      "w": 350.04,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 3,
+    "asset": "x3",
+    "label": "INSPECTION B",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 4,
+    "asset": "x5",
+    "label": "PAPIERS",
+    "boost": 1.5,
+    "before": {
+      "w": 302.5,
+      "h": 218.75
+    },
+    "after": {
+      "w": 453.75,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 5,
+    "asset": "v3",
+    "label": "COLIS",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 6,
+    "asset": "x5",
+    "label": "LIAISON",
+    "boost": 1.5,
+    "before": {
+      "w": 302.5,
+      "h": 218.75
+    },
+    "after": {
+      "w": 453.75,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 7,
+    "asset": "x5",
+    "label": "CIVILS",
+    "boost": 1.5,
+    "before": {
+      "w": 302.5,
+      "h": 218.75
+    },
+    "after": {
+      "w": 453.75,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 8,
+    "asset": "x5",
+    "label": "ATTENTE",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 9,
+    "asset": "x3",
+    "label": "CONSIGNE",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 10,
+    "asset": "x5",
+    "label": "SOINS",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 11,
+    "asset": "x3",
+    "label": "PESÉE",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 12,
+    "asset": "v3",
+    "label": "DÉSINFECTION",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 13,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 14,
+    "asset": "x3",
+    "label": "GARAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 0,
+    "asset": "x3",
+    "label": "DOUANE EST",
+    "boost": 1.35,
+    "before": {
+      "w": 267.58,
+      "h": 218.75
+    },
+    "after": {
+      "w": 361.24,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 1,
+    "asset": "x3",
+    "label": "MARCHANDISES",
+    "boost": 1.35,
+    "before": {
+      "w": 282.87,
+      "h": 231.25
+    },
+    "after": {
+      "w": 381.88,
+      "h": 312.19
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 2,
+    "asset": "x5",
+    "label": "BUREAU",
+    "boost": 1.5,
+    "before": {
+      "w": 242,
+      "h": 175
+    },
+    "after": {
+      "w": 363,
+      "h": 262.5
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 3,
+    "asset": "v3",
+    "label": "MANIFESTES",
+    "boost": 1.35,
+    "before": {
+      "w": 357.59,
+      "h": 250
+    },
+    "after": {
+      "w": 482.74,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 4,
+    "asset": "x3",
+    "label": "INSPECTION",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 5,
+    "asset": "x5",
+    "label": "VÉRIFICATIONS",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 6,
+    "asset": "v3",
+    "label": "RETENUES",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 7,
+    "asset": "x5",
+    "label": "COURTIERS",
+    "boost": 1.5,
+    "before": {
+      "w": 302.5,
+      "h": 218.75
+    },
+    "after": {
+      "w": 453.75,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 8,
+    "asset": "x5",
+    "label": "TRANSBORD",
+    "boost": 1.5,
+    "before": {
+      "w": 337.07,
+      "h": 243.75
+    },
+    "after": {
+      "w": 505.61,
+      "h": 365.63
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 9,
+    "asset": "x3",
+    "label": "LOT 3",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 10,
+    "asset": "x3",
+    "label": "ÉQUIPAGES",
+    "boost": 1.35,
+    "before": {
+      "w": 267.58,
+      "h": 218.75
+    },
+    "after": {
+      "w": 361.24,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 11,
+    "asset": "x3",
+    "label": "SAISIES",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 12,
+    "asset": "v3",
+    "label": "COLIS 5",
+    "boost": 1.35,
+    "before": {
+      "w": 339.2,
+      "h": 237.15
+    },
+    "after": {
+      "w": 457.92,
+      "h": 320.15
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 13,
+    "asset": "x5",
+    "label": "LIAISON",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 14,
+    "asset": "n2",
+    "label": "ATELIER",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 238.57
+    },
+    "after": {
+      "w": 318,
+      "h": 298.21
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 0,
+    "asset": "x5",
+    "label": "LIAISON NORD",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 183.97
+    },
+    "after": {
+      "w": 381.6,
+      "h": 275.95
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 1,
+    "asset": "x5",
+    "label": "CASERNEMENT",
+    "boost": 1.5,
+    "before": {
+      "w": 285.21,
+      "h": 206.25
+    },
+    "after": {
+      "w": 427.82,
+      "h": 309.38
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 2,
+    "asset": "x3",
+    "label": "HANGAR",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 3,
+    "asset": "x5",
+    "label": "OBSERVATION",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 4,
+    "asset": "x3",
+    "label": "TRANSMISSIONS",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 5,
+    "asset": "x5",
+    "label": "GARDE",
+    "boost": 1.5,
+    "before": {
+      "w": 302.5,
+      "h": 218.75
+    },
+    "after": {
+      "w": 453.75,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 6,
+    "asset": "x5",
+    "label": "LIAISON 2",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 7,
+    "asset": "x5",
+    "label": "PATROUILLES",
+    "boost": 1.5,
+    "before": {
+      "w": 302.5,
+      "h": 218.75
+    },
+    "after": {
+      "w": 453.75,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 8,
+    "asset": "x5",
+    "label": "CASERNE 2",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 9,
+    "asset": "x3",
+    "label": "MUNITIONS",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 10,
+    "asset": "v3",
+    "label": "INFIRMERIE",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 207.5
+    },
+    "after": {
+      "w": 400.68,
+      "h": 280.13
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 11,
+    "asset": "x3",
+    "label": "RELAIS",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 12,
+    "asset": "x3",
+    "label": "BATTERIES",
+    "boost": 1.35,
+    "before": {
+      "w": 298.16,
+      "h": 243.75
+    },
+    "after": {
+      "w": 402.52,
+      "h": 329.06
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 13,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 14,
+    "asset": "x3",
+    "label": "GARAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 0,
+    "asset": "x5",
+    "label": "LIAISON EST",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 183.97
+    },
+    "after": {
+      "w": 381.6,
+      "h": 275.95
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 1,
+    "asset": "x5",
+    "label": "COMMUNICATIONS",
+    "boost": 1.5,
+    "before": {
+      "w": 293.86,
+      "h": 212.5
+    },
+    "after": {
+      "w": 440.79,
+      "h": 318.75
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 2,
+    "asset": "x3",
+    "label": "GARAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 3,
+    "asset": "x3",
+    "label": "DRONES",
+    "boost": 1.35,
+    "before": {
+      "w": 321.1,
+      "h": 262.5
+    },
+    "after": {
+      "w": 433.48,
+      "h": 354.38
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 4,
+    "asset": "n2",
+    "label": "RÉPARATION",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 238.57
+    },
+    "after": {
+      "w": 318,
+      "h": 298.21
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 5,
+    "asset": "x5",
+    "label": "GARDE",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 6,
+    "asset": "x3",
+    "label": "PIÈCES",
+    "boost": 1.35,
+    "before": {
+      "w": 298.16,
+      "h": 243.75
+    },
+    "after": {
+      "w": 402.52,
+      "h": 329.06
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 7,
+    "asset": "x3",
+    "label": "RAVITAILLEMENT",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 8,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 9,
+    "asset": "x5",
+    "label": "REPOS",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 10,
+    "asset": "x3",
+    "label": "EAU",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 11,
+    "asset": "x5",
+    "label": "OPÉRATEURS",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 12,
+    "asset": "x3",
+    "label": "ACCUMULATEURS",
+    "boost": 1.35,
+    "before": {
+      "w": 298.16,
+      "h": 243.75
+    },
+    "after": {
+      "w": 402.52,
+      "h": 329.06
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 13,
+    "asset": "x3",
+    "label": "STOCKAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 14,
+    "asset": "x3",
+    "label": "LIAISON 3",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 0,
+    "asset": "x3",
+    "label": "DÉPÔT SUD",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 1,
+    "asset": "x5",
+    "label": "CASERNEMENT",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 183.97
+    },
+    "after": {
+      "w": 381.6,
+      "h": 275.95
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 2,
+    "asset": "x5",
+    "label": "LIAISON SUD",
+    "boost": 1.5,
+    "before": {
+      "w": 276.57,
+      "h": 200
+    },
+    "after": {
+      "w": 414.86,
+      "h": 300
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 3,
+    "asset": "x3",
+    "label": "RÉSERVE B",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 4,
+    "asset": "x3",
+    "label": "RÉSERVE C",
+    "boost": 1.35,
+    "before": {
+      "w": 305.81,
+      "h": 250
+    },
+    "after": {
+      "w": 412.84,
+      "h": 337.5
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 5,
+    "asset": "x5",
+    "label": "COMPTABILITÉ",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 6,
+    "asset": "x5",
+    "label": "GUET",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 7,
+    "asset": "x5",
+    "label": "CASERNE 3",
+    "boost": 1.5,
+    "before": {
+      "w": 302.5,
+      "h": 218.75
+    },
+    "after": {
+      "w": 453.75,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 8,
+    "asset": "x3",
+    "label": "CASERNE 4",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 9,
+    "asset": "x5",
+    "label": "CANTINE",
+    "boost": 1.5,
+    "before": {
+      "w": 296.8,
+      "h": 214.63
+    },
+    "after": {
+      "w": 445.2,
+      "h": 321.94
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 10,
+    "asset": "n2",
+    "label": "EAU",
+    "boost": 1.25,
+    "before": {
+      "w": 259.93,
+      "h": 243.75
+    },
+    "after": {
+      "w": 324.91,
+      "h": 304.69
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 11,
+    "asset": "n2",
+    "label": "VÉHICULES",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 238.57
+    },
+    "after": {
+      "w": 318,
+      "h": 298.21
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 12,
+    "asset": "x3",
+    "label": "PNEUS",
+    "boost": 1.35,
+    "before": {
+      "w": 298.16,
+      "h": 243.75
+    },
+    "after": {
+      "w": 402.52,
+      "h": 329.06
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 13,
+    "asset": "x3",
+    "label": "PIÈCES",
+    "boost": 1.35,
+    "before": {
+      "w": 296.8,
+      "h": 242.64
+    },
+    "after": {
+      "w": 400.68,
+      "h": 327.56
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 14,
+    "asset": "n2",
+    "label": "ATELIER LOURD",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 238.57
+    },
+    "after": {
+      "w": 318,
+      "h": 298.21
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 0,
+    "asset": "n1",
+    "label": "GARE DES VOYAGEURS",
+    "boost": 1.25,
+    "before": {
+      "w": 288.84,
+      "h": 256.25
+    },
+    "after": {
+      "w": 361.05,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 1,
+    "asset": "n1",
+    "label": "ENTREPÔT",
+    "boost": 1.25,
+    "before": {
+      "w": 288.84,
+      "h": 256.25
+    },
+    "after": {
+      "w": 361.05,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 2,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 198.74,
+      "h": 206.25
+    },
+    "after": {
+      "w": 248.43,
+      "h": 257.81
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 3,
+    "asset": "n0",
+    "label": "IMMEUBLE ÉVACUÉ",
+    "boost": 1,
+    "before": {
+      "w": 315.34,
+      "h": 318.75
+    },
+    "after": {
+      "w": 315.34,
+      "h": 318.75
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 4,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 220.01
+    },
+    "after": {
+      "w": 265,
+      "h": 275.01
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 5,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 284.42,
+      "h": 287.5
+    },
+    "after": {
+      "w": 355.53,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 6,
+    "asset": "v2",
+    "label": "RELAIS DES CHAUFFEURS",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 183.76
+    },
+    "after": {
+      "w": 212,
+      "h": 229.7
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 7,
+    "asset": "v4",
+    "label": "LOGEMENTS",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 8,
+    "asset": "b0",
+    "label": "POSTE DES CITERNES",
+    "boost": 1.35,
+    "before": {
+      "w": 256.02,
+      "h": 212.5
+    },
+    "after": {
+      "w": 345.63,
+      "h": 286.88
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 9,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 204.76,
+      "h": 212.5
+    },
+    "after": {
+      "w": 255.96,
+      "h": 265.63
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 10,
+    "asset": "x5",
+    "label": "VEILLE",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 183.97
+    },
+    "after": {
+      "w": 381.6,
+      "h": 275.95
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 11,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 284.42,
+      "h": 287.5
+    },
+    "after": {
+      "w": 355.53,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 12,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 13,
+    "asset": "v3",
+    "label": "ATELIER DES BÂCHES",
+    "boost": 1.35,
+    "before": {
+      "w": 277.13,
+      "h": 193.75
+    },
+    "after": {
+      "w": 374.13,
+      "h": 261.56
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 14,
+    "asset": "x3",
+    "label": "RÉSERVE D’EAU",
+    "boost": 1.35,
+    "before": {
+      "w": 282.87,
+      "h": 231.25
+    },
+    "after": {
+      "w": 381.88,
+      "h": 312.19
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 15,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 16,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 257.15
+    },
+    "after": {
+      "w": 318,
+      "h": 321.44
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 17,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 0,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 290.6,
+      "h": 293.75
+    },
+    "after": {
+      "w": 363.26,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 1,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 2,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 180.37
+    },
+    "after": {
+      "w": 318,
+      "h": 270.55
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 3,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 290.6,
+      "h": 293.75
+    },
+    "after": {
+      "w": 363.26,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 4,
+    "asset": "n3",
+    "label": "DISPENSAIRE",
+    "boost": 1.25,
+    "before": {
+      "w": 286.53,
+      "h": 256.25
+    },
+    "after": {
+      "w": 358.17,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 5,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 6,
+    "asset": "n4",
+    "label": "HALLE COMMUNE",
+    "boost": 1.25,
+    "before": {
+      "w": 275.98,
+      "h": 243.75
+    },
+    "after": {
+      "w": 344.98,
+      "h": 304.69
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 7,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 204.76,
+      "h": 212.5
+    },
+    "after": {
+      "w": 255.96,
+      "h": 265.63
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 8,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 290.6,
+      "h": 293.75
+    },
+    "after": {
+      "w": 363.26,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 9,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 220.39,
+      "h": 187.5
+    },
+    "after": {
+      "w": 330.58,
+      "h": 281.25
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 171.86,
+      "h": 193.75
+    },
+    "after": {
+      "w": 257.78,
+      "h": 290.63
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 11,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 257.15
+    },
+    "after": {
+      "w": 318,
+      "h": 321.44
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 12,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 13,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 257.15
+    },
+    "after": {
+      "w": 318,
+      "h": 321.44
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 14,
+    "asset": "n5",
+    "label": "CINÉMA",
+    "boost": 1.25,
+    "before": {
+      "w": 285.07,
+      "h": 287.5
+    },
+    "after": {
+      "w": 356.34,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 15,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 16,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 205.69,
+      "h": 175
+    },
+    "after": {
+      "w": 308.54,
+      "h": 262.5
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 17,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 205.69,
+      "h": 175
+    },
+    "after": {
+      "w": 308.54,
+      "h": 262.5
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 166.31,
+      "h": 187.5
+    },
+    "after": {
+      "w": 249.47,
+      "h": 281.25
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 19,
+    "asset": "v0",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 212,
+      "h": 180.37
+    },
+    "after": {
+      "w": 318,
+      "h": 270.55
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 0,
+    "asset": "n2",
+    "label": "REMISAGE DU TRAM",
+    "boost": 1.25,
+    "before": {
+      "w": 293.25,
+      "h": 275
+    },
+    "after": {
+      "w": 366.57,
+      "h": 343.75
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 1,
+    "asset": "n1",
+    "label": "ANCIENNE GARE DE FRET",
+    "boost": 1.25,
+    "before": {
+      "w": 295.89,
+      "h": 262.5
+    },
+    "after": {
+      "w": 369.86,
+      "h": 328.13
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 2,
+    "asset": "n2",
+    "label": "TREUILS",
+    "boost": 1.25,
+    "before": {
+      "w": 273.26,
+      "h": 256.25
+    },
+    "after": {
+      "w": 341.57,
+      "h": 320.31
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 3,
+    "asset": "n0",
+    "label": "ÉQUIPAGES",
+    "boost": 1.25,
+    "before": {
+      "w": 284.42,
+      "h": 287.5
+    },
+    "after": {
+      "w": 355.53,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 4,
+    "asset": "x3",
+    "label": "ROUES",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 5,
+    "asset": "v3",
+    "label": "MOTEURS",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 177.86
+    },
+    "after": {
+      "w": 343.44,
+      "h": 240.11
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 6,
+    "asset": "x3",
+    "label": "GABARITS",
+    "boost": 1.35,
+    "before": {
+      "w": 267.58,
+      "h": 218.75
+    },
+    "after": {
+      "w": 361.24,
+      "h": 295.31
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 7,
+    "asset": "n2",
+    "label": "DÉMONTAGE",
+    "boost": 1.25,
+    "before": {
+      "w": 266.59,
+      "h": 250
+    },
+    "after": {
+      "w": 333.24,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 8,
+    "asset": "v3",
+    "label": "AJUSTAGE",
+    "boost": 1.35,
+    "before": {
+      "w": 286.07,
+      "h": 200
+    },
+    "after": {
+      "w": 386.19,
+      "h": 270
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 9,
+    "asset": "v2",
+    "label": "DORTOIRS",
+    "boost": 1.25,
+    "before": {
+      "w": 201.89,
+      "h": 218.75
+    },
+    "after": {
+      "w": 252.36,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "boost": 1.5,
+    "before": {
+      "w": 169.6,
+      "h": 191.21
+    },
+    "after": {
+      "w": 254.4,
+      "h": 286.81
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 11,
+    "asset": "n4",
+    "label": "MESURES",
+    "boost": 1.25,
+    "before": {
+      "w": 275.98,
+      "h": 243.75
+    },
+    "after": {
+      "w": 344.98,
+      "h": 304.69
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 12,
+    "asset": "v3",
+    "label": "POMPES",
+    "boost": 1.35,
+    "before": {
+      "w": 277.13,
+      "h": 193.75
+    },
+    "after": {
+      "w": 374.13,
+      "h": 261.56
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 13,
+    "asset": "x3",
+    "label": "LOTS",
+    "boost": 1.35,
+    "before": {
+      "w": 254.4,
+      "h": 207.97
+    },
+    "after": {
+      "w": 343.44,
+      "h": 280.76
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 14,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 15,
+    "asset": "v3",
+    "label": "RÂTELIERS",
+    "boost": 1.35,
+    "before": {
+      "w": 268.19,
+      "h": 187.5
+    },
+    "after": {
+      "w": 362.06,
+      "h": 253.13
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 0,
+    "asset": "b4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 333.89,
+      "h": 293.75
+    },
+    "after": {
+      "w": 417.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 220.01
+    },
+    "after": {
+      "w": 265,
+      "h": 275.01
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 2,
+    "asset": "n0",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.79,
+      "h": 300
+    },
+    "after": {
+      "w": 296.79,
+      "h": 300
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 3,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 169.6,
+      "h": 176.01
+    },
+    "after": {
+      "w": 212,
+      "h": 220.01
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 4,
+    "asset": "b4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 333.89,
+      "h": 293.75
+    },
+    "after": {
+      "w": 417.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 5,
+    "asset": "n0",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 309.15,
+      "h": 312.5
+    },
+    "after": {
+      "w": 309.15,
+      "h": 312.5
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 6,
+    "asset": "n0",
+    "label": "",
+    "boost": 1,
+    "before": {
+      "w": 296.8,
+      "h": 300.01
+    },
+    "after": {
+      "w": 296.8,
+      "h": 300.01
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 7,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 210.79,
+      "h": 218.75
+    },
+    "after": {
+      "w": 263.48,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 8,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 210.79,
+      "h": 218.75
+    },
+    "after": {
+      "w": 263.48,
+      "h": 273.44
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 9,
+    "asset": "x3",
+    "label": "ÉQUIPE IO",
+    "boost": 1.35,
+    "before": {
+      "w": 282.87,
+      "h": 231.25
+    },
+    "after": {
+      "w": 381.88,
+      "h": 312.19
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 10,
+    "asset": "x5",
+    "label": "LIAISON IO",
+    "boost": 1.5,
+    "before": {
+      "w": 254.4,
+      "h": 183.97
+    },
+    "after": {
+      "w": 381.6,
+      "h": 275.95
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 11,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 220.01
+    },
+    "after": {
+      "w": 265,
+      "h": 275.01
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 12,
+    "asset": "n0",
+    "label": "ABRI NATIVOS",
+    "boost": 1.25,
+    "before": {
+      "w": 290.6,
+      "h": 293.75
+    },
+    "after": {
+      "w": 363.26,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 13,
+    "asset": "n0",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 284.42,
+      "h": 287.5
+    },
+    "after": {
+      "w": 355.53,
+      "h": 359.38
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 14,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 216.81,
+      "h": 225
+    },
+    "after": {
+      "w": 271.01,
+      "h": 281.25
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 15,
+    "asset": "b4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 333.89,
+      "h": 293.75
+    },
+    "after": {
+      "w": 417.37,
+      "h": 367.19
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 16,
+    "asset": "v5",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 212,
+      "h": 220.01
+    },
+    "after": {
+      "w": 265,
+      "h": 275.01
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 17,
+    "asset": "n2",
+    "label": "ANCIEN ATELIER",
+    "boost": 1.25,
+    "before": {
+      "w": 254.4,
+      "h": 238.57
+    },
+    "after": {
+      "w": 318,
+      "h": 298.21
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 18,
+    "asset": "b4",
+    "label": "",
+    "boost": 1.25,
+    "before": {
+      "w": 333.89,
+      "h": 293.75
+    },
+    "after": {
+      "w": 417.37,
+      "h": 367.19
+    }
+  }
+]

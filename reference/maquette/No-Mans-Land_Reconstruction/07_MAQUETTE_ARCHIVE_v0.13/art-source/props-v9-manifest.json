@@ -1,0 +1,410 @@
+[
+  {
+    "index": 0,
+    "kind": "clothesline",
+    "file": "dist/assets/props-v9-0.webp",
+    "width": 522,
+    "height": 455,
+    "source_bbox": [
+      20,
+      15,
+      534,
+      462
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 1,
+    "kind": "linenCart",
+    "file": "dist/assets/props-v9-1.webp",
+    "width": 472,
+    "height": 322,
+    "source_bbox": [
+      549,
+      122,
+      1013,
+      436
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 2,
+    "kind": "firewood",
+    "file": "dist/assets/props-v9-2.webp",
+    "width": 431,
+    "height": 445,
+    "source_bbox": [
+      1088,
+      37,
+      1511,
+      474
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 3,
+    "kind": "cookstove",
+    "file": "dist/assets/props-v9-3.webp",
+    "width": 394,
+    "height": 511,
+    "source_bbox": [
+      62,
+      483,
+      448,
+      986
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 4,
+    "kind": "fountainRuined",
+    "file": "dist/assets/props-v9-4.webp",
+    "width": 503,
+    "height": 443,
+    "source_bbox": [
+      515,
+      525,
+      1010,
+      960
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 5,
+    "kind": "gardenboxes",
+    "file": "dist/assets/props-v9-5.webp",
+    "width": 504,
+    "height": 492,
+    "source_bbox": [
+      1029,
+      501,
+      1525,
+      985
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 6,
+    "kind": "hullplate",
+    "file": "dist/assets/props-v9-6.webp",
+    "width": 445,
+    "height": 516,
+    "source_bbox": [
+      35,
+      11,
+      472,
+      519
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 7,
+    "kind": "netrack",
+    "file": "dist/assets/props-v9-7.webp",
+    "width": 502,
+    "height": 469,
+    "source_bbox": [
+      533,
+      60,
+      1027,
+      521
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 8,
+    "kind": "capstan",
+    "file": "dist/assets/props-v9-8.webp",
+    "width": 428,
+    "height": 431,
+    "source_bbox": [
+      1091,
+      115,
+      1511,
+      538
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 9,
+    "kind": "rubble",
+    "file": "dist/assets/props-v9-9.webp",
+    "width": 529,
+    "height": 421,
+    "source_bbox": [
+      11,
+      584,
+      532,
+      997
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 10,
+    "kind": "sandbag",
+    "file": "dist/assets/props-v9-10.webp",
+    "width": 528,
+    "height": 366,
+    "source_bbox": [
+      536,
+      617,
+      1056,
+      975
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 11,
+    "kind": "rail",
+    "file": "dist/assets/props-v9-11.webp",
+    "width": 520,
+    "height": 390,
+    "source_bbox": [
+      1013,
+      593,
+      1525,
+      975
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 12,
+    "kind": "fountain",
+    "file": "dist/assets/props-v9-12.webp",
+    "width": 461,
+    "height": 465,
+    "source_bbox": [
+      49,
+      19,
+      502,
+      476
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 13,
+    "kind": "balustrade",
+    "file": "dist/assets/props-v9-13.webp",
+    "width": 509,
+    "height": 437,
+    "source_bbox": [
+      560,
+      53,
+      1061,
+      482
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 14,
+    "kind": "advert",
+    "file": "dist/assets/props-v9-14.webp",
+    "width": 271,
+    "height": 489,
+    "source_bbox": [
+      1177,
+      4,
+      1440,
+      485
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 15,
+    "kind": "sortingbins",
+    "file": "dist/assets/props-v9-15.webp",
+    "width": 474,
+    "height": 426,
+    "source_bbox": [
+      58,
+      544,
+      524,
+      962
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 16,
+    "kind": "electrical",
+    "file": "dist/assets/props-v9-16.webp",
+    "width": 291,
+    "height": 519,
+    "source_bbox": [
+      668,
+      481,
+      951,
+      992
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 17,
+    "kind": "sculpture",
+    "file": "dist/assets/props-v9-17.webp",
+    "width": 294,
+    "height": 486,
+    "source_bbox": [
+      1164,
+      507,
+      1450,
+      985
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 18,
+    "kind": "rock",
+    "file": "dist/assets/props-v9-18.webp",
+    "width": 500,
+    "height": 501,
+    "source_bbox": [
+      33,
+      33,
+      525,
+      526
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 19,
+    "kind": "scrub",
+    "file": "dist/assets/props-v9-19.webp",
+    "width": 531,
+    "height": 463,
+    "source_bbox": [
+      543,
+      50,
+      1066,
+      505
+    ],
+    "alpha_extrema": [
+      0,
+      253
+    ]
+  },
+  {
+    "index": 20,
+    "kind": "tyre",
+    "file": "dist/assets/props-v9-20.webp",
+    "width": 426,
+    "height": 406,
+    "source_bbox": [
+      1106,
+      101,
+      1524,
+      499
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 21,
+    "kind": "pallet",
+    "file": "dist/assets/props-v9-21.webp",
+    "width": 548,
+    "height": 372,
+    "source_bbox": [
+      36,
+      585,
+      576,
+      949
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 22,
+    "kind": "cablecoil",
+    "file": "dist/assets/props-v9-22.webp",
+    "width": 541,
+    "height": 479,
+    "source_bbox": [
+      582,
+      528,
+      1115,
+      999
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "index": 23,
+    "kind": "buoy",
+    "file": "dist/assets/props-v9-23.webp",
+    "width": 262,
+    "height": 487,
+    "source_bbox": [
+      1190,
+      495,
+      1444,
+      974
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  }
+]

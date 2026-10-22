@@ -1,0 +1,9902 @@
+[
+  {
+    "location": "dusk",
+    "index": 0,
+    "asset": "b0",
+    "label": "MAISON DE L’EAU",
+    "before": {
+      "q": 4,
+      "r": 4,
+      "w": 6,
+      "d": 5,
+      "height": 310
+    },
+    "after": {
+      "q": 7,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 165
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 1,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 10,
+      "r": 4,
+      "w": 4,
+      "d": 4,
+      "height": 231
+    },
+    "after": {
+      "q": 12,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 2,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 4,
+      "r": 9,
+      "w": 5,
+      "d": 4,
+      "height": 344
+    },
+    "after": {
+      "q": 7,
+      "r": 11,
+      "w": 2,
+      "d": 2,
+      "height": 125
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 3,
+    "asset": "v1",
+    "label": "ÉPICERIE",
+    "before": {
+      "q": 18,
+      "r": 4,
+      "w": 5,
+      "d": 5,
+      "height": 427
+    },
+    "after": {
+      "q": 21,
+      "r": 7,
+      "w": 2,
+      "d": 2,
+      "height": 165
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 4,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 23,
+      "r": 4,
+      "w": 4,
+      "d": 4,
+      "height": 231
+    },
+    "after": {
+      "q": 25,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 5,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 27,
+      "r": 9,
+      "w": 4,
+      "d": 3,
+      "height": 268
+    },
+    "after": {
+      "q": 29,
+      "r": 10,
+      "w": 2,
+      "d": 2,
+      "height": 120
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 6,
+    "asset": "b0",
+    "label": "CLINIQUE VERA",
+    "before": {
+      "q": 35,
+      "r": 9,
+      "w": 6,
+      "d": 6,
+      "height": 338
+    },
+    "after": {
+      "q": 37,
+      "r": 11,
+      "w": 4,
+      "d": 4,
+      "height": 220
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 7,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 4,
+      "w": 5,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 45,
+      "r": 7,
+      "w": 2,
+      "d": 2,
+      "height": 145
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 8,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 33,
+      "r": 2,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 35,
+      "r": 4,
+      "w": 3,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 9,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 18,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 5,
+      "r": 20,
+      "w": 3,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 10,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 8,
+      "r": 18,
+      "w": 4,
+      "d": 4,
+      "height": 282
+    },
+    "after": {
+      "q": 10,
+      "r": 20,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 11,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 19,
+      "w": 6,
+      "d": 4,
+      "height": 289
+    },
+    "after": {
+      "q": 43,
+      "r": 21,
+      "w": 3,
+      "d": 2,
+      "height": 140
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 12,
+    "asset": "b1",
+    "label": "BAR DU PASSAGE",
+    "before": {
+      "q": 4,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 392
+    },
+    "after": {
+      "q": 8,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 13,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 34,
+      "w": 5,
+      "d": 4,
+      "height": 344
+    },
+    "after": {
+      "q": 6,
+      "r": 36,
+      "w": 2,
+      "d": 2,
+      "height": 125
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 14,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 8,
+      "r": 35,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 10,
+      "r": 37,
+      "w": 3,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 15,
+    "asset": "v2",
+    "label": "HÔTEL DES VOLETS",
+    "before": {
+      "q": 34,
+      "r": 30,
+      "w": 7,
+      "d": 7,
+      "height": 515
+    },
+    "after": {
+      "q": 38,
+      "r": 34,
+      "w": 3,
+      "d": 3,
+      "height": 195
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 16,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 30,
+      "w": 5,
+      "d": 5,
+      "height": 289
+    },
+    "after": {
+      "q": 44,
+      "r": 33,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 17,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 35,
+      "w": 5,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 44,
+      "r": 38,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 18,
+    "asset": "x5",
+    "label": "MILICE",
+    "before": {
+      "q": 19,
+      "r": 33,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 22,
+      "r": 35,
+      "w": 3,
+      "d": 3,
+      "height": 147
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 19,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 20,
+      "r": 38,
+      "w": 4,
+      "d": 4,
+      "height": 231
+    },
+    "after": {
+      "q": 22,
+      "r": 40,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 20,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 25,
+      "r": 38,
+      "w": 3,
+      "d": 4,
+      "height": 268
+    },
+    "after": {
+      "q": 26,
+      "r": 40,
+      "w": 2,
+      "d": 2,
+      "height": 125
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 21,
+    "asset": "v5",
+    "label": "ANCIENNE BOUTIQUE",
+    "before": {
+      "q": 3,
+      "r": 41,
+      "w": 6,
+      "d": 5,
+      "height": 387
+    },
+    "after": {
+      "q": 7,
+      "r": 44,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 22,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 9,
+      "r": 41,
+      "w": 4,
+      "d": 5,
+      "height": 344
+    },
+    "after": {
+      "q": 11,
+      "r": 44,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 23,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 35,
+      "r": 43,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 37,
+      "r": 45,
+      "w": 3,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk",
+    "index": 24,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 43,
+      "w": 6,
+      "d": 4,
+      "height": 382
+    },
+    "after": {
+      "q": 44,
+      "r": 45,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 0,
+    "asset": "b4",
+    "label": "ARCHIVES",
+    "before": {
+      "q": 2,
+      "r": 3,
+      "w": 7,
+      "d": 5,
+      "height": 358
+    },
+    "after": {
+      "q": 5,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 209
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 8,
+      "w": 5,
+      "d": 4,
+      "height": 317
+    },
+    "after": {
+      "q": 4,
+      "r": 10,
+      "w": 3,
+      "d": 2,
+      "height": 160
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 2,
+    "asset": "n0",
+    "label": "ANCIEN REGISTRE",
+    "before": {
+      "q": 13,
+      "r": 2,
+      "w": 6,
+      "d": 6,
+      "height": 411
+    },
+    "after": {
+      "q": 16,
+      "r": 5,
+      "w": 3,
+      "d": 3,
+      "height": 206
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 3,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 20,
+      "r": 2,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 24,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 4,
+    "asset": "x4",
+    "label": "TRIBUNAL ABANDONNÉ",
+    "before": {
+      "q": 29,
+      "r": 2,
+      "w": 7,
+      "d": 7,
+      "height": 501
+    },
+    "after": {
+      "q": 33,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 215
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 5,
+    "asset": "n1",
+    "label": "",
+    "before": {
+      "q": 38,
+      "r": 2,
+      "w": 9,
+      "d": 6,
+      "height": 451
+    },
+    "after": {
+      "q": 43,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 6,
+    "asset": "n0",
+    "label": "DÉLÉGUÉS",
+    "before": {
+      "q": 2,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 411
+    },
+    "after": {
+      "q": 5,
+      "r": 19,
+      "w": 3,
+      "d": 3,
+      "height": 206
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 7,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 22,
+      "w": 6,
+      "d": 4,
+      "height": 382
+    },
+    "after": {
+      "q": 6,
+      "r": 24,
+      "w": 2,
+      "d": 2,
+      "height": 145
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 8,
+    "asset": "n3",
+    "label": "COPIES",
+    "before": {
+      "q": 16,
+      "r": 13,
+      "w": 6,
+      "d": 5,
+      "height": 334
+    },
+    "after": {
+      "q": 19,
+      "r": 15,
+      "w": 3,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 9,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 13,
+      "w": 5,
+      "d": 7,
+      "height": 422
+    },
+    "after": {
+      "q": 45,
+      "r": 17,
+      "w": 2,
+      "d": 3,
+      "height": 176
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 29,
+      "w": 5,
+      "d": 6,
+      "height": 421
+    },
+    "after": {
+      "q": 5,
+      "r": 33,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 11,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 40,
+      "w": 6,
+      "d": 7,
+      "height": 446
+    },
+    "after": {
+      "q": 5,
+      "r": 43,
+      "w": 3,
+      "d": 4,
+      "height": 230
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 12,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 14,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 411
+    },
+    "after": {
+      "q": 16,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 245
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 13,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 14,
+      "r": 40,
+      "w": 6,
+      "d": 7,
+      "height": 458
+    },
+    "after": {
+      "q": 18,
+      "r": 44,
+      "w": 2,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 14,
+    "asset": "n2",
+    "label": "ANCIEN MUSÉE",
+    "before": {
+      "q": 28,
+      "r": 29,
+      "w": 7,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 31,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 15,
+    "asset": "n2",
+    "label": "IMPRIMERIE",
+    "before": {
+      "q": 40,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 414
+    },
+    "after": {
+      "q": 44,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 190
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 16,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 458
+    },
+    "after": {
+      "q": 32,
+      "r": 46,
+      "w": 3,
+      "d": 2,
+      "height": 175
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 17,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 41,
+      "w": 6,
+      "d": 7,
+      "height": 446
+    },
+    "after": {
+      "q": 44,
+      "r": 44,
+      "w": 3,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "buenos",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 20,
+      "r": 41,
+      "w": 4,
+      "d": 6,
+      "height": 382
+    },
+    "after": {
+      "q": 22,
+      "r": 44,
+      "w": 2,
+      "d": 3,
+      "height": 165
+    }
+  },
+  {
+    "location": "customs",
+    "index": 0,
+    "asset": "x5",
+    "label": "DOUANE OUEST",
+    "before": {
+      "q": 2,
+      "r": 4,
+      "w": 5,
+      "d": 4,
+      "height": 221
+    },
+    "after": {
+      "q": 4,
+      "r": 5,
+      "w": 3,
+      "d": 3,
+      "height": 145
+    }
+  },
+  {
+    "location": "customs",
+    "index": 1,
+    "asset": "x3",
+    "label": "QUARANTAINE",
+    "before": {
+      "q": 18,
+      "r": 3,
+      "w": 5,
+      "d": 6,
+      "height": 305
+    },
+    "after": {
+      "q": 20,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "customs",
+    "index": 2,
+    "asset": "x5",
+    "label": "CONSIGNE",
+    "before": {
+      "q": 17,
+      "r": 17,
+      "w": 5,
+      "d": 4,
+      "height": 221
+    },
+    "after": {
+      "q": 19,
+      "r": 19,
+      "w": 3,
+      "d": 2,
+      "height": 123
+    }
+  },
+  {
+    "location": "customs",
+    "index": 3,
+    "asset": "x5",
+    "label": "GUICHETS",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 31,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "customs",
+    "index": 4,
+    "asset": "v3",
+    "label": "INSPECTION 2",
+    "before": {
+      "q": 40,
+      "r": 3,
+      "w": 7,
+      "d": 6,
+      "height": 308
+    },
+    "after": {
+      "q": 42,
+      "r": 5,
+      "w": 5,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "customs",
+    "index": 5,
+    "asset": "x5",
+    "label": "CONTRE-VISITE",
+    "before": {
+      "q": 29,
+      "r": 16,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 31,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "customs",
+    "index": 6,
+    "asset": "x3",
+    "label": "CARGAISONS",
+    "before": {
+      "q": 41,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 18,
+      "w": 4,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "customs",
+    "index": 7,
+    "asset": "x3",
+    "label": "QUARANTAINE B",
+    "before": {
+      "q": 3,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 6,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "customs",
+    "index": 8,
+    "asset": "x5",
+    "label": "SOINS",
+    "before": {
+      "q": 16,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 18,
+      "r": 30,
+      "w": 4,
+      "d": 4,
+      "height": 180
+    }
+  },
+  {
+    "location": "customs",
+    "index": 9,
+    "asset": "x5",
+    "label": "ATTENTE",
+    "before": {
+      "q": 3,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 5,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "customs",
+    "index": 10,
+    "asset": "v3",
+    "label": "DÉSINFECTION",
+    "before": {
+      "q": 16,
+      "r": 41,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 18,
+      "r": 43,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "customs",
+    "index": 11,
+    "asset": "x3",
+    "label": "CONSIGNE 2",
+    "before": {
+      "q": 29,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 31,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "customs",
+    "index": 12,
+    "asset": "x3",
+    "label": "COLIS",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "customs",
+    "index": 13,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "before": {
+      "q": 29,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 31,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "customs",
+    "index": 14,
+    "asset": "v3",
+    "label": "ENTRETIEN",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 43,
+      "r": 44,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "steel",
+    "index": 0,
+    "asset": "v6",
+    "label": "BLOC OUEST",
+    "before": {
+      "q": 2,
+      "r": 2,
+      "w": 6,
+      "d": 7,
+      "height": 597
+    },
+    "after": {
+      "q": 5,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 310
+    }
+  },
+  {
+    "location": "steel",
+    "index": 1,
+    "asset": "v7",
+    "label": "COMMERCES DU FORUM",
+    "before": {
+      "q": 10,
+      "r": 2,
+      "w": 8,
+      "d": 5,
+      "height": 319
+    },
+    "after": {
+      "q": 14,
+      "r": 4,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "steel",
+    "index": 2,
+    "asset": "c5",
+    "label": "SERVICE MUNICIPAL",
+    "before": {
+      "q": 18,
+      "r": 2,
+      "w": 7,
+      "d": 5,
+      "height": 455
+    },
+    "after": {
+      "q": 22,
+      "r": 5,
+      "w": 3,
+      "d": 2,
+      "height": 190
+    }
+  },
+  {
+    "location": "steel",
+    "index": 3,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 29,
+      "r": 2,
+      "w": 8,
+      "d": 6,
+      "height": 601
+    },
+    "after": {
+      "q": 34,
+      "r": 6,
+      "w": 3,
+      "d": 2,
+      "height": 214
+    }
+  },
+  {
+    "location": "steel",
+    "index": 4,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 2,
+      "w": 8,
+      "d": 7,
+      "height": 689
+    },
+    "after": {
+      "q": 43,
+      "r": 6,
+      "w": 4,
+      "d": 3,
+      "height": 310
+    }
+  },
+  {
+    "location": "steel",
+    "index": 5,
+    "asset": "v6",
+    "label": "TOURS D’HABITAT",
+    "before": {
+      "q": 2,
+      "r": 27,
+      "w": 7,
+      "d": 8,
+      "height": 689
+    },
+    "after": {
+      "q": 6,
+      "r": 31,
+      "w": 3,
+      "d": 4,
+      "height": 320
+    }
+  },
+  {
+    "location": "steel",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 36,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 6,
+      "r": 39,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "steel",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 7,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "steel",
+    "index": 8,
+    "asset": "v8",
+    "label": "BAR DE COURSIVE",
+    "before": {
+      "q": 11,
+      "r": 28,
+      "w": 7,
+      "d": 5,
+      "height": 463
+    },
+    "after": {
+      "q": 15,
+      "r": 31,
+      "w": 3,
+      "d": 2,
+      "height": 193
+    }
+  },
+  {
+    "location": "steel",
+    "index": 9,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 35,
+      "w": 6,
+      "d": 5,
+      "height": 472
+    },
+    "after": {
+      "q": 14,
+      "r": 38,
+      "w": 3,
+      "d": 2,
+      "height": 214
+    }
+  },
+  {
+    "location": "steel",
+    "index": 10,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 41,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 15,
+      "r": 44,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "steel",
+    "index": 11,
+    "asset": "v9",
+    "label": "RÉSEAU",
+    "before": {
+      "q": 21,
+      "r": 29,
+      "w": 7,
+      "d": 5,
+      "height": 378
+    },
+    "after": {
+      "q": 25,
+      "r": 32,
+      "w": 3,
+      "d": 2,
+      "height": 158
+    }
+  },
+  {
+    "location": "steel",
+    "index": 12,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 21,
+      "r": 40,
+      "w": 7,
+      "d": 7,
+      "height": 643
+    },
+    "after": {
+      "q": 25,
+      "r": 44,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "steel",
+    "index": 13,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 35,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 38,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "steel",
+    "index": 14,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 44,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 300
+    }
+  },
+  {
+    "location": "steel",
+    "index": 15,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 36,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 551
+    },
+    "after": {
+      "q": 39,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "steel",
+    "index": 16,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 45,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "steel",
+    "index": 17,
+    "asset": "v7",
+    "label": "",
+    "before": {
+      "q": 33,
+      "r": 14,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 36,
+      "r": 17,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "steel",
+    "index": 18,
+    "asset": "v8",
+    "label": "GALERIES",
+    "before": {
+      "q": 41,
+      "r": 14,
+      "w": 7,
+      "d": 6,
+      "height": 501
+    },
+    "after": {
+      "q": 45,
+      "r": 18,
+      "w": 3,
+      "d": 2,
+      "height": 193
+    }
+  },
+  {
+    "location": "under",
+    "index": 0,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 2,
+      "w": 4,
+      "d": 5,
+      "height": 321
+    },
+    "after": {
+      "q": 4,
+      "r": 5,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 1,
+    "asset": "v3",
+    "label": "TRI DES PIÈCES",
+    "before": {
+      "q": 10,
+      "r": 2,
+      "w": 4,
+      "d": 5,
+      "height": 213
+    },
+    "after": {
+      "q": 11,
+      "r": 3,
+      "w": 3,
+      "d": 4,
+      "height": 150
+    }
+  },
+  {
+    "location": "under",
+    "index": 2,
+    "asset": "b3",
+    "label": "SOUS-STATION",
+    "before": {
+      "q": 20,
+      "r": 2,
+      "w": 6,
+      "d": 5,
+      "height": 354
+    },
+    "after": {
+      "q": 23,
+      "r": 4,
+      "w": 3,
+      "d": 3,
+      "height": 193
+    }
+  },
+  {
+    "location": "under",
+    "index": 3,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 29,
+      "r": 2,
+      "w": 5,
+      "d": 5,
+      "height": 357
+    },
+    "after": {
+      "q": 32,
+      "r": 5,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 4,
+    "asset": "b1",
+    "label": "",
+    "before": {
+      "q": 35,
+      "r": 2,
+      "w": 5,
+      "d": 6,
+      "height": 332
+    },
+    "after": {
+      "q": 38,
+      "r": 5,
+      "w": 2,
+      "d": 3,
+      "height": 145
+    }
+  },
+  {
+    "location": "under",
+    "index": 5,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 2,
+      "w": 6,
+      "d": 6,
+      "height": 428
+    },
+    "after": {
+      "q": 46,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 6,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 10,
+      "w": 4,
+      "d": 5,
+      "height": 321
+    },
+    "after": {
+      "q": 4,
+      "r": 13,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 7,
+    "asset": "b1",
+    "label": "",
+    "before": {
+      "q": 10,
+      "r": 9,
+      "w": 4,
+      "d": 5,
+      "height": 272
+    },
+    "after": {
+      "q": 12,
+      "r": 11,
+      "w": 2,
+      "d": 3,
+      "height": 150
+    }
+  },
+  {
+    "location": "under",
+    "index": 8,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 20,
+      "r": 9,
+      "w": 4,
+      "d": 5,
+      "height": 321
+    },
+    "after": {
+      "q": 22,
+      "r": 12,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 9,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 31,
+      "r": 11,
+      "w": 5,
+      "d": 5,
+      "height": 357
+    },
+    "after": {
+      "q": 34,
+      "r": 14,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 10,
+    "asset": "v3",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 12,
+      "w": 6,
+      "d": 5,
+      "height": 261
+    },
+    "after": {
+      "q": 42,
+      "r": 14,
+      "w": 3,
+      "d": 3,
+      "height": 142
+    }
+  },
+  {
+    "location": "under",
+    "index": 11,
+    "asset": "b1",
+    "label": "CANTINE",
+    "before": {
+      "q": 6,
+      "r": 19,
+      "w": 5,
+      "d": 4,
+      "height": 272
+    },
+    "after": {
+      "q": 8,
+      "r": 21,
+      "w": 3,
+      "d": 2,
+      "height": 151
+    }
+  },
+  {
+    "location": "under",
+    "index": 12,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 16,
+      "r": 20,
+      "w": 5,
+      "d": 4,
+      "height": 321
+    },
+    "after": {
+      "q": 19,
+      "r": 22,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 13,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 29,
+      "w": 5,
+      "d": 5,
+      "height": 357
+    },
+    "after": {
+      "q": 5,
+      "r": 32,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 14,
+    "asset": "b1",
+    "label": "",
+    "before": {
+      "q": 8,
+      "r": 29,
+      "w": 5,
+      "d": 5,
+      "height": 302
+    },
+    "after": {
+      "q": 11,
+      "r": 32,
+      "w": 2,
+      "d": 2,
+      "height": 121
+    }
+  },
+  {
+    "location": "under",
+    "index": 15,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 35,
+      "w": 4,
+      "d": 5,
+      "height": 321
+    },
+    "after": {
+      "q": 4,
+      "r": 38,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 16,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 10,
+      "r": 35,
+      "w": 5,
+      "d": 5,
+      "height": 357
+    },
+    "after": {
+      "q": 13,
+      "r": 38,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 17,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 43,
+      "w": 5,
+      "d": 4,
+      "height": 344
+    },
+    "after": {
+      "q": 6,
+      "r": 45,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "under",
+    "index": 18,
+    "asset": "b1",
+    "label": "",
+    "before": {
+      "q": 9,
+      "r": 43,
+      "w": 6,
+      "d": 4,
+      "height": 302
+    },
+    "after": {
+      "q": 12,
+      "r": 45,
+      "w": 3,
+      "d": 2,
+      "height": 145
+    }
+  },
+  {
+    "location": "under",
+    "index": 19,
+    "asset": "v3",
+    "label": "ATELIER DE TRAVÉE",
+    "before": {
+      "q": 22,
+      "r": 29,
+      "w": 6,
+      "d": 5,
+      "height": 261
+    },
+    "after": {
+      "q": 24,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 160
+    }
+  },
+  {
+    "location": "under",
+    "index": 20,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 32,
+      "r": 29,
+      "w": 6,
+      "d": 5,
+      "height": 392
+    },
+    "after": {
+      "q": 36,
+      "r": 32,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 21,
+    "asset": "b1",
+    "label": "INFIRMERIE",
+    "before": {
+      "q": 40,
+      "r": 29,
+      "w": 7,
+      "d": 5,
+      "height": 362
+    },
+    "after": {
+      "q": 44,
+      "r": 32,
+      "w": 3,
+      "d": 2,
+      "height": 151
+    }
+  },
+  {
+    "location": "under",
+    "index": 22,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 22,
+      "r": 43,
+      "w": 6,
+      "d": 5,
+      "height": 392
+    },
+    "after": {
+      "q": 26,
+      "r": 46,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 23,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 33,
+      "r": 43,
+      "w": 6,
+      "d": 5,
+      "height": 392
+    },
+    "after": {
+      "q": 37,
+      "r": 46,
+      "w": 2,
+      "d": 2,
+      "height": 143
+    }
+  },
+  {
+    "location": "under",
+    "index": 24,
+    "asset": "b1",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 43,
+      "w": 6,
+      "d": 5,
+      "height": 332
+    },
+    "after": {
+      "q": 44,
+      "r": 46,
+      "w": 3,
+      "d": 2,
+      "height": 145
+    }
+  },
+  {
+    "location": "junk",
+    "index": 0,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 1,
+      "r": 3,
+      "w": 3,
+      "d": 4,
+      "height": 250
+    },
+    "after": {
+      "q": 2,
+      "r": 4,
+      "w": 2,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "junk",
+    "index": 2,
+    "asset": "b1",
+    "label": "BAZAR",
+    "before": {
+      "q": 16,
+      "r": 2,
+      "w": 6,
+      "d": 4,
+      "height": 302
+    },
+    "after": {
+      "q": 18,
+      "r": 4,
+      "w": 4,
+      "d": 2,
+      "height": 181
+    }
+  },
+  {
+    "location": "junk",
+    "index": 3,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 19,
+      "r": 11,
+      "w": 4,
+      "d": 4,
+      "height": 285
+    },
+    "after": {
+      "q": 20,
+      "r": 12,
+      "w": 3,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "junk",
+    "index": 4,
+    "asset": "v2",
+    "label": "MOTEL",
+    "before": {
+      "q": 2,
+      "r": 13,
+      "w": 4,
+      "d": 5,
+      "height": 331
+    },
+    "after": {
+      "q": 4,
+      "r": 15,
+      "w": 2,
+      "d": 3,
+      "height": 184
+    }
+  },
+  {
+    "location": "junk",
+    "index": 6,
+    "asset": "v1",
+    "label": "",
+    "before": {
+      "q": 14,
+      "r": 11,
+      "w": 3,
+      "d": 3,
+      "height": 256
+    },
+    "after": {
+      "q": 15,
+      "r": 12,
+      "w": 2,
+      "d": 2,
+      "height": 165
+    }
+  },
+  {
+    "location": "junk",
+    "index": 7,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 27,
+      "r": 1,
+      "w": 5,
+      "d": 6,
+      "height": 392
+    },
+    "after": {
+      "q": 30,
+      "r": 4,
+      "w": 2,
+      "d": 3,
+      "height": 178
+    }
+  },
+  {
+    "location": "junk",
+    "index": 8,
+    "asset": "n4",
+    "label": "HALLES",
+    "before": {
+      "q": 37,
+      "r": 2,
+      "w": 9,
+      "d": 5,
+      "height": 419
+    },
+    "after": {
+      "q": 42,
+      "r": 5,
+      "w": 4,
+      "d": 2,
+      "height": 180
+    }
+  },
+  {
+    "location": "junk",
+    "index": 9,
+    "asset": "v1",
+    "label": "MÉDICAMENTS",
+    "before": {
+      "q": 28,
+      "r": 12,
+      "w": 5,
+      "d": 6,
+      "height": 470
+    },
+    "after": {
+      "q": 31,
+      "r": 16,
+      "w": 2,
+      "d": 2,
+      "height": 171
+    }
+  },
+  {
+    "location": "junk",
+    "index": 10,
+    "asset": "v3",
+    "label": "TÔLES",
+    "before": {
+      "q": 39,
+      "r": 12,
+      "w": 6,
+      "d": 5,
+      "height": 261
+    },
+    "after": {
+      "q": 41,
+      "r": 13,
+      "w": 4,
+      "d": 4,
+      "height": 185
+    }
+  },
+  {
+    "location": "junk",
+    "index": 11,
+    "asset": "v0",
+    "label": "DORTOIR",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 5,
+      "d": 5,
+      "height": 289
+    },
+    "after": {
+      "q": 4,
+      "r": 30,
+      "w": 3,
+      "d": 3,
+      "height": 173
+    }
+  },
+  {
+    "location": "junk",
+    "index": 12,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 12,
+      "r": 27,
+      "w": 5,
+      "d": 7,
+      "height": 428
+    },
+    "after": {
+      "q": 15,
+      "r": 31,
+      "w": 2,
+      "d": 3,
+      "height": 178
+    }
+  },
+  {
+    "location": "junk",
+    "index": 13,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 21,
+      "r": 28,
+      "w": 5,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 24,
+      "r": 31,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "junk",
+    "index": 14,
+    "asset": "x1",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 40,
+      "w": 6,
+      "d": 6,
+      "height": 428
+    },
+    "after": {
+      "q": 6,
+      "r": 43,
+      "w": 3,
+      "d": 3,
+      "height": 190
+    }
+  },
+  {
+    "location": "junk",
+    "index": 15,
+    "asset": "v2",
+    "label": "BAR",
+    "before": {
+      "q": 15,
+      "r": 40,
+      "w": 5,
+      "d": 6,
+      "height": 404
+    },
+    "after": {
+      "q": 18,
+      "r": 43,
+      "w": 2,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "junk",
+    "index": 16,
+    "asset": "n2",
+    "label": "ATELIERS",
+    "before": {
+      "q": 28,
+      "r": 27,
+      "w": 6,
+      "d": 5,
+      "height": 350
+    },
+    "after": {
+      "q": 31,
+      "r": 29,
+      "w": 3,
+      "d": 3,
+      "height": 190
+    }
+  },
+  {
+    "location": "junk",
+    "index": 17,
+    "asset": "x3",
+    "label": "LOTS SAISIS",
+    "before": {
+      "q": 39,
+      "r": 25,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 42,
+      "r": 28,
+      "w": 4,
+      "d": 3,
+      "height": 190
+    }
+  },
+  {
+    "location": "junk",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 29,
+      "r": 39,
+      "w": 5,
+      "d": 6,
+      "height": 421
+    },
+    "after": {
+      "q": 32,
+      "r": 42,
+      "w": 2,
+      "d": 3,
+      "height": 190
+    }
+  },
+  {
+    "location": "junk",
+    "index": 19,
+    "asset": "n4",
+    "label": "ENCHÈRES",
+    "before": {
+      "q": 40,
+      "r": 39,
+      "w": 6,
+      "d": 7,
+      "height": 389
+    },
+    "after": {
+      "q": 43,
+      "r": 42,
+      "w": 3,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "relay",
+    "index": 0,
+    "asset": "b3",
+    "label": "COMMANDE 07",
+    "before": {
+      "q": 20,
+      "r": 3,
+      "w": 12,
+      "d": 8,
+      "height": 643
+    },
+    "after": {
+      "q": 28,
+      "r": 8,
+      "w": 4,
+      "d": 3,
+      "height": 225
+    }
+  },
+  {
+    "location": "relay",
+    "index": 1,
+    "asset": "b3",
+    "label": "FILTRATION",
+    "before": {
+      "q": 4,
+      "r": 3,
+      "w": 11,
+      "d": 9,
+      "height": 643
+    },
+    "after": {
+      "q": 11,
+      "r": 9,
+      "w": 4,
+      "d": 3,
+      "height": 225
+    }
+  },
+  {
+    "location": "relay",
+    "index": 2,
+    "asset": "n2",
+    "label": "MAINTENANCE",
+    "before": {
+      "q": 36,
+      "r": 3,
+      "w": 10,
+      "d": 10,
+      "height": 636
+    },
+    "after": {
+      "q": 43,
+      "r": 10,
+      "w": 3,
+      "d": 3,
+      "height": 191
+    }
+  },
+  {
+    "location": "relay",
+    "index": 3,
+    "asset": "b3",
+    "label": "POMPES AVAL",
+    "before": {
+      "q": 36,
+      "r": 30,
+      "w": 10,
+      "d": 10,
+      "height": 643
+    },
+    "after": {
+      "q": 42,
+      "r": 36,
+      "w": 4,
+      "d": 4,
+      "height": 230
+    }
+  },
+  {
+    "location": "relay",
+    "index": 4,
+    "asset": "x3",
+    "label": "PIÈCES ET STOCK",
+    "before": {
+      "q": 4,
+      "r": 30,
+      "w": 11,
+      "d": 11,
+      "height": 610
+    },
+    "after": {
+      "q": 11,
+      "r": 37,
+      "w": 4,
+      "d": 4,
+      "height": 215
+    }
+  },
+  {
+    "location": "relay",
+    "index": 5,
+    "asset": "x5",
+    "label": "POSTE D’ACCÈS",
+    "before": {
+      "q": 21,
+      "r": 34,
+      "w": 10,
+      "d": 7,
+      "height": 417
+    },
+    "after": {
+      "q": 27,
+      "r": 38,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "port",
+    "index": 0,
+    "asset": "x3",
+    "label": "HALLE IO",
+    "before": {
+      "q": 4,
+      "r": 3,
+      "w": 12,
+      "d": 9,
+      "height": 582
+    },
+    "after": {
+      "q": 11,
+      "r": 8,
+      "w": 5,
+      "d": 4,
+      "height": 250
+    }
+  },
+  {
+    "location": "port",
+    "index": 1,
+    "asset": "v3",
+    "label": "CAPITAINERIE",
+    "before": {
+      "q": 23,
+      "r": 4,
+      "w": 9,
+      "d": 7,
+      "height": 379
+    },
+    "after": {
+      "q": 27,
+      "r": 7,
+      "w": 5,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "port",
+    "index": 2,
+    "asset": "n2",
+    "label": "ATELIER DES GRUES",
+    "before": {
+      "q": 4,
+      "r": 31,
+      "w": 11,
+      "d": 8,
+      "height": 604
+    },
+    "after": {
+      "q": 11,
+      "r": 36,
+      "w": 4,
+      "d": 3,
+      "height": 223
+    }
+  },
+  {
+    "location": "port",
+    "index": 3,
+    "asset": "x3",
+    "label": "RÉSERVE IO",
+    "before": {
+      "q": 24,
+      "r": 32,
+      "w": 9,
+      "d": 8,
+      "height": 471
+    },
+    "after": {
+      "q": 29,
+      "r": 36,
+      "w": 4,
+      "d": 4,
+      "height": 220
+    }
+  },
+  {
+    "location": "port",
+    "index": 4,
+    "asset": "v3",
+    "label": "REPOS DES ÉQUIPES",
+    "before": {
+      "q": 4,
+      "r": 18,
+      "w": 10,
+      "d": 5,
+      "height": 356
+    },
+    "after": {
+      "q": 9,
+      "r": 21,
+      "w": 5,
+      "d": 2,
+      "height": 166
+    }
+  },
+  {
+    "location": "port",
+    "index": 5,
+    "asset": "x5",
+    "label": "INSPECTION SANITAIRE",
+    "before": {
+      "q": 24,
+      "r": 18,
+      "w": 9,
+      "d": 5,
+      "height": 343
+    },
+    "after": {
+      "q": 28,
+      "r": 20,
+      "w": 5,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "port",
+    "index": 6,
+    "asset": "x5",
+    "label": "GARDE",
+    "before": {
+      "q": 3,
+      "r": 41,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 6,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 165
+    }
+  },
+  {
+    "location": "nova",
+    "index": 0,
+    "asset": "x5",
+    "label": "GARNISON",
+    "before": {
+      "q": 3,
+      "r": 2,
+      "w": 7,
+      "d": 4,
+      "height": 270
+    },
+    "after": {
+      "q": 6,
+      "r": 3,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "nova",
+    "index": 1,
+    "asset": "x5",
+    "label": "SURPLUS",
+    "before": {
+      "q": 16,
+      "r": 3,
+      "w": 5,
+      "d": 6,
+      "height": 270
+    },
+    "after": {
+      "q": 18,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 170
+    }
+  },
+  {
+    "location": "nova",
+    "index": 2,
+    "asset": "v2",
+    "label": "CASERNEMENT",
+    "before": {
+      "q": 3,
+      "r": 12,
+      "w": 4,
+      "d": 6,
+      "height": 368
+    },
+    "after": {
+      "q": 5,
+      "r": 15,
+      "w": 2,
+      "d": 3,
+      "height": 160
+    }
+  },
+  {
+    "location": "nova",
+    "index": 3,
+    "asset": "x3",
+    "label": "GARAGE",
+    "before": {
+      "q": 17,
+      "r": 17,
+      "w": 5,
+      "d": 4,
+      "height": 250
+    },
+    "after": {
+      "q": 18,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "nova",
+    "index": 4,
+    "asset": "x3",
+    "label": "DÉPÔT 19",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 8,
+      "d": 6,
+      "height": 388
+    },
+    "after": {
+      "q": 32,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "nova",
+    "index": 5,
+    "asset": "x3",
+    "label": "CARBURANT",
+    "before": {
+      "q": 40,
+      "r": 2,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 43,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "nova",
+    "index": 6,
+    "asset": "x5",
+    "label": "LIAISON",
+    "before": {
+      "q": 28,
+      "r": 16,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "nova",
+    "index": 7,
+    "asset": "x5",
+    "label": "DÉTACHEMENT",
+    "before": {
+      "q": 40,
+      "r": 16,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 43,
+      "r": 19,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "nova",
+    "index": 8,
+    "asset": "v4",
+    "label": "LOGIS",
+    "before": {
+      "q": 3,
+      "r": 28,
+      "w": 5,
+      "d": 6,
+      "height": 421
+    },
+    "after": {
+      "q": 6,
+      "r": 31,
+      "w": 2,
+      "d": 3,
+      "height": 185
+    }
+  },
+  {
+    "location": "nova",
+    "index": 9,
+    "asset": "x5",
+    "label": "DISPENSAIRE",
+    "before": {
+      "q": 13,
+      "r": 29,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 16,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "nova",
+    "index": 10,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 40,
+      "w": 6,
+      "d": 6,
+      "height": 346
+    },
+    "after": {
+      "q": 6,
+      "r": 43,
+      "w": 3,
+      "d": 3,
+      "height": 173
+    }
+  },
+  {
+    "location": "nova",
+    "index": 11,
+    "asset": "b1",
+    "label": "CANTINE",
+    "before": {
+      "q": 15,
+      "r": 40,
+      "w": 7,
+      "d": 6,
+      "height": 392
+    },
+    "after": {
+      "q": 19,
+      "r": 43,
+      "w": 3,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "nova",
+    "index": 12,
+    "asset": "v3",
+    "label": "TRANSMISSIONS",
+    "before": {
+      "q": 30,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 308
+    },
+    "after": {
+      "q": 33,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "nova",
+    "index": 13,
+    "asset": "x3",
+    "label": "RÉSERVES",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 44,
+      "r": 32,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "nova",
+    "index": 14,
+    "asset": "x5",
+    "label": "CASERNE 2",
+    "before": {
+      "q": 30,
+      "r": 41,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 33,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "nova",
+    "index": 15,
+    "asset": "x3",
+    "label": "VÉHICULES",
+    "before": {
+      "q": 41,
+      "r": 41,
+      "w": 6,
+      "d": 5,
+      "height": 305
+    },
+    "after": {
+      "q": 43,
+      "r": 43,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "coast",
+    "index": 0,
+    "asset": "n1",
+    "label": "ANCIENNE STATION",
+    "before": {
+      "q": 15,
+      "r": 2,
+      "w": 7,
+      "d": 6,
+      "height": 391
+    },
+    "after": {
+      "q": 19,
+      "r": 5,
+      "w": 3,
+      "d": 3,
+      "height": 181
+    }
+  },
+  {
+    "location": "coast",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 30,
+      "r": 3,
+      "w": 6,
+      "d": 7,
+      "height": 458
+    },
+    "after": {
+      "q": 34,
+      "r": 7,
+      "w": 2,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "coast",
+    "index": 2,
+    "asset": "x4",
+    "label": "TOUR DE SIGNAL",
+    "before": {
+      "q": 41,
+      "r": 8,
+      "w": 6,
+      "d": 7,
+      "height": 466
+    },
+    "after": {
+      "q": 44,
+      "r": 12,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "coast",
+    "index": 3,
+    "asset": "v3",
+    "label": "ABRI DE RÉCUPÉRATION",
+    "before": {
+      "q": 30,
+      "r": 28,
+      "w": 7,
+      "d": 5,
+      "height": 285
+    },
+    "after": {
+      "q": 33,
+      "r": 30,
+      "w": 4,
+      "d": 3,
+      "height": 160
+    }
+  },
+  {
+    "location": "coast",
+    "index": 4,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 5,
+      "r": 29,
+      "w": 6,
+      "d": 5,
+      "height": 387
+    },
+    "after": {
+      "q": 8,
+      "r": 32,
+      "w": 3,
+      "d": 2,
+      "height": 170
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 0,
+    "asset": "v0",
+    "label": "CUISINE COMMUNE",
+    "before": {
+      "q": 3,
+      "r": 3,
+      "w": 6,
+      "d": 5,
+      "height": 317
+    },
+    "after": {
+      "q": 6,
+      "r": 6,
+      "w": 3,
+      "d": 2,
+      "height": 144
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 1,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 9,
+      "r": 3,
+      "w": 6,
+      "d": 5,
+      "height": 421
+    },
+    "after": {
+      "q": 13,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 140
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 2,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 8,
+      "w": 5,
+      "d": 5,
+      "height": 289
+    },
+    "after": {
+      "q": 6,
+      "r": 11,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 3,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 8,
+      "w": 5,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 14,
+      "r": 11,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 4,
+    "asset": "v0",
+    "label": "FAMILLES",
+    "before": {
+      "q": 22,
+      "r": 3,
+      "w": 5,
+      "d": 5,
+      "height": 289
+    },
+    "after": {
+      "q": 25,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 5,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 27,
+      "r": 3,
+      "w": 5,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 30,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 6,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 22,
+      "r": 8,
+      "w": 4,
+      "d": 5,
+      "height": 344
+    },
+    "after": {
+      "q": 24,
+      "r": 11,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 7,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 28,
+      "r": 8,
+      "w": 4,
+      "d": 5,
+      "height": 260
+    },
+    "after": {
+      "q": 30,
+      "r": 10,
+      "w": 2,
+      "d": 3,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 8,
+    "asset": "v3",
+    "label": "CHEZ ABEL",
+    "before": {
+      "q": 38,
+      "r": 3,
+      "w": 5,
+      "d": 5,
+      "height": 237
+    },
+    "after": {
+      "q": 40,
+      "r": 5,
+      "w": 3,
+      "d": 3,
+      "height": 142
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 9,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 43,
+      "r": 3,
+      "w": 4,
+      "d": 5,
+      "height": 260
+    },
+    "after": {
+      "q": 45,
+      "r": 5,
+      "w": 2,
+      "d": 3,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 8,
+      "w": 4,
+      "d": 6,
+      "height": 382
+    },
+    "after": {
+      "q": 41,
+      "r": 12,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 11,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 26,
+      "w": 5,
+      "d": 5,
+      "height": 289
+    },
+    "after": {
+      "q": 6,
+      "r": 29,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 12,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 8,
+      "r": 26,
+      "w": 5,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 11,
+      "r": 29,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 13,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 31,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 5,
+      "r": 33,
+      "w": 3,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 14,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 8,
+      "r": 31,
+      "w": 5,
+      "d": 4,
+      "height": 344
+    },
+    "after": {
+      "q": 11,
+      "r": 33,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 15,
+    "asset": "v1",
+    "label": "RÉFECTOIRE",
+    "before": {
+      "q": 22,
+      "r": 30,
+      "w": 5,
+      "d": 5,
+      "height": 427
+    },
+    "after": {
+      "q": 25,
+      "r": 33,
+      "w": 2,
+      "d": 2,
+      "height": 155
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 16,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 27,
+      "r": 30,
+      "w": 5,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 30,
+      "r": 33,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 17,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 22,
+      "r": 35,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 24,
+      "r": 37,
+      "w": 3,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 18,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 27,
+      "w": 5,
+      "d": 5,
+      "height": 289
+    },
+    "after": {
+      "q": 42,
+      "r": 30,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 19,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 44,
+      "r": 27,
+      "w": 4,
+      "d": 5,
+      "height": 344
+    },
+    "after": {
+      "q": 46,
+      "r": 30,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 20,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 32,
+      "w": 6,
+      "d": 4,
+      "height": 289
+    },
+    "after": {
+      "q": 43,
+      "r": 34,
+      "w": 3,
+      "d": 2,
+      "height": 144
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 21,
+    "asset": "v5",
+    "label": "ANCIENNE ÉCOLE",
+    "before": {
+      "q": 3,
+      "r": 40,
+      "w": 6,
+      "d": 5,
+      "height": 387
+    },
+    "after": {
+      "q": 7,
+      "r": 43,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 22,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 9,
+      "r": 40,
+      "w": 4,
+      "d": 5,
+      "height": 344
+    },
+    "after": {
+      "q": 11,
+      "r": 43,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 23,
+    "asset": "v5",
+    "label": "MAISON FERMÉE",
+    "before": {
+      "q": 21,
+      "r": 42,
+      "w": 6,
+      "d": 4,
+      "height": 352
+    },
+    "after": {
+      "q": 24,
+      "r": 44,
+      "w": 3,
+      "d": 2,
+      "height": 150
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 24,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 27,
+      "r": 42,
+      "w": 5,
+      "d": 4,
+      "height": 344
+    },
+    "after": {
+      "q": 30,
+      "r": 44,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-courts",
+    "index": 25,
+    "asset": "v0",
+    "label": "LAVERIE",
+    "before": {
+      "q": 39,
+      "r": 42,
+      "w": 7,
+      "d": 4,
+      "height": 317
+    },
+    "after": {
+      "q": 43,
+      "r": 44,
+      "w": 3,
+      "d": 2,
+      "height": 144
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 0,
+    "asset": "b4",
+    "label": "ANCIEN SITE",
+    "before": {
+      "q": 4,
+      "r": 4,
+      "w": 7,
+      "d": 7,
+      "height": 418
+    },
+    "after": {
+      "q": 8,
+      "r": 8,
+      "w": 3,
+      "d": 3,
+      "height": 179
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 4,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 15,
+      "r": 8,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 2,
+    "asset": "x3",
+    "label": "",
+    "before": {
+      "q": 5,
+      "r": 11,
+      "w": 6,
+      "d": 5,
+      "height": 305
+    },
+    "after": {
+      "q": 8,
+      "r": 13,
+      "w": 3,
+      "d": 3,
+      "height": 165
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 3,
+    "asset": "b3",
+    "label": "ACCÈS SCELLÉ",
+    "before": {
+      "q": 22,
+      "r": 5,
+      "w": 7,
+      "d": 8,
+      "height": 482
+    },
+    "after": {
+      "q": 26,
+      "r": 10,
+      "w": 3,
+      "d": 3,
+      "height": 185
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 4,
+    "asset": "b4",
+    "label": "ANNEXE INSTABLE",
+    "before": {
+      "q": 37,
+      "r": 4,
+      "w": 7,
+      "d": 7,
+      "height": 418
+    },
+    "after": {
+      "q": 41,
+      "r": 8,
+      "w": 3,
+      "d": 3,
+      "height": 179
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 5,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 44,
+      "r": 4,
+      "w": 4,
+      "d": 7,
+      "height": 387
+    },
+    "after": {
+      "q": 46,
+      "r": 8,
+      "w": 2,
+      "d": 3,
+      "height": 165
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 6,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 38,
+      "r": 11,
+      "w": 6,
+      "d": 5,
+      "height": 387
+    },
+    "after": {
+      "q": 41,
+      "r": 14,
+      "w": 3,
+      "d": 2,
+      "height": 165
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 7,
+    "asset": "x5",
+    "label": "VEILLE",
+    "before": {
+      "q": 34,
+      "r": 19,
+      "w": 5,
+      "d": 4,
+      "height": 221
+    },
+    "after": {
+      "q": 36,
+      "r": 21,
+      "w": 3,
+      "d": 2,
+      "height": 123
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 8,
+    "asset": "v3",
+    "label": "ATELIER NILO",
+    "before": {
+      "q": 4,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 308
+    },
+    "after": {
+      "q": 7,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 165
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 9,
+    "asset": "n2",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 28,
+      "w": 5,
+      "d": 6,
+      "height": 350
+    },
+    "after": {
+      "q": 14,
+      "r": 31,
+      "w": 2,
+      "d": 3,
+      "height": 159
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 10,
+    "asset": "v3",
+    "label": "",
+    "before": {
+      "q": 4,
+      "r": 34,
+      "w": 6,
+      "d": 5,
+      "height": 261
+    },
+    "after": {
+      "q": 6,
+      "r": 36,
+      "w": 4,
+      "d": 3,
+      "height": 160
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 11,
+    "asset": "v3",
+    "label": "GARAGE COMMUNAL",
+    "before": {
+      "q": 22,
+      "r": 34,
+      "w": 7,
+      "d": 7,
+      "height": 332
+    },
+    "after": {
+      "q": 25,
+      "r": 37,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 12,
+    "asset": "x3",
+    "label": "DÉPÔT",
+    "before": {
+      "q": 33,
+      "r": 29,
+      "w": 7,
+      "d": 7,
+      "height": 388
+    },
+    "after": {
+      "q": 37,
+      "r": 33,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 13,
+    "asset": "v3",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 29,
+      "w": 6,
+      "d": 7,
+      "height": 308
+    },
+    "after": {
+      "q": 43,
+      "r": 32,
+      "w": 3,
+      "d": 4,
+      "height": 165
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 14,
+    "asset": "v0",
+    "label": "OUVRIERS",
+    "before": {
+      "q": 3,
+      "r": 43,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 5,
+      "r": 45,
+      "w": 3,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 15,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 8,
+      "r": 43,
+      "w": 5,
+      "d": 4,
+      "height": 344
+    },
+    "after": {
+      "q": 11,
+      "r": 45,
+      "w": 2,
+      "d": 2,
+      "height": 130
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 16,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 13,
+      "r": 43,
+      "w": 4,
+      "d": 4,
+      "height": 231
+    },
+    "after": {
+      "q": 15,
+      "r": 45,
+      "w": 2,
+      "d": 2,
+      "height": 115
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 17,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 34,
+      "r": 43,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 36,
+      "r": 45,
+      "w": 3,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "dusk-workshops",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 43,
+      "w": 6,
+      "d": 4,
+      "height": 382
+    },
+    "after": {
+      "q": 44,
+      "r": 45,
+      "w": 2,
+      "d": 2,
+      "height": 135
+    }
+  },
+  {
+    "location": "china",
+    "index": 0,
+    "asset": "c1",
+    "label": "MAISON DU THÉ",
+    "before": {
+      "q": 1,
+      "r": 2,
+      "w": 5,
+      "d": 5,
+      "height": 298
+    },
+    "after": {
+      "q": 3,
+      "r": 4,
+      "w": 3,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "china",
+    "index": 1,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 1,
+      "r": 8,
+      "w": 3,
+      "d": 8,
+      "height": 472
+    },
+    "after": {
+      "q": 2,
+      "r": 12,
+      "w": 2,
+      "d": 4,
+      "height": 240
+    }
+  },
+  {
+    "location": "china",
+    "index": 2,
+    "asset": "v6",
+    "label": "RÉSIDENCES DES QUAIS",
+    "before": {
+      "q": 1,
+      "r": 25,
+      "w": 5,
+      "d": 7,
+      "height": 551
+    },
+    "after": {
+      "q": 3,
+      "r": 28,
+      "w": 3,
+      "d": 4,
+      "height": 290
+    }
+  },
+  {
+    "location": "china",
+    "index": 3,
+    "asset": "v8",
+    "label": "LAVERIE",
+    "before": {
+      "q": 1,
+      "r": 34,
+      "w": 6,
+      "d": 6,
+      "height": 463
+    },
+    "after": {
+      "q": 4,
+      "r": 37,
+      "w": 3,
+      "d": 3,
+      "height": 195
+    }
+  },
+  {
+    "location": "china",
+    "index": 4,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 1,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 4,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 230
+    }
+  },
+  {
+    "location": "china",
+    "index": 5,
+    "asset": "v7",
+    "label": "ÉLECTRONIQUE LIN",
+    "before": {
+      "q": 16,
+      "r": 1,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 19,
+      "r": 3,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "china",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 24,
+      "r": 1,
+      "w": 7,
+      "d": 6,
+      "height": 558
+    },
+    "after": {
+      "q": 28,
+      "r": 5,
+      "w": 3,
+      "d": 2,
+      "height": 214
+    }
+  },
+  {
+    "location": "china",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 32,
+      "r": 1,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 36,
+      "r": 4,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "china",
+    "index": 8,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 2,
+      "w": 7,
+      "d": 7,
+      "height": 643
+    },
+    "after": {
+      "q": 45,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "china",
+    "index": 9,
+    "asset": "v8",
+    "label": "RESTAURANT DES LANTERNES",
+    "before": {
+      "q": 41,
+      "r": 12,
+      "w": 7,
+      "d": 7,
+      "height": 540
+    },
+    "after": {
+      "q": 45,
+      "r": 16,
+      "w": 3,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "china",
+    "index": 10,
+    "asset": "v7",
+    "label": "GALERIE DES QUAIS",
+    "before": {
+      "q": 27,
+      "r": 19,
+      "w": 9,
+      "d": 5,
+      "height": 343
+    },
+    "after": {
+      "q": 32,
+      "r": 22,
+      "w": 4,
+      "d": 2,
+      "height": 147
+    }
+  },
+  {
+    "location": "china",
+    "index": 11,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 22,
+      "w": 7,
+      "d": 6,
+      "height": 558
+    },
+    "after": {
+      "q": 44,
+      "r": 25,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "china",
+    "index": 12,
+    "asset": "v7",
+    "label": "CUISINE DE NUIT",
+    "before": {
+      "q": 17,
+      "r": 28,
+      "w": 8,
+      "d": 5,
+      "height": 319
+    },
+    "after": {
+      "q": 21,
+      "r": 30,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "china",
+    "index": 13,
+    "asset": "v8",
+    "label": "",
+    "before": {
+      "q": 27,
+      "r": 28,
+      "w": 7,
+      "d": 5,
+      "height": 463
+    },
+    "after": {
+      "q": 31,
+      "r": 31,
+      "w": 3,
+      "d": 2,
+      "height": 193
+    }
+  },
+  {
+    "location": "china",
+    "index": 14,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 31,
+      "w": 7,
+      "d": 7,
+      "height": 643
+    },
+    "after": {
+      "q": 44,
+      "r": 35,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "china",
+    "index": 15,
+    "asset": "v7",
+    "label": "HALLE ALIMENTAIRE",
+    "before": {
+      "q": 14,
+      "r": 42,
+      "w": 9,
+      "d": 6,
+      "height": 368
+    },
+    "after": {
+      "q": 19,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "china",
+    "index": 16,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 26,
+      "r": 43,
+      "w": 7,
+      "d": 5,
+      "height": 515
+    },
+    "after": {
+      "q": 30,
+      "r": 46,
+      "w": 3,
+      "d": 2,
+      "height": 214
+    }
+  },
+  {
+    "location": "china",
+    "index": 17,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 44,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "asia",
+    "index": 0,
+    "asset": "v7",
+    "label": "HALLE DES TISSUS",
+    "before": {
+      "q": 2,
+      "r": 2,
+      "w": 8,
+      "d": 5,
+      "height": 319
+    },
+    "after": {
+      "q": 6,
+      "r": 4,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "asia",
+    "index": 1,
+    "asset": "v8",
+    "label": "GALERIE MANSOUR",
+    "before": {
+      "q": 11,
+      "r": 2,
+      "w": 8,
+      "d": 5,
+      "height": 501
+    },
+    "after": {
+      "q": 16,
+      "r": 5,
+      "w": 3,
+      "d": 2,
+      "height": 193
+    }
+  },
+  {
+    "location": "asia",
+    "index": 2,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 20,
+      "r": 2,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 23,
+      "r": 5,
+      "w": 3,
+      "d": 3,
+      "height": 245
+    }
+  },
+  {
+    "location": "asia",
+    "index": 3,
+    "asset": "v7",
+    "label": "CANTINE MOURAD",
+    "before": {
+      "q": 29,
+      "r": 2,
+      "w": 8,
+      "d": 5,
+      "height": 319
+    },
+    "after": {
+      "q": 33,
+      "r": 4,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "asia",
+    "index": 4,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 2,
+      "w": 8,
+      "d": 7,
+      "height": 689
+    },
+    "after": {
+      "q": 44,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "asia",
+    "index": 5,
+    "asset": "v8",
+    "label": "PASSAGE DES MODULES",
+    "before": {
+      "q": 2,
+      "r": 13,
+      "w": 6,
+      "d": 6,
+      "height": 463
+    },
+    "after": {
+      "q": 5,
+      "r": 16,
+      "w": 3,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "asia",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 27,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 5,
+      "r": 30,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "asia",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 35,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 6,
+      "r": 38,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "asia",
+    "index": 8,
+    "asset": "v8",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 501
+    },
+    "after": {
+      "q": 6,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "asia",
+    "index": 9,
+    "asset": "v7",
+    "label": "CUISINE COLLECTIVE",
+    "before": {
+      "q": 11,
+      "r": 29,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 14,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "asia",
+    "index": 10,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 36,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 14,
+      "r": 39,
+      "w": 3,
+      "d": 3,
+      "height": 240
+    }
+  },
+  {
+    "location": "asia",
+    "index": 11,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 14,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 300
+    }
+  },
+  {
+    "location": "asia",
+    "index": 12,
+    "asset": "v6",
+    "label": "LOGEMENTS NORD",
+    "before": {
+      "q": 23,
+      "r": 13,
+      "w": 6,
+      "d": 7,
+      "height": 597
+    },
+    "after": {
+      "q": 26,
+      "r": 16,
+      "w": 3,
+      "d": 4,
+      "height": 300
+    }
+  },
+  {
+    "location": "asia",
+    "index": 13,
+    "asset": "v8",
+    "label": "LAVERIE",
+    "before": {
+      "q": 31,
+      "r": 14,
+      "w": 7,
+      "d": 6,
+      "height": 501
+    },
+    "after": {
+      "q": 35,
+      "r": 17,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "asia",
+    "index": 14,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 14,
+      "w": 7,
+      "d": 6,
+      "height": 558
+    },
+    "after": {
+      "q": 44,
+      "r": 17,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "asia",
+    "index": 15,
+    "asset": "v8",
+    "label": "",
+    "before": {
+      "q": 23,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 501
+    },
+    "after": {
+      "q": 27,
+      "r": 32,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "asia",
+    "index": 16,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 43,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 300
+    }
+  },
+  {
+    "location": "asia",
+    "index": 17,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 23,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 558
+    },
+    "after": {
+      "q": 27,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 240
+    }
+  },
+  {
+    "location": "asia",
+    "index": 18,
+    "asset": "v7",
+    "label": "GALERIE DU QUAI",
+    "before": {
+      "q": 32,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 35,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "asia",
+    "index": 19,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 43,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 300
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 0,
+    "asset": "v6",
+    "label": "BLOC 41",
+    "before": {
+      "q": 2,
+      "r": 2,
+      "w": 5,
+      "d": 8,
+      "height": 597
+    },
+    "after": {
+      "q": 4,
+      "r": 5,
+      "w": 3,
+      "d": 5,
+      "height": 340
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 1,
+    "asset": "c0",
+    "label": "BLOC 42",
+    "before": {
+      "q": 9,
+      "r": 2,
+      "w": 6,
+      "d": 8,
+      "height": 596
+    },
+    "after": {
+      "q": 12,
+      "r": 6,
+      "w": 3,
+      "d": 4,
+      "height": 298
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 2,
+    "asset": "v6",
+    "label": "BLOC 44",
+    "before": {
+      "q": 20,
+      "r": 2,
+      "w": 6,
+      "d": 9,
+      "height": 689
+    },
+    "after": {
+      "q": 23,
+      "r": 7,
+      "w": 3,
+      "d": 4,
+      "height": 321
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 3,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 32,
+      "r": 2,
+      "w": 6,
+      "d": 8,
+      "height": 601
+    },
+    "after": {
+      "q": 35,
+      "r": 7,
+      "w": 3,
+      "d": 3,
+      "height": 255
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 4,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 2,
+      "w": 7,
+      "d": 8,
+      "height": 689
+    },
+    "after": {
+      "q": 44,
+      "r": 6,
+      "w": 3,
+      "d": 4,
+      "height": 321
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 5,
+    "asset": "v6",
+    "label": "BLOC 43",
+    "before": {
+      "q": 2,
+      "r": 17,
+      "w": 6,
+      "d": 7,
+      "height": 597
+    },
+    "after": {
+      "q": 5,
+      "r": 20,
+      "w": 3,
+      "d": 4,
+      "height": 321
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 6,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 27,
+      "w": 6,
+      "d": 7,
+      "height": 558
+    },
+    "after": {
+      "q": 5,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 250
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 7,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 35,
+      "w": 6,
+      "d": 6,
+      "height": 551
+    },
+    "after": {
+      "q": 5,
+      "r": 38,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 8,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 5,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 245
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 9,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 551
+    },
+    "after": {
+      "q": 14,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 10,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 551
+    },
+    "after": {
+      "q": 14,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 11,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 25,
+      "r": 28,
+      "w": 6,
+      "d": 8,
+      "height": 643
+    },
+    "after": {
+      "q": 28,
+      "r": 32,
+      "w": 3,
+      "d": 4,
+      "height": 321
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 12,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 33,
+      "r": 27,
+      "w": 6,
+      "d": 8,
+      "height": 601
+    },
+    "after": {
+      "q": 37,
+      "r": 32,
+      "w": 2,
+      "d": 3,
+      "height": 214
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 13,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 27,
+      "w": 6,
+      "d": 8,
+      "height": 643
+    },
+    "after": {
+      "q": 44,
+      "r": 31,
+      "w": 3,
+      "d": 4,
+      "height": 321
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 14,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 26,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 29,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 245
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 15,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 34,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 551
+    },
+    "after": {
+      "q": 37,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 16,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 45,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 245
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 17,
+    "asset": "v7",
+    "label": "ÉPICERIE ET LAVERIE",
+    "before": {
+      "q": 29,
+      "r": 14,
+      "w": 8,
+      "d": 5,
+      "height": 319
+    },
+    "after": {
+      "q": 33,
+      "r": 16,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "blocks",
+    "index": 18,
+    "asset": "v9",
+    "label": "ASCENSEURS",
+    "before": {
+      "q": 40,
+      "r": 14,
+      "w": 7,
+      "d": 5,
+      "height": 378
+    },
+    "after": {
+      "q": 44,
+      "r": 17,
+      "w": 3,
+      "d": 2,
+      "height": 158
+    }
+  },
+  {
+    "location": "center",
+    "index": 0,
+    "asset": "c3",
+    "label": "ARCADIUS RECHERCHE",
+    "before": {
+      "q": 3,
+      "r": 2,
+      "w": 6,
+      "d": 7,
+      "height": 739
+    },
+    "after": {
+      "q": 6,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 370
+    }
+  },
+  {
+    "location": "center",
+    "index": 1,
+    "asset": "c3",
+    "label": "ARCADIUS CENTRAL",
+    "before": {
+      "q": 11,
+      "r": 1,
+      "w": 7,
+      "d": 8,
+      "height": 853
+    },
+    "after": {
+      "q": 14,
+      "r": 4,
+      "w": 4,
+      "d": 5,
+      "height": 510
+    }
+  },
+  {
+    "location": "center",
+    "index": 2,
+    "asset": "c3",
+    "label": "ARCADIUS FINANCES",
+    "before": {
+      "q": 30,
+      "r": 2,
+      "w": 6,
+      "d": 7,
+      "height": 739
+    },
+    "after": {
+      "q": 33,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 341
+    }
+  },
+  {
+    "location": "center",
+    "index": 3,
+    "asset": "c3",
+    "label": "ARCADIUS COMMUNICATIONS",
+    "before": {
+      "q": 20,
+      "r": 29,
+      "w": 7,
+      "d": 8,
+      "height": 853
+    },
+    "after": {
+      "q": 24,
+      "r": 34,
+      "w": 3,
+      "d": 3,
+      "height": 341
+    }
+  },
+  {
+    "location": "center",
+    "index": 4,
+    "asset": "v7",
+    "label": "GALERIE BÉRÉNICE",
+    "before": {
+      "q": 3,
+      "r": 27,
+      "w": 8,
+      "d": 5,
+      "height": 319
+    },
+    "after": {
+      "q": 6,
+      "r": 29,
+      "w": 5,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "center",
+    "index": 5,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 32,
+      "w": 6,
+      "d": 6,
+      "height": 461
+    },
+    "after": {
+      "q": 6,
+      "r": 35,
+      "w": 3,
+      "d": 3,
+      "height": 230
+    }
+  },
+  {
+    "location": "center",
+    "index": 6,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 39,
+      "w": 7,
+      "d": 7,
+      "height": 643
+    },
+    "after": {
+      "q": 7,
+      "r": 43,
+      "w": 3,
+      "d": 3,
+      "height": 265
+    }
+  },
+  {
+    "location": "center",
+    "index": 7,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 40,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 14,
+      "r": 43,
+      "w": 3,
+      "d": 3,
+      "height": 230
+    }
+  },
+  {
+    "location": "center",
+    "index": 8,
+    "asset": "v10",
+    "label": "SERVICES CENTRAUX",
+    "before": {
+      "q": 20,
+      "r": 2,
+      "w": 7,
+      "d": 6,
+      "height": 499
+    },
+    "after": {
+      "q": 23,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 269
+    }
+  },
+  {
+    "location": "center",
+    "index": 9,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 38,
+      "r": 3,
+      "w": 8,
+      "d": 7,
+      "height": 576
+    },
+    "after": {
+      "q": 42,
+      "r": 6,
+      "w": 4,
+      "d": 4,
+      "height": 300
+    }
+  },
+  {
+    "location": "center",
+    "index": 10,
+    "asset": "v7",
+    "label": "GALERIE EST",
+    "before": {
+      "q": 39,
+      "r": 12,
+      "w": 8,
+      "d": 6,
+      "height": 343
+    },
+    "after": {
+      "q": 43,
+      "r": 15,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "center",
+    "index": 11,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 29,
+      "r": 14,
+      "w": 7,
+      "d": 6,
+      "height": 499
+    },
+    "after": {
+      "q": 32,
+      "r": 17,
+      "w": 4,
+      "d": 3,
+      "height": 269
+    }
+  },
+  {
+    "location": "center",
+    "index": 12,
+    "asset": "v7",
+    "label": "GALERIE DES SERVICES",
+    "before": {
+      "q": 38,
+      "r": 28,
+      "w": 9,
+      "d": 5,
+      "height": 343
+    },
+    "after": {
+      "q": 42,
+      "r": 30,
+      "w": 5,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "center",
+    "index": 13,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 34,
+      "w": 8,
+      "d": 6,
+      "height": 537
+    },
+    "after": {
+      "q": 43,
+      "r": 37,
+      "w": 4,
+      "d": 3,
+      "height": 269
+    }
+  },
+  {
+    "location": "center",
+    "index": 14,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 558
+    },
+    "after": {
+      "q": 43,
+      "r": 46,
+      "w": 3,
+      "d": 2,
+      "height": 214
+    }
+  },
+  {
+    "location": "center",
+    "index": 15,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 29,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 499
+    },
+    "after": {
+      "q": 32,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 269
+    }
+  },
+  {
+    "location": "center",
+    "index": 16,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 20,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 597
+    },
+    "after": {
+      "q": 24,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 0,
+    "asset": "c2",
+    "label": "CLÍNICA K-12",
+    "before": {
+      "q": 1,
+      "r": 1,
+      "w": 6,
+      "d": 5,
+      "height": 392
+    },
+    "after": {
+      "q": 4,
+      "r": 3,
+      "w": 3,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 1,
+    "asset": "c2",
+    "label": "RÉÉDUCATION SEN",
+    "before": {
+      "q": 10,
+      "r": 1,
+      "w": 6,
+      "d": 5,
+      "height": 392
+    },
+    "after": {
+      "q": 13,
+      "r": 3,
+      "w": 3,
+      "d": 3,
+      "height": 200
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 2,
+    "asset": "v10",
+    "label": "PHARMACIE",
+    "before": {
+      "q": 20,
+      "r": 2,
+      "w": 5,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 22,
+      "r": 4,
+      "w": 3,
+      "d": 4,
+      "height": 250
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 3,
+    "asset": "c2",
+    "label": "CHIRURGIE",
+    "before": {
+      "q": 33,
+      "r": 2,
+      "w": 7,
+      "d": 7,
+      "height": 499
+    },
+    "after": {
+      "q": 37,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 4,
+    "asset": "v10",
+    "label": "LABORATOIRES",
+    "before": {
+      "q": 41,
+      "r": 3,
+      "w": 7,
+      "d": 7,
+      "height": 537
+    },
+    "after": {
+      "q": 45,
+      "r": 7,
+      "w": 3,
+      "d": 3,
+      "height": 230
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 5,
+    "asset": "c2",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 7,
+      "d": 8,
+      "height": 535
+    },
+    "after": {
+      "q": 6,
+      "r": 33,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 6,
+    "asset": "v16",
+    "label": "ADMISSIONS",
+    "before": {
+      "q": 11,
+      "r": 28,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 13,
+      "r": 30,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 7,
+    "asset": "c2",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 39,
+      "w": 7,
+      "d": 8,
+      "height": 535
+    },
+    "after": {
+      "q": 6,
+      "r": 44,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 8,
+    "asset": "v10",
+    "label": "LABORATOIRE EST",
+    "before": {
+      "q": 24,
+      "r": 29,
+      "w": 8,
+      "d": 6,
+      "height": 537
+    },
+    "after": {
+      "q": 28,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 265
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 9,
+    "asset": "c2",
+    "label": "SUIVI",
+    "before": {
+      "q": 35,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 463
+    },
+    "after": {
+      "q": 39,
+      "r": 32,
+      "w": 3,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 10,
+    "asset": "c2",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 40,
+      "w": 7,
+      "d": 7,
+      "height": 499
+    },
+    "after": {
+      "q": 45,
+      "r": 44,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "cliniccity",
+    "index": 11,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 25,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 499
+    },
+    "after": {
+      "q": 28,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 250
+    }
+  },
+  {
+    "location": "civic",
+    "index": 0,
+    "asset": "v14",
+    "label": "REGISTRE CIVIQUE",
+    "before": {
+      "q": 6,
+      "r": 1,
+      "w": 14,
+      "d": 7,
+      "height": 482
+    },
+    "after": {
+      "q": 13,
+      "r": 4,
+      "w": 7,
+      "d": 4,
+      "height": 250
+    }
+  },
+  {
+    "location": "civic",
+    "index": 1,
+    "asset": "v10",
+    "label": "ARCHIVES DES BAUX",
+    "before": {
+      "q": 1,
+      "r": 13,
+      "w": 6,
+      "d": 7,
+      "height": 499
+    },
+    "after": {
+      "q": 4,
+      "r": 16,
+      "w": 3,
+      "d": 4,
+      "height": 250
+    }
+  },
+  {
+    "location": "civic",
+    "index": 2,
+    "asset": "v16",
+    "label": "RECOURS",
+    "before": {
+      "q": 20,
+      "r": 13,
+      "w": 7,
+      "d": 7,
+      "height": 344
+    },
+    "after": {
+      "q": 23,
+      "r": 16,
+      "w": 4,
+      "d": 4,
+      "height": 185
+    }
+  },
+  {
+    "location": "civic",
+    "index": 3,
+    "asset": "v10",
+    "label": "ASCENSEURS VISITEURS",
+    "before": {
+      "q": 31,
+      "r": 2,
+      "w": 7,
+      "d": 7,
+      "height": 537
+    },
+    "after": {
+      "q": 34,
+      "r": 5,
+      "w": 4,
+      "d": 4,
+      "height": 290
+    }
+  },
+  {
+    "location": "civic",
+    "index": 4,
+    "asset": "v11",
+    "label": "SÛRETÉ",
+    "before": {
+      "q": 41,
+      "r": 2,
+      "w": 6,
+      "d": 7,
+      "height": 558
+    },
+    "after": {
+      "q": 44,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 240
+    }
+  },
+  {
+    "location": "civic",
+    "index": 5,
+    "asset": "v14",
+    "label": "CERTIFICATIONS",
+    "before": {
+      "q": 33,
+      "r": 14,
+      "w": 13,
+      "d": 6,
+      "height": 436
+    },
+    "after": {
+      "q": 40,
+      "r": 17,
+      "w": 6,
+      "d": 3,
+      "height": 207
+    }
+  },
+  {
+    "location": "civic",
+    "index": 6,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 8,
+      "d": 7,
+      "height": 576
+    },
+    "after": {
+      "q": 6,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 265
+    }
+  },
+  {
+    "location": "civic",
+    "index": 7,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 39,
+      "w": 7,
+      "d": 8,
+      "height": 643
+    },
+    "after": {
+      "q": 6,
+      "r": 44,
+      "w": 3,
+      "d": 3,
+      "height": 245
+    }
+  },
+  {
+    "location": "civic",
+    "index": 8,
+    "asset": "v16",
+    "label": "",
+    "before": {
+      "q": 12,
+      "r": 41,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 15,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "civic",
+    "index": 9,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 28,
+      "r": 29,
+      "w": 8,
+      "d": 7,
+      "height": 576
+    },
+    "after": {
+      "q": 32,
+      "r": 33,
+      "w": 4,
+      "d": 3,
+      "height": 269
+    }
+  },
+  {
+    "location": "civic",
+    "index": 10,
+    "asset": "v14",
+    "label": "CONSULTATION",
+    "before": {
+      "q": 39,
+      "r": 29,
+      "w": 8,
+      "d": 6,
+      "height": 322
+    },
+    "after": {
+      "q": 42,
+      "r": 31,
+      "w": 5,
+      "d": 4,
+      "height": 205
+    }
+  },
+  {
+    "location": "civic",
+    "index": 11,
+    "asset": "v16",
+    "label": "",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 31,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "civic",
+    "index": 12,
+    "asset": "v10",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 42,
+      "w": 8,
+      "d": 6,
+      "height": 537
+    },
+    "after": {
+      "q": 43,
+      "r": 45,
+      "w": 4,
+      "d": 3,
+      "height": 269
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 0,
+    "asset": "c5",
+    "label": "HALL PUBLIC SMPD",
+    "before": {
+      "q": 9,
+      "r": 2,
+      "w": 10,
+      "d": 6,
+      "height": 607
+    },
+    "after": {
+      "q": 15,
+      "r": 6,
+      "w": 4,
+      "d": 2,
+      "height": 228
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 1,
+    "asset": "c5",
+    "label": "GARDE",
+    "before": {
+      "q": 2,
+      "r": 2,
+      "w": 4,
+      "d": 5,
+      "height": 341
+    },
+    "after": {
+      "q": 4,
+      "r": 4,
+      "w": 2,
+      "d": 3,
+      "height": 190
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 2,
+    "asset": "v11",
+    "label": "RETENUES",
+    "before": {
+      "q": 21,
+      "r": 2,
+      "w": 8,
+      "d": 6,
+      "height": 601
+    },
+    "after": {
+      "q": 26,
+      "r": 5,
+      "w": 3,
+      "d": 3,
+      "height": 255
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 3,
+    "asset": "c5",
+    "label": "DÉTENTION",
+    "before": {
+      "q": 33,
+      "r": 2,
+      "w": 14,
+      "d": 7,
+      "height": 796
+    },
+    "after": {
+      "q": 42,
+      "r": 7,
+      "w": 5,
+      "d": 2,
+      "height": 260
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 4,
+    "asset": "v9",
+    "label": "GARAGE D’INTERVENTION",
+    "before": {
+      "q": 33,
+      "r": 15,
+      "w": 14,
+      "d": 6,
+      "height": 630
+    },
+    "after": {
+      "q": 42,
+      "r": 19,
+      "w": 5,
+      "d": 2,
+      "height": 210
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 5,
+    "asset": "v11",
+    "label": "SCELLÉS",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 8,
+      "d": 6,
+      "height": 601
+    },
+    "after": {
+      "q": 7,
+      "r": 32,
+      "w": 3,
+      "d": 2,
+      "height": 214
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 6,
+    "asset": "v6",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 40,
+      "w": 7,
+      "d": 7,
+      "height": 643
+    },
+    "after": {
+      "q": 6,
+      "r": 44,
+      "w": 3,
+      "d": 3,
+      "height": 276
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 7,
+    "asset": "v9",
+    "label": "VESTIAIRES",
+    "before": {
+      "q": 13,
+      "r": 28,
+      "w": 6,
+      "d": 5,
+      "height": 347
+    },
+    "after": {
+      "q": 16,
+      "r": 30,
+      "w": 3,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 8,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 13,
+      "r": 41,
+      "w": 6,
+      "d": 6,
+      "height": 515
+    },
+    "after": {
+      "q": 16,
+      "r": 44,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 9,
+    "asset": "c5",
+    "label": "SERVICE DES PIÈCES",
+    "before": {
+      "q": 28,
+      "r": 28,
+      "w": 8,
+      "d": 6,
+      "height": 531
+    },
+    "after": {
+      "q": 33,
+      "r": 32,
+      "w": 3,
+      "d": 2,
+      "height": 190
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 10,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 558
+    },
+    "after": {
+      "q": 44,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 235
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 11,
+    "asset": "v11",
+    "label": "",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 558
+    },
+    "after": {
+      "q": 32,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 245
+    }
+  },
+  {
+    "location": "smpd",
+    "index": 12,
+    "asset": "v9",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 410
+    },
+    "after": {
+      "q": 44,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 185
+    }
+  },
+  {
+    "location": "upper",
+    "index": 0,
+    "asset": "v13",
+    "label": "RÉSIDENCE ASTER",
+    "before": {
+      "q": 3,
+      "r": 3,
+      "w": 7,
+      "d": 6,
+      "height": 509
+    },
+    "after": {
+      "q": 7,
+      "r": 7,
+      "w": 3,
+      "d": 2,
+      "height": 196
+    }
+  },
+  {
+    "location": "upper",
+    "index": 1,
+    "asset": "v17",
+    "label": "",
+    "before": {
+      "q": 11,
+      "r": 3,
+      "w": 5,
+      "d": 5,
+      "height": 302
+    },
+    "after": {
+      "q": 13,
+      "r": 5,
+      "w": 3,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "upper",
+    "index": 2,
+    "asset": "v15",
+    "label": "BELVÉDÈRE",
+    "before": {
+      "q": 19,
+      "r": 2,
+      "w": 5,
+      "d": 6,
+      "height": 686
+    },
+    "after": {
+      "q": 22,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 249
+    }
+  },
+  {
+    "location": "upper",
+    "index": 3,
+    "asset": "v16",
+    "label": "ACCUEIL",
+    "before": {
+      "q": 27,
+      "r": 3,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 29,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "upper",
+    "index": 4,
+    "asset": "v13",
+    "label": "RÉSIDENCE ORIEL",
+    "before": {
+      "q": 41,
+      "r": 3,
+      "w": 7,
+      "d": 7,
+      "height": 548
+    },
+    "after": {
+      "q": 45,
+      "r": 7,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "upper",
+    "index": 5,
+    "asset": "v12",
+    "label": "JARDIN D’HIVER",
+    "before": {
+      "q": 3,
+      "r": 27,
+      "w": 8,
+      "d": 6,
+      "height": 385
+    },
+    "after": {
+      "q": 7,
+      "r": 30,
+      "w": 4,
+      "d": 3,
+      "height": 190
+    }
+  },
+  {
+    "location": "upper",
+    "index": 6,
+    "asset": "v17",
+    "label": "PAVILLON DE REPOS",
+    "before": {
+      "q": 3,
+      "r": 39,
+      "w": 7,
+      "d": 7,
+      "height": 423
+    },
+    "after": {
+      "q": 7,
+      "r": 43,
+      "w": 3,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "upper",
+    "index": 7,
+    "asset": "v16",
+    "label": "HORTICULTURE",
+    "before": {
+      "q": 15,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 295
+    },
+    "after": {
+      "q": 17,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "upper",
+    "index": 8,
+    "asset": "v14",
+    "label": "MUSIQUE",
+    "before": {
+      "q": 21,
+      "r": 41,
+      "w": 6,
+      "d": 6,
+      "height": 276
+    },
+    "after": {
+      "q": 23,
+      "r": 43,
+      "w": 4,
+      "d": 4,
+      "height": 184
+    }
+  },
+  {
+    "location": "upper",
+    "index": 9,
+    "asset": "v12",
+    "label": "ORANGERIE",
+    "before": {
+      "q": 38,
+      "r": 22,
+      "w": 9,
+      "d": 7,
+      "height": 440
+    },
+    "after": {
+      "q": 43,
+      "r": 26,
+      "w": 4,
+      "d": 3,
+      "height": 193
+    }
+  },
+  {
+    "location": "upper",
+    "index": 10,
+    "asset": "v17",
+    "label": "TERRASSE EST",
+    "before": {
+      "q": 39,
+      "r": 43,
+      "w": 8,
+      "d": 5,
+      "height": 393
+    },
+    "after": {
+      "q": 43,
+      "r": 46,
+      "w": 4,
+      "d": 2,
+      "height": 181
+    }
+  },
+  {
+    "location": "upper",
+    "index": 11,
+    "asset": "v14",
+    "label": "GALERIE DES JARDINS",
+    "before": {
+      "q": 27,
+      "r": 20,
+      "w": 6,
+      "d": 5,
+      "height": 253
+    },
+    "after": {
+      "q": 29,
+      "r": 21,
+      "w": 4,
+      "d": 4,
+      "height": 184
+    }
+  },
+  {
+    "location": "spire",
+    "index": 0,
+    "asset": "c7",
+    "label": "PILIER DU SIÈGE IO",
+    "before": {
+      "q": 19,
+      "r": 2,
+      "w": 9,
+      "d": 10,
+      "height": 1574
+    },
+    "after": {
+      "q": 25,
+      "r": 8,
+      "w": 3,
+      "d": 4,
+      "height": 570
+    }
+  },
+  {
+    "location": "spire",
+    "index": 1,
+    "asset": "v14",
+    "label": "CONSULTATIONS",
+    "before": {
+      "q": 3,
+      "r": 4,
+      "w": 8,
+      "d": 7,
+      "height": 345
+    },
+    "after": {
+      "q": 6,
+      "r": 7,
+      "w": 5,
+      "d": 4,
+      "height": 207
+    }
+  },
+  {
+    "location": "spire",
+    "index": 2,
+    "asset": "v14",
+    "label": "ARCHIVES DE CONSULTATION",
+    "before": {
+      "q": 36,
+      "r": 4,
+      "w": 10,
+      "d": 7,
+      "height": 390
+    },
+    "after": {
+      "q": 40,
+      "r": 7,
+      "w": 6,
+      "d": 4,
+      "height": 225
+    }
+  },
+  {
+    "location": "spire",
+    "index": 3,
+    "asset": "v13",
+    "label": "SALON DES VISITEURS",
+    "before": {
+      "q": 3,
+      "r": 28,
+      "w": 7,
+      "d": 8,
+      "height": 587
+    },
+    "after": {
+      "q": 7,
+      "r": 33,
+      "w": 3,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "spire",
+    "index": 4,
+    "asset": "v17",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 37,
+      "w": 7,
+      "d": 6,
+      "height": 393
+    },
+    "after": {
+      "q": 7,
+      "r": 40,
+      "w": 3,
+      "d": 3,
+      "height": 181
+    }
+  },
+  {
+    "location": "spire",
+    "index": 5,
+    "asset": "v16",
+    "label": "SÛRETÉ DE L’ATRIUM",
+    "before": {
+      "q": 39,
+      "r": 24,
+      "w": 8,
+      "d": 9,
+      "height": 418
+    },
+    "after": {
+      "q": 43,
+      "r": 28,
+      "w": 4,
+      "d": 5,
+      "height": 210
+    }
+  },
+  {
+    "location": "spire",
+    "index": 6,
+    "asset": "v14",
+    "label": "PORTIQUE DES VISITEURS",
+    "before": {
+      "q": 20,
+      "r": 29,
+      "w": 10,
+      "d": 6,
+      "height": 367
+    },
+    "after": {
+      "q": 24,
+      "r": 31,
+      "w": 6,
+      "d": 4,
+      "height": 225
+    }
+  },
+  {
+    "location": "spire",
+    "index": 7,
+    "asset": "v16",
+    "label": "SERVICES INTÉGRÉS",
+    "before": {
+      "q": 20,
+      "r": 43,
+      "w": 9,
+      "d": 5,
+      "height": 344
+    },
+    "after": {
+      "q": 24,
+      "r": 45,
+      "w": 5,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "spire",
+    "index": 8,
+    "asset": "v17",
+    "label": "",
+    "before": {
+      "q": 39,
+      "r": 43,
+      "w": 8,
+      "d": 5,
+      "height": 393
+    },
+    "after": {
+      "q": 43,
+      "r": 46,
+      "w": 4,
+      "d": 2,
+      "height": 181
+    }
+  },
+  {
+    "location": "industry",
+    "index": 0,
+    "asset": "x3",
+    "label": "ASSEMBLAGE",
+    "before": {
+      "q": 1,
+      "r": 2,
+      "w": 9,
+      "d": 5,
+      "height": 388
+    },
+    "after": {
+      "q": 5,
+      "r": 4,
+      "w": 5,
+      "d": 3,
+      "height": 220
+    }
+  },
+  {
+    "location": "industry",
+    "index": 1,
+    "asset": "b3",
+    "label": "IO INDUSTRIES",
+    "before": {
+      "q": 15,
+      "r": 2,
+      "w": 7,
+      "d": 8,
+      "height": 482
+    },
+    "after": {
+      "q": 18,
+      "r": 6,
+      "w": 4,
+      "d": 4,
+      "height": 245
+    }
+  },
+  {
+    "location": "industry",
+    "index": 2,
+    "asset": "x3",
+    "label": "EXPÉDITIONS",
+    "before": {
+      "q": 17,
+      "r": 16,
+      "w": 6,
+      "d": 5,
+      "height": 305
+    },
+    "after": {
+      "q": 19,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "industry",
+    "index": 3,
+    "asset": "b3",
+    "label": "FONDERIE",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 8,
+      "d": 6,
+      "height": 450
+    },
+    "after": {
+      "q": 32,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 225
+    }
+  },
+  {
+    "location": "industry",
+    "index": 4,
+    "asset": "v3",
+    "label": "MÉTAUX",
+    "before": {
+      "q": 40,
+      "r": 2,
+      "w": 7,
+      "d": 7,
+      "height": 332
+    },
+    "after": {
+      "q": 43,
+      "r": 5,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "industry",
+    "index": 5,
+    "asset": "b3",
+    "label": "OUTILS",
+    "before": {
+      "q": 28,
+      "r": 16,
+      "w": 7,
+      "d": 5,
+      "height": 386
+    },
+    "after": {
+      "q": 31,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 225
+    }
+  },
+  {
+    "location": "industry",
+    "index": 6,
+    "asset": "x3",
+    "label": "MOTEURS",
+    "before": {
+      "q": 40,
+      "r": 16,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 43,
+      "r": 19,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "industry",
+    "index": 7,
+    "asset": "x3",
+    "label": "EXPÉDITIONS B",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 5,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "industry",
+    "index": 8,
+    "asset": "n2",
+    "label": "PALETTES",
+    "before": {
+      "q": 16,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 414
+    },
+    "after": {
+      "q": 20,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 191
+    }
+  },
+  {
+    "location": "industry",
+    "index": 9,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 5,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "industry",
+    "index": 10,
+    "asset": "v3",
+    "label": "RETOURS",
+    "before": {
+      "q": 16,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 285
+    },
+    "after": {
+      "q": 18,
+      "r": 43,
+      "w": 5,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "industry",
+    "index": 11,
+    "asset": "b3",
+    "label": "ESSAIS",
+    "before": {
+      "q": 29,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 418
+    },
+    "after": {
+      "q": 32,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 225
+    }
+  },
+  {
+    "location": "industry",
+    "index": 12,
+    "asset": "x5",
+    "label": "RÉPARATION",
+    "before": {
+      "q": 42,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 44,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 196
+    }
+  },
+  {
+    "location": "industry",
+    "index": 13,
+    "asset": "x3",
+    "label": "STOCK 4",
+    "before": {
+      "q": 29,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 333
+    },
+    "after": {
+      "q": 32,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "industry",
+    "index": 14,
+    "asset": "v3",
+    "label": "STOCK 5",
+    "before": {
+      "q": 42,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 44,
+      "r": 44,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 0,
+    "asset": "x5",
+    "label": "CONTRÔLE NORD",
+    "before": {
+      "q": 3,
+      "r": 2,
+      "w": 5,
+      "d": 5,
+      "height": 245
+    },
+    "after": {
+      "q": 5,
+      "r": 4,
+      "w": 3,
+      "d": 3,
+      "height": 147
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 1,
+    "asset": "x3",
+    "label": "INSPECTION",
+    "before": {
+      "q": 17,
+      "r": 12,
+      "w": 6,
+      "d": 7,
+      "height": 360
+    },
+    "after": {
+      "q": 20,
+      "r": 16,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 2,
+    "asset": "x5",
+    "label": "SERVICE",
+    "before": {
+      "q": 2,
+      "r": 17,
+      "w": 4,
+      "d": 4,
+      "height": 196
+    },
+    "after": {
+      "q": 3,
+      "r": 18,
+      "w": 3,
+      "d": 3,
+      "height": 135
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 3,
+    "asset": "x3",
+    "label": "INSPECTION B",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 30,
+      "r": 4,
+      "w": 4,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 4,
+    "asset": "x5",
+    "label": "PAPIERS",
+    "before": {
+      "q": 41,
+      "r": 3,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 43,
+      "r": 5,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 5,
+    "asset": "v3",
+    "label": "COLIS",
+    "before": {
+      "q": 28,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 30,
+      "r": 18,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 6,
+    "asset": "x5",
+    "label": "LIAISON",
+    "before": {
+      "q": 41,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 43,
+      "r": 18,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 7,
+    "asset": "x5",
+    "label": "CIVILS",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 4,
+      "r": 30,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 8,
+    "asset": "x5",
+    "label": "ATTENTE",
+    "before": {
+      "q": 15,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 18,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 9,
+    "asset": "x3",
+    "label": "CONSIGNE",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 305
+    },
+    "after": {
+      "q": 4,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 10,
+    "asset": "x5",
+    "label": "SOINS",
+    "before": {
+      "q": 15,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 18,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 11,
+    "asset": "x3",
+    "label": "PESÉE",
+    "before": {
+      "q": 28,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 31,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 12,
+    "asset": "v3",
+    "label": "DÉSINFECTION",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 43,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 13,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "northcustoms",
+    "index": 14,
+    "asset": "x3",
+    "label": "GARAGE",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 44,
+      "w": 4,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 0,
+    "asset": "x3",
+    "label": "DOUANE EST",
+    "before": {
+      "q": 4,
+      "r": 2,
+      "w": 7,
+      "d": 5,
+      "height": 333
+    },
+    "after": {
+      "q": 7,
+      "r": 4,
+      "w": 4,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 1,
+    "asset": "x3",
+    "label": "MARCHANDISES",
+    "before": {
+      "q": 15,
+      "r": 16,
+      "w": 8,
+      "d": 5,
+      "height": 360
+    },
+    "after": {
+      "q": 19,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 185
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 2,
+    "asset": "x5",
+    "label": "BUREAU",
+    "before": {
+      "q": 2,
+      "r": 16,
+      "w": 4,
+      "d": 5,
+      "height": 221
+    },
+    "after": {
+      "q": 3,
+      "r": 18,
+      "w": 3,
+      "d": 3,
+      "height": 140
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 3,
+    "asset": "v3",
+    "label": "MANIFESTES",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 7,
+      "d": 6,
+      "height": 308
+    },
+    "after": {
+      "q": 30,
+      "r": 4,
+      "w": 5,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 4,
+    "asset": "x3",
+    "label": "INSPECTION",
+    "before": {
+      "q": 41,
+      "r": 2,
+      "w": 6,
+      "d": 7,
+      "height": 360
+    },
+    "after": {
+      "q": 44,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 194
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 5,
+    "asset": "x5",
+    "label": "VÉRIFICATIONS",
+    "before": {
+      "q": 28,
+      "r": 16,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 6,
+    "asset": "v3",
+    "label": "RETENUES",
+    "before": {
+      "q": 41,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 43,
+      "r": 18,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 7,
+    "asset": "x5",
+    "label": "COURTIERS",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 4,
+      "r": 30,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 8,
+    "asset": "x5",
+    "label": "TRANSBORD",
+    "before": {
+      "q": 15,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 18,
+      "r": 30,
+      "w": 4,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 9,
+    "asset": "x3",
+    "label": "LOT 3",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 305
+    },
+    "after": {
+      "q": 4,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 10,
+    "asset": "x3",
+    "label": "ÉQUIPAGES",
+    "before": {
+      "q": 15,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 333
+    },
+    "after": {
+      "q": 18,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 11,
+    "asset": "x3",
+    "label": "SAISIES",
+    "before": {
+      "q": 28,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 31,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 12,
+    "asset": "v3",
+    "label": "COLIS 5",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 43,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 190
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 13,
+    "asset": "x5",
+    "label": "LIAISON",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "eastcustoms",
+    "index": 14,
+    "asset": "n2",
+    "label": "ATELIER",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 382
+    },
+    "after": {
+      "q": 44,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 191
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 0,
+    "asset": "x5",
+    "label": "LIAISON NORD",
+    "before": {
+      "q": 3,
+      "r": 3,
+      "w": 7,
+      "d": 4,
+      "height": 270
+    },
+    "after": {
+      "q": 6,
+      "r": 5,
+      "w": 4,
+      "d": 2,
+      "height": 147
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 1,
+    "asset": "x5",
+    "label": "CASERNEMENT",
+    "before": {
+      "q": 15,
+      "r": 3,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 18,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 165
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 2,
+    "asset": "x3",
+    "label": "HANGAR",
+    "before": {
+      "q": 17,
+      "r": 14,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 19,
+      "r": 16,
+      "w": 4,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 3,
+    "asset": "x5",
+    "label": "OBSERVATION",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 4,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 4,
+    "asset": "x3",
+    "label": "TRANSMISSIONS",
+    "before": {
+      "q": 40,
+      "r": 4,
+      "w": 7,
+      "d": 7,
+      "height": 388
+    },
+    "after": {
+      "q": 43,
+      "r": 7,
+      "w": 4,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 5,
+    "asset": "x5",
+    "label": "GARDE",
+    "before": {
+      "q": 28,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 30,
+      "r": 18,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 6,
+    "asset": "x5",
+    "label": "LIAISON 2",
+    "before": {
+      "q": 40,
+      "r": 18,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 43,
+      "r": 20,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 7,
+    "asset": "x5",
+    "label": "PATROUILLES",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 4,
+      "r": 30,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 8,
+    "asset": "x5",
+    "label": "CASERNE 2",
+    "before": {
+      "q": 15,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 18,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 9,
+    "asset": "x3",
+    "label": "MUNITIONS",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 305
+    },
+    "after": {
+      "q": 4,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 10,
+    "asset": "v3",
+    "label": "INFIRMERIE",
+    "before": {
+      "q": 15,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 285
+    },
+    "after": {
+      "q": 18,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 11,
+    "asset": "x3",
+    "label": "RELAIS",
+    "before": {
+      "q": 28,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 31,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 12,
+    "asset": "x3",
+    "label": "BATTERIES",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 13,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "northbase",
+    "index": 14,
+    "asset": "x3",
+    "label": "GARAGE",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 44,
+      "w": 4,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 0,
+    "asset": "x5",
+    "label": "LIAISON EST",
+    "before": {
+      "q": 3,
+      "r": 2,
+      "w": 5,
+      "d": 5,
+      "height": 245
+    },
+    "after": {
+      "q": 5,
+      "r": 4,
+      "w": 3,
+      "d": 3,
+      "height": 147
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 1,
+    "asset": "x5",
+    "label": "COMMUNICATIONS",
+    "before": {
+      "q": 16,
+      "r": 2,
+      "w": 7,
+      "d": 4,
+      "height": 270
+    },
+    "after": {
+      "q": 19,
+      "r": 3,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 2,
+    "asset": "x3",
+    "label": "GARAGE",
+    "before": {
+      "q": 13,
+      "r": 17,
+      "w": 9,
+      "d": 5,
+      "height": 388
+    },
+    "after": {
+      "q": 17,
+      "r": 19,
+      "w": 5,
+      "d": 3,
+      "height": 200
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 3,
+    "asset": "x3",
+    "label": "DRONES",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 7,
+      "d": 7,
+      "height": 388
+    },
+    "after": {
+      "q": 31,
+      "r": 5,
+      "w": 4,
+      "d": 4,
+      "height": 210
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 4,
+    "asset": "n2",
+    "label": "RÉPARATION",
+    "before": {
+      "q": 41,
+      "r": 3,
+      "w": 6,
+      "d": 6,
+      "height": 382
+    },
+    "after": {
+      "q": 44,
+      "r": 6,
+      "w": 3,
+      "d": 3,
+      "height": 191
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 5,
+    "asset": "x5",
+    "label": "GARDE",
+    "before": {
+      "q": 28,
+      "r": 17,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 19,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 6,
+    "asset": "x3",
+    "label": "PIÈCES",
+    "before": {
+      "q": 41,
+      "r": 17,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 19,
+      "w": 4,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 7,
+    "asset": "x3",
+    "label": "RAVITAILLEMENT",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 5,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 8,
+    "asset": "x5",
+    "label": "ÉQUIPAGES",
+    "before": {
+      "q": 15,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 18,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 9,
+    "asset": "x5",
+    "label": "REPOS",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 5,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 10,
+    "asset": "x3",
+    "label": "EAU",
+    "before": {
+      "q": 16,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 305
+    },
+    "after": {
+      "q": 18,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 11,
+    "asset": "x5",
+    "label": "OPÉRATEURS",
+    "before": {
+      "q": 28,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 319
+    },
+    "after": {
+      "q": 31,
+      "r": 32,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 12,
+    "asset": "x3",
+    "label": "ACCUMULATEURS",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 13,
+    "asset": "x3",
+    "label": "STOCKAGE",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 333
+    },
+    "after": {
+      "q": 31,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "eastbase",
+    "index": 14,
+    "asset": "x3",
+    "label": "LIAISON 3",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 44,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 0,
+    "asset": "x3",
+    "label": "DÉPÔT SUD",
+    "before": {
+      "q": 2,
+      "r": 3,
+      "w": 8,
+      "d": 5,
+      "height": 360
+    },
+    "after": {
+      "q": 6,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 1,
+    "asset": "x5",
+    "label": "CASERNEMENT",
+    "before": {
+      "q": 2,
+      "r": 15,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 5,
+      "r": 18,
+      "w": 3,
+      "d": 3,
+      "height": 147
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 2,
+    "asset": "x5",
+    "label": "LIAISON SUD",
+    "before": {
+      "q": 16,
+      "r": 14,
+      "w": 6,
+      "d": 4,
+      "height": 245
+    },
+    "after": {
+      "q": 18,
+      "r": 15,
+      "w": 4,
+      "d": 3,
+      "height": 160
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 3,
+    "asset": "x3",
+    "label": "RÉSERVE B",
+    "before": {
+      "q": 28,
+      "r": 2,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 31,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 4,
+    "asset": "x3",
+    "label": "RÉSERVE C",
+    "before": {
+      "q": 40,
+      "r": 4,
+      "w": 7,
+      "d": 7,
+      "height": 388
+    },
+    "after": {
+      "q": 43,
+      "r": 7,
+      "w": 4,
+      "d": 4,
+      "height": 200
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 5,
+    "asset": "x5",
+    "label": "COMPTABILITÉ",
+    "before": {
+      "q": 28,
+      "r": 16,
+      "w": 7,
+      "d": 5,
+      "height": 294
+    },
+    "after": {
+      "q": 31,
+      "r": 18,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 6,
+    "asset": "x5",
+    "label": "GUET",
+    "before": {
+      "q": 41,
+      "r": 18,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 43,
+      "r": 20,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 7,
+    "asset": "x5",
+    "label": "CASERNE 3",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 4,
+      "r": 30,
+      "w": 4,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 8,
+    "asset": "x3",
+    "label": "CASERNE 4",
+    "before": {
+      "q": 15,
+      "r": 28,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 19,
+      "r": 31,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 9,
+    "asset": "x5",
+    "label": "CANTINE",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 270
+    },
+    "after": {
+      "q": 4,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 172
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 10,
+    "asset": "n2",
+    "label": "EAU",
+    "before": {
+      "q": 15,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 382
+    },
+    "after": {
+      "q": 18,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 195
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 11,
+    "asset": "n2",
+    "label": "VÉHICULES",
+    "before": {
+      "q": 28,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 414
+    },
+    "after": {
+      "q": 32,
+      "r": 32,
+      "w": 3,
+      "d": 3,
+      "height": 191
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 12,
+    "asset": "x3",
+    "label": "PNEUS",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 43,
+      "r": 31,
+      "w": 4,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 13,
+    "asset": "x3",
+    "label": "PIÈCES",
+    "before": {
+      "q": 28,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 333
+    },
+    "after": {
+      "q": 31,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 194
+    }
+  },
+  {
+    "location": "southbase",
+    "index": 14,
+    "asset": "n2",
+    "label": "ATELIER LOURD",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 382
+    },
+    "after": {
+      "q": 44,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 191
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 0,
+    "asset": "n1",
+    "label": "GARE DES VOYAGEURS",
+    "before": {
+      "q": 2,
+      "r": 3,
+      "w": 8,
+      "d": 5,
+      "height": 391
+    },
+    "after": {
+      "q": 6,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 1,
+    "asset": "n1",
+    "label": "ENTREPÔT",
+    "before": {
+      "q": 13,
+      "r": 2,
+      "w": 8,
+      "d": 6,
+      "height": 421
+    },
+    "after": {
+      "q": 17,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 2,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 9,
+      "w": 5,
+      "d": 4,
+      "height": 317
+    },
+    "after": {
+      "q": 4,
+      "r": 11,
+      "w": 3,
+      "d": 2,
+      "height": 165
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 3,
+    "asset": "n0",
+    "label": "IMMEUBLE ÉVACUÉ",
+    "before": {
+      "q": 28,
+      "r": 3,
+      "w": 7,
+      "d": 7,
+      "height": 480
+    },
+    "after": {
+      "q": 31,
+      "r": 6,
+      "w": 4,
+      "d": 4,
+      "height": 255
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 4,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 37,
+      "r": 3,
+      "w": 7,
+      "d": 6,
+      "height": 458
+    },
+    "after": {
+      "q": 41,
+      "r": 7,
+      "w": 3,
+      "d": 2,
+      "height": 176
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 5,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 44,
+      "r": 3,
+      "w": 4,
+      "d": 6,
+      "height": 343
+    },
+    "after": {
+      "q": 45,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 230
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 6,
+    "asset": "v2",
+    "label": "RELAIS DES CHAUFFEURS",
+    "before": {
+      "q": 2,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 441
+    },
+    "after": {
+      "q": 6,
+      "r": 20,
+      "w": 2,
+      "d": 2,
+      "height": 147
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 7,
+    "asset": "v4",
+    "label": "LOGEMENTS",
+    "before": {
+      "q": 13,
+      "r": 15,
+      "w": 6,
+      "d": 6,
+      "height": 459
+    },
+    "after": {
+      "q": 17,
+      "r": 19,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 8,
+    "asset": "b0",
+    "label": "POSTE DES CITERNES",
+    "before": {
+      "q": 30,
+      "r": 15,
+      "w": 7,
+      "d": 5,
+      "height": 338
+    },
+    "after": {
+      "q": 33,
+      "r": 17,
+      "w": 4,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 9,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 15,
+      "w": 6,
+      "d": 7,
+      "height": 458
+    },
+    "after": {
+      "q": 45,
+      "r": 19,
+      "w": 2,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 10,
+    "asset": "x5",
+    "label": "VEILLE",
+    "before": {
+      "q": 3,
+      "r": 30,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 6,
+      "r": 33,
+      "w": 3,
+      "d": 3,
+      "height": 147
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 11,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 41,
+      "w": 7,
+      "d": 6,
+      "height": 446
+    },
+    "after": {
+      "q": 6,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 230
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 12,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 15,
+      "r": 29,
+      "w": 5,
+      "d": 7,
+      "height": 459
+    },
+    "after": {
+      "q": 18,
+      "r": 34,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 13,
+    "asset": "v3",
+    "label": "ATELIER DES BÂCHES",
+    "before": {
+      "q": 15,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 261
+    },
+    "after": {
+      "q": 17,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 155
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 14,
+    "asset": "x3",
+    "label": "RÉSERVE D’EAU",
+    "before": {
+      "q": 31,
+      "r": 30,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 34,
+      "r": 33,
+      "w": 4,
+      "d": 3,
+      "height": 185
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 15,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 30,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 46,
+      "r": 34,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 16,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 31,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 411
+    },
+    "after": {
+      "q": 34,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 206
+    }
+  },
+  {
+    "location": "ba-avenues",
+    "index": 17,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 46,
+      "r": 46,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 0,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 2,
+      "w": 6,
+      "d": 7,
+      "height": 446
+    },
+    "after": {
+      "q": 5,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 1,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 12,
+      "r": 2,
+      "w": 6,
+      "d": 6,
+      "height": 459
+    },
+    "after": {
+      "q": 16,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 2,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 18,
+      "r": 2,
+      "w": 5,
+      "d": 6,
+      "height": 317
+    },
+    "after": {
+      "q": 21,
+      "r": 5,
+      "w": 2,
+      "d": 3,
+      "height": 144
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 3,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 25,
+      "r": 2,
+      "w": 5,
+      "d": 7,
+      "height": 411
+    },
+    "after": {
+      "q": 27,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 4,
+    "asset": "n3",
+    "label": "DISPENSAIRE",
+    "before": {
+      "q": 36,
+      "r": 3,
+      "w": 10,
+      "d": 6,
+      "height": 485
+    },
+    "after": {
+      "q": 42,
+      "r": 6,
+      "w": 4,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 5,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 15,
+      "w": 5,
+      "d": 7,
+      "height": 459
+    },
+    "after": {
+      "q": 5,
+      "r": 20,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 6,
+    "asset": "n4",
+    "label": "HALLE COMMUNE",
+    "before": {
+      "q": 21,
+      "r": 15,
+      "w": 7,
+      "d": 5,
+      "height": 360
+    },
+    "after": {
+      "q": 24,
+      "r": 17,
+      "w": 4,
+      "d": 3,
+      "height": 195
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 7,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 15,
+      "w": 6,
+      "d": 7,
+      "height": 458
+    },
+    "after": {
+      "q": 45,
+      "r": 19,
+      "w": 2,
+      "d": 3,
+      "height": 170
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 8,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 29,
+      "w": 6,
+      "d": 7,
+      "height": 446
+    },
+    "after": {
+      "q": 5,
+      "r": 32,
+      "w": 3,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 9,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 13,
+      "r": 31,
+      "w": 5,
+      "d": 5,
+      "height": 289
+    },
+    "after": {
+      "q": 15,
+      "r": 33,
+      "w": 3,
+      "d": 3,
+      "height": 150
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 29,
+      "r": 30,
+      "w": 7,
+      "d": 4,
+      "height": 421
+    },
+    "after": {
+      "q": 33,
+      "r": 32,
+      "w": 3,
+      "d": 2,
+      "height": 155
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 11,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 29,
+      "w": 6,
+      "d": 6,
+      "height": 411
+    },
+    "after": {
+      "q": 44,
+      "r": 32,
+      "w": 3,
+      "d": 3,
+      "height": 206
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 12,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 6,
+      "d": 5,
+      "height": 421
+    },
+    "after": {
+      "q": 6,
+      "r": 45,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 13,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 16,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 411
+    },
+    "after": {
+      "q": 19,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 206
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 15,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 45,
+      "r": 46,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 16,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 8,
+      "r": 2,
+      "w": 3,
+      "d": 6,
+      "height": 260
+    },
+    "after": {
+      "q": 9,
+      "r": 5,
+      "w": 2,
+      "d": 3,
+      "height": 140
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 17,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 22,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 4,
+      "r": 24,
+      "w": 3,
+      "d": 2,
+      "height": 140
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 18,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 13,
+      "r": 36,
+      "w": 5,
+      "d": 4,
+      "height": 344
+    },
+    "after": {
+      "q": 16,
+      "r": 38,
+      "w": 2,
+      "d": 2,
+      "height": 150
+    }
+  },
+  {
+    "location": "ba-habitat",
+    "index": 19,
+    "asset": "v0",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 35,
+      "w": 5,
+      "d": 4,
+      "height": 260
+    },
+    "after": {
+      "q": 44,
+      "r": 37,
+      "w": 3,
+      "d": 2,
+      "height": 144
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 0,
+    "asset": "n2",
+    "label": "REMISAGE DU TRAM",
+    "before": {
+      "q": 2,
+      "r": 2,
+      "w": 10,
+      "d": 6,
+      "height": 509
+    },
+    "after": {
+      "q": 8,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 220
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 1,
+    "asset": "n1",
+    "label": "ANCIENNE GARE DE FRET",
+    "before": {
+      "q": 20,
+      "r": 2,
+      "w": 8,
+      "d": 6,
+      "height": 421
+    },
+    "after": {
+      "q": 24,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 210
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 2,
+    "asset": "n2",
+    "label": "TREUILS",
+    "before": {
+      "q": 38,
+      "r": 2,
+      "w": 9,
+      "d": 6,
+      "height": 477
+    },
+    "after": {
+      "q": 43,
+      "r": 5,
+      "w": 4,
+      "d": 3,
+      "height": 205
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 3,
+    "asset": "n0",
+    "label": "ÉQUIPAGES",
+    "before": {
+      "q": 2,
+      "r": 15,
+      "w": 6,
+      "d": 7,
+      "height": 446
+    },
+    "after": {
+      "q": 5,
+      "r": 18,
+      "w": 3,
+      "d": 4,
+      "height": 230
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 4,
+    "asset": "x3",
+    "label": "ROUES",
+    "before": {
+      "q": 18,
+      "r": 15,
+      "w": 6,
+      "d": 6,
+      "height": 333
+    },
+    "after": {
+      "q": 21,
+      "r": 18,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 5,
+    "asset": "v3",
+    "label": "MOTEURS",
+    "before": {
+      "q": 34,
+      "r": 16,
+      "w": 6,
+      "d": 6,
+      "height": 285
+    },
+    "after": {
+      "q": 37,
+      "r": 19,
+      "w": 3,
+      "d": 3,
+      "height": 142
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 6,
+    "asset": "x3",
+    "label": "GABARITS",
+    "before": {
+      "q": 44,
+      "r": 17,
+      "w": 4,
+      "d": 6,
+      "height": 277
+    },
+    "after": {
+      "q": 45,
+      "r": 19,
+      "w": 3,
+      "d": 4,
+      "height": 175
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 7,
+    "asset": "n2",
+    "label": "DÉMONTAGE",
+    "before": {
+      "q": 2,
+      "r": 28,
+      "w": 9,
+      "d": 6,
+      "height": 477
+    },
+    "after": {
+      "q": 7,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 200
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 8,
+    "asset": "v3",
+    "label": "AJUSTAGE",
+    "before": {
+      "q": 17,
+      "r": 29,
+      "w": 6,
+      "d": 5,
+      "height": 261
+    },
+    "after": {
+      "q": 19,
+      "r": 31,
+      "w": 4,
+      "d": 3,
+      "height": 160
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 9,
+    "asset": "v2",
+    "label": "DORTOIRS",
+    "before": {
+      "q": 2,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 441
+    },
+    "after": {
+      "q": 6,
+      "r": 45,
+      "w": 3,
+      "d": 2,
+      "height": 175
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 10,
+    "asset": "v4",
+    "label": "",
+    "before": {
+      "q": 18,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 459
+    },
+    "after": {
+      "q": 22,
+      "r": 46,
+      "w": 2,
+      "d": 2,
+      "height": 153
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 11,
+    "asset": "n4",
+    "label": "MESURES",
+    "before": {
+      "q": 30,
+      "r": 29,
+      "w": 6,
+      "d": 7,
+      "height": 389
+    },
+    "after": {
+      "q": 33,
+      "r": 32,
+      "w": 3,
+      "d": 4,
+      "height": 195
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 12,
+    "asset": "v3",
+    "label": "POMPES",
+    "before": {
+      "q": 40,
+      "r": 30,
+      "w": 7,
+      "d": 6,
+      "height": 308
+    },
+    "after": {
+      "q": 43,
+      "r": 33,
+      "w": 4,
+      "d": 3,
+      "height": 155
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 13,
+    "asset": "x3",
+    "label": "LOTS",
+    "before": {
+      "q": 29,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 360
+    },
+    "after": {
+      "q": 33,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 166
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 14,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 41,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 45,
+      "r": 46,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "ba-ateliers",
+    "index": 15,
+    "asset": "v3",
+    "label": "RÂTELIERS",
+    "before": {
+      "q": 42,
+      "r": 10,
+      "w": 6,
+      "d": 4,
+      "height": 237
+    },
+    "after": {
+      "q": 44,
+      "r": 11,
+      "w": 4,
+      "d": 3,
+      "height": 150
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 0,
+    "asset": "b4",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 2,
+      "w": 6,
+      "d": 7,
+      "height": 388
+    },
+    "after": {
+      "q": 5,
+      "r": 5,
+      "w": 4,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 1,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 10,
+      "r": 2,
+      "w": 5,
+      "d": 7,
+      "height": 422
+    },
+    "after": {
+      "q": 13,
+      "r": 6,
+      "w": 2,
+      "d": 3,
+      "height": 176
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 2,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 16,
+      "r": 3,
+      "w": 5,
+      "d": 6,
+      "height": 377
+    },
+    "after": {
+      "q": 18,
+      "r": 5,
+      "w": 3,
+      "d": 4,
+      "height": 240
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 3,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 26,
+      "r": 2,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 30,
+      "r": 6,
+      "w": 2,
+      "d": 2,
+      "height": 141
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 4,
+    "asset": "b4",
+    "label": "",
+    "before": {
+      "q": 33,
+      "r": 2,
+      "w": 5,
+      "d": 6,
+      "height": 328
+    },
+    "after": {
+      "q": 34,
+      "r": 4,
+      "w": 4,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 5,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 40,
+      "r": 3,
+      "w": 7,
+      "d": 7,
+      "height": 480
+    },
+    "after": {
+      "q": 43,
+      "r": 6,
+      "w": 4,
+      "d": 4,
+      "height": 250
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 6,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 16,
+      "w": 6,
+      "d": 7,
+      "height": 446
+    },
+    "after": {
+      "q": 6,
+      "r": 19,
+      "w": 3,
+      "d": 4,
+      "height": 240
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 7,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 10,
+      "r": 16,
+      "w": 4,
+      "d": 6,
+      "height": 352
+    },
+    "after": {
+      "q": 12,
+      "r": 19,
+      "w": 2,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 8,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 17,
+      "r": 16,
+      "w": 5,
+      "d": 6,
+      "height": 387
+    },
+    "after": {
+      "q": 20,
+      "r": 19,
+      "w": 2,
+      "d": 3,
+      "height": 175
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 9,
+    "asset": "x3",
+    "label": "ÉQUIPE IO",
+    "before": {
+      "q": 33,
+      "r": 13,
+      "w": 5,
+      "d": 7,
+      "height": 333
+    },
+    "after": {
+      "q": 35,
+      "r": 16,
+      "w": 3,
+      "d": 4,
+      "height": 185
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 10,
+    "asset": "x5",
+    "label": "LIAISON IO",
+    "before": {
+      "q": 41,
+      "r": 15,
+      "w": 6,
+      "d": 6,
+      "height": 294
+    },
+    "after": {
+      "q": 44,
+      "r": 18,
+      "w": 3,
+      "d": 3,
+      "height": 147
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 11,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 2,
+      "r": 29,
+      "w": 7,
+      "d": 6,
+      "height": 458
+    },
+    "after": {
+      "q": 6,
+      "r": 33,
+      "w": 3,
+      "d": 2,
+      "height": 176
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 12,
+    "asset": "n0",
+    "label": "ABRI NATIVOS",
+    "before": {
+      "q": 14,
+      "r": 29,
+      "w": 5,
+      "d": 7,
+      "height": 411
+    },
+    "after": {
+      "q": 16,
+      "r": 32,
+      "w": 3,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 13,
+    "asset": "n0",
+    "label": "",
+    "before": {
+      "q": 3,
+      "r": 42,
+      "w": 7,
+      "d": 5,
+      "height": 411
+    },
+    "after": {
+      "q": 6,
+      "r": 44,
+      "w": 4,
+      "d": 3,
+      "height": 230
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 14,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 16,
+      "r": 42,
+      "w": 6,
+      "d": 6,
+      "height": 422
+    },
+    "after": {
+      "q": 19,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 180
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 15,
+    "asset": "b4",
+    "label": "",
+    "before": {
+      "q": 33,
+      "r": 30,
+      "w": 5,
+      "d": 6,
+      "height": 328
+    },
+    "after": {
+      "q": 34,
+      "r": 32,
+      "w": 4,
+      "d": 4,
+      "height": 235
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 16,
+    "asset": "v5",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 29,
+      "w": 6,
+      "d": 7,
+      "height": 458
+    },
+    "after": {
+      "q": 46,
+      "r": 33,
+      "w": 2,
+      "d": 3,
+      "height": 176
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 17,
+    "asset": "n2",
+    "label": "ANCIEN ATELIER",
+    "before": {
+      "q": 30,
+      "r": 42,
+      "w": 7,
+      "d": 6,
+      "height": 414
+    },
+    "after": {
+      "q": 34,
+      "r": 45,
+      "w": 3,
+      "d": 3,
+      "height": 191
+    }
+  },
+  {
+    "location": "ba-front",
+    "index": 18,
+    "asset": "b4",
+    "label": "",
+    "before": {
+      "q": 42,
+      "r": 43,
+      "w": 6,
+      "d": 5,
+      "height": 328
+    },
+    "after": {
+      "q": 44,
+      "r": 44,
+      "w": 4,
+      "d": 4,
+      "height": 235
+    }
+  }
+]

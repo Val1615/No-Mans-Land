@@ -1,0 +1,4 @@
+{
+  "mode": "built-in image_gen; transparent_background:false",
+  "prompt": "Use case: stylized-concept. Asset type: seamless tileable square top-down interior floor texture for a realistic isometric CRPG. Create a perfectly flat orthographic top-down scan-like texture of old maintained wooden floorboards, straight boards running horizontally across the image. Detailed timber grain, subtle wear, natural knots, restrained variation in warm desaturated medium brown, matte finish, narrow dark seams between planks, no holes and no transparency. Uniform neutral diffuse lighting, no directional shadows, no highlights, no perspective. Texture must repeat seamlessly at all four edges, with no border, no decorative frame, no furniture, no objects, no labels, no text. Square composition, opaque image."
+}

@@ -1,0 +1,191 @@
+[
+  {
+    "location": "dusk",
+    "door": "clinicdoor",
+    "at": [
+      41,
+      13
+    ],
+    "distance": 6
+  },
+  {
+    "location": "dusk",
+    "door": "dusk-hotel-door",
+    "at": [
+      39,
+      37
+    ],
+    "distance": 8
+  },
+  {
+    "location": "dusk",
+    "door": "dusk-bar-door",
+    "at": [
+      9,
+      34
+    ],
+    "distance": 22
+  },
+  {
+    "location": "dusk",
+    "door": "dusk-grocery-door",
+    "at": [
+      22,
+      9
+    ],
+    "distance": 7
+  },
+  {
+    "location": "buenos",
+    "door": "ba-reading-door",
+    "at": [
+      9,
+      7
+    ],
+    "distance": 18
+  },
+  {
+    "location": "steel",
+    "door": "forum-service-door",
+    "at": [
+      23,
+      7
+    ],
+    "distance": 12
+  },
+  {
+    "location": "junk",
+    "door": "backdoor",
+    "at": [
+      13,
+      20
+    ],
+    "distance": 27
+  },
+  {
+    "location": "junk",
+    "door": "junk-bazaar-door",
+    "at": [
+      20,
+      6
+    ],
+    "distance": 12
+  },
+  {
+    "location": "junk",
+    "door": "junk-surgery-door",
+    "at": [
+      16,
+      14
+    ],
+    "distance": 17
+  },
+  {
+    "location": "titan",
+    "door": "bunkerdoor",
+    "at": [
+      24,
+      19
+    ],
+    "distance": 14
+  },
+  {
+    "location": "relay",
+    "door": "relay-control-door",
+    "at": [
+      32,
+      9
+    ],
+    "distance": 10
+  },
+  {
+    "location": "port",
+    "door": "port-office-door",
+    "at": [
+      30,
+      11
+    ],
+    "distance": 12
+  },
+  {
+    "location": "nova",
+    "door": "nova-surplus-door",
+    "at": [
+      21,
+      7
+    ],
+    "distance": 4
+  },
+  {
+    "location": "nova",
+    "door": "nova-infirmary-door",
+    "at": [
+      18,
+      34
+    ],
+    "distance": 4
+  },
+  {
+    "location": "dusk-workshops",
+    "door": "dusk-repair-door",
+    "at": [
+      9,
+      34
+    ],
+    "distance": 2
+  },
+  {
+    "location": "china",
+    "door": "lin-workshop-door",
+    "at": [
+      21,
+      6
+    ],
+    "distance": 12
+  },
+  {
+    "location": "cliniccity",
+    "door": "sen-clinic-door",
+    "at": [
+      5,
+      6
+    ],
+    "distance": 9
+  },
+  {
+    "location": "civic",
+    "door": "civic-hall-door",
+    "at": [
+      18,
+      8
+    ],
+    "distance": 17
+  },
+  {
+    "location": "smpd",
+    "door": "smpd-reception-door",
+    "at": [
+      16,
+      8
+    ],
+    "distance": 4
+  },
+  {
+    "location": "ba-habitat",
+    "door": "ba-dispensary-door",
+    "at": [
+      45,
+      9
+    ],
+    "distance": 19
+  },
+  {
+    "location": "ba-habitat",
+    "door": "ba-cinema-door",
+    "at": [
+      35,
+      47
+    ],
+    "distance": 17
+  }
+]
