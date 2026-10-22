@@ -7,17 +7,17 @@
  {
   "name": "desktop: player image rendue en miroir (droite vs gauche)",
   "ok": true,
-  "detail": "écart direct 141.3, écart miroir 44.6"
+  "detail": "écart direct 152.7, écart miroir 79.7"
  },
  {
   "name": "desktop: Vera tournée vers le joueur, image rendue en miroir",
   "ok": false,
-  "detail": "sens 1->-1, écart direct 142.9, écart miroir 89.1"
+  "detail": "sens 1->-1, écart direct 142.7, écart miroir 87.6"
  },
  {
   "name": "desktop: rebond de marche visible et léger",
   "ok": true,
-  "detail": "amplitude écran 26.6 px (inclut le déplacement)"
+  "detail": "amplitude écran 27.7 px (inclut le déplacement)"
  },
  {
   "name": "mobile: Nilo absent (0 pixel rendu)",
@@ -27,16 +27,16 @@
  {
   "name": "mobile: player image rendue en miroir (droite vs gauche)",
   "ok": true,
-  "detail": "écart direct 192.4, écart miroir 10.7"
+  "detail": "écart direct 192.8, écart miroir 22.1"
  },
  {
   "name": "mobile: Vera tournée vers le joueur, image rendue en miroir",
   "ok": true,
-  "detail": "sens 1->-1, écart direct 142.3, écart miroir 19.1"
+  "detail": "sens 1->-1, écart direct 142.1, écart miroir 19.2"
  },
  {
   "name": "mobile: rebond de marche visible et léger",
   "ok": true,
-  "detail": "amplitude écran 14.0 px (inclut le déplacement)"
+  "detail": "amplitude écran 14.3 px (inclut le déplacement)"
  }
 ]
