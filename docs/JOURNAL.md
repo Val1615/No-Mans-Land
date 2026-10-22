@@ -278,3 +278,24 @@ Revue visuelle par Valentin des captures `docs/captures/dusk-q1/`, puis :
 ### Vérifié
 - `tests/steel_l1.py` (gestes réels 1280×800 et 390×844 dpr 2, quatre races). Captures : `captures/steel-l1-v12/` et `captures/steel-l1-v12/live/`.
 - Live (GitHub Pages) : `steel_l1` **213/213**. Local : lot1_menu 66/66, lot2_creation 101/101, dusk_q1_check, flip_pixels, interiors_pixels, town_pixels 129/129, entrances_walk 48/48, ui_pixels 53/53, quest_walk 132/132 (contrôle du journal final adapté : la route de Steel est ouverte), music_check 64/64.
+
+## 2026-10-22 (heure de Paris) : v13, Steel L1 refait d'après le concept art
+
+### Retour de Valentin
+Concept art de référence : `villes/steel/ambiance/concept_center_town.jpg` (copie non modifiée). Grande ville cyberpunk de nuit, dense : rue mouillée, néons violet et cyan, hologrammes, drones, échoppes, bâtiments massifs sombres, dôme.
+
+### Fait
+- **Place forte de la douane** [décision Valentin] : grande porte du sarcophage en haut à droite, au bout de la route ; poste de douane à gauche ; file d'attente (8 civils) devant le guichet ; 11 soldats (10 figurants + Halloran) et une patrouille le long du mur ; 4 miradors, 3 tourelles (plus 2 dans l'image de la porte), 10 barricades à barbelés, 3 mâts de projecteurs avec leurs halos, check-point sur la route, sacs de sable. Nuit.
+- **Porte** : nouvelle image générée (fond vert uni, détourage dédié) : métal neutre, plus de voile violet.
+- **Intérieur de la douane** : mobilier IO (maquette `io-interiors-v10` : guichet, baie serveur, banquette ; générés : portique scanner, console à écrans, armoire forte), murs et sol IO, porte IO, éclairage froid. Le tourniquet généré et l'écran sur pied de la maquette sont rejetés par le contrôle d'angle (voir `assets/interiors/rapport_angles.json`).
+- `tools_interiors.py` : correction d'angle `v4fix` (cisaillement vertical : arête basse ramenée aux pentes v4 0,33 / 0,70, verticales conservées) ; règle d'acceptation étendue aux objets plus profonds que larges (pente z 0,70) et aux objets dont l'arête basse corrigée tombe sur les pentes v4. Les assets existants ne changent pas (manifeste vérifié identique).
+- **Center-Town de nuit** : sol mouillé généré, reflets de néons au sol (halos additifs), 3 bâtiments générés à l'échelle v4 (la Rotonde à dôme, le change de Teng, la tour Arcadius), rangée sud de la maquette assombrie, échoppes, kiosque, hologrammes qui scintillent, lampadaires néon, borne, banc, voiture, 7 passants qui marchent (miroir dans le sens de la marche), 3 drones, soldats. `tools_steel_decor.py` écrit les sprites `st_*` (maquette `city-people-v3`, `city-props-v3`, et générés).
+- `view.js` : éclairage par lieu (`light`), halos au sol (`glows`), figurants (`extras`), passants (`walkers`), drones, hologrammes additifs ; `textures.js` : sol `clean` (pas de sable ni d'herbes) et zones `wet`.
+- Logique inchangée : douane par race, crédits, Sol, Bruno et Elio, crochet du combat mutant. La fuite du mutant renvoie en (29 ; 34) : en (34 ; 35), on tombait sur le seuil de la jonction et on repartait à Dusk-Town.
+
+### Vérifié
+- `tests/steel_l1.py` étendue : disposition mesurée sur les pixels (porte en haut à droite, poste à gauche, bout de route sur le sprite de la porte, chemin marchable), soldats et file comptés à l'écran, fortifications, métal de la porte sans voile violet, cohérence de l'intérieur (mobilier IO rendu, palette froide sans sable), Center-Town contre la v12 et contre l'approche (saturation, néons froids, zones éclairées), passants et drones animés, perf, vue comparable au concept art.
+
+### À vérifier
+- Center-Town est plus saturé et bien plus riche en néons que la v12, mais c'est une scène de nuit : sa luminance moyenne est plus basse que celle de la v12 (jour sableux), au niveau du concept art. Si « luminosité » veut dire « plus clair », il faut relever l'éclairage.
+- Les images générées sont en isométrie 2:1 corrigée par cisaillement : les pentes de l'arête basse sont justes, les proportions des faces restent celles du générateur.

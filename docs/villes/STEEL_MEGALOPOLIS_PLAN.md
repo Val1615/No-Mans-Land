@@ -108,3 +108,7 @@ Toutes closes le 21/10/2026 [décision] : Nilo retiré dès le début ; race cho
 - **Décision** (Valentin) : augmenté/cyborg passent, humain refusé, mutant attaqué à vue ; combat absent, scène provisoire.
 - **Proposition** : Odile (douanière), Halloran (soldat), Teng (changeur), Elio (frère de Bruno, nom provisoire), mot de passe « quatorze poutres », taux 20 $ → 11 cr et 10 $ → 6 cr, trappe de service comme entrée de la Sous-Ville (L2), Arcadius Center nommé par Teng.
 - Crochet combat : `COMBAT_HOOKS.douane_mutant` dans `src/data/steel.js`. Quand le combat existera, remplacer les actions `hurt:` de Halloran par l'ouverture du combat ; les drapeaux `steel_attaque`, `steel_fui`, `steel_capture` restent.
+
+## L1 refait (v13, 22/10/2026), d'après le concept art
+- **Décision** (Valentin) : ambiance de nuit cyberpunk (concept art `steel/ambiance/concept_center_town.jpg`) ; douane = place forte IO, porte du sarcophage en haut à droite au bout de la route, poste de douane à gauche, beaucoup de soldats, file d'attente, fortifications ; intérieur de la douane en mobilier IO.
+- **Proposition** : la Rotonde (bâtiment à dôme de Center-Town, fermé), disposition exacte des miradors, tourelles et barricades, nombre de passants et de drones.

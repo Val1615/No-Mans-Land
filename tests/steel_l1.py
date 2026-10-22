@@ -132,6 +132,10 @@ with sync_playwright() as p:
             end = P(34, 0.6, 8.0); gate = png(E("window.__nml.view.isolateBuilding('r_porte')"))
             ex, ey = int(end['x'] * dpr), int(end['y'] * dpr); win = gate[max(0, ey - 6):ey + 6, max(0, ex - 6):ex + 6]
             check(f'{T}: le bout de la route entre dans la porte (pixels du sprite)', MAG(win).mean() > 0.5, round(float(MAG(win).mean()), 2))
+            # teinte violette de la porte (v12) corrigée : sur les tons sombres du métal rendu, pas de dominante violette (min(R,B) - V)
+            gm = MAG(gate); rr, gg, bb = gate[..., 0][gm], gate[..., 1][gm], gate[..., 2][gm]; dim = np.maximum(np.maximum(rr, gg), bb) < 120
+            cast = float((np.minimum(rr, bb) - gg)[dim].mean()); frac = float(((np.minimum(rr, bb) - gg) > 6)[dim].mean())
+            check(f'{T}: porte : métal neutre, sans voile violet (v12 : +0,15 et 6,2 %)', cast <= 0 and frac < 0.062, (round(cast, 2), round(frac, 3)))
             dec = E("window.__nml.view.decor()")
             def seen(i):
                 a = png(E(f'window.__nml.view.isolateDecor({i})')); return int(MAG(a).sum())

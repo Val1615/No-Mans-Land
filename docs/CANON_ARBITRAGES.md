@@ -185,3 +185,7 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 ## 9 sexies. Steel L1 en jeu (22/10/2026)
 - Décision : douane selon la race (cf. 9 quater) ; mutant = scène provisoire en attendant le combat.
 - Proposition : Elio, nom provisoire du frère de Bruno (contact de la Sous-Ville). Taux de change provisoires 20 $ → 11 cr (douane), 10 $ → 6 cr (Teng).
+
+## 9 septies. Steel L1 v13 (22/10/2026)
+- Décision (Valentin) : Steel de nuit, dense, néons violet et cyan, hologrammes, drones ; la douane est une place forte d'IO.
+- Proposition : la Rotonde (nom provisoire du bâtiment à dôme de Center-Town).
