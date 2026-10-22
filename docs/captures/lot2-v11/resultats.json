@@ -1,0 +1,252 @@
+[
+ {
+  "test": "mobile: Nouveau jeu ouvre la création (écran 1)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: titre et cadres ambre rendus (pixels)",
+  "ok": true,
+  "detail": "6911"
+ },
+ {
+  "test": "mobile: portrait rendu (pixels variés)",
+  "ok": true,
+  "detail": "29.2"
+ },
+ {
+  "test": "mobile: race humain accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: race mutant accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: race augmente accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: race cyborg accessible au geste",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: visage suivant : image différente (pixels)",
+  "ok": true,
+  "detail": "‹Visage 2/4›"
+ },
+ {
+  "test": "mobile: nom saisi au clavier",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: race mutant : portrait de la race (pixels)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: 3 origines pour mutant",
+  "ok": true,
+  "detail": "['sables', 'rafle', 'errant']"
+ },
+ {
+  "test": "mobile: effets de race affichés",
+  "ok": true,
+  "detail": "Endurance +1, résiste aux radiationsPas d’implant : inconnu d’IOService Militarisé : tire à vueCertains, à Dusk-Town, te parlent plus volontiers"
+ },
+ {
+  "test": "mobile: origine choisie",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: nom conservé après choix",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: écran 2",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: les 7 attributs exacts de la maquette v0.13",
+  "ok": true,
+  "detail": "['Force', 'Perception', 'Endurance', 'Charisme', 'Intelligence', 'Agilité', 'Volonté']"
+ },
+ {
+  "test": "mobile: pas d'Aura dans la création",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: Volonté = peur, douleur, intimidation",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: 11 compétences",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: textes sans tiret cadratin ni « ce n'est pas »",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: 40 points, 0 restant au départ",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: − Force : 1 point à répartir, entrée bloquée",
+  "ok": true,
+  "detail": "Encore 1 point à répartir."
+ },
+ {
+  "test": "mobile: + désactivé seulement quand plus de points",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: + Endurance : PV dérivés +3",
+  "ok": true,
+  "detail": "('29/43', '31/46')"
+ },
+ {
+  "test": "mobile: + bloqués à 0 point",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: profil prêt (Le Technicien) : attributs de la maquette",
+  "ok": true,
+  "detail": "{'force': 4, 'perception': 7, 'endurance': 5, 'charisme': 4, 'intelligence': 9, 'agilite': 6, 'volonte': 5}"
+ },
+ {
+  "test": "mobile: traits : 2 au maximum",
+  "ok": true,
+  "detail": "['nerfs', 'insomniaque']"
+ },
+ {
+  "test": "mobile: favorite imposée par l'origine verrouillée",
+  "ok": true,
+  "detail": "survie"
+ },
+ {
+  "test": "mobile: 2/3 favorites : entrée bloquée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: 3/3 favorites, entrée possible",
+  "ok": true,
+  "detail": "['survie', 'mecanique', 'crochetage']"
+ },
+ {
+  "test": "mobile: retour à l'identité puis suite : choix conservés",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: jeu lancé dans Dusk-Town",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: personnage dans l'état (nom, race, origine)",
+  "ok": true,
+  "detail": "('Ysa Corvo', 'mutant', 'rafle')"
+ },
+ {
+  "test": "mobile: PV et dollars dérivés = fiche",
+  "ok": true,
+  "detail": "('27/40', '20 $', 27, 20)"
+ },
+ {
+  "test": "mobile: PV max = 25 + 3 x Endurance (+ race, − Insomniaque)",
+  "ok": true,
+  "detail": "(40, 40)"
+ },
+ {
+  "test": "mobile: PA = 5 + Agilité/2 + 1 (Pas de nerfs)",
+  "ok": true,
+  "detail": "9"
+ },
+ {
+  "test": "mobile: Volonté −2 (Pas de nerfs) appliquée",
+  "ok": true,
+  "detail": "(5, 3)"
+ },
+ {
+  "test": "mobile: compétence favorite au bon score",
+  "ok": true,
+  "detail": "(52, 52)"
+ },
+ {
+  "test": "mobile: implant stocké (False)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: drapeaux race/origine pour PNJ et douane",
+  "ok": true,
+  "detail": "{'radResist': True, 'healFactor': 1, 'priceMult': 1, 'intimidate': False, 'desertWalk': False, 'steelCustoms': 'attaque'}"
+ },
+ {
+  "test": "mobile: mutant : résistance aux radiations stockée",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: objet d'origine dans le sac",
+  "ok": true,
+  "detail": "{'plaque': 1}"
+ },
+ {
+  "test": "mobile: HUD dérivé (PV, $, objet)",
+  "ok": true,
+  "detail": "['27/40', '20 $', 'Plaque de camion du Service ×1']"
+ },
+ {
+  "test": "mobile: Nilo toujours absent",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: fiche du perso dans le Sac (nom + portrait rendu)",
+  "ok": true,
+  "detail": "36.7"
+ },
+ {
+  "test": "mobile: sauvegarde v2 avec le personnage",
+  "ok": true,
+  "detail": "Ysa Corvo · La Pompe"
+ },
+ {
+  "test": "mobile: Continuer restaure le personnage",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: migration v1 -> v2 : perso par défaut, $ / PV / drapeaux gardés",
+  "ok": true,
+  "detail": "Rafael Quintero"
+ },
+ {
+  "test": "mobile: création abandonnée : partie en cours intacte",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "test": "mobile: aucune erreur console / réseau",
+  "ok": true,
+  "detail": "[]"
+ }
+]

@@ -23,7 +23,7 @@ export function createCreation({ $, onDone, onCancel }) {
   const bar = v => `<span class="cr-bar">${Array.from({ length: 10 }, (_, i) => `<i class="${i < v ? 'on' : ''}"></i>`).join('')}</span>`;
   function head(title) {
     const o = originOf(d);
-    return `<header class="cr-head rp"><b>${title}</b><span class="muted">${screen === 2 ? esc(d.name || 'Sans nom') + ' · ' + RACES[d.race].name + ' · ' + o.name : 'Échap : retour au menu'}</span></header>`;
+    return `<header class="cr-head rp"><b>${title}</b><span class="muted">${screen === 2 ? esc(d.name || 'Sans nom') + ' · ' + RACES[d.race].name + ' · ' + o.name : ''}</span><button class="btn" id="cr-menu" title="Échap">‹ Menu</button></header>`;
   }
   function render() {
     const r = RACES[d.race], o = originOf(d), por = r.portraits[d.portrait % r.portraits.length];
@@ -69,6 +69,7 @@ export function createCreation({ $, onDone, onCancel }) {
     else if (b.dataset.attr) { const k = b.dataset.attr; d.stats[k] = Math.max(ATTR_MIN, Math.min(ATTR_MAX, d.stats[k] + +b.dataset.d)); d.profile = null; }
     else if (b.dataset.trait) { const t = b.dataset.trait, i = d.traits.indexOf(t); if (i >= 0) d.traits.splice(i, 1); else if (d.traits.length < MAX_TRAITS) d.traits.push(t); }
     else if (b.dataset.skill) { const k = b.dataset.skill, i = d.favs.indexOf(k); if (k === originOf(d).fav) return; if (i >= 0) d.favs.splice(i, 1); else if (d.favs.length < FAV_COUNT) d.favs.push(k); }
+    else if (b.id === 'cr-menu') { close(); onCancel(); return; }
     else if (b.id === 'cr-enter') { if (valid(d)) { close(); onDone(clone(d)); } return; }
     else return;
     const f = document.activeElement?.id; render(); if (f === 'cr-name') $('cr-name').focus();

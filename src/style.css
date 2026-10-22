@@ -179,3 +179,4 @@ body.reduce-motion *{transition:none!important;animation:none!important}
 #panel .fiche{display:flex;gap:10px;align-items:center;margin-bottom:8px}#panel .fiche img{width:56px;height:56px;object-fit:cover;object-position:top;border:1px solid var(--d)}
 #panel .fiche .attrs{display:flex;flex-wrap:wrap;gap:4px 9px;font-size:11.5px;margin-top:3px}#panel .fiche .attrs b{color:var(--c)}
 body.readable #creation .cr-head b{font-family:'Plex'}
+#creation #cr-menu{padding:3px 10px;font-size:12px;min-height:30px;margin-left:auto}#creation .cr-head .muted{margin-left:auto}
