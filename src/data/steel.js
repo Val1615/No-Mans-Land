@@ -262,7 +262,8 @@ export const DIALOGUES = {
       { label: 'Porter la caisse.', action: 'hurt:6;flag:sv_passage;reveal:v_lift', next: 'porte' }, { label: 'Je reviendrai avec l\u2019argent.', next: 'end' } ] },
     ok: { text: 'Le monte-charge est au fond à droite. Le gars dessus sait. En haut, tu sors entre deux galeries, et tu ne m\u2019as jamais vu.', options: [ { label: 'Merci.', next: 'end' } ] },
     porte: { text: 'Ils étaient de mauvaise humeur. Tu reviens avec une lèvre ouverte et la caisse livrée. Elio hoche la tête : le monte-charge, au fond à droite.', options: [ { label: 'J\u2019y vais.', next: 'end' } ] },
-    pauvre: { text: 'Compte encore. Il manque des billets, et moi je ne fais pas crédit.', options: [ { label: 'Bon.', next: 'risque' } ] },
+    pauvre: { text: 'Il te manque des billets, et je ne fais pas crédit. Par contre, j\u2019ai une caisse à porter à la Cuve. Tu la livres, tu montes. Les gens là-bas sont nerveux, je te préviens.', options: [
+      { label: 'D\u2019accord, je porte la caisse.', action: 'hurt:6;flag:sv_passage;reveal:v_lift', next: 'porte' }, { label: 'Je reviendrai avec l\u2019argent.', next: 'end' } ] },
   },
   patrouilleur: {
     start: { text: 'Circulez. L\u2019avenue est à tout le monde, mais pas pour longtemps.', options: [
