@@ -623,5 +623,257 @@
   "hauteur_attendue_m": 1.0,
   "hauteur_implicite_m": 0.88,
   "echelle_ok": true
+ },
+ "io_reception": {
+  "pente_dominante": 0.7,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.36,
+    0.48
+   ],
+   "cisaillement": [
+    1.218,
+    -0.113
+   ],
+   "miroir": true,
+   "pentes_apres": [
+    0.45,
+    0.64
+   ]
+  },
+  "source": "maquette art-source/io-interiors-v10.png #0",
+  "role": "guichet IO en arc (maquette, angle corrigé)",
+  "emprise_m": [
+   0.8,
+   2.7
+  ],
+  "hauteur_attendue_m": 1.2,
+  "hauteur_implicite_m": 1.22,
+  "echelle_ok": true
+ },
+ "io_server": {
+  "pente_dominante": 0.65,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.02,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.55,
+    0.58
+   ],
+   "cisaillement": [
+    0.91,
+    -0.175
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "regle": "arête basse v4",
+  "source": "maquette art-source/io-interiors-v10.png #3",
+  "role": "baie serveur IO (maquette, angle corrigé)",
+  "emprise_m": [
+   1.3,
+   1.5
+  ],
+  "hauteur_attendue_m": 2.0,
+  "hauteur_implicite_m": 2.04,
+  "echelle_ok": true
+ },
+ "io_sofa": {
+  "pente_dominante": 0.7,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.51,
+    0.52
+   ],
+   "cisaillement": [
+    0.998,
+    -0.182
+   ],
+   "miroir": true,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "regle": "arête basse v4",
+  "source": "maquette art-source/io-interiors-v10.png #4",
+  "role": "banquette d attente IO (maquette, angle corrigé)",
+  "emprise_m": [
+   0.9,
+   3.0
+  ],
+  "hauteur_attendue_m": 0.7,
+  "hauteur_implicite_m": 0.69,
+  "echelle_ok": true
+ },
+ "io_display": {
+  "pente_dominante": 0.15,
+  "sens": "direct",
+  "part_bande_v4": 0.05,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.89,
+    1.17
+   ],
+   "cisaillement": [
+    0.501,
+    -0.117
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.35,
+    0.66
+   ]
+  },
+  "regle": "arête basse v4",
+  "source": "maquette art-source/io-interiors-v10.png #5",
+  "role": "écran sur pied IO (maquette, angle corrigé)",
+  "emprise_m": [
+   1.8,
+   0.5
+  ],
+  "hauteur_attendue_m": 2.0,
+  "hauteur_implicite_m": 0.79,
+  "echelle_ok": false
+ },
+ "io_scanner": {
+  "pente_dominante": 0.75,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.5,
+    0.5
+   ],
+   "cisaillement": [
+    1.03,
+    -0.185
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    -1.22,
+    0.87
+   ]
+  },
+  "source": "généré art-gen/gen_douane_furn.jpg #0",
+  "role": "portique scanner corporel (généré, angle corrigé)",
+  "emprise_m": [
+   1.7,
+   0.75
+  ],
+  "hauteur_attendue_m": 2.3,
+  "hauteur_implicite_m": 2.3,
+  "echelle_ok": true
+ },
+ "io_turnstile": {
+  "pente_dominante": 0.85,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "pentes_source": [
+    0.5,
+    0.5
+   ],
+   "cisaillement": [
+    1.03,
+    -0.185
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    -0.5,
+    0.86
+   ]
+  },
+  "source": "généré art-gen/gen_douane_furn.jpg #1",
+  "role": "tourniquet de contrôle (généré, angle corrigé)",
+  "emprise_m": [
+   1.45,
+   2.1
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.99,
+  "echelle_ok": true
+ },
+ "io_console": {
+  "pente_dominante": 0.7,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.03,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.08,
+    0.69
+   ],
+   "cisaillement": [
+    1.336,
+    0.225
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.47,
+    0.69
+   ]
+  },
+  "source": "généré art-gen/gen_douane_furn.jpg #2",
+  "role": "console de surveillance à trois écrans (généré, angle corrigé)",
+  "emprise_m": [
+   1.1,
+   0.55
+  ],
+  "hauteur_attendue_m": 1.5,
+  "hauteur_implicite_m": 1.47,
+  "echelle_ok": true
+ },
+ "io_locker": {
+  "pente_dominante": 0.2,
+  "sens": "direct",
+  "part_bande_v4": 0.43,
+  "part_2_1_opposee": 0.09,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.41,
+    0.67
+   ],
+   "cisaillement": [
+    0.95,
+    -0.061
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.72
+   ]
+  },
+  "regle": "arête basse v4",
+  "source": "généré art-gen/gen_douane_furn.jpg #3",
+  "role": "armoire forte à armes (généré, angle corrigé)",
+  "emprise_m": [
+   1.4,
+   0.85
+  ],
+  "hauteur_attendue_m": 2.0,
+  "hauteur_implicite_m": 1.97,
+  "echelle_ok": true
  }
 }

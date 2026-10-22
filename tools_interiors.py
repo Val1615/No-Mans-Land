@@ -36,6 +36,8 @@ def judge(rgba):
     prim = max(side, key=side.get) if side else None
     near21_other = band(other, 0.45, 0.55)
     ok = prim is not None and 0.25 <= prim <= 0.42 and near21_other < 0.12
+    # v13 : objet plus profond que large (face z dominante) : pente dominante dans la bande z de la caméra v4 (0,70)
+    ok = ok or (prim is not None and 0.62 <= prim <= 0.8 and near21_other < 0.12)
     return {'pente_dominante': prim, 'sens': 'direct' if sign > 0 else 'miroir', 'part_bande_v4': round(band(side, 0.25, 0.42), 2),
             'part_2_1_opposee': round(near21_other, 2), 'accepte': bool(ok)}
 
@@ -59,6 +61,29 @@ def quad(path, q):
     if q < 0: return clean(rgba)  # image d'un seul objet
     c, r = q % 2, q // 2
     return clean(rgba[r*H//2:(r+1)*H//2, c*W//2:(c+1)*W//2])
+# v13 : correction d'angle des images générées en isométrie 2:1 (pentes ~0,5 / 0,5) vers la caméra v4 (0,33 à gauche, 0,70 à droite).
+# Cisaillement vertical seulement (les verticales restent verticales) : y' = d*y + c*(x - ax), calculé sur les pentes mesurées
+# de l'arête basse (enveloppe inférieure du masque). Si l'arête la plus douce est à droite, l'image est d'abord mise en miroir.
+def base_slopes(rgba):
+    a = rgba[:, :, 3] > 100; cols = np.nonzero(a.any(0))[0]; low = np.array([np.nonzero(a[:, x])[0].max() for x in cols])
+    i = int(np.argmax(low)); ax = cols[i]; W = cols[-1] - cols[0]
+    L = (cols < ax - 0.08 * W) & (cols > cols[0] + 0.08 * W); Rr = (cols > ax + 0.08 * W) & (cols < cols[-1] - 0.08 * W)
+    sl = np.polyfit(cols[L], low[L], 1)[0] if L.sum() > 5 else 0.5; sr = -np.polyfit(cols[Rr], low[Rr], 1)[0] if Rr.sum() > 5 else 0.5
+    return float(sl), float(sr), int(ax), int(low[i])
+def v4fix(rgba, tl=0.33, tr=0.70, force=None, mirror=None):
+    sl, sr, ax, ay = base_slopes(rgba); mirrored = False
+    if force: sl, sr = force  # objet à pieds (arche, tourniquet) : l'arête basse ne se mesure pas, pentes 2:1 de la génération
+    if (sr < sl if mirror is None else mirror):
+        rgba = rgba[:, ::-1].copy(); mirrored = True
+        if force: sl, sr = sr, sl; ax = rgba.shape[1] - 1 - ax
+        else: sl, sr, ax, ay = base_slopes(rgba)
+    d = (tl + tr) / max(0.2, sl + sr); c = tl - d * sl
+    H, W = rgba.shape[:2]; top = min(0, c * (0 - ax), c * (W - ax)); bot = max(d * H + c * (0 - ax), d * H + c * (W - ax))
+    nh = int(bot - top) + 2
+    # PIL : pixel source = A^-1 (x', y') ; y = (y' + top - c*(x - ax)) / d, x = x'
+    im = Image.fromarray(rgba, 'RGBA').transform((W, nh), Image.AFFINE, (1, 0, 0, -c / d, 1 / d, (top + c * ax) / d), resample=Image.BICUBIC)
+    out = clean(np.asarray(im).copy(), 200)
+    return out, {'pentes_source': [round(sl, 2), round(sr, 2)], 'cisaillement': [round(d, 3), round(c, 3)], 'miroir': mirrored, 'pentes_apres': [round(v, 2) for v in base_slopes(out)[:2]]}
 def mock(sheet, idx):
     im = np.array(Image.open(SRC + sheet).convert('RGBA')); a = im[:, :, 3] > 40
     lab, n = ndimage.label(ndimage.binary_dilation(a, iterations=6)); objs = []
@@ -110,17 +135,33 @@ ASSETS = [
   ('m_shop_shelf',   ('mock', 'service-v10-A.png', 1), 1.9, 0.5, 1.9, 'étagère d épicerie (maquette)'),
   ('m_medchair',     ('mock', 'service-v10-A.png', 5), 1.0, 1.4, 1.6, 'fauteuil médical (maquette)'),
   ('m_desk2',        ('mock', 'interiors-v2.png', 3), 1.6, 0.8, 1.0, 'bureau (maquette)'),
+  # v13 Steel : poste de douane IO (cyberpunk). Maquette io-interiors-v10 et générations, angle corrigé (v4fix) puis jugé.
+  ('io_reception',   ('mockfix', 'io-interiors-v10.png', 0, {}), 0.8, 2.7, 1.2, 'guichet IO en arc (maquette, angle corrigé)'),
+  ('io_server',      ('mockfix', 'io-interiors-v10.png', 3, {}), 1.3, 1.5, 2.0, 'baie serveur IO (maquette, angle corrigé)'),
+  ('io_sofa',        ('mockfix', 'io-interiors-v10.png', 4, {}), 0.9, 3.0, 0.7, 'banquette d attente IO (maquette, angle corrigé)'),
+  ('io_display',     ('mockfix', 'io-interiors-v10.png', 5, {}), 1.8, 0.5, 2.0, 'écran sur pied IO (maquette, angle corrigé)'),
+  ('io_scanner',     ('genfix', 'gen_douane_furn.jpg', 0, {'force': (0.5, 0.5), 'mirror': False}), 1.7, 0.75, 2.3, 'portique scanner corporel (généré, angle corrigé)'),
+  ('io_turnstile',   ('genfix', 'gen_douane_furn.jpg', 1, {'force': (0.5, 0.5), 'mirror': False}), 1.45, 2.1, 1.0, 'tourniquet de contrôle (généré, angle corrigé)'),
+  ('io_console',     ('genfix', 'gen_douane_furn.jpg', 2, {}), 1.1, 0.55, 1.5, 'console de surveillance à trois écrans (généré, angle corrigé)'),
+  ('io_locker',      ('genfix', 'gen_douane_furn.jpg', 3, {}), 1.4, 0.85, 2.0, 'armoire forte à armes (généré, angle corrigé)'),
 ]
 # acceptés par l'angle mais non retenus pour le canon ou le rendu
 NOT_EXPORTED = {'bar_backshelf': 'pan de mur en ruine peint avec l étagère : double le vrai mur, remplacé par bar_backshelf_b'}
 def run():
     man, rep = {}, {}
-    for aid, (kind, f, i), w, d, h, role in ASSETS:
-        rgba = quad(GEN + f, i) if kind == 'gen' else mock(f, i)
+    for aid, (kind, f, *rest), w, d, h, role in ASSETS:
+        i = rest[0]; f = (f, rest[0], rest[1]) if kind.endswith('fix') else f
+        fix = None
+        if kind in ('genfix', 'mockfix'):
+            f, i, o = f[0], f[1], f[2]; rgba, fix = v4fix(quad(GEN + f, i) if kind == 'genfix' else mock(f, i), **o)
+        else: rgba = quad(GEN + f, i) if kind == 'gen' else mock(f, i)
         j = judge(rgba); hh = rgba.shape[0] / rgba.shape[1]
+        if fix: j['correction_v4'] = fix; j['sens'] = 'direct'  # orientation déjà fixée par v4fix
+        # v13 : après correction mesurée (pas forcée), l'arête basse doit tomber sur les deux pentes v4 (0,33 et 0,70, à 0,06 près)
+        if fix and not rest[1].get('force') and abs(fix['pentes_apres'][0] - 0.33) <= 0.06 and abs(fix['pentes_apres'][1] - 0.70) <= 0.06: j['accepte'] = True; j['regle'] = 'arête basse v4'
         # échelle : largeur écran de l'emprise (m) -> hauteur implicite de l'objet
         sw = w*abs(R[0]) + d*abs(R[2]); sh = sw*hh; implied = (sh - w*abs(U[0]) - d*abs(U[2])) / U[1]
-        j.update({'source': ('maquette art-source/' if kind == 'mock' else 'généré art-gen/') + f + f' #{i}', 'role': role,
+        j.update({'source': ('maquette art-source/' if kind.startswith('mock') else 'généré art-gen/') + f + f' #{i}', 'role': role,
                   'emprise_m': [w, d], 'hauteur_attendue_m': h, 'hauteur_implicite_m': round(implied, 2)})
         j['echelle_ok'] = bool(abs(implied - h) <= 0.3*h + 0.15)
         rep[aid] = j
@@ -128,7 +169,7 @@ def run():
         if j['accepte'] and j['echelle_ok'] and aid not in NOT_EXPORTED:
             if j['sens'] == 'miroir': rgba = rgba[:, ::-1]
             im = Image.fromarray(rgba, 'RGBA'); im.thumbnail((640, 640)); im.save(OUT + aid + '.webp', quality=90)
-            man[aid] = {'file': f'interiors/{aid}.webp', 'px': list(im.size), 'footprint_m': [w, d], 'height_m': h, 'origin': 'maquette' if kind == 'mock' else 'généré',
+            man[aid] = {'file': f'interiors/{aid}.webp', 'px': list(im.size), 'footprint_m': [w, d], 'height_m': h, 'origin': 'maquette' if kind.startswith('mock') else 'généré',
                         'source': j['source'], 'mirrored_from_source': j['sens'] == 'miroir'}
         print(f"{aid:18s} {'ACCEPTE' if aid in man else 'REJETE '} pente={j['pente_dominante']} ({j['sens']}, bande {j['part_bande_v4']}, 2:1 opp {j['part_2_1_opposee']}) h impl={j['hauteur_implicite_m']} / {h}")
     # textures (plans en mètres : l'angle est donné par la géométrie 3D, pas par l'image)
@@ -137,6 +178,7 @@ def run():
         im.crop((c*W//2+m, r*H//2+m, (c+1)*W//2-m, (r+1)*H//2-m)).resize((size, size)).save(OUT + name + '.webp', quality=88)
         man[name] = {'file': f'interiors/{name}.webp', 'texture': True, 'origin': 'généré', 'source': 'généré art-gen/' + f + f' #{q}'}
     tile('gen_walls_sheet.jpg', 0, 'w_plaster'); tile('gen_walls_sheet.jpg', 1, 'w_brick'); tile('gen_walls_sheet.jpg', 2, 'w_clay'); tile('gen_walls_sheet.jpg', 3, 'w_planks')
+    tile('gen_io_surfaces.jpg', 0, 'w_io_dark'); tile('gen_io_surfaces.jpg', 1, 'w_io_white'); tile('gen_io_surfaces.jpg', 2, 'f_io_grate'); tile('gen_io_surfaces.jpg', 3, 'f_io_dark')  # v13 Steel
     tile('gen_floors_sheet.jpg', 0, 'f_tiles'); tile('gen_floors_sheet.jpg', 2, 'f_earth')
     Image.open(SRC + 'interior-wood-v10.png').convert('RGB').resize((512, 512)).save(OUT + 'f_wood.webp', quality=88)
     man['f_wood'] = {'file': 'interiors/f_wood.webp', 'texture': True, 'origin': 'maquette', 'source': 'maquette art-source/interior-wood-v10.png'}

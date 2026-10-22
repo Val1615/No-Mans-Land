@@ -224,6 +224,96 @@
   "source": "maquette art-source/service-v10-B.png #3",
   "mirrored_from_source": false
  },
+ "io_reception": {
+  "file": "interiors/io_reception.webp",
+  "px": [
+   459,
+   494
+  ],
+  "footprint_m": [
+   0.8,
+   2.7
+  ],
+  "height_m": 1.2,
+  "origin": "maquette",
+  "source": "maquette art-source/io-interiors-v10.png #0",
+  "mirrored_from_source": false
+ },
+ "io_server": {
+  "file": "interiors/io_server.webp",
+  "px": [
+   281,
+   400
+  ],
+  "footprint_m": [
+   1.3,
+   1.5
+  ],
+  "height_m": 2.0,
+  "origin": "maquette",
+  "source": "maquette art-source/io-interiors-v10.png #3",
+  "mirrored_from_source": false
+ },
+ "io_sofa": {
+  "file": "interiors/io_sofa.webp",
+  "px": [
+   486,
+   407
+  ],
+  "footprint_m": [
+   0.9,
+   3.0
+  ],
+  "height_m": 0.7,
+  "origin": "maquette",
+  "source": "maquette art-source/io-interiors-v10.png #4",
+  "mirrored_from_source": false
+ },
+ "io_scanner": {
+  "file": "interiors/io_scanner.webp",
+  "px": [
+   252,
+   383
+  ],
+  "footprint_m": [
+   1.7,
+   0.75
+  ],
+  "height_m": 2.3,
+  "origin": "généré",
+  "source": "généré art-gen/gen_douane_furn.jpg #0",
+  "mirrored_from_source": false
+ },
+ "io_console": {
+  "file": "interiors/io_console.webp",
+  "px": [
+   365,
+   542
+  ],
+  "footprint_m": [
+   1.1,
+   0.55
+  ],
+  "height_m": 1.5,
+  "origin": "généré",
+  "source": "généré art-gen/gen_douane_furn.jpg #2",
+  "mirrored_from_source": false
+ },
+ "io_locker": {
+  "file": "interiors/io_locker.webp",
+  "px": [
+   244,
+   365
+  ],
+  "footprint_m": [
+   1.4,
+   0.85
+  ],
+  "height_m": 2.0,
+  "origin": "généré",
+  "source": "généré art-gen/gen_douane_furn.jpg #3",
+  "mirrored_from_source": false
+ },
  "w_plaster": {
   "file": "interiors/w_plaster.webp",
   "texture": true,
@@ -247,6 +337,30 @@
   "texture": true,
   "origin": "généré",
   "source": "généré art-gen/gen_walls_sheet.jpg #3"
+ },
+ "w_io_dark": {
+  "file": "interiors/w_io_dark.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_io_surfaces.jpg #0"
+ },
+ "w_io_white": {
+  "file": "interiors/w_io_white.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_io_surfaces.jpg #1"
+ },
+ "f_io_grate": {
+  "file": "interiors/f_io_grate.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_io_surfaces.jpg #2"
+ },
+ "f_io_dark": {
+  "file": "interiors/f_io_dark.webp",
+  "texture": true,
+  "origin": "généré",
+  "source": "généré art-gen/gen_io_surfaces.jpg #3"
  },
  "f_tiles": {
   "file": "interiors/f_tiles.webp",
