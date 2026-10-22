@@ -184,6 +184,7 @@ export const DIALOGUES = {
       { label: 'Entrer. Je cherche du travail.', next: 'lu', if: 'implant&!steel_passe' },
       { label: 'Entrer. Je cherche du travail.', next: 'refus', if: '!implant', action: 'flag:steel_refuse' },
       { label: 'Changer des dollars (20 $ contre 11 cr)', action: 'change:20:11', next: 'change', if: 'implant' },
+      { label: 'Changer moins (10 $ contre 5 cr)', action: 'change:10:5', next: 'change', if: 'implant' },
       { label: 'Je repasse la barrière.', next: 'passe', if: 'steel_passe' },
       { label: 'Rien. Je regardais.', next: 'end' } ] },
     lu: { text: 'Poignet. Plus près. Voilà. Implant lu, aucune dette, aucun signalement. Entrée de transit, sept jours, renouvelable au bureau des permis. Le change est ici ou chez les changeurs de la place. Ici, au moins, on ne vous vole qu\u2019officiellement.', options: [
