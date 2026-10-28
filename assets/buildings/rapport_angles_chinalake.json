@@ -209,19 +209,19 @@
   "magenta_bord_pct": 0.02
  },
  "cl_stand_implants": {
-  "pente_dominante": 0.3,
+  "pente_dominante": 0.25,
   "sens": "direct",
-  "part_bande_v4": 1.0,
+  "part_bande_v4": 0.67,
   "part_2_1_opposee": 0,
   "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.27,
-    0.88
+    0.33,
+    0.82
    ],
    "cisaillement": [
-    0.898,
-    0.087
+    0.897,
+    0.032
    ],
    "miroir": false,
    "pentes_apres": [
@@ -229,35 +229,36 @@
     0.7
    ],
    "mesure": "enveloppe convexe",
-   "rallonge_hauteurs": 2.0
+   "keystone_k": 0.05,
+   "rallonge_hauteurs": 1.35
   },
   "accepte_arete_basse": true,
-  "source": "art-gen/gen_cl_stand_implants2.jpg",
+  "source": "art-gen/gen_cl_stand_implants3.jpg",
   "origine": "généré",
-  "role": "stand illégal, quai nord : implants piratés, IMPLANTS 植入物",
+  "role": "stand illégal, quai nord : implants piratés, kiosque fermé en tôle rouge sang-de-bœuf, toit plat, néon rouge, vitrine et fauteuil chirurgical, IMPLANTS 植入物",
   "emprise_m": [
    2.5,
    1.0
   ],
   "hauteur_attendue_m": 2.6,
-  "hauteur_implicite_m": 2.43,
+  "hauteur_implicite_m": 2.61,
   "echelle_ok": true,
-  "magenta_bord_pct": 0.02
+  "magenta_bord_pct": 0.0
  },
  "cl_stand_puces": {
   "pente_dominante": 0.3,
   "sens": "direct",
-  "part_bande_v4": 1.0,
+  "part_bande_v4": 0.55,
   "part_2_1_opposee": 0,
   "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.29,
-    0.86
+    0.4,
+    0.83
    ],
    "cisaillement": [
-    0.899,
-    0.072
+    0.84,
+    -0.005
    ],
    "miroir": false,
    "pentes_apres": [
@@ -265,18 +266,18 @@
     0.7
    ],
    "mesure": "enveloppe convexe",
-   "rallonge_hauteurs": 2.0
+   "rallonge_hauteurs": 1.8
   },
   "accepte_arete_basse": true,
-  "source": "art-gen/gen_cl_stand_puces2.jpg",
+  "source": "art-gen/gen_cl_stand_puces3.jpg",
   "origine": "généré",
-  "role": "stand illégal, quai nord : puces, PUCES 芯片",
+  "role": "stand illégal, quai nord : puces, charrette à roues sous ombrelle ronde moutarde, bacs de puces, cuivre, moniteur, PUCES 芯片",
   "emprise_m": [
    2.5,
    1.0
   ],
   "hauteur_attendue_m": 2.6,
-  "hauteur_implicite_m": 2.25,
+  "hauteur_implicite_m": 2.6,
   "echelle_ok": true,
   "magenta_bord_pct": 0.0
  },

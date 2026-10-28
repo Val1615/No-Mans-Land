@@ -1274,15 +1274,15 @@
  },
  "cl_stand_implants": {
   "file": "buildings/cl_stand_implants.webp",
-  "source": "art-gen/gen_cl_stand_implants2.jpg",
+  "source": "art-gen/gen_cl_stand_implants3.jpg",
   "origine": "généré",
   "px": [
    131,
-   161
+   169
   ],
   "anchor": [
    103,
-   160
+   168
   ],
   "footprint_m": [
    2.5,
@@ -1294,15 +1294,15 @@
  },
  "cl_stand_puces": {
   "file": "buildings/cl_stand_puces.webp",
-  "source": "art-gen/gen_cl_stand_puces2.jpg",
+  "source": "art-gen/gen_cl_stand_puces3.jpg",
   "origine": "généré",
   "px": [
    131,
-   152
+   168
   ],
   "anchor": [
    103,
-   151
+   167
   ],
   "footprint_m": [
    2.5,

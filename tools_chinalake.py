@@ -20,8 +20,8 @@ LT = {
  'cl_pilotis': ('gen_cl_pilotis.jpg', [6.0, 6.0], 4.5, 'module de structure sur pilotis 6 m (plateforme, garde-corps, caisses, filets pliés, lanterne)'),
  'cl_cabane': ('gen_cl_cabane2.jpg', [8.0, 6.0], 3.5, 'Les Filets, cabane sur pilotis, toit simple, FILETS 渔网'),
  'cl_ponton': ('gen_cl_ponton.jpg', [5.0, 3.0], 3.5, 'Ponton de Shen, stand du technicien au bord de l eau, ordinateurs, pièces, RÉPARATIONS 修理'),
- 'cl_stand_implants': ('gen_cl_stand_implants2.jpg', [2.5, 1.5], 2.6, 'stand illégal, quai nord : implants piratés, IMPLANTS 植入物'),
- 'cl_stand_puces': ('gen_cl_stand_puces2.jpg', [2.5, 1.5], 2.6, 'stand illégal, quai nord : puces, PUCES 芯片'),
+ 'cl_stand_implants': ('gen_cl_stand_implants3.jpg', [2.5, 1.0], 2.6, 'stand illégal, quai nord : implants piratés, kiosque fermé en tôle rouge sang-de-bœuf, toit plat, néon rouge, vitrine et fauteuil chirurgical, IMPLANTS 植入物'),
+ 'cl_stand_puces': ('gen_cl_stand_puces3.jpg', [2.5, 1.0], 2.6, 'stand illégal, quai nord : puces, charrette à roues sous ombrelle ronde moutarde, bacs de puces, cuivre, moniteur, PUCES 芯片'),
  'cl_stand_armes': ('gen_cl_stand_armes3.jpg', [2.5, 1.5], 2.6, 'stand illégal, quai est : armes, ARMES 武器'),
  'cl_stand_papiers': ('gen_cl_stand_papiers2.jpg', [2.5, 1.5], 2.4, 'stand illégal (guichet), quai sud : faux papiers, PAPIERS 证件'),
  'cl_stand_medocs': ('gen_cl_stand_medocs2.jpg', [2.5, 1.5], 2.6, 'stand illégal, quai ouest : médicaments, MÉDICAMENTS 药品'),
@@ -51,7 +51,7 @@ GRADE = {}
 # (coude : bras en V renversé, apex à l arrière ; passerelle : escalier et poteaux). (pente axe x, pente axe z), sans miroir.
 FORCE = {}
 FITFP = {'cl_maison_the', 'cl_immeuble_fond', 'cl_cabane'}  # proportions x/z mesurées sur le dessin (plus grande dimension = plan) pour que le pivot tombe sur le coin dessiné
-FP = {k: v[1] for k, v in LT.items() if not k.startswith('cl_stand_') and k not in FITFP}  # stands : proportions mesurées, plus grande dimension 2,5 m (les générations sont plus longues que profondes)  # emprises du plan imposées (pivot géométrique au coin avant)
+FP = {k: v[1] for k, v in LT.items() if (not k.startswith('cl_stand_') or k in ('cl_stand_implants', 'cl_stand_puces')) and k not in FITFP}  # stands : proportions mesurées, plus grande dimension 2,5 m (les générations sont plus longues que profondes)  # emprises du plan imposées (pivot géométrique au coin avant)
 STRICT = set()
 def key_green_strict(path):
     a = np.asarray(Image.open(path).convert('RGB')).astype(float); r, g, b = a[..., 0], a[..., 1], a[..., 2]
@@ -84,7 +84,7 @@ def stretch_heights(rgba, f):
     src_y = np.where(Yo >= T, Yo, T - (T - Yo) / f)
     out = cv2.remap(rgba, np.broadcast_to(X[None, :], src_y.shape).astype(np.float32), src_y.astype(np.float32), cv2.INTER_CUBIC, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
     return TI.clean(out, 200)
-PITCH = {'cl_stand_implants': 2.0, 'cl_stand_puces': 2.0, 'cl_stand_armes': 2.0, 'cl_stand_papiers': 1.8, 'cl_stand_medocs': 2.0, 'cl_caisse_armes': 2.2, 'cl_bac_puces': 2.5, 'cl_friture': 2.2}
+PITCH = {'cl_stand_implants': 1.35, 'cl_stand_puces': 1.8, 'cl_stand_armes': 2.0, 'cl_stand_papiers': 1.8, 'cl_stand_medocs': 2.0, 'cl_caisse_armes': 2.2, 'cl_bac_puces': 2.5, 'cl_friture': 2.2}
 TEXT = {'cl_maison_the', 'cl_immeuble_fond', 'cl_immeuble_fond_b', 'cl_cabane', 'cl_ponton', 'cl_stand_implants', 'cl_stand_puces', 'cl_stand_armes', 'cl_stand_papiers', 'cl_stand_medocs'}  # enseignes : jamais de miroir (texte inversé)
 THIN = {'cl_cable_lanternes'}  # câble fin : pas d ouverture morphologique, petits éléments (lanternes) conservés
 def key_green_thin(path):
@@ -181,12 +181,28 @@ if __name__ == '__main__':
 
 
 # ---- sol g_cl_eau (convention des sols : assets/generated/g_*.webp, 512 × 512 RGB, chargé par loadSkins / ground.skin, tileM au choix de Rivet) ----
-# La génération (1024²) est déjà périodique de 512 px (écart moyen 2/255 entre les deux moitiés) : on garde le carreau 64..576, dont les bords
-# se raccordent (écart moyen 3,4/255, de l ordre du bruit entre pixels voisins), éclairci de 20 % (noir pétrole lisible sous la teinte de zone).
-def build_eau(src='gen_cl_eau_src.jpg', off=64, gain=1.2):
-    a = np.asarray(Image.open(G + src).convert('RGB')).astype(float)[off:off + 512, off:off + 512] * gain
-    out = Image.fromarray(np.clip(a, 0, 255).astype('uint8'))
+# v2 (2026-10-28) : eau de lac urbaine stagnante vue de dessus (ni courant ni berges ni stries : l ancienne lisait comme un canal), reflets de néons
+# ambre et rouges en taches diffuses (canon : ni bleu ni cyan ni violet ni rose). La génération (1024²) est quasi périodique de 512 px ; le carreau
+# 256..768 est rendu strictement raccordable par fondu sur 96 px de chaque bord avec la période voisine (a[x] ~ a[x - 512]).
+# Reflets : gain 1,25 puis rehausse des zones claires (néons) et de la saturation chaude.
+def build_eau(src='gen_cl_eau_src2.jpg', off=256, gain=1.25, band=96):
+    a = np.asarray(Image.open(G + src).convert('RGB')).astype(float)
+    X = np.arange(512); w = np.clip((X - (512 - band)) / band, 0, 1)
+    def hblend(rows):  # vers le bord droit, fondu vers a[., off + x - 512] : la colonne 511 rejoint la colonne 0 du carreau voisin
+        r = a[rows]; return r[:, off + X] * (1 - w)[None, :, None] + r[:, off + X - 512 + 512 * (off + X < 512)] * w[None, :, None]
+    t = hblend(off + X) * (1 - w)[:, None, None] + hblend(off + X - 512 + 512 * (off + X < 512)) * w[:, None, None]
+    # ondulations calmes : petit déplacement périodique (fréquences entières sur 512 px, le carreau reste raccordable), reflets brisés en vaguelettes
+    import cv2
+    Y, Xg = np.meshgrid(X, X, indexing='ij'); u = 2 * np.pi / 512
+    dx = 2.2 * np.sin(u * (7 * Y + 3 * Xg)) + 1.3 * np.sin(u * (13 * Y - 5 * Xg) + 1.7)
+    dy = 2.2 * np.sin(u * (6 * Xg - 4 * Y) + 0.6) + 1.3 * np.sin(u * (11 * Xg + 9 * Y) + 2.9)
+    tt = np.tile(t, (3, 3, 1)).astype(np.float32)
+    t = cv2.remap(tt, (Xg + 512 + dx).astype(np.float32), (Y + 512 + dy).astype(np.float32), cv2.INTER_LINEAR).astype(float)
+    L0 = t.mean(2, keepdims=True); t = L0 + (t - L0) * np.clip(0.45 + L0 / 60, 0, 1)  # fond plus noir pétrole, moins boueux
+    t = t * gain; L = t.mean(2, keepdims=True); hi = np.clip((L - 35) / 40, 0, 1)
+    t = t + hi * (t - L) * 0.6 + hi * hi * np.array([18, 6, -4])  # reflets de néons : saturation et chaleur dans les zones claires
+    out = Image.fromarray(np.clip(t, 0, 255).astype('uint8'))
     out.save(HERE + '/assets/generated/g_cl_eau.webp', quality=88)
-    t = np.asarray(out).astype(float); seam = float(np.abs(t[:, 0] - t[:, -1]).mean() + np.abs(t[0] - t[-1]).mean()) / 2
-    inner = float(np.abs(np.diff(t, axis=1)).mean()); print('g_cl_eau', out.size, 'raccord', round(seam, 2), 'voisins', round(inner, 2))
+    q = np.asarray(out).astype(float); seam = float(np.abs(q[:, 0] - q[:, -1]).mean() + np.abs(q[0] - q[-1]).mean()) / 2
+    inner = float(np.abs(np.diff(q, axis=1)).mean()); print('g_cl_eau', out.size, 'raccord', round(seam, 2), 'voisins', round(inner, 2))
     return seam, inner

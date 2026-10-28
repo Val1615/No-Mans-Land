@@ -313,8 +313,8 @@ Sources : `PLAN_IMPLEMENTATION.md` §3, fiche `CHINA_LAKE.md` §2-§7, planches 
 | `cl_pilotis` | **généré** | `art-gen/gen_cl_pilotis.jpg` | 6 × 6 | 4.5 | 417×361 | [247, 360] | oui | True | 3.64 |
 | `cl_cabane` | **généré** | `art-gen/gen_cl_cabane2.jpg` | 8 × 2 | 3.5 | 386×295 | [330, 294] | oui | False | 3.34 |
 | `cl_ponton` | **généré** | `art-gen/gen_cl_ponton.jpg` | 5 × 3 | 3.5 | 291×248 | [206, 247] | oui | True | 2.74 |
-| `cl_stand_implants` | **généré** | `art-gen/gen_cl_stand_implants2.jpg` | 2.5 × 1 | 2.6 | 131×161 | [103, 160] | oui | True | 2.43 |
-| `cl_stand_puces` | **généré** | `art-gen/gen_cl_stand_puces2.jpg` | 2.5 × 1 | 2.6 | 131×152 | [103, 151] | oui | True | 2.25 |
+| `cl_stand_implants` | **généré** | `art-gen/gen_cl_stand_implants3.jpg` | 2.5 × 1 | 2.6 | 131×169 | [103, 168] | oui | True | 2.61 |
+| `cl_stand_puces` | **généré** | `art-gen/gen_cl_stand_puces3.jpg` | 2.5 × 1 | 2.6 | 131×168 | [103, 167] | oui | True | 2.6 |
 | `cl_stand_armes` | **généré** | `art-gen/gen_cl_stand_armes3.jpg` | 2.5 × 2 | 2.6 | 160×193 | [103, 192] | oui | True | 2.72 |
 | `cl_stand_papiers` | **généré** | `art-gen/gen_cl_stand_papiers2.jpg` | 2.5 × 1 | 2.4 | 131×159 | [103, 158] | oui | True | 2.41 |
 | `cl_stand_medocs` | **généré** | `art-gen/gen_cl_stand_medocs2.jpg` | 2.5 × 1.5 | 2.6 | 145×181 | [103, 180] | oui | True | 2.67 |
@@ -337,6 +337,9 @@ Sources : `PLAN_IMPLEMENTATION.md` §3, fiche `CHINA_LAKE.md` §2-§7, planches 
 | `cl_dechets_a` | **généré** | `art-gen/gen_cl_sheet_dechets_0.jpg` | 2 × 2 | 0.2 | 139×100 | [82, 99] | oui | None | 0.76 |
 | `cl_dechets_b` | **généré** | `art-gen/gen_cl_sheet_dechets_1.jpg` | 2 × 2 | 0.2 | 139×106 | [82, 105] | oui | None | 0.88 |
 | `cl_dechets_c` | **généré** | `art-gen/gen_cl_sheet_dechets_2.jpg` | 2 × 2 | 0.2 | 139×98 | [82, 97] | non | None | 0.72 |
-| `g_cl_eau` (sol) | **généré** | `art-gen/gen_cl_eau_src.jpg` (carreau 512 extrait, ×1,2) | tuile | — | 512×512 | — | — | — | raccord 2,0/255 |
+| `g_cl_eau` (sol) | **généré** | `art-gen/gen_cl_eau_src2.jpg` (v2 2026-10-28 : lac stagnant vu de dessus, reflets néon ambre/rouge, carreau 512 fondu de bord 96 px + ondulations périodiques) | tuile | — | 512×512 | — | — | — | raccord 2,79/255 (voisins 2,44) |
 
 Sol : `assets/generated/g_cl_eau.webp`, même convention que `g_wet` / `g_sv` (512² RGB, `loadSkins`, `ground.skin`), non branché (src/ intouché). Maquette réutilisée : `cl_pieux_b` (bitte d amarrage, `utility-v9.png`) ; le reste de la maquette (sacs de sable, gravats, mobilier de jour) ne correspond pas au marché d eau. Réserves : ballons, pieux, déchets et mah-jong non cisaillés (flottants / ronds / décalques / table en plongée), judge refusé ou non significatif ; emprises des stands 2,5 × 1,5 et de 4 bâtiments différentes du plan (cf. rapport) ; `cl_cabane` arête droite 0,50.
+
+
+China Lake — retouche 2026-10-28 : `cl_stand_implants` (kiosque fermé en tôle rouge sang-de-bœuf, toit plat, néon rouge, vitrine et fauteuil chirurgical) et `cl_stand_puces` (charrette à roues sous ombrelle ronde moutarde, bacs de puces, cuivre) régénérés pour des silhouettes, couleurs et marchandises distinctes ; emprise 2,5 × 1 et pivot x 103 conservés, sans miroir ; `g_cl_eau` régénéré (lac urbain stagnant, plus de lecture de canal).
