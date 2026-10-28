@@ -79,7 +79,7 @@ export const DOORS_LOWER = [
     text: 'Un escalier grillagé qui plonge vers la Sous-Ville. Cadenas neuf, chaîne neuve.' }]),
   J('v_fosse', 'sv_poutres', 18, 28, 18, 27, 'l_fosse', 'Escalier de la Fosse (vers Lower-Town)'),
   J('l_sud', 'steel_lower', 8, 36, 8, 35, 'a_nord', 'Vers Asia-Ground'),                                  // [plan] l_sud ↔ a_nord (lot 2), aucune condition
-  E('l_sud_est', 'steel_lower', 30, 36, 30, 35, 'Ruelle (China Lake)', 'Une ruelle qui file vers China Lake. Des types adossés au mur te font comprendre que non.'), // [plan] l_sud_est ↔ k_est, lot 3
+  J('l_sud_est', 'steel_lower', 30, 36, 30, 35, 'k_est', 'Ruelle (China Lake)'),                          // [plan] l_sud_est ↔ k_est (lot 3), libre dans les deux sens [décision du lot]
   DOOR('lt_foyer_door', 'lt_foyer', 9.5, 31, 'foyer_in_door'), OUT('foyer_in_door', 'foyer_in', 12, 9, 'lt_foyer_door'),
   DOOR('lt_bastide_door', 'lt_bastide', 40.5, 13, 'bastide_in_door'), OUT('bastide_in_door', 'bastide_in', 10, 8, 'lt_bastide_door'),
   DOOR('lt_moss_door', 'lt_moss', 41, 29.5, 'moss_in_door'), OUT('moss_in_door', 'moss_in', 10, 8, 'lt_moss_door'),

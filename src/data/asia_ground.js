@@ -31,8 +31,8 @@ export const BUILDINGS_ASIA = [
     ['ag_auvent', 2.5, 18.2, 5, 2.5, []], ['ag_hautparleur_io', 35.4, 8.6, 0.6, 0.6], ['ag_neon_io', 22.4, 9.4, 1.2, 0.3, []],
     ['ag_lanterne_cable', 13, 7.2, 5, 1, []], ['ag_lanterne_cable', 24, 7.2, 5, 1, []], ['ag_lanterne_cable', 31.5, 7.2, 5, 1, []]]
     .map(([sp, x, z, w, d, solid], i) => ({ id: `ag_prop${i}`, ...P(sp, x, z, w, d, solid) })),
-  // Barrage de gang (bord sud, a_sud) : caisses et chariot en travers, décor [inventé]
-  ...[[21.5, 33.6], [23, 34], [25.4, 33.8]].map(([x, z], i) => ({ id: `ag_barrage${i}`, ...P('ag_caisses_legumes', x, z, 1.2, 0.8) })),
+  // Barrage de gang (bord sud, a_sud) : caisses de part et d'autre du passage (x 20,6-27,6), décor [inventé]
+  ...[[19.4, 33.6], [27.6, 33.8], [29, 33.4]].map(([x, z], i) => ({ id: `ag_barrage${i}`, ...P('ag_caisses_legumes', x, z, 1.2, 0.8) })),
 ];
 const ASIA_IN = { bg: '#0b0606', hemi: ['#ffb890', '#2a1410', 1.2], sun: ['#ffaa70', 1.0] };
 const IN = (id, name, w, d, floor, wall, props, glows) => ({ id, name, kind: 'interior', size: { w, d }, light: ASIA_IN,
@@ -75,7 +75,9 @@ export const DOORS_ASIA = [
   J('a_nord', 'steel_asia', 8, 0, 8, 1, 'l_sud', 'Vers Lower-Town'),                       // [plan] a_nord ↔ l_sud, aucune condition
   J('a_escalier', 'steel_asia', 43, 0, 43, 1, 'c_sud_est', 'Mille Marches (Center-Town)'),  // [plan] a_escalier ↔ c_sud_est ; Repérage +1 : système absent, non branché
   J('c_sud_est', 'steel_center', 38, 36, 38, 35, 'a_escalier', 'Mille Marches (Asia-Ground)'),
-  E('a_sud', 'steel_asia', 24, 36, 24, 35, 'Barrage (China Lake)', 'Des caisses en travers de la rue, trois types assis dessus. China Lake est derrière. Pas ce soir.'), // [plan] lot 3
+  // [plan] lot 3 : le Barrage s'ouvre contre 20 cr payés à Ah-Lam (la quête de Mei et le laissez-passer viendront au lot 4). China Lake reste joignable sans argent par Lower-Town (l_sud_est).
+  J('a_sud', 'steel_asia', 24, 36, 24, 35, 'k_nord', 'Le Barrage (China Lake)', [{ test: s => !!s.flags.cl_barrage, reason: 'barrage',
+    text: 'Des caisses en travers de la rue, trois types assis dessus. Ah-Lam tend la main : vingt crédits, ou tu fais demi-tour.' }]),
   DOOR('ag_lau_door', 'ag_lau', 5, 18, 'lau_in_door'), OUT('lau_in_door', 'lau_in', 10, 8, 'ag_lau_door'),
   DOOR('ag_okafor_door', 'ag_okafor', 5, 28, 'okafor_in_door'), OUT('okafor_in_door', 'okafor_in', 10, 8, 'ag_okafor_door'),
   DOOR('ag_bureau_door', 'ag_bureau', 42, 23, 'emplacements_in_door'), OUT('emplacements_in_door', 'emplacements_in', 10, 8, 'ag_bureau_door'),
@@ -86,6 +88,7 @@ export const NPCS_ASIA = [ // sprites PROVISOIRES (réemplois) ; positions inté
   { id: 'ag_lau', name: 'Hana Lau', sprite: 'gen_odile', location: 'lau_in', x: 4, z: 2, faceTo: [5, 8], dialogue: 'ag_lau' },
   { id: 'ag_okafor', name: 'Okafor', sprite: 'gen_ezequiel', location: 'okafor_in', x: 6, z: 2, faceTo: [5, 8], dialogue: 'ag_okafor' },
   { id: 'ag_seng', name: 'Victor Seng', sprite: 'gen_teng', location: 'emplacements_in', x: 5, z: 2, faceTo: [5, 8], dialogue: 'ag_seng' },
+  { id: 'ag_ahlam', name: 'Ah-Lam', sprite: 'gen_sv_gang', location: 'steel_asia', x: 26.4, z: 32.2, faceTo: [24, 30], dialogue: 'ag_ahlam' }, // garde du Barrage, à l'écart du libellé de a_sud
   { id: 'ag_kim', name: 'Kim Tran', sprite: 'gen_sv_guetteuse', location: 'mei_in', x: 8, z: 5, faceTo: [5, 8], dialogue: 'ag_kim' },
 ];
 // Répliques et services [inventé, d'après envie / peur / voix de la fiche §5]. Prix en crédits [fiche §1]. Aucune quête.
@@ -94,6 +97,13 @@ const D = (t1, t2, t3, svc = []) => ({ start: { text: t1, options: [ ...svc, { l
   servi: { text: 'Voilà. Mange chaud, ça tient au corps.', options: [ { label: 'Merci.', next: 'end' } ] },
   pauvre: { text: 'Pas assez de crédits. Reviens quand tu en as.', options: [ { label: 'Au revoir.', next: 'end' } ] } });
 export const DIALOGUES_ASIA = {
+  ag_ahlam: { start: { text: 'Le Barrage, c\u2019est vingt crédits. Pour l\u2019entretien des caisses.', options: [
+      { label: 'Payer 20 cr.', action: 'paycr:20;flag:cl_barrage', next: 'paye', if: '!cl_barrage' }, { label: 'Et si je ne paie pas ?', next: 'non', if: '!cl_barrage' },
+      { label: 'Je repasse.', next: 'deja', if: 'cl_barrage' }, { label: 'Au revoir.', next: 'end' } ] },
+    paye: { text: 'Passe. Et souris pas trop, là-bas.', options: [ { label: 'Au revoir.', next: 'end' } ] },
+    deja: { text: 'T\u2019as payé, t\u2019es connu. Passe.', options: [ { label: 'Au revoir.', next: 'end' } ] },
+    non: { text: 'Alors tu fais le tour par Lower-Town, comme les rats. La ruelle est ouverte, elle.', options: [ { label: 'Au revoir.', next: 'end' } ] },
+    pauvre: { text: 'Vingt. Pas dix-neuf. Reviens.', options: [ { label: 'Au revoir.', next: 'end' } ] } },
   ag_mei: D('Assieds-toi, assieds-toi ! Nouilles, bouillon, trois crédits. Ni hao, tu as faim, ça se voit.', 'Ici tout le monde loue. Le stand, le coin de trottoir, même l\u2019air au-dessus du wok.',
     'Mon fils porte des caisses pour qui le paie. Il croit que je ne vois rien. Mange, va.', [{ label: 'Un bol de nouilles (3 cr).', action: 'paycr:3;give:meal', next: 'servi' }]),
   ag_lau: D('Fermez la porte. Qu\u2019est-ce qui fait mal ?', 'Je soigne. Je ne demande pas d\u2019où viennent les plaies.', 'Les patrouilles ont une lampe qui voit sous la peau. On dit. Moi je ne dis rien.'),
