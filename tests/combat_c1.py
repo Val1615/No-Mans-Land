@@ -188,8 +188,8 @@ with sync_playwright() as p:
         L = E("window.__nml.state.combatLast")
         check(f'{T}: issue fuite : case de bord atteinte en marchant', L and L['issue'] == 'fuite' and st()['flags'].get('combat_rodeur_fuite'), (L, n))
         cap(f'{T}-05_fuite')
-        # issue 4 : défaite (PV à 0 sous les coups fixes de C1) : jamais de mort, PV remis à 1, un bidon en moins
-        ok = fresh(hp=8); n = 0
+        # issue 4 : défaite (PV à 0 sous les coups de barre du rôdeur) : jamais de mort, PV remis à 1, un bidon en moins
+        ok = fresh(hp=8); E("window.__nml.game.setRng(()=>0)"); n = 0  # C2 : coups de barre réels, tirage forcé (toujours touché, dégâts min 4)
         while E(f"!!{C}") and n < 8: n += 1; my_turn(40); E(f"{C} && {C}.phase==='joueur'") and press('#cbt-end', 0.3); waitjs(f"!{C} || ({C}.phase==='joueur' && !{C}.units.some(u=>u.path.length))", 40)
         L = E("window.__nml.state.combatLast")
         check(f'{T}: issue défaite : PV 0 -> inconscient, PV remis à 1, pas d\'écran de fin', L and L['issue'] == 'defaite' and st()['player']['hp'] == 1 and st()['flags'].get('combat_rodeur_defaite'), (L, st()['player']['hp']))
