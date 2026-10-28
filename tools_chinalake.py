@@ -317,3 +317,27 @@ def build_lac():
                'quai_m': 0.6, 'note': 'contour = bord extérieur du quai ; eau non marchable = polygone rétréci de 0,6 m (le quai est marchable)'},
               open(HERE + '/assets/generated/g_cl_lac.json', 'w'), ensure_ascii=False, indent=1)
     print('g_cl_lac', W, H, len(poly))
+
+
+# ---- lac v2 « nuit » (2026-10-28, main 7de0a94) : la forme se lisait mal sous le voile du sol (ground.tint rgba(8,12,4,.5), textures.js) ----
+# Après build_lac() (même taille, même polygone, même clé) : quai éclairci et plus contrasté, liseré sombre côté rue (bord extérieur),
+# reflet ambre clair le long de la berge côté eau, eau éclaircie au centre (dégradé selon la distance au bord).
+def lac_nuit():
+    import cv2
+    from scipy import ndimage
+    j = json.load(open(HERE + '/assets/generated/g_cl_lac.json')); W, H = j['px']; pts = np.array(j['polygone_px'], np.float32)
+    P = pts
+    for _ in range(3): P = np.concatenate([[0.75 * a + 0.25 * b, 0.25 * a + 0.75 * b] for a, b in zip(P, np.roll(P, -1, 0))])
+    m = np.zeros((H, W), np.uint8); cv2.fillPoly(m, [np.round(P * 4).astype(np.int32)], 1, cv2.LINE_AA, shift=2)
+    a = np.asarray(Image.open(HERE + '/assets/generated/g_cl_lac.webp').convert('RGBA')).astype(float); rgb = a[..., :3]
+    dist = ndimage.distance_transform_edt(m); q0, q1 = 0.6 * K, 0.6 * K + 3
+    quai = (dist > 0) & (dist <= q0); rgb[quai] = rgb[quai] * 1.55 + np.array([14, 10, 4])  # planches plus claires
+    out = (dist > 0) & (dist <= 4); rgb[out] = np.array([12, 10, 8.])  # liseré sombre côté rue : découpe la silhouette
+    edge = (dist > q0) & (dist <= q1); rgb[edge] = np.array([200, 170, 120.])  # arête du quai plus claire
+    eau = dist > q1; dw = dist - q1
+    rim = np.exp(-((dw - 10) / 6) ** 2) * eau  # reflet ambre le long de la berge
+    rgb += rim[..., None] * np.array([150, 105, 50]) * 0.7
+    c = np.clip(dw / (3.5 * K), 0, 1) * eau  # eau plus claire au centre
+    L = rgb.mean(2, keepdims=True); rgb[:] = rgb * (1 + 0.45 * c[..., None]) + c[..., None] * np.array([14, 18, 18])
+    a[..., :3] = rgb; Image.fromarray(np.clip(a, 0, 255).astype('uint8'), 'RGBA').save(HERE + '/assets/generated/g_cl_lac.webp', quality=90)
+    print('g_cl_lac v2 nuit', W, H)
