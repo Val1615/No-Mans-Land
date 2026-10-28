@@ -39,7 +39,7 @@ export const BUILDINGS_CHINA = [
   P('cl_treteaux1', 'cl_treteaux', 31.5, 29.4, 2, 0.6), P('cl_treteaux2', 'cl_treteaux', 4, 14.2, 2, 0.6),
   P('cl_friture', 'cl_friture', 22.2, 9.6, 1, 0.7), P('cl_mahjong', 'cl_mahjong', 43.6, 18.4, 1.6, 1.6),
   P('cl_caisse_armes', 'cl_caisse_armes', 40.4, 15.6, 1.2, 0.6), P('cl_bac_puces', 'cl_bac_puces', 22.6, 11.4, 0.6, 0.4),
-  P('cl_presse', 'cl_presse_papiers', 18.8, 30.2, 1, 0.6), P('cl_bocaux', 'cl_bocaux', 8.6, 14.2, 0.8, 0.4),
+  P('cl_presse', 'cl_presse_papiers', 14.2, 30.8, 1, 0.6), P('cl_bocaux', 'cl_bocaux', 8.6, 14.2, 0.8, 0.4),
   P('cl_barriere', 'cl_barriere_caisses', 25.8, 2.4, 4, 0.8),
 ];
 const CHINA_IN = { bg: '#070806', hemi: ['#e8c890', '#141a0e', 1.15], sun: ['#e8a860', 0.95] };
@@ -90,7 +90,7 @@ export const NPCS_CHINA = [ // sprites PROVISOIRES (réemplois)
   { id: 'cl_shen', name: 'Shen', sprite: 'gen_sv_receleur', location: 'steel_china', x: 7.6, z: 18.6, faceTo: [12, 18.6], dialogue: 'cl_shen' },
   { id: 'cl_m_nord', name: 'Marchande d\u2019implants', sprite: 'gen_mara', location: 'steel_china', ...behind('cl_s_implants'), faceTo: [17.25, 13], dialogue: 'cl_m_nord' },
   { id: 'cl_m_est', name: 'Armurier', sprite: 'gen_sv_gang', location: 'steel_china', ...behind('cl_s_armes'), faceTo: [36, 14], dialogue: 'cl_m_est' },
-  { id: 'cl_m_sud', name: 'Faussaire', sprite: 'gen_teng', location: 'steel_china', ...behind('cl_s_papiers'), faceTo: [17.25, 31], dialogue: 'cl_m_sud' },
+  { id: 'cl_m_sud', name: 'Faussaire', sprite: 'gen_teng', location: 'steel_china', x: 19.1, z: 28.6, faceTo: [17.25, 31], /* au bout de l'étal : derrière, le sprite du stand masquait le tap */ dialogue: 'cl_m_sud' },
   { id: 'cl_m_ouest', name: 'Apothicaire', sprite: 'gen_odile', location: 'steel_china', ...behind('cl_s_medocs'), faceTo: [9, 15], dialogue: 'cl_m_ouest' },
   { id: 'cl_tech', name: 'Le technicien', sprite: 'gen_sv_dealer', location: 'steel_china', ...behind('cl_s_tech'), faceTo: [24, 30], dialogue: 'cl_tech' },
   { id: 'cl_zhou', name: 'Madame Zhou', sprite: 'gen_vera', location: 'the_in', x: 6, z: 2, faceTo: [6, 9], dialogue: 'cl_zhou' },
