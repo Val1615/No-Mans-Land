@@ -370,3 +370,46 @@ Source : `PLAN_IMPLEMENTATION.md` §2, fiche `ASIA_GROUND.md`, planche validée 
 | `ag_neon_io` | **généré** | `art-gen/gen_ag_neon_io.jpg` | 1.2 × 0.3 | 1 | 58×57 | [49, 56] | oui | False | 0.79 |
 
 Maquette réutilisée (origine `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/`, étalonnage nuit) : `ag_stand_pieces` (street-detail-v9), `ag_chariot` (props-v9-domestic). Rév. 2 : `ag_boutique_b` enseigne corrigée ÉLECTRONIQUE 电器 (retouche par régénération de la même image, `gen_ag_boutique_b2.jpg`, mêmes px/pivot en largeur, hauteur 331 → 325 px) ; `ag_stand_poisson` régénéré sur socle (la version maquette Props-v6, écrasée par le cisaillement, est abandonnée) ; `ag_wok` posé sur une plaque carrée rivetée (arêtes v4 mesurables) ; `ag_caisses_legumes` despill limité à la bande de bord, verts des légumes conservés. Réserve restante : `ag_chariot` hauteur implicite non significative (objet bas et long).
+
+## China Lake — lot 1 (branche `creation/china-lake-sprites`, 2026-10-22)
+
+Sources : `PLAN_IMPLEMENTATION.md` §3, fiche `CHINA_LAKE.md` §2-§7, planches `quartier_china_lake_*` (nml-quartiers 19c137c, 6610e92). Pipeline `tools_chinalake.py` (dérivé de `tools_asiaground.py`) : fond vert, détourage + despill de bord, `v4fix` (jamais de miroir pour les sprites à enseigne : 3 sources régénérées en miroir pour garder le texte lisible), `keystone` auto, `judge`, 50 px/m, pivot = coin avant bas géométrique. Ajouts : `stretch_heights` (rallonge ce qui dépasse du losange d emprise quand la génération est trop en plongée : stands, caisse d armes, bac de puces, friture), `key_green_thin` (câble fin), `PREFLIP` (câble), `FITFP` (emprise mesurée sur le dessin pour 3 bâtiments). Rapport : `assets/buildings/rapport_angles_chinalake.json`. Planche : `nml-shots/chinalake_sprites.png` (planche d assets, pas une capture). Canon : marché illégal, une rive par marchandise (5 stands lisibles), maison de thé seul toit recourbé (un seul toit, sans étages), fond en tôle et bois sur pilotis à toits plats, ambre + lanternes rouges, enseignes bilingues, ni bleu ni cyan ni violet ni rose.
+
+| id | origine | source | emprise m | h m | px | pivot | judge | arête basse v4 | h implicite |
+|---|---|---|---|---|---|---|---|---|---|
+| `cl_maison_the` | **généré** | `art-gen/gen_cl_maison_the.jpg` | 10 × 5.5 | 8.5 | 568×588 | [412, 587] | oui | True | 7.83 |
+| `cl_immeuble_fond` | **généré** | `art-gen/gen_cl_immeuble_fond.jpg` | 7 × 8 | 9 | 515×655 | [288, 654] | oui | True | 9.14 |
+| `cl_immeuble_fond_b` | **généré** | `art-gen/gen_cl_immeuble_fond_b2.jpg` | 6 × 8 | 8 | 474×543 | [247, 542] | oui | True | 6.9 |
+| `cl_pilotis` | **généré** | `art-gen/gen_cl_pilotis.jpg` | 6 × 6 | 4.5 | 417×361 | [247, 360] | oui | True | 3.64 |
+| `cl_cabane` | **généré** | `art-gen/gen_cl_cabane2.jpg` | 8 × 2 | 3.5 | 386×295 | [330, 294] | oui | False | 3.34 |
+| `cl_ponton` | **généré** | `art-gen/gen_cl_ponton.jpg` | 5 × 3 | 3.5 | 291×248 | [206, 247] | oui | True | 2.74 |
+| `cl_stand_implants` | **généré** | `art-gen/gen_cl_stand_implants3.jpg` | 2.5 × 1 | 2.6 | 131×169 | [103, 168] | oui | True | 2.61 |
+| `cl_stand_puces` | **généré** | `art-gen/gen_cl_stand_puces3.jpg` | 2.5 × 1 | 2.6 | 131×168 | [103, 167] | oui | True | 2.6 |
+| `cl_stand_armes` | **généré** | `art-gen/gen_cl_stand_armes3.jpg` | 2.5 × 2 | 2.6 | 160×193 | [103, 192] | oui | True | 2.72 |
+| `cl_stand_papiers` | **généré** | `art-gen/gen_cl_stand_papiers2.jpg` | 2.5 × 1 | 2.4 | 131×159 | [103, 158] | oui | True | 2.41 |
+| `cl_stand_medocs` | **généré** | `art-gen/gen_cl_stand_medocs2.jpg` | 2.5 × 1.5 | 2.6 | 145×181 | [103, 180] | oui | True | 2.67 |
+| `cl_cable_lanternes` | **généré** | `art-gen/gen_cl_cable_lanternes.jpg` | 14 × 0.5 | 5 | 591×419 | [577, 418] | oui | None | 4.97 |
+| `cl_ballon_dragon` | **généré** | `art-gen/gen_cl_sheet_ballons_0.jpg` | 3 × 1.5 | 3 | 166×172 | [124, 171] | oui | None | 2.3 |
+| `cl_ballon_carpe` | **généré** | `art-gen/gen_cl_sheet_ballons_1.jpg` | 3 × 1 | 3 | 152×160 | [124, 159] | non | None | 2.27 |
+| `cl_ballon_tigre` | **généré** | `art-gen/gen_cl_sheet_ballons_2.jpg` | 3 × 1.2 | 3 | 158×151 | [124, 150] | non | None | 1.98 |
+| `cl_ballon_phenix` | **généré** | `art-gen/gen_cl_sheet_ballons_3.jpg` | 3 × 1.5 | 3 | 166×185 | [124, 184] | oui | None | 2.61 |
+| `cl_bache` | **généré** | `art-gen/gen_cl_sheet_props_a_0.jpg` | 3 × 3 | 2.4 | 209×198 | [124, 197] | oui | True | 2.23 |
+| `cl_treteaux` | **généré** | `art-gen/gen_cl_sheet_props_a_1.jpg` | 2 × 0.6 | 0.8 | 99×79 | [82, 78] | oui | False | 0.9 |
+| `cl_caisse_armes` | **généré** | `art-gen/gen_cl_sheet_props_a_2.jpg` | 1.2 × 0.6 | 0.6 | 66×54 | [49, 53] | oui | True | 0.6 |
+| `cl_bac_puces` | **généré** | `art-gen/gen_cl_sheet_props_a_3.jpg` | 0.6 × 0.4 | 0.4 | 36×29 | [25, 28] | oui | True | 0.29 |
+| `cl_presse_papiers` | **généré** | `art-gen/gen_cl_sheet_props_b_0.jpg` | 1 × 0.6 | 1.2 | 58×67 | [41, 66] | oui | True | 0.95 |
+| `cl_bocaux` | **généré** | `art-gen/gen_cl_sheet_props_b_1.jpg` | 0.8 × 0.4 | 0.8 | 44×39 | [33, 38] | oui | False | 0.46 |
+| `cl_friture` | **généré** | `art-gen/gen_cl_sheet_props_b_2.jpg` | 1 × 0.7 | 1.1 | 61×71 | [41, 70] | oui | True | 1.0 |
+| `cl_mahjong` | **généré** | `art-gen/gen_cl_sheet_props_b_3.jpg` | 1.6 × 1.6 | 1 | 111×95 | [66, 94] | non | None | 0.96 |
+| `cl_barriere_caisses` | **généré** | `art-gen/gen_cl_sheet_props_c_0.jpg` | 4 × 0.8 | 2 | 187×151 | [165, 150] | oui | False | 1.85 |
+| `cl_pieux` | **généré** | `art-gen/gen_cl_sheet_props_c_1.jpg` | 0.8 × 0.8 | 2 | 56×102 | [33, 101] | non | None | 1.72 |
+| `cl_pieux_b` | **maquette** | `reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/utility-v9.png 588,512,977,961` | 0.8 × 0.8 | 0.9 | 56×54 | [33, 53] | non | None | 0.63 |
+| `cl_dechets_a` | **généré** | `art-gen/gen_cl_sheet_dechets_0.jpg` | 2 × 2 | 0.2 | 139×100 | [82, 99] | oui | None | 0.76 |
+| `cl_dechets_b` | **généré** | `art-gen/gen_cl_sheet_dechets_1.jpg` | 2 × 2 | 0.2 | 139×106 | [82, 105] | oui | None | 0.88 |
+| `cl_dechets_c` | **généré** | `art-gen/gen_cl_sheet_dechets_2.jpg` | 2 × 2 | 0.2 | 139×98 | [82, 97] | non | None | 0.72 |
+| `g_cl_eau` (sol) | **généré** | `art-gen/gen_cl_eau_src2.jpg` (v3 2026-10-28 : lac stagnant vu de dessus, surface éclaircie, reflets nets du dôme et d une lanterne rouge, carreau 512 fondu de bord 96 px + ondulations périodiques) | tuile | — | 512×512 | — | — | — | raccord 3,27/255 (voisins 2,90) |
+
+Sol : `assets/generated/g_cl_eau.webp`, même convention que `g_wet` / `g_sv` (512² RGB, `loadSkins`, `ground.skin`), non branché (src/ intouché). Maquette réutilisée : `cl_pieux_b` (bitte d amarrage, `utility-v9.png`) ; le reste de la maquette (sacs de sable, gravats, mobilier de jour) ne correspond pas au marché d eau. Réserves : ballons, pieux, déchets et mah-jong non cisaillés (flottants / ronds / décalques / table en plongée), judge refusé ou non significatif ; emprises des stands 2,5 × 1,5 et de 4 bâtiments différentes du plan (cf. rapport) ; `cl_cabane` arête droite 0,50.
+
+
+China Lake — retouche 2026-10-28 : `cl_stand_implants` (kiosque fermé en tôle rouge sang-de-bœuf, toit plat, néon rouge, vitrine et fauteuil chirurgical) et `cl_stand_puces` (charrette à roues sous ombrelle ronde moutarde, bacs de puces, cuivre) régénérés pour des silhouettes, couleurs et marchandises distinctes ; emprise 2,5 × 1 et pivot x 103 conservés, sans miroir ; `g_cl_eau` régénéré (lac urbain stagnant, plus de lecture de canal).

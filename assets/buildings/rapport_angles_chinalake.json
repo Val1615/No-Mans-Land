@@ -1,0 +1,958 @@
+{
+ "cl_maison_the": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.74,
+  "part_2_1_opposee": 0.07,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.2,
+    0.63
+   ],
+   "cisaillement": [
+    1.247,
+    0.086
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_maison_the.jpg",
+  "origine": "généré",
+  "role": "maison de thé de la mafia, seul toit recourbé (un seul pan, sans étages de pagode), porte gardée, MAISON DE THÉ 茶馆",
+  "emprise_m": [
+   10.0,
+   5.5
+  ],
+  "hauteur_attendue_m": 8.5,
+  "hauteur_implicite_m": 7.83,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.03
+ },
+ "cl_immeuble_fond": {
+  "pente_dominante": 0.35,
+  "sens": "miroir",
+  "part_bande_v4": 0.38,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.3,
+    0.49
+   ],
+   "cisaillement": [
+    1.296,
+    -0.06
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": -0.1
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_immeuble_fond.jpg",
+  "origine": "généré",
+  "role": "immeuble de fond 3 niveaux sur pilotis, toit plat, Pavillon du Dragon PAVILLON DU DRAGON 龙阁",
+  "emprise_m": [
+   7.0,
+   8.0
+  ],
+  "hauteur_attendue_m": 9.0,
+  "hauteur_implicite_m": 9.14,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.02
+ },
+ "cl_immeuble_fond_b": {
+  "pente_dominante": 0.3,
+  "sens": "miroir",
+  "part_bande_v4": 0.91,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.49,
+    0.56
+   ],
+   "cisaillement": [
+    0.977,
+    -0.15
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.68
+   ]
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_immeuble_fond_b2.jpg",
+  "origine": "généré",
+  "role": "variante façade muette LOGEMENTS 住房, toit plat, linge",
+  "emprise_m": [
+   6.0,
+   8.0
+  ],
+  "hauteur_attendue_m": 8.0,
+  "hauteur_implicite_m": 6.9,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.02
+ },
+ "cl_pilotis": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.51,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.47,
+    0.88
+   ],
+   "cisaillement": [
+    0.762,
+    -0.026
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_pilotis.jpg",
+  "origine": "généré",
+  "role": "module de structure sur pilotis 6 m (plateforme, garde-corps, caisses, filets pliés, lanterne)",
+  "emprise_m": [
+   6.0,
+   6.0
+  ],
+  "hauteur_attendue_m": 4.5,
+  "hauteur_implicite_m": 3.64,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.01
+ },
+ "cl_cabane": {
+  "pente_dominante": 0.35,
+  "sens": "miroir",
+  "part_bande_v4": 1.0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.26,
+    0.5
+   ],
+   "cisaillement": [
+    1.35,
+    -0.025
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.5
+   ],
+   "mesure": "enveloppe convexe",
+   "keystone_k": 0.05
+  },
+  "accepte_arete_basse": false,
+  "source": "art-gen/gen_cl_cabane2.jpg",
+  "origine": "généré",
+  "role": "Les Filets, cabane sur pilotis, toit simple, FILETS 渔网",
+  "emprise_m": [
+   8.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 3.5,
+  "hauteur_implicite_m": 3.34,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.01
+ },
+ "cl_ponton": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.69,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.43,
+    0.79
+   ],
+   "cisaillement": [
+    0.845,
+    -0.031
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_ponton.jpg",
+  "origine": "généré",
+  "role": "Ponton de Shen, stand du technicien au bord de l eau, ordinateurs, pièces, RÉPARATIONS 修理",
+  "emprise_m": [
+   5.0,
+   3.0
+  ],
+  "hauteur_attendue_m": 3.5,
+  "hauteur_implicite_m": 2.74,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.02
+ },
+ "cl_stand_implants": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.67,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.33,
+    0.82
+   ],
+   "cisaillement": [
+    0.897,
+    0.032
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe",
+   "keystone_k": 0.05,
+   "rallonge_hauteurs": 1.35
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_stand_implants3.jpg",
+  "origine": "généré",
+  "role": "stand illégal, quai nord : implants piratés, kiosque fermé en tôle rouge sang-de-bœuf, toit plat, néon rouge, vitrine et fauteuil chirurgical, IMPLANTS 植入物",
+  "emprise_m": [
+   2.5,
+   1.0
+  ],
+  "hauteur_attendue_m": 2.6,
+  "hauteur_implicite_m": 2.61,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_stand_puces": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.55,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.4,
+    0.83
+   ],
+   "cisaillement": [
+    0.84,
+    -0.005
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe",
+   "rallonge_hauteurs": 1.8
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_stand_puces3.jpg",
+  "origine": "généré",
+  "role": "stand illégal, quai nord : puces, charrette à roues sous ombrelle ronde moutarde, bacs de puces, cuivre, moniteur, PUCES 芯片",
+  "emprise_m": [
+   2.5,
+   1.0
+  ],
+  "hauteur_attendue_m": 2.6,
+  "hauteur_implicite_m": 2.6,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_stand_armes": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.85,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.31,
+    0.91
+   ],
+   "cisaillement": [
+    0.846,
+    0.072
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe",
+   "rallonge_hauteurs": 2.0
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_stand_armes3.jpg",
+  "origine": "généré",
+  "role": "stand illégal, quai est : armes, ARMES 武器",
+  "emprise_m": [
+   2.5,
+   2.0
+  ],
+  "hauteur_attendue_m": 2.6,
+  "hauteur_implicite_m": 2.72,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.01
+ },
+ "cl_stand_papiers": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.64,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.31,
+    0.84
+   ],
+   "cisaillement": [
+    0.895,
+    0.051
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "rallonge_hauteurs": 1.8
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_stand_papiers2.jpg",
+  "origine": "généré",
+  "role": "stand illégal (guichet), quai sud : faux papiers, PAPIERS 证件",
+  "emprise_m": [
+   2.5,
+   1.0
+  ],
+  "hauteur_attendue_m": 2.4,
+  "hauteur_implicite_m": 2.41,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_stand_medocs": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.91,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.3,
+    0.72
+   ],
+   "cisaillement": [
+    1.009,
+    0.023
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe",
+   "rallonge_hauteurs": 2.0
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_stand_medocs2.jpg",
+  "origine": "généré",
+  "role": "stand illégal, quai ouest : médicaments, MÉDICAMENTS 药品",
+  "emprise_m": [
+   2.5,
+   1.5
+  ],
+  "hauteur_attendue_m": 2.6,
+  "hauteur_implicite_m": 2.67,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_cable_lanternes": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.53,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_cable_lanternes.jpg",
+  "origine": "généré",
+  "role": "câble à 9 lanternes rouges au-dessus du lac (portée 14 m)",
+  "emprise_m": [
+   14.0,
+   0.5
+  ],
+  "hauteur_attendue_m": 5.0,
+  "hauteur_implicite_m": 4.97,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.11
+ },
+ "cl_ballon_dragon": {
+  "pente_dominante": 0.8,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_ballons_0.jpg",
+  "origine": "généré",
+  "role": "ballon de papier dragon, éclairé de l intérieur (flottant)",
+  "emprise_m": [
+   3.0,
+   1.5
+  ],
+  "hauteur_attendue_m": 3.0,
+  "hauteur_implicite_m": 2.3,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_ballon_carpe": {
+  "pente_dominante": 1.0,
+  "sens": "miroir",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_ballons_1.jpg",
+  "origine": "généré",
+  "role": "ballon de papier carpe (flottant)",
+  "emprise_m": [
+   3.0,
+   1.0
+  ],
+  "hauteur_attendue_m": 3.0,
+  "hauteur_implicite_m": 2.27,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_ballon_tigre": {
+  "pente_dominante": 0.85,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_ballons_2.jpg",
+  "origine": "généré",
+  "role": "ballon de papier tigre (flottant)",
+  "emprise_m": [
+   3.0,
+   1.2
+  ],
+  "hauteur_attendue_m": 3.0,
+  "hauteur_implicite_m": 1.98,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.08
+ },
+ "cl_ballon_phenix": {
+  "pente_dominante": 0.8,
+  "sens": "miroir",
+  "part_bande_v4": 0.1,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_ballons_3.jpg",
+  "origine": "généré",
+  "role": "ballon de papier phénix (flottant)",
+  "emprise_m": [
+   3.0,
+   1.5
+  ],
+  "hauteur_attendue_m": 3.0,
+  "hauteur_implicite_m": 2.61,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.05
+ },
+ "cl_bache": {
+  "pente_dominante": 0.65,
+  "sens": "miroir",
+  "part_bande_v4": 0.34,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.41,
+    0.56
+   ],
+   "cisaillement": [
+    1.06,
+    -0.104
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_sheet_props_a_0.jpg",
+  "origine": "généré",
+  "role": "bâche sur quatre perches",
+  "emprise_m": [
+   3.0,
+   3.0
+  ],
+  "hauteur_attendue_m": 2.4,
+  "hauteur_implicite_m": 2.23,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_treteaux": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.85,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.29,
+    0.5
+   ],
+   "cisaillement": [
+    1.31,
+    -0.045
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.5
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": false,
+  "source": "art-gen/gen_cl_sheet_props_a_1.jpg",
+  "origine": "généré",
+  "role": "tréteaux et plateau",
+  "emprise_m": [
+   2.0,
+   0.6
+  ],
+  "hauteur_attendue_m": 0.8,
+  "hauteur_implicite_m": 0.9,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_caisse_armes": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.78,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.53,
+    0.73
+   ],
+   "cisaillement": [
+    0.817,
+    -0.106
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "rallonge_hauteurs": 2.2
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_sheet_props_a_2.jpg",
+  "origine": "généré",
+  "role": "caisse d armes ouverte",
+  "emprise_m": [
+   1.2,
+   0.6
+  ],
+  "hauteur_attendue_m": 0.6,
+  "hauteur_implicite_m": 0.6,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_bac_puces": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.92,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.55,
+    0.89
+   ],
+   "cisaillement": [
+    0.714,
+    -0.065
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "keystone_k": 0.05,
+   "rallonge_hauteurs": 2.5
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_sheet_props_a_3.jpg",
+  "origine": "généré",
+  "role": "bac de puces et câbles",
+  "emprise_m": [
+   0.6,
+   0.4
+  ],
+  "hauteur_attendue_m": 0.4,
+  "hauteur_implicite_m": 0.29,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_presse_papiers": {
+  "pente_dominante": 0.35,
+  "sens": "direct",
+  "part_bande_v4": 0.87,
+  "part_2_1_opposee": 0.05,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.27,
+    0.77
+   ],
+   "cisaillement": [
+    0.994,
+    0.063
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_sheet_props_b_0.jpg",
+  "origine": "généré",
+  "role": "presse à faux papiers sur banc",
+  "emprise_m": [
+   1.0,
+   0.6
+  ],
+  "hauteur_attendue_m": 1.2,
+  "hauteur_implicite_m": 0.95,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_bocaux": {
+  "pente_dominante": 0.25,
+  "sens": "direct",
+  "part_bande_v4": 0.93,
+  "part_2_1_opposee": 0.05,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.3,
+    0.89
+   ],
+   "cisaillement": [
+    0.866,
+    0.073
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.82
+   ]
+  },
+  "accepte_arete_basse": false,
+  "source": "art-gen/gen_cl_sheet_props_b_1.jpg",
+  "origine": "généré",
+  "role": "étagère de bocaux de médicaments",
+  "emprise_m": [
+   0.8,
+   0.4
+  ],
+  "hauteur_attendue_m": 0.8,
+  "hauteur_implicite_m": 0.46,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_friture": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.82,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.48,
+    0.77
+   ],
+   "cisaillement": [
+    0.821,
+    -0.068
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.7
+   ],
+   "mesure": "enveloppe convexe",
+   "rallonge_hauteurs": 2.2
+  },
+  "accepte_arete_basse": true,
+  "source": "art-gen/gen_cl_sheet_props_b_2.jpg",
+  "origine": "généré",
+  "role": "bassine à friture sur chariot",
+  "emprise_m": [
+   1.0,
+   0.7
+  ],
+  "hauteur_attendue_m": 1.1,
+  "hauteur_implicite_m": 1.0,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_mahjong": {
+  "pente_dominante": 0.6,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0.27,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_props_b_3.jpg",
+  "origine": "généré",
+  "role": "table de mah-jong et quatre chaises",
+  "emprise_m": [
+   1.6,
+   1.6
+  ],
+  "hauteur_attendue_m": 1.0,
+  "hauteur_implicite_m": 0.96,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_barriere_caisses": {
+  "pente_dominante": 0.3,
+  "sens": "direct",
+  "part_bande_v4": 0.94,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "pentes_source": [
+    0.33,
+    0.5
+   ],
+   "cisaillement": [
+    1.238,
+    -0.081
+   ],
+   "miroir": false,
+   "pentes_apres": [
+    0.33,
+    0.5
+   ],
+   "mesure": "enveloppe convexe"
+  },
+  "accepte_arete_basse": false,
+  "source": "art-gen/gen_cl_sheet_props_c_0.jpg",
+  "origine": "généré",
+  "role": "barrière de caisses du barrage, lanterne",
+  "emprise_m": [
+   4.0,
+   0.8
+  ],
+  "hauteur_attendue_m": 2.0,
+  "hauteur_implicite_m": 1.85,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_pieux": {
+  "pente_dominante": null,
+  "sens": "direct",
+  "part_bande_v4": 0,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_props_c_1.jpg",
+  "origine": "généré",
+  "role": "faisceau de pieux d amarrage, corde, chaîne",
+  "emprise_m": [
+   0.8,
+   0.8
+  ],
+  "hauteur_attendue_m": 2.0,
+  "hauteur_implicite_m": 1.72,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_pieux_b": {
+  "pente_dominante": 0.45,
+  "sens": "miroir",
+  "part_bande_v4": 0.13,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/utility-v9.png 588,512,977,961",
+  "origine": "maquette",
+  "role": "bitte d amarrage à corde (maquette utility-v9), variante de cl_pieux",
+  "emprise_m": [
+   0.8,
+   0.8
+  ],
+  "hauteur_attendue_m": 0.9,
+  "hauteur_implicite_m": 0.63,
+  "echelle_ok": true,
+  "magenta_bord_pct": 0.05
+ },
+ "cl_dechets_a": {
+  "pente_dominante": 0.7,
+  "sens": "direct",
+  "part_bande_v4": 0.27,
+  "part_2_1_opposee": 0,
+  "accepte": true,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_dechets_0.jpg",
+  "origine": "généré",
+  "role": "déchets flottants : bouteilles, bidon, mousse (décalque sur l eau)",
+  "emprise_m": [
+   2.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 0.2,
+  "hauteur_implicite_m": 0.76,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_dechets_b": {
+  "pente_dominante": 0.65,
+  "sens": "miroir",
+  "part_bande_v4": 0.07,
+  "part_2_1_opposee": 0.04,
+  "accepte": true,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_dechets_1.jpg",
+  "origine": "généré",
+  "role": "déchets flottants : filet, planche, poisson mort",
+  "emprise_m": [
+   2.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 0.2,
+  "hauteur_implicite_m": 0.88,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ },
+ "cl_dechets_c": {
+  "pente_dominante": 0.45,
+  "sens": "direct",
+  "part_bande_v4": 0.47,
+  "part_2_1_opposee": 0,
+  "accepte": false,
+  "correction_v4": {
+   "v4fix": "non applicable (flottant / révolution / décalque)",
+   "pentes_apres": [
+    null,
+    null
+   ]
+  },
+  "accepte_arete_basse": null,
+  "source": "art-gen/gen_cl_sheet_dechets_2.jpg",
+  "origine": "généré",
+  "role": "déchets flottants : papier de lanterne, pneu, nappe",
+  "emprise_m": [
+   2.0,
+   2.0
+  ],
+  "hauteur_attendue_m": 0.2,
+  "hauteur_implicite_m": 0.72,
+  "echelle_ok": false,
+  "magenta_bord_pct": 0.0
+ }
+}
