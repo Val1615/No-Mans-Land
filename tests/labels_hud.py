@@ -17,5 +17,5 @@ with sync_playwright() as p:
         if npc: E(f"window.__nml.state.dialogue={{npc:'{npc}',node:'start',tree:null}}"); time.sleep(1.2)
         o=E(CHK); hid=E("[...document.querySelectorAll('.wlabel')].filter(l=>l.dataset.underHud==='1').map(l=>l.textContent)")
         pg.screenshot(path=OUT+n+'.png'); print(n,'chevauchent:',o,'masqués:',hid); bad+=len(o)
-        E("window.__nml.game.closeDialogue && window.__nml.game.closeDialogue()"); time.sleep(.3)
+        E("window.__nml.state.dialogue=null"); time.sleep(.3)
     print('ECHECS',bad); sys.exit(1 if bad else 0)
