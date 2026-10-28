@@ -28,6 +28,11 @@ game.on(ev => { if (ev.text) say(ev.text); });
 
 bindPointer($('view'), (x, y) => {
   if (game.state.dialogue || shell?.isOpen()) return;
+  if (game.state.combat) { // combat C1 : premier tap = aperçu du chemin et de son coût, second tap sur la même case = confirmer
+    const p = view.pick(x, y, true); if (!p || p.x === undefined) return; const pv = game.state.combat.preview, [i, j] = [Math.floor(p.x), Math.floor(p.z)];
+    if (pv && pv.i === i && pv.j === j && pv.ok) { const r = game.combat.moveTo(p.x, p.z); if (!r.ok && r.reason === 'pa_insuffisants') say(`Pas assez de PA (${r.cout} pour ${r.pa}).`); }
+    else game.combat.previewTo(p.x, p.z);
+    return; }
   const p = view.pick(x, y); if (!p) return;
   if (p.x !== undefined || p.kind === 'ground') { // v15 : ferraille / sacs du poste près du point visé
     const sp = (world.SPOTS || []).find(q => q.location === game.state.location && Math.hypot(q.x - p.x, q.z - p.z) < (q.r || 1.4)); if (sp) { game.useSpot(sp.id); return; } }
@@ -45,6 +50,22 @@ bindPointer($('view'), (x, y) => {
 });
 
 let nearDoor = null;
+// ---------- Combat C1 : autosave juste avant, interface de combat ----------
+game.on(ev => { if (ev.type === 'combat_autosave' && shell) shell.autosave(); });
+$('view').addEventListener('pointermove', e => { const c = game.state.combat; if (!c || e.pointerType !== 'mouse') return; const p = view.pick(e.clientX, e.clientY, true); if (p && p.x !== undefined) game.combat.previewTo(p.x, p.z); });
+$('cbt-end').addEventListener('click', () => game.combat.endTurn());
+$('cbt-rendre').addEventListener('click', () => game.combat.surrender());
+let cbtKey = '';
+function renderCombat() {
+  const c = game.state.combat; document.body.classList.toggle('combat', !!c); $('cbt').hidden = !c; if (!c) { cbtKey = ''; return; }
+  const u = c.units[c.actif], pl = c.units.find(q => q.joueur), pv = c.preview;
+  const key = JSON.stringify([c.tour, c.actif, c.phase, pl.pa, pv && [pv.i, pv.j, pv.pa], c.units.map(q => q.actif), game.state.player.hp]); if (key === cbtKey) return; cbtKey = key;
+  $('cbt-file').innerHTML = `<b class="t">COMBAT · TOUR ${c.tour}</b>` + c.units.filter(q => q.actif).map(q => `<span class="${q === u ? 'cur' : ''}">${q.joueur ? 'Toi' : q.nom}</span>`).join('');
+  const cost = pv && pv.ok ? pv.pa : 0;
+  $('cbt-pa').innerHTML = Array.from({ length: pl.paMax }, (_, k) => `<i class="${k < pl.pa - cost ? 'on' : k < pl.pa ? 'cost' : ''}"></i>`).join('');
+  $('cbt-info').textContent = u.joueur ? `${pl.pa}/${pl.paMax} PA · PV ${game.state.player.hp}/${game.state.player.maxHp}` + (pv ? (pv.ok ? ` · aller : ${pv.pa} PA` : pv.pa ? ` · trop loin (${pv.pa} PA)` : ' · case fermée') : '') : `Tour de ${u.nom}…`;
+  $('cbt-end').disabled = $('cbt-rendre').disabled = !u.joueur;
+}
 $('act').addEventListener('click', () => nearDoor && game.useDoor(nearDoor.id));
 $('dlg-close').addEventListener('click', () => game.closeDialogue());
 let shownNode = null;
@@ -81,7 +102,7 @@ function frame(now) {
   const q = currentObjective(); $('obj').hidden = !q; if (q) $('obj-text').textContent = q;
   music.update();
   s.seen[s.location] = true; if (panelOpen) renderPanel();
-  renderDialogue();
+  renderDialogue(); renderCombat();
   view.render();
   requestAnimationFrame(frame);
 }

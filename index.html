@@ -26,6 +26,9 @@
 <nav id="keys" aria-label="Menus">
   <button id="k-menu" class="rp" aria-label="Menu"><u>Échap</u> <span>Menu</span></button><button id="k-sac" class="rp" data-panel="sac"><u>I</u> Sac</button><button id="k-journal" class="rp" data-panel="journal"><u>J</u> Journal</button><button id="k-carte" class="rp" data-panel="carte"><u>M</u> Carte</button><button id="k-son" class="rp" aria-pressed="false"><u>S</u> <span>Son</span></button><button id="k-mini" class="rp"><u>H</u> <span>Discret</span></button>
 </nav>
+<!-- Combat C1 : liseré ambre, file d'initiative (haut gauche), PA / PV (bas gauche), actions (bas droite). Rien dans le tiers central. -->
+<div id="cbt" hidden><div id="cbt-file" class="rp"></div><div id="cbt-res" class="rp"><div class="lbl">PA</div><div id="cbt-pa"></div><div id="cbt-info" class="muted"></div></div>
+  <div id="cbt-actions"><button id="cbt-end" class="rp">Fin du tour</button><button id="cbt-rendre" class="rp">Se rendre</button></div></div>
 <section id="panel" class="rp" hidden><button id="panel-close" aria-label="Fermer">×</button><div id="panel-body"></div></section>
 <div id="dialogue" class="rp" hidden role="dialog" aria-modal="false">
   <div class="who"><img id="dlg-portrait" alt=""><div id="dlg-name"></div></div>

@@ -137,7 +137,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
-    ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true;
+    ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
     world.add(ground); pickables.push(ground);
     for (const b of loc.buildings) building(b);
     for (const p of loc.props) {
@@ -285,6 +285,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   }
   addEventListener('resize', resize); resize();
   let camOverride = null, camShift = 0;
+  let groundMesh = null, cbt = null; // combat C1 : grille, cases atteignables, chemin, unités ennemies
   function render() {
     const s = game.state;
     if (builtFor !== s.location) build(s.location);
@@ -314,6 +315,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; cam.left = -w / 2 / zoom; cam.right = w / 2 / zoom; cam.top = (h / 2 - camShift) / zoom; cam.bottom = (-h / 2 - camShift) / zoom; cam.updateProjectionMatrix(); }
     if (false) { const w = innerWidth, h = innerHeight; cam.left = -w / 2 / camOverride.ppm; cam.right = w / 2 / camOverride.ppm; cam.top = h / 2 / camOverride.ppm; cam.bottom = -h / 2 / camOverride.ppm; cam.updateProjectionMatrix(); }
     if (exterior) { painter(); spriteOcclusion(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
+    combatOverlay();
     renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran, puis décalées vers le haut si elles se chevauchent (mobile étroit)
@@ -327,10 +329,42 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const L = a.lx - a.lw / 2, R = a.lx + a.lw / 2, T = a.ly - a.lh, Bt = a.ly, under = hudRects.some(q => L < q.right && R > q.left && T < q.bottom && Bt > q.top);
       a.l.el.style.visibility = under ? 'hidden' : ''; a.l.el.dataset.underHud = under ? '1' : ''; }
   }
+  // ---------- Combat C1 : grille de 1 m semi-transparente (seulement en combat), cases atteignables, aperçu du chemin et coût ----------
+  function combatOverlay() {
+    const c = game.state.combat;
+    if (!c) { if (cbt) { scene.remove(cbt.group); for (const e of cbt.enemies) { world.remove(e); npcSprites.splice(npcSprites.indexOf(e), 1); } cbt.cost.remove(); cbt = null; } return; }
+    if (!cbt || cbt.id !== c) { if (cbt) { scene.remove(cbt.group); cbt.cost.remove(); }
+      const group = new THREE.Group(); scene.add(group); const z = c.zone, pts = [];
+      for (let i = z.i0; i <= z.i1; i++) for (let j = z.j0; j <= z.j1; j++) if (game.combat.cellFree(i, j)) pts.push(i, 0.03, j, i + 1, 0.03, j, i, 0.03, j, i, 0.03, j + 1, i + 1, 0.03, j, i + 1, 0.03, j + 1, i, 0.03, j + 1, i + 1, 0.03, j + 1);
+      const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+      const lines = new THREE.LineSegments(gg, new THREE.LineBasicMaterial({ color: '#f2b44a', transparent: true, opacity: 0.16, depthTest: false, depthWrite: false })); lines.renderOrder = 3; group.add(lines);
+      const mk = (col, op) => new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, depthTest: false, depthWrite: false });
+      const reach = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.92, 0.92).rotateX(-Math.PI / 2), mk('#f2b44a', 0.10), (2 * z.i1 - 2 * z.i0 + 3) ** 2); reach.renderOrder = 3; group.add(reach);
+      const exitM = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.92, 0.92).rotateX(-Math.PI / 2), mk('#b8d0a0', 0.10), 4 * (z.i1 - z.i0 + 1)); exitM.renderOrder = 3; group.add(exitM);
+      let ne = 0; const m4 = new THREE.Matrix4(); for (let i = z.i0; i <= z.i1; i++) for (let j = z.j0; j <= z.j1; j++) if ((i === z.i0 || i === z.i1 || j === z.j0 || j === z.j1) && game.combat.cellFree(i, j)) exitM.setMatrixAt(ne++, m4.makeTranslation(i + 0.5, 0.035, j + 0.5)); exitM.count = ne;
+      const pathL = new THREE.Line(new THREE.BufferGeometry(), new THREE.LineBasicMaterial({ color: '#ffe2a8', transparent: true, opacity: 0.85, depthTest: false, depthWrite: false })); pathL.renderOrder = 4; group.add(pathL);
+      const tgt = new THREE.Mesh(new THREE.RingGeometry(0.28, 0.4, 24).rotateX(-Math.PI / 2), mk('#ffe2a8', 0.8)); tgt.renderOrder = 4; group.add(tgt);
+      const cost = document.createElement('div'); cost.className = 'wlabel cbt-cost'; labelLayer.appendChild(cost);
+      const enemies = c.units.filter(u => !u.joueur).map(u => { const sp = spriteMesh(u.sprite, null, true); sp.material.depthTest = false; sp.material.transparent = true; sp.userData.unit = u.id; world.add(sp); npcSprites.push(sp); return sp; });
+      cbt = { id: c, group, reach, pathL, tgt, cost, enemies, key: '' }; }
+    for (const e of cbt.enemies) { const u = c.units.find(q => q.id === e.userData.unit); e.visible = u.actif; e.position.set(u.x, 0, u.z); if (u.heading !== undefined) face(e, u.heading); }
+    const pl = c.units.find(u => u.joueur), mine = c.phase === 'joueur' && c.units[c.actif] === pl && !pl.path.length, pv = c.preview;
+    const key = JSON.stringify([mine, pl.i, pl.j, pl.pa, pv && [pv.i, pv.j, pv.pa, pv.ok], c.units.map(u => [u.i, u.j, u.actif])]);
+    if (key !== cbt.key) { cbt.key = key; const m4 = new THREE.Matrix4(); let n = 0;
+      if (mine) for (const q of game.combat.reachable()) if (q.i !== pl.i || q.j !== pl.j) cbt.reach.setMatrixAt(n++, m4.makeTranslation(q.i + 0.5, 0.04, q.j + 0.5));
+      cbt.reach.count = n; cbt.reach.instanceMatrix.needsUpdate = true;
+      const showPv = mine && pv && pv.cells.length > 1; cbt.pathL.visible = cbt.tgt.visible = !!(mine && pv);
+      cbt.pathL.geometry.setFromPoints(showPv ? pv.cells.map(([a, b]) => new THREE.Vector3(a + 0.5, 0.05, b + 0.5)) : []);
+      if (mine && pv) { cbt.tgt.position.set(pv.i + 0.5, 0.05, pv.j + 0.5); cbt.tgt.material.color.set(pv.ok ? '#ffe2a8' : '#d06050'); cbt.pathL.material.color.set(pv.ok ? '#ffe2a8' : '#d06050'); }
+      cbt.cost.textContent = mine && pv ? (pv.pa != null ? `${pv.pa} PA` : '\u00d7') : ''; cbt.cost.hidden = !(mine && pv); }
+    if (mine && pv) { const v = new THREE.Vector3(pv.i + 0.5, 0.6, pv.j + 0.5).project(cam), r = canvas.getBoundingClientRect();
+      cbt.cost.style.transform = `translate(-50%,-100%) translate(${r.left + (v.x + 1) / 2 * r.width}px,${r.top + (1 - v.y) / 2 * r.height}px)`; }
+  }
   function pick(clientX, clientY) {
     render();
     const r = canvas.getBoundingClientRect();
     ray.setFromCamera(new THREE.Vector2(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1), cam);
+    if (arguments[2]) { const h = groundMesh && ray.intersectObject(groundMesh, false)[0]; return h ? { kind: 'ground', x: h.point.x, z: h.point.z } : null; } // combat : sol seul
     if (exterior) { // sprites : pixel opaque le plus haut dans l'ordre du peintre ; un bâtiment transparent laisse passer le clic
       const hits = ray.intersectObjects(pickables, false), ring = hits.find(h => h.object.userData.doorId); if (ring) return { kind: 'door', doorId: ring.object.userData.doorId };
       const nh = hits.find(h => h.object.userData.npc); if (nh) return { kind: 'npc', npcId: nh.object.userData.npc }; // v12 : PNJ dehors (Steel)
