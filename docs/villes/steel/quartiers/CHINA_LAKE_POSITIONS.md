@@ -4,7 +4,11 @@ Généré depuis `src/data/china_lake.js`. Sources : PLAN_IMPLEMENTATION.md §3 
 
 Composition [décision Valentin] : marché illégal de contrefaçons ; lac au centre (x 14-34, z 12-26, `ground.water`, non praticable) ; stands sur les quatre quais (nord implants et puces, est armes, sud faux papiers + établi du technicien au bord de l'eau, ouest médicaments) ; bâtiments au fond = bord nord (haut du cadre), trouée du Barrage x 21,5-29,5 ; ruelle de l'angle est (k_est).
 
-Eau : `g_cl_eau` (512 px) non modifié ; répétition cassée dans `paintWater` (textures.js) : décalage UV, seconde couche tournée de 37° et x1,7 en fondu, taches lentes, 9 lanternes flottantes peintes + lueurs rouges.
+Eau (main 7de0a94) : lac irrégulier `g_cl_lac` (1000 x 700 px, 50 px/m) posé sur LAKE, origine px = monde (14, 12) ; contour `LAC_POLY` (= `polygone_monde_m` de assets/generated/g_cl_lac.json, bord extérieur du quai), eau non marchable `EAU_POLY` = polygone rétréci de 0,6 m (quai marchable). Le carreau `g_cl_eau` reste pour les autres zones d eau.
+
+Lanternes flottantes (9, `ground.water[0].lanterns`) : (19,5 ; 15,6), (21 ; 16,8), (25,5 ; 13,6), (30,2 ; 17,5), (18 ; 20,6), (24,6 ; 21,4), (28,7 ; 22,9), (18,7 ; 22,6), (27,2 ; 16,2). Déplacées hors du quai : (16,5 ; 13,4) vers (19,5 ; 15,6), (31,5 ; 17,2) vers (30,2 ; 17,5), (30,6 ; 24,4) vers (28,7 ; 22,9), (15,6 ; 24,8) vers (18,7 ; 22,6).
+
+Quai nord (7de0a94) : les quatre étals passent de z 10,6 à z 11, contre l eau ; marchande d implants en (19 ; 11,5) entre les étals implants et puces, regard vers (19 ; 9) ; passage nord libre sur 2,5 m.
 
 ## Bâtiments et stands
 
@@ -18,10 +22,10 @@ Eau : `g_cl_eau` (512 px) non modifié ; répétition cassée dans `paintWater` 
 | cl_filets | Les Filets | cl_cabane | 40 | 24 | 8 | 2 | oui | emprise |
 | cl_pilotis_so | — | cl_pilotis | 0.5 | 29.5 | 6 | 6 |  | emprise |
 | cl_ponton | Ponton de Shen | cl_ponton | 9 | 17 | 5 | 3 |  | aucune |
-| cl_s_implants | Implants « garantis » | cl_stand_implants | 16 | 10.6 | 2.5 | 1 |  | emprise |
-| cl_s_puces | Puces et lecteurs | cl_stand_puces | 19.5 | 10.6 | 2.5 | 1 |  | emprise |
-| cl_s_puces2 | — | cl_stand_puces | 27.5 | 10.6 | 2.5 | 1 |  | emprise |
-| cl_s_implants2 | — | cl_stand_implants | 31 | 10.6 | 2.5 | 1 |  | emprise |
+| cl_s_implants | Implants « garantis » | cl_stand_implants | 16 | 11 | 2.5 | 1 |  | emprise ; contre l eau (main 7de0a94) |
+| cl_s_puces | Puces et lecteurs | cl_stand_puces | 19.5 | 11 | 2.5 | 1 |  | emprise ; contre l eau (main 7de0a94) |
+| cl_s_puces2 | — | cl_stand_puces | 27.5 | 11 | 2.5 | 1 |  | emprise ; contre l eau (main 7de0a94) |
+| cl_s_implants2 | — | cl_stand_implants | 31 | 11 | 2.5 | 1 |  | emprise ; contre l eau (main 7de0a94) |
 | cl_s_armes | Armes sans numéro | cl_stand_armes | 37 | 13 | 2.5 | 2 |  | emprise |
 | cl_s_armes2 | — | cl_stand_armes | 37 | 17 | 2.5 | 2 |  | emprise |
 | cl_s_armes3 | — | cl_stand_armes | 37 | 21 | 2.5 | 2 |  | emprise |
@@ -81,7 +85,7 @@ Eau : `g_cl_eau` (512 px) non modifié ; répétition cassée dans `paintWater` 
 | id | nom | lieu | x | z | sprite (PROVISOIRE) |
 |---|---|---|---|---|---|
 | cl_shen | Shen | steel_china | 7.6 | 18.6 | gen_cl_shen |
-| cl_m_nord | Marchande d’implants | steel_china | 17.25 | 9.5 | gen_cl_m_nord |
+| cl_m_nord | Marchande d’implants | steel_china | 19 | 11.5 | gen_cl_m_nord |
 | cl_m_est | Armurier | steel_china | 38.25 | 12.3 | gen_cl_m_est |
 | cl_m_sud | Faussaire | steel_china | 19.1 | 28.6 | gen_cl_m_sud |
 | cl_m_ouest | Apothicaire | steel_china | 11.75 | 12.8 | gen_cl_m_ouest |
