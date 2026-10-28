@@ -138,7 +138,9 @@ export function createGame(world, sprites) {
     if (next.includes('/')) { const [t, n] = next.split('/'); if (DIALOGUES[t]) { state.dialogue.tree = t; next = n; } }
     else { const own = npcById(state.dialogue.npc).dialogue, cur = DIALOGUES[state.dialogue.tree || own]; // v15 : nœud absent du sous-arbre (ex. pauvre) -> arbre du PNJ
       if (!cur[next] && DIALOGUES[own]?.[next]) state.dialogue.tree = own; else if (!cur[next]) { closeDialogue(); return { ok: true, closed: true }; } }
-    state.dialogue.node = next; return { ok: true };
+    state.dialogue.node = next; const nn = DIALOGUES[state.dialogue.tree || npcById(state.dialogue.npc).dialogue]?.[next]; // enter : effet posé à l'arrivée sur le nœud (survit à la croix)
+    if (nn?.enter) for (const a of nn.enter.split(';')) act(a);
+    return { ok: true };
   }
   function act(a) {
     const [k, x, y] = a.split(':'), pl = state.player;

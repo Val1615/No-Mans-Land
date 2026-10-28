@@ -320,7 +320,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran, puis décalées vers le haut si elles se chevauchent (mobile étroit)
-    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = r.left + (v.x + 1) / 2 * r.width; if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); placed.push({ l, lx, ly: r.top + (1 - v.y) / 2 * r.height, lw, lh }); }
+    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = r.left + (v.x + 1) / 2 * r.width; const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'); if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; continue; } if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); placed.push({ l, lx, ly: r.top + (1 - v.y) / 2 * r.height, lw, lh }); }
     const hudRects = ['hud', 'locbox', 'obj', 'msg', 'dialogue', 'panel', 'keys', 'act', 'mini', 'cbt-file', 'cbt-res', 'cbt-actions'].map(id => document.getElementById(id))
       .filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden').flatMap(e => e.id === 'keys' ? [...e.children].filter(c => c.getClientRects().length) : [e])
       .map(e => e.getBoundingClientRect()).filter(q => q.width > 0 && q.height > 0);

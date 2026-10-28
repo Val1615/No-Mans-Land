@@ -110,13 +110,13 @@ export const DIALOGUES_ASIA = {
         test: 'intimider:4', opposed: 'volonte', pass: 'peur_ok', fail: 'trente' },
       { label: 'Et si je ne paie pas ?', next: 'non', if: '!cl_barrage' },
       { label: 'Je repasse.', next: 'deja', if: 'cl_barrage' }, { label: 'Au revoir.', next: 'end' } ] },
-    parle_ok: { text: '\u2026 T\u2019as pas tort. Passe. Et fais pas d\u2019histoires.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage', next: 'end' } ] },
-    dix: { text: 'Bon. Dix, et on n\u2019en parle plus.', options: [
+    parle_ok: { enter: 'flag:cl_barrage', text: '\u2026 T\u2019as pas tort. Passe. Et fais pas d\u2019histoires.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage', next: 'end' } ] },
+    dix: { enter: 'flag:cl_barrage_10', text: 'Bon. Dix, et on n\u2019en parle plus.', options: [
       { label: 'Payer 10 cr.', action: 'paycr:10;flag:cl_barrage', next: 'paye', poor: 'pauvre10' }, { label: 'Au revoir.', action: 'flag:cl_barrage_10', next: 'end' } ] },
     parle_rate: { text: 'Zhou a pas besoin de toi pour compter. Vingt.', options: [
       { label: 'Payer 20 cr.', action: 'paycr:20;flag:cl_barrage', next: 'paye' }, { label: 'Au revoir.', next: 'end' } ] },
-    peur_ok: { text: '\u00c7a va, \u00e7a va\u2026 Entre. J\u2019ai rien vu.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage', next: 'end' } ] },
-    trente: { text: 'Joli num\u00e9ro. Maintenant c\u2019est trente. Ou la ruelle, par Lower-Town. Personne la garde.', options: [
+    peur_ok: { enter: 'flag:cl_barrage', text: '\u00c7a va, \u00e7a va\u2026 Entre. J\u2019ai rien vu.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage', next: 'end' } ] },
+    trente: { enter: 'flag:cl_barrage_30', text: 'Joli num\u00e9ro. Maintenant c\u2019est trente. Ou la ruelle, par Lower-Town. Personne la garde.', options: [
       { label: 'Payer 30 cr.', action: 'paycr:30;flag:cl_barrage', next: 'paye', poor: 'pauvre30' }, { label: 'Au revoir.', action: 'flag:cl_barrage_30', next: 'end' } ] },
     pauvre10: { text: 'Dix. Pas neuf. Reviens.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage_10', next: 'end' } ] }, // [inventé, à relire]
     pauvre30: { text: 'Trente. Pas vingt-neuf. Reviens.', options: [ { label: 'Il y a pas un autre chemin ?', action: 'flag:cl_barrage_30', next: 'non' }, { label: 'Au revoir.', action: 'flag:cl_barrage_30', next: 'end' } ] },

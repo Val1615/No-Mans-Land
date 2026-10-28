@@ -62,6 +62,15 @@ with sync_playwright() as p:
     check('payer 30 cr : passage', s['flags'].get('cl_barrage') and s['player']['credits'] == 0 and barrage_ouvert(), s['player']['credits'])
     setup(cr=40, cha=6); talk(); rng(-2, 2); pick('[Intimider]'); pick('Payer 30'); s = st()
     check('trente payé tout de suite (40 -> 10 cr)', s['flags'].get('cl_barrage') and s['player']['credits'] == 10, s['player']['credits'])
+    # fermeture par la croix : le résultat de l'essai est conservé
+    def croix(): E("window.__nml.game.closeDialogue ? window.__nml.game.closeDialogue() : (window.__nml.state.dialogue=null)"); time.sleep(0.2)
+    setup(); talk(); rng(1); pick('[Discours]'); croix(); s = st()
+    check('croix après Discours réussi : passage gratuit conservé', s['flags'].get('cl_barrage') and barrage_ouvert(), s['flags'])
+    setup(); talk(); rng(0); pick('[Discours]'); croix(); talk(); L = labels()
+    check('croix après Discours à 3 : prix de 10 conservé', 'Payer 10 cr.' in L and 'Payer 20 cr.' not in L, L)
+    setup(cha=6); talk(); rng(-2, 2); pick('[Intimider]'); croix(); talk(); L = labels()
+    check('croix après Intimider raté : prix de 30 conservé', 'Payer 30 cr.' in L and 'Payer 20 cr.' not in L, L)
+    E("window.__nml.state.player.credits=29"); pick('Payer 30'); check('puis 29 cr : « Il y a pas un autre chemin ? » proposé', 'Il y a pas un autre chemin ?' in labels(), labels())
     # barrage fermé sans payer ; la ruelle (passages obligatoires) reste sans condition
     setup(); check('Barrage fermé sans cl_barrage', not barrage_ouvert())
     check('ruelle et passages obligatoires toujours gratuits', E("['a_nord','a_escalier','c_sud_est','l_sud'].every(id=>!(window.__nml.game.doorById(id).conditions||[]).length)"))
