@@ -35,9 +35,9 @@ export const DIALOGUES_ARGENT = {
     recule: { text: 'Il hésite. Tu n\'as pas bougé d\'un centimètre. Il crache dans le sable et repart vers les ruines, sans se presser, pour sauver la face.', options: [
       { label: 'Continuer.', action: 'flag:a_rodeur_fait', next: 'end' } ] },
     frappe: { text: 'Ta voix tremble sur le dernier mot. Il l\'entend. La barre te prend à l\'épaule. Tu te relèves, il est déjà loin, et tes bidons sont toujours là. Il voulait seulement te faire mal.', options: [
-      { label: 'Ramasser les bidons.', action: 'hurt:5;flag:a_rodeur_fait;flag:combat_rodeur;hook:combat_rodeur', next: 'end' } ] },
+      { label: 'Ramasser les bidons.', action: 'hurt:5;flag:combat_rodeur;combat:rodeur', next: 'end' } ] },
     fuite: { text: 'Tu cours avec quatre bidons qui cognent. Il te rattrape au coin, te bouscule contre un mur, puis renonce : il n\'a plus de souffle non plus.', options: [
-      { label: 'Repartir en boitant.', action: 'hurt:3;flag:a_rodeur_fait;flag:combat_rodeur;hook:combat_rodeur', next: 'end' } ] },
+      { label: 'Repartir en boitant.', action: 'hurt:3;flag:combat_rodeur;combat:rodeur', next: 'end' } ] },
     cede_eau: { text: 'Il prend le bidon à deux mains, boit tout de suite, la moitié lui coule dans le cou. Il ne dit pas merci.', options: [
       { label: 'Continuer.', action: 'flag:a_rodeur_fait', next: 'end' } ] }
   },

@@ -3,6 +3,7 @@ import { UNITS } from '../data/units.js';
 import { ARGENT } from '../data/argent.js';
 import { buildGrid } from './grid.js';
 import { findPath } from './path.js';
+import { createCombat } from './combat.js';
 
 // État sérialisable + commandes à résultat typé. Aucune dépendance au rendu.
 export function createGame(world, sprites) {
@@ -27,7 +28,7 @@ export function createGame(world, sprites) {
   const doorOfBuilding = bid => DOORS.filter(d => d.buildingId === bid && d.location === state.location).sort((a, b) => Math.hypot(a.threshold.x - state.player.x, a.threshold.z - state.player.z) - Math.hypot(b.threshold.x - state.player.x, b.threshold.z - state.player.z))[0];
   const npcById = id => NPCS.find(n => n.id === id);
   const refuse = (reason, text) => { if (typeof text === 'function') text = text(state); /* v14 : texte selon l'état */ emit({ type: 'refus', reason, text }); return { ok: false, reason }; };
-  const busy = () => state.dialogue ? refuse('dialogue_ouvert', 'Termine la conversation d\'abord.') : null;
+  const busy = () => state.dialogue ? refuse('dialogue_ouvert', 'Termine la conversation d\'abord.') : state.combat ? refuse('combat', 'Pas pendant le combat.') : null;
 
   function moveTo(x, z) {
     const b = busy(); if (b) return b;
@@ -157,6 +158,7 @@ export function createGame(world, sprites) {
       state.location = loc; Object.assign(pl, { x: +wx, z: +wz, path: [], pending: null }); const g = grids[loc], [i, j] = g.toCell(pl.x, pl.z); if (!g.free(i, j)) { const w = nearestFree(g, pl, pl); if (w) Object.assign(pl, w); }
       state.junctionLock = null; state.transitions++; emit({ type: 'transition', from, to: loc, warp: true }); return { ok: true }; }
     // v12 : crochet pour un système futur (combat) : signalé, sans effet propre
+    if (k === 'combat') { state.combatPending = x; return { ok: true }; } // COMBAT C1 : lancé à la fermeture du dialogue (autosave juste avant)
     if (k === 'hook') { state.hooks = state.hooks || []; state.hooks.push(x); emit({ type: 'hook', id: x }); return { ok: true }; }
     return { ok: false };
   }
@@ -193,8 +195,9 @@ export function createGame(world, sprites) {
   function useItem(id) { const it = ITEMS[id], pl = state.player; if (!it?.use || !pl.inv[id]) return { ok: false };
     pl.inv[id]--; if (!pl.inv[id]) delete pl.inv[id]; const before = pl.hp; pl.hp = Math.min(pl.maxHp, pl.hp + (it.use.heal || 0));
     emit({ type: 'service', what: 'use', text: `${it.name} : +${pl.hp - before} PV` }); return { ok: true, healed: pl.hp - before }; }
-  function sceneTriggers() { if (state.dialogue) return; for (const t of TRIGGERS) if (t.location.includes(state.location) && t.if(state, rng)) { openDialogue(t.scene); return; } }
-  function closeDialogue() { if (state.dialogue) { const n = npcById(state.dialogue.npc); if (n.faceTo) state.npcs[n.id].heading = Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z); emit({ type: 'dialogue_close', npc: state.dialogue.npc }); state.dialogue = null; } }
+  function sceneTriggers() { if (state.dialogue || state.combat) return; for (const t of TRIGGERS) if (t.location.includes(state.location) && t.if(state, rng)) { openDialogue(t.scene); return; } }
+  function closeDialogue() { if (state.dialogue) { const n = npcById(state.dialogue.npc); if (n.faceTo) state.npcs[n.id].heading = Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z); emit({ type: 'dialogue_close', npc: state.dialogue.npc }); state.dialogue = null; }
+    if (state.combatPending && !state.combat) { const id = state.combatPending; state.combatPending = null; combat.start(id); } }
 
   // Transition de groupe atomique.
   function enter(door) {
@@ -217,6 +220,7 @@ export function createGame(world, sprites) {
   }
 
   function step(dt) {
+    if (state.combat) { combat.step(dt); return; } // combat : seules les unités du combat bougent
     const pl = state.player, sp = UNITS.walkSpeed * dt;
     advance(pl, sp);
     if (!pl.path.length && pl.pending) finishPending();
@@ -241,6 +245,7 @@ export function createGame(world, sprites) {
       if (d <= sp) { a.x = n.x; a.z = n.z; a.path.shift(); sp -= d; } else { a.x += dx / d * sp; a.z += dz / d * sp; sp = 0; }
     }
   }
+  const combat = createCombat({ state, grids, emit, act });
   // v10 : sauvegarde. Instantané de tout l'état durable (jamais chemins, attentes, dialogue en cours).
   function snapshot() {
     const p = state.player, c = state.companion;
@@ -255,14 +260,14 @@ export function createGame(world, sprites) {
     Object.assign(p, { x: +sp0.x || 0, z: +sp0.z || 0, heading: +sp0.heading || 0, hp: sp0.hp ?? START.hp, maxHp: sp0.maxHp ?? START.maxHp, money: sp0.money ?? START.money, credits: sp0.credits || 0, inv: { ...(sp0.inv || {}) }, path: [], pending: null });
     const g = grids[state.location], [i, j] = g.toCell(p.x, p.z); if (!g.free(i, j)) { const w = nearestFree(g, p, p); if (w) Object.assign(p, w); }
     Object.assign(state.companion, { ...(snap.companion || {}), path: [] });
-    state.flags = { ...(snap.flags || {}) }; state.discovered = { ...(snap.discovered || {}) }; state.seen = { ...(snap.seen || {}) }; state.transitions = snap.transitions || 0; state.osGains = snap.osGains || 0; state.os = null;
+    state.flags = { ...(snap.flags || {}) }; state.discovered = { ...(snap.discovered || {}) }; state.seen = { ...(snap.seen || {}) }; state.transitions = snap.transitions || 0; state.osGains = snap.osGains || 0; state.os = null; state.combat = null; state.combatPending = null;
     state.character = snap.character ? JSON.parse(JSON.stringify(snap.character)) : null; // v11 : personnage créé (lot 2)
     // pas de franchissement immédiat si l'on a sauvegardé sur un seuil de jonction
     const jd = DOORS.find(d => (d.junction || d.edge) && d.location === state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.5); state.junctionLock = jd ? jd.id : null;
     if (!quiet) emit({ type: 'restore', text: 'Partie chargée : ' + LOCATIONS[state.location].name });
     return true;
   }
-  return { state, setRng: f => { rng = f || Math.random; }, useSpot, useItem, sceneTriggers, step, snapshot, restore, moveTo, useDoor, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
+  return { combat, startCombat: id => combat.start(id), state, setRng: f => { rng = f || Math.random; }, useSpot, useItem, sceneTriggers, step, snapshot, restore, moveTo, useDoor, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
     on: f => listeners.add(f), get location() { return LOCATIONS[state.location]; } };
 }
 function nearestFree(g, target, from) {
