@@ -30,7 +30,8 @@ bindPointer($('view'), (x, y) => {
   if (game.state.dialogue || shell?.isOpen()) return;
   if (game.state.combat) { // combat C1 : premier tap = aperçu du chemin et de son coût, second tap sur la même case = confirmer
     const foe = enemyAt(x, y), pv0 = game.state.combat.preview; // C2 : tap sur un ennemi = aperçu de l'attaque (chance, PA), second tap = attaquer
-    if (foe) { if (pv0 && pv0.type === 'attaque' && pv0.cible === foe.id && pv0.ok) game.combat.attack(foe.id); else { const a = game.combat.previewAttack(foe.id); if (a && !a.ok) say(RAISONS[a.raison] || 'Impossible.'); } return; }
+    if (foe) { const me = game.combat.player(); if (pv0 && pv0.type === 'attaque' && pv0.cible === foe.id && pv0.ok && pv0.i === foe.i && pv0.j === foe.j && pv0.de[0] === me.i && pv0.de[1] === me.j) // aperçu périmé (cible ou tireur déplacé) : on refait l'aperçu
+      game.combat.attack(foe.id); else { const a = game.combat.previewAttack(foe.id); if (a && !a.ok) say(RAISONS[a.raison] || 'Impossible.'); } return; }
     const p = view.pick(x, y, true); if (!p || p.x === undefined) return; const pv = pv0 && pv0.type !== 'attaque' ? pv0 : null, [i, j] = [Math.floor(p.x), Math.floor(p.z)];
     if (pv && pv.i === i && pv.j === j && pv.ok) { const r = game.combat.moveTo(p.x, p.z); if (!r.ok && r.reason === 'pa_insuffisants') say(`Pas assez de PA (${r.cout} pour ${r.pa}).`); }
     else game.combat.previewTo(p.x, p.z);

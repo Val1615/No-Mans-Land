@@ -200,3 +200,4 @@ body.combat #keys,body.combat #act,body.combat #obj{display:none}
 /* combat C2 : aperçu d'attaque (chance, PA, couverture) au-dessus de la cible */
 .cbt-cost.att{color:#ffe2a8;border-color:rgba(224,80,60,.7)}
 .cbt-cost.ko{color:#e8a090}
+.cbt-cost{pointer-events:none}

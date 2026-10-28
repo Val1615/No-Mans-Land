@@ -179,7 +179,7 @@ with sync_playwright() as p:
         else: check(f'{T}: malus de portée : ligne dégagée de 11 m trouvée', False, far)
         # tir réel à l'interface : survol / premier tap = aperçu, clic / second tap = tir ; tirage forcé (touché, dégâts min 4)
         si, sj, ti, tj, d = cfg['0']; tp('joueur', si, sj); tp('rodeur', ti, tj); pv0 = unit('rodeur')['pv']; pa0 = unit('joueur')['pa']
-        rng(0); hover_foe(); pre = E("JSON.parse(JSON.stringify(window.__nml.state.combat.preview))")
+        rng(0); my_turn(10); hover_foe(); waitjs("window.__nml.state.combat.preview && window.__nml.state.combat.preview.type==='attaque'", 10); pre = E("JSON.parse(JSON.stringify(window.__nml.state.combat.preview))")
         check(f'{T}: survol / premier tap sur l\'ennemi = aperçu de l\'attaque, rien ne part', pre and pre.get('type') == 'attaque' and unit('rodeur')['pv'] == pv0 and unit('joueur')['charge'] == 6, pre)
         click_foe(); u = unit('rodeur'); me = unit('joueur'); last = E("JSON.parse(JSON.stringify(window.__nml.state.combat.dernier||null))")
         check(f'{T}: tir au pistolet : 3 PA, une balle, touché (tirage 0 < chance) : − 4 PV', last and last['touche'] and u['pv'] == pv0 - 4 and me['pa'] == pa0 - 3 and me['charge'] == 5, (last, u['pv'], me['pa'], me['charge']))

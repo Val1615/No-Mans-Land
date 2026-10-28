@@ -133,12 +133,12 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
     if (touche) { degats = A.degats[0] + Math.floor(ctx.rand() * (A.degats[1] - A.degats[0] + 1));
       if (t.joueur) state.player.hp = Math.max(0, state.player.hp - degats); else { t.pv = Math.max(0, t.pv - degats); if (t.pv <= 0) t.actif = false; } }
     const res = { ...ev, ok: true, roll, touche, degats, auteur: u.id };
-    emit({ type: 'combat_attaque', ...res, text: `${u.nom} · ${A.nom} : ${touche ? '−' + degats + ' PV' : 'manqué'} (${ev.chance} %)` + (!t.joueur && !t.actif ? ` · ${t.nom} est hors de combat.` : '') });
+    emit({ ...res, type: 'combat_attaque', text: `${u.nom} · ${A.nom} : ${touche ? '−' + degats + ' PV' : 'manqué'} (${ev.chance} %)` + (!t.joueur && !t.actif ? ` · ${t.nom} est hors de combat.` : '') });
     C().dernier = res; return res;
   }
   function apres() { if (state.player.hp <= 0) { finish('defaite'); return true; } return checkEnd(); }
   const unit = id => C()?.units.find(u => u.id === id);
-  function previewAttack(id) { if (!mine()) return null; const t = unit(id); if (!t || t.joueur) return null; C().preview = { i: t.i, j: t.j, cells: [], ...evaluer(player(), t), type: 'attaque' }; return C().preview; }
+  function previewAttack(id) { if (!mine()) return null; const t = unit(id); if (!t || t.joueur) return null; const me = player(); C().preview = { i: t.i, j: t.j, de: [me.i, me.j], cells: [], ...evaluer(me, t), type: 'attaque' }; return C().preview; }
   function attack(id) { if (!mine()) return { ok: false, reason: 'pas_ton_tour' }; const t = unit(id); if (!t || t.joueur) return { ok: false, reason: 'cible_inconnue' };
     const r = attaquer(player(), t); if (r.ok) { C().preview = null; apres(); } return r; }
   function reload(u = null) { const me = u || player(); if (!u && !mine()) return { ok: false, reason: 'pas_ton_tour' }; const A = armeDe(me);
