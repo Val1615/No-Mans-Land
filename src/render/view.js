@@ -337,12 +337,12 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const group = new THREE.Group(); scene.add(group); const z = c.zone, pts = [];
       for (let i = z.i0; i <= z.i1; i++) for (let j = z.j0; j <= z.j1; j++) if (game.combat.cellFree(i, j)) pts.push(i, 0.03, j, i + 1, 0.03, j, i, 0.03, j, i, 0.03, j + 1, i + 1, 0.03, j, i + 1, 0.03, j + 1, i, 0.03, j + 1, i + 1, 0.03, j + 1);
       const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
-      const lines = new THREE.LineSegments(gg, new THREE.LineBasicMaterial({ color: '#f2b44a', transparent: true, opacity: 0.16, depthTest: false, depthWrite: false })); lines.renderOrder = 3; group.add(lines);
+      const lines = new THREE.LineSegments(gg, new THREE.LineBasicMaterial({ color: '#1a1208', transparent: true, opacity: 0.32, depthTest: false, depthWrite: false })); lines.renderOrder = 3; group.add(lines);
       const mk = (col, op) => new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: op, depthTest: false, depthWrite: false });
       const reach = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.92, 0.92).rotateX(-Math.PI / 2), mk('#f2b44a', 0.10), (2 * z.i1 - 2 * z.i0 + 3) ** 2); reach.renderOrder = 3; group.add(reach);
       const exitM = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.92, 0.92).rotateX(-Math.PI / 2), mk('#b8d0a0', 0.10), 4 * (z.i1 - z.i0 + 1)); exitM.renderOrder = 3; group.add(exitM);
       let ne = 0; const m4 = new THREE.Matrix4(); for (let i = z.i0; i <= z.i1; i++) for (let j = z.j0; j <= z.j1; j++) if ((i === z.i0 || i === z.i1 || j === z.j0 || j === z.j1) && game.combat.cellFree(i, j)) exitM.setMatrixAt(ne++, m4.makeTranslation(i + 0.5, 0.035, j + 0.5)); exitM.count = ne;
-      const pathL = new THREE.Line(new THREE.BufferGeometry(), new THREE.LineBasicMaterial({ color: '#ffe2a8', transparent: true, opacity: 0.85, depthTest: false, depthWrite: false })); pathL.renderOrder = 4; group.add(pathL);
+      const pathL = new THREE.InstancedMesh(new THREE.CircleGeometry(0.13, 16).rotateX(-Math.PI / 2), mk('#ffe2a8', 0.85), 64); pathL.renderOrder = 4; pathL.count = 0; group.add(pathL);
       const tgt = new THREE.Mesh(new THREE.RingGeometry(0.28, 0.4, 24).rotateX(-Math.PI / 2), mk('#ffe2a8', 0.8)); tgt.renderOrder = 4; group.add(tgt);
       const cost = document.createElement('div'); cost.className = 'wlabel cbt-cost'; labelLayer.appendChild(cost);
       const enemies = c.units.filter(u => !u.joueur).map(u => { const sp = spriteMesh(u.sprite, null, true); sp.material.depthTest = false; sp.material.transparent = true; sp.userData.unit = u.id; world.add(sp); npcSprites.push(sp); return sp; });
@@ -354,7 +354,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       if (mine) for (const q of game.combat.reachable()) if (q.i !== pl.i || q.j !== pl.j) cbt.reach.setMatrixAt(n++, m4.makeTranslation(q.i + 0.5, 0.04, q.j + 0.5));
       cbt.reach.count = n; cbt.reach.instanceMatrix.needsUpdate = true;
       const showPv = mine && pv && pv.cells.length > 1; cbt.pathL.visible = cbt.tgt.visible = !!(mine && pv);
-      cbt.pathL.geometry.setFromPoints(showPv ? pv.cells.map(([a, b]) => new THREE.Vector3(a + 0.5, 0.05, b + 0.5)) : []);
+      { let k = 0; if (showPv) for (const [a, b] of pv.cells.slice(1, -1)) if (k < 64) cbt.pathL.setMatrixAt(k++, m4.makeTranslation(a + 0.5, 0.05, b + 0.5)); cbt.pathL.count = k; cbt.pathL.instanceMatrix.needsUpdate = true; }
       if (mine && pv) { cbt.tgt.position.set(pv.i + 0.5, 0.05, pv.j + 0.5); cbt.tgt.material.color.set(pv.ok ? '#ffe2a8' : '#d06050'); cbt.pathL.material.color.set(pv.ok ? '#ffe2a8' : '#d06050'); }
       cbt.cost.textContent = mine && pv ? (pv.pa != null ? `${pv.pa} PA` : '\u00d7') : ''; cbt.cost.hidden = !(mine && pv); }
     if (mine && pv) { const v = new THREE.Vector3(pv.i + 0.5, 0.6, pv.j + 0.5).project(cam), r = canvas.getBoundingClientRect();

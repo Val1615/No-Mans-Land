@@ -184,7 +184,7 @@ body.readable #creation .cr-head b{font-family:'Plex'}
 /* Combat C1 : discret, semi-transparent, sur les bords ; liseré ambre plein écran sans rien masquer */
 body.combat::before{content:'';position:fixed;inset:0;border:2px solid rgba(242,180,74,.55);box-shadow:inset 0 0 40px rgba(242,180,74,.12);pointer-events:none;z-index:5}
 #cbt[hidden]{display:none}
-#cbt-file{position:fixed;left:12px;top:calc(62px + var(--pad));display:flex;gap:6px;align-items:center;padding:4px 8px;font-size:12px;pointer-events:none;background:rgba(8,6,3,.55)}
+#cbt-file{position:fixed;right:12px;top:calc(48px + var(--pad));display:flex;gap:6px;align-items:center;padding:4px 8px;font-size:12px;pointer-events:none;background:rgba(8,6,3,.55)}
 #cbt-file .t{color:var(--c);letter-spacing:.08em}#cbt-file span{opacity:.6}#cbt-file span.cur{opacity:1;color:#fff2d8;border-bottom:1px solid var(--c)}
 #cbt-res{position:fixed;left:12px;bottom:calc(60px + env(safe-area-inset-bottom,0));padding:5px 10px;min-width:120px;pointer-events:none;background:rgba(8,6,3,.55)}
 #cbt-pa{display:flex;gap:3px;margin:3px 0}#cbt-pa i{width:12px;height:8px;border:1px solid var(--c);display:block}#cbt-pa i.on{background:var(--c)}#cbt-pa i.cost{background:rgba(242,180,74,.35)}
@@ -193,6 +193,6 @@ body.combat::before{content:'';position:fixed;inset:0;border:2px solid rgba(242,
 #cbt-actions button{min-height:36px;padding:4px 12px;background:rgba(8,6,3,.62);color:#fff2d8;font-size:13px}
 #cbt-actions button:disabled{opacity:.4}
 body.combat #keys,body.combat #act,body.combat #obj{display:none}
-@media (max-width:600px){#cbt-file{top:calc(118px + var(--pad));left:8px}#cbt-res{left:8px;bottom:calc(10px + env(safe-area-inset-bottom,0))}
+@media (max-width:600px){#cbt-file{top:calc(100px + var(--pad));right:8px}#cbt-res{left:8px;bottom:calc(10px + env(safe-area-inset-bottom,0))}
   #cbt-actions{right:8px;bottom:calc(10px + env(safe-area-inset-bottom,0));flex-direction:row}#cbt-actions button{min-height:52px;min-width:52px}}
 .wlabel.cbt-cost{color:#ffe2a8;border-color:rgba(242,180,74,.6);background:rgba(8,6,3,.6);font-size:12px}
