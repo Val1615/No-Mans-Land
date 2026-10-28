@@ -14,7 +14,7 @@ export const BUILDINGS_LOWER = [
   B('lt_bastide', 'Atelier Bastide', 'lt_atelier_petit', 36, 7, 8, 6, { h: 4.5, color: '#43362c', roof: 'sheds' }, { visitable: true }),
   B('lt_immeuble', 'Immeuble ouvrier', 'lt_immeuble_ouvrier', 5, 5, 8, 6.5, { h: 13, floors: 4 }),                    // sprite Ocre da01a62
   B('lt_immeuble3', 'Immeuble ouvrier', 'lt_immeuble_ouvrier', 14.5, 5, 8, 6.5, { h: 13, floors: 4 }),                // idem (flip non géré pour les bâtiments)
-  B('lt_moss', 'Chez Moss', 'lt_comptoir_moss', 37, 24.5, 6, 5, { h: 4.5 }, { visitable: true }),                         // sprite Ocre 711de0a
+  B('lt_moss', 'Chez Moss', 'lt_comptoir_moss', 37, 24.5, 6, 5, { h: 4.5 }, { visitable: true, sy: 0.584 /* sprite d'origine, proportions de l'illustration (retours Valentin 28/10) */ }),                         // sprite Ocre 711de0a
   // Props d'Ocre (lot 2, 711de0a) : sprites ancrés du manifeste des bâtiments, posés comme bâtiments anonymes (x, z = coin min, emprise du manifeste).
   ...[['lt_tuyau', 18.5, 13, 3, 2], ['lt_tuyau', 33, 13, 3, 2], ['lt_sodium', 9.6, 14.8, 0.8, 0.8], ['lt_sodium', 25.6, 15.6, 0.8, 0.8], ['lt_sodium', 39.6, 20.6, 0.8, 0.8],
     ['lt_sodium', 20.6, 28.2, 0.8, 0.8], ['lt_horloge_pointage', 24, 20.9, 1, 1], ['lt_voiture_panne', 30, 19.4, 4, 2], ['lt_voiture_panne', 1.5, 32.5, 4, 2],

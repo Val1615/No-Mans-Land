@@ -96,7 +96,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     if (!bman[b.sprite]) return placeholder(b);
     const m = bman[b.sprite]; const t = new THREE.Texture(SKIN[b.sprite]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, color: b.tint || light?.tint || '#ffffff' }));
-    s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K, m.px[1] / K, 1);
+    s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K, m.px[1] / K * (b.sy || 1), 1); // b.sy : tassement vertical par le code quand le sprite livré est plus haut que l'illustration
     s.position.set(b.x + b.w, 0, b.z + b.d);
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s);
@@ -182,7 +182,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
       const s = spriteMesh(n.sprite, null, true); if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
-      { const gm = s.material.clone(); gm.opacity = 0.45; gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
+      { const gm = s.material.clone(); gm.opacity = 0.45; gm.alphaTest = 0.2; /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
       addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z));
     }

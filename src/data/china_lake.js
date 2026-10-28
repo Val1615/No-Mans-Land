@@ -11,7 +11,7 @@ const P = (id, sp, x, z, w, d, solid) => ({ id, label: '', sprite: sp, x, z, w, 
 export const LAKE = { x: 14, z: 12, w: 20, d: 14 };
 // Lac irrégulier d'Ocre (retours tour 1, 845186f) : g_cl_lac.webp (1000 x 700 px, 50 px/m) posé sur LAKE, origine px = monde (14, 12).
 // LAC_POLY = polygone_monde_m de assets/generated/g_cl_lac.json (bord extérieur du quai) ; eau non marchable = ce polygone rétréci de 0,6 m (quai marchable).
-export const LAC_POLY = [[31.66, 19.0], [31.81, 20.74], [31.79, 22.07], [31.21, 23.19], [30.04, 23.97], [28.51, 24.48], [26.71, 24.84], [24.0, 25.07], [21.21, 25.01], [19.39, 24.6], [18.0, 23.94], [16.83, 23.17], [15.78, 22.25], [15.1, 20.98], [15.13, 19.0], [15.86, 17.19], [16.85, 16.18], [17.72, 15.35], [18.51, 14.48], [19.58, 13.63], [21.23, 13.03], [24.0, 12.75], [26.89, 12.76], [28.93, 13.01], [30.54, 13.61], [31.51, 14.63], [31.79, 15.93], [31.69, 17.29]];
+export const LAC_POLY = [[33.38, 19.0], [33.33, 22.19], [33.07, 23.43], [32.51, 24.28], [31.62, 24.86], [30.38, 25.24], [28.65, 25.49], [24.0, 25.6], [19.32, 25.54], [17.58, 25.28], [16.41, 24.84], [15.54, 24.24], [14.9, 23.44], [14.5, 22.25], [14.41, 19.0], [14.62, 15.79], [15.06, 14.64], [15.66, 13.83], [16.46, 13.2], [17.6, 12.74], [19.32, 12.47], [24.0, 12.39], [28.68, 12.47], [30.46, 12.68], [31.7, 13.08], [32.55, 13.7], [33.05, 14.59], [33.3, 15.82]]; // lac v4 d'Ocre (1478d07)
 export const QUAI_M = 0.6;
 export function shrinkPoly(P, d) { // décalage vers l'intérieur de d m (bissectrice des normales, polygone simple, orientation détectée)
   const n = P.length, A = P.reduce((s, p, i) => s + p[0] * P[(i + 1) % n][1] - P[(i + 1) % n][0] * p[1], 0), sg = A > 0 ? 1 : -1;
@@ -32,7 +32,7 @@ export const BUILDINGS_CHINA = [
   B('cl_pilotis_no', '', 'cl_pilotis', 0.5, 0.5, 6, 6, { named: false }),
   B('cl_dragon', 'Pavillon du Dragon', 'cl_immeuble_fond', 8, 0.5, 7, 8, { visitable: true, sign: true }),
   B('cl_fond1', '', 'cl_immeuble_fond_b', 15.5, 0.5, 6, 8, { named: false }),
-  B('cl_the', 'Maison de thé', 'cl_maison_the', 30, 0.5, 10, 5.5, { visitable: true, sign: true }),
+  B('cl_the', 'Maison de thé', 'cl_maison_the', 30, 0.5, 10, 5.5, { visitable: true, sign: true, sy: 0.774 /* sprite d'origine, proportions de l'illustration */ }),
   B('cl_fond2', '', 'cl_immeuble_fond_b', 41, 0.5, 6, 8, { named: false }),
   // Est : cabane des Filets (8 x 2), ruelle de l'angle vers Lower-Town (k_est, x 48, z 32) laissée libre ; sud-ouest : pilotis qui ferment l'angle
   B('cl_filets', 'Les Filets', 'cl_cabane', 40, 24, 8, 2, { visitable: true }),
@@ -45,7 +45,7 @@ export const BUILDINGS_CHINA = [
   P('cl_b_dragon', 'cl_ballon_dragon', 17, 15.5, 3, 1.5, []), P('cl_b_carpe', 'cl_ballon_carpe', 28, 15, 3, 1, []),
   P('cl_b_tigre', 'cl_ballon_tigre', 20.5, 22.8, 3, 1.2, []), P('cl_b_phenix', 'cl_ballon_phenix', 27.5, 19, 3, 1.5, []),
   P('cl_dech_a', 'cl_dechets_a', 19, 17.5, 2, 2, []), P('cl_dech_b', 'cl_dechets_b', 29.5, 22.5, 2, 2, []), P('cl_dech_c', 'cl_dechets_c', 15.5, 23, 2, 2, []),
-  ...[[13.6, 11.6], [33.6, 11.6], [13.6, 25.6], [33.6, 25.6], [24, 25.6]].map(([x, z], i) => P(`cl_pieux${i}`, i % 2 ? 'cl_pieux_b' : 'cl_pieux', x, z, 0.8, 0.8)),
+  ...[[13.6, 11.6], [33.6, 11.6], [13.6, 25.6], [33.6, 25.6], [24, 25.6]].map(([x, z], i) => P(`cl_pieux${i}`, i % 2 ? 'cl_pieux_b' : 'cl_pieux', x, z, 0.8, 0.8, i === 4 ? [] : undefined)), // pieu sud sur le quai du lac v4 : non bloquant
   P('cl_bache1', 'cl_bache', 21.4, 30.4, 3, 3, []), P('cl_bache2', 'cl_bache', 42, 12.4, 3, 3, []),
   P('cl_treteaux1', 'cl_treteaux', 31.5, 29.4, 2, 0.6), P('cl_treteaux2', 'cl_treteaux', 4, 14.2, 2, 0.6),
   P('cl_friture', 'cl_friture', 23.4, 11.2, 1, 0.7), P('cl_mahjong', 'cl_mahjong', 43.6, 18.4, 1.6, 1.6),

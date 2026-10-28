@@ -82,7 +82,7 @@ def run(T, VW, VH, mob):
         check(f'{T} lac : un point sur le quai marchable, et tout le quai marchable', lac['quai'][1] and lac['quaiLibres'] == lac['quaiN'] and lac['quaiN'] > 20, (lac['quai'], lac['quaiLibres'], lac['quaiN']))
         check(f'{T} lac : aucun PNJ de China Lake dans l’eau ; lanternes sur l’eau ; image g_cl_lac', not lac['wet'] and lac['lant'] == 0 and lac['img'] == 'g_cl_lac', lac)
         hs = E("[window.__nml.world.LOCATIONS.steel_lower.buildings.find(b=>b.id==='lt_moss').ph.h]")
-        check(f'{T} Chez Moss h 4,5 (sprite 389 x 487, pivot [247, 486])', hs == [4.5], hs)
+        check(f'{T} Chez Moss h 4,5 (sprite d’origine 389 x 669 tassé par sy 0,584)', hs == [4.5], hs)
         # Régie (28/10) : depuis (24 ; 34), Mei sous la halle reste visible (silhouette), étiquette lisible, sélectionnable
         go('steel_asia', 24, 34)
         for _ in range(15): E("window.__nml.view.render()")
