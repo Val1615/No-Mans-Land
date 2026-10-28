@@ -20,7 +20,7 @@ LT = {
  'cl_pilotis': ('gen_cl_pilotis.jpg', [6.0, 6.0], 4.5, 'module de structure sur pilotis 6 m (plateforme, garde-corps, caisses, filets pliés, lanterne)'),
  'cl_cabane': ('gen_cl_cabane2.jpg', [8.0, 6.0], 3.5, 'Les Filets, cabane sur pilotis, toit simple, FILETS 渔网'),
  'cl_ponton': ('gen_cl_ponton.jpg', [5.0, 3.0], 3.5, 'Ponton de Shen, stand du technicien au bord de l eau, ordinateurs, pièces, RÉPARATIONS 修理'),
- 'cl_stand_implants': ('gen_cl_stand_implants3.jpg', [2.5, 1.0], 2.6, 'stand illégal, quai nord : implants piratés, kiosque fermé en tôle rouge sang-de-bœuf, toit plat, néon rouge, vitrine et fauteuil chirurgical, IMPLANTS 植入物'),
+ 'cl_stand_implants': ('gen_cl_stand_implants3.jpg', [2.5, 1.0], 2.6, 'stand illégal, quai nord : implants piratés, kiosque fermé en tôle rouge sang-de-bœuf, toit plat, enseigne peinte sans néon, vitrine et fauteuil chirurgical, IMPLANTS 植入物'),
  'cl_stand_puces': ('gen_cl_stand_puces3.jpg', [2.5, 1.0], 2.6, 'stand illégal, quai nord : puces, charrette à roues sous ombrelle ronde moutarde, bacs de puces, cuivre, moniteur, PUCES 芯片'),
  'cl_stand_armes': ('gen_cl_stand_armes3.jpg', [2.5, 1.5], 2.6, 'stand illégal, quai est : armes, ARMES 武器'),
  'cl_stand_papiers': ('gen_cl_stand_papiers2.jpg', [2.5, 1.5], 2.4, 'stand illégal (guichet), quai sud : faux papiers, PAPIERS 证件'),
@@ -219,3 +219,45 @@ def build_eau(src='gen_cl_eau_src2.jpg', off=256, gain=1.25, band=96):
     q = np.asarray(out).astype(float); seam = float(np.abs(q[:, 0] - q[:, -1]).mean() + np.abs(q[0] - q[-1]).mean()) / 2
     inner = float(np.abs(np.diff(q, axis=1)).mean()); print('g_cl_eau', out.size, 'raccord', round(seam, 2), 'voisins', round(inner, 2))
     return seam, inner
+
+
+# ---- retouche 2026-10-28 : cl_stand_implants sans néon (direction artistique : le kiosque à implants n a pas de néon) ----
+# Post-traitement du sprite final (taille, alpha, pivot inchangés) : lettres IMPLANTS / 植入物 repeintes crème mat sur panneau tôle rouge sombre,
+# tubes néon des montants -> tôle rouge du kiosque, tube au-dessus de la vitrine éteint (rouge plafonné, assombri). À relancer après build('cl_stand_implants').
+def unneon_implants():
+    from scipy import ndimage
+    P = A + 'cl_stand_implants.webp'
+    a=np.asarray(Image.open(P)).astype(float);o=a.copy()
+    r,g,b,al=a[...,0],a[...,1],a[...,2],a[...,3]
+    sat=r-np.maximum(g,b);op=al>0
+    H,W=r.shape;yy,xx=np.mgrid[:H,:W]
+    lum=(r+g+b)/3;tex=np.clip(lum/255,0,1)[...,None]
+    # sign panel (incl. old black backplate) -> dark red corrugated metal with painted cream letters
+    sign=(xx>=24)&(xx<=70)&(yy>=34)&(yy<=60)&op
+    panel=(xx>=23)&(xx<=70)&(yy>=29)&(yy<=60)&op
+    letters=sign&(r>120)&(sat>40)
+    letters=ndimage.binary_opening(letters,np.ones((1,1)))
+    stripe=0.85+0.15*((xx//2)%2)[...,None]  # vertical corrugation
+    metal_sign=np.array([70,22,19.])*stripe
+    w_sign=np.clip((sat-12)/30,0,1)*sign  # red glow/halo pixels on sign
+    o[...,:3]=np.where(w_sign[...,None]>0,a[...,:3]*(1-w_sign[...,None])+metal_sign*w_sign[...,None],o[...,:3])
+    o[...,:3]=np.where(letters[...,None],np.array([182,156,118.])*(0.8+0.25*np.clip((r[...,None]-120)/135,0,1)),o[...,:3])
+    # tubes + halo elsewhere -> booth metal
+    core=(r>140)&(sat>65)&op&~panel
+    reg=ndimage.binary_dilation(core,iterations=1)
+    w=np.clip((sat-30)/40,0,1)*reg
+    ring=ndimage.binary_dilation(core,iterations=4)&~reg&op&~panel
+    p=o[...,:3];cap=np.maximum(p[...,1],p[...,2])*1.35+8  # residual red glow: cap red to a warm-neutral
+    p[...,0]=np.where(ring,np.minimum(p[...,0],cap),p[...,0])
+    metal=np.array([78,24,20.])*(0.8+0.4*tex)
+    # tube lying over the window: unlit = red capped to the warm neutral + darkened (no lit glow), on the frame: booth metal
+    onframe=(xx<=16)|(xx>=93)
+    w=w*onframe
+    o[...,:3]=o[...,:3]*(1-w[...,None])+metal*w[...,None]
+    q=o[...,:3];inner=reg&~onframe
+    for c in (0,1,2): q[...,c]=np.where(inner,q[...,c]*0.7,q[...,c])
+    q[...,0]=np.where(inner,np.minimum(q[...,0],np.maximum(q[...,1],q[...,2])*1.6+10),q[...,0])
+    dark=sign&~letters&(lum<75)&~(w_sign>0)
+    o[...,:3]=np.where(dark[...,None],o[...,:3]*0.3+metal_sign*0.7,o[...,:3])
+    o[...,3]=al
+    Image.fromarray(np.clip(o,0,255).astype('uint8'),'RGBA').save(P,quality=90)
