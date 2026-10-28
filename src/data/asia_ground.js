@@ -119,7 +119,7 @@ export const DIALOGUES_ASIA = {
     trente: { text: 'Joli num\u00e9ro. Maintenant c\u2019est trente. Ou la ruelle, par Lower-Town. Personne la garde.', options: [
       { label: 'Payer 30 cr.', action: 'paycr:30;flag:cl_barrage', next: 'paye', poor: 'pauvre30' }, { label: 'Au revoir.', action: 'flag:cl_barrage_30', next: 'end' } ] },
     pauvre10: { text: 'Dix. Pas neuf. Reviens.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage_10', next: 'end' } ] }, // [inventé, à relire]
-    pauvre30: { text: 'Trente. Pas vingt-neuf. Reviens.', options: [ { label: 'Et la ruelle ?', action: 'flag:cl_barrage_30', next: 'non' }, { label: 'Au revoir.', action: 'flag:cl_barrage_30', next: 'end' } ] },
+    pauvre30: { text: 'Trente. Pas vingt-neuf. Reviens.', options: [ { label: 'Il y a pas un autre chemin ?', action: 'flag:cl_barrage_30', next: 'non' }, { label: 'Au revoir.', action: 'flag:cl_barrage_30', next: 'end' } ] },
     paye: { text: 'Passe. Et souris pas trop, là-bas.', options: [ { label: 'Au revoir.', next: 'end' } ] },
     deja: { text: 'T\u2019as payé, t\u2019es connu. Passe.', options: [ { label: 'Au revoir.', next: 'end' } ] },
     non: { text: 'Alors tu fais le tour par Lower-Town, comme les rats. La ruelle est ouverte, elle.', options: [ { label: 'Au revoir.', next: 'end' } ] },
