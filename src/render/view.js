@@ -334,6 +334,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
         if (!u.visitable) { // clic sur un bâtiment fermé : si le sol visé est hors de son emprise (rue cachée derrière), on marche
           const g = hits.find(h => h.object.userData.ground), b = LOCATIONS[builtFor].buildings.find(b => b.id === u.buildingId);
           if (g && (g.point.x < b.x - 1 || g.point.x > b.x + b.w + 1 || g.point.z < b.z - 1 || g.point.z > b.z + b.d + 1)) return { kind: 'ground', x: g.point.x, z: g.point.z };
+          // décor praticable (halle, escalier, dalle : `solid` explicite) : le sol visé hors des parties pleines reste cliquable
+          if (g && b.solid && !b.solid.some(q => g.point.x >= q.x && g.point.x <= q.x + q.w && g.point.z >= q.z && g.point.z <= q.z + q.d)) return { kind: 'ground', x: g.point.x, z: g.point.z };
           return { kind: 'closed', label: u.label, buildingId: u.buildingId }; }
         const ds = DOORS.filter(d => d.buildingId === u.buildingId).map(d => ({ d, p: scr(new THREE.Vector3(d.opening.x, 1, d.opening.z)) }));
         ds.sort((a, b) => Math.hypot(a.p.x - c.x, a.p.y - c.y) - Math.hypot(b.p.x - c.x, b.p.y - c.y)); return { kind: 'door', doorId: ds[0].d.id }; }

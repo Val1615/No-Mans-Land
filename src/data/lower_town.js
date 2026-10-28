@@ -78,7 +78,7 @@ export const DOORS_LOWER = [
   J('l_fosse', 'steel_lower', 42, 36, 42, 35, 'v_fosse', 'Escalier de la Fosse', [{ test: s => !!(s.flags.lt_cle_ruiz || s.flags.lt_fosse_ouverte), reason: 'fosse',
     text: 'Un escalier grillagé qui plonge vers la Sous-Ville. Cadenas neuf, chaîne neuve.' }]),
   J('v_fosse', 'sv_poutres', 18, 28, 18, 27, 'l_fosse', 'Escalier de la Fosse (vers Lower-Town)'),
-  E('l_sud', 'steel_lower', 8, 36, 8, 35, 'Vers Asia-Ground', 'La rue continue vers les lanternes d\u2019Asia-Ground. Pas encore.'),           // [plan] l_sud ↔ a_nord, lot 2
+  J('l_sud', 'steel_lower', 8, 36, 8, 35, 'a_nord', 'Vers Asia-Ground'),                                  // [plan] l_sud ↔ a_nord (lot 2), aucune condition
   E('l_sud_est', 'steel_lower', 30, 36, 30, 35, 'Ruelle (China Lake)', 'Une ruelle qui file vers China Lake. Des types adossés au mur te font comprendre que non.'), // [plan] l_sud_est ↔ k_est, lot 3
   DOOR('lt_foyer_door', 'lt_foyer', 9.5, 31, 'foyer_in_door'), OUT('foyer_in_door', 'foyer_in', 12, 9, 'lt_foyer_door'),
   DOOR('lt_bastide_door', 'lt_bastide', 40.5, 13, 'bastide_in_door'), OUT('bastide_in_door', 'bastide_in', 10, 8, 'lt_bastide_door'),

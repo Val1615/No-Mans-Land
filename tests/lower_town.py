@@ -120,7 +120,7 @@ with sync_playwright() as p:
     check('PNJ à >= 1,5 m des portes et libellés', all(m >= 1.5 for _, m in near), near)
     sizes = E("['foyer_in','bastide_in','moss_in','pointage_in'].map(k=>window.__nml.world.LOCATIONS[k].size)")
     check('4 intérieurs >= 10 x 8 m', all(z['w'] >= 10 and z['d'] >= 8 for z in sizes), sizes)
-    for did in ['l_sud', 'l_sud_est', 'l_fosse']:
+    for did in ['l_sud_est', 'l_fosse']:  # l_sud ouverte au lot 2 (Asia-Ground, tests/asia_ground.py)
         E("window.__msgs=[]"); n0 = E(f"window.__nml.game.doorById('{did}').threshold"); walk(n0['x'], n0['z'] - 1.2, tol=1.0)
         E(f"window.__nml.game.useDoor('{did}')"); idle(); time.sleep(0.5)
         check(f'sortie {did} fermée', st()['location'] == 'steel_lower', st()['location'])
