@@ -13,7 +13,7 @@ const STANDS = [ // [id, sprite, x, z, libellé] ; emprises du manifeste (implan
   ['cl_s_implants', 'cl_stand_implants', 16, 10.6, 'Implants « garantis »'], ['cl_s_puces', 'cl_stand_puces', 19.5, 10.6, 'Puces et lecteurs'],
   ['cl_s_puces2', 'cl_stand_puces', 27.5, 10.6, ''], ['cl_s_implants2', 'cl_stand_implants', 31, 10.6, ''],
   ['cl_s_armes', 'cl_stand_armes', 37, 13, 'Armes sans numéro'], ['cl_s_armes2', 'cl_stand_armes', 37, 17, ''], ['cl_s_armes3', 'cl_stand_armes', 37, 21, ''],
-  ['cl_s_papiers', 'cl_stand_papiers', 16, 28.5, 'Faux papiers'], ['cl_s_tech', 'cl_stand_implants', 22.75, 26.6, 'Le technicien'], ['cl_s_papiers2', 'cl_stand_papiers', 28, 28.5, ''],
+  ['cl_s_papiers', 'cl_stand_papiers', 16, 28.5, 'Faux papiers'], ['cl_s_tech', 'cl_stand_implants', 22.75, 26.6, 'Établi du technicien'], ['cl_s_papiers2', 'cl_stand_papiers', 28, 28.5, ''],
   ['cl_s_medocs', 'cl_stand_medocs', 10.5, 13.6, 'Médicaments et stimulants'], ['cl_s_medocs2', 'cl_stand_medocs', 10.5, 22.6, ''] ];
 const FP = { cl_stand_implants: [2.5, 1], cl_stand_puces: [2.5, 1], cl_stand_papiers: [2.5, 1], cl_stand_medocs: [2.5, 1.5], cl_stand_armes: [2.5, 2] };
 export const BUILDINGS_CHINA = [
