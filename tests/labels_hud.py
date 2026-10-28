@@ -5,7 +5,7 @@ OUT='/tmp/nml-test-out/labels_hud/'; import os; os.makedirs(OUT,exist_ok=True); 
 with sync_playwright() as p:
     br=p.chromium.launch(channel='chrome',args=['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist'])
     ctx=br.new_context(viewport={'width':390,'height':844},has_touch=True,is_mobile=True,device_scale_factor=2); pg=ctx.new_page(); E=pg.evaluate
-    pg.goto('http://127.0.0.1:8799/'); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5)
+    pg.goto(os.environ.get('URL', 'http://127.0.0.1:8799/')); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5)
     E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"augmente\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
     CHK="""(()=>{const ids=['hud','locbox','obj','msg','dialogue','panel','keys','act'];const R=ids.map(i=>document.getElementById(i)).filter(e=>e&&!e.hidden&&e.getClientRects().length&&getComputedStyle(e).visibility!=='hidden').map(e=>e.getBoundingClientRect());
       const out=[];for(const l of document.querySelectorAll('.wlabel')){if(l.hidden||l.style.visibility==='hidden')continue;const a=l.getBoundingClientRect();if(!a.width)continue;
