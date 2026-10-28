@@ -322,7 +322,7 @@ def build_lac():
 # ---- lac v2 « nuit » (2026-10-28, main 7de0a94) : la forme se lisait mal sous le voile du sol (ground.tint rgba(8,12,4,.5), textures.js) ----
 # Après build_lac() (même taille, même polygone, même clé) : quai éclairci et plus contrasté, liseré sombre côté rue (bord extérieur),
 # reflet ambre clair le long de la berge côté eau, eau éclaircie au centre (dégradé selon la distance au bord).
-def lac_nuit():
+def lac_nuit(v=2):
     import cv2
     from scipy import ndimage
     j = json.load(open(HERE + '/assets/generated/g_cl_lac.json')); W, H = j['px']; pts = np.array(j['polygone_px'], np.float32)
@@ -331,13 +331,24 @@ def lac_nuit():
     m = np.zeros((H, W), np.uint8); cv2.fillPoly(m, [np.round(P * 4).astype(np.int32)], 1, cv2.LINE_AA, shift=2)
     a = np.asarray(Image.open(HERE + '/assets/generated/g_cl_lac.webp').convert('RGBA')).astype(float); rgb = a[..., :3]
     dist = ndimage.distance_transform_edt(m); q0, q1 = 0.6 * K, 0.6 * K + 3
-    quai = (dist > 0) & (dist <= q0); rgb[quai] = rgb[quai] * 1.55 + np.array([14, 10, 4])  # planches plus claires
-    out = (dist > 0) & (dist <= 4); rgb[out] = np.array([12, 10, 8.])  # liseré sombre côté rue : découpe la silhouette
-    edge = (dist > q0) & (dist <= q1); rgb[edge] = np.array([200, 170, 120.])  # arête du quai plus claire
+    V3 = v >= 3  # v3 (main c8721e4, retour Régie : contraste encore faible, contour masqué par les stands sur mobile)
+    quai = (dist > 0) & (dist <= q0); rgb[quai] = rgb[quai] * (1.7 if V3 else 1.55) + np.array([14, 10, 4])  # planches plus claires
+    out = (dist > 0) & (dist <= (6 if V3 else 4)); rgb[out] = np.array([6, 5, 4.]) if V3 else np.array([12, 10, 8.])  # liseré sombre côté rue
+    if V3: q1 = q0 + 4
+    edge = (dist > q0) & (dist <= q1); rgb[edge] = np.array([238, 205, 140.]) if V3 else np.array([200, 170, 120.])  # arête du quai plus claire
     eau = dist > q1; dw = dist - q1
-    rim = np.exp(-((dw - 10) / 6) ** 2) * eau  # reflet ambre le long de la berge
-    rgb += rim[..., None] * np.array([150, 105, 50]) * 0.7
+    if V3:  # liseré de berge doré plus large et plus lumineux, ravivé par morceaux près des lanternes (la courbe se lit même en partie cachée)
+        yy, xx = np.mgrid[:H, :W]; near = np.zeros((H, W))
+        for lx, lz in LANT: near = np.maximum(near, np.exp(-(((xx - (lx - LAKE[0]) * K) ** 2 + (yy - (lz - LAKE[1]) * K) ** 2) / (5.5 * K) ** 2)))
+        th = np.arctan2(yy - H / 2, xx - W / 2); glint = 0.75 + 0.25 * np.sin(9 * th) * np.sin(23 * th + 1.3)  # vaguelettes : intensité brisée
+        rim = (np.exp(-((dw - 9) / 9) ** 2) * (0.95 + 0.6 * near) * glint) * eau
+        rgb += rim[..., None] * np.array([235, 165, 70]) * 0.85
+        lr = np.exp(-((dw - 26) / 14) ** 2) * near * eau  # reflets rouge-ambre des lanternes près des bords
+        rgb += lr[..., None] * np.array([190, 70, 40]) * 0.45
+    else:
+        rim = np.exp(-((dw - 10) / 6) ** 2) * eau  # reflet ambre le long de la berge
+        rgb += rim[..., None] * np.array([150, 105, 50]) * 0.7
     c = np.clip(dw / (3.5 * K), 0, 1) * eau  # eau plus claire au centre
     L = rgb.mean(2, keepdims=True); rgb[:] = rgb * (1 + 0.45 * c[..., None]) + c[..., None] * np.array([14, 18, 18])
     a[..., :3] = rgb; Image.fromarray(np.clip(a, 0, 255).astype('uint8'), 'RGBA').save(HERE + '/assets/generated/g_cl_lac.webp', quality=90)
-    print('g_cl_lac v2 nuit', W, H)
+    print('g_cl_lac v%d nuit' % v, W, H)
