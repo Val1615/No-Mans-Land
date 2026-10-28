@@ -9,7 +9,7 @@ export function solidsOf(loc, doors, sprites) {
     else if (p.sprite) { const m = sprites[p.sprite]; const s = p.solid ?? null;
       const [w, d] = p.fp || (s ? [s, s] : m.footprint_m); out.push({ x: p.x - w / 2, z: p.z - d / 2, w, d }); }
   }
-  return out.concat(wallsOf(loc, doors));
+  return out.concat(loc.ground?.water || [], wallsOf(loc, doors)); // China Lake : eau non praticable (ground.water)
 }
 export function buildGrid(loc, doors, sprites, extraBlocked = []) {
   const w = Math.round(loc.size.w / C) + 1, d = Math.round(loc.size.d / C) + 1;

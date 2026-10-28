@@ -135,6 +135,7 @@ export function groundTexture(loc, doors = []) {
     for (const d of doors.filter(d => d.location === loc.id && !d.junction && !d.edge)) { x.fillStyle = 'rgba(90,70,50,.35)'; x.beginPath(); x.ellipse(d.threshold.x * P, d.threshold.z * P, 0.9 * P, 0.7 * P, 0, 0, 7); x.fill();
       x.fillStyle = 'rgba(60,45,30,.35)'; for (let k = 0; k < 7; k++) x.fillRect((d.threshold.x + (r() - .5) * 1.4) * P, (d.threshold.z + (r() - .5) * 1.2) * P, 4, 7); }
   }
+  for (const w of loc.ground.water || []) paintWater(x, w, loc.ground.waterSkin || 'g_cl_eau', w.tileM || 6, P, r);
   // herbes mortes (Ch. I §71)
   if (loc.ground.tint) { x.fillStyle = loc.ground.tint; x.fillRect(0, 0, W, H); } // v13 : voile de nuit
   if (loc.kind === 'exterior' && !loc.ground.clean) { x.strokeStyle = 'rgba(150,130,70,.8)'; for (let i = 0; i < (loc.ground.skin ? 250 : 700); i++) { const px = r() * W, py = r() * H; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 8, py - 4 - r() * 6); x.stroke(); } } }
@@ -149,4 +150,29 @@ export function hiddenDoorTexture() {
   x.fillStyle = 'rgba(255,190,110,.8)'; x.fillRect(4, 134, 56, 3); // filet de lumière sous la porte : indice de vie, lisible de près
   x.fillStyle = 'rgba(200,170,120,.6)'; x.fillRect(0, 120, 64, 20);
   return tex(c);
+}
+
+// China Lake : le carreau d'eau (512 px, raccordable) se répète ; on casse la répétition sans toucher au PNG :
+// couche de base décalée (UV offset), deuxième couche tournée de 37° et mise à l'échelle 1,7 en fondu, taches basses fréquences,
+// reflets de lanternes flottantes peints par code. Les bords restent raccordés (aucune rotation par carreau, donc aucune couture).
+function paintWater(x, w, skin, metres, P, r) {
+  const img = SKIN[skin], zx = w.x * P, zy = w.z * P, zw = w.w * P, zh = w.d * P;
+  x.save(); x.beginPath(); x.rect(zx, zy, zw, zh); x.clip();
+  if (img) {
+    const c = document.createElement('canvas'); c.width = c.height = Math.round(metres * P); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    const pat = x.createPattern(c, 'repeat'); pat.setTransform(new DOMMatrix().translate(zx + c.width * 0.37, zy + c.width * 0.61));
+    x.fillStyle = pat; x.fillRect(zx, zy, zw, zh);
+    const p2 = x.createPattern(c, 'repeat'); p2.setTransform(new DOMMatrix().translate(zx + zw / 2, zy + zh / 2).rotate(37).scale(1.7));
+    x.globalAlpha = 0.38; x.fillStyle = p2; x.fillRect(zx, zy, zw, zh); x.globalAlpha = 1;
+  } else { x.fillStyle = '#0b0d0a'; x.fillRect(zx, zy, zw, zh); }
+  for (let i = 0; i < Math.round(w.w * w.d / 6); i++) { // taches lentes : pétrole plus sombre, voile plus clair
+    const px = zx + r() * zw, py = zy + r() * zh, rad = (1.5 + r() * 3.5) * P, g = x.createRadialGradient(px, py, 0, px, py, rad), dark = r() < 0.6;
+    g.addColorStop(0, dark ? 'rgba(4,5,3,.35)' : 'rgba(70,80,50,.12)'); g.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = g; x.fillRect(px - rad, py - rad, rad * 2, rad * 2); }
+  for (const l of w.lanterns || []) { // lanternes flottantes : corps rouge, reflet étiré
+    const px = l.x * P, py = l.z * P, g = x.createRadialGradient(px, py, 0, px, py, 1.4 * P);
+    g.addColorStop(0, 'rgba(200,50,42,.55)'); g.addColorStop(1, 'rgba(200,50,42,0)'); x.fillStyle = g; x.fillRect(px - 1.4 * P, py - 1.4 * P, 2.8 * P, 2.8 * P);
+    x.fillStyle = 'rgba(232,161,58,.9)'; x.beginPath(); x.ellipse(px, py, 0.22 * P, 0.16 * P, 0, 0, 7); x.fill();
+    x.fillStyle = 'rgba(200,50,42,.95)'; x.beginPath(); x.ellipse(px, py, 0.16 * P, 0.11 * P, 0, 0, 7); x.fill(); }
+  x.strokeStyle = 'rgba(20,16,10,.8)'; x.lineWidth = 3; x.strokeRect(zx + 1, zy + 1, zw - 2, zh - 2); // arête du quai
+  x.restore();
 }
