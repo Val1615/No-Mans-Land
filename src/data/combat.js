@@ -15,8 +15,8 @@ export const ENCOUNTERS = {
   rodeur: {
     nom: 'Rôdeur du désert',
     // ancres : centre de la zone 19 x 19 par lieu (docs/villes/dusk/DUSK_TOWN_POSITIONS.md) ; toute la zone est sur la carte (aucune case dans le vide)
-    ancres: { dusk_q1: { x: 27.5, z: 23.5 }, dusk_q2: { x: 32.5, z: 23.5 } },
-    ennemis: [{ id: 'rodeur', nom: 'Rôdeur', sprite: 'gen_rodeur', dx: 4, dz: -2, pv: 14, pa: 6, initiative: 6, frappe: { pa: 3, degats: 3 }, fuitTour: 3 }],
+    ancres: { dusk_q1: { x: 22.5, z: 26.5 }, dusk_q2: { x: 32.5, z: 26.5 } },
+    ennemis: [{ id: 'rodeur', nom: 'Rôdeur', sprite: 'gen_rodeur', dx: 4, dz: 2, pv: 14, pa: 6, initiative: 6, frappe: { pa: 3, degats: 3 }, fuitTour: 3 }],
     issues: {
       victoire: 'flag:a_rodeur_fait',                // il détale ; les bidons restent
       fuite: 'flag:a_rodeur_fait',                   // tu as couru jusqu'au bout de la rue

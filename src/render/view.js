@@ -23,10 +23,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   // Personnages : texture propre à chaque sprite, car le miroir se fait par les UV (repeat.x = -1).
   // THREE.Sprite ignore le signe de scale.x (le shader prend la longueur de la colonne de la matrice) : c'était la cause du miroir invisible.
   const actorTex = id => { const t = loader.load('./assets/' + (sprites[id].file || `reused/${id}.webp`)); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; return t; };
+  // pivot (manifeste) : hauteur des pieds en fraction de l'image, quand la pose n'a pas les deux pieds au bas du cadre
   function spriteMesh(id, heightOverride, actor = false) {
     const m = sprites[id], h = (heightOverride || m.height_m) * Math.cos(pitch), w = h * m.px[0] / m.px[1]; // hauteur vue par la caméra
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: actor ? actorTex(id) : spriteTex(id), alphaTest: 0.5, transparent: false }));
-    s.center.set(0.5, 0.02); s.scale.set(w, h, 1); Object.assign(s.userData, { base: sprites[id].faces || 1, facing: 1, shown: 1, w, h, turn: 1, phase: Math.random() * 6.28 }); return s;
+    s.center.set(0.5, m.pivot ?? 0.02); s.scale.set(w, h, 1); Object.assign(s.userData, { base: sprites[id].faces || 1, facing: 1, shown: 1, w, h, turn: 1, phase: Math.random() * 6.28 }); return s;
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
