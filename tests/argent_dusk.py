@@ -67,8 +67,11 @@ with sync_playwright() as p:
             SIG = "(()=>{const s=window.__nml.state;return JSON.stringify([s.dialogue,s.os,s.player.money,s.player.credits,s.player.hp,s.player.inv,s.flags])})()"
             n0 = E(SIG)
             gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2)
-            waitjs(f"{SIG} !== {json.dumps(n0)}", 3)
-            waitjs("(()=>{const d=window.__nml.state.dialogue;return !d||document.getElementById('dialogue').hidden===false})()", t); time.sleep(0.15)
+            # sous charge (swiftshader, plusieurs navigateurs), une frame peut durer plusieurs secondes : le clic est traité en retard, pas perdu.
+            # On attend donc l'effet du clic sur l'état (10 s), sans second clic ; un clic resté sans effet est signalé (DIAG).
+            if not waitjs(f"{SIG} !== {json.dumps(n0)}", 10): print('DIAG clic sans effet après 10 s', label, flush=True)
+            waitjs("(()=>{const g=window.__nml.game,n=g.currentNode();if(!n)return true;const dom=[...document.querySelectorAll('#dlg-options button')].map(b=>b.textContent);"
+                   "return document.getElementById('dialogue').hidden===false&&JSON.stringify(dom)===JSON.stringify(n.options.map(o=>o.label))})()", t); time.sleep(0.1)  # DOM = nœud courant
             return True
         def opts(): return E("[...document.querySelectorAll('#dlg-options button')].map(b=>b.textContent)")
         def dtext(): return E("document.getElementById('dlg-text').textContent")
@@ -150,7 +153,7 @@ with sync_playwright() as p:
         x, z = near_door('j_q4_nord', 2.5); place('dusk_q4', x, z); rng([0.99] * 4)
         enter_door('j_q4_nord'); ok = waitjs("window.__nml.state.dialogue && window.__nml.state.dialogue.npc==='rodeur'", 10)
         check(f'{T}: A: scène du rôdeur à l\'entrée de La Pompe', ok, st()['location']); cap('a2-rodeur')
-        option('Le regarder en face'); check(f'{T}: A: rôdeur : Volonté réussie (recule)', 'Il hésite' in dtext(), dtext()[:40]); option('Continuer'); close_dlg()
+        option('Le regarder en face'); check(f'{T}: A: rôdeur : Volonté réussie (recule)', (st()['dialogue'] or {}).get('node') == 'recule' and 'Il hésite' in dtext(), (st()['dialogue'], dtext()[:40])); option('Continuer'); close_dlg()
         rng([0.99]); x, z = near_door('j_q1_est', 2.5); place('dusk_q1', x, z); enter_door('j_q1_est'); time.sleep(0.8)
         check(f'{T}: A: pas de raid (tirage forcé), arrivé au Transit', st()['location'] == 'dusk_q2' and not st()['dialogue'], st()['dialogue'])
         place('dusk_q2', 42, 14.5); m0 = money(); how = spot('poste')
