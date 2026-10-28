@@ -138,7 +138,7 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
   }
   function apres() { if (state.player.hp <= 0) { finish('defaite'); return true; } return checkEnd(); }
   const unit = id => C()?.units.find(u => u.id === id);
-  function previewAttack(id) { if (!mine()) return null; const t = unit(id); if (!t || t.joueur) return null; C().preview = { type: 'attaque', i: t.i, j: t.j, cells: [], ...evaluer(player(), t) }; return C().preview; }
+  function previewAttack(id) { if (!mine()) return null; const t = unit(id); if (!t || t.joueur) return null; C().preview = { i: t.i, j: t.j, cells: [], ...evaluer(player(), t), type: 'attaque' }; return C().preview; }
   function attack(id) { if (!mine()) return { ok: false, reason: 'pas_ton_tour' }; const t = unit(id); if (!t || t.joueur) return { ok: false, reason: 'cible_inconnue' };
     const r = attaquer(player(), t); if (r.ok) { C().preview = null; apres(); } return r; }
   function reload(u = null) { const me = u || player(); if (!u && !mine()) return { ok: false, reason: 'pas_ton_tour' }; const A = armeDe(me);
