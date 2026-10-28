@@ -196,3 +196,7 @@ body.combat #keys,body.combat #act,body.combat #obj{display:none}
 @media (max-width:600px){#cbt-file{top:calc(100px + var(--pad));right:8px}#cbt-res{left:8px;bottom:calc(10px + env(safe-area-inset-bottom,0))}
   #cbt-actions{right:8px;bottom:calc(10px + env(safe-area-inset-bottom,0));flex-direction:row}#cbt-actions button{min-height:52px;min-width:52px}}
 .wlabel.cbt-cost{color:#ffe2a8;border-color:rgba(242,180,74,.6);background:rgba(8,6,3,.6);font-size:12px}
+
+/* combat C2 : aperçu d'attaque (chance, PA, couverture) au-dessus de la cible */
+.cbt-cost.att{color:#ffe2a8;border-color:rgba(224,80,60,.7)}
+.cbt-cost.ko{color:#e8a090}

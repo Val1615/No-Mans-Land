@@ -29,7 +29,9 @@ game.on(ev => { if (ev.text) say(ev.text); });
 bindPointer($('view'), (x, y) => {
   if (game.state.dialogue || shell?.isOpen()) return;
   if (game.state.combat) { // combat C1 : premier tap = aperçu du chemin et de son coût, second tap sur la même case = confirmer
-    const p = view.pick(x, y, true); if (!p || p.x === undefined) return; const pv = game.state.combat.preview, [i, j] = [Math.floor(p.x), Math.floor(p.z)];
+    const foe = enemyAt(x, y), pv0 = game.state.combat.preview; // C2 : tap sur un ennemi = aperçu de l'attaque (chance, PA), second tap = attaquer
+    if (foe) { if (pv0 && pv0.type === 'attaque' && pv0.cible === foe.id && pv0.ok) game.combat.attack(foe.id); else { const a = game.combat.previewAttack(foe.id); if (a && !a.ok) say(RAISONS[a.raison] || 'Impossible.'); } return; }
+    const p = view.pick(x, y, true); if (!p || p.x === undefined) return; const pv = pv0 && pv0.type !== 'attaque' ? pv0 : null, [i, j] = [Math.floor(p.x), Math.floor(p.z)];
     if (pv && pv.i === i && pv.j === j && pv.ok) { const r = game.combat.moveTo(p.x, p.z); if (!r.ok && r.reason === 'pa_insuffisants') say(`Pas assez de PA (${r.cout} pour ${r.pa}).`); }
     else game.combat.previewTo(p.x, p.z);
     return; }
@@ -52,19 +54,30 @@ bindPointer($('view'), (x, y) => {
 let nearDoor = null;
 // ---------- Combat C1 : autosave juste avant, interface de combat ----------
 game.on(ev => { if (ev.type === 'combat_autosave' && shell) shell.autosave(); });
-$('view').addEventListener('pointermove', e => { const c = game.state.combat; if (!c || e.pointerType !== 'mouse') return; const p = view.pick(e.clientX, e.clientY, true); if (p && p.x !== undefined) game.combat.previewTo(p.x, p.z); });
+// C2 : ennemi sous le pointeur (rectangle écran du sprite, des pieds à la tête)
+function enemyAt(x, y) { const c = game.state.combat; if (!c) return null;
+  for (const u of c.units) { if (u.joueur || !u.actif) continue; const f = view.project(u.x, 0, u.z), h = view.project(u.x, 1.75, u.z), H = f.y - h.y, w = Math.max(18, H * 0.42);
+    if (x > f.x - w / 2 && x < f.x + w / 2 && y > h.y && y < f.y + 6) return u; }
+  return null; }
+const RAISONS = { hors_portee: 'Hors de portée : il faut être au contact.', pas_de_ligne_de_vue: 'Pas de ligne de vue.', chargeur_vide: 'Chargeur vide : recharge.', pa_insuffisants: 'Pas assez de PA.', cible_hors_combat: 'Hors de combat.' };
+$('view').addEventListener('pointermove', e => { const c = game.state.combat; if (!c || e.pointerType !== 'mouse') return; const foe = enemyAt(e.clientX, e.clientY); if (foe) { game.combat.previewAttack(foe.id); return; }
+  const p = view.pick(e.clientX, e.clientY, true); if (p && p.x !== undefined) game.combat.previewTo(p.x, p.z); });
+$('cbt-recharger').addEventListener('click', () => { const r = game.combat.reload(); if (!r.ok) say({ pas_de_chargeur: 'Rien à recharger.', chargeur_plein: 'Chargeur plein.', pa_insuffisants: 'Pas assez de PA.' }[r.reason] || ''); });
+game.on(ev => { if (ev.type === 'combat_attaque' || ev.type === 'combat_recharge') say(ev.text); });
 $('cbt-end').addEventListener('click', () => game.combat.endTurn());
 $('cbt-rendre').addEventListener('click', () => game.combat.surrender());
 let cbtKey = '';
 function renderCombat() {
   const c = game.state.combat; document.body.classList.toggle('combat', !!c); $('cbt').hidden = !c; if (!c) { cbtKey = ''; return; }
   const u = c.units[c.actif], pl = c.units.find(q => q.joueur), pv = c.preview;
-  const key = JSON.stringify([c.tour, c.actif, c.phase, pl.pa, pv && [pv.i, pv.j, pv.pa], c.units.map(q => q.actif), game.state.player.hp]); if (key === cbtKey) return; cbtKey = key;
+  const key = JSON.stringify([c.tour, c.actif, c.phase, pl.pa, pl.charge, pv && [pv.type, pv.i, pv.j, pv.pa, pv.chance, pv.ok], c.units.map(q => [q.actif, q.pv]), game.state.player.hp]); if (key === cbtKey) return; cbtKey = key;
   $('cbt-file').innerHTML = `<b class="t">COMBAT · TOUR ${c.tour}</b>` + c.units.filter(q => q.actif).map(q => `<span class="${q === u ? 'cur' : ''}">${q.joueur ? 'Toi' : q.nom}</span>`).join('');
   const cost = pv && pv.ok ? pv.pa : 0;
   $('cbt-pa').innerHTML = Array.from({ length: pl.paMax }, (_, k) => `<i class="${k < pl.pa - cost ? 'on' : k < pl.pa ? 'cost' : ''}"></i>`).join('');
-  $('cbt-info').textContent = u.joueur ? `${pl.pa}/${pl.paMax} PA · PV ${game.state.player.hp}/${game.state.player.maxHp}` + (pv ? (pv.ok ? ` · aller : ${pv.pa} PA` : pv.pa ? ` · trop loin (${pv.pa} PA)` : ' · case fermée') : '') : `Tour de ${u.nom}…`;
-  $('cbt-end').disabled = $('cbt-rendre').disabled = !u.joueur;
+  const A = game.combat.armeDe(pl), arme = A.nom + (A.chargeur ? ` ${pl.charge}/${A.chargeur}` : '');
+  const att = pv && pv.type === 'attaque', foe = att && c.units.find(q => q.id === pv.cible);
+  $('cbt-info').textContent = u.joueur ? `${pl.pa}/${pl.paMax} PA · PV ${game.state.player.hp}/${game.state.player.maxHp} · ${arme}` + (att ? ` · ${foe.nom} ${foe.pv}/${foe.pvMax} : ` + (pv.raison === 'pas_de_ligne_de_vue' ? 'pas de ligne de vue' : pv.raison === 'hors_portee' ? 'hors de portée' : `${pv.chance} %, ${pv.pa} PA` + (pv.couverture ? `, couvert ${pv.couverture}` : '')) : pv ? (pv.ok ? ` · aller : ${pv.pa} PA` : pv.pa ? ` · trop loin (${pv.pa} PA)` : ' · case fermée') : '') : `Tour de ${u.nom}…`;
+  $('cbt-end').disabled = $('cbt-rendre').disabled = !u.joueur; $('cbt-recharger').disabled = !u.joueur || !A.chargeur || pl.charge >= A.chargeur;
 }
 $('act').addEventListener('click', () => nearDoor && game.useDoor(nearDoor.id));
 $('dlg-close').addEventListener('click', () => game.closeDialogue());

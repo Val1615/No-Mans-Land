@@ -353,15 +353,16 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       cbt = { id: c, group, reach, pathL, tgt, cost, enemies, rings, key: '' }; }
     for (const e of cbt.enemies) { const u = c.units.find(q => q.id === e.userData.unit); e.visible = u.actif; e.position.set(u.x, 0, u.z); const rg = cbt.rings[cbt.enemies.indexOf(e)]; rg.visible = u.actif; rg.position.set(u.x, 0.045, u.z); if (u.heading !== undefined) face(e, u.heading); }
     const pl = c.units.find(u => u.joueur), mine = c.phase === 'joueur' && c.units[c.actif] === pl && !pl.path.length, pv = c.preview;
-    const key = JSON.stringify([mine, pl.i, pl.j, pl.pa, pv && [pv.i, pv.j, pv.pa, pv.ok], c.units.map(u => [u.i, u.j, u.actif])]);
+    const att = pv && pv.type === 'attaque', key = JSON.stringify([mine, pl.i, pl.j, pl.pa, pv && [pv.type, pv.i, pv.j, pv.pa, pv.ok, pv.chance], c.units.map(u => [u.i, u.j, u.actif])]);
     if (key !== cbt.key) { cbt.key = key; const m4 = new THREE.Matrix4(); let n = 0;
       if (mine) for (const q of game.combat.reachable()) if (q.i !== pl.i || q.j !== pl.j) cbt.reach.setMatrixAt(n++, m4.makeTranslation(q.i + 0.5, 0.04, q.j + 0.5));
       cbt.reach.count = n; cbt.reach.instanceMatrix.needsUpdate = true;
       const showPv = mine && pv && pv.cells.length > 1; cbt.pathL.visible = cbt.tgt.visible = !!(mine && pv);
       { let k = 0; if (showPv) for (const [a, b] of pv.cells.slice(1, -1)) if (k < 64) cbt.pathL.setMatrixAt(k++, m4.makeTranslation(a + 0.5, 0.05, b + 0.5)); cbt.pathL.count = k; cbt.pathL.instanceMatrix.needsUpdate = true; }
       if (mine && pv) { cbt.tgt.position.set(pv.i + 0.5, 0.05, pv.j + 0.5); cbt.tgt.material.color.set(pv.ok ? '#ffe2a8' : '#d06050'); cbt.pathL.material.color.set(pv.ok ? '#ffe2a8' : '#d06050'); }
-      cbt.cost.textContent = mine && pv ? (pv.pa != null ? `${pv.pa} PA` : '\u00d7') : ''; cbt.cost.hidden = !(mine && pv); }
-    if (mine && pv) { const v = new THREE.Vector3(pv.i + 0.5, 0.6, pv.j + 0.5).project(cam), r = canvas.getBoundingClientRect();
+      cbt.cost.textContent = mine && pv ? (att ? (pv.raison === 'pas_de_ligne_de_vue' ? 'pas de vue' : pv.raison === 'hors_portee' ? 'au contact' : `${pv.chance} % \u00b7 ${pv.pa} PA` + (pv.couverture ? ` \u00b7 couvert ${pv.couverture}` : '')) : pv.pa != null ? `${pv.pa} PA` : '\u00d7') : '';
+      cbt.cost.hidden = !(mine && pv); cbt.cost.classList.toggle('att', !!att); cbt.cost.classList.toggle('ko', !!(mine && pv && !pv.ok)); }
+    if (mine && pv) { const v = new THREE.Vector3(pv.i + 0.5, att ? 2.0 : 0.6, pv.j + 0.5).project(cam), r = canvas.getBoundingClientRect();
       cbt.cost.style.transform = `translate(-50%,-100%) translate(${r.left + (v.x + 1) / 2 * r.width}px,${r.top + (1 - v.y) / 2 * r.height}px)`; }
   }
   function pick(clientX, clientY) {
