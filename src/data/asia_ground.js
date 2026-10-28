@@ -97,9 +97,29 @@ const D = (t1, t2, t3, svc = []) => ({ start: { text: t1, options: [ ...svc, { l
   servi: { text: 'Voilà. Mange chaud, ça tient au corps.', options: [ { label: 'Merci.', next: 'end' } ] },
   pauvre: { text: 'Pas assez de crédits. Reviens quand tu en as.', options: [ { label: 'Au revoir.', next: 'end' } ] } });
 export const DIALOGUES_ASIA = {
-  ag_ahlam: { start: { text: 'Le Barrage, c\u2019est vingt crédits. Pour l\u2019entretien des caisses.', options: [
-      { label: 'Payer 20 cr.', action: 'paycr:20;flag:cl_barrage', next: 'paye', if: '!cl_barrage' }, { label: 'Et si je ne paie pas ?', next: 'non', if: '!cl_barrage' },
+  // Barrage (docs/dialogues/AH_LAM_BARRAGE.md, Ocre 69f4e73) : Discours (parole:4, palier 3 = dix crédits) ou Intimider (jet opposé à sa Volonté 4), un seul essai.
+  // Prix mémorisé : cl_barrage_10 (dix), cl_barrage_30 (trente). La ruelle de Lower-Town reste le passage gratuit.
+  ag_ahlam: { start: { text: 'Vingt crédits pour passer. Le march\u00e9, faut bien l\u2019entretenir.',
+      alt: [ { if: 'cl_barrage_30&!cl_barrage', text: 'Toujours trente. J\u2019ai bonne m\u00e9moire.' }, { if: 'cl_barrage_10&!cl_barrage', text: 'Dix, on avait dit. Je retiens.' } ], options: [
+      { label: 'Payer 20 cr.', action: 'paycr:20;flag:cl_barrage', next: 'paye', if: '!cl_barrage&!cl_barrage_10&!cl_barrage_30' },
+      { label: 'Payer 10 cr.', action: 'paycr:10;flag:cl_barrage', next: 'paye', poor: 'pauvre10', if: '!cl_barrage&cl_barrage_10' },
+      { label: 'Payer 30 cr.', action: 'paycr:30;flag:cl_barrage', next: 'paye', poor: 'pauvre30', if: '!cl_barrage&cl_barrage_30' },
+      { label: '[Discours] Je viens d\u00e9penser l\u00e0-dedans. Si tu me ruines \u00e0 l\u2019entr\u00e9e, c\u2019est Zhou qui y perd.', if: '!cl_barrage&!ahlam_tente', action: 'flag:ahlam_tente',
+        test: 'parole:4', partial: 'dix', partialAt: 3, pass: 'parle_ok', fail: 'parle_rate' },
+      { label: '[Intimider] Regarde-moi bien. Tu veux vraiment compter mes pi\u00e8ces ?', if: '!cl_barrage&!ahlam_tente', action: 'flag:ahlam_tente',
+        test: 'intimider:4', opposed: 'volonte', pass: 'peur_ok', fail: 'trente' },
+      { label: 'Et si je ne paie pas ?', next: 'non', if: '!cl_barrage' },
       { label: 'Je repasse.', next: 'deja', if: 'cl_barrage' }, { label: 'Au revoir.', next: 'end' } ] },
+    parle_ok: { text: '\u2026 T\u2019as pas tort. Passe. Et fais pas d\u2019histoires.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage', next: 'end' } ] },
+    dix: { text: 'Bon. Dix, et on n\u2019en parle plus.', options: [
+      { label: 'Payer 10 cr.', action: 'paycr:10;flag:cl_barrage', next: 'paye', poor: 'pauvre10' }, { label: 'Au revoir.', action: 'flag:cl_barrage_10', next: 'end' } ] },
+    parle_rate: { text: 'Zhou a pas besoin de toi pour compter. Vingt.', options: [
+      { label: 'Payer 20 cr.', action: 'paycr:20;flag:cl_barrage', next: 'paye' }, { label: 'Au revoir.', next: 'end' } ] },
+    peur_ok: { text: '\u00c7a va, \u00e7a va\u2026 Entre. J\u2019ai rien vu.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage', next: 'end' } ] },
+    trente: { text: 'Joli num\u00e9ro. Maintenant c\u2019est trente. Ou la ruelle, par Lower-Town. Personne la garde.', options: [
+      { label: 'Payer 30 cr.', action: 'paycr:30;flag:cl_barrage', next: 'paye', poor: 'pauvre30' }, { label: 'Au revoir.', action: 'flag:cl_barrage_30', next: 'end' } ] },
+    pauvre10: { text: 'Dix. Pas neuf. Reviens.', options: [ { label: 'Au revoir.', action: 'flag:cl_barrage_10', next: 'end' } ] }, // [inventé, à relire]
+    pauvre30: { text: 'Trente. Pas vingt-neuf. Reviens.', options: [ { label: 'Et la ruelle ?', action: 'flag:cl_barrage_30', next: 'non' }, { label: 'Au revoir.', action: 'flag:cl_barrage_30', next: 'end' } ] },
     paye: { text: 'Passe. Et souris pas trop, là-bas.', options: [ { label: 'Au revoir.', next: 'end' } ] },
     deja: { text: 'T\u2019as payé, t\u2019es connu. Passe.', options: [ { label: 'Au revoir.', next: 'end' } ] },
     non: { text: 'Alors tu fais le tour par Lower-Town, comme les rats. La ruelle est ouverte, elle.', options: [ { label: 'Au revoir.', next: 'end' } ] },

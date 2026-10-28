@@ -111,17 +111,26 @@ export function createGame(world, sprites) {
     m = /^(\w+)(>=|<=|>|<)(\d+)$/.exec(c); if (m) { const v = attrOf(m[1]), n = +m[3]; return m[2] === '>=' ? v >= n : m[2] === '<=' ? v <= n : m[2] === '>' ? v > n : v < n; }
     return c.startsWith('!') ? !cond1(c.slice(1)) : c === 'hurt' ? state.player.hp < state.player.maxHp : !!state.flags[c]; };
   const cond = c => c.split('&').every(cond1);
+  // Tests de dialogue génériques. « k:n » : score de k + jet (VOLONTE.jet) >= n. Score : attribut, sinon compétence / 10 (arrondi),
+  // « intimider » = max(Charisme, Force) (COMBAT.md §10). partial + partialAt : palier intermédiaire (total >= partialAt sans atteindre n).
+  // opposed : jet opposé, n = valeur de l'attribut opposé du PNJ (ex. Volonté 4) ; réussite si ton total dépasse le sien (égalité : le PNJ).
+  const scoreOf = k => { const a = state.character?.attrs, sk = state.character?.skills;
+    if (k === 'intimider') return Math.max(a?.charisme ?? 0, a?.force ?? 0);
+    if (a && k in a) return a[k]; if (sk && k in sk) return Math.round(sk[k] / 10); return 0; };
+  function testOf(opt) { const [k, n] = opt.test.split(':'), v = scoreOf(k);
+    if (opt.opposed) { const me = rollVolonte(v, 0, rng), him = rollVolonte(+n, 0, rng); return { k, ok: me.total > him.total, total: me.total, contre: him.total }; }
+    const r = rollVolonte(v, +n, rng); return { k, ok: r.ok, total: r.total, partial: !r.ok && opt.partialAt != null && r.total >= opt.partialAt }; }
   function choose(index) {
     const node = currentNode(); if (!node) return { ok: false };
     const opt = node.options.find(o => o.index === index); if (!opt) return { ok: false };
     let next = opt.next;
-    if (opt.test) { const [k, n] = opt.test.split(':'), r = rollVolonte(attrOf(k), +n, rng); next = r.ok ? opt.pass : opt.fail;
-      emit({ type: 'test', attr: k, ok: r.ok, text: r.ok ? 'Tu tiens bon.' : 'Tu flanches.' });
+    if (opt.test) { const r = testOf(opt); next = r.ok ? opt.pass : r.partial && opt.partial ? opt.partial : opt.fail;
+      emit({ type: 'test', attr: r.k, ok: r.ok, partial: !!r.partial, total: r.total, contre: r.contre, text: r.k === 'volonte' ? (r.ok ? 'Tu tiens bon.' : 'Tu flanches.') : r.ok ? 'Réussi.' : r.partial ? 'À moitié.' : 'Raté.' });
       if (r.ok && state.dialogue.tree === 'trois_os' && opt.pass === 'bluff_ok') osRoll('joueur', true); } // bluff réussi : la relance est montrée dans bluff_ok
     if (opt.action) { // v9 : plusieurs actions « a;b », on s'arrête au premier refus (pas assez de $)
       const acts = opt.action.split(';');
       if (acts.some(a => /^paycr:/.test(a))) { const cr = acts.reduce((t, a) => t + (/^paycr:/.test(a) ? +a.split(':')[1] : 0), 0);
-        if ((state.player.credits || 0) < cr) { next = 'pauvre'; acts.length = 0; } }
+        if ((state.player.credits || 0) < cr) { next = opt.poor || 'pauvre'; acts.length = 0; } } // poor : réplique « pas assez » propre à l'option
       if (acts.some(a => /^(buy|pay:|heal|os:mise:)/.test(a))) { const cost = acts.reduce((t, a) => t + (/^(pay:|heal)/.test(a) ? +a.split(':')[1] : /^(buy|os:mise)/.test(a) ? +a.split(':')[2] : 0), 0);
         if (state.player.money < cost) { next = 'pauvre'; acts.length = 0; } }
       for (const a of acts) { const r = act(a); if (!r.ok) { next = r.next || next; break; } if (r.next) next = r.next; } }
