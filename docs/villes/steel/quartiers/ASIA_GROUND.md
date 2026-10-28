@@ -22,7 +22,7 @@ Jeu en 2175, roman en 2202 : aucun personnage du roman n'apparaît (CANON_ARBITR
 - **Rue des Lanternes** (nord, z 4-8) : rue de restaurants à étages, câbles et lanternes au-dessus. Arrivée depuis Center-Town.
 - **Escalier des Mille Marches** (nord-est, x 40-46) : large escalier public qui descend de Center-Town, caméra en haut, aucune en bas. Jonction réciproque : `c_sud_est` (Center-Town, x 38, z 36) ↔ `a_escalier` (Asia-Ground, x 43, z 0). La grille `c_sud` (x 19,5) reste la sortie de la Sous-Ville.
 - **Cour des Porteurs** (sud-est) : quai de chargement et monte-charge de marchandises, relié à l'Usine 7 de Lower-Town par l'arrière [proposition], hors caméras.
-- **Bout de rue ouest** (x 0, z 18) : continue vers Lower-Town. Jonction `a_nord` ↔ `l_sud` (voir LOWER_TOWN.md). La rue vers China Lake (bord sud) reste fermée par un barrage de gang tant que China Lake n'existe pas.
+- **Bout de rue nord** (x 8, z 0, bord nord) : continue vers Lower-Town, qui est au nord d'Asia-Ground. Jonction `a_nord` ↔ `l_sud` (Lower-Town, x 8, z 36), voir LOWER_TOWN.md et PLAN_IMPLEMENTATION.md §2 [décision : position corrigée le 2026-10-28, l'ancienne valeur x 0, z 18 est caduque]. La rue vers China Lake (bord sud) reste fermée par un barrage de gang tant que China Lake n'existe pas.
 - Pas d'accès direct à la Sous-Ville [proposition] : on y descend par Lower-Town.
 
 ## 4. Services (nom affiché seulement une fois découverts) [proposition]

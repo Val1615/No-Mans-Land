@@ -23,7 +23,7 @@ Cohérent avec le canon : contrôle par implants d'immatriculation (Ch. VII §16
 | **Lower-Town** : « plongée dans une nuit permanente », « centre de la population et donc de la criminalité » | [canon] Ch. II §696, §720 |
 | **Upper-Town** : « ciel radieux, purement synthétique », bâtiments neufs, végétation jamais vue ailleurs ; plafond séparant les niveaux | [canon] Ch. II §696 ; Ch. XII §3366 |
 | **Center-Town** : tours, Arcadius Center (gestion d'IO) | [canon] Ch. III §854 |
-| **Asia-Ground** quartier marchand ; **China Lake** repaire de mafia ; lac de Lower Street | [canon] Ch. IV §1038 ; Ch. IX §2067-2069 ; Ch. III §806 |
+| **Asia-Ground** quartier marchand ; **China Lake** repaire de mafia ; lac de Lower Street | [canon] Ch. IV §1038 ; Ch. IX §2069-2071 ; Ch. III §806 |
 | **Sous-Ville** : « zone de non droit où les mutants sont jetés… condamnés à travailler dans les machineries alimentant la ville » ; « beaucoup ont leurs propres routes pour sortir » ; obscurité, « quelques feux dans les ruelles » ; entrées secrètes | [canon] Ch. VII §1701, §1716 ; Ch. IX §2031 ; Ch. VIII §1914 |
 | Politique **anti-mutants** d'IO ; mutants abattus « sans sommation » hors Sous-Ville ; Service Militarisé | [canon] Ch. I §105 ; Ch. IV §1087 ; Ch. VI §1348 ; Ch. VII §1716 |
 | SMPD (police de la ville), Service Militarisé, Interception Troupers | [canon] Ch. II §665, §718 ; Ch. I §353 |

@@ -189,7 +189,7 @@ Les stands, le ponton de Shen et le barrage sont des services extérieurs, sans 
   - les drapeaux d'accroche sont posés et sans effet bloquant.
 
 ## 5. Points à trancher avant ou pendant les lots [proposition]
-1. Position de `a_nord` : la fiche Asia-Ground la place au bord ouest (x 0, z 18). Comme Asia-Ground est au sud de Lower-Town, ce plan la met au bord nord (x 8, z 0). Il faut corriger la fiche si c'est validé.
+1. Position de `a_nord` : la fiche Asia-Ground la place au bord ouest (x 0, z 18). Comme Asia-Ground est au sud de Lower-Town, ce plan la met au bord nord (x 8, z 0). Corrigé dans la fiche le 2026-10-28 : `a_nord` en (8, 0).
 2. `k_est` ↔ `l_sud_est` : une ruelle de China Lake qui rejoint Lower-Town en contournant Asia-Ground. À confirmer, sinon China Lake n'a qu'une entrée.
 3. Prix du barrage (20 cr) et règle de réouverture de `l_sud_est`.
 4. `v_fosse` : la sortie aux Poutres est à ajouter dans la Sous-Ville (fichier `steel.js`, lot 1).
