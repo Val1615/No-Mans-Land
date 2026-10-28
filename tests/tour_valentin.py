@@ -83,6 +83,27 @@ def run(T, VW, VH, mob):
         check(f'{T} lac : aucun PNJ de China Lake dans l’eau ; lanternes sur l’eau ; image g_cl_lac', not lac['wet'] and lac['lant'] == 0 and lac['img'] == 'g_cl_lac', lac)
         hs = E("[window.__nml.world.LOCATIONS.steel_lower.buildings.find(b=>b.id==='lt_moss').ph.h]")
         check(f'{T} Chez Moss h 4,5 (sprite 389 x 487, pivot [247, 486])', hs == [4.5], hs)
+        # Régie (28/10) : depuis (24 ; 34), Mei sous la halle reste visible (silhouette), étiquette lisible, sélectionnable
+        go('steel_asia', 24, 34)
+        for _ in range(15): E("window.__nml.view.render()")
+        cap('8_mei_de_loin')
+        mei = E("""(()=>{const n=window.__nml.npcs.find(n=>n.id==='ag_mei'||n.name==='Mei Tran'),v=window.__nml.view,p=window.__nml.project(n.x,1.0,n.z);
+          const lab=[...document.querySelectorAll('.wlabel.npc')].find(e=>e.textContent==='Mei Tran');const r=lab&&lab.getBoundingClientRect();
+          const hit=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);
+          return {id:n.id,g:v.ghostOf(n.id),halle:v.opacityOf('ag_halle0'),lab:!!lab&&!lab.hidden&&r.width>0&&r.x>=0&&r.right<=innerWidth&&r.y>=0&&r.bottom<=innerHeight,labTop:hit===lab||lab.contains(hit),pick:window.__nml.pick(p.x,p.y),hOrd:v.orderOf('ag_halle0'),sOrd:v.orderOf('ag_mei')}})()""")
+        check(f'{T} Régie : depuis (24 ; 34), Mei visible à travers la halle opaque (silhouette 45 %)', mei['g'] and mei['g']['visible'] and abs(mei['g']['opacity'] - 0.45) < 0.01 and mei['halle'] > 0.9, mei)
+        check(f'{T} Régie : étiquette de Mei visible à l’écran et au premier plan', mei['lab'], mei)
+        check(f'{T} Régie : Mei sélectionnable (pick = npc)', mei['pick'] and mei['pick'].get('kind') == 'npc' and mei['pick'].get('npcId') == mei['id'], mei['pick'])
+        check(f'{T} Régie : halle toujours dessinée au-dessus du stand de Mei', mei['hOrd'] > mei['sOrd'], (mei['hOrd'], mei['sOrd']))
+        go('steel_asia', 16, 25, 0.2)
+        for _ in range(15): E("window.__nml.view.render()")
+        g2 = E(f"window.__nml.view.ghostOf('{mei['id']}')"); check(f'{T} Régie : à l’approche, halle transparente et silhouette masquée', E("window.__nml.opacityOf('ag_halle0')") < 0.5 and not g2['visible'], g2)
+        # bord du quai de China Lake, côté eau, caméra rapprochée (capture seule, pour juger le débord ~0,3 m)
+        import math
+        q = E("import('./src/data/china_lake.js').then(m=>{const k=0,a=m.LAC_POLY[k],b=m.EAU_POLY[k];return [a,b]})")
+        qx, qz = q[1][0] + (q[0][0] - q[1][0]) * 0.1, q[1][1] + (q[0][1] - q[1][1]) * 0.1
+        go('steel_china', qx, qz, 1.0); E(f"(()=>{{const p=window.__nml.game.state.player;p.x={qx};p.z={qz};p.path=[];window.__nml.view.setCamera({{x:{qx},z:{qz},ppm:150}})}})()"); time.sleep(0.8)
+        pg.screenshot(path=f'{OUT}quai_bord_{T}.png'); E("window.__nml.view.setCamera(null)"); go('steel_china', 24, 28.5); pg.screenshot(path=f'{OUT}lac_v3_{T}.png'); print('quai', T, round(qx, 2), round(qz, 2), E("[window.__nml.game.state.player.x,window.__nml.game.state.player.z]"))
     check(f'{T} aucune erreur JS', not errs, errs[:3]); ctx.close()
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])

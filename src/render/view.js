@@ -182,6 +182,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
       const s = spriteMesh(n.sprite, null, true); if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
+      { const gm = s.material.clone(); gm.opacity = 0.45; gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
+        gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
       addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z));
     }
     builtFor = locId;
@@ -247,6 +249,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   }
   // Règle d'occultation : un bâtiment passe à 30 % d'opacité quand un acteur est derrière lui (ordre du peintre)
   // et qu'un point du corps de l'acteur (0,3 à 1,5 m) tombe sur un pixel opaque du sprite.
+  function npcGhosts() { // PNJ sous une halle opaque : second rendu sans test de profondeur à 45 %, au-dessus du toit (repérable de loin)
+    for (const n of npcSprites) { const gh = n.userData.ghost; if (!gh) continue; const ai = actorItem(n);
+      gh.visible = n.visible && bills.some(b => b.cover && b.obj.material.opacity > 0.5 && under(ai, b)); gh.position.copy(n.position);
+      if (n.material.map !== gh.material.map) gh.material.map = n.material.map; }
+  }
   function spriteOcclusion() {
     for (const s of bsprites) s.userData.targetOpacity = 1;
     for (const a of [player, companion]) { if (!a.visible) continue; const ai = actorItem(a);
@@ -318,12 +325,12 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const zoom = camOverride?.ppm || (loc.kind === 'interior' ? Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6)) : ppm);
     if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; cam.left = -w / 2 / zoom; cam.right = w / 2 / zoom; cam.top = (h / 2 - camShift) / zoom; cam.bottom = (-h / 2 - camShift) / zoom; cam.updateProjectionMatrix(); }
     if (false) { const w = innerWidth, h = innerHeight; cam.left = -w / 2 / camOverride.ppm; cam.right = w / 2 / camOverride.ppm; cam.top = h / 2 / camOverride.ppm; cam.bottom = -h / 2 / camOverride.ppm; cam.updateProjectionMatrix(); }
-    if (exterior) { painter(); spriteOcclusion(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
+    if (exterior) { painter(); spriteOcclusion(); npcGhosts(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     combatOverlay();
     renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran, puis décalées vers le haut si elles se chevauchent (mobile étroit)
-    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = r.left + (v.x + 1) / 2 * r.width; const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'); if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; continue; } if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); placed.push({ l, lx, ly: r.top + (1 - v.y) / 2 * r.height, lw, lh }); }
+    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = r.left + (v.x + 1) / 2 * r.width; const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'); if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; continue; } if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); let ly = r.top + (1 - v.y) / 2 * r.height; if (lh && l.el.classList.contains('npc') && ly - lh < 4 && ly > -60) ly = lh + 4; /* PNJ en haut du cadre : libellé ramené dans l'écran (Mei sous la halle) */ placed.push({ l, lx, ly, lw, lh }); }
     const hudRects = ['hud', 'locbox', 'obj', 'msg', 'dialogue', 'panel', 'keys', 'act', 'mini', 'cbt-file', 'cbt-res', 'cbt-actions'].map(id => document.getElementById(id))
       .filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden').flatMap(e => e.id === 'keys' ? [...e.children].filter(c => c.getClientRects().length) : [e])
       .map(e => e.getBoundingClientRect()).filter(q => q.width > 0 && q.height > 0);
@@ -448,5 +455,6 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     // v13 : décor seul (personnages masqués), pour mesurer la palette d'un lieu sans les vêtements des personnages
     envShot: () => { render(); const hid = [player, companion, ...npcSprites, ...decor].filter(o => o.visible); hid.forEach(o => o.visible = false); renderer.render(scene, cam);
       const url = canvas.toDataURL('image/png'); hid.forEach(o => o.visible = true); return url; },
+    ghostOf: id => { const n = npcSprites.find(s => s.userData.npc === id); return n?.userData.ghost ? { visible: n.userData.ghost.visible, opacity: n.userData.ghost.material.opacity, order: n.userData.ghost.renderOrder } : null; },
     orderOf: id => id === 'player' ? player.renderOrder : bsprites.find(s => s.userData.buildingId === id)?.renderOrder };
 }
