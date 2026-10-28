@@ -8,6 +8,11 @@ Eau (main 7de0a94) : lac irrégulier `g_cl_lac` (1000 x 700 px, 50 px/m) posé s
 
 Lanternes flottantes (9, `ground.water[0].lanterns`) : (19,5 ; 15,6), (21 ; 16,8), (25,5 ; 13,6), (30,2 ; 17,5), (18 ; 20,6), (24,6 ; 21,4), (28,7 ; 22,9), (18,7 ; 22,6), (27,2 ; 16,2). Déplacées hors du quai : (16,5 ; 13,4) vers (19,5 ; 15,6), (31,5 ; 17,2) vers (30,2 ; 17,5), (30,6 ; 24,4) vers (28,7 ; 22,9), (15,6 ; 24,8) vers (18,7 ; 22,6).
 
+Lac v4 (retours tour 2, branche creation/retours-tour2, à intégrer) : même fichier, même taille, même rectangle LAKE (x 14-34, z 12-26, inchangé). Nouveau contour, plus grand : bord extérieur du quai à 0,4-0,6 m du rectangle sur les côtés, coins arrondis (jusqu à 1,7 m au coin) ; emprise du contour x 14,41-33,38, z 12,39-25,6 (environ 19 x 13,2 m, contre 16,7 x 12,3 m en v3). `LAC_POLY` à remplacer par `polygone_monde_m` de g_cl_lac.json :
+(33,38 ; 19,0), (33,33 ; 22,19), (33,07 ; 23,43), (32,51 ; 24,28), (31,62 ; 24,86), (30,38 ; 25,24), (28,65 ; 25,49), (24,0 ; 25,6), (19,32 ; 25,54), (17,58 ; 25,28), (16,41 ; 24,84), (15,54 ; 24,24), (14,9 ; 23,44), (14,5 ; 22,25), (14,41 ; 19,0), (14,62 ; 15,79), (15,06 ; 14,64), (15,66 ; 13,83), (16,46 ; 13,2), (17,6 ; 12,74), (19,32 ; 12,47), (24,0 ; 12,39), (28,68 ; 12,47), (30,46 ; 12,68), (31,7 ; 13,08), (32,55 ; 13,7), (33,05 ; 14,59), (33,3 ; 15,82)
+
+Vérification (EAU_POLY = contour rétréci de 0,6 m) : aucun PNJ ni stand dans l eau. Les 9 lanternes actuelles restent dans l eau ; les positions d origine (31,5 ; 17,2) et (30,6 ; 24,4) y retombent aussi et peuvent être reprises, (16,5 ; 13,4) et (15,6 ; 24,8) restent sur le quai. Dans l eau, comme voulu : câbles cl_cable1 / cl_cable2, ballons, déchets flottants.
+
 Quai nord (7de0a94) : les quatre étals passent de z 10,6 à z 11, contre l eau ; marchande d implants en (19 ; 11,5) entre les étals implants et puces, regard vers (19 ; 9) ; passage nord libre sur 2,5 m.
 
 ## Bâtiments et stands

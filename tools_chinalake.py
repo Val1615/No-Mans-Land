@@ -269,11 +269,13 @@ def unneon_implants():
 # (bande 0,6 m), pilotis ronds sous le quai, reflets des lanternes repris de china_lake.js. Hors contour : transparent (sol du quartier).
 LAKE = (14.0, 12.0, 20.0, 14.0)
 LANT = [[16.5, 13.4], [21, 16.8], [25.5, 13.6], [31.5, 17.2], [18, 20.6], [24.6, 21.4], [30.6, 24.4], [15.6, 24.8], [27.2, 16.2]]
-def lac_poly(n=28):
-    x0, z0, w, d = LAKE; cx, cz, rx, rz = x0 + w / 2, z0 + d / 2, w / 2 - 0.25, d / 2 - 0.25
+# v4 (retours tour 2, lac trop petit) : marge 0,3 m, irrégularités plus douces, superellipse 3,6 : le quai suit le rectangle à 0,3-0,9 m.
+def lac_poly(n=28, v=4):
+    x0, z0, w, d = LAKE; mg = 0.3 if v >= 4 else 0.25; cx, cz, rx, rz = x0 + w / 2, z0 + d / 2, w / 2 - mg, d / 2 - mg
     t = np.linspace(0, 2 * np.pi, n, endpoint=False)
-    f = 1 - 0.10 * (1 + np.sin(2 * t + 0.7)) / 2 - 0.09 * (1 + np.sin(3 * t + 2.1)) / 2 - 0.05 * (1 + np.cos(5 * t + 0.4)) / 2
-    c, s = np.cos(t), np.sin(t); e = 2.6  # superellipse arrondie : remplit le rectangle sans angles
+    A = (0.10, 0.09, 0.05) if v < 4 else (0.012, 0.012, 0.012)
+    f = 1 - A[0] * (1 + np.sin(2 * t + 0.7)) / 2 - A[1] * (1 + np.sin(3 * t + 2.1)) / 2 - A[2] * (1 + np.cos(5 * t + 0.4)) / 2
+    c, s = np.cos(t), np.sin(t); e = 2.6 if v < 4 else 4.2  # superellipse arrondie : remplit le rectangle sans angles
     px = cx + rx * f * np.sign(c) * np.abs(c) ** (2 / e); pz = cz + rz * f * np.sign(s) * np.abs(s) ** (2 / e)
     return [[round(float(a), 2), round(float(b), 2)] for a, b in zip(px, pz)]
 def build_lac():
