@@ -1,7 +1,7 @@
 import { rollVolonte } from '../data/volonte.js';
 import { UNITS } from '../data/units.js';
 import { ARGENT } from '../data/argent.js';
-import { buildGrid } from './grid.js';
+import { buildGrid, coverSolids } from './grid.js';
 import { findPath } from './path.js';
 import { createCombat } from './combat.js';
 
@@ -245,7 +245,7 @@ export function createGame(world, sprites) {
       if (d <= sp) { a.x = n.x; a.z = n.z; a.path.shift(); sp -= d; } else { a.x += dx / d * sp; a.z += dz / d * sp; sp = 0; }
     }
   }
-  const combat = createCombat({ state, grids, emit, act });
+  const combat = createCombat({ state, grids, emit, act, rand: () => rng(), coverOf: loc => coverSolids(LOCATIONS[loc], DOORS, sprites) });
   // v10 : sauvegarde. Instantané de tout l'état durable (jamais chemins, attentes, dialogue en cours).
   function snapshot() {
     const p = state.player, c = state.companion;

@@ -149,3 +149,6 @@ DIALOGUES.elio = { ...DIALOGUES.elio, monter: { ...DIALOGUES.elio.monter, option
 // Ajustement technique (action seulement, réplique intacte) : « garder le dernier » retire les 4 bidons de livraison et donne l'eau gardée
 { const o = DIALOGUES.poste.start.options.find(o => o.if === 'inv:bidon>=4' && /a_garde/.test(o.action)); if (o) o.action = 'take:bidon;' + o.action; }
 export { FERRAILLE };
+// Combat C2 : les armes sont des objets du Sac
+import { ARMES } from './combat.js';
+for (const [k, a] of Object.entries(ARMES)) if (k !== 'mains' && !ITEMS[k]) ITEMS[k] = { name: a.nom };
