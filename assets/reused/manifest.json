@@ -1174,5 +1174,19 @@
    0.6
   ],
   "status": "généré, pnj-asia-china"
+ },
+ "gen_rodeur": {
+  "file": "generated/gen_rodeur.webp",
+  "source": "GenerateImage (cursor), b971fb3d",
+  "height_m": 1.72,
+  "px": [
+   195,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, rodeur Dusk-Town"
  }
 }

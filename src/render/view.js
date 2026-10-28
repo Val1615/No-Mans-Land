@@ -346,8 +346,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const tgt = new THREE.Mesh(new THREE.RingGeometry(0.28, 0.4, 24).rotateX(-Math.PI / 2), mk('#ffe2a8', 0.8)); tgt.renderOrder = 4; group.add(tgt);
       const cost = document.createElement('div'); cost.className = 'wlabel cbt-cost'; labelLayer.appendChild(cost);
       const enemies = c.units.filter(u => !u.joueur).map(u => { const sp = spriteMesh(u.sprite, null, true); sp.material.depthTest = false; sp.material.transparent = true; sp.userData.unit = u.id; world.add(sp); npcSprites.push(sp); return sp; });
-      cbt = { id: c, group, reach, pathL, tgt, cost, enemies, key: '' }; }
-    for (const e of cbt.enemies) { const u = c.units.find(q => q.id === e.userData.unit); e.visible = u.actif; e.position.set(u.x, 0, u.z); if (u.heading !== undefined) face(e, u.heading); }
+      // anneau ennemi toujours visible (haillons couleur sable sur le sable) : liseré sombre + anneau rouge
+      const rings = enemies.map(() => { const g2 = new THREE.Group(); const a = new THREE.Mesh(new THREE.RingGeometry(0.34, 0.5, 32).rotateX(-Math.PI / 2), mk('#1a1208', 0.55)); a.renderOrder = 4;
+        const b = new THREE.Mesh(new THREE.RingGeometry(0.37, 0.46, 32).rotateX(-Math.PI / 2), mk('#e0503c', 0.9)); b.renderOrder = 5; b.position.y = 0.002; g2.add(a, b); group.add(g2); return g2; });
+      cbt = { id: c, group, reach, pathL, tgt, cost, enemies, rings, key: '' }; }
+    for (const e of cbt.enemies) { const u = c.units.find(q => q.id === e.userData.unit); e.visible = u.actif; e.position.set(u.x, 0, u.z); const rg = cbt.rings[cbt.enemies.indexOf(e)]; rg.visible = u.actif; rg.position.set(u.x, 0.045, u.z); if (u.heading !== undefined) face(e, u.heading); }
     const pl = c.units.find(u => u.joueur), mine = c.phase === 'joueur' && c.units[c.actif] === pl && !pl.path.length, pv = c.preview;
     const key = JSON.stringify([mine, pl.i, pl.j, pl.pa, pv && [pv.i, pv.j, pv.pa, pv.ok], c.units.map(u => [u.i, u.j, u.actif])]);
     if (key !== cbt.key) { cbt.key = key; const m4 = new THREE.Matrix4(); let n = 0;
