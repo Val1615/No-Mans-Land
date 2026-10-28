@@ -105,14 +105,22 @@ with sync_playwright() as p:
         E(f"""(()=>{{const g=window.__nml.game,s=g.snapshot();s.location='{loc}';s.player.x={x};s.player.z={z};s.player.hp={hp};s.player.inv={json.dumps(inv)};Object.assign(s.flags,{json.dumps(flags)});
           {'' if vol is None else f's.character.attrs.volonte={vol};'} g.restore(s,true)}})()"""); time.sleep(1.0)
     def cell_pt(i, j): return P(i + 0.5, 0, j + 0.5)
-    def tap_cell(i, j): pt = cell_pt(i, j); gesture(pt['x'], pt['y']); time.sleep(0.35)
+    def hover_or_tap(i, j):  # aperçu : survol à la souris (desktop) ou premier tap (mobile)
+        pt = cell_pt(i, j)
+        if mob: gesture(pt['x'], pt['y'])
+        else: pg.mouse.move(pt['x'] + 3, pt['y'] + 2); pg.mouse.move(pt['x'], pt['y'])
+        time.sleep(0.35)
+    def confirm(i, j): pt = cell_pt(i, j); gesture(pt['x'], pt['y']); time.sleep(0.35)  # desktop : clic sur la case survolée ; mobile : second tap
+    def tap_cell(i, j): hover_or_tap(i, j)
     def fresh(hp=30):  # combat neuf, par la vraie scène : rôdeur raté (Volonté 0, tirage forcé), « Ramasser les bidons. » -> combat:rodeur
         E(f"{C}=null"); d = E("window.__nml.game.doorById('j_q4_nord')"); t, o = d['threshold'], d['opening']; vx, vz = t['x'] - o['x'], t['z'] - o['z']; n = max(1e-6, np.hypot(vx, vz))
         place('dusk_q4', t['x'] + vx / n * 2.5, t['z'] + vz / n * 2.5, {'a_debut': True, 'a_rodeur_fait': False, 'a_fini': False}, {'bidon': 4}, hp=hp, vol=0)
         E("window.__q=[0,0,0,0];window.__nml.game.setRng(()=>window.__q.length?window.__q.shift():Math.random())")
         enter_door('j_q4_nord'); waitjs("window.__nml.state.dialogue && window.__nml.state.dialogue.npc==='rodeur'", 15)
         waitjs("[...document.querySelectorAll('#dlg-options button')].length>0", 8); option('Le regarder en face'); waitjs("window.__nml.state.dialogue && window.__nml.state.dialogue.node==='frappe'", 8)
-        option('Ramasser'); return waitjs(f"!!{C}", 10) and my_turn()
+        r = option('Ramasser'); ok = waitjs(f"!!{C}", 10) and my_turn()
+        if not ok: print('DIAG fresh', r, st()['dialogue'], st()['location'], E("JSON.stringify(window.__nml.state.log.slice(-6))"), flush=True)
+        return ok
     for prof in os.environ.get('PROFILES', 'desktop,mobile').split(','):
         mob = prof == 'mobile'
         if mob:
@@ -132,17 +140,18 @@ with sync_playwright() as p:
         check(f'{T}: grille et interface de combat affichées', E("document.body.classList.contains('combat') && !document.getElementById('cbt').hidden"))
         time.sleep(0.8); cap(f'{T}-01_debut_combat')
         c = cst(); me = c['units'][[u['id'] for u in c['units']].index('joueur')]; i0, j0 = me['i'], me['j']
-        costs = E(f"(()=>{{const g=window.__nml.game.combat,f=(i,j)=>{{const p=g.path(i,j);return p?p.pa:null}};return [f({i0}+1,{j0}),f({i0}+2,{j0}),f({i0}+1,{j0}+1),f({i0}+2,{j0}+2),f({i0}+3,{j0}+1)]}})()")
+        costs = E(f"""(()=>{{const g=window.__nml.game.combat,f=(i,j)=>{{const p=g.path(i,j);return p?p.pa:null}};
+          for(const [sx,sz] of [[1,1],[1,-1],[-1,1],[-1,-1]]){{const r=[f({i0}+sx,{j0}),f({i0}+2*sx,{j0}),f({i0}+sx,{j0}+sz),f({i0}+2*sx,{j0}+2*sz),f({i0}+3*sx,{j0}+sz)];if(r.every(v=>v!=null))return r}}return null}})()""")
         check(f'{T}: coûts 1 case = 1 PA, 2 cases = 2, 1 diagonale = 2 (1,5 arrondi), 2 diagonales = 3, 2 droites + 1 diag = 4 (3,5 arrondi)', costs == [1, 2, 2, 3, 4], costs)
         pa0 = me['pa']; free2 = E(f"(()=>{{const g=window.__nml.game.combat;for(const [di,dj] of [[2,0],[-2,0],[0,2],[0,-2],[1,1],[-1,-1]])if(g.path({i0}+di,{j0}+dj))return [{i0}+di,{j0}+dj];return null}})()")
         tap_cell(*free2); pv = cst()['preview']
-        check(f'{T}: premier tap = aperçu du chemin et de son coût (sans bouger)', pv and pv['i'] == free2[0] and pv['j'] == free2[1] and pv['ok'] and cst()['units'][0]['moving'] == 0 and E("document.querySelector('.cbt-cost') && !document.querySelector('.cbt-cost').hidden && document.querySelector('.cbt-cost').textContent"), (pv, E("document.querySelector('.cbt-cost')?.textContent")))
+        check(f'{T}: survol / premier tap = aperçu du chemin et de son coût (sans bouger)', pv and pv['i'] == free2[0] and pv['j'] == free2[1] and pv['ok'] and cst()['units'][0]['moving'] == 0 and E("document.querySelector('.cbt-cost') && !document.querySelector('.cbt-cost').hidden && document.querySelector('.cbt-cost').textContent"), (pv, E("document.querySelector('.cbt-cost')?.textContent")))
         cap(f'{T}-02_apercu_chemin')
-        tap_cell(*free2); my_turn(10); me = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
-        check(f'{T}: second tap = déplacement, PA décomptés', (me['i'], me['j']) == tuple(free2) and me['pa'] == pa0 - pv['pa'], (me, pv['pa']))
+        confirm(*free2); my_turn(10); me = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
+        check(f'{T}: clic / second tap = déplacement, PA décomptés', (me['i'], me['j']) == tuple(free2) and me['pa'] == pa0 - pv['pa'], (me, pv['pa']))
         far = E(f"(()=>{{const g=window.__nml.game.combat,me=g.player();for(let d=12;d>6;d--)for(const [a,b] of [[d,0],[-d,0],[0,d],[0,-d]]){{const p=g.path(me.i+a,me.j+b);if(p&&p.pa>me.pa)return [me.i+a,me.j+b,p.pa]}}return null}})()")
         if far:
-            tap_cell(far[0], far[1]); pv = cst()['preview']; tap_cell(far[0], far[1]); me2 = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
+            hover_or_tap(far[0], far[1]); pv = cst()['preview']; confirm(far[0], far[1]); me2 = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
             check(f'{T}: case trop loin : aperçu refusé, aucun déplacement', pv and not pv['ok'] and (me2['i'], me2['j']) == (me['i'], me['j']), (pv and pv['pa'], me2))
         press('#cbt-end', 0.3); ok = my_turn(40); c = cst()
         check(f'{T}: fin du tour -> tour du rôdeur -> retour au joueur (tour 2, PA rechargés)', ok and c['tour'] == 2 and [u for u in c['units'] if u['id'] == 'joueur'][0]['pa'] == E(f"{C}.units.find(u=>u.joueur).paMax"), c and (c['tour'], c['units']))
@@ -168,7 +177,7 @@ with sync_playwright() as p:
         while E(f"!!{C}") and n < 8:
             n += 1; my_turn(40)
             tgt = E(f"(()=>{{const g=window.__nml.game.combat,c={C},z=c.zone;let best=null;for(const q of g.reachable()){{const d=Math.min(q.i-z.i0,z.i1-q.i,q.j-z.j0,z.j1-q.j);if(!best||d<best[2])best=[q.i,q.j,d]}}return best}})()")
-            if tgt: tap_cell(tgt[0], tgt[1]); tap_cell(tgt[0], tgt[1]); waitjs(f"!{C} || !{C}.units.some(u=>u.path.length)", 15); time.sleep(0.3)
+            if tgt: hover_or_tap(tgt[0], tgt[1]); confirm(tgt[0], tgt[1]); waitjs(f"!{C} || !{C}.units.some(u=>u.path.length)", 15); time.sleep(0.3)
             if E(f"!!{C}") and E(f"{C}.phase==='joueur'"): press('#cbt-end', 0.3)
         L = E("window.__nml.state.combatLast")
         check(f'{T}: issue fuite : case de bord atteinte en marchant', L and L['issue'] == 'fuite' and st()['flags'].get('combat_rodeur_fuite'), (L, n))
