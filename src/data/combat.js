@@ -4,7 +4,7 @@
 export const COMBAT = {
   cell: 1,                       // cases de 1 m [décision]
   coutOrtho: 2, coutDiag: 3,     // en demi-PA : 1 PA orthogonal [décision], 1,5 PA diagonal [proposition], total arrondi au supérieur
-  zoneRayon: 7,                  // zone de combat = carré de 15 x 15 cases centré sur le joueur ; ses cases de bord sont des sorties (fuite)
+  zoneRayon: 9,                  // zone de combat = carré de 19 x 19 cases centré sur le joueur ; ses cases de bord sont des sorties (fuite)
   coutSeRendre: 0, coutFinTour: 0,
   pvMinApres: 1,                 // §3 : PV remis à au moins 1 après le combat
 };
