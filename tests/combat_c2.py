@@ -119,7 +119,7 @@ with sync_playwright() as p:
         E("window.__q=[0,0,0,0];window.__nml.game.setRng(()=>window.__q.length?window.__q.shift():Math.random())")
         enter_door('j_q4_nord'); waitjs("window.__nml.state.dialogue && window.__nml.state.dialogue.npc==='rodeur'", 15)
         waitjs("[...document.querySelectorAll('#dlg-options button')].length>0", 8); option('Le regarder en face'); waitjs("window.__nml.state.dialogue && window.__nml.state.dialogue.node==='frappe'", 8)
-        r = option('Ramasser'); ok = waitjs(f"!!{C}", 10) and my_turn()
+        waitjs("[...document.querySelectorAll('#dlg-options button')].some(b=>b.textContent.includes('Ramasser'))", 10); r = option('Ramasser'); ok = waitjs(f"!!{C}", 10) and my_turn()
         if not ok: print('DIAG fresh', r, st()['dialogue'], st()['location'], E("JSON.stringify(window.__nml.state.log.slice(-6))"), flush=True)
         return ok
 
