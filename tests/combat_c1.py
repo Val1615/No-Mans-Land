@@ -149,9 +149,13 @@ with sync_playwright() as p:
         cap(f'{T}-02_apercu_chemin')
         confirm(*free2); my_turn(10); me = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
         check(f'{T}: clic / second tap = déplacement, PA décomptés', (me['i'], me['j']) == tuple(free2) and me['pa'] == pa0 - pv['pa'], (me, pv['pa']))
-        far = E(f"(()=>{{const g=window.__nml.game.combat,me=g.player();for(let d=12;d>6;d--)for(const [a,b] of [[d,0],[-d,0],[0,d],[0,-d]]){{const p=g.path(me.i+a,me.j+b);if(p&&p.pa>me.pa)return [me.i+a,me.j+b,p.pa]}}return null}})()")
+        far = E(f"(()=>{{const g=window.__nml.game.combat,me=g.player();const r=[];for(let d=12;d>6;d--)for(const [a,b] of [[d,0],[-d,0],[0,d],[0,-d],[d-3,3],[3-d,-3]]){{const p=g.path(me.i+a,me.j+b);if(p&&p.pa>me.pa)r.push([me.i+a,me.j+b,p.pa])}}return r}})()") or []
+        pv = None
+        for cand in far:  # sur mobile, certaines cases lointaines sont hors écran : prendre la première atteignable au doigt
+            hover_or_tap(cand[0], cand[1]); pv = cst()['preview']
+            if pv and pv['i'] == cand[0] and pv['j'] == cand[1]: far = cand; break
         if far:
-            hover_or_tap(far[0], far[1]); pv = cst()['preview']; confirm(far[0], far[1]); me2 = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
+            confirm(far[0], far[1]); me2 = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
             check(f'{T}: case trop loin : aperçu refusé, aucun déplacement', pv and not pv['ok'] and (me2['i'], me2['j']) == (me['i'], me['j']), (pv and pv['pa'], me2))
         press('#cbt-end', 0.3); ok = my_turn(40); c = cst()
         check(f'{T}: fin du tour -> tour du rôdeur -> retour au joueur (tour 2, PA rechargés)', ok and c['tour'] == 2 and [u for u in c['units'] if u['id'] == 'joueur'][0]['pa'] == E(f"{C}.units.find(u=>u.joueur).paMax"), c and (c['tour'], c['units']))
