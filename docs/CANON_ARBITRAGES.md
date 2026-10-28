@@ -88,7 +88,7 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 - **Lower-Town** : « Là où la partie basse, Lower Town, est plongée dans une nuit permanente ; Upper Town, elle, jouit d'un ciel radieux, purement synthétique » (Ch. II §696). C'est le « centre de la population et donc de la criminalité » (Ch. II §720).
 - **Upper-Town** : partie supérieure, avec de la végétation (Ch. II §693, §696). Un immeuble « côtoyant le plafond menant à Upper Town » (Ch. XII §3374), ce qui suggère que Upper-Town est un niveau au-dessus de Lower-Town.
 - **Asia-Ground** : « un quartier marchand de Lower-Town, près de Asia-Ground » (Ch. IV §1038).
-- **China Lake** : « un quartier de Lower-Town. China Lake pour être plus précis. » (Ch. IX §2071), un « repaire pour la mafia la plus connue de la ville » (§2073). Le roman mentionne aussi « le lac de Lower Street » (Ch. III §806).
+- **China Lake** : « un quartier de Lower-Town. China Lake pour être plus précis. » (Ch. IX §2069), un « repaire pour la mafia la plus connue de la ville » (§2071). Le roman mentionne aussi « le lac de Lower Street » (Ch. III §806).
 - **Center Town** : des tours, dont l'Arcadius Center (Ch. III §854).
 - **Sous-Ville** : une seule mention, une plate-forme surplombant la Sous-Ville (Ch. XII §3590).
 - Statut : **résolu par le roman** pour l'existence et les caractères cités.
