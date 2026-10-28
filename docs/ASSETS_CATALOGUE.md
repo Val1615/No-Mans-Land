@@ -337,7 +337,7 @@ Sources : `PLAN_IMPLEMENTATION.md` §3, fiche `CHINA_LAKE.md` §2-§7, planches 
 | `cl_dechets_a` | **généré** | `art-gen/gen_cl_sheet_dechets_0.jpg` | 2 × 2 | 0.2 | 139×100 | [82, 99] | oui | None | 0.76 |
 | `cl_dechets_b` | **généré** | `art-gen/gen_cl_sheet_dechets_1.jpg` | 2 × 2 | 0.2 | 139×106 | [82, 105] | oui | None | 0.88 |
 | `cl_dechets_c` | **généré** | `art-gen/gen_cl_sheet_dechets_2.jpg` | 2 × 2 | 0.2 | 139×98 | [82, 97] | non | None | 0.72 |
-| `g_cl_eau` (sol) | **généré** | `art-gen/gen_cl_eau_src2.jpg` (v2 2026-10-28 : lac stagnant vu de dessus, reflets néon ambre/rouge, carreau 512 fondu de bord 96 px + ondulations périodiques) | tuile | — | 512×512 | — | — | — | raccord 2,79/255 (voisins 2,44) |
+| `g_cl_eau` (sol) | **généré** | `art-gen/gen_cl_eau_src2.jpg` (v3 2026-10-28 : lac stagnant vu de dessus, surface éclaircie, reflets nets du dôme et d une lanterne rouge, carreau 512 fondu de bord 96 px + ondulations périodiques) | tuile | — | 512×512 | — | — | — | raccord 3,27/255 (voisins 2,90) |
 
 Sol : `assets/generated/g_cl_eau.webp`, même convention que `g_wet` / `g_sv` (512² RGB, `loadSkins`, `ground.skin`), non branché (src/ intouché). Maquette réutilisée : `cl_pieux_b` (bitte d amarrage, `utility-v9.png`) ; le reste de la maquette (sacs de sable, gravats, mobilier de jour) ne correspond pas au marché d eau. Réserves : ballons, pieux, déchets et mah-jong non cisaillés (flottants / ronds / décalques / table en plongée), judge refusé ou non significatif ; emprises des stands 2,5 × 1,5 et de 4 bâtiments différentes du plan (cf. rapport) ; `cl_cabane` arête droite 0,50.
 

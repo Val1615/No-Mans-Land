@@ -201,6 +201,19 @@ def build_eau(src='gen_cl_eau_src2.jpg', off=256, gain=1.25, band=96):
     L0 = t.mean(2, keepdims=True); t = L0 + (t - L0) * np.clip(0.45 + L0 / 60, 0, 1)  # fond plus noir pétrole, moins boueux
     t = t * gain; L = t.mean(2, keepdims=True); hi = np.clip((L - 35) / 40, 0, 1)
     t = t + hi * (t - L) * 0.6 + hi * hi * np.array([18, 6, -4])  # reflets de néons : saturation et chaleur dans les zones claires
+    # v3 (2026-10-28, retour production : lisait comme de la boue) : surface éclaircie, et reflets nets : une lanterne rouge suspendue
+    # et une tache de lumière du dôme (blanc chaud), bords nets brisés par les mêmes ondulations périodiques. Distances toriques : carreau raccordable.
+    t = t * 1.18 + 10; Lb = t.mean(2, keepdims=True); t = Lb + (t - Lb) * 0.8 + np.array([-2, 1, 3])  # moins boueux : désaturé, légèrement froid-neutre
+    def blob(cx, cy, rx, ry):
+        ex = (Xg + dx * 1.5 - cx + 256) % 512 - 256; ey = (Y + dy * 1.5 - cy + 256) % 512 - 256; return np.sqrt((ex / rx) ** 2 + (ey / ry) ** 2)
+    def add(dist, col, core=1.0, halo=2.6, ha=0.35):
+        c = np.clip((core - dist) / 0.08, 0, 1) * (0.55 + 0.45 * np.clip(1 - dist, 0, 1) ** 0.5)  # bord net, cœur plus lumineux
+        c = c * (0.72 + 0.28 * np.sin(2 * np.pi * 32 * Y / 512 + 0.9 * dx))  # vaguelettes calmes : fines bandes claires/sombres
+        h = np.clip(1 - dist / halo, 0, 1) ** 2 * ha
+        return (c[..., None] * 0.9 + h[..., None]) * np.array(col)
+    t = t * (1 - 0.55 * np.clip((1.05 - blob(170, 330, 46, 30)) / 0.1, 0, 1))[..., None]  # fond sous le reflet du dôme
+    t = t + add(blob(170, 330, 46, 30), [215, 200, 165], ha=0.30)  # lumière du dôme : ovale blanc chaud net
+    t = t + add(blob(395, 120, 13, 17), [255, 70, 35], ha=0.45) + add(blob(395, 120, 5, 6.5), [255, 200, 120], halo=1, ha=0)  # lanterne rouge, cœur chaud
     out = Image.fromarray(np.clip(t, 0, 255).astype('uint8'))
     out.save(HERE + '/assets/generated/g_cl_eau.webp', quality=88)
     q = np.asarray(out).astype(float); seam = float(np.abs(q[:, 0] - q[:, -1]).mean() + np.abs(q[0] - q[-1]).mean()) / 2
