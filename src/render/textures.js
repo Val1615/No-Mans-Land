@@ -157,6 +157,13 @@ export function hiddenDoorTexture() {
 // reflets de lanternes flottantes peints par code. Les bords restent raccordés (aucune rotation par carreau, donc aucune couture).
 function paintWater(x, w, skin, metres, P, r) {
   const img = SKIN[skin], zx = w.x * P, zy = w.z * P, zw = w.w * P, zh = w.d * P;
+  if (w.image && SKIN[w.image]) { // retours tour 1 : lac d'Ocre (contour, quai, pilotis peints), image entière sur LAKE, aucune retouche du fichier
+    x.drawImage(SKIN[w.image], zx, zy, zw, zh);
+    for (const l of w.lanterns || []) { const px = l.x * P, py = l.z * P, g = x.createRadialGradient(px, py, 0, px, py, 1.4 * P);
+      g.addColorStop(0, 'rgba(200,50,42,.55)'); g.addColorStop(1, 'rgba(200,50,42,0)'); x.fillStyle = g; x.fillRect(px - 1.4 * P, py - 1.4 * P, 2.8 * P, 2.8 * P);
+      x.fillStyle = 'rgba(232,161,58,.9)'; x.beginPath(); x.ellipse(px, py, 0.22 * P, 0.16 * P, 0, 0, 7); x.fill();
+      x.fillStyle = 'rgba(200,50,42,.95)'; x.beginPath(); x.ellipse(px, py, 0.16 * P, 0.11 * P, 0, 0, 7); x.fill(); }
+    return; }
   x.save(); x.beginPath(); x.rect(zx, zy, zw, zh); x.clip();
   if (img) {
     const c = document.createElement('canvas'); c.width = c.height = Math.round(metres * P); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);

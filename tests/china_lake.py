@@ -122,8 +122,8 @@ with sync_playwright() as p:
     check('Lower-Town -> China Lake (l_sud_est -> k_est) à 0 cr / 0 $', ok and st()['location'] == 'steel_china' and st()['player']['x'] > 45, (st()['location'], st()['player']['x']))
     cap('01_arrivee_ruelle_k_est')
     # le lac n'est pas praticable ; le tour complet se fait par les quais
-    wet = E("""(()=>{const g=window.__nml.game.grids.steel_china,L={x:14,z:12,w:20,d:14};let n=0,b=0;for(let j=0;j<g.d;j++)for(let i=0;i<g.w;i++){const p=g.toWorld(i,j);
-      if(p.x>L.x+0.3&&p.x<L.x+L.w-0.3&&p.z>L.z+0.3&&p.z<L.z+L.d-0.3){n++;if(!g.free(i,j))b++}}return [n,b]})()""")
+    wet = E("""(async()=>{const m=await import('./src/data/china_lake.js'),G=await import('./src/core/grid.js'),g=window.__nml.game.grids.steel_china;let n=0,b=0;for(let j=0;j<g.d;j++)for(let i=0;i<g.w;i++){const p=g.toWorld(i,j);
+      if(G.inPoly(m.EAU_POLY,p.x,p.z)){n++;if(!g.free(i,j))b++}}return [n,b]})()""")  # retours tour 1 : eau = polygone d'Ocre rétréci de 0,6 m
     check('eau : toutes les cases du lac bloquées', wet[0] > 100 and wet[0] == wet[1], wet)
     loop = [(24, 10), (36, 19), (24, 29), (8, 21), (24, 10)]
     paths = [E(f"(()=>{{const g=window.__nml.game; const p=window.__findPath(g.grids.steel_china, {{x:{a[0]},z:{a[1]}}}, {{x:{b[0]},z:{b[1]}}}); return p?p.length:0}})()") for a, b in zip(loop, loop[1:])]

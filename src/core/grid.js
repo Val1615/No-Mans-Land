@@ -4,7 +4,7 @@ const C = UNITS.cell;
 export function solidsOf(loc, doors, sprites) {
   const out = [...loc.buildings.flatMap(b => b.solid || [{ x: b.x, z: b.z, w: b.w, d: b.d }])]; // Lower-Town v1 : b.solid = parties pleines (portique, dalle)
   out.push(...propSolids(loc, sprites));
-  return out.concat(loc.ground?.water || [], wallsOf(loc, doors)); // China Lake : eau non praticable (ground.water)
+  return out.concat((loc.ground?.water || []).filter(w => !w.poly), wallsOf(loc, doors)); // China Lake : eau non praticable (ground.water)
 }
 function propSolids(loc, sprites) {
   const out = [];
@@ -24,10 +24,11 @@ export function coverSolids(loc, doors, sprites) {
 export function buildGrid(loc, doors, sprites, extraBlocked = []) {
   const w = Math.round(loc.size.w / C) + 1, d = Math.round(loc.size.d / C) + 1;
   const blocked = new Uint8Array(w * d), r = UNITS.character.radius;
-  const solids = solidsOf(loc, doors, sprites).concat(extraBlocked);
+  const solids = solidsOf(loc, doors, sprites).concat(extraBlocked), polys = (loc.ground?.water || []).filter(w => w.poly).map(w => w.poly);
   for (let j = 0; j < d; j++) for (let i = 0; i < w; i++) {
     const x = i * C, z = j * C;
     if (x < r || z < r || x > loc.size.w - r || z > loc.size.d - r) { blocked[j * w + i] = 1; continue; }
+    if (polys.some(p => inPoly(p, x, z))) { blocked[j * w + i] = 1; continue; } // eau en polygone : centre de case dans l'eau = bloqué (le quai reste libre)
     for (const s of solids) if (x > s.x - r && x < s.x + s.w + r && z > s.z - r && z < s.z + s.d + r) { blocked[j * w + i] = 1; break; }
   }
   return { w, d, blocked, toCell: (x, z) => [Math.round(x / C), Math.round(z / C)], toWorld: (i, j) => ({ x: i * C, z: j * C }),
@@ -48,3 +49,4 @@ export function wallsOf(loc, doors = []) {
   return [...seg('north', 0, W, H), ...seg('west', 0, D, H), ...seg('south', D - t, W, low), ...seg('east', W - t, D, low)]
     .map((s, k) => ({ ...s, id: 'wall' + k, isWall: true }));
 }
+export function inPoly(P, x, z) { let c = false; for (let i = 0, j = P.length - 1; i < P.length; j = i++) if ((P[i][1] > z) !== (P[j][1] > z) && x < (P[j][0] - P[i][0]) * (z - P[i][1]) / (P[j][1] - P[i][1]) + P[i][0]) c = !c; return c; }

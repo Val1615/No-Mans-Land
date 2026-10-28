@@ -100,7 +100,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     s.position.set(b.x + b.w, 0, b.z + b.d);
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s);
-    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [] }; bills.push(item);
+    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
       c.scale.set(0.42, 0.42, 1); c.position.set(d.opening.x, 2.5, d.opening.z); world.add(c); item.extra.push(c);
@@ -226,7 +226,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const a = scr(o.position), sx = Math.abs(o.scale.x), sy = o.scale.y; return { x0: a.x - o.center.x * sx, x1: a.x + (1 - o.center.x) * sx, y0: a.y - o.center.y * sy, y1: a.y + (1 - o.center.y) * sy }; }
   function uvOf(o, p) { const r = rectOf(o); let u = (p.x - r.x0) / (r.x1 - r.x0); if (o.material.map?.repeat.x < 0) u = 1 - u; return { u, v: (p.y - r.y0) / (r.y1 - r.y0) }; }
   // Ordre de dessin : A avant B si B est devant (séparés sur x ou z, le plus grand est devant, la caméra regardant vers -x et -z).
-  function inFront(b, a) { if (b.x0 >= a.x1 - 1e-6 || b.z0 >= a.z1 - 1e-6) return true; if (a.x0 >= b.x1 - 1e-6 || a.z0 >= b.z1 - 1e-6) return false; return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1; }
+  const under = (o, c) => o.x0 < c.x1 && o.x1 > c.x0 && o.z0 < c.z1 && o.z1 > c.z0; // emprises qui se recouvrent
+  function inFront(b, a) { if (!!a.cover !== !!b.cover && under(a, b)) return !!b.cover; /* une halle couvre tout ce qui est sous son toit [tour Valentin] */ if (b.x0 >= a.x1 - 1e-6 || b.z0 >= a.z1 - 1e-6) return true; if (a.x0 >= b.x1 - 1e-6 || a.z0 >= b.z1 - 1e-6) return false; return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1; }
   const actorItem = a => ({ obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [] });
   function painter() {
     const items = bills.concat([player, companion].filter(a => a.visible).concat(npcSprites, decor, drones).map(actorItem)); const n = items.length;
@@ -249,7 +250,9 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   function spriteOcclusion() {
     for (const s of bsprites) s.userData.targetOpacity = 1;
     for (const a of [player, companion]) { if (!a.visible) continue; const ai = actorItem(a);
-      for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!inFront(bi, ai)) continue;
+      for (const s of bsprites) { const bi = bills.find(b => b.obj === s);
+        if (bi.cover) { const m = 1.5; if (a.position.x > bi.x0 - m && a.position.x < bi.x1 + m && a.position.z > bi.z0 - m && a.position.z < bi.z1 + m) s.userData.targetOpacity = 0.3; continue; } // halle : transparente dès l'emprise ou à 1,5 m
+        if (!inFront(bi, ai)) continue;
         for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(a.position.x, hy, a.position.z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { s.userData.targetOpacity = 0.3; break; } } } }
     for (const o of phOf) { o.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === o), r = rectOf(o);
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
@@ -393,7 +396,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       if (u.doorId && !(h.object.isMesh && h.object.geometry.type === 'PlaneGeometry' && op < 0.5)) return { kind: 'door', doorId: u.doorId }; // porte estompée : le clic passe
       if (u.doorId) continue;
       if (op < 0.5) continue; // volume devenu transparent : le clic passe au travers
-      if (u.buildingId) return u.visitable ? { kind: 'building', buildingId: u.buildingId } : { kind: 'closed', label: u.label };
+      if (u.buildingId) return u.visitable ? { kind: 'building', buildingId: u.buildingId } : { kind: 'closed', label: u.label, buildingId: u.buildingId };
       if (u.solid) return { kind: 'solid' };
       if (u.ground) return { kind: 'ground', x: h.point.x, z: h.point.z };
     }

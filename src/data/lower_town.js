@@ -14,7 +14,7 @@ export const BUILDINGS_LOWER = [
   B('lt_bastide', 'Atelier Bastide', 'lt_atelier_petit', 36, 7, 8, 6, { h: 4.5, color: '#43362c', roof: 'sheds' }, { visitable: true }),
   B('lt_immeuble', 'Immeuble ouvrier', 'lt_immeuble_ouvrier', 5, 5, 8, 6.5, { h: 13, floors: 4 }),                    // sprite Ocre da01a62
   B('lt_immeuble3', 'Immeuble ouvrier', 'lt_immeuble_ouvrier', 14.5, 5, 8, 6.5, { h: 13, floors: 4 }),                // idem (flip non géré pour les bâtiments)
-  B('lt_moss', 'Chez Moss', 'lt_comptoir_moss', 37, 24.5, 6, 5, { h: 7 }, { visitable: true }),                         // sprite Ocre 711de0a
+  B('lt_moss', 'Chez Moss', 'lt_comptoir_moss', 37, 24.5, 6, 5, { h: 4.5 }, { visitable: true }),                         // sprite Ocre 711de0a
   // Props d'Ocre (lot 2, 711de0a) : sprites ancrés du manifeste des bâtiments, posés comme bâtiments anonymes (x, z = coin min, emprise du manifeste).
   ...[['lt_tuyau', 18.5, 13, 3, 2], ['lt_tuyau', 33, 13, 3, 2], ['lt_sodium', 9.6, 14.8, 0.8, 0.8], ['lt_sodium', 25.6, 15.6, 0.8, 0.8], ['lt_sodium', 39.6, 20.6, 0.8, 0.8],
     ['lt_sodium', 20.6, 28.2, 0.8, 0.8], ['lt_horloge_pointage', 24, 20.9, 1, 1], ['lt_voiture_panne', 30, 19.4, 4, 2], ['lt_voiture_panne', 1.5, 32.5, 4, 2],
@@ -38,7 +38,7 @@ export const LOCATIONS_LOWER = {
       { x: 13.4, z: 21, w: 2, d: 12, kind: 'plate', tint: 'rgba(0,0,0,.45)' } ] },         // Allée du Foyer, 2 m [fiche]
     buildings: BUILDINGS_LOWER, props: [
       { sprite: 'rubble', x: 45, z: 9, fp: [2.0, 1.6] }, { sprite: 'tires', x: 16, z: 31, fp: [1.2, 1.0] }, { sprite: 'sv_brasero', x: 31, z: 24, fp: [0.8, 0.8] },
-      { box: true, x: 15.4, z: 22, w: 2.2, d: 11, h: 2.6, color: '#2f2a25' },        // palissade de tôle : ferme l'Allée du Foyer à l'est [inventé]
+      // [tour Valentin 28/10] palissade de tôle (volume sans sprite, « boîte vide sombre » derrière Pia) retirée : Pia reste au sol dans l'Allée du Foyer
     ],
     glows: [ { x: 10, z: 16.6, rx: 3, rz: 3, color: SODIUM, i: 0.7 }, { x: 26, z: 16.6, rx: 3, rz: 3, color: SODIUM, i: 0.7 }, { x: 40, z: 22.4, rx: 3, rz: 3, color: SODIUM, i: 0.65 },
       { x: 21, z: 30, rx: 3, rz: 3, color: SODIUM, i: 0.6 }, { x: 28.5, z: 15.6, rx: 3, rz: 2.2, color: FOUR, i: 0.85, flicker: true }, { x: 39, z: 14, rx: 2.2, rz: 1.6, color: FOUR, i: 0.75, flicker: true },

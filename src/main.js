@@ -16,7 +16,7 @@ const iman = await (await fetch('./assets/interiors/manifest.json')).json();
 Object.assign(sprites, iman);
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
-await loadSkins(['g_wet', 'g_sv', 'g_cl_eau'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
+await loadSkins(['g_wet', 'g_sv', 'g_cl_eau', 'g_cl_lac'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
 await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
@@ -46,7 +46,7 @@ bindPointer($('view'), (x, y) => {
     const f = game.state.flags;
     if (f.q_fin || (f.q_cric && f.q_signal)) game.startScene('porte', { x: 28, z: 5.8 });
     else say(!f.q_cric && !f.q_signal ? 'Pas à mains nues, et pas sans savoir où sont les camions.' : !f.q_cric ? 'Pas à mains nues. Le cric d\u2019Anselme.' : 'Pas sans savoir où sont les camions. Teo, au guet.'); }
-  else if (p.kind === 'closed') { const t = world.CLOSED_TEXT[p.buildingId]; say((typeof t === 'function' ? t(game.state) : t) || `${p.label} : fermé.`); }
+  else if (p.kind === 'closed') { const t = world.CLOSED_TEXT[p.buildingId]; say((typeof t === 'function' ? t(game.state) : t) || (p.label?.trim() ? `${p.label} : fermé.` : 'Rien à faire ici.')); } // sans libellé (décor, étal anonyme) : jamais « : fermé. » coupé
   else if (p.kind === 'ground') { // v7 : un tap au bout d'une rue vise la jonction (on marche jusqu'au seuil)
     const j = world.DOORS.find(d => (d.junction || d.edge) && d.location === game.state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.6);
     if (j) game.useDoor(j.id); else game.moveTo(p.x, p.z); }

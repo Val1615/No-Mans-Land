@@ -9,9 +9,20 @@ const AMBRE = '#e8a13a', ROUGE = '#c8322a', BILE = '#7a8a3a';
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: true, ...extra });
 const P = (id, sp, x, z, w, d, solid) => ({ id, label: '', sprite: sp, x, z, w, d, visitable: false, cue: null, named: false, ...(solid ? { solid } : {}) });
 export const LAKE = { x: 14, z: 12, w: 20, d: 14 };
+// Lac irrégulier d'Ocre (retours tour 1, 845186f) : g_cl_lac.webp (1000 x 700 px, 50 px/m) posé sur LAKE, origine px = monde (14, 12).
+// LAC_POLY = polygone_monde_m de assets/generated/g_cl_lac.json (bord extérieur du quai) ; eau non marchable = ce polygone rétréci de 0,6 m (quai marchable).
+export const LAC_POLY = [[31.66, 19.0], [31.81, 20.74], [31.79, 22.07], [31.21, 23.19], [30.04, 23.97], [28.51, 24.48], [26.71, 24.84], [24.0, 25.07], [21.21, 25.01], [19.39, 24.6], [18.0, 23.94], [16.83, 23.17], [15.78, 22.25], [15.1, 20.98], [15.13, 19.0], [15.86, 17.19], [16.85, 16.18], [17.72, 15.35], [18.51, 14.48], [19.58, 13.63], [21.23, 13.03], [24.0, 12.75], [26.89, 12.76], [28.93, 13.01], [30.54, 13.61], [31.51, 14.63], [31.79, 15.93], [31.69, 17.29]];
+export const QUAI_M = 0.6;
+export function shrinkPoly(P, d) { // décalage vers l'intérieur de d m (bissectrice des normales, polygone simple, orientation détectée)
+  const n = P.length, A = P.reduce((s, p, i) => s + p[0] * P[(i + 1) % n][1] - P[(i + 1) % n][0] * p[1], 0), sg = A > 0 ? 1 : -1;
+  const nrm = (a, b) => { const dx = b[0] - a[0], dz = b[1] - a[1], l = Math.hypot(dx, dz) || 1; return [-dz / l * sg, dx / l * sg]; }; // normale intérieure
+  return P.map((p, i) => { const n1 = nrm(P[(i + n - 1) % n], p), n2 = nrm(p, P[(i + 1) % n]), bx = n1[0] + n2[0], bz = n1[1] + n2[1], bl = Math.hypot(bx, bz) || 1;
+    const cos = (bx / bl) * n1[0] + (bz / bl) * n1[1], k = d / Math.max(0.5, cos); return [+(p[0] + bx / bl * k).toFixed(3), +(p[1] + bz / bl * k).toFixed(3)]; });
+}
+export const EAU_POLY = shrinkPoly(LAC_POLY, QUAI_M);
 const STANDS = [ // [id, sprite, x, z, libellé] ; emprises du manifeste (implants/puces/papiers 2,5 x 1 ; médocs 2,5 x 1,5 ; armes 2,5 x 2)
-  ['cl_s_implants', 'cl_stand_implants', 16, 10.6, 'Implants « garantis »'], ['cl_s_puces', 'cl_stand_puces', 19.5, 10.6, 'Puces et lecteurs'],
-  ['cl_s_puces2', 'cl_stand_puces', 27.5, 10.6, ''], ['cl_s_implants2', 'cl_stand_implants', 31, 10.6, ''],
+  ['cl_s_implants', 'cl_stand_implants', 16, 11, 'Implants « garantis »'], ['cl_s_puces', 'cl_stand_puces', 19.5, 11, 'Puces et lecteurs'],
+  ['cl_s_puces2', 'cl_stand_puces', 27.5, 11, ''], ['cl_s_implants2', 'cl_stand_implants', 31, 11, ''],
   ['cl_s_armes', 'cl_stand_armes', 37, 13, 'Armes sans numéro'], ['cl_s_armes2', 'cl_stand_armes', 37, 17, ''], ['cl_s_armes3', 'cl_stand_armes', 37, 21, ''],
   ['cl_s_papiers', 'cl_stand_papiers', 16, 28.5, 'Faux papiers'], ['cl_s_tech', 'cl_stand_implants', 22.75, 26.6, 'Établi du technicien'], ['cl_s_papiers2', 'cl_stand_papiers', 28, 28.5, ''],
   ['cl_s_medocs', 'cl_stand_medocs', 10.5, 13.6, 'Médicaments et stimulants'], ['cl_s_medocs2', 'cl_stand_medocs', 10.5, 22.6, ''] ];
@@ -28,7 +39,7 @@ export const BUILDINGS_CHINA = [
   B('cl_pilotis_so', '', 'cl_pilotis', 0.5, 29.5, 6, 6, { named: false }),
   // Ponton de Shen (rive ouest), praticable
   B('cl_ponton', 'Ponton de Shen', 'cl_ponton', 9, 17, 5, 3, { solid: [], sign: true }),
-  ...STANDS.map(([id, sp, x, z, label]) => B(id, label, sp, x, z, FP[sp][0], FP[sp][1], { named: !!label, sign: !!label })),
+  ...STANDS.map(([id, sp, x, z, label]) => B(id, label || 'Étal', sp, x, z, FP[sp][0], FP[sp][1], { named: !!label, sign: !!label })),
   // Props (emprises du manifeste ; solid [] = au-dessus de l'eau ou à hauteur de tête)
   P('cl_cable1', 'cl_cable_lanternes', 17, 14, 14, 0.5, []), P('cl_cable2', 'cl_cable_lanternes', 17, 22, 14, 0.5, []),
   P('cl_b_dragon', 'cl_ballon_dragon', 17, 15.5, 3, 1.5, []), P('cl_b_carpe', 'cl_ballon_carpe', 28, 15, 3, 1, []),
@@ -37,8 +48,8 @@ export const BUILDINGS_CHINA = [
   ...[[13.6, 11.6], [33.6, 11.6], [13.6, 25.6], [33.6, 25.6], [24, 25.6]].map(([x, z], i) => P(`cl_pieux${i}`, i % 2 ? 'cl_pieux_b' : 'cl_pieux', x, z, 0.8, 0.8)),
   P('cl_bache1', 'cl_bache', 21.4, 30.4, 3, 3, []), P('cl_bache2', 'cl_bache', 42, 12.4, 3, 3, []),
   P('cl_treteaux1', 'cl_treteaux', 31.5, 29.4, 2, 0.6), P('cl_treteaux2', 'cl_treteaux', 4, 14.2, 2, 0.6),
-  P('cl_friture', 'cl_friture', 22.2, 9.6, 1, 0.7), P('cl_mahjong', 'cl_mahjong', 43.6, 18.4, 1.6, 1.6),
-  P('cl_caisse_armes', 'cl_caisse_armes', 40.4, 15.6, 1.2, 0.6), P('cl_bac_puces', 'cl_bac_puces', 22.6, 11.4, 0.6, 0.4),
+  P('cl_friture', 'cl_friture', 23.4, 11.2, 1, 0.7), P('cl_mahjong', 'cl_mahjong', 43.6, 18.4, 1.6, 1.6),
+  P('cl_caisse_armes', 'cl_caisse_armes', 40.4, 15.6, 1.2, 0.6), P('cl_bac_puces', 'cl_bac_puces', 22.4, 11.5, 0.6, 0.4),
   P('cl_presse', 'cl_presse_papiers', 14.2, 30.8, 1, 0.6), P('cl_bocaux', 'cl_bocaux', 8.6, 14.2, 0.8, 0.4),
   P('cl_barriere', 'cl_barriere_caisses', 25.8, 2.4, 4, 0.8),
 ];
@@ -48,12 +59,12 @@ const IN = (id, name, w, d, floor, wall, props, glows) => ({ id, name, kind: 'in
 export const LOCATIONS_CHINA = {
   steel_china: { id: 'steel_china', name: 'Steel-Megalopolis · China Lake', kind: 'exterior', size: { w: 48, d: 36 }, light: CHINA,
     ground: { base: '#22241c', skin: 'g_sv', tileM: 5, clean: true, tint: 'rgba(8,12,4,.5)',
-      water: [{ ...LAKE, tileM: 6, lanterns: [[16.5, 13.4], [21, 16.8], [25.5, 13.6], [31.5, 17.2], [18, 20.6], [24.6, 21.4], [30.6, 24.4], [15.6, 24.8], [27.2, 16.2]].map(([x, z]) => ({ x, z })) }],
+      water: [{ ...LAKE, poly: EAU_POLY, image: 'g_cl_lac', tileM: 6, /* lanternes déplacées hors du quai (RETOURS_TOUR1.md) */ lanterns: [[19.5, 15.6], [21, 16.8], [25.5, 13.6], [30.2, 17.5], [18, 20.6], [24.6, 21.4], [28.7, 22.9], [18.7, 22.6], [27.2, 16.2]].map(([x, z]) => ({ x, z })) }],
       zones: [ { x: 0, z: 8.5, w: 48, d: 3.5, kind: 'plate', tint: 'rgba(30,26,14,.55)' }, { x: 0, z: 26, w: 48, d: 5, kind: 'plate', tint: 'rgba(30,26,14,.55)' } ] }, // quais en planches et béton
     buildings: BUILDINGS_CHINA, props: [],
     glows: [ // ampoules ambre des stands, lanternes rouges flottantes (reflets), une lueur bile au ras de l'eau
       ...STANDS.map(([, sp, x, z]) => ({ x: x + 1.25, z: z + FP[sp][1] + 0.4, rx: 1.8, rz: 1.2, color: AMBRE, i: 0.6, flicker: true })),
-      ...[[16.5, 13.4], [21, 16.8], [25.5, 13.6], [31.5, 17.2], [18, 20.6], [24.6, 21.4], [30.6, 24.4], [15.6, 24.8], [27.2, 16.2]].map(([x, z], i) => ({ x, z, rx: 1.3, rz: 0.9, color: ROUGE, i: 0.45, flicker: i % 2 === 0 })),
+      ...[[19.5, 15.6], [21, 16.8], [25.5, 13.6], [30.2, 17.5], [18, 20.6], [24.6, 21.4], [28.7, 22.9], [18.7, 22.6], [27.2, 16.2]].map(([x, z], i) => ({ x, z, rx: 1.3, rz: 0.9, color: ROUGE, i: 0.45, flicker: i % 2 === 0 })),
       { x: 24, z: 19, rx: 9, rz: 6, color: BILE, i: 0.18 }, { x: 11.5, z: 9.6, rx: 2.4, rz: 1.4, color: AMBRE, i: 0.6 }, { x: 35, z: 7, rx: 3, rz: 1.6, color: ROUGE, i: 0.5 },
       { x: 44, z: 27, rx: 2, rz: 1.2, color: AMBRE, i: 0.45 }, { x: 24, z: 2, rx: 2.4, rz: 1.6, color: AMBRE, i: 0.45 }, { x: 46, z: 32, rx: 2, rz: 1.4, color: AMBRE, i: 0.35 } ],
     extras: [ ...[[18, 9.2], [25, 12.0], [35.4, 15.2], [35.2, 22.4], [20, 27.4], [26, 30.6], [8, 25], [6.5, 12.6], [44, 21]].map(([x, z], i) => ({ sprite: `st_civil${i % 6}`, x, z, face: i % 2 ? 1 : -1, role: 'client' })) ],
@@ -88,7 +99,7 @@ export const DOORS_CHINA = [
 const behind = id => { const s = STANDS.find(q => q[0] === id); return { x: s[2] + 1.25, z: s[3] - 0.7 }; }; // marchand côté nord de l'étal [plan]
 export const NPCS_CHINA = [ // positions corrigées d'après CHINA_LAKE.md (Régie 9a33b8c) : >= 1,5 m du centre des stands, jamais sur l'eau
   { id: 'cl_shen', name: 'Shen', sprite: 'gen_cl_shen', location: 'steel_china', x: 7.6, z: 18.6, faceTo: [12, 18.6], dialogue: 'cl_shen' },
-  { id: 'cl_m_nord', name: 'Marchande d\u2019implants', sprite: 'gen_cl_m_nord', location: 'steel_china', x: 17.25, z: 9.5, faceTo: [17.25, 13], dialogue: 'cl_m_nord' },
+  { id: 'cl_m_nord', name: 'Marchande d\u2019implants', sprite: 'gen_cl_m_nord', location: 'steel_china', x: 19, z: 11.5, faceTo: [19, 9] /* entre les étals implants et puces, contre le quai : le passage nord reste libre sur 2,5 m [tour Valentin] */, dialogue: 'cl_m_nord' },
   { id: 'cl_m_est', name: 'Armurier', sprite: 'gen_cl_m_est', location: 'steel_china', ...behind('cl_s_armes'), faceTo: [36, 14], dialogue: 'cl_m_est' },
   { id: 'cl_m_sud', name: 'Faussaire', sprite: 'gen_cl_m_sud', location: 'steel_china', x: 19.1, z: 28.6, faceTo: [17.25, 31], /* au bout de l'étal : derrière, le sprite du stand masquait le tap */ dialogue: 'cl_m_sud' },
   { id: 'cl_m_ouest', name: 'Apothicaire', sprite: 'gen_cl_m_ouest', location: 'steel_china', x: 11.75, z: 12.8, faceTo: [9, 15], dialogue: 'cl_m_ouest' },
