@@ -169,7 +169,9 @@ with sync_playwright() as p:
         # variante : rôdeur raté (-5 PV, hook) puis raid raté (bidon crevé) -> 8 $
         reset(); x, z = near_door('j_q4_nord', 2.5); place('dusk_q4', x, z, flags={'a_debut': True}, inv={'bidon': 4}, vol=0, hp=30); rng([0.0] * 4); enter_door('j_q4_nord'); waitjs("window.__nml.state.dialogue", 10)
         option('Le regarder en face'); s = st(); check(f'{T}: A/rôdeur raté : frappe', (st()['dialogue'] or {}).get('node') == 'frappe', st()['dialogue']); option('Ramasser'); s = st()
-        check(f'{T}: A/rôdeur raté : -5 PV, combat_rodeur + hook', s['player']['hp'] == 25 and s['flags'].get('combat_rodeur') and 'combat_rodeur' in (s.get('hooks') or []), (s['player']['hp'], s.get('hooks')))
+        check(f'{T}: A/rôdeur raté : -5 PV, combat_rodeur, combat en attente', s['player']['hp'] == 25 and s['flags'].get('combat_rodeur') and E("window.__nml.state.combatPending==='rodeur'"), (s['player']['hp'], E("window.__nml.state.combatPending")))
+        close_dlg(); check(f'{T}: A/combat du rôdeur lancé à la fermeture du dialogue', waitjs("window.__nml.state.combat && window.__nml.state.combat.id==='rodeur'", 10))
+        E("window.__nml.game.combat.finish('fuite')"); check(f'{T}: A/combat : fuite = a_rodeur_fait, bidons gardés', waitjs("!window.__nml.state.combat && window.__nml.state.flags.a_rodeur_fait", 10) and inv('bidon') == 4, inv('bidon'))
         close_dlg(); rng([0.0, 0.0]); x, z = near_door('j_q1_est', 2.5); place('dusk_q1', x, z); enter_door('j_q1_est')
         check(f'{T}: A/raid déclenché (tirage forcé)', waitjs("window.__nml.state.dialogue && window.__nml.state.dialogue.npc==='raid'", 10)); cap('a5-raid')
         option('Ne plus bouger'); option('Attendre'); close_dlg(); check(f'{T}: A/raid raté : un bidon perdu, -3 PV', inv('bidon') == 3 and st()['player']['hp'] == 22, (inv('bidon'), st()['player']['hp']))
