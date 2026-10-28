@@ -9,7 +9,7 @@ const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x
 const P = (sp, x, z, w, d, solid) => ({ label: '', sprite: sp, x, z, w, d, visitable: false, cue: null, named: false, ...(solid ? { solid } : {}) });
 export const BUILDINGS_ASIA = [
   // Rue des Lanternes (nord) [fiche] : restaurants à étages 8 x 6 m. ag_restaurant = « Chez Lin 林记 » (nom définitif d'Ocre, 99f6759).
-  B('ag_lin', 'Chez Lin 林记', 'ag_restaurant', 13, 0.5, 8, 6, { sign: true }) // enseigne : libellé visible dès l'arrivée (sans porte, il n'était jamais « découvert »),
+  B('ag_lin', 'Chez Lin 林记', 'ag_restaurant', 13, 0.5, 8, 6, { sign: true }), // enseigne : libellé visible dès l'arrivée (sans porte, il n'était jamais « découvert »)
   B('ag_resto2', 'Restaurant', 'ag_restaurant_b', 23, 0.5, 8, 6, { named: false }),
   // Mille Marches (nord-est) [fiche] : escalier 8 x 14 m, décor praticable (pas de collision), haut de l'escalier = a_escalier (x 43, z 0).
   B('ag_escalier', 'Mille Marches', 'ag_escalier', 39, 0, 8, 14, { named: false, solid: [{ x: 39, z: 0, w: 0.6, d: 14 }, { x: 46.4, z: 0, w: 0.6, d: 14 }] }),
