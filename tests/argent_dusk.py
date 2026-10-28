@@ -56,15 +56,19 @@ with sync_playwright() as p:
         def press(sel, wait=0.4):
             E(f'(()=>{{const e=document.querySelector({json.dumps(sel)}); if(e&&e.closest("#creation")&&!e.closest(".cr-foot")) e.scrollIntoView({{block:"center"}})}})()'); time.sleep(0.1)
             b = pg.locator(sel).first.bounding_box(); assert b, sel; gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(wait)
-        def option(label):
+        def option(label, t=8):
+            # Cause réelle des échecs 1 sur 5 (rôdeur raté) : game.state.dialogue est posé avant que renderDialogue (frame suivante, lente
+            # juste après la construction d'une scène sous swiftshader) n'ait créé les boutons ; l'ancien option() trouvait 0 bouton et
+            # renvoyait False sans cliquer. On attend donc le bouton, puis on attend que l'état du dialogue change (pas de sleep fixe, pas de second clic).
             loc = pg.locator('#dlg-options button', has_text=label)
-            if not loc.count(): return False
+            if not waitjs(f"[...document.querySelectorAll('#dlg-options button')].some(b=>b.textContent.includes({json.dumps(label)}))", t): return False
             b = loc.first.bounding_box()
             if not b: return False
-            n0 = E("JSON.stringify(window.__nml.state.dialogue)")
-            gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.5)
-            if E("JSON.stringify(window.__nml.state.dialogue)") == n0 and loc.count():  # clic perdu pendant le re-rendu du nœud (desktop swiftshader lent) : un seul nouvel essai
-                b = loc.first.bounding_box(); b and gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.5)
+            SIG = "(()=>{const s=window.__nml.state;return JSON.stringify([s.dialogue,s.os,s.player.money,s.player.credits,s.player.hp,s.player.inv,s.flags])})()"
+            n0 = E(SIG)
+            gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2)
+            waitjs(f"{SIG} !== {json.dumps(n0)}", 3)
+            waitjs("(()=>{const d=window.__nml.state.dialogue;return !d||document.getElementById('dialogue').hidden===false})()", t); time.sleep(0.15)
             return True
         def opts(): return E("[...document.querySelectorAll('#dlg-options button')].map(b=>b.textContent)")
         def dtext(): return E("document.getElementById('dlg-text').textContent")
@@ -161,7 +165,7 @@ with sync_playwright() as p:
         option('rôdeur'); check(f'{T}: A/rôdeur payé : +8 $', money() == m0 + 8, (m0, money())); close_dlg()
         # variante : rôdeur raté (-5 PV, hook) puis raid raté (bidon crevé) -> 8 $
         reset(); x, z = near_door('j_q4_nord', 2.5); place('dusk_q4', x, z, flags={'a_debut': True}, inv={'bidon': 4}, vol=0, hp=30); rng([0.0] * 4); enter_door('j_q4_nord'); waitjs("window.__nml.state.dialogue", 10)
-        option('Le regarder en face'); s = st(); check(f'{T}: A/rôdeur raté : frappe', 'barre' in dtext()); option('Ramasser'); s = st()
+        option('Le regarder en face'); s = st(); check(f'{T}: A/rôdeur raté : frappe', (st()['dialogue'] or {}).get('node') == 'frappe', st()['dialogue']); option('Ramasser'); s = st()
         check(f'{T}: A/rôdeur raté : -5 PV, combat_rodeur + hook', s['player']['hp'] == 25 and s['flags'].get('combat_rodeur') and 'combat_rodeur' in (s.get('hooks') or []), (s['player']['hp'], s.get('hooks')))
         close_dlg(); rng([0.0, 0.0]); x, z = near_door('j_q1_est', 2.5); place('dusk_q1', x, z); enter_door('j_q1_est')
         check(f'{T}: A/raid déclenché (tirage forcé)', waitjs("window.__nml.state.dialogue && window.__nml.state.dialogue.npc==='raid'", 10)); cap('a5-raid')
