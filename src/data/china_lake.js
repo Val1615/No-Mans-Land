@@ -87,18 +87,18 @@ export const DOORS_CHINA = [
 ];
 const behind = id => { const s = STANDS.find(q => q[0] === id); return { x: s[2] + 1.25, z: s[3] - 0.7 }; }; // marchand côté nord de l'étal [plan]
 export const NPCS_CHINA = [ // sprites PROVISOIRES (réemplois)
-  { id: 'cl_shen', name: 'Shen', sprite: 'gen_sv_receleur', location: 'steel_china', x: 7.6, z: 18.6, faceTo: [12, 18.6], dialogue: 'cl_shen' },
-  { id: 'cl_m_nord', name: 'Marchande d\u2019implants', sprite: 'gen_mara', location: 'steel_china', ...behind('cl_s_implants'), faceTo: [17.25, 13], dialogue: 'cl_m_nord' },
-  { id: 'cl_m_est', name: 'Armurier', sprite: 'gen_sv_gang', location: 'steel_china', ...behind('cl_s_armes'), faceTo: [36, 14], dialogue: 'cl_m_est' },
-  { id: 'cl_m_sud', name: 'Faussaire', sprite: 'gen_teng', location: 'steel_china', x: 19.1, z: 28.6, faceTo: [17.25, 31], /* au bout de l'étal : derrière, le sprite du stand masquait le tap */ dialogue: 'cl_m_sud' },
-  { id: 'cl_m_ouest', name: 'Apothicaire', sprite: 'gen_odile', location: 'steel_china', ...behind('cl_s_medocs'), faceTo: [9, 15], dialogue: 'cl_m_ouest' },
-  { id: 'cl_tech', name: 'Le technicien', sprite: 'gen_sv_dealer', location: 'steel_china', ...behind('cl_s_tech'), faceTo: [24, 30], dialogue: 'cl_tech' },
-  { id: 'cl_zhou', name: 'Madame Zhou', sprite: 'gen_vera', location: 'the_in', x: 6, z: 2, faceTo: [6, 9], dialogue: 'cl_zhou' },
-  { id: 'cl_main1', name: 'Homme de main', sprite: 'gen_halloran', location: 'the_in', x: 2, z: 4, faceTo: [6, 9], dialogue: 'cl_main' },
-  { id: 'cl_main2', name: 'Homme de main', sprite: 'gen_halloran', location: 'the_in', x: 10, z: 4, faceTo: [6, 9], dialogue: 'cl_main' },
-  { id: 'cl_serveur', name: 'Serveur', sprite: 'gen_teo', location: 'dragon_in', x: 2.4, z: 3.2, faceTo: [6, 9], dialogue: 'cl_serveur' },
-  { id: 'cl_lo', name: 'Vieux Lo', sprite: 'gen_hector', location: 'dragon_in', x: 9, z: 6, faceTo: [6, 9], dialogue: 'cl_lo' },
-  { id: 'cl_yu', name: 'Yu', sprite: 'gen_sv_guetteuse', location: 'filets_in', x: 4, z: 3, faceTo: [5, 8], dialogue: 'cl_yu' },
+  { id: 'cl_shen', name: 'Shen', sprite: 'gen_cl_shen', location: 'steel_china', x: 7.6, z: 18.6, faceTo: [12, 18.6], dialogue: 'cl_shen' },
+  { id: 'cl_m_nord', name: 'Marchande d\u2019implants', sprite: 'gen_cl_m_nord', location: 'steel_china', ...behind('cl_s_implants'), faceTo: [17.25, 13], dialogue: 'cl_m_nord' },
+  { id: 'cl_m_est', name: 'Armurier', sprite: 'gen_cl_m_est', location: 'steel_china', ...behind('cl_s_armes'), faceTo: [36, 14], dialogue: 'cl_m_est' },
+  { id: 'cl_m_sud', name: 'Faussaire', sprite: 'gen_cl_m_sud', location: 'steel_china', x: 19.1, z: 28.6, faceTo: [17.25, 31], /* au bout de l'étal : derrière, le sprite du stand masquait le tap */ dialogue: 'cl_m_sud' },
+  { id: 'cl_m_ouest', name: 'Apothicaire', sprite: 'gen_cl_m_ouest', location: 'steel_china', ...behind('cl_s_medocs'), faceTo: [9, 15], dialogue: 'cl_m_ouest' },
+  { id: 'cl_tech', name: 'Le technicien', sprite: 'gen_cl_tech', location: 'steel_china', ...behind('cl_s_tech'), faceTo: [24, 30], dialogue: 'cl_tech' },
+  { id: 'cl_zhou', name: 'Madame Zhou', sprite: 'gen_cl_zhou', location: 'the_in', x: 6, z: 2, faceTo: [6, 9], dialogue: 'cl_zhou' },
+  { id: 'cl_main1', name: 'Homme de main', sprite: 'gen_cl_main1', location: 'the_in', x: 2, z: 4, faceTo: [6, 9], dialogue: 'cl_main' },
+  { id: 'cl_main2', name: 'Homme de main', sprite: 'gen_cl_main2', location: 'the_in', x: 10, z: 4, faceTo: [6, 9], dialogue: 'cl_main' },
+  { id: 'cl_serveur', name: 'Serveur', sprite: 'gen_cl_serveur', location: 'dragon_in', x: 2.4, z: 3.2, faceTo: [6, 9], dialogue: 'cl_serveur' },
+  { id: 'cl_lo', name: 'Vieux Lo', sprite: 'gen_cl_lo', location: 'dragon_in', x: 9, z: 6, faceTo: [6, 9], dialogue: 'cl_lo' },
+  { id: 'cl_yu', name: 'Yu', sprite: 'gen_cl_yu', location: 'filets_in', x: 4, z: 3, faceTo: [5, 8], dialogue: 'cl_yu' },
 ];
 // Répliques et services de base [inventé, d'après la DA : marchandage à voix basse, l'étranger dévisagé]. Prix en crédits. Aucune quête, aucun achat d'objet (lot 4).
 const D = (t1, t2, svc = []) => ({ start: { text: t1, options: [ ...svc, { label: 'Et sinon ?', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] },

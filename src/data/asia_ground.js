@@ -84,12 +84,12 @@ export const DOORS_ASIA = [
   DOOR('ag_mei_door', 'ag_mei', 15.25, 13.5, 'mei_in_door'), OUT('mei_in_door', 'mei_in', 10, 8, 'ag_mei_door'), // arrière du stand (sert à la quête plus tard)
 ];
 export const NPCS_ASIA = [ // sprites PROVISOIRES (réemplois) ; positions intérieures du plan §2
-  { id: 'ag_mei', name: 'Mei Tran', sprite: 'gen_vera', location: 'steel_asia', x: 15.2, z: 11.2, faceTo: [15.2, 16], dialogue: 'ag_mei' },     // derrière son stand, côté nord [plan]
-  { id: 'ag_lau', name: 'Hana Lau', sprite: 'gen_odile', location: 'lau_in', x: 4, z: 2, faceTo: [5, 8], dialogue: 'ag_lau' },
-  { id: 'ag_okafor', name: 'Okafor', sprite: 'gen_ezequiel', location: 'okafor_in', x: 6, z: 2, faceTo: [5, 8], dialogue: 'ag_okafor' },
-  { id: 'ag_seng', name: 'Victor Seng', sprite: 'gen_teng', location: 'emplacements_in', x: 5, z: 2, faceTo: [5, 8], dialogue: 'ag_seng' },
-  { id: 'ag_ahlam', name: 'Ah-Lam', sprite: 'gen_sv_gang', location: 'steel_asia', x: 26.4, z: 32.2, faceTo: [24, 30], dialogue: 'ag_ahlam' }, // garde du Barrage, à l'écart du libellé de a_sud
-  { id: 'ag_kim', name: 'Kim Tran', sprite: 'gen_sv_guetteuse', location: 'mei_in', x: 8, z: 5, faceTo: [5, 8], dialogue: 'ag_kim' },
+  { id: 'ag_mei', name: 'Mei Tran', sprite: 'gen_ag_mei', location: 'steel_asia', x: 15.2, z: 11.2, faceTo: [15.2, 16], dialogue: 'ag_mei' },     // derrière son stand, côté nord [plan]
+  { id: 'ag_lau', name: 'Hana Lau', sprite: 'gen_ag_lau', location: 'lau_in', x: 4, z: 2, faceTo: [5, 8], dialogue: 'ag_lau' },
+  { id: 'ag_okafor', name: 'Okafor', sprite: 'gen_ag_okafor', location: 'okafor_in', x: 6, z: 2, faceTo: [5, 8], dialogue: 'ag_okafor' },
+  { id: 'ag_seng', name: 'Victor Seng', sprite: 'gen_ag_seng', location: 'emplacements_in', x: 5, z: 2, faceTo: [5, 8], dialogue: 'ag_seng' },
+  { id: 'ag_ahlam', name: 'Ah-Lam', sprite: 'gen_ag_ahlam', location: 'steel_asia', x: 26.4, z: 32.2, faceTo: [24, 30], dialogue: 'ag_ahlam' }, // garde du Barrage, à l'écart du libellé de a_sud
+  { id: 'ag_kim', name: 'Kim Tran', sprite: 'gen_ag_kim', location: 'mei_in', x: 8, z: 5, faceTo: [5, 8], dialogue: 'ag_kim' },
 ];
 // Répliques et services [inventé, d'après envie / peur / voix de la fiche §5]. Prix en crédits [fiche §1]. Aucune quête.
 const D = (t1, t2, t3, svc = []) => ({ start: { text: t1, options: [ ...svc, { label: 'Continuer.', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] },

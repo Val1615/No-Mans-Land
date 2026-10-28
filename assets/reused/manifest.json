@@ -922,5 +922,257 @@
   ],
   "status": "v13 Steel : étal d implants volés (généré)",
   "src": "art-gen/gen_sv_props2.jpg #3"
+ },
+ "gen_ag_mei": {
+  "file": "generated/gen_ag_mei.webp",
+  "source": "GenerateImage (cursor), 67f7be5b",
+  "height_m": 1.62,
+  "px": [
+   175,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_ag_lau": {
+  "file": "generated/gen_ag_lau.webp",
+  "source": "GenerateImage (cursor), 291da5f1",
+  "height_m": 1.66,
+  "px": [
+   136,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_ag_okafor": {
+  "file": "generated/gen_ag_okafor.webp",
+  "source": "GenerateImage (cursor), 6d94b5ef",
+  "height_m": 1.8,
+  "px": [
+   203,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_ag_seng": {
+  "file": "generated/gen_ag_seng.webp",
+  "source": "GenerateImage (cursor), 59b0fd97",
+  "height_m": 1.72,
+  "px": [
+   185,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_ag_kim": {
+  "file": "generated/gen_ag_kim.webp",
+  "source": "GenerateImage (cursor), 8c2bd43f",
+  "height_m": 1.68,
+  "px": [
+   165,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_ag_ahlam": {
+  "file": "generated/gen_ag_ahlam.webp",
+  "source": "GenerateImage (cursor), 62d95423",
+  "height_m": 1.86,
+  "px": [
+   199,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_shen": {
+  "file": "generated/gen_cl_shen.webp",
+  "source": "GenerateImage (cursor), 31262777",
+  "height_m": 1.72,
+  "px": [
+   167,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_m_nord": {
+  "file": "generated/gen_cl_m_nord.webp",
+  "source": "GenerateImage (cursor), 6604ab08",
+  "height_m": 1.68,
+  "px": [
+   177,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_m_est": {
+  "file": "generated/gen_cl_m_est.webp",
+  "source": "GenerateImage (cursor), 26fa7452",
+  "height_m": 1.78,
+  "px": [
+   194,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_m_sud": {
+  "file": "generated/gen_cl_m_sud.webp",
+  "source": "GenerateImage (cursor), ed8241a8",
+  "height_m": 1.84,
+  "px": [
+   142,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_m_ouest": {
+  "file": "generated/gen_cl_m_ouest.webp",
+  "source": "GenerateImage (cursor), d4922e78",
+  "height_m": 1.55,
+  "px": [
+   231,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_tech": {
+  "file": "generated/gen_cl_tech.webp",
+  "source": "GenerateImage (cursor), 450aa3f8",
+  "height_m": 1.72,
+  "px": [
+   189,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_zhou": {
+  "file": "generated/gen_cl_zhou.webp",
+  "source": "GenerateImage (cursor), 3d926f9c",
+  "height_m": 1.72,
+  "px": [
+   138,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_main1": {
+  "file": "generated/gen_cl_main1.webp",
+  "source": "GenerateImage (cursor), eaf1b082",
+  "height_m": 1.88,
+  "px": [
+   156,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_main2": {
+  "file": "generated/gen_cl_main2.webp",
+  "source": "GenerateImage (cursor), 6a8689e6",
+  "height_m": 1.78,
+  "px": [
+   149,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_serveur": {
+  "file": "generated/gen_cl_serveur.webp",
+  "source": "GenerateImage (cursor), effc8bfe",
+  "height_m": 1.74,
+  "px": [
+   221,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_lo": {
+  "file": "generated/gen_cl_lo.webp",
+  "source": "GenerateImage (cursor), 595a1b22",
+  "height_m": 1.6,
+  "px": [
+   218,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
+ },
+ "gen_cl_yu": {
+  "file": "generated/gen_cl_yu.webp",
+  "source": "GenerateImage (cursor), 1be8cae4",
+  "height_m": 1.64,
+  "px": [
+   221,
+   512
+  ],
+  "footprint_m": [
+   0.6,
+   0.6
+  ],
+  "status": "généré, pnj-asia-china"
  }
 }
