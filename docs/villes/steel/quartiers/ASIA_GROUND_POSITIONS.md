@@ -82,7 +82,6 @@ Lower-Town : `l_sud` (8, 36) ↔ `a_nord` ouverte au lot 2, sans condition. `l_s
 
 ## Points ouverts
 
-- a_nord posé en (8, 0) comme le plan ; la fiche indique (0, 18).
 - Repérage +1 sur a_escalier : système absent, non branché.
 - a_quai (Cour des Porteurs) : lot 4, non posé. Quête « Le loyer de Mei » non branchée.
 - Sprites des PNJ : réemplois provisoires.

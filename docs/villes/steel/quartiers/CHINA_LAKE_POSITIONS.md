@@ -80,18 +80,18 @@ Eau : `g_cl_eau` (512 px) non modifié ; répétition cassée dans `paintWater` 
 
 | id | nom | lieu | x | z | sprite (PROVISOIRE) |
 |---|---|---|---|---|---|
-| cl_shen | Shen | steel_china | 7.6 | 18.6 | gen_sv_receleur |
-| cl_m_nord | Marchande d’implants | steel_china | 17.25 | 9.9 | gen_mara |
-| cl_m_est | Armurier | steel_china | 38.25 | 12.3 | gen_sv_gang |
-| cl_m_sud | Faussaire | steel_china | 19.1 | 28.6 | gen_teng |
-| cl_m_ouest | Apothicaire | steel_china | 11.75 | 12.9 | gen_odile |
-| cl_tech | Le technicien | steel_china | 24 | 25.900000000000002 | gen_sv_dealer |
-| cl_zhou | Madame Zhou | the_in | 6 | 2 | gen_vera |
-| cl_main1 | Homme de main | the_in | 2 | 4 | gen_halloran |
-| cl_main2 | Homme de main | the_in | 10 | 4 | gen_halloran |
-| cl_serveur | Serveur | dragon_in | 2.4 | 3.2 | gen_teo |
-| cl_lo | Vieux Lo | dragon_in | 9 | 6 | gen_hector |
-| cl_yu | Yu | filets_in | 4 | 3 | gen_sv_guetteuse |
+| cl_shen | Shen | steel_china | 7.6 | 18.6 | gen_cl_shen |
+| cl_m_nord | Marchande d’implants | steel_china | 17.25 | 9.5 | gen_cl_m_nord |
+| cl_m_est | Armurier | steel_china | 38.25 | 12.3 | gen_cl_m_est |
+| cl_m_sud | Faussaire | steel_china | 19.1 | 28.6 | gen_cl_m_sud |
+| cl_m_ouest | Apothicaire | steel_china | 11.75 | 12.8 | gen_cl_m_ouest |
+| cl_tech | Le technicien | steel_china | 25.7 | 27.1 | gen_cl_tech |
+| cl_zhou | Madame Zhou | the_in | 6 | 2 | gen_cl_zhou |
+| cl_main1 | Homme de main | the_in | 2 | 4 | gen_cl_main1 |
+| cl_main2 | Homme de main | the_in | 10 | 4 | gen_cl_main2 |
+| cl_serveur | Serveur | dragon_in | 2.4 | 3.2 | gen_cl_serveur |
+| cl_lo | Vieux Lo | dragon_in | 9 | 6 | gen_cl_lo |
+| cl_yu | Yu | filets_in | 4 | 3 | gen_cl_yu |
 | ag_ahlam | Ah-Lam | steel_asia | 26.4 | 32.2 | gen_sv_gang |
 
 ## Intérieurs

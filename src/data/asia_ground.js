@@ -1,7 +1,7 @@
 // Asia-Ground lot 2 (zone steel_asia) : décor, accès, PNJ et services de base. SANS quêtes (« Le loyer de Mei » non branché).
 // Fiches de Régie : docs/villes/steel/quartiers/ASIA_GROUND.md et PLAN_IMPLEMENTATION.md §2. Positions : docs/villes/steel/quartiers/ASIA_GROUND_POSITIONS.md.
 // Sprites d'Ocre (creation/asia-ground-sprites 99f6759), emprises = footprint_m du manifeste. [fiche] = repris de la fiche ; [inventé] = choix de ce lot.
-// Géographie [décision] : Asia-Ground au sud de Lower-Town. a_nord au bord nord (x 8, z 0) comme le plan (la fiche dit x 0, z 18 : point ouvert du plan §5.1).
+// Géographie [décision] : Asia-Ground au sud de Lower-Town. a_nord au bord nord (x 8, z 0) comme le plan.
 // Palette [fiche §2] : rouge laque, or terni, vapeur ; un seul néon cyan (ag_neon_io).
 const ASIA = { bg: '#0c0607', hemi: ['#f0a070', '#1a0f10', 1.1], sun: ['#ff9a6a', 0.65], tint: '#e0b48e', actor: '#ecc8a8' };
 const LAQUE = '#d0402a', LAMPE = '#f0b060', WOK = '#e86a22', CYAN = '#38d8ff';

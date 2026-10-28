@@ -141,6 +141,13 @@ with sync_playwright() as p:
       const pts=[...w.DOORS.filter(d=>d.location===n.location).flatMap(d=>[d.opening,d.threshold]),...(w.LOCATIONS[n.location].buildings||[]).filter(b=>b.named).map(b=>({x:b.x+b.w/2,z:b.z+b.d}))];
       const m=Math.min(...pts.map(p=>Math.hypot(p.x-n.x,p.z-n.z)));out.push([n.id,+m.toFixed(2)])}return out})()""")
     check('PNJ à >= 1,5 m des portes et libellés', all(m >= 1.5 for _, m in near), near)
+    near2 = E("""(()=>{const w=window.__nml.world,out=[];for(const n of window.__nml.npcs.filter(n=>n.location==='steel_china')){
+      const pts=w.LOCATIONS.steel_china.buildings.filter(b=>b.named).flatMap(b=>[{x:b.x+b.w/2,z:b.z+b.d},{x:b.x+b.w/2,z:b.z+b.d/2}]);
+      out.push([n.id,+Math.min(...pts.map(p=>Math.hypot(p.x-n.x,p.z-n.z))).toFixed(2)])}return out})()""")
+    check('PNJ de China Lake à >= 1,5 m des libellés et du centre des stands (mesure de Régie)', all(m >= 1.5 for _, m in near2), near2)
+    wetn = E("""(()=>{const w=window.__nml.world,out=[];for(const n of window.__nml.npcs){const W=(w.LOCATIONS[n.location].ground||{}).water||[];
+      if(W.some(q=>n.x>=q.x&&n.x<=q.x+q.w&&n.z>=q.z&&n.z<=q.z+q.d))out.push(n.id)}return out})()""")
+    check('aucun PNJ sur l\'eau', not wetn, wetn)
     E("window.__nml.state.player.credits=6")
     for door, inn, nid in [('cl_dragon_door', 'dragon_in', 'cl_lo'), ('cl_the_door', 'the_in', 'cl_zhou'), ('cl_filets_door', 'filets_in', 'cl_yu')]:
         ok = enter_door(door); time.sleep(1.2); check(f'entrée {inn}', ok and st()['location'] == inn, st()['location'])
