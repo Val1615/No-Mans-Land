@@ -2,6 +2,8 @@
 
 Branche creation/pnj-asia-china. Remplacent les reemplois provisoires (gen_vera, gen_odile, etc.). Cle = gen_ + id du PNJ dans src/data (asia_ground.js, china_lake.js).
 
+Kim Tran : adolescent de 17 ans (age canon), plus mince et plus petit (1.68 m).
+
 Convention (identique a gen_teng, gen_elio, gen_vera) : webp RGBA, fond transparent, recadre serre sur la silhouette, 512 px de haut, pivot = bas-centre (pieds). Echelle donnee par height_m dans assets/reused/manifest.json (environ 50 px/m en jeu). Portrait : portrait-<cle>.webp, 192x192, recadre du haut du sprite sur fond (58,44,32), comme tools_npcs_steel.py.
 
 Chaine : GenerateImage sur fond vert uni (#00E600), detourage par excès de vert, trous interieurs verts retires, despill limite a une bande de 4 px au bord.
@@ -14,7 +16,7 @@ A brancher (hors de ce lot, fichiers d autres agents) : 1) remplacer sprite: 'ge
 | gen_ag_lau | 1.66 | 136x512 |
 | gen_ag_okafor | 1.8 | 203x512 |
 | gen_ag_seng | 1.72 | 185x512 |
-| gen_ag_kim | 1.74 | 174x512 |
+| gen_ag_kim | 1.68 | 165x512 |
 | gen_ag_ahlam | 1.86 | 199x512 |
 | gen_cl_shen | 1.72 | 167x512 |
 | gen_cl_m_nord | 1.68 | 177x512 |
@@ -91,10 +93,10 @@ Entrees de manifeste proposees :
  },
  "gen_ag_kim": {
   "file": "generated/gen_ag_kim.webp",
-  "source": "GenerateImage (cursor), 9d05f75e",
-  "height_m": 1.74,
+  "source": "GenerateImage (cursor), 8c2bd43f",
+  "height_m": 1.68,
   "px": [
-   174,
+   165,
    512
   ],
   "footprint_m": [
