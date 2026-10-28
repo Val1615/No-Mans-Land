@@ -139,6 +139,8 @@ with sync_playwright() as p:
         check(f'{T}: autosave écrite juste avant le combat (sans le combat en cours)', auto and auto['loc'] == 'dusk_q1' and not auto['combat'] and auto['flag'], auto)
         check(f'{T}: grille et interface de combat affichées', E("document.body.classList.contains('combat') && !document.getElementById('cbt').hidden"))
         time.sleep(0.8); cap(f'{T}-01_debut_combat')
+        zc = E("(()=>{const c=window.__nml.state.combat,g=window.__nml.game.combat;return {loc:window.__nml.state.location,z:c.zone,hors:g.horsCarte().length,libres:(()=>{let n=0;for(let i=c.zone.i0;i<=c.zone.i1;i++)for(let j=c.zone.j0;j<=c.zone.j1;j++)if(g.cellFree(i,j))n++;return n})()}})()")
+        check(f'{T}: zone 19 x 19 entièrement sur la carte (aucune case dans le vide), ancre du lieu', zc['hors'] == 0 and zc['z']['i1'] - zc['z']['i0'] == 18 and zc['z']['j1'] - zc['z']['j0'] == 18 and zc['libres'] >= 250, zc)
         c = cst(); me = c['units'][[u['id'] for u in c['units']].index('joueur')]; i0, j0 = me['i'], me['j']
         costs = E(f"""(()=>{{const g=window.__nml.game.combat,f=(i,j)=>{{const p=g.path(i,j);return p?p.pa:null}};
           for(const [sx,sz] of [[1,1],[1,-1],[-1,1],[-1,-1]]){{const r=[f({i0}+sx,{j0}),f({i0}+2*sx,{j0}),f({i0}+sx,{j0}+sz),f({i0}+2*sx,{j0}+2*sz),f({i0}+3*sx,{j0}+sz)];if(r.every(v=>v!=null))return r}}return null}})()""")

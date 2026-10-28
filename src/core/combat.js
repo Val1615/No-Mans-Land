@@ -52,7 +52,8 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
   function start(id) {
     const E = ENCOUNTERS[id]; if (!E) return { ok: false, reason: 'combat_inconnu' };
     emit({ type: 'combat_autosave', id }); // main.js écrit l'autosave AVANT que le combat n'existe (COMBAT.md §1)
-    const p = state.player, [pi, pj] = cellOf(p.x, p.z), R = COMBAT.zoneRayon;
+    const p = state.player, anc = E.ancres?.[state.location]; if (anc) Object.assign(p, { x: anc.x, z: anc.z, path: [], pending: null }); // le rôdeur te coince sur le terrain dégagé
+    const [pi, pj] = cellOf(p.x, p.z), R = COMBAT.zoneRayon;
     state.combat = { id, phase: 'joueur', tour: 1, actif: 0, issue: null, preview: null, zone: { i0: pi - R, i1: pi + R, j0: pj - R, j1: pj + R }, units: [] };
     const ch = state.character || {};
     const pu = { id: 'joueur', nom: ch.name || 'Toi', joueur: true, actif: true, i: pi, j: pj, x: pi + 0.5, z: pj + 0.5, path: [], paMax: ch.ap || 5, pa: ch.ap || 5, initiative: ch.initiative ?? 5 };
@@ -125,5 +126,7 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
     emit({ type: 'combat_fin', id: c.id, issue, text: E.textes?.[issue] });
     state.combatLast = { id: c.id, issue, tour: c.tour }; state.combat = null;
   }
-  return { start, previewTo, moveTo, endTurn, surrender, step, reachable, path: (i, j) => C() && path(player(), i, j), cellFree, isExit: (i, j) => C() && isExit(i, j), player, actif, finish };
+  // cases de la zone hors de la carte (vide) : doit rester vide
+  function horsCarte() { const c = C(); if (!c) return null; const g = sub(), out = []; for (let i = c.zone.i0; i <= c.zone.i1; i++) for (let j = c.zone.j0; j <= c.zone.j1; j++) if (i < 0 || j < 0 || 2 * i + 1 >= g.w || 2 * j + 1 >= g.d) out.push([i, j]); return out; }
+  return { horsCarte, start, previewTo, moveTo, endTurn, surrender, step, reachable, path: (i, j) => C() && path(player(), i, j), cellFree, isExit: (i, j) => C() && isExit(i, j), player, actif, finish };
 }
