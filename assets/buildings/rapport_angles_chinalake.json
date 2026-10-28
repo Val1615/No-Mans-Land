@@ -235,7 +235,7 @@
   "accepte_arete_basse": true,
   "source": "art-gen/gen_cl_stand_implants3.jpg",
   "origine": "généré",
-  "role": "stand illégal, quai nord : implants piratés, kiosque fermé en tôle rouge sang-de-bœuf, toit plat, néon rouge, vitrine et fauteuil chirurgical, IMPLANTS 植入物",
+  "role": "stand illégal, quai nord : implants piratés, kiosque fermé en tôle rouge sang-de-bœuf, toit plat, enseigne peinte sans néon, vitrine et fauteuil chirurgical, IMPLANTS 植入物",
   "emprise_m": [
    2.5,
    1.0
@@ -243,7 +243,29 @@
   "hauteur_attendue_m": 2.6,
   "hauteur_implicite_m": 2.61,
   "echelle_ok": true,
-  "magenta_bord_pct": 0.0
+  "magenta_bord_pct": 0.0,
+  "retouche_sans_neon": {
+   "date": "2026-10-28",
+   "judge_sprite_final": {
+    "pente_dominante": 0.3,
+    "sens": "direct",
+    "part_bande_v4": 0.76,
+    "part_2_1_opposee": 0,
+    "accepte": true
+   },
+   "judge_sprite_final_avant": {
+    "pente_dominante": 0.25,
+    "part_bande_v4": 0.78,
+    "accepte": true
+   },
+   "pixels_neon_rouges": [
+    666,
+    0
+   ],
+   "bleu_cyan_violet_rose": 0,
+   "magenta_bord_pct": 0.0,
+   "alpha_identique": true
+  }
  },
  "cl_stand_puces": {
   "pente_dominante": 0.3,
