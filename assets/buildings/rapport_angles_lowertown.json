@@ -170,18 +170,18 @@
  },
  "lt_comptoir_moss": {
   "pente_dominante": 0.3,
-  "sens": "miroir",
-  "part_bande_v4": 0.49,
+  "sens": "direct",
+  "part_bande_v4": 0.39,
   "part_2_1_opposee": 0,
   "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.2,
-    0.4
+    0.22,
+    0.58
    ],
    "cisaillement": [
-    1.713,
-    -0.017
+    1.295,
+    0.048
    ],
    "miroir": false,
    "pentes_apres": [
@@ -190,17 +190,17 @@
    ]
   },
   "accepte_arete_basse": true,
-  "source": "art-gen/gen_lt_comptoir_moss.jpg",
+  "source": "art-gen/gen_lt_comptoir_moss_t1.jpg",
   "origine": "généré",
-  "role": "Chez Moss, comptoir sans enseigne au rez d un immeuble, guichet éclairé ambre",
+  "role": "Chez Moss (retours tour 1 : compact, un niveau), cabane bois et tôle sombre, comptoir éclairé ambre, enseigne peinte",
   "emprise_m": [
    6.0,
    5.0
   ],
-  "hauteur_attendue_m": 7.0,
-  "hauteur_implicite_m": 11.13,
+  "hauteur_attendue_m": 4.5,
+  "hauteur_implicite_m": 6.99,
   "echelle_ok": false,
-  "magenta_bord_pct": 0.0
+  "magenta_bord_pct": 0.02
  },
  "lt_tuyau": {
   "pente_dominante": 0.25,

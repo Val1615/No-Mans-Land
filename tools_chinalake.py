@@ -14,7 +14,7 @@ MAQ = 'reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/
 # China Lake (PLAN_IMPLEMENTATION.md §3, CHINA_LAKE.md §7, planches quartier_china_lake_* 19c137c/6610e92) : 5 bâtiments (+1 façade), stand illégal
 # en 5 variantes lisibles par marchandise (une rive par type), 13 props (ballon ×4, déchets ×3), préfixe cl_. Sol g_cl_eau : voir build_eau().
 LT = {
- 'cl_maison_the': ('gen_cl_maison_the.jpg', [10.0, 8.0], 8.5, 'maison de thé de la mafia, seul toit recourbé (un seul pan, sans étages de pagode), porte gardée, MAISON DE THÉ 茶馆'),
+ 'cl_maison_the': ('gen_cl_maison_the_t1.jpg', [10.0, 5.5], 5.5, 'maison de thé de la mafia (retours tour 1 : compacte, un niveau), seul toit recourbé (un seul pan, sans étages de pagode), porte gardée, MAISON DE THÉ 茶馆'),
  'cl_immeuble_fond': ('gen_cl_immeuble_fond.jpg', [8.0, 6.0], 9.0, 'immeuble de fond 3 niveaux sur pilotis, toit plat, Pavillon du Dragon PAVILLON DU DRAGON 龙阁'),
  'cl_immeuble_fond_b': ('gen_cl_immeuble_fond_b2.jpg', [6.0, 8.0], 8.0, 'variante façade muette LOGEMENTS 住房, toit plat, linge'),
  'cl_pilotis': ('gen_cl_pilotis.jpg', [6.0, 6.0], 4.5, 'module de structure sur pilotis 6 m (plateforme, garde-corps, caisses, filets pliés, lanterne)'),
@@ -50,7 +50,7 @@ GRADE = {}
 # correctifs 2026-10-22 : pentes source mesurées (Hough) sur les axes de l objet quand l arête basse n est pas mesurable
 # (coude : bras en V renversé, apex à l arrière ; passerelle : escalier et poteaux). (pente axe x, pente axe z), sans miroir.
 FORCE = {}
-FITFP = {'cl_maison_the', 'cl_immeuble_fond', 'cl_cabane'}  # proportions x/z mesurées sur le dessin (plus grande dimension = plan) pour que le pivot tombe sur le coin dessiné
+FITFP = {'cl_immeuble_fond', 'cl_cabane'}  # proportions x/z mesurées sur le dessin (plus grande dimension = plan) pour que le pivot tombe sur le coin dessiné
 FP = {k: v[1] for k, v in LT.items() if (not k.startswith('cl_stand_') or k in ('cl_stand_implants', 'cl_stand_puces')) and k not in FITFP}  # stands : proportions mesurées, plus grande dimension 2,5 m (les générations sont plus longues que profondes)  # emprises du plan imposées (pivot géométrique au coin avant)
 STRICT = set()
 def key_green_strict(path):
@@ -261,3 +261,59 @@ def unneon_implants():
     o[...,:3]=np.where(dark[...,None],o[...,:3]*0.3+metal_sign*0.7,o[...,:3])
     o[...,3]=al
     Image.fromarray(np.clip(o,0,255).astype('uint8'),'RGBA').save(P,quality=90)
+
+
+# ---- retours tour 1 (2026-10-28) : lac irrégulier g_cl_lac (le lac carré lisait comme un bassin) ----
+# Décalque RGBA vu de dessus couvrant le rectangle LAKE (x 14, z 12, w 20, d 14 m) à K = 50 px/m (1000 × 700 px, origine = coin x 14, z 12).
+# Eau = carreau g_cl_eau v3 (a301df7) répété à tileM 6 m, contour arrondi irrégulier LAC_POLY (monde, m), bord de quai en planches sombres
+# (bande 0,6 m), pilotis ronds sous le quai, reflets des lanternes repris de china_lake.js. Hors contour : transparent (sol du quartier).
+LAKE = (14.0, 12.0, 20.0, 14.0)
+LANT = [[16.5, 13.4], [21, 16.8], [25.5, 13.6], [31.5, 17.2], [18, 20.6], [24.6, 21.4], [30.6, 24.4], [15.6, 24.8], [27.2, 16.2]]
+def lac_poly(n=28):
+    x0, z0, w, d = LAKE; cx, cz, rx, rz = x0 + w / 2, z0 + d / 2, w / 2 - 0.25, d / 2 - 0.25
+    t = np.linspace(0, 2 * np.pi, n, endpoint=False)
+    f = 1 - 0.10 * (1 + np.sin(2 * t + 0.7)) / 2 - 0.09 * (1 + np.sin(3 * t + 2.1)) / 2 - 0.05 * (1 + np.cos(5 * t + 0.4)) / 2
+    c, s = np.cos(t), np.sin(t); e = 2.6  # superellipse arrondie : remplit le rectangle sans angles
+    px = cx + rx * f * np.sign(c) * np.abs(c) ** (2 / e); pz = cz + rz * f * np.sign(s) * np.abs(s) ** (2 / e)
+    return [[round(float(a), 2), round(float(b), 2)] for a, b in zip(px, pz)]
+def build_lac():
+    import cv2
+    from scipy import ndimage
+    x0, z0, w, d = LAKE; W, H = int(w * K), int(d * K); poly = lac_poly()
+    pts = np.array([[(x - x0) * K, (z - z0) * K] for x, z in poly], np.float32)
+    # contour lissé (Chaikin ×3) pour le tracé, le polygone exporté reste à 28 sommets
+    P = pts
+    for _ in range(3): P = np.concatenate([[0.75 * a + 0.25 * b, 0.25 * a + 0.75 * b] for a, b in zip(P, np.roll(P, -1, 0))])
+    m = np.zeros((H, W), np.uint8); cv2.fillPoly(m, [np.round(P * 4).astype(np.int32)], 1, cv2.LINE_AA, shift=2)
+    tile = Image.open(HERE + '/assets/generated/g_cl_eau.webp').convert('RGB').resize((int(6 * K),) * 2, Image.LANCZOS)
+    t = np.asarray(tile).astype(float); big = np.tile(t, (6, 6, 1)).astype(np.float32); water = big[37:37 + H, 113:113 + W]
+    # répétition cassée comme paintWater : deuxième couche tournée de 37° et agrandie 1,7, en fondu 0,38
+    Mr = cv2.getRotationMatrix2D((big.shape[1] / 2, big.shape[0] / 2), 37, 1.7); rot = cv2.warpAffine(big, Mr, big.shape[1::-1], borderMode=cv2.BORDER_WRAP)
+    oy, ox = (big.shape[0] - H) // 2, (big.shape[1] - W) // 2; water = water * 0.62 + rot[oy:oy + H, ox:ox + W] * 0.38
+    dist = ndimage.distance_transform_edt(m)  # px depuis le bord, dans l eau
+    out = np.zeros((H, W, 4), float); out[..., :3] = water * (0.78 + 0.22 * np.clip(dist / (1.2 * K), 0, 1))[..., None]  # eau assombrie sous le quai
+    yy, xx = np.mgrid[:H, :W]
+    for lx, lz in LANT:  # reflets lanternes (rouge, cœur ambre) comme paintWater
+        r2 = ((xx - (lx - x0) * K) ** 2 + (yy - (lz - z0) * K) ** 2) / (1.4 * K) ** 2
+        out[..., :3] += (np.clip(1 - r2, 0, 1) ** 2 * 0.55)[..., None] * np.array([200, 50, 42])
+    # quai : bande de 0,6 m de planches sombres à l intérieur du contour, arête claire côté eau, ombre portée sur l eau
+    q = (dist > 0) & (dist <= 0.6 * K); rng = np.random.default_rng(7)
+    plank = np.array([62, 50, 38.]) * (0.8 + 0.2 * ((np.arctan2(yy - H / 2, xx - W / 2) * 60).astype(int) % 2))[..., None]
+    plank *= (0.85 + 0.15 * rng.random((H, W)))[..., None]
+    out[..., :3] = np.where(q[..., None], plank, out[..., :3])
+    edge = (dist > 0.6 * K) & (dist <= 0.6 * K + 3); out[..., :3] = np.where(edge[..., None], np.array([118, 98, 72.]), out[..., :3])
+    sh = (dist > 0.6 * K + 3) & (dist <= 0.6 * K + 14); out[..., :3] = np.where(sh[..., None], out[..., :3] * 0.6, out[..., :3])
+    # pilotis : têtes de pieux rondes tous les ~1,6 m le long du quai, cerclées de sombre
+    L = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(np.vstack([P, P[:1]]), axis=0), axis=1))]); step = 1.6 * K
+    for s in np.arange(0, L[-1], step):
+        i = min(np.searchsorted(L, s) - 1, len(P) - 1); i = max(i, 0); a, b = P[i], P[(i + 1) % len(P)]; u = (s - L[i]) / max(L[i + 1] - L[i], 1e-6)
+        p = a + (b - a) * u; c = np.array([W / 2, H / 2]); p = p + (c - p) / np.linalg.norm(c - p) * (0.6 * K + 6)
+        rr = (xx - p[0]) ** 2 + (yy - p[1]) ** 2
+        out[..., :3] = np.where((rr <= 100)[..., None], np.array([24, 20, 15.]), out[..., :3]); out[..., :3] = np.where((rr <= 49)[..., None], np.array([92, 76, 56.]), out[..., :3])
+    al = cv2.GaussianBlur(m.astype(np.float32), (3, 3), 0); out[..., 3] = al * 255
+    Image.fromarray(np.clip(out, 0, 255).astype('uint8'), 'RGBA').save(HERE + '/assets/generated/g_cl_lac.webp', quality=90)
+    json.dump({'fichier': 'assets/generated/g_cl_lac.webp', 'px': [W, H], 'origine_monde_m': [x0, z0], 'K_px_par_m': K,
+               'polygone_monde_m': poly, 'polygone_px': [[round(float(a), 1), round(float(b), 1)] for a, b in pts],
+               'quai_m': 0.6, 'note': 'contour = bord extérieur du quai ; eau non marchable = polygone rétréci de 0,6 m (le quai est marchable)'},
+              open(HERE + '/assets/generated/g_cl_lac.json', 'w'), ensure_ascii=False, indent=1)
+    print('g_cl_lac', W, H, len(poly))

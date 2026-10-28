@@ -21,7 +21,7 @@ LT = {
 MAQ = 'reference/maquette/No-Mans-Land_Reconstruction/07_MAQUETTE_ARCHIVE_v0.13/art-source/'
 LT.update({
  'lt_atelier_petit': ('gen_lt_atelier_petit.jpg', [8.0, 6.0], 5.0, 'Atelier Bastide, petit atelier de ferrailleur, rideau ouvert, établi éclairé'),
- 'lt_comptoir_moss': ('gen_lt_comptoir_moss.jpg', [6.0, 5.0], 7.0, 'Chez Moss, comptoir sans enseigne au rez d un immeuble, guichet éclairé ambre'),
+ 'lt_comptoir_moss': ('gen_lt_comptoir_moss_t1.jpg', [6.0, 5.0], 4.5, 'Chez Moss (retours tour 1 : compact, un niveau), cabane bois et tôle sombre, comptoir éclairé ambre, enseigne peinte'),
  'lt_tuyau': ('MAQ:linear-v12.png:512,512,1024,1024', [3.0, 0.8], 1.3, 'tuyau suspendu droit, brides boulonnées, sur pieds'),
  'lt_tuyau_coude': ('gen_lt_tuyau_coude.jpg', [2.5, 2.5], 1.3, 'tuyau, coude à 90° (variante de lt_tuyau)'),
  'lt_sodium': ('MAQ:street-detail-v9.png:692,486,917,980', [0.8, 0.8], 4.5, 'poteau d éclairage à lanterne chaude (lampe sodium)'),
@@ -39,7 +39,7 @@ GRADE = {'lt_tuyau': 0.55, 'lt_tuyau_coude': 0.40}  # coude : 0,40 pour égaler 
 # correctifs 2026-10-22 : pentes source mesurées (Hough) sur les axes de l objet quand l arête basse n est pas mesurable
 # (coude : bras en V renversé, apex à l arrière ; passerelle : escalier et poteaux). (pente axe x, pente axe z), sans miroir.
 FORCE = {'lt_tuyau_coude': (0.60, 0.62), 'lt_passerelle': (0.95, 0.58)}
-FP = {'lt_passerelle': [1.5, 6.0], 'lt_tuyau_coude': [2.5, 2.5]}  # emprise imposée (le masque, escalier compris, ne donne pas la largeur du tablier)
+FP = {'lt_comptoir_moss': [6.0, 5.0], 'lt_passerelle': [1.5, 6.0], 'lt_tuyau_coude': [2.5, 2.5]}  # emprise imposée (le masque, escalier compris, ne donne pas la largeur du tablier)
 STRICT = {'lt_passerelle'}  # grillage : le vert du fond traverse les mailles -> détourage plus strict + despill complet
 def key_green_strict(path):
     a = np.asarray(Image.open(path).convert('RGB')).astype(float); r, g, b = a[..., 0], a[..., 1], a[..., 2]
@@ -205,7 +205,7 @@ def build_dalle():
 # view.js pose le sprite par anchor/px et px/K : la largeur doit valoir K (w cos34,5 + d sin34,5) (vérifié : écart ≤ 1 %) et le pivot x
 # tomber sur le coin avant de l'emprise, à K w cos34,5 du bord gauche. Le pivot x mesuré (point opaque le plus bas) s'en écartait
 # pour les objets dont le point bas n'est pas le coin avant (coude, passerelle, poteau, fût). Hauteurs alignées sur lower_town.js.
-POS = {'lt_atelier_usine': (7, 14, 9), 'lt_atelier_petit': (8, 6, 4.5), 'lt_immeuble_ouvrier': (8, 6.5, 13), 'lt_comptoir_moss': (6, 5, 7),
+POS = {'lt_atelier_usine': (7, 14, 9), 'lt_atelier_petit': (8, 6, 4.5), 'lt_immeuble_ouvrier': (8, 6.5, 13), 'lt_comptoir_moss': (6, 5, 4.5),
        'lt_foyer_ruiz': (10, 7, 5.5), 'lt_portique_io': (7, 2.5, 7), 'lt_tuyau': (3, 2, None), 'lt_tuyau_coude': (2.5, 2.5, None),
        'lt_sodium': (0.8, 0.8, None), 'lt_horloge_pointage': (1, 1, None), 'lt_voiture_panne': (4, 2, None), 'lt_bidons': (0.6, 0.6, None),
        'lt_ferraille': (1.5, 1, None), 'lt_palettes': (1, 1, None), 'lt_grille_fosse': (2, 2, None), 'lt_flaque': (2.5, 1.5, None),

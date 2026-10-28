@@ -1,18 +1,18 @@
 {
  "cl_maison_the": {
-  "pente_dominante": 0.3,
+  "pente_dominante": 0.4,
   "sens": "direct",
-  "part_bande_v4": 0.74,
-  "part_2_1_opposee": 0.07,
+  "part_bande_v4": 0.68,
+  "part_2_1_opposee": 0,
   "accepte": true,
   "correction_v4": {
    "pentes_source": [
-    0.2,
-    0.63
+    0.26,
+    0.67
    ],
    "cisaillement": [
-    1.247,
-    0.086
+    1.112,
+    0.039
    ],
    "miroir": false,
    "pentes_apres": [
@@ -21,17 +21,17 @@
    ]
   },
   "accepte_arete_basse": true,
-  "source": "art-gen/gen_cl_maison_the.jpg",
+  "source": "art-gen/gen_cl_maison_the_t1.jpg",
   "origine": "généré",
-  "role": "maison de thé de la mafia, seul toit recourbé (un seul pan, sans étages de pagode), porte gardée, MAISON DE THÉ 茶馆",
+  "role": "maison de thé de la mafia (retours tour 1 : compacte, un niveau), seul toit recourbé (un seul pan, sans étages de pagode), porte gardée, MAISON DE THÉ 茶馆",
   "emprise_m": [
    10.0,
    5.5
   ],
-  "hauteur_attendue_m": 8.5,
-  "hauteur_implicite_m": 7.83,
+  "hauteur_attendue_m": 5.5,
+  "hauteur_implicite_m": 4.7,
   "echelle_ok": true,
-  "magenta_bord_pct": 0.03
+  "magenta_bord_pct": 0.02
  },
  "cl_immeuble_fond": {
   "pente_dominante": 0.35,
