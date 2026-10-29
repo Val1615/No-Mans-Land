@@ -34,7 +34,7 @@
   },
   "gen_pp_brisset": {
     "file": "steel/pulse_plaza/gen_pp_brisset.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 80434f1e",
     "px": [
       180,
       512
@@ -44,11 +44,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_clone_gt": {
     "file": "steel/pulse_plaza/gen_pp_clone_gt.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), a1054a5a",
     "px": [
       180,
       512
@@ -58,11 +62,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_dorian": {
     "file": "steel/pulse_plaza/gen_pp_dorian.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 80434f1e",
     "px": [
       180,
       512
@@ -72,11 +80,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_foule_a": {
     "file": "steel/pulse_plaza/gen_pp_foule_a.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 5894af29",
     "px": [
       180,
       512
@@ -86,11 +98,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_foule_b": {
     "file": "steel/pulse_plaza/gen_pp_foule_b.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 5894af29",
     "px": [
       180,
       512
@@ -100,11 +116,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_gaspard": {
     "file": "steel/pulse_plaza/gen_pp_gaspard.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), a1054a5a",
     "px": [
       180,
       512
@@ -114,11 +134,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_isaure": {
     "file": "steel/pulse_plaza/gen_pp_isaure.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), a1054a5a",
     "px": [
       180,
       512
@@ -128,11 +152,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_maelle": {
     "file": "steel/pulse_plaza/gen_pp_maelle.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 80434f1e",
     "px": [
       180,
       512
@@ -142,11 +170,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_noor": {
     "file": "steel/pulse_plaza/gen_pp_noor.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), a1054a5a",
     "px": [
       180,
       512
@@ -156,11 +188,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_pham": {
     "file": "steel/pulse_plaza/gen_pp_pham.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 46d92509",
     "px": [
       180,
       512
@@ -170,11 +206,15 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "gen_pp_vasseur": {
     "file": "steel/pulse_plaza/gen_pp_vasseur.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 5894af29",
     "px": [
       180,
       512
@@ -184,97 +224,101 @@
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "anchor": [
+      89,
+      511
+    ]
   },
   "portrait-gen_pp_brisset": {
     "file": "steel/pulse_plaza/portrait-gen_pp_brisset.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_brisset.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_brisset",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_clone_gt": {
     "file": "steel/pulse_plaza/portrait-gen_pp_clone_gt.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_clone_gt.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_clone_gt",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_dorian": {
     "file": "steel/pulse_plaza/portrait-gen_pp_dorian.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_dorian.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_dorian",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_gaspard": {
     "file": "steel/pulse_plaza/portrait-gen_pp_gaspard.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_gaspard.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_gaspard",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_isaure": {
     "file": "steel/pulse_plaza/portrait-gen_pp_isaure.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_isaure.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_isaure",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_maelle": {
     "file": "steel/pulse_plaza/portrait-gen_pp_maelle.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_maelle.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_maelle",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_noor": {
     "file": "steel/pulse_plaza/portrait-gen_pp_noor.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_noor.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_noor",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_pham": {
     "file": "steel/pulse_plaza/portrait-gen_pp_pham.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_pham.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_pham",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "portrait-gen_pp_vasseur": {
     "file": "steel/pulse_plaza/portrait-gen_pp_vasseur.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "recadrage de gen_pp_vasseur.webp",
     "px": [
       192,
       192
     ],
     "npc": "gen_pp_vasseur",
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_arcadius": {
     "file": "steel/pulse_plaza/pp_arcadius.webp",
