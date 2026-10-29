@@ -41,3 +41,28 @@ Tous les fichiers sont en status v1, générés (GenerateImage, fond vert retir�
 | `portrait-gen_ml_nouilles.webp` | 192 x 192 | footprint None m,  m |
 | `portrait-gen_ml_pancarte.webp` | 192 x 192 | footprint None m,  m |
 | `portrait-gen_ml_vigile.webp` | 192 x 192 | footprint None m,  m |
+
+## Le terminus [décision Valentin]
+Aucun sable ni ciel dans ces sprites. Les portes du sas sont pleines, sans hublot ni lumière venue de dehors ; leurs petites lampes peintes ont été éteintes, le clignotement vient de `ml_ens_sas`. Le panneau est vierge, la phrase « Dernier arrêt avant No Man's Land » est affichée par le code.
+
+| fichier | px | note |
+|---|---|---|
+| `g_ml_fret.webp` | 512 x 512 | tuile 4.0 m |
+| `gen_ml_cheffe_fret.webp` | 180 x 512 | footprint [0.6, 0.6] m, 1.68 m |
+| `gen_ml_docker.webp` | 180 x 512 | footprint [0.6, 0.6] m, 1.86 m |
+| `gen_ml_foule_a.webp` | 180 x 512 | footprint [0.6, 0.6] m, 1.76 m |
+| `gen_ml_foule_b.webp` | 180 x 512 | footprint [0.6, 0.6] m, 1.66 m |
+| `ml_bureau_fret.webp` | 300 x 260 | footprint [5, 4] m, 4 m |
+| `ml_conteneurs.webp` | 280 x 220 | footprint [6, 2.5] m, 5.2 m |
+| `ml_ens_gyrophare.webp` | 256 x 64 | 4 images de 64 x 64, 4 i/s, gyrophare orange de la gare de fret, x 2 regroupés |
+| `ml_ens_gyrophare_mobile.webp` | 128 x 32 | 4 images de 32 x 32, 4 i/s, gyrophare orange de la gare de fret, x 2 regroupés |
+| `ml_ens_sas.webp` | 1024 x 64 | 4 images de 256 x 64, 2 i/s, deux lampes d’alerte du sas qui clignotent en alternance, posées sur l’encadrement |
+| `ml_ens_sas_mobile.webp` | 512 x 32 | 4 images de 128 x 32, 2 i/s, deux lampes d’alerte du sas qui clignotent en alternance, posées sur l’encadrement |
+| `ml_panneau_terminus.webp` | 200 x 150 | footprint [3, 0.5] m, 3 m, panneau vierge, phrase affichée par le code |
+| `ml_portique.webp` | 320 x 300 | footprint [7, 4] m, 7 m |
+| `ml_sas.webp` | 1000 x 750 | footprint [18, 2] m, 12 m, portes pleines, sans ouverture ni hublot ; ni ciel ni sable ; lampes éteintes, clignotement par ml_ens_sas |
+| `portrait-gen_ml_cheffe_fret.webp` | 192 x 192 | footprint None m,  m |
+| `portrait-gen_ml_docker.webp` | 192 x 192 | footprint None m,  m |
+
+## Poids et planche
+50 fichiers au total. Planches animées : environ 52 Ko en version ordinateur, 24 Ko en version mobile. Planche d'aperçu : `/workspace/nml-shots/mega_line_sprites.png`.
