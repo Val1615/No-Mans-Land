@@ -116,7 +116,7 @@ export function groundTexture(loc, doors = []) {
   if (loc.ground.planks && !loc.ground.skin) { for (let j = 0; j < loc.size.d; j += 0.25) { x.fillStyle = `rgba(0,0,0,${0.05 + r() * 0.12})`; x.fillRect(0, j * P, W, 1.5); } }
   for (const z of loc.ground.zones || []) {
     const zx = z.x * P, zy = z.z * P, zw = z.w * P, zh = z.d * P;
-    const zp = pattern(x, { asphalt: 'g_asphalt', packed: 'g_dirt', track: 'g_gravel', grass: 'g_grass', wet: 'g_wet', plate: 'g_concrete' }[z.kind], z.tileM || 4, P); // v13 : wet = chaussée mouillée de Steel
+    const zp = pattern(x, z.skin || { asphalt: 'g_asphalt', packed: 'g_dirt', track: 'g_gravel', grass: 'g_grass', wet: 'g_wet', plate: 'g_concrete' }[z.kind], z.tileM || 4, P); // v13 : wet = chaussée mouillée de Steel
     if (zp) { x.fillStyle = zp; x.globalAlpha = z.kind === 'grass' ? 0.75 : 1; x.fillRect(zx, zy, zw, zh); x.globalAlpha = 1;
       if (z.tint) { x.fillStyle = z.tint; x.fillRect(zx, zy, zw, zh); }
       if (z.kind === 'asphalt' && !loc.ground.clean) { x.fillStyle = 'rgba(205,180,130,.5)'; for (let i = 0; i < 26; i++) { const ex = zx + r() * zw, top = r() < .5; x.beginPath(); x.ellipse(ex, top ? zy + 6 : zy + zh - 6, 30 + r() * 70, 6 + r() * 14, 0, 0, Math.PI * 2); x.fill(); } }
