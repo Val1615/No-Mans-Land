@@ -30,7 +30,8 @@ REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../docs/captures
 def rgb_file(p): return np.asarray(Image.open(p).convert('RGB')).astype(int)
 def centroid(u):
     a = png(u); m = MAG(a); ys, xs = np.nonzero(m); return (float(xs.mean()), float(ys.mean()), int(m.sum())) if len(xs) else (0, 0, 0)
-CAP = os.environ.get('CAP', '/tmp/nml-test-out/combat_c1/'); os.makedirs(CAP, exist_ok=True)
+RACE = os.environ.get('RACE', 'augmente')
+CAP = os.environ.get('CAP', f'/tmp/nml-test-out/combat_c1/{RACE}/'); os.makedirs(CAP, exist_ok=True)
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
     mob = False; VW, VH = 1280, 800; T = 'desktop'
@@ -96,7 +97,7 @@ with sync_playwright() as p:
     def cap(name): pg.screenshot(path=CAP + name + '.png'); time.sleep(0.1)
     pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
     E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-    press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+    press('#m-new', 0.6); press(f'[data-race="{RACE}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
     check('perso créé', st().get('character'))
     C = "window.__nml.state.combat"
     def cst(): return E(f"{C} && JSON.parse(JSON.stringify({{phase:{C}.phase,tour:{C}.tour,actif:{C}.actif,units:{C}.units.map(u=>({{id:u.id,i:u.i,j:u.j,pa:u.pa,actif:u.actif,moving:u.path.length}})),preview:{C}.preview,zone:{C}.zone}}))")
@@ -129,7 +130,7 @@ with sync_playwright() as p:
             onscreen = lambda pt: 20 < pt['x'] < VW - 20 and 130 < pt['y'] < VH - 120
             pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
             E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-            press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+            press('#m-new', 0.6); press(f'[data-race="{RACE}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
         T = prof
         E("localStorage.removeItem('nml_save_auto')")
         check(f'{T}: grille absente hors combat', E("!document.body.classList.contains('combat') && document.getElementById('cbt').hidden && !window.__nml.state.combat"))

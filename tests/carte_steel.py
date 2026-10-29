@@ -2,6 +2,7 @@
 # marqueur du joueur sur la bonne couche, Upper-Town désaturée et verrouillée (non cliquable), découverts / silhouettes « ? », passages entre couches,
 # molette et flèches, Asia-Ground au sud de Lower-Town, Sous-Ville distincte de Lower-Town, carte de Dusk-Town inchangée hors de Steel, aucune erreur JS.
 import time,os,sys
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); from _chev import chevauchements
 from playwright.sync_api import sync_playwright
 OUT='/tmp/nml-test-out/cartes/'; os.makedirs(OUT,exist_ok=True); fails=[]; errs=[]; n_ok=0
 def ok(c,m,d=''):
@@ -64,6 +65,17 @@ with sync_playwright() as p:
         # Dusk-Town : ancienne carte des quartiers
         go('dusk_q1',20,20,['dusk_q1']); E("document.getElementById('k-carte').click()"); time.sleep(.4)
         ok(E("!document.querySelector('#panel .smap') && document.querySelector('#panel h3').textContent.includes('DUSK')"),f'{name} Dusk-Town : carte des quartiers')
+        # tout découvert (tous les lieux vus) : sur chaque couche, aucun libellé ni icône ne se chevauchent
+        E("document.getElementById('panel-close').click()"); time.sleep(.3)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';for(const k of Object.keys(window.__nml.world.LOCATIONS))s.seen[k]=true;g.restore(s,true)})()"); time.sleep(1.2)
+        if mob: E("document.getElementById('k-carte').click()")
+        else: pg.keyboard.press('m')
+        time.sleep(.6)
+        for c in (1,2,3):
+            E(f"document.querySelector('.smap-pile [data-couche=\"{c}\"]').click()"); time.sleep(.6)
+            n=E("document.querySelectorAll('#panel .smap .mk.known').length"); ov=chevauchements(E,'#panel .smap .mk')
+            ok(E(smap)['couche']==c and n>0 and not ov,f'{name} tout découvert, couche {c} ({n} repères) : aucun chevauchement libellé/icône',ov)
+            pg.screenshot(path=OUT+f'steel_{name}_tout_couche{c}.png')
         E("document.getElementById('panel-close').click()"); ctx.close()
     ok(not errs,'aucune erreur JS',errs[:3])
     print(f'{n_ok}/{n_ok+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)

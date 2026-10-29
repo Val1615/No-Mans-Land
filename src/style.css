@@ -307,3 +307,4 @@ body.nml-open #keys,body.nml-open #actions,body.nml-open #labels,body.nml-open #
 @media (max-width:600px){#nml{inset:calc(4px + var(--pad)) 4px calc(4px + env(safe-area-inset-bottom,0)) 4px;padding:6px}#nml-lieux .nl{font-size:10px}#nml-lieux .nl img{width:18px;height:18px}#nml-lieux .nl{transform:translate(-9px,-9px)}#nml-lieux .nl.gauche{transform:translate(calc(-100% + 9px),-9px)}
   #nml footer{flex-direction:column;align-items:stretch}#nml footer .b{margin-left:0}#nml footer .b button{flex:1;min-height:44px}#nml-moi{width:24px;height:24px;transform:translate(-12px,-12px)}}
 #panel .btn-nml{margin-top:8px;min-height:36px;padding:4px 12px;background:rgba(8,6,3,.5);border:1px solid var(--d);color:var(--c);font-size:12.5px}
+body.nml-open #msg{z-index:40} /* halte, « prototype » : au-dessus de la carte NML */

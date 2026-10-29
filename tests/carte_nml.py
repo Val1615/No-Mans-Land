@@ -4,6 +4,7 @@
 # halte + reprise (trajet intact), sauvegarde / rechargement en cours de trajet (reprise en halte), arrivée = chargement du lieu
 # (texte d'arrivée, autosave), mer bloquée, retour vers Dusk annulable, aucune erreur JS.
 import time,os,sys,json
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); from _chev import chevauchements, dessus
 from playwright.sync_api import sync_playwright
 OUT='/tmp/nml-test-out/cartes/'; os.makedirs(OUT,exist_ok=True); fails=[]; errs=[]; n_ok=0
 TABLE={'cote':2,'desert':2,'foret':3,'rocher':3,'verre':3,'piste':1}  # table validée par Valentin (heures)
@@ -92,6 +93,27 @@ with sync_playwright() as p:
         E("document.getElementById('nml-close').click()"); time.sleep(.4)
         ok(not vis() and R()['statut']=='lieu' and E("window.__nml.state.location")=='steel_route',f'{name} « Rester » : on reste à la douane')
         time.sleep(1.5); ok(E("window.__nml.state.location")=='steel_route' and not vis(),f'{name} pas de rebond sur la sortie')
+        # 7. tous les lieux découverts, brouillard levé : aucun libellé ni icône ne se chevauchent (zoom 1, puis zooms mobiles)
+        E("window.__nml.game.useDoor('j_route_sud')"); ok(wait("!document.getElementById('nml').hidden",15),f'{name} carte rouverte pour la découverte totale')
+        E("(()=>{const v=window.__nml.voyage,R=v.region();for(const l of v.lieux)R.connus[l.key]=true;R.vues=[...v.cells.keys()];window.__nml.carteNml?.render?.()})()")
+        E("window.__nml.voyage.viser({lieu:'dusk'})"); E("document.getElementById('nml-zoom').click()"); E("document.getElementById('nml-zoom').click()"); E("document.getElementById('nml-zoom').click()"); time.sleep(.8)
+        nl=E("document.querySelectorAll('#nml-lieux .nl').length"); ov=chevauchements(E,'#nml-lieux .nl')
+        ok(nl==E("window.__nml.voyage.lieux.length") and not ov,f'{name} carte NML, {nl} lieux découverts : aucun chevauchement libellé/icône',ov)
+        pg.screenshot(path=OUT+f'nml_{name}_tout_decouvert.png')
+        if mob:
+            for z in (1.5,2):
+                E("document.getElementById('nml-zoom').click()"); time.sleep(.6); ov=chevauchements(E,'#nml-lieux .nl'); ok(not ov,f'{name} zoom {z} : aucun chevauchement',ov)
+            E("document.getElementById('nml-zoom').click()"); time.sleep(.4)
+        # 8. messages de halte et « prototype » lisibles au-dessus de la carte
+        E("(()=>{window.__msgs=[];const m=document.getElementById('msg');new MutationObserver(()=>window.__msgs.push(m.textContent)).observe(m,{childList:true,characterData:true,subtree:true})})()")
+        E("(()=>{const v=window.__nml.voyage,R=v.region(),[c,r]=R.case;for(let dc=-1;dc<=1;dc++)for(let dr=-1;dr<=1;dr++){const n=v.cellAt(c+dc,r+dr);if(n&&(dc||dr)&&!v.lieuAt(n.col,n.row)){v.partir({case:[n.col,n.row]});return}}})()")
+        ok(wait("window.__msgs.some(t=>t.startsWith('Halte'))",8),f'{name} halte hors lieu : message affiché')
+        time.sleep(.3); ok(dessus(E,'msg')==True,f'{name} message de halte au-dessus de la carte (elementFromPoint)',E("document.getElementById('msg').textContent"))
+        pg.screenshot(path=OUT+f'nml_{name}_halte_msg.png')
+        E("(()=>{const v=window.__nml.voyage,R=v.region(),l=v.lieux.find(q=>!q.jeu);for(let dc=-1;dc<=1;dc++)for(let dr=-1;dr<=1;dr++){const n=v.cellAt(l.col+dc,l.row+dr);if(n&&(dc||dr)&&!v.lieuAt(n.col,n.row)){R.case=[n.col,n.row];R.statut='halte';v.partir({lieu:l.key});return}}})()")
+        ok(wait("window.__msgs.some(t=>t.includes('prototype'))",8),f'{name} lieu sans terrain : message « prototype » affiché')
+        time.sleep(.3); ok(dessus(E,'msg')==True,f'{name} message « prototype » au-dessus de la carte (elementFromPoint)',E("document.getElementById('msg').textContent"))
+        pg.screenshot(path=OUT+f'nml_{name}_prototype_msg.png')
         ctx.close()
     ok(not errs,'aucune erreur JS',errs[:3])
     print(f'{n_ok}/{n_ok+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)

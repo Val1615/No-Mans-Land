@@ -1,3 +1,4 @@
+import { placeLabels } from './placement.js';
 // Lot 3 interface : carte des No Man's Land (fond, brouillard et icônes ambre d'Ocre), choix de destination, trajet case par case animé,
 // halte et reprise. Logique du voyage : core/voyage.js ; terrains et réglages : data/nml.js.
 const ICO = k => `./assets/ui/maps/icones/${k}_48.png`;
@@ -26,7 +27,7 @@ export function createCarteNml({ $, voyage, manifest, say, onOpenChange }) {
     const k = JSON.stringify([R.case, st, R.trajet, R.dest, R.connus, zoom, mobile]); if (k === key) return; key = k; drawFog();
     // lieux connus (les autres restent sous le brouillard : ni icône ni nom)
     lieuxEl.innerHTML = voyage.lieux.filter(q => R.connus[q.key]).map(q => { const p = { x: 100 * q.px[0] / N.px[0], y: 100 * q.px[1] / N.px[1] };
-      return `<button class="nl ${q.jeu ? 'jeu' : ''} ${R.dest?.lieu === q.key ? 'dest' : ''} ${q.px[0] / N.px[0] > 0.7 ? 'gauche' : ''}" data-lieu="${q.key}" style="left:${p.x}%;top:${p.y}%"><img src="${ICO('lieu_decouvert')}" alt=""><span>${q.nom}</span></button>`; }).join('');
+      return `<button class="nl ${q.jeu ? 'jeu' : ''} ${R.dest?.lieu === q.key ? 'dest' : ''} ${q.px[0] / N.px[0] > 0.7 ? 'gauche' : ''}" data-lieu="${q.key}" style="left:${p.x}%;top:${p.y}%"><img src="${ICO('lieu_decouvert')}" alt=""><span>${q.nom}</span></button>`; }).join(''); placeLabels(lieuxEl, '.nl');
     // trajet restant (pointillés) et case visée
     const pts = [R.case, ...R.trajet].map(([c, r]) => `${(c + 0.5) * 100},${(r + 0.5) * 100}`).join(' '), d = R.trajet[R.trajet.length - 1];
     svg.innerHTML = (R.trajet.length ? `<polyline points="${pts}" class="route"/>` : '') + (d ? `<rect x="${d[0] * 100 + 8}" y="${d[1] * 100 + 8}" width="84" height="84" class="cible"/>` : '');

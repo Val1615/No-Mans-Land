@@ -8,6 +8,7 @@ import { loadSkins } from './render/textures.js';
 import { createShell } from './ui/shell.js';
 import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
 import { portraitUrl } from './ui/creation.js';
+import { placeLabels } from './ui/placement.js';
 import { steelMapHtml, isSteel, coucheOf, drawSteelFog } from './ui/carte_steel.js';
 import { createVoyage } from './core/voyage.js';
 import { createCarteNml } from './ui/carte_nml.js';
@@ -164,7 +165,7 @@ function renderPanel() {
     B.innerHTML = `<h3>JOURNAL</h3>${qs}<div class="lbl">Lieux repérés</div><ul>${places.length ? places.map(b => `<li><span>${b.label}</span><span class="muted">${short(b.loc)}</span></li>`).join('') : '<li class="muted">Aucun. Les entrées sont cachées derrière les façades.</li>'}</ul>
       <div class="desc"><div class="lbl">Notes</div>${notes.length ? notes.map(f => FLAGS[f] || QUEST_NOTES[f]).join('<br>') : '<span class="muted">Rien de noté.</span>'}</div>`;
   } else if (panelOpen === 'carte' && isSteel(world, s.location)) { // lot 2 : carte de Steel par couches
-    const n = steelCouche || coucheOf(world, s.location); B.innerHTML = steelMapHtml({ world, state: s, manifest: mapsMan, couche: n }); drawSteelFog(B.querySelector('.smap-plan .fog'), mapsMan);
+    const n = steelCouche || coucheOf(world, s.location); B.innerHTML = steelMapHtml({ world, state: s, manifest: mapsMan, couche: n }); drawSteelFog(B.querySelector('.smap-plan .fog'), mapsMan); placeLabels(B.querySelector('.smap-plan'), '.mk');
     const go = c => { steelCouche = Math.max(1, Math.min(4, c)); panelKey = ''; renderPanel(); };
     B.querySelectorAll('[data-couche]').forEach(b => b.addEventListener('click', () => go(+b.dataset.couche)));
     B.querySelectorAll('[data-dir]').forEach(b => b.addEventListener('click', () => go(n + +b.dataset.dir)));
