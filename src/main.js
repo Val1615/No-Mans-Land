@@ -18,10 +18,15 @@ const sprites = await (await fetch('./assets/reused/manifest.json')).json();
 // v6 : mobilier et textures d'intérieur (tools_interiors.py : maquette d'abord, sinon générés ; angle v4 contrôlé)
 const iman = await (await fetch('./assets/interiors/manifest.json')).json();
 Object.assign(sprites, iman);
+// Pulse Plaza : manifeste d'Ocre (assets/steel/pulse_plaza/manifest.json, chemins relatifs à assets/) ; PNJ et portraits -> sprites, décors pp_* -> bâtiments, g_pp_* -> sols
+const ppMan = await (await fetch('./assets/steel/pulse_plaza/manifest.json')).json();
+for (const [k, v] of Object.entries(ppMan)) if (k.startsWith('gen_') || k.startsWith('portrait-')) sprites[k] = v;
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
 await loadSkins(['g_wet', 'g_sv', 'g_cl_eau', 'g_cl_lac'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
+for (const [k, v] of Object.entries(ppMan)) if (k.startsWith('pp_')) bman[k] = v;
+await loadSkins(Object.keys(ppMan).filter(k => k.startsWith('g_')), n => './assets/' + ppMan[n].file);
 const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
 await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
@@ -94,7 +99,7 @@ function renderDialogue() {
   const n = game.currentNode(), key = n && [game.state.dialogue.npc, game.state.dialogue.tree, game.state.dialogue.node, game.state.player.money, n.text, n.options.length].join(':'); // v15 : sous-arbres (tree) et textes à gabarit
   $('dialogue').hidden = !n; if (!n || key === shownNode) { if (!n) shownNode = null; return; }
   shownNode = key;
-  $('dlg-portrait').hidden = n.npc.portrait === false; if (n.npc.portrait !== false) $("dlg-portrait").src = n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
+  $('dlg-portrait').hidden = n.npc.portrait === false; if (n.npc.portrait !== false) $("dlg-portrait").src = sprites["portrait-" + n.npc.sprite] ? "./assets/" + sprites["portrait-" + n.npc.sprite].file : n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
   $('dlg-name').textContent = n.npc.name; typeText(n.text);
   const box = $('dlg-options'); box.replaceChildren();
   for (const [k, o] of n.options.entries()) { const b = document.createElement('button'); b.textContent = o.label; b.dataset.index = o.index; b.dataset.n = k + 1; b.addEventListener('click', () => game.choose(o.index)); box.appendChild(b); }
