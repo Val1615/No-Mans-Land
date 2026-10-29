@@ -149,6 +149,8 @@ with sync_playwright() as p:
         tap_cell(*free2); pv = cst()['preview']
         check(f'{T}: survol / premier tap = aperçu du chemin et de son coût (sans bouger)', pv and pv['i'] == free2[0] and pv['j'] == free2[1] and pv['ok'] and cst()['units'][0]['moving'] == 0 and E("document.querySelector('.cbt-cost') && !document.querySelector('.cbt-cost').hidden && document.querySelector('.cbt-cost').textContent"), (pv, E("document.querySelector('.cbt-cost')?.textContent")))
         cap(f'{T}-02_apercu_chemin')
+        ov = E("(()=>{const m=document.getElementById('msg');if(!m||!m.textContent||getComputedStyle(m).display==='none')return 'vide';const a=m.getBoundingClientRect();const o=['cbt-res','cbt-actions','cbt-file'].filter(id=>{const e=document.getElementById(id);if(!e)return false;const b=e.getBoundingClientRect();return b.width>0&&Math.min(a.right,b.right)-Math.max(a.left,b.left)>1&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1});return o})()")
+        check(f'{T}: la ligne de message du combat ne chevauche ni le bloc PA ni les actions', ov == 'vide' or ov == [], ov)
         confirm(*free2); my_turn(10); me = [u for u in cst()['units'] if u['id'] == 'joueur'][0]
         check(f'{T}: clic / second tap = déplacement, PA décomptés', (me['i'], me['j']) == tuple(free2) and me['pa'] == pa0 - pv['pa'], (me, pv['pa']))
         far = E(f"(()=>{{const g=window.__nml.game.combat,me=g.player();const r=[];for(let d=12;d>6;d--)for(const [a,b] of [[d,0],[-d,0],[0,d],[0,-d],[d-3,3],[3-d,-3]]){{const p=g.path(me.i+a,me.j+b);if(p&&p.pa>me.pa)r.push([me.i+a,me.j+b,p.pa])}}return r}})()") or []

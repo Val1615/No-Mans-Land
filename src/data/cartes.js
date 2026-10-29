@@ -29,8 +29,8 @@ export const STEEL_COUCHES = [
     { key: 'steel_route', nom: 'La douane (sortie vers les No Man\u2019s Land)', type: 'sortie', loc: 'steel_route', region: true },
     { key: 'ct_descente', nom: 'La Descente (Lower-Town)', type: 'lien', vers: 2, connu: vu('steel_lower', 'steel_center') },
     { key: 'ct_monte_charge', nom: 'Grille de la Sous-Ville', type: 'lien', vers: 1, connu: vu('steel_center', 'sv_cuve') },
-    { key: 'ct_mille_marches', px: [980, 690], nom: 'Mille Marches (Asia-Ground)', type: 'lien', vers: 2, connu: vu('steel_center', 'steel_asia') },
-    { key: 'ct_ascenseur_upper', nom: 'Ascenseur d\u2019Upper-Town', type: 'lien', vers: 4, connu: vu('steel_center') } ] },
+    { key: 'ct_mille_marches', px: [1010, 810], nom: 'Mille Marches (Asia-Ground)', type: 'lien', vers: 2, connu: vu('steel_center', 'steel_asia') },
+    { key: 'ct_ascenseur_upper', px: [830, 430], nom: 'Ascenseur d\u2019Upper-Town', type: 'lien', vers: 4, connu: vu('steel_center') } ] },
   { n: 4, id: 'upper_town', nom: 'Upper-Town', court: 'Upper', verrou: true, reperes: [
     { key: 'ut_ascenseur', nom: 'Accès refusé', type: 'verrou' } ] },
 ];

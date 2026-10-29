@@ -45,6 +45,7 @@ with sync_playwright() as p:
         else:
             b=E("(()=>{const r=document.querySelector('.smap-plan').getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]})()"); pg.mouse.move(b[0],b[1]); pg.mouse.wheel(0,-120); time.sleep(.4); pg.mouse.wheel(0,-120); time.sleep(.4)
         m=E(smap); ok(m['couche']==3,f'{name} couche 3 ({"onglet" if mob else "molette"})',m['couche'])
+        ov=E("(()=>{const R=[...document.querySelectorAll('#panel .smap .mk')].flatMap(b=>[...b.children].map(e=>[b.dataset.key+':'+e.tagName,e.getBoundingClientRect()])).filter(([,r])=>r.width>0);const o=[];for(let i=0;i<R.length;i++)for(let j=i+1;j<R.length;j++){const[a,r]=R[i],[b,s]=R[j];if(a.split(':')[0]===b.split(':')[0])continue;const w=Math.min(r.right,s.right)-Math.max(r.left,s.left),h=Math.min(r.bottom,s.bottom)-Math.max(r.top,s.top);if(w>1&&h>1)o.push(a+'/'+b)}return o})()"); ok(not ov,f'{name} couche 3 : aucun libellé ni icône ne se chevauchent',ov)
         # Upper-Town : verrouillée, désaturée, repères non cliquables
         if mob: E("document.querySelector('.smap-pile [data-couche=\"4\"]').click()")
         else: pg.keyboard.press('ArrowUp')
