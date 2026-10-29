@@ -107,5 +107,16 @@ Clé de sprite `gen_fs_<id>`. Aucun d'eux n'est Vibes ni Tron, aucun ne cite d'i
    - « Avant les écrans, le Strip s'appelait autrement. Je ne me souviens plus comment. C'est peut-être ça, le but. »
    - « Un conseil : la nuit, ne regarde pas les pubs dans les yeux. Elles te reconnaissent. »
 
+## Caméo : Ocre, peintre de rue
+**[décision]** Caméo d'un membre du studio, PNJ ordinaire, sans mécanique. Les vigiles regardent ailleurs : aucune réaction de leur part. La fresque est une image de Groovy Vibes, donc un média, pas une apparition en personne.
+- Sprite `gen_fs_ocre` (1,68 m), portrait `portrait-gen_fs_ocre`, décor `fs_fresque_vibes` (mur de fresque inachevée, 6 m).
+- Femme de 29 ans, cheveux cuivrés bouclés, yeux ambrés, taches de rousseur, tenue bohème et industrielle, soignée, doigts tachés de peinture.
+- **Emplacement proposé** : façade sud, entre Le Retour et l'hôtel capsule, mur de fresque vers x 28 à 34, z 18 ; Ocre devant, vers (31 ; 16,8), tournée vers le mur.
+- Répliques [proposition] :
+  - « Recule un peu, tu me fais de l'ombre. Et ton ombre n'a aucun talent. »
+  - « Non, elle n'a pas posé pour moi. Personne ne l'a jamais vue poser. J'ai mieux que ça, j'ai de la mémoire. »
+  - « Les vigiles ? Ils adorent la fresque. Ils font semblant de ne pas me voir depuis trois nuits. »
+  - Clin d'œil au joueur : « Toi, je te mettrais bien dans un coin du mur. Tout petit. Personne ne regarde jamais les coins, et c'est là que je cache les meilleurs. »
+
 ## Concept art
 `concepts/maquette_frequence_strip_iso.jpg` : **maquette générée**, référence d'ambiance, **pas une capture du jeu**.

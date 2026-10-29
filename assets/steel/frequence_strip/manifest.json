@@ -1,52 +1,19 @@
 {
-  "g_fs_asphalte_mouille": {
-    "file": "steel/frequence_strip/g_fs_asphalte_mouille.webp",
+  "fs_capsules": {
+    "file": "steel/frequence_strip/fs_capsules.webp",
     "px": [
-      512,
-      512
-    ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), 920594a0",
-    "status": "v1"
-  },
-  "g_fs_trottoir": {
-    "file": "steel/frequence_strip/g_fs_trottoir.webp",
-    "px": [
-      512,
-      512
-    ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), 99a04016",
-    "status": "v1"
-  },
-  "g_fs_grille_vapeur": {
-    "file": "steel/frequence_strip/g_fs_grille_vapeur.webp",
-    "px": [
-      512,
-      512
-    ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), 35b50433",
-    "status": "v1"
-  },
-  "fs_neon7": {
-    "file": "steel/frequence_strip/fs_neon7.webp",
-    "px": [
-      600,
-      500
+      300,
+      420
     ],
     "anchor": [
-      292,
-      499
+      146,
+      419
     ],
     "footprint_m": [
-      12,
+      6,
       6
     ],
-    "source": "GenerateImage (cursor), 769ab882",
+    "source": "GenerateImage (cursor), baf8adcf",
     "status": "v1"
   },
   "fs_corestack": {
@@ -66,39 +33,313 @@
     "source": "GenerateImage (cursor), a7fc16c3",
     "status": "v1"
   },
-  "fs_retour": {
-    "file": "steel/frequence_strip/fs_retour.webp",
+  "fs_ens_capsules": {
+    "file": "steel/frequence_strip/fs_ens_capsules.webp",
     "px": [
-      400,
-      360
+      192,
+      192
     ],
+    "anime": true,
+    "frames": 2,
+    "frame_px": [
+      96,
+      192
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "colonne de hublots allumés",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
     "anchor": [
-      204,
-      359
-    ],
-    "footprint_m": [
-      8,
-      6
-    ],
-    "source": "GenerateImage (cursor), baf8adcf",
-    "status": "v1"
+      48,
+      191
+    ]
   },
-  "fs_capsules": {
-    "file": "steel/frequence_strip/fs_capsules.webp",
+  "fs_ens_capsules_mobile": {
+    "file": "steel/frequence_strip/fs_ens_capsules_mobile.webp",
     "px": [
-      300,
-      420
+      96,
+      96
     ],
+    "anime": true,
+    "frames": 2,
+    "frame_px": [
+      48,
+      96
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "colonne de hublots allumés",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
     "anchor": [
-      146,
-      419
+      24,
+      95
+    ]
+  },
+  "fs_ens_coeur": {
+    "file": "steel/frequence_strip/fs_ens_coeur.webp",
+    "px": [
+      576,
+      96
     ],
-    "footprint_m": [
-      6,
-      6
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      96,
+      96
     ],
-    "source": "GenerateImage (cursor), baf8adcf",
-    "status": "v1"
+    "fps": 8,
+    "boucle": true,
+    "contenu": "cœur néon qui bat",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      48,
+      95
+    ]
+  },
+  "fs_ens_coeur_mobile": {
+    "file": "steel/frequence_strip/fs_ens_coeur_mobile.webp",
+    "px": [
+      288,
+      48
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      48,
+      48
+    ],
+    "fps": 8,
+    "boucle": true,
+    "contenu": "cœur néon qui bat",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      24,
+      47
+    ]
+  },
+  "fs_ens_corestack": {
+    "file": "steel/frequence_strip/fs_ens_corestack.webp",
+    "px": [
+      1152,
+      192
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      192,
+      192
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "baies qui défilent, lumière cyan",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      96,
+      191
+    ]
+  },
+  "fs_ens_corestack_mobile": {
+    "file": "steel/frequence_strip/fs_ens_corestack_mobile.webp",
+    "px": [
+      576,
+      96
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      96,
+      96
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "baies qui défilent, lumière cyan",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      48,
+      95
+    ]
+  },
+  "fs_ens_neon7": {
+    "file": "steel/frequence_strip/fs_ens_neon7.webp",
+    "px": [
+      1024,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      128
+    ],
+    "fps": 4,
+    "boucle": true,
+    "contenu": "logo Neon-7, allumage par segments",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      128,
+      127
+    ]
+  },
+  "fs_ens_neon7_mobile": {
+    "file": "steel/frequence_strip/fs_ens_neon7_mobile.webp",
+    "px": [
+      512,
+      64
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      64
+    ],
+    "fps": 4,
+    "boucle": true,
+    "contenu": "logo Neon-7, allumage par segments",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      64,
+      63
+    ]
+  },
+  "fs_ens_retour": {
+    "file": "steel/frequence_strip/fs_ens_retour.webp",
+    "px": [
+      576,
+      64
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      192,
+      64
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "néon ambre du bar, grésillement",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      96,
+      63
+    ]
+  },
+  "fs_ens_retour_mobile": {
+    "file": "steel/frequence_strip/fs_ens_retour_mobile.webp",
+    "px": [
+      288,
+      32
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      96,
+      32
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "néon ambre du bar, grésillement",
+    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      48,
+      31
+    ]
+  },
+  "fs_ens_tron": {
+    "file": "steel/frequence_strip/fs_ens_tron.webp",
+    "px": [
+      512,
+      256
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      256
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran vertical, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "GenerateImage (cursor), 3e4dd190, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      64,
+      255
+    ]
+  },
+  "fs_ens_tron_mobile": {
+    "file": "steel/frequence_strip/fs_ens_tron_mobile.webp",
+    "px": [
+      256,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      128
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran vertical, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "GenerateImage (cursor), 3e4dd190, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      32,
+      127
+    ]
+  },
+  "fs_ens_vibes": {
+    "file": "steel/frequence_strip/fs_ens_vibes.webp",
+    "px": [
+      512,
+      256
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      256
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran vertical, Vibes (réf. pp_billboard_src)",
+    "source": "GenerateImage (cursor), b3a19276, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      64,
+      255
+    ]
+  },
+  "fs_ens_vibes_mobile": {
+    "file": "steel/frequence_strip/fs_ens_vibes_mobile.webp",
+    "px": [
+      256,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      128
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran vertical, Vibes (réf. pp_billboard_src)",
+    "source": "GenerateImage (cursor), b3a19276, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      32,
+      127
+    ]
   },
   "fs_facade_nord": {
     "file": "steel/frequence_strip/fs_facade_nord.webp",
@@ -125,6 +366,76 @@
     ],
     "anchor": [
       203,
+      359
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "source": "GenerateImage (cursor), baf8adcf",
+    "status": "v1"
+  },
+  "fs_fresque_vibes": {
+    "file": "steel/frequence_strip/fs_fresque_vibes.webp",
+    "px": [
+      400,
+      300
+    ],
+    "anchor": [
+      228,
+      299
+    ],
+    "footprint_m": [
+      6,
+      0.6
+    ],
+    "height_m": 4,
+    "source": "GenerateImage (cursor), a0628bf0",
+    "status": "v1",
+    "note": "fresque inachevée de Groovy Vibes (réf. nml-shots/refs/pp_billboard_src.jpg), échelle, pots ; aucune lumière animée"
+  },
+  "fs_grille_est": {
+    "file": "steel/frequence_strip/fs_grille_est.webp",
+    "px": [
+      200,
+      220
+    ],
+    "anchor": [
+      154,
+      219
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "source": "GenerateImage (cursor), 41722f18",
+    "status": "v1"
+  },
+  "fs_neon7": {
+    "file": "steel/frequence_strip/fs_neon7.webp",
+    "px": [
+      600,
+      500
+    ],
+    "anchor": [
+      292,
+      499
+    ],
+    "footprint_m": [
+      12,
+      6
+    ],
+    "source": "GenerateImage (cursor), 769ab882",
+    "status": "v1"
+  },
+  "fs_retour": {
+    "file": "steel/frequence_strip/fs_retour.webp",
+    "px": [
+      400,
+      360
+    ],
+    "anchor": [
+      204,
       359
     ],
     "footprint_m": [
@@ -185,331 +496,6 @@
     "source": "GenerateImage (cursor), 41722f18",
     "status": "v1"
   },
-  "fs_grille_est": {
-    "file": "steel/frequence_strip/fs_grille_est.webp",
-    "px": [
-      200,
-      220
-    ],
-    "anchor": [
-      154,
-      219
-    ],
-    "footprint_m": [
-      4,
-      1
-    ],
-    "source": "GenerateImage (cursor), 41722f18",
-    "status": "v1"
-  },
-  "fs_ens_neon7": {
-    "file": "steel/frequence_strip/fs_ens_neon7.webp",
-    "px": [
-      1024,
-      128
-    ],
-    "anime": true,
-    "frames": 4,
-    "frame_px": [
-      256,
-      128
-    ],
-    "fps": 4,
-    "boucle": true,
-    "contenu": "logo Neon-7, allumage par segments",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      128,
-      127
-    ]
-  },
-  "fs_ens_neon7_mobile": {
-    "file": "steel/frequence_strip/fs_ens_neon7_mobile.webp",
-    "px": [
-      512,
-      64
-    ],
-    "anime": true,
-    "frames": 4,
-    "frame_px": [
-      128,
-      64
-    ],
-    "fps": 4,
-    "boucle": true,
-    "contenu": "logo Neon-7, allumage par segments",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      64,
-      63
-    ]
-  },
-  "fs_ens_corestack": {
-    "file": "steel/frequence_strip/fs_ens_corestack.webp",
-    "px": [
-      1152,
-      192
-    ],
-    "anime": true,
-    "frames": 6,
-    "frame_px": [
-      192,
-      192
-    ],
-    "fps": 6,
-    "boucle": true,
-    "contenu": "baies qui défilent, lumière cyan",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      96,
-      191
-    ]
-  },
-  "fs_ens_corestack_mobile": {
-    "file": "steel/frequence_strip/fs_ens_corestack_mobile.webp",
-    "px": [
-      576,
-      96
-    ],
-    "anime": true,
-    "frames": 6,
-    "frame_px": [
-      96,
-      96
-    ],
-    "fps": 6,
-    "boucle": true,
-    "contenu": "baies qui défilent, lumière cyan",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      48,
-      95
-    ]
-  },
-  "fs_ens_vibes": {
-    "file": "steel/frequence_strip/fs_ens_vibes.webp",
-    "px": [
-      512,
-      256
-    ],
-    "anime": true,
-    "frames": 4,
-    "frame_px": [
-      128,
-      256
-    ],
-    "fps": 2,
-    "boucle": true,
-    "contenu": "écran vertical, Vibes (réf. pp_billboard_src)",
-    "source": "GenerateImage (cursor), b3a19276, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      64,
-      255
-    ]
-  },
-  "fs_ens_vibes_mobile": {
-    "file": "steel/frequence_strip/fs_ens_vibes_mobile.webp",
-    "px": [
-      256,
-      128
-    ],
-    "anime": true,
-    "frames": 4,
-    "frame_px": [
-      64,
-      128
-    ],
-    "fps": 2,
-    "boucle": true,
-    "contenu": "écran vertical, Vibes (réf. pp_billboard_src)",
-    "source": "GenerateImage (cursor), b3a19276, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      32,
-      127
-    ]
-  },
-  "fs_ens_tron": {
-    "file": "steel/frequence_strip/fs_ens_tron.webp",
-    "px": [
-      512,
-      256
-    ],
-    "anime": true,
-    "frames": 4,
-    "frame_px": [
-      128,
-      256
-    ],
-    "fps": 3,
-    "boucle": true,
-    "contenu": "écran vertical, Tron (réf. pp_holo_tron_src), glitch",
-    "source": "GenerateImage (cursor), 3e4dd190, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      64,
-      255
-    ]
-  },
-  "fs_ens_tron_mobile": {
-    "file": "steel/frequence_strip/fs_ens_tron_mobile.webp",
-    "px": [
-      256,
-      128
-    ],
-    "anime": true,
-    "frames": 4,
-    "frame_px": [
-      64,
-      128
-    ],
-    "fps": 3,
-    "boucle": true,
-    "contenu": "écran vertical, Tron (réf. pp_holo_tron_src), glitch",
-    "source": "GenerateImage (cursor), 3e4dd190, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      32,
-      127
-    ]
-  },
-  "fs_ens_coeur": {
-    "file": "steel/frequence_strip/fs_ens_coeur.webp",
-    "px": [
-      576,
-      96
-    ],
-    "anime": true,
-    "frames": 6,
-    "frame_px": [
-      96,
-      96
-    ],
-    "fps": 8,
-    "boucle": true,
-    "contenu": "cœur néon qui bat",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      48,
-      95
-    ]
-  },
-  "fs_ens_coeur_mobile": {
-    "file": "steel/frequence_strip/fs_ens_coeur_mobile.webp",
-    "px": [
-      288,
-      48
-    ],
-    "anime": true,
-    "frames": 6,
-    "frame_px": [
-      48,
-      48
-    ],
-    "fps": 8,
-    "boucle": true,
-    "contenu": "cœur néon qui bat",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      24,
-      47
-    ]
-  },
-  "fs_ens_retour": {
-    "file": "steel/frequence_strip/fs_ens_retour.webp",
-    "px": [
-      576,
-      64
-    ],
-    "anime": true,
-    "frames": 3,
-    "frame_px": [
-      192,
-      64
-    ],
-    "fps": 1.5,
-    "boucle": true,
-    "contenu": "néon ambre du bar, grésillement",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      96,
-      63
-    ]
-  },
-  "fs_ens_retour_mobile": {
-    "file": "steel/frequence_strip/fs_ens_retour_mobile.webp",
-    "px": [
-      288,
-      32
-    ],
-    "anime": true,
-    "frames": 3,
-    "frame_px": [
-      96,
-      32
-    ],
-    "fps": 1.5,
-    "boucle": true,
-    "contenu": "néon ambre du bar, grésillement",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      48,
-      31
-    ]
-  },
-  "fs_ens_capsules": {
-    "file": "steel/frequence_strip/fs_ens_capsules.webp",
-    "px": [
-      192,
-      192
-    ],
-    "anime": true,
-    "frames": 2,
-    "frame_px": [
-      96,
-      192
-    ],
-    "fps": 1,
-    "boucle": true,
-    "contenu": "colonne de hublots allumés",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      48,
-      191
-    ]
-  },
-  "fs_ens_capsules_mobile": {
-    "file": "steel/frequence_strip/fs_ens_capsules_mobile.webp",
-    "px": [
-      96,
-      96
-    ],
-    "anime": true,
-    "frames": 2,
-    "frame_px": [
-      48,
-      96
-    ],
-    "fps": 1,
-    "boucle": true,
-    "contenu": "colonne de hublots allumés",
-    "source": "GenerateImage (cursor), 27139523 ; animation PIL",
-    "status": "v1",
-    "anchor": [
-      24,
-      95
-    ]
-  },
   "fs_vapeur": {
     "file": "steel/frequence_strip/fs_vapeur.webp",
     "px": [
@@ -554,256 +540,37 @@
       99
     ]
   },
-  "gen_fs_rocco": {
-    "file": "steel/frequence_strip/gen_fs_rocco.webp",
+  "g_fs_asphalte_mouille": {
+    "file": "steel/frequence_strip/g_fs_asphalte_mouille.webp",
     "px": [
-      180,
+      512,
       512
     ],
-    "height_m": 1.95,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), e2115411",
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 920594a0",
     "status": "v1"
   },
-  "portrait-gen_fs_rocco": {
-    "file": "steel/frequence_strip/portrait-gen_fs_rocco.webp",
+  "g_fs_grille_vapeur": {
+    "file": "steel/frequence_strip/g_fs_grille_vapeur.webp",
     "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_rocco",
-    "source": "recadrage de gen_fs_rocco.webp",
-    "status": "v1"
-  },
-  "gen_fs_lila": {
-    "file": "steel/frequence_strip/gen_fs_lila.webp",
-    "px": [
-      180,
+      512,
       512
     ],
-    "height_m": 1.68,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), e2115411",
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 35b50433",
     "status": "v1"
   },
-  "portrait-gen_fs_lila": {
-    "file": "steel/frequence_strip/portrait-gen_fs_lila.webp",
+  "g_fs_trottoir": {
+    "file": "steel/frequence_strip/g_fs_trottoir.webp",
     "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_lila",
-    "source": "recadrage de gen_fs_lila.webp",
-    "status": "v1"
-  },
-  "gen_fs_hugo": {
-    "file": "steel/frequence_strip/gen_fs_hugo.webp",
-    "px": [
-      180,
+      512,
       512
     ],
-    "height_m": 1.74,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), e2115411",
-    "status": "v1"
-  },
-  "portrait-gen_fs_hugo": {
-    "file": "steel/frequence_strip/portrait-gen_fs_hugo.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_hugo",
-    "source": "recadrage de gen_fs_hugo.webp",
-    "status": "v1"
-  },
-  "gen_fs_okoro": {
-    "file": "steel/frequence_strip/gen_fs_okoro.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.7,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), e2115411",
-    "status": "v1"
-  },
-  "portrait-gen_fs_okoro": {
-    "file": "steel/frequence_strip/portrait-gen_fs_okoro.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_okoro",
-    "source": "recadrage de gen_fs_okoro.webp",
-    "status": "v1"
-  },
-  "gen_fs_tibo": {
-    "file": "steel/frequence_strip/gen_fs_tibo.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.66,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 55bed990",
-    "status": "v1"
-  },
-  "portrait-gen_fs_tibo": {
-    "file": "steel/frequence_strip/portrait-gen_fs_tibo.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_tibo",
-    "source": "recadrage de gen_fs_tibo.webp",
-    "status": "v1"
-  },
-  "gen_fs_yun": {
-    "file": "steel/frequence_strip/gen_fs_yun.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.72,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 55bed990",
-    "status": "v1"
-  },
-  "portrait-gen_fs_yun": {
-    "file": "steel/frequence_strip/portrait-gen_fs_yun.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_yun",
-    "source": "recadrage de gen_fs_yun.webp",
-    "status": "v1"
-  },
-  "gen_fs_gt_promo": {
-    "file": "steel/frequence_strip/gen_fs_gt_promo.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.85,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 55bed990",
-    "status": "v1"
-  },
-  "portrait-gen_fs_gt_promo": {
-    "file": "steel/frequence_strip/portrait-gen_fs_gt_promo.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_gt_promo",
-    "source": "recadrage de gen_fs_gt_promo.webp",
-    "status": "v1"
-  },
-  "gen_fs_sacha": {
-    "file": "steel/frequence_strip/gen_fs_sacha.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.78,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 55bed990",
-    "status": "v1"
-  },
-  "portrait-gen_fs_sacha": {
-    "file": "steel/frequence_strip/portrait-gen_fs_sacha.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_sacha",
-    "source": "recadrage de gen_fs_sacha.webp",
-    "status": "v1"
-  },
-  "gen_fs_marius": {
-    "file": "steel/frequence_strip/gen_fs_marius.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.7,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 43d383a0",
-    "status": "v1"
-  },
-  "portrait-gen_fs_marius": {
-    "file": "steel/frequence_strip/portrait-gen_fs_marius.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_fs_marius",
-    "source": "recadrage de gen_fs_marius.webp",
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 99a04016",
     "status": "v1"
   },
   "gen_fs_foule_a": {
@@ -840,6 +607,288 @@
       511
     ],
     "source": "GenerateImage (cursor), 43d383a0",
+    "status": "v1"
+  },
+  "gen_fs_gt_promo": {
+    "file": "steel/frequence_strip/gen_fs_gt_promo.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.85,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 55bed990",
+    "status": "v1"
+  },
+  "gen_fs_hugo": {
+    "file": "steel/frequence_strip/gen_fs_hugo.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.74,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), e2115411",
+    "status": "v1"
+  },
+  "gen_fs_lila": {
+    "file": "steel/frequence_strip/gen_fs_lila.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.68,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), e2115411",
+    "status": "v1"
+  },
+  "gen_fs_marius": {
+    "file": "steel/frequence_strip/gen_fs_marius.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 43d383a0",
+    "status": "v1"
+  },
+  "gen_fs_ocre": {
+    "file": "steel/frequence_strip/gen_fs_ocre.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.68,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 81fbff1f",
+    "status": "v1",
+    "cameo": true
+  },
+  "gen_fs_okoro": {
+    "file": "steel/frequence_strip/gen_fs_okoro.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), e2115411",
+    "status": "v1"
+  },
+  "gen_fs_rocco": {
+    "file": "steel/frequence_strip/gen_fs_rocco.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.95,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), e2115411",
+    "status": "v1"
+  },
+  "gen_fs_sacha": {
+    "file": "steel/frequence_strip/gen_fs_sacha.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 55bed990",
+    "status": "v1"
+  },
+  "gen_fs_tibo": {
+    "file": "steel/frequence_strip/gen_fs_tibo.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 55bed990",
+    "status": "v1"
+  },
+  "gen_fs_yun": {
+    "file": "steel/frequence_strip/gen_fs_yun.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 55bed990",
+    "status": "v1"
+  },
+  "portrait-gen_fs_gt_promo": {
+    "file": "steel/frequence_strip/portrait-gen_fs_gt_promo.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_gt_promo",
+    "source": "recadrage de gen_fs_gt_promo.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_hugo": {
+    "file": "steel/frequence_strip/portrait-gen_fs_hugo.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_hugo",
+    "source": "recadrage de gen_fs_hugo.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_lila": {
+    "file": "steel/frequence_strip/portrait-gen_fs_lila.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_lila",
+    "source": "recadrage de gen_fs_lila.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_marius": {
+    "file": "steel/frequence_strip/portrait-gen_fs_marius.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_marius",
+    "source": "recadrage de gen_fs_marius.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_ocre": {
+    "file": "steel/frequence_strip/portrait-gen_fs_ocre.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_ocre",
+    "source": "recadrage de gen_fs_ocre.webp",
+    "status": "v1",
+    "cameo": true
+  },
+  "portrait-gen_fs_okoro": {
+    "file": "steel/frequence_strip/portrait-gen_fs_okoro.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_okoro",
+    "source": "recadrage de gen_fs_okoro.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_rocco": {
+    "file": "steel/frequence_strip/portrait-gen_fs_rocco.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_rocco",
+    "source": "recadrage de gen_fs_rocco.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_sacha": {
+    "file": "steel/frequence_strip/portrait-gen_fs_sacha.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_sacha",
+    "source": "recadrage de gen_fs_sacha.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_tibo": {
+    "file": "steel/frequence_strip/portrait-gen_fs_tibo.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_tibo",
+    "source": "recadrage de gen_fs_tibo.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_yun": {
+    "file": "steel/frequence_strip/portrait-gen_fs_yun.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_yun",
+    "source": "recadrage de gen_fs_yun.webp",
     "status": "v1"
   }
 }
