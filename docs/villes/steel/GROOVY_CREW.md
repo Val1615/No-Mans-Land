@@ -58,6 +58,9 @@ Clip : « No Man's Land : Biologiquement Obsolète », chaîne Le Chroniqueur Va
 ## Merch [canon]
 Crop tee, hoodie « Live Rain », tee 8-bit, vinyle, posters (duo, Error 404), casquette pixel, tote 8-bit, pack EXE (clé chrome, zine, stickers), stickers holo. **[proposition]** Objets trouvables ou vendus dans Center-Town (objets d'ambiance, objets de quête, monnaie d'échange avec les fans).
 
+## Présence dans le jeu
+- **[décision]** (29/10) Pour l'instant, on ne les voit que sur les écrans et dans les médias (pubs, billboards, feed, flashs info, affiches, merch). Aucune rencontre en personne.
+
 ## Pour l'écriture [proposition]
 - Les deux restent ambigus : stars du système Human Corp, mais leurs textes critiquent ce système. Le joueur peut se demander s'ils sont complices ou prisonniers.
 - Ne pas écrire Vibes comme une victime ni Tron comme un simple robot. Leurs répliques gardent l'ironie et le rythme des paroles.

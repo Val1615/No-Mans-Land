@@ -25,7 +25,7 @@ Rien ici ne remplace le canon déjà fixé (`STEEL_MEGALOPOLIS_PLAN.md`, `CANON_
 - La Rotonde (nom provisoire du bâtiment à dôme de Center-Town) pourrait être le Dôme Fréquence. À trancher par Valentin.
 - DA : Center-Town passe du bleu acier général de Steel à un violet néon autour de ces lieux, comme sur le site.
 
-## Questions pour Valentin
-- La Rotonde et le Dôme Fréquence, est-ce le même bâtiment ?
-- Le Terminus est-il à la douane ouest, ou à une autre sortie du dôme ?
-- Le joueur peut-il rencontrer Vibes et Tron en personne, ou seulement les voir en concert et sur les écrans au début ?
+## Réponses de Valentin (29/10)
+- **[décision]** Le Terminus de la Mega-Line n'est **pas** à la douane ouest. Son emplacement reste à proposer.
+- **[décision]** Pour l'instant, le joueur ne voit Groovy Vibes et Groovy-Tron que sur les écrans et dans les médias. Ils sont trop célèbres pour qu'on les approche.
+- La Rotonde et le Dôme Fréquence : question en attente. La Rotonde n'est qu'un nom provisoire, proposé pour le bâtiment à dôme de Center-Town (`CANON_ARBITRAGES.md`).
