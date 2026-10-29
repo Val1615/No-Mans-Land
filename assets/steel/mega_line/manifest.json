@@ -1,0 +1,611 @@
+{
+  "g_ml_pave": {
+    "file": "steel/mega_line/g_ml_pave.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 717d5fb5",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "g_ml_quai": {
+    "file": "steel/mega_line/g_ml_quai.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 717d5fb5",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "gen_ml_controleuse": {
+    "file": "steel/mega_line/gen_ml_controleuse.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 581a34ef",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.66
+  },
+  "gen_ml_entretien": {
+    "file": "steel/mega_line/gen_ml_entretien.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 581a34ef",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.72
+  },
+  "gen_ml_etudiante": {
+    "file": "steel/mega_line/gen_ml_etudiante.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 581a34ef",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.6
+  },
+  "gen_ml_fan": {
+    "file": "steel/mega_line/gen_ml_fan.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 537cf0bd",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.64
+  },
+  "gen_ml_navetteur": {
+    "file": "steel/mega_line/gen_ml_navetteur.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 581a34ef",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.76
+  },
+  "gen_ml_nouilles": {
+    "file": "steel/mega_line/gen_ml_nouilles.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 537cf0bd",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.58
+  },
+  "gen_ml_pancarte": {
+    "file": "steel/mega_line/gen_ml_pancarte.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 537cf0bd",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.74
+  },
+  "gen_ml_vigile": {
+    "file": "steel/mega_line/gen_ml_vigile.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), 537cf0bd",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.92
+  },
+  "ml_banc": {
+    "file": "steel/mega_line/ml_banc.webp",
+    "px": [
+      140,
+      90
+    ],
+    "anchor": [
+      93,
+      89
+    ],
+    "footprint_m": [
+      2,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), d30a5014",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 0.9
+  },
+  "ml_borne": {
+    "file": "steel/mega_line/ml_borne.webp",
+    "px": [
+      80,
+      150
+    ],
+    "anchor": [
+      47,
+      149
+    ],
+    "footprint_m": [
+      0.8,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), d30a5014",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1.8
+  },
+  "ml_ens_ecran_tron": {
+    "file": "steel/mega_line/ml_ens_ecran_tron.webp",
+    "px": [
+      1024,
+      144
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      144
+    ],
+    "fps": 3,
+    "boucle": true,
+    "anchor": [
+      128,
+      143
+    ],
+    "contenu": "écran de quai, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "GenerateImage (cursor), 27cbfbf8 (écran de scène du Dôme), réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
+    "status": "v1",
+    "partie": "ligne",
+    "groupe": "ecrans_quai"
+  },
+  "ml_ens_ecran_tron_mobile": {
+    "file": "steel/mega_line/ml_ens_ecran_tron_mobile.webp",
+    "px": [
+      512,
+      72
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      72
+    ],
+    "fps": 3,
+    "boucle": true,
+    "anchor": [
+      64,
+      71
+    ],
+    "contenu": "écran de quai, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "GenerateImage (cursor), 27cbfbf8 (écran de scène du Dôme), réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
+    "status": "v1",
+    "partie": "ligne",
+    "groupe": "ecrans_quai"
+  },
+  "ml_ens_ecran_vibes": {
+    "file": "steel/mega_line/ml_ens_ecran_vibes.webp",
+    "px": [
+      1024,
+      144
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      144
+    ],
+    "fps": 2,
+    "boucle": true,
+    "anchor": [
+      128,
+      143
+    ],
+    "contenu": "écran de quai, Vibes en concert (réf. pp_billboard_src)",
+    "source": "GenerateImage (cursor), 0b968ddf (écran de scène du Dôme), réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "status": "v1",
+    "partie": "ligne",
+    "groupe": "ecrans_quai"
+  },
+  "ml_ens_ecran_vibes_mobile": {
+    "file": "steel/mega_line/ml_ens_ecran_vibes_mobile.webp",
+    "px": [
+      512,
+      72
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      72
+    ],
+    "fps": 2,
+    "boucle": true,
+    "anchor": [
+      64,
+      71
+    ],
+    "contenu": "écran de quai, Vibes en concert (réf. pp_billboard_src)",
+    "source": "GenerateImage (cursor), 0b968ddf (écran de scène du Dôme), réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "status": "v1",
+    "partie": "ligne",
+    "groupe": "ecrans_quai"
+  },
+  "ml_ens_horaires": {
+    "file": "steel/mega_line/ml_ens_horaires.webp",
+    "px": [
+      384,
+      80
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      128,
+      80
+    ],
+    "fps": 1,
+    "boucle": true,
+    "anchor": [
+      64,
+      79
+    ],
+    "contenu": "tableau des départs en pictogrammes (aucun texte), une ligne change à chaque image",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "ligne",
+    "pose_sur": "ml_tableau"
+  },
+  "ml_ens_horaires_mobile": {
+    "file": "steel/mega_line/ml_ens_horaires_mobile.webp",
+    "px": [
+      192,
+      40
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      64,
+      40
+    ],
+    "fps": 1,
+    "boucle": true,
+    "anchor": [
+      32,
+      39
+    ],
+    "contenu": "tableau des départs en pictogrammes (aucun texte), une ligne change à chaque image",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "ligne",
+    "pose_sur": "ml_tableau"
+  },
+  "ml_ens_human_corp": {
+    "file": "steel/mega_line/ml_ens_human_corp.webp",
+    "px": [
+      384,
+      128
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      128,
+      128
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "anchor": [
+      64,
+      127
+    ],
+    "contenu": "logo abstrait Human Corp qui respire, en façade sous le viaduc",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "ml_ens_human_corp_mobile": {
+    "file": "steel/mega_line/ml_ens_human_corp_mobile.webp",
+    "px": [
+      192,
+      64
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      64,
+      64
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "anchor": [
+      32,
+      63
+    ],
+    "contenu": "logo abstrait Human Corp qui respire, en façade sous le viaduc",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "ml_lampadaire": {
+    "file": "steel/mega_line/ml_lampadaire.webp",
+    "px": [
+      80,
+      300
+    ],
+    "anchor": [
+      38,
+      299
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), d30a5014",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 6
+  },
+  "ml_poubelle": {
+    "file": "steel/mega_line/ml_poubelle.webp",
+    "px": [
+      50,
+      70
+    ],
+    "anchor": [
+      25,
+      69
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), d30a5014",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 1
+  },
+  "ml_rame": {
+    "file": "steel/mega_line/ml_rame.webp",
+    "px": [
+      1200,
+      680
+    ],
+    "anchor": [
+      1141,
+      679
+    ],
+    "footprint_m": [
+      24,
+      3
+    ],
+    "source": "GenerateImage (cursor), 8f71e637",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 3.6,
+    "note": "déplacée par le code le long du viaduc"
+  },
+  "ml_station": {
+    "file": "steel/mega_line/ml_station.webp",
+    "px": [
+      1100,
+      820
+    ],
+    "anchor": [
+      881,
+      819
+    ],
+    "footprint_m": [
+      20,
+      6
+    ],
+    "source": "GenerateImage (cursor), c52399c4",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 7,
+    "note": "deux cadres d’écran éteints sur le quai, écrans posés par le code"
+  },
+  "ml_tableau": {
+    "file": "steel/mega_line/ml_tableau.webp",
+    "px": [
+      160,
+      180
+    ],
+    "anchor": [
+      110,
+      179
+    ],
+    "footprint_m": [
+      2.4,
+      0.4
+    ],
+    "source": "GenerateImage (cursor), d30a5014",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 3
+  },
+  "ml_viaduc": {
+    "file": "steel/mega_line/ml_viaduc.webp",
+    "px": [
+      1200,
+      900
+    ],
+    "anchor": [
+      1122,
+      899
+    ],
+    "footprint_m": [
+      24,
+      3
+    ],
+    "source": "GenerateImage (cursor), 3cb38a0b",
+    "status": "v1",
+    "partie": "ligne",
+    "height_m": 6,
+    "repetable": true
+  },
+  "portrait-gen_ml_controleuse": {
+    "file": "steel/mega_line/portrait-gen_ml_controleuse.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_controleuse",
+    "source": "recadrage de gen_ml_controleuse.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_entretien": {
+    "file": "steel/mega_line/portrait-gen_ml_entretien.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_entretien",
+    "source": "recadrage de gen_ml_entretien.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_etudiante": {
+    "file": "steel/mega_line/portrait-gen_ml_etudiante.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_etudiante",
+    "source": "recadrage de gen_ml_etudiante.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_fan": {
+    "file": "steel/mega_line/portrait-gen_ml_fan.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_fan",
+    "source": "recadrage de gen_ml_fan.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_navetteur": {
+    "file": "steel/mega_line/portrait-gen_ml_navetteur.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_navetteur",
+    "source": "recadrage de gen_ml_navetteur.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_nouilles": {
+    "file": "steel/mega_line/portrait-gen_ml_nouilles.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_nouilles",
+    "source": "recadrage de gen_ml_nouilles.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_pancarte": {
+    "file": "steel/mega_line/portrait-gen_ml_pancarte.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_pancarte",
+    "source": "recadrage de gen_ml_pancarte.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_vigile": {
+    "file": "steel/mega_line/portrait-gen_ml_vigile.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_vigile",
+    "source": "recadrage de gen_ml_vigile.webp",
+    "status": "v1",
+    "partie": "ligne"
+  }
+}
