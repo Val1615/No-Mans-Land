@@ -1,36 +1,36 @@
 {
   "g_pp_dalle": {
     "file": "steel/pulse_plaza/g_pp_dalle.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), db485438",
     "px": [
       512,
       512
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "g_pp_dalle_mouillee": {
     "file": "steel/pulse_plaza/g_pp_dalle_mouillee.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 8ab2559c",
     "px": [
       512,
       512
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "g_pp_grille": {
     "file": "steel/pulse_plaza/g_pp_grille.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 45f10721",
     "px": [
       512,
       512
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "gen_pp_brisset": {
     "file": "steel/pulse_plaza/gen_pp_brisset.webp",
@@ -278,37 +278,37 @@
   },
   "pp_arcadius": {
     "file": "steel/pulse_plaza/pp_arcadius.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 91a82f07",
     "px": [
       1200,
       900
     ],
     "anchor": [
-      600,
+      779,
       899
     ],
     "footprint_m": [
       24,
       4
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_banc": {
     "file": "steel/pulse_plaza/pp_banc.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 21699ffb (planche B)",
     "px": [
       110,
       60
     ],
     "anchor": [
-      55,
+      72,
       59
     ],
     "footprint_m": [
       2,
       1
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_billboard": {
     "file": "steel/pulse_plaza/pp_billboard.webp",
@@ -329,105 +329,105 @@
   },
   "pp_camera": {
     "file": "steel/pulse_plaza/pp_camera.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 21699ffb (planche B)",
     "px": [
       40,
       140
     ],
     "anchor": [
-      20,
+      24,
       139
     ],
     "footprint_m": [
       0.4,
       0.4
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_distrib": {
     "file": "steel/pulse_plaza/pp_distrib.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), f0df6fa8 (planche A)",
     "px": [
       110,
       160
     ],
     "anchor": [
-      55,
+      63,
       159
     ],
     "footprint_m": [
       2,
       2
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_ecran_feed": {
     "file": "steel/pulse_plaza/pp_ecran_feed.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 9c4eee65",
     "px": [
       1000,
       700
     ],
     "anchor": [
-      500,
+      729,
       699
     ],
     "footprint_m": [
       20,
       4
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_escalier": {
     "file": "steel/pulse_plaza/pp_escalier.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 21699ffb (planche B)",
     "px": [
       200,
       200
     ],
     "anchor": [
-      100,
+      90,
       199
     ],
     "footprint_m": [
       4,
       4
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_guerite": {
     "file": "steel/pulse_plaza/pp_guerite.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), f0df6fa8 (planche A)",
     "px": [
       220,
       260
     ],
     "anchor": [
-      110,
+      107,
       259
     ],
     "footprint_m": [
       4,
       6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_holo_socle": {
     "file": "steel/pulse_plaza/pp_holo_socle.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), de166044",
     "px": [
       400,
       300
     ],
     "anchor": [
-      200,
+      198,
       299
     ],
     "footprint_m": [
       8,
       8
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_holo_tron": {
     "file": "steel/pulse_plaza/pp_holo_tron.webp",
@@ -448,53 +448,53 @@
   },
   "pp_kiosque": {
     "file": "steel/pulse_plaza/pp_kiosque.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), f0df6fa8 (planche A)",
     "px": [
       220,
       260
     ],
     "anchor": [
-      110,
+      128,
       259
     ],
     "footprint_m": [
       4,
       6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_nouilles": {
     "file": "steel/pulse_plaza/pp_nouilles.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), f0df6fa8 (planche A)",
     "px": [
       220,
       240
     ],
     "anchor": [
-      110,
+      140,
       239
     ],
     "footprint_m": [
       4,
       6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_portique": {
     "file": "steel/pulse_plaza/pp_portique.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "GenerateImage (cursor), 21699ffb (planche B)",
     "px": [
       220,
       180
     ],
     "anchor": [
-      110,
+      136,
       179
     ],
     "footprint_m": [
       4,
       2
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   }
 }
