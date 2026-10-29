@@ -12,7 +12,7 @@ export const BUILDINGS_PULSE = [
   B('pp_portique', 'Portique IO', 'pp_portique', 20, 4, 4, 2),
   B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed', 12, 8, 20, 4, { sign: true }),
   B('pp_holo', 'Projection Holo-Tron', 'pp_holo_socle', 20, 14, 8, 8),
-  B('pp_holo_tron', '', 'pp_holo_tron', 23.7, 17.7, 0.6, 0.6, { solid: [], named: false, cover: true /* cover : dessiné par-dessus le socle ; 104 x 230 à la source (height_m 3,6, a160a80), plus d'échelle en code ; transparence de l'image seule */ }),
+  B('pp_holo_tron', '', 'pp_holo_tron', 23.7, 17.7, 0.6, 0.6, { solid: [], named: false, cover: true /* cover : dessiné par-dessus le socle ; 81 x 180 à la source, ancre au pied [40, 179] (height_m 3,6, fedd3e3), plus d'échelle en code ; transparence de l'image seule */ }),
   B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard', 0, 6, 4, 6),
   B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque', 44, 6, 4, 6),
   B('pp_guerite', 'Guérite SMPD', 'pp_guerite', 0, 24, 4, 6),
