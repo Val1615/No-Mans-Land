@@ -331,12 +331,12 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran (les deux axes), puis écartées des panneaux d'interface et entre elles
     const toScr = p => { const v = p.clone().project(cam); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; };
-    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const q = toScr(l.getPos()); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = q.x, ly = q.y;
+    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; l.el.dataset.off = ''; if (!vis) continue; const q = toScr(l.getPos()); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = q.x, ly = q.y;
       const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'), npc = l.el.classList.contains('npc');
-      if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; continue; }
+      if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; }
       if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx));
       let foot = null; if (npc && l.foot) foot = toScr(l.foot());
-      if (!sortie && !(npc && foot && foot.y > 0 && ly - lh < 4) && (ly - lh > innerHeight || ly < 0)) { l.el.hidden = true; continue; } // hors écran vertical : masqué (sorties : marqueur gardé au bord)
+      if (!sortie && !(npc && foot && foot.y > 0 && ly - lh < 4) && (ly - lh > innerHeight || ly < 0)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; } // hors écran vertical : masqué (sorties : marqueur gardé au bord)
       if (sortie && lh) ly = Math.min(innerHeight - 4, Math.max(lh + 4, ly));
       let below = false; if (npc && foot && lh && ly - lh < 4) { if (foot.y < 0 || foot.y + lh + 6 > innerHeight) { l.el.hidden = true; continue; } ly = foot.y + lh + 6; below = true; } // PNJ en haut du cadre : libellé sous ses pieds, jamais sur sa tête [Régie B]
       placed.push({ l, lx, ly, lw, lh, npc, below, foot }); }
@@ -358,6 +358,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
         for (const q of hudRects) { ys.push(q.top - 3, q.bottom + a.lh + 3); xs.push(q.left - a.lw / 2 - 3, q.right + a.lw / 2 + 3); }
         if (a.foot) ys.push(a.foot.y + a.lh + 6);
         for (const b of done) ys.push(b.ly - b.lh - 4, b.ly + a.lh + 4);
+        for (const q of bodies) { ys.push(q.top - 3, q.bottom + a.lh + 3); xs.push(q.left - a.lw / 2 - 3, q.right + a.lw / 2 + 3); } // contourner les corps des PNJ
         let best = null, bd = Infinity;
         for (const strict of [true, false]) { for (const x of xs) { if (x - a.lw / 2 < 2 || x + a.lw / 2 > innerWidth - 2) continue; for (const y of ys) { if (!ok(x, y, strict)) continue;
           const d = Math.abs(y - a.ly) + 1.5 * Math.abs(x - a.lx); if (d < bd) { bd = d; best = [x, y]; } } } if (best) break; }

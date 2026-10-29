@@ -215,7 +215,7 @@ with sync_playwright() as p:
                 check(f'{T}: barrière franchie -> Center-Town', ok and s['location'] == 'steel_center', s['location'])
                 check(f'{T}: quête : arrivé en ville (q_steel)', s['flags'].get('q_steel'))
                 check(f'{T}: HUD en crédits dans Steel', E("document.getElementById('money').textContent") == '11 cr' and E("document.getElementById('money-lbl').textContent") == 'Crédits')
-                lbl = lambda b: E(f"(()=>{{const e=document.querySelector('.wlabel[data-building=\"{b}\"]');return !!e && !e.hidden && getComputedStyle(e).display!=='none'}})()")
+                lbl = lambda b: E(f"(()=>{{const e=document.querySelector('.wlabel[data-building=\"{b}\"]');return !!e && (e.dataset.off==='1' || !e.hidden && getComputedStyle(e).display!=='none')}})()") # hors champ (mobile) : masqué par le lot 1, nommé dès qu'il entre dans le cadre
                 check(f'{T}: services non nommés avant découverte', not lbl('c_change') and not lbl('c_arcadius'))
                 pg.screenshot(path=OUT + f'{prof}-{race}-center.png')
                 if race == 'augmente':
