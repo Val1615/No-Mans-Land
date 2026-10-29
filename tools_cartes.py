@@ -137,8 +137,18 @@ def _blocks(d, cx, cy, r, rnd, col, n=60, sz=(14, 34), street=None):
 def _blob(d, cx, cy, rx, ry, rnd, fill, outline=None, n=24):
     pts = [(cx + rx * (0.85 + 0.15 * rnd.random()) * math.cos(2 * math.pi * k / n), cy + ry * (0.85 + 0.15 * rnd.random()) * math.sin(2 * math.pi * k / n)) for k in range(n)]
     d.polygon(pts, fill=fill, outline=outline)
+PALETTE = 'bleu'  # 'bleu' (retour Valentin 29/10 : Steel en bleu acier, contraste avec le désert ambre) ou 'ambre' (3556d7d)
+RAMPE = np.array([[8, 12, 18], [22, 34, 48], [52, 76, 98], [110, 146, 170], [196, 222, 236.]])  # nuit, bleu acier, gris-bleu, cyan froid pâle
+def _bleu(a, desat=False):  # luminance -> rampe bleu acier ; les accents chauds (lanternes, feux) gardent une pointe de couleur, atténuée
+    L = a.mean(2) / 255; L = np.clip(L * 1.35, 0, 1) ** 0.85; t = L * (len(RAMPE) - 1); i = np.clip(t.astype(int), 0, len(RAMPE) - 2); f = (t - i)[..., None]
+    b = RAMPE[i] * (1 - f) + RAMPE[i + 1] * f
+    warm = np.clip((a[..., 0] - a[..., 2] - 70) / 80, 0, 1)[..., None] * (a[..., 0:1] > 150)
+    b = b * (1 - 0.6 * warm) + a * 0.6 * warm
+    if desat: G = b.mean(2, keepdims=True); b = G * 0.75 + b * 0.25 + np.array([0, 3, 8]); b = b * 0.85 + 8
+    return b
 def _finish(im, seed, desat=False):
     im = im.convert('RGB'); a = np.asarray(im).astype(float) * (0.93 + 0.12 * noise(SH, SW, [(2, 1)], seed)[..., None])
+    if PALETTE == 'bleu': return Image.fromarray(np.clip(_bleu(a, desat), 0, 255).astype('uint8'))
     if desat: L = a.mean(2, keepdims=True); a = (L * 0.85 + a * 0.15) * 0.8 + 10
     return Image.fromarray(np.clip(a, 0, 255).astype('uint8'))
 def carte_steel():
@@ -192,6 +202,9 @@ def manifest(nml):
              'note': 'même cadrage sur les 4 planches ; repères = positions proposées des lieux, sorties et liens entre couches (même x, y d une couche à l autre pour un ascenseur)'},
          'icones_lieux': {k: {'svg': 'ui/maps/icones/%s.svg' % k, 'png24': 'ui/maps/icones/%s_24.png' % k, 'png48': 'ui/maps/icones/%s_48.png' % k}
                           for k in ('lieu_decouvert', 'lieu_non_decouvert', 'joueur', 'sortie', 'lien_couches', 'verrouille')}}
+    m['icones_lieux_steel'] = {k + '_steel': {'svg': 'ui/maps/icones/%s_steel.svg' % k, 'png24': 'ui/maps/icones/%s_steel_24.png' % k, 'png48': 'ui/maps/icones/%s_steel_48.png' % k}
+                               for k in ('lieu_decouvert', 'lieu_non_decouvert', 'joueur', 'sortie', 'lien_couches', 'verrouille')}  # variante bleue (#a9d2e6) pour la carte Steel
+    m['steel']['palette'] = PALETTE
     json.dump(m, open(OUT + 'manifest.json', 'w'), ensure_ascii=False, indent=1)
 def chemin(a, b):  # A* 8 directions sans couper les angles marins (comme worldPath), coût uniforme : pour la maquette seulement
     import heapq

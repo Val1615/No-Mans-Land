@@ -11,10 +11,12 @@ Suit docs/design/INTERFACE.md §4 (branche docs/regie-interface, 8e70070). Dessi
 
 ## Steel-Megalopolis
 - 4 planches 1600 × 1200, même cadrage (sarcophage : ellipse centre 800, 610, demi-axes 700 × 500) : `steel_1_sous_ville`, `steel_2_lower_town`, `steel_3_center_town`, `steel_4_upper_town` (désaturée, verrouillée).
+- Palette bleu acier (retour Valentin 29/10, contraste avec le désert ambre) : rampe nuit, bleu acier, gris-bleu, cyan froid pâle, sans néon ; Upper-Town en gris-bleu désaturé. Option `PALETTE = 'bleu'` ou `'ambre'` dans tools_cartes.py (l ambre de 3556d7d reste reproductible).
 - Repères proposés par couche (px) dans le manifest (`reperes_px_proposition`) : lieux, sorties, liens entre couches ; un lien garde les mêmes x, y d une couche à l autre.
 
 ## Icônes de lieux
 `assets/ui/maps/icones/` : SVG + PNG 24 et 48 px, ambre `#f2b44a` sur fond sombre : `lieu_decouvert`, `lieu_non_decouvert`, `joueur`, `sortie`, `lien_couches`, `verrouille` (Upper-Town).
+Variante bleue pour la carte Steel (`#a9d2e6`, fond `#060a10`), mêmes noms suffixés `_steel` (ex. `lieu_decouvert_steel_24.png`), entrée `icones_lieux_steel` du manifest. Les ambres restent pour la carte NML.
 
 ## Décisions prises (à valider)
 - Disposition de Steel déduite des jonctions du code : douane à l ouest, Center-Town au centre (dalle surélevée), Lower-Town à l est (la Descente), Asia-Ground au sud de Lower-Town, China Lake au sud d Asia-Ground (sortie nord de China Lake vers Asia-Ground) et reliée à Lower-Town par une ruelle ; lac de Lower Street au nord-est. Sous-Ville : Les Poutres sous la douane (trappe), La Cuve à l est, monte-charge sous Center-Town, deux routes de sortie (ouest, sud).

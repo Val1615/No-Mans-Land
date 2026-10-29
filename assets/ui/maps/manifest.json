@@ -1306,7 +1306,8 @@
     }
    }
   ],
-  "note": "même cadrage sur les 4 planches ; repères = positions proposées des lieux, sorties et liens entre couches (même x, y d une couche à l autre pour un ascenseur)"
+  "note": "même cadrage sur les 4 planches ; repères = positions proposées des lieux, sorties et liens entre couches (même x, y d une couche à l autre pour un ascenseur)",
+  "palette": "bleu"
  },
  "icones_lieux": {
   "lieu_decouvert": {
@@ -1338,6 +1339,38 @@
    "svg": "ui/maps/icones/verrouille.svg",
    "png24": "ui/maps/icones/verrouille_24.png",
    "png48": "ui/maps/icones/verrouille_48.png"
+  }
+ },
+ "icones_lieux_steel": {
+  "lieu_decouvert_steel": {
+   "svg": "ui/maps/icones/lieu_decouvert_steel.svg",
+   "png24": "ui/maps/icones/lieu_decouvert_steel_24.png",
+   "png48": "ui/maps/icones/lieu_decouvert_steel_48.png"
+  },
+  "lieu_non_decouvert_steel": {
+   "svg": "ui/maps/icones/lieu_non_decouvert_steel.svg",
+   "png24": "ui/maps/icones/lieu_non_decouvert_steel_24.png",
+   "png48": "ui/maps/icones/lieu_non_decouvert_steel_48.png"
+  },
+  "joueur_steel": {
+   "svg": "ui/maps/icones/joueur_steel.svg",
+   "png24": "ui/maps/icones/joueur_steel_24.png",
+   "png48": "ui/maps/icones/joueur_steel_48.png"
+  },
+  "sortie_steel": {
+   "svg": "ui/maps/icones/sortie_steel.svg",
+   "png24": "ui/maps/icones/sortie_steel_24.png",
+   "png48": "ui/maps/icones/sortie_steel_48.png"
+  },
+  "lien_couches_steel": {
+   "svg": "ui/maps/icones/lien_couches_steel.svg",
+   "png24": "ui/maps/icones/lien_couches_steel_24.png",
+   "png48": "ui/maps/icones/lien_couches_steel_48.png"
+  },
+  "verrouille_steel": {
+   "svg": "ui/maps/icones/verrouille_steel.svg",
+   "png24": "ui/maps/icones/verrouille_steel_24.png",
+   "png48": "ui/maps/icones/verrouille_steel_48.png"
   }
  }
 }
