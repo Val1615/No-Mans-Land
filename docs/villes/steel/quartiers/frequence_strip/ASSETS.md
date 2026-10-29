@@ -9,6 +9,7 @@ Mêmes conventions que `pulse_plaza/ASSETS.md`. Tout est **[proposition]** d'Ocr
 
 ## Placeholders et manifest
 49 fichiers dans `assets/steel/frequence_strip/`, générés par `docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py` (cadre magenta). Le script ne réécrit pas une entrée déjà passée en status « v1 ».
+v1 (branche creation/frequence-strip) : les 49 fichiers sont des sprites v1 (status « v1 », ancres recalées). Enseignes : image de base générée, animation faite en PIL (variation de lumière, battement, glitch) pour garder des images cohérentes ; vapeur entièrement procédurale. Poids mesurés : 45 Ko pour les 8 planches mobiles, 123 Ko en version ordinateur. Faux textes des façades floutés.
 Index : `assets/steel/frequence_strip/manifest.json`, chemins `file` relatifs à `assets/`.
 
 ## Sols
