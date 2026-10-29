@@ -17,7 +17,8 @@ Rien ici ne remplace le canon déjà fixé (`STEEL_MEGALOPOLIS_PLAN.md`, `CANON_
 | Festival Pulse of Steel | Festival (tournée). | |
 Éléments de rue : billboard HCM-88X de Vibes (« Le sourire est une mise à jour »), projection Holo-Tron, pubs GT (« Be iconic. Be perfect. Be groovy. »), caméras C.A.G.E. (« Inactives. Officiellement. »), panneau « No Man's Land : au-delà de ce point, pas de droits, pas de loi, pas de retour ».
 
-## Regroupement en quartiers [proposition]
+## Sous-quartiers de Center-Town [proposition]
+Tous sont dans Center-Town, sur la dalle surélevée, et aucun dans Lower-Town.
 1. **Pulse Plaza** : la place centrale des écrans, cœur de Center-Town, au pied des tours et de l'Arcadius Center. Feed 24/7, foule synchronisée, caméras C.A.G.E.
 2. **Fréquence Strip** : la rue de la nuit, bars, néons mouillés, Club Neon-7 et Core Stack.
 3. **Quartier de l'Arena** : la Steel-Mégalopolis Arena, siège des grands concerts et du Festival Pulse of Steel.

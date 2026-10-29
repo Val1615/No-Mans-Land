@@ -111,7 +111,7 @@ Toutes closes le 21/10/2026 [décision] : Nilo retiré dès le début ; race cho
 
 ## L1 refait (v13, 22/10/2026), d'après le concept art
 - **Décision** (Valentin) : ambiance de nuit cyberpunk (concept art `steel/ambiance/concept_center_town.jpg`) ; douane = place forte IO, porte du sarcophage en haut à droite au bout de la route, poste de douane à gauche, beaucoup de soldats, file d'attente, fortifications ; intérieur de la douane en mobilier IO.
-- **Proposition** : la Rotonde (bâtiment à dôme de Center-Town, fermé), disposition exacte des miradors, tourelles et barricades, nombre de passants et de drones.
+- **Proposition** : le Dôme Fréquence (bâtiment à dôme de Center-Town, fermé, ex-« Rotonde », nom décidé par Valentin le 29/10), disposition exacte des miradors, tourelles et barricades, nombre de passants et de drones.
 
 ## L2 codé (v14, 22/10/2026) : la Sous-Ville
 - Trappe de service (`r_trappe`, au sud de la douane) : ouverte si `bruno_frere` (humain refoulé, mutant en fuite, via Sol puis Bruno) ou `sv_jete` (mutant capturé). [décision]
