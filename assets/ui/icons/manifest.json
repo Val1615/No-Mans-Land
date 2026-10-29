@@ -1,0 +1,72 @@
+{
+  "style": "monochrome ambre #f2b44a (var --c de src/style.css), trait 1,75 / 24, fond transparent",
+  "icons": {
+    "menu": {
+      "svg": "ui/icons/menu.svg",
+      "png64": "ui/icons/menu_64.png",
+      "png128": "ui/icons/menu_128.png",
+      "touche": "Échap"
+    },
+    "sac": {
+      "svg": "ui/icons/sac.svg",
+      "png64": "ui/icons/sac_64.png",
+      "png128": "ui/icons/sac_128.png",
+      "touche": "I"
+    },
+    "journal": {
+      "svg": "ui/icons/journal.svg",
+      "png64": "ui/icons/journal_64.png",
+      "png128": "ui/icons/journal_128.png",
+      "touche": "J"
+    },
+    "carte": {
+      "svg": "ui/icons/carte.svg",
+      "png64": "ui/icons/carte_64.png",
+      "png128": "ui/icons/carte_128.png",
+      "touche": "M"
+    },
+    "son_on": {
+      "svg": "ui/icons/son_on.svg",
+      "png64": "ui/icons/son_on_64.png",
+      "png128": "ui/icons/son_on_128.png",
+      "touche": "S"
+    },
+    "son_off": {
+      "svg": "ui/icons/son_off.svg",
+      "png64": "ui/icons/son_off_64.png",
+      "png128": "ui/icons/son_off_128.png",
+      "touche": "S"
+    },
+    "discret_on": {
+      "svg": "ui/icons/discret_on.svg",
+      "png64": "ui/icons/discret_on_64.png",
+      "png128": "ui/icons/discret_on_128.png",
+      "touche": "H"
+    },
+    "discret_off": {
+      "svg": "ui/icons/discret_off.svg",
+      "png64": "ui/icons/discret_off_64.png",
+      "png128": "ui/icons/discret_off_128.png",
+      "touche": "H"
+    },
+    "entrer": {
+      "svg": "ui/icons/entrer.svg",
+      "png64": "ui/icons/entrer_64.png",
+      "png128": "ui/icons/entrer_128.png",
+      "touche": "E"
+    },
+    "replier": {
+      "svg": "ui/icons/replier.svg",
+      "png64": "ui/icons/replier_64.png",
+      "png128": "ui/icons/replier_128.png",
+      "touche": "Tab"
+    },
+    "deplier": {
+      "svg": "ui/icons/deplier.svg",
+      "png64": "ui/icons/deplier_64.png",
+      "png128": "ui/icons/deplier_128.png",
+      "touche": "Tab"
+    }
+  },
+  "note": "touches : reprises de la barre actuelle (Échap, I, J, M, S, H) ; E et Tab sont des suggestions pour entrer et replier/déplier"
+}
