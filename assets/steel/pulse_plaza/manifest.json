@@ -1,0 +1,500 @@
+{
+  "g_pp_dalle": {
+    "file": "steel/pulse_plaza/g_pp_dalle.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "g_pp_dalle_mouillee": {
+    "file": "steel/pulse_plaza/g_pp_dalle_mouillee.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "g_pp_grille": {
+    "file": "steel/pulse_plaza/g_pp_grille.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_brisset": {
+    "file": "steel/pulse_plaza/gen_pp_brisset.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.8,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_clone_gt": {
+    "file": "steel/pulse_plaza/gen_pp_clone_gt.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.85,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_dorian": {
+    "file": "steel/pulse_plaza/gen_pp_dorian.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_foule_a": {
+    "file": "steel/pulse_plaza/gen_pp_foule_a.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_foule_b": {
+    "file": "steel/pulse_plaza/gen_pp_foule_b.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.74,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_gaspard": {
+    "file": "steel/pulse_plaza/gen_pp_gaspard.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_isaure": {
+    "file": "steel/pulse_plaza/gen_pp_isaure.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_maelle": {
+    "file": "steel/pulse_plaza/gen_pp_maelle.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.64,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_noor": {
+    "file": "steel/pulse_plaza/gen_pp_noor.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.58,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_pham": {
+    "file": "steel/pulse_plaza/gen_pp_pham.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.62,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "gen_pp_vasseur": {
+    "file": "steel/pulse_plaza/gen_pp_vasseur.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.76,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_brisset": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_brisset.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_brisset",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_clone_gt": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_clone_gt.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_clone_gt",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_dorian": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_dorian.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_dorian",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_gaspard": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_gaspard.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_gaspard",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_isaure": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_isaure.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_isaure",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_maelle": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_maelle.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_maelle",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_noor": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_noor.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_noor",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_pham": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_pham.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_pham",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "portrait-gen_pp_vasseur": {
+    "file": "steel/pulse_plaza/portrait-gen_pp_vasseur.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_pp_vasseur",
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_arcadius": {
+    "file": "steel/pulse_plaza/pp_arcadius.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      1200,
+      900
+    ],
+    "anchor": [
+      600,
+      899
+    ],
+    "footprint_m": [
+      24,
+      4
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_banc": {
+    "file": "steel/pulse_plaza/pp_banc.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      110,
+      60
+    ],
+    "anchor": [
+      55,
+      59
+    ],
+    "footprint_m": [
+      2,
+      1
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_billboard": {
+    "file": "steel/pulse_plaza/pp_billboard.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      220,
+      520
+    ],
+    "anchor": [
+      110,
+      519
+    ],
+    "footprint_m": [
+      4,
+      6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_camera": {
+    "file": "steel/pulse_plaza/pp_camera.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      40,
+      140
+    ],
+    "anchor": [
+      20,
+      139
+    ],
+    "footprint_m": [
+      0.4,
+      0.4
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_distrib": {
+    "file": "steel/pulse_plaza/pp_distrib.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      110,
+      160
+    ],
+    "anchor": [
+      55,
+      159
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_ecran_feed": {
+    "file": "steel/pulse_plaza/pp_ecran_feed.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      1000,
+      700
+    ],
+    "anchor": [
+      500,
+      699
+    ],
+    "footprint_m": [
+      20,
+      4
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_escalier": {
+    "file": "steel/pulse_plaza/pp_escalier.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      200,
+      200
+    ],
+    "anchor": [
+      100,
+      199
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_guerite": {
+    "file": "steel/pulse_plaza/pp_guerite.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      220,
+      260
+    ],
+    "anchor": [
+      110,
+      259
+    ],
+    "footprint_m": [
+      4,
+      6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_holo_socle": {
+    "file": "steel/pulse_plaza/pp_holo_socle.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      400,
+      300
+    ],
+    "anchor": [
+      200,
+      299
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_holo_tron": {
+    "file": "steel/pulse_plaza/pp_holo_tron.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      220,
+      512
+    ],
+    "anchor": [
+      110,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_kiosque": {
+    "file": "steel/pulse_plaza/pp_kiosque.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      220,
+      260
+    ],
+    "anchor": [
+      110,
+      259
+    ],
+    "footprint_m": [
+      4,
+      6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_nouilles": {
+    "file": "steel/pulse_plaza/pp_nouilles.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      220,
+      240
+    ],
+    "anchor": [
+      110,
+      239
+    ],
+    "footprint_m": [
+      4,
+      6
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  },
+  "pp_portique": {
+    "file": "steel/pulse_plaza/pp_portique.webp",
+    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "px": [
+      220,
+      180
+    ],
+    "anchor": [
+      110,
+      179
+    ],
+    "footprint_m": [
+      4,
+      2
+    ],
+    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+  }
+}

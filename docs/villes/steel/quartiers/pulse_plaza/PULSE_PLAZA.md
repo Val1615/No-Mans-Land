@@ -33,7 +33,9 @@ Le violet est réservé aux médias du groupe : pubs, écrans, merch. IO et Huma
 **Musique.** Boucle principale autour de 170 BPM, nu-disco et synthwave, filtrée comme si elle sortait des écrans. Près de l'écran principal, le morceau est net ; ailleurs on n'entend que la basse et la voix vocodée de Tron. Titres repris en extraits (canon) : « HeartSync », « Toujours en ligne », « Erreur 404, Argument introuvable ». Quand une alerte passe sur le feed, la musique se coupe deux secondes puis reprend sur le même temps, sans transition.
 
 ## Plan de la zone [proposition]
-Zone `steel_pulse`, 48 x 36 m, cases de 2 m (24 colonnes x 18 rangées). x vers l'est, z vers le sud, comme `CHINA_LAKE_POSITIONS.md`. Nord = haut du cadre (tours, Arcadius Center au fond).
+**[décision du développeur, 29/10]** Zone `steel_pulse`, zone à part, reliée à Center-Town par une porte, comme Lower-Town. Sortie sud vers `c_sud`.
+
+**[proposition]** 48 x 36 m, cases de 2 m (24 colonnes x 18 rangées). x vers l'est, z vers le sud, comme `CHINA_LAKE_POSITIONS.md`. Nord = haut du cadre (tours, Arcadius Center au fond).
 
 ```
    col 0         6           12          18        23
@@ -45,7 +47,7 @@ r4  H H . . . . E E E E E E E E E E . . . . . . K K
 r5  H H . . . . E E E E E E E E E E . . . . . . K K
 r6  . . . . . . . . . . . . . . . . . . . . . . . >  sortie est : Fréquence Strip
 r7  < . . . . . . . . . . o o . . . . . . . . . . .
-r8  < . . . . . . . . . o O O o . . . . . . . . . .   sortie ouest : rue d'arrivée (Dôme Fréquence)
+r8  < . . . . . . . . . o O O o . . . . . . . . . .   sortie ouest : porte vers Center-Town (rue d'arrivée, Dôme Fréquence)
 r9  . . . . . . . . . . o O O o . . . . . . . . . .
 r10 . . B B . . . . . . . o o . . . . . . . M M . .
 r11 . . B B . . . . . . . . . . . . . . . . M M . .
@@ -54,9 +56,9 @@ r13 G G . . . . . . . . . . . . . . . . . . . . S S
 r14 G G . . . . . . . . . . . . . . . . . . . . S S
 r15 . . . . . . . . . . . v v . . . . . . . . . . .
 r16 . . . . . . . . . . . v v . . . . . . . . . . .
-r17 . . . . . . . . . . . V V . . . . . . . . . . .   sortie sud : grille c_sud / Mega-Line
+r17 . . . . . . . . . . . V V . . . . . . . . . . .   sortie sud : grille c_sud
 ```
-Légende : T tours de fond ; A Arcadius Center (non visitable) ; P portique de contrôle de l'Arcadius ; E écran géant du Feed 24/7 ; O socle de la projection Holo-Tron, o rambarde du socle ; H billboard HCM-88X ; K kiosque merch officiel ; B bancs ; M distributeur « sourire calibré » ; G guérite SMPD ; S stand de nouilles ; c caméra C.A.G.E. ; v, V escalier vers la grille de service et la Mega-Line ; < > sorties.
+Légende : T tours de fond ; A Arcadius Center (non visitable) ; P portique de contrôle de l'Arcadius ; E écran géant du Feed 24/7 ; O socle de la projection Holo-Tron, o rambarde du socle ; H billboard HCM-88X ; K kiosque merch officiel ; B bancs ; M distributeur « sourire calibré » ; G guérite SMPD ; S stand de nouilles ; c caméra C.A.G.E. ; v, V escalier vers la grille `c_sud` ; < > sorties.
 
 Repères en mètres (centre des cases) :
 | id | élément | cases | x, z (m) | visitable |
@@ -72,7 +74,9 @@ Repères en mètres (centre des cases) :
 | pp_distrib | distributeur | c20-21, r10-11 | 40-44, 20-24 | oui (objet) |
 | pp_bancs | bancs | c2-3, r10-11 | 4-8, 20-24 | non |
 | caméras | C.A.G.E. | (4,3) (17,3) (8,12) (17,12) | (9,7) (35,7) (17,25) (35,25) | non |
-Jonctions : ouest (r7-8) vers la rue d'arrivée, est (r6) vers Fréquence Strip, sud (c11-12) vers la grille de service, cohérente avec la sortie du monte-charge `c_sud`, à confirmer par le développeur.
+Jonctions : ouest (r7-8), **porte vers Center-Town** [décision], à traiter comme la porte de Lower-Town ; sud (c11-12), **sortie vers `c_sud`** [décision], la grille où arrive le monte-charge de la Sous-Ville ; est (r6) vers Fréquence Strip [proposition].
+
+Assets : `assets/steel/pulse_plaza/`, index `assets/steel/pulse_plaza/manifest.json` (placeholders, voir `ASSETS.md`).
 
 ## Bâtiments et mobilier [proposition sauf mention]
 - **Arcadius Center** [canon pour l'existence] : la façade ferme le nord. Verre noir, structure blanche, aucun violet. Logo IO. Entrée gardée, fermée.

@@ -1,8 +1,8 @@
 """Placeholders Pulse Plaza : RGBA webp aux tailles attendues, cadre magenta + croix.
-A remplacer par les vrais assets. Ne pas copier dans assets/ tels quels."""
+A remplacer par les vrais assets. Ecrit dans assets/steel/pulse_plaza/."""
 from PIL import Image, ImageDraw
 import os
-OUT = os.path.join(os.path.dirname(__file__), 'placeholders')
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', '..', '..', 'assets', 'steel', 'pulse_plaza')
 ITEMS = {
  # sols (512x512, tuilables)
  'g_pp_dalle.webp': (512, 512, True), 'g_pp_dalle_mouillee.webp': (512, 512, True), 'g_pp_grille.webp': (512, 512, True),
