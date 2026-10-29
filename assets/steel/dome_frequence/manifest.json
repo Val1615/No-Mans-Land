@@ -7,8 +7,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), fc040266",
+    "status": "v1"
   },
   "g_df_moquette": {
     "file": "steel/dome_frequence/g_df_moquette.webp",
@@ -18,8 +18,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), eb4e6570",
+    "status": "v1"
   },
   "g_df_scene": {
     "file": "steel/dome_frequence/g_df_scene.webp",
@@ -29,8 +29,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), ee16b344",
+    "status": "v1"
   },
   "df_scene": {
     "file": "steel/dome_frequence/df_scene.webp",
@@ -39,15 +39,15 @@
       360
     ],
     "anchor": [
-      450,
+      583,
       359
     ],
     "footprint_m": [
       18,
       4
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 4abba9c1",
+    "status": "v1"
   },
   "df_ecran_cadre": {
     "file": "steel/dome_frequence/df_ecran_cadre.webp",
@@ -56,15 +56,15 @@
       200
     ],
     "anchor": [
-      150,
+      234,
       199
     ],
     "footprint_m": [
       6,
       0.5
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 573c0e21",
+    "status": "v1"
   },
   "df_gradin": {
     "file": "steel/dome_frequence/df_gradin.webp",
@@ -73,15 +73,15 @@
       160
     ],
     "anchor": [
-      150,
+      199,
       159
     ],
     "footprint_m": [
       6,
       2
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 573c0e21",
+    "status": "v1"
   },
   "df_regie": {
     "file": "steel/dome_frequence/df_regie.webp",
@@ -90,15 +90,15 @@
       180
     ],
     "anchor": [
-      110,
+      176,
       179
     ],
     "footprint_m": [
       4,
       4
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 573c0e21",
+    "status": "v1"
   },
   "df_enceinte": {
     "file": "steel/dome_frequence/df_enceinte.webp",
@@ -107,15 +107,15 @@
       220
     ],
     "anchor": [
-      45,
+      71,
       219
     ],
     "footprint_m": [
       1,
       1
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 573c0e21",
+    "status": "v1"
   },
   "df_bar": {
     "file": "steel/dome_frequence/df_bar.webp",
@@ -124,15 +124,15 @@
       200
     ],
     "anchor": [
-      160,
+      197,
       199
     ],
     "footprint_m": [
       6,
       2
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 4f963310",
+    "status": "v1"
   },
   "df_vestiaire": {
     "file": "steel/dome_frequence/df_vestiaire.webp",
@@ -141,15 +141,15 @@
       220
     ],
     "anchor": [
-      160,
+      198,
       219
     ],
     "footprint_m": [
       6,
       2
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 4f963310",
+    "status": "v1"
   },
   "df_banquette": {
     "file": "steel/dome_frequence/df_banquette.webp",
@@ -158,15 +158,15 @@
       90
     ],
     "anchor": [
-      70,
+      101,
       89
     ],
     "footprint_m": [
       2,
       1
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 4f963310",
+    "status": "v1"
   },
   "df_colonne": {
     "file": "steel/dome_frequence/df_colonne.webp",
@@ -175,15 +175,15 @@
       320
     ],
     "anchor": [
-      40,
+      44,
       319
     ],
     "footprint_m": [
       1,
       1
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 4f963310",
+    "status": "v1"
   },
   "df_borne": {
     "file": "steel/dome_frequence/df_borne.webp",
@@ -192,15 +192,15 @@
       150
     ],
     "anchor": [
-      40,
+      45,
       149
     ],
     "footprint_m": [
       1,
       1
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), f4836672",
+    "status": "v1"
   },
   "df_cloison": {
     "file": "steel/dome_frequence/df_cloison.webp",
@@ -209,15 +209,15 @@
       220
     ],
     "anchor": [
-      150,
+      221,
       219
     ],
     "footprint_m": [
       6,
       0.5
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), f4836672",
+    "status": "v1"
   },
   "df_porte": {
     "file": "steel/dome_frequence/df_porte.webp",
@@ -226,15 +226,15 @@
       240
     ],
     "anchor": [
-      100,
+      158,
       239
     ],
     "footprint_m": [
       6,
       0.5
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), f4836672",
+    "status": "v1"
   },
   "df_verriere": {
     "file": "steel/dome_frequence/df_verriere.webp",
@@ -244,14 +244,14 @@
     ],
     "anchor": [
       450,
-      899
+      450
     ],
     "footprint_m": [
       30,
       30
     ],
-    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
-    "status": "placeholder, dome-frequence (zone steel_dome)"
+    "source": "GenerateImage (cursor), 10108c61",
+    "status": "v1"
   },
   "df_ens_ecran_vibes": {
     "file": "steel/dome_frequence/df_ens_ecran_vibes.webp",
