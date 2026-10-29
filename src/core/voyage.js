@@ -40,7 +40,7 @@ export function createVoyage({ game, manifest, data = D, rng = () => Math.random
     if (L?.kind === 'interior') for (const d of w.DOORS) if (d.location === loc && d.target) { const t = w.DOORS.find(x => x.id === d.target.doorId); if (t && w.LOCATIONS[t.location]?.kind !== 'interior') { e = t.location; break; } }
     return lieux.find(l => l.jeu && l.jeu.prefixe && e.startsWith(l.jeu.prefixe))?.key || 'steel'; };
   function voir(c, r) { const R = S().region, v = new Set(R.vues); for (let dc = -RAYON_VUE; dc <= RAYON_VUE; dc++) for (let dr = -RAYON_VUE; dr <= RAYON_VUE; dr++) v.add(K(c + dc, r + dr));
-    R.vues = [...v]; for (const l of lieux) if (v.has(K(l.col, l.row))) R.connus[l.key] = true; }
+    R.vues = [...v]; } // le brouillard se dissipe ; un grand lieu ne devient connu qu'en entrant sur sa case
   function region() { // état régional, recréé depuis le lieu courant si absent (nouvelle partie, ancienne sauvegarde)
     const s = S(); if (s.heures == null) s.heures = HEURE_DEPART;
     if (!s.region || !s.region.case) { const k = lieuDuLieuJeu(s.location), l = lieux.find(x => x.key === k);
@@ -77,12 +77,12 @@ export function createVoyage({ game, manifest, data = D, rng = () => Math.random
     // une case entrée : temps, brouillard, crochet ; arrivée à la destination
     pas() { const R = region(); if (R.statut !== 'route' || !R.trajet.length) return null;
       const [c, r] = R.trajet.shift(), cell = cellAt(c, r), h = heures(cell); R.case = [c, r]; S().heures += h; R.parcours.push(K(c, r)); if (R.parcours.length > 400) R.parcours.shift();
-      if (!R.visitees.includes(K(c, r))) R.visitees.push(K(c, r)); voir(c, r);
+      if (!R.visitees.includes(K(c, r))) R.visitees.push(K(c, r)); voir(c, r); { const lc = lieuAt(c, r); if (lc) R.connus[lc.key] = true; }
       api.appels++; const ev = api.crochets.onCaseEntree({ col: c, row: r, label: cell.label, terrain: cell.terrain, biome: cell.biome, heures: h, lieu: lieuAt(c, r)?.key || null }, S());
       emit({ type: 'case', col: c, row: r, terrain: cell.terrain, heures: h, evenement: ev });
       if (ev) { R.statut = 'halte'; emit({ type: 'evenement', evenement: ev }); return ev; }
       if (!R.trajet.length) { const l = lieuAt(c, r), visé = R.dest?.lieu;
-        if (l && l.jeu && (!visé || visé === l.key)) api.entrer(); else { R.statut = 'halte'; emit({ type: 'arret', lieu: l?.key || null }); } }
+        if (l && l.jeu && (!visé || visé === l.key)) { R.statut = 'halte'; api.entrer(); } else { R.statut = 'halte'; emit({ type: 'arret', lieu: l?.key || null }); } }
       return cell; },
     tick(ms, pasMs = data.VOYAGE_PAS_MS) { const R = region(); if (R.statut !== 'route') return; prog += ms / pasMs; while (prog >= 1 && R.statut === 'route') { prog -= 1; api.pas(); } if (R.statut !== 'route') prog = 0; },
     // après chargement : une partie sauvegardée en marche reprend en halte sur la dernière case parcourue, trajet conservé
