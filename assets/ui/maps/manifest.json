@@ -1,0 +1,1343 @@
+{
+ "source": "docs/design/INTERFACE.md §4 (origin/docs/regie-interface 8e70070)",
+ "outil": "tools_cartes.py (dessin déterministe)",
+ "nml_fond": {
+  "fichier": "ui/maps/nml_fond.webp",
+  "px": [
+   2200,
+   2000
+  ],
+  "mobile": {
+   "fichier": "ui/maps/nml_fond_mobile.webp",
+   "px": [
+    1100,
+    1000
+   ]
+  },
+  "grille": {
+   "cols": 22,
+   "rows": 20,
+   "case_px": 100,
+   "px_vers_case": "col = floor(x / 100), row = floor(y / 100)",
+   "case_vers_px": "coin = (col * 100, row * 100), centre = coin + 50",
+   "unites_maquette": "px = unités maquette v0.13 x 2 (dist/world.js, 50 unités par case)"
+  },
+  "cases_terrestres": 167,
+  "cases": [
+   {
+    "col": 2,
+    "row": 1,
+    "label": "C02",
+    "biome": "desert"
+   },
+   {
+    "col": 3,
+    "row": 1,
+    "label": "D02",
+    "biome": "desert"
+   },
+   {
+    "col": 4,
+    "row": 1,
+    "label": "E02",
+    "biome": "desert"
+   },
+   {
+    "col": 5,
+    "row": 1,
+    "label": "F02",
+    "biome": "desert"
+   },
+   {
+    "col": 6,
+    "row": 1,
+    "label": "G02",
+    "biome": "desert"
+   },
+   {
+    "col": 7,
+    "row": 1,
+    "label": "H02",
+    "biome": "glass"
+   },
+   {
+    "col": 8,
+    "row": 1,
+    "label": "I02",
+    "biome": "glass"
+   },
+   {
+    "col": 9,
+    "row": 1,
+    "label": "J02",
+    "biome": "glass"
+   },
+   {
+    "col": 10,
+    "row": 1,
+    "label": "K02",
+    "biome": "glass"
+   },
+   {
+    "col": 11,
+    "row": 1,
+    "label": "L02",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 1,
+    "label": "M02",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 1,
+    "label": "N02",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 1,
+    "label": "O02",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 1,
+    "label": "P02",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 1,
+    "label": "Q02",
+    "biome": "desert"
+   },
+   {
+    "col": 17,
+    "row": 1,
+    "label": "R02",
+    "biome": "desert"
+   },
+   {
+    "col": 18,
+    "row": 1,
+    "label": "S02",
+    "biome": "desert"
+   },
+   {
+    "col": 19,
+    "row": 1,
+    "label": "T02",
+    "biome": "desert"
+   },
+   {
+    "col": 20,
+    "row": 1,
+    "label": "U02",
+    "biome": "coast"
+   },
+   {
+    "col": 2,
+    "row": 2,
+    "label": "C03",
+    "biome": "desert"
+   },
+   {
+    "col": 3,
+    "row": 2,
+    "label": "D03",
+    "biome": "desert"
+   },
+   {
+    "col": 4,
+    "row": 2,
+    "label": "E03",
+    "biome": "desert"
+   },
+   {
+    "col": 5,
+    "row": 2,
+    "label": "F03",
+    "biome": "desert"
+   },
+   {
+    "col": 6,
+    "row": 2,
+    "label": "G03",
+    "biome": "desert"
+   },
+   {
+    "col": 7,
+    "row": 2,
+    "label": "H03",
+    "biome": "glass"
+   },
+   {
+    "col": 8,
+    "row": 2,
+    "label": "I03",
+    "biome": "glass"
+   },
+   {
+    "col": 9,
+    "row": 2,
+    "label": "J03",
+    "biome": "glass"
+   },
+   {
+    "col": 10,
+    "row": 2,
+    "label": "K03",
+    "biome": "glass"
+   },
+   {
+    "col": 11,
+    "row": 2,
+    "label": "L03",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 2,
+    "label": "M03",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 2,
+    "label": "N03",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 2,
+    "label": "O03",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 2,
+    "label": "P03",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 2,
+    "label": "Q03",
+    "biome": "desert"
+   },
+   {
+    "col": 17,
+    "row": 2,
+    "label": "R03",
+    "biome": "coast"
+   },
+   {
+    "col": 3,
+    "row": 3,
+    "label": "D04",
+    "biome": "desert"
+   },
+   {
+    "col": 4,
+    "row": 3,
+    "label": "E04",
+    "biome": "desert"
+   },
+   {
+    "col": 5,
+    "row": 3,
+    "label": "F04",
+    "biome": "desert"
+   },
+   {
+    "col": 6,
+    "row": 3,
+    "label": "G04",
+    "biome": "desert"
+   },
+   {
+    "col": 7,
+    "row": 3,
+    "label": "H04",
+    "biome": "desert"
+   },
+   {
+    "col": 8,
+    "row": 3,
+    "label": "I04",
+    "biome": "glass"
+   },
+   {
+    "col": 9,
+    "row": 3,
+    "label": "J04",
+    "biome": "glass"
+   },
+   {
+    "col": 10,
+    "row": 3,
+    "label": "K04",
+    "biome": "glass"
+   },
+   {
+    "col": 11,
+    "row": 3,
+    "label": "L04",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 3,
+    "label": "M04",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 3,
+    "label": "N04",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 3,
+    "label": "O04",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 3,
+    "label": "P04",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 3,
+    "label": "Q04",
+    "biome": "desert"
+   },
+   {
+    "col": 4,
+    "row": 4,
+    "label": "E05",
+    "biome": "desert"
+   },
+   {
+    "col": 5,
+    "row": 4,
+    "label": "F05",
+    "biome": "desert"
+   },
+   {
+    "col": 6,
+    "row": 4,
+    "label": "G05",
+    "biome": "desert"
+   },
+   {
+    "col": 7,
+    "row": 4,
+    "label": "H05",
+    "biome": "desert"
+   },
+   {
+    "col": 8,
+    "row": 4,
+    "label": "I05",
+    "biome": "desert"
+   },
+   {
+    "col": 9,
+    "row": 4,
+    "label": "J05",
+    "biome": "desert"
+   },
+   {
+    "col": 10,
+    "row": 4,
+    "label": "K05",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 4,
+    "label": "L05",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 4,
+    "label": "M05",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 4,
+    "label": "N05",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 4,
+    "label": "O05",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 4,
+    "label": "P05",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 4,
+    "label": "Q05",
+    "biome": "desert"
+   },
+   {
+    "col": 17,
+    "row": 4,
+    "label": "R05",
+    "biome": "desert"
+   },
+   {
+    "col": 18,
+    "row": 4,
+    "label": "S05",
+    "biome": "coast"
+   },
+   {
+    "col": 4,
+    "row": 5,
+    "label": "E06",
+    "biome": "rock"
+   },
+   {
+    "col": 5,
+    "row": 5,
+    "label": "F06",
+    "biome": "rock"
+   },
+   {
+    "col": 6,
+    "row": 5,
+    "label": "G06",
+    "biome": "desert"
+   },
+   {
+    "col": 7,
+    "row": 5,
+    "label": "H06",
+    "biome": "desert"
+   },
+   {
+    "col": 8,
+    "row": 5,
+    "label": "I06",
+    "biome": "desert"
+   },
+   {
+    "col": 9,
+    "row": 5,
+    "label": "J06",
+    "biome": "desert"
+   },
+   {
+    "col": 10,
+    "row": 5,
+    "label": "K06",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 5,
+    "label": "L06",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 5,
+    "label": "M06",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 5,
+    "label": "N06",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 5,
+    "label": "O06",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 5,
+    "label": "P06",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 5,
+    "label": "Q06",
+    "biome": "desert"
+   },
+   {
+    "col": 17,
+    "row": 5,
+    "label": "R06",
+    "biome": "desert"
+   },
+   {
+    "col": 18,
+    "row": 5,
+    "label": "S06",
+    "biome": "desert"
+   },
+   {
+    "col": 19,
+    "row": 5,
+    "label": "T06",
+    "biome": "coast"
+   },
+   {
+    "col": 5,
+    "row": 6,
+    "label": "F07",
+    "biome": "rock"
+   },
+   {
+    "col": 6,
+    "row": 6,
+    "label": "G07",
+    "biome": "desert"
+   },
+   {
+    "col": 7,
+    "row": 6,
+    "label": "H07",
+    "biome": "desert"
+   },
+   {
+    "col": 8,
+    "row": 6,
+    "label": "I07",
+    "biome": "desert"
+   },
+   {
+    "col": 9,
+    "row": 6,
+    "label": "J07",
+    "biome": "desert"
+   },
+   {
+    "col": 10,
+    "row": 6,
+    "label": "K07",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 6,
+    "label": "L07",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 6,
+    "label": "M07",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 6,
+    "label": "N07",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 6,
+    "label": "O07",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 6,
+    "label": "P07",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 6,
+    "label": "Q07",
+    "biome": "desert"
+   },
+   {
+    "col": 17,
+    "row": 6,
+    "label": "R07",
+    "biome": "coast"
+   },
+   {
+    "col": 5,
+    "row": 7,
+    "label": "F08",
+    "biome": "forest"
+   },
+   {
+    "col": 6,
+    "row": 7,
+    "label": "G08",
+    "biome": "forest"
+   },
+   {
+    "col": 7,
+    "row": 7,
+    "label": "H08",
+    "biome": "desert"
+   },
+   {
+    "col": 8,
+    "row": 7,
+    "label": "I08",
+    "biome": "desert"
+   },
+   {
+    "col": 9,
+    "row": 7,
+    "label": "J08",
+    "biome": "desert"
+   },
+   {
+    "col": 10,
+    "row": 7,
+    "label": "K08",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 7,
+    "label": "L08",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 7,
+    "label": "M08",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 7,
+    "label": "N08",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 7,
+    "label": "O08",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 7,
+    "label": "P08",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 7,
+    "label": "Q08",
+    "biome": "coast"
+   },
+   {
+    "col": 5,
+    "row": 8,
+    "label": "F09",
+    "biome": "forest"
+   },
+   {
+    "col": 6,
+    "row": 8,
+    "label": "G09",
+    "biome": "forest"
+   },
+   {
+    "col": 7,
+    "row": 8,
+    "label": "H09",
+    "biome": "rock"
+   },
+   {
+    "col": 8,
+    "row": 8,
+    "label": "I09",
+    "biome": "desert"
+   },
+   {
+    "col": 9,
+    "row": 8,
+    "label": "J09",
+    "biome": "desert"
+   },
+   {
+    "col": 10,
+    "row": 8,
+    "label": "K09",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 8,
+    "label": "L09",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 8,
+    "label": "M09",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 8,
+    "label": "N09",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 8,
+    "label": "O09",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 8,
+    "label": "P09",
+    "biome": "desert"
+   },
+   {
+    "col": 16,
+    "row": 8,
+    "label": "Q09",
+    "biome": "coast"
+   },
+   {
+    "col": 7,
+    "row": 9,
+    "label": "H10",
+    "biome": "rock"
+   },
+   {
+    "col": 8,
+    "row": 9,
+    "label": "I10",
+    "biome": "rock"
+   },
+   {
+    "col": 9,
+    "row": 9,
+    "label": "J10",
+    "biome": "desert"
+   },
+   {
+    "col": 10,
+    "row": 9,
+    "label": "K10",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 9,
+    "label": "L10",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 9,
+    "label": "M10",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 9,
+    "label": "N10",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 9,
+    "label": "O10",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 9,
+    "label": "P10",
+    "biome": "coast"
+   },
+   {
+    "col": 8,
+    "row": 10,
+    "label": "I11",
+    "biome": "rock"
+   },
+   {
+    "col": 9,
+    "row": 10,
+    "label": "J11",
+    "biome": "rock"
+   },
+   {
+    "col": 10,
+    "row": 10,
+    "label": "K11",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 10,
+    "label": "L11",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 10,
+    "label": "M11",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 10,
+    "label": "N11",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 10,
+    "label": "O11",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 10,
+    "label": "P11",
+    "biome": "coast"
+   },
+   {
+    "col": 9,
+    "row": 11,
+    "label": "J12",
+    "biome": "rock"
+   },
+   {
+    "col": 10,
+    "row": 11,
+    "label": "K12",
+    "biome": "rock"
+   },
+   {
+    "col": 11,
+    "row": 11,
+    "label": "L12",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 11,
+    "label": "M12",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 11,
+    "label": "N12",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 11,
+    "label": "O12",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 11,
+    "label": "P12",
+    "biome": "coast"
+   },
+   {
+    "col": 10,
+    "row": 12,
+    "label": "K13",
+    "biome": "rock"
+   },
+   {
+    "col": 11,
+    "row": 12,
+    "label": "L13",
+    "biome": "desert"
+   },
+   {
+    "col": 12,
+    "row": 12,
+    "label": "M13",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 12,
+    "label": "N13",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 12,
+    "label": "O13",
+    "biome": "desert"
+   },
+   {
+    "col": 11,
+    "row": 13,
+    "label": "L14",
+    "biome": "rock"
+   },
+   {
+    "col": 12,
+    "row": 13,
+    "label": "M14",
+    "biome": "desert"
+   },
+   {
+    "col": 13,
+    "row": 13,
+    "label": "N14",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 13,
+    "label": "O14",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 13,
+    "label": "P14",
+    "biome": "coast"
+   },
+   {
+    "col": 12,
+    "row": 14,
+    "label": "M15",
+    "biome": "rock"
+   },
+   {
+    "col": 13,
+    "row": 14,
+    "label": "N15",
+    "biome": "desert"
+   },
+   {
+    "col": 14,
+    "row": 14,
+    "label": "O15",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 14,
+    "label": "P15",
+    "biome": "coast"
+   },
+   {
+    "col": 16,
+    "row": 14,
+    "label": "Q15",
+    "biome": "coast"
+   },
+   {
+    "col": 13,
+    "row": 15,
+    "label": "N16",
+    "biome": "rock"
+   },
+   {
+    "col": 14,
+    "row": 15,
+    "label": "O16",
+    "biome": "desert"
+   },
+   {
+    "col": 15,
+    "row": 15,
+    "label": "P16",
+    "biome": "coast"
+   },
+   {
+    "col": 14,
+    "row": 16,
+    "label": "O17",
+    "biome": "rock"
+   },
+   {
+    "col": 15,
+    "row": 16,
+    "label": "P17",
+    "biome": "coast"
+   },
+   {
+    "col": 16,
+    "row": 16,
+    "label": "Q17",
+    "biome": "coast"
+   },
+   {
+    "col": 15,
+    "row": 17,
+    "label": "P18",
+    "biome": "rock"
+   },
+   {
+    "col": 16,
+    "row": 17,
+    "label": "Q18",
+    "biome": "coast"
+   },
+   {
+    "col": 16,
+    "row": 18,
+    "label": "Q19",
+    "biome": "coast"
+   },
+   {
+    "col": 17,
+    "row": 18,
+    "label": "R19",
+    "biome": "coast"
+   },
+   {
+    "col": 18,
+    "row": 18,
+    "label": "S19",
+    "biome": "coast"
+   }
+  ],
+  "lieux": {
+   "farm": {
+    "nom": "Granja Altruista",
+    "case": [
+     4,
+     2
+    ],
+    "px": [
+     468,
+     286
+    ]
+   },
+   "dusk": {
+    "nom": "Dusk-Town",
+    "case": [
+     7,
+     3
+    ],
+    "px": [
+     734,
+     360
+    ]
+   },
+   "crater": {
+    "nom": "Zone de Big Larry",
+    "case": [
+     9,
+     2
+    ],
+    "px": [
+     928,
+     216
+    ]
+   },
+   "buenos": {
+    "nom": "Buenos Aires",
+    "case": [
+     14,
+     3
+    ],
+    "px": [
+     1430,
+     368
+    ]
+   },
+   "customs": {
+    "nom": "Douane ouest",
+    "case": [
+     9,
+     5
+    ],
+    "px": [
+     998,
+     536
+    ]
+   },
+   "steel": {
+    "nom": "Steel-Megalopolis",
+    "case": [
+     12,
+     5
+    ],
+    "px": [
+     1244,
+     580
+    ]
+   },
+   "titan": {
+    "nom": "Le Titan échoué",
+    "case": [
+     11,
+     4
+    ],
+    "px": [
+     1160,
+     476
+    ]
+   },
+   "junk": {
+    "nom": "Junk-Burgh",
+    "case": [
+     17,
+     5
+    ],
+    "px": [
+     1758,
+     542
+    ]
+   },
+   "relay": {
+    "nom": "Station de répartition",
+    "case": [
+     9,
+     8
+    ],
+    "px": [
+     956,
+     852
+    ]
+   },
+   "temple": {
+    "nom": "Le temple du couchant",
+    "case": [
+     6,
+     8
+    ],
+    "px": [
+     604,
+     864
+    ]
+   },
+   "port": {
+    "nom": "Nœud maritime IO",
+    "case": [
+     14,
+     8
+    ],
+    "px": [
+     1480,
+     884
+    ]
+   },
+   "nova": {
+    "nom": "Novo Córdoba",
+    "case": [
+     11,
+     12
+    ],
+    "px": [
+     1136,
+     1242
+    ]
+   },
+   "coast": {
+    "nom": "Waste Coast",
+    "case": [
+     15,
+     14
+    ],
+    "px": [
+     1524,
+     1498
+    ]
+   }
+  }
+ },
+ "steel": {
+  "px": [
+   1600,
+   1200
+  ],
+  "sarcophage_ellipse": {
+   "centre": [
+    800,
+    610
+   ],
+   "demi_axes": [
+    700,
+    500
+   ]
+  },
+  "couches": [
+   {
+    "cle": "steel_1_sous_ville",
+    "fichier": "ui/maps/steel_1_sous_ville.webp",
+    "couche": 1,
+    "id": "sous_ville",
+    "statut": "accessible",
+    "reperes_px_proposition": {
+     "sv_poutres": [
+      400,
+      760
+     ],
+     "sv_cuve": [
+      700,
+      800
+     ],
+     "sv_trappe": [
+      250,
+      690
+     ],
+     "sv_monte_charge": [
+      760,
+      700
+     ],
+     "sv_sortie_sud": [
+      620,
+      1080
+     ],
+     "sv_sortie_ouest": [
+      130,
+      820
+     ]
+    }
+   },
+   {
+    "cle": "steel_2_lower_town",
+    "fichier": "ui/maps/steel_2_lower_town.webp",
+    "couche": 2,
+    "id": "lower_town",
+    "statut": "accessible",
+    "reperes_px_proposition": {
+     "steel_lower": [
+      1130,
+      470
+     ],
+     "steel_asia": [
+      1130,
+      760
+     ],
+     "steel_china": [
+      880,
+      960
+     ],
+     "lac_lower_street": [
+      1220,
+      260
+     ],
+     "lt_descente": [
+      960,
+      520
+     ],
+     "lt_acces_sous_ville": [
+      1000,
+      880
+     ]
+    }
+   },
+   {
+    "cle": "steel_3_center_town",
+    "fichier": "ui/maps/steel_3_center_town.webp",
+    "couche": 3,
+    "id": "center_town",
+    "statut": "accessible",
+    "reperes_px_proposition": {
+     "steel_center": [
+      720,
+      560
+     ],
+     "steel_route": [
+      130,
+      600
+     ],
+     "arcadius_center": [
+      720,
+      470
+     ],
+     "cz_rotonde": [
+      610,
+      640
+     ],
+     "ct_monte_charge": [
+      760,
+      700
+     ],
+     "ct_descente": [
+      960,
+      520
+     ],
+     "ct_ascenseur_upper": [
+      800,
+      560
+     ]
+    }
+   },
+   {
+    "cle": "steel_4_upper_town",
+    "fichier": "ui/maps/steel_4_upper_town.webp",
+    "couche": 4,
+    "id": "upper_town",
+    "statut": "affichee_verrouillee",
+    "reperes_px_proposition": {
+     "ut_ascenseur": [
+      800,
+      560
+     ]
+    }
+   }
+  ],
+  "note": "même cadrage sur les 4 planches ; repères = positions proposées des lieux, sorties et liens entre couches (même x, y d une couche à l autre pour un ascenseur)"
+ },
+ "icones_lieux": {
+  "lieu_decouvert": {
+   "svg": "ui/maps/icones/lieu_decouvert.svg",
+   "png24": "ui/maps/icones/lieu_decouvert_24.png",
+   "png48": "ui/maps/icones/lieu_decouvert_48.png"
+  },
+  "lieu_non_decouvert": {
+   "svg": "ui/maps/icones/lieu_non_decouvert.svg",
+   "png24": "ui/maps/icones/lieu_non_decouvert_24.png",
+   "png48": "ui/maps/icones/lieu_non_decouvert_48.png"
+  },
+  "joueur": {
+   "svg": "ui/maps/icones/joueur.svg",
+   "png24": "ui/maps/icones/joueur_24.png",
+   "png48": "ui/maps/icones/joueur_48.png"
+  },
+  "sortie": {
+   "svg": "ui/maps/icones/sortie.svg",
+   "png24": "ui/maps/icones/sortie_24.png",
+   "png48": "ui/maps/icones/sortie_48.png"
+  },
+  "lien_couches": {
+   "svg": "ui/maps/icones/lien_couches.svg",
+   "png24": "ui/maps/icones/lien_couches_24.png",
+   "png48": "ui/maps/icones/lien_couches_48.png"
+  },
+  "verrouille": {
+   "svg": "ui/maps/icones/verrouille.svg",
+   "png24": "ui/maps/icones/verrouille_24.png",
+   "png48": "ui/maps/icones/verrouille_48.png"
+  }
+ }
+}
