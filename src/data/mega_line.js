@@ -18,6 +18,7 @@ export const BUILDINGS_MEGA = [
   B('ml_poub0', '', 'ml_poubelle', 9, 15.4, 0.6, 0.6, { named: false }), B('ml_poub1', '', 'ml_poubelle', 41, 18, 0.6, 0.6, { named: false }),
   ...LAMPS.map(([x, z], i) => B(`ml_lamp${i}`, '', 'ml_lampadaire', x - 0.3, z - 0.3, 0.6, 0.6, { named: false })),
   ENS('ml_e_vibes', 'ml_ens_ecran_vibes', 19, 13.6, 3.4, { groupe: 'ecrans_quai', ph: 0 }), ENS('ml_e_tron', 'ml_ens_ecran_tron', 29, 13.6, 3.4, { groupe: 'ecrans_quai', ph: 0 }),
+  B('ml_portique_implant', 'Portique à implant', 'ml_portique_implant', 31.2, 13.5, 1.6, 1, { solid: [] }), // éteint, hors budget : planches jouées une fois au passage (main.js)
   ENS('ml_e_horaires', 'ml_ens_horaires', 26.2, 14.6, 2.2), ENS('ml_e_hc', 'ml_ens_human_corp', 8, 7.2, 1.6),
 ];
 export const BUILDINGS_TERMINUS = [
@@ -30,6 +31,7 @@ export const BUILDINGS_TERMINUS = [
   ENS('ml_e_gyro0', 'ml_ens_gyrophare', 12, 11.2, 6.2, { groupe: 'gyrophares', ph: 0 }), ENS('ml_e_gyro1', 'ml_ens_gyrophare', 18.4, 11.2, 6.2, { groupe: 'gyrophares', ph: 2 }),
 ];
 export const CLOSED_MEGA = {
+  ml_portique_implant: 'Le portique à implant. Deux piliers, deux volets vitrés, un lecteur éteint. Il lit la nuque des gens.',
   ml_station: 'La station. On monte au quai par les escaliers ; la rame ne s\u2019arrête pas pour qui n\u2019a pas de billet.',
   ml_viaduc1: 'Le viaduc de fer noir. Les piles ruissellent ; le fer transpire.',
   ml_tableau: 'Le tableau des départs, en pictogrammes. Une ligne change. Aucune ne dit « terminus ».',
@@ -46,7 +48,7 @@ export const LOCATIONS_MEGA = {
     glows: [ ...LAMPS.map(([x, z]) => ({ x, z: z + 0.6, rx: 2.4, rz: 1.8, color: AMBRE, i: 0.6, flicker: true })), // lueurs des lampadaires (code)
       { x: 19, z: 14.6, rx: 3, rz: 1.4, color: VIOLET, i: 0.7, flicker: true }, { x: 29, z: 14.6, rx: 3, rz: 1.4, color: CYAN, i: 0.65, flicker: true },
       { x: 8, z: 8, rx: 2.4, rz: 1.2, color: '#e8eef2', i: 0.45 }, { x: 24, z: 6, rx: 22, rz: 2, color: MAGENTA, i: 0.15 }, { x: 24, z: 15.2, rx: 2, rz: 1, color: AMBRE, i: 0.6 } ],
-    extras: [ ...[[16, 15.4], [22, 15.6], [32, 15.2], [11, 18], [27, 19]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_ml_foule_b' : 'gen_ml_foule_a', x, z, face: i % 2 ? 1 : -1, role: 'voyageur' })) ],
+    extras: [ ...[[16, 15.4], [22, 15.6], [30.2, 16.2], [11, 18], [27, 19]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_ml_foule_b' : 'gen_ml_foule_a', x, z, face: i % 2 ? 1 : -1, role: 'voyageur' })) ],
     walkers: [ { sprite: 'gen_ml_foule_a', path: [[2, 19], [46, 19]], speed: 0.8, t0: 4 } ],
     spawn: { player: { x: 24, z: 23 }, companion: { x: 25, z: 23 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'La Mega-Line. Le viaduc de fer noir passe au-dessus des têtes ; la rame violette glisse sans bruit. Sur le quai, Vibes et Tron passent en boucle.' } },
@@ -60,7 +62,31 @@ export const LOCATIONS_MEGA = {
     arrive: { from: 'steel_megaline', text: 'Le terminus de fret. Plus d\u2019écran, plus de pub. Au bout de la voie, des portes si grandes qu\u2019on les prend d\u2019abord pour un mur.' } },
 };
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
+// [décision Valentin] rame jouable : billet lié à l'implant. Augmenté et cyborg embarquent ; humain et mutant refusés (conseil : la passerelle), sauf avec le Pique-Puce.
+// Espèce : state.character.race, et les drapeaux race_* posés à la création (character.js, raceFlags) ; on lit les drapeaux, comme la douane.
+// Valeurs non canon (fiche d'Ocre, MEGA_LINE.md) : proposé, non validé.
+export const PIQUE_PUCE_PRIX = 600;              // proposé, non validé : prix chez Fusible, en crédits (actif)
+export const PIQUE_PUCE_ZONES = ['steel_megaline', 'steel_terminus']; // proposé, non validé : ne sert que sur la Mega-Line (actif)
+export const PIQUE_PUCE_P_REPERE = 0;            // proposé, non validé : 0.1 (1 sur 10 d'être repéré) ; désactivé par défaut
+export const PIQUE_PUCE_P_GRILLE = 0;            // proposé, non validé : 0.05 (1 sur 20 de griller) ; désactivé par défaut
+export const ITEMS_MEGA = { pirate_implant: { name: 'Pique-Puce', icon: 'steel/mega_line/icone_pique_puce_64.webp', icon128: 'steel/mega_line/icone_pique_puce_128.webp',
+  desc: 'Un boîtier rafistolé au ruban adhésif, un écran fendu et une pastille de contact au bout d\u2019un fil. On le colle contre la peau, il fait croire au portique qu\u2019il y a un implant. Ça pique un peu.' } };
+export const aImplant = s => !!(s.flags.race_augmente || s.flags.race_cyborg);
+export const aBillet = s => aImplant(s) || (!!s.player.inv?.pirate_implant && PIQUE_PUCE_ZONES.includes(s.location));
+export const VALIDATION = s => aImplant(s)
+  ? 'Ton implant vibre une fois. « Titre validé. Bon voyage sur la Mega-Line. »'
+  : (s.flags.race_mutant ? 'Le Pique-Puce te mord la nuque, une décharge sèche. ' : 'Le Pique-Puce grésille contre ta nuque. ') + '« Titre… validé. Bon voyage. » Personne ne regarde.';
+// Refus du portique (fiche d'Ocre) : communes + catégorie, tirées au hasard ; 3 insistances de suite : Kessler se retourne
+export const REFUS = { commun: ['« Aucun implant détecté. Accès refusé. »', '« Lecture impossible. Veuillez présenter un implant valide. »', '« Titre de transport absent. Le personnel est informé. »', '« Accès refusé. La passerelle piétonne est à votre disposition. »'],
+  humain: ['« Profil non augmenté. Ce service ne vous est pas destiné. »', '« Aucun implant. Pensez à consulter un centre Human Corp. »', '« Erreur : passager organique. »'],
+  mutant: ['« Signature biologique non conforme. Accès refusé. »', '« Profil non reconnu. Merci de vous éloigner du portique. »', '« Lecture interrompue. Anomalie corporelle détectée. »'],
+  insiste: ['« Tentatives répétées enregistrées. »', '« Merci de libérer le passage. »'] };
+export const CONSEIL = 'Sans implant, la rame n\u2019est pas pour toi : pour le terminus, prends la passerelle de service, au bout du viaduc.';
+const AU_PORTIQUE = [{ test: s => !!s.flags.ml_valide, reason: 'billet', text: '' }]; // le portique (main.js) valide puis relance le passage
+const BILLET_RETOUR = [{ test: aBillet, reason: 'billet_retour', text: 'Le lecteur du quai reste rouge. Pour la ligne, la passerelle de service.' }];
 export const DOORS_MEGA = [
+  J('ml_rame_quai', 'steel_megaline', 32, 14.4, 32, 15.2, 'tm_rame_quai', 'Portique : monter dans la rame (terminus)', AU_PORTIQUE),
+  J('tm_rame_quai', 'steel_terminus', 6, 4.6, 6, 5.4, 'ml_rame_quai', 'Monter dans la rame (vers la ligne)', BILLET_RETOUR),
   J('c_mega', 'steel_center', 8, 0, 8, 1, 'ml_sud', 'Mega-Line'),
   J('ml_sud', 'steel_megaline', 24, 24, 24, 23, 'c_mega', 'Vers Center-Town'),
   J('ml_passerelle', 'steel_megaline', 48, 2, 47, 2, 'tm_sud', 'Passerelle de service (terminus)'),

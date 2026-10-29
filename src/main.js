@@ -12,7 +12,9 @@ import { placeLabels } from './ui/placement.js';
 import { steelMapHtml, isSteel, coucheOf, drawSteelFog } from './ui/carte_steel.js';
 import { createVoyage } from './core/voyage.js';
 import { createCarteNml } from './ui/carte_nml.js';
+import { ITEMS_MEGA, VALIDATION, REFUS, CONSEIL, aBillet, aImplant, PIQUE_PUCE_P_REPERE, PIQUE_PUCE_P_GRILLE } from './data/mega_line.js';
 Object.assign(ITEMS, ORIGIN_ITEMS); // v11 : objets d'origine
+Object.assign(ITEMS, ITEMS_MEGA); // Mega-Line : passe-implant piraté (texte seul)
 
 const sprites = await (await fetch('./assets/reused/manifest.json')).json();
 // v6 : mobilier et textures d'intérieur (tools_interiors.py : maquette d'abord, sinon générés ; angle v4 contrôlé)
@@ -145,7 +147,41 @@ requestAnimationFrame(frame);
 // Dôme Fréquence : accès de debug (?dome=1 ou window.__nml.ouvrirDome()) ; en jeu, le drapeau dome_ouvert ouvrira la porte plus tard
 const ouvrirDome = () => { game.state.flags.dome_ouvert = true; return true; };
 if (new URLSearchParams(location.search).get('dome') === '1') game.on(() => { game.state.flags.dome_ouvert = true; });
-window.__nml = { ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
+// Mega-Line : accès de debug, window.__nml.debugMega({ race: 'humain'|'mutant'|'augmente'|'cyborg', passe: true|false }) ou ?race=cyborg&passe=1
+// Réutilise le système d'espèce : state.character.race + drapeaux race_* (raceFlags) ; implant pour augmenté et cyborg.
+const RACES4 = ['humain', 'mutant', 'augmente', 'cyborg'];
+function debugMega({ race, passe, cr } = {}) { const s = game.state;
+  if (race) { if (!RACES4.includes(race)) return false; RACES4.forEach(r => delete s.flags['race_' + r]); s.flags['race_' + race] = true;
+    const imp = race === 'augmente' || race === 'cyborg'; if (imp) s.flags.implant = true; else delete s.flags.implant;
+    if (s.character) Object.assign(s.character, { race, implant: imp }); }
+  if (cr !== undefined) s.player.credits = cr;
+  if (passe !== undefined) { if (passe) s.player.inv.pirate_implant = 1; else delete s.player.inv.pirate_implant; }
+  return true; }
+{ const q = new URLSearchParams(location.search); if (q.get('race') || q.get('passe')) { let fait = false; game.on(ev => { if (!fait && ev.type === 'transition') { fait = true; debugMega({ race: q.get('race') || undefined, passe: q.get('passe') ? q.get('passe') === '1' : undefined }); } }); } }
+// Trajet de la rame (décision Valentin) : fondu, rame qui défile, quelques secondes ; le passage a déjà eu lieu, l'écran le couvre.
+const trajet = document.createElement('div'); trajet.id = 'trajet';
+trajet.innerHTML = `<div class="tj-rame" style="background-image:url('./assets/${bman.ml_rame?.file || ''}')"></div><div class="tj-txt mono"></div>`; document.body.appendChild(trajet);
+let trajetEnCours = false;
+// Portique à implant (fiche d'Ocre) : la porte de la rame ne s'ouvre qu'après validation ; planche « accepté » ou « refusé » jouée une fois
+const tirer = l => l[Math.floor(Math.random() * l.length)]; let insiste = 0;
+const portique = { kessler: false, dernier: null };
+game.on(ev => { if (ev.type !== 'refus' || ev.reason !== 'billet') return; const s = game.state;
+  const refuser = ligne => { view.joue('ml_portique_implant', 'ml_ens_portique_refuse'); insiste++; portique.dernier = 'refuse';
+    if (insiste >= 3) { portique.kessler = true; const k = world.NPCS.find(n => n.id === 'ml_vigile'); // Kessler se retourne vers le joueur
+      if (k && s.npcs.ml_vigile) s.npcs.ml_vigile.heading = Math.atan2(s.player.x - k.x, s.player.z - k.z);
+      setTimeout(() => say(tirer(REFUS.insiste) + ' Kessler, le vigile, se retourne vers toi.'), 60); }
+    else setTimeout(() => say(ligne + ' ' + CONSEIL), 60); };
+  if (!aBillet(s)) return refuser(tirer([...REFUS.commun, ...(REFUS[s.flags.race_mutant ? 'mutant' : 'humain'])]));
+  const pique = !aImplant(s);
+  if (pique && Math.random() < PIQUE_PUCE_P_GRILLE) { delete s.player.inv.pirate_implant; return refuser('Le Pique-Puce claque, une odeur de plastique brûlé. Il est grillé.'); }
+  const repere = pique && Math.random() < PIQUE_PUCE_P_REPERE; if (repere) { s.flags.ml_repere = (s.flags.ml_repere || 0) + 1; view.joue('ml_portique_implant', 'ml_ens_portique_refuse'); }
+  insiste = 0; setTimeout(() => { view.joue('ml_portique_implant', 'ml_ens_portique_accepte'); portique.dernier = 'accepte'; s.flags.ml_valide = true; }, repere ? 400 : 0);
+  setTimeout(() => { const r = game.useDoor('ml_rame_quai'); if (!r?.ok) delete s.flags.ml_valide; }, (repere ? 400 : 0) + 650); });
+function trajetRame(versTerminus) { trajetEnCours = true; trajet.querySelector('.tj-txt').textContent = versTerminus ? 'Mega-Line · vers le terminus de fret' : 'Mega-Line · vers la station';
+  trajet.className = 'on'; setTimeout(() => { trajet.className = 'on roule'; }, 600);
+  setTimeout(() => { trajet.className = 'on'; }, 3400); setTimeout(() => { trajet.className = ''; trajetEnCours = false; say(VALIDATION(game.state)); }, 4000); }
+game.on(ev => { if (ev.type === 'transition') delete game.state.flags.ml_valide; if (ev.type === 'transition' && (ev.door === 'ml_rame_quai' || ev.door === 'tm_rame_quai')) trajetRame(ev.door === 'ml_rame_quai'); });
+window.__nml = { portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
@@ -162,7 +198,7 @@ function renderPanel() {
     const offers = n ? n.options.filter(o => o.action && o.action.startsWith('buy:')) : [];
     const ch = s.character, RN = { humain: 'Humain', mutant: 'Mutant', augmente: 'Augmenté', cyborg: 'Cyborg' };
     const fiche = ch ? `<div class="fiche"><img src="${portraitUrl(ch.portrait)}" alt=""><div><h3>${ch.name.toUpperCase()}</h3><span class="muted">${RN[ch.race]} · PA ${ch.ap} · ${ch.implant ? 'implant d\u2019IO' : 'sans implant'}</span><div class="attrs">${Object.entries(ch.attrs).map(([k, v]) => `<span>${k.slice(0, 3).toUpperCase()} <b>${v}</b></span>`).join('')}</div></div></div>` : '';
-    B.innerHTML = fiche + `<div class="cols"><div><h3>SAC · ${s.player.money} $${s.player.credits ? ' · ' + s.player.credits + ' cr' : ''}</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].name}</span><span>×${v}${ITEMS[k].use ? ` <button data-use="${k}">${ITEMS[k].use.verb || 'Utiliser'}</button>` : ''}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
+    B.innerHTML = fiche + `<div class="cols"><div><h3>SAC · ${s.player.money} $${s.player.credits ? ' · ' + s.player.credits + ' cr' : ''}</h3><ul>${items.length ? items.map(([k, v]) => `<li><span>${ITEMS[k].icon ? `<img class="ico" src="./assets/${ITEMS[k].icon}" alt="">` : ''}${ITEMS[k].name}</span><span>×${v}${ITEMS[k].use ? ` <button data-use="${k}">${ITEMS[k].use.verb || 'Utiliser'}</button>` : ''}</span></li>`).join('') : '<li class="muted">Vide. De quoi acheter : 4 $ l\u2019eau chez Anselme, 3 $ chez Sol.</li>'}</ul></div>
       <div><h3>${n ? 'ACHAT · ' + n.npc.name.toUpperCase() : 'ACHAT'}</h3>${offers.length ? '<ul>' + offers.map(o => `<li><button data-buy="${o.index}"><span>${o.label.replace(/ \(\d+ \$\)/, '')}</span><span>${o.action.split(':')[2]} $</span></button></li>`).join('') + '</ul>' : '<p class="muted">Parle à un marchand pour voir ses prix. Le troc d\u2019objets n\u2019existe pas encore.</p>'}</div></div>
       <div class="desc">${items.length ? 'Ce que tu portes reste avec toi d\u2019un quartier à l\u2019autre.' : 'Rien à porter pour l\u2019instant.'}</div>`;
     B.querySelectorAll('[data-use]').forEach(b => b.addEventListener('click', () => { game.useItem(b.dataset.use); panelKey = ''; }));

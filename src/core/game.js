@@ -233,7 +233,7 @@ export function createGame(world, sprites) {
       Object.assign(c, { x: pos.x, z: pos.z, path: [], location: dest });
     } else if (c.mode !== 'absent') c.mode = 'left_behind';
     state.transitions++;
-    emit({ type: 'transition', from: door.location, to: dest, withCompanion, text: LOCATIONS[dest].name + (withCompanion || c.mode === 'absent' ? '' : ' (compagnon resté derrière)') });
+    emit({ type: 'transition', from: door.location, to: dest, door: door.id, withCompanion, text: LOCATIONS[dest].name + (withCompanion || c.mode === 'absent' ? '' : ' (compagnon resté derrière)') });
     sceneTriggers();
   }
 

@@ -15,7 +15,7 @@ with sync_playwright() as p:
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=46;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
         E("window.__nml.game.useDoor('pp_est')"); time.sleep(2)
         ok(E("window.__nml.state.location")=='steel_strip',f'{name} Pulse Plaza (sortie est) -> Fréquence Strip',E("window.__nml.state.location"))
-        ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_strip').length")==9,f'{name} 9 PNJ')
+        ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_strip').length")==10,f'{name} 10 PNJ (dont Fusible)')
         pg.screenshot(path=OUT+f'{name}_arrivee.png')
         E("window.__nml.game.moveTo(30,12)"); time.sleep(6); pg.screenshot(path=OUT+f'{name}_milieu.png')
         fps=E("new Promise(r=>{let k=0;const t0=performance.now();const f=()=>{k++;if(performance.now()-t0<3000)requestAnimationFrame(f);else r(k*1000/(performance.now()-t0))};requestAnimationFrame(f)})")

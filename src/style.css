@@ -308,3 +308,12 @@ body.nml-open #keys,body.nml-open #actions,body.nml-open #labels,body.nml-open #
   #nml footer{flex-direction:column;align-items:stretch}#nml footer .b{margin-left:0}#nml footer .b button{flex:1;min-height:44px}#nml-moi{width:24px;height:24px;transform:translate(-12px,-12px)}}
 #panel .btn-nml{margin-top:8px;min-height:36px;padding:4px 12px;background:rgba(8,6,3,.5);border:1px solid var(--d);color:var(--c);font-size:12.5px}
 body.nml-open #msg{z-index:40} /* halte, « prototype » : au-dessus de la carte NML */
+
+/* Mega-Line : trajet en rame (fondu, rame qui défile) */
+#trajet{position:fixed;inset:0;z-index:60;background:#000;opacity:0;pointer-events:none;transition:opacity .6s;overflow:hidden}
+#trajet.on{opacity:1;pointer-events:auto}
+#trajet .tj-rame{position:absolute;left:0;top:50%;width:min(90vw,900px);aspect-ratio:1200/680;transform:translate(110vw,-50%);background:center/contain no-repeat}
+#trajet.roule .tj-rame{animation:tj-defile 2.8s linear forwards}
+@keyframes tj-defile{from{transform:translate(110vw,-50%)}to{transform:translate(-110%,-50%)}}
+#trajet .tj-txt{position:absolute;left:0;right:0;bottom:18%;text-align:center;color:#f2b44a;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+#panel .ico{width:20px;height:20px;vertical-align:middle;margin-right:5px;image-rendering:auto}

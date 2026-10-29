@@ -1,3 +1,4 @@
+import { PIQUE_PUCE_PRIX } from './mega_line.js';
 // Fréquence Strip (zone steel_strip, 64 x 24 m, quartier de Center-Town). Pack d'Ocre : docs/villes/steel/quartiers/frequence_strip/ (FREQUENCE_STRIP.md, ASSETS.md).
 // [décision] ouverte à l'ouest sur la sortie est de Pulse Plaza ; bout est : grille ouverte vers la Steel Arena (fs_est). Neon-7 et Core Stack fermés pour l'instant.
 // Groovy-Tron et Groovy Vibes n'apparaissent que sur des écrans (enseignes fs_ens_tron, fs_ens_vibes) : jamais rencontrés. Aucun nom civil.
@@ -74,10 +75,29 @@ export const NPCS_STRIP = [ // positions de la fiche (m) ; aucun n'est Vibes ni 
   { id: 'fs_tibo', name: 'Tibo', sprite: 'gen_fs_tibo', location: 'steel_strip', x: 48, z: 13.2, faceTo: [48, 10], dialogue: 'fs_tibo' },
   { id: 'fs_yun', name: 'Yun', sprite: 'gen_fs_yun', location: 'steel_strip', x: 10, z: 13.2, faceTo: [10, 10], dialogue: 'fs_yun' },
   { id: 'fs_gt', name: 'GT de promotion', sprite: 'gen_fs_gt_promo', location: 'steel_strip', x: 32, z: 12, faceTo: [28, 12], dialogue: 'fs_gt' },
+  // Fusible (fiche Mega-Line d'Ocre) : vendeur du Pique-Puce, dans le renfoncement noir entre deux façades sud (x 39-40, aucune enseigne ni lueur), loin du stand de merch et de la caméra
+  { id: 'fs_fusible', name: 'Fusible', sprite: 'gen_ml_fusible', location: 'steel_strip', x: 39.6, z: 16.9, faceTo: [38, 12], dialogue: 'fs_fusible' },
   { id: 'fs_marius', name: 'Vieux Marius', sprite: 'gen_fs_marius', location: 'steel_strip', x: 58, z: 16.6, faceTo: [56, 12], dialogue: 'fs_marius' },
 ];
 const D = (t1, t2) => ({ start: { text: t1, options: [ { label: 'Et sinon ?', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] }, b: { text: t2, options: [ { label: 'Au revoir.', next: 'end' } ] } });
 export const DIALOGUES_STRIP = {
+  // Fusible : 7 répliques de la fiche d'Ocre ; vend le Pique-Puce (prix proposé, non validé : PIQUE_PUCE_PRIX), un seul exemplaire à la fois
+  fs_fusible: {
+    start: { text: 'Tu cherches la rame sans la puce ? Parle moins fort, le néon d\u2019à côté a des oreilles.', alt: [
+        { if: 'race_augmente', text: 'Toi, tu as déjà ce qu\u2019il faut sous la peau. Qu\u2019est-ce que tu viens faire dans ma ruelle ?' },
+        { if: 'race_cyborg', text: 'Toi, tu as déjà ce qu\u2019il faut sous la peau. Qu\u2019est-ce que tu viens faire dans ma ruelle ?' },
+        { if: 'fusible_vendu', text: 'Tu ne m\u2019as jamais vu. Et moi je n\u2019ai jamais rien vendu.' } ], options: [
+      { label: 'Combien, la boîte ?', next: 'prix', if: 'pirate_implant<1' },
+      { label: 'Ça marche à tous les coups ?', next: 'fiable' },
+      { label: 'Au revoir.', next: 'end' } ] },
+    prix: { text: 'Six cents. C\u2019est le prix d\u2019un aller simple pour avoir l\u2019air de quelqu\u2019un d\u2019autre.', alt: [
+        { if: 'race_mutant', text: 'Six cents. Elle va te mordre un peu au contact. Les portiques n\u2019aiment pas les gens comme nous, et la boîte non plus.' } ], options: [
+      { label: `Je la prends (${PIQUE_PUCE_PRIX} cr).`, action: `paycr:${PIQUE_PUCE_PRIX};give:pirate_implant;flag:fusible_vendu`, next: 'vendu', poor: 'pauvre' },
+      { label: 'Trop cher.', next: 'end' } ] },
+    vendu: { text: 'Si ça chauffe dans ta poche, jette-la. Ne me rapporte pas les morceaux.', options: [ { label: 'Au revoir.', next: 'end' } ] },
+    fiable: { text: 'Ça ne marche pas à tous les coups. Neuf fois sur dix, ce qui est mieux que la plupart des gens.', options: [ { label: 'Combien ?', next: 'prix', if: 'pirate_implant<1' }, { label: 'Au revoir.', next: 'end' } ] },
+    pauvre: { text: 'Reviens avec six cents crédits. Je ne fais pas crédit, justement.', options: [ { label: 'Au revoir.', next: 'end' } ] },
+  },
   fs_rocco: D('Le scanner dit que ton sourire est à soixante pour cent. Il faut quatre-vingts. Reviens quand tu seras content.', 'Moi je ne choisis personne. C\u2019est la machine. Je me contente d\u2019être grand.'),
   fs_lila: D('Douze sets cette semaine. Dans le contrat, il y a une clause sur le sourire. Je l\u2019ai lue deux fois pour être sûre.', 'Ils passent « Danse, sois plus chrome » toutes les heures. Je crois qu\u2019au bout d\u2019un moment, plus personne n\u2019entend les paroles.'),
   fs_hugo: D('J\u2019attends depuis six heures. Le concert du 31, c\u2019est ce soir ou dans un an, personne n\u2019est sûr.', 'Si elle passe en vrai, tu crois qu\u2019on la reconnaîtra ? Personne ne sait à quoi elle ressemble sans le chapeau.'),
