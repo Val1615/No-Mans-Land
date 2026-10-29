@@ -39,14 +39,14 @@
       900
     ],
     "anchor": [
-      962,
+      961,
       899
     ],
     "footprint_m": [
       48,
       12
     ],
-    "source": "GenerateImage (cursor), 9252aeb1",
+    "source": "GenerateImage (cursor), 3d8a69c2 (sans faisceaux)",
     "status": "v1"
   },
   "ar_entree": {
@@ -234,7 +234,7 @@
     "fps": 2,
     "boucle": true,
     "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
-    "source": "GenerateImage (cursor), f8a621ee, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "source": "GenerateImage (cursor), f3ac42bd, réf. nml-shots/refs/pp_billboard_src.jpg, format 16:9 ; animation PIL",
     "status": "v1",
     "anchor": [
       128,
@@ -256,7 +256,7 @@
     "fps": 2,
     "boucle": true,
     "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
-    "source": "GenerateImage (cursor), f8a621ee, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "source": "GenerateImage (cursor), f3ac42bd, réf. nml-shots/refs/pp_billboard_src.jpg, format 16:9 ; animation PIL",
     "status": "v1",
     "anchor": [
       64,
