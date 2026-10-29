@@ -74,3 +74,7 @@ Planches horizontales, images de gauche à droite, lues en boucle (`frames`, `fr
 ## Sprites v1 (29/10/2026)
 
 Les 50 entrées du manifest passent en v1. Les enseignes animées pèsent environ 152 Ko en version ordinateur et 69 Ko en version mobile. Les écrans de scène et de façade réutilisent les références de Vibes et de Tron, et aucun visage n'y apparaît hormis le leur. Les lumières de la herse, la lueur de la verrière et les vumètres sont dessinés par le code, ou ajoutés en PIL sur une base éteinte. Aucun faisceau n'est peint dans les images. Planche d'aperçu : /workspace/nml-shots/dome_frequence_sprites.png.
+
+## Écrans de scène recalés (29/10/2026)
+
+Les deux écrans de scène étaient un peu trop hauts (144 px, soit 2,88 m à 50 px par mètre). Ils passent à 213 x 120 px par image, soit 2,4 m, en 16:9. Les versions mobiles passent de 128 x 72 à 106 x 60. L'ancre reste au pied, au centre du bas de l'image. Le nombre d'images et les fps ne changent pas, donc l'horloge partagée du groupe ecrans_scene reste la même.

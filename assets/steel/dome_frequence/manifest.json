@@ -256,14 +256,14 @@
   "df_ens_ecran_vibes": {
     "file": "steel/dome_frequence/df_ens_ecran_vibes.webp",
     "px": [
-      1024,
-      144
+      852,
+      120
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      256,
-      144
+      213,
+      120
     ],
     "fps": 2,
     "boucle": true,
@@ -271,21 +271,21 @@
     "source": "GenerateImage (cursor), 0b968ddf, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
     "status": "v1",
     "anchor": [
-      128,
-      143
+      106,
+      119
     ]
   },
   "df_ens_ecran_vibes_mobile": {
     "file": "steel/dome_frequence/df_ens_ecran_vibes_mobile.webp",
     "px": [
-      512,
-      72
+      424,
+      60
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      128,
-      72
+      106,
+      60
     ],
     "fps": 2,
     "boucle": true,
@@ -293,21 +293,21 @@
     "source": "GenerateImage (cursor), 0b968ddf, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
     "status": "v1",
     "anchor": [
-      64,
-      71
+      53,
+      59
     ]
   },
   "df_ens_ecran_tron": {
     "file": "steel/dome_frequence/df_ens_ecran_tron.webp",
     "px": [
-      1024,
-      144
+      852,
+      120
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      256,
-      144
+      213,
+      120
     ],
     "fps": 3,
     "boucle": true,
@@ -315,21 +315,21 @@
     "source": "GenerateImage (cursor), 27cbfbf8, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
     "status": "v1",
     "anchor": [
-      128,
-      143
+      106,
+      119
     ]
   },
   "df_ens_ecran_tron_mobile": {
     "file": "steel/dome_frequence/df_ens_ecran_tron_mobile.webp",
     "px": [
-      512,
-      72
+      424,
+      60
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      128,
-      72
+      106,
+      60
     ],
     "fps": 3,
     "boucle": true,
@@ -337,8 +337,8 @@
     "source": "GenerateImage (cursor), 27cbfbf8, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
     "status": "v1",
     "anchor": [
-      64,
-      71
+      53,
+      59
     ]
   },
   "df_ens_lumieres": {
