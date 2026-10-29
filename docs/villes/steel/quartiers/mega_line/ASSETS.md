@@ -66,3 +66,18 @@ Aucun sable ni ciel dans ces sprites. Les portes du sas sont pleines, sans hublo
 
 ## Poids et planche
 50 fichiers au total. Planches animées : environ 52 Ko en version ordinateur, 24 Ko en version mobile. Planche d'aperçu : `/workspace/nml-shots/mega_line_sprites.png`.
+
+## Portique à implant, Pique-Puce et vendeur
+| fichier | px | ancre | note |
+|---|---|---|---|
+| `ml_portique_implant.webp` | 110 x 110 | [71, 109] | footprint 1,6 x 1 m, 1,3 m, éteint |
+| `ml_ens_portique_accepte.webp` | 660 x 110 | [71, 109] | 6 images de 110 x 110, 10 i/s, non bouclée, jouée au passage |
+| `ml_ens_portique_accepte_mobile.webp` | 330 x 55 | [35, 54] | mi-résolution |
+| `ml_ens_portique_refuse.webp` | 440 x 110 | [71, 109] | 4 images de 110 x 110, 12 i/s, non bouclée, jouée au passage |
+| `ml_ens_portique_refuse_mobile.webp` | 220 x 55 | [35, 54] | mi-résolution |
+| `icone_pique_puce_128.webp` | 128 x 128 | sans objet | icône d'inventaire |
+| `icone_pique_puce_64.webp` | 64 x 64 | sans objet | icône d'inventaire |
+| `gen_ml_fusible.webp` | 180 x 512 | [90, 511] | vendeur, 1,72 m, Fréquence Strip |
+| `portrait-gen_ml_fusible.webp` | 192 x 192 | sans objet | portrait |
+
+Les planches du portique ont la même taille et la même ancre que le sprite de base : le code les met à sa place le temps du passage. Les lumières n'existent que dans les planches, le sprite de base est éteint. Planche d'aperçu : `/workspace/nml-shots/megaline_implant.png`.

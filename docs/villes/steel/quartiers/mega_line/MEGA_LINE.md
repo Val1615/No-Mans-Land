@@ -79,5 +79,65 @@ Aucun faisceau, halo ou lumière animée n'est peint dans les sprites de base.
 
 ## Questions ouvertes
 - La rame doit-elle s'arrêter et devenir un vrai trajet vers le terminus, ou le terminus reste-t-il accessible à pied seulement ?
-- Le billet de la Mega-Line est-il un objet, un drapeau, ou une ligne du bracelet ?
 - Faut-il une quête liée aux portes du terminus, sachant qu'elles ne s'ouvriront jamais à l'écran ?
+
+## Le billet, c'est l'implant
+### Ce qui est décidé **[décision Valentin]**
+- Le billet de la Mega-Line est lié directement à l'implant. Pas de ticket ni de borne à payer : le portique lit l'implant.
+- Les Augmentés et les Cyborgs passent.
+- Les Humains et les Mutants ne passent qu'avec un objet de piratage, achetable plus tard dans la partie.
+- La passerelle à pied vers le terminus reste ouverte à tous.
+
+### Le portique [proposition]
+Portique `ml_portique_implant`, 1,6 x 1 m, deux piliers et deux volets vitrés, éteint au repos. Il ne compte pas dans le budget de 8 animations : rien ne bouge tant que personne ne passe. Au passage, le code remplace le sprite de base par une planche jouée une fois, puis revient au sprite éteint.
+- `ml_ens_portique_accepte` : 6 images à 10 i/s, soit 0,6 s. Le lecteur s'allume en vert, les volets prennent la teinte et s'effacent, le joueur passe, ils reviennent.
+- `ml_ens_portique_refuse` : 4 images à 12 i/s, soit 0,33 s. Flash rouge, les volets tressautent et restent fermés.
+
+### Les refus du portique [proposition]
+Une réplique tirée au hasard, affichée en bulle au-dessus du portique. Le code peut choisir dans la liste commune ou dans celle de la catégorie du personnage.
+
+Communes aux Humains et aux Mutants :
+- « Aucun implant détecté. Accès refusé. »
+- « Lecture impossible. Veuillez présenter un implant valide. »
+- « Titre de transport absent. Le personnel est informé. »
+- « Accès refusé. La passerelle piétonne est à votre disposition. »
+
+Humains :
+- « Profil non augmenté. Ce service ne vous est pas destiné. »
+- « Aucun implant. Pensez à consulter un centre Human Corp. »
+- « Erreur : passager organique. »
+
+Mutants :
+- « Signature biologique non conforme. Accès refusé. »
+- « Profil non reconnu. Merci de vous éloigner du portique. »
+- « Lecture interrompue. Anomalie corporelle détectée. »
+
+Si le joueur insiste trois fois de suite :
+- « Tentatives répétées enregistrées. »
+- « Merci de libérer le passage. » (Kessler, le vigile, regarde dans sa direction.)
+
+## Le Pique-Puce, objet de piratage [proposition]
+**Nom.** Pique-Puce, ou « la boîte » dans la rue.
+**Icônes.** `icone_pique_puce_128.webp` et `icone_pique_puce_64.webp`.
+**Description d'inventaire.** « Un boîtier rafistolé au ruban adhésif, un écran fendu et une pastille de contact au bout d'un fil. On le colle contre la peau, il fait croire au portique qu'il y a un implant. Ça pique un peu. »
+**Prix suggéré.** 600 crédits chez le vendeur, 450 avec Marchandage à 2. Un seul exemplaire à la fois dans l'inventaire.
+**Effets proposés.**
+- Ouvre le portique de la rame comme un implant : la planche « accepté » se joue.
+- Ne sert que sur la Mega-Line. Les douanes et Human Corp lisent l'implant autrement.
+**Risques proposés.**
+- À chaque passage, une chance sur dix d'être repéré : Repérage + 1, et le portique joue d'abord un refus avant de céder.
+- Une chance sur vingt que la boîte grille : l'objet est perdu, le passage échoue.
+- Les Mutants sentent une décharge au contact. Pas d'effet de jeu, une ligne de texte.
+- Être fouillé avec la boîte sur soi par un vigile Human Corp entraîne une amende ou la confiscation.
+
+## Le vendeur : Fusible [proposition]
+**Où.** Fréquence Strip, dans une ruelle de côté restée noire, derrière les enseignes. Position exacte à fixer dans le plan du Strip.
+**Qui.** Fusible (`gen_ml_fusible`, 1,72 m, portrait `portrait-gen_ml_fusible`). Électronicien de ruelle, la cinquantaine, mal rasé, lunettes-loupes relevées sur le front, parka kaki couverte de poches pleines de câbles et de boîtiers scotchés. Marchand. Il ne porte pas d'implant et en est fier.
+**Répliques.**
+- « Tu cherches la rame sans la puce ? Parle moins fort, le néon d'à côté a des oreilles. »
+- « Six cents. C'est le prix d'un aller simple pour avoir l'air de quelqu'un d'autre. »
+- « Ça ne marche pas à tous les coups. Neuf fois sur dix, ce qui est mieux que la plupart des gens. »
+- « Si ça chauffe dans ta poche, jette-la. Ne me rapporte pas les morceaux. »
+- Si le joueur est Augmenté ou Cyborg : « Toi, tu as déjà ce qu'il faut sous la peau. Qu'est-ce que tu viens faire dans ma ruelle ? »
+- Si le joueur est Mutant : « Elle va te mordre un peu au contact. Les portiques n'aiment pas les gens comme nous, et la boîte non plus. »
+- Après un achat : « Tu ne m'as jamais vu. Et moi je n'ai jamais rien vendu. »
