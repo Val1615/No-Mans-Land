@@ -168,6 +168,8 @@ with sync_playwright() as p:
         if mob:
             bs = E("[...document.querySelectorAll('#cbt-actions button')].map(b=>{const r=b.getBoundingClientRect();return [Math.round(r.width),Math.round(r.height)]})")
             check(f'{T}: boutons de combat >= 52 px', all(w >= 52 and h >= 52 for w, h in bs), bs)
+            ov = E("(()=>{const a=document.getElementById('cbt-res').getBoundingClientRect();return [...document.querySelectorAll('#cbt-actions button')].filter(b=>{const r=b.getBoundingClientRect();return r.left<a.right&&r.right>a.left&&r.top<a.bottom&&r.bottom>a.top}).map(b=>b.textContent)})()")
+            check(f'{T}: aucun bouton de combat (Recharger…) sur le bloc PA', not ov, ov)
         # issue 1 : victoire (le rôdeur panique et s'enfuit au tour 3)
         for _ in range(3):
             if not E(f"!!{C}"): break

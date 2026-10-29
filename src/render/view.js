@@ -184,7 +184,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const s = spriteMesh(n.sprite, null, true); if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
       { const gm = s.material.clone(); gm.opacity = 0.62; gm.color.set('#ffd9a0'); gm.alphaTest = 0.2; /* lot 1 : 62 % et teinte ambre clair, lisible sur le toit sombre */ /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
-      addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z)); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, 0, n.z); labels[labels.length - 1].el.dataset.npc = n.id;
+      addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z)); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, 0, n.z); labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
     }
     builtFor = locId;
   }
@@ -348,10 +348,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     placed.sort((a, b) => (b.npc - a.npc) || (b.ly - a.ly)); // PNJ d'abord (prioritaires), puis de bas en haut
     const done = [], free = (a, x, y, extra) => { const t = { lx: x, ly: y, lw: a.lw, lh: a.lh }; return !hudRects.some(q => hits(t, q)) && !(extra || []).some(q => hits(t, q, 0)); };
     const clash = (a, x, y) => done.some(b => Math.abs(x - b.lx) < (a.lw + b.lw) / 2 + 3 && y > b.ly - b.lh - 3 && y - a.lh < b.ly + 3);
+    // corps (tête aux pieds) de TOUS les PNJ visibles : aucun libellé ne s'y pose, ni le leur ni un autre [Régie B ; Régie 29/10 : Mei, Dorn, technicien, marchande]
+    const bodies = labels.filter(l => l.foot && l.npcSprite?.visible !== false).map(l => { const f = toScr(l.foot()), h = toScr(l.getPos()), hw = Math.max(10, 0.22 * (f.y - h.y));
+      return { left: f.x - hw, right: f.x + hw, top: h.y + 2, bottom: f.y }; }).filter(q => q.bottom > 0 && q.top < innerHeight && q.right > 0 && q.left < innerWidth);
     for (const a of placed) {
-      // corps du PNJ (tête aux pieds) : son libellé ne s'y pose jamais [Régie B]
-      const body = a.npc && a.foot ? [{ left: a.foot.x - 14, right: a.foot.x + 14, top: toScr(a.l.getPos()).y + 2, bottom: a.foot.y }] : [];
-      const ok = (x, y, strict) => y - a.lh >= 2 && y <= innerHeight - 2 && free(a, x, y, body) && (!strict || !clash(a, x, y));
+      const ok = (x, y, strict) => y - a.lh >= 2 && y <= innerHeight - 2 && free(a, x, y, bodies) && (!strict || !clash(a, x, y));
       if (!ok(a.lx, a.ly, true)) { // positions candidates : bords des panneaux, sous les pieds du PNJ, voisinage des autres libellés ; la plus proche gagne
         const ys = [a.ly], xs = [a.lx];
         for (const q of hudRects) { ys.push(q.top - 3, q.bottom + a.lh + 3); xs.push(q.left - a.lw / 2 - 3, q.right + a.lw / 2 + 3); }

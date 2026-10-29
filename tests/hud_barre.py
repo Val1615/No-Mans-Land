@@ -77,6 +77,17 @@ with sync_playwright() as p:
                     R=E(HUD); cov=max([max(0,min(r['x']+r['w'],q['right'])-max(r['x'],q['left']))*max(0,min(r['y']+r['h'],q['bottom'])-max(r['y'],q['top'])) for q in R]+[0])/max(1,r['w']*r['h'])
                     if name=='mobile': ok(vis and cov<0.2,f'mobile Mei visible depuis (24;34) (à l écran={vis}, couverte {cov:.0%})')
                     pg.screenshot(path=OUT+f'apres_{name}_asia.png')
+        # [Régie 29/10] aucune étiquette sur le corps (tête aux pieds) d'un PNJ visible, quel qu'il soit
+        if name in('desktop','mobile'):
+            BODY="""(()=>{const v=window.__nml.view,out=[];const npcs=window.__nml.npcs.filter(n=>n.location===window.__nml.state.location);
+              const B=npcs.map(n=>{const r=v.actorRect(n.id);if(!r)return null;const cx=r.x+r.w/2,hw=Math.max(8,r.h*0.18);return {id:n.id,l:cx-hw,r:cx+hw,t:r.y+r.h*0.06,b:r.y+r.h*0.97}}).filter(q=>q&&q.b>0&&q.t<innerHeight&&q.r>0&&q.l<innerWidth);
+              for(const el of document.querySelectorAll('.wlabel')){if(el.hidden||el.style.visibility==='hidden')continue;const a=el.getBoundingClientRect();if(!a.width)continue;
+                for(const q of B)if(a.left<q.r&&a.right>q.l&&a.top<q.b&&a.bottom>q.t)out.push([el.textContent,q.id])}return {out,n:B.length}})()"""
+            for loc,x,z,cas in [('steel_asia',24,34,[('Vers Lower-Town','ag_mei')]),('steel_lower',30,33,[('La Descente (vers Center-Town)','lt_dorn')]),('steel_china',24,29,[('Pavillon du Dragon','cl_tech'),('Implants « garantis »','cl_m_nord')])]:
+                go(loc,x,z); time.sleep(.5); r=E(BODY)
+                for t,npc in cas: ok([t,npc] not in r['out'],f'{name} {loc} ({x};{z}) « {t} » pas sur {npc}')
+                ok(not r['out'],f'{name} {loc} ({x};{z}) aucune étiquette sur un corps de PNJ ({r["n"]} PNJ à l écran) '+str(r['out']))
+                pg.screenshot(path=OUT+f'apres_{name}_corps_{loc}.png')
         # OBJECTIF : une ligne en mobile
         if name=='mobile':
             go('dusk_q1',20,20)
