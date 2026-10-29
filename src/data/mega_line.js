@@ -19,6 +19,7 @@ export const BUILDINGS_MEGA = [
   ...LAMPS.map(([x, z], i) => B(`ml_lamp${i}`, '', 'ml_lampadaire', x - 0.3, z - 0.3, 0.6, 0.6, { named: false })),
   ENS('ml_e_vibes', 'ml_ens_ecran_vibes', 19, 13.6, 3.4, { groupe: 'ecrans_quai', ph: 0 }), ENS('ml_e_tron', 'ml_ens_ecran_tron', 29, 13.6, 3.4, { groupe: 'ecrans_quai', ph: 0 }),
   B('ml_portique_implant', 'Portique à implant', 'ml_portique_implant', 31.2, 13.5, 1.6, 1, { solid: [] }), // éteint, hors budget : planches jouées une fois au passage (main.js)
+  B('ml_cafe_froid', '', 'ml_cafe_froid', 36.6, 8.6, 0.2, 0.2, { solid: [], named: false, y: 0.9 }), // café froid de Rivet, posé sur l'établi (hauteur de plan de travail)
   ENS('ml_e_horaires', 'ml_ens_horaires', 26.2, 14.6, 2.2), ENS('ml_e_hc', 'ml_ens_human_corp', 8, 7.2, 1.6),
 ];
 export const BUILDINGS_TERMINUS = [
@@ -101,11 +102,16 @@ export const NPCS_MEGA = [ // aucun n'est Vibes ni Tron
   { id: 'ml_vigile', name: 'Kessler', sprite: 'gen_ml_vigile', location: 'steel_megaline', x: 40, z: 16, faceTo: [34, 18], dialogue: 'ml_vigile' },
   { id: 'ml_pancarte', name: 'Noé', sprite: 'gen_ml_pancarte', location: 'steel_megaline', x: 35.5, z: 16.6, faceTo: [30, 19], dialogue: 'ml_pancarte' },
   { id: 'ml_fan', name: 'Yuna', sprite: 'gen_ml_fan', location: 'steel_megaline', x: 19, z: 16, faceTo: [19, 13], dialogue: 'ml_fan' },
+  { id: 'ml_rivet', name: 'Rivet', sprite: 'gen_ml_rivet', location: 'steel_megaline', x: 37.4, z: 9, faceTo: [36.6, 8.6], dialogue: 'ml_rivet' }, // caméo : atelier sous le viaduc, côté est de la station
+  { id: 'ml_regie', name: 'Régie', sprite: 'gen_ml_regie', location: 'steel_terminus', x: 9.5, z: 4.6, faceTo: [15, 3], dialogue: 'ml_regie' }, // caméo : quai du terminus, entre le fret et le sas
   { id: 'ml_cheffe', name: 'Odile Ferraz', sprite: 'gen_ml_cheffe_fret', location: 'steel_terminus', x: 5, z: 13, faceTo: [10, 15], dialogue: 'ml_cheffe' },
   { id: 'ml_docker', name: 'Bruno', sprite: 'gen_ml_docker', location: 'steel_terminus', x: 19.5, z: 12, faceTo: [15, 14], dialogue: 'ml_docker' },
 ];
 const D = (t1, t2) => ({ start: { text: t1, options: [ { label: 'Et sinon ?', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] }, b: { text: t2, options: [ { label: 'Au revoir.', next: 'end' } ] } });
+const D3 = (a, b, c) => ({ start: { text: a, options: [ { label: 'Et sinon ?', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] }, b: { text: b, options: [ { label: 'Et sinon ?', next: 'c' }, { label: 'Au revoir.', next: 'end' } ] }, c: { text: c, options: [ { label: 'Au revoir.', next: 'end' } ] } });
 export const DIALOGUES_MEGA = {
+  ml_rivet: D3('Ça fonctionne ? Bien. Maintenant, voyons comment ça casse.', 'Si la rame t\u2019a refusé, c\u2019est le portique. Si elle t\u2019a accepté, c\u2019est aussi le portique. Moi, je répare.', 'Le café est froid. Il l\u2019est toujours. Ne me demande pas pourquoi, j\u2019ai arrêté de déboguer ça.'),
+  ml_regie: D3('Dernier arrêt. Au-delà, ce ne sont plus mes horaires.', 'Je sais qui monte, qui descend, et qui n\u2019aurait pas dû. Toi, je n\u2019ai pas encore décidé.', 'Ces portes ne s\u2019ouvrent pas. Enfin, pas pour toi. Pas encore.'),
   ml_navetteur: D('Trente-huit minutes de trajet, tous les jours. J\u2019ai fini par connaître les écrans mieux que mes enfants.', 'La rame n\u2019est jamais en retard. C\u2019est nous qui sommes en avance, d\u2019après eux.'),
   ml_controleuse: D('Billet, s\u2019il vous plaît. Ou votre bracelet. Ou votre visage, la borne sait faire.', 'Le terminus ? Il n\u2019y a rien là-bas, que du fret. Personne n\u2019achète de billet pour le terminus.'),
   ml_etudiante: D('Je révise dans la rame. C\u2019est le seul endroit où le réseau me laisse tranquille.', 'Le prof dit que la ligne allait jusqu\u2019au désert, avant. Maintenant elle s\u2019arrête contre une porte.'),

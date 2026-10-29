@@ -25,6 +25,7 @@ export const BUILDINGS_STRIP = [
   B('fs_tapis', '', 'fs_tapis', 14, 6, 4, 2, { solid: [], named: false }),
   B('fs_stand_brochettes', 'Brochettes de Yun', 'fs_stand_brochettes', 8, 14, 4, 4),
   B('fs_stand_merch', 'Merch « pas tout à fait officiel »', 'fs_stand_merch', 46, 14, 4, 4),
+  B('fs_fresque_vibes', 'Fresque inachevée', 'fs_fresque_vibes', 28, 17.4, 6, 0.6), // caméo Ocre : mur de fresque (x 28-34, z 18), média de Vibes, aucune animation
   B('fs_cam', '', 'pp_camera', 24.8, 14.8, 0.4, 0.4, { named: false }),
   B('fs_grille_est', 'Grille de l\u2019Arena', 'fs_grille_est', 60, 11, 4, 1, { solid: [] }), // ouverte : mène à la Steel Arena (fs_est)
   // enseignes animées : 4 en façade nord (Neon-7, Core Stack, Vibes, cœur), Tron au milieu, 2 côté sud (Retour, capsules), 2 panaches de vapeur
@@ -35,6 +36,7 @@ export const BUILDINGS_STRIP = [
   ENS('fs_vap0', 'fs_vapeur', 5, 11, 0), ENS('fs_vap1', 'fs_vapeur', 57, 11, 0),
 ];
 export const CLOSED_STRIP = {
+  fs_fresque_vibes: 'Une fresque inachevée de Groovy Vibes, une échelle, des pots. La peinture est encore fraîche.',
   fs_neon7: 'Club Neon-7. « Next Drop. Entrée : sourire calibré. » Le portique au-dessus de la porte te scanne et ne s\u2019ouvre pas.',
   fs_corestack: 'Core Stack. Une affiche : 31/10. Les baies ronronnent derrière la porte, fermée.',
   fs_retour: 'Le Retour. Lumière ambre, musique basse. Fermé pour l\u2019instant.',
@@ -77,10 +79,14 @@ export const NPCS_STRIP = [ // positions de la fiche (m) ; aucun n'est Vibes ni 
   { id: 'fs_gt', name: 'GT de promotion', sprite: 'gen_fs_gt_promo', location: 'steel_strip', x: 32, z: 12, faceTo: [28, 12], dialogue: 'fs_gt' },
   // Fusible (fiche Mega-Line d'Ocre) : vendeur du Pique-Puce, dans le renfoncement noir entre deux façades sud (x 39-40, aucune enseigne ni lueur), loin du stand de merch et de la caméra
   { id: 'fs_fusible', name: 'Fusible', sprite: 'gen_ml_fusible', location: 'steel_strip', x: 39.6, z: 16.9, faceTo: [38, 12], dialogue: 'fs_fusible' },
+  { id: 'fs_ocre', name: 'Ocre', sprite: 'gen_fs_ocre', location: 'steel_strip', x: 31, z: 16.8, faceTo: [31, 18], dialogue: 'fs_ocre' }, // caméo du studio, sans mécanique
   { id: 'fs_marius', name: 'Vieux Marius', sprite: 'gen_fs_marius', location: 'steel_strip', x: 58, z: 16.6, faceTo: [56, 12], dialogue: 'fs_marius' },
 ];
 const D = (t1, t2) => ({ start: { text: t1, options: [ { label: 'Et sinon ?', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] }, b: { text: t2, options: [ { label: 'Au revoir.', next: 'end' } ] } });
+const D4 = (...t) => Object.fromEntries(t.map((x, i) => [i ? 'r' + i : 'start', { text: x, options: [ ...(i < t.length - 1 ? [{ label: 'Et sinon ?', next: 'r' + (i + 1) }] : []), { label: 'Au revoir.', next: 'end' } ] }]));
 export const DIALOGUES_STRIP = {
+  fs_ocre: D4('Recule un peu, tu me fais de l\u2019ombre. Et ton ombre n\u2019a aucun talent.', 'Non, elle n\u2019a pas posé pour moi. Personne ne l\u2019a jamais vue poser. J\u2019ai mieux que ça, j\u2019ai de la mémoire.',
+    'Les vigiles ? Ils adorent la fresque. Ils font semblant de ne pas me voir depuis trois nuits.', 'Toi, je te mettrais bien dans un coin du mur. Tout petit. Personne ne regarde jamais les coins, et c\u2019est là que je cache les meilleurs.'),
   // Fusible : 7 répliques de la fiche d'Ocre ; vend le Pique-Puce (prix proposé, non validé : PIQUE_PUCE_PRIX), un seul exemplaire à la fois
   fs_fusible: {
     start: { text: 'Tu cherches la rame sans la puce ? Parle moins fort, le néon d\u2019à côté a des oreilles.', alt: [
