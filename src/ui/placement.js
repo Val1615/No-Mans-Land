@@ -5,13 +5,14 @@ const inter = (a, b) => Math.max(0, Math.min(a.r, b.r) - Math.max(a.l, b.l)) * M
 const box = r => ({ l: r.left, t: r.top, r: r.right, b: r.bottom });
 export function placeLabels(plan, sel = 'button') {
   if (!plan) return; if (!plan.__ro && window.ResizeObserver) { plan.__ro = new ResizeObserver(() => placeLabels(plan, sel)); plan.__ro.observe(plan); }
-  const P = box(plan.getBoundingClientRect()), items = [...plan.querySelectorAll(sel)].map(b => ({ b, i: b.querySelector('img'), s: b.querySelector('span') })).filter(x => x.i);
+  const P = box(plan.getBoundingClientRect()), items = [...plan.querySelectorAll(sel)].map(b => ({ b, i: b.querySelector('img:not(.me)'), s: b.querySelector('span') })).filter(x => x.i);
   for (const x of items) if (x.s) { x.s.style.position = 'absolute'; x.s.style.left = '0px'; x.s.style.top = '0px'; }
   for (const x of items) x.ib = box(x.i.getBoundingClientRect()); const obst = items.map(x => x.ib).filter(r => r.r > r.l);
   for (const x of items) { if (!x.s || !x.s.offsetWidth) continue;
     const I = x.ib, B = x.b.getBoundingClientRect(), w = x.s.offsetWidth, h = x.s.offsetHeight, iw = I.r - I.l, cy = I.t + (iw - h) / 2, cx = I.l + (iw - w) / 2, g = 3;
     let C = [[I.r + g, cy], [I.l - w - g, cy], [cx, I.b + 1], [cx, I.t - h - 1], [I.r + g, I.t - h + 4], [I.r + g, I.b - 4], [I.l - w - g, I.t - h + 4], [I.l - w - g, I.b - 4],
       [I.r + g, I.b + 1], [I.l - w - g, I.b + 1], [I.r + g, I.t - h - 1], [I.l - w - g, I.t - h - 1]];
+    for (const k of [1.5, 2.5, 3.5]) C.push([I.r + g, cy + k * h], [I.r + g, cy - k * h], [I.l - w - g, cy + k * h], [I.l - w - g, cy - k * h], [cx, I.b + 1 + k * h], [cx, I.t - h - 1 - k * h]);
     if (x.b.classList.contains('gauche')) [C[0], C[1]] = [C[1], C[0]];
     let best = null, cost = Infinity;
     for (const [l, t] of C) { const R = { l, t, r: l + w, b: t + h }, out = (R.r - R.l) * (R.b - R.t) - inter(R, P);
