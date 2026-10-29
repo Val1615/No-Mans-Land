@@ -109,7 +109,9 @@ with sync_playwright() as p:
         E("(()=>{window.__msgs=[];const m=document.getElementById('msg');new MutationObserver(()=>window.__msgs.push(m.textContent)).observe(m,{childList:true,characterData:true,subtree:true})})()")
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='dusk_q2';s.player.x=42;s.player.z=18;Object.assign(s.flags,{q_start:true,q_cric:true,q_signal:true,q_fin:true});g.restore(s,true)})()"); time.sleep(1.2)
         j = E("window.__nml.game.doorById('j_q2_est').threshold"); walk(j['x'], j['z'], tol=0.5)
-        check(f'{T}: Dusk-Town -> route de Steel à pied', waitjs("window.__nml.state.location==='steel_route'", 15)); time.sleep(1)
+        # lot 3 interface : la route des patrouilles ouvre la carte des No Man's Land (Steel proposé) ; « Partir », voyage case par case
+        check(f'{T}: carte NML ouverte à la sortie, Steel proposé', waitjs("!document.getElementById('nml').hidden && window.__nml.voyage.region().dest?.lieu==='steel'", 15)); press('#nml-partir', 0.3)
+        check(f'{T}: Dusk-Town -> route de Steel à pied', waitjs("window.__nml.state.location==='steel_route'", 25)); time.sleep(1)
         r = E("window.__nml.game.useDoor('r_trappe')"); check(f'{T}: trappe fermée tant qu\'on ne connaît personne', r and r['ok'] is False and r['reason'] == 'trappe', r)
         capt = race == 'mutant' and mob
         if race == 'humain':

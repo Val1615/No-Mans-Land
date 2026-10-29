@@ -280,3 +280,29 @@ body.reduce-motion .smap-plan .mk .me{animation:none}
 .smap-plan .fog{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .smap-plan .mk.gauche{flex-direction:row-reverse;transform:translate(calc(-100% + 11px),-11px)}
 @media (max-width:600px){.smap-plan .mk.lien span,.smap-plan .mk.sortie span{display:none}.smap-plan .mk.gauche{transform:translate(calc(-100% + 9px),-9px)}} /* mobile : passages et sorties en icônes seules (noms dans la liste) */
+
+/* ---------- Lot 3 interface : carte des No Man's Land (plein écran semi-transparent, brouillard d'Ocre) ---------- */
+#nml{position:fixed;inset:calc(8px + var(--pad)) 8px calc(8px + env(safe-area-inset-bottom,0)) 8px;z-index:30;display:flex;flex-direction:column;padding:8px 10px;background:rgba(10,7,4,.8)}
+#nml[hidden]{display:none}
+#nml header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-right:40px;position:relative;z-index:1}
+#nml h3{font-family:'VT';font-weight:400;font-size:24px;color:var(--c);margin:0}
+#nml-heure{font-family:'VT';font-size:20px;color:#fff2d8}#nml-etat{font-size:12.5px}
+#nml-close{position:absolute;right:0;top:-4px;width:38px;height:38px;font-size:22px;background:none;border:0;color:var(--c)}#nml-close:disabled{opacity:.25}
+#nml-vue{flex:1;min-height:0;overflow:auto;margin:6px 0;position:relative;z-index:1;display:flex;touch-action:pan-x pan-y}
+#nml-plan{position:relative;margin:auto;aspect-ratio:2200/2000;flex:none;cursor:crosshair}
+#nml-fond,#nml-svg,#nml-fog{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none}
+#nml-svg .route{fill:none;stroke:#f2b44a;stroke-width:9;stroke-dasharray:22 16;stroke-linecap:round;opacity:.9}
+#nml-svg .cible{fill:none;stroke:#fff2d8;stroke-width:6;opacity:.8}
+#nml-lieux .nl{position:absolute;transform:translate(-12px,-12px);display:flex;align-items:center;gap:3px;background:none;border:0;padding:0;color:#fff2d8;font-size:12px;white-space:nowrap;text-shadow:0 1px 2px #000,0 0 3px #000}
+#nml-lieux .nl img{width:24px;height:24px}#nml-lieux .nl span{background:rgba(10,7,4,.6);padding:1px 4px;border-radius:2px}
+#nml-lieux .nl.dest span{border:1px solid var(--c);color:var(--c)}
+#nml-lieux .nl.gauche{flex-direction:row-reverse;transform:translate(calc(-100% + 12px),-12px)}
+#nml-moi{position:absolute;width:30px;height:30px;transform:translate(-15px,-15px);pointer-events:none;filter:drop-shadow(0 0 3px #000)}
+#nml footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;position:relative;z-index:1;font-size:13px}
+#nml footer .b{display:flex;gap:6px;margin-left:auto}
+#nml footer button{min-height:38px;padding:4px 14px;background:rgba(8,6,3,.6);border:1px solid var(--d);color:#fff2d8;font-size:13px}
+#nml footer button:disabled{opacity:.4}#nml-partir,#nml-entrer{border-color:var(--c)!important;color:var(--c)!important}
+body.nml-open #keys,body.nml-open #actions,body.nml-open #labels,body.nml-open #obj,body.nml-open #panel{visibility:hidden}
+@media (max-width:600px){#nml{inset:calc(4px + var(--pad)) 4px calc(4px + env(safe-area-inset-bottom,0)) 4px;padding:6px}#nml-lieux .nl{font-size:10px}#nml-lieux .nl img{width:18px;height:18px}#nml-lieux .nl{transform:translate(-9px,-9px)}#nml-lieux .nl.gauche{transform:translate(calc(-100% + 9px),-9px)}
+  #nml footer{flex-direction:column;align-items:stretch}#nml footer .b{margin-left:0}#nml footer .b button{flex:1;min-height:44px}#nml-moi{width:24px;height:24px;transform:translate(-12px,-12px)}}
+#panel .btn-nml{margin-top:8px;min-height:36px;padding:4px 12px;background:rgba(8,6,3,.5);border:1px solid var(--d);color:var(--c);font-size:12.5px}

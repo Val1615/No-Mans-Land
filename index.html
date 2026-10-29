@@ -54,6 +54,12 @@
   </div>
   <section id="menu-sub" class="rp" hidden></section>
 </div>
+<!-- lots 2 et 3 interface : carte des No Man's Land, voyage case par case (fond, brouillard et icônes d'Ocre) -->
+<section id="nml" class="rp" hidden aria-label="Carte des No Man's Land">
+  <header><h3>NO MAN'S LAND</h3><span id="nml-heure" class="mono"></span><span id="nml-etat" class="muted"></span><button id="nml-close" aria-label="Fermer">×</button></header>
+  <div id="nml-vue"><div id="nml-plan"><img id="nml-fond" alt="Carte des No Man's Land" draggable="false"><svg id="nml-svg" viewBox="0 0 2200 2000" preserveAspectRatio="none" aria-hidden="true"></svg><canvas id="nml-fog" aria-hidden="true"></canvas><div id="nml-lieux"></div><img id="nml-moi" src="./assets/ui/maps/icones/joueur_48.png" alt="Toi"></div></div>
+  <footer><span id="nml-dest"></span><span class="b"><button id="nml-zoom" aria-label="Zoom">+</button><button id="nml-entrer" hidden></button><button id="nml-halte" hidden>Halte</button><button id="nml-partir" hidden>Partir</button></span></footer>
+</section>
 <!-- v11 lot 2 : création de personnage -->
 <div id="creation" hidden></div>
 <script type="module" src="./src/main.js"></script>

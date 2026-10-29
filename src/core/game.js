@@ -19,7 +19,8 @@ export function createGame(world, sprites) {
     companion: COMPANION?.enabled ? { x: sp.companion.x, z: sp.companion.z, path: [], mode: 'follow', location: START.location, name: COMPANION?.name }
                                   : { x: -99, z: -99, path: [], mode: 'absent', location: '_none', name: COMPANION?.name },
     dialogue: null, flags: {}, discovered: {}, seen: {}, junctionLock: null,
-    npcs: Object.fromEntries(NPCS.map(n => [n.id, { heading: n.faceTo ? Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z) : 0 }])), log: [], transitions: 0, osGains: 0, os: null
+    npcs: Object.fromEntries(NPCS.map(n => [n.id, { heading: n.faceTo ? Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z) : 0 }])), log: [], transitions: 0, osGains: 0, os: null,
+    heures: null, region: null // lot 3 : temps de jeu (heures écoulées depuis le jour 1, 0 h) et état du voyage régional (core/voyage.js)
   };
   const listeners = new Set();
   const emit = ev => { state.log.push(ev); if (state.log.length > 80) state.log.shift(); listeners.forEach(f => f(ev)); };
@@ -73,7 +74,7 @@ export function createGame(world, sprites) {
   }
   function finishPending() {
     const p = state.player.pending; state.player.pending = null; if (!p) return;
-    if (p.kind === 'door') { const d = doorById(p.id), bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else if (!interrupt(d)) enter(d); }
+    if (p.kind === 'door') { const d = doorById(p.id), bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else if (!interrupt(d)) cross(d); }
     if (p.kind === 'talk') openDialogue(p.id);
     if (p.kind === 'scene') openDialogue(p.id);
     if (p.kind === 'spot') doSpot(SPOTS.find(s => s.id === p.id));
@@ -210,6 +211,12 @@ export function createGame(world, sprites) {
   function closeDialogue() { if (state.dialogue) { const n = npcById(state.dialogue.npc); if (n.faceTo) state.npcs[n.id].heading = Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z); emit({ type: 'dialogue_close', npc: state.dialogue.npc }); state.dialogue = null; }
     if (state.combatPending && !state.combat) { const id = state.combatPending; state.combatPending = null; combat.start(id); } }
 
+  // Lot 3 : une sortie régionale (door.regional, posée par core/voyage.js) ouvre la carte des No Man's Land au lieu de passer directement.
+  let onRegional = null;
+  function cross(d) { if (d.regional && onRegional) { state.junctionLock = d.id; state.player.path = []; onRegional(d); } else enter(d); }
+  // Arrivée d'un voyage régional : même transition de groupe, vers la porte d'arrivée du lieu (sortie de départ : compagnon, texte d'arrivée).
+  function arriveVia(targetId, fromDoorId) { const from = fromDoorId && doorById(fromDoorId);
+    enter({ ...(from && from.location === state.location ? from : { location: state.location, junction: true }), target: { doorId: targetId } }); }
   // Transition de groupe atomique.
   function enter(door) {
     const target = doorById(door.target.doorId), dest = target.location, c = state.companion;
@@ -238,7 +245,7 @@ export function createGame(world, sprites) {
     // Jonctions de rue : franchies dès que le joueur s'arrête sur le seuil (marche réelle).
     if (state.junctionLock) { const l = doorById(state.junctionLock); if (!l || l.location !== state.location || Math.hypot(l.threshold.x - pl.x, l.threshold.z - pl.z) > 1.5) state.junctionLock = null; }
     if (!pl.path.length && !state.dialogue) for (const d of DOORS) if ((d.junction || d.edge) && d.location === state.location && d.id !== state.junctionLock && Math.hypot(d.threshold.x - pl.x, d.threshold.z - pl.z) < 0.8) {
-      const bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else if (!interrupt(d)) enter(d); break; }
+      const bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else if (!interrupt(d)) cross(d); break; }
     const c = state.companion;
     if (c.mode === 'follow' && c.location === state.location) {
       c._t = (c._t || 0) + dt;
@@ -261,7 +268,7 @@ export function createGame(world, sprites) {
   function snapshot() {
     const p = state.player, c = state.companion;
     return JSON.parse(JSON.stringify({ location: state.location, player: { x: p.x, z: p.z, heading: p.heading || 0, hp: p.hp, maxHp: p.maxHp, money: p.money, credits: p.credits || 0, inv: p.inv },
-      companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions, osGains: state.osGains, character: state.character || null }));
+      companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions, osGains: state.osGains, character: state.character || null, heures: state.heures, region: state.region }));
   }
   function restore(snap, quiet) {
     if (!snap || !LOCATIONS[snap.location]) return false;
@@ -273,12 +280,13 @@ export function createGame(world, sprites) {
     Object.assign(state.companion, { ...(snap.companion || {}), path: [] });
     state.flags = { ...(snap.flags || {}) }; state.discovered = { ...(snap.discovered || {}) }; state.seen = { ...(snap.seen || {}) }; state.transitions = snap.transitions || 0; state.osGains = snap.osGains || 0; state.os = null; state.combat = null; state.combatPending = null;
     state.character = snap.character ? JSON.parse(JSON.stringify(snap.character)) : null; // v11 : personnage créé (lot 2)
+    state.heures = snap.heures ?? null; state.region = snap.region ? JSON.parse(JSON.stringify(snap.region)) : null; // lot 3 : temps et voyage régional (absents : recréés)
     // pas de franchissement immédiat si l'on a sauvegardé sur un seuil de jonction
     const jd = DOORS.find(d => (d.junction || d.edge) && d.location === state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.5); state.junctionLock = jd ? jd.id : null;
     if (!quiet) emit({ type: 'restore', text: 'Partie chargée : ' + LOCATIONS[state.location].name });
     return true;
   }
-  return { combat, startCombat: id => combat.start(id), state, setRng: f => { rng = f || Math.random; }, useSpot, useItem, sceneTriggers, step, snapshot, restore, moveTo, useDoor, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
+  return { combat, startCombat: id => combat.start(id), state, setRng: f => { rng = f || Math.random; }, useSpot, useItem, sceneTriggers, step, snapshot, restore, moveTo, useDoor, arriveVia, onRegional: f => { onRegional = f; }, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
     on: f => listeners.add(f), get location() { return LOCATIONS[state.location]; } };
 }
 function nearestFree(g, target, from) {

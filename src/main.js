@@ -9,6 +9,8 @@ import { createShell } from './ui/shell.js';
 import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
 import { portraitUrl } from './ui/creation.js';
 import { steelMapHtml, isSteel, coucheOf, drawSteelFog } from './ui/carte_steel.js';
+import { createVoyage } from './core/voyage.js';
+import { createCarteNml } from './ui/carte_nml.js';
 Object.assign(ITEMS, ORIGIN_ITEMS); // v11 : objets d'origine
 
 const sprites = await (await fetch('./assets/reused/manifest.json')).json();
@@ -22,6 +24,8 @@ const bman = await (await fetch('./assets/buildings/manifest.json')).json();
 const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
 await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
+// lot 3 : voyage régional (les sorties régionales ouvrent la carte des No Man's Land)
+const voyage = createVoyage({ game, manifest: mapsMan });
 const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'));
 const $ = id => document.getElementById(id);
 let msgTimer;
@@ -29,7 +33,7 @@ const say = t => { $('msg').textContent = t; clearTimeout(msgTimer); msgTimer = 
 game.on(ev => { if (ev.text) say(ev.text); });
 
 bindPointer($('view'), (x, y) => {
-  if (game.state.dialogue || shell?.isOpen()) return;
+  if (game.state.dialogue || shell?.isOpen() || nml.open) return;
   if (game.state.combat) { // combat C1 : premier tap = aperçu du chemin et de son coût, second tap sur la même case = confirmer
     const foe = enemyAt(x, y), pv0 = game.state.combat.preview; // C2 : tap sur un ennemi = aperçu de l'attaque (chance, PA), second tap = attaquer
     if (foe) { const me = game.combat.player(); if (pv0 && pv0.type === 'attaque' && pv0.cible === foe.id && pv0.ok && pv0.i === foe.i && pv0.j === foe.j && pv0.de[0] === me.i && pv0.de[1] === me.j) // aperçu périmé (cible ou tireur déplacé) : on refait l'aperçu
@@ -102,10 +106,14 @@ function typeText(t) {
   let i = 0; el.textContent = ''; typeTimer = setInterval(() => { i += 2; el.textContent = t.slice(0, i); if (i >= t.length) clearInterval(typeTimer); }, 16);
   el.onclick = () => { clearInterval(typeTimer); el.textContent = t; };
 }
-let last = performance.now();
+let last = performance.now(), lastRegion;
+const nml = createCarteNml({ $, voyage, manifest: mapsMan, say });
+voyage.on(ev => { if ((ev.type === 'case' || ev.type === 'halte' || ev.type === 'arret') && shell && !shell.isOpen()) shell.autosave(); }); // reprise après rechargement : sur la dernière case
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
-  if (!shell?.isOpen()) game.step(dt);
+  if (!shell?.isOpen()) { if (game.state.region !== lastRegion) { voyage.restaure(); lastRegion = game.state.region; } // partie chargée en marche : halte
+    if (voyage.region().statut === 'lieu') game.step(dt); else { voyage.tick(dt * 1000 * (shell?.options.reduceMotion ? 0.5 : 1)); if (!nml.open) nml.show(true); } }
+  nml.frame();
   const s = game.state, D = world.DOORS;
   nearDoor = s.dialogue ? null : D.find(d => d.location === s.location && Math.hypot(d.threshold.x - s.player.x, d.threshold.z - s.player.z) < 2.5) || null;
   $('act').hidden = !nearDoor; if (nearDoor) $('act-text').textContent = game.location.kind === 'interior' ? 'Sortir' : nearDoor.junction ? nearDoor.label : nearDoor.edge ? nearDoor.label : 'Entrer : ' + game.location.buildings.find(b => b.id === nearDoor.buildingId).label;
@@ -124,7 +132,7 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
-window.__nml = { mapsMan, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
@@ -162,14 +170,15 @@ function renderPanel() {
     B.querySelectorAll('[data-dir]').forEach(b => b.addEventListener('click', () => go(n + +b.dataset.dir)));
     B.querySelectorAll('.mk[data-vers]').forEach(b => b.addEventListener('click', () => go(+b.dataset.vers)));
     B.querySelectorAll('.mk.verrou').forEach(b => b.addEventListener('click', () => say('Upper-Town : accès refusé.')));
-    B.querySelectorAll('.mk.unk').forEach(b => b.addEventListener('click', () => say('Lieu inconnu.')));
+    B.querySelectorAll('.mk[data-region]').forEach(b => b.addEventListener('click', () => { openPanel(panelOpen); nml.show(true); })); // la douane : carte des No Man's Land
     let wt = 0; B.querySelector('.smap-plan').addEventListener('wheel', e => { e.preventDefault(); const t = performance.now(); if (t - wt < 250 || !e.deltaY) return; wt = t; go(n + (e.deltaY < 0 ? 1 : -1)); }, { passive: false });
   } else if (panelOpen === 'carte') {
     const cells = Array(9).fill('<div></div>');
     for (const [id, c, r] of QUARTERS) { const here = s.location === id || world.LOCATIONS[s.location].kind === 'interior' && false, known = s.seen[id];
       const pl = allBuildings().filter(b => b.loc === id && s.discovered[b.id]).map(b => b.label);
       cells[r * 3 + c] = `<div class="q ${s.location === id ? 'here' : ''} ${known ? '' : 'unk'}"><b>${known ? short(id) : '?'}</b>${s.location === id ? '> ici<br>' : ''}${pl.join('<br>')}</div>`; }
-    B.innerHTML = `<h3>CARTE · DUSK-TOWN</h3><div class="map">${cells.join('')}</div><div class="desc muted">Nord en haut. Les quartiers se rejoignent par les bouts de rue. Au sud des Sables : les terres dévastées.</div>`;
+    B.innerHTML = `<h3>CARTE · DUSK-TOWN</h3><div class="map">${cells.join('')}</div><div class="desc muted">Nord en haut. Les quartiers se rejoignent par les bouts de rue. Au sud des Sables : les terres dévastées.</div><button class="btn-nml" id="p-nml">Carte des No Man’s Land</button>`;
+    $('p-nml').addEventListener('click', () => { openPanel(panelOpen); nml.show(true); });
   }
 }
 function openPanel(name) {
@@ -193,6 +202,7 @@ addEventListener('keydown', e => {
   const k = e.key.toLowerCase();
   if (game.state.dialogue && /^[1-9]$/.test(k)) { const b = document.querySelector(`#dlg-options button[data-n="${k}"]`); if (b) b.click(); return; }
   if (shell?.isOpen()) return;
+  if (nml.open) { if (k === 'escape' || k === 'm') { e.preventDefault(); if (!nml.close()) shell.pause(); } return; } // lot 3 : carte régionale au premier plan
   if (k === 'escape') { if (panelOpen) openPanel(panelOpen); else if (game.state.dialogue) game.closeDialogue(); else shell.pause(); }
   if (k === 'tab') { e.preventDefault(); foldKeys(); return; }
   if (k === 'e' && !e.repeat && !$('act').hidden) { $('act').click(); return; }
