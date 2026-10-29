@@ -70,3 +70,7 @@ Planches horizontales, images de gauche à droite, lues en boucle (`frames`, `fr
 | `gen_df_gardien` | 1.6 | 180 x 512 | oui |
 | `gen_df_foule_a` | 1.7 | 180 x 512 | non |
 | `gen_df_foule_b` | 1.66 | 180 x 512 | non |
+
+## Sprites v1 (29/10/2026)
+
+Les 50 entrées du manifest passent en v1. Les enseignes animées pèsent environ 152 Ko en version ordinateur et 69 Ko en version mobile. Les écrans de scène et de façade réutilisent les références de Vibes et de Tron, et aucun visage n'y apparaît hormis le leur. Les lumières de la herse, la lueur de la verrière et les vumètres sont dessinés par le code, ou ajoutés en PIL sur une base éteinte. Aucun faisceau n'est peint dans les images. Planche d'aperçu : /workspace/nml-shots/dome_frequence_sprites.png.
