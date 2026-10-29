@@ -1,7 +1,7 @@
 // Le Dôme Fréquence (zone steel_dome, 30 x 30 m) : intérieur de c_tour (Center-Town). Pack d'Ocre : docs/villes/steel/quartiers/dome_frequence/.
 // Entrée : porte de façade de c_tour vers (23,5 ; 13), fermée tant que le drapeau dome_ouvert n'est pas posé (comme les grilles conditionnelles).
 // Accès de debug : ?dome=1 dans l'URL, ou window.__nml.ouvrirDome(). Vibes et Tron : uniquement sur les écrans de scène et de façade.
-// Écrans de scène : un groupe, une seule horloge (synchronisés). Herse de lumières : enseigne df_ens_lumieres + lueurs posées par le code (rien de peint).
+// Écrans de scène : 213 x 120 (2,4 m, ancre [106, 119]), posés à y 3,9 au-dessus de la herse (y 2,6) : sommet à 6,3 m comme avant, bas dégagé ; un groupe, une seule horloge. Herse de lumières : enseigne df_ens_lumieres + lueurs posées par le code (rien de peint).
 const DOME = { bg: '#07060c', hemi: ['#c8a0ff', '#2a1420', 1.15], sun: ['#f2b44a', 0.55], tint: '#c8b4d0', actor: '#e8dcea' };
 const VIOLET = '#8a3cff', MAGENTA = '#e03ca8', CYAN = '#5fd3f0', AMBRE = '#f2b44a', LAITON = '#c8a050';
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: !!label, ...extra });
@@ -20,8 +20,8 @@ export const BUILDINGS_DOME = [
   B('df_borne', 'Borne de billets', 'df_borne', 14, 26, 1, 1),
   B('df_porte', '', 'df_porte', 12, 29.5, 6, 0.5, { solid: [], named: false }),
   // enseignes : écrans de scène (groupe synchronisé), herse de lumières, vumètres, néon du bar
-  ENS('df_e_vibes', 'df_ens_ecran_vibes', 11, 1.8, 3.4, { groupe: 'ecrans_scene', ph: 0 }), ENS('df_e_tron', 'df_ens_ecran_tron', 17, 1.8, 3.4, { groupe: 'ecrans_scene', ph: 0 }),
-  ENS('df_e_herse', 'df_ens_lumieres', 15, 6.2, 4.2), ENS('df_e_vu', 'df_ens_vu', 16.8, 18.2, 1.4), ENS('df_e_bar', 'df_ens_bar', 8, 24.2, 2.2),
+  ENS('df_e_vibes', 'df_ens_ecran_vibes', 11, 1.8, 3.9, { groupe: 'ecrans_scene', ph: 0 }), ENS('df_e_tron', 'df_ens_ecran_tron', 17, 1.8, 3.9, { groupe: 'ecrans_scene', ph: 0 }),
+  ENS('df_e_herse', 'df_ens_lumieres', 15, 6.2, 2.6), ENS('df_e_vu', 'df_ens_vu', 16.8, 18.2, 1.4), ENS('df_e_bar', 'df_ens_bar', 8, 24.2, 2.2),
 ];
 export const CLOSED_DOME = {
   df_scene: 'La scène, plateau noir à bord laiton. Au-dessus, Vibes et Tron jouent sur les écrans, en parfaite synchronisation.',
@@ -39,7 +39,7 @@ export const LOCATIONS_DOME = {
       { x: 15, z: 4, rx: 10, rz: 2.6, color: VIOLET, i: 0.5 }, { x: 15, z: 12, rx: 10, rz: 6, color: VIOLET, i: 0.22 },
       { x: 15, z: 16, rx: 2.4, rz: 2, color: CYAN, i: 0.4 }, { x: 7, z: 24.6, rx: 3.6, rz: 1.6, color: AMBRE, i: 0.7 }, { x: 23, z: 24.6, rx: 3, rz: 1.4, color: LAITON, i: 0.45 },
       { x: 15, z: 27, rx: 3, rz: 2, color: '#e8eef2', i: 0.35 }, { x: 15, z: 25, rx: 13, rz: 4, color: AMBRE, i: 0.18 } ],
-    extras: [ ...[[8, 9.6], [10, 12], [21, 9.6], [23, 12.2], [8.5, 17.4], [22, 17.4], [12, 25.6], [18, 27]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_df_foule_b' : 'gen_df_foule_a', x, z, face: x < 15 ? 1 : -1, role: 'public' })) ],
+    extras: [ ...[[21, 9.6], [23, 12.2], [8.5, 17.4], [22, 17.4], [12, 25.6], [18, 27]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_df_foule_b' : 'gen_df_foule_a', x, z, face: x < 15 ? 1 : -1, role: 'public' })) ],
     walkers: [ { sprite: 'gen_df_foule_a', path: [[3, 25], [27, 25]], speed: 0.5, t0: 5 } ],
     spawn: { player: { x: 15, z: 28.5 }, companion: { x: 16, z: 28.5 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'Le Dôme Fréquence. Marbre, laiton et velours. Sur les deux écrans de scène, Vibes et Tron jouent pour une salle presque vide.' } },
@@ -58,6 +58,8 @@ export const NPCS_DOME = [ // positions de la fiche, décalées hors du mobilier
   { id: 'df_pia', name: 'Pia', sprite: 'gen_df_pia', location: 'steel_dome', x: 22, z: 7, faceTo: [15, 4], dialogue: 'df_pia' },
   { id: 'df_ruben', name: 'Ruben', sprite: 'gen_df_ruben', location: 'steel_dome', x: 15.8, z: 27.2, faceTo: [15, 30], dialogue: 'df_ruben' },
   { id: 'df_helene', name: 'Hélène', sprite: 'gen_df_helene', location: 'steel_dome', x: 8.6, z: 27.4, faceTo: [12, 27], dialogue: 'df_helene' },
+  { id: 'df_theo', name: 'Théo', sprite: 'gen_df_foule_a', location: 'steel_dome', x: 8, z: 9.6, faceTo: [15, 4], dialogue: 'df_theo' },
+  { id: 'df_maelle', name: 'Maëlle', sprite: 'gen_df_foule_b', location: 'steel_dome', x: 10, z: 12, faceTo: [15, 4], dialogue: 'df_maelle' },
   { id: 'df_gardien', name: 'Le Gardien des balcons', sprite: 'gen_df_gardien', location: 'steel_dome', x: 3.6, z: 19.6, faceTo: [10, 14], dialogue: 'df_gardien' },
 ];
 const D = (t1, t2) => ({ start: { text: t1, options: [ { label: 'Et sinon ?', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] }, b: { text: t2, options: [ { label: 'Au revoir.', next: 'end' } ] } });
@@ -70,6 +72,8 @@ export const DIALOGUES_DOME = {
   df_pia: D1('Je règle les lumières pour une scène qui joue surtout sur écran. Mes projecteurs éclairent des gens qui ne sont pas là.'),
   df_ruben: D('Le Dôme est fermé ce soir. Il est fermé presque tous les soirs. C\u2019est ce qui le rend désirable.', 'Vous étiez déjà venu hier. La borne s\u2019en souvient, moi aussi.'),
   df_helene: D('J\u2019écris sur leurs disques depuis le début. Je n\u2019ai jamais réussi à savoir qui écrit vraiment les paroles.', 'Le meilleur morceau de l\u2019album, c\u2019est celui qu\u2019on ne passe jamais ici. Devine lequel.'),
+  df_theo: D('J\u2019ai pris une place au premier rang. Je regarde quand même l\u2019écran, on voit mieux leurs visages.', 'Tous les soirs, le même concert, à la seconde près. Moi, c\u2019est ça qui me rassure.'),
+  df_maelle: D('Ma robe est assortie à l\u2019écran de Tron. Si la caméra de la salle passe par ici, je serai prête.', 'On dit qu\u2019ils ne viennent jamais en vrai. Moi, je garde mon billet au cas où.'),
   df_gardien: D('Avant, ça s\u2019appelait la Rotonde. On y jouait de l\u2019orgue. L\u2019orgue est toujours sous la scène, personne n\u2019a pensé à l\u2019enlever.', 'Le dôme ne laisse pas passer le ciel. Il le montre. Ce n\u2019est pas pareil.'),
 };
 // Écrans de façade sur c_tour (steel_center) : comptent dans le budget mobile de Center-Town

@@ -18,7 +18,7 @@ with sync_playwright() as p:
         E("window.__nml.game.useDoor('c_dome')"); time.sleep(1.5); ok(E("window.__nml.state.location")=='steel_center',f'{name} porte du Dôme fermée sans le drapeau')
         ok(E("window.__nml.ouvrirDome()"),f'{name} accès de debug'); E("window.__nml.game.useDoor('c_dome')"); time.sleep(2)
         ok(E("window.__nml.state.location")=='steel_dome',f'{name} entrée dans le Dôme',E("window.__nml.state.location"))
-        ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_dome').length")==8,f'{name} 8 PNJ')
+        ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_dome').length")==10,f'{name} 10 PNJ')
         pg.screenshot(path=OUT+f'{name}_foyer.png')
         E("window.__nml.game.moveTo(18,7.5)"); t0=time.time()
         while time.time()-t0<40 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-18,p.z-7.5)>1.2})()"): time.sleep(.3)
