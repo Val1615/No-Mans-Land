@@ -264,6 +264,44 @@
     "partie": "ligne",
     "height_m": 1.74
   },
+  "gen_ml_regie": {
+    "file": "steel/mega_line/gen_ml_regie.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.67,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 0e43e38e",
+    "status": "v1",
+    "cameo": true
+  },
+  "gen_ml_rivet": {
+    "file": "steel/mega_line/gen_ml_rivet.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 0fe7c670",
+    "status": "v1",
+    "cameo": true
+  },
   "gen_ml_vigile": {
     "file": "steel/mega_line/gen_ml_vigile.webp",
     "px": [
@@ -361,6 +399,25 @@
     "status": "v1",
     "partie": "terminus",
     "height_m": 4
+  },
+  "ml_cafe_froid": {
+    "file": "steel/mega_line/ml_cafe_froid.webp",
+    "px": [
+      16,
+      16
+    ],
+    "anchor": [
+      7,
+      15
+    ],
+    "footprint_m": [
+      0.2,
+      0.2
+    ],
+    "height_m": 0.12,
+    "source": "GenerateImage (cursor), 539a2aa5",
+    "status": "v1",
+    "note": "tasse de café froid de Rivet, grossie à 16 px pour rester lisible (0,12 m feraient 6 px)"
   },
   "ml_conteneurs": {
     "file": "steel/mega_line/ml_conteneurs.webp",
@@ -1069,6 +1126,28 @@
     "source": "recadrage de gen_ml_pancarte.webp",
     "status": "v1",
     "partie": "ligne"
+  },
+  "portrait-gen_ml_regie": {
+    "file": "steel/mega_line/portrait-gen_ml_regie.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_regie",
+    "source": "recadrage de gen_ml_regie.webp",
+    "status": "v1",
+    "cameo": true
+  },
+  "portrait-gen_ml_rivet": {
+    "file": "steel/mega_line/portrait-gen_ml_rivet.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_rivet",
+    "source": "recadrage de gen_ml_rivet.webp",
+    "status": "v1",
+    "cameo": true
   },
   "portrait-gen_ml_vigile": {
     "file": "steel/mega_line/portrait-gen_ml_vigile.webp",

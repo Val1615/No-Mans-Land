@@ -141,3 +141,25 @@ Si le joueur insiste trois fois de suite :
 - Si le joueur est Augmenté ou Cyborg : « Toi, tu as déjà ce qu'il faut sous la peau. Qu'est-ce que tu viens faire dans ma ruelle ? »
 - Si le joueur est Mutant : « Elle va te mordre un peu au contact. Les portiques n'aiment pas les gens comme nous, et la boîte non plus. »
 - Après un achat : « Tu ne m'as jamais vu. Et moi je n'ai jamais rien vendu. »
+- Si le joueur n'a pas assez de crédits **[validée]** : « Reviens avec six cents crédits. Je ne fais pas crédit, justement. »
+
+## Caméos du studio
+**[décision]** Les membres du studio apparaissent en caméo, comme des PNJ ordinaires, sans mécanique.
+
+### Rivet, mécano de l'atelier [physique décidé, emplacement proposé]
+- Sprite `gen_ml_rivet` (1,78 m), portrait `portrait-gen_ml_rivet`, prop `ml_cafe_froid` posé à portée de main.
+- Homme de 32 ans, brun, cheveux courts en bataille, barbe de trois jours, chemise sombre aux manches retroussées, l'air fatigué de quelqu'un qui débogue.
+- **Emplacement proposé** : un atelier de maintenance sous le viaduc de `steel_megaline`, côté est de la station, entre deux piles. Le café sur l'établi, Rivet penché dessus.
+- Répliques : à écrire par Rivet.
+  - « … »
+  - « … »
+  - « … »
+
+### Régie, cheffe de gare au terminus [physique et répliques décidés, emplacement proposé]
+- Sprite `gen_ml_regie` (1,67 m), portrait `portrait-gen_ml_regie`.
+- Femme de 41 ans, cheveux courts poivre et sel, yeux gris acier, air attentif et sourire en coin, veste sombre bien coupée sur un pull noir, pantalon sombre, bottines, carnet en cuir à la main. Elle sait tout sur tout le monde.
+- **Emplacement proposé** : sur le quai de `steel_terminus`, entre le bureau de fret et le sas, face à la voie. Odile Ferraz garde le fret, Régie garde les gens.
+- Répliques **[validées]** :
+  - « Dernier arrêt. Au-delà, ce ne sont plus mes horaires. »
+  - « Je sais qui monte, qui descend, et qui n'aurait pas dû. Toi, je n'ai pas encore décidé. »
+  - « Ces portes ne s'ouvrent pas. Enfin, pas pour toi. Pas encore. »
