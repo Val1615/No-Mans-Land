@@ -105,6 +105,12 @@ Clé de sprite `gen_df_<id>`. Aucun d'eux n'est Vibes ni Tron, aucun ne cite d'i
 8. **Le Gardien des balcons** (`gen_df_gardien`, 1,60 m, âgé). Ancien ouvreur de la Rotonde. Près des colonnes (3 ; 19).
    - « Avant, ça s'appelait la Rotonde. On y jouait de l'orgue. L'orgue est toujours sous la scène, personne n'a pensé à l'enlever. »
    - « Le dôme ne laisse pas passer le ciel. Il le montre. Ce n'est pas pareil. »
+9. **Théo, spectateur en costume** (`gen_df_foule_a`, 1,70 m). Costume sombre, cravate violette. C'est un des figurants déjà posés dans les gradins, rang ouest (8 ; 9,6). Il est revenu pour la quatrième fois.
+   - « J'ai pris une place au premier rang. Je regarde quand même l'écran, on voit mieux leurs visages. »
+   - « Tous les soirs, le même concert, à la seconde près. Moi, c'est ça qui me rassure. »
+10. **Maëlle, spectatrice en robe violette** (`gen_df_foule_b`, 1,66 m). Robe longue de soirée, sac argenté. C'est une autre figurante des gradins, un rang plus bas (10 ; 12). Elle vient pour être vue.
+   - « Ma robe est assortie à l'écran de Tron. Si la caméra de la salle passe par ici, je serai prête. »
+   - « On dit qu'ils ne viennent jamais en vrai. Moi, je garde mon billet au cas où. »
 
 ## Concepts
 Dans `concepts/` : deux **maquettes générées**, références d'ambiance, **pas des captures du jeu**.
