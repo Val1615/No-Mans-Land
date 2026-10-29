@@ -31,7 +31,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let decor = [], walkers = [], drones = [], flick = [], anims = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -102,7 +102,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K * (b.k || 1), m.px[1] / K * (b.k || 1) * (b.sy || 1), 1); // b.k : échelle uniforme corrigée par le code // b.sy : tassement vertical par le code quand le sprite livré est plus haut que l'illustration
     s.position.set(b.x + b.w, b.y || 0, b.z + b.d); // b.y : hauteur (m) d'une enseigne posée en façade
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
-    world.add(s); bsprites.push(s); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
+    world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
     const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
@@ -138,7 +138,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   function build(locId) {
     scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = [];
+    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -204,6 +204,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const s of decor) if (!walkers.includes(s)) animate(s, false, dt, t);
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
     for (const f of flick) f.m.opacity = f.base * (0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2));
+    // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
+    for (const mv of movers) { const k = ((t + (mv.ph || 0)) % mv.periode) / mv.passage; mv.s.visible = k < 1; if (k < 1) mv.s.position.x = mv.x0 + mv.dx * (k - 0.5); }
     // enseignes animées : seules les visibles à l'écran tournent, au plus ANIM_MAX (8 sur mobile) ; les autres restent sur leur première image
     if (anims.length) { const max = innerWidth < 700 ? 8 : 16, v = new THREE.Vector3(); let on = 0; const pl = player.position;
       const vis = anims.map(a => { v.copy(a.s.position).project(cam); return { a, in: Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, d: a.s.position.distanceToSquared(pl) }; }).sort((p, q) => (q.in - p.in) || (p.d - q.d));

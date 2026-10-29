@@ -22,13 +22,14 @@ Object.assign(sprites, iman);
 const ppMan = await (await fetch('./assets/steel/pulse_plaza/manifest.json')).json();
 Object.assign(ppMan, await (await fetch('./assets/steel/frequence_strip/manifest.json')).json());
 Object.assign(ppMan, await (await fetch('./assets/steel/steel_arena/manifest.json')).json());
-Object.assign(ppMan, await (await fetch('./assets/steel/dome_frequence/manifest.json')).json()); // Dôme Fréquence (df_ -> bâtiments) // Steel Arena (ar_ -> bâtiments) // Fréquence Strip : même chargeur (gen_, portrait-, fs_ -> bâtiments, g_ -> sols)
+Object.assign(ppMan, await (await fetch('./assets/steel/dome_frequence/manifest.json')).json());
+Object.assign(ppMan, await (await fetch('./assets/steel/mega_line/manifest.json')).json()); // Mega-Line et terminus (ml_ -> bâtiments) // Dôme Fréquence (df_ -> bâtiments) // Steel Arena (ar_ -> bâtiments) // Fréquence Strip : même chargeur (gen_, portrait-, fs_ -> bâtiments, g_ -> sols)
 for (const [k, v] of Object.entries(ppMan)) if (k.startsWith('gen_') || k.startsWith('portrait-')) sprites[k] = v;
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
 await loadSkins(['g_wet', 'g_sv', 'g_cl_eau', 'g_cl_lac'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
-for (const [k, v] of Object.entries(ppMan)) if (/^(pp|fs|ar|df)_/.test(k)) bman[k] = v;
+for (const [k, v] of Object.entries(ppMan)) if (/^(pp|fs|ar|df|ml)_/.test(k)) bman[k] = v;
 await loadSkins(Object.keys(ppMan).filter(k => k.startsWith('g_')), n => './assets/' + ppMan[n].file);
 const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
