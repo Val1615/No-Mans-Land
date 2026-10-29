@@ -356,20 +356,20 @@
   },
   "pp_billboard": {
     "file": "steel/pulse_plaza/pp_billboard.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "nml-shots/refs/pp_billboard_src.jpg (détouré, faux texte flouté)",
     "px": [
       220,
       520
     ],
     "anchor": [
-      110,
+      148,
       519
     ],
     "footprint_m": [
       4,
       6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1"
   },
   "pp_camera": {
     "file": "steel/pulse_plaza/pp_camera.webp",
@@ -475,20 +475,21 @@
   },
   "pp_holo_tron": {
     "file": "steel/pulse_plaza/pp_holo_tron.webp",
-    "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py",
+    "source": "nml-shots/refs/pp_holo_tron_src.jpg (fond noir retiré, alpha 0,8)",
     "px": [
       220,
       512
     ],
     "anchor": [
-      110,
+      109,
       511
     ],
     "footprint_m": [
       0.6,
       0.6
     ],
-    "status": "placeholder, pulse-plaza (zone steel_pulse)"
+    "status": "v1",
+    "alpha": 0.8
   },
   "pp_kiosque": {
     "file": "steel/pulse_plaza/pp_kiosque.webp",
