@@ -9,6 +9,7 @@ Mêmes conventions que `frequence_strip/ASSETS.md`. Tout est **[proposition]** d
 
 ## Placeholders et manifest
 48 fichiers dans `assets/steel/steel_arena/`, générés par `docs/villes/steel/quartiers/steel_arena/gen_placeholders.py` (cadre magenta). Le script ne réécrit pas une entrée déjà en status « v1 ».
+v1 (branche creation/steel-arena) : les 48 fichiers sont des sprites v1 (status « v1 », ancres recalées). Enseignes : image de base générée et animation PIL ; faisceau procédural. Poids mesurés : 34 Ko pour les planches mobiles, 76 Ko en version ordinateur. Faux textes flous sur le stand de merch et sur trois uniformes de PNJ.
 Index : `assets/steel/steel_arena/manifest.json`, chemins `file` relatifs à `assets/`.
 
 ## Sols
