@@ -19,12 +19,13 @@
   <span id="inv" hidden></span>
 </div>
 <div id="locbox" class="rp"><span id="loc"></span><span class="tag" title="Prototype">PROTO</span></div>
-<div id="obj" class="rp" hidden><span class="lbl">OBJECTIF</span> <span id="obj-text"></span></div>
+<div id="obj" class="rp" hidden title="Objectif (toucher pour déplier)"><span class="lbl">OBJECTIF</span> <span id="obj-text"></span></div>
 <div id="mini" class="mono" hidden></div>
 <div id="msg" class="mono" role="status" aria-live="polite"></div>
-<div id="actions"><button id="act" class="rp" hidden></button></div>
+<div id="actions"><button id="act" class="rp" hidden><i class="ic" data-ic="entrer" aria-hidden="true"></i><span id="act-text"></span><u class="key">E</u></button></div>
+<!-- lot 1 interface : rangée compacte d'icônes (assets/ui/icons d'Ocre, teintées en CSS par mask-image), touche en petit, réductible (Tab) -->
 <nav id="keys" aria-label="Menus">
-  <button id="k-menu" class="rp" aria-label="Menu"><u>Échap</u> <span>Menu</span></button><button id="k-sac" class="rp" data-panel="sac"><u>I</u> Sac</button><button id="k-journal" class="rp" data-panel="journal"><u>J</u> Journal</button><button id="k-carte" class="rp" data-panel="carte"><u>M</u> Carte</button><button id="k-son" class="rp" aria-pressed="false"><u>S</u> <span>Son</span></button><button id="k-mini" class="rp"><u>H</u> <span>Discret</span></button>
+  <button id="k-menu" class="rp" aria-label="Menu" title="Menu (Échap)"><i class="ic" data-ic="menu"></i><u class="key">Échap</u><span class="sr">Menu</span></button><button id="k-sac" class="rp" data-panel="sac" aria-label="Sac" title="Sac (I)"><i class="ic" data-ic="sac"></i><u class="key">I</u><span class="sr">Sac</span></button><button id="k-journal" class="rp" data-panel="journal" aria-label="Journal" title="Journal (J)"><i class="ic" data-ic="journal"></i><u class="key">J</u><span class="sr">Journal</span></button><button id="k-carte" class="rp" data-panel="carte" aria-label="Carte" title="Carte (M)"><i class="ic" data-ic="carte"></i><u class="key">M</u><span class="sr">Carte</span></button><button id="k-son" class="rp" aria-pressed="false" aria-label="Son" title="Son (S)"><i class="ic" data-ic="son_on"></i><u class="key">S</u><span class="sr">Son</span></button><button id="k-mini" class="rp" aria-pressed="false" aria-label="Discret" title="Mode discret (H)"><i class="ic" data-ic="discret_off"></i><u class="key">H</u><span class="sr">Discret</span></button><button id="k-fold" class="rp" aria-expanded="true" aria-label="Replier la barre" title="Replier / déplier (Tab)"><i class="ic" data-ic="replier"></i><u class="key">Tab</u></button>
 </nav>
 <!-- Combat C1 : liseré ambre, file d'initiative (haut gauche), PA / PV (bas gauche), actions (bas droite). Rien dans le tiers central. -->
 <div id="cbt" hidden><div id="cbt-file" class="rp"></div><div id="cbt-res" class="rp"><div class="lbl">PA</div><div id="cbt-pa"></div><div id="cbt-info" class="muted"></div></div>

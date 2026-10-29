@@ -106,7 +106,8 @@ function frame(now) {
   if (!shell?.isOpen()) game.step(dt);
   const s = game.state, D = world.DOORS;
   nearDoor = s.dialogue ? null : D.find(d => d.location === s.location && Math.hypot(d.threshold.x - s.player.x, d.threshold.z - s.player.z) < 2.5) || null;
-  $('act').hidden = !nearDoor; if (nearDoor) $('act').textContent = game.location.kind === 'interior' ? 'Sortir' : nearDoor.junction ? nearDoor.label : nearDoor.edge ? nearDoor.label : 'Entrer : ' + game.location.buildings.find(b => b.id === nearDoor.buildingId).label;
+  $('act').hidden = !nearDoor; if (nearDoor) $('act-text').textContent = game.location.kind === 'interior' ? 'Sortir' : nearDoor.junction ? nearDoor.label : nearDoor.edge ? nearDoor.label : 'Entrer : ' + game.location.buildings.find(b => b.id === nearDoor.buildingId).label;
+  placeAct();
   $('loc').textContent = game.location.name;
   $('hp').textContent = `${s.player.hp}/${s.player.maxHp}`; $('hpbar').style.width = (100 * s.player.hp / s.player.maxHp) + '%'; const inSteel = game.location.city === 'steel'; // v12 : crédit dans Steel, dollar ailleurs
   $('money').textContent = inSteel ? `${s.player.credits || 0} cr` : `${s.player.money} $`; $('money-lbl').textContent = inSteel ? 'Crédits' : 'Dollars';
@@ -165,14 +166,25 @@ function openPanel(name) {
   $('panel').hidden = !panelOpen; document.body.classList.toggle('panel-open', !!panelOpen); document.querySelectorAll('#keys [data-panel]').forEach(b => b.classList.toggle('on', b.dataset.panel === panelOpen));
   if (panelOpen) renderPanel();
 }
-function toggleMini() { document.body.classList.toggle('mini'); const on = document.body.classList.contains('mini'); $('mini').hidden = !on; $('k-mini').classList.toggle('on', on); if (on && panelOpen) openPanel(panelOpen); }
+function toggleMini() { document.body.classList.toggle('mini'); const on = document.body.classList.contains('mini'); $('mini').hidden = !on; $('k-mini').classList.toggle('on', on); $('k-mini').setAttribute('aria-pressed', on); $('k-mini').querySelector('.ic').dataset.ic = on ? 'discret_on' : 'discret_off'; if (on && panelOpen) openPanel(panelOpen); }
 document.querySelectorAll('#keys [data-panel]').forEach(b => b.addEventListener('click', () => openPanel(b.dataset.panel)));
 $('k-mini').addEventListener('click', toggleMini); $('panel-close').addEventListener('click', () => openPanel(panelOpen));
+// lot 1 interface : barre repliable (Tab ou bouton), état mémorisé ; objectif dépliable au toucher (mobile)
+const FOLD_KEY = 'nml_barre_repliee';
+function foldKeys(force) { const f = force ?? !$('keys').classList.contains('folded'); $('keys').classList.toggle('folded', f); localStorage.setItem(FOLD_KEY, f ? '1' : '0');
+  $('k-fold').setAttribute('aria-expanded', !f); $('k-fold').setAttribute('aria-label', f ? 'Déplier la barre' : 'Replier la barre'); $('k-fold').querySelector('.ic').dataset.ic = f ? 'deplier' : 'replier'; }
+foldKeys(localStorage.getItem(FOLD_KEY) === '1'); $('k-fold').addEventListener('click', () => foldKeys());
+$('obj').addEventListener('click', () => $('obj').classList.toggle('open'));
+// bouton contextuel (entrer, sortir) : sa propre place, jamais sur la barre ; s'il la toucherait (écran étroit), il monte au-dessus
+function placeAct() { const a = $('actions'); a.style.bottom = ''; if ($('act').hidden) return; const r = $('act').getBoundingClientRect(), k = [...$('keys').children].filter(b => b.getClientRects().length).map(b => b.getBoundingClientRect());
+  const top = Math.min(...k.map(q => q.top)); if (k.some(q => r.left < q.right + 6 && r.right > q.left - 6 && r.top < q.bottom + 6 && r.bottom > q.top - 6)) a.style.bottom = (innerHeight - top + 8) + 'px'; }
 addEventListener('keydown', e => {
   const k = e.key.toLowerCase();
   if (game.state.dialogue && /^[1-9]$/.test(k)) { const b = document.querySelector(`#dlg-options button[data-n="${k}"]`); if (b) b.click(); return; }
   if (shell?.isOpen()) return;
   if (k === 'escape') { if (panelOpen) openPanel(panelOpen); else if (game.state.dialogue) game.closeDialogue(); else shell.pause(); }
+  if (k === 'tab') { e.preventDefault(); foldKeys(); return; }
+  if (k === 'e' && !e.repeat && !$('act').hidden) { $('act').click(); return; }
   if (k === 'i') openPanel('sac'); if (k === 'j') openPanel('journal'); if (k === 'm') openPanel('carte'); if (k === 'h') toggleMini();
 });
 
@@ -187,7 +199,7 @@ function currentObjective() {
 var music = (() => {
   const a = $('music'), KEY = 'nml_muted'; let started = false;
   const muted = () => localStorage.getItem(KEY) === '1';
-  const sync = () => { a.muted = muted(); $('k-son').classList.toggle('on', a.muted); $('k-son').setAttribute('aria-pressed', a.muted); $('k-son').querySelector('span').textContent = a.muted ? 'Muet' : 'Son'; };
+  const sync = () => { a.muted = muted(); $('k-son').classList.toggle('on', a.muted); $('k-son').setAttribute('aria-pressed', a.muted); $('k-son').querySelector('.sr').textContent = a.muted ? 'Muet' : 'Son'; $('k-son').querySelector('.ic').dataset.ic = a.muted ? 'son_off' : 'son_on'; };
   const start = () => { if (started) return; started = true; a.play().catch(() => { started = false; }); };
   addEventListener('pointerdown', start, true); addEventListener('keydown', start, true); addEventListener('touchstart', start, { capture: true, passive: true });
   $('k-son').addEventListener('click', () => { localStorage.setItem(KEY, muted() ? '0' : '1'); sync(); });

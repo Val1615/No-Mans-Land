@@ -182,9 +182,9 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
       const s = spriteMesh(n.sprite, null, true); if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
-      { const gm = s.material.clone(); gm.opacity = 0.45; gm.alphaTest = 0.2; /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
+      { const gm = s.material.clone(); gm.opacity = 0.62; gm.color.set('#ffd9a0'); gm.alphaTest = 0.2; /* lot 1 : 62 % et teinte ambre clair, lisible sur le toit sombre */ /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
-      addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z));
+      addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z)); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, 0, n.z); labels[labels.length - 1].el.dataset.npc = n.id;
     }
     builtFor = locId;
   }
@@ -329,16 +329,41 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     combatOverlay();
     renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
-    const placed = []; // étiquettes : bornées à l'écran, puis décalées vers le haut si elles se chevauchent (mobile étroit)
-    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const v = l.getPos().clone().project(cam); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = r.left + (v.x + 1) / 2 * r.width; const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'); if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; continue; } if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx)); let ly = r.top + (1 - v.y) / 2 * r.height; if (lh && l.el.classList.contains('npc') && ly - lh < 4 && ly > -60) ly = lh + 4; /* PNJ en haut du cadre : libellé ramené dans l'écran (Mei sous la halle) */ placed.push({ l, lx, ly, lw, lh }); }
+    const placed = []; // étiquettes : bornées à l'écran (les deux axes), puis écartées des panneaux d'interface et entre elles
+    const toScr = p => { const v = p.clone().project(cam); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; };
+    for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; if (!vis) continue; const q = toScr(l.getPos()); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = q.x, ly = q.y;
+      const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'), npc = l.el.classList.contains('npc');
+      if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; continue; }
+      if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx));
+      let foot = null; if (npc && l.foot) foot = toScr(l.foot());
+      if (!sortie && !(npc && foot && foot.y > 0 && ly - lh < 4) && (ly - lh > innerHeight || ly < 0)) { l.el.hidden = true; continue; } // hors écran vertical : masqué (sorties : marqueur gardé au bord)
+      if (sortie && lh) ly = Math.min(innerHeight - 4, Math.max(lh + 4, ly));
+      let below = false; if (npc && foot && lh && ly - lh < 4) { if (foot.y < 0 || foot.y + lh + 6 > innerHeight) { l.el.hidden = true; continue; } ly = foot.y + lh + 6; below = true; } // PNJ en haut du cadre : libellé sous ses pieds, jamais sur sa tête [Régie B]
+      placed.push({ l, lx, ly, lw, lh, npc, below, foot }); }
     const hudRects = ['hud', 'locbox', 'obj', 'msg', 'dialogue', 'panel', 'keys', 'act', 'mini', 'cbt-file', 'cbt-res', 'cbt-actions'].map(id => document.getElementById(id))
-      .filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden').flatMap(e => e.id === 'keys' ? [...e.children].filter(c => c.getClientRects().length) : [e])
-      .map(e => e.getBoundingClientRect()).filter(q => q.width > 0 && q.height > 0);
-    placed.sort((a, b) => b.ly - a.ly);
-    for (let i = 0; i < placed.length; i++) { const a = placed[i]; for (let pass = 0; pass < 4; pass++) { let moved = false; for (let j = 0; j < i; j++) { const b = placed[j]; if (Math.abs(a.lx - b.lx) < (a.lw + b.lw) / 2 + 2 && a.ly > b.ly - b.lh - 2 && a.ly - a.lh < b.ly + 2) { a.ly = b.ly - b.lh - 3; moved = true; } } if (!moved) break; } a.l.el.style.transform = `translate(-50%,-100%) translate(${a.lx}px,${a.ly}px)`;
-      // un libellé qui passe sous un panneau d'interface (HUD, lieu, OBJECTIF, message, dialogue, panneau, boutons) est masqué, jamais coupé
-      const L = a.lx - a.lw / 2, R = a.lx + a.lw / 2, T = a.ly - a.lh, Bt = a.ly, under = hudRects.some(q => L < q.right && R > q.left && T < q.bottom && Bt > q.top);
-      a.l.el.style.visibility = under ? 'hidden' : ''; a.l.el.dataset.underHud = under ? '1' : ''; }
+      .filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden')
+      .map(e => e.getBoundingClientRect()).filter(q => q.width > 0 && q.height > 0); // barre : son cadre entier (fond semi-transparent)
+    const hits = (a, q, m = 2) => a.lx - a.lw / 2 < q.right + m && a.lx + a.lw / 2 > q.left - m && a.ly - a.lh < q.bottom + m && a.ly > q.top - m;
+    const overHud = a => hudRects.find(q => hits(a, q));
+    placed.sort((a, b) => (b.npc - a.npc) || (b.ly - a.ly)); // PNJ d'abord (prioritaires), puis de bas en haut
+    const done = [], free = (a, x, y, extra) => { const t = { lx: x, ly: y, lw: a.lw, lh: a.lh }; return !hudRects.some(q => hits(t, q)) && !(extra || []).some(q => hits(t, q, 0)); };
+    const clash = (a, x, y) => done.some(b => Math.abs(x - b.lx) < (a.lw + b.lw) / 2 + 3 && y > b.ly - b.lh - 3 && y - a.lh < b.ly + 3);
+    for (const a of placed) {
+      // corps du PNJ (tête aux pieds) : son libellé ne s'y pose jamais [Régie B]
+      const body = a.npc && a.foot ? [{ left: a.foot.x - 14, right: a.foot.x + 14, top: toScr(a.l.getPos()).y + 2, bottom: a.foot.y }] : [];
+      const ok = (x, y, strict) => y - a.lh >= 2 && y <= innerHeight - 2 && free(a, x, y, body) && (!strict || !clash(a, x, y));
+      if (!ok(a.lx, a.ly, true)) { // positions candidates : bords des panneaux, sous les pieds du PNJ, voisinage des autres libellés ; la plus proche gagne
+        const ys = [a.ly], xs = [a.lx];
+        for (const q of hudRects) { ys.push(q.top - 3, q.bottom + a.lh + 3); xs.push(q.left - a.lw / 2 - 3, q.right + a.lw / 2 + 3); }
+        if (a.foot) ys.push(a.foot.y + a.lh + 6);
+        for (const b of done) ys.push(b.ly - b.lh - 4, b.ly + a.lh + 4);
+        let best = null, bd = Infinity;
+        for (const strict of [true, false]) { for (const x of xs) { if (x - a.lw / 2 < 2 || x + a.lw / 2 > innerWidth - 2) continue; for (const y of ys) { if (!ok(x, y, strict)) continue;
+          const d = Math.abs(y - a.ly) + 1.5 * Math.abs(x - a.lx); if (d < bd) { bd = d; best = [x, y]; } } } if (best) break; }
+        if (best) [a.lx, a.ly] = best; }
+      done.push(a); a.l.el.style.transform = `translate(-50%,-100%) translate(${a.lx}px,${a.ly}px)`;
+      // filet : un libellé qu'on n'a pas pu sortir d'un panneau d'interface est masqué, jamais coupé
+      const under = !!hudRects.find(q => hits(a, q, 0)); a.l.el.style.visibility = under ? 'hidden' : ''; a.l.el.dataset.underHud = under ? '1' : ''; a.l.el.dataset.below = a.below ? '1' : ''; }
   }
   // ---------- Combat C1 : grille de 1 m semi-transparente (seulement en combat), cases atteignables, aperçu du chemin et coût ----------
   function combatOverlay() {

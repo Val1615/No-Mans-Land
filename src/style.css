@@ -30,7 +30,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 #mini{position:fixed;top:calc(12px + var(--pad));left:12px;font-family:'VT';font-size:21px;color:var(--c);text-shadow:0 0 4px #000,0 1px 2px #000;pointer-events:none}
 #actions{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0));left:0;right:0;display:flex;justify-content:center;pointer-events:none}
 #act{position:relative;pointer-events:auto;min-height:40px;padding:6px 16px;font-size:14px;color:var(--c)}
-#act::before{content:'> '}
+
 #keys{position:fixed;right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0));display:flex;gap:6px}
 #keys button{position:relative;min-height:32px;padding:4px 9px;font-size:12.5px;font-weight:500;color:var(--t)}
 #keys button u{color:var(--c);text-decoration:none;margin-right:2px}
@@ -201,3 +201,34 @@ body.combat #keys,body.combat #act,body.combat #obj{display:none}
 .cbt-cost.att{color:#ffe2a8;border-color:rgba(224,80,60,.7)}
 .cbt-cost.ko{color:#e8a090}
 .cbt-cost{pointer-events:none}
+
+/* ---------- Lot 1 interface : barre d'icônes compacte, semi-transparente, réductible ; bouton contextuel à part ---------- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ic{display:block;width:20px;height:20px;background-color:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.ic[data-ic=menu]{--ic:url(../assets/ui/icons/menu.svg)}.ic[data-ic=sac]{--ic:url(../assets/ui/icons/sac.svg)}.ic[data-ic=journal]{--ic:url(../assets/ui/icons/journal.svg)}
+.ic[data-ic=carte]{--ic:url(../assets/ui/icons/carte.svg)}.ic[data-ic=son_on]{--ic:url(../assets/ui/icons/son_on.svg)}.ic[data-ic=son_off]{--ic:url(../assets/ui/icons/son_off.svg)}
+.ic[data-ic=discret_on]{--ic:url(../assets/ui/icons/discret_on.svg)}.ic[data-ic=discret_off]{--ic:url(../assets/ui/icons/discret_off.svg)}
+.ic[data-ic=entrer]{--ic:url(../assets/ui/icons/entrer.svg)}.ic[data-ic=replier]{--ic:url(../assets/ui/icons/replier.svg)}.ic[data-ic=deplier]{--ic:url(../assets/ui/icons/deplier.svg)}
+#keys{right:10px;left:auto;bottom:calc(10px + env(safe-area-inset-bottom,0));gap:3px;padding:3px;border-radius:6px;background:rgba(8,6,3,.32);opacity:.82;transition:opacity .2s}
+#keys:hover,#keys:focus-within{opacity:1}
+#keys button,#keys button.on{width:34px;height:34px;min-height:0;padding:0;display:grid;place-items:center;background:rgba(8,6,3,.38);border:1px solid rgba(242,180,74,.28);color:var(--c);border-radius:4px;backdrop-filter:none}
+#keys button::after{display:none}
+#keys button.on{border-color:var(--c);background:rgba(242,180,74,.16)}
+#keys button u.key{position:absolute;right:1px;bottom:0;margin:0;font-size:8.5px;line-height:1;padding:1px 2px;color:#fff2d8;background:rgba(8,6,3,.7);border-radius:2px;display:block}
+#keys.folded button:not(#k-fold){display:none}
+body.mini #keys button:not(#k-mini):not(#k-son):not(#k-fold){display:none}
+body.mini #keys{opacity:.6}
+#actions{left:10px;right:auto;bottom:calc(10px + env(safe-area-inset-bottom,0));justify-content:flex-start;max-width:calc(100vw - 20px)}
+#act{display:flex;align-items:center;gap:7px;min-height:34px;padding:4px 30px 4px 8px;font-size:13px;background:rgba(8,6,3,.5);border-color:rgba(242,180,74,.45);max-width:100%}
+#act[hidden]{display:none}
+#act span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#act u.key{position:absolute;right:4px;bottom:3px;font-size:9px;line-height:1;padding:1px 3px;text-decoration:none;color:#fff2d8;background:rgba(8,6,3,.7);border:1px solid rgba(242,180,74,.35);border-radius:2px}
+@media (hover:none) and (pointer:coarse){#keys button u.key,#act u.key{display:none}#act{padding-right:12px}}
+@media (max-width:600px){
+  #keys{left:auto;right:8px;justify-content:flex-end;bottom:calc(8px + env(safe-area-inset-bottom,0))}
+  #keys button,#keys button.on{width:40px;height:40px;padding:0}
+  #actions{left:8px;right:8px;bottom:calc(62px + env(safe-area-inset-bottom,0))}
+  /* objectif : une seule ligne tronquée, dépliée au toucher */
+  #obj{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:auto}
+  #obj.open{white-space:normal}
+}

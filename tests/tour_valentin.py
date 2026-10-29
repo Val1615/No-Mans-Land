@@ -91,7 +91,7 @@ def run(T, VW, VH, mob):
           const lab=[...document.querySelectorAll('.wlabel.npc')].find(e=>e.textContent==='Mei Tran');const r=lab&&lab.getBoundingClientRect();
           const hit=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);
           return {id:n.id,g:v.ghostOf(n.id),halle:v.opacityOf('ag_halle0'),lab:!!lab&&!lab.hidden&&r.width>0&&r.x>=0&&r.right<=innerWidth&&r.y>=0&&r.bottom<=innerHeight,labTop:hit===lab||lab.contains(hit),pick:window.__nml.pick(p.x,p.y),hOrd:v.orderOf('ag_halle0'),sOrd:v.orderOf('ag_mei')}})()""")
-        check(f'{T} Régie : depuis (24 ; 34), Mei visible à travers la halle opaque (silhouette 45 %)', mei['g'] and mei['g']['visible'] and abs(mei['g']['opacity'] - 0.45) < 0.01 and mei['halle'] > 0.9, mei)
+        check(f'{T} Régie : depuis (24 ; 34), Mei visible à travers la halle opaque (silhouette 62 %, teinte ambre)', mei['g'] and mei['g']['visible'] and abs(mei['g']['opacity'] - 0.62) < 0.01 and mei['halle'] > 0.9, mei)
         check(f'{T} Régie : étiquette de Mei visible à l’écran et au premier plan', mei['lab'], mei)
         check(f'{T} Régie : Mei sélectionnable (pick = npc)', mei['pick'] and mei['pick'].get('kind') == 'npc' and mei['pick'].get('npcId') == mei['id'], mei['pick'])
         check(f'{T} Régie : halle toujours dessinée au-dessus du stand de Mei', mei['hOrd'] > mei['sOrd'], (mei['hOrd'], mei['sOrd']))
