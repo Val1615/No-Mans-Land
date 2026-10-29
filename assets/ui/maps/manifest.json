@@ -1410,5 +1410,27 @@
   },
   "opacite_conseillee": 0.94,
   "rayon_cases": 1
+ },
+ "brouillard_steel": {
+  "outil": "tools_brouillard.py (seed 2175, rampe bleu acier)",
+  "texture": {
+   "fichier": "ui/maps/fog/steel_brouillard.webp",
+   "png": "ui/maps/fog/steel_brouillard.png",
+   "px": [
+    512,
+    512
+   ],
+   "tuilable": true,
+   "mobile": {
+    "fichier": "ui/maps/fog/steel_brouillard_mobile.webp",
+    "png": "ui/maps/fog/steel_brouillard_mobile.png",
+    "px": [
+     256,
+     256
+    ]
+   }
+  },
+  "masque": "même masque que brouillard_nml",
+  "opacite_conseillee": 0.94
  }
 }

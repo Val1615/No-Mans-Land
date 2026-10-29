@@ -23,6 +23,7 @@ Décision de Valentin (29/10) : les cases et les lieux pas encore vus restent so
 - `assets/ui/maps/fog/nml_brouillard.webp` (et `.png`) 512 × 512 px : brume de poussière ambre sombre, tuilable sans raccord. Version mobile `nml_brouillard_mobile` 256 × 256 px.
 - `assets/ui/maps/fog/nml_brouillard_masque.png` 300 × 300 px : blanc dont l alpha donne la force d effacement, plein sur la case, fondu doux sur la case voisine. Version mobile `nml_brouillard_masque_mobile.png` 150 × 150 px.
 - Usage conseillé : remplir un calque au-dessus du fond avec la texture en motif répété, opacité 0,94 environ. Pour chaque case vue (la case du trajet et ses 8 voisines), dessiner le masque centré sur le centre de la case en `destination-out`. Les icônes et les noms des lieux restent cachés tant que leur case est dans le brouillard.
+- Carte Steel : même brume en bleu acier sombre, `steel_brouillard.webp` (et `.png`) 512 px, mobile 256 px, entrée `brouillard_steel` du manifest. Même masque.
 - Aperçu (maquette) : /workspace/nml-shots/brouillard.png
 
 ## Décisions prises (à valider)

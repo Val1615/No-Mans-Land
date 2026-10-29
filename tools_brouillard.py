@@ -9,6 +9,8 @@ OUT = 'assets/ui/maps/fog'
 SEED = 2175
 # rampe ambre sombre tirée du fond nml_fond.webp (centiles 5 à 95), plus sombre pour rester un voile
 RAMPE = np.array([[10, 8, 7], [20, 16, 12], [36, 28, 19], [58, 45, 29], [78, 60, 38.]])
+# variante carte Steel : bleu acier sombre (rampe de tools_cartes.py, assombrie)
+RAMPE_STEEL = np.array([[6, 9, 13], [12, 18, 26], [22, 33, 45], [38, 55, 71], [58, 80, 98.]])
 
 
 def bruit_periodique(n, beta, seed, fmin=2):
@@ -22,21 +24,22 @@ def bruit_periodique(n, beta, seed, fmin=2):
     return (b - b.min()) / (b.max() - b.min())
 
 
-def rampe(L):
-    t = np.clip(L, 0, 1) * (len(RAMPE) - 1)
-    i = np.clip(t.astype(int), 0, len(RAMPE) - 2)
+def rampe(L, R=None):
+    R = RAMPE if R is None else R
+    t = np.clip(L, 0, 1) * (len(R) - 1)
+    i = np.clip(t.astype(int), 0, len(R) - 2)
     f = (t - i)[..., None]
-    return RAMPE[i] * (1 - f) + RAMPE[i + 1] * f
+    return R[i] * (1 - f) + R[i + 1] * f
 
 
-def texture(n):
+def texture(n, R=None):
     nuages = bruit_periodique(n, 1.6, SEED)            # grandes masses de brume
     voiles = bruit_periodique(n, 1.1, SEED + 1, 6)     # traînées plus fines
     grain = bruit_periodique(n, 0.3, SEED + 2, 1)      # poussière
     L = 0.62 * nuages + 0.28 * voiles + 0.10 * grain
     L = (L - L.min()) / (L.max() - L.min())
     L = 0.12 + 0.62 * L ** 1.3
-    return Image.fromarray(np.clip(rampe(L), 0, 255).astype('uint8'), 'RGB')
+    return Image.fromarray(np.clip(rampe(L, R), 0, 255).astype('uint8'), 'RGB')
 
 
 def masque(n):
@@ -62,6 +65,9 @@ if __name__ == '__main__':
         t = texture(n)
         t.save(f'{OUT}/nml_brouillard{suf}.png', optimize=True)
         t.save(f'{OUT}/nml_brouillard{suf}.webp', quality=88, method=6)
+        t = texture(n, RAMPE_STEEL)
+        t.save(f'{OUT}/steel_brouillard{suf}.png', optimize=True)
+        t.save(f'{OUT}/steel_brouillard{suf}.webp', quality=88, method=6)
     masque(300).save(f'{OUT}/nml_brouillard_masque.png', optimize=True)
     masque(150).save(f'{OUT}/nml_brouillard_masque_mobile.png', optimize=True)
     print('ok')
