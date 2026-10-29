@@ -96,7 +96,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     if (!bman[b.sprite]) return placeholder(b);
     const m = bman[b.sprite]; const t = new THREE.Texture(SKIN[b.sprite]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, color: b.tint || light?.tint || '#ffffff' }));
-    s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K, m.px[1] / K * (b.sy || 1), 1); // b.sy : tassement vertical par le code quand le sprite livré est plus haut que l'illustration
+    s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K * (b.k || 1), m.px[1] / K * (b.k || 1) * (b.sy || 1), 1); // b.k : échelle uniforme corrigée par le code // b.sy : tassement vertical par le code quand le sprite livré est plus haut que l'illustration
     s.position.set(b.x + b.w, 0, b.z + b.d);
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s);
