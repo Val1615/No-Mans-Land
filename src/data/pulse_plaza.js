@@ -51,7 +51,8 @@ export const LOCATIONS_PULSE = {
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
 export const DOORS_PULSE = [
   J('pp_ouest', 'steel_pulse', 0, 16, 1, 16, 'c_nord', 'Vers Center-Town (rue d\u2019arrivée)'),
-  J('pp_sud', 'steel_pulse', 24, 36, 24, 35, 'c_sud', 'Escalier de service (grille de Center-Town)'),
+  J('pp_sud', 'steel_pulse', 24, 36, 24, 35, 'c_pp_sud', 'Escalier de service (vers Center-Town)'),
+  J('c_pp_sud', 'steel_center', 26, 36, 26, 35, 'pp_sud', 'Escalier de Pulse Plaza'), // [décision Valentin] distincte de la grille c_sud (Sous-Ville), sans condition
   J('c_nord', 'steel_center', 33, 0, 33, 1, 'pp_ouest', 'Pulse Plaza'),
 ];
 export const NPCS_PULSE = [ // positions de la fiche (x, z en m) ; aucun n'est Vibes ni Tron

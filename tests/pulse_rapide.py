@@ -21,6 +21,7 @@ with sync_playwright() as p:
         while time.time()-t0<40 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-24,p.z-33)>1.2})()"): time.sleep(.3)
         pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-24)<1.3 and abs(pz[1]-33)<1.3,f'{name} traversée ouest -> escalier sud à pied',pz)
         pg.screenshot(path=OUT+f'{name}_traversee.png')
-        E("window.__nml.game.useDoor('pp_sud')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_center',f'{name} sortie sud -> grille c_sud (Center-Town)',E("window.__nml.state.location"))
+        E("window.__nml.game.useDoor('pp_sud')"); time.sleep(2); pz=E("[window.__nml.state.location,Math.round(window.__nml.state.player.x)]"); ok(pz==['steel_center',26],f'{name} sortie sud -> Escalier de Pulse Plaza (Center-Town)',pz)
+        E("window.__nml.game.useDoor('c_pp_sud')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_pulse',f'{name} retour Escalier de Pulse Plaza -> Pulse Plaza',E("window.__nml.state.location"))
         ok(not errs,f'{name} aucune erreur JS',errs[:3]); ctx.close()
     print(f'{n}/{n+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)
