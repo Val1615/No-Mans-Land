@@ -7,8 +7,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 920594a0",
+    "status": "v1"
   },
   "g_fs_trottoir": {
     "file": "steel/frequence_strip/g_fs_trottoir.webp",
@@ -18,8 +18,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 99a04016",
+    "status": "v1"
   },
   "g_fs_grille_vapeur": {
     "file": "steel/frequence_strip/g_fs_grille_vapeur.webp",
@@ -29,8 +29,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 35b50433",
+    "status": "v1"
   },
   "fs_neon7": {
     "file": "steel/frequence_strip/fs_neon7.webp",
@@ -39,15 +39,15 @@
       500
     ],
     "anchor": [
-      300,
+      292,
       499
     ],
     "footprint_m": [
       12,
       6
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 769ab882",
+    "status": "v1"
   },
   "fs_corestack": {
     "file": "steel/frequence_strip/fs_corestack.webp",
@@ -56,15 +56,15 @@
       560
     ],
     "anchor": [
-      300,
+      301,
       559
     ],
     "footprint_m": [
       12,
       6
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), a7fc16c3",
+    "status": "v1"
   },
   "fs_retour": {
     "file": "steel/frequence_strip/fs_retour.webp",
@@ -73,15 +73,15 @@
       360
     ],
     "anchor": [
-      200,
+      204,
       359
     ],
     "footprint_m": [
       8,
       6
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), baf8adcf",
+    "status": "v1"
   },
   "fs_capsules": {
     "file": "steel/frequence_strip/fs_capsules.webp",
@@ -90,15 +90,15 @@
       420
     ],
     "anchor": [
-      150,
+      146,
       419
     ],
     "footprint_m": [
       6,
       6
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), baf8adcf",
+    "status": "v1"
   },
   "fs_facade_nord": {
     "file": "steel/frequence_strip/fs_facade_nord.webp",
@@ -107,15 +107,15 @@
       420
     ],
     "anchor": [
-      200,
+      189,
       419
     ],
     "footprint_m": [
       8,
       6
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), baf8adcf",
+    "status": "v1"
   },
   "fs_facade_sud": {
     "file": "steel/frequence_strip/fs_facade_sud.webp",
@@ -124,15 +124,15 @@
       360
     ],
     "anchor": [
-      200,
+      203,
       359
     ],
     "footprint_m": [
       8,
       6
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), baf8adcf",
+    "status": "v1"
   },
   "fs_stand_brochettes": {
     "file": "steel/frequence_strip/fs_stand_brochettes.webp",
@@ -141,15 +141,15 @@
       220
     ],
     "anchor": [
-      100,
+      135,
       219
     ],
     "footprint_m": [
       4,
       4
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 41722f18",
+    "status": "v1"
   },
   "fs_stand_merch": {
     "file": "steel/frequence_strip/fs_stand_merch.webp",
@@ -158,15 +158,15 @@
       220
     ],
     "anchor": [
-      100,
+      104,
       219
     ],
     "footprint_m": [
       4,
       4
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 41722f18",
+    "status": "v1"
   },
   "fs_tapis": {
     "file": "steel/frequence_strip/fs_tapis.webp",
@@ -175,15 +175,15 @@
       110
     ],
     "anchor": [
-      100,
+      95,
       109
     ],
     "footprint_m": [
       4,
       2
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 41722f18",
+    "status": "v1"
   },
   "fs_grille_est": {
     "file": "steel/frequence_strip/fs_grille_est.webp",
@@ -192,15 +192,15 @@
       220
     ],
     "anchor": [
-      100,
+      154,
       219
     ],
     "footprint_m": [
       4,
       1
     ],
-    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
-    "status": "placeholder, frequence-strip (zone steel_strip)"
+    "source": "GenerateImage (cursor), 41722f18",
+    "status": "v1"
   },
   "fs_ens_neon7": {
     "file": "steel/frequence_strip/fs_ens_neon7.webp",
