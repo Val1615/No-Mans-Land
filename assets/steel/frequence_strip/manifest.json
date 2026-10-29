@@ -1,0 +1,781 @@
+{
+  "g_fs_asphalte_mouille": {
+    "file": "steel/frequence_strip/g_fs_asphalte_mouille.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "g_fs_trottoir": {
+    "file": "steel/frequence_strip/g_fs_trottoir.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "g_fs_grille_vapeur": {
+    "file": "steel/frequence_strip/g_fs_grille_vapeur.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_neon7": {
+    "file": "steel/frequence_strip/fs_neon7.webp",
+    "px": [
+      600,
+      500
+    ],
+    "anchor": [
+      300,
+      499
+    ],
+    "footprint_m": [
+      12,
+      6
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_corestack": {
+    "file": "steel/frequence_strip/fs_corestack.webp",
+    "px": [
+      600,
+      560
+    ],
+    "anchor": [
+      300,
+      559
+    ],
+    "footprint_m": [
+      12,
+      6
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_retour": {
+    "file": "steel/frequence_strip/fs_retour.webp",
+    "px": [
+      400,
+      360
+    ],
+    "anchor": [
+      200,
+      359
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_capsules": {
+    "file": "steel/frequence_strip/fs_capsules.webp",
+    "px": [
+      300,
+      420
+    ],
+    "anchor": [
+      150,
+      419
+    ],
+    "footprint_m": [
+      6,
+      6
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_facade_nord": {
+    "file": "steel/frequence_strip/fs_facade_nord.webp",
+    "px": [
+      400,
+      420
+    ],
+    "anchor": [
+      200,
+      419
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_facade_sud": {
+    "file": "steel/frequence_strip/fs_facade_sud.webp",
+    "px": [
+      400,
+      360
+    ],
+    "anchor": [
+      200,
+      359
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_stand_brochettes": {
+    "file": "steel/frequence_strip/fs_stand_brochettes.webp",
+    "px": [
+      200,
+      220
+    ],
+    "anchor": [
+      100,
+      219
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_stand_merch": {
+    "file": "steel/frequence_strip/fs_stand_merch.webp",
+    "px": [
+      200,
+      220
+    ],
+    "anchor": [
+      100,
+      219
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_tapis": {
+    "file": "steel/frequence_strip/fs_tapis.webp",
+    "px": [
+      200,
+      110
+    ],
+    "anchor": [
+      100,
+      109
+    ],
+    "footprint_m": [
+      4,
+      2
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_grille_est": {
+    "file": "steel/frequence_strip/fs_grille_est.webp",
+    "px": [
+      200,
+      220
+    ],
+    "anchor": [
+      100,
+      219
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_neon7": {
+    "file": "steel/frequence_strip/fs_ens_neon7.webp",
+    "px": [
+      1024,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      128
+    ],
+    "fps": 4,
+    "boucle": true,
+    "contenu": "logo Neon-7, allumage par segments",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_neon7_mobile": {
+    "file": "steel/frequence_strip/fs_ens_neon7_mobile.webp",
+    "px": [
+      512,
+      64
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      64
+    ],
+    "fps": 4,
+    "boucle": true,
+    "contenu": "logo Neon-7, allumage par segments",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_corestack": {
+    "file": "steel/frequence_strip/fs_ens_corestack.webp",
+    "px": [
+      1152,
+      192
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      192,
+      192
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "baies qui défilent, lumière cyan",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_corestack_mobile": {
+    "file": "steel/frequence_strip/fs_ens_corestack_mobile.webp",
+    "px": [
+      576,
+      96
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      96,
+      96
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "baies qui défilent, lumière cyan",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_vibes": {
+    "file": "steel/frequence_strip/fs_ens_vibes.webp",
+    "px": [
+      512,
+      256
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      256
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran vertical, Vibes (réf. pp_billboard_src)",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_vibes_mobile": {
+    "file": "steel/frequence_strip/fs_ens_vibes_mobile.webp",
+    "px": [
+      256,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      128
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran vertical, Vibes (réf. pp_billboard_src)",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_tron": {
+    "file": "steel/frequence_strip/fs_ens_tron.webp",
+    "px": [
+      512,
+      256
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      256
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran vertical, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_tron_mobile": {
+    "file": "steel/frequence_strip/fs_ens_tron_mobile.webp",
+    "px": [
+      256,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      128
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran vertical, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_coeur": {
+    "file": "steel/frequence_strip/fs_ens_coeur.webp",
+    "px": [
+      576,
+      96
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      96,
+      96
+    ],
+    "fps": 8,
+    "boucle": true,
+    "contenu": "cœur néon qui bat",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_coeur_mobile": {
+    "file": "steel/frequence_strip/fs_ens_coeur_mobile.webp",
+    "px": [
+      288,
+      48
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      48,
+      48
+    ],
+    "fps": 8,
+    "boucle": true,
+    "contenu": "cœur néon qui bat",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_retour": {
+    "file": "steel/frequence_strip/fs_ens_retour.webp",
+    "px": [
+      576,
+      64
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      192,
+      64
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "néon ambre du bar, grésillement",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_retour_mobile": {
+    "file": "steel/frequence_strip/fs_ens_retour_mobile.webp",
+    "px": [
+      288,
+      32
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      96,
+      32
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "néon ambre du bar, grésillement",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_capsules": {
+    "file": "steel/frequence_strip/fs_ens_capsules.webp",
+    "px": [
+      192,
+      192
+    ],
+    "anime": true,
+    "frames": 2,
+    "frame_px": [
+      96,
+      192
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "colonne de hublots allumés",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_ens_capsules_mobile": {
+    "file": "steel/frequence_strip/fs_ens_capsules_mobile.webp",
+    "px": [
+      96,
+      96
+    ],
+    "anime": true,
+    "frames": 2,
+    "frame_px": [
+      48,
+      96
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "colonne de hublots allumés",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_vapeur": {
+    "file": "steel/frequence_strip/fs_vapeur.webp",
+    "px": [
+      320,
+      200
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      80,
+      200
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "panache de vapeur, semi-transparent",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "fs_vapeur_mobile": {
+    "file": "steel/frequence_strip/fs_vapeur_mobile.webp",
+    "px": [
+      160,
+      100
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      40,
+      100
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "panache de vapeur, semi-transparent",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_rocco": {
+    "file": "steel/frequence_strip/gen_fs_rocco.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.95,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_rocco": {
+    "file": "steel/frequence_strip/portrait-gen_fs_rocco.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_rocco",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_lila": {
+    "file": "steel/frequence_strip/gen_fs_lila.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.68,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_lila": {
+    "file": "steel/frequence_strip/portrait-gen_fs_lila.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_lila",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_hugo": {
+    "file": "steel/frequence_strip/gen_fs_hugo.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.74,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_hugo": {
+    "file": "steel/frequence_strip/portrait-gen_fs_hugo.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_hugo",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_okoro": {
+    "file": "steel/frequence_strip/gen_fs_okoro.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_okoro": {
+    "file": "steel/frequence_strip/portrait-gen_fs_okoro.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_okoro",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_tibo": {
+    "file": "steel/frequence_strip/gen_fs_tibo.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_tibo": {
+    "file": "steel/frequence_strip/portrait-gen_fs_tibo.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_tibo",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_yun": {
+    "file": "steel/frequence_strip/gen_fs_yun.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_yun": {
+    "file": "steel/frequence_strip/portrait-gen_fs_yun.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_yun",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_gt_promo": {
+    "file": "steel/frequence_strip/gen_fs_gt_promo.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.85,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_gt_promo": {
+    "file": "steel/frequence_strip/portrait-gen_fs_gt_promo.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_gt_promo",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_sacha": {
+    "file": "steel/frequence_strip/gen_fs_sacha.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_sacha": {
+    "file": "steel/frequence_strip/portrait-gen_fs_sacha.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_sacha",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_marius": {
+    "file": "steel/frequence_strip/gen_fs_marius.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "portrait-gen_fs_marius": {
+    "file": "steel/frequence_strip/portrait-gen_fs_marius.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_marius",
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_foule_a": {
+    "file": "steel/frequence_strip/gen_fs_foule_a.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  },
+  "gen_fs_foule_b": {
+    "file": "steel/frequence_strip/gen_fs_foule_b.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/frequence_strip/gen_placeholders.py",
+    "status": "placeholder, frequence-strip (zone steel_strip)"
+  }
+}
