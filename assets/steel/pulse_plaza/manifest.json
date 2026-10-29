@@ -475,21 +475,22 @@
   },
   "pp_holo_tron": {
     "file": "steel/pulse_plaza/pp_holo_tron.webp",
-    "source": "nml-shots/refs/pp_holo_tron_src.jpg (fond noir retiré, alpha 0,8)",
+    "source": "nml-shots/refs/pp_holo_tron_src.jpg (fond noir retiré, alpha 0,8) ; redimensionné à 3,6 m (2 x un PNJ)",
     "px": [
-      220,
-      512
+      104,
+      230
     ],
     "anchor": [
-      109,
-      511
+      52,
+      229
     ],
     "footprint_m": [
       0.6,
       0.6
     ],
     "status": "v1",
-    "alpha": 0.8
+    "alpha": 0.8,
+    "height_m": 3.6
   },
   "pp_kiosque": {
     "file": "steel/pulse_plaza/pp_kiosque.webp",
