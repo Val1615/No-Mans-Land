@@ -7,8 +7,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 74c4d4c6",
+    "status": "v1"
   },
   "g_ar_parvis_mouille": {
     "file": "steel/steel_arena/g_ar_parvis_mouille.webp",
@@ -18,8 +18,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), b3d44da7",
+    "status": "v1"
   },
   "g_ar_ligne_file": {
     "file": "steel/steel_arena/g_ar_ligne_file.webp",
@@ -29,8 +29,8 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), e0a328f1",
+    "status": "v1"
   },
   "ar_arena": {
     "file": "steel/steel_arena/ar_arena.webp",
@@ -39,15 +39,15 @@
       900
     ],
     "anchor": [
-      700,
+      962,
       899
     ],
     "footprint_m": [
       48,
       12
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 9252aeb1",
+    "status": "v1"
   },
   "ar_entree": {
     "file": "steel/steel_arena/ar_entree.webp",
@@ -56,15 +56,15 @@
       360
     ],
     "anchor": [
-      210,
+      287,
       359
     ],
     "footprint_m": [
       8,
       2
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), efc9f580",
+    "status": "v1"
   },
   "ar_portique": {
     "file": "steel/steel_arena/ar_portique.webp",
@@ -73,15 +73,15 @@
       220
     ],
     "anchor": [
-      100,
+      141,
       219
     ],
     "footprint_m": [
       2,
       1
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 00a8e59c",
+    "status": "v1"
   },
   "ar_barriere": {
     "file": "steel/steel_arena/ar_barriere.webp",
@@ -90,15 +90,15 @@
       120
     ],
     "anchor": [
-      110,
+      164,
       119
     ],
     "footprint_m": [
       4,
       0.5
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 00a8e59c",
+    "status": "v1"
   },
   "ar_projecteur": {
     "file": "steel/steel_arena/ar_projecteur.webp",
@@ -114,8 +114,8 @@
       2,
       2
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 00a8e59c",
+    "status": "v1"
   },
   "ar_lampadaire": {
     "file": "steel/steel_arena/ar_lampadaire.webp",
@@ -124,15 +124,15 @@
       300
     ],
     "anchor": [
-      40,
+      38,
       299
     ],
     "footprint_m": [
       0.6,
       0.6
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 00a8e59c",
+    "status": "v1"
   },
   "ar_guichets": {
     "file": "steel/steel_arena/ar_guichets.webp",
@@ -141,15 +141,15 @@
       260
     ],
     "anchor": [
-      110,
+      111,
       259
     ],
     "footprint_m": [
       4,
       4
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
   },
   "ar_merch": {
     "file": "steel/steel_arena/ar_merch.webp",
@@ -158,15 +158,15 @@
       260
     ],
     "anchor": [
-      110,
+      140,
       259
     ],
     "footprint_m": [
       4,
       4
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
   },
   "ar_securite": {
     "file": "steel/steel_arena/ar_securite.webp",
@@ -175,15 +175,15 @@
       240
     ],
     "anchor": [
-      110,
+      115,
       239
     ],
     "footprint_m": [
       4,
       4
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
   },
   "ar_regie": {
     "file": "steel/steel_arena/ar_regie.webp",
@@ -192,15 +192,15 @@
       240
     ],
     "anchor": [
-      170,
+      200,
       239
     ],
     "footprint_m": [
       6,
       4
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
   },
   "ar_panneau_nml": {
     "file": "steel/steel_arena/ar_panneau_nml.webp",
@@ -209,15 +209,15 @@
       220
     ],
     "anchor": [
-      60,
+      62,
       219
     ],
     "footprint_m": [
       2,
       0.5
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), efc9f580",
+    "status": "v1"
   },
   "ar_ens_ecran_vibes": {
     "file": "steel/steel_arena/ar_ens_ecran_vibes.webp",
