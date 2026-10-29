@@ -1,0 +1,762 @@
+{
+  "g_ar_parvis": {
+    "file": "steel/steel_arena/g_ar_parvis.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "g_ar_parvis_mouille": {
+    "file": "steel/steel_arena/g_ar_parvis_mouille.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "g_ar_ligne_file": {
+    "file": "steel/steel_arena/g_ar_ligne_file.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_arena": {
+    "file": "steel/steel_arena/ar_arena.webp",
+    "px": [
+      1400,
+      900
+    ],
+    "anchor": [
+      700,
+      899
+    ],
+    "footprint_m": [
+      48,
+      12
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_entree": {
+    "file": "steel/steel_arena/ar_entree.webp",
+    "px": [
+      420,
+      360
+    ],
+    "anchor": [
+      210,
+      359
+    ],
+    "footprint_m": [
+      8,
+      2
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_portique": {
+    "file": "steel/steel_arena/ar_portique.webp",
+    "px": [
+      200,
+      220
+    ],
+    "anchor": [
+      100,
+      219
+    ],
+    "footprint_m": [
+      2,
+      1
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_barriere": {
+    "file": "steel/steel_arena/ar_barriere.webp",
+    "px": [
+      220,
+      120
+    ],
+    "anchor": [
+      110,
+      119
+    ],
+    "footprint_m": [
+      4,
+      0.5
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_projecteur": {
+    "file": "steel/steel_arena/ar_projecteur.webp",
+    "px": [
+      160,
+      300
+    ],
+    "anchor": [
+      80,
+      299
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_lampadaire": {
+    "file": "steel/steel_arena/ar_lampadaire.webp",
+    "px": [
+      80,
+      300
+    ],
+    "anchor": [
+      40,
+      299
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_guichets": {
+    "file": "steel/steel_arena/ar_guichets.webp",
+    "px": [
+      220,
+      260
+    ],
+    "anchor": [
+      110,
+      259
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_merch": {
+    "file": "steel/steel_arena/ar_merch.webp",
+    "px": [
+      220,
+      260
+    ],
+    "anchor": [
+      110,
+      259
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_securite": {
+    "file": "steel/steel_arena/ar_securite.webp",
+    "px": [
+      220,
+      240
+    ],
+    "anchor": [
+      110,
+      239
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_regie": {
+    "file": "steel/steel_arena/ar_regie.webp",
+    "px": [
+      340,
+      240
+    ],
+    "anchor": [
+      170,
+      239
+    ],
+    "footprint_m": [
+      6,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_panneau_nml": {
+    "file": "steel/steel_arena/ar_panneau_nml.webp",
+    "px": [
+      120,
+      220
+    ],
+    "anchor": [
+      60,
+      219
+    ],
+    "footprint_m": [
+      2,
+      0.5
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_ecran_vibes": {
+    "file": "steel/steel_arena/ar_ens_ecran_vibes.webp",
+    "px": [
+      1024,
+      144
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      144
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_ecran_vibes_mobile": {
+    "file": "steel/steel_arena/ar_ens_ecran_vibes_mobile.webp",
+    "px": [
+      512,
+      72
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      72
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_ecran_tron": {
+    "file": "steel/steel_arena/ar_ens_ecran_tron.webp",
+    "px": [
+      1024,
+      144
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      144
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran du dôme, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_ecran_tron_mobile": {
+    "file": "steel/steel_arena/ar_ens_ecran_tron_mobile.webp",
+    "px": [
+      512,
+      72
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      72
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran du dôme, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_fronton": {
+    "file": "steel/steel_arena/ar_ens_fronton.webp",
+    "px": [
+      1536,
+      96
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      384,
+      96
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "fronton lumineux sans texte, onde violette",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_fronton_mobile": {
+    "file": "steel/steel_arena/ar_ens_fronton_mobile.webp",
+    "px": [
+      768,
+      48
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      192,
+      48
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "fronton lumineux sans texte, onde violette",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_faisceau": {
+    "file": "steel/steel_arena/ar_ens_faisceau.webp",
+    "px": [
+      768,
+      256
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      128,
+      256
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "faisceau de projecteur qui balaie, semi-transparent",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_faisceau_mobile": {
+    "file": "steel/steel_arena/ar_ens_faisceau_mobile.webp",
+    "px": [
+      384,
+      128
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      64,
+      128
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "faisceau de projecteur qui balaie, semi-transparent",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_coeurs": {
+    "file": "steel/steel_arena/ar_ens_coeurs.webp",
+    "px": [
+      256,
+      64
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      64
+    ],
+    "fps": 4,
+    "boucle": true,
+    "contenu": "bâton-cœur des fans qui pulse",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_coeurs_mobile": {
+    "file": "steel/steel_arena/ar_ens_coeurs_mobile.webp",
+    "px": [
+      128,
+      32
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      32,
+      32
+    ],
+    "fps": 4,
+    "boucle": true,
+    "contenu": "bâton-cœur des fans qui pulse",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_guichet": {
+    "file": "steel/steel_arena/ar_ens_guichet.webp",
+    "px": [
+      192,
+      64
+    ],
+    "anime": true,
+    "frames": 2,
+    "frame_px": [
+      96,
+      64
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "écran du guichet, complet / ouvert en pictogramme",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_guichet_mobile": {
+    "file": "steel/steel_arena/ar_ens_guichet_mobile.webp",
+    "px": [
+      96,
+      32
+    ],
+    "anime": true,
+    "frames": 2,
+    "frame_px": [
+      48,
+      32
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "écran du guichet, complet / ouvert en pictogramme",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_human_corp": {
+    "file": "steel/steel_arena/ar_ens_human_corp.webp",
+    "px": [
+      384,
+      128
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      128,
+      128
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "logo abstrait Human Corp qui respire",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "ar_ens_human_corp_mobile": {
+    "file": "steel/steel_arena/ar_ens_human_corp_mobile.webp",
+    "px": [
+      192,
+      64
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      64,
+      64
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "logo abstrait Human Corp qui respire",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_ferrand": {
+    "file": "steel/steel_arena/gen_ar_ferrand.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.9,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_ferrand": {
+    "file": "steel/steel_arena/portrait-gen_ar_ferrand.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_ferrand",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_anouk": {
+    "file": "steel/steel_arena/gen_ar_anouk.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.64,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_anouk": {
+    "file": "steel/steel_arena/portrait-gen_ar_anouk.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_anouk",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_zelie": {
+    "file": "steel/steel_arena/gen_ar_zelie.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.6,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_zelie": {
+    "file": "steel/steel_arena/portrait-gen_ar_zelie.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_zelie",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_malik": {
+    "file": "steel/steel_arena/gen_ar_malik.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.8,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_malik": {
+    "file": "steel/steel_arena/portrait-gen_ar_malik.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_malik",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_ines": {
+    "file": "steel/steel_arena/gen_ar_ines.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.62,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_ines": {
+    "file": "steel/steel_arena/portrait-gen_ar_ines.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_ines",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_clem": {
+    "file": "steel/steel_arena/gen_ar_clem.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_clem": {
+    "file": "steel/steel_arena/portrait-gen_ar_clem.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_clem",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_garnier": {
+    "file": "steel/steel_arena/gen_ar_garnier.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.82,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_garnier": {
+    "file": "steel/steel_arena/portrait-gen_ar_garnier.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_garnier",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_bastien": {
+    "file": "steel/steel_arena/gen_ar_bastien.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.76,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_bastien": {
+    "file": "steel/steel_arena/portrait-gen_ar_bastien.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_bastien",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_laure": {
+    "file": "steel/steel_arena/gen_ar_laure.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.58,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "portrait-gen_ar_laure": {
+    "file": "steel/steel_arena/portrait-gen_ar_laure.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_laure",
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_foule_a": {
+    "file": "steel/steel_arena/gen_ar_foule_a.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  },
+  "gen_ar_foule_b": {
+    "file": "steel/steel_arena/gen_ar_foule_b.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
+    "status": "placeholder, steel-arena (zone steel_arena)"
+  }
+}
