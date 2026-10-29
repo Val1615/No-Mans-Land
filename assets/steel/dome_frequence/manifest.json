@@ -1,0 +1,804 @@
+{
+  "g_df_marbre": {
+    "file": "steel/dome_frequence/g_df_marbre.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "g_df_moquette": {
+    "file": "steel/dome_frequence/g_df_moquette.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "g_df_scene": {
+    "file": "steel/dome_frequence/g_df_scene.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_scene": {
+    "file": "steel/dome_frequence/df_scene.webp",
+    "px": [
+      900,
+      360
+    ],
+    "anchor": [
+      450,
+      359
+    ],
+    "footprint_m": [
+      18,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ecran_cadre": {
+    "file": "steel/dome_frequence/df_ecran_cadre.webp",
+    "px": [
+      300,
+      200
+    ],
+    "anchor": [
+      150,
+      199
+    ],
+    "footprint_m": [
+      6,
+      0.5
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_gradin": {
+    "file": "steel/dome_frequence/df_gradin.webp",
+    "px": [
+      300,
+      160
+    ],
+    "anchor": [
+      150,
+      159
+    ],
+    "footprint_m": [
+      6,
+      2
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_regie": {
+    "file": "steel/dome_frequence/df_regie.webp",
+    "px": [
+      220,
+      180
+    ],
+    "anchor": [
+      110,
+      179
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_enceinte": {
+    "file": "steel/dome_frequence/df_enceinte.webp",
+    "px": [
+      90,
+      220
+    ],
+    "anchor": [
+      45,
+      219
+    ],
+    "footprint_m": [
+      1,
+      1
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_bar": {
+    "file": "steel/dome_frequence/df_bar.webp",
+    "px": [
+      320,
+      200
+    ],
+    "anchor": [
+      160,
+      199
+    ],
+    "footprint_m": [
+      6,
+      2
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_vestiaire": {
+    "file": "steel/dome_frequence/df_vestiaire.webp",
+    "px": [
+      320,
+      220
+    ],
+    "anchor": [
+      160,
+      219
+    ],
+    "footprint_m": [
+      6,
+      2
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_banquette": {
+    "file": "steel/dome_frequence/df_banquette.webp",
+    "px": [
+      140,
+      90
+    ],
+    "anchor": [
+      70,
+      89
+    ],
+    "footprint_m": [
+      2,
+      1
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_colonne": {
+    "file": "steel/dome_frequence/df_colonne.webp",
+    "px": [
+      80,
+      320
+    ],
+    "anchor": [
+      40,
+      319
+    ],
+    "footprint_m": [
+      1,
+      1
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_borne": {
+    "file": "steel/dome_frequence/df_borne.webp",
+    "px": [
+      80,
+      150
+    ],
+    "anchor": [
+      40,
+      149
+    ],
+    "footprint_m": [
+      1,
+      1
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_cloison": {
+    "file": "steel/dome_frequence/df_cloison.webp",
+    "px": [
+      300,
+      220
+    ],
+    "anchor": [
+      150,
+      219
+    ],
+    "footprint_m": [
+      6,
+      0.5
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_porte": {
+    "file": "steel/dome_frequence/df_porte.webp",
+    "px": [
+      200,
+      240
+    ],
+    "anchor": [
+      100,
+      239
+    ],
+    "footprint_m": [
+      6,
+      0.5
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_verriere": {
+    "file": "steel/dome_frequence/df_verriere.webp",
+    "px": [
+      900,
+      900
+    ],
+    "anchor": [
+      450,
+      899
+    ],
+    "footprint_m": [
+      30,
+      30
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_ecran_vibes": {
+    "file": "steel/dome_frequence/df_ens_ecran_vibes.webp",
+    "px": [
+      1024,
+      144
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      144
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran de scène 16:9, Vibes (réf. pp_billboard_src)",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_ecran_vibes_mobile": {
+    "file": "steel/dome_frequence/df_ens_ecran_vibes_mobile.webp",
+    "px": [
+      512,
+      72
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      72
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran de scène 16:9, Vibes (réf. pp_billboard_src)",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_ecran_tron": {
+    "file": "steel/dome_frequence/df_ens_ecran_tron.webp",
+    "px": [
+      1024,
+      144
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      144
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran de scène 16:9, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_ecran_tron_mobile": {
+    "file": "steel/dome_frequence/df_ens_ecran_tron_mobile.webp",
+    "px": [
+      512,
+      72
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      72
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran de scène 16:9, Tron (réf. pp_holo_tron_src), glitch",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_lumieres": {
+    "file": "steel/dome_frequence/df_ens_lumieres.webp",
+    "px": [
+      2304,
+      128
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      384,
+      128
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "rampe de lumières de scène, magenta et cyan, un seul sprite pour toute la rampe",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_lumieres_mobile": {
+    "file": "steel/dome_frequence/df_ens_lumieres_mobile.webp",
+    "px": [
+      1152,
+      64
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      192,
+      64
+    ],
+    "fps": 6,
+    "boucle": true,
+    "contenu": "rampe de lumières de scène, magenta et cyan, un seul sprite pour toute la rampe",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_verriere": {
+    "file": "steel/dome_frequence/df_ens_verriere.webp",
+    "px": [
+      1024,
+      256
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      256
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "lueur ambre de la verrière, calque de plafond semi-transparent",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_verriere_mobile": {
+    "file": "steel/dome_frequence/df_ens_verriere_mobile.webp",
+    "px": [
+      512,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      128
+    ],
+    "fps": 1,
+    "boucle": true,
+    "contenu": "lueur ambre de la verrière, calque de plafond semi-transparent",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_bar": {
+    "file": "steel/dome_frequence/df_ens_bar.webp",
+    "px": [
+      576,
+      64
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      192,
+      64
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "néon ambre du bar, pictogramme",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_bar_mobile": {
+    "file": "steel/dome_frequence/df_ens_bar_mobile.webp",
+    "px": [
+      288,
+      32
+    ],
+    "anime": true,
+    "frames": 3,
+    "frame_px": [
+      96,
+      32
+    ],
+    "fps": 1.5,
+    "boucle": true,
+    "contenu": "néon ambre du bar, pictogramme",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_vu": {
+    "file": "steel/dome_frequence/df_ens_vu.webp",
+    "px": [
+      384,
+      64
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      96,
+      64
+    ],
+    "fps": 8,
+    "boucle": true,
+    "contenu": "VU-mètres de la console",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_vu_mobile": {
+    "file": "steel/dome_frequence/df_ens_vu_mobile.webp",
+    "px": [
+      192,
+      32
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      48,
+      32
+    ],
+    "fps": 8,
+    "boucle": true,
+    "contenu": "VU-mètres de la console",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_facade_vibes": {
+    "file": "steel/dome_frequence/df_ens_facade_vibes.webp",
+    "px": [
+      512,
+      256
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      256
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran de façade, Vibes, pour b_st_ct_dome (zone steel_center)",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_facade_vibes_mobile": {
+    "file": "steel/dome_frequence/df_ens_facade_vibes_mobile.webp",
+    "px": [
+      256,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      128
+    ],
+    "fps": 2,
+    "boucle": true,
+    "contenu": "écran de façade, Vibes, pour b_st_ct_dome (zone steel_center)",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_facade_tron": {
+    "file": "steel/dome_frequence/df_ens_facade_tron.webp",
+    "px": [
+      512,
+      256
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      256
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran de façade, Tron, pour b_st_ct_dome (zone steel_center)",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "df_ens_facade_tron_mobile": {
+    "file": "steel/dome_frequence/df_ens_facade_tron_mobile.webp",
+    "px": [
+      256,
+      128
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      128
+    ],
+    "fps": 3,
+    "boucle": true,
+    "contenu": "écran de façade, Tron, pour b_st_ct_dome (zone steel_center)",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_varenne": {
+    "file": "steel/dome_frequence/gen_df_varenne.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_varenne": {
+    "file": "steel/dome_frequence/portrait-gen_df_varenne.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_varenne",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_octave": {
+    "file": "steel/dome_frequence/gen_df_octave.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_octave": {
+    "file": "steel/dome_frequence/portrait-gen_df_octave.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_octave",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_jade": {
+    "file": "steel/dome_frequence/gen_df_jade.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_jade": {
+    "file": "steel/dome_frequence/portrait-gen_df_jade.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_jade",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_nils": {
+    "file": "steel/dome_frequence/gen_df_nils.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_nils": {
+    "file": "steel/dome_frequence/portrait-gen_df_nils.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_nils",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_pia": {
+    "file": "steel/dome_frequence/gen_df_pia.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.64,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_pia": {
+    "file": "steel/dome_frequence/portrait-gen_df_pia.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_pia",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_ruben": {
+    "file": "steel/dome_frequence/gen_df_ruben.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.88,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_ruben": {
+    "file": "steel/dome_frequence/portrait-gen_df_ruben.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_ruben",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_helene": {
+    "file": "steel/dome_frequence/gen_df_helene.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.68,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_helene": {
+    "file": "steel/dome_frequence/portrait-gen_df_helene.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_helene",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_gardien": {
+    "file": "steel/dome_frequence/gen_df_gardien.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.6,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "portrait-gen_df_gardien": {
+    "file": "steel/dome_frequence/portrait-gen_df_gardien.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_df_gardien",
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_foule_a": {
+    "file": "steel/dome_frequence/gen_df_foule_a.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  },
+  "gen_df_foule_b": {
+    "file": "steel/dome_frequence/gen_df_foule_b.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "docs/villes/steel/quartiers/dome_frequence/gen_placeholders.py",
+    "status": "placeholder, dome-frequence (zone steel_dome)"
+  }
+}
