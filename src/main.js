@@ -112,7 +112,7 @@ voyage.on(ev => { if ((ev.type === 'case' || ev.type === 'halte' || ev.type === 
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
   if (!shell?.isOpen()) { if (game.state.region !== lastRegion) { voyage.restaure(); lastRegion = game.state.region; } // partie chargée en marche : halte
-    if (voyage.region().statut === 'lieu') game.step(dt); else { voyage.tick(dt * 1000 * (shell?.options.reduceMotion ? 0.5 : 1)); if (!nml.open) nml.show(true); } }
+    if (voyage.region().statut === 'lieu') game.step(dt); else { voyage.tick(dt * 1000 * (shell?.options.reduceMotion ? 0.5 : 1)); if (!nml.open && voyage.region().statut !== 'lieu') nml.show(true); } }
   nml.frame();
   const s = game.state, D = world.DOORS;
   nearDoor = s.dialogue ? null : D.find(d => d.location === s.location && Math.hypot(d.threshold.x - s.player.x, d.threshold.z - s.player.z) < 2.5) || null;

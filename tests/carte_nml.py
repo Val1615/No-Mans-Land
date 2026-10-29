@@ -78,7 +78,7 @@ with sync_playwright() as p:
         ok([x[:2] for x in c2]==reste and len(c2)==len(reste),f'{name} onCaseEntree appelé une fois par case ({len(c2)} pour {len(reste)})',c2)
         ok(E("window.__nml.state.heures")-h1==sum(TABLE[t] for t in E(f"{json.dumps(reste)}.map(([c,r])=>window.__nml.voyage.cellAt(c,r).terrain)")),f'{name} temps cumulé de la fin du trajet = somme de la table')
         ok(E("window.__nml.state.heures")-h0==attendu,f'{name} temps total Dusk-Town -> Steel = {attendu} h (somme de la table)',E("window.__nml.state.heures")-h0)
-        ok(not vis() and R()['statut']=='lieu' and R()['lieu']=='steel',f'{name} carte fermée, statut lieu (Steel)')
+        ok(not vis() and R()['statut']=='lieu' and R()['lieu']=='steel',f'{name} carte fermée, statut lieu (Steel)',(vis(),R()['statut'],R()['lieu']))
         ok(wait("window.__msgs.some(t=>t.includes('journée de marche'))",6),f'{name} texte d arrivée (une journée de marche)')
         ok(E("JSON.parse(localStorage.getItem('nml_save_auto')).state.location")=='steel_route',f'{name} autosave à l arrivée')
         ok(E("window.__nml.state.flags.q_fin")==True,f'{name} progression de quête conservée (q_fin)')
