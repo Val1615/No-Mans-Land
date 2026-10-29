@@ -188,7 +188,7 @@ La cryogénisation d'août 2065 est antérieure à la guerre et indépendante de
 
 ## 9 septies. Steel L1 v13 (22/10/2026)
 - Décision (Valentin) : Steel de nuit, dense, néons violet et cyan, hologrammes, drones ; la douane est une place forte d'IO.
-- Proposition : la Rotonde (nom provisoire du bâtiment à dôme de Center-Town).
+- **[décision]** (Valentin, 29/10) : le bâtiment à dôme de Center-Town, d'abord nommé « la Rotonde » à titre provisoire, est le **Dôme Fréquence**, salle de concert du Groovy Crew (voir `docs/villes/steel/GROOVY_CREW.md`).
 
 ## 9 octies. Steel L2 v14, la Sous-Ville (22/10/2026)
 - Décision (Valentin) : bidonville souterrain sous la ville, gros tuyaux et poutres, tôle rouillée, braseros, lumière orange (concept `villes/steel/ambiance/concept_sous_ville.jpg`) ; criminalité visible ; la trappe de service s'ouvre pour qui connaît Elio ; le mutant capturé est jeté dans la Sous-Ville ; la quête s'arrête à Center-Town.
