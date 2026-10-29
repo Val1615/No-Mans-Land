@@ -178,7 +178,7 @@ export const NPCS = [
 export const CLOSED_TEXT = {
   r_porte: 'La route entre dans le noir entre deux battants grands comme des immeubles. Sans passer la douane, les tourelles s\u2019en chargent.',
   r_service: s => s.flags.sol_passage ? 'La trappe dont parlait Sol. Chaîne neuve, cadenas neuf. Celui qui passe par là ne passe pas par le dessus.' : 'Une trappe de service à moitié ensablée, chaîne et cadenas. Des traces de pas fraîches, qui n\u2019en reviennent pas.',
-  c_tour: 'La Rotonde. Des écrans sur toute la façade, et pas une porte qui s\u2019ouvre pour toi.',
+  c_tour: 'Le Dôme Fréquence. Des écrans sur toute la façade, et pas une porte qui s\u2019ouvre pour toi.',
   c_arcadius: 'Arcadius Center. Les portes s\u2019ouvrent pour les implants qu\u2019elles reconnaissent, pas pour les autres.',
   c_blanc: 'Bureau des permis. Un écran annonce un délai d\u2019attente qui ne veut rien dire.',
   c_neon: 'Une galerie de néons. Tout y est à vendre, en crédits.',

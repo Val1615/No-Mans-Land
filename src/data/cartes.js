@@ -25,7 +25,7 @@ export const STEEL_COUCHES = [
   { n: 3, id: 'center_town', nom: 'Center-Town', court: 'Center', reperes: [
     { key: 'steel_center', nom: 'Center-Town', type: 'lieu', loc: 'steel_center' },
     { key: 'arcadius_center', nom: 'Arcadius Center', type: 'lieu', connu: s => !!(s.seen.steel_center || s.discovered.c_arcadius) },
-    { key: 'cz_rotonde', nom: 'La Rotonde', type: 'lieu', connu: s => !!(s.seen.steel_center || s.discovered.c_tour) },
+    { key: 'cz_rotonde', nom: 'Le Dôme Fréquence', type: 'lieu', connu: s => !!(s.seen.steel_center || s.discovered.c_tour) },
     { key: 'steel_route', nom: 'La douane (sortie vers les No Man\u2019s Land)', type: 'sortie', loc: 'steel_route', region: true },
     { key: 'ct_descente', nom: 'La Descente (Lower-Town)', type: 'lien', vers: 2, connu: vu('steel_lower', 'steel_center') },
     { key: 'ct_monte_charge', nom: 'Grille de la Sous-Ville', type: 'lien', vers: 1, connu: vu('steel_center', 'sv_cuve') },
