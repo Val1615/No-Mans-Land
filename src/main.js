@@ -8,6 +8,7 @@ import { loadSkins } from './render/textures.js';
 import { createShell } from './ui/shell.js';
 import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
 import { portraitUrl } from './ui/creation.js';
+import { steelMapHtml, isSteel, coucheOf, drawSteelFog } from './ui/carte_steel.js';
 Object.assign(ITEMS, ORIGIN_ITEMS); // v11 : objets d'origine
 
 const sprites = await (await fetch('./assets/reused/manifest.json')).json();
@@ -18,6 +19,7 @@ const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
 await loadSkins(['g_wet', 'g_sv', 'g_cl_eau', 'g_cl_lac'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
+const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
 await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
 const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'));
@@ -122,17 +124,17 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
-window.__nml = { game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { mapsMan, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
-let panelOpen = null, panelKey = '';
+let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
 const QUARTERS = [['dusk_q3', 1, 0], ['dusk_q1', 1, 1], ['dusk_q2', 2, 1], ['dusk_q4', 1, 2]];
 const short = id => world.LOCATIONS[id].name.split('· ')[1] || world.LOCATIONS[id].name;
 const allBuildings = () => Object.values(world.LOCATIONS).flatMap(l => (l.buildings || []).map(b => ({ ...b, loc: l.id })));
 const FLAGS = { teo_secret: 'Teo : la nuit où il dormait. Promis de me taire.', ezequiel_toit: 'Ezequiel : la jambe, le toit du blockhaus. Je n\u2019en dirai rien.', sol_vue: 'Sol : le foulard. Je n\u2019en dirai rien.' };
 function renderPanel() {
   const s = game.state, n = game.currentNode();
-  const key = panelOpen + JSON.stringify([s.flags, s.player.inv, s.player.money, s.discovered, s.flags, s.location, n && n.options.length, Object.keys(s.seen)]);
+  const key = panelOpen + steelCouche + JSON.stringify([s.flags, s.player.inv, s.player.money, s.discovered, s.flags, s.location, n && n.options.length, Object.keys(s.seen)]);
   if (key === panelKey) return; panelKey = key; const B = $('panel-body');
   if (panelOpen === 'sac') {
     const items = Object.entries(s.player.inv);
@@ -153,6 +155,15 @@ function renderPanel() {
     notes.push(...Object.keys(QUEST_NOTES).filter(f => s.flags[f]));
     B.innerHTML = `<h3>JOURNAL</h3>${qs}<div class="lbl">Lieux repérés</div><ul>${places.length ? places.map(b => `<li><span>${b.label}</span><span class="muted">${short(b.loc)}</span></li>`).join('') : '<li class="muted">Aucun. Les entrées sont cachées derrière les façades.</li>'}</ul>
       <div class="desc"><div class="lbl">Notes</div>${notes.length ? notes.map(f => FLAGS[f] || QUEST_NOTES[f]).join('<br>') : '<span class="muted">Rien de noté.</span>'}</div>`;
+  } else if (panelOpen === 'carte' && isSteel(world, s.location)) { // lot 2 : carte de Steel par couches
+    const n = steelCouche || coucheOf(world, s.location); B.innerHTML = steelMapHtml({ world, state: s, manifest: mapsMan, couche: n }); drawSteelFog(B.querySelector('.smap-plan .fog'), mapsMan);
+    const go = c => { steelCouche = Math.max(1, Math.min(4, c)); panelKey = ''; renderPanel(); };
+    B.querySelectorAll('[data-couche]').forEach(b => b.addEventListener('click', () => go(+b.dataset.couche)));
+    B.querySelectorAll('[data-dir]').forEach(b => b.addEventListener('click', () => go(n + +b.dataset.dir)));
+    B.querySelectorAll('.mk[data-vers]').forEach(b => b.addEventListener('click', () => go(+b.dataset.vers)));
+    B.querySelectorAll('.mk.verrou').forEach(b => b.addEventListener('click', () => say('Upper-Town : accès refusé.')));
+    B.querySelectorAll('.mk.unk').forEach(b => b.addEventListener('click', () => say('Lieu inconnu.')));
+    let wt = 0; B.querySelector('.smap-plan').addEventListener('wheel', e => { e.preventDefault(); const t = performance.now(); if (t - wt < 250 || !e.deltaY) return; wt = t; go(n + (e.deltaY < 0 ? 1 : -1)); }, { passive: false });
   } else if (panelOpen === 'carte') {
     const cells = Array(9).fill('<div></div>');
     for (const [id, c, r] of QUARTERS) { const here = s.location === id || world.LOCATIONS[s.location].kind === 'interior' && false, known = s.seen[id];
@@ -163,7 +174,7 @@ function renderPanel() {
 }
 function openPanel(name) {
   panelOpen = panelOpen === name ? null : name; panelKey = '';
-  $('panel').hidden = !panelOpen; document.body.classList.toggle('panel-open', !!panelOpen); document.querySelectorAll('#keys [data-panel]').forEach(b => b.classList.toggle('on', b.dataset.panel === panelOpen));
+  steelCouche = null; $('panel').hidden = !panelOpen; $('panel').classList.toggle('wide', panelOpen === 'carte' && isSteel(world, game.state.location)); document.body.classList.toggle('panel-open', !!panelOpen); document.querySelectorAll('#keys [data-panel]').forEach(b => b.classList.toggle('on', b.dataset.panel === panelOpen));
   if (panelOpen) renderPanel();
 }
 function toggleMini() { document.body.classList.toggle('mini'); const on = document.body.classList.contains('mini'); $('mini').hidden = !on; $('k-mini').classList.toggle('on', on); $('k-mini').setAttribute('aria-pressed', on); $('k-mini').querySelector('.ic').dataset.ic = on ? 'discret_on' : 'discret_off'; if (on && panelOpen) openPanel(panelOpen); }
@@ -185,6 +196,7 @@ addEventListener('keydown', e => {
   if (k === 'escape') { if (panelOpen) openPanel(panelOpen); else if (game.state.dialogue) game.closeDialogue(); else shell.pause(); }
   if (k === 'tab') { e.preventDefault(); foldKeys(); return; }
   if (k === 'e' && !e.repeat && !$('act').hidden) { $('act').click(); return; }
+  if (panelOpen === 'carte' && isSteel(world, game.state.location) && /^(arrowup|arrowdown|pageup|pagedown)$/.test(k)) { e.preventDefault(); const c = (steelCouche || coucheOf(world, game.state.location)) + (/up$/.test(k) ? 1 : -1); steelCouche = Math.max(1, Math.min(4, c)); panelKey = ''; renderPanel(); return; }
   if (k === 'i') openPanel('sac'); if (k === 'j') openPanel('journal'); if (k === 'm') openPanel('carte'); if (k === 'h') toggleMini();
 });
 
