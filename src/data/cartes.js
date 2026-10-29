@@ -26,6 +26,7 @@ export const STEEL_COUCHES = [
     { key: 'steel_center', nom: 'Center-Town', type: 'lieu', loc: 'steel_center' },
     { key: 'steel_pulse', px: [880, 330], nom: 'Pulse Plaza', type: 'lieu', loc: 'steel_pulse' },
     { key: 'steel_strip', px: [1010, 300], nom: 'Fréquence Strip', type: 'lieu', loc: 'steel_strip' },
+    { key: 'steel_arena', px: [1110, 250], nom: 'Steel Arena', type: 'lieu', loc: 'steel_arena' },
     { key: 'arcadius_center', nom: 'Arcadius Center', type: 'lieu', connu: s => !!(s.seen.steel_center || s.discovered.c_arcadius) },
     { key: 'cz_rotonde', nom: 'Le Dôme Fréquence', type: 'lieu', connu: s => !!(s.seen.steel_center || s.discovered.c_tour) },
     { key: 'steel_route', nom: 'La douane (sortie vers les No Man\u2019s Land)', type: 'sortie', loc: 'steel_route', region: true },
@@ -37,5 +38,5 @@ export const STEEL_COUCHES = [
     { key: 'ut_ascenseur', nom: 'Accès refusé', type: 'verrou' } ] },
 ];
 // Lieu du jeu -> couche (les intérieurs prennent la couche du quartier par lequel on y entre ; la douane intérieure : la douane).
-export const STEEL_LOC = { sv_poutres: 1, sv_cuve: 1, steel_lower: 2, steel_asia: 2, steel_china: 2, steel_center: 3, steel_pulse: 3, steel_strip: 3, steel_route: 3, douane_in: 3 };
+export const STEEL_LOC = { sv_poutres: 1, sv_cuve: 1, steel_lower: 2, steel_asia: 2, steel_china: 2, steel_center: 3, steel_pulse: 3, steel_strip: 3, steel_arena: 3, steel_route: 3, douane_in: 3 };
 export const STEEL_ALIAS = { douane_in: 'steel_route' };

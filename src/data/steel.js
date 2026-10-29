@@ -3,6 +3,7 @@
 // premier quartier = Center-Town ; la quête s'arrête une fois en ville. Le reste (PNJ, textes, plan, taux) = [proposition].
 import { LOCATIONS_LOWER, DOORS_LOWER, NPCS_LOWER, DIALOGUES_LOWER } from './lower_town.js';
 import { LOCATIONS_ASIA, DOORS_ASIA, NPCS_ASIA, DIALOGUES_ASIA } from './asia_ground.js';
+import { LOCATIONS_ARENA, DOORS_ARENA, NPCS_ARENA, DIALOGUES_ARENA, CLOSED_ARENA } from './steel_arena.js';
 import { LOCATIONS_STRIP, DOORS_STRIP, NPCS_STRIP, DIALOGUES_STRIP, CLOSED_STRIP } from './frequence_strip.js';
 import { LOCATIONS_PULSE, DOORS_PULSE, NPCS_PULSE, DIALOGUES_PULSE, CLOSED_PULSE } from './pulse_plaza.js';
 import { LOCATIONS_CHINA, DOORS_CHINA, NPCS_CHINA, DIALOGUES_CHINA } from './china_lake.js';
@@ -123,6 +124,7 @@ export const LOCATIONS = {
     ground: { base: '#3a3430', skin: 'f_sv_concrete', tileM: 2 }, wall: '#3a2a20', wallSkin: 'w_sv_planks', buildings: [], props: [
       { furn: 'sv_workbench', x: 0.3, z: 0.3 }, { furn: 'sv_shelf', x: 4.9, z: 0.2 } ], city: null },
   ...LOCATIONS_ASIA, // Asia-Ground lot 2 (asia_ground.js)
+  ...LOCATIONS_ARENA, // Steel Arena (steel_arena.js)
   ...LOCATIONS_STRIP, // Fréquence Strip (frequence_strip.js)
   ...LOCATIONS_PULSE, // Pulse Plaza (pulse_plaza.js)
   ...LOCATIONS_CHINA, // China Lake lot 3 (china_lake.js)
@@ -153,6 +155,7 @@ export const DOORS = [
   ...DOORS_CHINA,
   ...DOORS_PULSE,
   ...DOORS_STRIP,
+  ...DOORS_ARENA,
   // v14 : la trappe de service ouvre sur la Sous-Ville pour qui connaît Elio (ou qu'on y a jeté)
   { id: 'r_trappe', buildingId: 'r_service', location: 'steel_route', opening: { x: 42.2, z: 32.5, side: 'south' }, threshold: { x: 42.2, z: 33.5 }, target: { doorId: 'v_trappe' },
     conditions: [{ test: s => !!(s.flags.bruno_frere || s.flags.sv_jete), reason: 'trappe', text: s => CLOSED_TEXT.r_service(s) }] },
@@ -182,10 +185,12 @@ export const NPCS = [
   ...NPCS_CHINA,
   ...NPCS_PULSE,
   ...NPCS_STRIP,
+  ...NPCS_ARENA,
 ];
 export const CLOSED_TEXT = {
   ...CLOSED_PULSE,
   ...CLOSED_STRIP,
+  ...CLOSED_ARENA,
   r_porte: 'La route entre dans le noir entre deux battants grands comme des immeubles. Sans passer la douane, les tourelles s\u2019en chargent.',
   r_service: s => s.flags.sol_passage ? 'La trappe dont parlait Sol. Chaîne neuve, cadenas neuf. Celui qui passe par là ne passe pas par le dessus.' : 'Une trappe de service à moitié ensablée, chaîne et cadenas. Des traces de pas fraîches, qui n\u2019en reviennent pas.',
   c_tour: 'Le Dôme Fréquence. Des écrans sur toute la façade, et pas une porte qui s\u2019ouvre pour toi.',
@@ -206,6 +211,7 @@ export const DIALOGUES = {
   ...DIALOGUES_CHINA,
   ...DIALOGUES_PULSE,
   ...DIALOGUES_STRIP,
+  ...DIALOGUES_ARENA,
   odile: {
     start: { text: 'Suivant. Motif ?', options: [
       { label: 'Je repasse. Il paraît que mon implant a sonné.', next: 'odile_volonte/start', if: 'steel_passe&!race_humain&!race_mutant&!odile_tenu&!odile_signe&!odile_payee' },

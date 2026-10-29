@@ -1,5 +1,5 @@
 // Fréquence Strip (zone steel_strip, 64 x 24 m, quartier de Center-Town). Pack d'Ocre : docs/villes/steel/quartiers/frequence_strip/ (FREQUENCE_STRIP.md, ASSETS.md).
-// [décision] ouverte à l'ouest sur la sortie est de Pulse Plaza ; bout est fermé par une grille (attend l'Arena). Neon-7 et Core Stack fermés pour l'instant.
+// [décision] ouverte à l'ouest sur la sortie est de Pulse Plaza ; bout est : grille ouverte vers la Steel Arena (fs_est). Neon-7 et Core Stack fermés pour l'instant.
 // Groovy-Tron et Groovy Vibes n'apparaissent que sur des écrans (enseignes fs_ens_tron, fs_ens_vibes) : jamais rencontrés. Aucun nom civil.
 // Enseignes animées : planches du manifeste (frames, frame_px, fps), lues par view.js ; au plus 8 animations visibles à la fois sur mobile.
 const STRIP = { bg: '#060a10', hemi: ['#e070c0', '#2a1030', 1.3], sun: ['#f2b44a', 0.55], tint: '#c8a0c0', actor: '#e8d0e0' }; // plus chaud que Pulse Plaza : magenta et ambre
@@ -25,7 +25,7 @@ export const BUILDINGS_STRIP = [
   B('fs_stand_brochettes', 'Brochettes de Yun', 'fs_stand_brochettes', 8, 14, 4, 4),
   B('fs_stand_merch', 'Merch « pas tout à fait officiel »', 'fs_stand_merch', 46, 14, 4, 4),
   B('fs_cam', '', 'pp_camera', 24.8, 14.8, 0.4, 0.4, { named: false }),
-  B('fs_grille_est', 'Grille fermée', 'fs_grille_est', 60, 11, 4, 1),
+  B('fs_grille_est', 'Grille de l\u2019Arena', 'fs_grille_est', 60, 11, 4, 1, { solid: [] }), // ouverte : mène à la Steel Arena (fs_est)
   // enseignes animées : 4 en façade nord (Neon-7, Core Stack, Vibes, cœur), Tron au milieu, 2 côté sud (Retour, capsules), 2 panaches de vapeur
   ENS('fs_e_neon7', 'fs_ens_neon7', 20, 6.2, 3.6), ENS('fs_e_core', 'fs_ens_corestack', 48, 6.2, 3.4),
   ENS('fs_e_vibes', 'fs_ens_vibes', 28.4, 6.2, 1.2), ENS('fs_e_coeur', 'fs_ens_coeur', 6.4, 6.2, 2.6),
@@ -38,7 +38,7 @@ export const CLOSED_STRIP = {
   fs_corestack: 'Core Stack. Une affiche : 31/10. Les baies ronronnent derrière la porte, fermée.',
   fs_retour: 'Le Retour. Lumière ambre, musique basse. Fermé pour l\u2019instant.',
   fs_capsules: 'Hôtel capsule. Des cases empilées, quelques hublots allumés. Complet.',
-  fs_grille_est: 'Une grille ferme le bout de la rue. Derrière, on entend une foule qui gronde. Pas encore.',
+  fs_grille_est: 'La grille du bout de la rue, ouverte. Derrière, le dôme de l\u2019Arena et une foule qui gronde.',
 };
 export const LOCATIONS_STRIP = {
   steel_strip: { id: 'steel_strip', name: 'Steel-Megalopolis · Fréquence Strip', kind: 'exterior', size: { w: 64, d: 24 }, light: STRIP,

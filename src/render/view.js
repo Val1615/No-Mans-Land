@@ -102,7 +102,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K * (b.k || 1), m.px[1] / K * (b.k || 1) * (b.sy || 1), 1); // b.k : échelle uniforme corrigée par le code // b.sy : tassement vertical par le code quand le sprite livré est plus haut que l'illustration
     s.position.set(b.x + b.w, b.y || 0, b.z + b.d); // b.y : hauteur (m) d'une enseigne posée en façade
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
-    world.add(s); bsprites.push(s); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: Math.random() * m.frames });
+    world.add(s); bsprites.push(s); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
     const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
@@ -207,8 +207,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     // enseignes animées : seules les visibles à l'écran tournent, au plus ANIM_MAX (8 sur mobile) ; les autres restent sur leur première image
     if (anims.length) { const max = innerWidth < 700 ? 8 : 16, v = new THREE.Vector3(); let on = 0; const pl = player.position;
       const vis = anims.map(a => { v.copy(a.s.position).project(cam); return { a, in: Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, d: a.s.position.distanceToSquared(pl) }; }).sort((p, q) => (q.in - p.in) || (p.d - q.d));
-      for (const { a, in: inn } of vis) { const run = inn && on < max; if (run) on++; a.t.offset.x = run ? Math.floor(t * a.fps + a.ph) % a.n / a.n : 0; a.s.userData.animOn = run; }
-      animStats.on = on; animStats.total = anims.length; } }
+      const admis = new Set(); let runs = 0;
+      for (const { a, in: inn } of vis) { const k = a.g || a; let run = false;
+        if (inn && !a.fige) { if (admis.has(k)) run = true; else if (on < max) { admis.add(k); on++; run = true; } }
+        if (run) runs++; a.t.offset.x = run ? Math.floor(t * a.fps + a.ph) % a.n / a.n : 0; a.s.userData.animOn = run; }
+      animStats.on = on; animStats.sprites = runs; animStats.total = anims.length; } }
   // Miroir horizontal : l'image regarde à droite de l'écran par défaut (manifest.faces = -1 sinon).
   const screenRight = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0, 1, 0)).normalize();
   function face(s, heading) {
