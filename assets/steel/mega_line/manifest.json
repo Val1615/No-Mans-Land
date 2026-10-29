@@ -187,6 +187,26 @@
     "partie": "terminus",
     "height_m": 1.66
   },
+  "gen_ml_fusible": {
+    "file": "steel/mega_line/gen_ml_fusible.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), c909519f",
+    "status": "v1",
+    "partie": "ligne",
+    "quartier": "frequence_strip"
+  },
   "gen_ml_navetteur": {
     "file": "steel/mega_line/gen_ml_navetteur.webp",
     "px": [
@@ -262,6 +282,28 @@
     "status": "v1",
     "partie": "ligne",
     "height_m": 1.92
+  },
+  "icone_pique_puce_128": {
+    "file": "steel/mega_line/icone_pique_puce_128.webp",
+    "px": [
+      128,
+      128
+    ],
+    "objet": "pique_puce",
+    "source": "GenerateImage (cursor), 2ac77016",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "icone_pique_puce_64": {
+    "file": "steel/mega_line/icone_pique_puce_64.webp",
+    "px": [
+      64,
+      64
+    ],
+    "objet": "pique_puce",
+    "source": "GenerateImage (cursor), 2ac77016",
+    "status": "v1",
+    "partie": "ligne"
   },
   "ml_banc": {
     "file": "steel/mega_line/ml_banc.webp",
@@ -575,6 +617,106 @@
     "status": "v1",
     "partie": "ligne"
   },
+  "ml_ens_portique_accepte": {
+    "file": "steel/mega_line/ml_ens_portique_accepte.webp",
+    "px": [
+      660,
+      110
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      110,
+      110
+    ],
+    "fps": 10,
+    "boucle": false,
+    "declenchement": "passage",
+    "remplace": "ml_portique_implant",
+    "anchor": [
+      71,
+      109
+    ],
+    "contenu": "implant accepté : halo vert sur le lecteur, volets qui s’effacent puis reviennent",
+    "source": "animation PIL sur ml_portique_implant (aeb1db72)",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "ml_ens_portique_accepte_mobile": {
+    "file": "steel/mega_line/ml_ens_portique_accepte_mobile.webp",
+    "px": [
+      330,
+      55
+    ],
+    "anime": true,
+    "frames": 6,
+    "frame_px": [
+      55,
+      55
+    ],
+    "fps": 10,
+    "boucle": false,
+    "declenchement": "passage",
+    "remplace": "ml_portique_implant",
+    "anchor": [
+      35,
+      54
+    ],
+    "contenu": "implant accepté : halo vert sur le lecteur, volets qui s’effacent puis reviennent",
+    "source": "animation PIL sur ml_portique_implant (aeb1db72)",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "ml_ens_portique_refuse": {
+    "file": "steel/mega_line/ml_ens_portique_refuse.webp",
+    "px": [
+      440,
+      110
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      110,
+      110
+    ],
+    "fps": 12,
+    "boucle": false,
+    "declenchement": "passage",
+    "remplace": "ml_portique_implant",
+    "anchor": [
+      71,
+      109
+    ],
+    "contenu": "implant refusé : flash rouge sec, volets qui tressautent",
+    "source": "animation PIL sur ml_portique_implant (aeb1db72)",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "ml_ens_portique_refuse_mobile": {
+    "file": "steel/mega_line/ml_ens_portique_refuse_mobile.webp",
+    "px": [
+      220,
+      55
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      55,
+      55
+    ],
+    "fps": 12,
+    "boucle": false,
+    "declenchement": "passage",
+    "remplace": "ml_portique_implant",
+    "anchor": [
+      35,
+      54
+    ],
+    "contenu": "implant refusé : flash rouge sec, volets qui tressautent",
+    "source": "animation PIL sur ml_portique_implant (aeb1db72)",
+    "status": "v1",
+    "partie": "ligne"
+  },
   "ml_ens_sas": {
     "file": "steel/mega_line/ml_ens_sas.webp",
     "px": [
@@ -679,6 +821,26 @@
     "status": "v1",
     "partie": "terminus",
     "height_m": 7
+  },
+  "ml_portique_implant": {
+    "file": "steel/mega_line/ml_portique_implant.webp",
+    "px": [
+      110,
+      110
+    ],
+    "anchor": [
+      71,
+      109
+    ],
+    "footprint_m": [
+      1.6,
+      1.0
+    ],
+    "height_m": 1.3,
+    "source": "GenerateImage (cursor), aeb1db72",
+    "status": "v1",
+    "partie": "ligne",
+    "note": "portique éteint, lecteur d’implant ; remplacé par une planche le temps d’un passage"
   },
   "ml_poubelle": {
     "file": "steel/mega_line/ml_poubelle.webp",
@@ -861,6 +1023,17 @@
     ],
     "npc": "gen_ml_fan",
     "source": "recadrage de gen_ml_fan.webp",
+    "status": "v1",
+    "partie": "ligne"
+  },
+  "portrait-gen_ml_fusible": {
+    "file": "steel/mega_line/portrait-gen_ml_fusible.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_fusible",
+    "source": "recadrage de gen_ml_fusible.webp",
     "status": "v1",
     "partie": "ligne"
   },
