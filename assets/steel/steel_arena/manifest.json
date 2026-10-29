@@ -234,8 +234,12 @@
     "fps": 2,
     "boucle": true,
     "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), f8a621ee, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      128,
+      143
+    ]
   },
   "ar_ens_ecran_vibes_mobile": {
     "file": "steel/steel_arena/ar_ens_ecran_vibes_mobile.webp",
@@ -252,8 +256,12 @@
     "fps": 2,
     "boucle": true,
     "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), f8a621ee, réf. nml-shots/refs/pp_billboard_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      64,
+      71
+    ]
   },
   "ar_ens_ecran_tron": {
     "file": "steel/steel_arena/ar_ens_ecran_tron.webp",
@@ -270,8 +278,12 @@
     "fps": 3,
     "boucle": true,
     "contenu": "écran du dôme, Tron (réf. pp_holo_tron_src), glitch",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 886e5acd, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      128,
+      143
+    ]
   },
   "ar_ens_ecran_tron_mobile": {
     "file": "steel/steel_arena/ar_ens_ecran_tron_mobile.webp",
@@ -288,8 +300,12 @@
     "fps": 3,
     "boucle": true,
     "contenu": "écran du dôme, Tron (réf. pp_holo_tron_src), glitch",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 886e5acd, réf. nml-shots/refs/pp_holo_tron_src.jpg ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      64,
+      71
+    ]
   },
   "ar_ens_fronton": {
     "file": "steel/steel_arena/ar_ens_fronton.webp",
@@ -306,8 +322,12 @@
     "fps": 3,
     "boucle": true,
     "contenu": "fronton lumineux sans texte, onde violette",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      192,
+      95
+    ]
   },
   "ar_ens_fronton_mobile": {
     "file": "steel/steel_arena/ar_ens_fronton_mobile.webp",
@@ -324,8 +344,12 @@
     "fps": 3,
     "boucle": true,
     "contenu": "fronton lumineux sans texte, onde violette",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      96,
+      47
+    ]
   },
   "ar_ens_faisceau": {
     "file": "steel/steel_arena/ar_ens_faisceau.webp",
@@ -342,8 +366,12 @@
     "fps": 6,
     "boucle": true,
     "contenu": "faisceau de projecteur qui balaie, semi-transparent",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "anchor": [
+      64,
+      255
+    ]
   },
   "ar_ens_faisceau_mobile": {
     "file": "steel/steel_arena/ar_ens_faisceau_mobile.webp",
@@ -360,8 +388,12 @@
     "fps": 6,
     "boucle": true,
     "contenu": "faisceau de projecteur qui balaie, semi-transparent",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "anchor": [
+      32,
+      127
+    ]
   },
   "ar_ens_coeurs": {
     "file": "steel/steel_arena/ar_ens_coeurs.webp",
@@ -378,8 +410,12 @@
     "fps": 4,
     "boucle": true,
     "contenu": "bâton-cœur des fans qui pulse",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      32,
+      63
+    ]
   },
   "ar_ens_coeurs_mobile": {
     "file": "steel/steel_arena/ar_ens_coeurs_mobile.webp",
@@ -396,8 +432,12 @@
     "fps": 4,
     "boucle": true,
     "contenu": "bâton-cœur des fans qui pulse",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      16,
+      31
+    ]
   },
   "ar_ens_guichet": {
     "file": "steel/steel_arena/ar_ens_guichet.webp",
@@ -414,8 +454,12 @@
     "fps": 1,
     "boucle": true,
     "contenu": "écran du guichet, complet / ouvert en pictogramme",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      48,
+      63
+    ]
   },
   "ar_ens_guichet_mobile": {
     "file": "steel/steel_arena/ar_ens_guichet_mobile.webp",
@@ -432,8 +476,12 @@
     "fps": 1,
     "boucle": true,
     "contenu": "écran du guichet, complet / ouvert en pictogramme",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      24,
+      31
+    ]
   },
   "ar_ens_human_corp": {
     "file": "steel/steel_arena/ar_ens_human_corp.webp",
@@ -450,8 +498,12 @@
     "fps": 1.5,
     "boucle": true,
     "contenu": "logo abstrait Human Corp qui respire",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      64,
+      127
+    ]
   },
   "ar_ens_human_corp_mobile": {
     "file": "steel/steel_arena/ar_ens_human_corp_mobile.webp",
@@ -468,8 +520,12 @@
     "fps": 1.5,
     "boucle": true,
     "contenu": "logo abstrait Human Corp qui respire",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "status": "v1",
+    "anchor": [
+      32,
+      63
+    ]
   },
   "gen_ar_ferrand": {
     "file": "steel/steel_arena/gen_ar_ferrand.webp",
@@ -483,11 +539,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 2307cd1e",
+    "status": "v1"
   },
   "portrait-gen_ar_ferrand": {
     "file": "steel/steel_arena/portrait-gen_ar_ferrand.webp",
@@ -496,8 +552,8 @@
       192
     ],
     "npc": "gen_ar_ferrand",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_ferrand.webp",
+    "status": "v1"
   },
   "gen_ar_anouk": {
     "file": "steel/steel_arena/gen_ar_anouk.webp",
@@ -511,11 +567,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 2307cd1e",
+    "status": "v1"
   },
   "portrait-gen_ar_anouk": {
     "file": "steel/steel_arena/portrait-gen_ar_anouk.webp",
@@ -524,8 +580,8 @@
       192
     ],
     "npc": "gen_ar_anouk",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_anouk.webp",
+    "status": "v1"
   },
   "gen_ar_zelie": {
     "file": "steel/steel_arena/gen_ar_zelie.webp",
@@ -539,11 +595,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 2307cd1e",
+    "status": "v1"
   },
   "portrait-gen_ar_zelie": {
     "file": "steel/steel_arena/portrait-gen_ar_zelie.webp",
@@ -552,8 +608,8 @@
       192
     ],
     "npc": "gen_ar_zelie",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_zelie.webp",
+    "status": "v1"
   },
   "gen_ar_malik": {
     "file": "steel/steel_arena/gen_ar_malik.webp",
@@ -567,11 +623,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 2307cd1e",
+    "status": "v1"
   },
   "portrait-gen_ar_malik": {
     "file": "steel/steel_arena/portrait-gen_ar_malik.webp",
@@ -580,8 +636,8 @@
       192
     ],
     "npc": "gen_ar_malik",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_malik.webp",
+    "status": "v1"
   },
   "gen_ar_ines": {
     "file": "steel/steel_arena/gen_ar_ines.webp",
@@ -595,11 +651,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), b559e0d3",
+    "status": "v1"
   },
   "portrait-gen_ar_ines": {
     "file": "steel/steel_arena/portrait-gen_ar_ines.webp",
@@ -608,8 +664,8 @@
       192
     ],
     "npc": "gen_ar_ines",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_ines.webp",
+    "status": "v1"
   },
   "gen_ar_clem": {
     "file": "steel/steel_arena/gen_ar_clem.webp",
@@ -623,11 +679,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), b559e0d3",
+    "status": "v1"
   },
   "portrait-gen_ar_clem": {
     "file": "steel/steel_arena/portrait-gen_ar_clem.webp",
@@ -636,8 +692,8 @@
       192
     ],
     "npc": "gen_ar_clem",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_clem.webp",
+    "status": "v1"
   },
   "gen_ar_garnier": {
     "file": "steel/steel_arena/gen_ar_garnier.webp",
@@ -651,11 +707,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), b559e0d3",
+    "status": "v1"
   },
   "portrait-gen_ar_garnier": {
     "file": "steel/steel_arena/portrait-gen_ar_garnier.webp",
@@ -664,8 +720,8 @@
       192
     ],
     "npc": "gen_ar_garnier",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_garnier.webp",
+    "status": "v1"
   },
   "gen_ar_bastien": {
     "file": "steel/steel_arena/gen_ar_bastien.webp",
@@ -679,11 +735,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), b559e0d3",
+    "status": "v1"
   },
   "portrait-gen_ar_bastien": {
     "file": "steel/steel_arena/portrait-gen_ar_bastien.webp",
@@ -692,8 +748,8 @@
       192
     ],
     "npc": "gen_ar_bastien",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_bastien.webp",
+    "status": "v1"
   },
   "gen_ar_laure": {
     "file": "steel/steel_arena/gen_ar_laure.webp",
@@ -707,11 +763,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 6593a78a",
+    "status": "v1"
   },
   "portrait-gen_ar_laure": {
     "file": "steel/steel_arena/portrait-gen_ar_laure.webp",
@@ -720,8 +776,8 @@
       192
     ],
     "npc": "gen_ar_laure",
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "recadrage de gen_ar_laure.webp",
+    "status": "v1"
   },
   "gen_ar_foule_a": {
     "file": "steel/steel_arena/gen_ar_foule_a.webp",
@@ -735,11 +791,11 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 6593a78a",
+    "status": "v1"
   },
   "gen_ar_foule_b": {
     "file": "steel/steel_arena/gen_ar_foule_b.webp",
@@ -753,10 +809,10 @@
       0.6
     ],
     "anchor": [
-      90,
+      89,
       511
     ],
-    "source": "docs/villes/steel/quartiers/steel_arena/gen_placeholders.py",
-    "status": "placeholder, steel-arena (zone steel_arena)"
+    "source": "GenerateImage (cursor), 6593a78a",
+    "status": "v1"
   }
 }
