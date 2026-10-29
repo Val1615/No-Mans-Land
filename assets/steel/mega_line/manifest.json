@@ -1,4 +1,16 @@
 {
+  "g_ml_fret": {
+    "file": "steel/mega_line/g_ml_fret.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 717d5fb5",
+    "status": "v1",
+    "partie": "terminus"
+  },
   "g_ml_pave": {
     "file": "steel/mega_line/g_ml_pave.webp",
     "px": [
@@ -23,6 +35,25 @@
     "status": "v1",
     "partie": "ligne"
   },
+  "gen_ml_cheffe_fret": {
+    "file": "steel/mega_line/gen_ml_cheffe_fret.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), c16c8036",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 1.68
+  },
   "gen_ml_controleuse": {
     "file": "steel/mega_line/gen_ml_controleuse.webp",
     "px": [
@@ -41,6 +72,25 @@
     "status": "v1",
     "partie": "ligne",
     "height_m": 1.66
+  },
+  "gen_ml_docker": {
+    "file": "steel/mega_line/gen_ml_docker.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), c16c8036",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 1.86
   },
   "gen_ml_entretien": {
     "file": "steel/mega_line/gen_ml_entretien.webp",
@@ -98,6 +148,44 @@
     "status": "v1",
     "partie": "ligne",
     "height_m": 1.64
+  },
+  "gen_ml_foule_a": {
+    "file": "steel/mega_line/gen_ml_foule_a.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), c16c8036",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 1.76
+  },
+  "gen_ml_foule_b": {
+    "file": "steel/mega_line/gen_ml_foule_b.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "source": "GenerateImage (cursor), c16c8036",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 1.66
   },
   "gen_ml_navetteur": {
     "file": "steel/mega_line/gen_ml_navetteur.webp",
@@ -213,6 +301,44 @@
     "partie": "ligne",
     "height_m": 1.8
   },
+  "ml_bureau_fret": {
+    "file": "steel/mega_line/ml_bureau_fret.webp",
+    "px": [
+      300,
+      260
+    ],
+    "anchor": [
+      153,
+      259
+    ],
+    "footprint_m": [
+      5,
+      4
+    ],
+    "source": "GenerateImage (cursor), eb08625f",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 4
+  },
+  "ml_conteneurs": {
+    "file": "steel/mega_line/ml_conteneurs.webp",
+    "px": [
+      280,
+      220
+    ],
+    "anchor": [
+      173,
+      219
+    ],
+    "footprint_m": [
+      6,
+      2.5
+    ],
+    "source": "GenerateImage (cursor), eb08625f",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 5.2
+  },
   "ml_ens_ecran_tron": {
     "file": "steel/mega_line/ml_ens_ecran_tron.webp",
     "px": [
@@ -309,6 +435,52 @@
     "partie": "ligne",
     "groupe": "ecrans_quai"
   },
+  "ml_ens_gyrophare": {
+    "file": "steel/mega_line/ml_ens_gyrophare.webp",
+    "px": [
+      256,
+      64
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      64,
+      64
+    ],
+    "fps": 4,
+    "boucle": true,
+    "anchor": [
+      32,
+      63
+    ],
+    "contenu": "gyrophare orange de la gare de fret, x 2 regroupés",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "terminus"
+  },
+  "ml_ens_gyrophare_mobile": {
+    "file": "steel/mega_line/ml_ens_gyrophare_mobile.webp",
+    "px": [
+      128,
+      32
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      32,
+      32
+    ],
+    "fps": 4,
+    "boucle": true,
+    "anchor": [
+      16,
+      31
+    ],
+    "contenu": "gyrophare orange de la gare de fret, x 2 regroupés",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "terminus"
+  },
   "ml_ens_horaires": {
     "file": "steel/mega_line/ml_ens_horaires.webp",
     "px": [
@@ -403,6 +575,52 @@
     "status": "v1",
     "partie": "ligne"
   },
+  "ml_ens_sas": {
+    "file": "steel/mega_line/ml_ens_sas.webp",
+    "px": [
+      1024,
+      64
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      256,
+      64
+    ],
+    "fps": 2,
+    "boucle": true,
+    "anchor": [
+      128,
+      63
+    ],
+    "contenu": "deux lampes d’alerte du sas qui clignotent en alternance, posées sur l’encadrement",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "terminus"
+  },
+  "ml_ens_sas_mobile": {
+    "file": "steel/mega_line/ml_ens_sas_mobile.webp",
+    "px": [
+      512,
+      32
+    ],
+    "anime": true,
+    "frames": 4,
+    "frame_px": [
+      128,
+      32
+    ],
+    "fps": 2,
+    "boucle": true,
+    "anchor": [
+      64,
+      31
+    ],
+    "contenu": "deux lampes d’alerte du sas qui clignotent en alternance, posées sur l’encadrement",
+    "source": "procédural (PIL)",
+    "status": "v1",
+    "partie": "terminus"
+  },
   "ml_lampadaire": {
     "file": "steel/mega_line/ml_lampadaire.webp",
     "px": [
@@ -421,6 +639,46 @@
     "status": "v1",
     "partie": "ligne",
     "height_m": 6
+  },
+  "ml_panneau_terminus": {
+    "file": "steel/mega_line/ml_panneau_terminus.webp",
+    "px": [
+      200,
+      150
+    ],
+    "anchor": [
+      138,
+      149
+    ],
+    "footprint_m": [
+      3,
+      0.5
+    ],
+    "source": "GenerateImage (cursor), eb08625f",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 3,
+    "texte_code": "Dernier arrêt avant No Man’s Land",
+    "note": "panneau vierge, phrase affichée par le code"
+  },
+  "ml_portique": {
+    "file": "steel/mega_line/ml_portique.webp",
+    "px": [
+      320,
+      300
+    ],
+    "anchor": [
+      202,
+      299
+    ],
+    "footprint_m": [
+      7,
+      4
+    ],
+    "source": "GenerateImage (cursor), eb08625f",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 7
   },
   "ml_poubelle": {
     "file": "steel/mega_line/ml_poubelle.webp",
@@ -460,6 +718,26 @@
     "partie": "ligne",
     "height_m": 3.6,
     "note": "déplacée par le code le long du viaduc"
+  },
+  "ml_sas": {
+    "file": "steel/mega_line/ml_sas.webp",
+    "px": [
+      1000,
+      750
+    ],
+    "anchor": [
+      900,
+      749
+    ],
+    "footprint_m": [
+      18,
+      2
+    ],
+    "source": "GenerateImage (cursor), c66551c2",
+    "status": "v1",
+    "partie": "terminus",
+    "height_m": 12,
+    "note": "portes pleines, sans ouverture ni hublot ; ni ciel ni sable ; lampes éteintes, clignotement par ml_ens_sas"
   },
   "ml_station": {
     "file": "steel/mega_line/ml_station.webp",
@@ -520,6 +798,17 @@
     "height_m": 6,
     "repetable": true
   },
+  "portrait-gen_ml_cheffe_fret": {
+    "file": "steel/mega_line/portrait-gen_ml_cheffe_fret.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_cheffe_fret",
+    "source": "recadrage de gen_ml_cheffe_fret.webp",
+    "status": "v1",
+    "partie": "terminus"
+  },
   "portrait-gen_ml_controleuse": {
     "file": "steel/mega_line/portrait-gen_ml_controleuse.webp",
     "px": [
@@ -530,6 +819,17 @@
     "source": "recadrage de gen_ml_controleuse.webp",
     "status": "v1",
     "partie": "ligne"
+  },
+  "portrait-gen_ml_docker": {
+    "file": "steel/mega_line/portrait-gen_ml_docker.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ml_docker",
+    "source": "recadrage de gen_ml_docker.webp",
+    "status": "v1",
+    "partie": "terminus"
   },
   "portrait-gen_ml_entretien": {
     "file": "steel/mega_line/portrait-gen_ml_entretien.webp",
