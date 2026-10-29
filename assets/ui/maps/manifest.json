@@ -1372,5 +1372,43 @@
    "png24": "ui/maps/icones/verrouille_steel_24.png",
    "png48": "ui/maps/icones/verrouille_steel_48.png"
   }
+ },
+ "brouillard_nml": {
+  "outil": "tools_brouillard.py (seed 2175)",
+  "texture": {
+   "fichier": "ui/maps/fog/nml_brouillard.webp",
+   "png": "ui/maps/fog/nml_brouillard.png",
+   "px": [
+    512,
+    512
+   ],
+   "tuilable": true,
+   "mobile": {
+    "fichier": "ui/maps/fog/nml_brouillard_mobile.webp",
+    "png": "ui/maps/fog/nml_brouillard_mobile.png",
+    "px": [
+     256,
+     256
+    ]
+   }
+  },
+  "masque": {
+   "fichier": "ui/maps/fog/nml_brouillard_masque.png",
+   "px": [
+    300,
+    300
+   ],
+   "centre_sur": "centre de la case découverte",
+   "alpha": "opacité de l'effacement (destination-out)",
+   "mobile": {
+    "fichier": "ui/maps/fog/nml_brouillard_masque_mobile.png",
+    "px": [
+     150,
+     150
+    ]
+   }
+  },
+  "opacite_conseillee": 0.94,
+  "rayon_cases": 1
  }
 }

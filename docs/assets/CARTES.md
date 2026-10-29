@@ -18,6 +18,13 @@ Suit docs/design/INTERFACE.md §4 (branche docs/regie-interface, 8e70070). Dessi
 `assets/ui/maps/icones/` : SVG + PNG 24 et 48 px, ambre `#f2b44a` sur fond sombre : `lieu_decouvert`, `lieu_non_decouvert`, `joueur`, `sortie`, `lien_couches`, `verrouille` (Upper-Town).
 Variante bleue pour la carte Steel (`#a9d2e6`, fond `#060a10`), mêmes noms suffixés `_steel` (ex. `lieu_decouvert_steel_24.png`), entrée `icones_lieux_steel` du manifest. Les ambres restent pour la carte NML.
 
+## Brouillard de guerre (carte NML)
+Décision de Valentin (29/10) : les cases et les lieux pas encore vus restent sous un brouillard, que le joueur dissipe autour de son trajet. Fichiers produits par `tools_brouillard.py` (seed fixe), entrée `brouillard_nml` du manifest.
+- `assets/ui/maps/fog/nml_brouillard.webp` (et `.png`) 512 × 512 px : brume de poussière ambre sombre, tuilable sans raccord. Version mobile `nml_brouillard_mobile` 256 × 256 px.
+- `assets/ui/maps/fog/nml_brouillard_masque.png` 300 × 300 px : blanc dont l alpha donne la force d effacement, plein sur la case, fondu doux sur la case voisine. Version mobile `nml_brouillard_masque_mobile.png` 150 × 150 px.
+- Usage conseillé : remplir un calque au-dessus du fond avec la texture en motif répété, opacité 0,94 environ. Pour chaque case vue (la case du trajet et ses 8 voisines), dessiner le masque centré sur le centre de la case en `destination-out`. Les icônes et les noms des lieux restent cachés tant que leur case est dans le brouillard.
+- Aperçu (maquette) : /workspace/nml-shots/brouillard.png
+
 ## Décisions prises (à valider)
 - Disposition de Steel déduite des jonctions du code : douane à l ouest, Center-Town au centre (dalle surélevée), Lower-Town à l est (la Descente), Asia-Ground au sud de Lower-Town, China Lake au sud d Asia-Ground (sortie nord de China Lake vers Asia-Ground) et reliée à Lower-Town par une ruelle ; lac de Lower Street au nord-est. Sous-Ville : Les Poutres sous la douane (trappe), La Cuve à l est, monte-charge sous Center-Town, deux routes de sortie (ouest, sud).
 - Sur la couche Lower-Town, l emprise de Center-Town est une ombre sur piliers (la dalle est au-dessus).
