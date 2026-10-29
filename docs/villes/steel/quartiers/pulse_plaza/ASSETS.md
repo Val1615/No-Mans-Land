@@ -13,6 +13,7 @@ Conventions reprises de `docs/assets/PNJ_ASIA_CHINA.md`, `CHINA_LAKE_POSITIONS.m
 
 ## Placeholders et manifest
 Zone `steel_pulse` [décision du développeur]. Les 36 placeholders (cadre magenta et croix) sont dans `assets/steel/pulse_plaza/`, aux noms et tailles ci-dessous. Ils sont générés par `docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py`, qui écrit à cet emplacement.
+v1 (branche creation/pulse-plaza-sprites) : 34 sur 36 remplacés par des sprites générés (status « v1 », ancres recalées). Restent placeholders : `pp_billboard` et `pp_holo_tron`, faute des références de Vibes et de Tron.
 Index : `assets/steel/pulse_plaza/manifest.json`, un manifest par dossier comme `assets/buildings/` ou `assets/interiors/`. Les chemins `file` sont relatifs à `assets/` (ex. `steel/pulse_plaza/pp_kiosque.webp`). Champs : `px`, `footprint_m` et `anchor` (bas-centre, provisoire) pour les décors, `height_m` et `footprint_m` pour les PNJ, `tile_m` pour les sols, `npc` pour les portraits, `status` « placeholder ». Les vrais assets remplaceront les fichiers sous le même nom.
 
 ## Sols
