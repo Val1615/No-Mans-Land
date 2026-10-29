@@ -38,5 +38,5 @@ export const STEEL_COUCHES = [
     { key: 'ut_ascenseur', nom: 'Accès refusé', type: 'verrou' } ] },
 ];
 // Lieu du jeu -> couche (les intérieurs prennent la couche du quartier par lequel on y entre ; la douane intérieure : la douane).
-export const STEEL_LOC = { sv_poutres: 1, sv_cuve: 1, steel_lower: 2, steel_asia: 2, steel_china: 2, steel_center: 3, steel_pulse: 3, steel_strip: 3, steel_arena: 3, steel_route: 3, douane_in: 3 };
+export const STEEL_LOC = { sv_poutres: 1, sv_cuve: 1, steel_lower: 2, steel_asia: 2, steel_china: 2, steel_center: 3, steel_pulse: 3, steel_strip: 3, steel_arena: 3, steel_dome: 3, steel_route: 3, douane_in: 3 };
 export const STEEL_ALIAS = { douane_in: 'steel_route' };

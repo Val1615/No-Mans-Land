@@ -21,13 +21,14 @@ Object.assign(sprites, iman);
 // Pulse Plaza : manifeste d'Ocre (assets/steel/pulse_plaza/manifest.json, chemins relatifs à assets/) ; PNJ et portraits -> sprites, décors pp_* -> bâtiments, g_pp_* -> sols
 const ppMan = await (await fetch('./assets/steel/pulse_plaza/manifest.json')).json();
 Object.assign(ppMan, await (await fetch('./assets/steel/frequence_strip/manifest.json')).json());
-Object.assign(ppMan, await (await fetch('./assets/steel/steel_arena/manifest.json')).json()); // Steel Arena (ar_ -> bâtiments) // Fréquence Strip : même chargeur (gen_, portrait-, fs_ -> bâtiments, g_ -> sols)
+Object.assign(ppMan, await (await fetch('./assets/steel/steel_arena/manifest.json')).json());
+Object.assign(ppMan, await (await fetch('./assets/steel/dome_frequence/manifest.json')).json()); // Dôme Fréquence (df_ -> bâtiments) // Steel Arena (ar_ -> bâtiments) // Fréquence Strip : même chargeur (gen_, portrait-, fs_ -> bâtiments, g_ -> sols)
 for (const [k, v] of Object.entries(ppMan)) if (k.startsWith('gen_') || k.startsWith('portrait-')) sprites[k] = v;
 const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
 await loadSkins(['g_wet', 'g_sv', 'g_cl_eau', 'g_cl_lac'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
-for (const [k, v] of Object.entries(ppMan)) if (/^(pp|fs|ar)_/.test(k)) bman[k] = v;
+for (const [k, v] of Object.entries(ppMan)) if (/^(pp|fs|ar|df)_/.test(k)) bman[k] = v;
 await loadSkins(Object.keys(ppMan).filter(k => k.startsWith('g_')), n => './assets/' + ppMan[n].file);
 const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
@@ -140,7 +141,10 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
-window.__nml = { mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
+// Dôme Fréquence : accès de debug (?dome=1 ou window.__nml.ouvrirDome()) ; en jeu, le drapeau dome_ouvert ouvrira la porte plus tard
+const ouvrirDome = () => { game.state.flags.dome_ouvert = true; return true; };
+if (new URLSearchParams(location.search).get('dome') === '1') game.on(() => { game.state.flags.dome_ouvert = true; });
+window.__nml = { ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
