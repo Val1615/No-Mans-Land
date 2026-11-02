@@ -18,7 +18,7 @@ export function createDev({ game, world, say }) {
   let instantane = null;
   const el = document.createElement('div'); el.id = 'dev';
   el.innerHTML = `<button id="dev-tog" class="mono">DEV</button><div id="dev-box" hidden>
-    <b class="mono">Déplacement</b>
+    <a href="./editor/" target="_blank" style="color:#f2b44a">Éditeur de cartes ↗</a><b class="mono">Déplacement</b>
     <div class="dev-row"><select id="dev-type"><option value="zone">Zone</option><option value="porte">Porte</option><option value="pnj">PNJ</option></select><select id="dev-cible"></select></div>
     <button id="dev-go">Aller</button>
     <b class="mono">Réinitialisation</b>

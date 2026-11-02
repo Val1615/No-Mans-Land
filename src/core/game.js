@@ -56,6 +56,7 @@ export function createGame(world, sprites) {
     const b = busy(); if (b) return b;
     const door = doorById(doorId);
     if (!door || door.location !== state.location) return refuse('porte_absente', 'Aucune porte ici.');
+    if(!door.edge&&!door.regional&&!door.target?.doorId)return refuse('sans_destination','Cette entrée n’a pas de destination.');
     for (const c of door.conditions) if (!c.test(state)) return refuse(c.reason, c.text);
     return goThen(door.threshold, { kind: 'door', id: doorId }) || refuse('chemin_bloque', 'Le seuil est inaccessible.');
   }

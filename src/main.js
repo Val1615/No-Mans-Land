@@ -1,10 +1,13 @@
-import * as world from './data/dusk_town.js'; // v7 : toute la ville (Q1 + Q2-Q4)
+import * as sourceWorld from './data/dusk_town.js';
+import {createEditorBase} from '../editor/base.js';
+import {applyEditorProject,loadPublishedMaps} from './core/editor-maps.js';
+import {bindEditorStory} from './core/editor-story.js'; // v7 : toute la ville (Q1 + Q2-Q4)
 import { DIALOGUES, ITEMS } from './data/dialogues_town.js';
 import { createGame } from './core/game.js';
 import { QUESTS, QUEST_NOTES } from './data/quests.js';
 import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
-import { loadSkins } from './render/textures.js';
+import { loadSkins } from './render/textures.js?v=editor1';
 import { createShell } from './ui/shell.js';
 import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
 import { portraitUrl } from './ui/creation.js';
@@ -27,7 +30,7 @@ Object.assign(ppMan, await (await fetch('./assets/steel/steel_arena/manifest.jso
 Object.assign(ppMan, await (await fetch('./assets/steel/dome_frequence/manifest.json')).json());
 Object.assign(ppMan, await (await fetch('./assets/steel/mega_line/manifest.json')).json()); // Mega-Line et terminus (ml_ -> bâtiments) // Dôme Fréquence (df_ -> bâtiments) // Steel Arena (ar_ -> bâtiments) // Fréquence Strip : même chargeur (gen_, portrait-, fs_ -> bâtiments, g_ -> sols)
 for (const [k, v] of Object.entries(ppMan)) if (k.startsWith('gen_') || k.startsWith('portrait-')) sprites[k] = v;
-const game = createGame({ ...world, DIALOGUES, ITEMS }, sprites);
+
 await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
 await loadSkins(['g_wet', 'g_sv', 'g_cl_eau', 'g_cl_lac'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
 const bman = await (await fetch('./assets/buildings/manifest.json')).json();
@@ -36,6 +39,13 @@ await loadSkins(Object.keys(ppMan).filter(k => k.startsWith('g_')), n => './asse
 const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
 await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
+const editorBase=createEditorBase(sourceWorld,{sprites,bman,iman});
+let publishedMaps=null;try{publishedMaps=await loadPublishedMaps();}catch(error){console.error('Éditeur : chargement des cartes impossible.',error);const warning=document.createElement('div');warning.id='editor-map-warning';warning.textContent='Les cartes modifiées n’ont pas pu être chargées. La carte d’origine est utilisée.';warning.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:100;background:#472b1b;color:#fff;padding:12px';document.body.append(warning);}
+let world;try{world=applyEditorProject(sourceWorld,publishedMaps,editorBase);}catch(error){console.error('Carte publiée invalide :',error);world={...sourceWorld,editorProject:null};const warning=document.createElement('div');warning.textContent='Carte publiée invalide : retour à la carte d’origine. '+error.message;warning.style.cssText='position:fixed;bottom:0;z-index:100;background:#472b1b;color:white;padding:12px';document.body.append(warning);}
+const mapQuery=new URLSearchParams(location.search);if(mapQuery.get('dev')==='1'&&world.LOCATIONS[mapQuery.get('map')])world={...world,START:{...world.START,location:mapQuery.get('map')}};
+const game=createGame({...world,DIALOGUES:{...DIALOGUES,editor_silence:{start:{text:'Cette personne n’a pas encore de dialogue.',options:[{label:'Partir.',next:'end'}]}}},ITEMS},sprites);
+const editorStory=bindEditorStory(game);
+
 // lot 3 : voyage régional (les sorties régionales ouvrent la carte des No Man's Land)
 const voyage = createVoyage({ game, manifest: mapsMan });
 const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'));
@@ -54,6 +64,7 @@ bindPointer($('view'), (x, y) => {
     if (pv && pv.i === i && pv.j === j && pv.ok) { const r = game.combat.moveTo(p.x, p.z); if (!r.ok && r.reason === 'pa_insuffisants') say(`Pas assez de PA (${r.cout} pour ${r.pa}).`); }
     else game.combat.previewTo(p.x, p.z);
     return; }
+  const editorHit=world.editorProject&&view.editorPick(x,y,['prop','building']);if(editorHit?.id&&editorStory.interact(editorHit.id))return;
   const p = view.pick(x, y); if (!p) return;
   if (p.x !== undefined || p.kind === 'ground') { // v15 : ferraille / sacs du poste près du point visé
     const sp = (world.SPOTS || []).find(q => q.location === game.state.location && Math.hypot(q.x - p.x, q.z - p.z) < (q.r || 1.4)); if (sp) { game.useSpot(sp.id); return; } }
@@ -62,7 +73,7 @@ bindPointer($('view'), (x, y) => {
   else if (p.kind === 'building') { const d = game.doorOfBuilding(p.buildingId); if (d) game.useDoor(d.id); }
   else if (p.kind === 'closed' && p.buildingId === 's_lab' && game.state.flags.q_start) { // v9 : la porte d'acier
     const f = game.state.flags;
-    if (f.q_fin || (f.q_cric && f.q_signal)) game.startScene('porte', { x: 28, z: 5.8 });
+    if (f.q_fin || (f.q_cric && f.q_signal)) game.startScene('porte',world.editorScenePoints?.porte||{ x: 28, z: 5.8 });
     else say(!f.q_cric && !f.q_signal ? 'Pas à mains nues, et pas sans savoir où sont les camions.' : !f.q_cric ? 'Pas à mains nues. Le cric d\u2019Anselme.' : 'Pas sans savoir où sont les camions. Teo, au guet.'); }
   else if (p.kind === 'closed') { const t = world.CLOSED_TEXT[p.buildingId]; say((typeof t === 'function' ? t(game.state) : t) || (p.label?.trim() ? `${p.label} : fermé.` : 'Rien à faire ici.')); } // sans libellé (décor, étal anonyme) : jamais « : fermé. » coupé
   else if (p.kind === 'ground') { // v7 : un tap au bout d'une rue vise la jonction (on marche jusqu'au seuil)
@@ -212,8 +223,9 @@ function renderPanel() {
         const done = st.done && s.flags[st.done], isCur = !done && !cur; if (isCur) cur = true;
         return `<li class="${done ? 'done' : isCur ? 'cur' : ''} ${st.blocked ? 'blk' : ''}"><span>${done ? '[x]' : isCur ? '>' : '[ ]'} ${st.text}</span>${st.blocked && isCur ? `<span class="muted">${st.blocked}</span>` : ''}</li>`; }).join('') + '</ul>'; }).join('');
     notes.push(...Object.keys(QUEST_NOTES).filter(f => s.flags[f]));
-    B.innerHTML = `<h3>JOURNAL</h3>${qs}<div class="lbl">Lieux repérés</div><ul>${places.length ? places.map(b => `<li><span>${b.label}</span><span class="muted">${short(b.loc)}</span></li>`).join('') : '<li class="muted">Aucun. Les entrées sont cachées derrière les façades.</li>'}</ul>
+    B.innerHTML = `<h3>JOURNAL</h3>${qs}${editorStory.journalHtml()}<div class="lbl">Lieux repérés</div><ul>${places.length ? places.map(b => `<li><span>${b.label}</span><span class="muted">${short(b.loc)}</span></li>`).join('') : '<li class="muted">Aucun. Les entrées sont cachées derrière les façades.</li>'}</ul>
       <div class="desc"><div class="lbl">Notes</div>${notes.length ? notes.map(f => FLAGS[f] || QUEST_NOTES[f]).join('<br>') : '<span class="muted">Rien de noté.</span>'}</div>`;
+    B.querySelectorAll('[data-editor-start]').forEach(b=>b.onclick=()=>{editorStory.start(b.dataset.editorStart);panelKey='';renderPanel();});
   } else if (panelOpen === 'carte' && isSteel(world, s.location)) { // lot 2 : carte de Steel par couches
     const n = steelCouche || coucheOf(world, s.location); B.innerHTML = steelMapHtml({ world, state: s, manifest: mapsMan, couche: n }); drawSteelFog(B.querySelector('.smap-plan .fog'), mapsMan); placeLabels(B.querySelector('.smap-plan'), '.mk');
     const go = c => { steelCouche = Math.max(1, Math.min(4, c)); panelKey = ''; renderPanel(); };
@@ -265,7 +277,7 @@ addEventListener('keydown', e => {
 function currentObjective() {
   const s = game.state; for (const q of QUESTS) { if (!q.visible(s)) continue;
     const st = q.steps.filter(x => !x.show || x.show(s)).find(x => !x.done || !s.flags[x.done]); if (st) return st.text + (st.blocked ? ' (hors de portée pour l\u2019instant)' : ''); }
-  return null;
+  return editorStory.currentObjective();
 }
 // Un seul élément <audio> pour toute la partie : jamais recréé au changement de quartier, donc aucune coupure.
 // Démarre au premier geste (règles autoplay). Atténuée en intérieur. Coupure mémorisée (localStorage).
