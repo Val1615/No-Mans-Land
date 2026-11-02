@@ -110,7 +110,7 @@ export function groundTexture(loc, doors = []) {
   const P = 24, W = Math.round(loc.size.w * P), H = Math.round(loc.size.d * P);
   const c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d'), r = rng(hash(loc.id));
   x.fillStyle = pattern(x, loc.ground.skin, loc.ground.tileM || 4, P) || loc.ground.base; x.fillRect(0, 0, W, H);
-  if (loc.kind === 'interior' && loc.ground.skin) return tex(c); // v6 : sol d'intérieur = texture réelle seule, rien de peint par code
+  if (loc.kind === 'interior' && loc.ground.skin && !loc.ground.zones?.length) { paintTerrain(x,loc,P); return tex(c); } // v6 : sol d'intérieur = texture réelle seule, rien de peint par code
   if (!loc.ground.clean) for (let i = 0; i < W * H / 40; i++) { x.fillStyle = `rgba(${r() < .5 ? '60,45,30' : '230,210,170'},${r() * 0.08})`; x.fillRect(r() * W, r() * H, 1 + r() * 2, 1 + r() * 2); }
   if (loc.ground.tiles && !loc.ground.skin) { x.strokeStyle = 'rgba(0,0,0,.15)'; for (let i = 0; i <= loc.size.w; i += 0.5) { x.beginPath(); x.moveTo(i * P, 0); x.lineTo(i * P, H); x.stroke(); } for (let j = 0; j <= loc.size.d; j += 0.5) { x.beginPath(); x.moveTo(0, j * P); x.lineTo(W, j * P); x.stroke(); } }
   if (loc.ground.planks && !loc.ground.skin) { for (let j = 0; j < loc.size.d; j += 0.25) { x.fillStyle = `rgba(0,0,0,${0.05 + r() * 0.12})`; x.fillRect(0, j * P, W, 1.5); } }
@@ -139,8 +139,10 @@ export function groundTexture(loc, doors = []) {
   // herbes mortes (Ch. I §71)
   if (loc.ground.tint) { x.fillStyle = loc.ground.tint; x.fillRect(0, 0, W, H); } // v13 : voile de nuit
   if (loc.kind === 'exterior' && !loc.ground.clean) { x.strokeStyle = 'rgba(150,130,70,.8)'; for (let i = 0; i < (loc.ground.skin ? 250 : 700); i++) { const px = r() * W, py = r() * H; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 8, py - 4 - r() * 6); x.stroke(); } } }
+  paintTerrain(x,loc,P);
   return tex(c);
 }
+function paintTerrain(ctx,loc,P){for(const r of loc.ground.paint||[]){ctx.fillStyle=pattern(ctx,r.skin,4,P)||loc.ground.base;ctx.fillRect(r.x*P,r.z*P,r.w*P,r.d*P);}}
 
 export function hiddenDoorTexture() {
   const c = document.createElement('canvas'); c.width = 64; c.height = 140; const x = c.getContext('2d');

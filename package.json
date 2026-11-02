@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:editor": "node --experimental-vm-modules tests/editor-integration.mjs && node --experimental-vm-modules tests/editor-github.mjs && node --experimental-vm-modules tests/editor-render.mjs"
   },
   "keywords": [],
   "author": "",

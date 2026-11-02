@@ -10,7 +10,7 @@ function propSolids(loc, sprites) {
   const out = [];
   for (const p of loc.props) {
     if (p.box) out.push(p);
-    else if (p.furn) { const [w, d] = sprites[p.furn].footprint_m; out.push({ x: p.x, z: p.z, w, d }); } // mobilier : x, z = coin min de l'emprise
+    else if (p.furn) { const [w,d]=p.fp||sprites[p.furn].footprint_m.map(v=>v*(p.editorScale||1)); out.push({ x: p.x, z: p.z, w, d }); } // mobilier : x, z = coin min de l'emprise
     else if (p.sprite) { const m = sprites[p.sprite]; const s = p.solid ?? null;
       const [w, d] = p.fp || (s ? [s, s] : m.footprint_m); out.push({ x: p.x - w / 2, z: p.z - d / 2, w, d }); }
   }

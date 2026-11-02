@@ -17,3 +17,7 @@ Prototype. Bâtiments : sprites entiers de la maquette (v4). Intérieurs (v6) : 
 
 ## Documentation
 Voir [docs/](docs/) : `JOURNAL.md`, `CANON_ARBITRAGES.md`, `DECISION_TECHNIQUE.md`, `quartiers/DUSK_TOWN_PLAN.md`, `quartiers/DUSK_TOWN_Q1.md`, `ASSETS_CATALOGUE.md`.
+
+## Éditeur de cartes
+
+L’éditeur intégré est accessible dans [`editor/`](editor/). Il peut réellement enregistrer les cartes dans `src/data/editor-maps.json`, chargé par le jeu, via un commit GitHub ou l’écriture dans un dépôt local. [Mode d’emploi et validation](docs/EDITEUR_CARTES.md).
