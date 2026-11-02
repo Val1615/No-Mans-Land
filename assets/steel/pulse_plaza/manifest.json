@@ -668,22 +668,22 @@
   "pp_facade_a_o": {
     "file": "steel/pulse_plaza/pp_facade_a_o.webp",
     "px": [
-      800,
-      600
+      420,
+      554
     ],
     "anchor": [
-      133,
-      599
+      78,
+      553
     ],
     "footprint_m": [
       2,
-      16
+      12
     ],
     "height_m": 10,
-    "source": "GenerateImage (cursor), c7e484ac",
+    "source": "GenerateImage (cursor), c7e484ac ; recadrée sur 3 travées et redressée à la pente z (Ocre, 2026-11-02)",
     "status": "v1",
     "pilote": true,
-    "pose": "est, x 46 à 48, z 12 à 24 (entre kiosque et nouilles)"
+    "pose": "est, bord en z, 12 m (420 px), base à pente 0,70"
   },
   "pp_facade_b": {
     "file": "steel/pulse_plaza/pp_facade_b.webp",
@@ -888,5 +888,38 @@
     "status": "v1",
     "pilote": true,
     "pose": "socles autour du Holo : (13 ; 19), (15 ; 25), (33 ; 25)"
+  },
+  "pp_facade_b_o2": {
+    "file": "steel/pulse_plaza/pp_facade_b_o2.webp",
+    "px": [
+      280,
+      368
+    ],
+    "anchor": [
+      47,
+      366
+    ],
+    "footprint_m": [
+      1.5,
+      8
+    ],
+    "height_m": 7,
+    "source": "GenerateImage (cursor), e41c3d88 ; recadrée aux 2/3 et redressée à la pente z (Ocre, 2026-11-02)",
+    "status": "v1",
+    "pilote": true,
+    "pose": "ouest ou est, bord en z, 8 m (280 px), base à pente 0,70, remplace pp_facade_b_o à terme"
+  },
+  "g_pp_allee_ew": {
+    "file": "steel/pulse_plaza/g_pp_allee_ew.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 29bb62cf ; rotation 90°",
+    "status": "v1",
+    "pilote": true,
+    "pose": "allée est-ouest (z 15 à 17), bande de laiton dans le sens de l’allée"
   }
 }
