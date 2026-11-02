@@ -1,4 +1,17 @@
 {
+  "g_pp_allee": {
+    "file": "steel/pulse_plaza/g_pp_allee.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 29bb62cf",
+    "status": "v1",
+    "pilote": true,
+    "pose": "allées : x 22 à 26 de z 4 à 28 (portique vers escalier) et z 15 à 17 de x 0 à 48"
+  },
   "g_pp_dalle": {
     "file": "steel/pulse_plaza/g_pp_dalle.webp",
     "source": "GenerateImage (cursor), db485438",
@@ -20,6 +33,19 @@
     "tile_m": 4.0,
     "tuilable": true,
     "status": "v1"
+  },
+  "g_pp_dalle_sombre": {
+    "file": "steel/pulse_plaza/g_pp_dalle_sombre.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 29bb62cf",
+    "status": "v1",
+    "pilote": true,
+    "pose": "sol de base de steel_pulse à la place de g_pp_dalle_mouillee, qui reste en zones"
   },
   "g_pp_grille": {
     "file": "steel/pulse_plaza/g_pp_grille.webp",
@@ -121,6 +147,166 @@
       89,
       511
     ]
+  },
+  "gen_pp_foule_c": {
+    "file": "steel/pulse_plaza/gen_pp_foule_c.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.74,
+    "source": "GenerateImage (cursor), f6e5ba60",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (15 ; 14,5)"
+  },
+  "gen_pp_foule_d": {
+    "file": "steel/pulse_plaza/gen_pp_foule_d.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.66,
+    "source": "GenerateImage (cursor), f6e5ba60",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (19 ; 13,6)"
+  },
+  "gen_pp_foule_e": {
+    "file": "steel/pulse_plaza/gen_pp_foule_e.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.7,
+    "source": "GenerateImage (cursor), f6e5ba60",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (29 ; 15)"
+  },
+  "gen_pp_foule_f": {
+    "file": "steel/pulse_plaza/gen_pp_foule_f.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.68,
+    "source": "GenerateImage (cursor), f6e5ba60",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (14 ; 16,6)"
+  },
+  "gen_pp_foule_g": {
+    "file": "steel/pulse_plaza/gen_pp_foule_g.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.58,
+    "source": "GenerateImage (cursor), 28032a6d",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (26 ; 23,4)"
+  },
+  "gen_pp_foule_h": {
+    "file": "steel/pulse_plaza/gen_pp_foule_h.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.86,
+    "source": "GenerateImage (cursor), 28032a6d",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (18 ; 23,2)"
+  },
+  "gen_pp_foule_i": {
+    "file": "steel/pulse_plaza/gen_pp_foule_i.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.66,
+    "source": "GenerateImage (cursor), 28032a6d",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (30,5 ; 16,8)"
+  },
+  "gen_pp_foule_j": {
+    "file": "steel/pulse_plaza/gen_pp_foule_j.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.8,
+    "source": "GenerateImage (cursor), 28032a6d",
+    "status": "v1",
+    "pilote": true,
+    "pose": "figurant, remplace un clone : (27 ; 13,8)"
   },
   "gen_pp_gaspard": {
     "file": "steel/pulse_plaza/gen_pp_gaspard.webp",
@@ -371,6 +557,26 @@
     ],
     "status": "v1"
   },
+  "pp_borne_neon": {
+    "file": "steel/pulse_plaza/pp_borne_neon.webp",
+    "px": [
+      50,
+      110
+    ],
+    "anchor": [
+      24,
+      109
+    ],
+    "footprint_m": [
+      0.5,
+      0.5
+    ],
+    "height_m": 2.2,
+    "source": "GenerateImage (cursor), 34b16051",
+    "status": "v1",
+    "pilote": true,
+    "pose": "de part et d’autre de l’écran du Feed : (11 ; 11) et (33 ; 11) ; halo magenta du code"
+  },
   "pp_camera": {
     "file": "steel/pulse_plaza/pp_camera.webp",
     "source": "GenerateImage (cursor), 21699ffb (planche B)",
@@ -439,6 +645,86 @@
     ],
     "status": "v1"
   },
+  "pp_facade_a": {
+    "file": "steel/pulse_plaza/pp_facade_a.webp",
+    "px": [
+      800,
+      600
+    ],
+    "anchor": [
+      664,
+      599
+    ],
+    "footprint_m": [
+      16,
+      2
+    ],
+    "height_m": 10,
+    "source": "GenerateImage (cursor), c7e484ac",
+    "status": "v1",
+    "pilote": true,
+    "pose": "nord, x 36 à 48 (raboutée à l’Arcadius), z 0 à 2"
+  },
+  "pp_facade_a_o": {
+    "file": "steel/pulse_plaza/pp_facade_a_o.webp",
+    "px": [
+      800,
+      600
+    ],
+    "anchor": [
+      133,
+      599
+    ],
+    "footprint_m": [
+      2,
+      16
+    ],
+    "height_m": 10,
+    "source": "GenerateImage (cursor), c7e484ac",
+    "status": "v1",
+    "pilote": true,
+    "pose": "est, x 46 à 48, z 12 à 24 (entre kiosque et nouilles)"
+  },
+  "pp_facade_b": {
+    "file": "steel/pulse_plaza/pp_facade_b.webp",
+    "px": [
+      420,
+      330
+    ],
+    "anchor": [
+      343,
+      329
+    ],
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 7,
+    "source": "GenerateImage (cursor), e41c3d88",
+    "status": "v1",
+    "pilote": true,
+    "pose": "nord, x 0 à 8 puis x 4 à 12 en doublon, z 0 à 1,5"
+  },
+  "pp_facade_b_o": {
+    "file": "steel/pulse_plaza/pp_facade_b_o.webp",
+    "px": [
+      420,
+      330
+    ],
+    "anchor": [
+      74,
+      329
+    ],
+    "footprint_m": [
+      1.5,
+      8
+    ],
+    "height_m": 7,
+    "source": "GenerateImage (cursor), e41c3d88",
+    "status": "v1",
+    "pilote": true,
+    "pose": "ouest, x 0 à 1,5, z 14 à 22 (entre billboard et guérite, accès ouest laissé libre)"
+  },
   "pp_guerite": {
     "file": "steel/pulse_plaza/pp_guerite.webp",
     "source": "GenerateImage (cursor), f0df6fa8 (planche A)",
@@ -492,6 +778,26 @@
     "alpha": 0.8,
     "height_m": 3.6
   },
+  "pp_jardiniere": {
+    "file": "steel/pulse_plaza/pp_jardiniere.webp",
+    "px": [
+      90,
+      90
+    ],
+    "anchor": [
+      45,
+      89
+    ],
+    "footprint_m": [
+      1.6,
+      1.6
+    ],
+    "height_m": 1.6,
+    "source": "GenerateImage (cursor), 34b16051",
+    "status": "v1",
+    "pilote": true,
+    "pose": "à côté des bancs : (4 ; 21,5), et (40 ; 24)"
+  },
   "pp_kiosque": {
     "file": "steel/pulse_plaza/pp_kiosque.webp",
     "source": "GenerateImage (cursor), f0df6fa8 (planche A)",
@@ -508,6 +814,26 @@
       6
     ],
     "status": "v1"
+  },
+  "pp_lampadaire": {
+    "file": "steel/pulse_plaza/pp_lampadaire.webp",
+    "px": [
+      120,
+      300
+    ],
+    "anchor": [
+      59,
+      299
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 6,
+    "source": "GenerateImage (cursor), 34b16051",
+    "status": "v1",
+    "pilote": true,
+    "pose": "(8 ; 14), (8 ; 26), (40 ; 14), (36 ; 31) ; halo cyan du code centré au pied"
   },
   "pp_nouilles": {
     "file": "steel/pulse_plaza/pp_nouilles.webp",
@@ -542,5 +868,25 @@
       2
     ],
     "status": "v1"
+  },
+  "pp_statue": {
+    "file": "steel/pulse_plaza/pp_statue.webp",
+    "px": [
+      150,
+      170
+    ],
+    "anchor": [
+      74,
+      169
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 3.2,
+    "source": "GenerateImage (cursor), 34b16051",
+    "status": "v1",
+    "pilote": true,
+    "pose": "socles autour du Holo : (13 ; 19), (15 ; 25), (33 ; 25)"
   }
 }
