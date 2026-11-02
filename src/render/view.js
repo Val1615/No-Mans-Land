@@ -31,7 +31,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -104,6 +104,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
     const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
+    if (b.ecran) { const e = ecranSprite(b, m, s); if (e) { world.add(e); item.extra.push(e); } } // écran dessiné par le code (Feed de Pulse Plaza)
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
       c.scale.set(0.42, 0.42, 1); c.position.set(d.opening.x, 2.5, d.opening.z); world.add(c); item.extra.push(c);
@@ -138,7 +139,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = []; uniques = [];
+    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -171,7 +172,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.32, 0.4, 28), new THREE.MeshBasicMaterial({ color: '#e0b04a', transparent: true, opacity: 0.7 }));
       ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(d.threshold.x, 0.03, d.threshold.z); ring.userData.doorId = d.id; world.add(ring); pickables.push(ring);
       if (d.junction || d.edge) { ring.material.color.set(d.junction ? '#e0b04a' : '#b9a68a'); ring.material.opacity = d.junction ? 0.8 : 0.5; // v7 : bout de rue
-        addLabel(d.label, d.junction ? 'junction' : 'edge', () => new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte : ne cache jamais le joueur au seuil
+        if (loc.accessLabels !== false) addLabel(d.label, d.junction ? 'junction' : 'edge', () => new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); if (loc.accessLabels !== false) labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte : ne cache jamais le joueur au seuil
       if (loc.kind === 'interior') addLabel(d.label || 'Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
     // v13 : lumières au sol (néons reflétés sur la chaussée mouillée, pinceaux des projecteurs) : disques additifs étirés
@@ -191,6 +192,25 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     }
     builtFor = locId;
   }
+  // Écran dessiné par le code : une toile de la taille de l'image source, le contenu est projeté dans la dalle (parallélogramme b.ecran.coins, px source).
+  // Même ancre et même échelle que le sprite du bâtiment ; non teinté par la lumière (un écran éclaire, il n'est pas éclairé). Une page toutes les b.ecran.periode s,
+  // redessinée une fois par page (pas de planche animée, hors budget d'animations ; figé sur la première page avec « Réduire les animations »).
+  function ecranSprite(b, m, base) {
+    const E = b.ecran, c = document.createElement('canvas'); c.width = m.px[0]; c.height = m.px[1]; const x = c.getContext('2d');
+    const [tl, tr, , bl] = E.coins, W = Math.hypot(tr[0] - tl[0], tr[1] - tl[1]) | 0, H = bl[1] - tl[1];
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    const draw = k => { const P = E.pages[k % E.pages.length]; x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, c.width, c.height);
+      x.setTransform((tr[0] - tl[0]) / W, (tr[1] - tl[1]) / W, 0, 1, tl[0], tl[1]); // u le long du bord haut, v vers le bas
+      const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, P.fond[0]); g.addColorStop(1, P.fond[1]); x.fillStyle = g; x.fillRect(0, 0, W, H);
+      x.fillStyle = 'rgba(255,255,255,.05)'; for (let i = 0; i < H; i += 4) x.fillRect(0, i, W, 1); // trame d'écran
+      const img = P.image && SKIN[P.image]; if (img) { const [sx, sy, sw, sh] = P.crop, ih = H * 0.82, iw = ih * sw / sh; x.globalAlpha = 0.95; x.drawImage(img, sx, sy, sw, sh, W * 0.06, H * 0.06, iw, ih); x.globalAlpha = 1; }
+      const tx = img ? W * 0.42 : W * 0.08; x.fillStyle = '#ffffff'; x.font = `bold ${H * 0.13 | 0}px monospace`; x.fillText(P.titre, tx, H * 0.38, W - tx - 10);
+      x.fillStyle = '#f2d8ff'; x.font = `${H * 0.075 | 0}px monospace`; x.fillText(P.sous, tx, H * 0.52, W - tx - 10);
+      x.fillStyle = 'rgba(10,4,20,.75)'; x.fillRect(0, H * 0.84, W, H * 0.12); x.fillStyle = '#ffb860'; x.font = `${H * 0.06 | 0}px monospace`; x.fillText('FEED 24/7 · ' + P.bandeau, 8, H * 0.92, W - 16);
+      x.setTransform(1, 0, 0, 1, 0, 0); t.needsUpdate = true; };
+    draw(0); const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
+    s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: 0, periode: E.periode || 9 }; ecrans.push(s); return s;
+  }
   let glowT = null;
   function glowTex() { if (glowT) return glowT; const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
     g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128); return glowT = new THREE.CanvasTexture(c); }
@@ -203,6 +223,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       animate(s, true, dt, t); }
     for (const s of decor) if (!walkers.includes(s)) animate(s, false, dt, t);
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
+    if (ecrans.length && !document.body?.classList?.contains('reduce-motion')) for (const e of ecrans) { const u = e.userData.ecran, k = Math.floor(t / u.periode); if (k !== u.page) { u.page = k; u.draw(k); } }
+    animStats.ecrans = ecrans.length;
     for (const f of flick) f.m.opacity = f.base * (0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2));
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
     // planches jouées une fois (portique de la Mega-Line) : remplacent le sprite de base le temps du passage, hors budget d'animations

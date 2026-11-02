@@ -34,3 +34,13 @@ But : rapprocher la capture en jeu du concept `1_pulse_plaza.jpg`. Captures de d
 | `gen_pp_foule_j.webp` | 180 x 512 | [90, 511] | figurant, remplace un clone : (27 ; 13,8) |
 
 Les lampadaires et bornes portent leur source de lumière, sans halo au sol : le halo reste celui du code, à centrer sur l'ancre. Rien de ce qui existait n'a été régénéré.
+
+## Pose réalisée (main, src/data/pulse_plaza.js) et notes pour Ocre
+- Sol : `g_pp_dalle_sombre` en base ; `g_pp_dalle_mouillee` reste en zones (devant l'écran, au sud du Holo) ; allées `g_pp_allee` posées en `ground.paint` (format de l'éditeur de cartes) : x 22 à 26 de z 4 à 28, z 15 à 17 de x 0 à 48.
+- Transition sol / bâtiments : bande `g_pp_grille` assombrie au pied des façades, de l'Arcadius, du portique et des stands.
+- Halos : chaque halo a une source (écran, Holo, billboard, kiosque, distributeur, portique, stand, guérite, caméras, lampadaires, bornes, vitrines) ; ceux des lampadaires et des bornes sont centrés sur l'ancre ; ambres chaudes au pied des façades.
+- Figurants : `gen_pp_foule_c` à `j` aux points du tableau ; `foule_a` et `foule_b` ne servent plus qu'aux deux passants. Les 9 PNJ nommés sont inchangés.
+- Accès : plus d'étiquette sur les jonctions de la place (`accessLabels: false`) ni sur l'escalier de service ; les anneaux de seuil restent.
+- Écran du Feed : `pp_ecran_feed.webp` est un écran vierge (« contenu animé par le code ») et aucun code ne le remplissait ; la teinte de la lumière l'assombrissait encore. Le contenu est maintenant dessiné par le code dans la dalle de l'image (4 pages, une toutes les 9 s).
+- **Échelle, à reprendre par Ocre** : les variantes `_o` ne suivent pas l'axe z de la caméra (lacet 34,5°, un mètre en z vaut 0,566 m d'écran contre 0,824 en x). `pp_facade_b_o` est dessinée sur environ 12 m de z pour une emprise de 8 m, `pp_facade_a_o` sur environ 23,6 m pour 16 m ; la pente de leur base (environ 0,43) ne suit pas un bord en z (0,70 attendu). Posées aux coordonnées du tableau, elles couvraient l'accès ouest (seuil 1 ; 16) et la jonction vers Fréquence Strip (seuil 47 ; 13). Pose retenue : ouest en quatre `pp_facade_b_o` (ancres z 8, 15, 29, 36), est en `pp_facade_b_o` (ancres z 6, 26, et z 36 à l'échelle 0,5 pour ne pas masquer le stand de nouilles). `pp_facade_a_o` n'est pas posée : aucune place sur l'est sans masquer le kiosque et la jonction. Il faudrait une version `_o` d'environ 420 px de large pour 12 m de z.
+- `g_pp_allee` n'a pas de variante tournée : sur l'allée est-ouest, la bande de laiton traverse l'allée tous les 4 m au lieu de la border.
