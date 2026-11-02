@@ -158,6 +158,8 @@ function debugMega({ race, passe, cr } = {}) { const s = game.state;
   if (passe !== undefined) { if (passe) s.player.inv.pirate_implant = 1; else delete s.player.inv.pirate_implant; }
   return true; }
 { const q = new URLSearchParams(location.search); if (q.get('race') || q.get('passe')) { let fait = false; game.on(ev => { if (!fait && ev.type === 'transition') { fait = true; debugMega({ race: q.get('race') || undefined, passe: q.get('passe') ? q.get('passe') === '1' : undefined }); } }); } }
+// Mode DEV (?dev=1) : panneau chargé à la demande (ui/dev.js), invisible et inactif sinon ; sauvegardes DEV séparées (shell.js, nml_dev_save_*)
+if (new URLSearchParams(location.search).get('dev') === '1') import('./ui/dev.js').then(m => { window.__nml.dev = m.createDev({ game, world, say }); });
 // Trajet de la rame (décision Valentin) : fondu, rame qui défile, quelques secondes ; le passage a déjà eu lieu, l'écran le couvre.
 const trajet = document.createElement('div'); trajet.id = 'trajet';
 trajet.innerHTML = `<div class="tj-rame" style="background-image:url('./assets/${bman.ml_rame?.file || ''}')"></div><div class="tj-txt mono"></div>`; document.body.appendChild(trajet);

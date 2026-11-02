@@ -29,7 +29,8 @@ export function migrateOptions(raw) {
 
 export function createShell({ game, world, $, onStart, applyOptions }) {
   const LS = window.localStorage;
-  const key = s => 'nml_save_' + s;
+  const DEV = new URLSearchParams(location.search).get('dev') === '1'; // mode DEV : emplacements séparés, jamais ceux du joueur
+  const key = s => (DEV ? 'nml_dev_save_' : 'nml_save_') + s;
   const read = s => migrateSave(LS.getItem(key(s)));
   const fmt = t => t ? new Date(t).toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',', '') : '';
   const label = () => (game.state.character ? game.state.character.name + ' · ' : '') + world.LOCATIONS[game.state.location].name.replace('Dusk-Town · ', '');
