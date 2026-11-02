@@ -23,6 +23,7 @@ export function createDev({ game, world, say }) {
     <button id="dev-go">Aller</button>
     <b class="mono">Réinitialisation</b>
     <div class="dev-row"><button id="dev-snap">Instantané</button><button id="dev-rest" disabled>Restaurer</button></div>
+    <button id="dev-oublier">Oublier le mode DEV</button>
     <small id="dev-info" class="muted"></small></div>`;
   document.body.appendChild(el);
   const $ = id => el.querySelector('#' + id), info = t => { $('dev-info').textContent = t; };
@@ -33,6 +34,8 @@ export function createDev({ game, world, say }) {
   $('dev-go').onclick = () => aller($('dev-type').value, $('dev-cible').value);
   const snap = () => { instantane = game.snapshot(); $('dev-rest').disabled = false; info(`Instantané : ${nom(instantane.location)}`); return true; };
   const rest = () => { if (!instantane) return false; if (game.state.dialogue) game.closeDialogue(); game.restore(JSON.parse(JSON.stringify(instantane)), true); info('Instantané restauré'); return true; };
+  $('dev-oublier').onclick = () => { localStorage.removeItem('nml_dev_unlocked'); info('Mode DEV oublié : le bouton d\u2019Options disparaît.'); };
+  if (new URLSearchParams(location.search).get('devpanel') === '1') $('dev-box').hidden = false; // ouvert depuis Options
   $('dev-snap').onclick = snap; $('dev-rest').onclick = rest;
   for (const e of ['pointerdown', 'pointerup', 'click', 'wheel', 'touchstart']) el.addEventListener(e, ev => ev.stopPropagation());
   const st = document.createElement('style'); st.textContent = `

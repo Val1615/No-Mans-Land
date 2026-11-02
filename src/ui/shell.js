@@ -42,6 +42,10 @@ export function createShell({ game, world, $, onStart, applyOptions }) {
   let options = migrateOptions(LS.getItem('nml_options'));
   const saveOptions = () => { LS.setItem('nml_options', JSON.stringify({ v: OPT_VERSION, ...options })); applyOptions(options); };
 
+  // 5 appuis sur le numéro de version en ~3 s : débloque le bouton « Mode DEV » d'Options (comme une visite avec ?dev=1)
+  { let taps = []; const V = document.getElementById('m-version');
+    V?.addEventListener('click', () => { const t = Date.now(); taps = [...taps.filter(x => t - x < 3000), t];
+      if (taps.length >= 5) { taps = []; LS.setItem('nml_dev_unlocked', '1'); const n = document.getElementById('menu-note'); if (n) n.textContent = 'Mode DEV débloqué : bouton « Mode DEV » dans Options.'; if (sub === 'options') render(); } }); }
   let mode = 'title', sub = null; // mode : title | pause | closed
   const M = $('menu'), S = $('menu-sub');
   let before = 'title';
@@ -69,6 +73,7 @@ export function createShell({ game, world, $, onStart, applyOptions }) {
         <div class="lbl">Interface</div>${row('Mode minimal au démarrage', seg('minimal', [[false, 'Non'], [true, 'Oui']]))}${row('Taille du texte', seg('textSize', [[100, '100 %'], [115, '115 %'], [130, '130 %']]))}${row('Contraste renforcé', seg('contrast', [[false, 'Non'], [true, 'Oui']]))}
         <div class="lbl">Accessibilité</div>${row('Police', seg('readable', [[false, 'Radio'], [true, 'Lisible']]))}${row('Texte des dialogues', seg('textMode', [['instant', 'Instantané'], ['defilant', 'Défilant']]))}${row('Réduire les animations', seg('reduceMotion', [[false, 'Non'], [true, 'Oui']]))}
         <div class="lbl">Langue</div>${row('Langue', '<span class="seg"><button class="btn sel">Français</button></span>')}
+        ${LS.getItem('nml_dev_unlocked') === '1' ? `<div class="lbl">Développement</div>${row(DEV ? 'Mode DEV actif' : 'Mode DEV inactif', '<span class="seg"><button class="btn' + (DEV ? ' sel' : '') + '" id="m-dev">Mode DEV</button></span>')}` : ''}
         <p class="muted">Réglages gardés sur cet appareil, hors sauvegardes. Les effets sonores arriveront avec le combat.</p>`;
     } else if (sub === 'codex') {
       S.innerHTML = `<button class="btn m-back" data-back="1">‹ Retour</button><h2>CODEX</h2><p>Le codex se remplira en jouant : lieux, factions, peuples, objets.</p><p class="muted">Aucune entrée pour l'instant.</p>`;
@@ -82,6 +87,8 @@ export function createShell({ game, world, $, onStart, applyOptions }) {
   function flash(t) { $('menu-note').textContent = t; setTimeout(() => $('menu-note').textContent = '', 3000); }
   M.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b || b.disabled) return;
+    // Mode DEV (débloqué par une visite avec ?dev=1) : bascule par rechargement, pour garder les sauvegardes DEV séparées de celles du joueur
+    if (b.id === 'm-dev') { const u = new URL(location.href); if (DEV) { u.searchParams.delete('dev'); u.searchParams.delete('devpanel'); } else { u.searchParams.set('dev', '1'); u.searchParams.set('devpanel', '1'); } location.href = u.toString(); return; }
     if (b.id === 'm-resume') return close();
     if (b.dataset.back) { sub = null; return render(); }
     if (b.id === 'm-continue') { const l = latest(); if (l) load(l.s); return; }

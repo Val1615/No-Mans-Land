@@ -170,6 +170,7 @@ function debugMega({ race, passe, cr } = {}) { const s = game.state;
   return true; }
 { const q = new URLSearchParams(location.search); if (q.get('race') || q.get('passe')) { let fait = false; game.on(ev => { if (!fait && ev.type === 'transition') { fait = true; debugMega({ race: q.get('race') || undefined, passe: q.get('passe') ? q.get('passe') === '1' : undefined }); } }); } }
 // Mode DEV (?dev=1) : panneau chargé à la demande (ui/dev.js), invisible et inactif sinon ; sauvegardes DEV séparées (shell.js, nml_dev_save_*)
+if (new URLSearchParams(location.search).get('dev') === '1') { localStorage.setItem('nml_dev_unlocked', '1'); } // débloque le bouton « Mode DEV » d'Options
 if (new URLSearchParams(location.search).get('dev') === '1') import('./ui/dev.js').then(m => { window.__nml.dev = m.createDev({ game, world, say }); });
 // Trajet de la rame (décision Valentin) : fondu, rame qui défile, quelques secondes ; le passage a déjà eu lieu, l'écran le couvre.
 const trajet = document.createElement('div'); trajet.id = 'trajet';

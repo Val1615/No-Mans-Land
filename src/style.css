@@ -317,3 +317,4 @@ body.nml-open #msg{z-index:40} /* halte, « prototype » : au-dessus de la carte
 @keyframes tj-defile{from{transform:translate(110vw,-50%)}to{transform:translate(-110%,-50%)}}
 #trajet .tj-txt{position:absolute;left:0;right:0;bottom:18%;text-align:center;color:#f2b44a;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
 #panel .ico{width:20px;height:20px;vertical-align:middle;margin-right:5px;image-rendering:auto}
+#m-version{display:block;margin-top:6px;font-size:10px;opacity:.55;cursor:default;user-select:none;text-align:right}
