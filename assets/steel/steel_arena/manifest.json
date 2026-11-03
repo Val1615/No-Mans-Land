@@ -584,9 +584,9 @@
       10.24
     ],
     "tuilable": true,
-    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus",
+    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus ; étalonné sombre, grandes taches retirées (passe-haut)",
     "pose": "grand parvis sud (z 32 à 64), à alterner avec g_ar_parvis",
-    "note": "mat, sans reflet (zones mouillées et reflets gérés par le moteur)",
+    "note": "sombre et mat, sans reflet (zones mouillées et reflets gérés par le moteur) ; luminance moyenne ~35",
     "file": "steel/steel_arena/g_ar_dalles_usees.webp",
     "status": "v1"
   },

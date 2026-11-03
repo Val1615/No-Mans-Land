@@ -67,3 +67,6 @@ Placement des enseignes : 4 en façade nord (Neon-7, Core Stack, Vibes, cœur), 
 | `gen_fs_marius` | 1.70 | 180 x 512 | oui |
 | `gen_fs_foule_a` | 1.72 | 180 x 512 | non |
 | `gen_fs_foule_b` | 1.66 | 180 x 512 | non |
+
+## Compléments 2
+Devantures `fs_sexshop`, `fs_peep`, `fs_salon`, `fs_lovehotel`, `fs_clubprive`, `fs_bouche_nord` (côté nord, faces x pente 0,33, 8 à 10 m de haut) et `fs_bas_nouilles`, `fs_bas_fleurs`, `fs_bas_tabac` (premier plan sud, 2 m). Couches néon fixes `_neon.webp` pour chaque enseigne, y compris `fs_club_neon` et `fs_cabines_neon`. Cinq figurants `gen_fs_client_imper`, `gen_fs_client_costume`, `gen_fs_passante`, `gen_fs_passant_canne`, `gen_fs_videur_prive`. Détail, ancres et poses dans FREQUENCE_STRIP.md, section Compléments 2. Aucune animation nouvelle (budget 8 sur 8).

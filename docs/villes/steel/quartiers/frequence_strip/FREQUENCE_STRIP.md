@@ -130,8 +130,8 @@ Code couleur d'un quartier rouge **[décision Valentin]** : les enseignes domine
 
 | fichier | px | ancre | pose suggérée (x ; z en m) |
 |---|---|---|---|
-| `fs_club.webp` | 500 x 565 | [498, 564] | façade nord, à l’est du Core Stack : x 51 à 61, z 0 à 1,5 ; porte au centre, vers (56 ; 1,5) ; l’auvent ne dépasse pas sur l’accès |
-| `fs_cabines.webp` | 400 x 432 | [398, 431] | façade sud, entre Le Retour et l’hôtel capsule, à l’est de la fresque d’Ocre : x 38 à 46, z 22,5 à 24 ; porte à droite, vers (44,5 ; 22,5) |
+| `fs_club.webp` (+ `fs_club_neon.webp`) | 500 x 565 | [498, 564] | façade nord, x 54 à 64, z 0 à 1,5 (à la place de fs_fn3 et fs_fn4) ; porte au centre, vers (59 ; 1,5) ; l’auvent ne dépasse pas sur l’accès |
+| `fs_cabines.webp` (+ `fs_cabines_neon.webp`) | 400 x 432 | [398, 431] | façade sud, entre Le Retour et l’hôtel capsule, à l’est de la fresque d’Ocre : x 38 à 46, z 22,5 à 24 ; porte à droite, vers (44,5 ; 22,5) |
 | `gen_fs_rouge.webp` | 180 x 512 | [90, 511] | grappe devant le club : (55 ; 3,2) |
 | `gen_fs_rubis.webp` | 180 x 512 | [90, 511] | grappe devant le club : (56,6 ; 3,6) |
 | `gen_fs_fourrure.webp` | 180 x 512 | [90, 511] | grappe devant le club : (55,8 ; 4,4) |
@@ -148,3 +148,50 @@ Code couleur d'un quartier rouge **[décision Valentin]** : les enseignes domine
 | `fs_carton.webp` | 60 x 60 | [30, 30] | ruelles de côté, près de l’hôtel capsule |
 
 Portraits 192 x 192 : `portrait-gen_fs_<id>` pour les huit PNJ. Planche de contrôle : `/workspace/nml-shots/strip_arena_complements.png`.
+
+## Compléments 2 : devantures étroites, premier plan bas, figurants [proposition]
+Rue étroite et sombre, éclairée seulement par les enseignes. Couleurs **[décision Valentin]** : rouges et roses dominants, ambre en touche, violet en accent. Budget d'animations à 8 sur 8 : aucune nouvelle animation. Chaque enseigne est une image fixe, avec sa couche `_neon.webp` séparée (même taille, même ancre que la façade) que le code pose en mode additif. Elle reste allumée en fixe tant que le budget est plein.
+
+**Enseignes et jeux de mots** [proposition] : le texte est dans la couche néon seulement, en lettres nettes, la façade porte un panneau éteint.
+- `fs_club` : « L'Effeuillée ».
+- `fs_cabines` : « Cabines sans C.A.G.E. » (les caméras du Strip ne marchent pas, c'est écrit dessus).
+- `fs_sexshop` : « Jouets calibrés », clin d'œil au « sourire calibré » du Neon-7. Vitrines de jouets stylisés, rien de graphique.
+- `fs_peep` : « 3 secondes », en vertical, d'après « Trois secondes pour m'aimer ». Cabines à crédits, fente à crédits près de la porte.
+- `fs_salon` : « Tombé de rideau », salon à rideaux rouges et bar à hôtesses.
+- `fs_lovehotel` : « L'Heure exquise », hôtel facturé à l'heure. Le rideau de lanières couvre une alcôve de stationnement, ce n'est pas un accès.
+- `fs_clubprive` : « Club 404 », club privé où l'on ne trouve jamais les membres.
+- Premier plan sud : « Nouilles de minuit », « Excuses » (des fleurs pour se faire pardonner en sortant), « À crédit » (tabac et recharges).
+
+**Portes.** Chaque porte est décrite par `porte_coins` (haut gauche, haut droit, bas droit, bas gauche, en px du sprite). Les deux comptoirs du premier plan ont `comptoir_coins` et `guichet_coins` : on y sert depuis la rue, sans entrer. Aucune enseigne ne couvre une porte.
+
+**Côté nord**, de l'ouest à l'est, rue prolongée à 80 m : `fs_facade_nord` 0 à 8, `fs_bouche_nord` 7 à 11 (bouche le trou de x 8 à 10), Neon-7 10 à 22, `fs_sexshop` 22 à 30, `fs_peep` 30 à 34, `fs_salon` 34 à 38, Core Stack 38 à 50, `fs_bouche_nord` 50 à 54, `fs_club` 54 à 64, `fs_lovehotel` 64 à 72, `fs_clubprive` 72 à 80.
+
+**Côté sud, premier plan.** Trois devantures basses de 2 m au plus, à la manière de murets et d'auvents bas, pour ne masquer aucun personnage.
+
+| fichier | px | ancre | enseigne | pose suggérée (x ; z en m) |
+|---|---|---|---|---|
+| `fs_sexshop.webp` | 400 x 632 | [398, 631] | Jouets calibrés | façade nord, x 22 à 30, z 0 à 1,5 (à la place de fs_fn1) ; porte au centre, vers (26 ; 1,5) |
+| `fs_peep.webp` | 200 x 466 | [198, 465] | Trois secondes | façade nord, x 30 à 34, z 0 à 1,5 (moitié ouest de fs_fn2) ; porte à gauche, vers (31 ; 1,5) |
+| `fs_salon.webp` | 200 x 466 | [198, 465] | Tombé de rideau | façade nord, x 34 à 38, z 0 à 1,5 (moitié est de fs_fn2) ; porte à gauche, vers (35 ; 1,5) ; l’auvent reste au-dessus de 2,6 m |
+| `fs_lovehotel.webp` | 400 x 632 | [398, 631] | L’Heure exquise | façade nord, rue allongée : x 64 à 72, z 0 à 1,5 ; porte à gauche, vers (65,5 ; 1,5) ; le rideau de lanières n’est pas un accès |
+| `fs_clubprive.webp` | 400 x 582 | [398, 581] | Club 404 | façade nord, rue allongée : x 72 à 80, z 0 à 1,5 ; double porte au centre, vers (76 ; 1,5) |
+| `fs_bouche_nord.webp` | 200 x 466 | [198, 465] |  | bouche le trou de la façade nord de x 8 à 10 : poser de x 7 à 11, z 0 à 1,5, derrière fs_fn0 et fs_neon7 (1 m de recouvrement de chaque côté, le rideau métallique tombe dans le trou) ; second exemplaire possible de x 50 à 54, entre le Core Stack et fs_club |
+| `fs_bas_nouilles.webp` | 400 x 232 | [398, 231] | Nouilles de minuit | côté sud, premier plan : x 0 à 8, z 17 à 18, devant fs_fs0 ; comptoir tourné vers la rue |
+| `fs_bas_fleurs.webp` | 200 x 166 | [198, 165] | Excuses (fleurs pour se faire pardonner) | côté sud, premier plan : x 8 à 12, z 17 à 18 ; passage au centre, vers (10 ; 17) |
+| `fs_bas_tabac.webp` | 200 x 166 | [198, 165] | À crédit | côté sud, premier plan : x 12 à 16, z 17 à 18, juste à l’ouest du bar Le Retour ; guichet tourné vers la rue |
+
+Chaque façade avec enseigne a sa couche `<clé>_neon.webp`, de la même taille et avec la même ancre.
+
+**Figurants** [proposition] : cinq silhouettes en plus des rôles déjà faits, tous habillés, sans réplique.
+
+| fichier | px | ancre | pose suggérée |
+|---|---|---|---|
+| `gen_fs_client_imper.webp` | 180 x 512 | [90, 511] | hésite à 3 m de la porte des cabines, tourné vers la rue : (41 ; 19,5) |
+| `gen_fs_client_costume.webp` | 180 x 512 | [90, 511] | devant le peep-show, regarde par-dessus l’épaule : (32,5 ; 3,4) |
+| `gen_fs_passante.webp` | 180 x 512 | [90, 511] | passante, traverse de (20 ; 8) à (28 ; 16) |
+| `gen_fs_passant_canne.webp` | 180 x 512 | [90, 511] | passant lent le long du trottoir nord, de x 40 à x 60 sur z 7 |
+| `gen_fs_videur_prive.webp` | 180 x 512 | [90, 511] | videur du club privé, à droite de la double porte : (78 ; 2,6) |
+
+**Sols assombris.** `g_fs_asphalte` (presque noir), `g_fs_trottoir_etroit` (pavés sombres) et `g_ar_dalles_usees` (anthracite) sont étalonnés sombres, et les grandes taches qui se répétaient d'une tuile à l'autre sont retirées par un passe-haut. Ils restent mats : le mouillé et les reflets sont au moteur.
+
+Planche de contrôle : `/workspace/nml-shots/strip_complements2.png` (maquette de pose en bas, pas une capture du jeu).

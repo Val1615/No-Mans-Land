@@ -130,7 +130,7 @@
     "face": "x",
     "pente": 0.33,
     "source": "GenerateImage (cursor), 4be7261e",
-    "pose": "façade nord, à l’est du Core Stack : x 51 à 61, z 0 à 1,5 ; porte au centre, vers (56 ; 1,5) ; l’auvent ne dépasse pas sur l’accès",
+    "pose": "façade nord, x 54 à 64, z 0 à 1,5 (à la place de fs_fn3 et fs_fn4) ; porte au centre, vers (59 ; 1,5) ; l’auvent ne dépasse pas sur l’accès",
     "neon_coins": [
       [
         126,
@@ -744,9 +744,9 @@
       10.24
     ],
     "tuilable": true,
-    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus",
+    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus ; étalonné sombre, grandes taches retirées (passe-haut)",
     "pose": "chaussée (z 8 à 16)",
-    "note": "mat, sans reflet (zones mouillées et reflets gérés par le moteur)",
+    "note": "sombre et mat, sans reflet (zones mouillées et reflets gérés par le moteur) ; luminance moyenne ~17",
     "file": "steel/frequence_strip/g_fs_asphalte.webp",
     "status": "v1"
   },
@@ -793,9 +793,9 @@
       6.4
     ],
     "tuilable": true,
-    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus",
+    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus ; étalonné sombre, grandes taches retirées (passe-haut)",
     "pose": "trottoirs étroits des deux côtés de la rue (z 6 à 8 et z 16 à 18), dalles de longueurs inégales",
-    "note": "mat, sans reflet (zones mouillées et reflets gérés par le moteur)",
+    "note": "sombre et mat, sans reflet (zones mouillées et reflets gérés par le moteur) ; luminance moyenne ~30",
     "file": "steel/frequence_strip/g_fs_trottoir_etroit.webp",
     "status": "v1"
   },
@@ -1347,6 +1347,900 @@
     ],
     "npc": "gen_fs_yun",
     "source": "recadrage de gen_fs_yun.webp",
+    "status": "v1"
+  },
+  "fs_club_neon": {
+    "px": [
+      500,
+      565
+    ],
+    "anchor": [
+      498,
+      564
+    ],
+    "couche_de": "fs_club",
+    "texte": "L’EFFEUILLÉE",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_club",
+    "note": "couche néon séparée, même taille et même ancre que fs_club ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_club_neon.webp",
+    "status": "v1"
+  },
+  "fs_cabines_neon": {
+    "px": [
+      400,
+      432
+    ],
+    "anchor": [
+      398,
+      431
+    ],
+    "couche_de": "fs_cabines",
+    "texte": "CABINES SANS C.A.G.E.",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_cabines",
+    "note": "couche néon séparée, même taille et même ancre que fs_cabines ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_cabines_neon.webp",
+    "status": "v1"
+  },
+  "fs_sexshop": {
+    "px": [
+      400,
+      632
+    ],
+    "anchor": [
+      398,
+      631
+    ],
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 10,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 3311958e",
+    "pose": "façade nord, x 22 à 30, z 0 à 1,5 (à la place de fs_fn1) ; porte au centre, vers (26 ; 1,5)",
+    "neon_coins": [
+      [
+        127,
+        225
+      ],
+      [
+        277,
+        275
+      ],
+      [
+        277,
+        335
+      ],
+      [
+        127,
+        286
+      ]
+    ],
+    "porte_coins": [
+      [
+        165,
+        358
+      ],
+      [
+        240,
+        383
+      ],
+      [
+        240,
+        565
+      ],
+      [
+        165,
+        540
+      ]
+    ],
+    "vitrine_g_coins": [
+      [
+        34,
+        318
+      ],
+      [
+        137,
+        352
+      ],
+      [
+        137,
+        490
+      ],
+      [
+        34,
+        456
+      ]
+    ],
+    "vitrine_d_coins": [
+      [
+        264,
+        394
+      ],
+      [
+        369,
+        428
+      ],
+      [
+        369,
+        566
+      ],
+      [
+        264,
+        531
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_sexshop.webp",
+    "status": "v1",
+    "enseigne": "Jouets calibrés",
+    "note": "vitrines de jouets stylisés, non graphiques ; enseigne peinte éteinte, néon dans fs_sexshop_neon"
+  },
+  "fs_peep": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "footprint_m": [
+      4,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 771d62f5",
+    "pose": "façade nord, x 30 à 34, z 0 à 1,5 (moitié ouest de fs_fn2) ; porte à gauche, vers (31 ; 1,5)",
+    "neon_coins": [
+      [
+        65,
+        133
+      ],
+      [
+        94,
+        142
+      ],
+      [
+        94,
+        268
+      ],
+      [
+        65,
+        259
+      ]
+    ],
+    "porte_coins": [
+      [
+        31,
+        268
+      ],
+      [
+        72,
+        281
+      ],
+      [
+        72,
+        419
+      ],
+      [
+        31,
+        406
+      ]
+    ],
+    "fente_credits_coins": [
+      [
+        76,
+        322
+      ],
+      [
+        88,
+        326
+      ],
+      [
+        88,
+        369
+      ],
+      [
+        76,
+        365
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_peep.webp",
+    "status": "v1",
+    "enseigne": "Trois secondes",
+    "note": "cabines et fente à crédits ; les voyants de cabine sont peints, le néon vertical est dans fs_peep_neon"
+  },
+  "fs_lovehotel": {
+    "px": [
+      400,
+      632
+    ],
+    "anchor": [
+      398,
+      631
+    ],
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 10,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 64fca15d",
+    "pose": "façade nord, rue allongée : x 64 à 72, z 0 à 1,5 ; porte à gauche, vers (65,5 ; 1,5) ; le rideau de lanières n’est pas un accès",
+    "neon_coins": [
+      [
+        55,
+        38
+      ],
+      [
+        345,
+        133
+      ],
+      [
+        345,
+        181
+      ],
+      [
+        55,
+        85
+      ]
+    ],
+    "porte_coins": [
+      [
+        51,
+        378
+      ],
+      [
+        105,
+        395
+      ],
+      [
+        105,
+        505
+      ],
+      [
+        51,
+        488
+      ]
+    ],
+    "rideau_parking_coins": [
+      [
+        148,
+        409
+      ],
+      [
+        360,
+        479
+      ],
+      [
+        360,
+        601
+      ],
+      [
+        148,
+        531
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_lovehotel.webp",
+    "status": "v1",
+    "enseigne": "L’Heure exquise",
+    "note": "cœurs des fenêtres peints fixes ; tubes de l’enseigne éteints, néon dans fs_lovehotel_neon"
+  },
+  "fs_salon": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "footprint_m": [
+      4,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 777965c5",
+    "pose": "façade nord, x 34 à 38, z 0 à 1,5 (moitié est de fs_fn2) ; porte à gauche, vers (35 ; 1,5) ; l’auvent reste au-dessus de 2,6 m",
+    "neon_coins": [
+      [
+        51,
+        186
+      ],
+      [
+        147,
+        218
+      ],
+      [
+        147,
+        254
+      ],
+      [
+        51,
+        222
+      ]
+    ],
+    "porte_coins": [
+      [
+        51,
+        275
+      ],
+      [
+        96,
+        290
+      ],
+      [
+        96,
+        404
+      ],
+      [
+        51,
+        389
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_salon.webp",
+    "status": "v1",
+    "enseigne": "Tombé de rideau",
+    "note": "salon à rideaux rouges, bar à hôtesses ; néon dans fs_salon_neon"
+  },
+  "fs_clubprive": {
+    "px": [
+      400,
+      582
+    ],
+    "anchor": [
+      398,
+      581
+    ],
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 9,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 4cdb2ad8",
+    "pose": "façade nord, rue allongée : x 72 à 80, z 0 à 1,5 ; double porte au centre, vers (76 ; 1,5)",
+    "neon_coins": [
+      [
+        42,
+        56
+      ],
+      [
+        359,
+        160
+      ],
+      [
+        359,
+        218
+      ],
+      [
+        42,
+        113
+      ]
+    ],
+    "porte_coins": [
+      [
+        128,
+        262
+      ],
+      [
+        276,
+        311
+      ],
+      [
+        276,
+        537
+      ],
+      [
+        128,
+        488
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_clubprive.webp",
+    "status": "v1",
+    "enseigne": "Club 404",
+    "note": "club privé ; filets violets de la façade peints fixes (accent) ; tubes de l’enseigne éteints, néon dans fs_clubprive_neon"
+  },
+  "fs_bouche_nord": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "footprint_m": [
+      4,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 99a3d0b4",
+    "pose": "bouche le trou de la façade nord de x 8 à 10 : poser de x 7 à 11, z 0 à 1,5, derrière fs_fn0 et fs_neon7 (1 m de recouvrement de chaque côté, le rideau métallique tombe dans le trou) ; second exemplaire possible de x 50 à 54, entre le Core Stack et fs_club",
+    "porte_coins": [
+      [
+        53,
+        305
+      ],
+      [
+        148,
+        336
+      ],
+      [
+        148,
+        446
+      ],
+      [
+        53,
+        415
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bouche_nord.webp",
+    "status": "v1",
+    "note": "pièce de remplissage sans enseigne ; rideau métallique fermé (accès de service, futur intérieur possible)"
+  },
+  "fs_bas_nouilles": {
+    "px": [
+      400,
+      232
+    ],
+    "anchor": [
+      398,
+      231
+    ],
+    "footprint_m": [
+      8,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 4a5ad132",
+    "pose": "côté sud, premier plan : x 0 à 8, z 17 à 18, devant fs_fs0 ; comptoir tourné vers la rue",
+    "neon_coins": [
+      [
+        6,
+        5
+      ],
+      [
+        394,
+        133
+      ],
+      [
+        394,
+        163
+      ],
+      [
+        6,
+        35
+      ]
+    ],
+    "comptoir_coins": [
+      [
+        4,
+        52
+      ],
+      [
+        396,
+        182
+      ],
+      [
+        396,
+        230
+      ],
+      [
+        4,
+        100
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_nouilles.webp",
+    "status": "v1",
+    "enseigne": "Nouilles de minuit",
+    "note": "devanture basse, 2 m au plus, ne masque aucun personnage ; auvent bas peint, sans halo"
+  },
+  "fs_bas_fleurs": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 4a5ad132",
+    "pose": "côté sud, premier plan : x 8 à 12, z 17 à 18 ; passage au centre, vers (10 ; 17)",
+    "neon_coins": [
+      [
+        15,
+        10
+      ],
+      [
+        186,
+        67
+      ],
+      [
+        186,
+        82
+      ],
+      [
+        15,
+        26
+      ]
+    ],
+    "porte_coins": [
+      [
+        82,
+        62
+      ],
+      [
+        122,
+        75
+      ],
+      [
+        122,
+        135
+      ],
+      [
+        82,
+        122
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_fleurs.webp",
+    "status": "v1",
+    "enseigne": "Excuses (fleurs pour se faire pardonner)",
+    "note": "kiosque bas de fleurs et parfums, 2 m au plus"
+  },
+  "fs_bas_tabac": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 4a5ad132",
+    "pose": "côté sud, premier plan : x 12 à 16, z 17 à 18, juste à l’ouest du bar Le Retour ; guichet tourné vers la rue",
+    "neon_coins": [
+      [
+        8,
+        9
+      ],
+      [
+        193,
+        70
+      ],
+      [
+        193,
+        89
+      ],
+      [
+        8,
+        28
+      ]
+    ],
+    "guichet_coins": [
+      [
+        67,
+        63
+      ],
+      [
+        126,
+        82
+      ],
+      [
+        126,
+        111
+      ],
+      [
+        67,
+        91
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_tabac.webp",
+    "status": "v1",
+    "enseigne": "À crédit",
+    "note": "tabac et recharges de crédit, muret et auvent bas, 2 m au plus"
+  },
+  "fs_sexshop_neon": {
+    "px": [
+      400,
+      632
+    ],
+    "anchor": [
+      398,
+      631
+    ],
+    "couche_de": "fs_sexshop",
+    "texte": "JOUETS CALIBRÉS",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_sexshop",
+    "note": "couche néon séparée, même taille et même ancre que fs_sexshop ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_sexshop_neon.webp",
+    "status": "v1"
+  },
+  "fs_peep_neon": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "couche_de": "fs_peep",
+    "texte": "3 SECONDES",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_peep",
+    "note": "couche néon séparée, même taille et même ancre que fs_peep ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_peep_neon.webp",
+    "status": "v1"
+  },
+  "fs_lovehotel_neon": {
+    "px": [
+      400,
+      632
+    ],
+    "anchor": [
+      398,
+      631
+    ],
+    "couche_de": "fs_lovehotel",
+    "texte": "L’HEURE EXQUISE",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_lovehotel",
+    "note": "couche néon séparée, même taille et même ancre que fs_lovehotel ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_lovehotel_neon.webp",
+    "status": "v1"
+  },
+  "fs_salon_neon": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "couche_de": "fs_salon",
+    "texte": "TOMBÉ DE RIDEAU",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_salon",
+    "note": "couche néon séparée, même taille et même ancre que fs_salon ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_salon_neon.webp",
+    "status": "v1"
+  },
+  "fs_clubprive_neon": {
+    "px": [
+      400,
+      582
+    ],
+    "anchor": [
+      398,
+      581
+    ],
+    "couche_de": "fs_clubprive",
+    "texte": "CLUB 404",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_clubprive",
+    "note": "couche néon séparée, même taille et même ancre que fs_clubprive ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_clubprive_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_nouilles_neon": {
+    "px": [
+      400,
+      232
+    ],
+    "anchor": [
+      398,
+      231
+    ],
+    "couche_de": "fs_bas_nouilles",
+    "texte": "NOUILLES DE MINUIT",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_nouilles",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_nouilles ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_nouilles_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_fleurs_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_fleurs",
+    "texte": "EXCUSES",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_fleurs",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_fleurs ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_fleurs_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_tabac_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_tabac",
+    "texte": "À CRÉDIT",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_tabac",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_tabac ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_tabac_neon.webp",
+    "status": "v1"
+  },
+  "gen_fs_client_imper": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.76,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 7a6f1677",
+    "pose": "hésite à 3 m de la porte des cabines, tourné vers la rue : (41 ; 19,5)",
+    "file": "steel/frequence_strip/gen_fs_client_imper.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_fs_client_imper": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_client_imper",
+    "source": "recadrage de gen_fs_client_imper.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_client_imper.webp",
+    "status": "v1"
+  },
+  "gen_fs_client_costume": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.74,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 7a6f1677",
+    "pose": "devant le peep-show, regarde par-dessus l’épaule : (32,5 ; 3,4)",
+    "file": "steel/frequence_strip/gen_fs_client_costume.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_fs_client_costume": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_client_costume",
+    "source": "recadrage de gen_fs_client_costume.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_client_costume.webp",
+    "status": "v1"
+  },
+  "gen_fs_passante": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 7a6f1677",
+    "pose": "passante, traverse de (20 ; 8) à (28 ; 16)",
+    "file": "steel/frequence_strip/gen_fs_passante.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_fs_passante": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_passante",
+    "source": "recadrage de gen_fs_passante.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_passante.webp",
+    "status": "v1"
+  },
+  "gen_fs_passant_canne": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 7a6f1677",
+    "pose": "passant lent le long du trottoir nord, de x 40 à x 60 sur z 7",
+    "file": "steel/frequence_strip/gen_fs_passant_canne.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_fs_passant_canne": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_passant_canne",
+    "source": "recadrage de gen_fs_passant_canne.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_passant_canne.webp",
+    "status": "v1"
+  },
+  "gen_fs_videur_prive": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.95,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 7a6f1677",
+    "pose": "videur du club privé, à droite de la double porte : (78 ; 2,6)",
+    "file": "steel/frequence_strip/gen_fs_videur_prive.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_fs_videur_prive": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_videur_prive",
+    "source": "recadrage de gen_fs_videur_prive.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_videur_prive.webp",
     "status": "v1"
   }
 }

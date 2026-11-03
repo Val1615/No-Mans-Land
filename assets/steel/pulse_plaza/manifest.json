@@ -791,7 +791,7 @@
     "source": "GenerateImage (cursor), a1642572",
     "status": "v1",
     "pilote": true,
-    "pose": "EN HAUTEUR sur la façade est uniquement, jamais au sol au milieu de la place : fixé sur pp_facade_a_o ou pp_facade_b_o2, x 46, z 20 à 24 ; bas des supports à 4 m ; l’ancre est le pied de la façade porteuse sous le bord sud (46 ; 24)",
+    "pose": "EN HAUTEUR sur la façade est uniquement, jamais au sol au milieu de la place : fixé sur pp_facade_a_o ou pp_facade_b_o2, x 48, z 20 à 24 ; bas des supports à 4 m ; l’ancre est le pied de la façade porteuse sous le bord sud (48 ; 24)",
     "face": "z",
     "pente": 0.7,
     "elevation_m": 4,
@@ -1420,19 +1420,19 @@
     "source": "GenerateImage (cursor), 833d9c08",
     "status": "v1",
     "pilote": true,
-    "pose": "façade est, à la place du pp_mur_bas_o de 4 m : bord x 46 à 46,4, z 20 à 24 ; ancre au coin bas (46 ; 24)",
+    "pose": "façade est, à la place du pp_mur_bas_o de 4 m : bord x 48 à 48,4, z 20 à 24 ; ancre au coin bas (48 ; 24)",
     "face": "z",
     "pente": 0.7,
     "porte": "pp_ecran_haut_e2",
     "fixation_ecran": {
       "sprite": "pp_ecran_haut_e2",
       "ancre_monde": [
-        46,
+        48,
         24
       ],
       "meme_ancre": true,
       "elevation_m": 4,
-      "note": "poser pp_ecran_haut_e2 avec la même ancre au sol (46 ; 24) : le bas de ses supports tombe sur les platines laiton en haut des mâts, à 4 m"
+      "note": "poser pp_ecran_haut_e2 avec la même ancre au sol (48 ; 24) : le bas de ses supports tombe sur les platines laiton en haut des mâts, à 4 m"
     }
   }
 }

@@ -78,7 +78,7 @@ Planche de contrôle (pas une capture du jeu) : `/workspace/nml-shots/pulse_mobi
 Verdict de Rivet sur capture : la pente 0,33 des faces x est la bonne.
 - `pp_facade_a` recisaillée de 0,54 à 0,33 : 687 x 488, ancre [607, 486].
 - `pp_facade_b` recisaillée de 0,51 à 0,33 : 359 x 282, ancre [297, 280].
-- `pp_ecran_haut_e2` : même design que e1, face z pente 0,70, 4 m de z, 138 x 394, ancre [0, 393]. Il se pose **en hauteur sur la façade est**, jamais au sol au milieu de la place (bas des supports à 4 m, `elevation_m`). L'ancre est le pied de la façade porteuse sous le bord sud de l'écran, par exemple (46 ; 24). Zone d'écran vide, `ecran_rect` [13, 17, 125, 143], `ecran_coins` [[13, 95], [125, 17], [125, 64], [13, 143]]. e1 est conservé.
+- `pp_ecran_haut_e2` : même design que e1, face z pente 0,70, 4 m de z, 138 x 394, ancre [0, 393]. Il se pose **en hauteur sur la façade est**, jamais au sol au milieu de la place (bas des supports à 4 m, `elevation_m`). L'ancre est le pied de la façade porteuse sous le bord sud de l'écran, par exemple (48 ; 24). Zone d'écran vide, `ecran_rect` [13, 17, 125, 143], `ecran_coins` [[13, 95], [125, 17], [125, 64], [13, 143]]. e1 est conservé.
 - `pp_muret` (face x, 8 m, 1,2 m) : 400 x 200, ancre [398, 199]. `pp_muret_o` (face z, 8 m) : 275 x 260, ancre [0, 259]. Même logique que pp_mur_bas : ancre au coin, raccord bord à bord, pièce suivante ancrée 8 m plus loin.
 Planche de contrôle : `/workspace/nml-shots/pulse_retouches.png`.
 
@@ -92,10 +92,10 @@ Planche de contrôle : `/workspace/nml-shots/pulse_retouches.png`.
 
 ## Murets de 4 m et support d'écran (lot creation/pulse-murets4)
 - `pp_muret_4` (face x, 4 m, 1,2 m, pente 0,33) : 200 x 134, ancre [198, 133]. `pp_muret_4_o` (face z, 4 m, pente 0,70) : 138 x 165, ancre [0, 163]. Faits des deux embouts des murets de 8 m (2 m chacun, joints sur un panneau), pas d'une coupe au milieu. Ancre au coin, raccord bord à bord avec pp_muret et pp_muret_o : la pièce suivante s'ancre 4 m plus loin. Usage prévu : remettre l'escalier sud à sa place et resserrer l'accès ouest à 2 m.
-- `pp_support_ecran_o` (face z, 4 m) : 138 x 307, ancre [0, 305]. Muret de 4 m et deux mâts fins en métal sombre et laiton jusqu'à 4 m, avec platines de fixation et traverse haute. Remplace le pp_mur_bas_o de 4 m sous l'écran est. Pose : façade est, bord x 46, z 20 à 24, ancre au coin bas (46 ; 24). `pp_ecran_haut_e2` se pose avec la même ancre au sol (46 ; 24) : le bas de ses supports tombe à 4 m (`fixation_ecran.elevation_m`), sur les platines.
+- `pp_support_ecran_o` (face z, 4 m) : 138 x 307, ancre [0, 305]. Muret de 4 m et deux mâts fins en métal sombre et laiton jusqu'à 4 m, avec platines de fixation et traverse haute. Remplace le pp_mur_bas_o de 4 m sous l'écran est. Pose : façade est, bord x 48, z 20 à 24, ancre au coin bas (48 ; 24). `pp_ecran_haut_e2` se pose avec la même ancre au sol (48 ; 24) : le bas de ses supports tombe à 4 m (`fixation_ecran.elevation_m`), sur les platines.
 Planche de contrôle : `/workspace/nml-shots/pulse_murets4.png`.
 
 ## Revue 3 (main) : murets de 4 m et support d'écran
 - Sud, trame de 4 m : `pp_muret` x 0 à 16, `pp_muret_4` x 16 à 20, accès x 20 à 28 (escalier x 22 à 26, seuil 24 ; 35 et Noor 27 ; 31 remis à leur place d'origine), `pp_muret_4` x 28 à 32, `pp_muret` x 32 à 48.
 - Ouest : `pp_facade_a_o` z 0 à 12, accès z 12 à 16 (4 m ; seuil déplacé de 16 à 14 pour le centrer : 2 m ne tombe pas sur la trame de 4 m), `pp_facade_b_o2` z 16 à 24 et 24 à 32, `pp_muret_4_o` z 32 à 36.
-- Est : `pp_muret_o` z 0 à 8, `pp_muret_4_o` z 8 à 12, jonction Strip z 12 à 16, `pp_muret_4_o` z 16 à 20, `pp_support_ecran_o` z 20 à 24 (à la place du `pp_mur_bas_o`), `pp_muret_4_o` z 24 à 28, `pp_muret_o` z 28 à 36. `pp_ecran_haut_e2` sur la même ancre que son support : (48,4 ; 24), sur la ligne x 48 du bord est (x 46 du manifeste laisserait la ligne du bord ouverte sur z 20 à 24).
+- Est : `pp_muret_o` z 0 à 8, `pp_muret_4_o` z 8 à 12, jonction Strip z 12 à 16, `pp_muret_4_o` z 16 à 20, `pp_support_ecran_o` z 20 à 24 (à la place du `pp_mur_bas_o`), `pp_muret_4_o` z 24 à 28, `pp_muret_o` z 28 à 36. `pp_ecran_haut_e2` sur la même ancre que son support : (48 ; 24), sur la ligne x 48 du bord est (manifeste corrigé, x 46 auparavant).
