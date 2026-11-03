@@ -24,21 +24,21 @@ const PYL = [[10, 40], [86, 40], [24, 58], [72, 58]], LAMP = [[4, 34], [92, 34],
 const POOL = ['gen_ar_foule_a', 'gen_pp_foule_a', 'gen_fs_foule_a', 'gen_pp_foule_c', 'gen_ml_fan', 'gen_ar_foule_b', 'gen_pp_foule_e', 'gen_df_foule_a', 'gen_fs_passante', 'gen_pp_foule_g', 'gen_ml_foule_a', 'gen_pp_foule_b', 'gen_fs_foule_b', 'gen_pp_foule_i', 'gen_df_foule_b', 'gen_pp_foule_d', 'gen_ml_foule_b', 'gen_pp_foule_f', 'gen_fs_client_imper', 'gen_pp_foule_h', 'gen_pp_foule_j', 'gen_fs_client_costume'];
 const FIG = (pts, k0, role) => pts.map(([x, z, f], i) => ({ sprite: POOL[(k0 + i * 5) % POOL.length], x, z, face: f ?? ((k0 + i) % 2 ? -1 : 1), role }));
 export const BUILDINGS_ARENA = [
-  // toit et gradins supérieurs d'Ocre (809e51c), 42 m, 4 m en retrait ; peints avant tout (fond) dans l'ordre conseillé : toit z, toit x d'ouest en est, angles
-  // le premier segment porte le solide de toute l'enceinte (z < 29)
-  B('ar_toit_e', '', 'ar_toit_z', 84, 6, 4, 16, { named: false, fond: true, solid: [] }),
-  ...[4, 20, 36, 52, 68].map((x, i) => B(`ar_toit_s${i}`, '', 'ar_toit_x', x, 22, 16, 4, { named: false, fond: true, solid: i ? [] : [{ x: 0, z: 0, w: 96, d: 29 }] })),
-  B('ar_toit_se', '', 'ar_toit_angle_se', 84, 22, 4, 4, { named: false, fond: true, solid: [], ancre: [-4, 0] }),
-  B('ar_toit_so', '', 'ar_toit_angle_so', 0, 22, 4, 4, { named: false, fond: true, solid: [] }),
-  // enceinte : façade est, segments sud d'ouest en est, retour ouest, angle, écrans (ordre conseillé par Ocre)
-  B('ar_f_retour', '', 'ar_facade_retour_ouest', 0, 26, 4, 4, { named: false, solid: [{ x: 0, z: 29, w: 4, d: 1 }] }),
-  AP('ar_f_est', 'ar_facade_courbe_z', 92, 22, 1, 16, { solid: [{ x: 91, z: 0, w: 1, d: 22 }] }),
-  AP('ar_f_s0', 'ar_facade_courbe_x', 20, 30, 16, 1), AP('ar_f_s1', 'ar_facade_courbe_x', 36, 30, 16, 1),
-  AP('ar_entree', 'ar_facade_entree', 52, 30, 16, 1, { label: 'Entrée de l\u2019Arena', named: true, ecran: { coins: [[135, 1026], [627, 1189], [627, 1291], [135, 1128]], periode: 7, marque: 'STEEL ARENA', pages: FRONTON } }),
-  AP('ar_f_s2', 'ar_facade_courbe_x', 68, 30, 16, 1), AP('ar_f_s3', 'ar_facade_courbe_x', 84, 30, 16, 1),
-  B('ar_f_angle', '', 'ar_facade_angle', 84, 22, 8, 8, { named: false, ancre: [-8, 0] }), // ancre au raccord sud (84 ; 30), emprise x 84-92 z 22-30
-  AP('ar_ecran_s', 'ar_ecran_geant_x', 18, 30.8, 12, 0.5, { solid: [], ecran: { periode: 9, marque: 'ARENA LIVE', pages: BATTLE } }),
-  AP('ar_ecran_e', 'ar_ecran_geant_z', 92.8, 19, 0.5, 10, { solid: [], ecran: { periode: 11, decale: 1, marque: 'ARENA LIVE', pages: BATTLE } }),
+  // enceinte basse d'Ocre (58703a8, clés ar2_) : façades de 15 m sur les mêmes lignes, dôme surbaissé (rive 15,6 m, faîte 23 m) couvrant x 0-92, z 0-30
+  // dôme en six morceaux peints avant tout (fond), d'ouest en est puis ar2_toit_z avant l'angle ; le premier porte le solide de toute l'enceinte (z < 29)
+  B('ar_toit_so', '', 'ar2_toit_angle_so', 0, 0, 20, 30, { named: false, fond: true, solid: [{ x: 0, z: 0, w: 96, d: 29 }] }),
+  ...[20, 36, 52].map((x, i) => B(`ar_toit_x${i}`, '', 'ar2_toit_x', x, 0, 16, 30, { named: false, fond: true, solid: [] })),
+  B('ar_toit_z', '', 'ar2_toit_z', 68, 0, 24, 14, { named: false, fond: true, solid: [] }),
+  B('ar_toit_se', '', 'ar2_toit_angle_se', 68, 14, 24, 16, { named: false, fond: true, solid: [] }),
+  // façades : est, sud d'ouest en est, retour ouest, angle ; écrans en dernier
+  AP('ar_f_est', 'ar2_facade_courbe_z', 92, 22, 1, 16, { solid: [] }),
+  AP('ar_f_s0', 'ar2_facade_courbe_x', 20, 30, 16, 1), AP('ar_f_s1', 'ar2_facade_courbe_x', 36, 30, 16, 1),
+  AP('ar_entree', 'ar2_facade_entree', 52, 30, 16, 1, { label: 'Entrée de l\u2019Arena', named: true, ecran: { coins: [[93, 414], [685, 609], [685, 705], [93, 510]], periode: 7, marque: 'STEEL ARENA', pages: FRONTON } }),
+  AP('ar_f_s2', 'ar2_facade_courbe_x', 68, 30, 16, 1), AP('ar_f_s3', 'ar2_facade_courbe_x', 84, 30, 16, 1),
+  B('ar_f_retour', '', 'ar2_facade_retour_ouest', 0, 26, 4, 4, { named: false, solid: [{ x: 0, z: 29, w: 4, d: 1 }] }),
+  B('ar_f_angle', '', 'ar2_facade_angle', 84, 22, 8, 8, { named: false, ancre: [-8, 0] }), // ancre au raccord sud (84 ; 30), emprise x 84-92 z 22-30
+  AP('ar_ecran_s', 'ar2_ecran_geant_x', 18, 30.8, 9.6, 0.5, { solid: [], ecran: { periode: 9, marque: 'ARENA LIVE', pages: BATTLE } }),
+  AP('ar_ecran_e', 'ar2_ecran_geant_z', 92.8, 19, 0.5, 8, { solid: [], ecran: { periode: 11, decale: 1, marque: 'ARENA LIVE', pages: BATTLE } }),
   // bord ouest : façades basses de Steel (dos de Pulse Plaza) le long de x 0, arrivée ar_ouest libre (z 42 à 46)
   B('ar_bord_o0', '', 'pp_facade_a_o', 0, 30, 2, 12, { named: false }),
   B('ar_bord_o1', '', 'pp_facade_b_o', 0, 46, 1.5, 8, { named: false }), B('ar_bord_o2', '', 'pp_facade_b_o2', 0, 54, 1.5, 8, { named: false }),
@@ -122,9 +122,9 @@ export const LOCATIONS_ARENA = {
     walkers: [ ...[0, 8, 16, 24, 32, 40, 48].map((t0, i) => ({ sprite: ['gen_ar_foule_a', 'gen_pp_foule_b', 'gen_ar_foule_b', 'gen_fs_foule_a', 'gen_ml_fan', 'gen_pp_foule_h', 'gen_df_foule_a'][i], path: [[50, 49], [50, 44.6], [38, 44.6], [38, 41.6], [49.4, 41.6], [49.4, 38.6], [38, 38.6], [38, 35.6], [49.4, 35.6], [49.4, 32.9], [44, 32.9]], speed: 0.3, t0, aller: true, role: 'file' })),
       { sprite: 'gen_ar_foule_a', path: [[3, 62.2], [94, 62.2]], speed: 0.6, t0: 3 }, { sprite: 'gen_pp_foule_c', path: [[93, 63.2], [3, 63.2]], speed: 0.6, t0: 10 } ],
     spawn: { player: { x: 1, z: 44 }, companion: { x: 1, z: 45 } }, city: 'steel',
-    // plan d'arrivée : à 30 px/m (24 en mobile) les façades (33 m d'image) remplissent l'écran et cachent le toit ; à l'arrivée, plan large à 15 px/m qui regarde 40 m devant le joueur :
-    // le toit d'Ocre dépasse au-dessus des façades, la foule de l'écran ouest et du parvis est en bas ; dès les premiers pas, retour en douceur au cadre de jeu habituel
-    cadre: { arrivee: { mobile: { ppm: 15, avance: 40, u: [-12, 50] }, desktop: { ppm: 15, avance: 40, u: [10, 30] } } },
+    // plan d'arrivée : même avec l'enceinte basse (ar2, 15 m), l'ovale fait 92 m de large ; au cadre de jeu (30 px/m, 24 en mobile) on n'en voit que l'angle ouest depuis le départ.
+    // À l'arrivée, plan large à 15 px/m qui regarde 40 m devant le joueur : ovale entier + dôme + foule du parvis ; dès les premiers pas, retour en douceur au cadre habituel
+    cadre: { arrivee: { mobile: { ppm: 4, avance: 12, u: [26, 30] }, desktop: { ppm: 12, avance: 10, u: [26, 30] } } },
     arrive: { from: 'steel_strip', text: 'La Steel Arena. L\u2019enceinte noire mange tout le nord ; quatre faisceaux cyan balaient le plafond du sarcophage. « Human Corp sponsorise le sourire. »' } },
 };
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });

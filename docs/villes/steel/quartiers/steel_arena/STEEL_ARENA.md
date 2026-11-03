@@ -70,3 +70,10 @@ Statut : proposition d'Ocre, à poser par le code. Elle répond à la revue de d
 Planche de contrôle : `/workspace/nml-shots/arena_enceinte_basse.png` (maquette de pose hors jeu avec figurants gen_ar_* pour l'échelle, pas une capture). Raccords du toit vérifiés en recomposant les morceaux à leurs ancres contre le rendu entier : 2 px de trou, 6 px en trop, 18 px de chevauchement sur 5,26 millions.
 
 Limites : la façade est s'arrête à z 6 comme avant, le bout nord-est du toit (z 0 à 6) n'a pas de façade dessous, il n'est visible qu'en bord de silhouette ; la texture de façade est agrandie et reste un peu douce de près.
+
+## Pose retenue (ar2)
+
+- Les pièces `ar2_` remplacent les `ar_` dans `steel_arena` (les `ar_` restent dans les assets, plus posées) : dôme en six morceaux (`ar2_toit_angle_so`, trois `ar2_toit_x`, `ar2_toit_z`, `ar2_toit_angle_se`) en `fond: true`, z 0→30 ; façades 15 m sur les mêmes emprises et lignes ; écrans géants `ar2_ecran_geant_x/z` (coins lus au manifeste, contenu au code) ; fronton aux coins `[[93,414],[685,609],[685,705],[93,510]]`.
+- Moteur : `src/core/catalogue.js` ne faisait passer en bâtiments que `pp|fs|ar|df|ml_` ; `ar2_` ajouté (même chargement pour le jeu et l'éditeur).
+- Plan d'arrivée gardé, recalé : sans lui, au départ (1, 44) le cadre de jeu (30 px/m, 24 en mobile) ne montre que l'angle ouest (ovale de 92 m). Desktop 12 px/m, avance 10 ; mobile 4 px/m, avance 12 ; u [26, 30]. Les noms (PNJ, services) sont masqués tant que le plan large domine, les sorties restent.
+- Coin nord-est : la façade est s'arrête à z 6 ; en jeu, au bord est (95, 31), la coupe tombe en haut d'écran, sombre sur fond noir, sans trou clair. Une pièce z 0→6 fermerait la silhouette, non bloquante.

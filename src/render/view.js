@@ -425,7 +425,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     }
     for (const m of solids) for (const mt of [].concat(m.material)) { const o = mt.opacity; mt.opacity = o + (m.userData.targetOpacity - o) * 0.3; mt.depthWrite = mt.opacity > 0.9; }
   }
-  let ppm = 30, camCible = null, plan = 0, planLoc = null, planSort = false, planPos = [0, 0]; // plan : poids du plan d'arrivée (1 à l'arrivée, 0 après les premiers pas) // camCible : point du sol au centre de l'écran (contrôle des tests)
+  let ppm = 30, camCible = null, plan = 0, planLoc = null, planSort = false, planPos = [0, 0], planLarge = false; // plan : poids du plan d'arrivée (1 à l'arrivée, 0 après les premiers pas) // camCible : point du sol au centre de l'écran (contrôle des tests)
   function resize() {
     const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false);
     ppm = w < 700 ? UNITS.camera.pxPerMeterMobile : UNITS.camera.pxPerMeterDesktop;
@@ -475,6 +475,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     if (CA) { cadrer(target, CA, CA.ppm || ppm); zoomCadre = CA.ppm || null; }
     if (PA) { const k = plan * plan * (3 - 2 * plan), zA = PA.ppm || ppm, tA = cadrer(new THREE.Vector3(s.player.x, 0, s.player.z), PA, zA);
       target.lerp(tA, k); zoomCadre = 1 / ((1 - k) / (zoomCadre || ppm) + k / zA); }
+    planLarge = !!PA && plan > 0.5; // plan large d'arrivée : les noms (PNJ, services) sont masqués, seules les sorties restent ; ils reviennent au premier pas
     camCible = [+target.x.toFixed(2), +target.z.toFixed(2)];
     // mobile : quand le dialogue est ouvert, le cadre remonte pour garder joueur et PNJ visibles au-dessus du panneau
     const dlg = document.getElementById('dialogue');
@@ -498,6 +499,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const toScr = p => { const v = p.clone().project(cam); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; };
     for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; l.el.dataset.off = ''; if (!vis) continue; const q = toScr(l.getPos()); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = q.x, ly = q.y;
       const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'), npc = l.el.classList.contains('npc');
+      if (planLarge && !sortie) { l.el.hidden = true; continue; }
       if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; }
       if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx));
       let foot = null; if (npc && l.foot) foot = toScr(l.foot());

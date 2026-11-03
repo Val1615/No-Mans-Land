@@ -28,7 +28,7 @@ with sync_playwright() as p:
         ok(st['total']>=1 and st['on']<=(8 if mob else 16) and st['ecrans']==3 and st['projecteurs']==4,f'{name} animations : {st["on"]} planches animées sur {st["total"]} (plafond {"8" if mob else "16"}), 3 écrans code (2 géants + fronton), 4 faisceaux de pylône',st)
         ok(E("window.__nml.view.masques()")==[],f'{name} aucun personnage masqué par un bâtiment',E("window.__nml.view.masques()"))
         ov=E("""(()=>{const L=window.__nml.world.LOCATIONS.steel_arena,r=[];const S=L.buildings.flatMap(b=>(b.solid??[{x:b.x,z:b.z,w:b.w,d:b.d}]).map(s=>({...s,id:b.id})));
-          for(let i=0;i<S.length;i++)for(let j=i+1;j<S.length;j++){const a=S[i],b=S[j];if(a.id==='ar_toit_s0'||b.id==='ar_toit_s0')continue;if(a.x<b.x+b.w-1e-6&&b.x<a.x+a.w-1e-6&&a.z<b.z+b.d-1e-6&&b.z<a.z+a.d-1e-6)r.push(a.id+'/'+b.id)}return r})()""")
+          for(let i=0;i<S.length;i++)for(let j=i+1;j<S.length;j++){const a=S[i],b=S[j];if(a.id==='ar_toit_so'||b.id==='ar_toit_so')continue;if(a.x<b.x+b.w-1e-6&&b.x<a.x+a.w-1e-6&&a.z<b.z+b.d-1e-6&&b.z<a.z+a.d-1e-6)r.push(a.id+'/'+b.id)}return r})()""")
         ok(not ov,f'{name} aucun chevauchement de solides',ov)
         E("window.__nml.game.moveTo(88,46)"); t0=time.time()
         while time.time()-t0<60 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-88,p.z-46)>1.2})()"): time.sleep(.3)
