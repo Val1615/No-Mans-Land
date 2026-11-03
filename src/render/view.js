@@ -418,7 +418,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     }
     for (const m of solids) for (const mt of [].concat(m.material)) { const o = mt.opacity; mt.opacity = o + (m.userData.targetOpacity - o) * 0.3; mt.depthWrite = mt.opacity > 0.9; }
   }
-  let ppm = 30;
+  let ppm = 30, camCible = null; // camCible : point du sol au centre de l'écran (contrôle des tests)
   function resize() {
     const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false);
     ppm = w < 700 ? UNITS.camera.pxPerMeterMobile : UNITS.camera.pxPerMeterDesktop;
@@ -451,6 +451,9 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const loc = LOCATIONS[s.location];
     const target = camOverride ? new THREE.Vector3(camOverride.x, 0, camOverride.z) : new THREE.Vector3(s.player.x, 0, s.player.z);
     if (loc.kind === 'interior' && !camOverride) target.set(loc.size.w / 2, 0, loc.size.d / 2);
+    // loc.cadre : { mobile|desktop: { x: [min, max], z: [min, max] } } : le cadre suit le joueur mais reste sur la rue (pas de vide aux arrivées par les bouts)
+    if (loc.cadre && !camOverride) { const C = (innerWidth < 700 ? loc.cadre.mobile : loc.cadre.desktop) || loc.cadre; if (C.x) target.x = Math.min(C.x[1], Math.max(C.x[0], target.x)); if (C.z) target.z = Math.min(C.z[1], Math.max(C.z[0], target.z)); }
+    camCible = [+target.x.toFixed(2), +target.z.toFixed(2)];
     // mobile : quand le dialogue est ouvert, le cadre remonte pour garder joueur et PNJ visibles au-dessus du panneau
     const dlg = document.getElementById('dialogue');
     let wantShift = 0;
@@ -622,7 +625,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);
       for(const h of hits){const s=h.object;const img=s.userData.img|| (s===player?'player':s.userData.npc?NPCS.find(n=>n.id===s.userData.npc)?.sprite:null);if(img&&h.uv&&alphaAt(img,h.uv.x,h.uv.y)<.3)continue;
       return {id:s.userData.buildingId||s.userData.editorId};}return null;
-    }, joue, joueEtat, animStats, masqueEn, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
+    }, joue, joueEtat, animStats, masqueEn, camCible: () => camCible, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
     facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
     // rectangle écran (px CSS) d'un personnage, pour les contrôles au pixel
     actorRect: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who);

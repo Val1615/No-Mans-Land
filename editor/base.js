@@ -5,7 +5,7 @@ const copy=o=>JSON.parse(JSON.stringify(o));
 export const REFERENCE_LOCATIONS=['dusk_q1','dusk_q2','dusk_q3','dusk_q4'];
 export const REFERENCE_INTERIORS=['clinic_in','bar_in','mara_in','grocery_in','guet_in','atelier_in','citerne_in'];
 // Clés de lieu purement narratives ou d'interface : elles restent dans le code du jeu et ne passent pas par l'éditeur.
-export const NATIVE_LOCATION_KEYS=['city','arrive','labelsProches','accessLabels'];
+export const NATIVE_LOCATION_KEYS=['city','arrive','labelsProches','accessLabels','cadre'];
 export const REGION_NAMES={dusk:'Dusk-Town',steel:'Steel',autre:'Autres zones'};
 const exteriorRegion=l=>l.city==='steel'||/^(steel_|sv_)/.test(l.id)?'steel':/^dusk_/.test(l.id)?'dusk':'autre';
 // Région de chaque zone : un extérieur par son identifiant / sa ville, un intérieur par l'extérieur auquel ses portes mènent.

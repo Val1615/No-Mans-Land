@@ -27,13 +27,13 @@ export const BUILDINGS_STRIP = [
   // côté sud, premier plan (front z 24)
   BAS('fs_nouilles', 'Nouilles de minuit', 'fs_bas_nouilles', 0, 8), BAS('fs_fleurs', 'Excuses', 'fs_bas_fleurs', 8, 4), BAS('fs_tabac', 'À crédit', 'fs_bas_tabac', 12, 4),
   B('fs_retour', 'Le Retour', 'fs_retour', 16, 18, 8, 6),
-  BAS('fs_bas1', '', 'fs_bas_tabac', 24, 4, { named: false }), // répétitions sans néon, en attendant d'autres devantures basses d'Ocre
+  BAS('fs_couvert', 'Bien couvert', 'fs_bas_preservatifs', 24, 4), // suite d'Ocre (15f934f) : huit devantures basses toutes différentes, à la place des répétitions
   B('fs_fresque_vibes', 'Fresque inachevée', 'fs_fresque_vibes', 28, 23.4, 6, 0.6), // caméo Ocre : mur de fresque au bord sud (x 28-34), média de Vibes, aucune animation
-  BAS('fs_bas2', '', 'fs_bas_fleurs', 34, 4, { named: false }),
+  BAS('fs_shots', 'Shot de grâce', 'fs_bas_shots', 34, 4),
   B('fs_cabines', 'Cabines sans C.A.G.E.', 'fs_cabines', 38, 22.5, 8, 1.5),
-  BAS('fs_bas3', '', 'fs_bas_nouilles', 46, 8, { named: false }),
+  BAS('fs_billets', 'Billets doux', 'fs_bas_distributeur', 46, 4), BAS('fs_massages', 'Mains de fée', 'fs_bas_massages', 50, 4),
   B('fs_capsules', 'Hôtel capsule', 'fs_capsules', 54, 18, 6, 6),
-  BAS('fs_bas4', '', 'fs_bas_tabac', 60, 4, { named: false }), BAS('fs_bas5', '', 'fs_bas_nouilles', 64, 8, { named: false }), BAS('fs_bas6', '', 'fs_bas_fleurs', 72, 4, { named: false }), BAS('fs_bas7', '', 'fs_bas_tabac', 76, 4, { named: false }),
+  BAS('fs_laverie', 'Blanchiment', 'fs_bas_laverie', 60, 8), BAS('fs_gage', 'Mont-de-pitié', 'fs_bas_gage', 68, 4), BAS('fs_perruques', 'Faux-semblants', 'fs_bas_perruques', 72, 4), BAS('fs_implants', 'Rechromage', 'fs_bas_implants', 76, 4),
   // rue
   B('fs_tapis', '', 'fs_tapis', 14, 6, 4, 2, { solid: [], named: false }),
   B('fs_stand_brochettes', 'Brochettes de Yun', 'fs_stand_brochettes', 8, 14, 4, 4),
@@ -63,6 +63,14 @@ export const CLOSED_STRIP = {
   fs_cabines: 'Cabines sans C.A.G.E. Pas de caméra, pas de garde, pas d\u2019engagement. Un rideau, et c\u2019est complet.',
   fs_nouilles: 'Nouilles de minuit. Le bouillon fume, le comptoir donne sur la rue. Rien à payer tant que tu ne t\u2019assois pas.',
   fs_fleurs: 'Excuses. Des fleurs pour ceux qui sortent d\u2019ici et rentrent chez eux. Les bouquets les plus chers sont les plus petits.',
+  fs_couvert: 'Bien couvert. Préservatifs et « tonifiants » au comptoir. Le vendeur te souhaite bonne chance sans lever les yeux.',
+  fs_shots: 'Shot de grâce. Trois verres alignés, un seul a une étiquette. Le barman dit que c\u2019est la surprise.',
+  fs_billets: 'Billets doux. Un distributeur rafistolé au ruban rose. Il donne des billets, ou il les garde, selon son humeur.',
+  fs_massages: 'Mains de fée. Un rideau de perles et une lampe tamisée. « Tarif à la minute, pourboire à la conscience. »',
+  fs_laverie: 'Blanchiment. Laverie ouverte toute la nuit. Personne ne vient pour le linge.',
+  fs_gage: 'Mont-de-pitié. Montres, implants, alliances. Le prêteur pèse tout, même les excuses.',
+  fs_perruques: 'Faux-semblants. Perruques et costumes. On ressort quelqu\u2019un d\u2019autre, au même prix.',
+  fs_implants: 'Rechromage. Réparateur d\u2019implants. « Danse, sois plus chrome. » La garantie tient jusqu\u2019au trottoir.',
   fs_tabac: 'À crédit. Tabac, recharges, tickets. Le guichet sert depuis la rue et ne rend jamais la monnaie exacte.',
 };
 // Sol : chaussée sombre g_fs_asphalte en grandes tuiles (10,24 m, aucun damier lisible), trottoirs étroits g_fs_trottoir_etroit (tuile 2,56 x 6,4 m gardée),
@@ -99,7 +107,7 @@ export const LOCATIONS_STRIP = {
       { id: 'fs_n_lovehotel', building: 'fs_lovehotel', effet: 'pulse', intensite: 0.85, periode: 5 },
       { id: 'fs_n_clubprive', building: 'fs_clubprive', effet: 'clignote', intensite: 0.9, periode: 4.04 }, // « 404 » qui s'éteint par moments
       { id: 'fs_n_cabines', building: 'fs_cabines', effet: 'gresille', intensite: 0.8, decale: 0.4 },
-      ...['fs_bas1', 'fs_bas2', 'fs_bas3', 'fs_bas4', 'fs_bas5', 'fs_bas6', 'fs_bas7'].map(b => ({ id: b + '_n', building: b, effet: 'eteint' })),
+      { id: 'fs_billets_n', building: 'fs_billets', effet: 'gresille' }, { id: 'fs_implants_n', building: 'fs_implants', effet: 'clignote', periode: 3.3 }, // les six autres devantures basses : néon fixe (automatique)
       // démo du contour par le même fichier (sans calque _neon), derrière ?dev=1
       { id: 'fs_n_neon7', building: 'fs_neon7', effet: 'saute', saute: [0.42, 0.58], couleur: ROSE, intensite: 0.28, periode: 3, dev: true },
       { id: 'fs_n_retour', building: 'fs_retour', effet: 'pulse', couleur: AMBRE, intensite: 0.25, periode: 4, decale: 0.5, dev: true } ],
@@ -113,6 +121,9 @@ export const LOCATIONS_STRIP = {
     walkers: [ { sprite: 'gen_fs_foule_a', path: [[4, 9.75], [67, 9.75]], speed: 0.8, t0: 2 }, { sprite: 'gen_fs_foule_b', path: [[66, 8.75], [5, 8.75]], speed: 0.7, t0: 8 },
       { sprite: 'gen_fs_passante', path: [[21, 8.2], [27, 11.6]], speed: 0.9, t0: 1 }, { sprite: 'gen_fs_passant_canne', path: [[40, 7.4], [52.6, 7.4]], speed: 0.35, t0: 4 } ],
     spawn: { player: { x: 1, z: 10 }, companion: { x: 1, z: 11 } }, city: 'steel',
+    // revue Régie : cadre borné sur la rue (arrivées ouest et est sans vide) ; étiquettes des groupes serrés à l'approche (3 m), comme Pulse Plaza
+    cadre: { mobile: { x: [9, 71], z: [9, 10] }, desktop: { x: [17, 63], z: [12, 14] } },
+    labelsProches: { ids: ['fs_rouge', 'fs_rubis', 'fs_fourrure', 'fs_racoleur', 'fs_flic_a', 'fs_flic_b', 'fs_racoleuse', 'fs_mac'], r: 3 },
     arrive: { from: 'steel_pulse', text: 'Fréquence Strip. Néons mouillés, publicités qui chantent plus fort que les gens. Deux basses se battent au milieu de la rue.' } },
 };
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
@@ -134,15 +145,15 @@ export const NPCS_STRIP = [ // aucun n'est Vibes ni Tron ; positions hors de l'o
   P('fs_fusible', 'Fusible', 'gen_ml_fusible', 9, 5.4, [9, 9]),
   P('fs_ocre', 'Ocre', 'gen_fs_ocre', 27.5, 19.8, [30, 23.4]), // caméo du studio, sans mécanique, devant sa fresque
   P('fs_marius', 'Vieux Marius', 'gen_fs_marius', 60.8, 17.2, [56, 12]),
-  // compléments d'Ocre : grappe devant L'Effeuillée, rabatteuse des cabines et son patron un peu en retrait, patrouille qui regarde ailleurs
-  P('fs_rouge', 'Rouge', 'gen_fs_rouge', 55, 7.7, [57, 12]),
-  P('fs_rubis', 'Rubis', 'gen_fs_rubis', 56.6, 8.1, [55, 12]),
-  P('fs_fourrure', 'Zibeline', 'gen_fs_fourrure', 55.8, 8.9, [58, 13]),
-  P('fs_racoleur', 'Le rabatteur', 'gen_fs_racoleur', 60.6, 7.6, [60, 12]),
+  // compléments d'Ocre : grappe devant L'Effeuillée (étalée le long de l'horizontale de l'écran : étiquettes côte à côte), rabatteuse des cabines et son patron un peu en retrait, patrouille qui regarde ailleurs
+  P('fs_rouge', 'Rouge', 'gen_fs_rouge', 53.6, 9.4, [57, 12]),
+  P('fs_rubis', 'Rubis', 'gen_fs_rubis', 59.4, 6.9, [55, 12]),
+  P('fs_fourrure', 'Zibeline', 'gen_fs_fourrure', 56.4, 7.6, [58, 13]),
+  P('fs_racoleur', 'Le rabatteur', 'gen_fs_racoleur', 64, 8, [60, 12]),
   P('fs_racoleuse', 'La rabatteuse', 'gen_fs_racoleuse', 46.8, 20.2, [44, 16]),
   P('fs_mac', 'Monsieur Velours', 'gen_fs_mac', 48.6, 19.6, [46, 20]),
-  P('fs_flic_a', 'Agente Brehm', 'gen_fs_flic_a', 66, 12.6, [74, 16]),
-  P('fs_flic_b', 'Agent Kessler', 'gen_fs_flic_b', 67.4, 13.4, [74, 17]),
+  P('fs_flic_a', 'Agente Brehm', 'gen_fs_flic_a', 65, 12.2, [74, 16]),
+  P('fs_flic_b', 'Agent Kessler', 'gen_fs_flic_b', 69.4, 12.4, [74, 17]),
 ];
 const D = (t1, t2) => ({ start: { text: t1, options: [ { label: 'Et sinon ?', next: 'b' }, { label: 'Au revoir.', next: 'end' } ] }, b: { text: t2, options: [ { label: 'Au revoir.', next: 'end' } ] } });
 const D4 = (...t) => Object.fromEntries(t.map((x, i) => [i ? 'r' + i : 'start', { text: x, options: [ ...(i < t.length - 1 ? [{ label: 'Et sinon ?', next: 'r' + (i + 1) }] : []), { label: 'Au revoir.', next: 'end' } ] }]));

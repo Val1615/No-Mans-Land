@@ -17,9 +17,9 @@ with sync_playwright() as p:
         errs=[]; ctx=br.new_context(viewport={'width':vp[0],'height':vp[1]},has_touch=mob,is_mobile=mob); pg=ctx.new_page(); E=pg.evaluate
         pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:m.type=='error' and errs.append(m.text))
         start(pg,''); go(pg,'steel_strip',16,10)
-        ok(E("window.__nml.view.animStats.enseignes")==12,f'{name} : sans ?dev=1 : 10 calques _neon d Ocre (L Effeuillée en 3 morceaux), démo absente, répétitions éteintes',E("window.__nml.view.animStats.enseignes"))
+        ok(E("window.__nml.view.animStats.enseignes")==20,f'{name} : sans ?dev=1 : 18 calques _neon d Ocre (L Effeuillée en 3 morceaux, 8 devantures basses du sud), démo absente',E("window.__nml.view.animStats.enseignes"))
         start(pg,'?dev=1'); go(pg,'steel_strip',16,10)
-        st=E("window.__nml.view.animStats"); ok(st['enseignes']==16,f'{name} : Strip ?dev=1 : + démo Neon-7 (3 morceaux) et Retour',st)
+        st=E("window.__nml.view.animStats"); ok(st['enseignes']==24,f'{name} : Strip ?dev=1 : + démo Neon-7 (3 morceaux) et Retour',st)
         a=[E("window.__nml.view.codeAnims().neons") for _ in range(12) if not time.sleep(.15)]
         ok(len({tuple(x) for x in a})>2 and all(0<=v<=1 for x in a for v in x),f'{name} : luminosité des contours animée par le code',a[:3])
         if mob: ok(st['on']<=8,f'{name} : budget mobile animStats.on <= 8 (Strip, enseignes code hors budget)',st)

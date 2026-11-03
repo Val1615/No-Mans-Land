@@ -17,3 +17,8 @@ Huit pièces nouvelles, toutes différentes, pour remplacer les répétitions `f
 Jeux de mots : « Bien couvert » (préservatifs), « Shot de grâce », « Billets doux » (le distributeur trafiqué), « Mains de fée », « Blanchiment » (la laverie), « Mont-de-pitié » (le vieux mont-de-piété, sans pitié), « Faux-semblants » (perruques et costumes), « Rechromage », d'après « Danse, sois plus chrome ».
 
 Planche de contrôle : `/workspace/nml-shots/strip_sud_suite.png` (maquette de pose en bas, pas une capture du jeu).
+
+## Pose retenue de la suite (main, revue Régie)
+- Les huit devantures basses sont posées comme proposé (BAS, front z 24) : `fs_couvert` (Bien couvert) x 24-28, `fs_shots` 34-38, `fs_billets` 46-50, `fs_massages` 50-54, `fs_laverie` 60-68, `fs_gage` (Mont-de-pitié) 68-72, `fs_perruques` 72-76, `fs_implants` 76-80. Les répétitions au néon éteint sont retirées. Néons fixes, sauf Billets doux (grésille) et Rechromage (clignote).
+- Cadre de départ (`cadre`) borné sur la rue, en 390 comme en 1280 : arrivée ouest et arrivée est sans vide au centre.
+- Étiquettes à l'approche (3 m, `labelsProches`, comme Pulse Plaza) pour Rouge, Rubis, Zibeline, le rabatteur, la rabatteuse, Monsieur Velours, Brehm et Kessler. La grappe et la patrouille sont étalées le long de l'horizontale de l'écran pour que les étiquettes restent côte à côte.

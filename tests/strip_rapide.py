@@ -37,6 +37,14 @@ with sync_playwright() as p:
                 time.sleep(1)
             ok(not M,'view.masques() vide : aucun PNJ ni figurant caché par une façade (10 s de passants)',sorted(M))
         pg.screenshot(path=OUT+f'{name}_arrivee.png')
+        # revue Régie : cadre de départ sur la rue (pas de vide), étiquettes des groupes serrés lisibles
+        LAB='''(()=>{const r=[...document.querySelectorAll('.wlabel.npc')].filter(e=>!e.hidden&&e.offsetWidth).map(e=>[e.textContent,e.getBoundingClientRect()]);const o=[];
+          for(let i=0;i<r.length;i++)for(let j=i+1;j<r.length;j++){const a=r[i][1],b=r[j][1];if(a.left<b.right&&b.left<a.right&&a.top<b.bottom+2&&b.top<a.bottom+2)o.push(r[i][0]+'/'+r[j][0])}return o})()'''
+        c=E("window.__nml.view.camCible()"); ok(c and 8.9<=c[0]<=71.1 and 9<=c[1]<=14.1,f'{name} arrivée ouest : cadre centré sur la rue',c)
+        for (px,pz,qui) in [(56,11,'Rouge/Rubis/Zibeline'),(66.6,11.4,'Brehm/Kessler'),(56.2,9.2,'Rouge/Rubis/Zibeline (au milieu)')]:
+            E(f"(()=>{{const g=window.__nml.game,s=g.snapshot();s.player.x={px};s.player.z={pz};g.restore(s,true)}})()"); time.sleep(1.2)
+            o=E(LAB); ok(not o,f'{name} étiquettes {qui} : aucune superposée',o)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=2;s.player.z=10;g.restore(s,true)})()"); time.sleep(1)
         E("window.__nml.game.moveTo(30,12)"); time.sleep(6); pg.screenshot(path=OUT+f'{name}_milieu.png')
         fps=E("new Promise(r=>{let k=0;const t0=performance.now();const f=()=>{k++;if(performance.now()-t0<3000)requestAnimationFrame(f);else r(k*1000/(performance.now()-t0))};requestAnimationFrame(f)})")
         st=E("({...window.__nml.view.animStats})"); print(f'   {name} fps={fps:.1f} enseignes animées {st}')
@@ -46,7 +54,7 @@ with sync_playwright() as p:
         pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-78)<1.3 and abs(pz[1]-12.5)<1.3,f'{name} traversée ouest -> est à pied',pz)
         pg.screenshot(path=OUT+f'{name}_est.png')
         E("window.__nml.game.useDoor('fs_est')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_arena',f'{name} grille est -> Steel Arena',E("window.__nml.state.location"))
-        E("window.__nml.game.useDoor('ar_ouest')"); time.sleep(2); pz=E("[window.__nml.state.location,window.__nml.state.player.x]"); ok(pz[0]=='steel_strip' and pz[1]>75,f'{name} retour de l Arena au bout est du Strip',pz)
+        E("window.__nml.game.useDoor('ar_ouest')"); time.sleep(2); c=E("window.__nml.view.camCible()"); ok(c and c[0]<=71.1,f'{name} arrivée est : cadre centré sur la rue',c); pz=E("[window.__nml.state.location,window.__nml.state.player.x]"); ok(pz[0]=='steel_strip' and pz[1]>75,f'{name} retour de l Arena au bout est du Strip',pz)
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=2;s.player.z=10;g.restore(s,true)})()"); time.sleep(1); E("window.__nml.game.useDoor('fs_ouest')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_pulse',f'{name} retour vers Pulse Plaza',E("window.__nml.state.location"))
         ok(not errs,f'{name} aucune erreur JS',errs[:3]); ctx.close()
     print(f'{n}/{n+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)
