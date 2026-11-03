@@ -122,7 +122,7 @@ Clé de sprite `gen_fs_<id>`. Aucun d'eux n'est Vibes ni Tron, aucun ne cite d'i
 `concepts/maquette_frequence_strip_iso.jpg` : **maquette générée**, référence d'ambiance, **pas une capture du jeu**.
 
 ## Compléments : quartier rouge, rue allongée [proposition]
-Code couleur d'un quartier rouge **[décision Valentin]** : les enseignes dominent en rouge et rose, l'ambre vient en touche, le violet existant reste un accent. Les couleurs actuelles du Strip sont gardées.
+Code couleur d'un quartier rouge **[décision Valentin]** : les enseignes dominent en rouge et rose, l'ambre vient en touche, le violet existant reste un accent. La palette rouge fait foi : la lumière du code passe au rouge et au rose (voir `docs/villes/steel/ENSEIGNES_CODE.md`), le violet ne reste que sur Core Stack et Vibes, et les vitrines violettes peintes sortent en rose.
 - **Devantures.** Un club de strip (`fs_club`, 10 m) et des cabines à rideaux (`fs_cabines`, 8 m), faces x à la pente 0,33. Chaque devanture a une porte lisible, documentée en `porte_coins` dans le manifest pour un futur intérieur. Les enseignes sont peintes éteintes : le code dessine les néons qui clignotent dans `neon_coins`. Aucune enseigne ni auvent ne déborde sur un accès.
 - **PNJ.** Prostitué·es et racoleurs en grappes devant les portes (club et cabines), un mac un peu en retrait, et une patrouille de police de deux agents qui marche le long de la rue en regardant ailleurs. Tous habillés, rien d'explicite.
 - **Sols.** À 50 px/m, mats, sans reflet (le moteur gère les zones mouillées) : trottoirs étroits, asphalte de chaussée, et en pièces séparées le caniveau, les plaques d'égout, les détritus et les cartons. Raccords fondus pour ne pas lire de damier.
