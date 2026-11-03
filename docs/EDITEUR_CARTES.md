@@ -40,7 +40,7 @@ Catalogue : `src/core/catalogue.js` charge tous les manifestes exactement comme 
 
 ## Format (version 5)
 
-Couvert : taille, sol (couleur, texture, motif, teinte, propreté, eau, zones dont `wet`, peinture `ground.paint`), bâtiments (emprise, collision, calque, écrans, enseignes, défilements, groupes, réglages repris du jeu), décors (y compris lueur et miroir), PNJ, figurants (`extras`), passants (`walkers`), drones, lueurs (`glows`) et lumière (`light`), garde-corps, habillage de porte, portes (ouverture, seuil, destination), départs.
+Couvert : taille, sol (couleur, texture, motif, teinte, propreté, eau, zones dont `wet`, peinture `ground.paint`), bâtiments (emprise, collision, calque, écrans, enseignes, défilements, groupes, réglages repris du jeu), décors (y compris lueur et miroir), PNJ, figurants (`extras`), passants (`walkers`), drones, lueurs (`glows`) et lumière (`light`), garde-corps, enseignes animées par le code (`enseignes`, voir docs/villes/steel/ENSEIGNES_CODE.md) et projecteurs (`projecteurs`), habillage de porte, portes (ouverture, seuil, destination), départs.
 Non couvert, reste dans le code : conditions exécutables des portes et métadonnées scriptées (jonctions, interruptions), dialogues natifs, scènes, combats, quêtes natives, clés narratives de lieu (`city`, `arrive`, `labelsProches`, `accessLabels`).
 Validation : JSON lisible, schéma attendu, zones / identifiants / assets existants, coordonnées dans les bornes ; en cas d’échec, la liste complète des erreurs est donnée en français. Un réglage du jeu que l’éditeur ne sait pas éditer est accepté tant qu’il est identique à la source.
 

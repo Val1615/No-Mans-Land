@@ -3,8 +3,10 @@ import { PIQUE_PUCE_PRIX } from './mega_line.js';
 // [décision] ouverte à l'ouest sur la sortie est de Pulse Plaza ; bout est : grille ouverte vers la Steel Arena (fs_est). Neon-7 et Core Stack fermés pour l'instant.
 // Groovy-Tron et Groovy Vibes n'apparaissent que sur des écrans (enseignes fs_ens_tron, fs_ens_vibes) : jamais rencontrés. Aucun nom civil.
 // Enseignes animées : planches du manifeste (frames, frame_px, fps), lues par view.js ; au plus 8 animations visibles à la fois sur mobile.
-const STRIP = { bg: '#060a10', hemi: ['#e070c0', '#2a1030', 1.3], sun: ['#f2b44a', 0.55], tint: '#c8a0c0', actor: '#e8d0e0' }; // plus chaud que Pulse Plaza : magenta et ambre
-const MAGENTA = '#e03ca8', VIOLET = '#8a3cff', CYAN = '#a9d2e6', AMBRE = '#f2b44a', VELOURS = '#7a1428';
+// [décision Valentin] quartier rouge : rue sombre, chaque tache de lumière vient d'une enseigne ou d'une vitrine ; rouges et roses dominants,
+// ambre en touche (bar, stand), violet en accent seulement (Core Stack, Vibes). Ambiance plus sombre qu'avant (hemi, soleil et teinte baissés en luminance ; la teinte sans bleu tire les fenêtres violettes des façades vers le rose).
+const STRIP = { bg: '#060a10', hemi: ['#e05870', '#2a0c16', 1.3], sun: ['#f2a04a', 0.5], tint: '#d4907e', actor: '#ecd0d4' };
+const ROUGE = '#ff2a48', ROSE = '#ff5a8c', VIOLET = '#8a3cff', AMBRE = '#f2a04a', VELOURS = '#7a1428';
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: !!label, ...extra });
 const ENS = (id, sprite, x, z, y) => B(id, '', sprite, x - 0.1, z - 0.1, 0.2, 0.2, { y, solid: [], named: false }); // enseigne : point de pose (x, z) au pied de la façade, hauteur y (m)
 export const BUILDINGS_STRIP = [
@@ -52,12 +54,18 @@ export const LOCATIONS_STRIP = {
       { x: 35, z: 13, w: 2, d: 2, kind: 'plate', skin: 'g_fs_grille_vapeur', tileM: 2 } ] },
     buildings: BUILDINGS_STRIP, props: [],
     glows: [
-      { x: 16, z: 7.5, rx: 6, rz: 2.4, color: MAGENTA, i: 0.9, flicker: true }, { x: 16, z: 7, rx: 2.2, rz: 1, color: VELOURS, i: 0.7 },
-      { x: 44, z: 7.5, rx: 6, rz: 2.4, color: CYAN, i: 0.75, flicker: true }, { x: 26, z: 7.4, rx: 2.4, rz: 1.6, color: VIOLET, i: 0.8, flicker: true },
-      { x: 34, z: 7.4, rx: 2.4, rz: 1.6, color: VIOLET, i: 0.8, flicker: true }, { x: 4, z: 7.4, rx: 2.2, rz: 1.4, color: MAGENTA, i: 0.75, flicker: true },
-      { x: 20, z: 16.6, rx: 3.6, rz: 1.6, color: AMBRE, i: 0.75 }, { x: 10, z: 13.4, rx: 2.4, rz: 1.4, color: AMBRE, i: 0.7, flicker: true },
-      { x: 48, z: 13.4, rx: 2.4, rz: 1.4, color: MAGENTA, i: 0.6 }, { x: 57, z: 16.6, rx: 2, rz: 1.2, color: CYAN, i: 0.5 },
-      { x: 32, z: 12, rx: 30, rz: 4, color: MAGENTA, i: 0.18 }, { x: 25, z: 15.4, rx: 0.6, rz: 0.4, color: '#c8323c', i: 0.5 } ],
+      // une lueur = une enseigne ou une vitrine : Neon-7 (rose), cœur (rouge), Tron (rose), merch (rouge), capsules (rose) ; Retour et brochettes en ambre ; Core Stack et Vibes en violet (accents)
+      { x: 16, z: 7.5, rx: 6, rz: 2.4, color: ROSE, i: 0.85, flicker: true }, { x: 16, z: 7, rx: 2.2, rz: 1, color: VELOURS, i: 0.7 },
+      { x: 44, z: 7.5, rx: 5, rz: 2, color: VIOLET, i: 0.6, flicker: true }, { x: 26, z: 7.4, rx: 2.4, rz: 1.6, color: VIOLET, i: 0.7, flicker: true },
+      { x: 34, z: 7.4, rx: 2.4, rz: 1.6, color: ROSE, i: 0.75, flicker: true }, { x: 4, z: 7.4, rx: 2.2, rz: 1.4, color: ROUGE, i: 0.75, flicker: true },
+      { x: 20, z: 16.6, rx: 3.6, rz: 1.6, color: AMBRE, i: 0.7 }, { x: 10, z: 13.4, rx: 2.4, rz: 1.4, color: AMBRE, i: 0.6, flicker: true },
+      { x: 48, z: 13.4, rx: 2.4, rz: 1.4, color: ROUGE, i: 0.6 }, { x: 57, z: 16.6, rx: 2, rz: 1.2, color: ROSE, i: 0.45 },
+      { x: 32, z: 12, rx: 30, rz: 4, color: ROUGE, i: 0.14 }, { x: 25, z: 15.4, rx: 0.6, rz: 0.4, color: '#c8323c', i: 0.5 } ],
+    // enseignes animées par le code (view.js, docs/villes/steel/ENSEIGNES_CODE.md) : démo derrière ?dev=1 en attendant les calques _neon d'Ocre ;
+    // le contour est obtenu par le même fichier en additif (aucun asset modifié)
+    enseignes: [
+      { id: 'fs_n_neon7', building: 'fs_neon7', effet: 'saute', saute: [0.42, 0.58], couleur: ROSE, intensite: 0.28, periode: 3, dev: true },
+      { id: 'fs_n_retour', building: 'fs_retour', effet: 'pulse', couleur: AMBRE, intensite: 0.25, periode: 4, decale: 0.5, dev: true } ],
     extras: [ ...[[12, 8.6], [13, 9.4], [19.5, 8.8], [42, 7.4], [43, 7.6], [45, 7.2], [46.5, 7.6], [30, 15], [53, 12.6]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_fs_foule_b' : 'gen_fs_foule_a', x, z, face: i % 3 ? 1 : -1, role: 'foule' })) ],
     walkers: [ { sprite: 'gen_fs_foule_a', path: [[2, 12], [58, 12]], speed: 0.8, t0: 2 }, { sprite: 'gen_fs_foule_b', path: [[58, 9.5], [3, 9.5]], speed: 0.7, t0: 8 } ],
     spawn: { player: { x: 1, z: 10 }, companion: { x: 1, z: 11 } }, city: 'steel',

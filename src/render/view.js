@@ -31,7 +31,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -139,12 +139,20 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = [];
+    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; beams = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
     world.add(ground); pickables.push(ground);
     for (const b of loc.buildings) building(b);
+    // format d'Ocre : toute façade posée dont le manifeste a un calque <clé>_neon (même taille, même ancre) reçoit son néon additif, fixe par défaut ;
+    // loc.enseignes ne fait que régler un bâtiment (effet, couleur, intensité, lettre qui saute). Idem pour les faisceaux : tout bâtiment dont le
+    // manifeste donne source_faisceau_px (pylônes, anime_par_code) tire un faisceau depuis ce pixel ; loc.projecteurs règle ou ajoute.
+    const ensDe = new Map((loc.enseignes || []).map(e => [e.building, e])), projDe = new Map((loc.projecteurs || []).filter(p => p.building).map(p => [p.building, p]));
+    for (const b of loc.buildings) if (!ensDe.has(b.id) && bman[b.sprite + '_neon']) enseigne({ id: b.id + '_neon', building: b.id }, loc);
+    for (const e of loc.enseignes || []) enseigne(e, loc);
+    for (const b of loc.buildings) if (!projDe.has(b.id) && bman[b.sprite]?.source_faisceau_px) projecteur({ building: b.id }, loc);
+    for (const pr of loc.projecteurs || []) projecteur(pr, loc);
     for (const p of loc.props) {
       if (p.furn) furniture(p);
       else if (p.box) box(p, p.color,loc.wallSkin);
@@ -239,6 +247,50 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     draw(E.decale || 0); const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
     s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: -1, decale: E.decale || 0, periode: E.periode || 9 }; ecrans.push(s); return s;
   }
+  // Enseignes animées par le code (loc.enseignes, format : docs/villes/steel/ENSEIGNES_CODE.md) : calque « contour lumineux » additif posé
+  // sur le support d'un bâtiment (même ancre monde), dont seule la luminosité varie (clignote, grésille, saute, pulse). Une couleur par image :
+  // aucun échange de texture, aucune planche, donc hors du plafond view.animStats.on (compté à part dans animStats.enseignes).
+  // « saute » : la colonne [u0, u1] du calque (une lettre) est un sprite à part qui grésille seul. dev: true -> visible seulement avec ?dev=1.
+  const NEON_DEV = typeof location !== 'undefined' && new URLSearchParams(location.search).get('dev') === '1';
+  function enseigne(e, loc) {
+    if (e.dev && !NEON_DEV) return; const item = bills.find(i => i.obj.userData.buildingId === e.building), b = loc.buildings.find(x => x.id === e.building), key = e.neon || (bman[b?.sprite + '_neon'] ? b.sprite + '_neon' : b?.sprite), m = bman[key]; // calque <clé>_neon d'Ocre, sinon le support lui-même en additif (démo)
+    if (!item || !b || !m || !SKIN[key] || m.anime) return; // planche animée : pas de calque code (l'animation d'Ocre reste seule)
+    const k = b.k || 1, W = m.px[0] / K * k, H = m.px[1] / K * k * (b.sy || 1), au = m.anchor[0] / m.px[0], av = 1 - m.anchor[1] / m.px[1];
+    const cols = e.saute ? [[0, e.saute[0], false], [e.saute[0], e.saute[1], true], [e.saute[1], 1, false]] : [[0, 1, false]];
+    for (const [u0, u1, lettre] of cols) { if (u1 - u0 <= 1e-4) continue;
+      const t = new THREE.Texture(SKIN[key]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace; t.repeat.set(u1 - u0, 1); t.offset.set(u0, 0);
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: e.couleur || '#ffffff', opacity: 0 }));
+      s.center.set((au - u0) / (u1 - u0), av); s.scale.set(W * (u1 - u0), H, 1); s.position.copy(item.obj.position);
+      s.userData.neon = { effet: lettre ? 'gresille' : (e.effet === 'saute' ? 'fixe' : e.effet || 'fixe'), periode: e.periode || 3, ph: (e.decale || 0) + (lettre ? 0.37 : 0), i: e.intensite ?? 0.6 };
+      s.userData.fondu = 1; world.add(s); item.extra.push(s); neons.push(s); }
+  }
+  const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  function neonK(u, t) { const T = u.periode, ph = u.ph, f = ((t / T + ph) % 1 + 1) % 1;
+    if (u.effet === 'pulse') return 0.6 + 0.4 * Math.sin(f * Math.PI * 2);
+    if (u.effet === 'clignote') return f < 0.7 ? 1 : 0.08;
+    if (u.effet === 'gresille') { const n = Math.floor(t * 14 + ph * 97); return hash(n) < 0.14 ? 0.05 + 0.25 * hash(n + 9) : 0.9 + 0.1 * hash(n + 3); }
+    return 1; }
+  // Projecteurs dessinés par le code (loc.projecteurs) : cône additif ouvert, apex à la source, qui balaie lentement le ciel.
+  // Paramètres : x, z (m) ou fx, fz (fraction de loc.size : suit l'agrandissement de la zone), y, couleur, longueur, ouverture (demi-angle, °),
+  // inclinaison (° depuis la verticale), cap (° autour de la verticale), balayage (amplitude, °), periode (s), decale (s), intensite. Hors animStats.on.
+  function projecteur(p, loc) {
+    const L = p.longueur || 24, r = L * Math.tan((p.ouverture || 4) * Math.PI / 180), seg = 6, g = new THREE.ConeGeometry(r, L, 20, seg, true);
+    g.rotateX(Math.PI); g.translate(0, L / 2, 0); // apex en bas (source), ouverture vers le haut
+    const c = new THREE.Color(p.couleur || '#5fd3f0'), col = [], pos = g.attributes.position;
+    for (let i = 0; i < pos.count; i++) { const k = Math.pow(1 - pos.getY(i) / L, 2.2); col.push(c.r * k, c.g * k, c.b * k); } // fondu vers le noir = rien en additif
+    g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+    const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: p.intensite ?? 0.25, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, side: THREE.DoubleSide }));
+    const it = p.building && bills.find(i => i.obj.userData.buildingId === p.building), bm = it && bman[loc.buildings.find(x => x.id === p.building)?.sprite];
+    if (p.building && !it) return;
+    if (it) { const s = it.obj, src = bm?.source_faisceau_px; m.position.copy(s.position); // pied du bâtiment (ancre), puis pixel source du manifeste dans le plan du sprite
+      if (src && bm.px) m.position.addScaledVector(screenRight, (src[0] - bm.anchor[0]) * s.scale.x / bm.px[0]); // le pixel source se lit à la verticale du pied (même point à l'écran) : hauteur = décalage écran / camUp.y
+      if (src && bm.px) m.position.y += (bm.anchor[1] - src[1]) * s.scale.y / bm.px[1] / camUp.y;
+      else m.position.y += p.y ?? 0.5; }
+    else m.position.set(p.fx != null ? p.fx * loc.size.w : p.x, p.y ?? 0.5, p.fz != null ? p.fz * loc.size.d : p.z); m.rotation.order = 'YXZ'; m.renderOrder = 3; m.userData.projecteur = true;
+    m.userData.beam = { cap: (p.cap || 0) * Math.PI / 180, bal: (p.balayage ?? 25) * Math.PI / 180, inc: (p.inclinaison ?? 20) * Math.PI / 180, T: p.periode || 14, ph: p.decale || 0 };
+    beamPose(m, 0); world.add(m); beams.push(m);
+  }
+  function beamPose(m, t) { const u = m.userData.beam; m.rotation.y = u.cap + u.bal * Math.sin((t + u.ph) / u.T * Math.PI * 2); m.rotation.x = -u.inc; }
   let glowT = null;
   function glowTex() { if (glowT) return glowT; const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
     g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128); return glowT = new THREE.CanvasTexture(c); }
@@ -253,6 +305,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
     if (ecrans.length && !document.body?.classList?.contains('reduce-motion')) for (const e of ecrans) { const u = e.userData.ecran, k = Math.floor(t / u.periode) + u.decale; if (k !== u.page) { u.page = k; u.draw(k); } }
     animStats.ecrans = ecrans.length;
+    // enseignes code et projecteurs : une couleur ou une rotation par image, hors plafond animStats.on (catégories à part) ; figés si mouvement réduit
+    const calme = !!document.body?.classList?.contains('reduce-motion');
+    for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : neonK(u, t))); }
+    if (!calme) for (const m of beams) beamPose(m, t);
+    animStats.enseignes = neons.length; animStats.projecteurs = beams.length;
     for (const f of flick) f.m.opacity = f.base * (0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2));
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
     // planches jouées une fois (portique de la Mega-Line) : remplacent le sprite de base le temps du passage, hors budget d'animations
@@ -329,8 +386,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const o of phOf) { o.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === o), r = rectOf(o);
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
         if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
-      const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) e.material.opacity = m.opacity; }
-    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) e.material.opacity = Math.min(0.9, m.opacity); }
+      const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon) e.userData.fondu = m.opacity; else e.material.opacity = m.opacity; }
+    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon) e.userData.fondu = m.opacity; else e.material.opacity = Math.min(0.9, m.opacity); }
   }
   // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
   function furnitureOcclusion() {
@@ -557,7 +614,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);
       for(const h of hits){const s=h.object;const img=s.userData.img|| (s===player?'player':s.userData.npc?NPCS.find(n=>n.id===s.userData.npc)?.sprite:null);if(img&&h.uv&&alphaAt(img,h.uv.x,h.uv.y)<.3)continue;
       return {id:s.userData.buildingId||s.userData.editorId};}return null;
-    }, joue, joueEtat, animStats, masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
+    }, joue, joueEtat, animStats, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
     facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
     // rectangle écran (px CSS) d'un personnage, pour les contrôles au pixel
     actorRect: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who);

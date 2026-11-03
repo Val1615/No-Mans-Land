@@ -2,6 +2,8 @@
 // [décision] entrée ouest par la grille du bout est du Fréquence Strip (aller-retour) ; le parvis se visite, le dôme reste fermé (réplique au clic).
 // Vibes et Tron n'apparaissent que sur les écrans du dôme (ar_ens_ecran_vibes, ar_ens_ecran_tron). Aucun nom civil.
 // Animations : les 4 faisceaux = un groupe synchronisé (une seule place dans le plafond mobile de 8), décalés d'une image ; un seul cœur animé dans la file.
+// [proposé] taille de la zone agrandie quand la façade géante d'Ocre sera livrée (non utilisée : la zone reste 56 x 40 m pour l'instant).
+export const ARENA_TAILLE_PROPOSEE = { w: 96, d: 64 }; // proposé
 const ARENA = { bg: '#060a10', hemi: ['#7a90ff', '#1a1030', 1.2], sun: ['#5fd3f0', 0.6], tint: '#a0a8d0', actor: '#d8dcf0' };
 const VIOLET = '#8a3cff', CYAN = '#5fd3f0', MAGENTA = '#e03ca8', BLANC = '#e8eef2', ROUGE = '#c8323c';
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: !!label, ...extra });
@@ -50,6 +52,11 @@ export const LOCATIONS_ARENA = {
       ...LAMP.map(([x, z]) => ({ x, z: z + 0.6, rx: 2.4, rz: 1.8, color: VIOLET, i: 0.7 })),
       { x: 26, z: 21, rx: 3, rz: 3, color: MAGENTA, i: 0.4, flicker: true }, { x: 16, z: 30.6, rx: 2.2, rz: 1.2, color: BLANC, i: 0.5 },
       { x: 27, z: 29.4, rx: 0.6, rz: 0.4, color: ROUGE, i: 0.5 }, { x: 51, z: 37, rx: 2, rz: 1.4, color: ROUGE, i: 0.3 } ],
+    // projecteurs dessinés par le code (view.js) : cônes additifs qui balaient le ciel au-dessus du dôme, hors budget d'animations.
+    // Source = le bâtiment porteur : pixel source_faisceau_px de son manifeste (ar_pylone_projecteur d'Ocre, branché automatiquement dès qu'il est posé),
+    // sinon pied du bâtiment + y (ar_projecteur actuel, sans source_faisceau_px). Suit donc le bâtiment quand la zone passera à ARENA_TAILLE_PROPOSEE.
+    projecteurs: PROJ.map(([x, z], i) => ({ building: `ar_proj${i}`, y: 3.6, couleur: CYAN, longueur: 24, ouverture: 4,
+      inclinaison: 24, cap: i % 2 ? -18 : 18, balayage: 28, periode: [15, 18, 21, 16][i], decale: [0, 5, 9, 3][i], intensite: 0.22 })),
     extras: [ ...[[23, 15.6], [27.6, 15.6], [29, 18.4], [23, 19.2], [27, 21.8], [23.4, 22.5], [29.4, 23.2], [12, 25], [38, 18]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_ar_foule_b' : 'gen_ar_foule_a', x, z, face: i % 3 ? 1 : -1, role: 'foule' })) ],
     walkers: [ { sprite: 'gen_ar_foule_a', path: [[2, 21], [20, 21], [20, 30], [2, 30]], speed: 0.6, t0: 3 }, { sprite: 'gen_ar_foule_b', path: [[34, 18], [52, 18], [52, 32], [34, 32]], speed: 0.6, t0: 10 } ],
     spawn: { player: { x: 1, z: 21 }, companion: { x: 1, z: 22 } }, city: 'steel',
