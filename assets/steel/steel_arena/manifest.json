@@ -1434,5 +1434,262 @@
     "source": "recadrage de gen_ar_cuir.webp",
     "file": "steel/steel_arena/portrait-gen_ar_cuir.webp",
     "status": "v1"
+  },
+  "ar_facade_retour_ouest": {
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 28,
+    "face": "angle",
+    "rayon_m": 4,
+    "courbe": "quart de cercle de 4 m, de la face ouest (z 26) à la façade sud (x 4 ; z 30)",
+    "pose": "extrémité ouest de la façade sud : emprise x 0 à 4, z 26 à 30 ; ancre au pied du raccord avec ar_f_s0 (4 ; 30), soit B(x 0, z 26, 4, 4) avec ancre [0, 0] par rapport au coin avant (4 ; 30)",
+    "bord_ouest_px": [
+      0,
+      1400
+    ],
+    "note": "la partie de l’arc tournée vers l’ouest est de dos et n’est pas dessinée : le sprite s’arrête sur la silhouette",
+    "px": [
+      107,
+      1497
+    ],
+    "anchor": [
+      105,
+      1495
+    ],
+    "source": "GenerateImage (cursor), 130dca4b ; mise en volume PIL",
+    "file": "steel/steel_arena/ar_facade_retour_ouest.webp",
+    "status": "v1"
+  },
+  "ar_toit_x": {
+    "height_m": 42,
+    "source": "GenerateImage (cursor), 9994cbc3 ; travée doublée et mise en volume PIL",
+    "note": "gradins supérieurs et anneau de toit : les 14.7 m du haut sont la partie qui dépasse ; le bas (façade assombrie) reste caché derrière les façades de 28 m ; projecteurs et feux de balisage peints allumés, aucun faisceau",
+    "footprint_m": [
+      16,
+      4
+    ],
+    "face": "x",
+    "pente": 0.33,
+    "pose": "en retrait de 4 m derrière la façade sud, ligne z 26 : segments x 4 à 20, 20 à 36, 36 à 52, 52 à 68, 68 à 84 ; ancre au pied de l’extrémité est (x fin ; 26)",
+    "px": [
+      801,
+      2366
+    ],
+    "anchor": [
+      800,
+      2364
+    ],
+    "file": "steel/steel_arena/ar_toit_x.webp",
+    "status": "v1"
+  },
+  "ar_toit_z": {
+    "height_m": 42,
+    "source": "GenerateImage (cursor), 9994cbc3 ; travée doublée et mise en volume PIL",
+    "note": "gradins supérieurs et anneau de toit : les 14.7 m du haut sont la partie qui dépasse ; le bas (façade assombrie) reste caché derrière les façades de 28 m ; projecteurs et feux de balisage peints allumés, aucun faisceau",
+    "footprint_m": [
+      4,
+      16
+    ],
+    "face": "z",
+    "pente": 0.7,
+    "pose": "en retrait de 4 m derrière la façade est, ligne x 88 : z 6 à 22 ; ancre au pied de l’extrémité sud (88 ; 22)",
+    "px": [
+      552,
+      2488
+    ],
+    "anchor": [
+      0,
+      2485
+    ],
+    "file": "steel/steel_arena/ar_toit_z.webp",
+    "status": "v1"
+  },
+  "ar_toit_angle_se": {
+    "height_m": 42,
+    "source": "GenerateImage (cursor), 9994cbc3 ; travée doublée et mise en volume PIL",
+    "note": "gradins supérieurs et anneau de toit : les 14.7 m du haut sont la partie qui dépasse ; le bas (façade assombrie) reste caché derrière les façades de 28 m ; projecteurs et feux de balisage peints allumés, aucun faisceau",
+    "footprint_m": [
+      4,
+      4
+    ],
+    "face": "angle",
+    "rayon_m": 4,
+    "raccord_est_px": [
+      338,
+      2100
+    ],
+    "pose": "angle sud-est du toit : centre (84 ; 22), raccords (84 ; 26) et (88 ; 22) ; ancre au raccord sud (84 ; 26), option ancre [-4, 0] si posé par son coin avant (88 ; 26)",
+    "px": [
+      339,
+      2153
+    ],
+    "anchor": [
+      0,
+      2130
+    ],
+    "file": "steel/steel_arena/ar_toit_angle_se.webp",
+    "status": "v1"
+  },
+  "ar_toit_angle_so": {
+    "height_m": 42,
+    "source": "GenerateImage (cursor), 9994cbc3 ; travée doublée et mise en volume PIL",
+    "note": "gradins supérieurs et anneau de toit : les 14.7 m du haut sont la partie qui dépasse ; le bas (façade assombrie) reste caché derrière les façades de 28 m ; projecteurs et feux de balisage peints allumés, aucun faisceau",
+    "footprint_m": [
+      4,
+      4
+    ],
+    "face": "angle",
+    "rayon_m": 4,
+    "bord_ouest_px": [
+      0,
+      2100
+    ],
+    "pose": "angle sud-ouest du toit : centre (4 ; 22), raccords (0 ; 22) et (4 ; 26) ; ancre au raccord sud (4 ; 26), c’est-à-dire son coin avant",
+    "px": [
+      107,
+      2197
+    ],
+    "anchor": [
+      105,
+      2195
+    ],
+    "file": "steel/steel_arena/ar_toit_angle_so.webp",
+    "status": "v1"
+  },
+  "gen_ar_fan_echarpe": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "figurant": true,
+    "lumiere": "appoint chaud, ambre",
+    "source": "GenerateImage (cursor), c8bfb314",
+    "pose": "brandit son écharpe, au bord de la file : (34 ; 38,5)",
+    "file": "steel/steel_arena/gen_ar_fan_echarpe.webp",
+    "status": "v1"
+  },
+  "gen_ar_fan_pancarte": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "figurant": true,
+    "lumiere": "appoint chaud, ambre",
+    "source": "GenerateImage (cursor), c8bfb314",
+    "pose": "pancarte vierge levée, devant les portiques hors couloir : (54 ; 33)",
+    "file": "steel/steel_arena/gen_ar_fan_pancarte.webp",
+    "status": "v1"
+  },
+  "gen_ar_fan_batons": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.7,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "figurant": true,
+    "lumiere": "appoint chaud, ambre",
+    "source": "GenerateImage (cursor), c8bfb314",
+    "pose": "deux bâtons ambre levés, parvis central : (48 ; 46)",
+    "file": "steel/steel_arena/gen_ar_fan_batons.webp",
+    "status": "v1"
+  },
+  "gen_ar_fans_duo": {
+    "px": [
+      360,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      1.2,
+      0.6
+    ],
+    "anchor": [
+      180,
+      511
+    ],
+    "figurant": true,
+    "groupe": 2,
+    "lumiere": "appoint chaud, ambre",
+    "source": "GenerateImage (cursor), 56ec9d16",
+    "pose": "groupe de deux qui chante, près du food truck nouilles : (26 ; 47)",
+    "note": "deux personnes dans un seul sprite : 360 x 512 (double largeur) pour garder l’échelle des PNJ, ancre au centre des pieds [180, 511]",
+    "file": "steel/steel_arena/gen_ar_fans_duo.webp",
+    "status": "v1"
+  },
+  "g_ar_dalles_neutre": {
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": [
+      10.24,
+      10.24
+    ],
+    "tuilable": true,
+    "source": "g_ar_dalles_usees désaturé (anthracite neutre)",
+    "pose": "parvis, remplace g_ar_dalles_usees qui tire vers le bleu ; à alterner avec les deux variantes",
+    "note": "sombre et mat, sans reflet",
+    "file": "steel/steel_arena/g_ar_dalles_neutre.webp",
+    "status": "v1"
+  },
+  "g_ar_parvis_use": {
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": [
+      10.24,
+      10.24
+    ],
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 9e5b0a18 ; raccords fondus, anthracite neutre",
+    "pose": "parvis : autour des food trucks, des stands et au pied des pylônes, là où l’on piétine",
+    "note": "zones usées, taches et mégots ; mat, sans reflet",
+    "file": "steel/steel_arena/g_ar_parvis_use.webp",
+    "status": "v1"
+  },
+  "g_ar_parvis_marquages": {
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": [
+      10.24,
+      10.24
+    ],
+    "tuilable": true,
+    "source": "g_ar_dalles_neutre + marquages PIL usés",
+    "pose": "parvis devant l’entrée (x 36 à 52, z 32 à 42) : lignes de file le long de x, flèches vers les portiques, cases de portes 3 et 4 ; pas sur le reste du parvis",
+    "note": "peinture usée, sans reflet ; lignes continues aux bords est et ouest (raccord le long de x) ; les numéros se répètent à chaque tuile, n’en poser qu’une rangée",
+    "file": "steel/steel_arena/g_ar_parvis_marquages.webp",
+    "status": "v1"
   }
 }
