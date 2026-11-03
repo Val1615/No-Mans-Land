@@ -89,3 +89,8 @@ Planche de contrôle : `/workspace/nml-shots/pulse_retouches.png`.
 - Ouest : `pp_facade_a_o` z 0 à 12, accès z 12 à 20, `pp_facade_b_o2` z 20 à 28 et 28 à 36. Plus aucun garde-corps dessiné par le code.
 - Isaure (22,5 ; 23,4) devant le Holo, Vasseur (34,5 ; 8,5) à droite de l'écran du Feed : plus aucun PNJ ni figurant masqué.
 - Attend une pièce d'Ocre : un tronçon de 4 m (`pp_muret` et `pp_muret_o`, et un 4 m porteur de 4 m de haut) permettrait de garder l'escalier à x 22 à 26 et de resserrer les accès ouest (8 m) et est ; le seul mur porteur de 4 m de haut à l'est reste `pp_mur_bas_o` (une version porteuse plus fine, au style des murets, serait plus juste sous e2).
+
+## Murets de 4 m et support d'écran (lot creation/pulse-murets4)
+- `pp_muret_4` (face x, 4 m, 1,2 m, pente 0,33) : 200 x 134, ancre [198, 133]. `pp_muret_4_o` (face z, 4 m, pente 0,70) : 138 x 165, ancre [0, 163]. Faits des deux embouts des murets de 8 m (2 m chacun, joints sur un panneau), pas d'une coupe au milieu. Ancre au coin, raccord bord à bord avec pp_muret et pp_muret_o : la pièce suivante s'ancre 4 m plus loin. Usage prévu : remettre l'escalier sud à sa place et resserrer l'accès ouest à 2 m.
+- `pp_support_ecran_o` (face z, 4 m) : 138 x 307, ancre [0, 305]. Muret de 4 m et deux mâts fins en métal sombre et laiton jusqu'à 4 m, avec platines de fixation et traverse haute. Remplace le pp_mur_bas_o de 4 m sous l'écran est. Pose : façade est, bord x 46, z 20 à 24, ancre au coin bas (46 ; 24). `pp_ecran_haut_e2` se pose avec la même ancre au sol (46 ; 24) : le bas de ses supports tombe à 4 m (`fixation_ecran.elevation_m`), sur les platines.
+Planche de contrôle : `/workspace/nml-shots/pulse_murets4.png`.

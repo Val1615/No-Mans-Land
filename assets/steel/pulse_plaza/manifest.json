@@ -1279,6 +1279,52 @@
     "pente": 0.33,
     "raccord": "ancre = extrémité basse ; raccord bord à bord au coin avec l’autre face, sans chevauchement"
   },
+  "pp_muret_4": {
+    "file": "steel/pulse_plaza/pp_muret_4.webp",
+    "px": [
+      200,
+      134
+    ],
+    "anchor": [
+      198,
+      133
+    ],
+    "footprint_m": [
+      4,
+      0.4
+    ],
+    "height_m": 1.2,
+    "source": "GenerateImage (cursor), 833d9c08",
+    "status": "v1",
+    "pilote": true,
+    "pose": "face x, 4 m le long de x ; ancre au coin avant droit (x + 4 ; z) ; se raboute bord à bord à pp_muret (8 m) ancré 4 m ou 8 m plus loin",
+    "face": "x",
+    "pente": 0.33,
+    "raccord": "ancre = extrémité basse ; pièce suivante ancrée 4 m plus loin (8 m pour un muret de 8 m), sans chevauchement"
+  },
+  "pp_muret_4_o": {
+    "file": "steel/pulse_plaza/pp_muret_4_o.webp",
+    "px": [
+      138,
+      165
+    ],
+    "anchor": [
+      0,
+      163
+    ],
+    "footprint_m": [
+      0.4,
+      4
+    ],
+    "height_m": 1.2,
+    "source": "GenerateImage (cursor), 833d9c08",
+    "status": "v1",
+    "pilote": true,
+    "pose": "face z, 4 m le long de z ; ancre au coin bas (x ; z + 4) ; se raboute bord à bord à pp_muret_o",
+    "face": "z",
+    "pente": 0.7,
+    "raccord": "ancre = extrémité basse ; pièce suivante ancrée 4 m plus loin (8 m pour un muret de 8 m), sans chevauchement"
+  },
   "pp_muret_o": {
     "file": "steel/pulse_plaza/pp_muret_o.webp",
     "px": [
@@ -1355,5 +1401,38 @@
     "status": "v1",
     "pilote": true,
     "pose": "socles autour du Holo : (13 ; 19), (15 ; 25), (33 ; 25)"
+  },
+  "pp_support_ecran_o": {
+    "file": "steel/pulse_plaza/pp_support_ecran_o.webp",
+    "px": [
+      138,
+      307
+    ],
+    "anchor": [
+      0,
+      305
+    ],
+    "footprint_m": [
+      0.4,
+      4
+    ],
+    "height_m": 4,
+    "source": "GenerateImage (cursor), 833d9c08",
+    "status": "v1",
+    "pilote": true,
+    "pose": "façade est, à la place du pp_mur_bas_o de 4 m : bord x 46 à 46,4, z 20 à 24 ; ancre au coin bas (46 ; 24)",
+    "face": "z",
+    "pente": 0.7,
+    "porte": "pp_ecran_haut_e2",
+    "fixation_ecran": {
+      "sprite": "pp_ecran_haut_e2",
+      "ancre_monde": [
+        46,
+        24
+      ],
+      "meme_ancre": true,
+      "elevation_m": 4,
+      "note": "poser pp_ecran_haut_e2 avec la même ancre au sol (46 ; 24) : le bas de ses supports tombe sur les platines laiton en haut des mâts, à 4 m"
+    }
   }
 }
