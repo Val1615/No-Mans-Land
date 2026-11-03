@@ -7,29 +7,32 @@ const PULSE = { bg: '#060a10', hemi: ['#b8a0f0', '#2e2034', 1.3], sun: ['#e6c8a8
 const VIOLET = '#8a3cff', MAGENTA = '#e03ca8', CYAN = '#a9d2e6', CHAUD = '#ffae55', ROUGE = '#c8323c';
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: !!label, ...extra });
 const CAMS = [[9, 7], [35, 7], [17, 25], [35, 25]];
-// [proposition d'Ocre, chantier pilote] façades : emprise (x, z, w, d) et options. L'ancre tombe sur le coin avant (x + w ; z + d).
-// Nord (tableau de pose) : pp_facade_b x 0 à 8 puis x 4 à 12 (doublon), pp_facade_a x 36 à 48 contre l'Arcadius.
-// Écart au tableau, mesuré en jeu : les variantes _o sont dessinées plus longues que leur emprise le long de z (pp_facade_b_o : environ 12 m pour 8 m ;
-// pp_facade_a_o : environ 23,6 m pour 16 m). Posées aux coordonnées du tableau, elles couvriraient l'accès ouest (seuil 1 ; 16) et la jonction
-// vers Fréquence Strip (seuil 47 ; 13). Ouest : pp_facade_b_o en quatre pièces, ancres en z 8, 15, 29 et 36 ; z 15 à 17 reste ouvert.
-// Est : pp_facade_b_o ancrée en z 26 (dessinée de z 14 à 26), à la place de pp_facade_a_o qui masquerait le kiosque et la jonction ; solide de z 14 à 24 ;
-// deux pièces de plus ferment les coins nord-est (derrière le kiosque) et sud-est (derrière le stand de nouilles).
-const FACADES = [ // [id, sprite, x, z, w, d, options (solide, échelle)]
-  ['pp_fac_n1', 'pp_facade_b', 0, 0, 8, 1.5], ['pp_fac_n2', 'pp_facade_b', 4, 0, 8, 1.5], ['pp_fac_n3', 'pp_facade_a', 36, 0, 12, 2],
-  ['pp_fac_o1', 'pp_facade_b_o', 0, 0, 1.5, 8], ['pp_fac_o2', 'pp_facade_b_o', 0, 7, 1.5, 8], ['pp_fac_o3', 'pp_facade_b_o', 0, 21, 1.5, 8, { solid: [{ x: 0, z: 17, w: 1.5, d: 12 }] }], ['pp_fac_o4', 'pp_facade_b_o', 0, 28, 1.5, 8],
-  ['pp_fac_e1', 'pp_facade_b_o', 46.5, 18, 1.5, 8, { solid: [{ x: 46.5, z: 14, w: 1.5, d: 10 }] }],
-  ['pp_fac_e0', 'pp_facade_b_o', 46.5, -2, 1.5, 8, { solid: [{ x: 46.5, z: 2, w: 1.5, d: 4 }] }],
-  ['pp_fac_e2', 'pp_facade_b_o', 46.5, 30, 1.5, 6, { k: 0.5 }], // coins nord-est (z 2 à 6) et sud-est (z 30 à 36) ; au sud-est, échelle 0,5 par le code (6 m dessinés) pour ne pas masquer le stand de nouilles
+// [proposition d'Ocre] façades et murs : emprise (x, z, w, d) ; l'ancre du sprite tombe sur le coin avant (x + w ; z + d), à l'échelle du manifeste (aucune échelle par le code).
+// Lot murs (Valentin : « ils se superposent et font intrusif ») : tout est reculé hors de la place (x < 0, z < 0 ou > 36, x > 48), raboutée bord à bord,
+// aucune emprise de mur n'en chevauche une autre. Nord et ouest (fond de la vue) : façades hautes ; sud et est (devant la caméra) : murs bas de 4 m.
+// Faces x : pp_facade_c (pente 0,33, colle au sol) ; pp_facade_a et pp_facade_b (pente 0,54 et 0,51) ne sont plus posées. Faces z : pp_facade_a_o et pp_facade_b_o2 (pente 0,70).
+// Accès ouest (seuil 1 ; 16) : z 15 à 17 libre. Jonction Fréquence Strip (seuil 47 ; 13) : z 12 à 14 libre. Escalier de service et sa grille (x 20 à 28) : libres.
+const FACADES = [ // [id, sprite, x, z, w, d]
+  ['pp_fac_n1', 'pp_facade_c', 0, -1.5, 12, 1.5], ['pp_fac_n3', 'pp_facade_c', 36, -1.5, 12, 1.5],
+  ['pp_fac_o1', 'pp_facade_a_o', -2, 3, 2, 12], ['pp_fac_o2', 'pp_facade_b_o2', -1.5, 17, 1.5, 8], ['pp_fac_o3', 'pp_facade_b_o2', -1.5, 25, 1.5, 8],
+  ['pp_mur_s1', 'pp_mur_bas', 0, 36, 8, 0.5], ['pp_mur_s2', 'pp_mur_bas', 8, 36, 8, 0.5], ['pp_mur_s4', 'pp_mur_bas', 40, 36, 8, 0.5],
+  ['pp_mur_e1', 'pp_mur_bas_o', 48, 28.5, 0.5, 8], ['pp_mur_e2', 'pp_mur_bas_o', 48, 20.5, 0.5, 8],
 ];
+// écrans en hauteur d'Ocre (zone vide, contenu dessiné par le code d'après ecran_coins du manifeste) : [id, sprite, x, z, w, d]
+const ECRANS_HAUTS = [ ['pp_ecran_n1', 'pp_ecran_haut_n1', 39, -0.6, 8, 0.6], ['pp_ecran_n2', 'pp_ecran_haut_n2', 3, -0.6, 4, 0.6], ['pp_ecran_e1', 'pp_ecran_haut_e1', 45.4, 16, 0.6, 8] ];
+// garde-corps bas dessinés par le code (x, z, w, d) : là où une pièce de 8 m ne tient pas sans couvrir un accès, ou masquerait un PNJ (x 32 à 40 : Noor)
+const GARDE_CORPS = [ { x: 16, z: 36, w: 4, d: 0.2 }, { x: 28, z: 36, w: 12, d: 0.2 }, { x: -0.2, z: 0, w: 0.2, d: 3 }, { x: -0.2, z: 33, w: 0.2, d: 3 }, { x: 48, z: 0, w: 0.2, d: 6 }, { x: 48, z: 14, w: 0.2, d: 6.5 } ];
 // mobilier : [id, sprite, x de l'ancre, z de l'ancre, w, d] (emprises du manifeste)
 // pied des façades et des stands (x, z, w, d) : transition entre le sol et les bâtiments
-const PIEDS = [[0, 1.5, 12, 1], [12, 4, 8, 0.8], [24, 4, 12, 0.8], [36, 2, 12, 1], [1.5, 1.5, 0.8, 13.5], [1.5, 17, 0.8, 7], [1.5, 30, 0.8, 6], [45.7, 14, 0.8, 10], [44, 12, 4, 0.6], [0, 12, 4, 0.6], [0, 30, 4, 0.6], [44, 30, 4, 0.6]];
+const PIEDS = [[0, 0, 12, 1], [12, 4, 8, 0.8], [24, 4, 12, 0.8], [36, 0, 12, 1], [0, 3, 0.8, 12], [0, 17, 0.8, 16], [0, 35.2, 16, 0.8], [40, 35.2, 8, 0.8], [47.2, 20.5, 0.8, 15.5], [44, 12, 4, 0.6], [0, 12, 4, 0.6], [0, 30, 4, 0.6], [44, 30, 4, 0.6]];
 const LAMPES = [[8, 14], [8, 26], [40, 14], [36, 31]], BORNES = [[11, 11], [33, 11]];
 const MOBILIER = [
   ...LAMPES.map(([x, z], i) => [`pp_lampe${i}`, 'pp_lampadaire', x, z, 0.6, 0.6]),
   ...[[13, 19], [15, 25], [33, 25]].map(([x, z], i) => [`pp_statue${i}`, 'pp_statue', x, z, 2, 2]),
   ...BORNES.map(([x, z], i) => [`pp_borne${i}`, 'pp_borne_neon', x, z, 0.5, 0.5]),
   ...[[4, 21.5], [40, 24]].map(([x, z], i) => [`pp_jard${i}`, 'pp_jardiniere', x, z, 1.6, 1.6]),
+  ['pp_banc3', 'pp_banc_bois', 38, 21, 2, 0.6], ['pp_banc4', 'pp_banc_beton_o', 44.5, 20, 0.6, 2], // bancs d'Ocre, hors des allées
+  ['pp_kiosque_presse', 'pp_kiosque_presse', 10, 30, 2, 2], ['pp_kiosque_boissons', 'pp_kiosque_boissons', 38, 30, 2, 2], // kiosques 2 x 2 x 3 m
 ];
 // Écran du Feed : l'image d'Ocre est un écran vierge (« contenu animé par le code », ASSETS.md). Le code dessine le contenu dans la dalle
 // de l'image (coins en px de la source : haut gauche, haut droit, bas droit, bas gauche) ; une page toutes les `periode` secondes, sans planche animée.
@@ -40,7 +43,7 @@ const ECRAN_FEED = { coins: [[247, 52], [712, 264], [712, 562], [247, 350]], per
   { fond: ['#3a0a2a', '#b02a7a'], titre: 'AUDIENCE SYNC', sous: 'Applaudissez maintenant', bandeau: '100% connection stable. Jusqu\u2019à la prochaine alerte.' },
 ] };
 export const BUILDINGS_PULSE = [
-  B('pp_arcadius', 'Arcadius Center', 'pp_arcadius', 12, 0, 24, 4, { tint: '#ffffff' }),
+  B('pp_arcadius', 'Arcadius Center', 'pp_arcadius', 12, 0, 24, 4, { tint: '#ffffff' }), // l'immeuble blanc d'IO reste : il porte le portique et son texte ; pp_facade_c remplace la façade à sa droite (x 36 à 48)
   B('pp_portique', 'Portique IO', 'pp_portique', 20, 4, 4, 2),
   B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED }),
   B('pp_holo', 'Projection Holo-Tron', 'pp_holo_socle', 20, 14, 8, 8),
@@ -55,7 +58,8 @@ export const BUILDINGS_PULSE = [
   B('pp_escalier', '', 'pp_escalier', 22, 28, 4, 4, { solid: [], named: false }), // chantier pilote : plus d'étiquette posée sur l'accès
   // Chantier pilote (docs/villes/steel/quartiers/pulse_plaza/PILOTE.md) : façades raccordables qui ferment les bords nord, ouest et est.
   // Emprise (x, z, w, d) = celle du tableau de pose ; l'ancre du sprite tombe sur le coin avant (x + w ; z + d), comme tous les bâtiments.
-  ...FACADES.map(([id, sprite, x, z, w, d, extra = {}]) => B(id, '', sprite, x, z, w, d, { named: false, ...extra })),
+  ...FACADES.map(([id, sprite, x, z, w, d]) => B(id, '', sprite, x, z, w, d, { named: false })),
+  ...ECRANS_HAUTS.map(([id, sprite, x, z, w, d], i) => B(id, '', sprite, x, z, w, d, { named: false, solid: [], ecran: { periode: 11 + i * 2, decale: i + 1, pages: ECRAN_FEED.pages } })),
   // mobilier et sources de lumière : l'ancre (pied) est posée sur le point du tableau ; le halo du code est centré sur ce même point
   ...MOBILIER.map(([id, sprite, ax, az, w, d]) => B(id, '', sprite, ax - w, az - d, w, d, { named: false })),
 ];
@@ -78,7 +82,8 @@ export const LOCATIONS_PULSE = {
       { x: 20, z: 30, w: 8, d: 6, kind: 'plate', tint: 'rgba(10,12,22,.55)' },
       { x: 12, z: 12, w: 20, d: 2, kind: 'wet', skin: 'g_pp_dalle_mouillee', tint: 'rgba(10,10,20,.35)' }, { x: 19, z: 22, w: 10, d: 1.5, kind: 'wet', skin: 'g_pp_dalle_mouillee', tint: 'rgba(10,10,20,.35)' },
       ...PIEDS.map(([x, z, w, d]) => ({ x, z, w, d, kind: 'plate', skin: 'g_pp_grille', tint: 'rgba(6,6,12,.55)' })) ],
-      paint: [ { x: 22, z: 4, w: 4, d: 24, skin: 'g_pp_allee' }, { x: 0, z: 15, w: 22, d: 2, skin: 'g_pp_allee' }, { x: 26, z: 15, w: 22, d: 2, skin: 'g_pp_allee' } ] },
+      paint: [ { x: 22, z: 4, w: 4, d: 24, skin: 'g_pp_allee' }, { x: 0, z: 15, w: 22, d: 2, skin: 'g_pp_allee_ew' }, { x: 26, z: 15, w: 22, d: 2, skin: 'g_pp_allee_ew' } ] },
+    gardeCorps: GARDE_CORPS, labelsProches: { ids: ['pp_ecran_feed', 'pp_vasseur', 'pp_isaure', 'pp_maelle'], r: 3 }, // scène centrale : étiquettes à l'approche (3 m) ou au survol
     accessLabels: false, // chantier pilote : aucune étiquette ni écran posés sur les accès (les anneaux de seuil restent)
     buildings: BUILDINGS_PULSE, props: [],
     glows: [ // chaque halo a sa source : l'écran du Feed, le Holo, le billboard, le kiosque, le distributeur, le portique, le stand, la guérite, les caméras,
@@ -89,10 +94,10 @@ export const LOCATIONS_PULSE = {
       { x: 22, z: 6.3, rx: 3, rz: 1.2, color: '#e8eef2', i: 0.45 }, { x: 46, z: 30.5, rx: 2.6, rz: 1.8, color: CHAUD, i: 0.8 }, { x: 2, z: 30.5, rx: 2, rz: 1.4, color: '#e8eef2', i: 0.4 },
       ...CAMS.map(([x, z]) => ({ x: x + 0.2, z: z + 0.2, rx: 0.6, rz: 0.4, color: ROUGE, i: 0.5 })),
       ...LAMPES.map(([x, z]) => ({ x, z, rx: 2.2, rz: 1.6, color: CYAN, i: 0.55 })), ...BORNES.map(([x, z]) => ({ x, z, rx: 1.3, rz: 1, color: MAGENTA, i: 0.6, flicker: true })),
-      ...[[3, 3], [7, 3], [11, 3], [38.5, 3.6], [42.5, 3.6], [46, 3.6], [3, 4.5], [3, 10], [3, 20], [3, 23], [3, 33], [45, 17], [45, 21]].map(([x, z]) => ({ x, z, rx: 1.6, rz: 1.1, color: CHAUD, i: 0.45 })) ],
+      ...[[2, 1.2], [6, 1.2], [10, 1.2], [38.5, 1.2], [42.5, 1.2], [46, 1.2], [1, 4.5], [1, 9], [1, 13.5], [1, 20], [1, 23], [1, 31]].map(([x, z]) => ({ x, z, rx: 1.6, rz: 1.1, color: CHAUD, i: 0.45 })) ],
     // chantier pilote : 8 figurants distincts (gen_pp_foule_c à j) à la place des clones, groupés devant l'écran et autour du Holo ; foule_a et foule_b ne servent plus qu'aux deux passants
     extras: [ ...[['c', 15, 14.5], ['d', 19, 13.6], ['e', 29, 15], ['f', 14, 16.6], ['g', 26, 23.4], ['h', 18, 23.2], ['i', 30.5, 16.8], ['j', 27, 13.8]].map(([k, x, z]) => ({ sprite: 'gen_pp_foule_' + k, x, z, face: x < 24 ? 1 : -1, role: 'foule' })) ],
-    walkers: [ { sprite: 'gen_pp_foule_a', path: [[2, 16], [46, 16]], speed: 0.7, t0: 4 }, { sprite: 'gen_pp_foule_b', path: [[8, 33], [8, 27], [40, 27]], speed: 0.6, t0: 11 } ],
+    walkers: [ { sprite: 'gen_pp_foule_a', path: [[2, 16], [44, 16]], speed: 0.7, t0: 4 }, { sprite: 'gen_pp_foule_b', path: [[6.5, 33], [6.5, 27], [40, 27]], speed: 0.6, t0: 11 } ],
     spawn: { player: { x: 1, z: 16 }, companion: { x: 1, z: 17 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'Pulse Plaza. Les écrans éclairent tout ; la nuit n\u2019a plus le droit de tomber ici. La foule applaudit en même temps, puis se tait en même temps.' } },
 };

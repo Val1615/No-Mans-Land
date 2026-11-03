@@ -64,3 +64,12 @@ Faces construites à partir d'élévations de face générées, puis cisaillées
 | `pp_kiosque_boissons.webp` | 170 x 232 | [99, 231] |  | kiosque à boissons : (38 ; 30), près du stand de nouilles |
 
 Planche de contrôle (pas une capture du jeu) : `/workspace/nml-shots/pulse_mobilier.png`.
+
+## Lot murs (main) : pose retenue et vérifications
+- Tout est reculé hors de la place, bord à bord, sans chevauchement d'emprise entre murs (vérifié par tests/pulse_rapide.py) ni PNJ masqué par un mur (`view.masques()`).
+- Nord : deux `pp_facade_c` (x 0 à 12 et 36 à 48, z -1,5 à 0), écrans `pp_ecran_haut_n2` (x 3 à 7) et `pp_ecran_haut_n1` (x 39 à 47) devant. L'Arcadius (immeuble blanc d'IO, nommé, avec portique et texte) est gardé ; `pp_facade_c` remplace la façade sombre à sa droite.
+- Ouest : `pp_facade_a_o` (z 3 à 15), `pp_facade_b_o2` (z 17 à 25 et 25 à 33), x < 0. Accès ouest z 15 à 17 libre.
+- Sud : `pp_mur_bas` x 0 à 16 et 40 à 48 (z 36 à 36,5) ; x 32 à 40 la pièce masquait Noor, remplacée par un garde-corps bas dessiné par le code ; x 20 à 28 (escalier, grille) libre.
+- Est : `pp_mur_bas_o` z 20,5 à 36,5 (x 48 à 48,5) ; écran `pp_ecran_haut_e1` à x 45,4 à 46, z 16 à 24 ; jonction Strip z 12 à 14 libre ; garde-corps bas z 0 à 6 et 14 à 20,5.
+- Pentes des faces x, mesurées sur l'alpha de la base : théorie de la caméra 0,331 ; `pp_facade_c` et `pp_mur_bas` 0,330 (collent au sol) ; `pp_facade_a` 0,539 et `pp_facade_b` 0,510 décollent (environ 2,7 m d'écran sur les 16 m de `pp_facade_a`, 1,2 m sur les 8 m de `pp_facade_b`) : elles ne sont plus posées. Faces z : 0,69 à 0,70 pour 0,70 attendu.
+- À reprendre par Ocre : les murs « bas » de 4 m restent hauts sur les bords sud et est, côté caméra (ils cachent une bande d'environ 7 m derrière eux) ; une version à 1,2 m serait plus juste. L'écran `pp_ecran_haut_e1` (8,9 m) paraît grand au premier plan ; n1 et n2, au fond, passent bien. Si les façades hautes du fond paraissent encore intrusives, une version à 4 m est possible.

@@ -1,10 +1,10 @@
 # Test rapide Pulse Plaza : la zone se charge depuis Center-Town, se traverse (ouest -> sud), aucune erreur JS (1280 et 390).
 # Chantier pilote (PILOTE.md) : 9 PNJ nommés, 8 figurants distincts sans clone, aucune étiquette sur les accès, écran du Feed allumé (pixels),
-# budget d'animations (view.animStats, 8 au plus sur mobile), accès ouest et jonction de Fréquence Strip libres ; captures sous l'angle du concept.
+# murs sans chevauchement et sans PNJ masqué, étiquettes de la scène centrale à l'approche, budget d'animations (view.animStats, 8 au plus sur mobile), accès ouest et jonction de Fréquence Strip libres ; captures sous l'angle du concept.
 import time,os,sys,io
 from PIL import Image
 from playwright.sync_api import sync_playwright
-URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/pulse/'; CAP='/tmp/nml-test-out/pulse_pilote/'; os.makedirs(OUT,exist_ok=True); os.makedirs(CAP,exist_ok=True); fails=[]; n=0
+URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/pulse/'; CAP='/tmp/nml-test-out/pulse_murs/apres_'; os.makedirs(OUT,exist_ok=True); os.makedirs(os.path.dirname(CAP),exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 with sync_playwright() as p:
@@ -24,6 +24,22 @@ with sync_playwright() as p:
         ok(len(L['ex'])==8 and len(set(L['ex']+L['wk']))==len(L['ex']+L['wk']) and all(x.startswith('gen_pp_foule_') and x[-1] in 'cdefghij' for x in L['ex']),f'{name} 8 figurants distincts, aucun clone',L)
         ok(L['skin']=='g_pp_dalle_sombre' and 'g_pp_allee' in L['paint'],f'{name} dalle sombre et allées (ground.paint)',L['skin'])
         ok(E("document.querySelectorAll('.wlabel.junction,.wlabel.edge').length")==0 and E("[...document.querySelectorAll('.wlabel')].every(l=>!/Escalier|Center-Town|Strip/.test(l.textContent))"),f'{name} aucune étiquette sur les accès')
+        W=E("window.__nml.world.LOCATIONS.steel_pulse.buildings.filter(b=>/^pp_(facade|mur)/.test(b.sprite)).map(b=>[b.id,b.x,b.z,b.x+b.w,b.z+b.d])")
+        chev=[(a[0],b[0]) for i,a in enumerate(W) for b in W[i+1:] if a[1]<b[3]-1e-6 and b[1]<a[3]-1e-6 and a[2]<b[4]-1e-6 and b[2]<a[4]-1e-6]
+        ok(not chev,f'{name} aucun mur ne chevauche un autre ({len(W)} pièces)',chev)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=30;g.restore(s,true)})()"); time.sleep(1)
+        mq=[]
+        for _ in range(4): mq+=[m for m in E("window.__nml.view.masques()") if m[0].startswith(('pp_fac','pp_mur'))]; time.sleep(1.5)
+        ok(not mq,f'{name} aucun mur ne masque un personnage',mq)
+        vis=lambda: E("['pp_vasseur','pp_isaure','pp_maelle'].filter(id=>{const l=document.querySelector(`.wlabel[data-npc=${id}]`);return l&&!l.hidden}).concat([...document.querySelectorAll('.wlabel[data-building=pp_ecran_feed]')].filter(l=>!l.hidden).map(()=>'feed'))")
+        ok(vis()==[],f'{name} scène centrale : étiquettes cachées loin du joueur',vis())
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=17;s.player.z=12.6;g.restore(s,true)})()"); time.sleep(1.2)
+        v=vis(); ok('pp_maelle' in v and 'pp_vasseur' not in v,f'{name} étiquette de Maëlle à l approche (3 m)',v)
+        if not mob:
+            E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=16;s.player.z=22;g.restore(s,true)})()"); time.sleep(1.2)
+            q=E("window.__nml.project(22,5,12)"); pg.mouse.move(q['x'],q['y']); pg.mouse.move(q['x']+3,q['y']+2); time.sleep(.8)
+            ok('feed' in vis(),f'{name} étiquette de l écran du Feed au survol',vis()); pg.mouse.move(5,5); time.sleep(.3)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=27;g.restore(s,true)})()"); time.sleep(1.2)
         ppm=13 if mob else 22; E(f"window.__nml.view.setCamera({{x:24,z:17,ppm:{ppm}}})"); time.sleep(2.5)
         a=E("window.__nml.project(32,0,12)"); cx,cy=a['x']-4.98*ppm,a['y']-7.84*ppm
         im=Image.open(io.BytesIO(pg.screenshot())).convert('RGB'); px=[im.getpixel((int(cx)+i,int(cy)+j)) for i in range(-10,11,2) for j in range(-10,11,2)]

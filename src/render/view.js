@@ -190,14 +190,42 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
       addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z)); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, 0, n.z); labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
     }
+    // garde-corps bas (loc.gardeCorps : x, z, w, d, h en m) : pan sombre et liseré néon, dessinés par le code ; triés avec les sprites (ordre du peintre)
+    for (const g of loc.gardeCorps || []) { const h = g.h || 1.1, grp = new THREE.Group();
+      const pan = new THREE.Mesh(new THREE.BoxGeometry(g.w, h, g.d), new THREE.MeshBasicMaterial({ color: g.color || '#1c1a24', transparent: true, depthTest: false, depthWrite: false }));
+      const neon = new THREE.Mesh(new THREE.BoxGeometry(g.w + 0.02, 0.07, g.d + 0.02), new THREE.MeshBasicMaterial({ color: g.neon || '#ffae55', transparent: true, depthTest: false, depthWrite: false }));
+      pan.position.set(g.x + g.w / 2, h / 2, g.z + g.d / 2); pan.userData.box = { x0: g.x, x1: g.x + g.w, z0: g.z, z1: g.z + g.d, h }; neon.position.set(g.x + g.w / 2, h - 0.05, g.z + g.d / 2); grp.add(pan, neon); world.add(grp);
+      bills.push({ obj: pan, x0: g.x, x1: g.x + g.w, z0: g.z, z1: g.z + g.d, extra: [neon] }); }
+    // étiquettes rapprochées (loc.labelsProches : { ids, r }) : visibles seulement à moins de r m du joueur, ou au survol (souris)
+    if (loc.labelsProches) { const P = loc.labelsProches, R = P.r || 3;
+      for (const l of labels) { const id = l.el.dataset.npc || l.el.dataset.building; if (!P.ids.includes(id)) continue;
+        const n = NPCS.find(n => n.id === id), b = loc.buildings.find(b => b.id === id), vis0 = l.visible;
+        const dist = () => { const q = game.state.player; if (n) return Math.hypot(q.x - n.x, q.z - n.z);
+          return Math.hypot(q.x - Math.max(b.x, Math.min(q.x, b.x + b.w)), q.z - Math.max(b.z, Math.min(q.z, b.z + b.d))); };
+        l.proche = true; l.visible = () => (!vis0 || vis0()) && (survol === id || dist() <= R); } }
     builtFor = locId;
   }
+  // survol à la souris (étiquettes rapprochées) : PNJ ou bâtiment sous le pointeur, au plus toutes les 150 ms
+  let survol = null, survolT = 0;
+  canvas.addEventListener?.('pointermove', e => { if (e.pointerType !== 'mouse' || !LOCATIONS[builtFor]?.labelsProches) return; const t = performance.now(); if (t - survolT < 150) return; survolT = t;
+    const r = canvas.getBoundingClientRect(); ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), cam);
+    const nh = ray.intersectObjects(npcSprites, false)[0]; if (nh) { survol = nh.object.userData.npc; return; }
+    const c = scr(ray.ray.origin); let top = null; // sprite opaque le plus haut sous le pointeur, quelle que soit son emprise au sol
+    for (const s of bsprites) { if (s.material.opacity < 0.5) continue; const q = uvOf(s, c); if (alphaAt(s.userData.img, q.u, q.v) > 0.5 && (!top || s.renderOrder > top.renderOrder)) top = s; }
+    survol = top?.userData.buildingId || null; });
+  // contrôle (tests) : bâtiments ou garde-corps dessinés devant un personnage (PNJ, figurant, passant) et opaques sur lui
+  function masques() { const out = [];
+    const gens = [...npcSprites.map(s => [s.userData.npc, s]), ...decor.map((s, i) => [(s.userData.role || 'decor') + i, s])];
+    for (const [nom, a] of gens) { const ai = actorItem(a);
+      for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!bi || bi.cover || !inFront(bi, ai)) continue;
+        for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(a.position.x, hy, a.position.z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { out.push([s.userData.buildingId, nom]); break; } } } }
+    return out; }
   // Écran dessiné par le code : une toile de la taille de l'image source, le contenu est projeté dans la dalle (parallélogramme b.ecran.coins, px source).
   // Même ancre et même échelle que le sprite du bâtiment ; non teinté par la lumière (un écran éclaire, il n'est pas éclairé). Une page toutes les b.ecran.periode s,
   // redessinée une fois par page (pas de planche animée, hors budget d'animations ; figé sur la première page avec « Réduire les animations »).
   function ecranSprite(b, m, base) {
     const E = b.ecran, c = document.createElement('canvas'); c.width = m.px[0]; c.height = m.px[1]; const x = c.getContext('2d');
-    const [tl, tr, , bl] = E.coins, W = Math.hypot(tr[0] - tl[0], tr[1] - tl[1]) | 0, H = bl[1] - tl[1];
+    const [tl, tr, , bl] = E.coins || m.ecran_coins, W = Math.hypot(tr[0] - tl[0], tr[1] - tl[1]) | 0, H = bl[1] - tl[1];
     const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
     const draw = k => { const P = E.pages[k % E.pages.length]; x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, c.width, c.height);
       x.setTransform((tr[0] - tl[0]) / W, (tr[1] - tl[1]) / W, 0, 1, tl[0], tl[1]); // u le long du bord haut, v vers le bas
@@ -208,8 +236,8 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       x.fillStyle = '#f2d8ff'; x.font = `${H * 0.075 | 0}px monospace`; x.fillText(P.sous, tx, H * 0.52, W - tx - 10);
       x.fillStyle = 'rgba(10,4,20,.75)'; x.fillRect(0, H * 0.84, W, H * 0.12); x.fillStyle = '#ffb860'; x.font = `${H * 0.06 | 0}px monospace`; x.fillText('FEED 24/7 · ' + P.bandeau, 8, H * 0.92, W - 16);
       x.setTransform(1, 0, 0, 1, 0, 0); t.needsUpdate = true; };
-    draw(0); const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
-    s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: 0, periode: E.periode || 9 }; ecrans.push(s); return s;
+    draw(E.decale || 0); const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
+    s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: -1, decale: E.decale || 0, periode: E.periode || 9 }; ecrans.push(s); return s;
   }
   let glowT = null;
   function glowTex() { if (glowT) return glowT; const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
@@ -223,7 +251,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       animate(s, true, dt, t); }
     for (const s of decor) if (!walkers.includes(s)) animate(s, false, dt, t);
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
-    if (ecrans.length && !document.body?.classList?.contains('reduce-motion')) for (const e of ecrans) { const u = e.userData.ecran, k = Math.floor(t / u.periode); if (k !== u.page) { u.page = k; u.draw(k); } }
+    if (ecrans.length && !document.body?.classList?.contains('reduce-motion')) for (const e of ecrans) { const u = e.userData.ecran, k = Math.floor(t / u.periode) + u.decale; if (k !== u.page) { u.page = k; u.draw(k); } }
     animStats.ecrans = ecrans.length;
     for (const f of flick) f.m.opacity = f.base * (0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2));
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
@@ -529,7 +557,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);
       for(const h of hits){const s=h.object;const img=s.userData.img|| (s===player?'player':s.userData.npc?NPCS.find(n=>n.id===s.userData.npc)?.sprite:null);if(img&&h.uv&&alphaAt(img,h.uv.x,h.uv.y)<.3)continue;
       return {id:s.userData.buildingId||s.userData.editorId};}return null;
-    }, joue, joueEtat, animStats, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
+    }, joue, joueEtat, animStats, masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
     facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
     // rectangle écran (px CSS) d'un personnage, pour les contrôles au pixel
     actorRect: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who);
