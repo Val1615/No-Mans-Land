@@ -773,6 +773,17 @@
     "status": "v1"
   },
   "g_fs_trottoir": {
+    "file": "steel/frequence_strip/g_fs_trottoir.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 99a04016",
+    "status": "v1"
+  },
+  "g_fs_trottoir_etroit": {
     "px": [
       128,
       320
@@ -785,7 +796,7 @@
     "source": "GenerateImage (cursor), 405ba84d ; raccords fondus",
     "pose": "trottoirs étroits des deux côtés de la rue (z 6 à 8 et z 16 à 18), dalles de longueurs inégales",
     "note": "mat, sans reflet (zones mouillées et reflets gérés par le moteur)",
-    "file": "steel/frequence_strip/g_fs_trottoir.webp",
+    "file": "steel/frequence_strip/g_fs_trottoir_etroit.webp",
     "status": "v1"
   },
   "gen_fs_flic_a": {

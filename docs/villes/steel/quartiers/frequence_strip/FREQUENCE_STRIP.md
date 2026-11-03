@@ -140,7 +140,7 @@ Code couleur d'un quartier rouge **[décision Valentin]** : les enseignes domine
 | `gen_fs_mac.webp` | 180 x 512 | [90, 511] | adossé près des cabines, un peu en retrait : (47 ; 20,2) |
 | `gen_fs_flic_a.webp` | 180 x 512 | [90, 511] | patrouille qui ferme les yeux, marche le long de z 12 de x 30 à 62, regard tourné vers la rue |
 | `gen_fs_flic_b.webp` | 180 x 512 | [90, 511] | patrouille, suit flic_a à 1,5 m |
-| `g_fs_trottoir.webp` | 128 x 320 | sans ancre | trottoirs étroits des deux côtés de la rue (z 6 à 8 et z 16 à 18), dalles de longueurs inégales |
+| `g_fs_trottoir_etroit.webp` | 128 x 320 | sans ancre | trottoirs étroits des deux côtés de la rue (z 6 à 8 et z 16 à 18), dalles de longueurs inégales |
 | `g_fs_asphalte.webp` | 512 x 512 | sans ancre | chaussée (z 8 à 16) |
 | `fs_caniveau.webp` | 200 x 40 | [100, 20] | bordure de trottoir côté chaussée, répété tous les 4 m le long de x (z 8 et z 16) |
 | `fs_plaque_egout.webp` | 40 x 40 | [20, 20] | sur la chaussée, 3 ou 4 dans la rue, ex. (20 ; 12), (44 ; 10) |
