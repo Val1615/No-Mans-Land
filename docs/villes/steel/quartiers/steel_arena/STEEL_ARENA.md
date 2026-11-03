@@ -115,3 +115,20 @@ Clé de sprite `gen_ar_<id>`. Aucun d'eux n'est Vibes ni Tron, aucun ne cite d'i
 
 ## Concept art
 `concepts/maquette_steel_arena_iso.jpg` : **maquette générée**, référence d'ambiance, **pas une capture du jeu**.
+
+## Compléments : parvis agrandi [proposition]
+- **Zone.** Environ 96 x 64 m : le bâtiment occupe toute la moitié nord (z 0 à 32), un grand parvis au sud (z 32 à 64). Le code dessine les faisceaux, les écrans et la file qui avance aux portiques ; rien de tout cela n'est peint.
+- **Sols.** Grandes dalles usées (`g_ar_dalles_usees`, mates, raccords fondus), marquages de file et grilles d'évacuation en pièces séparées.
+- **Parvis.** Deux food trucks et deux revendeurs de billets, hors du couloir des portiques.
+
+| fichier | px | ancre | pose suggérée (x ; z en m) |
+|---|---|---|---|
+| `g_ar_dalles_usees.webp` | 512 x 512 | sans ancre | grand parvis sud (z 32 à 64), à alterner avec g_ar_parvis |
+| `ar_grille_evacuation.webp` | 50 x 30 | [25, 15] | parvis, tous les 12 m environ le long des files et au pied des marches |
+| `ar_marquage_file.webp` | 100 x 20 | [50, 10] | marquage de file vers les portiques, répété le long de la file (le code fait avancer la file) |
+| `ar_foodtruck_nouilles.webp` | 400 x 300 | [253, 299] | parvis sud, côté ouest : (22 ; 50), comptoir tourné vers la file |
+| `ar_foodtruck_boissons.webp` | 400 x 300 | [252, 299] | parvis sud, côté est : (74 ; 50) |
+| `gen_ar_revendeur.webp` | 180 x 512 | [90, 511] | parvis, le long de la file, hors du couloir des portiques : (40 ; 44) |
+| `gen_ar_revendeuse.webp` | 180 x 512 | [90, 511] | parvis, près des food trucks : (58 ; 47) |
+
+Portraits 192 x 192 : `portrait-gen_ar_revendeur` et `portrait-gen_ar_revendeuse`.

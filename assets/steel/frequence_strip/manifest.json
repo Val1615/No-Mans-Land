@@ -1,4 +1,81 @@
 {
+  "fs_cabines": {
+    "px": [
+      400,
+      432
+    ],
+    "anchor": [
+      398,
+      431
+    ],
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 6,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 688a75a3",
+    "pose": "façade sud, entre Le Retour et l’hôtel capsule, à l’est de la fresque d’Ocre : x 38 à 46, z 22,5 à 24 ; porte à droite, vers (44,5 ; 22,5)",
+    "neon_coins": [
+      [
+        35,
+        36
+      ],
+      [
+        367,
+        146
+      ],
+      [
+        367,
+        176
+      ],
+      [
+        35,
+        66
+      ]
+    ],
+    "porte_coins": [
+      [
+        306,
+        207
+      ],
+      [
+        369,
+        228
+      ],
+      [
+        369,
+        411
+      ],
+      [
+        306,
+        390
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_cabines.webp",
+    "status": "v1"
+  },
+  "fs_caniveau": {
+    "px": [
+      200,
+      40
+    ],
+    "decal_sol": true,
+    "taille_m": [
+      4.0,
+      0.8
+    ],
+    "anchor": [
+      100,
+      20
+    ],
+    "source": "GenerateImage (cursor), 15b49d48",
+    "pose": "bordure de trottoir côté chaussée, répété tous les 4 m le long de x (z 8 et z 16)",
+    "note": "vue de dessus, posé sur le sol par le code, sans reflet",
+    "file": "steel/frequence_strip/fs_caniveau.webp",
+    "status": "v1"
+  },
   "fs_capsules": {
     "file": "steel/frequence_strip/fs_capsules.webp",
     "px": [
@@ -16,6 +93,83 @@
     "source": "GenerateImage (cursor), baf8adcf",
     "status": "v1"
   },
+  "fs_carton": {
+    "px": [
+      60,
+      60
+    ],
+    "decal_sol": true,
+    "taille_m": [
+      1.2,
+      1.2
+    ],
+    "anchor": [
+      30,
+      30
+    ],
+    "source": "GenerateImage (cursor), 15b49d48",
+    "pose": "ruelles de côté, près de l’hôtel capsule",
+    "note": "vue de dessus, posé sur le sol par le code, sans reflet",
+    "file": "steel/frequence_strip/fs_carton.webp",
+    "status": "v1"
+  },
+  "fs_club": {
+    "px": [
+      500,
+      565
+    ],
+    "anchor": [
+      498,
+      564
+    ],
+    "footprint_m": [
+      10,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 4be7261e",
+    "pose": "façade nord, à l’est du Core Stack : x 51 à 61, z 0 à 1,5 ; porte au centre, vers (56 ; 1,5) ; l’auvent ne dépasse pas sur l’accès",
+    "neon_coins": [
+      [
+        126,
+        100
+      ],
+      [
+        376,
+        182
+      ],
+      [
+        376,
+        235
+      ],
+      [
+        126,
+        152
+      ]
+    ],
+    "porte_coins": [
+      [
+        197,
+        244
+      ],
+      [
+        304,
+        280
+      ],
+      [
+        304,
+        481
+      ],
+      [
+        197,
+        446
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_club.webp",
+    "status": "v1"
+  },
   "fs_corestack": {
     "file": "steel/frequence_strip/fs_corestack.webp",
     "px": [
@@ -31,6 +185,26 @@
       6
     ],
     "source": "GenerateImage (cursor), a7fc16c3",
+    "status": "v1"
+  },
+  "fs_detritus": {
+    "px": [
+      60,
+      50
+    ],
+    "decal_sol": true,
+    "taille_m": [
+      1.2,
+      1.0
+    ],
+    "anchor": [
+      30,
+      25
+    ],
+    "source": "GenerateImage (cursor), 15b49d48",
+    "pose": "pieds de façade et coins de porte, ex. (50 ; 6,5), (36 ; 17,5)",
+    "note": "vue de dessus, posé sur le sol par le code, sans reflet",
+    "file": "steel/frequence_strip/fs_detritus.webp",
     "status": "v1"
   },
   "fs_ens_capsules": {
@@ -428,6 +602,26 @@
     "source": "GenerateImage (cursor), 769ab882",
     "status": "v1"
   },
+  "fs_plaque_egout": {
+    "px": [
+      40,
+      40
+    ],
+    "decal_sol": true,
+    "taille_m": [
+      0.8,
+      0.8
+    ],
+    "anchor": [
+      20,
+      20
+    ],
+    "source": "GenerateImage (cursor), 15b49d48",
+    "pose": "sur la chaussée, 3 ou 4 dans la rue, ex. (20 ; 12), (44 ; 10)",
+    "note": "vue de dessus, posé sur le sol par le code, sans reflet",
+    "file": "steel/frequence_strip/fs_plaque_egout.webp",
+    "status": "v1"
+  },
   "fs_retour": {
     "file": "steel/frequence_strip/fs_retour.webp",
     "px": [
@@ -540,6 +734,22 @@
       99
     ]
   },
+  "g_fs_asphalte": {
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": [
+      10.24,
+      10.24
+    ],
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus",
+    "pose": "chaussée (z 8 à 16)",
+    "note": "mat, sans reflet (zones mouillées et reflets gérés par le moteur)",
+    "file": "steel/frequence_strip/g_fs_asphalte.webp",
+    "status": "v1"
+  },
   "g_fs_asphalte_mouille": {
     "file": "steel/frequence_strip/g_fs_asphalte_mouille.webp",
     "px": [
@@ -563,14 +773,57 @@
     "status": "v1"
   },
   "g_fs_trottoir": {
-    "file": "steel/frequence_strip/g_fs_trottoir.webp",
     "px": [
-      512,
+      128,
+      320
+    ],
+    "tile_m": [
+      2.56,
+      6.4
+    ],
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus",
+    "pose": "trottoirs étroits des deux côtés de la rue (z 6 à 8 et z 16 à 18), dalles de longueurs inégales",
+    "note": "mat, sans reflet (zones mouillées et reflets gérés par le moteur)",
+    "file": "steel/frequence_strip/g_fs_trottoir.webp",
+    "status": "v1"
+  },
+  "gen_fs_flic_a": {
+    "px": [
+      180,
       512
     ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), 99a04016",
+    "height_m": 1.8,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3145134e",
+    "pose": "patrouille qui ferme les yeux, marche le long de z 12 de x 30 à 62, regard tourné vers la rue",
+    "file": "steel/frequence_strip/gen_fs_flic_a.webp",
+    "status": "v1"
+  },
+  "gen_fs_flic_b": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3145134e",
+    "pose": "patrouille, suit flic_a à 1,5 m",
+    "file": "steel/frequence_strip/gen_fs_flic_b.webp",
     "status": "v1"
   },
   "gen_fs_foule_a": {
@@ -607,6 +860,25 @@
       511
     ],
     "source": "GenerateImage (cursor), 43d383a0",
+    "status": "v1"
+  },
+  "gen_fs_fourrure": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.74,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), bf35b18a",
+    "pose": "grappe devant le club : (55,8 ; 4,4)",
+    "file": "steel/frequence_strip/gen_fs_fourrure.webp",
     "status": "v1"
   },
   "gen_fs_gt_promo": {
@@ -661,6 +933,25 @@
       511
     ],
     "source": "GenerateImage (cursor), e2115411",
+    "status": "v1"
+  },
+  "gen_fs_mac": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.8,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3145134e",
+    "pose": "adossé près des cabines, un peu en retrait : (47 ; 20,2)",
+    "file": "steel/frequence_strip/gen_fs_mac.webp",
     "status": "v1"
   },
   "gen_fs_marius": {
@@ -718,6 +1009,44 @@
     "source": "GenerateImage (cursor), e2115411",
     "status": "v1"
   },
+  "gen_fs_racoleur": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.72,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), bf35b18a",
+    "pose": "à côté de la porte du club : (58 ; 3)",
+    "file": "steel/frequence_strip/gen_fs_racoleur.webp",
+    "status": "v1"
+  },
+  "gen_fs_racoleuse": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.64,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3145134e",
+    "pose": "devant la porte des cabines : (44 ; 20,6)",
+    "file": "steel/frequence_strip/gen_fs_racoleuse.webp",
+    "status": "v1"
+  },
   "gen_fs_rocco": {
     "file": "steel/frequence_strip/gen_fs_rocco.webp",
     "px": [
@@ -734,6 +1063,44 @@
       511
     ],
     "source": "GenerateImage (cursor), e2115411",
+    "status": "v1"
+  },
+  "gen_fs_rouge": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.68,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), bf35b18a",
+    "pose": "grappe devant le club : (55 ; 3,2)",
+    "file": "steel/frequence_strip/gen_fs_rouge.webp",
+    "status": "v1"
+  },
+  "gen_fs_rubis": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.76,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), bf35b18a",
+    "pose": "grappe devant le club : (56,6 ; 3,6)",
+    "file": "steel/frequence_strip/gen_fs_rubis.webp",
     "status": "v1"
   },
   "gen_fs_sacha": {
@@ -790,6 +1157,36 @@
     "source": "GenerateImage (cursor), 55bed990",
     "status": "v1"
   },
+  "portrait-gen_fs_flic_a": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_flic_a",
+    "source": "recadrage de gen_fs_flic_a.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_flic_a.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_flic_b": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_flic_b",
+    "source": "recadrage de gen_fs_flic_b.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_flic_b.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_fourrure": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_fourrure",
+    "source": "recadrage de gen_fs_fourrure.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_fourrure.webp",
+    "status": "v1"
+  },
   "portrait-gen_fs_gt_promo": {
     "file": "steel/frequence_strip/portrait-gen_fs_gt_promo.webp",
     "px": [
@@ -818,6 +1215,16 @@
     ],
     "npc": "gen_fs_lila",
     "source": "recadrage de gen_fs_lila.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_mac": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_mac",
+    "source": "recadrage de gen_fs_mac.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_mac.webp",
     "status": "v1"
   },
   "portrait-gen_fs_marius": {
@@ -851,6 +1258,26 @@
     "source": "recadrage de gen_fs_okoro.webp",
     "status": "v1"
   },
+  "portrait-gen_fs_racoleur": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_racoleur",
+    "source": "recadrage de gen_fs_racoleur.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_racoleur.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_racoleuse": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_racoleuse",
+    "source": "recadrage de gen_fs_racoleuse.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_racoleuse.webp",
+    "status": "v1"
+  },
   "portrait-gen_fs_rocco": {
     "file": "steel/frequence_strip/portrait-gen_fs_rocco.webp",
     "px": [
@@ -859,6 +1286,26 @@
     ],
     "npc": "gen_fs_rocco",
     "source": "recadrage de gen_fs_rocco.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_rouge": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_rouge",
+    "source": "recadrage de gen_fs_rouge.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_rouge.webp",
+    "status": "v1"
+  },
+  "portrait-gen_fs_rubis": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_fs_rubis",
+    "source": "recadrage de gen_fs_rubis.webp",
+    "file": "steel/frequence_strip/portrait-gen_fs_rubis.webp",
     "status": "v1"
   },
   "portrait-gen_fs_sacha": {

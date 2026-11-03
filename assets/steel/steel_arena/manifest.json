@@ -1,37 +1,4 @@
 {
-  "g_ar_parvis": {
-    "file": "steel/steel_arena/g_ar_parvis.webp",
-    "px": [
-      512,
-      512
-    ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), 74c4d4c6",
-    "status": "v1"
-  },
-  "g_ar_parvis_mouille": {
-    "file": "steel/steel_arena/g_ar_parvis_mouille.webp",
-    "px": [
-      512,
-      512
-    ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), b3d44da7",
-    "status": "v1"
-  },
-  "g_ar_ligne_file": {
-    "file": "steel/steel_arena/g_ar_ligne_file.webp",
-    "px": [
-      512,
-      512
-    ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), e0a328f1",
-    "status": "v1"
-  },
   "ar_arena": {
     "file": "steel/steel_arena/ar_arena.webp",
     "px": [
@@ -47,40 +14,6 @@
       12
     ],
     "source": "GenerateImage (cursor), 3d8a69c2 (sans faisceaux)",
-    "status": "v1"
-  },
-  "ar_entree": {
-    "file": "steel/steel_arena/ar_entree.webp",
-    "px": [
-      420,
-      360
-    ],
-    "anchor": [
-      287,
-      359
-    ],
-    "footprint_m": [
-      8,
-      2
-    ],
-    "source": "GenerateImage (cursor), efc9f580",
-    "status": "v1"
-  },
-  "ar_portique": {
-    "file": "steel/steel_arena/ar_portique.webp",
-    "px": [
-      200,
-      220
-    ],
-    "anchor": [
-      141,
-      219
-    ],
-    "footprint_m": [
-      2,
-      1
-    ],
-    "source": "GenerateImage (cursor), 00a8e59c",
     "status": "v1"
   },
   "ar_barriere": {
@@ -100,167 +33,48 @@
     "source": "GenerateImage (cursor), 00a8e59c",
     "status": "v1"
   },
-  "ar_projecteur": {
-    "file": "steel/steel_arena/ar_projecteur.webp",
+  "ar_ens_coeurs": {
+    "file": "steel/steel_arena/ar_ens_coeurs.webp",
     "px": [
-      160,
-      300
-    ],
-    "anchor": [
-      80,
-      299
-    ],
-    "footprint_m": [
-      2,
-      2
-    ],
-    "source": "GenerateImage (cursor), 00a8e59c",
-    "status": "v1"
-  },
-  "ar_lampadaire": {
-    "file": "steel/steel_arena/ar_lampadaire.webp",
-    "px": [
-      80,
-      300
-    ],
-    "anchor": [
-      38,
-      299
-    ],
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "source": "GenerateImage (cursor), 00a8e59c",
-    "status": "v1"
-  },
-  "ar_guichets": {
-    "file": "steel/steel_arena/ar_guichets.webp",
-    "px": [
-      220,
-      260
-    ],
-    "anchor": [
-      111,
-      259
-    ],
-    "footprint_m": [
-      4,
-      4
-    ],
-    "source": "GenerateImage (cursor), 4afe40b8",
-    "status": "v1"
-  },
-  "ar_merch": {
-    "file": "steel/steel_arena/ar_merch.webp",
-    "px": [
-      220,
-      260
-    ],
-    "anchor": [
-      140,
-      259
-    ],
-    "footprint_m": [
-      4,
-      4
-    ],
-    "source": "GenerateImage (cursor), 4afe40b8",
-    "status": "v1"
-  },
-  "ar_securite": {
-    "file": "steel/steel_arena/ar_securite.webp",
-    "px": [
-      220,
-      240
-    ],
-    "anchor": [
-      115,
-      239
-    ],
-    "footprint_m": [
-      4,
-      4
-    ],
-    "source": "GenerateImage (cursor), 4afe40b8",
-    "status": "v1"
-  },
-  "ar_regie": {
-    "file": "steel/steel_arena/ar_regie.webp",
-    "px": [
-      340,
-      240
-    ],
-    "anchor": [
-      200,
-      239
-    ],
-    "footprint_m": [
-      6,
-      4
-    ],
-    "source": "GenerateImage (cursor), 4afe40b8",
-    "status": "v1"
-  },
-  "ar_panneau_nml": {
-    "file": "steel/steel_arena/ar_panneau_nml.webp",
-    "px": [
-      120,
-      220
-    ],
-    "anchor": [
-      62,
-      219
-    ],
-    "footprint_m": [
-      2,
-      0.5
-    ],
-    "source": "GenerateImage (cursor), efc9f580",
-    "status": "v1"
-  },
-  "ar_ens_ecran_vibes": {
-    "file": "steel/steel_arena/ar_ens_ecran_vibes.webp",
-    "px": [
-      1024,
-      144
+      256,
+      64
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      256,
-      144
+      64,
+      64
     ],
-    "fps": 2,
+    "fps": 4,
     "boucle": true,
-    "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
-    "source": "GenerateImage (cursor), f3ac42bd, réf. nml-shots/refs/pp_billboard_src.jpg, format 16:9 ; animation PIL",
+    "contenu": "bâton-cœur des fans qui pulse",
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
     "status": "v1",
     "anchor": [
-      128,
-      143
+      32,
+      63
     ]
   },
-  "ar_ens_ecran_vibes_mobile": {
-    "file": "steel/steel_arena/ar_ens_ecran_vibes_mobile.webp",
+  "ar_ens_coeurs_mobile": {
+    "file": "steel/steel_arena/ar_ens_coeurs_mobile.webp",
     "px": [
-      512,
-      72
+      128,
+      32
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      128,
-      72
+      32,
+      32
     ],
-    "fps": 2,
+    "fps": 4,
     "boucle": true,
-    "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
-    "source": "GenerateImage (cursor), f3ac42bd, réf. nml-shots/refs/pp_billboard_src.jpg, format 16:9 ; animation PIL",
+    "contenu": "bâton-cœur des fans qui pulse",
+    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
     "status": "v1",
     "anchor": [
-      64,
-      71
+      16,
+      31
     ]
   },
   "ar_ens_ecran_tron": {
@@ -307,48 +121,48 @@
       71
     ]
   },
-  "ar_ens_fronton": {
-    "file": "steel/steel_arena/ar_ens_fronton.webp",
+  "ar_ens_ecran_vibes": {
+    "file": "steel/steel_arena/ar_ens_ecran_vibes.webp",
     "px": [
-      1536,
-      96
+      1024,
+      144
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      384,
-      96
+      256,
+      144
     ],
-    "fps": 3,
+    "fps": 2,
     "boucle": true,
-    "contenu": "fronton lumineux sans texte, onde violette",
-    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
+    "source": "GenerateImage (cursor), f3ac42bd, réf. nml-shots/refs/pp_billboard_src.jpg, format 16:9 ; animation PIL",
     "status": "v1",
     "anchor": [
-      192,
-      95
+      128,
+      143
     ]
   },
-  "ar_ens_fronton_mobile": {
-    "file": "steel/steel_arena/ar_ens_fronton_mobile.webp",
+  "ar_ens_ecran_vibes_mobile": {
+    "file": "steel/steel_arena/ar_ens_ecran_vibes_mobile.webp",
     "px": [
-      768,
-      48
+      512,
+      72
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      192,
-      48
+      128,
+      72
     ],
-    "fps": 3,
+    "fps": 2,
     "boucle": true,
-    "contenu": "fronton lumineux sans texte, onde violette",
-    "source": "GenerateImage (cursor), 291839ef ; animation PIL",
+    "contenu": "écran du dôme, Vibes en concert (réf. pp_billboard_src)",
+    "source": "GenerateImage (cursor), f3ac42bd, réf. nml-shots/refs/pp_billboard_src.jpg, format 16:9 ; animation PIL",
     "status": "v1",
     "anchor": [
-      96,
-      47
+      64,
+      71
     ]
   },
   "ar_ens_faisceau": {
@@ -395,48 +209,48 @@
       127
     ]
   },
-  "ar_ens_coeurs": {
-    "file": "steel/steel_arena/ar_ens_coeurs.webp",
+  "ar_ens_fronton": {
+    "file": "steel/steel_arena/ar_ens_fronton.webp",
     "px": [
-      256,
-      64
+      1536,
+      96
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      64,
-      64
+      384,
+      96
     ],
-    "fps": 4,
+    "fps": 3,
     "boucle": true,
-    "contenu": "bâton-cœur des fans qui pulse",
+    "contenu": "fronton lumineux sans texte, onde violette",
     "source": "GenerateImage (cursor), 291839ef ; animation PIL",
     "status": "v1",
     "anchor": [
-      32,
-      63
+      192,
+      95
     ]
   },
-  "ar_ens_coeurs_mobile": {
-    "file": "steel/steel_arena/ar_ens_coeurs_mobile.webp",
+  "ar_ens_fronton_mobile": {
+    "file": "steel/steel_arena/ar_ens_fronton_mobile.webp",
     "px": [
-      128,
-      32
+      768,
+      48
     ],
     "anime": true,
     "frames": 4,
     "frame_px": [
-      32,
-      32
+      192,
+      48
     ],
-    "fps": 4,
+    "fps": 3,
     "boucle": true,
-    "contenu": "bâton-cœur des fans qui pulse",
+    "contenu": "fronton lumineux sans texte, onde violette",
     "source": "GenerateImage (cursor), 291839ef ; animation PIL",
     "status": "v1",
     "anchor": [
-      16,
-      31
+      96,
+      47
     ]
   },
   "ar_ens_guichet": {
@@ -527,32 +341,286 @@
       63
     ]
   },
-  "gen_ar_ferrand": {
-    "file": "steel/steel_arena/gen_ar_ferrand.webp",
+  "ar_entree": {
+    "file": "steel/steel_arena/ar_entree.webp",
     "px": [
-      180,
-      512
+      420,
+      360
     ],
-    "height_m": 1.9,
+    "anchor": [
+      287,
+      359
+    ],
+    "footprint_m": [
+      8,
+      2
+    ],
+    "source": "GenerateImage (cursor), efc9f580",
+    "status": "v1"
+  },
+  "ar_foodtruck_boissons": {
+    "px": [
+      400,
+      300
+    ],
+    "anchor": [
+      252,
+      299
+    ],
+    "footprint_m": [
+      6,
+      2.5
+    ],
+    "height_m": 3.2,
+    "source": "GenerateImage (cursor), 8255050d",
+    "pose": "parvis sud, côté est : (74 ; 50)",
+    "note": "panneaux vierges, aucun halo ; l’ambre du comptoir est peint, la lueur au sol est au code",
+    "file": "steel/steel_arena/ar_foodtruck_boissons.webp",
+    "status": "v1"
+  },
+  "ar_foodtruck_nouilles": {
+    "px": [
+      400,
+      300
+    ],
+    "anchor": [
+      253,
+      299
+    ],
+    "footprint_m": [
+      6,
+      2.5
+    ],
+    "height_m": 3.2,
+    "source": "GenerateImage (cursor), 8255050d",
+    "pose": "parvis sud, côté ouest : (22 ; 50), comptoir tourné vers la file",
+    "note": "panneaux vierges, aucun halo ; l’ambre du comptoir est peint, la lueur au sol est au code",
+    "file": "steel/steel_arena/ar_foodtruck_nouilles.webp",
+    "status": "v1"
+  },
+  "ar_grille_evacuation": {
+    "px": [
+      50,
+      30
+    ],
+    "decal_sol": true,
+    "taille_m": [
+      1.0,
+      0.6
+    ],
+    "anchor": [
+      25,
+      15
+    ],
+    "source": "GenerateImage (cursor), 15b49d48",
+    "pose": "parvis, tous les 12 m environ le long des files et au pied des marches",
+    "note": "vue de dessus, posé sur le sol par le code, sans reflet",
+    "file": "steel/steel_arena/ar_grille_evacuation.webp",
+    "status": "v1"
+  },
+  "ar_guichets": {
+    "file": "steel/steel_arena/ar_guichets.webp",
+    "px": [
+      220,
+      260
+    ],
+    "anchor": [
+      111,
+      259
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
+  },
+  "ar_lampadaire": {
+    "file": "steel/steel_arena/ar_lampadaire.webp",
+    "px": [
+      80,
+      300
+    ],
+    "anchor": [
+      38,
+      299
+    ],
     "footprint_m": [
       0.6,
       0.6
     ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 2307cd1e",
+    "source": "GenerateImage (cursor), 00a8e59c",
     "status": "v1"
   },
-  "portrait-gen_ar_ferrand": {
-    "file": "steel/steel_arena/portrait-gen_ar_ferrand.webp",
+  "ar_marquage_file": {
     "px": [
-      192,
-      192
+      100,
+      20
     ],
-    "npc": "gen_ar_ferrand",
-    "source": "recadrage de gen_ar_ferrand.webp",
+    "decal_sol": true,
+    "taille_m": [
+      2.0,
+      0.4
+    ],
+    "anchor": [
+      50,
+      10
+    ],
+    "source": "GenerateImage (cursor), 15b49d48",
+    "pose": "marquage de file vers les portiques, répété le long de la file (le code fait avancer la file)",
+    "note": "vue de dessus, posé sur le sol par le code, sans reflet",
+    "file": "steel/steel_arena/ar_marquage_file.webp",
+    "status": "v1"
+  },
+  "ar_merch": {
+    "file": "steel/steel_arena/ar_merch.webp",
+    "px": [
+      220,
+      260
+    ],
+    "anchor": [
+      140,
+      259
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
+  },
+  "ar_panneau_nml": {
+    "file": "steel/steel_arena/ar_panneau_nml.webp",
+    "px": [
+      120,
+      220
+    ],
+    "anchor": [
+      62,
+      219
+    ],
+    "footprint_m": [
+      2,
+      0.5
+    ],
+    "source": "GenerateImage (cursor), efc9f580",
+    "status": "v1"
+  },
+  "ar_portique": {
+    "file": "steel/steel_arena/ar_portique.webp",
+    "px": [
+      200,
+      220
+    ],
+    "anchor": [
+      141,
+      219
+    ],
+    "footprint_m": [
+      2,
+      1
+    ],
+    "source": "GenerateImage (cursor), 00a8e59c",
+    "status": "v1"
+  },
+  "ar_projecteur": {
+    "file": "steel/steel_arena/ar_projecteur.webp",
+    "px": [
+      160,
+      300
+    ],
+    "anchor": [
+      80,
+      299
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "source": "GenerateImage (cursor), 00a8e59c",
+    "status": "v1"
+  },
+  "ar_regie": {
+    "file": "steel/steel_arena/ar_regie.webp",
+    "px": [
+      340,
+      240
+    ],
+    "anchor": [
+      200,
+      239
+    ],
+    "footprint_m": [
+      6,
+      4
+    ],
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
+  },
+  "ar_securite": {
+    "file": "steel/steel_arena/ar_securite.webp",
+    "px": [
+      220,
+      240
+    ],
+    "anchor": [
+      115,
+      239
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "source": "GenerateImage (cursor), 4afe40b8",
+    "status": "v1"
+  },
+  "g_ar_dalles_usees": {
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": [
+      10.24,
+      10.24
+    ],
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 405ba84d ; raccords fondus",
+    "pose": "grand parvis sud (z 32 à 64), à alterner avec g_ar_parvis",
+    "note": "mat, sans reflet (zones mouillées et reflets gérés par le moteur)",
+    "file": "steel/steel_arena/g_ar_dalles_usees.webp",
+    "status": "v1"
+  },
+  "g_ar_ligne_file": {
+    "file": "steel/steel_arena/g_ar_ligne_file.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), e0a328f1",
+    "status": "v1"
+  },
+  "g_ar_parvis": {
+    "file": "steel/steel_arena/g_ar_parvis.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 74c4d4c6",
+    "status": "v1"
+  },
+  "g_ar_parvis_mouille": {
+    "file": "steel/steel_arena/g_ar_parvis_mouille.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), b3d44da7",
     "status": "v1"
   },
   "gen_ar_anouk": {
@@ -573,79 +641,13 @@
     "source": "GenerateImage (cursor), 2307cd1e",
     "status": "v1"
   },
-  "portrait-gen_ar_anouk": {
-    "file": "steel/steel_arena/portrait-gen_ar_anouk.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_anouk",
-    "source": "recadrage de gen_ar_anouk.webp",
-    "status": "v1"
-  },
-  "gen_ar_zelie": {
-    "file": "steel/steel_arena/gen_ar_zelie.webp",
+  "gen_ar_bastien": {
+    "file": "steel/steel_arena/gen_ar_bastien.webp",
     "px": [
       180,
       512
     ],
-    "height_m": 1.6,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 2307cd1e",
-    "status": "v1"
-  },
-  "portrait-gen_ar_zelie": {
-    "file": "steel/steel_arena/portrait-gen_ar_zelie.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_zelie",
-    "source": "recadrage de gen_ar_zelie.webp",
-    "status": "v1"
-  },
-  "gen_ar_malik": {
-    "file": "steel/steel_arena/gen_ar_malik.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.8,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 2307cd1e",
-    "status": "v1"
-  },
-  "portrait-gen_ar_malik": {
-    "file": "steel/steel_arena/portrait-gen_ar_malik.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_malik",
-    "source": "recadrage de gen_ar_malik.webp",
-    "status": "v1"
-  },
-  "gen_ar_ines": {
-    "file": "steel/steel_arena/gen_ar_ines.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.62,
+    "height_m": 1.76,
     "footprint_m": [
       0.6,
       0.6
@@ -655,16 +657,6 @@
       511
     ],
     "source": "GenerateImage (cursor), b559e0d3",
-    "status": "v1"
-  },
-  "portrait-gen_ar_ines": {
-    "file": "steel/steel_arena/portrait-gen_ar_ines.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_ines",
-    "source": "recadrage de gen_ar_ines.webp",
     "status": "v1"
   },
   "gen_ar_clem": {
@@ -685,23 +677,13 @@
     "source": "GenerateImage (cursor), b559e0d3",
     "status": "v1"
   },
-  "portrait-gen_ar_clem": {
-    "file": "steel/steel_arena/portrait-gen_ar_clem.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_clem",
-    "source": "recadrage de gen_ar_clem.webp",
-    "status": "v1"
-  },
-  "gen_ar_garnier": {
-    "file": "steel/steel_arena/gen_ar_garnier.webp",
+  "gen_ar_ferrand": {
+    "file": "steel/steel_arena/gen_ar_ferrand.webp",
     "px": [
       180,
       512
     ],
-    "height_m": 1.82,
+    "height_m": 1.9,
     "footprint_m": [
       0.6,
       0.6
@@ -710,73 +692,7 @@
       89,
       511
     ],
-    "source": "GenerateImage (cursor), b559e0d3",
-    "status": "v1"
-  },
-  "portrait-gen_ar_garnier": {
-    "file": "steel/steel_arena/portrait-gen_ar_garnier.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_garnier",
-    "source": "recadrage de gen_ar_garnier.webp",
-    "status": "v1"
-  },
-  "gen_ar_bastien": {
-    "file": "steel/steel_arena/gen_ar_bastien.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.76,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), b559e0d3",
-    "status": "v1"
-  },
-  "portrait-gen_ar_bastien": {
-    "file": "steel/steel_arena/portrait-gen_ar_bastien.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_bastien",
-    "source": "recadrage de gen_ar_bastien.webp",
-    "status": "v1"
-  },
-  "gen_ar_laure": {
-    "file": "steel/steel_arena/gen_ar_laure.webp",
-    "px": [
-      180,
-      512
-    ],
-    "height_m": 1.58,
-    "footprint_m": [
-      0.6,
-      0.6
-    ],
-    "anchor": [
-      89,
-      511
-    ],
-    "source": "GenerateImage (cursor), 6593a78a",
-    "status": "v1"
-  },
-  "portrait-gen_ar_laure": {
-    "file": "steel/steel_arena/portrait-gen_ar_laure.webp",
-    "px": [
-      192,
-      192
-    ],
-    "npc": "gen_ar_laure",
-    "source": "recadrage de gen_ar_laure.webp",
+    "source": "GenerateImage (cursor), 2307cd1e",
     "status": "v1"
   },
   "gen_ar_foule_a": {
@@ -813,6 +729,244 @@
       511
     ],
     "source": "GenerateImage (cursor), 6593a78a",
+    "status": "v1"
+  },
+  "gen_ar_garnier": {
+    "file": "steel/steel_arena/gen_ar_garnier.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.82,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), b559e0d3",
+    "status": "v1"
+  },
+  "gen_ar_ines": {
+    "file": "steel/steel_arena/gen_ar_ines.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.62,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), b559e0d3",
+    "status": "v1"
+  },
+  "gen_ar_laure": {
+    "file": "steel/steel_arena/gen_ar_laure.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.58,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 6593a78a",
+    "status": "v1"
+  },
+  "gen_ar_malik": {
+    "file": "steel/steel_arena/gen_ar_malik.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.8,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 2307cd1e",
+    "status": "v1"
+  },
+  "gen_ar_revendeur": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.76,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 628629af",
+    "pose": "parvis, le long de la file, hors du couloir des portiques : (40 ; 44)",
+    "file": "steel/steel_arena/gen_ar_revendeur.webp",
+    "status": "v1"
+  },
+  "gen_ar_revendeuse": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.64,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 628629af",
+    "pose": "parvis, près des food trucks : (58 ; 47)",
+    "file": "steel/steel_arena/gen_ar_revendeuse.webp",
+    "status": "v1"
+  },
+  "gen_ar_zelie": {
+    "file": "steel/steel_arena/gen_ar_zelie.webp",
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.6,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "source": "GenerateImage (cursor), 2307cd1e",
+    "status": "v1"
+  },
+  "portrait-gen_ar_anouk": {
+    "file": "steel/steel_arena/portrait-gen_ar_anouk.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_anouk",
+    "source": "recadrage de gen_ar_anouk.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_bastien": {
+    "file": "steel/steel_arena/portrait-gen_ar_bastien.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_bastien",
+    "source": "recadrage de gen_ar_bastien.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_clem": {
+    "file": "steel/steel_arena/portrait-gen_ar_clem.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_clem",
+    "source": "recadrage de gen_ar_clem.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_ferrand": {
+    "file": "steel/steel_arena/portrait-gen_ar_ferrand.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_ferrand",
+    "source": "recadrage de gen_ar_ferrand.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_garnier": {
+    "file": "steel/steel_arena/portrait-gen_ar_garnier.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_garnier",
+    "source": "recadrage de gen_ar_garnier.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_ines": {
+    "file": "steel/steel_arena/portrait-gen_ar_ines.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_ines",
+    "source": "recadrage de gen_ar_ines.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_laure": {
+    "file": "steel/steel_arena/portrait-gen_ar_laure.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_laure",
+    "source": "recadrage de gen_ar_laure.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_malik": {
+    "file": "steel/steel_arena/portrait-gen_ar_malik.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_malik",
+    "source": "recadrage de gen_ar_malik.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_revendeur": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_revendeur",
+    "source": "recadrage de gen_ar_revendeur.webp",
+    "file": "steel/steel_arena/portrait-gen_ar_revendeur.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_revendeuse": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_revendeuse",
+    "source": "recadrage de gen_ar_revendeuse.webp",
+    "file": "steel/steel_arena/portrait-gen_ar_revendeuse.webp",
+    "status": "v1"
+  },
+  "portrait-gen_ar_zelie": {
+    "file": "steel/steel_arena/portrait-gen_ar_zelie.webp",
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_zelie",
+    "source": "recadrage de gen_ar_zelie.webp",
     "status": "v1"
   }
 }

@@ -120,3 +120,31 @@ Clé de sprite `gen_fs_<id>`. Aucun d'eux n'est Vibes ni Tron, aucun ne cite d'i
 
 ## Concept art
 `concepts/maquette_frequence_strip_iso.jpg` : **maquette générée**, référence d'ambiance, **pas une capture du jeu**.
+
+## Compléments : quartier rouge, rue allongée [proposition]
+Code couleur d'un quartier rouge **[décision Valentin]** : les enseignes dominent en rouge et rose, l'ambre vient en touche, le violet existant reste un accent. Les couleurs actuelles du Strip sont gardées.
+- **Devantures.** Un club de strip (`fs_club`, 10 m) et des cabines à rideaux (`fs_cabines`, 8 m), faces x à la pente 0,33. Chaque devanture a une porte lisible, documentée en `porte_coins` dans le manifest pour un futur intérieur. Les enseignes sont peintes éteintes : le code dessine les néons qui clignotent dans `neon_coins`. Aucune enseigne ni auvent ne déborde sur un accès.
+- **PNJ.** Prostitué·es et racoleurs en grappes devant les portes (club et cabines), un mac un peu en retrait, et une patrouille de police de deux agents qui marche le long de la rue en regardant ailleurs. Tous habillés, rien d'explicite.
+- **Sols.** À 50 px/m, mats, sans reflet (le moteur gère les zones mouillées) : trottoirs étroits, asphalte de chaussée, et en pièces séparées le caniveau, les plaques d'égout, les détritus et les cartons. Raccords fondus pour ne pas lire de damier.
+- **Rue allongée et plus dense.** Les poses ci-dessous supposent la rue actuelle (64 m) prolongée vers l'est ; les coordonnées sont à recaler si la longueur change.
+
+| fichier | px | ancre | pose suggérée (x ; z en m) |
+|---|---|---|---|
+| `fs_club.webp` | 500 x 565 | [498, 564] | façade nord, à l’est du Core Stack : x 51 à 61, z 0 à 1,5 ; porte au centre, vers (56 ; 1,5) ; l’auvent ne dépasse pas sur l’accès |
+| `fs_cabines.webp` | 400 x 432 | [398, 431] | façade sud, entre Le Retour et l’hôtel capsule, à l’est de la fresque d’Ocre : x 38 à 46, z 22,5 à 24 ; porte à droite, vers (44,5 ; 22,5) |
+| `gen_fs_rouge.webp` | 180 x 512 | [90, 511] | grappe devant le club : (55 ; 3,2) |
+| `gen_fs_rubis.webp` | 180 x 512 | [90, 511] | grappe devant le club : (56,6 ; 3,6) |
+| `gen_fs_fourrure.webp` | 180 x 512 | [90, 511] | grappe devant le club : (55,8 ; 4,4) |
+| `gen_fs_racoleur.webp` | 180 x 512 | [90, 511] | à côté de la porte du club : (58 ; 3) |
+| `gen_fs_racoleuse.webp` | 180 x 512 | [90, 511] | devant la porte des cabines : (44 ; 20,6) |
+| `gen_fs_mac.webp` | 180 x 512 | [90, 511] | adossé près des cabines, un peu en retrait : (47 ; 20,2) |
+| `gen_fs_flic_a.webp` | 180 x 512 | [90, 511] | patrouille qui ferme les yeux, marche le long de z 12 de x 30 à 62, regard tourné vers la rue |
+| `gen_fs_flic_b.webp` | 180 x 512 | [90, 511] | patrouille, suit flic_a à 1,5 m |
+| `g_fs_trottoir.webp` | 128 x 320 | sans ancre | trottoirs étroits des deux côtés de la rue (z 6 à 8 et z 16 à 18), dalles de longueurs inégales |
+| `g_fs_asphalte.webp` | 512 x 512 | sans ancre | chaussée (z 8 à 16) |
+| `fs_caniveau.webp` | 200 x 40 | [100, 20] | bordure de trottoir côté chaussée, répété tous les 4 m le long de x (z 8 et z 16) |
+| `fs_plaque_egout.webp` | 40 x 40 | [20, 20] | sur la chaussée, 3 ou 4 dans la rue, ex. (20 ; 12), (44 ; 10) |
+| `fs_detritus.webp` | 60 x 50 | [30, 25] | pieds de façade et coins de porte, ex. (50 ; 6,5), (36 ; 17,5) |
+| `fs_carton.webp` | 60 x 60 | [30, 30] | ruelles de côté, près de l’hôtel capsule |
+
+Portraits 192 x 192 : `portrait-gen_fs_<id>` pour les huit PNJ. Planche de contrôle : `/workspace/nml-shots/strip_arena_complements.png`.
