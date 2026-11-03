@@ -65,3 +65,6 @@ Planches horizontales, images côte à côte de gauche à droite, lues en boucle
 | `gen_ar_laure` | 1.58 | 180 x 512 | oui |
 | `gen_ar_foule_a` | 1.70 | 180 x 512 | non |
 | `gen_ar_foule_b` | 1.66 | 180 x 512 | non |
+
+## Compléments 2
+Façades courbes de 28 m (`ar_facade_courbe_x`, `ar_facade_courbe_z`, `ar_facade_angle`), entrée `ar_facade_entree`, écrans `ar_ecran_geant_x` et `ar_ecran_geant_z`, `ar_pylone_projecteur`, `ar_barriere_file` et `ar_barriere_file_o`, `ar_stand_merch_b` et `ar_stand_merch_c`, PNJ `gen_ar_fan_chignons`, `gen_ar_techwear`, `gen_ar_manteau`, `gen_ar_cuir`. Détail dans STEEL_ARENA.md, section Compléments 2.

@@ -132,3 +132,38 @@ Clé de sprite `gen_ar_<id>`. Aucun d'eux n'est Vibes ni Tron, aucun ne cite d'i
 | `gen_ar_revendeuse.webp` | 180 x 512 | [90, 511] | parvis, près des food trucks : (58 ; 47) |
 
 Portraits 192 x 192 : `portrait-gen_ar_revendeur` et `portrait-gen_ar_revendeuse`.
+
+## Compléments 2 : le bâtiment et son parvis, 96 x 64 m [proposition]
+Une arène immense, vivante dehors, la nuit. Le bâtiment occupe la moitié nord (proposé : x 4 à 92, z 0 à 30), le parvis sombre en dalles anthracite occupe la moitié sud.
+
+- **Façade courbe géante, 28 m.** Segments de 16 m en face x (`ar_facade_courbe_x`, pente 0,33) et en face z (`ar_facade_courbe_z`, pente 0,70), chacun avec un léger ventre de 0,8 m vers l'extérieur ; les extrémités restent sur la ligne de façade pour raccorder bord à bord. L'angle sud-est est un quart de cercle de 8 m de rayon (`ar_facade_angle`). Côtes d'acier sombre, filets violets fixes, quelques touches cyan.
+- **Entrée principale.** `ar_facade_entree` est un segment de façade de 16 m qui porte le portail, six portiques et les grilles ouvertes rabattues. `porte_coins`, `portiques_coins` et `fronton_coins` sont au manifest (le fronton est vide, `ar_ens_fronton` peut s'y poser).
+- **Écrans géants vides.** `ar_ecran_geant_x` (12 m) et `ar_ecran_geant_z` (10 m), fixés à 12 m de haut sur la façade porteuse (`elevation_m`), zone d'écran vide décrite par `ecran_coins`. L'ancre est le pied de la façade porteuse.
+- **Pylônes projecteurs.** `ar_pylone_projecteur`, 12 m : seules les lentilles sont peintes. `source_faisceau_px` donne le point d'où le code tire le faisceau.
+- **File.** Barrières `ar_barriere_file` (face x) et `ar_barriere_file_o` (face z) en serpentin devant l'entrée, avec `ar_marquage_file` au sol.
+- **Merch.** Un stand (`ar_stand_merch_b`) et un chariot (`ar_stand_merch_c`), marchandises unies, sans imprimé.
+- **Foule.** Quatre PNJ de foule en plus des revendeurs, tous habillés, sans réplique.
+
+**Animations au code** (notées `anime_par_code` dans le manifest) : les faisceaux des pylônes, le contenu des écrans géants et du fronton, la file qui avance aux portiques. Aucune animation peinte, aucun faisceau dans les sprites. Pas de nouvelle planche animée : le budget de 8 animations visibles est inchangé.
+
+| fichier | px | ancre | pose suggérée (x ; z en m) |
+|---|---|---|---|
+| `ar_facade_courbe_x.webp` | 801 x 1666 | [800, 1664] | façade sud du bâtiment (ligne z 30), segments de 16 m bord à bord : x 4 à 20, 20 à 36, 52 à 68, 68 à 84 ; ancre au pied de l’extrémité est, sur la ligne de façade (x fin ; 30) |
+| `ar_facade_entree.webp` | 801 x 1666 | [800, 1664] | au milieu de la façade sud : x 36 à 52, z 30 ; ancre (52 ; 30) ; la file arrive du sud vers (44 ; 31) |
+| `ar_facade_courbe_z.webp` | 552 x 1788 | [0, 1785] | façade est du bâtiment (ligne x 92) : z 6 à 22 ; ancre au pied de l’extrémité sud, sur la ligne de façade (92 ; 22) |
+| `ar_facade_angle.webp` | 677 x 1504 | [0, 1461] | angle sud-est : centre de l’arc (84 ; 22), raccord à la façade sud en (84 ; 30) et à la façade est en (92 ; 22) ; ancre au pied du raccord sud (84 ; 30) |
+| `ar_ecran_geant_x.webp` | 600 x 1136 | [599, 1135] | façade sud, à 12 m de haut, sur ar_facade_courbe_x : x 6 à 18 ou x 70 à 82, ancre au pied de la façade (x fin ; 30,8), décollé du ventre de la façade |
+| `ar_ecran_geant_z.webp` | 344 x 1121 | [0, 1120] | façade est, à 12 m de haut, sur ar_facade_courbe_z : z 9 à 19, ancre au pied de la façade (92,8 ; 19) |
+| `ar_pylone_projecteur.webp` | 218 x 600 | [105, 599] | quatre pylônes sur le parvis, aux coins de la zone de file : (10 ; 40), (86 ; 40), (24 ; 58), (72 ; 58) |
+| `ar_barriere_file.webp` | 200 x 198 | [143, 197] | serpentin de file devant ar_facade_entree : lignes x 36 à 52 à z 34, 37 et 40, ouvertes en bout alterné |
+| `ar_barriere_file_o.webp` | 138 x 214 | [37, 213] | retours du serpentin : x 36 et x 52, z 34 à 40 |
+| `ar_stand_merch_b.webp` | 230 x 260 | [151, 259] | parvis, le long de la file côté ouest : (30 ; 42) |
+| `ar_stand_merch_c.webp` | 230 x 260 | [148, 259] | chariot mobile, côté est de la file : (58 ; 42) |
+| `gen_ar_fan_chignons.webp` | 180 x 512 | [90, 511] | dans la file, entre les barrières : (40 ; 37,5) |
+| `gen_ar_techwear.webp` | 180 x 512 | [90, 511] | dans la file : (46 ; 34,5) |
+| `gen_ar_manteau.webp` | 180 x 512 | [90, 511] | fait signe à quelqu’un, près des food trucks : (62 ; 48) |
+| `gen_ar_cuir.webp` | 180 x 512 | [90, 511] | bras croisés, hors file, au pied d’un pylône : (24 ; 56) |
+
+Ordre d'affichage conseillé pour le bâtiment : façade est, puis segments sud d'ouest en est, puis l'angle, puis les écrans.
+
+Planche de contrôle : `/workspace/nml-shots/arena_complements2.png` (maquette de pose en bas, pas une capture du jeu).

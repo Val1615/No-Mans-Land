@@ -968,5 +968,471 @@
     "npc": "gen_ar_zelie",
     "source": "recadrage de gen_ar_zelie.webp",
     "status": "v1"
+  },
+  "ar_facade_courbe_x": {
+    "footprint_m": [
+      16,
+      1
+    ],
+    "height_m": 28,
+    "face": "x",
+    "pente": 0.33,
+    "courbe": "ventre de 0,8 m vers le sud au milieu du segment, extrémités sur la ligne de façade",
+    "pose": "façade sud du bâtiment (ligne z 30), segments de 16 m bord à bord : x 4 à 20, 20 à 36, 52 à 68, 68 à 84 ; ancre au pied de l’extrémité est, sur la ligne de façade (x fin ; 30)",
+    "px": [
+      801,
+      1666
+    ],
+    "anchor": [
+      800,
+      1664
+    ],
+    "source": "GenerateImage (cursor), 130dca4b ; mise en volume PIL",
+    "file": "steel/steel_arena/ar_facade_courbe_x.webp",
+    "status": "v1"
+  },
+  "ar_facade_entree": {
+    "footprint_m": [
+      16,
+      1
+    ],
+    "height_m": 28,
+    "face": "x",
+    "pente": 0.33,
+    "courbe": "même courbe que ar_facade_courbe_x",
+    "source": "GenerateImage (cursor), 130dca4b + 4a43e206 ; mise en volume PIL",
+    "porte_coins": [
+      [
+        157,
+        1177
+      ],
+      [
+        614,
+        1327
+      ],
+      [
+        614,
+        1615
+      ],
+      [
+        157,
+        1465
+      ]
+    ],
+    "portiques_coins": [
+      [
+        155,
+        1369
+      ],
+      [
+        572,
+        1510
+      ],
+      [
+        572,
+        1602
+      ],
+      [
+        155,
+        1461
+      ]
+    ],
+    "fronton_coins": [
+      [
+        135,
+        1026
+      ],
+      [
+        627,
+        1189
+      ],
+      [
+        627,
+        1291
+      ],
+      [
+        135,
+        1128
+      ]
+    ],
+    "pose": "au milieu de la façade sud : x 36 à 52, z 30 ; ancre (52 ; 30) ; la file arrive du sud vers (44 ; 31)",
+    "anime_par_code": "file d’attente qui avance aux portiques (portiques_coins), voyants des portiques, contenu du fronton (fronton_coins, vide, ar_ens_fronton peut s’y poser)",
+    "note": "six portiques et grilles ouvertes rabattues, hall bleu sombre ; aucun texte, aucun faisceau",
+    "px": [
+      801,
+      1666
+    ],
+    "anchor": [
+      800,
+      1664
+    ],
+    "file": "steel/steel_arena/ar_facade_entree.webp",
+    "status": "v1"
+  },
+  "ar_facade_courbe_z": {
+    "footprint_m": [
+      1,
+      16
+    ],
+    "height_m": 28,
+    "face": "z",
+    "pente": 0.7,
+    "courbe": "ventre de 0,8 m vers l’est au milieu du segment",
+    "pose": "façade est du bâtiment (ligne x 92) : z 6 à 22 ; ancre au pied de l’extrémité sud, sur la ligne de façade (92 ; 22)",
+    "px": [
+      552,
+      1788
+    ],
+    "anchor": [
+      0,
+      1785
+    ],
+    "source": "GenerateImage (cursor), 130dca4b ; mise en volume PIL",
+    "file": "steel/steel_arena/ar_facade_courbe_z.webp",
+    "status": "v1"
+  },
+  "ar_facade_angle": {
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 28,
+    "face": "angle",
+    "rayon_m": 8,
+    "courbe": "quart de cercle de 8 m de rayon, de la façade sud à la façade est",
+    "pose": "angle sud-est : centre de l’arc (84 ; 22), raccord à la façade sud en (84 ; 30) et à la façade est en (92 ; 22) ; ancre au pied du raccord sud (84 ; 30)",
+    "raccord_est_px": [
+      675,
+      1400
+    ],
+    "note": "l’ancre est le pied du raccord avec la façade sud ; raccord_est_px donne le pied du raccord avec la façade est",
+    "px": [
+      677,
+      1504
+    ],
+    "anchor": [
+      0,
+      1461
+    ],
+    "source": "GenerateImage (cursor), 130dca4b ; mise en volume PIL",
+    "file": "steel/steel_arena/ar_facade_angle.webp",
+    "status": "v1"
+  },
+  "ar_ecran_geant_x": {
+    "px": [
+      600,
+      1136
+    ],
+    "anchor": [
+      599,
+      1135
+    ],
+    "footprint_m": [
+      12,
+      0.5
+    ],
+    "height_m": 6.75,
+    "elevation_m": 12,
+    "face": "x",
+    "pente": 0.33,
+    "ecran_coins": [
+      [
+        12,
+        16
+      ],
+      [
+        588,
+        206
+      ],
+      [
+        588,
+        520
+      ],
+      [
+        12,
+        330
+      ]
+    ],
+    "ecran": "zone vide (8,8,12) ; coins haut gauche, haut droit, bas droit, bas gauche",
+    "anime_par_code": "contenu de l’écran (clips, Vibes et Tron selon les refs, jamais de visage au hasard)",
+    "fixation": "en hauteur sur la façade porteuse, jamais au sol",
+    "ancre_note": "pied de la façade porteuse, sous l’extrémité est de l’écran",
+    "source": "PIL, cadre tiré de la texture de façade 130dca4b",
+    "pose": "façade sud, à 12 m de haut, sur ar_facade_courbe_x : x 6 à 18 ou x 70 à 82, ancre au pied de la façade (x fin ; 30,8), décollé du ventre de la façade",
+    "file": "steel/steel_arena/ar_ecran_geant_x.webp",
+    "status": "v1"
+  },
+  "ar_ecran_geant_z": {
+    "px": [
+      344,
+      1121
+    ],
+    "anchor": [
+      0,
+      1120
+    ],
+    "footprint_m": [
+      0.5,
+      10
+    ],
+    "height_m": 5.6,
+    "elevation_m": 12,
+    "face": "z",
+    "pente": 0.7,
+    "ecran_coins": [
+      [
+        12,
+        244
+      ],
+      [
+        332,
+        20
+      ],
+      [
+        332,
+        276
+      ],
+      [
+        12,
+        500
+      ]
+    ],
+    "ecran": "zone vide (8,8,12) ; coins haut gauche, haut droit, bas droit, bas gauche",
+    "anime_par_code": "contenu de l’écran (clips, Vibes et Tron selon les refs, jamais de visage au hasard)",
+    "fixation": "en hauteur sur la façade porteuse, jamais au sol",
+    "ancre_note": "pied de la façade porteuse, sous l’extrémité sud de l’écran",
+    "source": "PIL, cadre tiré de la texture de façade 130dca4b",
+    "pose": "façade est, à 12 m de haut, sur ar_facade_courbe_z : z 9 à 19, ancre au pied de la façade (92,8 ; 19)",
+    "file": "steel/steel_arena/ar_ecran_geant_z.webp",
+    "status": "v1"
+  },
+  "ar_pylone_projecteur": {
+    "px": [
+      218,
+      600
+    ],
+    "anchor": [
+      105,
+      599
+    ],
+    "footprint_m": [
+      1.5,
+      1.5
+    ],
+    "height_m": 12,
+    "source_faisceau_px": [
+      108,
+      109
+    ],
+    "anime_par_code": "faisceaux dessinés par le code depuis source_faisceau_px (balayage lent), rien de peint au-delà des lentilles",
+    "source": "GenerateImage (cursor), 28b9ee7a",
+    "pose": "quatre pylônes sur le parvis, aux coins de la zone de file : (10 ; 40), (86 ; 40), (24 ; 58), (72 ; 58)",
+    "note": "seule la source est peinte (lentilles allumées) ; le faisceau est au code",
+    "file": "steel/steel_arena/ar_pylone_projecteur.webp",
+    "status": "v1"
+  },
+  "ar_barriere_file": {
+    "px": [
+      200,
+      198
+    ],
+    "anchor": [
+      143,
+      197
+    ],
+    "footprint_m": [
+      4,
+      0.4
+    ],
+    "height_m": 1.1,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 28b9ee7a ; pente recalée",
+    "pose": "serpentin de file devant ar_facade_entree : lignes x 36 à 52 à z 34, 37 et 40, ouvertes en bout alterné",
+    "anime_par_code": "la file qui avance entre les barrières (avec ar_marquage_file)",
+    "file": "steel/steel_arena/ar_barriere_file.webp",
+    "status": "v1"
+  },
+  "ar_barriere_file_o": {
+    "px": [
+      138,
+      214
+    ],
+    "anchor": [
+      37,
+      213
+    ],
+    "footprint_m": [
+      0.4,
+      4
+    ],
+    "height_m": 1.1,
+    "face": "z",
+    "pente": 0.7,
+    "source": "GenerateImage (cursor), 28b9ee7a ; miroir et pente recalée",
+    "pose": "retours du serpentin : x 36 et x 52, z 34 à 40",
+    "anime_par_code": "la file qui avance",
+    "file": "steel/steel_arena/ar_barriere_file_o.webp",
+    "status": "v1"
+  },
+  "ar_stand_merch_b": {
+    "px": [
+      230,
+      260
+    ],
+    "anchor": [
+      151,
+      259
+    ],
+    "footprint_m": [
+      3,
+      2
+    ],
+    "height_m": 2.6,
+    "source": "GenerateImage (cursor), 28b9ee7a",
+    "pose": "parvis, le long de la file côté ouest : (30 ; 42)",
+    "note": "marchandises unies, sans imprimé ni texte",
+    "file": "steel/steel_arena/ar_stand_merch_b.webp",
+    "status": "v1"
+  },
+  "ar_stand_merch_c": {
+    "px": [
+      230,
+      260
+    ],
+    "anchor": [
+      148,
+      259
+    ],
+    "footprint_m": [
+      3,
+      2
+    ],
+    "height_m": 2.6,
+    "source": "GenerateImage (cursor), 28b9ee7a",
+    "pose": "chariot mobile, côté est de la file : (58 ; 42)",
+    "note": "marchandises unies, sans imprimé ni texte",
+    "file": "steel/steel_arena/ar_stand_merch_c.webp",
+    "status": "v1"
+  },
+  "gen_ar_fan_chignons": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.6,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3e6f399d",
+    "pose": "dans la file, entre les barrières : (40 ; 37,5)",
+    "file": "steel/steel_arena/gen_ar_fan_chignons.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_ar_fan_chignons": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_fan_chignons",
+    "source": "recadrage de gen_ar_fan_chignons.webp",
+    "file": "steel/steel_arena/portrait-gen_ar_fan_chignons.webp",
+    "status": "v1"
+  },
+  "gen_ar_techwear": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.84,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3e6f399d",
+    "pose": "dans la file : (46 ; 34,5)",
+    "file": "steel/steel_arena/gen_ar_techwear.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_ar_techwear": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_techwear",
+    "source": "recadrage de gen_ar_techwear.webp",
+    "file": "steel/steel_arena/portrait-gen_ar_techwear.webp",
+    "status": "v1"
+  },
+  "gen_ar_manteau": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.66,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3e6f399d",
+    "pose": "fait signe à quelqu’un, près des food trucks : (62 ; 48)",
+    "file": "steel/steel_arena/gen_ar_manteau.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_ar_manteau": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_manteau",
+    "source": "recadrage de gen_ar_manteau.webp",
+    "file": "steel/steel_arena/portrait-gen_ar_manteau.webp",
+    "status": "v1"
+  },
+  "gen_ar_cuir": {
+    "px": [
+      180,
+      512
+    ],
+    "height_m": 1.78,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "source": "GenerateImage (cursor), 3e6f399d",
+    "pose": "bras croisés, hors file, au pied d’un pylône : (24 ; 56)",
+    "file": "steel/steel_arena/gen_ar_cuir.webp",
+    "status": "v1",
+    "figurant": true
+  },
+  "portrait-gen_ar_cuir": {
+    "px": [
+      192,
+      192
+    ],
+    "npc": "gen_ar_cuir",
+    "source": "recadrage de gen_ar_cuir.webp",
+    "file": "steel/steel_arena/portrait-gen_ar_cuir.webp",
+    "status": "v1"
   }
 }
