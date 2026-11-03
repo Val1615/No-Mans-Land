@@ -12,6 +12,19 @@
     "pilote": true,
     "pose": "allées : x 22 à 26 de z 4 à 28 (portique vers escalier) et z 15 à 17 de x 0 à 48"
   },
+  "g_pp_allee_ew": {
+    "file": "steel/pulse_plaza/g_pp_allee_ew.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor), 29bb62cf ; rotation 90°",
+    "status": "v1",
+    "pilote": true,
+    "pose": "allée est-ouest (z 15 à 17), bande de laiton dans le sens de l’allée"
+  },
   "g_pp_dalle": {
     "file": "steel/pulse_plaza/g_pp_dalle.webp",
     "source": "GenerateImage (cursor), db485438",
@@ -540,6 +553,90 @@
     ],
     "status": "v1"
   },
+  "pp_banc_beton": {
+    "file": "steel/pulse_plaza/pp_banc_beton.webp",
+    "px": [
+      118,
+      90
+    ],
+    "anchor": [
+      82,
+      89
+    ],
+    "footprint_m": [
+      2,
+      0.6
+    ],
+    "height_m": 0.9,
+    "source": "GenerateImage (cursor), d6cf6af8",
+    "status": "v1",
+    "pilote": true,
+    "pose": "banc béton, dossier laiton, assise le long de x ; ex. (6 ; 21) et (38 ; 21), dos à la façade",
+    "face": "x"
+  },
+  "pp_banc_beton_o": {
+    "file": "steel/pulse_plaza/pp_banc_beton_o.webp",
+    "px": [
+      67,
+      98
+    ],
+    "anchor": [
+      16,
+      96
+    ],
+    "footprint_m": [
+      0.6,
+      2
+    ],
+    "height_m": 0.9,
+    "source": "GenerateImage (cursor), d6cf6af8",
+    "status": "v1",
+    "pilote": true,
+    "pose": "banc béton, dossier laiton, assise le long de z ; ex. bord ouest (3 ; 10) ou est (44,5 ; 20)",
+    "face": "z"
+  },
+  "pp_banc_bois": {
+    "file": "steel/pulse_plaza/pp_banc_bois.webp",
+    "px": [
+      118,
+      90
+    ],
+    "anchor": [
+      77,
+      89
+    ],
+    "footprint_m": [
+      2,
+      0.6
+    ],
+    "height_m": 0.9,
+    "source": "GenerateImage (cursor), d6cf6af8",
+    "status": "v1",
+    "pilote": true,
+    "pose": "banc métal et bois, assise le long de x ; ex. (6 ; 21) et (38 ; 21), dos à la façade",
+    "face": "x"
+  },
+  "pp_banc_bois_o": {
+    "file": "steel/pulse_plaza/pp_banc_bois_o.webp",
+    "px": [
+      63,
+      96
+    ],
+    "anchor": [
+      18,
+      95
+    ],
+    "footprint_m": [
+      0.6,
+      2
+    ],
+    "height_m": 0.9,
+    "source": "GenerateImage (cursor), d6cf6af8",
+    "status": "v1",
+    "pilote": true,
+    "pose": "banc métal et bois, assise le long de z ; ex. bord ouest (3 ; 10) ou est (44,5 ; 20)",
+    "face": "z"
+  },
   "pp_billboard": {
     "file": "steel/pulse_plaza/pp_billboard.webp",
     "source": "nml-shots/refs/pp_billboard_src.jpg (détouré, faux texte flouté)",
@@ -627,6 +724,150 @@
       4
     ],
     "status": "v1"
+  },
+  "pp_ecran_haut_e1": {
+    "file": "steel/pulse_plaza/pp_ecran_haut_e1.webp",
+    "px": [
+      275,
+      636
+    ],
+    "anchor": [
+      0,
+      635
+    ],
+    "footprint_m": [
+      0.6,
+      8
+    ],
+    "height_m": 8.9,
+    "source": "GenerateImage (cursor), a1642572",
+    "status": "v1",
+    "pilote": true,
+    "pose": "façade est, sur pp_facade_a_o : x 46, z 16 à 24 ; ancre au pied sous le bord sud (46 ; 24) ; laisse libre la jonction Strip (47 ; 13)",
+    "face": "z",
+    "pente": 0.7,
+    "elevation_m": 5,
+    "ecran_coins": [
+      [
+        25,
+        190
+      ],
+      [
+        249,
+        33
+      ],
+      [
+        249,
+        128
+      ],
+      [
+        25,
+        285
+      ]
+    ],
+    "ecran_rect": [
+      25,
+      33,
+      249,
+      285
+    ],
+    "ecran": "zone vide (8,8,12), contenu dessiné par le code comme le Feed ; coins haut gauche, haut droit, bas droit, bas gauche"
+  },
+  "pp_ecran_haut_n1": {
+    "file": "steel/pulse_plaza/pp_ecran_haut_n1.webp",
+    "px": [
+      400,
+      665
+    ],
+    "anchor": [
+      399,
+      664
+    ],
+    "footprint_m": [
+      8,
+      0.6
+    ],
+    "height_m": 10.7,
+    "source": "GenerateImage (cursor), a1642572",
+    "status": "v1",
+    "pilote": true,
+    "pose": "façade nord, sur pp_facade_c : x 39 à 47, z 1,5 ; bas des supports à 5 m, ancre au pied sous le bord droit (47 ; 1,5)",
+    "face": "x",
+    "pente": 0.33,
+    "elevation_m": 5,
+    "ecran_coins": [
+      [
+        37,
+        35
+      ],
+      [
+        363,
+        142
+      ],
+      [
+        363,
+        280
+      ],
+      [
+        37,
+        173
+      ]
+    ],
+    "ecran_rect": [
+      37,
+      35,
+      363,
+      280
+    ],
+    "ecran": "zone vide (8,8,12), contenu dessiné par le code comme le Feed ; coins haut gauche, haut droit, bas droit, bas gauche"
+  },
+  "pp_ecran_haut_n2": {
+    "file": "steel/pulse_plaza/pp_ecran_haut_n2.webp",
+    "px": [
+      200,
+      544
+    ],
+    "anchor": [
+      199,
+      543
+    ],
+    "footprint_m": [
+      4,
+      0.6
+    ],
+    "height_m": 9.6,
+    "source": "GenerateImage (cursor), 29106175",
+    "status": "v1",
+    "pilote": true,
+    "pose": "façade nord, sur pp_facade_b : x 3 à 7, z 1,5 ; ancre (7 ; 1,5)",
+    "face": "x",
+    "pente": 0.33,
+    "elevation_m": 5.5,
+    "ecran_coins": [
+      [
+        16,
+        17
+      ],
+      [
+        181,
+        72
+      ],
+      [
+        181,
+        188
+      ],
+      [
+        16,
+        133
+      ]
+    ],
+    "ecran_rect": [
+      16,
+      17,
+      181,
+      188
+    ],
+    "ecran": "zone vide (8,8,12), contenu dessiné par le code comme le Feed ; coins haut gauche, haut droit, bas droit, bas gauche"
   },
   "pp_escalier": {
     "file": "steel/pulse_plaza/pp_escalier.webp",
@@ -725,6 +966,48 @@
     "pilote": true,
     "pose": "ouest, x 0 à 1,5, z 14 à 22 (entre billboard et guérite, accès ouest laissé libre)"
   },
+  "pp_facade_b_o2": {
+    "file": "steel/pulse_plaza/pp_facade_b_o2.webp",
+    "px": [
+      280,
+      368
+    ],
+    "anchor": [
+      47,
+      366
+    ],
+    "footprint_m": [
+      1.5,
+      8
+    ],
+    "height_m": 7,
+    "source": "GenerateImage (cursor), e41c3d88 ; recadrée aux 2/3 et redressée à la pente z (Ocre, 2026-11-02)",
+    "status": "v1",
+    "pilote": true,
+    "pose": "ouest ou est, bord en z, 8 m (280 px), base à pente 0,70, remplace pp_facade_b_o à terme"
+  },
+  "pp_facade_c": {
+    "file": "steel/pulse_plaza/pp_facade_c.webp",
+    "px": [
+      600,
+      698
+    ],
+    "anchor": [
+      598,
+      697
+    ],
+    "footprint_m": [
+      12,
+      1.5
+    ],
+    "height_m": 10,
+    "source": "GenerateImage (cursor), f16730d7",
+    "status": "v1",
+    "pilote": true,
+    "pose": "nord-est, face x : x 36 à 48, z 0 à 1,5 ; remplace l’immeuble blanc et cyan ; ancre au coin avant droit (48 ; 1,5)",
+    "face": "x",
+    "pente": 0.33
+  },
   "pp_guerite": {
     "file": "steel/pulse_plaza/pp_guerite.webp",
     "source": "GenerateImage (cursor), f0df6fa8 (planche A)",
@@ -815,6 +1098,46 @@
     ],
     "status": "v1"
   },
+  "pp_kiosque_boissons": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons.webp",
+    "px": [
+      170,
+      232
+    ],
+    "anchor": [
+      99,
+      231
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 3,
+    "source": "GenerateImage (cursor), 32b617ad",
+    "status": "v1",
+    "pilote": true,
+    "pose": "kiosque à boissons : (38 ; 30), près du stand de nouilles"
+  },
+  "pp_kiosque_presse": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse.webp",
+    "px": [
+      170,
+      232
+    ],
+    "anchor": [
+      96,
+      231
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 3,
+    "source": "GenerateImage (cursor), 32b617ad",
+    "status": "v1",
+    "pilote": true,
+    "pose": "kiosque holo-presse : (10 ; 30), entre la guérite et l’escalier, sans gêner l’accès sud"
+  },
   "pp_lampadaire": {
     "file": "steel/pulse_plaza/pp_lampadaire.webp",
     "px": [
@@ -834,6 +1157,52 @@
     "status": "v1",
     "pilote": true,
     "pose": "(8 ; 14), (8 ; 26), (40 ; 14), (36 ; 31) ; halo cyan du code centré au pied"
+  },
+  "pp_mur_bas": {
+    "file": "steel/pulse_plaza/pp_mur_bas.webp",
+    "px": [
+      400,
+      342
+    ],
+    "anchor": [
+      398,
+      340
+    ],
+    "footprint_m": [
+      8,
+      0.5
+    ],
+    "height_m": 4,
+    "source": "GenerateImage (cursor), 833d9c08",
+    "status": "v1",
+    "pilote": true,
+    "pose": "sud : bord z 35,5 à 36, de x 40 à 48 (répéter vers l’ouest tous les 8 m) ; raccord bord à bord avec pp_mur_bas_o au coin (48 ; 36)",
+    "face": "x",
+    "pente": 0.33,
+    "raccord": "ancre = extrémité basse ; pièce suivante ancrée 8 m plus loin, sans chevauchement"
+  },
+  "pp_mur_bas_o": {
+    "file": "steel/pulse_plaza/pp_mur_bas_o.webp",
+    "px": [
+      275,
+      402
+    ],
+    "anchor": [
+      0,
+      401
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 4,
+    "source": "GenerateImage (cursor), 833d9c08",
+    "status": "v1",
+    "pilote": true,
+    "pose": "est : bord x 47,5 à 48, de z 28 à 36 (répéter vers le nord tous les 8 m) ; même ancre (48 ; 36) que pp_mur_bas au coin",
+    "face": "z",
+    "pente": 0.7,
+    "raccord": "ancre = extrémité basse ; pièce suivante ancrée 8 m plus loin, sans chevauchement"
   },
   "pp_nouilles": {
     "file": "steel/pulse_plaza/pp_nouilles.webp",
@@ -888,38 +1257,5 @@
     "status": "v1",
     "pilote": true,
     "pose": "socles autour du Holo : (13 ; 19), (15 ; 25), (33 ; 25)"
-  },
-  "pp_facade_b_o2": {
-    "file": "steel/pulse_plaza/pp_facade_b_o2.webp",
-    "px": [
-      280,
-      368
-    ],
-    "anchor": [
-      47,
-      366
-    ],
-    "footprint_m": [
-      1.5,
-      8
-    ],
-    "height_m": 7,
-    "source": "GenerateImage (cursor), e41c3d88 ; recadrée aux 2/3 et redressée à la pente z (Ocre, 2026-11-02)",
-    "status": "v1",
-    "pilote": true,
-    "pose": "ouest ou est, bord en z, 8 m (280 px), base à pente 0,70, remplace pp_facade_b_o à terme"
-  },
-  "g_pp_allee_ew": {
-    "file": "steel/pulse_plaza/g_pp_allee_ew.webp",
-    "px": [
-      512,
-      512
-    ],
-    "tile_m": 4.0,
-    "tuilable": true,
-    "source": "GenerateImage (cursor), 29bb62cf ; rotation 90°",
-    "status": "v1",
-    "pilote": true,
-    "pose": "allée est-ouest (z 15 à 17), bande de laiton dans le sens de l’allée"
   }
 }
