@@ -73,3 +73,11 @@ Planche de contrôle (pas une capture du jeu) : `/workspace/nml-shots/pulse_mobi
 - Est : `pp_mur_bas_o` z 20,5 à 36,5 (x 48 à 48,5) ; écran `pp_ecran_haut_e1` à x 45,4 à 46, z 16 à 24 ; jonction Strip z 12 à 14 libre ; garde-corps bas z 0 à 6 et 14 à 20,5.
 - Pentes des faces x, mesurées sur l'alpha de la base : théorie de la caméra 0,331 ; `pp_facade_c` et `pp_mur_bas` 0,330 (collent au sol) ; `pp_facade_a` 0,539 et `pp_facade_b` 0,510 décollent (environ 2,7 m d'écran sur les 16 m de `pp_facade_a`, 1,2 m sur les 8 m de `pp_facade_b`) : elles ne sont plus posées. Faces z : 0,69 à 0,70 pour 0,70 attendu.
 - À reprendre par Ocre : les murs « bas » de 4 m restent hauts sur les bords sud et est, côté caméra (ils cachent une bande d'environ 7 m derrière eux) ; une version à 1,2 m serait plus juste. L'écran `pp_ecran_haut_e1` (8,9 m) paraît grand au premier plan ; n1 et n2, au fond, passent bien. Si les façades hautes du fond paraissent encore intrusives, une version à 4 m est possible.
+
+## Retouches après pose (lot creation/pulse-retouches)
+Verdict de Rivet sur capture : la pente 0,33 des faces x est la bonne.
+- `pp_facade_a` recisaillée de 0,54 à 0,33 : 687 x 488, ancre [607, 486].
+- `pp_facade_b` recisaillée de 0,51 à 0,33 : 359 x 282, ancre [297, 280].
+- `pp_ecran_haut_e2` : même design que e1, face z pente 0,70, 4 m de z, 138 x 394, ancre [0, 393]. Il se pose **en hauteur sur la façade est**, jamais au sol au milieu de la place (bas des supports à 4 m, `elevation_m`). L'ancre est le pied de la façade porteuse sous le bord sud de l'écran, par exemple (46 ; 24). Zone d'écran vide, `ecran_rect` [13, 17, 125, 143], `ecran_coins` [[13, 95], [125, 17], [125, 64], [13, 143]]. e1 est conservé.
+- `pp_muret` (face x, 8 m, 1,2 m) : 400 x 200, ancre [398, 199]. `pp_muret_o` (face z, 8 m) : 275 x 260, ancre [0, 259]. Même logique que pp_mur_bas : ancre au coin, raccord bord à bord, pièce suivante ancrée 8 m plus loin.
+Planche de contrôle : `/workspace/nml-shots/pulse_retouches.png`.

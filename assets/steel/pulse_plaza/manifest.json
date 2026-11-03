@@ -773,6 +773,56 @@
     ],
     "ecran": "zone vide (8,8,12), contenu dessiné par le code comme le Feed ; coins haut gauche, haut droit, bas droit, bas gauche"
   },
+  "pp_ecran_haut_e2": {
+    "file": "steel/pulse_plaza/pp_ecran_haut_e2.webp",
+    "px": [
+      138,
+      394
+    ],
+    "anchor": [
+      0,
+      393
+    ],
+    "footprint_m": [
+      0.6,
+      4
+    ],
+    "height_m": 5.9,
+    "source": "GenerateImage (cursor), a1642572",
+    "status": "v1",
+    "pilote": true,
+    "pose": "EN HAUTEUR sur la façade est uniquement, jamais au sol au milieu de la place : fixé sur pp_facade_a_o ou pp_facade_b_o2, x 46, z 20 à 24 ; bas des supports à 4 m ; l’ancre est le pied de la façade porteuse sous le bord sud (46 ; 24)",
+    "face": "z",
+    "pente": 0.7,
+    "elevation_m": 4,
+    "ecran_coins": [
+      [
+        13,
+        95
+      ],
+      [
+        125,
+        17
+      ],
+      [
+        125,
+        64
+      ],
+      [
+        13,
+        143
+      ]
+    ],
+    "ecran_rect": [
+      13,
+      17,
+      125,
+      143
+    ],
+    "ecran": "zone vide (8,8,12), contenu dessiné par le code comme le Feed ; coins haut gauche, haut droit, bas droit, bas gauche",
+    "fixation": "façade est (porteuse), comme n1 et n2 sur la façade nord",
+    "ancre_note": "pied de la façade porteuse, sous le bord sud de l’écran"
+  },
   "pp_ecran_haut_n1": {
     "file": "steel/pulse_plaza/pp_ecran_haut_n1.webp",
     "px": [
@@ -889,22 +939,23 @@
   "pp_facade_a": {
     "file": "steel/pulse_plaza/pp_facade_a.webp",
     "px": [
-      800,
-      600
+      687,
+      488
     ],
     "anchor": [
-      664,
-      599
+      607,
+      486
     ],
     "footprint_m": [
       16,
       2
     ],
     "height_m": 10,
-    "source": "GenerateImage (cursor), c7e484ac",
+    "source": "GenerateImage (cursor), c7e484ac ; recisaillée de la pente 0,54 à 0,33 (2026-11-03)",
     "status": "v1",
     "pilote": true,
-    "pose": "nord, x 36 à 48 (raboutée à l’Arcadius), z 0 à 2"
+    "pose": "nord, x 36 à 48 (raboutée à l’Arcadius), z 0 à 2",
+    "pente": 0.33
   },
   "pp_facade_a_o": {
     "file": "steel/pulse_plaza/pp_facade_a_o.webp",
@@ -929,22 +980,23 @@
   "pp_facade_b": {
     "file": "steel/pulse_plaza/pp_facade_b.webp",
     "px": [
-      420,
-      330
+      359,
+      282
     ],
     "anchor": [
-      343,
-      329
+      297,
+      280
     ],
     "footprint_m": [
       8,
       1.5
     ],
     "height_m": 7,
-    "source": "GenerateImage (cursor), e41c3d88",
+    "source": "GenerateImage (cursor), e41c3d88 ; recisaillée de la pente 0,51 à 0,33 (2026-11-03)",
     "status": "v1",
     "pilote": true,
-    "pose": "nord, x 0 à 8 puis x 4 à 12 en doublon, z 0 à 1,5"
+    "pose": "nord, x 0 à 8 puis x 4 à 12 en doublon, z 0 à 1,5",
+    "pente": 0.33
   },
   "pp_facade_b_o": {
     "file": "steel/pulse_plaza/pp_facade_b_o.webp",
@@ -1203,6 +1255,52 @@
     "face": "z",
     "pente": 0.7,
     "raccord": "ancre = extrémité basse ; pièce suivante ancrée 8 m plus loin, sans chevauchement"
+  },
+  "pp_muret": {
+    "file": "steel/pulse_plaza/pp_muret.webp",
+    "px": [
+      400,
+      200
+    ],
+    "anchor": [
+      398,
+      199
+    ],
+    "footprint_m": [
+      8,
+      0.4
+    ],
+    "height_m": 1.2,
+    "source": "GenerateImage (cursor), 833d9c08",
+    "status": "v1",
+    "pilote": true,
+    "pose": "sud ou entre-deux : bord en z, 8 m le long de x ; ancre au coin avant droit (x + 8 ; z), pièce suivante ancrée 8 m plus loin",
+    "face": "x",
+    "pente": 0.33,
+    "raccord": "ancre = extrémité basse ; raccord bord à bord au coin avec l’autre face, sans chevauchement"
+  },
+  "pp_muret_o": {
+    "file": "steel/pulse_plaza/pp_muret_o.webp",
+    "px": [
+      275,
+      260
+    ],
+    "anchor": [
+      0,
+      259
+    ],
+    "footprint_m": [
+      0.4,
+      8
+    ],
+    "height_m": 1.2,
+    "source": "GenerateImage (cursor), 833d9c08",
+    "status": "v1",
+    "pilote": true,
+    "pose": "bord en x, 8 m le long de z ; ancre au coin bas (x ; z + 8), même point que pp_muret au coin",
+    "face": "z",
+    "pente": 0.7,
+    "raccord": "ancre = extrémité basse ; raccord bord à bord au coin avec l’autre face, sans chevauchement"
   },
   "pp_nouilles": {
     "file": "steel/pulse_plaza/pp_nouilles.webp",
