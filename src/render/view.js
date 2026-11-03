@@ -100,7 +100,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     if (m.anime) { t.repeat.set(1 / m.frames, 1); m = { ...m, px: m.frame_px }; }
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, color: b.tint || light?.tint || '#ffffff' }));
     s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K * (b.k || 1), m.px[1] / K * (b.k || 1) * (b.sy || 1), 1); // b.k : échelle uniforme corrigée par le code // b.sy : tassement vertical par le code quand le sprite livré est plus haut que l'illustration
-    s.position.set(b.x + b.w, b.y || 0, b.z + b.d); // b.y : hauteur (m) d'une enseigne posée en façade
+    s.position.set(b.x + b.w + (b.ancre?.[0] || 0), b.y || 0, b.z + b.d + (b.ancre?.[1] || 0)); // b.y : hauteur (m) d'une enseigne posée en façade ; b.ancre : décalage (m) de l'ancre du sprite par rapport au coin avant (angle de l'Arena, ancre au raccord ouest)
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
     const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
@@ -190,7 +190,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
       if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; world.add(s); decor.push(s); }
     for (const w of loc.walkers || []) { const s = spriteMesh(w.sprite, null, true); s.material.depthTest = false; s.material.transparent = true; if (light.actor) s.material.color.set(light.actor);
-      s.userData.role = 'passant'; s.userData.route = w.path; s.userData.speed = w.speed || 1.1; s.userData.t = w.t0 || 0; world.add(s); decor.push(s); walkers.push(s); }
+      s.userData.role = w.role || 'passant'; s.userData.aller = !!w.aller; /* aller : parcours ouvert (file qui avance vers les portiques), repart du début */ s.userData.route = w.path; s.userData.speed = w.speed || 1.1; s.userData.t = w.t0 || 0; world.add(s); decor.push(s); walkers.push(s); }
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
       const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
@@ -223,14 +223,16 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     survol = top?.userData.buildingId || null; });
   // contrôle (tests) : bâtiments ou garde-corps dessinés devant un personnage (PNJ, figurant, passant) et opaques sur lui
   // bâtiments qui masqueraient un personnage posé en (x, z) (même règle que masques()) : aide à la pose et aux tests
+  // pièce basse (height_m < 1,2 m au manifeste : barrières de file) : ne cache pas un personnage, on voit sa tête et son buste au-dessus
+  const bas = s => (bman[s.userData.img]?.height_m ?? 99) < 1.2;
   function masqueEn(x, z) { const a = { position: new THREE.Vector3(x, 0, z) }, ai = actorItem(a), out = [];
-    for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!bi || bi.cover || !inFront(bi, ai)) continue;
+    for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!bi || bi.cover || bas(s) || !inFront(bi, ai)) continue;
       for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(x, hy, z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { out.push(s.userData.buildingId); break; } } }
     return out; }
   function masques() { const out = [];
     const gens = [...npcSprites.map(s => [s.userData.npc, s]), ...decor.map((s, i) => [(s.userData.role || 'decor') + i, s])];
     for (const [nom, a] of gens) { const ai = actorItem(a);
-      for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!bi || bi.cover || !inFront(bi, ai)) continue;
+      for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!bi || bi.cover || bas(s) || !inFront(bi, ai)) continue;
         for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(a.position.x, hy, a.position.z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { out.push([s.userData.buildingId, nom]); break; } } } }
     return out; }
   // Écran dessiné par le code : une toile de la taille de l'image source, le contenu est projeté dans la dalle (parallélogramme b.ecran.coins, px source).
@@ -247,7 +249,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const img = P.image && SKIN[P.image]; if (img) { const [sx, sy, sw, sh] = P.crop, ih = H * 0.82, iw = ih * sw / sh; x.globalAlpha = 0.95; x.drawImage(img, sx, sy, sw, sh, W * 0.06, H * 0.06, iw, ih); x.globalAlpha = 1; }
       const tx = img ? W * 0.42 : W * 0.08; x.fillStyle = '#ffffff'; x.font = `bold ${H * 0.13 | 0}px monospace`; x.fillText(P.titre, tx, H * 0.38, W - tx - 10);
       x.fillStyle = '#f2d8ff'; x.font = `${H * 0.075 | 0}px monospace`; x.fillText(P.sous, tx, H * 0.52, W - tx - 10);
-      x.fillStyle = 'rgba(10,4,20,.75)'; x.fillRect(0, H * 0.84, W, H * 0.12); x.fillStyle = '#ffb860'; x.font = `${H * 0.06 | 0}px monospace`; x.fillText('FEED 24/7 · ' + P.bandeau, 8, H * 0.92, W - 16);
+      x.fillStyle = 'rgba(10,4,20,.75)'; x.fillRect(0, H * 0.84, W, H * 0.12); x.fillStyle = '#ffb860'; x.font = `${H * 0.06 | 0}px monospace`; x.fillText((E.marque ?? 'FEED 24/7') + ' · ' + P.bandeau, 8, H * 0.92, W - 16);
       x.setTransform(1, 0, 0, 1, 0, 0); t.needsUpdate = true; };
     draw(E.decale || 0); const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
     s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: -1, decale: E.decale || 0, periode: E.periode || 9 }; ecrans.push(s); return s;
@@ -294,6 +296,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     else m.position.set(p.fx != null ? p.fx * loc.size.w : p.x, p.y ?? 0.5, p.fz != null ? p.fz * loc.size.d : p.z); m.rotation.order = 'YXZ'; m.renderOrder = 3; m.userData.projecteur = true;
     m.userData.beam = { cap: (p.cap || 0) * Math.PI / 180, bal: (p.balayage ?? 25) * Math.PI / 180, inc: (p.inclinaison ?? 20) * Math.PI / 180, T: p.periode || 14, ph: p.decale || 0 };
     beamPose(m, 0); world.add(m); beams.push(m);
+    if (it) { m.userData.neon = 'faisceau'; it.extra.push(m); } // trié avec son pylône : devant ce qui est derrière lui (façade de 28 m), derrière ce qui est devant ; opacité propre
   }
   function beamPose(m, t) { const u = m.userData.beam; m.rotation.y = u.cap + u.bal * Math.sin((t + u.ph) / u.T * Math.PI * 2); m.rotation.x = -u.inc; }
   let glowT = null;
@@ -302,7 +305,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   // v13 : passants le long d'une boucle de points (vitesse m/s), drones en orbite au-dessus de la rue, néons qui scintillent
   function ambient(dt, t) {
     for (const s of walkers) { const u = s.userData, P = u.route, seg = []; let L = 0;
-      for (let i = 0; i < P.length; i++) { const a = P[i], b = P[(i + 1) % P.length], l = Math.hypot(b[0] - a[0], b[1] - a[1]); seg.push([a, b, l]); L += l; }
+      for (let i = 0; i < P.length - (u.aller ? 1 : 0); i++) { const a = P[i], b = P[(i + 1) % P.length], l = Math.hypot(b[0] - a[0], b[1] - a[1]); seg.push([a, b, l]); L += l; }
       u.t = (u.t + dt * u.speed) % L; let r = u.t;
       for (const [a, b, l] of seg) { if (r <= l) { const k = r / l; s.position.set(a[0] + (b[0] - a[0]) * k, 0, a[1] + (b[1] - a[1]) * k); face(s, Math.atan2(b[0] - a[0], b[1] - a[1])); break; } r -= l; }
       animate(s, true, dt, t); }
@@ -590,7 +593,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       if(id) {
         const b=loc.buildings.find(b=>b.id===id), m=b && bman[b.sprite];
         if(!m || s.userData.img!==b.sprite) { builtFor=null; return; }
-        s.position.set(b.x+b.w,b.y||0,b.z+b.d);
+        s.position.set(b.x+b.w+(b.ancre?.[0]||0),b.y||0,b.z+b.d+(b.ancre?.[1]||0));
         s.scale.set(m.px[0]/K*(b.k||1),m.px[1]/K*(b.k||1)*(b.sy||1),1);
         Object.assign(item,{x0:b.x,x1:b.x+b.w,z0:b.z,z1:b.z+b.d});
       } else if(s.userData.editorId) {

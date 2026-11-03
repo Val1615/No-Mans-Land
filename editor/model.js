@@ -22,7 +22,7 @@ export function transform(doc,locId,id,changes){const l=doc.locations[locId],b=l
 const LOCATION_KEYS=['id','name','size','kind','ground','buildings','props','spawn','actors','wall','wallSkin','light','glows','extras','walkers','drones','gardeCorps','doorSkin','enseignes','projecteurs'];
 export const EFFETS_ENSEIGNE=['fixe','clignote','gresille','saute','pulse','eteint']; // enseignes animées par le code (docs/villes/steel/ENSEIGNES_CODE.md)
 const GROUND_KEYS=['base','skin','zones','tileM','paint','tint','clean','water','decals'];
-const KEYS={building:['id','label','sprite','x','z','w','d','visitable','cue','k','sy','y','solid','editorScale','editorLayer','editorDepth','interiorId','named','tint','sign','cover','defile','groupe','ph','fige','ecran'],
+const KEYS={building:['id','label','sprite','x','z','w','d','visitable','cue','k','sy','y','solid','editorScale','editorLayer','editorDepth','interiorId','named','tint','sign','cover','defile','groupe','ph','fige','ecran','ancre'],
  prop:['id','label','sprite','furn','box','w','d','h','color','x','z','y','solid','fp','glow','flip','tint','editorScale','editorLayer','editorDepth'],
  actor:['id','label','sprite','role','x','z','editorScale','dialogueId'],zone:['id','label','kind','x','z','w','d','skin','tint','tileM','editorScale','editorLayer','editorDepth']};
 const LABEL={building:'bâtiment',prop:'décor',actor:'personnage',zone:'zone de sol'};

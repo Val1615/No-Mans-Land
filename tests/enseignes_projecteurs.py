@@ -24,7 +24,7 @@ with sync_playwright() as p:
         ok(len({tuple(x) for x in a})>2 and all(0<=v<=1 for x in a for v in x),f'{name} : luminosité des contours animée par le code',a[:3])
         if mob: ok(st['on']<=8,f'{name} : budget mobile animStats.on <= 8 (Strip, enseignes code hors budget)',st)
         pg.screenshot(path=OUT+f'test_strip_enseignes_dev_{name}.png')
-        go(pg,'steel_arena',26,30); st=E("window.__nml.view.animStats")
+        go(pg,'steel_arena',26,40); st=E("window.__nml.view.animStats")
         ok(st['projecteurs']==4,f'{name} : Arena : 4 projecteurs code',st)
         b0=E("window.__nml.view.codeAnims().beams"); time.sleep(1.5); b1=E("window.__nml.view.codeAnims().beams")
         ok(len(b0)==4 and all(abs(x-y)>1e-3 for x,y in zip(b0,b1)) and len(set(b1))==4,f'{name} : faisceaux qui balaient, mouvements décalés',(b0,b1))
@@ -42,7 +42,7 @@ with sync_playwright() as p:
         if not mob:  # format d'Ocre branché sans déclaration : une façade avec calque <clé>_neon et un pylône à source_faisceau_px posés à la volée
             E("""(()=>{const L=window.__nml.world.LOCATIONS,B=(id,sprite,x,z,w,d)=>({id,label:'',sprite,x,z,w,d,visitable:false,cue:null,named:false,solid:[]});
               L.steel_arena.buildings.push(B('t_pyl','ar_pylone_projecteur',30,32,1.5,1.5));})()"""); go(pg,'steel_strip',2,10)
-            go(pg,'steel_arena',26,30); src=E("window.__nml.view.codeAnims().sources"); st=E("window.__nml.view.animStats")
+            go(pg,'steel_arena',26,40); src=E("window.__nml.view.codeAnims().sources"); st=E("window.__nml.view.animStats")
             py=[q for q in src if abs(q[2]-33.5)<0.5 and abs(q[0]-31.5)<0.5]; ok(st['projecteurs']==5 and len(py)==1 and 9<py[0][1]<12.5,'pylône : faisceau tiré depuis source_faisceau_px (lentilles à ~10 m)',(st,src))
             pg.screenshot(path=OUT+'test_format_ocre_pylone_1280.png')
         ok(not errs,f'{name} : aucune erreur JS',errs[:3]); ctx.close()

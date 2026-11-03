@@ -167,3 +167,19 @@ Une arène immense, vivante dehors, la nuit. Le bâtiment occupe la moitié nord
 Ordre d'affichage conseillé pour le bâtiment : façade est, puis segments sud d'ouest en est, puis l'angle, puis les écrans.
 
 Planche de contrôle : `/workspace/nml-shots/arena_complements2.png` (maquette de pose en bas, pas une capture du jeu).
+
+## Pose retenue (main, lot construction de l'Arena)
+
+Zone 96 x 64 m (`ARENA_TAILLE_PROPOSEE`). Entrée depuis le Strip par `ar_ouest` en (0 ; 44), arrivée en (1 ; 44) ; retour vers `fs_est` (80 ; 13).
+
+Conforme aux poses conseillées : façades sud z 30 (x 4-20, 20-36, entrée 36-52, 52-68, 68-84), angle (emprise x 84-92, z 22-30), façade est x 92 (z 6-22), écran x en x 6-18 (ancre 18 ; 30,8), écran z en z 9-19 (ancre 92,8 ; 19), merch b ancré (30 ; 42) et c (58 ; 42), food trucks ancrés (22 ; 50) et (74 ; 50), fans chignons, techwear, manteau, cuir à moins de 0,5 m des poses, décals marquages et grilles, sol `g_ar_dalles_usees`.
+
+Écarts et pourquoi :
+- `ar_facade_angle` : son ancre est au raccord ouest ; le moteur a une nouvelle option de bâtiment `ancre: [dx, dz]` (décalage de l'ancre par rapport au coin avant), ici `[-8, 0]`. Éditeur et moteur la lisent.
+- Pylônes : centrés sur les poses (10 ; 40), (86 ; 40), (24 ; 58), (72 ; 58) ; faisceaux au code (source_faisceau_px), triés avec leur pylône. Les 4 `ar_ens_faisceau` peints, les écrans Vibes et Tron du dôme et le fronton peint sont retirés : Vibes et Tron passent sur les écrans géants (pages tournantes code, combats « Battle du 31 »), le fronton de l'entrée est un écran code (fronton_coins).
+- Serpentin : lignes z 34 (x 36-48), z 37 (x 40-52), z 40 (x 36-48), retours x 51,6 (z 33-37) et x 36 (z 36-40), pour une file continue en S ; cinq passants en aller simple avancent dans la file vers les portiques.
+- Revendeurs : PNJ (dialogues) en (33 ; 44) et (60 ; 46,4), un peu à l'écart de la file pour ne pas être cachés par les barrières et le chariot.
+- Pièces basses (`height_m` < 1,2 m, les barrières) : ne comptent plus dans le contrôle des personnages masqués, la tête et le buste restent visibles.
+- `ar_arena` (dôme) : posé derrière les façades et porte le solide de l'enceinte, mais les façades de 28 m le cachent entièrement : il ne se voit nulle part.
+
+Besoins pour Ocre : un toit ou une masse de l'enceinte qui dépasse au-dessus des façades de 28 m (le dôme actuel est trop bas) ; éventuellement un retour de façade pour x 0-4 (le bout ouest du segment sud s'arrête net) et une feuille de marche de la file.
