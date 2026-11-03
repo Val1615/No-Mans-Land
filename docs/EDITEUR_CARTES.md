@@ -2,18 +2,19 @@
 
 Ouvrir `editor/` sur le site du jeu, ou utiliser le lien du panneau DEV (`?dev=1`). Le catalogue est construit depuis les modules et manifestes actuels du dépôt. Aucun asset n’est recopié et le rendu Three.js, les coordonnées, les textures, collisions et chemins sont partagés avec le jeu.
 
-## Enregistrer une vraie modification
+## Publier une modification
 
-1. Modifier Dusk-Town, ses sols, bâtiments, décors, personnages ou intérieurs. `Brouillon` conserve seulement le travail dans ce navigateur.
-2. Cliquer **Enregistrer dans le jeu**.
-3. Choisir une branche existante, puis **Lire la version GitHub**. Il est possible de charger ce projet ou de conserver son projet actuel, notamment après import d’un export du prototype V1–V4.
-4. Pour écrire, fournir dans la fenêtre un jeton GitHub à expiration courte, limité au dépôt `Val1615/No-Mans-Land`, avec **Contents: Read and write**. Le jeton n’est jamais enregistré. Ne pas l’envoyer dans une conversation.
-5. **Publier mon projet sur cette branche** crée un vrai commit modifiant `src/data/editor-maps.json`. Un lien permet d’inspecter ce commit. Toute modification concurrente du fichier bloque l’écriture et demande de relire GitHub ; aucun écrasement forcé.
-6. Sur `main`, attendre le déploiement GitHub Pages puis recharger le jeu. Une branche de travail doit être fusionnée avant d’être visible sur le jeu public.
+1. Choisir une zone (Dusk-Town ou Steel) et modifier sols, bâtiments, décors, personnages ou intérieurs. `Brouillon` conserve le travail dans ce navigateur.
+2. Cliquer **Publier sur GitHub**. Dépôt `Val1615/No-Mans-Land`, branche `main` et fichier `src/data/editor-maps.json` sont préremplis ; le message « Éditeur : <zone> modifiée » est proposé et reste modifiable.
+3. À la première utilisation, l’aide donne le lien direct [créer le jeton](https://github.com/settings/personal-access-tokens/new) : dépôt `Val1615/No-Mans-Land`, **Contents : Read and write** (et **Pull requests : Read and write** si « Proposer en PR plutôt » est cochée). Coller le jeton dans le champ masqué.
+4. Par défaut : commit direct sur `main`. Statut : « Publication en cours… », puis « Publié » avec le lien du commit (GitHub Pages met environ 1 minute). Option « Proposer en PR plutôt » (décochée par défaut) : branche `editeur/<zone>-<date>`, PR vers `main`, « PR ouverte » avec le lien.
+5. Avant tout envoi, le fichier est relu et validé (JSON lisible, schéma, zones / identifiants / assets existants, coordonnées dans les bornes). En cas d’erreur, rien n’est envoyé et la liste des erreurs s’affiche en français.
+6. Conflit (quelqu’un a publié entre-temps) : rien n’est écrasé ; la version fraîche est relue et « Réessayer avec la version actuelle » renvoie nos zones par-dessus en gardant les autres zones publiées entre-temps.
+7. Secours : **Télécharger le JSON** (fichier `editor-maps.json` à déposer dans `src/data/`) ; sous « Autres options », écriture directe dans un dépôt local (Chrome/Edge).
 
-Le mode GitHub accepte un projet de moins de 900 ko. Le jeton est envoyé exclusivement à `api.github.com`, dans l’en-tête Authorization, jamais dans le JSON, l’URL ou le stockage navigateur. Fermer la fenêtre efface le champ. Ce site public ne contient aucun secret ni droit d’écriture : les visiteurs ne peuvent pas modifier le dépôt sans leur propre autorisation GitHub.
+Erreurs traduites : jeton invalide ou expiré (401), droits insuffisants (403 / 404), conflit (409), limite GitHub, réseau. Le jeton est envoyé uniquement à `api.github.com` dans l’en-tête Authorization ; il est mémorisé dans le `localStorage` de ce navigateur seulement (clé `nml-editeur-jeton-github`, bouton « Oublier le jeton »), jamais dans le dépôt, le JSON ou l’URL. Le site public ne contient aucun secret : sans son propre jeton, un visiteur ne peut rien écrire. Limite : 900 ko.
 
-Sur un ordinateur disposant de l’accès aux dossiers (notamment Chrome/Edge), **Choisir le dépôt local et enregistrer** écrit réellement le même fichier dans le dossier sélectionné. Le jeu lancé depuis ce dossier charge immédiatement ces données après actualisation. Le commit/push local reste séparé. Sur les autres navigateurs, utiliser GitHub ou l’export JSON.
+Côté jeu, le chargement est tolérant : un `editor-maps.json` illisible ou invalide est ignoré, le jeu démarre sur ses données intégrées et affiche un avertissement.
 
 ## Données effectivement utilisées par le jeu
 
@@ -45,6 +46,7 @@ Validation : JSON lisible, schéma attendu, zones / identifiants / assets exista
 
 ## Portée et limites
 
+- Projets v4 de l’ancien éditeur (Dusk-Town) : relus tels quels ; les PNJ des quartiers, absents de ces fichiers, sont repris de la source au lieu d’être retirés.
 - Les nouveaux intérieurs possèdent des entrées/sorties réciproques et fonctionnent dans le jeu natif.
 - Les nouveaux quartiers peuvent être essayés dans le jeu avec `?dev=1&map=IDENTIFIANT`. Leur raccordement aux routes du monde doit encore être défini ; l’éditeur n’invente pas de jonction. Le lien « Jeu publié » ouvre le lieu courant quand celui-ci a été publié.
 - Les zones d’interaction ajoutées via une quête utilisent leurs identifiants éditables. Les textes narratifs natifs décrivant un ancien agencement ne sont pas réécrits automatiquement.
@@ -61,9 +63,10 @@ node --experimental-vm-modules tests/editor-integration.mjs
 node --experimental-vm-modules tests/editor-github.mjs
 node --experimental-vm-modules tests/editor-render.mjs
 node --experimental-vm-modules tests/editor-regions.mjs steel   # ou dusk, all
+python3 tests/editor_publier.py                                # fenêtre de publication, API GitHub simulée
 python3 tests/editor_regions.py steel                          # serveur local sur 8862
 ```
 
 `editor-regions.mjs` : chaque zone de la région s’ouvre, enregistrer sans changement publie 0 zone et laisse le jeu identique, chaque zone réappliquée est identique au code, une modification ne publie que sa zone. `editor_regions.py` : chaque zone s’ouvre dans l’éditeur sans erreur JS, le jeu charge une carte éditée et visite chaque zone sans erreur JS, une carte invalide est ignorée (données intégrées + avertissement).
 
-L’intégration exécute le vrai `createGame` avec les données actuelles : géométrie et collision modifiées, conservation des conditions et dialogues natifs, entrée/sortie d’un nouvel intérieur, collecte liée à un décor déplacé, quête personnalisée terminée et progression restaurée par les sauvegardes natives. Les tests HTTP de publication simulent succès, refus et conflit, sans utiliser de jeton. Le test de scène Three.js utilise un renderer GPU simulé ; il ne vérifie pas visuellement WebGL.
+L’intégration exécute le vrai `createGame` avec les données actuelles : géométrie et collision modifiées, conservation des conditions et dialogues natifs, entrée/sortie d’un nouvel intérieur, collecte liée à un décor déplacé, quête personnalisée terminée et progression restaurée par les sauvegardes natives. Les tests de publication (`editor-github.mjs`, `editor_publier.py`) simulent l’API GitHub : commit sur main, PR, erreurs, conflit et nouvel essai, export cassé bloqué avant envoi ; aucun push réel ni jeton réel. Le test de scène Three.js utilise un renderer GPU simulé ; il ne vérifie pas visuellement WebGL.
