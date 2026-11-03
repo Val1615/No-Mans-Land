@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { UNITS } from '../data/units.js';
 import { wallsOf } from '../core/grid.js';
-import { groundTexture, SKIN } from './textures.js?v=editor2';
+import { groundTexture, margeTexture, SKIN } from './textures.js?v=editor2';
 
 export function createView(canvas, game, sprites, bman, labelLayer) {
   let { LOCATIONS, DOORS, NPCS, COMPANION } = game.world;
@@ -144,6 +144,9 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
     world.add(ground); pickables.push(ground);
+    if (loc.ground.marge) { const m = loc.ground.marge.m || 60; // sol hors zone (non cliquable) : la rue continue au-delà des bords
+      const mg = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w + 2 * m, loc.size.d + 2 * m), new THREE.MeshStandardMaterial({ map: margeTexture(loc), roughness: 1 }));
+      mg.rotation.x = -Math.PI / 2; mg.position.set(loc.size.w / 2, -0.02, loc.size.d / 2); mg.renderOrder = -1; world.add(mg); }
     for (const b of loc.buildings) building(b);
     // format d'Ocre : toute façade posée dont le manifeste a un calque <clé>_neon (même taille, même ancre) reçoit son néon additif, fixe par défaut ;
     // loc.enseignes ne fait que régler un bâtiment (effet, couleur, intensité, lettre qui saute). Idem pour les faisceaux : tout bâtiment dont le
@@ -184,11 +187,15 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       if (loc.kind === 'interior') addLabel(d.label || 'Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
     // v13 : lumières au sol (néons reflétés sur la chaussée mouillée, pinceaux des projecteurs) : disques additifs étirés
-    for (const g of loc.glows || []) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
+    // petite lumière en hauteur (g.y, m) : point additif posé sur sa source (g.building : trié juste après elle, ampoule de comptoir, lampe de truck)
+    for (const g of (loc.glows || []).filter(g => g.y != null)) { const p = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
+      const r = g.r || 0.8; p.scale.set(r * 2, r * 2, 1); p.position.set(g.x, g.y, g.z); p.renderOrder = 3; p.userData.neon = 'lampe'; world.add(p);
+      const it = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (it) it.extra.push(p); }
+    for (const g of (loc.glows || []).filter(g => g.y == null)) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
       m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02, g.z); m.renderOrder = 2; world.add(m); if (g.flicker) flick.push({ m: m.material, base: g.i ?? 0.6, ph: Math.random() * 6 }); }
     // v13 : figurants immobiles (file d'attente, soldats) et passants qui marchent : mêmes sprites animés que les PNJ, sans dialogue
     for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
-      if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; world.add(s); decor.push(s); }
+      if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; s.userData.sprite = e.sprite; world.add(s); decor.push(s); }
     for (const w of loc.walkers || []) { const s = spriteMesh(w.sprite, null, true); s.material.depthTest = false; s.material.transparent = true; if (light.actor) s.material.color.set(light.actor);
       s.userData.role = w.role || 'passant'; s.userData.aller = !!w.aller; /* aller : parcours ouvert (file qui avance vers les portiques), repart du début */ s.userData.route = w.path; s.userData.speed = w.speed || 1.1; s.userData.t = w.t0 || 0; world.add(s); decor.push(s); walkers.push(s); }
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
@@ -418,7 +425,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     }
     for (const m of solids) for (const mt of [].concat(m.material)) { const o = mt.opacity; mt.opacity = o + (m.userData.targetOpacity - o) * 0.3; mt.depthWrite = mt.opacity > 0.9; }
   }
-  let ppm = 30, camCible = null; // camCible : point du sol au centre de l'écran (contrôle des tests)
+  let ppm = 30, camCible = null, plan = 0, planLoc = null, planSort = false, planPos = [0, 0]; // plan : poids du plan d'arrivée (1 à l'arrivée, 0 après les premiers pas) // camCible : point du sol au centre de l'écran (contrôle des tests)
   function resize() {
     const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false);
     ppm = w < 700 ? UNITS.camera.pxPerMeterMobile : UNITS.camera.pxPerMeterDesktop;
@@ -452,7 +459,22 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     const target = camOverride ? new THREE.Vector3(camOverride.x, 0, camOverride.z) : new THREE.Vector3(s.player.x, 0, s.player.z);
     if (loc.kind === 'interior' && !camOverride) target.set(loc.size.w / 2, 0, loc.size.d / 2);
     // loc.cadre : { mobile|desktop: { x: [min, max], z: [min, max] } } : le cadre suit le joueur mais reste sur la rue (pas de vide aux arrivées par les bouts)
-    if (loc.cadre && !camOverride) { const C = (innerWidth < 700 ? loc.cadre.mobile : loc.cadre.desktop) || loc.cadre; if (C.x) target.x = Math.min(C.x[1], Math.max(C.x[0], target.x)); if (C.z) target.z = Math.min(C.z[1], Math.max(C.z[0], target.z)); }
+    // loc.cadre.arrivee : { mobile|desktop: { ppm, avance, u, w } } : plan d'arrivée (plan large qui montre le lieu : toit de l'Arena), tenu tant que le joueur n'a pas bougé, puis retour en douceur au cadre de jeu
+    //   ppm (zoom), avance (m : le cadre regarde devant le joueur, vers le haut de l'écran), u et w (bornes en mètres dans les axes de l'écran : droite, profondeur), le joueur restant toujours dans le cadre
+    const mob = innerWidth < 700, pick = c => c && ((mob ? c.mobile : c.desktop) || (c.mobile || c.desktop ? null : c));
+    if (planLoc !== s.location) { planLoc = s.location; plan = 1; planSort = false; planPos = [s.player.x, s.player.z]; }
+    if (!planSort && (s.player.path.length > 0 || Math.hypot(s.player.x - planPos[0], s.player.z - planPos[1]) > 0.3)) planSort = true;
+    if (planSort) plan = Math.max(0, plan - dt * 1.2);
+    const CA = loc.cadre && !camOverride ? pick(loc.cadre) : null, PA = loc.cadre?.arrivee && !camOverride && plan > 0 ? pick(loc.cadre.arrivee) : null;
+    const cl = (v, a, b) => Math.min(b, Math.max(a, v)), f = new THREE.Vector3(camDir.x, 0, camDir.z).normalize(), R = new THREE.Vector3(-f.z, 0, f.x);
+    const cadrer = (t, C, z0) => { const up = t.dot(R), wp = t.dot(f); if (C.avance) t.addScaledVector(f, C.avance);
+      if (C.u || C.w) { const u = t.dot(R), w = t.dot(f), lu = innerWidth / 2 / z0 - 1.5, lw = (innerHeight / 2 / z0 - 2) / Math.sin(pitch);
+        const u2 = cl(C.u ? cl(u, C.u[0], C.u[1]) : u, up - lu, up + lu), w2 = cl(C.w ? cl(w, C.w[0], C.w[1]) : w, wp - lw, wp + lw); t.addScaledVector(R, u2 - u).addScaledVector(f, w2 - w); }
+      if (C.x) t.x = cl(t.x, C.x[0], C.x[1]); if (C.z) t.z = cl(t.z, C.z[0], C.z[1]); return t; };
+    let zoomCadre = null;
+    if (CA) { cadrer(target, CA, CA.ppm || ppm); zoomCadre = CA.ppm || null; }
+    if (PA) { const k = plan * plan * (3 - 2 * plan), zA = PA.ppm || ppm, tA = cadrer(new THREE.Vector3(s.player.x, 0, s.player.z), PA, zA);
+      target.lerp(tA, k); zoomCadre = 1 / ((1 - k) / (zoomCadre || ppm) + k / zA); }
     camCible = [+target.x.toFixed(2), +target.z.toFixed(2)];
     // mobile : quand le dialogue est ouvert, le cadre remonte pour garder joueur et PNJ visibles au-dessus du panneau
     const dlg = document.getElementById('dialogue');
@@ -464,13 +486,13 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     }
     camShift += (wantShift - camShift) * Math.min(1, dt * 8); if (Math.abs(wantShift - camShift) < 0.5) camShift = wantShift;
     cam.position.copy(target).addScaledVector(camDir, -80); cam.lookAt(target);
-    const zoom = camOverride?.ppm || (loc.kind === 'interior' ? Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6)) : ppm);
+    const zoom = camOverride?.ppm || zoomCadre || (loc.kind === 'interior' ? Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6)) : ppm);
     if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift || cam.userData.cx!==camOverride?.cx || cam.userData.cy!==camOverride?.cy) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; const cx=camOverride?.cx??w/2,cy=camOverride?.cy??h/2;cam.userData.cx=camOverride?.cx;cam.userData.cy=camOverride?.cy;cam.left=-cx/zoom;cam.right=(w-cx)/zoom;cam.top=(cy-camShift)/zoom;cam.bottom=-(h-cy+camShift)/zoom; cam.updateProjectionMatrix(); }
     if (exterior) { painter(); spriteOcclusion(); npcGhosts(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     combatOverlay();
     for(const n of npcSprites)if(n.userData.ghost&&!visible('actor'))n.userData.ghost.visible=false;
     world.traverse(o=>{if(o.userData.wall)o.visible=visible('building');if(o.userData.propBox)o.visible=visible('prop');if(o.isMesh&&o.geometry.type==='RingGeometry'&&o.userData.doorId)o.visible=visible('building');});
-    for(const s of bsprites) { const b=LOCATIONS[game.state.location].buildings.find(b=>b.id===s.userData.buildingId); if(b) { s.renderOrder += (b.editorLayer||0)*10000+(b.editorDepth||0); if(b.editorGhost) s.material.opacity=.45; } } renderer.render(scene, cam);
+    for(const s of bsprites) { const b=LOCATIONS[game.state.location].buildings.find(b=>b.id===s.userData.buildingId); if(b) { s.renderOrder += (b.editorLayer||0)*10000+(b.editorDepth||0)+(b.fond?-100000:0);/* b.fond : masse de fond (toit de l'Arena) peinte avant tout, derrière les façades */ if(b.editorGhost) s.material.opacity=.45; } } renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran (les deux axes), puis écartées des panneaux d'interface et entre elles
     const toScr = p => { const v = p.clone().project(cam); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; };
@@ -662,7 +684,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const r = rectOf(s), c = m.crop, u = (d.painted[0] - c[0]) / m.px[0], v = 1 - (d.painted[1] - c[1]) / m.px[1];
       const p = { x: r.x0 + u * (r.x1 - r.x0), y: r.y0 + v * (r.y1 - r.y0) }, o = scr(new THREE.Vector3(d.opening.x, 0, d.opening.z)); return +Math.hypot(p.x - o.x, p.y - o.y).toFixed(2); },
     // v13 : figurants (rôle, position monde) et rendu isolé d'un figurant, pour les contrôles au pixel (comptage à l'écran)
-    decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing })); },
+    decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing, sprite: s.userData.sprite, ratio: +(Math.abs(s.scale.x) / s.scale.y).toFixed(3) })); },
     isolateDecor: i => { render(); const keep = decor.concat(drones)[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
       hidden.forEach(o => o.visible = true); scene.background = bg; return url; },

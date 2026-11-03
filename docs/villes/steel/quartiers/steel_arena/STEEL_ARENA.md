@@ -24,3 +24,13 @@ Ordre d'affichage conseillé : toit z, toit x d'ouest en est, angles du toit, pu
 | `g_ar_parvis_use` | 512 x 512 | tuile | parvis : autour des food trucks, des stands et au pied des pylônes, là où l’on piétine |
 
 Planche de contrôle : `/workspace/nml-shots/arena_toit_suite.png` (maquette de pose en bas, pas une capture du jeu).
+
+## Pose retenue de la suite (main, revue Régie)
+- Toit : `ar_toit_z` (x 84-88, z 6-22), `ar_toit_x` ×5 (ligne z 26, x 4 à 84), `ar_toit_angle_se` (ancre [-4, 0]) et `ar_toit_angle_so`, posés comme proposé, dessinés avant tout le reste (option `fond`). Le premier segment porte le solide de l'enceinte ; l'ancien dôme `ar_arena` est retiré. `ar_facade_retour_ouest` est posé sur x 0-4, z 26-30.
+- Toit visible au départ : à 30 px/m (24 en mobile), l'image de 33 m des façades remplit l'écran. Un plan d'arrivée (`cadre.arrivee`) cadre donc large, à 15 px/m, 40 m devant le joueur : le toit dépasse au-dessus des façades, la foule est en bas. Dès les premiers pas, le cadre revient en douceur au cadre de jeu habituel.
+- Fans : écharpe (34 ; 38,5), pancarte (54 ; 33), bâtons (53 ; 47,6, décalés de la nouvelle file), duo (26 ; 47). `gen_ar_fans_duo` en 360 x 512 passe : la largeur du sprite suit le rapport de l'image.
+- Sols : `g_ar_dalles_neutre` partout ; une rangée de `g_ar_parvis_marquages` (x 36-52, z 31,6-41,8) ; `g_ar_parvis_use` autour des stands, des trucks et des pylônes ; rue en asphalte au sud (z 60-64). Hors zone, une marge de rue (`ground.marge`, 90 m) remplace le vide.
+- Bords : à l'ouest, façades de Steel (`pp_facade_a_o`, `pp_facade_b_o`, `pp_facade_b_o2`) sur x 0-2, l'arrivée `ar_ouest` (z 42-46) reste libre. Au sud, barrières de police (`ar_barriere_file`) sur z 59,6, avec des passages en x 32-40 et 56-64.
+- Foule : 66 figurants fixes, plus de 20 sprites de foule différents (Arena, Strip, Pulse, Méga-Line, Dôme), miroir alterné. Ils se répartissent en grappes autour des stands et des trucks, dans le serpentin, devant les portiques et devant l'écran ouest. Le serpentin est prolongé de deux lignes (z 43 et 46) et 7 passants avancent dans la file.
+- Lumière : appoint chaud ; chaque stand et chaque truck a une lueur ambre ou orangée au sol et une petite lumière (option `y` des lueurs, triée avec sa source) ; ambres aux pieds des portiques ; cyan réservé aux pylônes et à l'écran est.
+- Reste pour Ocre : des immeubles bas ou des devantures pour le bord sud (aujourd'hui une rue et des barrières, la marge est une rue nue) ; éventuellement des façades de fond pour la marge ouest.

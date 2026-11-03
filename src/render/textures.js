@@ -106,6 +106,15 @@ export function roofTexture(b, w, d) {
   x.fillStyle = 'rgba(190,160,110,.35)'; for (let i = 0; i < 12; i++) x.fillRect(r() * c.width, r() * c.height, 6 + r() * 20, 3 + r() * 6);
   return tex(c);
 }
+// marge : sol hors zone (rue sombre autour du bloc), non marchable, pour qu'aucun vide ne se voie au bord ; s'assombrit vers l'extérieur
+export function margeTexture(loc) { const M = loc.ground.marge, P = 8, m = M.m || 60, W = Math.round((loc.size.w + 2 * m) * P), H = Math.round((loc.size.d + 2 * m) * P);
+  const c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  x.fillStyle = pattern(x, M.skin, M.tileM || 10.24, P) || loc.ground.base; x.fillRect(0, 0, W, H);
+  if (M.voile) { x.fillStyle = M.voile; x.fillRect(0, 0, W, H); }
+  const bg = loc.light?.bg || '#000', f = m * P;
+  for (const [x0, y0, x1, y1, rx, ry, rw, rh] of [[0, 0, f, 0, 0, 0, f, H], [W, 0, W - f, 0, W - f, 0, f, H], [0, 0, 0, f, 0, 0, W, f], [0, H, 0, H - f, 0, H - f, W, f]]) {
+    const g = x.createLinearGradient(x0, y0, x1, y1); g.addColorStop(0, bg); g.addColorStop(0.15, bg + '00'); x.fillStyle = g; x.fillRect(rx, ry, rw, rh); }
+  return tex(c); }
 export function groundTexture(loc, doors = []) {
   const P = 24, W = Math.round(loc.size.w * P), H = Math.round(loc.size.d * P);
   const c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d'), r = rng(hash(loc.id));
