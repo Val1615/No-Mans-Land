@@ -34,3 +34,39 @@ Planche de contrôle : `/workspace/nml-shots/arena_toit_suite.png` (maquette de 
 - Foule : 66 figurants fixes, plus de 20 sprites de foule différents (Arena, Strip, Pulse, Méga-Line, Dôme), miroir alterné. Ils se répartissent en grappes autour des stands et des trucks, dans le serpentin, devant les portiques et devant l'écran ouest. Le serpentin est prolongé de deux lignes (z 43 et 46) et 7 passants avancent dans la file.
 - Lumière : appoint chaud ; chaque stand et chaque truck a une lueur ambre ou orangée au sol et une petite lumière (option `y` des lueurs, triée avec sa source) ; ambres aux pieds des portiques ; cyan réservé aux pylônes et à l'écran est.
 - Reste pour Ocre : des immeubles bas ou des devantures pour le bord sud (aujourd'hui une rue et des barrières, la marge est une rue nue) ; éventuellement des façades de fond pour la marge ouest.
+
+
+## Enceinte basse (ar2)
+Statut : proposition d'Ocre, à poser par le code. Elle répond à la revue de départ : façades de 28 m et toit de 42 m formaient un mur violet qui remplissait l'écran, le toit n'était jamais vu et la foule paraissait minuscule.
+
+- **Façades** (décision de taille de la Régie : environ 15 m). Les clés `ar2_facade_*` reprennent exactement les lignes de pose des `ar_facade_*` : façade sud sur z 30 (x 4-20, 20-36, entrée 36-52, 52-68, 68-84), angle sud-est de rayon 8 centré en (84 ; 22), façade est sur x 92 (z 6-22), retour ouest x 0-4, z 26-30. Même emprise, mêmes ancres au pied, hauteur 15 m. Matière : acier anthracite et métal sombre, bandeaux lumineux blancs sobres en haut de façade, violet et cyan en filets courts seulement. Au pied : portes de service, grilles de ventilation, appliques, socle.
+- **Entrée** `ar2_facade_entree` : portiques sous lumière ambre chaude. Coins recalculés dans le manifest : `porte_coins` [[120, 535], [650, 710], [650, 954], [120, 779]], `portiques_coins` [[200, 749], [551, 865], [551, 926], [200, 809]], `fronton_coins` [[93, 414], [685, 609], [685, 705], [93, 510]]. Les coins du fronton posés dans le code (`ecran.coins` de l'entrée, calés sur l'ancienne image de 28 m) doivent être remplacés par ces valeurs.
+- **Toit** : un dôme bas et bombé, couronne à 23 m, rive à 15,6 m juste au-dessus des façades, entièrement visible depuis le parvis. Silhouette ovale : rectangle arrondi x 0-92, z 0-30, rayon 8 à l'est, 4 à l'ouest, qui suit le ventre des façades. Anneau lumineux peint sur la rive, tirets violets et cyan, projecteurs de rive et balises rouges de couronne peints allumés. Aucun faisceau : ils restent au code. Le toit se pose en six morceaux, tous avec `fond: true` et ancrés au coin avant au sol de leur emprise :
+  - `ar2_toit_angle_so` : B(0, 0, 20, 30) ;
+  - `ar2_toit_x` trois fois : B(20, 0, 16, 30), B(36, 0, 16, 30), B(52, 0, 16, 30) (la même image, le dôme est identique tous les 16 m) ;
+  - `ar2_toit_angle_se` : B(68, 14, 24, 16) ;
+  - `ar2_toit_z` : B(68, 0, 24, 14).
+  Ces emprises remplacent celles de `ar_toit_*` (lignes z 26 et x 88) : le toit couvre maintenant toute l'enceinte.
+- **Écrans géants** : l'ancien écran sud (12 x 6,75 m à 12 m d'élévation) dépasserait une façade de 15 m. `ar2_ecran_geant_x` fait 9,6 x 5,4 m à 7,5 m (x 8,4 à 18), `ar2_ecran_geant_z` fait 8 x 4,5 m à 7,5 m (z 11 à 19). Mêmes ancres que les anciens : (18 ; 30,8) et (92,8 ; 19). Zone d'écran vide (8, 8, 12), `ecran_coins` dans le manifest, contenu animé par le code.
+- **Ordre d'affichage** : les six morceaux de toit d'abord (`fond`), d'ouest en est puis `ar2_toit_z` avant `ar2_toit_angle_se` ; ensuite façade est, façades sud, retour ouest, angle ; écrans en dernier.
+- **Ce qui ne change pas** : le parvis (fans, stands, trucks, barrières, sols, pylônes) reste tel quel.
+- **Anciennes clés** : les `ar_facade_*`, `ar_toit_*` et `ar_ecran_geant_*` (28 et 42 m) restent dans le manifest et disponibles, mais ne sont plus recommandées.
+- **Proposition** : avec une enceinte de 15 à 23 m, le plan d'arrivée large (`cadre.arrivee`) n'est peut-être plus nécessaire. À juger en jeu.
+
+| clé | px | ancre | remplace | pose |
+|---|---|---|---|---|
+| `ar2_facade_courbe_x` | 801 x 1016 | [800, 1014] | ar_facade_courbe_x (28 m) | façade sud, ligne z 30, segments de 16 m bord à bord : x 4 à 20, 20 à 36, 52 à 68, 68 à 84 ; ancre au pied de l’extrémité est (x fin ; 30), comme ar_facade_courbe_x |
+| `ar2_facade_entree` | 801 x 1016 | [800, 1014] | ar_facade_entree (28 m) | milieu de la façade sud : x 36 à 52, z 30 ; ancre (52 ; 30) ; la file arrive du sud vers (44 ; 31) |
+| `ar2_facade_courbe_z` | 552 x 1138 | [0, 1135] | ar_facade_courbe_z (28 m) | façade est, ligne x 92 : z 6 à 22 ; ancre au pied de l’extrémité sud (92 ; 22) |
+| `ar2_facade_angle` | 677 x 854 | [0, 811] | ar_facade_angle (28 m) | angle sud-est : centre (84 ; 22), raccords (84 ; 30) et (92 ; 22) ; ancre au pied du raccord sud (84 ; 30), soit B(84, 22, 8, 8, { ancre: [-8, 0] }) comme ar_facade_angle |
+| `ar2_facade_retour_ouest` | 107 x 847 | [105, 845] | ar_facade_retour_ouest (28 m) | bout ouest de la façade sud : emprise x 0 à 4, z 26 à 30 ; ancre au pied du raccord (4 ; 30), soit B(0, 26, 4, 4) comme ar_facade_retour_ouest |
+| `ar2_toit_angle_so` | 1952 x 1808 | [915, 1807] |  | bout ouest du dôme : B(0, 0, 20, 30) ; ancre au coin avant au sol (20 ; 30) ; couvre x 0 à 20 (débord à x -0,15) |
+| `ar2_toit_x` | 1841 x 1853 | [804, 1852] |  | partie courante du dôme, identique tous les 16 m : B(20, 0, 16, 30), B(36, 0, 16, 30), B(52, 0, 16, 30) ; ancre au coin avant au sol (x fin ; 30) |
+| `ar2_toit_angle_se` | 1803 x 1930 | [1204, 1929] |  | angle sud-est du dôme : B(68, 14, 24, 16) ; ancre au coin avant au sol (92 ; 30) |
+| `ar2_toit_z` | 1501 x 1600 | [1198, 1599] |  | bout est du dôme, au nord de l’angle : B(68, 0, 24, 14) ; ancre au coin avant au sol (92 ; 14) |
+| `ar2_ecran_geant_x` | 480 x 803 | [479, 802] | ar_ecran_geant_x (12 x 6,75 m à 12 m : dépasserait la façade de 15 m) | façade sud, sur ar2_facade_courbe_x (x 4 à 20) : x 8,4 à 18, de 7,5 à 12,9 m ; même ancre que ar_ecran_geant_x (18 ; 30,8) ; largeur 9,6 au lieu de 12 |
+| `ar2_ecran_geant_z` | 275 x 792 | [0, 792] | ar_ecran_geant_z (10 m à 12 m : dépasserait la façade de 15 m) | façade est, sur ar2_facade_courbe_z : z 11 à 19, de 7,5 à 12 m ; même ancre que ar_ecran_geant_z (92,8 ; 19) ; longueur 8 au lieu de 10 |
+
+Planche de contrôle : `/workspace/nml-shots/arena_enceinte_basse.png` (maquette de pose hors jeu avec figurants gen_ar_* pour l'échelle, pas une capture). Raccords du toit vérifiés en recomposant les morceaux à leurs ancres contre le rendu entier : 2 px de trou, 6 px en trop, 18 px de chevauchement sur 5,26 millions.
+
+Limites : la façade est s'arrête à z 6 comme avant, le bout nord-est du toit (z 0 à 6) n'a pas de façade dessous, il n'est visible qu'en bord de silhouette ; la texture de façade est agrandie et reste un peu douce de près.

@@ -1691,5 +1691,367 @@
     "note": "peinture usée, sans reflet ; lignes continues aux bords est et ouest (raccord le long de x) ; les numéros se répètent à chaque tuile, n’en poser qu’une rangée",
     "file": "steel/steel_arena/g_ar_parvis_marquages.webp",
     "status": "v1"
+  },
+  "ar2_facade_courbe_x": {
+    "footprint_m": [
+      16,
+      1
+    ],
+    "height_m": 15,
+    "face": "x",
+    "pente": 0.33,
+    "courbe": "ventre de 0,8 m vers le sud au milieu du segment, extrémités sur la ligne de façade",
+    "remplace": "ar_facade_courbe_x (28 m)",
+    "pose": "façade sud, ligne z 30, segments de 16 m bord à bord : x 4 à 20, 20 à 36, 52 à 68, 68 à 84 ; ancre au pied de l’extrémité est (x fin ; 30), comme ar_facade_courbe_x",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "source": "GenerateImage (cursor), 8f55f92d ; mise en volume PIL",
+    "file": "steel/steel_arena/ar2_facade_courbe_x.webp",
+    "status": "v1"
+  },
+  "ar2_facade_entree": {
+    "footprint_m": [
+      16,
+      1
+    ],
+    "height_m": 15,
+    "face": "x",
+    "pente": 0.33,
+    "courbe": "même courbe que ar2_facade_courbe_x",
+    "remplace": "ar_facade_entree (28 m)",
+    "porte_coins": [
+      [
+        120,
+        535
+      ],
+      [
+        650,
+        710
+      ],
+      [
+        650,
+        954
+      ],
+      [
+        120,
+        779
+      ]
+    ],
+    "portiques_coins": [
+      [
+        200,
+        749
+      ],
+      [
+        551,
+        865
+      ],
+      [
+        551,
+        926
+      ],
+      [
+        200,
+        809
+      ]
+    ],
+    "fronton_coins": [
+      [
+        93,
+        414
+      ],
+      [
+        685,
+        609
+      ],
+      [
+        685,
+        705
+      ],
+      [
+        93,
+        510
+      ]
+    ],
+    "pose": "milieu de la façade sud : x 36 à 52, z 30 ; ancre (52 ; 30) ; la file arrive du sud vers (44 ; 31)",
+    "anime_par_code": "file qui avance aux portiques (portiques_coins), écran du fronton (fronton_coins, bandeau vide), voyants des portiques",
+    "note": "portail de 7.9 m, hall et portiques en ambre chaud ; aucun texte, aucun faisceau",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "source": "GenerateImage (cursor), 8f55f92d + 965f44c4 ; mise en volume PIL",
+    "file": "steel/steel_arena/ar2_facade_entree.webp",
+    "status": "v1"
+  },
+  "ar2_facade_courbe_z": {
+    "footprint_m": [
+      1,
+      16
+    ],
+    "height_m": 15,
+    "face": "z",
+    "pente": 0.7,
+    "courbe": "ventre de 0,8 m vers l’est",
+    "remplace": "ar_facade_courbe_z (28 m)",
+    "pose": "façade est, ligne x 92 : z 6 à 22 ; ancre au pied de l’extrémité sud (92 ; 22)",
+    "px": [
+      552,
+      1138
+    ],
+    "anchor": [
+      0,
+      1135
+    ],
+    "source": "GenerateImage (cursor), 8f55f92d ; mise en volume PIL",
+    "file": "steel/steel_arena/ar2_facade_courbe_z.webp",
+    "status": "v1"
+  },
+  "ar2_facade_angle": {
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 15,
+    "face": "angle",
+    "rayon_m": 8,
+    "raccord_est_px": [
+      675,
+      750
+    ],
+    "remplace": "ar_facade_angle (28 m)",
+    "pose": "angle sud-est : centre (84 ; 22), raccords (84 ; 30) et (92 ; 22) ; ancre au pied du raccord sud (84 ; 30), soit B(84, 22, 8, 8, { ancre: [-8, 0] }) comme ar_facade_angle",
+    "px": [
+      677,
+      854
+    ],
+    "anchor": [
+      0,
+      811
+    ],
+    "source": "GenerateImage (cursor), 8f55f92d ; mise en volume PIL",
+    "file": "steel/steel_arena/ar2_facade_angle.webp",
+    "status": "v1",
+    "pente": "arc : de 0,33 (face x) à 0,70 (face z) le long de la courbe"
+  },
+  "ar2_facade_retour_ouest": {
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 15,
+    "face": "angle",
+    "rayon_m": 4,
+    "bord_ouest_px": [
+      0,
+      750
+    ],
+    "remplace": "ar_facade_retour_ouest (28 m)",
+    "pose": "bout ouest de la façade sud : emprise x 0 à 4, z 26 à 30 ; ancre au pied du raccord (4 ; 30), soit B(0, 26, 4, 4) comme ar_facade_retour_ouest",
+    "note": "la partie de l’arc tournée vers l’ouest est de dos et n’est pas dessinée",
+    "px": [
+      107,
+      847
+    ],
+    "anchor": [
+      105,
+      845
+    ],
+    "source": "GenerateImage (cursor), 8f55f92d ; mise en volume PIL",
+    "file": "steel/steel_arena/ar2_facade_retour_ouest.webp",
+    "status": "v1",
+    "pente": "arc : de 0,33 (face x) à 0,70 (face z) le long de la courbe"
+  },
+  "ar2_toit_angle_so": {
+    "footprint_m": [
+      20,
+      30
+    ],
+    "height_m": 23,
+    "face": "toit",
+    "pose": "bout ouest du dôme : B(0, 0, 20, 30) ; ancre au coin avant au sol (20 ; 30) ; couvre x 0 à 20 (débord à x -0,15)",
+    "elevation_m": 15,
+    "note": "dôme surbaissé, rebord à 15,6 m, faîte à 23 m ; anneau lumineux, projecteurs du rebord et balisage du faîte peints allumés, aucun faisceau (au code) ; poser avec fond: true, avant les façades ar2_ qui le recouvrent au pied",
+    "px": [
+      1952,
+      1808
+    ],
+    "anchor": [
+      915,
+      1807
+    ],
+    "source": "GenerateImage (cursor), 1468c521 ; dôme calculé (champ de hauteur) et rendu PIL",
+    "file": "steel/steel_arena/ar2_toit_angle_so.webp",
+    "status": "v1",
+    "pente": "dôme : rives en 0,33 (face x) et 0,70 (face z), couronne à 23 m"
+  },
+  "ar2_toit_x": {
+    "footprint_m": [
+      16,
+      30
+    ],
+    "height_m": 23,
+    "face": "toit",
+    "pose": "partie courante du dôme, identique tous les 16 m : B(20, 0, 16, 30), B(36, 0, 16, 30), B(52, 0, 16, 30) ; ancre au coin avant au sol (x fin ; 30)",
+    "elevation_m": 15,
+    "note": "dôme surbaissé, rebord à 15,6 m, faîte à 23 m ; anneau lumineux, projecteurs du rebord et balisage du faîte peints allumés, aucun faisceau (au code) ; poser avec fond: true, avant les façades ar2_ qui le recouvrent au pied",
+    "px": [
+      1841,
+      1853
+    ],
+    "anchor": [
+      804,
+      1852
+    ],
+    "source": "GenerateImage (cursor), 1468c521 ; dôme calculé (champ de hauteur) et rendu PIL",
+    "file": "steel/steel_arena/ar2_toit_x.webp",
+    "status": "v1",
+    "pente": "dôme : rives en 0,33 (face x) et 0,70 (face z), couronne à 23 m"
+  },
+  "ar2_toit_angle_se": {
+    "footprint_m": [
+      24,
+      16
+    ],
+    "height_m": 23,
+    "face": "toit",
+    "pose": "angle sud-est du dôme : B(68, 14, 24, 16) ; ancre au coin avant au sol (92 ; 30)",
+    "elevation_m": 15,
+    "note": "dôme surbaissé, rebord à 15,6 m, faîte à 23 m ; anneau lumineux, projecteurs du rebord et balisage du faîte peints allumés, aucun faisceau (au code) ; poser avec fond: true, avant les façades ar2_ qui le recouvrent au pied",
+    "px": [
+      1803,
+      1930
+    ],
+    "anchor": [
+      1204,
+      1929
+    ],
+    "source": "GenerateImage (cursor), 1468c521 ; dôme calculé (champ de hauteur) et rendu PIL",
+    "file": "steel/steel_arena/ar2_toit_angle_se.webp",
+    "status": "v1",
+    "pente": "dôme : rives en 0,33 (face x) et 0,70 (face z), couronne à 23 m"
+  },
+  "ar2_toit_z": {
+    "footprint_m": [
+      24,
+      14
+    ],
+    "height_m": 23,
+    "face": "toit",
+    "pose": "bout est du dôme, au nord de l’angle : B(68, 0, 24, 14) ; ancre au coin avant au sol (92 ; 14)",
+    "elevation_m": 15,
+    "note": "dôme surbaissé, rebord à 15,6 m, faîte à 23 m ; anneau lumineux, projecteurs du rebord et balisage du faîte peints allumés, aucun faisceau (au code) ; poser avec fond: true, avant les façades ar2_ qui le recouvrent au pied",
+    "px": [
+      1501,
+      1600
+    ],
+    "anchor": [
+      1198,
+      1599
+    ],
+    "source": "GenerateImage (cursor), 1468c521 ; dôme calculé (champ de hauteur) et rendu PIL",
+    "file": "steel/steel_arena/ar2_toit_z.webp",
+    "status": "v1",
+    "pente": "dôme : rives en 0,33 (face x) et 0,70 (face z), couronne à 23 m"
+  },
+  "ar2_ecran_geant_x": {
+    "px": [
+      480,
+      803
+    ],
+    "anchor": [
+      479,
+      802
+    ],
+    "footprint_m": [
+      9.6,
+      0.5
+    ],
+    "height_m": 5.4,
+    "elevation_m": 7.5,
+    "face": "x",
+    "pente": 0.33,
+    "ecran_coins": [
+      [
+        10,
+        13
+      ],
+      [
+        470,
+        165
+      ],
+      [
+        470,
+        415
+      ],
+      [
+        10,
+        263
+      ]
+    ],
+    "ecran": "zone vide (8,8,12) ; coins haut gauche, haut droit, bas droit, bas gauche",
+    "anime_par_code": "contenu de l’écran (pages tournantes du code)",
+    "fixation": "en hauteur sur la façade ar2_ porteuse (15 m), jamais au sol",
+    "ancre_note": "pied de la façade porteuse, sous l’extrémité est de l’écran",
+    "remplace": "ar_ecran_geant_x (12 x 6,75 m à 12 m : dépasserait la façade de 15 m)",
+    "source": "PIL, cadre tiré de la texture de façade 8f55f92d",
+    "pose": "façade sud, sur ar2_facade_courbe_x (x 4 à 20) : x 8,4 à 18, de 7,5 à 12,9 m ; même ancre que ar_ecran_geant_x (18 ; 30,8) ; largeur 9,6 au lieu de 12",
+    "file": "steel/steel_arena/ar2_ecran_geant_x.webp",
+    "status": "v1"
+  },
+  "ar2_ecran_geant_z": {
+    "px": [
+      275,
+      792
+    ],
+    "anchor": [
+      0,
+      792
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 4.5,
+    "elevation_m": 7.5,
+    "face": "z",
+    "pente": 0.7,
+    "ecran_coins": [
+      [
+        10,
+        196
+      ],
+      [
+        265,
+        17
+      ],
+      [
+        265,
+        222
+      ],
+      [
+        10,
+        400
+      ]
+    ],
+    "ecran": "zone vide (8,8,12) ; coins haut gauche, haut droit, bas droit, bas gauche",
+    "anime_par_code": "contenu de l’écran (pages tournantes du code)",
+    "fixation": "en hauteur sur la façade ar2_ porteuse (15 m), jamais au sol",
+    "ancre_note": "pied de la façade porteuse, sous l’extrémité sud de l’écran",
+    "remplace": "ar_ecran_geant_z (10 m à 12 m : dépasserait la façade de 15 m)",
+    "source": "PIL, cadre tiré de la texture de façade 8f55f92d",
+    "pose": "façade est, sur ar2_facade_courbe_z : z 11 à 19, de 7,5 à 12 m ; même ancre que ar_ecran_geant_z (92,8 ; 19) ; longueur 8 au lieu de 10",
+    "file": "steel/steel_arena/ar2_ecran_geant_z.webp",
+    "status": "v1"
   }
 }
