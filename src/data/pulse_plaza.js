@@ -8,26 +8,27 @@ const VIOLET = '#8a3cff', MAGENTA = '#e03ca8', CYAN = '#a9d2e6', CHAUD = '#ffae5
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: !!label, ...extra });
 const CAMS = [[9, 7], [35, 7], [17, 25], [35, 25]];
 // [proposition d'Ocre] façades et murs : emprise (x, z, w, d) ; l'ancre du sprite tombe sur le coin avant (x + w ; z + d), à l'échelle du manifeste (aucune échelle par le code).
-// Revue 2 : tout est hors de la place (x < 0, z < 0, z >= 36, x >= 48), bord à bord tous les 8 m (12 m pour pp_facade_c et pp_facade_a_o, 16 m pour pp_facade_a),
+// Revues 2 et 3 : tout est hors de la place (x < 0, z < 0, z >= 36, x >= 48), bord à bord sur une trame de 4 m (murets de 8 et 4 m ; 12 m pour pp_facade_c et pp_facade_a_o, 16 m pour pp_facade_a),
 // aucune emprise de mur n'en chevauche une autre, aucun trou vers le vide hors des trois accès. Nord : façades hautes ; l'immeuble blanc (pp_arcadius) est retiré,
 // pp_facade_a et pp_facade_b recisaillées à 0,33 (faces x, donc bord nord) ferment x 12 à 36. Ouest : façades de profil. Sud et est (côté caméra) : murets de 1,2 m.
-// Est : pp_mur_bas_o (4 m) porte l'écran haut pp_ecran_haut_e2 (bas des supports à 4 m) sur z 16 à 24 ; le kiosque merch (z 6 à 12) et le stand de nouilles (z 24 à 30) sont adossés au bord.
-// Accès (8 m ou 4 m, multiples de la trame) : ouest z 12 à 20 (seuil 1 ; 16), jonction Fréquence Strip z 12 à 16 (seuil 47 ; 13), escalier de service et sa grille x 24 à 32 (seuil 28 ; 35).
+// Est : pp_support_ecran_o (muret et deux mâts, z 20 à 24) porte l'écran haut pp_ecran_haut_e2 sur la même ancre (supports sur les platines à 4 m) ; murets partout ailleurs.
+// Accès : ouest z 12 à 16 (4 m, seuil 1 ; 14 : la trame de 4 m ne permet pas 2 m), jonction Fréquence Strip z 12 à 16 (seuil 47 ; 13), escalier de service et sa grille x 20 à 28 (seuil 24 ; 35, place d'origine).
 const FACADES = [ // [id, sprite, x, z, w, d]
   ['pp_fac_n1', 'pp_facade_c', 0, -1.5, 12, 1.5], ['pp_fac_n2', 'pp_facade_a', 12, -2, 16, 2], ['pp_fac_n4', 'pp_facade_b', 28, -1.5, 8, 1.5], ['pp_fac_n3', 'pp_facade_c', 36, -1.5, 12, 1.5],
-  ['pp_fac_o1', 'pp_facade_a_o', -2, 0, 2, 12], ['pp_fac_o2', 'pp_facade_b_o2', -1.5, 20, 1.5, 8], ['pp_fac_o3', 'pp_facade_b_o2', -1.5, 28, 1.5, 8],
-  ['pp_mur_s1', 'pp_muret', 0, 36, 8, 0.4], ['pp_mur_s2', 'pp_muret', 8, 36, 8, 0.4], ['pp_mur_s3', 'pp_muret', 16, 36, 8, 0.4],
-  ['pp_mur_s4', 'pp_muret', 32, 36, 8, 0.4], ['pp_mur_s5', 'pp_muret', 40, 36, 8, 0.4],
-  ['pp_mur_e0', 'pp_muret_o', 48, 0, 0.4, 8], ['pp_mur_e1', 'pp_mur_bas_o', 48, 16, 0.5, 8], ['pp_mur_e2', 'pp_muret_o', 48, 28, 0.4, 8],
+  ['pp_fac_o1', 'pp_facade_a_o', -2, 0, 2, 12], ['pp_fac_o2', 'pp_facade_b_o2', -1.5, 16, 1.5, 8], ['pp_fac_o3', 'pp_facade_b_o2', -1.5, 24, 1.5, 8], ['pp_mur_o4', 'pp_muret_4_o', -0.4, 32, 0.4, 4],
+  ['pp_mur_s1', 'pp_muret', 0, 36, 8, 0.4], ['pp_mur_s2', 'pp_muret', 8, 36, 8, 0.4], ['pp_mur_s3', 'pp_muret_4', 16, 36, 4, 0.4],
+  ['pp_mur_s4', 'pp_muret_4', 28, 36, 4, 0.4], ['pp_mur_s5', 'pp_muret', 32, 36, 8, 0.4], ['pp_mur_s6', 'pp_muret', 40, 36, 8, 0.4],
+  ['pp_mur_e0', 'pp_muret_o', 48, 0, 0.4, 8], ['pp_mur_e1', 'pp_muret_4_o', 48, 8, 0.4, 4], ['pp_mur_e3', 'pp_muret_4_o', 48, 16, 0.4, 4], ['pp_mur_e4', 'pp_support_ecran_o', 48, 20, 0.4, 4],
+  ['pp_mur_e5', 'pp_muret_4_o', 48, 24, 0.4, 4], ['pp_mur_e2', 'pp_muret_o', 48, 28, 0.4, 8],
 ];
 // écrans en hauteur d'Ocre (zone vide, contenu dessiné par le code d'après ecran_coins du manifeste), fixés sur la face visible de leur façade : [id, sprite, x, z, w, d]
-// e2 (4 m) remplace e1 (8,9 m, trop grand au premier plan) : emprise de 10 cm posée contre la face x = 48,5 du mur porteur (tri du peintre : dessiné devant lui).
-const ECRANS_HAUTS = [ ['pp_ecran_n1', 'pp_ecran_haut_n1', 39, -0.6, 8, 0.6], ['pp_ecran_n2', 'pp_ecran_haut_n2', 3, -0.6, 4, 0.6], ['pp_ecran_e2', 'pp_ecran_haut_e2', 48.5, 20, 0.1, 4] ];
+// e2 (4 m) remplace e1 : même ancre au sol que son support pp_support_ecran_o (48,4 ; 24), emprise de 10 cm dans celle du support (tri du peintre : dessiné devant lui).
+const ECRANS_HAUTS = [ ['pp_ecran_n1', 'pp_ecran_haut_n1', 39, -0.6, 8, 0.6], ['pp_ecran_n2', 'pp_ecran_haut_n2', 3, -0.6, 4, 0.6], ['pp_ecran_e2', 'pp_ecran_haut_e2', 48.3, 20, 0.1, 4] ];
 // garde-corps dessinés par le code : plus utilisés (les murets d'Ocre ferment sud et est)
 const GARDE_CORPS = [];
 // mobilier : [id, sprite, x de l'ancre, z de l'ancre, w, d] (emprises du manifeste)
 // pied des façades et des stands (x, z, w, d) : transition entre le sol et les bâtiments
-const PIEDS = [[0, 0, 48, 1], [0, 1, 0.8, 11], [0, 20, 0.8, 15.2], [0, 35.2, 24, 0.8], [32, 35.2, 16, 0.8], [47.2, 16, 0.8, 8], [44, 12, 4, 0.6], [0, 12, 4, 0.6], [0, 30, 4, 0.6], [44, 30, 4, 0.6]];
+const PIEDS = [[0, 0, 48, 1], [0, 1, 0.8, 11], [0, 16, 0.8, 19.2], [0, 35.2, 20, 0.8], [28, 35.2, 20, 0.8], [44, 12, 4, 0.6], [0, 12, 4, 0.6], [0, 30, 4, 0.6], [44, 30, 4, 0.6]];
 const LAMPES = [[8, 14], [8, 26], [40, 14], [36, 31]], BORNES = [[11, 11], [33, 11]];
 const MOBILIER = [
   ...LAMPES.map(([x, z], i) => [`pp_lampe${i}`, 'pp_lampadaire', x, z, 0.6, 0.6]),
@@ -58,7 +59,7 @@ export const BUILDINGS_PULSE = [
   B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib', 40, 20, 2, 2),
   B('pp_banc1', '', 'pp_banc', 4, 20, 2, 1, { named: false }), B('pp_banc2', '', 'pp_banc', 4, 23, 2, 1, { named: false }),
   ...CAMS.map(([x, z], i) => B(`pp_cam${i}`, '', 'pp_camera', x - 0.2, z - 0.2, 0.4, 0.4, { named: false })),
-  B('pp_escalier', '', 'pp_escalier', 26, 28, 4, 4, { solid: [], named: false }), // chantier pilote : plus d'étiquette posée sur l'accès
+  B('pp_escalier', '', 'pp_escalier', 22, 28, 4, 4, { solid: [], named: false }), // chantier pilote : plus d'étiquette posée sur l'accès
   // Chantier pilote (docs/villes/steel/quartiers/pulse_plaza/PILOTE.md) : façades raccordables qui ferment les bords nord, ouest et est.
   // Emprise (x, z, w, d) = celle du tableau de pose ; l'ancre du sprite tombe sur le coin avant (x + w ; z + d), comme tous les bâtiments.
   ...FACADES.map(([id, sprite, x, z, w, d]) => B(id, '', sprite, x, z, w, d, { named: false })),
@@ -96,17 +97,17 @@ export const LOCATIONS_PULSE = {
       { x: 22, z: 2.3, rx: 3, rz: 1.2, color: '#e8eef2', i: 0.45 }, { x: 46, z: 30.5, rx: 2.6, rz: 1.8, color: CHAUD, i: 0.8 }, { x: 2, z: 30.5, rx: 2, rz: 1.4, color: '#e8eef2', i: 0.4 },
       ...CAMS.map(([x, z]) => ({ x: x + 0.2, z: z + 0.2, rx: 0.6, rz: 0.4, color: ROUGE, i: 0.5 })),
       ...LAMPES.map(([x, z]) => ({ x, z, rx: 2.2, rz: 1.6, color: CYAN, i: 0.55 })), ...BORNES.map(([x, z]) => ({ x, z, rx: 1.3, rz: 1, color: MAGENTA, i: 0.6, flicker: true })),
-      ...[[2, 1.2], [6, 1.2], [10, 1.2], [14.5, 1.2], [26, 1.2], [31, 1.2], [38.5, 1.2], [42.5, 1.2], [46, 1.2], [1, 4.5], [1, 9], [1, 22], [1, 26], [1, 31]].map(([x, z]) => ({ x, z, rx: 1.6, rz: 1.1, color: CHAUD, i: 0.45 })) ],
+      ...[[2, 1.2], [6, 1.2], [10, 1.2], [14.5, 1.2], [26, 1.2], [31, 1.2], [38.5, 1.2], [42.5, 1.2], [46, 1.2], [1, 4.5], [1, 9], [1, 18], [1, 22], [1, 26], [1, 30]].map(([x, z]) => ({ x, z, rx: 1.6, rz: 1.1, color: CHAUD, i: 0.45 })) ],
     // chantier pilote : 8 figurants distincts (gen_pp_foule_c à j) à la place des clones, groupés devant l'écran et autour du Holo ; foule_a et foule_b ne servent plus qu'aux deux passants
     extras: [ ...[['c', 15, 14.5], ['d', 19, 13.6], ['e', 29, 15], ['f', 14, 16.6], ['g', 26, 23.4], ['h', 18, 23.2], ['i', 30.5, 16.8], ['j', 27, 13.8]].map(([k, x, z]) => ({ sprite: 'gen_pp_foule_' + k, x, z, face: x < 24 ? 1 : -1, role: 'foule' })) ],
     walkers: [ { sprite: 'gen_pp_foule_a', path: [[2, 16], [44, 16]], speed: 0.7, t0: 4 }, { sprite: 'gen_pp_foule_b', path: [[6.5, 33], [6.5, 27], [40, 27]], speed: 0.6, t0: 11 } ],
-    spawn: { player: { x: 1, z: 16 }, companion: { x: 1, z: 17 } }, city: 'steel',
+    spawn: { player: { x: 1, z: 14 }, companion: { x: 1, z: 15 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'Pulse Plaza. Les écrans éclairent tout ; la nuit n\u2019a plus le droit de tomber ici. La foule applaudit en même temps, puis se tait en même temps.' } },
 };
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
 export const DOORS_PULSE = [
-  J('pp_ouest', 'steel_pulse', 0, 16, 1, 16, 'c_nord', 'Vers Center-Town (rue d\u2019arrivée)'),
-  J('pp_sud', 'steel_pulse', 28, 36, 28, 35, 'c_pp_sud', 'Escalier de service (vers Center-Town)'),
+  J('pp_ouest', 'steel_pulse', 0, 14, 1, 14, 'c_nord', 'Vers Center-Town (rue d\u2019arrivée)'),
+  J('pp_sud', 'steel_pulse', 24, 36, 24, 35, 'c_pp_sud', 'Escalier de service (vers Center-Town)'),
   J('c_pp_sud', 'steel_center', 26, 36, 26, 35, 'pp_sud', 'Escalier de Pulse Plaza'), // [décision Valentin] distincte de la grille c_sud (Sous-Ville), sans condition
   J('c_nord', 'steel_center', 33, 0, 33, 1, 'pp_ouest', 'Pulse Plaza'),
 ];
@@ -119,7 +120,7 @@ export const NPCS_PULSE = [ // positions de la fiche (x, z en m) ; aucun n'est V
     dialogue: 'pp_isaure' },
   { id: 'pp_clone', name: 'Le Clone 7', sprite: 'gen_pp_clone_gt', location: 'steel_pulse', x: 19, z: 22.8, faceTo: [14, 24], dialogue: 'pp_clone' },
   { id: 'pp_gaspard', name: 'Gaspard', sprite: 'gen_pp_gaspard', location: 'steel_pulse', x: 7, z: 22, faceTo: [12, 22], dialogue: 'pp_gaspard' },
-  { id: 'pp_noor', name: 'Noor', sprite: 'gen_pp_noor', location: 'steel_pulse', x: 25, z: 31, faceTo: [28, 31], dialogue: 'pp_noor' },
+  { id: 'pp_noor', name: 'Noor', sprite: 'gen_pp_noor', location: 'steel_pulse', x: 27, z: 31, faceTo: [24, 31], dialogue: 'pp_noor' },
   { id: 'pp_vasseur', name: 'Monsieur Vasseur', sprite: 'gen_pp_vasseur', location: 'steel_pulse', x: 34.5, z: 8.5, faceTo: [28, 10], // revue 2 : à droite de l'écran du Feed (n'est plus caché par lui)
     dialogue: 'pp_vasseur' },
 ];

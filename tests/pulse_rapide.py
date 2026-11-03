@@ -4,7 +4,7 @@
 import time,os,sys,io
 from PIL import Image
 from playwright.sync_api import sync_playwright
-URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/pulse/'; CAP='/tmp/nml-test-out/pulse_revue2/apres_'; os.makedirs(OUT,exist_ok=True); os.makedirs(os.path.dirname(CAP),exist_ok=True); fails=[]; n=0
+URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/pulse/'; CAP='/tmp/nml-test-out/pulse_revue3/apres_'; os.makedirs(OUT,exist_ok=True); os.makedirs(os.path.dirname(CAP),exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 with sync_playwright() as p:
@@ -37,11 +37,11 @@ with sync_playwright() as p:
                 cur=max(cur,a1)
             if cur<hi-1e-6: t.append((cur,hi))
             return t
-        T={'nord':trous('x',0,0,48,(0,0)),'sud':trous('x',36,0,48,(24,32)),'ouest':trous('z',0,0,36,(12,20)),'est':trous('z',48,0,36,(12,16))}
+        T={'nord':trous('x',0,0,48,(0,0)),'sud':trous('x',36,0,48,(20,28)),'ouest':trous('z',0,0,36,(12,16)),'est':trous('z',48,0,36,(12,16))}
         ok(not any(T.values()),f'{name} aucun trou vers le vide hors des accès (nord, sud, ouest, est)',T)
         ok(not [b for b in B if b[1]=='pp_arcadius'] and [b[2] for b in B if b[0]=='pp_fac_n3']==[36],f'{name} immeuble blanc retiré, pp_facade_c sur x 36 à 48')
-        e2=[b for b in B if b[0]=='pp_ecran_e2']; ok(e2 and e2[0][1]=='pp_ecran_haut_e2' and abs(e2[0][2]-48.5)<1e-6 and e2[0][3]>=16 and e2[0][5]<=24 and not [b for b in B if b[1]=='pp_ecran_haut_e1'],f'{name} écran est e2 sur le mur porteur (x 48,5, z 16 à 24), e1 retiré',e2)
-        ok(set(b[1] for b in B if b[0].startswith('pp_mur_s'))=={'pp_muret'} and E("window.__nml.world.LOCATIONS.steel_pulse.gardeCorps.length")==0,f'{name} sud fermé par les murets de 1,2 m, plus de garde-corps')
+        e2=[b for b in B if b[0]=='pp_ecran_e2']; ok(e2 and e2[0][1]=='pp_ecran_haut_e2' and abs(e2[0][4]-48.4)<1e-6 and abs(e2[0][5]-24)<1e-6 and [b for b in B if b[1]=='pp_support_ecran_o' and abs(b[4]-48.4)<1e-6 and abs(b[5]-24)<1e-6] and not [b for b in B if b[1]=='pp_mur_bas_o'] and not [b for b in B if b[1]=='pp_ecran_haut_e1'],f'{name} écran est e2 sur son support léger, même ancre (48,4 ; 24), plus de mur bas de 4 m, e1 retiré',e2)
+        ok(set(b[1] for b in B if b[0].startswith('pp_mur_s'))=={'pp_muret','pp_muret_4'} and E("window.__nml.world.LOCATIONS.steel_pulse.gardeCorps.length")==0,f'{name} sud fermé par les murets de 1,2 m (8 et 4 m), plus de garde-corps')
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=30;g.restore(s,true)})()"); time.sleep(1)
         mq=[]
         for _ in range(4): mq+=[m for m in E("window.__nml.view.masques()") if not m[1].startswith('passant') or m[0].startswith(('pp_fac','pp_mur','pp_ecran'))]; time.sleep(1.5)
@@ -66,12 +66,12 @@ with sync_playwright() as p:
             while time.time()-t0<20 and E("window.__nml.state.location")=='steel_pulse': time.sleep(.3)
             return E("window.__nml.state.location")
         loc=acces(40,16,47,13,'steel_strip'); ok(loc=='steel_strip',f'{name} jonction Fréquence Strip libre (à pied)',loc)
-        loc=acces(8,16,1,16,'steel_center'); ok(loc=='steel_center',f'{name} accès ouest libre (à pied vers Center-Town)',loc)
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=3;s.player.z=16;g.restore(s,true)})()"); time.sleep(1.5)
+        loc=acces(8,14,1,14,'steel_center'); ok(loc=='steel_center',f'{name} accès ouest libre (à pied vers Center-Town)',loc)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=3;s.player.z=14;g.restore(s,true)})()"); time.sleep(1.5)
         pg.screenshot(path=CAP+f'acces_ouest_{vp[0]}.png')
-        E("window.__nml.game.moveTo(28,33)"); t0=time.time()
-        while time.time()-t0<40 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-28,p.z-33)>1.2})()"): time.sleep(.3)
-        pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-28)<1.3 and abs(pz[1]-33)<1.3,f'{name} traversée ouest -> escalier sud à pied',pz)
+        E("window.__nml.game.moveTo(24,33)"); t0=time.time()
+        while time.time()-t0<40 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-24,p.z-33)>1.2})()"): time.sleep(.3)
+        pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-24)<1.3 and abs(pz[1]-33)<1.3,f'{name} traversée ouest -> escalier sud à pied',pz)
         pg.screenshot(path=OUT+f'{name}_traversee.png'); time.sleep(1.5) # fin du trajet en cours avant de prendre la porte (sinon il continue dans Center-Town)
         E("window.__nml.game.useDoor('pp_sud')"); t0=time.time()
         while time.time()-t0<8 and E("[window.__nml.state.location,Math.round(window.__nml.state.player.x)]")!=['steel_center',26]: time.sleep(.3)
