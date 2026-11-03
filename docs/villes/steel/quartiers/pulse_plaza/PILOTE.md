@@ -81,3 +81,11 @@ Verdict de Rivet sur capture : la pente 0,33 des faces x est la bonne.
 - `pp_ecran_haut_e2` : même design que e1, face z pente 0,70, 4 m de z, 138 x 394, ancre [0, 393]. Il se pose **en hauteur sur la façade est**, jamais au sol au milieu de la place (bas des supports à 4 m, `elevation_m`). L'ancre est le pied de la façade porteuse sous le bord sud de l'écran, par exemple (46 ; 24). Zone d'écran vide, `ecran_rect` [13, 17, 125, 143], `ecran_coins` [[13, 95], [125, 17], [125, 64], [13, 143]]. e1 est conservé.
 - `pp_muret` (face x, 8 m, 1,2 m) : 400 x 200, ancre [398, 199]. `pp_muret_o` (face z, 8 m) : 275 x 260, ancre [0, 259]. Même logique que pp_mur_bas : ancre au coin, raccord bord à bord, pièce suivante ancrée 8 m plus loin.
 Planche de contrôle : `/workspace/nml-shots/pulse_retouches.png`.
+
+## Revue 2 (main) : pose retenue
+- Nord : l'immeuble blanc (`pp_arcadius`) est retiré. Bord nord bord à bord : `pp_facade_c` x 0 à 12, `pp_facade_a` (recisaillée 0,33) x 12 à 28, `pp_facade_b` (recisaillée 0,33) x 28 à 36, `pp_facade_c` x 36 à 48. Portique IO au pied de `pp_facade_a` (20 ; 0). A et B sont des faces x : leur place est le bord nord, pas les bords latéraux (faces z, qui gardent `pp_facade_a_o` et `pp_facade_b_o2`).
+- Sud : `pp_muret` x 0 à 24 et 32 à 48 (z 36 à 36,4) ; escalier de service et sa grille décalés de 4 m (escalier x 26 à 30, seuil 28 ; 35) pour que l'accès tombe sur la trame de 8 m (x 24 à 32) ; Noor suit (25 ; 31).
+- Est : `pp_muret_o` z 0 à 8 et 28 à 36 ; kiosque merch (z 6 à 12) et stand de nouilles (z 24 à 30) adossés au bord ; jonction Strip z 12 à 16 ; `pp_mur_bas_o` (4 m) z 16 à 24 porte `pp_ecran_haut_e2` (z 20 à 24, supports à 4 m). e1 n'est plus posé.
+- Ouest : `pp_facade_a_o` z 0 à 12, accès z 12 à 20, `pp_facade_b_o2` z 20 à 28 et 28 à 36. Plus aucun garde-corps dessiné par le code.
+- Isaure (22,5 ; 23,4) devant le Holo, Vasseur (34,5 ; 8,5) à droite de l'écran du Feed : plus aucun PNJ ni figurant masqué.
+- Attend une pièce d'Ocre : un tronçon de 4 m (`pp_muret` et `pp_muret_o`, et un 4 m porteur de 4 m de haut) permettrait de garder l'escalier à x 22 à 26 et de resserrer les accès ouest (8 m) et est ; le seul mur porteur de 4 m de haut à l'est reste `pp_mur_bas_o` (une version porteuse plus fine, au style des murets, serait plus juste sous e2).

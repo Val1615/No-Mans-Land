@@ -2,7 +2,7 @@
 # sauvegardes du joueur intactes (emplacements DEV séparés), aucune erreur JS, en 1280 et 390.
 import time,os,sys,json
 from playwright.sync_api import sync_playwright
-URL='http://127.0.0.1:8862/'; OUT='/tmp/nml-test-out/dev/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
+URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/dev/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 with sync_playwright() as p:
