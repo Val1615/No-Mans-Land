@@ -2242,5 +2242,641 @@
     "source": "recadrage de gen_fs_videur_prive.webp",
     "file": "steel/frequence_strip/portrait-gen_fs_videur_prive.webp",
     "status": "v1"
+  },
+  "fs_bas_preservatifs": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 96dba393",
+    "pose": "côté sud, premier plan : x 24 à 28, front z 24 (BAS(..., 24, 4)) ; service au comptoir depuis la rue",
+    "comptoir_coins": [
+      [
+        49,
+        42
+      ],
+      [
+        152,
+        76
+      ],
+      [
+        152,
+        112
+      ],
+      [
+        49,
+        78
+      ]
+    ],
+    "neon_coins": [
+      [
+        3,
+        6
+      ],
+      [
+        194,
+        69
+      ],
+      [
+        194,
+        90
+      ],
+      [
+        3,
+        27
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_preservatifs.webp",
+    "status": "v1",
+    "enseigne": "BIEN COUVERT",
+    "note": "kiosque de préservatifs et de « tonifiants », servi au comptoir ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_preservatifs_neon"
+  },
+  "fs_bas_preservatifs_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_preservatifs",
+    "texte": "BIEN COUVERT",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_preservatifs",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_preservatifs ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_preservatifs_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_shots": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 96dba393",
+    "pose": "côté sud, premier plan : x 34 à 38, front z 24 (BAS(..., 34, 4)) ; service au comptoir depuis la rue",
+    "comptoir_coins": [
+      [
+        3,
+        61
+      ],
+      [
+        197,
+        125
+      ],
+      [
+        197,
+        165
+      ],
+      [
+        3,
+        101
+      ]
+    ],
+    "neon_coins": [
+      [
+        7,
+        9
+      ],
+      [
+        191,
+        70
+      ],
+      [
+        191,
+        87
+      ],
+      [
+        7,
+        27
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_shots.webp",
+    "status": "v1",
+    "enseigne": "SHOT DE GRÂCE",
+    "note": "bar à shots, comptoir et tabourets sur la rue ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_shots_neon"
+  },
+  "fs_bas_shots_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_shots",
+    "texte": "SHOT DE GRÂCE",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_shots",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_shots ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_shots_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_distributeur": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 96dba393",
+    "pose": "côté sud, premier plan : x 46 à 50, front z 24 (BAS(..., 46, 4)) ; service au comptoir depuis la rue",
+    "distributeur_coins": [
+      [
+        82,
+        57
+      ],
+      [
+        130,
+        73
+      ],
+      [
+        130,
+        107
+      ],
+      [
+        82,
+        91
+      ]
+    ],
+    "neon_coins": [
+      [
+        7,
+        9
+      ],
+      [
+        194,
+        71
+      ],
+      [
+        194,
+        88
+      ],
+      [
+        7,
+        26
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_distributeur.webp",
+    "status": "v1",
+    "enseigne": "BILLETS DOUX",
+    "note": "distributeur de billets bricolé, câbles apparents, écran ambre peint fixe ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_distributeur_neon"
+  },
+  "fs_bas_distributeur_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_distributeur",
+    "texte": "BILLETS DOUX",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_distributeur",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_distributeur ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_distributeur_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_massages": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 96dba393",
+    "pose": "côté sud, premier plan : x 50 à 54, front z 24 (BAS(..., 50, 4)) ; porte vers (52.0 ; 24)",
+    "porte_coins": [
+      [
+        62,
+        48
+      ],
+      [
+        124,
+        68
+      ],
+      [
+        124,
+        139
+      ],
+      [
+        62,
+        118
+      ]
+    ],
+    "neon_coins": [
+      [
+        10,
+        10
+      ],
+      [
+        192,
+        71
+      ],
+      [
+        192,
+        89
+      ],
+      [
+        10,
+        29
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_massages.webp",
+    "status": "v1",
+    "enseigne": "MAINS DE FÉE",
+    "note": "guichet de « massages », porte étroite à rideau de perles ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_massages_neon"
+  },
+  "fs_bas_massages_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_massages",
+    "texte": "MAINS DE FÉE",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_massages",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_massages ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_massages_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_laverie": {
+    "px": [
+      400,
+      232
+    ],
+    "anchor": [
+      398,
+      231
+    ],
+    "footprint_m": [
+      8,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 98c284bd",
+    "pose": "côté sud, premier plan : x 60 à 68, front z 24 (BAS(..., 60, 8)) ; porte vers (64.0 ; 24)",
+    "porte_coins": [
+      [
+        333,
+        133
+      ],
+      [
+        374,
+        147
+      ],
+      [
+        374,
+        216
+      ],
+      [
+        333,
+        203
+      ]
+    ],
+    "neon_coins": [
+      [
+        5,
+        3
+      ],
+      [
+        395,
+        131
+      ],
+      [
+        395,
+        150
+      ],
+      [
+        5,
+        21
+      ]
+    ],
+    "hublots_coins": [
+      [
+        26,
+        32
+      ],
+      [
+        326,
+        130
+      ],
+      [
+        326,
+        176
+      ],
+      [
+        26,
+        77
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_laverie.webp",
+    "status": "v1",
+    "enseigne": "BLANCHIMENT",
+    "note": "laverie de nuit, ouverte 24 h sur 24 ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_laverie_neon"
+  },
+  "fs_bas_laverie_neon": {
+    "px": [
+      400,
+      232
+    ],
+    "anchor": [
+      398,
+      231
+    ],
+    "couche_de": "fs_bas_laverie",
+    "texte": "BLANCHIMENT",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_laverie",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_laverie ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_laverie_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_gage": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 98c284bd",
+    "pose": "côté sud, premier plan : x 68 à 72, front z 24 (BAS(..., 68, 4)) ; porte vers (70.0 ; 24)",
+    "porte_coins": [
+      [
+        122,
+        73
+      ],
+      [
+        170,
+        89
+      ],
+      [
+        170,
+        151
+      ],
+      [
+        122,
+        135
+      ]
+    ],
+    "vitrine_coins": [
+      [
+        26,
+        36
+      ],
+      [
+        103,
+        61
+      ],
+      [
+        103,
+        111
+      ],
+      [
+        26,
+        85
+      ]
+    ],
+    "neon_coins": [
+      [
+        11,
+        9
+      ],
+      [
+        189,
+        68
+      ],
+      [
+        189,
+        89
+      ],
+      [
+        11,
+        30
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_gage.webp",
+    "status": "v1",
+    "enseigne": "MONT-DE-PITIÉ",
+    "note": "prêteur sur gage, vitrine à barreaux ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_gage_neon"
+  },
+  "fs_bas_gage_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_gage",
+    "texte": "MONT-DE-PITIÉ",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_gage",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_gage ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_gage_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_perruques": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 98c284bd",
+    "pose": "côté sud, premier plan : x 72 à 76, front z 24 (BAS(..., 72, 4)) ; porte vers (74.0 ; 24)",
+    "porte_coins": [
+      [
+        125,
+        79
+      ],
+      [
+        174,
+        95
+      ],
+      [
+        174,
+        151
+      ],
+      [
+        125,
+        135
+      ]
+    ],
+    "neon_coins": [
+      [
+        12,
+        9
+      ],
+      [
+        191,
+        68
+      ],
+      [
+        191,
+        86
+      ],
+      [
+        12,
+        27
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_perruques.webp",
+    "status": "v1",
+    "enseigne": "FAUX-SEMBLANTS",
+    "note": "perruques et costumes ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_perruques_neon"
+  },
+  "fs_bas_perruques_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_perruques",
+    "texte": "FAUX-SEMBLANTS",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_perruques",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_perruques ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_perruques_neon.webp",
+    "status": "v1"
+  },
+  "fs_bas_implants": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "footprint_m": [
+      4,
+      1
+    ],
+    "height_m": 2,
+    "face": "x",
+    "pente": 0.33,
+    "source": "GenerateImage (cursor), 98c284bd",
+    "pose": "côté sud, premier plan : x 76 à 80, front z 24 (BAS(..., 76, 4)) ; porte vers (78.0 ; 24)",
+    "porte_coins": [
+      [
+        124,
+        79
+      ],
+      [
+        169,
+        93
+      ],
+      [
+        169,
+        151
+      ],
+      [
+        124,
+        136
+      ]
+    ],
+    "neon_coins": [
+      [
+        12,
+        9
+      ],
+      [
+        190,
+        67
+      ],
+      [
+        190,
+        83
+      ],
+      [
+        12,
+        25
+      ]
+    ],
+    "file": "steel/frequence_strip/fs_bas_implants.webp",
+    "status": "v1",
+    "enseigne": "RECHROMAGE",
+    "note": "réparateur d’implants, prothèse chromée en vitrine ; devanture basse, 2 m au plus, ne masque aucun personnage ; panneau peint éteint, texte dans fs_bas_implants_neon"
+  },
+  "fs_bas_implants_neon": {
+    "px": [
+      200,
+      166
+    ],
+    "anchor": [
+      198,
+      165
+    ],
+    "couche_de": "fs_bas_implants",
+    "texte": "RECHROMAGE",
+    "source": "PIL, texte en Oswald, posé sur neon_coins de fs_bas_implants",
+    "note": "couche néon séparée, même taille et même ancre que fs_bas_implants ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
+    "file": "steel/frequence_strip/fs_bas_implants_neon.webp",
+    "status": "v1"
   }
 }
