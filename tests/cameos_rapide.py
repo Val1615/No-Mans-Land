@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 URL='http://127.0.0.1:8862/'; OUT='/tmp/nml-test-out/cameos/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
-CAS=[('steel_strip','fs_ocre',31,14.8,'Recule un peu'),('steel_megaline','ml_rivet',37.4,11,'Ça fonctionne'),('steel_terminus','ml_regie',10,6.5,'Dernier arrêt')]
+CAS=[('steel_strip','fs_ocre',27.5,17.4,'Recule un peu'),('steel_megaline','ml_rivet',37.4,11,'Ça fonctionne'),('steel_terminus','ml_regie',10,6.5,'Dernier arrêt')]
 with sync_playwright() as p:
     br=p.chromium.launch(channel='chrome',args=['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist'])
     for name,vp,mob in [('desktop',(1280,800),False),('mobile',(390,844),True)]:

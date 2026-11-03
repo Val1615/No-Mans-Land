@@ -1,4 +1,5 @@
-# Test rapide Fréquence Strip : Pulse Plaza -> Strip (porte est), traversée jusqu'à la grille est, retour, aucune erreur JS ; fps et enseignes animées (1280 et 390).
+# Test rapide Fréquence Strip (80 x 24 m) : Pulse Plaza -> Strip (porte est), traversée jusqu'à la grille est et passage vers l'Arena, retour, aucune erreur JS ;
+# fps et enseignes animées (1280 et 390), façades sans chevauchement ni trou, view.masques() vide (PNJ et figurants), calques néon d'Ocre posés.
 import time,os,sys
 from playwright.sync_api import sync_playwright
 URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/strip/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
@@ -15,16 +16,37 @@ with sync_playwright() as p:
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=46;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
         E("window.__nml.game.useDoor('pp_est')"); time.sleep(2)
         ok(E("window.__nml.state.location")=='steel_strip',f'{name} Pulse Plaza (sortie est) -> Fréquence Strip',E("window.__nml.state.location"))
-        ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_strip').length")==11,f'{name} 11 PNJ (dont Fusible et Ocre)')
+        ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_strip').length")==19,f'{name} 19 PNJ (11 d origine dont Fusible et Ocre, 8 des compléments d Ocre)')
+        if not mob:
+            B=E("window.__nml.game.world.LOCATIONS.steel_strip.buildings.map(b=>[b.id,b.sprite,b.x,b.z,b.w,b.d,(b.solid||[{x:b.x,z:b.z,w:b.w,d:b.d}])])")
+            S=[(b[0],r) for b in B if not b[0].startswith(('fs_e_','fs_vap')) and b[0] not in ('fs_tapis','fs_cam','fs_grille_est') for r in b[6]]
+            ov=[(a[0],c[0]) for i,a in enumerate(S) for c in S[i+1:] if a[0]!=c[0] and min(a[1]['x']+a[1]['w'],c[1]['x']+c[1]['w'])-max(a[1]['x'],c[1]['x'])>0.01 and min(a[1]['z']+a[1]['d'],c[1]['z']+c[1]['d'])-max(a[1]['z'],c[1]['z'])>0.01]
+            ok(not ov,'aucun chevauchement d emprises solides entre façades, devantures et stands',ov)
+            def couvre(f):
+                iv=sorted((b[2],b[2]+b[4]) for b in B if f(b)); x=0
+                for a,c in iv:
+                    if a>x+0.01: return x
+                    x=max(x,c)
+                return x if x<80-0.01 else None
+            tn=couvre(lambda b:abs(b[3]+b[5]-6)<0.01 or b[0]=='fs_bouche0'); ts=couvre(lambda b:abs(b[3]+b[5]-24)<0.01)
+            ok(tn is None and ts is None,'bords nord (front z 6) et sud (front z 24) fermés de x 0 à 80',(tn,ts))
+            ok(E("window.__nml.view.animStats.enseignes")>=10,'calques _neon d Ocre posés en additif (enseignes code)',E("window.__nml.view.animStats.enseignes"))
+            M=set()
+            for _ in range(10):
+                for m in E("window.__nml.view.masques()"): M.add(tuple(m))
+                time.sleep(1)
+            ok(not M,'view.masques() vide : aucun PNJ ni figurant caché par une façade (10 s de passants)',sorted(M))
         pg.screenshot(path=OUT+f'{name}_arrivee.png')
         E("window.__nml.game.moveTo(30,12)"); time.sleep(6); pg.screenshot(path=OUT+f'{name}_milieu.png')
         fps=E("new Promise(r=>{let k=0;const t0=performance.now();const f=()=>{k++;if(performance.now()-t0<3000)requestAnimationFrame(f);else r(k*1000/(performance.now()-t0))};requestAnimationFrame(f)})")
         st=E("({...window.__nml.view.animStats})"); print(f'   {name} fps={fps:.1f} enseignes animées {st}')
         ok(st['total']==9 and st['on']<=(8 if mob else 16) and st['on']>0,f'{name} enseignes : {st["on"]} animées sur {st["total"]} (plafond {"8" if mob else "16"})',st)
-        E("window.__nml.game.moveTo(58,12)"); t0=time.time()
-        while time.time()-t0<40 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-58,p.z-12)>1.2})()"): time.sleep(.3)
-        pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-58)<1.3 and abs(pz[1]-12)<1.3,f'{name} traversée ouest -> est à pied',pz)
+        E("window.__nml.game.moveTo(78,12.5)"); t0=time.time()
+        while time.time()-t0<60 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-78,p.z-12.5)>1.2})()"): time.sleep(.3)
+        pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-78)<1.3 and abs(pz[1]-12.5)<1.3,f'{name} traversée ouest -> est à pied',pz)
         pg.screenshot(path=OUT+f'{name}_est.png')
+        E("window.__nml.game.useDoor('fs_est')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_arena',f'{name} grille est -> Steel Arena',E("window.__nml.state.location"))
+        E("window.__nml.game.useDoor('ar_ouest')"); time.sleep(2); pz=E("[window.__nml.state.location,window.__nml.state.player.x]"); ok(pz[0]=='steel_strip' and pz[1]>75,f'{name} retour de l Arena au bout est du Strip',pz)
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=2;s.player.z=10;g.restore(s,true)})()"); time.sleep(1); E("window.__nml.game.useDoor('fs_ouest')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_pulse',f'{name} retour vers Pulse Plaza',E("window.__nml.state.location"))
         ok(not errs,f'{name} aucune erreur JS',errs[:3]); ctx.close()
     print(f'{n}/{n+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)

@@ -7,7 +7,7 @@ export async function loadSkins(names, path = n => `./assets/mockup/${n}.webp`) 
   await Promise.all(names.map(n => new Promise((ok, ko) => { const i = new Image(); i.onload = () => { SKIN[n] = i; ok(); }; i.onerror = ko; i.src = path(n); })));
 }
 function pattern(x, name, metres, P) {
-  const img = SKIN[name]; if (!img) return null; const c = document.createElement('canvas'); c.width = c.height = Math.round(metres * P);
+  const img = SKIN[name]; if (!img) return null; const c = document.createElement('canvas'); c.width = Math.round(metres * P); c.height = Math.round(metres * P * img.height / img.width); // tuile non carrée (g_fs_trottoir_etroit 128 x 320) : proportions gardées
   c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return x.createPattern(c, 'repeat');
 }
 function cueMark(x, cue, cx, cy) { x.strokeStyle = 'rgba(235,225,200,.85)'; x.lineWidth = 3; x.beginPath();
@@ -135,6 +135,9 @@ export function groundTexture(loc, doors = []) {
     for (const d of doors.filter(d => d.location === loc.id && !d.junction && !d.edge)) { x.fillStyle = 'rgba(90,70,50,.35)'; x.beginPath(); x.ellipse(d.threshold.x * P, d.threshold.z * P, 0.9 * P, 0.7 * P, 0, 0, 7); x.fill();
       x.fillStyle = 'rgba(60,45,30,.35)'; for (let k = 0; k < 7; k++) x.fillRect((d.threshold.x + (r() - .5) * 1.4) * P, (d.threshold.z + (r() - .5) * 1.2) * P, 4, 7); }
   }
+  // pièces au sol vues de dessus (caniveaux, plaques d'égout, détritus d'Ocre) : peintes dans la texture du sol, à 50 px/m, centrées sur (x, z) ; ni sprite ni tri
+  for (const d of loc.ground.decals || []) { const img = SKIN[d.image]; if (!img) continue; const w = img.width / 50 * P, h = img.height / 50 * P;
+    x.save(); x.translate(d.x * P, d.z * P); if (d.rot) x.rotate(d.rot * Math.PI / 180); x.globalAlpha = d.a ?? 1; x.drawImage(img, -w / 2, -h / 2, w, h); x.restore(); }
   for (const w of loc.ground.water || []) paintWater(x, w, loc.ground.waterSkin || 'g_cl_eau', w.tileM || 6, P, r);
   // herbes mortes (Ch. I §71)
   if (loc.ground.tint) { x.fillStyle = loc.ground.tint; x.fillRect(0, 0, W, H); } // v13 : voile de nuit

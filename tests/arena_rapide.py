@@ -12,7 +12,7 @@ with sync_playwright() as p:
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1)
         E("localStorage.removeItem('nml_save_auto')"); E("document.getElementById('m-new').click()"); time.sleep(.5)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_strip';s.player.x=62;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_strip';s.player.x=78;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
         E("window.__nml.game.useDoor('fs_est')"); time.sleep(2)
         ok(E("window.__nml.state.location")=='steel_arena',f'{name} grille du Strip -> Steel Arena',E("window.__nml.state.location"))
         ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_arena').length")==9,f'{name} 9 PNJ')

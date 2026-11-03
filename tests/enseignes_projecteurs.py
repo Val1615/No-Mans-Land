@@ -17,9 +17,9 @@ with sync_playwright() as p:
         errs=[]; ctx=br.new_context(viewport={'width':vp[0],'height':vp[1]},has_touch=mob,is_mobile=mob); pg=ctx.new_page(); E=pg.evaluate
         pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:m.type=='error' and errs.append(m.text))
         start(pg,''); go(pg,'steel_strip',16,10)
-        ok(E("window.__nml.view.animStats.enseignes")==0,f'{name} : démo des enseignes code absente sans ?dev=1')
+        ok(E("window.__nml.view.animStats.enseignes")==12,f'{name} : sans ?dev=1 : 10 calques _neon d Ocre (L Effeuillée en 3 morceaux), démo absente, répétitions éteintes',E("window.__nml.view.animStats.enseignes"))
         start(pg,'?dev=1'); go(pg,'steel_strip',16,10)
-        st=E("window.__nml.view.animStats"); ok(st['enseignes']==4,f'{name} : Strip ?dev=1 : 2 enseignes code (Neon-7 en 3 morceaux pour la lettre qui saute, Retour)',st)
+        st=E("window.__nml.view.animStats"); ok(st['enseignes']==16,f'{name} : Strip ?dev=1 : + démo Neon-7 (3 morceaux) et Retour',st)
         a=[E("window.__nml.view.codeAnims().neons") for _ in range(12) if not time.sleep(.15)]
         ok(len({tuple(x) for x in a})>2 and all(0<=v<=1 for x in a for v in x),f'{name} : luminosité des contours animée par le code',a[:3])
         if mob: ok(st['on']<=8,f'{name} : budget mobile animStats.on <= 8 (Strip, enseignes code hors budget)',st)
@@ -41,8 +41,7 @@ with sync_playwright() as p:
             ok(all('enseignes' in r[k] for k in ['effet','bat','neon']) and all('projecteurs' in r[k] for k in ['proj','coul']),'éditeur : effet, bâtiment, calque, position ou couleur invalides refusés',r)
         if not mob:  # format d'Ocre branché sans déclaration : une façade avec calque <clé>_neon et un pylône à source_faisceau_px posés à la volée
             E("""(()=>{const L=window.__nml.world.LOCATIONS,B=(id,sprite,x,z,w,d)=>({id,label:'',sprite,x,z,w,d,visitable:false,cue:null,named:false,solid:[]});
-              L.steel_strip.buildings.push(B('t_club','fs_club',54,0,10,1.5));L.steel_arena.buildings.push(B('t_pyl','ar_pylone_projecteur',30,32,1.5,1.5));})()""")
-            go(pg,'steel_strip',50,10); st=E("window.__nml.view.animStats"); ok(st['enseignes']==5 and st['on']==E("window.__nml.view.animStats.on"),'calque fs_club_neon posé automatiquement (format d Ocre), hors animStats.on',st)
+              L.steel_arena.buildings.push(B('t_pyl','ar_pylone_projecteur',30,32,1.5,1.5));})()"""); go(pg,'steel_strip',2,10)
             go(pg,'steel_arena',26,30); src=E("window.__nml.view.codeAnims().sources"); st=E("window.__nml.view.animStats")
             py=[q for q in src if abs(q[2]-33.5)<0.5 and abs(q[0]-31.5)<0.5]; ok(st['projecteurs']==5 and len(py)==1 and 9<py[0][1]<12.5,'pylône : faisceau tiré depuis source_faisceau_px (lentilles à ~10 m)',(st,src))
             pg.screenshot(path=OUT+'test_format_ocre_pylone_1280.png')

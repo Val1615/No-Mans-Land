@@ -65,7 +65,7 @@ export const LOCATIONS_ARENA = {
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
 export const DOORS_ARENA = [
   J('ar_ouest', 'steel_arena', 0, 21, 1, 21, 'fs_est', 'Fréquence Strip'),
-  J('fs_est', 'steel_strip', 64, 13, 63, 13, 'ar_ouest', 'La grille de l\u2019Arena'),
+  J('fs_est', 'steel_strip', 80, 13, 79, 13, 'ar_ouest', 'La grille de l\u2019Arena'),
 ];
 export const NPCS_ARENA = [ // positions de la fiche (m), décalées hors des portiques et des projecteurs ; aucun n'est Vibes ni Tron
   { id: 'ar_ferrand', name: 'Ferrand', sprite: 'gen_ar_ferrand', location: 'steel_arena', x: 31, z: 14.6, faceTo: [26, 18], dialogue: 'ar_ferrand' },

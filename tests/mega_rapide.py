@@ -46,7 +46,7 @@ with sync_playwright() as p:
                     hd=E("(()=>{const s=window.__nml.state,k=window.__nml.npcs.find(n=>n.id==='ml_vigile');return Math.abs(s.npcs.ml_vigile.heading-Math.atan2(s.player.x-k.x,s.player.z-k.z))<0.01})()")
                     ok(E("window.__nml.portique.kessler") and hd and 'Kessler' in m,f'{name} 3 insistances : Kessler se retourne',m)
                     # achat chez Fusible (Fréquence Strip)
-                    tp('steel_strip',39.6,14.6); time.sleep(1); E("window.__nml.debugMega({cr:100})"); E("window.__nml.game.talkTo('fs_fusible')"); time.sleep(2.5)
+                    tp('steel_strip',9,7.4); time.sleep(1); E("window.__nml.debugMega({cr:100})"); E("window.__nml.game.talkTo('fs_fusible')"); time.sleep(2.5)
                     choisir('Combien'); choisir('Je la prends'); time.sleep(.4)
                     ok(not E("window.__nml.state.player.inv.pirate_implant"),f'{name} Fusible : 100 cr, achat refusé',E("window.__nml.game.currentNode?.()?.text"))
                     E("window.__nml.game.choose(window.__nml.game.currentNode().options[0].index)"); time.sleep(.3)

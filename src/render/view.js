@@ -222,6 +222,11 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     for (const s of bsprites) { if (s.material.opacity < 0.5) continue; const q = uvOf(s, c); if (alphaAt(s.userData.img, q.u, q.v) > 0.5 && (!top || s.renderOrder > top.renderOrder)) top = s; }
     survol = top?.userData.buildingId || null; });
   // contrôle (tests) : bâtiments ou garde-corps dessinés devant un personnage (PNJ, figurant, passant) et opaques sur lui
+  // bâtiments qui masqueraient un personnage posé en (x, z) (même règle que masques()) : aide à la pose et aux tests
+  function masqueEn(x, z) { const a = { position: new THREE.Vector3(x, 0, z) }, ai = actorItem(a), out = [];
+    for (const s of bsprites) { const bi = bills.find(b => b.obj === s); if (!bi || bi.cover || !inFront(bi, ai)) continue;
+      for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(x, hy, z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { out.push(s.userData.buildingId); break; } } }
+    return out; }
   function masques() { const out = [];
     const gens = [...npcSprites.map(s => [s.userData.npc, s]), ...decor.map((s, i) => [(s.userData.role || 'decor') + i, s])];
     for (const [nom, a] of gens) { const ai = actorItem(a);
@@ -253,7 +258,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
   // « saute » : la colonne [u0, u1] du calque (une lettre) est un sprite à part qui grésille seul. dev: true -> visible seulement avec ?dev=1.
   const NEON_DEV = typeof location !== 'undefined' && new URLSearchParams(location.search).get('dev') === '1';
   function enseigne(e, loc) {
-    if (e.dev && !NEON_DEV) return; const item = bills.find(i => i.obj.userData.buildingId === e.building), b = loc.buildings.find(x => x.id === e.building), key = e.neon || (bman[b?.sprite + '_neon'] ? b.sprite + '_neon' : b?.sprite), m = bman[key]; // calque <clé>_neon d'Ocre, sinon le support lui-même en additif (démo)
+    if ((e.dev && !NEON_DEV) || e.effet === 'eteint') return; /* eteint : façade répétée, calque néon non allumé */ const item = bills.find(i => i.obj.userData.buildingId === e.building), b = loc.buildings.find(x => x.id === e.building), key = e.neon || (bman[b?.sprite + '_neon'] ? b.sprite + '_neon' : b?.sprite), m = bman[key]; // calque <clé>_neon d'Ocre, sinon le support lui-même en additif (démo)
     if (!item || !b || !m || !SKIN[key] || m.anime) return; // planche animée : pas de calque code (l'animation d'Ocre reste seule)
     const k = b.k || 1, W = m.px[0] / K * k, H = m.px[1] / K * k * (b.sy || 1), au = m.anchor[0] / m.px[0], av = 1 - m.anchor[1] / m.px[1];
     const cols = e.saute ? [[0, e.saute[0], false], [e.saute[0], e.saute[1], true], [e.saute[1], 1, false]] : [[0, 1, false]];
@@ -614,7 +619,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);
       for(const h of hits){const s=h.object;const img=s.userData.img|| (s===player?'player':s.userData.npc?NPCS.find(n=>n.id===s.userData.npc)?.sprite:null);if(img&&h.uv&&alphaAt(img,h.uv.x,h.uv.y)<.3)continue;
       return {id:s.userData.buildingId||s.userData.editorId};}return null;
-    }, joue, joueEtat, animStats, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
+    }, joue, joueEtat, animStats, masqueEn, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
     facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
     // rectangle écran (px CSS) d'un personnage, pour les contrôles au pixel
     actorRect: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who);
