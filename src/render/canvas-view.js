@@ -3,7 +3,7 @@ import {wallsOf} from '../core/grid.js';
 // sprite anchor formula, groundTexture and footprint painter relation as view.js.
 import * as THREE from 'three';
 import {UNITS} from '../data/units.js';
-import {groundTexture,SKIN} from './textures.js?v=editor1';
+import {groundTexture,SKIN} from './textures.js?v=editor2';
 export function createCanvasView(canvas,game,sprites,bman){const ctx=canvas.getContext('2d'),{LOCATIONS,DOORS}=game.world;let camera={x:24,z:18,ppm:20},built=null,ground=null,items=[],masks={};const cache={};const pitch=THREE.MathUtils.degToRad(UNITS.camera.pitchDeg),yaw=THREE.MathUtils.degToRad(UNITS.camera.yawDeg),dir=new THREE.Vector3(-Math.sin(yaw)*Math.cos(pitch),-Math.sin(pitch),-Math.cos(yaw)*Math.cos(pitch)),right=new THREE.Vector3().crossVectors(dir,new THREE.Vector3(0,1,0)).normalize(),up=new THREE.Vector3().crossVectors(right,dir).normalize();
 const img=id=>cache[id]||=(Object.assign(new Image(),{src:'./assets/'+(sprites[id].file||`reused/${id}.webp`)}));
 const project=(x,y,z)=>({x:(camera.cx??innerWidth/2)+((x-camera.x)*right.x+(z-camera.z)*right.z)*camera.ppm,y:(camera.cy??innerHeight/2)-((x-camera.x)*up.x+y*up.y+(z-camera.z)*up.z)*camera.ppm});

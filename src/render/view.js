@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { UNITS } from '../data/units.js';
 import { wallsOf } from '../core/grid.js';
-import { groundTexture, SKIN } from './textures.js?v=editor1';
+import { groundTexture, SKIN } from './textures.js?v=editor2';
 
 export function createView(canvas, game, sprites, bman, labelLayer) {
   let { LOCATIONS, DOORS, NPCS, COMPANION } = game.world;

@@ -1,13 +1,14 @@
 import * as sourceWorld from './data/dusk_town.js';
 import {createEditorBase} from '../editor/base.js';
 import {applyEditorProject,loadPublishedMaps} from './core/editor-maps.js';
+import { chargerCatalogue } from './core/catalogue.js';
 import {bindEditorStory} from './core/editor-story.js'; // v7 : toute la ville (Q1 + Q2-Q4)
 import { DIALOGUES, ITEMS } from './data/dialogues_town.js';
 import { createGame } from './core/game.js';
 import { QUESTS, QUEST_NOTES } from './data/quests.js';
 import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
-import { loadSkins } from './render/textures.js?v=editor1';
+import { loadSkins } from './render/textures.js?v=editor2';
 import { createShell } from './ui/shell.js';
 import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
 import { portraitUrl } from './ui/creation.js';
@@ -19,29 +20,15 @@ import { ITEMS_MEGA, VALIDATION, REFUS, CONSEIL, aBillet, aImplant, PIQUE_PUCE_P
 Object.assign(ITEMS, ORIGIN_ITEMS); // v11 : objets d'origine
 Object.assign(ITEMS, ITEMS_MEGA); // Mega-Line : passe-implant piraté (texte seul)
 
-const sprites = await (await fetch('./assets/reused/manifest.json')).json();
-// v6 : mobilier et textures d'intérieur (tools_interiors.py : maquette d'abord, sinon générés ; angle v4 contrôlé)
-const iman = await (await fetch('./assets/interiors/manifest.json')).json();
-Object.assign(sprites, iman);
-// Pulse Plaza : manifeste d'Ocre (assets/steel/pulse_plaza/manifest.json, chemins relatifs à assets/) ; PNJ et portraits -> sprites, décors pp_* -> bâtiments, g_pp_* -> sols
-const ppMan = await (await fetch('./assets/steel/pulse_plaza/manifest.json')).json();
-Object.assign(ppMan, await (await fetch('./assets/steel/frequence_strip/manifest.json')).json());
-Object.assign(ppMan, await (await fetch('./assets/steel/steel_arena/manifest.json')).json());
-Object.assign(ppMan, await (await fetch('./assets/steel/dome_frequence/manifest.json')).json());
-Object.assign(ppMan, await (await fetch('./assets/steel/mega_line/manifest.json')).json()); // Mega-Line et terminus (ml_ -> bâtiments) // Dôme Fréquence (df_ -> bâtiments) // Steel Arena (ar_ -> bâtiments) // Fréquence Strip : même chargeur (gen_, portrait-, fs_ -> bâtiments, g_ -> sols)
-for (const [k, v] of Object.entries(ppMan)) if (k.startsWith('gen_') || k.startsWith('portrait-')) sprites[k] = v;
-
-await loadSkins(['g_sand','g_asphalt','g_dirt','g_gravel','g_grass','g_concrete','g_wood']);
-await loadSkins(['g_wet', 'g_sv', 'g_cl_eau', 'g_cl_lac'], n => `./assets/generated/${n}.webp`); // v13 : chaussée mouillée de Steel (générée)
-const bman = await (await fetch('./assets/buildings/manifest.json')).json();
-for (const [k, v] of Object.entries(ppMan)) if (/^(pp|fs|ar|df|ml)_/.test(k)) bman[k] = v;
-await loadSkins(Object.keys(ppMan).filter(k => k.startsWith('g_')), n => './assets/' + ppMan[n].file);
+// Tous les manifestes (reused, interiors, buildings, assets/steel/<quartier>) : src/core/catalogue.js, partagé avec l'éditeur de cartes
+const { sprites, iman, bman, sols } = await chargerCatalogue();
+await loadSkins(Object.keys(sols), n => sols[n]); // sols : mockup, générés (Steel), quartiers d'Ocre (g_*)
 const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
 await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
 await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
-const editorBase=createEditorBase(sourceWorld,{sprites,bman,iman});
+const editorBase=createEditorBase(sourceWorld,{sprites,bman,iman,sols});
 let publishedMaps=null;try{publishedMaps=await loadPublishedMaps();}catch(error){console.error('Éditeur : chargement des cartes impossible.',error);const warning=document.createElement('div');warning.id='editor-map-warning';warning.textContent='Les cartes modifiées n’ont pas pu être chargées. La carte d’origine est utilisée.';warning.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:100;background:#472b1b;color:#fff;padding:12px';document.body.append(warning);}
-let world;try{world=applyEditorProject(sourceWorld,publishedMaps,editorBase);}catch(error){console.error('Carte publiée invalide :',error);world={...sourceWorld,editorProject:null};const warning=document.createElement('div');warning.textContent='Carte publiée invalide : retour à la carte d’origine. '+error.message;warning.style.cssText='position:fixed;bottom:0;z-index:100;background:#472b1b;color:white;padding:12px';document.body.append(warning);}
+let world;try{world=applyEditorProject(sourceWorld,publishedMaps,editorBase);}catch(error){console.error('Carte publiée invalide :',error);world={...sourceWorld,editorProject:null};const warning=document.createElement('div');warning.id='editor-map-invalid';warning.textContent='Carte publiée invalide : le jeu utilise ses cartes intégrées. '+String(error.message).split('\n').slice(0,3).join(' ');warning.style.cssText='position:fixed;bottom:0;z-index:100;background:#472b1b;color:white;padding:12px';document.body.append(warning);}
 const mapQuery=new URLSearchParams(location.search);if(mapQuery.get('dev')==='1'&&world.LOCATIONS[mapQuery.get('map')])world={...world,START:{...world.START,location:mapQuery.get('map')}};
 const game=createGame({...world,DIALOGUES:{...DIALOGUES,editor_silence:{start:{text:'Cette personne n’a pas encore de dialogue.',options:[{label:'Partir.',next:'end'}]}}},ITEMS},sprites);
 const editorStory=bindEditorStory(game);

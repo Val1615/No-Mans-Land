@@ -9,7 +9,7 @@ class TestRenderer{setPixelRatio(){}setSize(){}render(scene,camera){scene.update
 class TestLoader{load(){return new RealThree.Texture();}}
 const three={...RealThree,WebGLRenderer:TestRenderer,TextureLoader:TestLoader};
 const mod=(exports)=>new vm.SyntheticModule(Object.keys(exports),function(){for(const[k,v]of Object.entries(exports))this.setExport(k,v);},{context});
-const dependencies={'three':mod(three),'../data/units.js':mod({UNITS}),'../core/grid.js':mod({wallsOf:()=>[]}),'./textures.js?v=editor1':mod({groundTexture:()=>new RealThree.Texture(),SKIN:{b:{width:2,height:2}}})};
+const dependencies={'three':mod(three),'../data/units.js':mod({UNITS}),'../core/grid.js':mod({wallsOf:()=>[]}),'./textures.js?v=editor2':mod({groundTexture:()=>new RealThree.Texture(),SKIN:{b:{width:2,height:2}}})};
 const source=new vm.SourceTextModule(fs.readFileSync('src/render/view.js','utf8'),{context});await source.link(s=>dependencies[s]);await source.evaluate();
 const location=()=>({id:'dusk_q1',kind:'exterior',size:{w:48,d:36},ground:{},buildings:[{id:'house',sprite:'b',x:1,z:8,w:7,d:5}],props:[]});
 const state={location:'dusk_q1',player:{x:0,z:0,path:[],heading:0},companion:{x:0,z:0,path:[],mode:'off'},npcs:{},discovered:{},combat:null};

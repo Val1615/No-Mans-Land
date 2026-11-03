@@ -1,0 +1,28 @@
+// Éditeur généralisé : chaque zone d'une région s'ouvre, un aller-retour enregistrer → recharger ne change rien au jeu.
+// Usage : node --experimental-vm-modules tests/editor-regions.mjs [steel|dusk|all]
+import fs from 'node:fs';import path from 'node:path';import vm from 'node:vm';import assert from 'node:assert/strict';
+const root=path.resolve(import.meta.dirname,'..'),context=vm.createContext({console,structuredClone,TextEncoder,TextDecoder,URLSearchParams,atob,btoa,Math,performance}),cache=new Map();
+async function load(relative){const file=path.resolve(root,relative);if(cache.has(file))return cache.get(file);const mod=new vm.SourceTextModule(fs.readFileSync(file,'utf8'),{context,identifier:file});cache.set(file,mod);await mod.link(spec=>load(path.relative(root,path.resolve(path.dirname(file),spec.split('?')[0]))));await mod.evaluate();return mod;}
+const ns=async p=>(await load(p)).namespace,source=await ns('src/data/dusk_town.js'),{createEditorBase}=await ns('editor/base.js'),{initial,validate,compact,transform,canonical}=await ns('editor/model.js'),{applyEditorProject}=await ns('src/core/editor-maps.js'),{chargerCatalogue}=await ns('src/core/catalogue.js'),{createGame}=await ns('src/core/game.js');
+const cat=await chargerCatalogue(async p=>JSON.parse(fs.readFileSync(path.join(root,p))));
+const base=createEditorBase(source,cat),region=process.argv[2]||'all';
+const zones=Object.keys(source.LOCATIONS).filter(id=>region==='all'||base.regions[id]===region);assert(zones.length,'aucune zone pour la région '+region);
+const doc=initial(base);const opened=validate(JSON.parse(JSON.stringify(doc)),base);
+for(const id of Object.keys(source.LOCATIONS))assert(opened.locations[id],'zone absente de l’éditeur : '+id);
+// 1. Enregistrer sans rien changer : fichier vide de zones, jeu identique (mêmes objets natifs).
+const saved=JSON.parse(JSON.stringify(compact(opened,base)));assert.equal(Object.keys(saved.locations).length,0,'aucune zone ne doit être publiée sans modification');assert.equal(saved.doors.length,0);
+const reloaded=validate(saved,base);assert.equal(canonical(reloaded.locations),canonical(opened.locations),'le fichier compact se recharge à l’identique dans l’éditeur');
+const same=applyEditorProject(source,saved,base);for(const id of zones)assert.equal(same.LOCATIONS[id],source.LOCATIONS[id],id+' : zone native conservée');assert.equal(canonical(same.DOORS),canonical(source.DOORS));assert.equal(same.NPCS.length,source.NPCS.length);assert.equal(JSON.stringify(same.editorScope),'[]');
+// 2. Zone forcée dans le fichier sans modification : les données de jeu restent celles du code (hors clés propres à l'éditeur).
+const EDITOR_KEYS=['editorScale','editorLayer','editorDepth','interiorId'];const strip=(loc,nat)=>{const l=structuredClone(loc);for(const b of l.buildings||[])for(const k of EDITOR_KEYS)delete b[k];(l.props||[]).forEach((p,i)=>{if(!nat.props?.[i]?.id)delete p.id;});(l.ground?.zones||[]).forEach((z,i)=>{if(!nat.ground?.zones?.[i]?.id)delete z.id;});for(const k of ['props','buildings'])if(!nat[k]&&!l[k]?.length)delete l[k];if(!nat.ground?.zones&&!l.ground?.zones?.length)delete l.ground.zones;if(!nat.spawn)delete l.spawn;return l;};
+const npcKey=n=>canonical({id:n.id,name:n.name,sprite:n.sprite,x:n.x,z:n.z,dialogue:n.dialogue,location:n.location});
+let checked=0;for(const id of zones){const w=applyEditorProject(source,saved,base,{force:[id]});const nat=source.LOCATIONS[id];
+ const a=JSON.parse(JSON.stringify(strip(w.LOCATIONS[id],nat))),b=JSON.parse(JSON.stringify(nat));assert.equal(canonical(a),canonical(b),id+' : la zone réappliquée diffère du code du jeu');
+ assert.equal(JSON.stringify(source.NPCS.filter(n=>n.location===id).map(npcKey).sort()),JSON.stringify(w.NPCS.filter(n=>n.location===id).map(npcKey).sort()),id+' : PNJ');
+ const nd=source.DOORS.filter(d=>d.location===id),wd=w.DOORS.filter(d=>d.location===id);assert.equal(canonical(wd.map(d=>({...d,conditions:d.conditions?.length}))),canonical(nd.map(d=>({...d,conditions:d.conditions?.length}))),id+' : portes');for(const d of nd)assert.equal(wd.find(x=>x.id===d.id).conditions,d.conditions,id+' : conditions natives des portes');
+ checked++;}
+// 3. Une vraie modification ne publie que sa zone, et le moteur la charge.
+const target=zones.find(id=>source.LOCATIONS[id].buildings?.length)||zones[0],edit=structuredClone(opened),b0=edit.locations[target].buildings[0];if(b0)transform(edit,target,b0.id,{x:b0.x+0.5});else edit.locations[target].ground.base='#123456';
+const pub=JSON.parse(JSON.stringify(compact(edit,base)));assert.equal(JSON.stringify(Object.keys(pub.locations)),JSON.stringify([target]));const ew=applyEditorProject(source,pub,base);assert.equal(JSON.stringify(ew.editorScope),JSON.stringify([target]));for(const id of Object.keys(source.LOCATIONS))if(id!==target)assert.equal(ew.LOCATIONS[id],source.LOCATIONS[id]);
+const game=createGame({...ew,DIALOGUES:{},ITEMS:{}},cat.sprites);for(const id of zones)assert(game.grids[id],id+' : grille du moteur');
+console.log(`PASS editor-regions [${region}] : ${zones.length} zones (${zones.join(', ')}) ouvertes ; enregistrement sans changement = 0 zone publiée, jeu identique ; ${checked} zones réappliquées identiques au code ; modification de ${target} seule publiée et chargée par le moteur.`);
