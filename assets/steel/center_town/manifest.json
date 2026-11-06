@@ -1,0 +1,1738 @@
+{
+  "g_ct_asphalte_mouille": {
+    "file": "steel/center_town/g_ct_asphalte_mouille.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor) + synthèse tuilable PIL",
+    "status": "v1",
+    "pose": "chaussée mouillée de nuit noire + marge hors zone"
+  },
+  "g_ct_trottoir_dalles": {
+    "file": "steel/center_town/g_ct_trottoir_dalles.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "GenerateImage (cursor) + calepinage dalles 1m PIL",
+    "status": "v1",
+    "pose": "sol de base trottoirs et parvis en dalles anthracite humides"
+  },
+  "g_ct_rails_tram_ew": {
+    "file": "steel/center_town/g_ct_rails_tram_ew.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "dérivé PIL de g_ct_asphalte_mouille + rails acier",
+    "status": "v1",
+    "pose": "voie de tramway est-ouest (z 16..20)"
+  },
+  "g_ct_rails_tram_ns": {
+    "file": "steel/center_town/g_ct_rails_tram_ns.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "rotation 90° de g_ct_rails_tram_ew",
+    "status": "v1",
+    "pose": "voie de tramway nord-sud (x 28..32)"
+  },
+  "g_ct_passage_pieton_ns": {
+    "file": "steel/center_town/g_ct_passage_pieton_ns.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "dérivé PIL de g_ct_asphalte_mouille + zébra usé",
+    "status": "v1",
+    "pose": "passages piétons ouest/est du carrefour (24,16,4,4) et (36,16,4,4)"
+  },
+  "g_ct_passage_pieton_ew": {
+    "file": "steel/center_town/g_ct_passage_pieton_ew.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "rotation 90° de g_ct_passage_pieton_ns",
+    "status": "v1",
+    "pose": "passages piétons nord/sud du carrefour (28,12,8,4) et (28,20,8,4)"
+  },
+  "g_ct_carrefour_jaune": {
+    "file": "steel/center_town/g_ct_carrefour_jaune.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "dérivé PIL de g_ct_asphalte_mouille + case jaune hachurée",
+    "status": "v1",
+    "pose": "case jaune hachurée centrale du carrefour (28,16,8,4)"
+  },
+  "ct_arcadius_qg_3q": {
+    "file": "steel/center_town/ct_arcadius_qg_3q.webp",
+    "px": [
+      838,
+      1115
+    ],
+    "anchor": [
+      496,
+      1113
+    ],
+    "footprint_m": [
+      12,
+      12
+    ],
+    "height_m": 17.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "QG Arcadius IO (forteresse grise, bannières rouges IO, statues dorées, portail gardé)",
+    "pose": "B('c_arcadius', 'Arcadius Center', 'ct_arcadius_qg_3q', 36, 0, 12, 12)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_arcadius_qg_v2.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "ARCADIUS QG IO · SÉCURITÉ IO",
+    "neon": "ct_arcadius_qg_3q_neon",
+    "fenetres": "ct_arcadius_qg_3q_fenetres",
+    "ecran_layer": "ct_arcadius_qg_3q_ecran"
+  },
+  "ct_arcadius_qg_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_qg_3q_fenetres.webp",
+    "px": [
+      838,
+      1115
+    ],
+    "anchor": [
+      496,
+      1113
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_qg_3q",
+    "couche_de": "ct_arcadius_qg_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_arcadius_qg_3q.webp",
+    "status": "v1"
+  },
+  "ct_arcadius_qg_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_qg_3q_neon.webp",
+    "px": [
+      838,
+      1115
+    ],
+    "anchor": [
+      496,
+      1113
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_qg_3q",
+    "couche_de": "ct_arcadius_qg_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_arcadius_qg_3q.webp",
+    "status": "v1"
+  },
+  "ct_arcadius_qg_3q_ecran": {
+    "file": "steel/center_town/ct_arcadius_qg_3q_ecran.webp",
+    "px": [
+      838,
+      1115
+    ],
+    "anchor": [
+      496,
+      1113
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_qg_3q",
+    "couche_de": "ct_arcadius_qg_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_arcadius_qg_3q.webp",
+    "status": "v1"
+  },
+  "ct_dome_frequence_3q": {
+    "file": "steel/center_town/ct_dome_frequence_3q.webp",
+    "px": [
+      838,
+      1044
+    ],
+    "anchor": [
+      496,
+      1042
+    ],
+    "footprint_m": [
+      12,
+      12
+    ],
+    "height_m": 14.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Le Dôme Fréquence (verrière dorée, écran chanteuse Vibes, Médias Information Culture)",
+    "pose": "B('c_tour', 'Le Dôme Fréquence', 'ct_dome_frequence_3q', 16, 0, 12, 12, { visitable: true })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_dome_frequence.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "LE DÔME FRÉQUENCE · MÉDIAS INFORMATION CULTURE",
+    "neon": "ct_dome_frequence_3q_neon",
+    "fenetres": "ct_dome_frequence_3q_fenetres",
+    "ecran_layer": "ct_dome_frequence_3q_ecran",
+    "porte_opening": [
+      22.0,
+      12.0
+    ],
+    "porte_threshold": [
+      22.0,
+      13.0
+    ]
+  },
+  "ct_dome_frequence_3q_fenetres": {
+    "file": "steel/center_town/ct_dome_frequence_3q_fenetres.webp",
+    "px": [
+      838,
+      1044
+    ],
+    "anchor": [
+      496,
+      1042
+    ],
+    "additive": true,
+    "parent": "ct_dome_frequence_3q",
+    "couche_de": "ct_dome_frequence_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_dome_frequence_3q.webp",
+    "status": "v1"
+  },
+  "ct_dome_frequence_3q_neon": {
+    "file": "steel/center_town/ct_dome_frequence_3q_neon.webp",
+    "px": [
+      838,
+      1044
+    ],
+    "anchor": [
+      496,
+      1042
+    ],
+    "additive": true,
+    "parent": "ct_dome_frequence_3q",
+    "couche_de": "ct_dome_frequence_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_dome_frequence_3q.webp",
+    "status": "v1"
+  },
+  "ct_dome_frequence_3q_ecran": {
+    "file": "steel/center_town/ct_dome_frequence_3q_ecran.webp",
+    "px": [
+      838,
+      1044
+    ],
+    "anchor": [
+      496,
+      1042
+    ],
+    "additive": true,
+    "parent": "ct_dome_frequence_3q",
+    "couche_de": "ct_dome_frequence_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_dome_frequence_3q.webp",
+    "status": "v1"
+  },
+  "ct_bureau_permis_3q": {
+    "file": "steel/center_town/ct_bureau_permis_3q.webp",
+    "px": [
+      561,
+      640
+    ],
+    "anchor": [
+      332,
+      638
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 8.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Bureau des Permis Administratifs (angle SE carrefour, logo IO blanc, bureaux ambre)",
+    "pose": "B('c_blanc', 'Bureau des permis', 'ct_bureau_permis_3q', 40, 28, 8, 8)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_bureau_permis.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "BUREAU DES PERMIS · IDENTITÉ · ACTIVITÉS",
+    "neon": "ct_bureau_permis_3q_neon",
+    "fenetres": "ct_bureau_permis_3q_fenetres",
+    "ecran_layer": "ct_bureau_permis_3q_ecran"
+  },
+  "ct_bureau_permis_3q_fenetres": {
+    "file": "steel/center_town/ct_bureau_permis_3q_fenetres.webp",
+    "px": [
+      561,
+      640
+    ],
+    "anchor": [
+      332,
+      638
+    ],
+    "additive": true,
+    "parent": "ct_bureau_permis_3q",
+    "couche_de": "ct_bureau_permis_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bureau_permis_3q.webp",
+    "status": "v1"
+  },
+  "ct_bureau_permis_3q_neon": {
+    "file": "steel/center_town/ct_bureau_permis_3q_neon.webp",
+    "px": [
+      561,
+      640
+    ],
+    "anchor": [
+      332,
+      638
+    ],
+    "additive": true,
+    "parent": "ct_bureau_permis_3q",
+    "couche_de": "ct_bureau_permis_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bureau_permis_3q.webp",
+    "status": "v1"
+  },
+  "ct_bureau_permis_3q_ecran": {
+    "file": "steel/center_town/ct_bureau_permis_3q_ecran.webp",
+    "px": [
+      561,
+      640
+    ],
+    "anchor": [
+      332,
+      638
+    ],
+    "additive": true,
+    "parent": "ct_bureau_permis_3q",
+    "couche_de": "ct_bureau_permis_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bureau_permis_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_teng_3q": {
+    "file": "steel/center_town/ct_tour_teng_3q.webp",
+    "px": [
+      561,
+      934
+    ],
+    "anchor": [
+      332,
+      931
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 15.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour Teng Banque Nationale & Change de Teng (visitable, porte face est)",
+    "pose": "B('c_change', 'Change de Teng', 'ct_tour_teng_3q', 4, 4, 8, 8, { visitable: true, cue: 'coin' })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_tour_teng.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "TENG BANQUE NATIONALE · CHANGE · CRÉDITS",
+    "neon": "ct_tour_teng_3q_neon",
+    "fenetres": "ct_tour_teng_3q_fenetres",
+    "ecran_layer": "ct_tour_teng_3q_ecran",
+    "porte_px": [
+      430,
+      825
+    ],
+    "porte_face": "e",
+    "porte_opening": [
+      12.0,
+      8.5
+    ],
+    "porte_threshold": [
+      13.0,
+      8.5
+    ]
+  },
+  "ct_tour_teng_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_teng_3q_fenetres.webp",
+    "px": [
+      561,
+      934
+    ],
+    "anchor": [
+      332,
+      931
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_3q",
+    "couche_de": "ct_tour_teng_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_teng_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_teng_3q_neon": {
+    "file": "steel/center_town/ct_tour_teng_3q_neon.webp",
+    "px": [
+      561,
+      934
+    ],
+    "anchor": [
+      332,
+      931
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_3q",
+    "couche_de": "ct_tour_teng_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_teng_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_teng_3q_ecran": {
+    "file": "steel/center_town/ct_tour_teng_3q_ecran.webp",
+    "px": [
+      561,
+      934
+    ],
+    "anchor": [
+      332,
+      931
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_3q",
+    "couche_de": "ct_tour_teng_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_teng_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_archeon_3q": {
+    "file": "steel/center_town/ct_tour_archeon_3q.webp",
+    "px": [
+      561,
+      1048
+    ],
+    "anchor": [
+      332,
+      1046
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 17.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour à pubs ARCHEON Industries (billboard ambre géant + écran schéma bleu)",
+    "pose": "B('ct_archeon', 'Tour Archeon Industries', 'ct_tour_archeon_3q', -8, 4, 8, 8)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_tour_archeon.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "ARCHEON INDUSTRIES",
+    "neon": "ct_tour_archeon_3q_neon",
+    "fenetres": "ct_tour_archeon_3q_fenetres",
+    "ecran_layer": "ct_tour_archeon_3q_ecran"
+  },
+  "ct_tour_archeon_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_archeon_3q_fenetres.webp",
+    "px": [
+      561,
+      1048
+    ],
+    "anchor": [
+      332,
+      1046
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_3q",
+    "couche_de": "ct_tour_archeon_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_archeon_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_archeon_3q_neon": {
+    "file": "steel/center_town/ct_tour_archeon_3q_neon.webp",
+    "px": [
+      561,
+      1048
+    ],
+    "anchor": [
+      332,
+      1046
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_3q",
+    "couche_de": "ct_tour_archeon_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_archeon_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_archeon_3q_ecran": {
+    "file": "steel/center_town/ct_tour_archeon_3q_ecran.webp",
+    "px": [
+      561,
+      1048
+    ],
+    "anchor": [
+      332,
+      1046
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_3q",
+    "couche_de": "ct_tour_archeon_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_archeon_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_orc_3q": {
+    "file": "steel/center_town/ct_tour_orc_3q.webp",
+    "px": [
+      561,
+      1109
+    ],
+    "anchor": [
+      332,
+      1107
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 16.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour à pubs Orc Énergie (billboard vert émeraude & cyan vif)",
+    "pose": "B('ct_orc', 'Tour Orc Énergie', 'ct_tour_orc_3q', 48, 2, 8, 8)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_tour_orc.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "ORC ÉNERGIE",
+    "neon": "ct_tour_orc_3q_neon",
+    "fenetres": "ct_tour_orc_3q_fenetres",
+    "ecran_layer": "ct_tour_orc_3q_ecran"
+  },
+  "ct_tour_orc_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_orc_3q_fenetres.webp",
+    "px": [
+      561,
+      1109
+    ],
+    "anchor": [
+      332,
+      1107
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_3q",
+    "couche_de": "ct_tour_orc_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_orc_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_orc_3q_neon": {
+    "file": "steel/center_town/ct_tour_orc_3q_neon.webp",
+    "px": [
+      561,
+      1109
+    ],
+    "anchor": [
+      332,
+      1107
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_3q",
+    "couche_de": "ct_tour_orc_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_orc_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_orc_3q_ecran": {
+    "file": "steel/center_town/ct_tour_orc_3q_ecran.webp",
+    "px": [
+      561,
+      1109
+    ],
+    "anchor": [
+      332,
+      1107
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_3q",
+    "couche_de": "ct_tour_orc_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_orc_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_humancorp_3q": {
+    "file": "steel/center_town/ct_tour_humancorp_3q.webp",
+    "px": [
+      561,
+      1011
+    ],
+    "anchor": [
+      332,
+      1009
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 16.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour à pubs Human Corp & Groovy Crew en concert (blanc, cyan, magenta)",
+    "pose": "B('ct_humancorp', 'Tour Human Corp', 'ct_tour_humancorp_3q', 4, -8, 8, 8)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_tour_humancorp.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "HUMAN CORP · GROOVY CREW EN CONCERT",
+    "neon": "ct_tour_humancorp_3q_neon",
+    "fenetres": "ct_tour_humancorp_3q_fenetres",
+    "ecran_layer": "ct_tour_humancorp_3q_ecran"
+  },
+  "ct_tour_humancorp_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_humancorp_3q_fenetres.webp",
+    "px": [
+      561,
+      1011
+    ],
+    "anchor": [
+      332,
+      1009
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_3q",
+    "couche_de": "ct_tour_humancorp_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_humancorp_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_humancorp_3q_neon": {
+    "file": "steel/center_town/ct_tour_humancorp_3q_neon.webp",
+    "px": [
+      561,
+      1011
+    ],
+    "anchor": [
+      332,
+      1009
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_3q",
+    "couche_de": "ct_tour_humancorp_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_humancorp_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_humancorp_3q_ecran": {
+    "file": "steel/center_town/ct_tour_humancorp_3q_ecran.webp",
+    "px": [
+      561,
+      1011
+    ],
+    "anchor": [
+      332,
+      1009
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_3q",
+    "couche_de": "ct_tour_humancorp_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_humancorp_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_nexus_3q": {
+    "file": "steel/center_town/ct_tour_nexus_3q.webp",
+    "px": [
+      561,
+      984
+    ],
+    "anchor": [
+      332,
+      982
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 17.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour à pubs NEXUS (enseigne verticale cyan électrique + écran urbain)",
+    "pose": "B('ct_nexus', 'Tour Nexus', 'ct_tour_nexus_3q', 20, -8, 8, 8)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_tour_nexus.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "NEXUS · RÉSEAU OPTIMUM",
+    "neon": "ct_tour_nexus_3q_neon",
+    "fenetres": "ct_tour_nexus_3q_fenetres",
+    "ecran_layer": "ct_tour_nexus_3q_ecran"
+  },
+  "ct_tour_nexus_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_nexus_3q_fenetres.webp",
+    "px": [
+      561,
+      984
+    ],
+    "anchor": [
+      332,
+      982
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_3q",
+    "couche_de": "ct_tour_nexus_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_nexus_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_nexus_3q_neon": {
+    "file": "steel/center_town/ct_tour_nexus_3q_neon.webp",
+    "px": [
+      561,
+      984
+    ],
+    "anchor": [
+      332,
+      982
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_3q",
+    "couche_de": "ct_tour_nexus_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_nexus_3q.webp",
+    "status": "v1"
+  },
+  "ct_tour_nexus_3q_ecran": {
+    "file": "steel/center_town/ct_tour_nexus_3q_ecran.webp",
+    "px": [
+      561,
+      984
+    ],
+    "anchor": [
+      332,
+      982
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_3q",
+    "couche_de": "ct_tour_nexus_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_nexus_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_a_3q": {
+    "file": "steel/center_town/ct_bord_sud_a_3q.webp",
+    "px": [
+      447,
+      517
+    ],
+    "anchor": [
+      332,
+      515
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 6.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Immeuble de bordure sud-ouest A (enseigne NEXUS TRANSIT, fenêtres ambre)",
+    "pose": "B('c_immeuble', 'Immeuble Nexus Transit', 'ct_bord_sud_a_3q', 0, 32, 8, 4)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_bord_sud_a.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "NEXUS TRANSIT",
+    "neon": "ct_bord_sud_a_3q_neon",
+    "fenetres": "ct_bord_sud_a_3q_fenetres",
+    "ecran_layer": "ct_bord_sud_a_3q_ecran"
+  },
+  "ct_bord_sud_a_3q_fenetres": {
+    "file": "steel/center_town/ct_bord_sud_a_3q_fenetres.webp",
+    "px": [
+      447,
+      517
+    ],
+    "anchor": [
+      332,
+      515
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_a_3q",
+    "couche_de": "ct_bord_sud_a_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bord_sud_a_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_a_3q_neon": {
+    "file": "steel/center_town/ct_bord_sud_a_3q_neon.webp",
+    "px": [
+      447,
+      517
+    ],
+    "anchor": [
+      332,
+      515
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_a_3q",
+    "couche_de": "ct_bord_sud_a_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bord_sud_a_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_a_3q_ecran": {
+    "file": "steel/center_town/ct_bord_sud_a_3q_ecran.webp",
+    "px": [
+      447,
+      517
+    ],
+    "anchor": [
+      332,
+      515
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_a_3q",
+    "couche_de": "ct_bord_sud_a_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bord_sud_a_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_b_3q": {
+    "file": "steel/center_town/ct_bord_sud_b_3q.webp",
+    "px": [
+      447,
+      565
+    ],
+    "anchor": [
+      332,
+      563
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 6.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Galerie de bordure sud B (billboard Groovy Crew en concert, vitrines ambre)",
+    "pose": "B('c_galerie', 'Galerie du Carrefour', 'ct_bord_sud_b_3q', 8, 32, 8, 4)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_bord_sud_b.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "GROOVY CREW EN CONCERT",
+    "neon": "ct_bord_sud_b_3q_neon",
+    "fenetres": "ct_bord_sud_b_3q_fenetres",
+    "ecran_layer": "ct_bord_sud_b_3q_ecran"
+  },
+  "ct_bord_sud_b_3q_fenetres": {
+    "file": "steel/center_town/ct_bord_sud_b_3q_fenetres.webp",
+    "px": [
+      447,
+      565
+    ],
+    "anchor": [
+      332,
+      563
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_b_3q",
+    "couche_de": "ct_bord_sud_b_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bord_sud_b_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_b_3q_neon": {
+    "file": "steel/center_town/ct_bord_sud_b_3q_neon.webp",
+    "px": [
+      447,
+      565
+    ],
+    "anchor": [
+      332,
+      563
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_b_3q",
+    "couche_de": "ct_bord_sud_b_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bord_sud_b_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_b_3q_ecran": {
+    "file": "steel/center_town/ct_bord_sud_b_3q_ecran.webp",
+    "px": [
+      447,
+      565
+    ],
+    "anchor": [
+      332,
+      563
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_b_3q",
+    "couche_de": "ct_bord_sud_b_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bord_sud_b_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_c_3q": {
+    "file": "steel/center_town/ct_bord_sud_c_3q.webp",
+    "px": [
+      396,
+      517
+    ],
+    "anchor": [
+      167,
+      515
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 6.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Pavillon d’angle sud-ouest du carrefour C (guichets Human Corp, fenêtres ambre)",
+    "pose": "B('c_neon', 'Guichets Human Corp', 'ct_bord_sud_c_3q', 20, 28, 4, 8)",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_bord_sud_c.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "HUMAN CORP · GUICHETS",
+    "neon": "ct_bord_sud_c_3q_neon",
+    "fenetres": "ct_bord_sud_c_3q_fenetres",
+    "ecran_layer": "ct_bord_sud_c_3q_ecran"
+  },
+  "ct_bord_sud_c_3q_fenetres": {
+    "file": "steel/center_town/ct_bord_sud_c_3q_fenetres.webp",
+    "px": [
+      396,
+      517
+    ],
+    "anchor": [
+      167,
+      515
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_c_3q",
+    "couche_de": "ct_bord_sud_c_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bord_sud_c_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_c_3q_neon": {
+    "file": "steel/center_town/ct_bord_sud_c_3q_neon.webp",
+    "px": [
+      396,
+      517
+    ],
+    "anchor": [
+      167,
+      515
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_c_3q",
+    "couche_de": "ct_bord_sud_c_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bord_sud_c_3q.webp",
+    "status": "v1"
+  },
+  "ct_bord_sud_c_3q_ecran": {
+    "file": "steel/center_town/ct_bord_sud_c_3q_ecran.webp",
+    "px": [
+      396,
+      517
+    ],
+    "anchor": [
+      167,
+      515
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_c_3q",
+    "couche_de": "ct_bord_sud_c_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bord_sud_c_3q.webp",
+    "status": "v1"
+  },
+  "ct_monorail_viaduc_3q": {
+    "file": "steel/center_town/ct_monorail_viaduc_3q.webp",
+    "px": [
+      509,
+      460
+    ],
+    "anchor": [
+      167,
+      458
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 8.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Segment de viaduc surélevé du monorail sur piles (feux ambre en sous-face)",
+    "pose": "B('ct_mono_v0', '', 'ct_monorail_viaduc_3q', 0, 0, 4, 12, { cover: true, named: false, solid: [{ x: 0.4, z: 0.4, w: 2.2, d: 2.2 }, { x: 0.4, z: 9.8, w: 2.2, d: 2.0 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_monorail_viaduc.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "neon": "ct_monorail_viaduc_3q_neon",
+    "fenetres": "ct_monorail_viaduc_3q_fenetres"
+  },
+  "ct_monorail_viaduc_3q_fenetres": {
+    "file": "steel/center_town/ct_monorail_viaduc_3q_fenetres.webp",
+    "px": [
+      509,
+      460
+    ],
+    "anchor": [
+      167,
+      458
+    ],
+    "additive": true,
+    "parent": "ct_monorail_viaduc_3q",
+    "couche_de": "ct_monorail_viaduc_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_monorail_viaduc_3q.webp",
+    "status": "v1"
+  },
+  "ct_monorail_viaduc_3q_neon": {
+    "file": "steel/center_town/ct_monorail_viaduc_3q_neon.webp",
+    "px": [
+      509,
+      460
+    ],
+    "anchor": [
+      167,
+      458
+    ],
+    "additive": true,
+    "parent": "ct_monorail_viaduc_3q",
+    "couche_de": "ct_monorail_viaduc_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_monorail_viaduc_3q.webp",
+    "status": "v1"
+  },
+  "ct_monorail_rame_3q": {
+    "file": "steel/center_town/ct_monorail_rame_3q.webp",
+    "px": [
+      509,
+      428
+    ],
+    "anchor": [
+      167,
+      426
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 9.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Viaduc surélevé avec rame de monorail MEGA-LINE en passage (fenêtres ambre)",
+    "pose": "B('ct_mono_r0', 'Viaduc Mega-Line', 'ct_monorail_rame_3q', 0, 12, 4, 12, { cover: true, named: false, solid: [{ x: 0.4, z: 12.4, w: 2.2, d: 2.0 }, { x: 0.4, z: 21.8, w: 2.2, d: 2.0 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_monorail_rame.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "MEGA-LINE",
+    "neon": "ct_monorail_rame_3q_neon",
+    "fenetres": "ct_monorail_rame_3q_fenetres"
+  },
+  "ct_monorail_rame_3q_fenetres": {
+    "file": "steel/center_town/ct_monorail_rame_3q_fenetres.webp",
+    "px": [
+      509,
+      428
+    ],
+    "anchor": [
+      167,
+      426
+    ],
+    "additive": true,
+    "parent": "ct_monorail_rame_3q",
+    "couche_de": "ct_monorail_rame_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_monorail_rame_3q.webp",
+    "status": "v1"
+  },
+  "ct_monorail_rame_3q_neon": {
+    "file": "steel/center_town/ct_monorail_rame_3q_neon.webp",
+    "px": [
+      509,
+      428
+    ],
+    "anchor": [
+      167,
+      426
+    ],
+    "additive": true,
+    "parent": "ct_monorail_rame_3q",
+    "couche_de": "ct_monorail_rame_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_monorail_rame_3q.webp",
+    "status": "v1"
+  },
+  "ct_holo_suspendu_3q": {
+    "file": "steel/center_town/ct_holo_suspendu_3q.webp",
+    "px": [
+      509,
+      581
+    ],
+    "anchor": [
+      167,
+      579
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 9.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Portique d’avenue projetant un hologramme publicitaire suspendu NEXUS au-dessus du carrefour",
+    "pose": "B('ct_holo0', '', 'ct_holo_suspendu_3q', 24, 12, 4, 12, { cover: true, named: false, solid: [{ x: 24.6, z: 12.6, w: 1.4, d: 1.4 }, { x: 24.6, z: 22.0, w: 1.4, d: 1.4 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_holo_suspendu.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "NEXUS",
+    "neon": "ct_holo_suspendu_3q_neon",
+    "fenetres": "ct_holo_suspendu_3q_fenetres",
+    "ecran_layer": "ct_holo_suspendu_3q_ecran"
+  },
+  "ct_holo_suspendu_3q_fenetres": {
+    "file": "steel/center_town/ct_holo_suspendu_3q_fenetres.webp",
+    "px": [
+      509,
+      581
+    ],
+    "anchor": [
+      167,
+      579
+    ],
+    "additive": true,
+    "parent": "ct_holo_suspendu_3q",
+    "couche_de": "ct_holo_suspendu_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_holo_suspendu_3q.webp",
+    "status": "v1"
+  },
+  "ct_holo_suspendu_3q_neon": {
+    "file": "steel/center_town/ct_holo_suspendu_3q_neon.webp",
+    "px": [
+      509,
+      581
+    ],
+    "anchor": [
+      167,
+      579
+    ],
+    "additive": true,
+    "parent": "ct_holo_suspendu_3q",
+    "couche_de": "ct_holo_suspendu_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_holo_suspendu_3q.webp",
+    "status": "v1"
+  },
+  "ct_holo_suspendu_3q_ecran": {
+    "file": "steel/center_town/ct_holo_suspendu_3q_ecran.webp",
+    "px": [
+      509,
+      581
+    ],
+    "anchor": [
+      167,
+      579
+    ],
+    "additive": true,
+    "parent": "ct_holo_suspendu_3q",
+    "couche_de": "ct_holo_suspendu_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_holo_suspendu_3q.webp",
+    "status": "v1"
+  },
+  "ct_arret_tram_3q": {
+    "file": "steel/center_town/ct_arret_tram_3q.webp",
+    "px": [
+      447,
+      346
+    ],
+    "anchor": [
+      332,
+      344
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 3.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Arrêt de tramway vitré sur quai dallé (carte TRAM CENTRAL, lueur ambre)",
+    "pose": "B('ct_arret0', 'Arrêt Tram Central', 'ct_arret_tram_3q', 4, 12, 8, 4, { solid: [{ x: 4.5, z: 12.3, w: 7.0, d: 1.5 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_arret_tram.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "TRAM CENTRAL",
+    "neon": "ct_arret_tram_3q_neon",
+    "fenetres": "ct_arret_tram_3q_fenetres",
+    "ecran_layer": "ct_arret_tram_3q_ecran"
+  },
+  "ct_arret_tram_3q_fenetres": {
+    "file": "steel/center_town/ct_arret_tram_3q_fenetres.webp",
+    "px": [
+      447,
+      346
+    ],
+    "anchor": [
+      332,
+      344
+    ],
+    "additive": true,
+    "parent": "ct_arret_tram_3q",
+    "couche_de": "ct_arret_tram_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_arret_tram_3q.webp",
+    "status": "v1"
+  },
+  "ct_arret_tram_3q_neon": {
+    "file": "steel/center_town/ct_arret_tram_3q_neon.webp",
+    "px": [
+      447,
+      346
+    ],
+    "anchor": [
+      332,
+      344
+    ],
+    "additive": true,
+    "parent": "ct_arret_tram_3q",
+    "couche_de": "ct_arret_tram_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_arret_tram_3q.webp",
+    "status": "v1"
+  },
+  "ct_arret_tram_3q_ecran": {
+    "file": "steel/center_town/ct_arret_tram_3q_ecran.webp",
+    "px": [
+      447,
+      346
+    ],
+    "anchor": [
+      332,
+      344
+    ],
+    "additive": true,
+    "parent": "ct_arret_tram_3q",
+    "couche_de": "ct_arret_tram_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_arret_tram_3q.webp",
+    "status": "v1"
+  },
+  "ct_tram_3q": {
+    "file": "steel/center_town/ct_tram_3q.webp",
+    "px": [
+      509,
+      314
+    ],
+    "anchor": [
+      167,
+      312
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 3.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tramway articulé argent et anthracite (fenêtres ambre, girouette CENTER-TOWN)",
+    "pose": "B('ct_tram0', 'Tramway Center-Town', 'ct_tram_3q', 28, 22, 4, 12, { solid: [{ x: 28.8, z: 22.8, w: 2.4, d: 10.4 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_tram.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "CENTER-TOWN",
+    "neon": "ct_tram_3q_neon",
+    "fenetres": "ct_tram_3q_fenetres"
+  },
+  "ct_tram_3q_fenetres": {
+    "file": "steel/center_town/ct_tram_3q_fenetres.webp",
+    "px": [
+      509,
+      314
+    ],
+    "anchor": [
+      167,
+      312
+    ],
+    "additive": true,
+    "parent": "ct_tram_3q",
+    "couche_de": "ct_tram_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tram_3q.webp",
+    "status": "v1"
+  },
+  "ct_tram_3q_neon": {
+    "file": "steel/center_town/ct_tram_3q_neon.webp",
+    "px": [
+      509,
+      314
+    ],
+    "anchor": [
+      167,
+      312
+    ],
+    "additive": true,
+    "parent": "ct_tram_3q",
+    "couche_de": "ct_tram_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tram_3q.webp",
+    "status": "v1"
+  },
+  "ct_taxi_3q": {
+    "file": "steel/center_town/ct_taxi_3q.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Taxi jaune de Steel sur dalle d’asphalte mouillé (lumineux TAXI ambre)",
+    "pose": "B('ct_taxi0', '', 'ct_taxi_3q', 42, 16, 4, 4, { named: false, solid: [{ x: 42.5, z: 16.9, w: 3.0, d: 2.1 }] }) ; B('ct_taxi1', '', 'ct_taxi_3q', 14, 16, 4, 4, { named: false, solid: [{ x: 14.5, z: 16.9, w: 3.0, d: 2.1 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_taxi.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "TAXI",
+    "neon": "ct_taxi_3q_neon",
+    "fenetres": "ct_taxi_3q_fenetres"
+  },
+  "ct_taxi_3q_fenetres": {
+    "file": "steel/center_town/ct_taxi_3q_fenetres.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "additive": true,
+    "parent": "ct_taxi_3q",
+    "couche_de": "ct_taxi_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_taxi_3q.webp",
+    "status": "v1"
+  },
+  "ct_taxi_3q_neon": {
+    "file": "steel/center_town/ct_taxi_3q_neon.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "additive": true,
+    "parent": "ct_taxi_3q",
+    "couche_de": "ct_taxi_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_taxi_3q.webp",
+    "status": "v1"
+  },
+  "ct_kiosque_info_3q": {
+    "file": "steel/center_town/ct_kiosque_info_3q.webp",
+    "px": [
+      282,
+      322
+    ],
+    "anchor": [
+      167,
+      320
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Kiosque multimédia Presse & Médias (comptoir ambre, écran latéral magenta/cyan)",
+    "pose": "B('ct_kiosque0', 'Kiosque Presse & Médias', 'ct_kiosque_info_3q', 12, 20, 4, 4, { named: false, solid: [{ x: 12.6, z: 21.5, w: 2.8, d: 2.1 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_kiosque_info.jpg)",
+    "status": "v1",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "PRESSE · MÉDIAS",
+    "neon": "ct_kiosque_info_3q_neon",
+    "fenetres": "ct_kiosque_info_3q_fenetres",
+    "ecran_layer": "ct_kiosque_info_3q_ecran"
+  },
+  "ct_kiosque_info_3q_fenetres": {
+    "file": "steel/center_town/ct_kiosque_info_3q_fenetres.webp",
+    "px": [
+      282,
+      322
+    ],
+    "anchor": [
+      167,
+      320
+    ],
+    "additive": true,
+    "parent": "ct_kiosque_info_3q",
+    "couche_de": "ct_kiosque_info_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_kiosque_info_3q.webp",
+    "status": "v1"
+  },
+  "ct_kiosque_info_3q_neon": {
+    "file": "steel/center_town/ct_kiosque_info_3q_neon.webp",
+    "px": [
+      282,
+      322
+    ],
+    "anchor": [
+      167,
+      320
+    ],
+    "additive": true,
+    "parent": "ct_kiosque_info_3q",
+    "couche_de": "ct_kiosque_info_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_kiosque_info_3q.webp",
+    "status": "v1"
+  },
+  "ct_kiosque_info_3q_ecran": {
+    "file": "steel/center_town/ct_kiosque_info_3q_ecran.webp",
+    "px": [
+      282,
+      322
+    ],
+    "anchor": [
+      167,
+      320
+    ],
+    "additive": true,
+    "parent": "ct_kiosque_info_3q",
+    "couche_de": "ct_kiosque_info_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_kiosque_info_3q.webp",
+    "status": "v1"
+  },
+  "ct_echoppe_vapeur_3q": {
+    "file": "steel/center_town/ct_echoppe_vapeur_3q.webp",
+    "px": [
+      282,
+      317
+    ],
+    "anchor": [
+      167,
+      315
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Échoppe de rue Nouilles & Vapeur (acier sombre, marmites fumantes, intérieur ambre)",
+    "pose": "B('ct_echoppe0', 'Nouilles & Vapeur', 'ct_echoppe_vapeur_3q', 4, 20, 4, 4, { named: false, solid: [{ x: 4.5, z: 21.5, w: 3.0, d: 2.1 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_echoppe_vapeur.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "NOUILLES & VAPEUR",
+    "neon": "ct_echoppe_vapeur_3q_neon",
+    "fenetres": "ct_echoppe_vapeur_3q_fenetres"
+  },
+  "ct_echoppe_vapeur_3q_fenetres": {
+    "file": "steel/center_town/ct_echoppe_vapeur_3q_fenetres.webp",
+    "px": [
+      282,
+      317
+    ],
+    "anchor": [
+      167,
+      315
+    ],
+    "additive": true,
+    "parent": "ct_echoppe_vapeur_3q",
+    "couche_de": "ct_echoppe_vapeur_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_echoppe_vapeur_3q.webp",
+    "status": "v1"
+  },
+  "ct_echoppe_vapeur_3q_neon": {
+    "file": "steel/center_town/ct_echoppe_vapeur_3q_neon.webp",
+    "px": [
+      282,
+      317
+    ],
+    "anchor": [
+      167,
+      315
+    ],
+    "additive": true,
+    "parent": "ct_echoppe_vapeur_3q",
+    "couche_de": "ct_echoppe_vapeur_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_echoppe_vapeur_3q.webp",
+    "status": "v1"
+  },
+  "ct_lampadaire_io_3q": {
+    "file": "steel/center_town/ct_lampadaire_io_3q.webp",
+    "px": [
+      282,
+      295
+    ],
+    "anchor": [
+      167,
+      292
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 5.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Lampadaire urbain fonte et laiton à lanternes ambre et bannière rouge IO sur dalle 4x4",
+    "pose": "B('ct_lamp0', '', 'ct_lampadaire_io_3q', 20, 12, 4, 4, { named: false, solid: [{ x: 21.5, z: 13.5, w: 1.0, d: 1.0 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_lampadaire_io.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "IO",
+    "neon": "ct_lampadaire_io_3q_neon",
+    "fenetres": "ct_lampadaire_io_3q_fenetres"
+  },
+  "ct_lampadaire_io_3q_fenetres": {
+    "file": "steel/center_town/ct_lampadaire_io_3q_fenetres.webp",
+    "px": [
+      282,
+      295
+    ],
+    "anchor": [
+      167,
+      292
+    ],
+    "additive": true,
+    "parent": "ct_lampadaire_io_3q",
+    "couche_de": "ct_lampadaire_io_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_lampadaire_io_3q.webp",
+    "status": "v1"
+  },
+  "ct_lampadaire_io_3q_neon": {
+    "file": "steel/center_town/ct_lampadaire_io_3q_neon.webp",
+    "px": [
+      282,
+      295
+    ],
+    "anchor": [
+      167,
+      292
+    ],
+    "additive": true,
+    "parent": "ct_lampadaire_io_3q",
+    "couche_de": "ct_lampadaire_io_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_lampadaire_io_3q.webp",
+    "status": "v1"
+  },
+  "ct_banniere_io_3q": {
+    "file": "steel/center_town/ct_banniere_io_3q.webp",
+    "px": [
+      282,
+      326
+    ],
+    "anchor": [
+      167,
+      323
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 6.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Mât cérémoniel de bannière rouge IO et balise rouge sur socle granit 4x4",
+    "pose": "B('ct_bann0', '', 'ct_banniere_io_3q', 36, 12, 4, 4, { named: false, solid: [{ x: 37.4, z: 13.4, w: 1.2, d: 1.2 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_banniere_io.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "IO",
+    "neon": "ct_banniere_io_3q_neon",
+    "fenetres": "ct_banniere_io_3q_fenetres"
+  },
+  "ct_banniere_io_3q_fenetres": {
+    "file": "steel/center_town/ct_banniere_io_3q_fenetres.webp",
+    "px": [
+      282,
+      326
+    ],
+    "anchor": [
+      167,
+      323
+    ],
+    "additive": true,
+    "parent": "ct_banniere_io_3q",
+    "couche_de": "ct_banniere_io_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_banniere_io_3q.webp",
+    "status": "v1"
+  },
+  "ct_banniere_io_3q_neon": {
+    "file": "steel/center_town/ct_banniere_io_3q_neon.webp",
+    "px": [
+      282,
+      326
+    ],
+    "anchor": [
+      167,
+      323
+    ],
+    "additive": true,
+    "parent": "ct_banniere_io_3q",
+    "couche_de": "ct_banniere_io_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_banniere_io_3q.webp",
+    "status": "v1"
+  },
+  "ct_cerisier_bac_3q": {
+    "file": "steel/center_town/ct_cerisier_bac_3q.webp",
+    "px": [
+      282,
+      349
+    ],
+    "anchor": [
+      167,
+      347
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 4.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Cerisier en fleurs roses dans un bac carré en granit anthracite éclairé en ambre",
+    "pose": "B('ct_ceris0', '', 'ct_cerisier_bac_3q', 12, 12, 4, 4, { named: false, solid: [{ x: 13.0, z: 13.0, w: 2.0, d: 2.0 }] }) ; B('ct_ceris1', '', 'ct_cerisier_bac_3q', 36, 24, 4, 4, { named: false, solid: [{ x: 37.0, z: 25.0, w: 2.0, d: 2.0 }] })",
+    "source": "GenerateImage (cursor) + calibration 3/4 PIL (ct_cerisier_bac.jpg)",
+    "status": "v1",
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_cerisier_bac_3q_fenetres"
+  },
+  "ct_cerisier_bac_3q_fenetres": {
+    "file": "steel/center_town/ct_cerisier_bac_3q_fenetres.webp",
+    "px": [
+      282,
+      349
+    ],
+    "anchor": [
+      167,
+      347
+    ],
+    "additive": true,
+    "parent": "ct_cerisier_bac_3q",
+    "couche_de": "ct_cerisier_bac_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_cerisier_bac_3q.webp",
+    "status": "v1"
+  }
+}
