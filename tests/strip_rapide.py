@@ -1,5 +1,5 @@
 # Test rapide Fréquence Strip (80 x 24 m) : Pulse Plaza -> Strip (porte est), traversée jusqu'à la grille est et passage vers l'Arena, retour, aucune erreur JS ;
-# fps et enseignes animées (1280 et 390), façades sans chevauchement ni trou, view.masques() vide (PNJ et figurants), calques néon d'Ocre posés.
+# fps et enseignes animées (1280 et 390), façades bord à bord sans chevauchement ni trou ni inversion d'ordre dynamique, view.masques() vide, calques néon d'Ocre posés.
 import time,os,sys
 from playwright.sync_api import sync_playwright
 URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/strip/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
@@ -17,6 +17,15 @@ with sync_playwright() as p:
         E("window.__nml.game.useDoor('pp_est')"); time.sleep(2)
         ok(E("window.__nml.state.location")=='steel_strip',f'{name} Pulse Plaza (sortie est) -> Fréquence Strip',E("window.__nml.state.location"))
         ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_strip').length")==19,f'{name} 19 PNJ (11 d origine dont Fusible et Ocre, 8 des compléments d Ocre)')
+        STAB=E("""(()=>{const L=window.__nml.game.world.LOCATIONS.steel_strip,v=window.__nml.view,g=window.__nml.game,s=g.state;v.render();
+          const B=L.buildings.map(b=>({id:b.id,x0:b.x,x1:b.x+b.w,z0:b.z,z1:b.z+b.d,fond:!!b.fond,cover:!!b.cover,sol:(b.solid??[1]).length,o0:v.orderOf(b.id)}));
+          const boxOv=[];for(let i=0;i<B.length;i++)for(let j=i+1;j<B.length;j++){const a=B[i],b=B[j];if(a.fond||b.fond||a.cover||b.cover||!a.sol||!b.sol)continue;if(a.x0<b.x1-1e-6&&b.x0<a.x1-1e-6&&a.z0<b.z1-1e-6&&b.z0<a.z1-1e-6)boxOv.push(a.id+'/'+b.id);}
+          const rel={};for(let i=0;i<B.length;i++)for(let j=i+1;j<B.length;j++)rel[B[i].id+'/'+B[j].id]=B[i].o0<B[j].o0;
+          const flips=[],snap=g.snapshot();
+          for(const [px,pz] of [[6,10],[16,10],[32,12],[54,10],[74,12]]){s.player.x=px;s.player.z=pz;g.step(0.4);v.render();
+            for(let i=0;i<B.length;i++)for(let j=i+1;j<B.length;j++){const k=B[i].id+'/'+B[j].id;if((v.orderOf(B[i].id)<v.orderOf(B[j].id))!==rel[k])flips.push(k);}}
+          g.restore(snap,true);v.render();return {boxOv,flips:[...new Set(flips)]};})()""")
+        ok(not STAB['boxOv'] and not STAB['flips'],f'{name} emprises bord à bord sans superposition ni inversion dynamique d ordre',STAB)
         if not mob:
             B=E("window.__nml.game.world.LOCATIONS.steel_strip.buildings.map(b=>[b.id,b.sprite,b.x,b.z,b.w,b.d,(b.solid||[{x:b.x,z:b.z,w:b.w,d:b.d}])])")
             S=[(b[0],r) for b in B if not b[0].startswith(('fs_e_','fs_vap')) and b[0] not in ('fs_tapis','fs_cam','fs_grille_est') for r in b[6]]
@@ -37,7 +46,6 @@ with sync_playwright() as p:
                 time.sleep(1)
             ok(not M,'view.masques() vide : aucun PNJ ni figurant caché par une façade (10 s de passants)',sorted(M))
         pg.screenshot(path=OUT+f'{name}_arrivee.png')
-        # revue Régie : cadre de départ sur la rue (pas de vide), étiquettes des groupes serrés lisibles
         LAB='''(()=>{const r=[...document.querySelectorAll('.wlabel.npc')].filter(e=>!e.hidden&&e.offsetWidth).map(e=>[e.textContent,e.getBoundingClientRect()]);const o=[];
           for(let i=0;i<r.length;i++)for(let j=i+1;j<r.length;j++){const a=r[i][1],b=r[j][1];if(a.left<b.right&&b.left<a.right&&a.top<b.bottom+2&&b.top<a.bottom+2)o.push(r[i][0]+'/'+r[j][0])}return o})()'''
         c=E("window.__nml.view.camCible()"); ok(c and 8.9<=c[0]<=71.1 and 9<=c[1]<=14.1,f'{name} arrivée ouest : cadre centré sur la rue',c)

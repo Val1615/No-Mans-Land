@@ -20,6 +20,34 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   const camDir = new THREE.Vector3(-Math.sin(yaw) * Math.cos(pitch), -Math.sin(pitch), -Math.cos(yaw) * Math.cos(pitch)).normalize();
   const loader = new THREE.TextureLoader(), texCache = {};
   const spriteTex = id => texCache[id] ||= Object.assign(loader.load('./assets/' + (sprites[id].file || `reused/${id}.webp`)), { colorSpace: THREE.SRGBColorSpace });
+  const skinTex = key => texCache['skin:' + key] ||= Object.assign(new THREE.Texture(SKIN[key]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace });
+  const layerCache = {};
+  function layerTex(key, m) {
+    if (layerCache[key]) return layerCache[key];
+    const img = SKIN[key];
+    if (!img || !img.width || !img.height || img.width * img.height < 65000) {
+      return layerCache[key] = { tex: skinTex(key), x0: 0, y0: 0, cw: m.px[0], ch: m.px[1] };
+    }
+    const mk = maskOf(key);
+    if (!mk) return layerCache[key] = { tex: skinTex(key), x0: 0, y0: 0, cw: m.px[0], ch: m.px[1] };
+    const w = mk.w, h = mk.h, d = mk.data;
+    let x0 = w, y0 = h, x1 = -1, y1 = -1;
+    for (let y = 0; y < h; y++) {
+      const row = y * w * 4;
+      for (let x = 0; x < w; x++) if (d[row + x * 4 + 3] > 4) {
+        if (x < x0) x0 = x; if (x > x1) x1 = x;
+        if (y < y0) y0 = y; if (y > y1) y1 = y;
+      }
+    }
+    if (x1 < x0) return layerCache[key] = { tex: skinTex(key), x0: 0, y0: 0, cw: w, ch: h };
+    const cw = x1 - x0 + 1, ch = y1 - y0 + 1;
+    if (cw * ch > w * h * 0.65) return layerCache[key] = { tex: skinTex(key), x0: 0, y0: 0, cw: w, ch: h };
+    const c = document.createElement('canvas'); c.width = cw; c.height = ch;
+    c.getContext('2d').drawImage(img, x0, y0, cw, ch, 0, 0, cw, ch);
+    const tex = Object.assign(new THREE.CanvasTexture(c), { colorSpace: THREE.SRGBColorSpace });
+    texCache['layer:' + key] = tex;
+    return layerCache[key] = { tex, x0, y0, cw, ch };
+  }
   // Personnages : texture propre à chaque sprite, car le miroir se fait par les UV (repeat.x = -1).
   // THREE.Sprite ignore le signe de scale.x (le shader prend la longueur de la colonne de la matrice) : c'était la cause du miroir invisible.
   const actorTex = id => { const t = loader.load('./assets/' + (sprites[id].file || `reused/${id}.webp`)); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; return t; };
@@ -95,7 +123,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function building(b) {
     if (!bman[b.sprite]) return placeholder(b);
     let m = bman[b.sprite]; const mobAnim = m.anime && innerWidth < 700 && bman[b.sprite + '_mobile'] && SKIN[b.sprite + '_mobile'];
-    const t = new THREE.Texture(SKIN[mobAnim ? b.sprite + '_mobile' : b.sprite]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
+    const skKey = mobAnim ? b.sprite + '_mobile' : b.sprite;
+    const t = m.anime ? Object.assign(new THREE.Texture(SKIN[skKey]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace }) : skinTex(skKey);
     // enseigne animée (planche horizontale, frames x frame_px, fps du manifeste) : une image de la planche, taille monde = image ordinateur ; version _mobile sur petit écran
     if (m.anime) { t.repeat.set(1 / m.frames, 1); m = { ...m, px: m.frame_px }; }
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, color: b.tint || light?.tint || '#ffffff' }));
@@ -103,7 +132,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     s.position.set(b.x + b.w + (b.ancre?.[0] || 0), b.y || 0, b.z + b.d + (b.ancre?.[1] || 0)); // b.y : hauteur (m) d'une enseigne posée en façade ; b.ancre : décalage (m) de l'ancre du sprite par rapport au coin avant (angle de l'Arena, ancre au raccord ouest)
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
-    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
+    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
     if (b.ecran) { const e = ecranSprite(b, m, s); if (e) { world.add(e); item.extra.push(e); } } // écran dessiné par le code (Feed de Pulse Plaza)
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
@@ -154,7 +183,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const ensDe = new Map((loc.enseignes || []).map(e => [e.building, e])), projDe = new Map((loc.projecteurs || []).filter(p => p.building).map(p => [p.building, p]));
     const pulseDe = new Map((loc.pulses || []).map(p => [p.building + ':' + p.calque, p]));
     for (const b of loc.buildings) if (bman[b.sprite + '_fenetres']) fenetre(b);
-    for (const b of loc.buildings) for (const calque of ['ecran', 'pulse']) if (bman[b.sprite + '_' + calque]) calqueRythme(b, calque, pulseDe.get(b.id + ':' + calque));
+    for (const b of loc.buildings) for (const calque of ['ecran', 'pulse', 'pulse2', 'pulse_b', 'faisceau']) if (bman[b.sprite + '_' + calque] || pulseDe.get(b.id + ':' + calque)?.key) calqueRythme(b, calque, pulseDe.get(b.id + ':' + calque));
     for (const b of loc.buildings) if (!ensDe.has(b.id) && bman[b.sprite + '_neon']) enseigne({ id: b.id + '_neon', building: b.id }, loc);
     for (const e of loc.enseignes || []) enseigne(e, loc);
     for (const b of loc.buildings) if (!projDe.has(b.id) && bman[b.sprite]?.source_faisceau_px) projecteur({ building: b.id }, loc);
@@ -193,10 +222,11 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     // petite lumière en hauteur (g.y, m) : point additif posé sur sa source (g.building : trié juste après elle, ampoule de comptoir, lampe de truck)
     for (const g of (loc.glows || []).filter(g => g.y != null)) { const p = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
       const r = g.r || 0.8; p.scale.set(r * 2, r * 2, 1); p.position.set(g.x, g.y, g.z); p.renderOrder = 3; p.userData.neon = 'lampe'; world.add(p);
-      if (g.flicker) flick.push({ m: p.material, base: g.i ?? 0.6, ph: Math.random() * 6 }); // clignotement lent des ambres (stands, trucks)
+      if (g.flicker || g.beat) flick.push({ m: p.material, obj: p, s0: r * 2, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null }); // clignotement lent des ambres ou pulsation rythmique
       const it = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (it) it.extra.push(p); }
     for (const g of (loc.glows || []).filter(g => g.y == null)) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
-      m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02, g.z); m.renderOrder = 2; world.add(m); if (g.flicker) flick.push({ m: m.material, base: g.i ?? 0.6, ph: Math.random() * 6 }); }
+      m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02, g.z); m.renderOrder = 2; world.add(m);
+      if (g.flicker || g.beat) flick.push({ m: m.material, obj: m, s0: 1, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null }); }
     // v13 : figurants immobiles (file d'attente, soldats) et passants qui marchent : mêmes sprites animés que les PNJ, sans dialogue
     for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
       if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; s.userData.sprite = e.sprite; world.add(s); decor.push(s); }
@@ -263,7 +293,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       x.fillStyle = 'rgba(10,4,20,.75)'; x.fillRect(0, H * 0.84, W, H * 0.12); x.fillStyle = '#ffb860'; x.font = `${H * 0.06 | 0}px monospace`; x.fillText((E.marque ?? 'FEED 24/7') + ' · ' + P.bandeau, 8, H * 0.92, W - 16);
       x.setTransform(1, 0, 0, 1, 0, 0); t.needsUpdate = true; };
     draw(E.decale || 0); const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
-    s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: -1, decale: E.decale || 0, periode: E.periode || 9 }; ecrans.push(s); return s;
+    s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: -1, decale: E.decale || 0, periode: E.periode || 9, beat: E.beat ?? null }; ecrans.push(s); return s;
   }
   // Enseignes animées par le code (loc.enseignes, format : docs/villes/steel/ENSEIGNES_CODE.md) : calque « contour lumineux » additif posé
   // sur le support d'un bâtiment (même ancre monde), dont seule la luminosité varie (clignote, grésille, saute, pulse). Une couleur par image :
@@ -276,9 +306,11 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const k = b.k || 1, W = m.px[0] / K * k, H = m.px[1] / K * k * (b.sy || 1), au = m.anchor[0] / m.px[0], av = 1 - m.anchor[1] / m.px[1];
     const cols = e.saute ? [[0, e.saute[0], false], [e.saute[0], e.saute[1], true], [e.saute[1], 1, false]] : [[0, 1, false]];
     for (const [u0, u1, lettre] of cols) { if (u1 - u0 <= 1e-4) continue;
-      const t = new THREE.Texture(SKIN[key]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace; t.repeat.set(u1 - u0, 1); t.offset.set(u0, 0);
+      let t, cx, cy, sw, sh;
+      if (u0 === 0 && u1 === 1) { const L = layerTex(key, m); t = L.tex; cx = (m.anchor[0] - L.x0) / L.cw; cy = 1 - (m.anchor[1] - L.y0) / L.ch; sw = L.cw / K * k; sh = L.ch / K * k * (b.sy || 1); }
+      else { t = Object.assign(new THREE.Texture(SKIN[key]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace }); t.repeat.set(u1 - u0, 1); t.offset.set(u0, 0); cx = (au - u0) / (u1 - u0); cy = av; sw = W * (u1 - u0); sh = H; }
       const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: e.couleur || '#ffffff', opacity: 0 }));
-      s.center.set((au - u0) / (u1 - u0), av); s.scale.set(W * (u1 - u0), H, 1); s.position.copy(item.obj.position);
+      s.center.set(cx, cy); s.scale.set(sw, sh, 1); s.position.copy(item.obj.position);
       s.userData.neon = { effet: lettre ? 'gresille' : (e.effet === 'saute' ? 'fixe' : e.effet || 'fixe'), periode: e.periode || 3, ph: (e.decale || 0) + (lettre ? 0.37 : 0), i: e.intensite ?? 0.6 };
       s.userData.fondu = 1; world.add(s); item.extra.push(s); neons.push(s); }
   }
@@ -286,10 +318,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function fenetre(b) {
     const key = b.sprite + '_fenetres', m = bman[key], item = bills.find(i => i.obj.userData.buildingId === b.id);
     if (!item || !m || !SKIN[key] || m.obsolete || m.anime) return;
-    const k = b.k || 1, W = m.px[0] / K * k, H = m.px[1] / K * k * (b.sy || 1);
-    const t = new THREE.Texture(SKIN[key]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
-    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 }));
-    s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(W, H, 1); s.position.copy(item.obj.position);
+    const k = b.k || 1, L = layerTex(key, m), W = L.cw / K * k, H = L.ch / K * k * (b.sy || 1);
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: L.tex, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 }));
+    s.center.set((m.anchor[0] - L.x0) / L.cw, 1 - (m.anchor[1] - L.y0) / L.ch); s.scale.set(W, H, 1); s.position.copy(item.obj.position);
     s.userData.fenetre = { i: 0.34, ph: fenetres.length * 1.37 }; s.userData.fondu = 1;
     world.add(s); item.extra.push(s); fenetres.push(s);
   }
@@ -299,46 +330,60 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function calqueRythme(b, calque, cfg = {}) {
     const key = cfg.key || (b.sprite + '_' + calque), m = bman[key], item = bills.find(i => i.obj.userData.buildingId === b.id);
     if (!item || !m || !SKIN[key] || m.obsolete || m.anime || cfg.mode === 'eteint') return;
-    const k = b.k || 1, W = m.px[0] / K * k, H = m.px[1] / K * k * (b.sy || 1);
-    const t = new THREE.Texture(SKIN[key]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
-    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: cfg.couleur || '#ffffff', opacity: 0 }));
-    s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(W, H, 1); s.position.copy(item.obj.position);
+    const k = b.k || 1, L = layerTex(key, m), W = L.cw / K * k, H = L.ch / K * k * (b.sy || 1);
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: L.tex, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: cfg.couleur || '#ffffff', opacity: 0 }));
+    s.center.set((m.anchor[0] - L.x0) / L.cw, 1 - (m.anchor[1] - L.y0) / L.ch); s.scale.set(W, H, 1); s.position.copy(item.obj.position);
+    const defMode = calque === 'pulse_b' ? 'mid' : calque === 'ecran' ? 'mid' : 'kick';
+    const defI = calque === 'faisceau' ? 1.0 : calque === 'pulse2' ? 0.98 : calque === 'pulse_b' ? 0.88 : calque === 'ecran' ? 0.84 : 0.96;
     s.userData.pulse = {
       key,
       building: b.id,
       calque,
-      mode: cfg.mode || (calque === 'ecran' ? 'mid' : 'kick'),
-      i: cfg.intensite ?? (calque === 'ecran' ? 0.7 : 0.8),
-      ph: cfg.decale ?? (pulses.length * 0.19),
+      mode: cfg.mode || defMode,
+      i: cfg.intensite ?? defI,
+      ph: cfg.decale ?? (pulses.length * 0.17),
       periode: cfg.periode || (calque === 'ecran' ? 9 : 8 * T_KICK_REF),
       priorite: cfg.priorite || 0,
+      W,
+      H,
+      punch: cfg.punch ?? ((calque === 'pulse' || calque === 'pulse2' || calque === 'faisceau') ? 0.016 : 0.008),
     };
     s.userData.fondu = 1;
     world.add(s); item.extra.push(s); pulses.push(s);
   }
   function pulseK(u, t, ost) {
     if (u.mode === 'fixe') return 0.72;
-    if (u.mode === 'balise') { const f = ((t / (u.periode || 2.8) + u.ph) % 1 + 1) % 1; return f < 0.28 ? 0.95 : 0.18; }
+    if (u.mode === 'balise') { const f = ((t / (u.periode || 2.8) + u.ph) % 1 + 1) % 1; return f < 0.28 ? 0.98 : 0.14; }
     const on = !!ost?.playing, tc = on ? (ost.currentTime || t) : t;
-    if (!on) return u.mode === 'mesure' ? 0.5 + 0.12 * Math.sin((t / (u.periode || 9) + u.ph) * Math.PI * 2) : 0.45;
-    const beat = ost.beat || 0, bass = ost.bass || 0, mid = ost.mid || 0, nrj = ost.energy || 0;
+    const tk = ost?.bpm >= 95 ? 60 / ost.bpm : T_KICK_REF;
+    if (!on) {
+      return u.mode === 'mesure' ? 0.26 + 0.10 * Math.sin((t / (u.periode || 9) + u.ph) * Math.PI * 2) : 0.20;
+    }
+    const beat = ost.beat || 0, bass = ost.bass || 0, mid = ost.mid || 0, high = ost.high || 0, nrj = ost.energy || 0;
     if (u.mode === 'kick') {
-      const wave = Math.pow(0.5 + 0.5 * Math.cos(((tc / T_KICK_REF) + u.ph) * Math.PI * 2), 3);
-      const kBeat = beat * (u.ph ? 0.78 + 0.22 * Math.cos(u.ph * Math.PI * 2) : 1);
-      return 0.26 + 0.74 * Math.min(1, Math.max(kBeat, bass * 0.85, 0.36 * wave));
+      const wave = Math.pow(0.5 + 0.5 * Math.cos(((tc / tk) + u.ph) * Math.PI * 2), 5);
+      const env = Math.pow(beat, 1.15) * (u.ph ? 0.85 + 0.15 * Math.cos(u.ph * Math.PI * 2) : 1);
+      const subHit = Math.max(0, (bass - 0.55) * 0.9) * wave;
+      return 0.06 + 0.94 * Math.min(1, Math.max(env * 1.12, subHit, (0.35 + 0.45 * nrj) * wave));
     }
     if (u.mode === 'demi_kick') {
-      const sub = Math.pow(0.5 + 0.5 * Math.cos(((tc / (T_KICK_REF * 2)) + u.ph) * Math.PI * 2), 2);
-      const alt = ((ost.kickCount || 0) + (u.ph >= 0.35 ? 1 : 0)) % 2 ? 1 : 0.45;
-      return 0.34 + 0.58 * Math.min(1, Math.max(beat * alt * 0.85, nrj * 0.7, 0.42 * sub));
+      const sub = Math.pow(0.5 + 0.5 * Math.cos(((tc / (tk * 2)) + u.ph) * Math.PI * 2), 3);
+      const alt = ((ost.kickCount || 0) + (u.ph >= 0.35 ? 1 : 0)) % 2 ? 1 : 0.22;
+      return 0.12 + 0.86 * Math.min(1, Math.max(Math.pow(beat, 1.2) * alt, bass * 0.55 * alt * sub, 0.45 * sub));
+    }
+    if (u.mode === 'high' || u.mode === 'aigus') {
+      const shimmer = Math.pow(0.5 + 0.5 * Math.sin(((tc / (tk * 0.5)) + u.ph) * Math.PI * 2), 3);
+      const eq = Math.max(high * 1.45, mid * 0.75, beat * 0.45, 0.38 * shimmer);
+      return 0.10 + 0.90 * Math.min(1, eq);
     }
     if (u.mode === 'mid') {
-      const eq = Math.max(mid * 1.15, nrj * 0.8, 0.24 + 0.18 * Math.sin(tc * 3.2 + u.ph * 6.28));
-      return 0.30 + 0.70 * Math.min(1, eq);
+      const groove = Math.pow(0.5 + 0.5 * Math.sin(((tc / (tk * 2)) + u.ph + 0.25) * Math.PI * 2), 2);
+      const eq = Math.max(mid * 1.30, nrj * 0.95, 0.36 * groove);
+      return 0.14 + 0.84 * Math.min(1, eq);
     }
     if (u.mode === 'mesure') {
       const w = 0.5 + 0.5 * Math.sin(((tc / (u.periode || 9)) + u.ph) * Math.PI * 2);
-      return 0.42 + 0.40 * w + 0.18 * Math.min(1, nrj + beat * 0.3);
+      return 0.24 + 0.52 * w + 0.24 * Math.min(1, nrj * 0.8 + beat * 0.5);
     }
     return 0.7;
   }
@@ -365,11 +410,21 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (src && bm.px) m.position.y += (bm.anchor[1] - src[1]) * s.scale.y / bm.px[1] / camUp.y;
       else m.position.y += p.y ?? 0.5; }
     else m.position.set(p.fx != null ? p.fx * loc.size.w : p.x, p.y ?? 0.5, p.fz != null ? p.fz * loc.size.d : p.z); m.rotation.order = 'YXZ'; m.renderOrder = 3; m.userData.projecteur = true;
-    m.userData.beam = { cap: (p.cap || 0) * Math.PI / 180, bal: (p.balayage ?? 25) * Math.PI / 180, inc: (p.inclinaison ?? 20) * Math.PI / 180, T: p.periode || 14, ph: p.decale || 0 };
-    beamPose(m, 0); world.add(m); beams.push(m);
+    m.userData.beam = { cap: (p.cap || 0) * Math.PI / 180, bal: (p.balayage ?? 25) * Math.PI / 180, inc: (p.inclinaison ?? 20) * Math.PI / 180, T: p.periode || 14, ph: p.decale || 0, base: p.intensite ?? 0.25, beat: !!loc.pulses?.length };
+    m.userData.fondu = 1;
+    beamPose(m, 0, null); world.add(m); beams.push(m);
     if (it) { m.userData.neon = 'faisceau'; it.extra.push(m); } // trié avec son pylône : devant ce qui est derrière lui (façade de 28 m), derrière ce qui est devant ; opacité propre
   }
-  function beamPose(m, t) { const u = m.userData.beam; m.rotation.y = u.cap + u.bal * Math.sin((t + u.ph) / u.T * Math.PI * 2); m.rotation.x = -u.inc; }
+  function beamPose(m, t, ost) {
+    const u = m.userData.beam;
+    const on = u.beat && !!ost?.playing, beat = on ? (ost.beat || 0) : 0, nrj = on ? (ost.energy || 0) : 0;
+    const kKick = on ? Math.max(Math.pow(beat, 1.25), (ost.bass || 0) * 0.75, nrj * 0.50) : 0;
+    m.rotation.y = u.cap + u.bal * Math.sin((t + u.ph) / u.T * Math.PI * 2);
+    m.rotation.x = -(u.inc + (u.beat ? 0.055 * kKick : 0));
+    const sLat = u.beat ? 1 + 0.22 * kKick : 1;
+    m.scale.set(sLat, 1, sLat);
+    if (u.beat) m.material.opacity = Math.min(1, (m.userData.fondu ?? 1) * (u.base * (0.55 + 1.55 * kKick)));
+  }
   let glowT = null;
   function glowTex() { if (glowT) return glowT; const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
     g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128); return glowT = new THREE.CanvasTexture(c); }
@@ -382,29 +437,44 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       animate(s, true, dt, t); }
     for (const s of decor) if (!walkers.includes(s)) animate(s, false, dt, t);
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
-    if (ecrans.length && !document.body?.classList?.contains('reduce-motion')) for (const e of ecrans) { const u = e.userData.ecran, k = Math.floor(t / u.periode) + u.decale; if (k !== u.page) { u.page = k; u.draw(k); } }
+    const calme = !!document.body?.classList?.contains('reduce-motion');
+    const ostOn = !!ostCentre?.playing;
+    const kickEnv = calme || !ostOn ? 0 : Math.max(Math.pow(ostCentre.beat || 0, 1.2), Math.max(0, ((ostCentre.bass || 0) - 0.35) * 0.9));
+    const midEnv = calme || !ostOn ? 0 : Math.max((ostCentre.mid || 0) * 1.25, (ostCentre.energy || 0) * 0.90);
+    if (ecrans.length && !calme) for (const e of ecrans) {
+      const u = e.userData.ecran, k = Math.floor(t / u.periode) + u.decale;
+      if (k !== u.page) { u.page = k; u.draw(k); }
+      if (u.beat || pulses.length) e.userData.beatOp = ostOn ? 0.84 + 0.16 * Math.min(1, kickEnv * 0.85 + midEnv * 0.35) : 0.92;
+    }
     animStats.ecrans = ecrans.length;
     // enseignes code et projecteurs : une couleur ou une rotation par image, hors plafond animStats.on (catégories à part) ; figés si mouvement réduit
-    const calme = !!document.body?.classList?.contains('reduce-motion');
-    for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : neonK(u, t))); }
+    for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : neonK(u, t) * (pulses.length && u.effet === 'pulse' ? (ostOn ? 0.78 + 0.34 * kickEnv : 0.85) : 1))); }
     for (const s of fenetres) { const u = s.userData.fenetre, k = calme ? 1 : 0.78 + 0.22 * (0.6 * Math.sin(t * 1.25 + u.ph) + 0.4 * Math.sin(t * 2.9 + u.ph * 1.7));
       s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k); }
     let pulsesOn = 0;
     if (pulses.length) {
-      const pMax = innerWidth < 700 ? 8 : 32, pv = new THREE.Vector3(), pl = player.position;
-      const ord = pulses.map(s => { pv.copy(s.position).project(cam); return { s, u: s.userData.pulse, in: Math.abs(pv.x) < 1.2 && Math.abs(pv.y) < 1.2, d: s.position.distanceToSquared(pl) }; })
+      const pMax = innerWidth < 700 ? 8 : 48, pv = new THREE.Vector3(), pl = player.position;
+      const ord = pulses.map(s => { pv.copy(s.position).project(cam); return { s, u: s.userData.pulse, in: Math.abs(pv.x) < 1.25 && Math.abs(pv.y) < 1.25, d: s.position.distanceToSquared(pl) }; })
         .sort((a, b) => (b.u.priorite - a.u.priorite) || (b.in - a.in) || (a.d - b.d));
       for (const { s, u, in: inn } of ord) {
         const anim = !calme && u.mode !== 'fixe' && pulsesOn < pMax && (u.priorite > 0 || inn);
         if (anim) pulsesOn++;
         s.userData.pulseOn = anim;
-        const k = calme ? 0.68 : anim ? pulseK(u, t, ostCentre) : 0.58;
+        const k = calme ? 0.55 : anim ? pulseK(u, t, ostCentre) : (ostOn ? 0.38 : 0.18);
         s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k);
+        const swell = anim && ostOn && u.punch ? 1 + u.punch * Math.max(0, k - 0.35) : 1;
+        s.scale.set(u.W * swell, u.H * swell, 1);
       }
     }
-    if (!calme) for (const m of beams) beamPose(m, t);
+    if (!calme) for (const m of beams) beamPose(m, t, ostCentre);
+    else for (const m of beams) if (m.userData.beam?.beat) m.material.opacity = (m.userData.fondu ?? 1) * m.userData.beam.base;
     animStats.enseignes = neons.length; animStats.fenetres = fenetres.length; animStats.pulses = pulses.length; animStats.pulsesOn = pulsesOn; animStats.projecteurs = beams.length;
-    for (const f of flick) f.m.opacity = f.base * (0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2));
+    for (const f of flick) {
+      const flk = f.flicker ? 0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2) : 1;
+      const bk = !calme && f.beat ? (ostOn ? (f.beat === 'mid' ? 0.52 + 0.85 * midEnv : 0.40 + 1.10 * kickEnv) : 0.62) : 1;
+      f.m.opacity = Math.min(1, f.base * flk * bk);
+      if (f.obj && f.beat && !calme) { const sc = f.s0 * (1 + (ostOn ? 0.15 * (f.beat === 'mid' ? midEnv : kickEnv) : 0)); f.obj.scale.set(sc, sc, 1); }
+    }
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
     // planches jouées une fois (portique de la Mega-Line) : remplacent le sprite de base le temps du passage, hors budget d'animations
     horloge = t; for (const u of [...uniques]) { const i = Math.floor((t - u.t0) * u.fps); if (i >= u.n) { u.s.material.map = u.base; u.s.material.needsUpdate = true; uniques.splice(uniques.indexOf(u), 1); joueEtat.fini = true; } else u.t.offset.x = i / u.n; }
@@ -443,25 +513,59 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       return { x0: Math.min(...P.map(p => p.x)), x1: Math.max(...P.map(p => p.x)), y0: Math.min(...P.map(p => p.y)), y1: Math.max(...P.map(p => p.y)) }; }
     const a = scr(o.position), sx = Math.abs(o.scale.x), sy = o.scale.y; return { x0: a.x - o.center.x * sx, x1: a.x + (1 - o.center.x) * sx, y0: a.y - o.center.y * sy, y1: a.y + (1 - o.center.y) * sy }; }
   function uvOf(o, p) { const r = rectOf(o); let u = (p.x - r.x0) / (r.x1 - r.x0); if (o.material.map?.repeat.x < 0) u = 1 - u; return { u, v: (p.y - r.y0) / (r.y1 - r.y0) }; }
-  // Ordre de dessin : A avant B si B est devant (séparés sur x ou z, le plus grand est devant, la caméra regardant vers -x et -z).
-  const under = (o, c) => o.x0 < c.x1 && o.x1 > c.x0 && o.z0 < c.z1 && o.z1 > c.z0; // emprises qui se recouvrent
-  function inFront(b, a) { if (!!a.cover !== !!b.cover && under(a, b)) return !!b.cover; /* une halle couvre tout ce qui est sous son toit [tour Valentin] */ if (b.x0 >= a.x1 - 1e-6 || b.z0 >= a.z1 - 1e-6) return true; if (a.x0 >= b.x1 - 1e-6 || a.z0 >= b.z1 - 1e-6) return false; return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1; }
+  // Ordre de dessin antisymétrique : A avant B si B est devant. Séparation franche sur x ou z quand l'autre axe ne contredit pas ;
+  // en séparation diagonale (NE vs SO) au même pixel écran, le plus grand z est mathématiquement plus proche de la caméra.
+  const under = (o, c) => o.x0 < c.x1 - 1e-6 && o.x1 > c.x0 + 1e-6 && o.z0 < c.z1 - 1e-6 && o.z1 > c.z0 + 1e-6;
+  function inFront(b, a) {
+    if (!!a.cover !== !!b.cover && under(a, b)) return !!b.cover; /* une halle couvre tout ce qui est sous son toit [tour Valentin] */
+    if (!!a.fond !== !!b.fond) return !!a.fond; /* une pièce de fond (dalle/toit) reste toujours derrière les façades et acteurs */
+    const bx = b.x0 >= a.x1 - 1e-6, ax = a.x0 >= b.x1 - 1e-6, bz = b.z0 >= a.z1 - 1e-6, az = a.z0 >= b.z1 - 1e-6;
+    if ((bx || bz) && !(ax || az)) return true;
+    if ((ax || az) && !(bx || bz)) return false;
+    if (bz !== az) return bz;
+    return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1;
+  }
   const actorItem = a => ({ obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [] });
-  function painter() {
-    const items = bills.concat([player, companion].filter(a => a.visible).concat(npcSprites.filter(n=>n.visible), decor, drones).map(actorItem)); const n = items.length;
-    const R = items.map(i => rectOf(i.obj)), indeg = new Array(n).fill(0), out = items.map(() => []);
+  function topoSort(list) {
+    const n = list.length, R = list.map(i => rectOf(i.obj)), indeg = new Array(n).fill(0), out = list.map(() => []);
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
-      const a = R[i], b = R[j]; if (a.x1 < b.x0 || b.x1 < a.x0 || a.y1 < b.y0 || b.y1 < a.y0) continue; // pas de recouvrement à l'écran
-      if (inFront(items[j], items[i])) { out[i].push(j); indeg[j]++; } else { out[j].push(i); indeg[i]++; }
+      const a = R[i], b = R[j]; if (a.x1 < b.x0 || b.x1 < a.x0 || a.y1 < b.y0 || b.y1 < a.y0) continue;
+      if (inFront(list[j], list[i])) { out[i].push(j); indeg[j]++; } else { out[j].push(i); indeg[i]++; }
     }
-    const key = i => items[i].x0 + items[i].x1 + items[i].z0 + items[i].z1, done = new Array(n).fill(false); let ord = 10;
+    const key = i => list[i].x0 + list[i].x1 + list[i].z0 + list[i].z1, done = new Array(n).fill(false), res = [];
     for (let k = 0; k < n; k++) {
-      let best = -1; for (let i = 0; i < n; i++) if (!done[i] && indeg[i] === 0 && (best < 0 || key(i) < key(best))) best = i;
-      if (best < 0) for (let i = 0; i < n; i++) if (!done[i] && (best < 0 || key(i) < key(best))) best = i; // cycle : repli sur la clé
+      let best = -1; for (let i = 0; i < n; i++) if (!done[i] && indeg[i] === 0 && (best < 0 || key(i) < key(best) || (key(i) === key(best) && i < best))) best = i;
+      if (best < 0) for (let i = 0; i < n; i++) if (!done[i] && (best < 0 || key(i) < key(best) || (key(i) === key(best) && i < best))) best = i;
       done[best] = true; for (const j of out[best]) indeg[j]--;
-      items[best].obj.renderOrder = ord; for (const e of items[best].extra) e.renderOrder = ord + 1; ord += 2;
+      res.push(list[best]);
     }
-    return items;
+    return res;
+  }
+  function painter() {
+    // 1) Ordre mutuel des bâtiments/meubles calculé seul : un personnage ou passant mobile ne peut JAMAIS inverser deux bâtiments.
+    const statics = topoSort(bills);
+    const actors = [player, companion].filter(a => a.visible).concat(npcSprites.filter(n => n.visible), decor, drones).map(actorItem);
+    actors.sort((a, b) => (a.x0 + a.x1 + a.z0 + a.z1) - (b.x0 + b.x1 + b.z0 + b.z1));
+    // 2) Insertion de chaque acteur juste avant le premier bâtiment devant lui dont le rectangle écran le recouvre.
+    const merged = [...statics];
+    const rectCache = new Map(merged.map(it => [it, rectOf(it.obj)]));
+    for (const ac of actors) {
+      const ra = rectOf(ac.obj); rectCache.set(ac, ra);
+      let lo = 0, hi = merged.length;
+      for (let i = 0; i < merged.length; i++) {
+        const it = merged[i], rb = rectCache.get(it);
+        if (ra.x1 < rb.x0 || rb.x1 < ra.x0 || ra.y1 < rb.y0 || rb.y1 < ra.y0) continue;
+        if (inFront(ac, it)) lo = Math.max(lo, i + 1);
+        else if (inFront(it, ac) && i < hi) hi = i;
+      }
+      const pos = lo <= hi ? hi : lo;
+      merged.splice(pos, 0, ac);
+    }
+    let ord = 10;
+    for (const it of merged) {
+      it.obj.renderOrder = ord; for (const e of it.extra) e.renderOrder = ord + 1; ord += 2;
+    }
+    return merged;
   }
   // Règle d'occultation : un bâtiment passe à 30 % d'opacité quand un acteur est derrière lui (ordre du peintre)
   // et qu'un point du corps de l'acteur (0,3 à 1,5 m) tombe sur un pixel opaque du sprite.
@@ -481,7 +585,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
         if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
       const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else e.material.opacity = m.opacity; }
-    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else e.material.opacity = Math.min(0.9, m.opacity); }
+    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse || e.userData.projecteur) e.userData.fondu = m.opacity; else if (e.userData.ecran) e.material.opacity = Math.min(0.98, m.opacity * (e.userData.beatOp ?? 0.92)); else e.material.opacity = Math.min(0.9, m.opacity); }
   }
   // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
   function furnitureOcclusion() {
@@ -572,7 +676,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     combatOverlay();
     for(const n of npcSprites)if(n.userData.ghost&&!visible('actor'))n.userData.ghost.visible=false;
     world.traverse(o=>{if(o.userData.wall)o.visible=visible('building');if(o.userData.propBox)o.visible=visible('prop');if(o.isMesh&&o.geometry.type==='RingGeometry'&&o.userData.doorId)o.visible=visible('building');});
-    for(const s of bsprites) { const b=LOCATIONS[game.state.location].buildings.find(b=>b.id===s.userData.buildingId); if(b) { s.renderOrder += (b.editorLayer||0)*10000+(b.editorDepth||0)+(b.fond?-100000:0);/* b.fond : masse de fond (toit de l'Arena) peinte avant tout, derrière les façades */ if(b.editorGhost) s.material.opacity=.45; } } renderer.render(scene, cam);
+    for(const s of bsprites) { const b=LOCATIONS[game.state.location].buildings.find(b=>b.id===s.userData.buildingId); if(b) { const sh=(b.editorLayer||0)*10000+(b.editorDepth||0)+(b.fond?-100000:0); s.renderOrder += sh;/* b.fond : masse de fond (toit de l'Arena, dalles) peinte avant tout, derrière façades et acteurs, y compris ses calques _pulse */ if (sh) { const it = bills.find(i => i.obj === s); for (const e of it?.extra || []) e.renderOrder += sh; } if(b.editorGhost) s.material.opacity=.45; } } renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran (les deux axes), puis écartées des panneaux d'interface et entre elles
     const toScr = p => { const v = p.clone().project(cam); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; };

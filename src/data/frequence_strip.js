@@ -15,7 +15,7 @@ const ENS = (id, sprite, x, z, y) => B(id, '', sprite, x - 0.1, z - 0.1, 0.2, 0.
 export const BUILDINGS_STRIP = [
   // façade nord, d'ouest en est (rue de 80 m, front z 6)
   B('fs_fn0', '', 'fs_facade_nord', 0, 0, 8, 6, { named: false }),
-  B('fs_bouche0', '', 'fs_bouche_nord_3q', 7, -1, 4, 4, { named: false, solid: [{ x: 8, z: 0, w: 2, d: 3 }] }), // ferme la ruelle x 8-10 (z 3-6 libre autour de Fusible)
+  B('fs_bouche0', '', 'fs_bouche_nord_3q', 8, 0, 2, 3, { ancre: [1, 0], named: false }), // ferme la ruelle x 8-10 bord à bord (z 3-6 libre autour de Fusible)
   B('fs_neon7', 'Club Neon-7', 'fs_neon7', 10, 0, 12, 6),
   B('fs_sexshop', 'Jouets calibrés', 'fs_sexshop_3q', 22, -2, 8, 8), B('fs_peep', '3 secondes', 'fs_peep_3q', 30, 2, 4, 4), B('fs_salon', 'Tombé de rideau', 'fs_salon_3q', 34, 2, 4, 4),
   B('fs_corestack', 'Core Stack', 'fs_corestack', 38, 0, 12, 6),
