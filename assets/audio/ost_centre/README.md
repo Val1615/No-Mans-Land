@@ -1,4 +1,4 @@
-# Playlist commune : Center-Town, Fréquence Strip, Pulse Plaza, Steel Arena
+# Playlist commune : Pulse Plaza et Steel Arena
 
 Fichiers fournis par Valentin le 2026-11-06, interprétés par Groovy Crew (canon). Ils sont copiés tels quels, sans conversion (`fecc483`).
 
