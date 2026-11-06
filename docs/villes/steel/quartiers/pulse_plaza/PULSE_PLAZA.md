@@ -294,3 +294,8 @@ Vérification automatique des rectangles au sol (lecture seule de `src/data/puls
 | `pp_pont_projecteurs_v2_3q` | 391×403 | [332, 401] | (10,20,8,2) | `B('pp_pont0', '', 'pp_pont_projecteurs_v2_3q', 10, 20, 8, 2, { solid: [], named: false })` | `_pulse` (kick), `_faisceau` (kick, cônes visibles), `_pulse_b` (aigus cyan) |
 
 Rivet : remplacer le sprite du pont par `pp_pont_projecteurs_v2_3q` ; brancher `_faisceau` en additif kick (priorité haute avec les écrans Arena).
+
+### Pose retenue (festif v2 + pont v2 + rythmique bi-bande, main)
+- Tous les bâtiments de `BUILDINGS_PULSE` passent en `*_v2_3q` sur les mêmes emprises, à la seule exception de `pp_guerite` conservée en `pp_guerite_3q` (`ECRAN_FEED.coins` recalé en `[[132, 37], [755, 242], [755, 516], [132, 311]]`, écrans hauts `pp_ecran_n1`/`n2` avancés bord à bord en `z 0..0.6` sans solide).
+- Les 6 props rythmiques sont posés sans chevauchement d'emprises ni masquage (`view.masques()` vide, Maëlle en `(17,2 ; 13,4)`, statue sud-ouest en `(14,5 ; 26)`, Clone 7 en `(19,6 ; 23,2)`) : `pp_dalle_pa0` `(22, 12, 4, 4, fond)`, `pp_dalle_pb0` `(26, 12, 4, 4, fond)`, `pp_arche0` `(21, 4, 6, 2, cover)`, `pp_pont0` en `pp_pont_projecteurs_v2_3q` `(10, 20, 8, 2, cover)`, `pp_totem0` `(18, 18, 2, 2)`, `pp_ence0` `(16, 22, 2, 2)`.
+- 50 calques additifs (`_pulse` et `_faisceau` sur le kick, `_pulse_b` sur mid/aigus, `_ecran` sur mid/mesure) + 2 projecteurs scéniques + halos au sol réactifs pilotés par `ostCentre` (plafond mobile `animStats.pulsesOn <= 8` avec priorité Feed + Nord_A + Billboard + faisceau du pont v2 + dalle A). Tri de profondeur statique antisymétrique : 0 inversion d'ordre entre bâtiments.

@@ -206,14 +206,14 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     mid += (rawMid - mid) * alpha;
     high += (rawHigh - high) * alpha;
     energy += (rawEnergy - energy) * alpha;
-    beat = Math.max(0, beat - dt * 4.5);
+    beat = Math.max(0, beat - dt * 4.2);
 
     const rise = rawBass - prevBass;
     prevBass = rawBass;
     const delta = bassAvg > 0.01 ? rawBass - bassAvg : 0;
-    bassAvg = bassAvg > 0.01 ? bassAvg + (rawBass - bassAvg) * Math.min(1, dt * 2.8) : rawBass;
+    bassAvg = bassAvg > 0.01 ? bassAvg + (rawBass - bassAvg) * Math.min(1, dt * 3.0) : rawBass;
 
-    if (now - lastKickAt >= 0.22 && rawBass > 0.24 && (delta > 0.055 || rise > 0.05)) {
+    if (now - lastKickAt >= 0.20 && rawBass > 0.20 && (delta > 0.042 || rise > 0.038)) {
       beat = 1;
       pendingFrameKick = true;
       kickCount++;
