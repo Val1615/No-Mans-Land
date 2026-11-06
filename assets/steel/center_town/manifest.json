@@ -379,7 +379,8 @@
     "porte_threshold": [
       13.0,
       8.5
-    ]
+    ],
+    "obsolete": true
   },
   "ct_tour_teng_3q_fenetres": {
     "file": "steel/center_town/ct_tour_teng_3q_fenetres.webp",
@@ -396,7 +397,8 @@
     "couche_de": "ct_tour_teng_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_teng_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_teng_3q_neon": {
     "file": "steel/center_town/ct_tour_teng_3q_neon.webp",
@@ -413,7 +415,8 @@
     "couche_de": "ct_tour_teng_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_teng_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_teng_3q_ecran": {
     "file": "steel/center_town/ct_tour_teng_3q_ecran.webp",
@@ -430,7 +433,8 @@
     "couche_de": "ct_tour_teng_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_teng_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_archeon_3q": {
     "file": "steel/center_town/ct_tour_archeon_3q.webp",
@@ -461,7 +465,8 @@
     "enseigne": "ARCHEON INDUSTRIES",
     "neon": "ct_tour_archeon_3q_neon",
     "fenetres": "ct_tour_archeon_3q_fenetres",
-    "ecran_layer": "ct_tour_archeon_3q_ecran"
+    "ecran_layer": "ct_tour_archeon_3q_ecran",
+    "obsolete": true
   },
   "ct_tour_archeon_3q_fenetres": {
     "file": "steel/center_town/ct_tour_archeon_3q_fenetres.webp",
@@ -478,7 +483,8 @@
     "couche_de": "ct_tour_archeon_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_archeon_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_archeon_3q_neon": {
     "file": "steel/center_town/ct_tour_archeon_3q_neon.webp",
@@ -495,7 +501,8 @@
     "couche_de": "ct_tour_archeon_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_archeon_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_archeon_3q_ecran": {
     "file": "steel/center_town/ct_tour_archeon_3q_ecran.webp",
@@ -512,7 +519,8 @@
     "couche_de": "ct_tour_archeon_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_archeon_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_orc_3q": {
     "file": "steel/center_town/ct_tour_orc_3q.webp",
@@ -543,7 +551,8 @@
     "enseigne": "ORC ÉNERGIE",
     "neon": "ct_tour_orc_3q_neon",
     "fenetres": "ct_tour_orc_3q_fenetres",
-    "ecran_layer": "ct_tour_orc_3q_ecran"
+    "ecran_layer": "ct_tour_orc_3q_ecran",
+    "obsolete": true
   },
   "ct_tour_orc_3q_fenetres": {
     "file": "steel/center_town/ct_tour_orc_3q_fenetres.webp",
@@ -560,7 +569,8 @@
     "couche_de": "ct_tour_orc_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_orc_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_orc_3q_neon": {
     "file": "steel/center_town/ct_tour_orc_3q_neon.webp",
@@ -577,7 +587,8 @@
     "couche_de": "ct_tour_orc_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_orc_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_orc_3q_ecran": {
     "file": "steel/center_town/ct_tour_orc_3q_ecran.webp",
@@ -594,7 +605,8 @@
     "couche_de": "ct_tour_orc_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_orc_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_humancorp_3q": {
     "file": "steel/center_town/ct_tour_humancorp_3q.webp",
@@ -625,7 +637,8 @@
     "enseigne": "HUMAN CORP · GROOVY CREW EN CONCERT",
     "neon": "ct_tour_humancorp_3q_neon",
     "fenetres": "ct_tour_humancorp_3q_fenetres",
-    "ecran_layer": "ct_tour_humancorp_3q_ecran"
+    "ecran_layer": "ct_tour_humancorp_3q_ecran",
+    "obsolete": true
   },
   "ct_tour_humancorp_3q_fenetres": {
     "file": "steel/center_town/ct_tour_humancorp_3q_fenetres.webp",
@@ -642,7 +655,8 @@
     "couche_de": "ct_tour_humancorp_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_humancorp_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_humancorp_3q_neon": {
     "file": "steel/center_town/ct_tour_humancorp_3q_neon.webp",
@@ -659,7 +673,8 @@
     "couche_de": "ct_tour_humancorp_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_humancorp_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_humancorp_3q_ecran": {
     "file": "steel/center_town/ct_tour_humancorp_3q_ecran.webp",
@@ -676,7 +691,8 @@
     "couche_de": "ct_tour_humancorp_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_humancorp_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_nexus_3q": {
     "file": "steel/center_town/ct_tour_nexus_3q.webp",
@@ -707,7 +723,8 @@
     "enseigne": "NEXUS · RÉSEAU OPTIMUM",
     "neon": "ct_tour_nexus_3q_neon",
     "fenetres": "ct_tour_nexus_3q_fenetres",
-    "ecran_layer": "ct_tour_nexus_3q_ecran"
+    "ecran_layer": "ct_tour_nexus_3q_ecran",
+    "obsolete": true
   },
   "ct_tour_nexus_3q_fenetres": {
     "file": "steel/center_town/ct_tour_nexus_3q_fenetres.webp",
@@ -724,7 +741,8 @@
     "couche_de": "ct_tour_nexus_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_nexus_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_nexus_3q_neon": {
     "file": "steel/center_town/ct_tour_nexus_3q_neon.webp",
@@ -741,7 +759,8 @@
     "couche_de": "ct_tour_nexus_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_nexus_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_tour_nexus_3q_ecran": {
     "file": "steel/center_town/ct_tour_nexus_3q_ecran.webp",
@@ -758,7 +777,8 @@
     "couche_de": "ct_tour_nexus_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_nexus_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_bord_sud_a_3q": {
     "file": "steel/center_town/ct_bord_sud_a_3q.webp",
@@ -1385,7 +1405,8 @@
     ],
     "enseigne": "TAXI",
     "neon": "ct_taxi_3q_neon",
-    "fenetres": "ct_taxi_3q_fenetres"
+    "fenetres": "ct_taxi_3q_fenetres",
+    "obsolete": true
   },
   "ct_taxi_3q_fenetres": {
     "file": "steel/center_town/ct_taxi_3q_fenetres.webp",
@@ -1402,7 +1423,8 @@
     "couche_de": "ct_taxi_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_taxi_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_taxi_3q_neon": {
     "file": "steel/center_town/ct_taxi_3q_neon.webp",
@@ -1419,7 +1441,8 @@
     "couche_de": "ct_taxi_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_taxi_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ct_kiosque_info_3q": {
     "file": "steel/center_town/ct_kiosque_info_3q.webp",
@@ -1716,7 +1739,8 @@
     "layers": [
       "fenetres"
     ],
-    "fenetres": "ct_cerisier_bac_3q_fenetres"
+    "fenetres": "ct_cerisier_bac_3q_fenetres",
+    "obsolete": true
   },
   "ct_cerisier_bac_3q_fenetres": {
     "file": "steel/center_town/ct_cerisier_bac_3q_fenetres.webp",
@@ -1733,6 +1757,643 @@
     "couche_de": "ct_cerisier_bac_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_cerisier_bac_3q.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
+  },
+  "ct_cerisier_bac_v2_3q": {
+    "file": "steel/center_town/ct_cerisier_bac_v2_3q.webp",
+    "px": [
+      282,
+      260
+    ],
+    "anchor": [
+      167,
+      257
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 4.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Cerisier urbain (4,4 m, couronne proportionnée ~3,1 m) sur bac 2x2 m posé au centre de la dalle 4x4 m",
+    "pose": "B('ct_ceris0', '', 'ct_cerisier_bac_v2_3q', 12, 12, 4, 4, { named: false, solid: [{ x: 13.0, z: 13.0, w: 2.0, d: 2.0 }] }) ; B('ct_ceris1', '', 'ct_cerisier_bac_v2_3q', 36, 24, 4, 4, { named: false, solid: [{ x: 37.0, z: 25.0, w: 2.0, d: 2.0 }] })",
+    "source": "GenerateImage (cursor) + montage bac 2x2 m centré sur dalle 4x4 m (ct_cerisier_v2.jpg)",
+    "remplace": "ct_cerisier_bac_3q",
+    "status": "v2",
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_cerisier_bac_v2_3q_fenetres"
+  },
+  "ct_cerisier_bac_v2_3q_fenetres": {
+    "file": "steel/center_town/ct_cerisier_bac_v2_3q_fenetres.webp",
+    "px": [
+      282,
+      260
+    ],
+    "anchor": [
+      167,
+      257
+    ],
+    "additive": true,
+    "parent": "ct_cerisier_bac_v2_3q",
+    "couche_de": "ct_cerisier_bac_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_cerisier_bac_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_taxi_v2_3q": {
+    "file": "steel/center_town/ct_taxi_v2_3q.webp",
+    "px": [
+      240,
+      143
+    ],
+    "anchor": [
+      187,
+      141
+    ],
+    "footprint_m": [
+      4.5,
+      1.8
+    ],
+    "height_m": 1.45,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Taxi jaune de Steel à l’échelle réelle (~4,5 x 1,8 m, h 1,45 m, 50 px/m, sans dalle socle)",
+    "enseigne": "TAXI",
+    "pose": "B('ct_taxi0', '', 'ct_taxi_v2_3q', 41.5, 17.1, 4.5, 1.8, { named: false }) ; B('ct_taxi1', '', 'ct_taxi_v2_3q', 13.5, 17.1, 4.5, 1.8, { named: false })",
+    "source": "GenerateImage (cursor) + calibration 50 px/m véhicule 4,5x1,8 m (ct_taxi_v2.jpg)",
+    "remplace": "ct_taxi_3q",
+    "status": "v2",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "neon": "ct_taxi_v2_3q_neon",
+    "fenetres": "ct_taxi_v2_3q_fenetres"
+  },
+  "ct_taxi_v2_3q_fenetres": {
+    "file": "steel/center_town/ct_taxi_v2_3q_fenetres.webp",
+    "px": [
+      240,
+      143
+    ],
+    "anchor": [
+      187,
+      141
+    ],
+    "additive": true,
+    "parent": "ct_taxi_v2_3q",
+    "couche_de": "ct_taxi_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_taxi_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_taxi_v2_3q_neon": {
+    "file": "steel/center_town/ct_taxi_v2_3q_neon.webp",
+    "px": [
+      240,
+      143
+    ],
+    "anchor": [
+      187,
+      141
+    ],
+    "additive": true,
+    "parent": "ct_taxi_v2_3q",
+    "couche_de": "ct_taxi_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_taxi_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_teng_v2_3q": {
+    "file": "steel/center_town/ct_tour_teng_v2_3q.webp",
+    "px": [
+      561,
+      1902
+    ],
+    "anchor": [
+      332,
+      1900
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 40.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Haute tour à pubs Teng Banque Nationale & Change de Teng (34 m, façades couvertes d’écrans financiers cyan/ambre/blanc, visitable)",
+    "enseigne": "TENG BANQUE NATIONALE · CHANGE · CRÉDITS",
+    "pose": "B('c_change', 'Change de Teng', 'ct_tour_teng_v2_3q', 4, 4, 8, 8, { visitable: true, cue: 'coin' })",
+    "source": "GenerateImage (cursor, 9:16) + calibration 50 px/m (ct_tour_teng_v2.jpg)",
+    "remplace": "ct_tour_teng_3q",
+    "status": "v2",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "porte_px": [
+      430,
+      1792
+    ],
+    "porte_face": "e",
+    "porte_opening": [
+      12.0,
+      8.5
+    ],
+    "porte_threshold": [
+      13.0,
+      8.5
+    ],
+    "neon": "ct_tour_teng_v2_3q_neon",
+    "fenetres": "ct_tour_teng_v2_3q_fenetres",
+    "ecran_layer": "ct_tour_teng_v2_3q_ecran",
+    "pulse": "ct_tour_teng_v2_3q_pulse"
+  },
+  "ct_tour_teng_v2_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_teng_v2_3q_fenetres.webp",
+    "px": [
+      561,
+      1902
+    ],
+    "anchor": [
+      332,
+      1900
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v2_3q",
+    "couche_de": "ct_tour_teng_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_teng_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_teng_v2_3q_neon": {
+    "file": "steel/center_town/ct_tour_teng_v2_3q_neon.webp",
+    "px": [
+      561,
+      1902
+    ],
+    "anchor": [
+      332,
+      1900
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v2_3q",
+    "couche_de": "ct_tour_teng_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_teng_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_teng_v2_3q_pulse": {
+    "file": "steel/center_town/ct_tour_teng_v2_3q_pulse.webp",
+    "px": [
+      561,
+      1902
+    ],
+    "anchor": [
+      332,
+      1900
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v2_3q",
+    "couche_de": "ct_tour_teng_v2_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_teng_v2_3q.webp",
+    "status": "v2",
+    "bande": "kick"
+  },
+  "ct_tour_teng_v2_3q_ecran": {
+    "file": "steel/center_town/ct_tour_teng_v2_3q_ecran.webp",
+    "px": [
+      561,
+      1902
+    ],
+    "anchor": [
+      332,
+      1900
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v2_3q",
+    "couche_de": "ct_tour_teng_v2_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_teng_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_archeon_v2_3q": {
+    "file": "steel/center_town/ct_tour_archeon_v2_3q.webp",
+    "px": [
+      561,
+      2079
+    ],
+    "anchor": [
+      332,
+      2077
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 44.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Haute tour à pubs ARCHEON Industries (40 m, billboards géants ambre et schémas bleus, bandeaux LED égaliseur)",
+    "enseigne": "ARCHEON INDUSTRIES",
+    "pose": "B('ct_archeon', 'Tour Archeon Industries', 'ct_tour_archeon_v2_3q', -8, 4, 8, 8)",
+    "source": "GenerateImage (cursor, 9:16) + calibration 50 px/m (ct_tour_archeon_v2.jpg)",
+    "remplace": "ct_tour_archeon_3q",
+    "status": "v2",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "neon": "ct_tour_archeon_v2_3q_neon",
+    "fenetres": "ct_tour_archeon_v2_3q_fenetres",
+    "ecran_layer": "ct_tour_archeon_v2_3q_ecran",
+    "pulse": "ct_tour_archeon_v2_3q_pulse"
+  },
+  "ct_tour_archeon_v2_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_archeon_v2_3q_fenetres.webp",
+    "px": [
+      561,
+      2079
+    ],
+    "anchor": [
+      332,
+      2077
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v2_3q",
+    "couche_de": "ct_tour_archeon_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_archeon_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_archeon_v2_3q_neon": {
+    "file": "steel/center_town/ct_tour_archeon_v2_3q_neon.webp",
+    "px": [
+      561,
+      2079
+    ],
+    "anchor": [
+      332,
+      2077
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v2_3q",
+    "couche_de": "ct_tour_archeon_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_archeon_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_archeon_v2_3q_pulse": {
+    "file": "steel/center_town/ct_tour_archeon_v2_3q_pulse.webp",
+    "px": [
+      561,
+      2079
+    ],
+    "anchor": [
+      332,
+      2077
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v2_3q",
+    "couche_de": "ct_tour_archeon_v2_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_archeon_v2_3q.webp",
+    "status": "v2",
+    "bande": "kick"
+  },
+  "ct_tour_archeon_v2_3q_ecran": {
+    "file": "steel/center_town/ct_tour_archeon_v2_3q_ecran.webp",
+    "px": [
+      561,
+      2079
+    ],
+    "anchor": [
+      332,
+      2077
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v2_3q",
+    "couche_de": "ct_tour_archeon_v2_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_archeon_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_orc_v2_3q": {
+    "file": "steel/center_town/ct_tour_orc_v2_3q.webp",
+    "px": [
+      561,
+      1888
+    ],
+    "anchor": [
+      332,
+      1886
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 40.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Haute tour à pubs Orc Énergie (38 m, écrans géants vert émeraude/cyan/ambre HAUTE TENSION et bandeaux LED)",
+    "enseigne": "ORC ÉNERGIE · HAUTE TENSION",
+    "pose": "B('ct_orc', 'Tour Orc Énergie', 'ct_tour_orc_v2_3q', 48, 2, 8, 8)",
+    "source": "GenerateImage (cursor, 9:16) + calibration 50 px/m (ct_tour_orc_v2.jpg)",
+    "remplace": "ct_tour_orc_3q",
+    "status": "v2",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "neon": "ct_tour_orc_v2_3q_neon",
+    "fenetres": "ct_tour_orc_v2_3q_fenetres",
+    "ecran_layer": "ct_tour_orc_v2_3q_ecran",
+    "pulse": "ct_tour_orc_v2_3q_pulse"
+  },
+  "ct_tour_orc_v2_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_orc_v2_3q_fenetres.webp",
+    "px": [
+      561,
+      1888
+    ],
+    "anchor": [
+      332,
+      1886
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v2_3q",
+    "couche_de": "ct_tour_orc_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_orc_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_orc_v2_3q_neon": {
+    "file": "steel/center_town/ct_tour_orc_v2_3q_neon.webp",
+    "px": [
+      561,
+      1888
+    ],
+    "anchor": [
+      332,
+      1886
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v2_3q",
+    "couche_de": "ct_tour_orc_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_orc_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_orc_v2_3q_pulse": {
+    "file": "steel/center_town/ct_tour_orc_v2_3q_pulse.webp",
+    "px": [
+      561,
+      1888
+    ],
+    "anchor": [
+      332,
+      1886
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v2_3q",
+    "couche_de": "ct_tour_orc_v2_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_orc_v2_3q.webp",
+    "status": "v2",
+    "bande": "kick"
+  },
+  "ct_tour_orc_v2_3q_ecran": {
+    "file": "steel/center_town/ct_tour_orc_v2_3q_ecran.webp",
+    "px": [
+      561,
+      1888
+    ],
+    "anchor": [
+      332,
+      1886
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v2_3q",
+    "couche_de": "ct_tour_orc_v2_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_orc_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_humancorp_v2_3q": {
+    "file": "steel/center_town/ct_tour_humancorp_v2_3q.webp",
+    "px": [
+      561,
+      2038
+    ],
+    "anchor": [
+      332,
+      2035
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 43.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Haute tour à pubs Human Corp & Groovy Crew en concert (36 m, écrans géants blanc/cyan/magenta et waveforms LED)",
+    "enseigne": "HUMAN CORP · GROOVY CREW EN CONCERT",
+    "pose": "B('ct_humancorp', 'Tour Human Corp', 'ct_tour_humancorp_v2_3q', 4, -8, 8, 8)",
+    "source": "GenerateImage (cursor, 9:16) + calibration 50 px/m (ct_tour_humancorp_v2.jpg)",
+    "remplace": "ct_tour_humancorp_3q",
+    "status": "v2",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "neon": "ct_tour_humancorp_v2_3q_neon",
+    "fenetres": "ct_tour_humancorp_v2_3q_fenetres",
+    "ecran_layer": "ct_tour_humancorp_v2_3q_ecran",
+    "pulse": "ct_tour_humancorp_v2_3q_pulse"
+  },
+  "ct_tour_humancorp_v2_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_humancorp_v2_3q_fenetres.webp",
+    "px": [
+      561,
+      2038
+    ],
+    "anchor": [
+      332,
+      2035
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v2_3q",
+    "couche_de": "ct_tour_humancorp_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_humancorp_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_humancorp_v2_3q_neon": {
+    "file": "steel/center_town/ct_tour_humancorp_v2_3q_neon.webp",
+    "px": [
+      561,
+      2038
+    ],
+    "anchor": [
+      332,
+      2035
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v2_3q",
+    "couche_de": "ct_tour_humancorp_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_humancorp_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_humancorp_v2_3q_pulse": {
+    "file": "steel/center_town/ct_tour_humancorp_v2_3q_pulse.webp",
+    "px": [
+      561,
+      2038
+    ],
+    "anchor": [
+      332,
+      2035
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v2_3q",
+    "couche_de": "ct_tour_humancorp_v2_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_humancorp_v2_3q.webp",
+    "status": "v2",
+    "bande": "kick"
+  },
+  "ct_tour_humancorp_v2_3q_ecran": {
+    "file": "steel/center_town/ct_tour_humancorp_v2_3q_ecran.webp",
+    "px": [
+      561,
+      2038
+    ],
+    "anchor": [
+      332,
+      2035
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v2_3q",
+    "couche_de": "ct_tour_humancorp_v2_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_humancorp_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_nexus_v2_3q": {
+    "file": "steel/center_town/ct_tour_nexus_v2_3q.webp",
+    "px": [
+      561,
+      2113
+    ],
+    "anchor": [
+      332,
+      2111
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 45.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Haute tour à pubs NEXUS (42 m, enseigne verticale cyan géante, écrans RÉSEAU OPTIMUM et FEED 24/7, bandeaux LED)",
+    "enseigne": "NEXUS · RÉSEAU OPTIMUM · FEED 24/7",
+    "pose": "B('ct_nexus', 'Tour Nexus', 'ct_tour_nexus_v2_3q', 20, -8, 8, 8)",
+    "source": "GenerateImage (cursor, 9:16) + calibration 50 px/m (ct_tour_nexus_v2.jpg)",
+    "remplace": "ct_tour_nexus_3q",
+    "status": "v2",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "neon": "ct_tour_nexus_v2_3q_neon",
+    "fenetres": "ct_tour_nexus_v2_3q_fenetres",
+    "ecran_layer": "ct_tour_nexus_v2_3q_ecran",
+    "pulse": "ct_tour_nexus_v2_3q_pulse"
+  },
+  "ct_tour_nexus_v2_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_nexus_v2_3q_fenetres.webp",
+    "px": [
+      561,
+      2113
+    ],
+    "anchor": [
+      332,
+      2111
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v2_3q",
+    "couche_de": "ct_tour_nexus_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_nexus_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_nexus_v2_3q_neon": {
+    "file": "steel/center_town/ct_tour_nexus_v2_3q_neon.webp",
+    "px": [
+      561,
+      2113
+    ],
+    "anchor": [
+      332,
+      2111
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v2_3q",
+    "couche_de": "ct_tour_nexus_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_nexus_v2_3q.webp",
+    "status": "v2"
+  },
+  "ct_tour_nexus_v2_3q_pulse": {
+    "file": "steel/center_town/ct_tour_nexus_v2_3q_pulse.webp",
+    "px": [
+      561,
+      2113
+    ],
+    "anchor": [
+      332,
+      2111
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v2_3q",
+    "couche_de": "ct_tour_nexus_v2_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_nexus_v2_3q.webp",
+    "status": "v2",
+    "bande": "kick"
+  },
+  "ct_tour_nexus_v2_3q_ecran": {
+    "file": "steel/center_town/ct_tour_nexus_v2_3q_ecran.webp",
+    "px": [
+      561,
+      2113
+    ],
+    "anchor": [
+      332,
+      2111
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v2_3q",
+    "couche_de": "ct_tour_nexus_v2_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_nexus_v2_3q.webp",
+    "status": "v2"
   }
 }

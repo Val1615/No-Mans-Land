@@ -139,3 +139,39 @@ Aucune clé existante n'a été supprimée ni altérée dans ses dimensions ou s
 ## 5. Planches de contrôle
 - `/workspace/nml-shots/center_town_v1.png` : **maquette composée d'assets** (présentation DA avec scène isométrique recomposée, décomposition des calques `_fenetres` / `_neon` / `_ecran` et catalogue des 22 modules + 7 sols ; **pas une capture du jeu**).
 - `/workspace/nml-shots/center_town_audit.png` : **vraie capture moteur Three.js hors repo** (`/tmp/nml-ct-preview`, desktop `1280 x 800` dézoomé `x0,6`, vue carrefour `x1,0`, entrée ouest et mobile `390 x 844` DPR 2 ; `masques = []`, `0` erreur console/réseau, `10/10` portes et PNJ joignables, `pulsesOn = 8/8` sur mobile).
+
+---
+
+## 6. Correctif v2 : échelle cerisier/taxi et vraies hautes tours à pubs (`*_v2_3q`)
+
+Toutes les clés v1 remplacées ci-dessous (ainsi que leurs calques v1) reçoivent uniquement `"obsolete": true` dans `assets/steel/center_town/manifest.json` ; aucun fichier ni champ existant n'est écrasé.
+
+### A. Tableau des swaps v1 -> v2
+
+| Ancienne clé (`obsolete: true`) | Problème v1 | Nouvelle clé v2 | `px` | `anchor` | Emprise `W x D` | `h` (m) | Calques | Pose `B(...)` mise à jour |
+|---|---|---|---|---|---|---|---|---|
+| `ct_cerisier_bac_3q` | Trop massif (`349 px`), dépassait les immeubles bas | `ct_cerisier_bac_v2_3q` | `282 x 260` | `[167, 257]` | `4 x 4 m` (bac `2 x 2 m` centré sur la dalle `4 x 4 m`) | `4,4` | `_fenetres` | `B('ct_ceris0', '', 'ct_cerisier_bac_v2_3q', 12, 12, 4, 4, { named: false, solid: [{ x: 13, z: 13, w: 2, d: 2 }] })` et `ct_ceris1` en `(36, 24, 4, 4)` |
+| `ct_taxi_3q` | Aussi gros qu'une échoppe (`282 x 231` sur socle) | `ct_taxi_v2_3q` | `240 x 143` | `[187, 141]` | `4,5 x 1,8 m` (vraie berline à `50 px/m`, sans dalle socle) | `1,45` | `_neon`, `_fenetres` | `B('ct_taxi0', '', 'ct_taxi_v2_3q', 41.5, 17.1, 4.5, 1.8, { named: false })` et `ct_taxi1` en `(13.5, 17.1, 4.5, 1.8)` |
+| `ct_tour_teng_3q` | Trop basse (`15,5 m`), pubs trop sages | `ct_tour_teng_v2_3q` | `561 x 1902` | `[332, 1900]` | `8 x 8 m` *(inchangée)* | `40,3` | `_neon`, `_fenetres`, `_ecran`, `_pulse` | `B('c_change', 'Change de Teng', 'ct_tour_teng_v2_3q', 4, 4, 8, 8, { visitable: true, cue: 'coin' })` |
+| `ct_tour_archeon_3q` | Trop basse (`17,0 m`), pubs trop sages | `ct_tour_archeon_v2_3q` | `561 x 2079` | `[332, 2077]` | `8 x 8 m` *(inchangée)* | `44,3` | `_neon`, `_fenetres`, `_ecran`, `_pulse` | `B('ct_archeon', 'Tour Archeon Industries', 'ct_tour_archeon_v2_3q', -8, 4, 8, 8)` |
+| `ct_tour_orc_3q` | Trop basse (`16,5 m`), pubs trop sages | `ct_tour_orc_v2_3q` | `561 x 1888` | `[332, 1886]` | `8 x 8 m` *(inchangée)* | `40,0` | `_neon`, `_fenetres`, `_ecran`, `_pulse` | `B('ct_orc', 'Tour Orc Énergie', 'ct_tour_orc_v2_3q', 48, 2, 8, 8)` |
+| `ct_tour_humancorp_3q` | Trop basse (`16,0 m`), pubs trop sages | `ct_tour_humancorp_v2_3q` | `561 x 2038` | `[332, 2035]` | `8 x 8 m` *(inchangée)* | `43,4` | `_neon`, `_fenetres`, `_ecran`, `_pulse` | `B('ct_humancorp', 'Tour Human Corp', 'ct_tour_humancorp_v2_3q', 4, -8, 8, 8)` |
+| `ct_tour_nexus_3q` | Trop basse (`17,0 m`), pubs trop sages | `ct_tour_nexus_v2_3q` | `561 x 2113` | `[332, 2111]` | `8 x 8 m` *(inchangée)* | `45,1` | `_neon`, `_fenetres`, `_ecran`, `_pulse` | `B('ct_nexus', 'Tour Nexus', 'ct_tour_nexus_v2_3q', 20, -8, 8, 8)` |
+
+### B. Points côté code spécifiques à la v2 (Rivet)
+
+1. **Porte peinte de `c_change` (`ct_tour_teng_v2_3q`, `561 x 1902 px`)** :
+   - Mettre `painted_px: [430, 1792]`, `face: 'e'`, `opening: [12.0, 8.5]`, `threshold: [13.0, 8.5]`.
+2. **Non-masquage des portes, du joueur et des passants par les tours de 40–45 m (vérifié en rendu Three.js réel)** :
+   - `ct_archeon` `(-8, 4, 8, 8)`, `ct_humancorp` `(4, -8, 8, 8)` et `ct_nexus` `(20, -8, 8, 8)` ont leur emprise hors du rectangle jouable nord/ouest (`x1 <= 0` ou `z1 <= 0`) : `inFront(tour, acteur)` dans `view.js` vaut **toujours `false`**, elles restent en permanence derrière le joueur, les PNJ et tous les anneaux de portes.
+   - `ct_orc` `(48, 2, 8, 8)` est hors bord est (`visitable: false`) : le clic sol passe au travers (`view.js` l. 832) et `spriteOcclusion()` la fond à `0,30` si le joueur longe le coin nord-est.
+   - `c_change` (`ct_tour_teng_v2_3q`, `(4, 4, 8, 8)`, `40,3 m`, `visitable: true`) : dès que le joueur passe au nord (`z < 4`, accès `c_mega` en `(8 ; 0)`), **`spriteOcclusion()` (`view.js` l. 630) passe automatiquement la tour et ses 4 calques en fondu à `30 %` (`fondu`)**, laissant le joueur et le seuil `c_mega` `(8 ; 1)` parfaitement visibles et cliquables (`pick(8, 0.03, 1)` renvoie bien `ground` / `c_mega`).
+   - *Astuce optionnelle `pick()` (`view.js` l. 836)* : tant que le joueur est encore au sud (`z > 4`, `c_change` à opacité `1`), cliquer directement l'anneau doré `c_mega` fonctionne déjà (priorité `ring` l. 825), mais un clic sur le sol `(8 ; 2,5)` à travers le haut de la tour `c_change` renvoie `c_change_door` parce que `u.visitable === true` ne passe pas par le filtre d'emprise de la l. 832. Appliquer le même test `g.point` hors `[b.x - 1 .. b.x + b.w + 1, b.z - 1 .. b.z + b.d + 1]` avant de renvoyer la porte d'un bâtiment visitable rend aussi le sol nord directement cliquable à distance.
+   - Pour le passant ouest `civ(3)`, borner sa boucle sur la chaussée `[[2.5, 16.4], [22.5, 16.4], [22.5, 18.4], [2.5, 18.4]]` pour qu'il ne frôle jamais l'arrière de `ct_kiosque0` (`view.masques() === []` à tout instant).
+3. **Calques `_pulse` sur le kick (`ct_tour_*_v2_3q_pulse`)** :
+   - Les 5 tours v2 fournissent chacune leur calque `<clé>_pulse` (bandeaux LED égaliseur, tubes d'angle et balise de toit, `bande: "kick"`).
+   - Dans `src/core/ost_centre.js` l. 181 et 183, `sampleRhythm()` n'échantillonne actuellement l'analyseur Web Audio que si `mode === 'ost_centre'`. Étendre ce test à `(mode === 'ost_centre' || mode === 'ost_center_town')` permet aux `_pulse` des 5 tours de battre en direct sur le kick de `01_center_town.mp3` (sinon ils restent sagement en `veille` fixe, plafonnés à `pulsesOn <= 8` sur mobile).
+
+### C. Planches de contrôle v2
+- `/workspace/nml-shots/center_town_v2.png` : **maquette composée d'assets** (scène isométrique v2 recomposée, comparatif d'échelle 1:1 `v1 obsolete` vs `v2` avec humain `1,8 m`, décomposition des 4 calques dont `_pulse` et galerie des 7 clés `*_v2_3q` ; **pas une capture du jeu**).
+- `/workspace/nml-shots/center_town_v2_audit.png` : **vraie capture moteur Three.js hors repo** (vue dézoomée `x0,6` des tours de `40–45 m`, échelle rue `1:1` joueur / taxi v2 / cerisier v2, test de fondu automatique `30 %` de la Tour Teng `40,3 m` devant `c_mega`, et mobile `390 x 844` avec `pulsesOn = 8/8`).
