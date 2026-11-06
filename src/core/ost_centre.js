@@ -136,7 +136,7 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     savedTimes[mode] = Number.isFinite(el.currentTime) ? el.currentTime : 0;
     pendingSeek = 0;
     mode = want;
-    if (mode !== 'ost_centre') resetBeat();
+    if (mode !== 'ost_centre' && mode !== 'ost_center_town') resetBeat();
     if (mode === 'ost_centre') mountTrack(trackIndex, savedTimes.ost_centre);
     else if (mode === 'ost_center_town') mountLoopFile(OST_CENTER_TOWN, savedTimes.ost_center_town);
     else if (mode === 'ost_strip') mountLoopFile(OST_STRIP, savedTimes.ost_strip);
@@ -178,9 +178,9 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     const now = performance.now() / 1000;
     const dt = Math.min(0.25, Math.max(0.001, now - lastSampleAt));
     lastSampleAt = now;
-    const playing = mode === 'ost_centre' && !el.paused && !el.ended && !el.muted && el.volume > 0.001;
+    const playing = (mode === 'ost_centre' || mode === 'ost_center_town') && !el.paused && !el.ended && !el.muted && el.volume > 0.001;
     if (!playing || !analyser || !freqBuf || (audioCtx && audioCtx.state !== 'running')) {
-      if (el.muted || el.paused || mode !== 'ost_centre') resetBeat();
+      if (el.muted || el.paused || (mode !== 'ost_centre' && mode !== 'ost_center_town')) resetBeat();
       else {
         const fade = Math.max(0, 1 - dt * 8);
         beat = beat > 0.005 ? beat * fade : 0;
@@ -263,7 +263,7 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
 
   // Échantillonnage régulier (~33 Hz) pour ne manquer aucun transitoire de kick même si le rendu 3D ralentit
   setInterval(() => {
-    if (mode === 'ost_centre' && !el.paused && !el.muted) sampleRhythm();
+    if ((mode === 'ost_centre' || mode === 'ost_center_town') && !el.paused && !el.muted) sampleRhythm();
   }, 30);
 
   syncMute();
@@ -276,7 +276,7 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     get mode() { return mode; },
     get el() { return el; },
     get active() { return mode === 'ost_centre'; },
-    get playing() { return mode === 'ost_centre' && !el.paused && !el.muted && el.volume > 0.001; },
+    get playing() { return (mode === 'ost_centre' || mode === 'ost_center_town') && !el.paused && !el.muted && el.volume > 0.001; },
     get trackIndex() { return trackIndex; },
     get track() { return OST_CENTRE_TRACKS[trackIndex]; },
     get currentTime() { return el.currentTime; },

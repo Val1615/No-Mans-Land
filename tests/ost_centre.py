@@ -138,7 +138,7 @@ with sync_playwright() as p:
 
         # 1. Center-Town : OST dédiée en boucle, continue et atténuée dans change_in
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=13;s.player.z=8.7;g.restore(s,true)})()")
-        pg.wait_for_function("!window.__nml.music.paused && window.__nml.music.currentTime > 0.2", timeout=10000)
+        pg.wait_for_function("!window.__nml.music.paused && window.__nml.music.currentTime > 0.2 && Math.abs(window.__nml.music.volume - 0.55) < 0.05", timeout=10000)
         time.sleep(1.0)
         E("window.__nml.music.dataset.ostMark = 'singleton'")
         ct0 = S()

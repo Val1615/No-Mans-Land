@@ -222,9 +222,9 @@ with sync_playwright() as p:
                     # v13 : Center-Town vivant, mesuré sur les pixels : saturation, néons, zones éclairées, contre la v12 et contre l'approche
                     time.sleep(0.5); M = mood(crop_hud(shot())); ref = REF + f'{prof}-augmente-center.png'  # écran réel, à l'arrivée (même cadrage que la capture v12)
                     R12 = mood(crop_hud(rgb_file(ref))) if os.path.exists(ref) else None
-                    check(f'{T}: Center-Town : saturation et néons nettement supérieurs à la v12', R12 and M['sat'] > 1.4 * R12['sat'] and M['neon'] > 2 * max(R12['neon'], 0.002), (M, R12))
-                    check(f'{T}: Center-Town : lumières (p95) et néons nettement au-dessus de l\'approche', M['v95'] > 1.3 * ROUTE_MOOD['v95'] and M['neon'] > 3 * max(ROUTE_MOOD['neon'], 0.002) and M['sat'] > 1.1 * ROUTE_MOOD['sat'], (M, ROUTE_MOOD))
-                    check(f'{T}: Center-Town : sol mouillé, nuit', E("window.__nml.game.world.LOCATIONS.steel_center.ground.skin") == 'g_wet' and E("window.__nml.view.lightOf().bg") == '#0b0a16')
+                    check(f'{T}: Center-Town : vraie nuit noire plus sombre et saturée que la v12, néons présents', R12 and M['v'] < 0.75 * R12['v'] and M['sat'] > 1.2 * R12['sat'] and M['neon'] > 0.012, (M, R12))
+                    check(f'{T}: Center-Town : lumières (p95) et néons nettement au-dessus de l\'approche', M['v95'] > 1.3 * ROUTE_MOOD['v95'] and M['neon'] > 3 * max(ROUTE_MOOD['neon'], 0.002) and M['sat'] > ROUTE_MOOD['sat'], (M, ROUTE_MOOD))
+                    check(f'{T}: Center-Town : dalles humides (g_ct_*), vraie nuit noire (#05070d)', E("window.__nml.game.world.LOCATIONS.steel_center.ground.skin") == 'g_ct_trottoir_dalles' and E("window.__nml.view.lightOf().bg") == '#05070d')
                     d0 = {d['i']: d for d in E("window.__nml.view.decor()")}; time.sleep(1.2); d1 = E("window.__nml.view.decor()")
                     moved = [d for d in d1 if d['role'] == 'passant' and np.hypot(d['x'] - d0[d['i']]['x'], d['z'] - d0[d['i']]['z']) > 0.4]
                     drones = [d for d in d1 if d['role'] == 'drone' and np.hypot(d['x'] - d0[d['i']]['x'], d['z'] - d0[d['i']]['z']) > 0.1]
@@ -235,8 +235,8 @@ with sync_playwright() as p:
                         a0 = d0[d['i']]; sr = E(f"window.__nml.view.screenRightOf({d['x'] - a0['x']},{d['z'] - a0['z']})")
                         if abs(sr) > 0.2: ok_f += (sr > 0) == (d['facing'] > 0); sides.add(d['facing'])
                     check(f'{T}: passants tournés dans leur sens de marche (miroir), dans les deux sens', ok_f >= 4 and sides == {1, -1}, (ok_f, sides))
-                    W = E("window.__nml.game.world.LOCATIONS.steel_center"); sp = [p.get('sprite') for p in W['props']]
-                    check(f'{T}: échoppes, hologrammes, lampadaires néon, reflets au sol', sp.count('st_echoppe') >= 2 and sp.count('st_holo') >= 3 and sp.count('st_lampadaire') >= 4 and len(W['glows']) >= 10, (sp.count('st_echoppe'), sp.count('st_holo'), len(W['glows'])))
+                    W = E("window.__nml.game.world.LOCATIONS.steel_center"); bs = [b.get('sprite') for b in W['buildings']]
+                    check(f'{T}: modules ct_*_3q (échoppe, holo, lampadaires, bannières, transports) et reflets au sol', 'ct_echoppe_vapeur_3q' in bs and 'ct_holo_suspendu_3q' in bs and bs.count('ct_lampadaire_io_3q') >= 2 and bs.count('ct_banniere_io_3q') >= 2 and len([s for s in bs if s.startswith('ct_')]) >= 22 and not W['props'] and len(W['glows']) >= 10, (len(bs), len(W['glows'])))
                     fps = E("new Promise(r=>{let n=0;const t=performance.now();(function f(){n++;if(performance.now()-t<2000)requestAnimationFrame(f);else r(n/2)})()})")
                     check(f'{T}: perf Center-Town (rendu logiciel SwiftShader) >= 8 i/s', fps >= 8, fps)
                     if not mob:  # vue comparable au concept art : la rotonde, la rue mouillée, les néons

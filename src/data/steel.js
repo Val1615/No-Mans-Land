@@ -4,7 +4,7 @@
 import { LOCATIONS_LOWER, DOORS_LOWER, NPCS_LOWER, DIALOGUES_LOWER } from './lower_town.js';
 import { LOCATIONS_ASIA, DOORS_ASIA, NPCS_ASIA, DIALOGUES_ASIA } from './asia_ground.js';
 import { LOCATIONS_MEGA, DOORS_MEGA, NPCS_MEGA, DIALOGUES_MEGA, CLOSED_MEGA } from './mega_line.js';
-import { LOCATIONS_DOME, DOORS_DOME, NPCS_DOME, DIALOGUES_DOME, CLOSED_DOME, FACADE_DOME } from './dome_frequence.js';
+import { LOCATIONS_DOME, DOORS_DOME, NPCS_DOME, DIALOGUES_DOME, CLOSED_DOME } from './dome_frequence.js';
 import { LOCATIONS_ARENA, DOORS_ARENA, NPCS_ARENA, DIALOGUES_ARENA, CLOSED_ARENA } from './steel_arena.js';
 import { LOCATIONS_STRIP, DOORS_STRIP, NPCS_STRIP, DIALOGUES_STRIP, CLOSED_STRIP } from './frequence_strip.js';
 import { LOCATIONS_PULSE, DOORS_PULSE, NPCS_PULSE, DIALOGUES_PULSE, CLOSED_PULSE } from './pulse_plaza.js';
@@ -17,7 +17,7 @@ const named = list => list.map(b => ({ ...b, named: true }));
 const SOLDAT = 'gen_halloran';
 const civ = i => `st_civil${i % 6}`;
 const NIGHT_ROUTE = { bg: '#0c0f18', hemi: ['#8090b8', '#2a2430', 0.95], sun: ['#a8b8ff', 0.55], tint: '#c4c8d8', actor: '#c9cddc' };
-const NIGHT_CITY = { bg: '#0b0a16', hemi: ['#aab4ff', '#4a2a5c', 1.35], sun: ['#c0b0ff', 0.7], tint: '#9092b8', actor: '#d4d4ea' };
+const NIGHT_CITY = { bg: '#05070d', hemi: ['#9ab0d4', '#141824', 1.08], sun: ['#dce4f5', 0.55], tint: '#d8dce8', actor: '#e2dee8' };
 // v14 : Sous-Ville (concept docs/villes/steel/ambiance/concept_sous_ville.jpg) : lumière orange des braseros, fumée, tôle rouillée.
 const UNDER = { bg: '#0e0805', hemi: ['#ffb27a', '#2a1408', 1.05], sun: ['#ff9c55', 0.62], tint: '#dcae86', actor: '#e6c4a2' };
 const FIRE = '#ff8a2a';
@@ -57,31 +57,87 @@ export const LOCATIONS = {
     ground: { base: '#2a2c30', skin: 'f_io_grate', tileM: 2 }, wall: '#2a2e36', wallSkin: 'w_io_dark', doorSkin: 'door_io', buildings: [], props: [
       { furn: 'io_server', x: 0.2, z: 0.2 }, { furn: 'io_reception', x: 2.9, z: 0.6 }, { furn: 'io_console', x: 4.6, z: 0.2 },
       { furn: 'io_locker', x: 8.4, z: 0.2 }, { furn: 'io_scanner', x: 7.6, z: 2.3 }, { furn: 'io_sofa', x: 0.2, z: 3.6 } ], city: null },
-  // S1 : Center-Town sous le dôme, la nuit (concept art) : chaussée mouillée, néons, hologrammes, échoppes, passants, drones.
+  // S1 : Center-Town · Carrefour Arcadius (docs/villes/steel/quartiers/center_town/CENTER_TOWN.md) : vraie nuit noire (#05070d),
+  // dalles anthracite humides, rails tram, case jaune, QG Arcadius IO, silhouette extérieure du Dôme Fréquence (zone steel_dome à part),
+  // Bureau des permis, 5 tours à pubs distinctes, viaduc Mega-Line, hologramme suspendu NEXUS, mobilier ct_*_3q.
   steel_center: { id: 'steel_center', name: 'Steel-Megalopolis · Center-Town', kind: 'exterior', size: { w: 48, d: 36 }, light: NIGHT_CITY,
-    ground: { base: '#1b1b22', skin: 'g_wet', tileM: 6, clean: true, zones: [
-      { x: 0, z: 13, w: 48, d: 1.6, kind: 'plate', tint: 'rgba(10,10,20,.55)' }, { x: 0, z: 21.6, w: 48, d: 1.8, kind: 'plate', tint: 'rgba(10,10,20,.55)' } ] },
-    buildings: [...named(BUILDINGS_CENTER).map(b => ['c_tour', 'c_change', 'c_arcadius'].includes(b.id) ? { ...b, tint: '#ffffff', ...(b.id === 'c_tour' ? { visitable: true } : {}) } : b), ...FACADE_DOME], /* c_tour : porte du Dôme (c_dome, conditionnelle) */ props: [
-      { sprite: 'st_echoppe', x: 33.2, z: 14.0, fp: [2.6, 1.2] }, { sprite: 'st_kiosque', x: 14.2, z: 13.9, fp: [1.4, 1.0] }, { sprite: 'st_echoppe', x: 46.2, z: 22.6, fp: [2.6, 1.2] },
-      { sprite: 'st_lampadaire', x: 9, z: 14.4, solid: 0.4 }, { sprite: 'st_lampadaire', x: 24, z: 14.4, solid: 0.4 }, { sprite: 'st_lampadaire', x: 40, z: 14.4, solid: 0.4 },
-      { sprite: 'st_lampadaire', x: 15, z: 22.2, solid: 0.4 }, { sprite: 'st_lampadaire', x: 31, z: 22.2, solid: 0.4 },
-      { sprite: 'st_holo', x: 27.6, z: 14.2, solid: 0.4, glow: 0.9 }, { sprite: 'st_holo', x: 20.2, z: 22.6, solid: 0.4, glow: 0.9, flip: true }, { sprite: 'st_holo', x: 44.8, z: 14.0, solid: 0.4, glow: 0.85 },
-      { sprite: 'st_borne', x: 35.8, z: 22.6, fp: [0.8, 0.6] }, { sprite: 'st_banc', x: 26.0, z: 22.8, fp: [1.8, 0.6] }, { sprite: 'st_pylone', x: 2.6, z: 13.8, fp: [0.7, 0.7] },
-      { sprite: 'st_voiture', x: 41.5, z: 20.4, fp: [4.4, 2.0] } ],
+    ground: { base: '#12151d', skin: 'g_ct_trottoir_dalles', tileM: 4, clean: true,
+      marge: { skin: 'g_ct_asphalte_mouille', tileM: 4, m: 48, voile: 'rgba(4,6,12,.64)' },
+      zones: [],
+      paint: [
+        { x: 32, z: 0, w: 4, d: 12, skin: 'g_ct_asphalte_mouille' },
+        { x: 32, z: 24, w: 4, d: 12, skin: 'g_ct_asphalte_mouille' },
+        { x: 0, z: 16, w: 24, d: 4, skin: 'g_ct_rails_tram_ew' },
+        { x: 40, z: 16, w: 8, d: 4, skin: 'g_ct_rails_tram_ew' },
+        { x: 28, z: 0, w: 4, d: 12, skin: 'g_ct_rails_tram_ns' },
+        { x: 28, z: 24, w: 4, d: 12, skin: 'g_ct_rails_tram_ns' },
+        { x: 24, z: 16, w: 4, d: 4, skin: 'g_ct_passage_pieton_ns' },
+        { x: 36, z: 16, w: 4, d: 4, skin: 'g_ct_passage_pieton_ns' },
+        { x: 28, z: 12, w: 8, d: 4, skin: 'g_ct_passage_pieton_ew' },
+        { x: 28, z: 20, w: 8, d: 4, skin: 'g_ct_passage_pieton_ew' },
+        { x: 28, z: 16, w: 8, d: 4, skin: 'g_ct_carrefour_jaune' },
+      ] },
+    buildings: BUILDINGS_CENTER, props: [],
+    enseignes: [
+      { id: 'ct_n_arcadius', building: 'c_arcadius', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_dome', building: 'c_tour', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_teng', building: 'c_change', effet: 'fixe', intensite: 0.90 },
+      { id: 'ct_n_archeon', building: 'ct_archeon', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_orc', building: 'ct_orc', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_humancorp', building: 'ct_humancorp', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_nexus', building: 'ct_nexus', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_holo', building: 'ct_holo0', effet: 'fixe', intensite: 0.95 },
+      { id: 'ct_n_arret', building: 'ct_arret0', effet: 'fixe', intensite: 0.88 },
+      { id: 'ct_n_echoppe', building: 'ct_echoppe0', effet: 'gresille', intensite: 0.85, decale: 0.4 },
+    ],
+    pulses: [
+      { building: 'c_change', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0, priorite: 8 },
+      { building: 'ct_orc', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.04, priorite: 7 },
+      { building: 'ct_archeon', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.08, priorite: 6 },
+      { building: 'ct_nexus', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.12, priorite: 5 },
+      { building: 'ct_humancorp', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.16, priorite: 4 },
+      { building: 'c_arcadius', calque: 'ecran', mode: 'balise', periode: 2.6, intensite: 0.95, veille: 0.35, priorite: 3 },
+      { building: 'c_tour', calque: 'ecran', mode: 'mesure', periode: 8.0, intensite: 1.15, veille: 0.55, priorite: 2 },
+      { building: 'ct_holo0', calque: 'ecran', mode: 'mesure', periode: 6.5, intensite: 1.20, veille: 0.60, priorite: 1 },
+      { building: 'ct_orc', calque: 'ecran', mode: 'mesure', periode: 9.0, intensite: 1.15, veille: 0.55 },
+      { building: 'ct_archeon', calque: 'ecran', mode: 'mesure', periode: 10.0, intensite: 1.15, veille: 0.55 },
+      { building: 'ct_nexus', calque: 'ecran', mode: 'mesure', periode: 8.5, intensite: 1.15, veille: 0.55 },
+      { building: 'ct_humancorp', calque: 'ecran', mode: 'mesure', periode: 9.5, intensite: 1.15, veille: 0.55 },
+      { building: 'c_change', calque: 'ecran', mode: 'mesure', periode: 10.5, intensite: 1.15, veille: 0.55 },
+      { building: 'c_blanc', calque: 'ecran', mode: 'fixe', intensite: 2.75, veille: 0.26 },
+      { building: 'c_immeuble', calque: 'ecran', mode: 'fixe', intensite: 2.75, veille: 0.26 },
+      { building: 'c_galerie', calque: 'ecran', mode: 'fixe', intensite: 2.75, veille: 0.26 },
+      { building: 'c_neon', calque: 'ecran', mode: 'fixe', intensite: 2.75, veille: 0.26 },
+      { building: 'ct_arret0', calque: 'ecran', mode: 'fixe', intensite: 2.75, veille: 0.26 },
+      { building: 'ct_kiosque0', calque: 'ecran', mode: 'fixe', intensite: 2.75, veille: 0.26 },
+    ],
     glows: [
-      { x: 10, z: 16, rx: 2.1, rz: 4.4, color: NEON_V, i: 0.8 }, { x: 14.6, z: 16.2, rx: 1.8, rz: 3.9, color: NEON_V, i: 0.85, flicker: true }, { x: 21, z: 15.6, rx: 3.1, rz: 4.2, color: NEON_C, i: 0.8 },
-      { x: 27.6, z: 16.6, rx: 2.6, rz: 4.4, color: NEON_C, i: 0.95, flicker: true }, { x: 33.2, z: 15.8, rx: 2.9, rz: 3.1, color: WARM, i: 0.8 }, { x: 40, z: 16, rx: 2.3, rz: 3.9, color: NEON_C, i: 0.75 },
-      { x: 44.8, z: 16.4, rx: 2.6, rz: 3.9, color: NEON_V, i: 0.85, flicker: true }, { x: 15, z: 20.2, rx: 2.3, rz: 3.9, color: NEON_C, i: 0.75 }, { x: 20.2, z: 20.4, rx: 2.6, rz: 4.2, color: NEON_V, i: 0.9, flicker: true },
-      { x: 31, z: 20.2, rx: 2.3, rz: 3.9, color: NEON_C, i: 0.75 }, { x: 46, z: 20.6, rx: 2.6, rz: 3.1, color: WARM, i: 0.75 }, { x: 6, z: 18, rx: 3.4, rz: 4.4, color: NEON_V, i: 0.6 },
-      { x: 24, z: 9, rx: 9.1, rz: 5.2, color: NEON_C, i: 0.45 }, { x: 39.5, z: 13.4, rx: 4.7, rz: 2.1, color: NEON_C, i: 0.8 }, { x: 9, z: 15.2, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 24, z: 15.2, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 40, z: 15.2, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 },
-      { x: 15, z: 21.4, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 31, z: 21.4, rx: 1.8, rz: 1.8, color: FLOOD, i: 0.6 }, { x: 2.5, z: 18, rx: 2.4, rz: 3.6, color: NEON_C, i: 0.6, flicker: true },
-      { x: 13.4, z: 9.2, rx: 2.1, rz: 2.9, color: WARM, i: 0.75 } ],
-    extras: [ { sprite: SOLDAT, x: 34.0, z: 13.6, face: -1, role: 'soldat' }, { sprite: SOLDAT, x: 44.2, z: 12.9, face: -1, role: 'soldat' },
-      { sprite: civ(2), x: 32.0, z: 15.4, face: 1, role: 'client' }, { sprite: civ(4), x: 34.6, z: 15.6, face: -1, role: 'client' } ],
-    walkers: [ { sprite: civ(0), path: [[2, 14.2], [46, 14.2], [46, 14.8], [2, 14.8]], speed: 1.1, t0: 5 }, { sprite: civ(1), path: [[46, 22.4], [2, 22.4], [2, 23.0], [46, 23.0]], speed: 0.9, t0: 30 },
-      { sprite: civ(3), path: [[2, 14.6], [46, 14.6], [46, 14.0], [2, 14.0]], speed: 1.0, t0: 60 }, { sprite: civ(5), path: [[46, 22.8], [2, 22.8], [2, 22.2], [46, 22.2]], speed: 1.2, t0: 12 },
-      { sprite: civ(4), path: [[18, 15], [18, 21.5], [19, 21.5], [19, 15]], speed: 0.8 }, { sprite: civ(2), path: [[36.5, 15], [36.5, 21.5], [37.4, 21.5], [37.4, 15]], speed: 0.9, t0: 4 },
-      { sprite: civ(1), path: [[4, 22.6], [44, 22.6], [44, 23.1], [4, 23.1]], speed: 1.05, t0: 50 } ],
+      { x: 8, z: 14.5, rx: 3.6, rz: 2.2, color: NEON_C, i: 0.52 },
+      { x: 6, z: 23.8, rx: 2.8, rz: 2.2, color: WARM, i: 0.58, flicker: true },
+      { x: 14, z: 23.8, rx: 2.8, rz: 2.2, color: '#e042a8', i: 0.50 },
+      { x: 18, z: 14.2, rx: 2.6, rz: 2.2, color: WARM, i: 0.55 },
+      { x: 38, z: 21.8, rx: 2.6, rz: 2.2, color: WARM, i: 0.55 },
+      { x: 26, z: 18, rx: 3.8, rz: 4.2, color: NEON_C, i: 0.65, flicker: true },
+      { x: 22, z: 12.8, rx: 4.6, rz: 2.6, color: WARM, i: 0.52 },
+      { x: 42, z: 13, rx: 4.8, rz: 2.6, color: '#c8323c', i: 0.42 },
+      { x: 16, z: 18, rx: 2.8, rz: 1.8, color: WARM, i: 0.48 },
+      { x: 44, z: 18, rx: 2.8, rz: 1.8, color: WARM, i: 0.48 },
+      { x: 2.4, z: 18, rx: 2.6, rz: 3.4, color: NEON_C, i: 0.46 },
+    ],
+    extras: [
+      { sprite: SOLDAT, x: 41.2, z: 13.8, face: -1, role: 'soldat' },
+      { sprite: SOLDAT, x: 43.8, z: 13.8, face: -1, role: 'soldat' },
+      { sprite: civ(2), x: 19.6, z: 13.8, face: 1, role: 'client' },
+      { sprite: civ(4), x: 28.8, z: 13.8, face: -1, role: 'client' },
+    ],
+    walkers: [
+      { sprite: civ(0), path: [[18.5, 16.3], [32.6, 16.3], [32.6, 19.3], [18.5, 19.3]], speed: 1.15, t0: 2 },
+      { sprite: civ(1), path: [[32.2, 19.1], [18.8, 19.1], [18.8, 16.6], [32.2, 16.6]], speed: 1.05, t0: 9 },
+      { sprite: civ(3), path: [[18.0, 14.8], [30.8, 14.8], [30.8, 15.8], [18.0, 15.8]], speed: 1.1, t0: 1.5 },
+      { sprite: civ(5), path: [[28.4, 8.5], [28.4, 19.2], [30.4, 19.2], [30.4, 8.5]], speed: 1.2, t0: 4 },
+      { sprite: civ(4), path: [[27.0, 16.2], [32.4, 16.2], [32.4, 19.2], [27.0, 19.2]], speed: 1.0, t0: 3 },
+      { sprite: civ(2), path: [[30.2, 18.8], [30.2, 9.0], [28.8, 9.0], [28.8, 18.8]], speed: 1.15, t0: 8 },
+    ],
     drones: [ { x: 22, z: 17, r: 7, y: 6, speed: 0.22 }, { x: 38, z: 18, r: 5, y: 5.2, speed: -0.3, ph: 2 }, { x: 10, z: 18, r: 4, y: 6.5, speed: 0.35, ph: 4 } ],
     spawn: { player: { x: 1, z: 18 }, companion: { x: 1, z: 19 } }, city: 'steel' },
   change_in: { id: 'change_in', name: 'Center-Town · Change de Teng', kind: 'interior', size: { w: 6, d: 5 },
@@ -206,7 +262,17 @@ export const CLOSED_TEXT = {
   c_tour: 'Le Dôme Fréquence. Des écrans sur toute la façade, et pas une porte qui s\u2019ouvre pour toi.',
   c_arcadius: 'Arcadius Center. Les portes s\u2019ouvrent pour les implants qu\u2019elles reconnaissent, pas pour les autres.',
   c_blanc: 'Bureau des permis. Un écran annonce un délai d\u2019attente qui ne veut rien dire.',
-  c_neon: 'Une galerie de néons. Tout y est à vendre, en crédits.',
+  c_neon: 'Les guichets Human Corp. Tout y est à vendre, en crédits.',
+  c_immeuble: 'Immeuble Nexus Transit. Derrière les vitres ambre, les tourniquets demandent un badge résident.',
+  c_galerie: 'La galerie du carrefour. Une affiche annonce Groovy Crew en concert ; les grilles de nuit sont déjà baissées.',
+  ct_archeon: 'Tour Archeon Industries. Un panneau ambre haut de dix étages, et aucun interphone au rez-de-chaussée.',
+  ct_orc: 'Tour Orc Énergie. Les conduites ronflent derrière le marbre noir.',
+  ct_humancorp: 'Tour Human Corp. Des étages de bureaux identiques et une affiche de tournée qui éclaire tout le trottoir.',
+  ct_nexus: 'Tour Nexus. Le réseau tourne sans personne derrière la vitre.',
+  ct_arret0: 'Arrêt Tram Central. Le prochain passage s\u2019affiche en ambre, sans heure.',
+  ct_tram0: 'Une rame du tramway de Center-Town, portes verrouillées à l\u2019arrêt.',
+  ct_echoppe0: 'Nouilles et vapeur. Le bouillon fume derrière le comptoir en laiton ; paiement par implant uniquement.',
+  ct_kiosque0: 'Kiosque Presse & Médias. Les éditions validées par IO tournent en boucle sur l\u2019écran latéral.',
   v_cab_a: 'Une cabane de tôle. Quelqu’un tousse derrière le rideau.', v_cab_b: 'Rideau tiré. Une radio grésille un match qui date.', v_cab_c: 'Des chiens grognent derrière la porte.',
   v_cab_d: 'Cadenas. Sur la tôle, une croix à la craie.', v_cab_e: 'Une odeur de soudure. On ne t’ouvre pas.', v_cab_f: 'Un gamin te regarde par une fente, puis plus rien.',
   v_cab_g: 'Rideau tiré.', v_cab_h: 'On dort, là-dedans. Ou on fait semblant.', v_cab_i: 'Une cabane vide. Vide depuis peu.', v_cab_j: 'Quelqu’un compte des billets à voix basse.',

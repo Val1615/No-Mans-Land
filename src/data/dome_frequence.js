@@ -1,5 +1,5 @@
 // Le Dôme Fréquence (zone steel_dome, 30 x 30 m) : intérieur de c_tour (Center-Town). Pack d'Ocre : docs/villes/steel/quartiers/dome_frequence/.
-// Entrée : porte de façade de c_tour vers (23,5 ; 13), fermée tant que le drapeau dome_ouvert n'est pas posé (comme les grilles conditionnelles).
+// Entrée : porte de façade de c_tour vers (22,0 ; 12), fermée tant que le drapeau dome_ouvert n'est pas posé (comme les grilles conditionnelles).
 // Accès de debug : ?dome=1 dans l'URL, ou window.__nml.ouvrirDome(). Vibes et Tron : uniquement sur les écrans de scène et de façade.
 // Écrans de scène : 213 x 120 (2,4 m, ancre [106, 119]), posés à y 3,9 au-dessus de la herse (y 2,6) : sommet à 6,3 m comme avant, bas dégagé ; un groupe, une seule horloge. Herse de lumières : enseigne df_ens_lumieres + lueurs posées par le code (rien de peint).
 const DOME = { bg: '#07060c', hemi: ['#c8a0ff', '#2a1420', 1.15], sun: ['#f2b44a', 0.55], tint: '#c8b4d0', actor: '#e8dcea' };
@@ -46,7 +46,7 @@ export const LOCATIONS_DOME = {
 };
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
 export const DOORS_DOME = [
-  { id: 'c_dome', buildingId: 'c_tour', location: 'steel_center', label: 'Le Dôme Fréquence', opening: { x: 23.5, z: 13, side: 'south' }, threshold: { x: 23.5, z: 14 }, target: { doorId: 'df_sortie' },
+  { id: 'c_dome', buildingId: 'c_tour', location: 'steel_center', label: 'Le Dôme Fréquence', opening: { x: 22.0, z: 12, side: 'south' }, threshold: { x: 22.0, z: 13 }, target: { doorId: 'df_sortie' },
     conditions: [{ test: s => !!s.flags.dome_ouvert, reason: 'dome', text: 'Le Dôme Fréquence. Des écrans sur toute la façade, et une porte qui ne s\u2019ouvre pas pour toi. Pas ce soir.' }] },
   J('df_sortie', 'steel_dome', 15, 30, 15, 29, 'c_dome', 'Sortie (Center-Town)'),
 ];
