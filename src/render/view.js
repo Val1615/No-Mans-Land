@@ -3,7 +3,7 @@ import { UNITS } from '../data/units.js';
 import { wallsOf } from '../core/grid.js';
 import { groundTexture, margeTexture, SKIN } from './textures.js?v=editor2';
 
-export function createView(canvas, game, sprites, bman, labelLayer) {
+export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = null) {
   let { LOCATIONS, DOORS, NPCS, COMPANION } = game.world;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -710,5 +710,6 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     envShot: () => { render(); const hid = [player, companion, ...npcSprites, ...decor].filter(o => o.visible); hid.forEach(o => o.visible = false); renderer.render(scene, cam);
       const url = canvas.toDataURL('image/png'); hid.forEach(o => o.visible = true); return url; },
     ghostOf: id => { const n = npcSprites.find(s => s.userData.npc === id); return n?.userData.ghost ? { visible: n.userData.ghost.visible, opacity: n.userData.ghost.material.opacity, order: n.userData.ghost.renderOrder } : null; },
+    ostCentre,
     orderOf: id => id === 'player' ? player.renderOrder : bsprites.find(s => s.userData.buildingId === id)?.renderOrder };
 }

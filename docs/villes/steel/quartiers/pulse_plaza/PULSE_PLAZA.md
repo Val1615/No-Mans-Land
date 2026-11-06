@@ -195,3 +195,6 @@ Les murets sud/est (`pp_muret*`), lampadaires, bancs, caméras, statues, jardini
 ### Planches
 - `/workspace/nml-shots/pulse_3q.png` (maquette iso de la place avec les 14 bâtiments espacés comme en jeu, pas une capture)
 - `/workspace/nml-shots/pulse_3q_zoom.png` (gros plan 1:1 de 4 bâtiments avec calques)
+
+## Playlist OST commune (`fecc483`, `src/core/ost_centre.js`)
+- Playlist commune Groovy Crew posée sur `main` (4 titres MP3 `assets/audio/ost_centre/`, pack `fecc483`) et partagée en singleton entre Center-Town, Fréquence Strip, Pulse Plaza et Steel Arena (aucune coupure ni remise à zéro aux changements de zone). L'API Web Audio `window.__nml.ostCentre` (`beat`, `energy`, `bass`, `mid`, `high`, `kick`, `onKick`) est exposée sur cette même lecture pour piloter les calques `_3q_ecran` et `_3q_pulse`.

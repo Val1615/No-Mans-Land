@@ -79,7 +79,7 @@ export function createShell({ game, world, $, onStart, applyOptions }) {
       S.innerHTML = `<button class="btn m-back" data-back="1">‹ Retour</button><h2>CODEX</h2><p>Le codex se remplira en jouant : lieux, factions, peuples, objets.</p><p class="muted">Aucune entrée pour l'instant.</p>`;
     } else if (sub === 'credits') {
       S.innerHTML = `<button class="btn m-back" data-back="1">‹ Retour</button><h2>CRÉDITS</h2><p><span class="lbl">Univers et conception</span><br>Valentin Sartorius · roman <i>No Man's Land, tome 1 : Un réveil tardif</i></p>
-        <p><span class="lbl">Musique</span><br>Ambiance de Dusk-Town, fournie par Valentin</p><p><span class="lbl">Polices</span><br>IBM Plex Mono, VT323 (SIL Open Font License)</p><p><span class="lbl">Moteur</span><br>three.js (MIT)</p><p class="muted">Prototype · lot 1 (v10)</p>`;
+        <p><span class="lbl">Musique</span><br>Ambiance de Dusk-Town · OST Center-Town : Groovy Crew (fournies par Valentin)</p><p><span class="lbl">Polices</span><br>IBM Plex Mono, VT323 (SIL Open Font License)</p><p><span class="lbl">Moteur</span><br>three.js (MIT)</p><p class="muted">Prototype · lot 1 (v10)</p>`;
     }
   }
   function newGame() { before = mode; sub = null; mode = 'create'; M.hidden = true; creation.open(); }

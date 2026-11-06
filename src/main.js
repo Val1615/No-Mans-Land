@@ -15,6 +15,7 @@ import { portraitUrl } from './ui/creation.js';
 import { placeLabels } from './ui/placement.js';
 import { steelMapHtml, isSteel, coucheOf, drawSteelFog } from './ui/carte_steel.js';
 import { createVoyage } from './core/voyage.js';
+import { createMusic } from './core/ost_centre.js';
 import { createCarteNml } from './ui/carte_nml.js';
 import { ITEMS_MEGA, VALIDATION, REFUS, CONSEIL, aBillet, aImplant, PIQUE_PUCE_P_REPERE, PIQUE_PUCE_P_GRILLE } from './data/mega_line.js';
 Object.assign(ITEMS, ORIGIN_ITEMS); // v11 : objets d'origine
@@ -35,8 +36,19 @@ const editorStory=bindEditorStory(game);
 
 // lot 3 : voyage régional (les sorties régionales ouvrent la carte des No Man's Land)
 const voyage = createVoyage({ game, manifest: mapsMan });
-const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'));
 const $ = id => document.getElementById(id);
+var shell = null;
+// Un seul élément <audio> pour toute la partie : ambiance Dusk-Town hors centre, rotation partagée Groovy Crew (4 titres) sur Center-Town / Strip / Pulse Plaza / Steel Arena.
+const music = createMusic({
+  el: $('music'),
+  kSon: $('k-son'),
+  getLocation: () => game.state.location,
+  getKind: () => game.location.kind,
+  getMusicOption: () => (shell ? shell.options.music : 100),
+  isMenuOpen: () => !!shell?.isOpen(),
+});
+game.on(ev => { if (ev.type === 'transition') music.syncZone(); });
+const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'), music.ostCentre);
 let msgTimer;
 const say = t => { $('msg').textContent = t; clearTimeout(msgTimer); msgTimer = setTimeout(() => $('msg').textContent = '', 3500); };
 game.on(ev => { if (ev.text) say(ev.text); });
@@ -182,7 +194,7 @@ function trajetRame(versTerminus) { trajetEnCours = true; trajet.querySelector('
   trajet.className = 'on'; setTimeout(() => { trajet.className = 'on roule'; }, 600);
   setTimeout(() => { trajet.className = 'on'; }, 3400); setTimeout(() => { trajet.className = ''; trajetEnCours = false; say(VALIDATION(game.state)); }, 4000); }
 game.on(ev => { if (ev.type === 'transition') delete game.state.flags.ml_valide; if (ev.type === 'transition' && (ev.door === 'ml_rame_quai' || ev.door === 'tm_rame_quai')) trajetRame(ev.door === 'ml_rame_quai'); });
-window.__nml = { portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
@@ -267,24 +279,8 @@ function currentObjective() {
     const st = q.steps.filter(x => !x.show || x.show(s)).find(x => !x.done || !s.flags[x.done]); if (st) return st.text + (st.blocked ? ' (hors de portée pour l\u2019instant)' : ''); }
   return editorStory.currentObjective();
 }
-// Un seul élément <audio> pour toute la partie : jamais recréé au changement de quartier, donc aucune coupure.
-// Démarre au premier geste (règles autoplay). Atténuée en intérieur. Coupure mémorisée (localStorage).
-var music = (() => {
-  const a = $('music'), KEY = 'nml_muted'; let started = false;
-  const muted = () => localStorage.getItem(KEY) === '1';
-  const sync = () => { a.muted = muted(); $('k-son').classList.toggle('on', a.muted); $('k-son').setAttribute('aria-pressed', a.muted); $('k-son').querySelector('.sr').textContent = a.muted ? 'Muet' : 'Son'; $('k-son').querySelector('.ic').dataset.ic = a.muted ? 'son_off' : 'son_on'; };
-  const start = () => { if (started) return; started = true; a.play().catch(() => { started = false; }); };
-  addEventListener('pointerdown', start, true); addEventListener('keydown', start, true); addEventListener('touchstart', start, { capture: true, passive: true });
-  $('k-son').addEventListener('click', () => { localStorage.setItem(KEY, muted() ? '0' : '1'); sync(); });
-  addEventListener('keydown', e => { if (e.key.toLowerCase() === 's' && !e.repeat && !shell?.isOpen()) $('k-son').click(); });
-  sync();
-  return { el: a, update() { const v = (game.location.kind === 'interior' ? 0.25 : 0.55) * (shell ? shell.options.music / 100 : 1); if (Math.abs(a.volume - v) > 0.01) a.volume += Math.sign(v - a.volume) * 0.01; } };
-})();
-window.__nml.music = music.el;
-
 // ---------- v10 lot 1 : menu principal, pause, sauvegardes, options ----------
 const START_SNAP = game.snapshot(); // « Nouveau jeu » : état de départ (perso par défaut, Dusk-Town ; la création viendra au lot 2)
-var shell = null;
 function applyOptions(o) {
   const B = document.body.classList;
   B.toggle('contrast', o.contrast); B.toggle('readable', o.readable); B.toggle('reduce-motion', o.reduceMotion);
