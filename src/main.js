@@ -53,6 +53,30 @@ let msgTimer;
 const say = t => { $('msg').textContent = t; clearTimeout(msgTimer); msgTimer = setTimeout(() => $('msg').textContent = '', 3500); };
 game.on(ev => { if (ev.text) say(ev.text); });
 
+const ZOOM_KEY = 'nml_zoom', ZOOM_STEP = 0.1;
+function syncZoomUi() {
+  const z = view.zoom(), [zMin, zMax] = view.zoomBounds(), zi = $('zoom-in'), zo = $('zoom-out'), zb = $('zoom');
+  if (zi) zi.disabled = z >= zMax - 1e-4;
+  if (zo) zo.disabled = z <= zMin + 1e-4;
+  if (zb) zb.title = `Zoom ×${z.toFixed(2).replace(/\.?0+$/, '').replace('.', ',')}`;
+}
+function applyZoom(z, user = true) {
+  const v = view.setZoom(z, { user });
+  try { localStorage.setItem(ZOOM_KEY, String(v)); } catch {}
+  syncZoomUi();
+  return v;
+}
+{ const savedZ = parseFloat(localStorage.getItem(ZOOM_KEY)); if (Number.isFinite(savedZ)) view.setZoom(savedZ, { user: false }); syncZoomUi(); }
+$('zoom-in')?.addEventListener('click', () => applyZoom(Math.round((view.zoom() + ZOOM_STEP) * 100) / 100));
+$('zoom-out')?.addEventListener('click', () => applyZoom(Math.round((view.zoom() - ZOOM_STEP) * 100) / 100));
+$('zoom')?.addEventListener('wheel', e => {
+  if (shell?.isOpen() || nml.open || panelOpen || trajetEnCours) return;
+  e.preventDefault();
+  const raw = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * 300 : e.deltaY;
+  const dy = Math.max(-240, Math.min(240, raw));
+  if (dy) applyZoom(view.zoom() - dy * 0.001);
+}, { passive: false });
+
 bindPointer($('view'), (x, y) => {
   if (game.state.dialogue || shell?.isOpen() || nml.open) return;
   if (game.state.combat) { // combat C1 : premier tap = aperçu du chemin et de son coût, second tap sur la même case = confirmer
@@ -78,7 +102,7 @@ bindPointer($('view'), (x, y) => {
   else if (p.kind === 'ground') { // v7 : un tap au bout d'une rue vise la jonction (on marche jusqu'au seuil)
     const j = world.DOORS.find(d => (d.junction || d.edge) && d.location === game.state.location && Math.hypot(d.threshold.x - p.x, d.threshold.z - p.z) < 1.6);
     if (j) game.useDoor(j.id); else game.moveTo(p.x, p.z); }
-});
+}, { get: () => view.zoom(), set: z => applyZoom(z), canZoom: () => !shell?.isOpen() && !nml.open && !panelOpen && !trajetEnCours });
 
 let nearDoor = null;
 // ---------- Combat C1 : autosave juste avant, interface de combat ----------
@@ -194,7 +218,7 @@ function trajetRame(versTerminus) { trajetEnCours = true; trajet.querySelector('
   trajet.className = 'on'; setTimeout(() => { trajet.className = 'on roule'; }, 600);
   setTimeout(() => { trajet.className = 'on'; }, 3400); setTimeout(() => { trajet.className = ''; trajetEnCours = false; say(VALIDATION(game.state)); }, 4000); }
 game.on(ev => { if (ev.type === 'transition') delete game.state.flags.ml_valide; if (ev.type === 'transition' && (ev.door === 'ml_rame_quai' || ev.door === 'tm_rame_quai')) trajetRame(ev.door === 'ml_rame_quai'); });
-window.__nml = { music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
@@ -271,6 +295,11 @@ addEventListener('keydown', e => {
   if (k === 'e' && !e.repeat && !$('act').hidden) { $('act').click(); return; }
   if (panelOpen === 'carte' && isSteel(world, game.state.location) && /^(arrowup|arrowdown|pageup|pagedown)$/.test(k)) { e.preventDefault(); const c = (steelCouche || coucheOf(world, game.state.location)) + (/up$/.test(k) ? 1 : -1); steelCouche = Math.max(1, Math.min(4, c)); panelKey = ''; renderPanel(); return; }
   if (k === 'i') openPanel('sac'); if (k === 'j') openPanel('journal'); if (k === 'm') openPanel('carte'); if (k === 'h') toggleMini();
+  if (!panelOpen && !e.ctrlKey && !e.metaKey && !e.altKey && !/^(INPUT|SELECT|TEXTAREA)$/.test(e.target?.tagName || '')) {
+    if (e.key === '+' || e.key === '=') { e.preventDefault(); applyZoom(Math.round((view.zoom() + ZOOM_STEP) * 100) / 100); return; }
+    if (e.key === '-') { e.preventDefault(); applyZoom(Math.round((view.zoom() - ZOOM_STEP) * 100) / 100); return; }
+    if (e.key === '0' && !game.state.dialogue) { e.preventDefault(); applyZoom(1); return; }
+  }
 });
 
 // ---------- v9 : objectif suivi, musique de Dusk-Town ----------

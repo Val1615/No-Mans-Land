@@ -318,3 +318,16 @@ body.nml-open #msg{z-index:40} /* halte, « prototype » : au-dessus de la carte
 #trajet .tj-txt{position:absolute;left:0;right:0;bottom:18%;text-align:center;color:#f2b44a;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
 #panel .ico{width:20px;height:20px;vertical-align:middle;margin-right:5px;image-rendering:auto}
 #m-version{display:block;margin-top:6px;font-size:10px;opacity:.55;cursor:default;user-select:none;text-align:right}
+/* Zoom caméra (×0,6 … ×1,5) : deux boutons discrets semi-transparents, hors scène centrale */
+#zoom{position:fixed;right:10px;bottom:calc(53px + env(safe-area-inset-bottom,0));display:flex;gap:3px;padding:3px;border-radius:6px;background:rgba(8,6,3,.32);border:1px solid rgba(242,180,74,.22);opacity:.82;transition:opacity .2s}
+#zoom:hover,#zoom:focus-within{opacity:1}
+#zoom button{width:30px;height:30px;min-height:0;padding:0;display:grid;place-items:center;background:rgba(8,6,3,.38);border:1px solid rgba(242,180,74,.28);color:var(--c);border-radius:4px;font-size:16px;line-height:1;text-shadow:0 1px 2px #000}
+#zoom button:hover:not(:disabled),#zoom button:focus-visible{border-color:var(--c);background:rgba(242,180,74,.16);outline:0}
+#zoom button:disabled{opacity:.35;cursor:default}
+body.menu-open #zoom,body.nml-open #zoom{visibility:hidden}
+body.mini #zoom,body.panel-open #zoom{display:none}
+body.combat #zoom{bottom:calc(10px + env(safe-area-inset-bottom,0))}
+@media (max-width:600px){
+  #zoom,body.combat #zoom{right:auto;left:8px;bottom:auto;top:calc(72px + var(--pad));padding:2px}
+  #zoom button{width:30px;height:30px;font-size:17px}
+}

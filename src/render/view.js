@@ -3,6 +3,7 @@ import { UNITS } from '../data/units.js';
 import { wallsOf } from '../core/grid.js';
 import { groundTexture, margeTexture, SKIN } from './textures.js?v=editor2';
 
+export const ZOOM_MIN = 0.6, ZOOM_MAX = 1.5;
 export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = null) {
   let { LOCATIONS, DOORS, NPCS, COMPANION } = game.world;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
@@ -662,7 +663,14 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     cam.userData.zoom = null;
   }
   addEventListener('resize', resize); resize();
-  let camOverride = null, camShift = 0;
+  let camOverride = null, camShift = 0, userZoom = 1;
+  function setZoom(z, { user = true } = {}) {
+    if (!Number.isFinite(z)) return userZoom;
+    userZoom = Math.round(Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, z)) * 1000) / 1000;
+    if (user && plan > 0) { planSort = true; plan = 0; }
+    cam.userData.zoom = null;
+    return userZoom;
+  }
   let groundMesh = null, cbt = null; // combat C1 : grille, cases atteignables, chemin, unités ennemies
   function render() {
     ({ LOCATIONS, DOORS, NPCS } = game.world);
@@ -697,14 +705,23 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (planSort) plan = Math.max(0, plan - dt * 1.2);
     const CA = loc.cadre && !camOverride ? pick(loc.cadre) : null, PA = loc.cadre?.arrivee && !camOverride && plan > 0 ? pick(loc.cadre.arrivee) : null;
     const cl = (v, a, b) => Math.min(b, Math.max(a, v)), f = new THREE.Vector3(camDir.x, 0, camDir.z).normalize(), R = new THREE.Vector3(-f.z, 0, f.x);
+    const zPpm = ppm * userZoom, baseInt = Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6));
     const cadrer = (t, C, z0) => { const up = t.dot(R), wp = t.dot(f); if (C.avance) t.addScaledVector(f, C.avance);
-      if (C.u || C.w) { const u = t.dot(R), w = t.dot(f), lu = innerWidth / 2 / z0 - 1.5, lw = (innerHeight / 2 / z0 - 2) / Math.sin(pitch);
+      if (C.u || C.w) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, innerWidth / 2 / z0 - 1.5), lw = Math.max(1, (innerHeight / 2 / z0 - 2) / Math.sin(pitch));
         const u2 = cl(C.u ? cl(u, C.u[0], C.u[1]) : u, up - lu, up + lu), w2 = cl(C.w ? cl(w, C.w[0], C.w[1]) : w, wp - lw, wp + lw); t.addScaledVector(R, u2 - u).addScaledVector(f, w2 - w); }
-      if (C.x) t.x = cl(t.x, C.x[0], C.x[1]); if (C.z) t.z = cl(t.z, C.z[0], C.z[1]); return t; };
+      if (C.x) t.x = cl(t.x, C.x[0], C.x[1]); if (C.z) t.z = cl(t.z, C.z[0], C.z[1]);
+      if ((C.x || C.z) && userZoom > 1) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, innerWidth / 2 / z0 - 1.5), lw = Math.max(1, (innerHeight / 2 / z0 - 2) / Math.sin(pitch));
+        t.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w); }
+      return t; };
     let zoomCadre = null;
-    if (CA) { cadrer(target, CA, CA.ppm || ppm); zoomCadre = CA.ppm || null; }
-    if (PA) { const k = plan * plan * (3 - 2 * plan), zA = PA.ppm || ppm, tA = cadrer(new THREE.Vector3(s.player.x, 0, s.player.z), PA, zA);
-      target.lerp(tA, k); zoomCadre = 1 / ((1 - k) / (zoomCadre || ppm) + k / zA); }
+    if (CA) { const zC = (CA.ppm || ppm) * userZoom; cadrer(target, CA, zC); zoomCadre = CA.ppm ? zC : null; }
+    if (PA) { const k = plan * plan * (3 - 2 * plan), zA = PA.ppm || zPpm, tA = cadrer(new THREE.Vector3(s.player.x, 0, s.player.z), PA, zA);
+      target.lerp(tA, k); zoomCadre = 1 / ((1 - k) / (zoomCadre || zPpm) + k / zA); }
+    if (loc.kind === 'interior' && !camOverride && userZoom > 1) {
+      const zI = baseInt * userZoom, p0 = new THREE.Vector3(s.player.x, 0, s.player.z), up = p0.dot(R), wp = p0.dot(f);
+      const u = target.dot(R), w = target.dot(f), lu = Math.max(1, innerWidth / 2 / zI - 1.5), lw = Math.max(1, (innerHeight / 2 / zI - 2) / Math.sin(pitch));
+      target.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w);
+    }
     planLarge = !!PA && plan > 0.5; // plan large d'arrivée : les noms (PNJ, services) sont masqués, seules les sorties restent ; ils reviennent au premier pas
     camCible = [+target.x.toFixed(2), +target.z.toFixed(2)];
     // mobile : quand le dialogue est ouvert, le cadre remonte pour garder joueur et PNJ visibles au-dessus du panneau
@@ -717,7 +734,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     }
     camShift += (wantShift - camShift) * Math.min(1, dt * 8); if (Math.abs(wantShift - camShift) < 0.5) camShift = wantShift;
     cam.position.copy(target).addScaledVector(camDir, -80); cam.lookAt(target);
-    const zoom = camOverride?.ppm || zoomCadre || (loc.kind === 'interior' ? Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6)) : ppm);
+    const zoom = camOverride?.ppm || zoomCadre || (loc.kind === 'interior' ? baseInt * userZoom : zPpm);
     if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift || cam.userData.cx!==camOverride?.cx || cam.userData.cy!==camOverride?.cy) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; const cx=camOverride?.cx??w/2,cy=camOverride?.cy??h/2;cam.userData.cx=camOverride?.cx;cam.userData.cy=camOverride?.cy;cam.left=-cx/zoom;cam.right=(w-cx)/zoom;cam.top=(cy-camShift)/zoom;cam.bottom=-(h-cy+camShift)/zoom; cam.updateProjectionMatrix(); }
     if (exterior) { painter(); spriteOcclusion(); npcGhosts(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     combatOverlay();
@@ -737,7 +754,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (sortie && lh) ly = Math.min(innerHeight - 4, Math.max(lh + 4, ly));
       let below = false; if (npc && foot && lh && ly - lh < 4) { if (foot.y < 0 || foot.y + lh + 6 > innerHeight) { l.el.hidden = true; continue; } ly = foot.y + lh + 6; below = true; } // PNJ en haut du cadre : libellé sous ses pieds, jamais sur sa tête [Régie B]
       placed.push({ l, lx, ly, lw, lh, npc, below, foot }); }
-    const hudRects = ['hud', 'locbox', 'obj', 'msg', 'dialogue', 'panel', 'keys', 'act', 'mini', 'cbt-file', 'cbt-res', 'cbt-actions'].map(id => document.getElementById(id))
+    const hudRects = ['hud', 'locbox', 'obj', 'msg', 'dialogue', 'panel', 'keys', 'zoom', 'act', 'mini', 'cbt-file', 'cbt-res', 'cbt-actions'].map(id => document.getElementById(id))
       .filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden')
       .map(e => e.getBoundingClientRect()).filter(q => q.width > 0 && q.height > 0); // barre : son cadre entier (fond semi-transparent)
     const hits = (a, q, m = 2) => a.lx - a.lw / 2 < q.right + m && a.lx + a.lw / 2 > q.left - m && a.ly - a.lh < q.bottom + m && a.ly > q.top - m;
@@ -879,7 +896,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);
       for(const h of hits){const s=h.object;const img=s.userData.img|| (s===player?'player':s.userData.npc?NPCS.find(n=>n.id===s.userData.npc)?.sprite:null);if(img&&h.uv&&alphaAt(img,h.uv.x,h.uv.y)<.3)continue;
       return {id:s.userData.buildingId||s.userData.editorId};}return null;
-    }, joue, joueEtat, animStats, masqueEn, camCible: () => camCible, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), fenetres: fenetres.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, setCamera: o => { camOverride = o; if (!o) resize(); },
+    }, joue, joueEtat, animStats, masqueEn, camCible: () => camCible, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), fenetres: fenetres.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, zoom: () => userZoom, setZoom, zoomBounds: () => [ZOOM_MIN, ZOOM_MAX], ppm: () => cam.userData.zoom || ppm * userZoom, setCamera: o => { camOverride = o; if (!o) resize(); },
     facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
     // rectangle écran (px CSS) d'un personnage, pour les contrôles au pixel
     actorRect: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who);
