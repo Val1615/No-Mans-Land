@@ -1434,5 +1434,1392 @@
       "elevation_m": 4,
       "note": "poser pp_ecran_haut_e2 avec la même ancre au sol (48 ; 24) : le bas de ses supports tombe sur les platines laiton en haut des mâts, à 4 m"
     }
+  },
+  "pp_kiosque_3q": {
+    "file": "steel/pulse_plaza/pp_kiosque_3q.webp",
+    "px": [
+      282,
+      312
+    ],
+    "anchor": [
+      167,
+      310
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 4.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque_3q', 44, 8, 4, 4) (remplace pp_kiosque ; était 4×6)",
+    "source": "GenerateImage (cursor), 3612ba9d, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (enseigne MERCH OFFICIEL)",
+      "fenetres": "vacillement lent ambre (hors plafond mobile)"
+    },
+    "fenetres": "pp_kiosque_3q_fenetres",
+    "enseigne": "Merch officiel",
+    "neon": "pp_kiosque_3q_neon",
+    "neon_coins": [
+      [
+        34,
+        104
+      ],
+      [
+        135,
+        137
+      ],
+      [
+        135,
+        160
+      ],
+      [
+        34,
+        126
+      ]
+    ],
+    "remplace": "pp_kiosque"
+  },
+  "pp_kiosque_3q_neon": {
+    "file": "steel/pulse_plaza/pp_kiosque_3q_neon.webp",
+    "px": [
+      282,
+      312
+    ],
+    "anchor": [
+      167,
+      310
+    ],
+    "couche_de": "pp_kiosque_3q",
+    "texte": "MERCH OFFICIEL",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_kiosque_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_kiosque_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (enseigne MERCH OFFICIEL)",
+    "status": "v1"
+  },
+  "pp_kiosque_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_kiosque_3q_fenetres.webp",
+    "px": [
+      282,
+      312
+    ],
+    "anchor": [
+      167,
+      310
+    ],
+    "couche_de": "pp_kiosque_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_kiosque_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_kiosque_3q",
+    "effet_conseille": "vacillement lent ambre (hors plafond mobile)",
+    "status": "v1"
+  },
+  "pp_guerite_3q": {
+    "file": "steel/pulse_plaza/pp_guerite_3q.webp",
+    "px": [
+      282,
+      273
+    ],
+    "anchor": [
+      167,
+      271
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_guerite', 'Guérite SMPD', 'pp_guerite_3q', 0, 28, 4, 4) (remplace pp_guerite ; était 4×6)",
+    "source": "GenerateImage (cursor), cf8cc42a, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (SMPD, blanc IO)",
+      "fenetres": "vacillement lent froid",
+      "pulse": "balise toit : clignote lent hors beat ; voyants rouges discrets"
+    },
+    "fenetres": "pp_guerite_3q_fenetres",
+    "enseigne": "SMPD",
+    "neon": "pp_guerite_3q_neon",
+    "neon_coins": [
+      [
+        60,
+        106
+      ],
+      [
+        113,
+        124
+      ],
+      [
+        113,
+        142
+      ],
+      [
+        60,
+        125
+      ]
+    ],
+    "pulse": "pp_guerite_3q_pulse",
+    "remplace": "pp_guerite"
+  },
+  "pp_guerite_3q_neon": {
+    "file": "steel/pulse_plaza/pp_guerite_3q_neon.webp",
+    "px": [
+      282,
+      273
+    ],
+    "anchor": [
+      167,
+      271
+    ],
+    "couche_de": "pp_guerite_3q",
+    "texte": "SMPD",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_guerite_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_guerite_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (SMPD, blanc IO)",
+    "status": "v1"
+  },
+  "pp_guerite_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_guerite_3q_fenetres.webp",
+    "px": [
+      282,
+      273
+    ],
+    "anchor": [
+      167,
+      271
+    ],
+    "couche_de": "pp_guerite_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_guerite_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_guerite_3q",
+    "effet_conseille": "vacillement lent froid",
+    "status": "v1"
+  },
+  "pp_guerite_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_guerite_3q_pulse.webp",
+    "px": [
+      282,
+      273
+    ],
+    "anchor": [
+      167,
+      271
+    ],
+    "couche_de": "pp_guerite_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_guerite_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_guerite_3q ; pilotable sur le kick",
+    "effet_conseille": "balise toit : clignote lent hors beat ; voyants rouges discrets",
+    "status": "v1"
+  },
+  "pp_nouilles_3q": {
+    "file": "steel/pulse_plaza/pp_nouilles_3q.webp",
+    "px": [
+      282,
+      256
+    ],
+    "anchor": [
+      167,
+      254
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_nouilles', 'Stand de nouilles', 'pp_nouilles_3q', 44, 28, 4, 4) (remplace pp_nouilles ; était 4×6)",
+    "source": "GenerateImage (cursor), 2351565c, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe ou grésillement très léger (ambre)",
+      "fenetres": "flicker ambre chaud (seul coin sans écran)"
+    },
+    "fenetres": "pp_nouilles_3q_fenetres",
+    "enseigne": "Nouilles",
+    "neon": "pp_nouilles_3q_neon",
+    "neon_coins": [
+      [
+        29,
+        101
+      ],
+      [
+        133,
+        135
+      ],
+      [
+        133,
+        154
+      ],
+      [
+        29,
+        120
+      ]
+    ],
+    "remplace": "pp_nouilles"
+  },
+  "pp_nouilles_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nouilles_3q_neon.webp",
+    "px": [
+      282,
+      256
+    ],
+    "anchor": [
+      167,
+      254
+    ],
+    "couche_de": "pp_nouilles_3q",
+    "texte": "NOUILLES",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_nouilles_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_nouilles_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe ou grésillement très léger (ambre)",
+    "status": "v1"
+  },
+  "pp_nouilles_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nouilles_3q_fenetres.webp",
+    "px": [
+      282,
+      256
+    ],
+    "anchor": [
+      167,
+      254
+    ],
+    "couche_de": "pp_nouilles_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nouilles_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nouilles_3q",
+    "effet_conseille": "flicker ambre chaud (seul coin sans écran)",
+    "status": "v1"
+  },
+  "pp_billboard_3q": {
+    "file": "steel/pulse_plaza/pp_billboard_3q.webp",
+    "px": [
+      282,
+      518
+    ],
+    "anchor": [
+      167,
+      516
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 7.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard_3q', 0, 8, 4, 4) (remplace pp_billboard ; était 4×6)",
+    "source": "GenerateImage (cursor), b4e7fba3, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (logo HCM-88X)",
+      "ecran": "pages du feed / portrait Vibes — période ~9 s, sync possible avec ECRAN_FEED",
+      "pulse": "projecteurs de base : pulse sur le kick (période = 60/BPM, ~170 BPM → 0,35 s)"
+    },
+    "enseigne": "HCM-88X",
+    "neon": "pp_billboard_3q_neon",
+    "neon_coins": [
+      [
+        43,
+        439
+      ],
+      [
+        119,
+        464
+      ],
+      [
+        119,
+        489
+      ],
+      [
+        43,
+        464
+      ]
+    ],
+    "ecran_layer": "pp_billboard_3q_ecran",
+    "ecran_coins": [
+      [
+        2,
+        178
+      ],
+      [
+        212,
+        201
+      ],
+      [
+        212,
+        346
+      ],
+      [
+        2,
+        323
+      ]
+    ],
+    "pulse": "pp_billboard_3q_pulse",
+    "remplace": "pp_billboard"
+  },
+  "pp_billboard_3q_neon": {
+    "file": "steel/pulse_plaza/pp_billboard_3q_neon.webp",
+    "px": [
+      282,
+      518
+    ],
+    "anchor": [
+      167,
+      516
+    ],
+    "couche_de": "pp_billboard_3q",
+    "texte": "HCM-88X",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_billboard_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_billboard_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (logo HCM-88X)",
+    "status": "v1"
+  },
+  "pp_billboard_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_billboard_3q_ecran.webp",
+    "px": [
+      282,
+      518
+    ],
+    "anchor": [
+      167,
+      516
+    ],
+    "couche_de": "pp_billboard_3q",
+    "source": "extraction PIL des panneaux écran de pp_billboard_3q.webp",
+    "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_billboard_3q ; à piloter sur le beat (Rivet)",
+    "effet_conseille": "pages du feed / portrait Vibes — période ~9 s, sync possible avec ECRAN_FEED",
+    "status": "v1"
+  },
+  "pp_billboard_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_billboard_3q_pulse.webp",
+    "px": [
+      282,
+      518
+    ],
+    "anchor": [
+      167,
+      516
+    ],
+    "couche_de": "pp_billboard_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_billboard_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_billboard_3q ; pilotable sur le kick",
+    "effet_conseille": "projecteurs de base : pulse sur le kick (période = 60/BPM, ~170 BPM → 0,35 s)",
+    "status": "v1"
+  },
+  "pp_portique_3q": {
+    "file": "steel/pulse_plaza/pp_portique_3q.webp",
+    "px": [
+      282,
+      313
+    ],
+    "anchor": [
+      167,
+      311
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 4.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_portique', 'Portique IO', 'pp_portique_3q', 20, 0, 4, 4) (remplace pp_portique ; était 4×2)",
+    "source": "GenerateImage (cursor), 22c7e3a3, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (CONTRÔLE IO)",
+      "fenetres": "glow scanner cyan, vacillement lent",
+      "pulse": "voyants verts : pulse court sur le beat (audience sync)"
+    },
+    "fenetres": "pp_portique_3q_fenetres",
+    "enseigne": "Contrôle IO",
+    "neon": "pp_portique_3q_neon",
+    "neon_coins": [
+      [
+        51,
+        111
+      ],
+      [
+        124,
+        135
+      ],
+      [
+        124,
+        154
+      ],
+      [
+        51,
+        130
+      ]
+    ],
+    "pulse": "pp_portique_3q_pulse",
+    "remplace": "pp_portique"
+  },
+  "pp_portique_3q_neon": {
+    "file": "steel/pulse_plaza/pp_portique_3q_neon.webp",
+    "px": [
+      282,
+      313
+    ],
+    "anchor": [
+      167,
+      311
+    ],
+    "couche_de": "pp_portique_3q",
+    "texte": "CONTRÔLE IO",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_portique_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_portique_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (CONTRÔLE IO)",
+    "status": "v1"
+  },
+  "pp_portique_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_portique_3q_fenetres.webp",
+    "px": [
+      282,
+      313
+    ],
+    "anchor": [
+      167,
+      311
+    ],
+    "couche_de": "pp_portique_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_portique_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_portique_3q",
+    "effet_conseille": "glow scanner cyan, vacillement lent",
+    "status": "v1"
+  },
+  "pp_portique_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_portique_3q_pulse.webp",
+    "px": [
+      282,
+      313
+    ],
+    "anchor": [
+      167,
+      311
+    ],
+    "couche_de": "pp_portique_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_portique_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_portique_3q ; pilotable sur le kick",
+    "effet_conseille": "voyants verts : pulse court sur le beat (audience sync)",
+    "status": "v1"
+  },
+  "pp_distrib_3q": {
+    "file": "steel/pulse_plaza/pp_distrib_3q.webp",
+    "px": [
+      282,
+      305
+    ],
+    "anchor": [
+      167,
+      303
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib_3q', 40, 20, 4, 4) (remplace pp_distrib ; était 2×2)",
+    "source": "GenerateImage (cursor), 67cd0277, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "pulse lent magenta",
+      "ecran": "sourire calibré : pulse sur le kick",
+      "pulse": "bandes d’angle : balayage vertical 1 tour / 2 mesures"
+    },
+    "enseigne": "sourire calibré",
+    "neon": "pp_distrib_3q_neon",
+    "neon_coins": [
+      [
+        27,
+        166
+      ],
+      [
+        127,
+        200
+      ],
+      [
+        127,
+        225
+      ],
+      [
+        27,
+        191
+      ]
+    ],
+    "ecran_layer": "pp_distrib_3q_ecran",
+    "ecran_coins": [
+      [
+        5,
+        145
+      ],
+      [
+        273,
+        124
+      ],
+      [
+        273,
+        196
+      ],
+      [
+        5,
+        216
+      ]
+    ],
+    "pulse": "pp_distrib_3q_pulse",
+    "remplace": "pp_distrib"
+  },
+  "pp_distrib_3q_neon": {
+    "file": "steel/pulse_plaza/pp_distrib_3q_neon.webp",
+    "px": [
+      282,
+      305
+    ],
+    "anchor": [
+      167,
+      303
+    ],
+    "couche_de": "pp_distrib_3q",
+    "texte": "sourire calibré",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_distrib_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_distrib_3q ; posée en additif par view.js",
+    "effet_conseille": "pulse lent magenta",
+    "status": "v1"
+  },
+  "pp_distrib_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_distrib_3q_ecran.webp",
+    "px": [
+      282,
+      305
+    ],
+    "anchor": [
+      167,
+      303
+    ],
+    "couche_de": "pp_distrib_3q",
+    "source": "extraction PIL des panneaux écran de pp_distrib_3q.webp",
+    "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_distrib_3q ; à piloter sur le beat (Rivet)",
+    "effet_conseille": "sourire calibré : pulse sur le kick",
+    "status": "v1"
+  },
+  "pp_distrib_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_distrib_3q_pulse.webp",
+    "px": [
+      282,
+      305
+    ],
+    "anchor": [
+      167,
+      303
+    ],
+    "couche_de": "pp_distrib_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_distrib_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_distrib_3q ; pilotable sur le kick",
+    "effet_conseille": "bandes d’angle : balayage vertical 1 tour / 2 mesures",
+    "status": "v1"
+  },
+  "pp_kiosque_presse_3q": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_3q.webp",
+    "px": [
+      282,
+      242
+    ],
+    "anchor": [
+      167,
+      240
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_kiosque_presse', 'Kiosque presse', 'pp_kiosque_presse_3q', 8, 28, 4, 4) (remplace pp_kiosque_presse ; était 2×2)",
+    "source": "GenerateImage (cursor), 572a0c12, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (HOLO-PRESSE, cyan)",
+      "fenetres": "vacillement ambre comptoir",
+      "ecran": "affiche Groovy Vibes : change avec le feed (période 11 s)"
+    },
+    "fenetres": "pp_kiosque_presse_3q_fenetres",
+    "enseigne": "Holo-presse",
+    "neon": "pp_kiosque_presse_3q_neon",
+    "neon_coins": [
+      [
+        44,
+        77
+      ],
+      [
+        120,
+        102
+      ],
+      [
+        120,
+        120
+      ],
+      [
+        44,
+        95
+      ]
+    ],
+    "ecran_layer": "pp_kiosque_presse_3q_ecran",
+    "ecran_coins": [
+      [
+        12,
+        81
+      ],
+      [
+        266,
+        63
+      ],
+      [
+        266,
+        133
+      ],
+      [
+        12,
+        151
+      ]
+    ],
+    "remplace": "pp_kiosque_presse"
+  },
+  "pp_kiosque_presse_3q_neon": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_3q_neon.webp",
+    "px": [
+      282,
+      242
+    ],
+    "anchor": [
+      167,
+      240
+    ],
+    "couche_de": "pp_kiosque_presse_3q",
+    "texte": "HOLO-PRESSE",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_kiosque_presse_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_kiosque_presse_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (HOLO-PRESSE, cyan)",
+    "status": "v1"
+  },
+  "pp_kiosque_presse_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_3q_fenetres.webp",
+    "px": [
+      282,
+      242
+    ],
+    "anchor": [
+      167,
+      240
+    ],
+    "couche_de": "pp_kiosque_presse_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_kiosque_presse_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_kiosque_presse_3q",
+    "effet_conseille": "vacillement ambre comptoir",
+    "status": "v1"
+  },
+  "pp_kiosque_presse_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_3q_ecran.webp",
+    "px": [
+      282,
+      242
+    ],
+    "anchor": [
+      167,
+      240
+    ],
+    "couche_de": "pp_kiosque_presse_3q",
+    "source": "extraction PIL des panneaux écran de pp_kiosque_presse_3q.webp",
+    "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_kiosque_presse_3q ; à piloter sur le beat (Rivet)",
+    "effet_conseille": "affiche Groovy Vibes : change avec le feed (période 11 s)",
+    "status": "v1"
+  },
+  "pp_kiosque_boissons_3q": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_3q.webp",
+    "px": [
+      282,
+      252
+    ],
+    "anchor": [
+      167,
+      250
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_3q', 36, 28, 4, 4) (remplace pp_kiosque_boissons ; était 2×2)",
+    "source": "GenerateImage (cursor), 861572f9, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (HYDRATATION)",
+      "fenetres": "vacillement cyan des frigos"
+    },
+    "fenetres": "pp_kiosque_boissons_3q_fenetres",
+    "enseigne": "Hydratation",
+    "neon": "pp_kiosque_boissons_3q_neon",
+    "neon_coins": [
+      [
+        44,
+        112
+      ],
+      [
+        145,
+        145
+      ],
+      [
+        145,
+        169
+      ],
+      [
+        44,
+        135
+      ]
+    ],
+    "remplace": "pp_kiosque_boissons"
+  },
+  "pp_kiosque_boissons_3q_neon": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_3q_neon.webp",
+    "px": [
+      282,
+      252
+    ],
+    "anchor": [
+      167,
+      250
+    ],
+    "couche_de": "pp_kiosque_boissons_3q",
+    "texte": "HYDRATATION",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_kiosque_boissons_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_kiosque_boissons_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (HYDRATATION)",
+    "status": "v1"
+  },
+  "pp_kiosque_boissons_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_3q_fenetres.webp",
+    "px": [
+      282,
+      252
+    ],
+    "anchor": [
+      167,
+      250
+    ],
+    "couche_de": "pp_kiosque_boissons_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_kiosque_boissons_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_kiosque_boissons_3q",
+    "effet_conseille": "vacillement cyan des frigos",
+    "status": "v1"
+  },
+  "pp_nord_a_3q": {
+    "file": "steel/pulse_plaza/pp_nord_a_3q.webp",
+    "px": [
+      776,
+      708
+    ],
+    "anchor": [
+      661,
+      706
+    ],
+    "footprint_m": [
+      16,
+      4
+    ],
+    "height_m": 10.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_fac_n2', '', 'pp_nord_a_3q', 12, -4, 16, 4, { named: false }) (remplace pp_facade_a ; était 16×2)",
+    "source": "GenerateImage (cursor), 2e76fe03, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "pulse lent (PULSE)",
+      "fenetres": "vacillement ambre étages",
+      "ecran": "égaliseur façade : réagit au mid (pas au kick) — budget 1 calque",
+      "pulse": "bandes verticales violettes : pulse sur le kick, déphasage par travée"
+    },
+    "fenetres": "pp_nord_a_3q_fenetres",
+    "enseigne": "Pulse",
+    "neon": "pp_nord_a_3q_neon",
+    "neon_coins": [
+      [
+        273,
+        206
+      ],
+      [
+        404,
+        250
+      ],
+      [
+        404,
+        274
+      ],
+      [
+        273,
+        231
+      ]
+    ],
+    "ecran_layer": "pp_nord_a_3q_ecran",
+    "ecran_coins": [
+      [
+        28,
+        102
+      ],
+      [
+        762,
+        241
+      ],
+      [
+        762,
+        542
+      ],
+      [
+        28,
+        403
+      ]
+    ],
+    "pulse": "pp_nord_a_3q_pulse",
+    "remplace": "pp_facade_a"
+  },
+  "pp_nord_a_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_a_3q_neon.webp",
+    "px": [
+      776,
+      708
+    ],
+    "anchor": [
+      661,
+      706
+    ],
+    "couche_de": "pp_nord_a_3q",
+    "texte": "PULSE",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_nord_a_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_nord_a_3q ; posée en additif par view.js",
+    "effet_conseille": "pulse lent (PULSE)",
+    "status": "v1"
+  },
+  "pp_nord_a_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_a_3q_fenetres.webp",
+    "px": [
+      776,
+      708
+    ],
+    "anchor": [
+      661,
+      706
+    ],
+    "couche_de": "pp_nord_a_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nord_a_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nord_a_3q",
+    "effet_conseille": "vacillement ambre étages",
+    "status": "v1"
+  },
+  "pp_nord_a_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_nord_a_3q_ecran.webp",
+    "px": [
+      776,
+      708
+    ],
+    "anchor": [
+      661,
+      706
+    ],
+    "couche_de": "pp_nord_a_3q",
+    "source": "extraction PIL des panneaux écran de pp_nord_a_3q.webp",
+    "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_nord_a_3q ; à piloter sur le beat (Rivet)",
+    "effet_conseille": "égaliseur façade : réagit au mid (pas au kick) — budget 1 calque",
+    "status": "v1"
+  },
+  "pp_nord_a_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_a_3q_pulse.webp",
+    "px": [
+      776,
+      708
+    ],
+    "anchor": [
+      661,
+      706
+    ],
+    "couche_de": "pp_nord_a_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_nord_a_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_nord_a_3q ; pilotable sur le kick",
+    "effet_conseille": "bandes verticales violettes : pulse sur le kick, déphasage par travée",
+    "status": "v1"
+  },
+  "pp_nord_b_3q": {
+    "file": "steel/pulse_plaza/pp_nord_b_3q.webp",
+    "px": [
+      447,
+      571
+    ],
+    "anchor": [
+      332,
+      569
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 8.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_fac_n4', '', 'pp_nord_b_3q', 28, -4, 8, 4, { named: false }) (remplace pp_facade_b ; était 8×1,5)",
+    "source": "GenerateImage (cursor), 6bc34ca3, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (LOUNGE)",
+      "fenetres": "vacillement ambre",
+      "pulse": "bandes magenta : pulse doux 1/2 kick"
+    },
+    "fenetres": "pp_nord_b_3q_fenetres",
+    "enseigne": "Lounge",
+    "neon": "pp_nord_b_3q_neon",
+    "neon_coins": [
+      [
+        94,
+        226
+      ],
+      [
+        242,
+        275
+      ],
+      [
+        242,
+        307
+      ],
+      [
+        94,
+        258
+      ]
+    ],
+    "pulse": "pp_nord_b_3q_pulse",
+    "remplace": "pp_facade_b"
+  },
+  "pp_nord_b_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_b_3q_neon.webp",
+    "px": [
+      447,
+      571
+    ],
+    "anchor": [
+      332,
+      569
+    ],
+    "couche_de": "pp_nord_b_3q",
+    "texte": "LOUNGE",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_nord_b_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_nord_b_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (LOUNGE)",
+    "status": "v1"
+  },
+  "pp_nord_b_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_b_3q_fenetres.webp",
+    "px": [
+      447,
+      571
+    ],
+    "anchor": [
+      332,
+      569
+    ],
+    "couche_de": "pp_nord_b_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nord_b_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nord_b_3q",
+    "effet_conseille": "vacillement ambre",
+    "status": "v1"
+  },
+  "pp_nord_b_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_b_3q_pulse.webp",
+    "px": [
+      447,
+      571
+    ],
+    "anchor": [
+      332,
+      569
+    ],
+    "couche_de": "pp_nord_b_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_nord_b_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_nord_b_3q ; pilotable sur le kick",
+    "effet_conseille": "bandes magenta : pulse doux 1/2 kick",
+    "status": "v1"
+  },
+  "pp_nord_c_3q": {
+    "file": "steel/pulse_plaza/pp_nord_c_3q.webp",
+    "px": [
+      611,
+      632
+    ],
+    "anchor": [
+      496,
+      630
+    ],
+    "footprint_m": [
+      12,
+      4
+    ],
+    "height_m": 10.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_fac_n1', '', 'pp_nord_c_3q', 0, -4, 12, 4, { named: false }) et B('pp_fac_n3', '', 'pp_nord_c_3q', 36, -4, 12, 4, { named: false }) (remplace pp_facade_c ; était 12×1,5)",
+    "source": "GenerateImage (cursor), 93177240, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "fenetres": "vacillement ambre / blanc chaud",
+      "ecran": "bande visualizer : sync kick",
+      "pulse": "filets verticaux : balayage sur la mesure"
+    },
+    "fenetres": "pp_nord_c_3q_fenetres",
+    "neon": null,
+    "ecran_layer": "pp_nord_c_3q_ecran",
+    "ecran_coins": [
+      [
+        2,
+        71
+      ],
+      [
+        595,
+        165
+      ],
+      [
+        595,
+        541
+      ],
+      [
+        2,
+        446
+      ]
+    ],
+    "pulse": "pp_nord_c_3q_pulse",
+    "remplace": "pp_facade_c"
+  },
+  "pp_nord_c_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_c_3q_fenetres.webp",
+    "px": [
+      611,
+      632
+    ],
+    "anchor": [
+      496,
+      630
+    ],
+    "couche_de": "pp_nord_c_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nord_c_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nord_c_3q",
+    "effet_conseille": "vacillement ambre / blanc chaud",
+    "status": "v1"
+  },
+  "pp_nord_c_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_nord_c_3q_ecran.webp",
+    "px": [
+      611,
+      632
+    ],
+    "anchor": [
+      496,
+      630
+    ],
+    "couche_de": "pp_nord_c_3q",
+    "source": "extraction PIL des panneaux écran de pp_nord_c_3q.webp",
+    "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_nord_c_3q ; à piloter sur le beat (Rivet)",
+    "effet_conseille": "bande visualizer : sync kick",
+    "status": "v1"
+  },
+  "pp_nord_c_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_c_3q_pulse.webp",
+    "px": [
+      611,
+      632
+    ],
+    "anchor": [
+      496,
+      630
+    ],
+    "couche_de": "pp_nord_c_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_nord_c_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_nord_c_3q ; pilotable sur le kick",
+    "effet_conseille": "filets verticaux : balayage sur la mesure",
+    "status": "v1"
+  },
+  "pp_ouest_a_3q": {
+    "file": "steel/pulse_plaza/pp_ouest_a_3q.webp",
+    "px": [
+      509,
+      674
+    ],
+    "anchor": [
+      167,
+      672
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 10.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_fac_o1', '', 'pp_ouest_a_3q', -4, 0, 4, 12, { named: false }) (remplace pp_facade_a_o ; était 2×12) ; laisse libre l'accès ouest z 12–16",
+    "source": "GenerateImage (cursor), 0406f47b, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "fenetres": "vacillement ambre",
+      "ecran": "écran égaliseur : sync kick",
+      "pulse": "bandes violettes : pulse kick, décalé vs nord"
+    },
+    "fenetres": "pp_ouest_a_3q_fenetres",
+    "neon": null,
+    "ecran_layer": "pp_ouest_a_3q_ecran",
+    "ecran_coins": [
+      [
+        38,
+        263
+      ],
+      [
+        449,
+        108
+      ],
+      [
+        449,
+        356
+      ],
+      [
+        38,
+        511
+      ]
+    ],
+    "pulse": "pp_ouest_a_3q_pulse",
+    "remplace": "pp_facade_a_o"
+  },
+  "pp_ouest_a_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_ouest_a_3q_fenetres.webp",
+    "px": [
+      509,
+      674
+    ],
+    "anchor": [
+      167,
+      672
+    ],
+    "couche_de": "pp_ouest_a_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_ouest_a_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_ouest_a_3q",
+    "effet_conseille": "vacillement ambre",
+    "status": "v1"
+  },
+  "pp_ouest_a_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_ouest_a_3q_ecran.webp",
+    "px": [
+      509,
+      674
+    ],
+    "anchor": [
+      167,
+      672
+    ],
+    "couche_de": "pp_ouest_a_3q",
+    "source": "extraction PIL des panneaux écran de pp_ouest_a_3q.webp",
+    "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_ouest_a_3q ; à piloter sur le beat (Rivet)",
+    "effet_conseille": "écran égaliseur : sync kick",
+    "status": "v1"
+  },
+  "pp_ouest_a_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ouest_a_3q_pulse.webp",
+    "px": [
+      509,
+      674
+    ],
+    "anchor": [
+      167,
+      672
+    ],
+    "couche_de": "pp_ouest_a_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_ouest_a_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_ouest_a_3q ; pilotable sur le kick",
+    "effet_conseille": "bandes violettes : pulse kick, décalé vs nord",
+    "status": "v1"
+  },
+  "pp_ouest_b_3q": {
+    "file": "steel/pulse_plaza/pp_ouest_b_3q.webp",
+    "px": [
+      396,
+      576
+    ],
+    "anchor": [
+      167,
+      573
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 8.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_fac_o2', '', 'pp_ouest_b_3q', -4, 16, 4, 8, { named: false }) et B('pp_fac_o3', '', 'pp_ouest_b_3q', -4, 24, 4, 8, { named: false }) (remplace pp_facade_b_o2 ; était 1,5×8)",
+    "source": "GenerateImage (cursor), 1cb7b20c, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "fenetres": "vacillement ambre léger",
+      "pulse": "liserés cyan des baies : pulse 1/2 kick"
+    },
+    "fenetres": "pp_ouest_b_3q_fenetres",
+    "neon": null,
+    "pulse": "pp_ouest_b_3q_pulse",
+    "remplace": "pp_facade_b_o2"
+  },
+  "pp_ouest_b_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_ouest_b_3q_fenetres.webp",
+    "px": [
+      396,
+      576
+    ],
+    "anchor": [
+      167,
+      573
+    ],
+    "couche_de": "pp_ouest_b_3q",
+    "source": "extraction PIL des fenêtres/vitrines chaudes de pp_ouest_b_3q.webp",
+    "note": "calque fenêtres allumées seules, même taille et même ancre que pp_ouest_b_3q",
+    "effet_conseille": "vacillement ambre léger",
+    "status": "v1"
+  },
+  "pp_ouest_b_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ouest_b_3q_pulse.webp",
+    "px": [
+      396,
+      576
+    ],
+    "anchor": [
+      167,
+      573
+    ],
+    "couche_de": "pp_ouest_b_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_ouest_b_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_ouest_b_3q ; pilotable sur le kick",
+    "effet_conseille": "liserés cyan des baies : pulse 1/2 kick",
+    "status": "v1"
+  },
+  "pp_ecran_feed_3q": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_3q.webp",
+    "px": [
+      941,
+      672
+    ],
+    "anchor": [
+      826,
+      670
+    ],
+    "footprint_m": [
+      20,
+      4
+    ],
+    "height_m": 8.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED }) (remplace pp_ecran_feed ; zone écran vide pour le code)",
+    "source": "GenerateImage (cursor), 392e6fa6, réf. pulse_a/pulse_b + recalage PIL 3/4",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (FEED 24/7)",
+      "ecran": "zone vide : contenu dessiné par le code (ECRAN_FEED) — opacity pulse léger sur Audience sync",
+      "pulse": "filets magentas du cadre + tirets cyan : pulse fort sur le kick ; budget prioritaire"
+    },
+    "enseigne": "Feed 24/7",
+    "neon": "pp_ecran_feed_3q_neon",
+    "neon_coins": [
+      [
+        248,
+        387
+      ],
+      [
+        580,
+        497
+      ],
+      [
+        580,
+        516
+      ],
+      [
+        248,
+        406
+      ]
+    ],
+    "ecran_layer": "pp_ecran_feed_3q_ecran",
+    "ecran_coins": [
+      [
+        36,
+        124
+      ],
+      [
+        899,
+        334
+      ],
+      [
+        899,
+        588
+      ],
+      [
+        36,
+        378
+      ]
+    ],
+    "pulse": "pp_ecran_feed_3q_pulse",
+    "remplace": "pp_ecran_feed"
+  },
+  "pp_ecran_feed_3q_neon": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_3q_neon.webp",
+    "px": [
+      941,
+      672
+    ],
+    "anchor": [
+      826,
+      670
+    ],
+    "couche_de": "pp_ecran_feed_3q",
+    "texte": "FEED 24/7",
+    "source": "extraction PIL de l'enseigne lumineuse de pp_ecran_feed_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que pp_ecran_feed_3q ; posée en additif par view.js",
+    "effet_conseille": "fixe (FEED 24/7)",
+    "status": "v1"
+  },
+  "pp_ecran_feed_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_3q_ecran.webp",
+    "px": [
+      941,
+      672
+    ],
+    "anchor": [
+      826,
+      670
+    ],
+    "couche_de": "pp_ecran_feed_3q",
+    "source": "extraction PIL des panneaux écran de pp_ecran_feed_3q.webp",
+    "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_ecran_feed_3q ; à piloter sur le beat (Rivet)",
+    "effet_conseille": "zone vide : contenu dessiné par le code (ECRAN_FEED) — opacity pulse léger sur Audience sync",
+    "status": "v1"
+  },
+  "pp_ecran_feed_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_3q_pulse.webp",
+    "px": [
+      941,
+      672
+    ],
+    "anchor": [
+      826,
+      670
+    ],
+    "couche_de": "pp_ecran_feed_3q",
+    "source": "extraction PIL des bandes lumineuses / balises de pp_ecran_feed_3q.webp",
+    "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_ecran_feed_3q ; pilotable sur le kick",
+    "effet_conseille": "filets magentas du cadre + tirets cyan : pulse fort sur le kick ; budget prioritaire",
+    "status": "v1"
   }
 }

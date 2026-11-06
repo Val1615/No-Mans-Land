@@ -124,3 +124,74 @@ Clé de sprite `gen_pp_<id>`. Aucun d'eux n'est Vibes ni Tron, aucun ne cite d'i
 
 ## Concept arts
 Dans `concepts/` : `maquette_pulse_plaza_a.jpg` et `maquette_pulse_plaza_iso.jpg`. Ce sont des **maquettes générées**, des références d'ambiance, **pas des captures du jeu**. Elles ne fixent ni le plan ni les positions.
+
+
+## Bâtiments complets (3/4)
+
+Statut : **proposition d'Ocre**, à poser par Rivet. Même méthode que les `fs_*_3q` du Strip et les `ar_*_3q` de l'Arena (`7e5478b`, posée en `da2c189`). Valentin a rejeté les façades plates : chaque bâtiment est un seul sprite en 3/4 (façade + retour + toit peints ensemble), plus des calques additifs de même taille et même ancre.
+
+Pour Pulse Plaza, le décor doit **réagir au rythme** de la playlist commune (Center-Town / Strip / Pulse / Arena). En plus de `_3q_neon` et `_3q_fenetres` (déjà lus par `view.js`), ce lot ajoute `_3q_ecran` (panneaux / zone écran) et `_3q_pulse` (bandes, balises, projecteurs) à brancher côté code sur le beat.
+
+Les murets sud/est (`pp_muret*`), lampadaires, bancs, caméras, statues, jardinieres, Holo-Tron et écrans hauts `pp_ecran_haut_*` **restent**. Les façades plates `pp_facade_*` et les stands plats sont remplacés à la pose par les `*_3q` (clés anciennes conservées, non modifiées).
+
+### Géométrie
+- 50 px/m ; façade rue (face x) = W × 41,21 px ; retour (face z) = D × 28,32 px ; pentes 0,33 / 0,70.
+- Ancre au pied du coin avant sud-est `(x+W ; z+D)`.
+- Emprises en multiples de 4 m, profondeur min 4 m (les façades nord/ouest passent de 1,5–2 m à 4 m).
+- Palette : anthracite + ambre / blanc chaud + accents violet/magenta/cyan (réfs de direction seulement : `nml-refs/pulse_plaza/pulse_a.png`, `pulse_b.png`). Éviter une place uniformément violette.
+
+### Tableau
+
+| clé `_3q` | remplace | enseigne | px | ancre | emprise | h (m) | pose | calques |
+|---|---|---|---|---|---|---|---|---|
+| `pp_kiosque_3q` | pp_kiosque (4×6) | « Merch officiel » | 282 × 312 | [167, 310] | 4 × 4 m | 4,0 | `B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque_3q', 44, 8, 4, 4)` | `_neon`, `_fenetres` |
+| `pp_guerite_3q` | pp_guerite (4×6) | « SMPD » | 282 × 273 | [167, 271] | 4 × 4 m | 3,5 | `B('pp_guerite', 'Guérite SMPD', 'pp_guerite_3q', 0, 28, 4, 4)` | `_neon`, `_fenetres`, `_pulse` |
+| `pp_nouilles_3q` | pp_nouilles (4×6) | « Nouilles » | 282 × 256 | [167, 254] | 4 × 4 m | 3,2 | `B('pp_nouilles', 'Stand de nouilles', 'pp_nouilles_3q', 44, 28, 4, 4)` | `_neon`, `_fenetres` |
+| `pp_billboard_3q` | pp_billboard (4×6) | « HCM-88X » | 282 × 518 | [167, 516] | 4 × 4 m | 7,0 | `B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard_3q', 0, 8, 4, 4)` | `_neon`, `_ecran`, `_pulse` |
+| `pp_portique_3q` | pp_portique (4×2) | « Contrôle IO » | 282 × 313 | [167, 311] | 4 × 4 m | 4,0 | `B('pp_portique', 'Portique IO', 'pp_portique_3q', 20, 0, 4, 4)` | `_neon`, `_fenetres`, `_pulse` |
+| `pp_distrib_3q` | pp_distrib (2×2) | « sourire calibré » | 282 × 305 | [167, 303] | 4 × 4 m | 2,8 | `B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib_3q', 40, 20, 4, 4)` | `_neon`, `_ecran`, `_pulse` |
+| `pp_kiosque_presse_3q` | pp_kiosque_presse (2×2) | « Holo-presse » | 282 × 242 | [167, 240] | 4 × 4 m | 3,0 | `B('pp_kiosque_presse', 'Kiosque presse', 'pp_kiosque_presse_3q', 8, 28, 4, 4)` | `_neon`, `_fenetres`, `_ecran` |
+| `pp_kiosque_boissons_3q` | pp_kiosque_boissons (2×2) | « Hydratation » | 282 × 252 | [167, 250] | 4 × 4 m | 3,0 | `B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_3q', 36, 28, 4, 4)` | `_neon`, `_fenetres` |
+| `pp_nord_a_3q` | pp_facade_a (16×2) | « Pulse » | 776 × 708 | [661, 706] | 16 × 4 m | 10,0 | `B('pp_fac_n2', '', 'pp_nord_a_3q', 12, -4, 16, 4, { named: false })` | `_neon`, `_fenetres`, `_ecran`, `_pulse` |
+| `pp_nord_b_3q` | pp_facade_b (8×1,5) | « Lounge » | 447 × 571 | [332, 569] | 8 × 4 m | 8,0 | `B('pp_fac_n4', '', 'pp_nord_b_3q', 28, -4, 8, 4, { named: false })` | `_neon`, `_fenetres`, `_pulse` |
+| `pp_nord_c_3q` | pp_facade_c (12×1,5) | « *(sans enseigne)* » | 611 × 632 | [496, 630] | 12 × 4 m | 10,0 | `B('pp_fac_n1', '', 'pp_nord_c_3q', 0, -4, 12, 4, { named: false }) (+ `pp_fac_n3` en x 36)` | `_fenetres`, `_ecran`, `_pulse` |
+| `pp_ouest_a_3q` | pp_facade_a_o (2×12) | « *(sans enseigne)* » | 509 × 674 | [167, 672] | 4 × 12 m | 10,0 | `B('pp_fac_o1', '', 'pp_ouest_a_3q', -4, 0, 4, 12, { named: false })` | `_fenetres`, `_ecran`, `_pulse` |
+| `pp_ouest_b_3q` | pp_facade_b_o2 (1,5×8) | « *(sans enseigne)* » | 396 × 576 | [167, 573] | 4 × 8 m | 8,0 | `B('pp_fac_o2', '', 'pp_ouest_b_3q', -4, 16, 4, 8, { named: false }) (+ `pp_fac_o3` en z 24)` | `_fenetres`, `_pulse` |
+| `pp_ecran_feed_3q` | pp_ecran_feed | « Feed 24/7 » | 941 × 672 | [826, 670] | 20 × 4 m | 8,0 | `B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED })` | `_neon`, `_ecran`, `_pulse` |
+
+### Calques rythmiques (effets conseillés)
+
+| bâtiment | `_neon` | `_fenetres` | `_ecran` | `_pulse` |
+|---|---|---|---|---|
+| `pp_kiosque_3q` | fixe (enseigne MERCH OFFICIEL) | vacillement lent ambre (hors plafond mobile) | — | — |
+| `pp_guerite_3q` | fixe (SMPD, blanc IO) | vacillement lent froid | — | balise toit : clignote lent hors beat ; voyants rouges discrets |
+| `pp_nouilles_3q` | fixe ou grésillement très léger (ambre) | flicker ambre chaud (seul coin sans écran) | — | — |
+| `pp_billboard_3q` | fixe (logo HCM-88X) | — | pages du feed / portrait Vibes — période ~9 s, sync possible avec ECRAN_FEED | projecteurs de base : pulse sur le kick (période = 60/BPM, ~170 BPM → 0,35 s) |
+| `pp_portique_3q` | fixe (CONTRÔLE IO) | glow scanner cyan, vacillement lent | — | voyants verts : pulse court sur le beat (audience sync) |
+| `pp_distrib_3q` | pulse lent magenta | — | sourire calibré : pulse sur le kick | bandes d’angle : balayage vertical 1 tour / 2 mesures |
+| `pp_kiosque_presse_3q` | fixe (HOLO-PRESSE, cyan) | vacillement ambre comptoir | affiche Groovy Vibes : change avec le feed (période 11 s) | — |
+| `pp_kiosque_boissons_3q` | fixe (HYDRATATION) | vacillement cyan des frigos | — | — |
+| `pp_nord_a_3q` | pulse lent (PULSE) | vacillement ambre étages | égaliseur façade : réagit au mid (pas au kick) — budget 1 calque | bandes verticales violettes : pulse sur le kick, déphasage par travée |
+| `pp_nord_b_3q` | fixe (LOUNGE) | vacillement ambre | — | bandes magenta : pulse doux 1/2 kick |
+| `pp_nord_c_3q` | — | vacillement ambre / blanc chaud | bande visualizer : sync kick | filets verticaux : balayage sur la mesure |
+| `pp_ouest_a_3q` | — | vacillement ambre | écran égaliseur : sync kick | bandes violettes : pulse kick, décalé vs nord |
+| `pp_ouest_b_3q` | — | vacillement ambre léger | — | liserés cyan des baies : pulse 1/2 kick |
+| `pp_ecran_feed_3q` | fixe (FEED 24/7) | — | zone vide : contenu dessiné par le code (ECRAN_FEED) — opacity pulse léger sur Audience sync | filets magentas du cadre + tirets cyan : pulse fort sur le kick ; budget prioritaire |
+
+### Budget d'animation mobile (proposition)
+- `view.js` charge déjà `*_neon` et `*_fenetres` hors plafond `animStats.on` (8).
+- **Nouveaux** `*_ecran` et `*_pulse` : à brancher comme les enseignes (additif, une couleur/opacité par image). Compter dans `animStats.enseignes` ou une catégorie `pulse`.
+- Sur mobile : garder actifs en priorité `pp_ecran_feed_3q_pulse`, `pp_nord_a_3q_pulse`, `pp_billboard_3q_ecran` ; les autres `_pulse` / `_ecran` peuvent tomber en fixe si `animStats` dépasse.
+- BPM cible playlist commune ~170 : période kick ≈ 0,35 s ; ne pas animer plus d'un calque « fort » par bâtiment.
+
+### À faire côté code (Rivet)
+1. Remplacer les sprites plats des stands et les façades `pp_facade_*` / `pp_facade_*_o` par les appels `B(...)` du tableau (emprises en multiples de 4 m, profondeur min 4 m).
+2. Nord : fronts à z 0 (emprise z −4→0). Ouest : fronts à x 0 (emprise x −4→0) ; **laisser libre** l'accès ouest z 12–16.
+3. `*_neon` / `*_fenetres` : chargement auto actuel dès que `b.sprite` vaut `<clé>_3q`.
+4. Brancher `*_ecran` et `*_pulse` (additif, effets du tableau) ; pour `pp_ecran_feed_3q`, conserver `ECRAN_FEED` — mettre à jour `ecran_coins` d'après le manifeste si besoin.
+5. Recaler PNJ / figurants / lueurs autour des nouvelles emprises 4×4 (stands) et des bords 4 m de profondeur.
+6. Vérifier les trois accès (ouest, Strip, escalier sud) : aucun écran ni emprise ne doit les gêner.
+
+### Planches
+- `/workspace/nml-shots/pulse_3q.png` (maquette iso de la place avec les 14 bâtiments espacés comme en jeu, pas une capture)
+- `/workspace/nml-shots/pulse_3q_zoom.png` (gros plan 1:1 de 4 bâtiments avec calques)
