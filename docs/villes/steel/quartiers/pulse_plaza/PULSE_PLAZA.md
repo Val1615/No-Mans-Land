@@ -215,3 +215,74 @@ Les murets sud/est (`pp_muret*`), lampadaires, bancs, caméras, statues, jardini
 ## Playlist OST commune (`fecc483` / `27b3f1f`, `src/core/ost_centre.js`)
 - Playlist commune Groovy Crew posée sur `main` en `27b3f1f` (4 titres MP3 `assets/audio/ost_centre/`, pack `fecc483`) et partagée en singleton entre Center-Town, Fréquence Strip, Pulse Plaza et Steel Arena (aucune coupure ni remise à zéro aux changements de zone). L'API Web Audio `window.__nml.ostCentre` (`beat`, `energy`, `bass`, `mid`, `high`, `kick`, `onKick`) pilote en direct les calques `*_3q_ecran` et `*_3q_pulse` de Pulse Plaza.
 
+## Bâtiments festifs v2 (`*_v2_3q`) [proposition Ocre 2026-11-06]
+Direction : place de divertissement chic 2175 (verre, LED, courbes, auvents lumineux, hologrammes, végétal). Palette variée magenta / ambre / blanc chaud / touches cyan — pas uniformément violet. Moins de tuyaux, béton brut et rayures de danger.
+**Règle Rivet** : mêmes emprises que les `*_3q` actuels ; remplacer uniquement la clé sprite. Anciennes clés `*_3q` marquées `"obsolete": true` (autres champs inchangés).
+
+| clé | px | ancre | emprise W×D | h (m) | appel B(...) proposé | calques |
+|---|---|---|---|---|---|---|
+| `pp_nord_a_v2_3q` | 776 × 711 | [661, 709] | 16 × 4 m | 10.0 | `B('pp_fac_n2', '', 'pp_nord_a_v2_3q', 12, -4, 16, 4, { named: false })` | `_neon`, `_fenetres`, `_ecran`, `_pulse`, `_pulse_b` |
+| `pp_nord_b_v2_3q` | 447 × 559 | [332, 557] | 8 × 4 m | 8.0 | `B('pp_fac_n4', '', 'pp_nord_b_v2_3q', 28, -4, 8, 4, { named: false })` | `_neon`, `_fenetres`, `_pulse`, `_pulse_b` |
+| `pp_nord_c2_v2_3q` | 611 × 652 | [496, 650] | 12 × 4 m | 10.0 | `B('pp_fac_n1', '', 'pp_nord_c2_v2_3q', 0, -4, 12, 4, { named: false })` | `_neon`, `_fenetres`, `_ecran`, `_pulse`, `_pulse_b` |
+| `pp_nord_c3_v2_3q` | 611 × 708 | [496, 706] | 12 × 4 m | 10.0 | `B('pp_fac_n3', '', 'pp_nord_c3_v2_3q', 36, -4, 12, 4, { named: false })` | `_neon`, `_fenetres`, `_ecran`, `_pulse`, `_pulse_b` |
+| `pp_ouest_a_v2_3q` | 509 × 664 | [167, 662] | 4 × 12 m | 10.0 | `B('pp_fac_o1', '', 'pp_ouest_a_v2_3q', -4, 0, 4, 12, { named: false })` | `_fenetres`, `_ecran`, `_pulse`, `_pulse_b` |
+| `pp_ouest_b_v2_3q` | 396 × 503 | [167, 499] | 4 × 8 m | 8.0 | `B('pp_fac_o2', '', 'pp_ouest_b_v2_3q', -4, 16, 4, 8, { named: false }) ; B('pp_fac_o3', '', 'pp_ouest_b_v2_3q', -4, 24, 4, 8, { named: false })` | `_fenetres`, `_pulse`, `_pulse_b` |
+| `pp_ecran_feed_v2_3q` | 941 × 623 | [826, 621] | 20 × 4 m | 8.0 | `B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_v2_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED })` | `_neon`, `_ecran`, `_pulse`, `_pulse_b` |
+| `pp_billboard_v2_3q` | 282 × 409 | [167, 407] | 4 × 4 m | 7.0 | `B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard_v2_3q', 0, 8, 4, 4)` | `_neon`, `_ecran`, `_pulse`, `_pulse_b` |
+| `pp_kiosque_v2_3q` | 282 × 255 | [167, 253] | 4 × 4 m | 4.0 | `B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque_v2_3q', 44, 8, 4, 4)` | `_neon`, `_fenetres`, `_pulse`, `_pulse_b` |
+| `pp_nouilles_v2_3q` | 282 × 211 | [167, 209] | 4 × 4 m | 3.2 | `B('pp_nouilles', 'Stand de nouilles', 'pp_nouilles_v2_3q', 44, 28, 4, 4)` | `_neon`, `_fenetres` |
+| `pp_kiosque_presse_v2_3q` | 282 × 230 | [167, 228] | 4 × 4 m | 3.0 | `B('pp_kiosque_presse', 'Kiosque presse', 'pp_kiosque_presse_v2_3q', 8, 28, 4, 4)` | `_neon`, `_fenetres`, `_ecran`, `_pulse`, `_pulse_b` |
+| `pp_kiosque_boissons_v2_3q` | 282 × 228 | [167, 226] | 4 × 4 m | 3.0 | `B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_v2_3q', 36, 28, 4, 4)` | `_neon`, `_fenetres`, `_pulse`, `_pulse_b` |
+| `pp_portique_v2_3q` | 282 × 247 | [167, 245] | 4 × 4 m | 4.0 | `B('pp_portique', 'Portique IO', 'pp_portique_v2_3q', 20, 0, 4, 4)` | `_neon`, `_fenetres`, `_pulse`, `_pulse_b` |
+| `pp_distrib_v2_3q` | 282 × 231 | [167, 229] | 4 × 4 m | 2.8 | `B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib_v2_3q', 40, 20, 4, 4)` | `_neon`, `_ecran`, `_pulse`, `_pulse_b` |
+
+### Props rythmiques neufs
+| clé | px | ancre | emprise (x,z,w,d) | appel B(...) | notes |
+|---|---|---|---|---|---|
+| `pp_dalle_pulse_a_3q` | 282×216 | [167, 213] | (22,12,4,4) | `B('pp_dalle_pa0', '', 'pp_dalle_pulse_a_3q', 22, 12, 4, 4, { solid: [], named: false, fond: true })` | `_pulse`, `_pulse_b` |
+| `pp_dalle_pulse_b_3q` | 282×212 | [167, 210] | (26,12,4,4) | `B('pp_dalle_pb0', '', 'pp_dalle_pulse_b_3q', 26, 12, 4, 4, { solid: [], named: false, fond: true })` | `_pulse`, `_pulse_b` |
+| `pp_totem_pulse_3q` | 143×268 | [84, 266] | (18,18,2,2) | `B('pp_totem0', '', 'pp_totem_pulse_3q', 18, 18, 2, 2, { named: false })` | `_pulse`, `_pulse_b` |
+| `pp_arche_holo_3q` | 308×366 | [249, 364] | (21,4,6,2) | `B('pp_arche0', '', 'pp_arche_holo_3q', 21, 10, 6, 2, { solid: [], named: false })` | `_pulse`, `_pulse_b` |
+| `pp_enceinte_pulse_3q` | 143×224 | [84, 222] | (16,22,2,2) | `B('pp_ence0', '', 'pp_enceinte_pulse_3q', 16, 22, 2, 2, { named: false })` | `_pulse`, `_pulse_b` |
+| `pp_pont_projecteurs_3q` | 391×544 | [332, 540] | (10,20,8,2) | `B('pp_pont0', '', 'pp_pont_projecteurs_3q', 10, 20, 8, 2, { solid: [], named: false })` | `_pulse`, `_pulse_b` |
+
+Dalles : répéter en piste sur l’allée centrale (x 22–30, z 12–20), variantes a (magenta/kick) et b (ambre/mid) en damier. Totems additionnels proposés en (28,18) et (28,22). Enceinte miroir en (30,22).
+
+### Calques rythmiques — bandes & priorité mobile
+| calque | bande | effet | priorité mobile (1=garder) |
+|---|---|---|---|
+| `pp_nord_a_v2_3q_pulse` | kick | bandes LED verticales + waveform façade : flash kick | 1 |
+| `pp_nord_a_v2_3q_pulse_b` | mid | égaliseur façade / ambre intérieur décalé 1/2 mesure | 3 |
+| `pp_nord_a_v2_3q_ecran` | mid | bande waveform sync mid | 2 |
+| `pp_nord_b_v2_3q_pulse` | kick | liserés magenta auvents : pulse doux 1/2 kick | 3 |
+| `pp_nord_c2_v2_3q_pulse` | kick | ruban LED visualizer entre étages | 2 |
+| `pp_nord_c2_v2_3q_ecran` | mid | bande fréquence | 3 |
+| `pp_nord_c3_v2_3q_pulse` | kick | néons d’arcade + auvent entrée | 2 |
+| `pp_nord_c3_v2_3q_ecran` | aigus | écrans verticaux latéraux scintillent | 3 |
+| `pp_ouest_a_v2_3q_pulse` | kick | bandes coin tour vitrée | 2 |
+| `pp_ouest_a_v2_3q_ecran` | mid | écran façade waveform | 3 |
+| `pp_ouest_b_v2_3q_pulse` | kick | liserés cyan des baies | 3 |
+| `pp_ecran_feed_v2_3q_pulse` | kick | cadre magenta + tirets cyan : pulse fort | 1 |
+| `pp_ecran_feed_v2_3q_ecran` | mid | zone vide code / opacity Audience sync | 1 |
+| `pp_billboard_v2_3q_pulse` | kick | projecteurs socle + cadre néon | 1 |
+| `pp_billboard_v2_3q_ecran` | mid | portrait feed ~9 s | 2 |
+| `pp_kiosque_v2_3q_pulse` | mid | vitrine LED / auvent | 4 |
+| `pp_kiosque_presse_v2_3q_pulse` | aigus | holo intérieur scintille | 4 |
+| `pp_kiosque_boissons_v2_3q_pulse` | mid | bandeau comptoir | 4 |
+| `pp_portique_v2_3q_pulse` | kick | faisceaux scanner / anneaux sol | 2 |
+| `pp_distrib_v2_3q_pulse` | kick | coins magenta | 3 |
+| `pp_dalle_pulse_a_3q_pulse` | kick | anneaux concentriques magenta | 2 |
+| `pp_dalle_pulse_b_3q_pulse` | mid | anneaux ambre décalés | 3 |
+| `pp_totem_pulse_3q_pulse` | aigus | barres égaliseur verticales | 3 |
+| `pp_arche_holo_3q_pulse` | mid | rideau holo intérieur | 3 |
+| `pp_enceinte_pulse_3q_pulse` | kick | membranes / liserés | 4 |
+| `pp_pont_projecteurs_3q_pulse` | kick | projecteurs allumés | 2 |
+| `pp_pont_projecteurs_3q_pulse_b` | aigus | faisceaux cyan (calque séparé) | 2 |
+
+### Emprises & chevauchements (script)
+Vérification automatique des rectangles au sol (lecture seule de `src/data/pulse_plaza.js`).
+- **Chevauchements actuels dans src/** :
+  - `pp_fac_n3` ∩ `pp_ecran_n1` = 4.8 m² — [36.0, -4.0, 12.0, 4.0] vs [39.0, -0.6, 8.0, 0.6] (écran haut sur façade nord : volontaire / décoratif, OK si `fond` ou non-solide).
+- **Propositions v2** : emprises bâtiments = inchangées → aucun nouveau chevauchement bâtiment/bâtiment.
+- **Pont projecteurs** : placé en (10, 20, 8, 2) pour **éviter** le socle Holo-Tron (20, 14, 8, 8). Ne pas le poser à (20, 20).
+- **Écran haut `pp_ecran_n1`** (39, −0,6, 8, 0,6) chevauche `pp_fac_n3` : rester en décor accroché façade, pas solid.

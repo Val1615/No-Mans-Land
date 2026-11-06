@@ -1480,7 +1480,8 @@
         126
       ]
     ],
-    "remplace": "pp_kiosque"
+    "remplace": "pp_kiosque",
+    "obsolete": true
   },
   "pp_kiosque_3q_neon": {
     "file": "steel/pulse_plaza/pp_kiosque_3q_neon.webp",
@@ -1497,7 +1498,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_kiosque_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_kiosque_3q ; posée en additif par view.js",
     "effet_conseille": "fixe (enseigne MERCH OFFICIEL)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_kiosque_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_kiosque_3q_fenetres.webp",
@@ -1513,7 +1515,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_kiosque_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_kiosque_3q",
     "effet_conseille": "vacillement lent ambre (hors plafond mobile)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_guerite_3q": {
     "file": "steel/pulse_plaza/pp_guerite_3q.webp",
@@ -1658,7 +1661,8 @@
         120
       ]
     ],
-    "remplace": "pp_nouilles"
+    "remplace": "pp_nouilles",
+    "obsolete": true
   },
   "pp_nouilles_3q_neon": {
     "file": "steel/pulse_plaza/pp_nouilles_3q_neon.webp",
@@ -1675,7 +1679,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_nouilles_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_nouilles_3q ; posée en additif par view.js",
     "effet_conseille": "fixe ou grésillement très léger (ambre)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nouilles_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_nouilles_3q_fenetres.webp",
@@ -1691,7 +1696,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nouilles_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nouilles_3q",
     "effet_conseille": "flicker ambre chaud (seul coin sans écran)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_billboard_3q": {
     "file": "steel/pulse_plaza/pp_billboard_3q.webp",
@@ -1758,7 +1764,8 @@
       ]
     ],
     "pulse": "pp_billboard_3q_pulse",
-    "remplace": "pp_billboard"
+    "remplace": "pp_billboard",
+    "obsolete": true
   },
   "pp_billboard_3q_neon": {
     "file": "steel/pulse_plaza/pp_billboard_3q_neon.webp",
@@ -1775,7 +1782,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_billboard_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_billboard_3q ; posée en additif par view.js",
     "effet_conseille": "fixe (logo HCM-88X)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_billboard_3q_ecran": {
     "file": "steel/pulse_plaza/pp_billboard_3q_ecran.webp",
@@ -1791,7 +1799,8 @@
     "source": "extraction PIL des panneaux écran de pp_billboard_3q.webp",
     "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_billboard_3q ; à piloter sur le beat (Rivet)",
     "effet_conseille": "pages du feed / portrait Vibes — période ~9 s, sync possible avec ECRAN_FEED",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_billboard_3q_pulse": {
     "file": "steel/pulse_plaza/pp_billboard_3q_pulse.webp",
@@ -1807,7 +1816,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_billboard_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_billboard_3q ; pilotable sur le kick",
     "effet_conseille": "projecteurs de base : pulse sur le kick (période = 60/BPM, ~170 BPM → 0,35 s)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_portique_3q": {
     "file": "steel/pulse_plaza/pp_portique_3q.webp",
@@ -1856,7 +1866,8 @@
       ]
     ],
     "pulse": "pp_portique_3q_pulse",
-    "remplace": "pp_portique"
+    "remplace": "pp_portique",
+    "obsolete": true
   },
   "pp_portique_3q_neon": {
     "file": "steel/pulse_plaza/pp_portique_3q_neon.webp",
@@ -1873,7 +1884,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_portique_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_portique_3q ; posée en additif par view.js",
     "effet_conseille": "fixe (CONTRÔLE IO)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_portique_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_portique_3q_fenetres.webp",
@@ -1889,7 +1901,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_portique_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_portique_3q",
     "effet_conseille": "glow scanner cyan, vacillement lent",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_portique_3q_pulse": {
     "file": "steel/pulse_plaza/pp_portique_3q_pulse.webp",
@@ -1905,7 +1918,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_portique_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_portique_3q ; pilotable sur le kick",
     "effet_conseille": "voyants verts : pulse court sur le beat (audience sync)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_distrib_3q": {
     "file": "steel/pulse_plaza/pp_distrib_3q.webp",
@@ -1972,7 +1986,8 @@
       ]
     ],
     "pulse": "pp_distrib_3q_pulse",
-    "remplace": "pp_distrib"
+    "remplace": "pp_distrib",
+    "obsolete": true
   },
   "pp_distrib_3q_neon": {
     "file": "steel/pulse_plaza/pp_distrib_3q_neon.webp",
@@ -1989,7 +2004,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_distrib_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_distrib_3q ; posée en additif par view.js",
     "effet_conseille": "pulse lent magenta",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_distrib_3q_ecran": {
     "file": "steel/pulse_plaza/pp_distrib_3q_ecran.webp",
@@ -2005,7 +2021,8 @@
     "source": "extraction PIL des panneaux écran de pp_distrib_3q.webp",
     "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_distrib_3q ; à piloter sur le beat (Rivet)",
     "effet_conseille": "sourire calibré : pulse sur le kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_distrib_3q_pulse": {
     "file": "steel/pulse_plaza/pp_distrib_3q_pulse.webp",
@@ -2021,7 +2038,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_distrib_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_distrib_3q ; pilotable sur le kick",
     "effet_conseille": "bandes d’angle : balayage vertical 1 tour / 2 mesures",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_kiosque_presse_3q": {
     "file": "steel/pulse_plaza/pp_kiosque_presse_3q.webp",
@@ -2088,7 +2106,8 @@
         151
       ]
     ],
-    "remplace": "pp_kiosque_presse"
+    "remplace": "pp_kiosque_presse",
+    "obsolete": true
   },
   "pp_kiosque_presse_3q_neon": {
     "file": "steel/pulse_plaza/pp_kiosque_presse_3q_neon.webp",
@@ -2105,7 +2124,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_kiosque_presse_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_kiosque_presse_3q ; posée en additif par view.js",
     "effet_conseille": "fixe (HOLO-PRESSE, cyan)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_kiosque_presse_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_kiosque_presse_3q_fenetres.webp",
@@ -2121,7 +2141,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_kiosque_presse_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_kiosque_presse_3q",
     "effet_conseille": "vacillement ambre comptoir",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_kiosque_presse_3q_ecran": {
     "file": "steel/pulse_plaza/pp_kiosque_presse_3q_ecran.webp",
@@ -2137,7 +2158,8 @@
     "source": "extraction PIL des panneaux écran de pp_kiosque_presse_3q.webp",
     "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_kiosque_presse_3q ; à piloter sur le beat (Rivet)",
     "effet_conseille": "affiche Groovy Vibes : change avec le feed (période 11 s)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_kiosque_boissons_3q": {
     "file": "steel/pulse_plaza/pp_kiosque_boissons_3q.webp",
@@ -2184,7 +2206,8 @@
         135
       ]
     ],
-    "remplace": "pp_kiosque_boissons"
+    "remplace": "pp_kiosque_boissons",
+    "obsolete": true
   },
   "pp_kiosque_boissons_3q_neon": {
     "file": "steel/pulse_plaza/pp_kiosque_boissons_3q_neon.webp",
@@ -2201,7 +2224,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_kiosque_boissons_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_kiosque_boissons_3q ; posée en additif par view.js",
     "effet_conseille": "fixe (HYDRATATION)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_kiosque_boissons_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_kiosque_boissons_3q_fenetres.webp",
@@ -2217,7 +2241,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_kiosque_boissons_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_kiosque_boissons_3q",
     "effet_conseille": "vacillement cyan des frigos",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_a_3q": {
     "file": "steel/pulse_plaza/pp_nord_a_3q.webp",
@@ -2286,7 +2311,8 @@
       ]
     ],
     "pulse": "pp_nord_a_3q_pulse",
-    "remplace": "pp_facade_a"
+    "remplace": "pp_facade_a",
+    "obsolete": true
   },
   "pp_nord_a_3q_neon": {
     "file": "steel/pulse_plaza/pp_nord_a_3q_neon.webp",
@@ -2303,7 +2329,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_nord_a_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_nord_a_3q ; posée en additif par view.js",
     "effet_conseille": "pulse lent (PULSE)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_a_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_nord_a_3q_fenetres.webp",
@@ -2319,7 +2346,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nord_a_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nord_a_3q",
     "effet_conseille": "vacillement ambre étages",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_a_3q_ecran": {
     "file": "steel/pulse_plaza/pp_nord_a_3q_ecran.webp",
@@ -2335,7 +2363,8 @@
     "source": "extraction PIL des panneaux écran de pp_nord_a_3q.webp",
     "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_nord_a_3q ; à piloter sur le beat (Rivet)",
     "effet_conseille": "égaliseur façade : réagit au mid (pas au kick) — budget 1 calque",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_a_3q_pulse": {
     "file": "steel/pulse_plaza/pp_nord_a_3q_pulse.webp",
@@ -2351,7 +2380,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_nord_a_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_nord_a_3q ; pilotable sur le kick",
     "effet_conseille": "bandes verticales violettes : pulse sur le kick, déphasage par travée",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_b_3q": {
     "file": "steel/pulse_plaza/pp_nord_b_3q.webp",
@@ -2400,7 +2430,8 @@
       ]
     ],
     "pulse": "pp_nord_b_3q_pulse",
-    "remplace": "pp_facade_b"
+    "remplace": "pp_facade_b",
+    "obsolete": true
   },
   "pp_nord_b_3q_neon": {
     "file": "steel/pulse_plaza/pp_nord_b_3q_neon.webp",
@@ -2417,7 +2448,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_nord_b_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_nord_b_3q ; posée en additif par view.js",
     "effet_conseille": "fixe (LOUNGE)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_b_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_nord_b_3q_fenetres.webp",
@@ -2433,7 +2465,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nord_b_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nord_b_3q",
     "effet_conseille": "vacillement ambre",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_b_3q_pulse": {
     "file": "steel/pulse_plaza/pp_nord_b_3q_pulse.webp",
@@ -2449,7 +2482,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_nord_b_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_nord_b_3q ; pilotable sur le kick",
     "effet_conseille": "bandes magenta : pulse doux 1/2 kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c_3q": {
     "file": "steel/pulse_plaza/pp_nord_c_3q.webp",
@@ -2599,7 +2633,8 @@
       ]
     ],
     "pulse": "pp_ouest_a_3q_pulse",
-    "remplace": "pp_facade_a_o"
+    "remplace": "pp_facade_a_o",
+    "obsolete": true
   },
   "pp_ouest_a_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_ouest_a_3q_fenetres.webp",
@@ -2615,7 +2650,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_ouest_a_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_ouest_a_3q",
     "effet_conseille": "vacillement ambre",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ouest_a_3q_ecran": {
     "file": "steel/pulse_plaza/pp_ouest_a_3q_ecran.webp",
@@ -2631,7 +2667,8 @@
     "source": "extraction PIL des panneaux écran de pp_ouest_a_3q.webp",
     "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_ouest_a_3q ; à piloter sur le beat (Rivet)",
     "effet_conseille": "écran égaliseur : sync kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ouest_a_3q_pulse": {
     "file": "steel/pulse_plaza/pp_ouest_a_3q_pulse.webp",
@@ -2647,7 +2684,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_ouest_a_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_ouest_a_3q ; pilotable sur le kick",
     "effet_conseille": "bandes violettes : pulse kick, décalé vs nord",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ouest_b_3q": {
     "file": "steel/pulse_plaza/pp_ouest_b_3q.webp",
@@ -2676,7 +2714,8 @@
     "fenetres": "pp_ouest_b_3q_fenetres",
     "neon": null,
     "pulse": "pp_ouest_b_3q_pulse",
-    "remplace": "pp_facade_b_o2"
+    "remplace": "pp_facade_b_o2",
+    "obsolete": true
   },
   "pp_ouest_b_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_ouest_b_3q_fenetres.webp",
@@ -2692,7 +2731,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_ouest_b_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_ouest_b_3q",
     "effet_conseille": "vacillement ambre léger",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ouest_b_3q_pulse": {
     "file": "steel/pulse_plaza/pp_ouest_b_3q_pulse.webp",
@@ -2708,7 +2748,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_ouest_b_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_ouest_b_3q ; pilotable sur le kick",
     "effet_conseille": "liserés cyan des baies : pulse 1/2 kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ecran_feed_3q": {
     "file": "steel/pulse_plaza/pp_ecran_feed_3q.webp",
@@ -2775,7 +2816,8 @@
       ]
     ],
     "pulse": "pp_ecran_feed_3q_pulse",
-    "remplace": "pp_ecran_feed"
+    "remplace": "pp_ecran_feed",
+    "obsolete": true
   },
   "pp_ecran_feed_3q_neon": {
     "file": "steel/pulse_plaza/pp_ecran_feed_3q_neon.webp",
@@ -2792,7 +2834,8 @@
     "source": "extraction PIL de l'enseigne lumineuse de pp_ecran_feed_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que pp_ecran_feed_3q ; posée en additif par view.js",
     "effet_conseille": "fixe (FEED 24/7)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ecran_feed_3q_ecran": {
     "file": "steel/pulse_plaza/pp_ecran_feed_3q_ecran.webp",
@@ -2808,7 +2851,8 @@
     "source": "extraction PIL des panneaux écran de pp_ecran_feed_3q.webp",
     "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_ecran_feed_3q ; à piloter sur le beat (Rivet)",
     "effet_conseille": "zone vide : contenu dessiné par le code (ECRAN_FEED) — opacity pulse léger sur Audience sync",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ecran_feed_3q_pulse": {
     "file": "steel/pulse_plaza/pp_ecran_feed_3q_pulse.webp",
@@ -2824,7 +2868,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_ecran_feed_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_ecran_feed_3q ; pilotable sur le kick",
     "effet_conseille": "filets magentas du cadre + tirets cyan : pulse fort sur le kick ; budget prioritaire",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c2_3q": {
     "file": "steel/pulse_plaza/pp_nord_c2_3q.webp",
@@ -2892,7 +2937,8 @@
         101,
         502
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "pp_nord_c2_3q_neon": {
     "file": "steel/pulse_plaza/pp_nord_c2_3q_neon.webp",
@@ -2909,7 +2955,8 @@
     "source": "extraction PIL enseigne de pp_nord_c2_3q.webp",
     "note": "couche néon, même taille/ancre que pp_nord_c2_3q",
     "effet_conseille": "fixe (Résidences du Pulse, ambre)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c2_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_nord_c2_3q_fenetres.webp",
@@ -2925,7 +2972,8 @@
     "source": "extraction PIL fenêtres de pp_nord_c2_3q.webp",
     "note": "calque fenêtres, même taille/ancre que pp_nord_c2_3q",
     "effet_conseille": "vacillement ambre",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c2_3q_ecran": {
     "file": "steel/pulse_plaza/pp_nord_c2_3q_ecran.webp",
@@ -2941,7 +2989,8 @@
     "source": "extraction PIL écrans de pp_nord_c2_3q.webp",
     "note": "calque écrans, même taille/ancre que pp_nord_c2_3q",
     "effet_conseille": "égaliseur : sync kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c2_3q_pulse": {
     "file": "steel/pulse_plaza/pp_nord_c2_3q_pulse.webp",
@@ -2957,7 +3006,8 @@
     "source": "extraction PIL pulse de pp_nord_c2_3q.webp",
     "note": "calque pulse, même taille/ancre que pp_nord_c2_3q",
     "effet_conseille": "bandes violettes : pulse kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c3_3q": {
     "file": "steel/pulse_plaza/pp_nord_c3_3q.webp",
@@ -3025,7 +3075,8 @@
         102,
         449
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "pp_nord_c3_3q_neon": {
     "file": "steel/pulse_plaza/pp_nord_c3_3q_neon.webp",
@@ -3042,7 +3093,8 @@
     "source": "extraction PIL enseigne de pp_nord_c3_3q.webp",
     "note": "couche néon, même taille/ancre que pp_nord_c3_3q",
     "effet_conseille": "fixe (Arcades Nord)",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c3_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_nord_c3_3q_fenetres.webp",
@@ -3058,7 +3110,8 @@
     "source": "extraction PIL fenêtres de pp_nord_c3_3q.webp",
     "note": "calque fenêtres, même taille/ancre que pp_nord_c3_3q",
     "effet_conseille": "vacillement ambre",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c3_3q_ecran": {
     "file": "steel/pulse_plaza/pp_nord_c3_3q_ecran.webp",
@@ -3074,7 +3127,8 @@
     "source": "extraction PIL écrans de pp_nord_c3_3q.webp",
     "note": "calque écrans, même taille/ancre que pp_nord_c3_3q",
     "effet_conseille": "égaliseur : sync kick déphasé",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c3_3q_pulse": {
     "file": "steel/pulse_plaza/pp_nord_c3_3q_pulse.webp",
@@ -3090,7 +3144,8 @@
     "source": "extraction PIL pulse de pp_nord_c3_3q.webp",
     "note": "calque pulse, même taille/ancre que pp_nord_c3_3q",
     "effet_conseille": "bandes violettes : pulse 1/2 kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_billboard_3q_neon2": {
     "file": "steel/pulse_plaza/pp_billboard_3q_neon2.webp",
@@ -3125,6 +3180,1886 @@
         41,
         342
       ]
+    ],
+    "obsolete": true
+  },
+  "pp_nord_a_v2_3q": {
+    "file": "steel/pulse_plaza/pp_nord_a_v2_3q.webp",
+    "px": [
+      776,
+      711
+    ],
+    "anchor": [
+      661,
+      709
+    ],
+    "footprint_m": [
+      16,
+      4
+    ],
+    "height_m": 10.0,
+    "source": "GenerateImage festif v2, raw 9ba31d29",
+    "status": "v2",
+    "pose": "B('pp_fac_n2', '', 'pp_nord_a_v2_3q', 12, -4, 16, 4, { named: false })",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Pulse",
+    "neon_coins": [
+      [
+        182,
+        132
+      ],
+      [
+        565,
+        259
+      ],
+      [
+        565,
+        301
+      ],
+      [
+        182,
+        174
+      ]
+    ],
+    "ecran_coins": [
+      [
+        2,
+        132
+      ],
+      [
+        772,
+        273
+      ],
+      [
+        772,
+        605
+      ],
+      [
+        2,
+        465
+      ]
     ]
+  },
+  "pp_nord_a_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_a_v2_3q_neon.webp",
+    "px": [
+      776,
+      711
+    ],
+    "anchor": [
+      661,
+      709
+    ],
+    "additive": true,
+    "parent": "pp_nord_a_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_nord_a_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_a_v2_3q_fenetres.webp",
+    "px": [
+      776,
+      711
+    ],
+    "anchor": [
+      661,
+      709
+    ],
+    "additive": true,
+    "parent": "pp_nord_a_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_nord_a_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_nord_a_v2_3q_ecran.webp",
+    "px": [
+      776,
+      711
+    ],
+    "anchor": [
+      661,
+      709
+    ],
+    "additive": true,
+    "parent": "pp_nord_a_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_nord_a_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_a_v2_3q_pulse.webp",
+    "px": [
+      776,
+      711
+    ],
+    "anchor": [
+      661,
+      709
+    ],
+    "additive": true,
+    "parent": "pp_nord_a_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_nord_a_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_nord_a_v2_3q_pulse_b.webp",
+    "px": [
+      776,
+      711
+    ],
+    "anchor": [
+      661,
+      709
+    ],
+    "additive": true,
+    "parent": "pp_nord_a_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_nord_b_v2_3q": {
+    "file": "steel/pulse_plaza/pp_nord_b_v2_3q.webp",
+    "px": [
+      447,
+      559
+    ],
+    "anchor": [
+      332,
+      557
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 8.0,
+    "source": "GenerateImage festif v2, raw 1d9cd6e3",
+    "status": "v2",
+    "pose": "B('pp_fac_n4', '', 'pp_nord_b_v2_3q', 28, -4, 8, 4, { named: false })",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Lounge",
+    "neon_coins": [
+      [
+        132,
+        272
+      ],
+      [
+        286,
+        323
+      ],
+      [
+        286,
+        353
+      ],
+      [
+        132,
+        302
+      ]
+    ]
+  },
+  "pp_nord_b_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_b_v2_3q_neon.webp",
+    "px": [
+      447,
+      559
+    ],
+    "anchor": [
+      332,
+      557
+    ],
+    "additive": true,
+    "parent": "pp_nord_b_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_nord_b_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_b_v2_3q_fenetres.webp",
+    "px": [
+      447,
+      559
+    ],
+    "anchor": [
+      332,
+      557
+    ],
+    "additive": true,
+    "parent": "pp_nord_b_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_nord_b_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_b_v2_3q_pulse.webp",
+    "px": [
+      447,
+      559
+    ],
+    "anchor": [
+      332,
+      557
+    ],
+    "additive": true,
+    "parent": "pp_nord_b_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_nord_b_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_nord_b_v2_3q_pulse_b.webp",
+    "px": [
+      447,
+      559
+    ],
+    "anchor": [
+      332,
+      557
+    ],
+    "additive": true,
+    "parent": "pp_nord_b_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_nord_c2_v2_3q": {
+    "file": "steel/pulse_plaza/pp_nord_c2_v2_3q.webp",
+    "px": [
+      611,
+      652
+    ],
+    "anchor": [
+      496,
+      650
+    ],
+    "footprint_m": [
+      12,
+      4
+    ],
+    "height_m": 10.0,
+    "source": "GenerateImage festif v2, raw fe65aaaf",
+    "status": "v2",
+    "pose": "B('pp_fac_n1', '', 'pp_nord_c2_v2_3q', 0, -4, 12, 4, { named: false })",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Résidences",
+    "neon_coins": [
+      [
+        105,
+        137
+      ],
+      [
+        424,
+        243
+      ],
+      [
+        424,
+        280
+      ],
+      [
+        105,
+        174
+      ]
+    ],
+    "ecran_coins": [
+      [
+        3,
+        163
+      ],
+      [
+        582,
+        266
+      ],
+      [
+        582,
+        549
+      ],
+      [
+        3,
+        446
+      ]
+    ]
+  },
+  "pp_nord_c2_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_c2_v2_3q_neon.webp",
+    "px": [
+      611,
+      652
+    ],
+    "anchor": [
+      496,
+      650
+    ],
+    "additive": true,
+    "parent": "pp_nord_c2_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_nord_c2_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_c2_v2_3q_fenetres.webp",
+    "px": [
+      611,
+      652
+    ],
+    "anchor": [
+      496,
+      650
+    ],
+    "additive": true,
+    "parent": "pp_nord_c2_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_nord_c2_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_nord_c2_v2_3q_ecran.webp",
+    "px": [
+      611,
+      652
+    ],
+    "anchor": [
+      496,
+      650
+    ],
+    "additive": true,
+    "parent": "pp_nord_c2_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_nord_c2_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_c2_v2_3q_pulse.webp",
+    "px": [
+      611,
+      652
+    ],
+    "anchor": [
+      496,
+      650
+    ],
+    "additive": true,
+    "parent": "pp_nord_c2_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_nord_c2_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_nord_c2_v2_3q_pulse_b.webp",
+    "px": [
+      611,
+      652
+    ],
+    "anchor": [
+      496,
+      650
+    ],
+    "additive": true,
+    "parent": "pp_nord_c2_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_nord_c3_v2_3q": {
+    "file": "steel/pulse_plaza/pp_nord_c3_v2_3q.webp",
+    "px": [
+      611,
+      708
+    ],
+    "anchor": [
+      496,
+      706
+    ],
+    "footprint_m": [
+      12,
+      4
+    ],
+    "height_m": 10.0,
+    "source": "GenerateImage festif v2, raw 85f7d13d",
+    "status": "v2",
+    "pose": "B('pp_fac_n3', '', 'pp_nord_c3_v2_3q', 36, -4, 12, 4, { named: false })",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Arcades Nord",
+    "neon_coins": [
+      [
+        194,
+        142
+      ],
+      [
+        425,
+        219
+      ],
+      [
+        425,
+        253
+      ],
+      [
+        194,
+        177
+      ]
+    ],
+    "ecran_coins": [
+      [
+        2,
+        175
+      ],
+      [
+        599,
+        266
+      ],
+      [
+        599,
+        606
+      ],
+      [
+        2,
+        515
+      ]
+    ]
+  },
+  "pp_nord_c3_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_c3_v2_3q_neon.webp",
+    "px": [
+      611,
+      708
+    ],
+    "anchor": [
+      496,
+      706
+    ],
+    "additive": true,
+    "parent": "pp_nord_c3_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_nord_c3_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_c3_v2_3q_fenetres.webp",
+    "px": [
+      611,
+      708
+    ],
+    "anchor": [
+      496,
+      706
+    ],
+    "additive": true,
+    "parent": "pp_nord_c3_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_nord_c3_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_nord_c3_v2_3q_ecran.webp",
+    "px": [
+      611,
+      708
+    ],
+    "anchor": [
+      496,
+      706
+    ],
+    "additive": true,
+    "parent": "pp_nord_c3_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_nord_c3_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_c3_v2_3q_pulse.webp",
+    "px": [
+      611,
+      708
+    ],
+    "anchor": [
+      496,
+      706
+    ],
+    "additive": true,
+    "parent": "pp_nord_c3_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_nord_c3_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_nord_c3_v2_3q_pulse_b.webp",
+    "px": [
+      611,
+      708
+    ],
+    "anchor": [
+      496,
+      706
+    ],
+    "additive": true,
+    "parent": "pp_nord_c3_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_ouest_a_v2_3q": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v2_3q.webp",
+    "px": [
+      509,
+      664
+    ],
+    "anchor": [
+      167,
+      662
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 10.0,
+    "source": "GenerateImage festif v2, raw ae9007e6",
+    "status": "v2",
+    "pose": "B('pp_fac_o1', '', 'pp_ouest_a_v2_3q', -4, 0, 4, 12, { named: false })",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "pulse"
+    ],
+    "ecran_coins": [
+      [
+        3,
+        211
+      ],
+      [
+        507,
+        27
+      ],
+      [
+        507,
+        394
+      ],
+      [
+        3,
+        578
+      ]
+    ]
+  },
+  "pp_ouest_a_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_fenetres.webp",
+    "px": [
+      509,
+      664
+    ],
+    "anchor": [
+      167,
+      662
+    ],
+    "additive": true,
+    "parent": "pp_ouest_a_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_ouest_a_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_ecran.webp",
+    "px": [
+      509,
+      664
+    ],
+    "anchor": [
+      167,
+      662
+    ],
+    "additive": true,
+    "parent": "pp_ouest_a_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_ouest_a_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_pulse.webp",
+    "px": [
+      509,
+      664
+    ],
+    "anchor": [
+      167,
+      662
+    ],
+    "additive": true,
+    "parent": "pp_ouest_a_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_ouest_a_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_pulse_b.webp",
+    "px": [
+      509,
+      664
+    ],
+    "anchor": [
+      167,
+      662
+    ],
+    "additive": true,
+    "parent": "pp_ouest_a_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_ouest_b_v2_3q": {
+    "file": "steel/pulse_plaza/pp_ouest_b_v2_3q.webp",
+    "px": [
+      396,
+      503
+    ],
+    "anchor": [
+      167,
+      499
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 8.0,
+    "source": "GenerateImage festif v2, raw 655f8629",
+    "status": "v2",
+    "pose": "B('pp_fac_o2', '', 'pp_ouest_b_v2_3q', -4, 16, 4, 8, { named: false }) ; B('pp_fac_o3', '', 'pp_ouest_b_v2_3q', -4, 24, 4, 8, { named: false })",
+    "layers": [
+      "fenetres",
+      "pulse"
+    ]
+  },
+  "pp_ouest_b_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_ouest_b_v2_3q_fenetres.webp",
+    "px": [
+      396,
+      503
+    ],
+    "anchor": [
+      167,
+      499
+    ],
+    "additive": true,
+    "parent": "pp_ouest_b_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_ouest_b_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ouest_b_v2_3q_pulse.webp",
+    "px": [
+      396,
+      503
+    ],
+    "anchor": [
+      167,
+      499
+    ],
+    "additive": true,
+    "parent": "pp_ouest_b_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_ouest_b_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_ouest_b_v2_3q_pulse_b.webp",
+    "px": [
+      396,
+      503
+    ],
+    "anchor": [
+      167,
+      499
+    ],
+    "additive": true,
+    "parent": "pp_ouest_b_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_ecran_feed_v2_3q": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q.webp",
+    "px": [
+      941,
+      623
+    ],
+    "anchor": [
+      826,
+      621
+    ],
+    "footprint_m": [
+      20,
+      4
+    ],
+    "height_m": 8.0,
+    "source": "GenerateImage festif v2, raw d0d5f314",
+    "status": "v2",
+    "pose": "B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_v2_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED })",
+    "layers": [
+      "ecran",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Feed 24/7",
+    "neon_coins": [
+      [
+        181,
+        357
+      ],
+      [
+        627,
+        505
+      ],
+      [
+        627,
+        537
+      ],
+      [
+        181,
+        389
+      ]
+    ],
+    "ecran_coins": [
+      [
+        50,
+        72
+      ],
+      [
+        861,
+        304
+      ],
+      [
+        861,
+        580
+      ],
+      [
+        50,
+        348
+      ]
+    ]
+  },
+  "pp_ecran_feed_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_neon.webp",
+    "px": [
+      941,
+      623
+    ],
+    "anchor": [
+      826,
+      621
+    ],
+    "additive": true,
+    "parent": "pp_ecran_feed_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_ecran_feed_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_ecran.webp",
+    "px": [
+      941,
+      623
+    ],
+    "anchor": [
+      826,
+      621
+    ],
+    "additive": true,
+    "parent": "pp_ecran_feed_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_ecran_feed_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_pulse.webp",
+    "px": [
+      941,
+      623
+    ],
+    "anchor": [
+      826,
+      621
+    ],
+    "additive": true,
+    "parent": "pp_ecran_feed_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_ecran_feed_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_pulse_b.webp",
+    "px": [
+      941,
+      623
+    ],
+    "anchor": [
+      826,
+      621
+    ],
+    "additive": true,
+    "parent": "pp_ecran_feed_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_billboard_v2_3q": {
+    "file": "steel/pulse_plaza/pp_billboard_v2_3q.webp",
+    "px": [
+      282,
+      409
+    ],
+    "anchor": [
+      167,
+      407
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 7.0,
+    "source": "GenerateImage festif v2, raw 32386e92",
+    "status": "v2",
+    "pose": "B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard_v2_3q', 0, 8, 4, 4)",
+    "layers": [
+      "ecran",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "HCM-88X",
+    "neon_coins": [
+      [
+        58,
+        127
+      ],
+      [
+        154,
+        159
+      ],
+      [
+        154,
+        205
+      ],
+      [
+        58,
+        173
+      ]
+    ],
+    "ecran_coins": [
+      [
+        2,
+        93
+      ],
+      [
+        281,
+        67
+      ],
+      [
+        281,
+        314
+      ],
+      [
+        2,
+        339
+      ]
+    ]
+  },
+  "pp_billboard_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_billboard_v2_3q_neon.webp",
+    "px": [
+      282,
+      409
+    ],
+    "anchor": [
+      167,
+      407
+    ],
+    "additive": true,
+    "parent": "pp_billboard_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_billboard_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_billboard_v2_3q_ecran.webp",
+    "px": [
+      282,
+      409
+    ],
+    "anchor": [
+      167,
+      407
+    ],
+    "additive": true,
+    "parent": "pp_billboard_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_billboard_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_billboard_v2_3q_pulse.webp",
+    "px": [
+      282,
+      409
+    ],
+    "anchor": [
+      167,
+      407
+    ],
+    "additive": true,
+    "parent": "pp_billboard_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_billboard_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_billboard_v2_3q_pulse_b.webp",
+    "px": [
+      282,
+      409
+    ],
+    "anchor": [
+      167,
+      407
+    ],
+    "additive": true,
+    "parent": "pp_billboard_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_kiosque_v2_3q": {
+    "file": "steel/pulse_plaza/pp_kiosque_v2_3q.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 4.0,
+    "source": "GenerateImage festif v2, raw ac173738",
+    "status": "v2",
+    "pose": "B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque_v2_3q', 44, 8, 4, 4)",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Merch officiel",
+    "neon_coins": [
+      [
+        17,
+        76
+      ],
+      [
+        157,
+        123
+      ],
+      [
+        157,
+        157
+      ],
+      [
+        17,
+        110
+      ]
+    ]
+  },
+  "pp_kiosque_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_kiosque_v2_3q_neon.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_kiosque_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_kiosque_v2_3q_fenetres.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_kiosque_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_kiosque_v2_3q_pulse.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_kiosque_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_kiosque_v2_3q_pulse_b.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_nouilles_v2_3q": {
+    "file": "steel/pulse_plaza/pp_nouilles_v2_3q.webp",
+    "px": [
+      282,
+      211
+    ],
+    "anchor": [
+      167,
+      209
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.2,
+    "source": "GenerateImage festif v2, raw 7d39ce38",
+    "status": "v2",
+    "pose": "B('pp_nouilles', 'Stand de nouilles', 'pp_nouilles_v2_3q', 44, 28, 4, 4)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "enseigne": "Nouilles",
+    "neon_coins": [
+      [
+        39,
+        45
+      ],
+      [
+        153,
+        83
+      ],
+      [
+        153,
+        113
+      ],
+      [
+        39,
+        75
+      ]
+    ]
+  },
+  "pp_nouilles_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nouilles_v2_3q_neon.webp",
+    "px": [
+      282,
+      211
+    ],
+    "anchor": [
+      167,
+      209
+    ],
+    "additive": true,
+    "parent": "pp_nouilles_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_nouilles_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nouilles_v2_3q_fenetres.webp",
+    "px": [
+      282,
+      211
+    ],
+    "anchor": [
+      167,
+      209
+    ],
+    "additive": true,
+    "parent": "pp_nouilles_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_kiosque_presse_v2_3q": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_v2_3q.webp",
+    "px": [
+      282,
+      230
+    ],
+    "anchor": [
+      167,
+      228
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.0,
+    "source": "GenerateImage festif v2, raw a18f9eb6",
+    "status": "v2",
+    "pose": "B('pp_kiosque_presse', 'Kiosque presse', 'pp_kiosque_presse_v2_3q', 8, 28, 4, 4)",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Holo-presse",
+    "neon_coins": [
+      [
+        23,
+        86
+      ],
+      [
+        112,
+        116
+      ],
+      [
+        112,
+        141
+      ],
+      [
+        23,
+        111
+      ]
+    ],
+    "ecran_coins": [
+      [
+        49,
+        78
+      ],
+      [
+        281,
+        38
+      ],
+      [
+        281,
+        128
+      ],
+      [
+        49,
+        168
+      ]
+    ]
+  },
+  "pp_kiosque_presse_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_v2_3q_neon.webp",
+    "px": [
+      282,
+      230
+    ],
+    "anchor": [
+      167,
+      228
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_presse_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_kiosque_presse_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_v2_3q_fenetres.webp",
+    "px": [
+      282,
+      230
+    ],
+    "anchor": [
+      167,
+      228
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_presse_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_kiosque_presse_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_v2_3q_ecran.webp",
+    "px": [
+      282,
+      230
+    ],
+    "anchor": [
+      167,
+      228
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_presse_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_kiosque_presse_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_v2_3q_pulse.webp",
+    "px": [
+      282,
+      230
+    ],
+    "anchor": [
+      167,
+      228
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_presse_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_kiosque_presse_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_kiosque_presse_v2_3q_pulse_b.webp",
+    "px": [
+      282,
+      230
+    ],
+    "anchor": [
+      167,
+      228
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_presse_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_kiosque_boissons_v2_3q": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_v2_3q.webp",
+    "px": [
+      282,
+      228
+    ],
+    "anchor": [
+      167,
+      226
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.0,
+    "source": "GenerateImage festif v2, raw 600e08bd",
+    "status": "v2",
+    "pose": "B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_v2_3q', 36, 28, 4, 4)",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Hydratation",
+    "neon_coins": [
+      [
+        24,
+        74
+      ],
+      [
+        141,
+        113
+      ],
+      [
+        141,
+        146
+      ],
+      [
+        24,
+        107
+      ]
+    ]
+  },
+  "pp_kiosque_boissons_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_v2_3q_neon.webp",
+    "px": [
+      282,
+      228
+    ],
+    "anchor": [
+      167,
+      226
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_boissons_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_kiosque_boissons_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_v2_3q_fenetres.webp",
+    "px": [
+      282,
+      228
+    ],
+    "anchor": [
+      167,
+      226
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_boissons_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_kiosque_boissons_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_v2_3q_pulse.webp",
+    "px": [
+      282,
+      228
+    ],
+    "anchor": [
+      167,
+      226
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_boissons_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_kiosque_boissons_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_kiosque_boissons_v2_3q_pulse_b.webp",
+    "px": [
+      282,
+      228
+    ],
+    "anchor": [
+      167,
+      226
+    ],
+    "additive": true,
+    "parent": "pp_kiosque_boissons_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_portique_v2_3q": {
+    "file": "steel/pulse_plaza/pp_portique_v2_3q.webp",
+    "px": [
+      282,
+      247
+    ],
+    "anchor": [
+      167,
+      245
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 4.0,
+    "source": "GenerateImage festif v2, raw 4d2a0e7c",
+    "status": "v2",
+    "pose": "B('pp_portique', 'Portique IO', 'pp_portique_v2_3q', 20, 0, 4, 4)",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Contrôle IO",
+    "neon_coins": [
+      [
+        54,
+        38
+      ],
+      [
+        153,
+        70
+      ],
+      [
+        153,
+        99
+      ],
+      [
+        54,
+        66
+      ]
+    ]
+  },
+  "pp_portique_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_portique_v2_3q_neon.webp",
+    "px": [
+      282,
+      247
+    ],
+    "anchor": [
+      167,
+      245
+    ],
+    "additive": true,
+    "parent": "pp_portique_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_portique_v2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_portique_v2_3q_fenetres.webp",
+    "px": [
+      282,
+      247
+    ],
+    "anchor": [
+      167,
+      245
+    ],
+    "additive": true,
+    "parent": "pp_portique_v2_3q",
+    "status": "v2",
+    "layer": "fenetres"
+  },
+  "pp_portique_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_portique_v2_3q_pulse.webp",
+    "px": [
+      282,
+      247
+    ],
+    "anchor": [
+      167,
+      245
+    ],
+    "additive": true,
+    "parent": "pp_portique_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_portique_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_portique_v2_3q_pulse_b.webp",
+    "px": [
+      282,
+      247
+    ],
+    "anchor": [
+      167,
+      245
+    ],
+    "additive": true,
+    "parent": "pp_portique_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_distrib_v2_3q": {
+    "file": "steel/pulse_plaza/pp_distrib_v2_3q.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.8,
+    "source": "GenerateImage festif v2, raw 316e95c0",
+    "status": "v2",
+    "pose": "B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib_v2_3q', 40, 20, 4, 4)",
+    "layers": [
+      "ecran",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "sourire calibré",
+    "neon_coins": [
+      [
+        23,
+        82
+      ],
+      [
+        146,
+        123
+      ],
+      [
+        146,
+        165
+      ],
+      [
+        23,
+        125
+      ]
+    ],
+    "ecran_coins": [
+      [
+        9,
+        73
+      ],
+      [
+        277,
+        48
+      ],
+      [
+        277,
+        142
+      ],
+      [
+        9,
+        167
+      ]
+    ]
+  },
+  "pp_distrib_v2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_distrib_v2_3q_neon.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "additive": true,
+    "parent": "pp_distrib_v2_3q",
+    "status": "v2",
+    "layer": "neon"
+  },
+  "pp_distrib_v2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_distrib_v2_3q_ecran.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "additive": true,
+    "parent": "pp_distrib_v2_3q",
+    "status": "v2",
+    "layer": "ecran"
+  },
+  "pp_distrib_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_distrib_v2_3q_pulse.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "additive": true,
+    "parent": "pp_distrib_v2_3q",
+    "status": "v2",
+    "layer": "pulse"
+  },
+  "pp_distrib_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_distrib_v2_3q_pulse_b.webp",
+    "px": [
+      282,
+      231
+    ],
+    "anchor": [
+      167,
+      229
+    ],
+    "additive": true,
+    "parent": "pp_distrib_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b"
+  },
+  "pp_dalle_pulse_a_3q": {
+    "file": "steel/pulse_plaza/pp_dalle_pulse_a_3q.webp",
+    "px": [
+      282,
+      216
+    ],
+    "anchor": [
+      167,
+      213
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.15,
+    "source": "GenerateImage festif v2, raw 6950c307",
+    "status": "v1",
+    "pose": "B('pp_dalle_pa0', '', 'pp_dalle_pulse_a_3q', 22, 12, 4, 4, { solid: [], named: false, fond: true })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "pp_dalle_pulse_a_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_dalle_pulse_a_3q_pulse.webp",
+    "px": [
+      282,
+      216
+    ],
+    "anchor": [
+      167,
+      213
+    ],
+    "additive": true,
+    "parent": "pp_dalle_pulse_a_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "pp_dalle_pulse_a_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_dalle_pulse_a_3q_pulse_b.webp",
+    "px": [
+      282,
+      216
+    ],
+    "anchor": [
+      167,
+      213
+    ],
+    "additive": true,
+    "parent": "pp_dalle_pulse_a_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "pp_dalle_pulse_b_3q": {
+    "file": "steel/pulse_plaza/pp_dalle_pulse_b_3q.webp",
+    "px": [
+      282,
+      212
+    ],
+    "anchor": [
+      167,
+      210
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.15,
+    "source": "GenerateImage festif v2, raw b624a44b",
+    "status": "v1",
+    "pose": "B('pp_dalle_pb0', '', 'pp_dalle_pulse_b_3q', 26, 12, 4, 4, { solid: [], named: false, fond: true })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "pp_dalle_pulse_b_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_dalle_pulse_b_3q_pulse.webp",
+    "px": [
+      282,
+      212
+    ],
+    "anchor": [
+      167,
+      210
+    ],
+    "additive": true,
+    "parent": "pp_dalle_pulse_b_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "pp_dalle_pulse_b_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_dalle_pulse_b_3q_pulse_b.webp",
+    "px": [
+      282,
+      212
+    ],
+    "anchor": [
+      167,
+      210
+    ],
+    "additive": true,
+    "parent": "pp_dalle_pulse_b_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "pp_totem_pulse_3q": {
+    "file": "steel/pulse_plaza/pp_totem_pulse_3q.webp",
+    "px": [
+      143,
+      268
+    ],
+    "anchor": [
+      84,
+      266
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 5.0,
+    "source": "GenerateImage festif v2, raw 3c57690d",
+    "status": "v1",
+    "pose": "B('pp_totem0', '', 'pp_totem_pulse_3q', 18, 18, 2, 2, { named: false })",
+    "layers": [
+      "neon",
+      "pulse"
+    ]
+  },
+  "pp_totem_pulse_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_totem_pulse_3q_pulse.webp",
+    "px": [
+      143,
+      268
+    ],
+    "anchor": [
+      84,
+      266
+    ],
+    "additive": true,
+    "parent": "pp_totem_pulse_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "pp_totem_pulse_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_totem_pulse_3q_pulse_b.webp",
+    "px": [
+      143,
+      268
+    ],
+    "anchor": [
+      84,
+      266
+    ],
+    "additive": true,
+    "parent": "pp_totem_pulse_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "pp_arche_holo_3q": {
+    "file": "steel/pulse_plaza/pp_arche_holo_3q.webp",
+    "px": [
+      308,
+      366
+    ],
+    "anchor": [
+      249,
+      364
+    ],
+    "footprint_m": [
+      6,
+      2
+    ],
+    "height_m": 5.0,
+    "source": "GenerateImage festif v2, raw d9f0b820",
+    "status": "v1",
+    "pose": "B('pp_arche0', '', 'pp_arche_holo_3q', 21, 10, 6, 2, { solid: [], named: false })",
+    "layers": [
+      "neon",
+      "pulse"
+    ]
+  },
+  "pp_arche_holo_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_arche_holo_3q_pulse.webp",
+    "px": [
+      308,
+      366
+    ],
+    "anchor": [
+      249,
+      364
+    ],
+    "additive": true,
+    "parent": "pp_arche_holo_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "pp_arche_holo_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_arche_holo_3q_pulse_b.webp",
+    "px": [
+      308,
+      366
+    ],
+    "anchor": [
+      249,
+      364
+    ],
+    "additive": true,
+    "parent": "pp_arche_holo_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "pp_enceinte_pulse_3q": {
+    "file": "steel/pulse_plaza/pp_enceinte_pulse_3q.webp",
+    "px": [
+      143,
+      224
+    ],
+    "anchor": [
+      84,
+      222
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 3.5,
+    "source": "GenerateImage festif v2, raw 17a9b67f",
+    "status": "v1",
+    "pose": "B('pp_ence0', '', 'pp_enceinte_pulse_3q', 16, 22, 2, 2, { named: false })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "pp_enceinte_pulse_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_enceinte_pulse_3q_pulse.webp",
+    "px": [
+      143,
+      224
+    ],
+    "anchor": [
+      84,
+      222
+    ],
+    "additive": true,
+    "parent": "pp_enceinte_pulse_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "pp_enceinte_pulse_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_enceinte_pulse_3q_pulse_b.webp",
+    "px": [
+      143,
+      224
+    ],
+    "anchor": [
+      84,
+      222
+    ],
+    "additive": true,
+    "parent": "pp_enceinte_pulse_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "pp_pont_projecteurs_3q": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_3q.webp",
+    "px": [
+      391,
+      544
+    ],
+    "anchor": [
+      332,
+      540
+    ],
+    "footprint_m": [
+      8,
+      2
+    ],
+    "height_m": 5.0,
+    "source": "GenerateImage festif v2, raw 872e1ae7",
+    "status": "v1",
+    "pose": "B('pp_pont0', '', 'pp_pont_projecteurs_3q', 10, 20, 8, 2, { solid: [], named: false })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "pp_pont_projecteurs_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_3q_pulse.webp",
+    "px": [
+      391,
+      544
+    ],
+    "anchor": [
+      332,
+      540
+    ],
+    "additive": true,
+    "parent": "pp_pont_projecteurs_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "pp_pont_projecteurs_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_3q_pulse_b.webp",
+    "px": [
+      391,
+      544
+    ],
+    "anchor": [
+      332,
+      540
+    ],
+    "additive": true,
+    "parent": "pp_pont_projecteurs_3q",
+    "status": "v1",
+    "layer": "pulse_b"
   }
 }

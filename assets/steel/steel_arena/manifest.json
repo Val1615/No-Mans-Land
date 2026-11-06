@@ -2868,5 +2868,517 @@
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tech_ouest_c_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tech_ouest_c_3q, pour vacillement par le code",
     "status": "v1"
+  },
+  "ar_mat_projecteur_pulse_3q": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q.webp",
+    "px": [
+      143,
+      338
+    ],
+    "anchor": [
+      84,
+      335
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 6.0,
+    "source": "GenerateImage festif v2, raw 7ed9a31d",
+    "status": "v1",
+    "pose": "B('ar_mat_p0', '', 'ar_mat_projecteur_pulse_3q', 40, 36, 2, 2, { named: false })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "ar_mat_projecteur_pulse_3q_pulse": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q_pulse.webp",
+    "px": [
+      143,
+      338
+    ],
+    "anchor": [
+      84,
+      335
+    ],
+    "additive": true,
+    "parent": "ar_mat_projecteur_pulse_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "ar_mat_projecteur_pulse_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q_pulse_b.webp",
+    "px": [
+      143,
+      338
+    ],
+    "anchor": [
+      84,
+      335
+    ],
+    "additive": true,
+    "parent": "ar_mat_projecteur_pulse_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "ar_enceinte_pulse_3q": {
+    "file": "steel/steel_arena/ar_enceinte_pulse_3q.webp",
+    "px": [
+      184,
+      242
+    ],
+    "anchor": [
+      125,
+      239
+    ],
+    "footprint_m": [
+      3,
+      2
+    ],
+    "height_m": 3.5,
+    "source": "GenerateImage festif v2, raw 5d0d236e",
+    "status": "v1",
+    "pose": "B('ar_ence_p0', '', 'ar_enceinte_pulse_3q', 48, 38, 3, 2, { named: false })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "ar_enceinte_pulse_3q_pulse": {
+    "file": "steel/steel_arena/ar_enceinte_pulse_3q_pulse.webp",
+    "px": [
+      184,
+      242
+    ],
+    "anchor": [
+      125,
+      239
+    ],
+    "additive": true,
+    "parent": "ar_enceinte_pulse_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "ar_enceinte_pulse_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_enceinte_pulse_3q_pulse_b.webp",
+    "px": [
+      184,
+      242
+    ],
+    "anchor": [
+      125,
+      239
+    ],
+    "additive": true,
+    "parent": "ar_enceinte_pulse_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "ar_gantry_led_pulse_3q": {
+    "file": "steel/steel_arena/ar_gantry_led_pulse_3q.webp",
+    "px": [
+      390,
+      376
+    ],
+    "anchor": [
+      331,
+      373
+    ],
+    "footprint_m": [
+      8,
+      2
+    ],
+    "height_m": 5.0,
+    "source": "GenerateImage festif v2, raw db1633a5",
+    "status": "v1",
+    "pose": "B('ar_gantry0', '', 'ar_gantry_led_pulse_3q', 30, 34, 8, 2, { solid: [], named: false })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "ar_gantry_led_pulse_3q_pulse": {
+    "file": "steel/steel_arena/ar_gantry_led_pulse_3q_pulse.webp",
+    "px": [
+      390,
+      376
+    ],
+    "anchor": [
+      331,
+      373
+    ],
+    "additive": true,
+    "parent": "ar_gantry_led_pulse_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "ar_gantry_led_pulse_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_gantry_led_pulse_3q_pulse_b.webp",
+    "px": [
+      390,
+      376
+    ],
+    "anchor": [
+      331,
+      373
+    ],
+    "additive": true,
+    "parent": "ar_gantry_led_pulse_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "ar_strobe_pulse_3q": {
+    "file": "steel/steel_arena/ar_strobe_pulse_3q.webp",
+    "px": [
+      108,
+      154
+    ],
+    "anchor": [
+      64,
+      152
+    ],
+    "footprint_m": [
+      1.5,
+      1.5
+    ],
+    "height_m": 2.5,
+    "source": "GenerateImage festif v2, raw 8ff1410f",
+    "status": "v1",
+    "pose": "B('ar_strobe0', '', 'ar_strobe_pulse_3q', 56, 36, 1.5, 1.5, { named: false })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "ar_strobe_pulse_3q_pulse": {
+    "file": "steel/steel_arena/ar_strobe_pulse_3q_pulse.webp",
+    "px": [
+      108,
+      154
+    ],
+    "anchor": [
+      64,
+      152
+    ],
+    "additive": true,
+    "parent": "ar_strobe_pulse_3q",
+    "status": "v1",
+    "layer": "pulse"
+  },
+  "ar_strobe_pulse_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_strobe_pulse_3q_pulse_b.webp",
+    "px": [
+      108,
+      154
+    ],
+    "anchor": [
+      64,
+      152
+    ],
+    "additive": true,
+    "parent": "ar_strobe_pulse_3q",
+    "status": "v1",
+    "layer": "pulse_b"
+  },
+  "ar2_facade_entree_pulse": {
+    "file": "steel/steel_arena/ar2_facade_entree_pulse.webp",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "additive": true,
+    "parent": "ar2_facade_entree",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_facade_entree"
+  },
+  "ar2_facade_courbe_x_pulse": {
+    "file": "steel/steel_arena/ar2_facade_courbe_x_pulse.webp",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "additive": true,
+    "parent": "ar2_facade_courbe_x",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_facade_courbe_x"
+  },
+  "ar2_facade_courbe_z_pulse": {
+    "file": "steel/steel_arena/ar2_facade_courbe_z_pulse.webp",
+    "px": [
+      552,
+      1138
+    ],
+    "anchor": [
+      0,
+      1135
+    ],
+    "additive": true,
+    "parent": "ar2_facade_courbe_z",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_facade_courbe_z"
+  },
+  "ar2_facade_angle_pulse": {
+    "file": "steel/steel_arena/ar2_facade_angle_pulse.webp",
+    "px": [
+      677,
+      854
+    ],
+    "anchor": [
+      0,
+      811
+    ],
+    "additive": true,
+    "parent": "ar2_facade_angle",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_facade_angle"
+  },
+  "ar2_facade_retour_ouest_pulse": {
+    "file": "steel/steel_arena/ar2_facade_retour_ouest_pulse.webp",
+    "px": [
+      107,
+      847
+    ],
+    "anchor": [
+      105,
+      845
+    ],
+    "additive": true,
+    "parent": "ar2_facade_retour_ouest",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_facade_retour_ouest"
+  },
+  "ar2_toit_x_pulse": {
+    "file": "steel/steel_arena/ar2_toit_x_pulse.webp",
+    "px": [
+      1841,
+      1853
+    ],
+    "anchor": [
+      804,
+      1852
+    ],
+    "additive": true,
+    "parent": "ar2_toit_x",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_toit_x"
+  },
+  "ar2_toit_z_pulse": {
+    "file": "steel/steel_arena/ar2_toit_z_pulse.webp",
+    "px": [
+      1501,
+      1600
+    ],
+    "anchor": [
+      1198,
+      1599
+    ],
+    "additive": true,
+    "parent": "ar2_toit_z",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_toit_z"
+  },
+  "ar2_toit_angle_se_pulse": {
+    "file": "steel/steel_arena/ar2_toit_angle_se_pulse.webp",
+    "px": [
+      1803,
+      1930
+    ],
+    "anchor": [
+      1204,
+      1929
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_se",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_toit_angle_se"
+  },
+  "ar2_toit_angle_so_pulse": {
+    "file": "steel/steel_arena/ar2_toit_angle_so_pulse.webp",
+    "px": [
+      1952,
+      1808
+    ],
+    "anchor": [
+      915,
+      1807
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_so",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_toit_angle_so"
+  },
+  "ar2_ecran_geant_x_pulse": {
+    "file": "steel/steel_arena/ar2_ecran_geant_x_pulse.webp",
+    "px": [
+      480,
+      803
+    ],
+    "anchor": [
+      479,
+      802
+    ],
+    "additive": true,
+    "parent": "ar2_ecran_geant_x",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_ecran_geant_x"
+  },
+  "ar2_ecran_geant_z_pulse": {
+    "file": "steel/steel_arena/ar2_ecran_geant_z_pulse.webp",
+    "px": [
+      275,
+      792
+    ],
+    "anchor": [
+      0,
+      792
+    ],
+    "additive": true,
+    "parent": "ar2_ecran_geant_z",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar2_ecran_geant_z"
+  },
+  "ar_tribunes_3q_pulse": {
+    "file": "steel/steel_arena/ar_tribunes_3q_pulse.webp",
+    "px": [
+      725,
+      469
+    ],
+    "anchor": [
+      496,
+      467
+    ],
+    "additive": true,
+    "parent": "ar_tribunes_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_tribunes_3q"
+  },
+  "ar_regie_3q_pulse": {
+    "file": "steel/steel_arena/ar_regie_3q_pulse.webp",
+    "px": [
+      447,
+      314
+    ],
+    "anchor": [
+      332,
+      312
+    ],
+    "additive": true,
+    "parent": "ar_regie_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_regie_3q"
+  },
+  "ar_guichets_3q_pulse": {
+    "file": "steel/steel_arena/ar_guichets_3q_pulse.webp",
+    "px": [
+      282,
+      267
+    ],
+    "anchor": [
+      167,
+      265
+    ],
+    "additive": true,
+    "parent": "ar_guichets_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_guichets_3q"
+  },
+  "ar_booking_3q_pulse": {
+    "file": "steel/steel_arena/ar_booking_3q_pulse.webp",
+    "px": [
+      282,
+      299
+    ],
+    "anchor": [
+      167,
+      297
+    ],
+    "additive": true,
+    "parent": "ar_booking_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_booking_3q"
+  },
+  "ar_securite_3q_pulse": {
+    "file": "steel/steel_arena/ar_securite_3q_pulse.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "additive": true,
+    "parent": "ar_securite_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_securite_3q"
+  },
+  "ar_tech_ouest_a_3q_pulse": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_3q_pulse.webp",
+    "px": [
+      561,
+      694
+    ],
+    "anchor": [
+      332,
+      691
+    ],
+    "additive": true,
+    "parent": "ar_tech_ouest_a_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_tech_ouest_a_3q"
+  },
+  "ar_stand_merch_b_3q_pulse": {
+    "file": "steel/steel_arena/ar_stand_merch_b_3q_pulse.webp",
+    "px": [
+      282,
+      216
+    ],
+    "anchor": [
+      167,
+      213
+    ],
+    "additive": true,
+    "parent": "ar_stand_merch_b_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_stand_merch_b_3q"
+  },
+  "ar_foodtruck_nouilles_3q_pulse": {
+    "file": "steel/steel_arena/ar_foodtruck_nouilles_3q_pulse.webp",
+    "px": [
+      447,
+      317
+    ],
+    "anchor": [
+      332,
+      315
+    ],
+    "additive": true,
+    "parent": "ar_foodtruck_nouilles_3q",
+    "status": "v1",
+    "layer": "pulse",
+    "source": "overlay LED/rubans from ar_foodtruck_nouilles_3q"
   }
 }
