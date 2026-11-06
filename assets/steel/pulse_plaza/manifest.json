@@ -3737,7 +3737,8 @@
         3,
         578
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "pp_ouest_a_v2_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_fenetres.webp",
@@ -3752,7 +3753,8 @@
     "additive": true,
     "parent": "pp_ouest_a_v2_3q",
     "status": "v2",
-    "layer": "fenetres"
+    "layer": "fenetres",
+    "obsolete": true
   },
   "pp_ouest_a_v2_3q_ecran": {
     "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_ecran.webp",
@@ -3767,7 +3769,8 @@
     "additive": true,
     "parent": "pp_ouest_a_v2_3q",
     "status": "v2",
-    "layer": "ecran"
+    "layer": "ecran",
+    "obsolete": true
   },
   "pp_ouest_a_v2_3q_pulse": {
     "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_pulse.webp",
@@ -3782,7 +3785,8 @@
     "additive": true,
     "parent": "pp_ouest_a_v2_3q",
     "status": "v2",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "pp_ouest_a_v2_3q_pulse_b": {
     "file": "steel/pulse_plaza/pp_ouest_a_v2_3q_pulse_b.webp",
@@ -3797,7 +3801,8 @@
     "additive": true,
     "parent": "pp_ouest_a_v2_3q",
     "status": "v2",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
   },
   "pp_ouest_b_v2_3q": {
     "file": "steel/pulse_plaza/pp_ouest_b_v2_3q.webp",
@@ -3820,7 +3825,8 @@
     "layers": [
       "fenetres",
       "pulse"
-    ]
+    ],
+    "obsolete": true
   },
   "pp_ouest_b_v2_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_ouest_b_v2_3q_fenetres.webp",
@@ -3835,7 +3841,8 @@
     "additive": true,
     "parent": "pp_ouest_b_v2_3q",
     "status": "v2",
-    "layer": "fenetres"
+    "layer": "fenetres",
+    "obsolete": true
   },
   "pp_ouest_b_v2_3q_pulse": {
     "file": "steel/pulse_plaza/pp_ouest_b_v2_3q_pulse.webp",
@@ -3850,7 +3857,8 @@
     "additive": true,
     "parent": "pp_ouest_b_v2_3q",
     "status": "v2",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "pp_ouest_b_v2_3q_pulse_b": {
     "file": "steel/pulse_plaza/pp_ouest_b_v2_3q_pulse_b.webp",
@@ -3865,7 +3873,8 @@
     "additive": true,
     "parent": "pp_ouest_b_v2_3q",
     "status": "v2",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
   },
   "pp_ecran_feed_v2_3q": {
     "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q.webp",
@@ -3926,7 +3935,8 @@
         50,
         348
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "pp_ecran_feed_v2_3q_neon": {
     "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_neon.webp",
@@ -3941,7 +3951,8 @@
     "additive": true,
     "parent": "pp_ecran_feed_v2_3q",
     "status": "v2",
-    "layer": "neon"
+    "layer": "neon",
+    "obsolete": true
   },
   "pp_ecran_feed_v2_3q_ecran": {
     "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_ecran.webp",
@@ -3956,7 +3967,8 @@
     "additive": true,
     "parent": "pp_ecran_feed_v2_3q",
     "status": "v2",
-    "layer": "ecran"
+    "layer": "ecran",
+    "obsolete": true
   },
   "pp_ecran_feed_v2_3q_pulse": {
     "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_pulse.webp",
@@ -3971,7 +3983,8 @@
     "additive": true,
     "parent": "pp_ecran_feed_v2_3q",
     "status": "v2",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "pp_ecran_feed_v2_3q_pulse_b": {
     "file": "steel/pulse_plaza/pp_ecran_feed_v2_3q_pulse_b.webp",
@@ -3986,7 +3999,8 @@
     "additive": true,
     "parent": "pp_ecran_feed_v2_3q",
     "status": "v2",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
   },
   "pp_billboard_v2_3q": {
     "file": "steel/pulse_plaza/pp_billboard_v2_3q.webp",
@@ -5087,7 +5101,8 @@
       "pulse",
       "faisceau",
       "pulse_b"
-    ]
+    ],
+    "obsolete": true
   },
   "pp_pont_projecteurs_v2_3q_pulse": {
     "file": "steel/pulse_plaza/pp_pont_projecteurs_v2_3q_pulse.webp",
@@ -5103,7 +5118,8 @@
     "parent": "pp_pont_projecteurs_v2_3q",
     "status": "v2",
     "layer": "pulse",
-    "bande": "kick"
+    "bande": "kick",
+    "obsolete": true
   },
   "pp_pont_projecteurs_v2_3q_faisceau": {
     "file": "steel/pulse_plaza/pp_pont_projecteurs_v2_3q_faisceau.webp",
@@ -5119,7 +5135,8 @@
     "parent": "pp_pont_projecteurs_v2_3q",
     "status": "v2",
     "layer": "faisceau",
-    "bande": "kick"
+    "bande": "kick",
+    "obsolete": true
   },
   "pp_pont_projecteurs_v2_3q_pulse_b": {
     "file": "steel/pulse_plaza/pp_pont_projecteurs_v2_3q_pulse_b.webp",
@@ -5135,6 +5152,270 @@
     "parent": "pp_pont_projecteurs_v2_3q",
     "status": "v2",
     "layer": "pulse_b",
-    "bande": "aigus"
+    "bande": "aigus",
+    "obsolete": true
+  },
+  "pp_ouest_a_v3_3q": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v3_3q.webp",
+    "px": [
+      509,
+      713
+    ],
+    "anchor": [
+      167,
+      711
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 10.0,
+    "source": "audit-sol fix Valentin captures",
+    "status": "v3",
+    "pose": "B('pp_fac_o1', '', 'pp_ouest_a_v3_3q', -4, 0, 4, 12, { named: false })",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "pulse"
+    ]
+  },
+  "pp_ouest_a_v3_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v3_3q_fenetres.webp",
+    "px": [
+      509,
+      713
+    ],
+    "anchor": [
+      167,
+      711
+    ],
+    "additive": true,
+    "parent": "pp_ouest_a_v3_3q",
+    "status": "v3",
+    "layer": "fenetres"
+  },
+  "pp_ouest_a_v3_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v3_3q_ecran.webp",
+    "px": [
+      509,
+      713
+    ],
+    "anchor": [
+      167,
+      711
+    ],
+    "additive": true,
+    "parent": "pp_ouest_a_v3_3q",
+    "status": "v3",
+    "layer": "ecran"
+  },
+  "pp_ouest_a_v3_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ouest_a_v3_3q_pulse.webp",
+    "px": [
+      509,
+      713
+    ],
+    "anchor": [
+      167,
+      711
+    ],
+    "additive": true,
+    "parent": "pp_ouest_a_v3_3q",
+    "status": "v3",
+    "layer": "pulse"
+  },
+  "pp_ouest_b_v3_3q": {
+    "file": "steel/pulse_plaza/pp_ouest_b_v3_3q.webp",
+    "px": [
+      396,
+      587
+    ],
+    "anchor": [
+      167,
+      585
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 8.0,
+    "source": "audit-sol fix Valentin captures",
+    "status": "v3",
+    "pose": "B('pp_fac_o2', '', 'pp_ouest_b_v3_3q', -4, 16, 4, 8, { named: false }) ; B('pp_fac_o3', '', 'pp_ouest_b_v3_3q', -4, 24, 4, 8, { named: false })",
+    "layers": [
+      "fenetres",
+      "pulse"
+    ]
+  },
+  "pp_ouest_b_v3_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_ouest_b_v3_3q_fenetres.webp",
+    "px": [
+      396,
+      587
+    ],
+    "anchor": [
+      167,
+      585
+    ],
+    "additive": true,
+    "parent": "pp_ouest_b_v3_3q",
+    "status": "v3",
+    "layer": "fenetres"
+  },
+  "pp_ouest_b_v3_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ouest_b_v3_3q_pulse.webp",
+    "px": [
+      396,
+      587
+    ],
+    "anchor": [
+      167,
+      585
+    ],
+    "additive": true,
+    "parent": "pp_ouest_b_v3_3q",
+    "status": "v3",
+    "layer": "pulse"
+  },
+  "pp_ecran_feed_v3_3q": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v3_3q.webp",
+    "px": [
+      941,
+      771
+    ],
+    "anchor": [
+      826,
+      769
+    ],
+    "footprint_m": [
+      20,
+      4
+    ],
+    "height_m": 11.0,
+    "source": "audit-sol fix Valentin captures",
+    "status": "v3",
+    "pose": "B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_v3_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED })",
+    "layers": [
+      "ecran",
+      "neon",
+      "pulse"
+    ],
+    "enseigne": "Feed 24/7",
+    "ecran_coins": [
+      [
+        78,
+        341
+      ],
+      [
+        815,
+        246
+      ],
+      [
+        815,
+        578
+      ],
+      [
+        78,
+        347
+      ]
+    ],
+    "note": "recalibré plus haut (mur dressé opaque) audit-sol"
+  },
+  "pp_ecran_feed_v3_3q_neon": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v3_3q_neon.webp",
+    "px": [
+      941,
+      771
+    ],
+    "anchor": [
+      826,
+      769
+    ],
+    "additive": true,
+    "parent": "pp_ecran_feed_v3_3q",
+    "status": "v3",
+    "layer": "neon"
+  },
+  "pp_ecran_feed_v3_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v3_3q_ecran.webp",
+    "px": [
+      941,
+      771
+    ],
+    "anchor": [
+      826,
+      769
+    ],
+    "additive": true,
+    "parent": "pp_ecran_feed_v3_3q",
+    "status": "v3",
+    "layer": "ecran"
+  },
+  "pp_ecran_feed_v3_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_ecran_feed_v3_3q_pulse.webp",
+    "px": [
+      941,
+      771
+    ],
+    "anchor": [
+      826,
+      769
+    ],
+    "additive": true,
+    "parent": "pp_ecran_feed_v3_3q",
+    "status": "v3",
+    "layer": "pulse"
+  },
+  "pp_pont_projecteurs_v3_3q": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_v3_3q.webp",
+    "px": [
+      391,
+      290
+    ],
+    "anchor": [
+      332,
+      287
+    ],
+    "footprint_m": [
+      8,
+      2
+    ],
+    "height_m": 5.0,
+    "source": "audit-sol fix Valentin captures",
+    "status": "v3",
+    "pose": "B('pp_pont0', '', 'pp_pont_projecteurs_v3_3q', 10, 20, 8, 2, { solid: [], named: false, cover: true })",
+    "layers": [
+      "pulse"
+    ]
+  },
+  "pp_pont_projecteurs_v3_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_v3_3q_pulse.webp",
+    "px": [
+      391,
+      290
+    ],
+    "anchor": [
+      332,
+      287
+    ],
+    "additive": true,
+    "parent": "pp_pont_projecteurs_v3_3q",
+    "status": "v3",
+    "layer": "pulse"
+  },
+  "pp_pont_projecteurs_v3_3q_faisceau": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_v3_3q_faisceau.webp",
+    "px": [
+      391,
+      290
+    ],
+    "anchor": [
+      332,
+      287
+    ],
+    "additive": true,
+    "parent": "pp_pont_projecteurs_v3_3q",
+    "status": "v3",
+    "layer": "faisceau"
   }
 }

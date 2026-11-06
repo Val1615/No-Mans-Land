@@ -299,3 +299,35 @@ Rivet : remplacer le sprite du pont par `pp_pont_projecteurs_v2_3q` ; brancher `
 - Tous les bâtiments de `BUILDINGS_PULSE` passent en `*_v2_3q` sur les mêmes emprises, à la seule exception de `pp_guerite` conservée en `pp_guerite_3q` (`ECRAN_FEED.coins` recalé en `[[132, 37], [755, 242], [755, 516], [132, 311]]`, écrans hauts `pp_ecran_n1`/`n2` avancés bord à bord en `z 0..0.6` sans solide).
 - Les 6 props rythmiques sont posés sans chevauchement d'emprises ni masquage (`view.masques()` vide, Maëlle en `(17,2 ; 13,4)`, statue sud-ouest en `(14,5 ; 26)`, Clone 7 en `(19,6 ; 23,2)`) : `pp_dalle_pa0` `(22, 12, 4, 4, fond)`, `pp_dalle_pb0` `(26, 12, 4, 4, fond)`, `pp_arche0` `(21, 4, 6, 2, cover)`, `pp_pont0` en `pp_pont_projecteurs_v2_3q` `(10, 20, 8, 2, cover)`, `pp_totem0` `(18, 18, 2, 2)`, `pp_ence0` `(16, 22, 2, 2)`.
 - 50 calques additifs (`_pulse`, `_faisceau` et `_ecran` prioritaires verrouillés en phase sur le kick, `_pulse_b` sur mid/aigus, `pp_pont_projecteurs_v2_3q_faisceau` plafonné à `0,50` au pic depuis veille `0,01`) + flash additif des dalles d'écran code + 2 projecteurs scéniques + halos réactifs pilotés par `ostCentre` (plafond mobile `animStats.pulsesOn <= 8` : Feed `pulse`+`ecran`, Billboard `pulse`+`ecran`, Nord_A `pulse`+`ecran`, Pont v2 `faisceau`+`pulse`). Foule densifiée à 52 figurants fixes + 4 passants en grappes devant le Feed, la scène, le pont et tous les stands (`view.masques()` vide). Tri de profondeur statique antisymétrique : 0 inversion d'ordre entre bâtiments.
+
+## Audit sol / correctifs v3 [Ocre 2026-11-06]
+Captures Valentin (`nml-refs/retours/pulse_feed_capture.jpg`, `pulse_ouest_capture.jpg`) + audit ancre.
+
+### Remplacements (nouvelles clés, mêmes emprises)
+| ancienne (obsolete) | problème | nouvelle | B(...) / échange Rivet |
+|---|---|---|---|
+| `pp_ouest_a_v2_3q` | silhouette dents de scie / pignons | `pp_ouest_a_v3_3q` | sprite → `pp_ouest_a_v3_3q` (pp_fac_o1, -4,0,4,12) |
+| `pp_ouest_b_v2_3q` | idem dents de scie | `pp_ouest_b_v3_3q` | sprite → `pp_ouest_b_v3_3q` (pp_fac_o2/o3) |
+| `pp_ecran_feed_v2_3q` | dalle translucide au sol, pas dressée | `pp_ecran_feed_v3_3q` | sprite → `pp_ecran_feed_v3_3q` ; **recaler ECRAN_FEED.coins** (voir manifeste `ecran_coins`) ; h ≈ 11 m |
+| `pp_pont_projecteurs_v2_3q` | industriel + faisceaux aplats saturés | `pp_pont_projecteurs_v3_3q` | sprite → `pp_pont_projecteurs_v3_3q` ; `_faisceau` soft max α≈95 |
+
+**Feed v3** px=[941, 771] ancre=[826, 769] coins écran proposés : `[[78, 341], [815, 246], [815, 578], [78, 347]]`
+
+### Faisceaux
+- Pont : calque `_faisceau` fin, dégradé transparent, courts, issus des projecteurs.
+- Arena : nouvelles `*_faisceau_fix` (ambre soft) ; anciennes `*_faisceau` → obsolete. Brancher les `_fix` à la place.
+- **Côté code** : le grand faisceau diagonal blanc/cyan visible sur les captures Valentin vient aussi des **faisceaux code** (`view.js` / extras Pulse, ex. billboard/pont y≈4). Rivet : baisser `intensite` / `ouverture` / longueur de ces rayons runtime (pas un sprite).
+
+### Écarts d’ancre (asset vs code)
+Sprites avec |dy|>4 px (ancre manifeste vs pied opaque SE) — souvent **toits/écrans hauts** dont l’ancre est volontairement au raccord bas alors que le volume opaque est au-dessus (pas un float de kiosque) :
+- `ar2_toit_angle_se` dy=-820px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `ar2_toit_z` dy=-768px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `ar2_toit_angle_so` dy=-726px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `ar2_ecran_geant_z` dy=-376px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `ar2_ecran_geant_x` dy=-374px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `pp_ecran_haut_n2` dy=-336px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `pp_ecran_haut_n1` dy=-254px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `pp_ecran_haut_e2` dy=-203px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+- `ar_gantry_led_pulse_3q` dy=-116px — typiquement **ancre au sol / raccord** alors que le dessin opaque est le volume haut : à traiter côté pose `b.ancre` / `fond` (code Rivet), pas forcément regen.
+
+Maquettes : `/workspace/nml-shots/audit_pulse_feed.png`, `audit_pulse_ouest.png`, `audit_strip.png`, `audit_arena.png`, `audit_anchors.png`.

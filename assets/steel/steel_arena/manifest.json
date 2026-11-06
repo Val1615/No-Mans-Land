@@ -3644,7 +3644,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "faisceaux projecteurs ambre visibles",
-    "pulse_px": 62743
+    "pulse_px": 62743,
+    "obsolete": true
   },
   "ar2_toit_z_faisceau": {
     "file": "steel/steel_arena/ar2_toit_z_faisceau.webp",
@@ -3662,7 +3663,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "faisceaux projecteurs ambre visibles",
-    "pulse_px": 57571
+    "pulse_px": 57571,
+    "obsolete": true
   },
   "ar2_toit_angle_se_faisceau": {
     "file": "steel/steel_arena/ar2_toit_angle_se_faisceau.webp",
@@ -3680,7 +3682,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "faisceaux projecteurs ambre visibles",
-    "pulse_px": 19824
+    "pulse_px": 19824,
+    "obsolete": true
   },
   "ar2_toit_angle_so_faisceau": {
     "file": "steel/steel_arena/ar2_toit_angle_so_faisceau.webp",
@@ -3698,7 +3701,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "faisceaux projecteurs ambre visibles",
-    "pulse_px": 51862
+    "pulse_px": 51862,
+    "obsolete": true
   },
   "ar2_facade_entree_faisceau": {
     "file": "steel/steel_arena/ar2_facade_entree_faisceau.webp",
@@ -3716,7 +3720,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "faisceaux projecteurs ambre visibles",
-    "pulse_px": 115868
+    "pulse_px": 115868,
+    "obsolete": true
   },
   "ar_projecteur_faisceau": {
     "file": "steel/steel_arena/ar_projecteur_faisceau.webp",
@@ -3734,7 +3739,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "cone faisceau projecteur",
-    "pulse_px": 2972
+    "pulse_px": 2972,
+    "obsolete": true
   },
   "ar_pylone_projecteur_faisceau": {
     "file": "steel/steel_arena/ar_pylone_projecteur_faisceau.webp",
@@ -3752,7 +3758,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "cone faisceau projecteur",
-    "pulse_px": 10179
+    "pulse_px": 10179,
+    "obsolete": true
   },
   "ar_mat_projecteur_pulse_3q_faisceau": {
     "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q_faisceau.webp",
@@ -3770,6 +3777,151 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "cone faisceau projecteur",
-    "pulse_px": 6383
+    "pulse_px": 6383,
+    "obsolete": true
+  },
+  "ar2_toit_x_faisceau_fix": {
+    "file": "steel/steel_arena/ar2_toit_x_faisceau_fix.webp",
+    "px": [
+      1841,
+      1853
+    ],
+    "anchor": [
+      804,
+      1852
+    ],
+    "additive": true,
+    "parent": "ar2_toit_x",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 26337
+  },
+  "ar2_toit_z_faisceau_fix": {
+    "file": "steel/steel_arena/ar2_toit_z_faisceau_fix.webp",
+    "px": [
+      1501,
+      1600
+    ],
+    "anchor": [
+      1198,
+      1599
+    ],
+    "additive": true,
+    "parent": "ar2_toit_z",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 20204
+  },
+  "ar2_toit_angle_se_faisceau_fix": {
+    "file": "steel/steel_arena/ar2_toit_angle_se_faisceau_fix.webp",
+    "px": [
+      1803,
+      1930
+    ],
+    "anchor": [
+      1204,
+      1929
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_se",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 7619
+  },
+  "ar2_toit_angle_so_faisceau_fix": {
+    "file": "steel/steel_arena/ar2_toit_angle_so_faisceau_fix.webp",
+    "px": [
+      1952,
+      1808
+    ],
+    "anchor": [
+      915,
+      1807
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_so",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 18998
+  },
+  "ar2_facade_entree_faisceau_fix": {
+    "file": "steel/steel_arena/ar2_facade_entree_faisceau_fix.webp",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "additive": true,
+    "parent": "ar2_facade_entree",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 32222
+  },
+  "ar_projecteur_faisceau_fix": {
+    "file": "steel/steel_arena/ar_projecteur_faisceau_fix.webp",
+    "px": [
+      160,
+      300
+    ],
+    "anchor": [
+      80,
+      299
+    ],
+    "additive": true,
+    "parent": "ar_projecteur",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 2897
+  },
+  "ar_pylone_projecteur_faisceau_fix": {
+    "file": "steel/steel_arena/ar_pylone_projecteur_faisceau_fix.webp",
+    "px": [
+      218,
+      600
+    ],
+    "anchor": [
+      105,
+      599
+    ],
+    "additive": true,
+    "parent": "ar_pylone_projecteur",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 9220
+  },
+  "ar_mat_projecteur_pulse_3q_faisceau_fix": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q_faisceau_fix.webp",
+    "px": [
+      143,
+      338
+    ],
+    "anchor": [
+      84,
+      335
+    ],
+    "additive": true,
+    "parent": "ar_mat_projecteur_pulse_3q",
+    "status": "fix",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "soft thin faisceau audit-sol",
+    "pulse_px": 6182
   }
 }
