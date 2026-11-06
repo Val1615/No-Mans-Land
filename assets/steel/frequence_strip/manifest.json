@@ -2878,5 +2878,1595 @@
     "note": "couche néon séparée, même taille et même ancre que fs_bas_implants ; fixe, le code l’allume (ou la fait clignoter s’il reste du budget) en mode additif",
     "file": "steel/frequence_strip/fs_bas_implants_neon.webp",
     "status": "v1"
+  },
+  "fs_vol_cote_h2_d4_a": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 4 m, hauteur 2 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_a + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_bas_massages",
+      "fs_bas_nouilles",
+      "fs_bas_perruques",
+      "fs_bas_shots",
+      "fs_bas_tabac"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h2_d4_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h2_d4_b": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 4 m, hauteur 2 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_b + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_bas_distributeur",
+      "fs_bas_fleurs",
+      "fs_bas_gage",
+      "fs_bas_implants",
+      "fs_bas_laverie",
+      "fs_bas_preservatifs"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h2_d4_b.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h6_d4_a": {
+    "px": [
+      138,
+      396
+    ],
+    "anchor": [
+      0,
+      395
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 6,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 4 m, hauteur 6 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_a + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_cabines"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h6_d4_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h6_d4_b": {
+    "px": [
+      138,
+      396
+    ],
+    "anchor": [
+      0,
+      395
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 6,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 4 m, hauteur 6 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_b + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h6_d4_b.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h8_d4_a": {
+    "px": [
+      138,
+      496
+    ],
+    "anchor": [
+      0,
+      495
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 8,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 4 m, hauteur 8 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_a + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_bouche_nord",
+      "fs_peep"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h8_d4_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h8_d4_b": {
+    "px": [
+      138,
+      496
+    ],
+    "anchor": [
+      0,
+      495
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 8,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 4 m, hauteur 8 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_b + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_salon"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h8_d4_b.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h8_d8_a": {
+    "px": [
+      275,
+      592
+    ],
+    "anchor": [
+      0,
+      591
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 8,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 8 m, hauteur 8 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_a + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_club"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h8_d8_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h9_d8_a": {
+    "px": [
+      275,
+      642
+    ],
+    "anchor": [
+      0,
+      641
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 9,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 8 m, hauteur 9 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_b + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_clubprive"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h9_d8_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h10_d8_a": {
+    "px": [
+      275,
+      692
+    ],
+    "anchor": [
+      0,
+      691
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 10,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 8 m, hauteur 10 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_a + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_sexshop"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h10_d8_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_cote_h10_d8_b": {
+    "px": [
+      275,
+      692
+    ],
+    "anchor": [
+      0,
+      691
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 10,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est face z, profondeur 8 m, hauteur 10 m ; ancre au pied de l’arête avant (coin est de la façade) ; raccord exact à l’arête",
+    "source": "GenerateImage (cursor) side_b + PIL shear pente 0,70",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_lovehotel"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "file": "steel/frequence_strip/fs_vol_cote_h10_d8_b.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_4x4_a": {
+    "px": [
+      343,
+      565
+    ],
+    "anchor": [
+      202,
+      564
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 4 x 4 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_a + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_peep"
+    ],
+    "elevation_m": 8,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_4x4_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_4x4_b": {
+    "px": [
+      343,
+      565
+    ],
+    "anchor": [
+      202,
+      564
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 4 x 4 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_b + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_bouche_nord",
+      "fs_salon"
+    ],
+    "elevation_m": 8,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_4x4_b.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_4x4_low": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 4 x 4 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_low + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_bas_distributeur",
+      "fs_bas_fleurs",
+      "fs_bas_gage",
+      "fs_bas_implants",
+      "fs_bas_massages",
+      "fs_bas_perruques",
+      "fs_bas_preservatifs",
+      "fs_bas_shots",
+      "fs_bas_tabac"
+    ],
+    "elevation_m": 2,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_4x4_low.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_8x4_a": {
+    "px": [
+      543,
+      531
+    ],
+    "anchor": [
+      402,
+      530
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 8 x 4 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_a + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_cabines"
+    ],
+    "elevation_m": 6,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_8x4_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_8x4_low": {
+    "px": [
+      543,
+      331
+    ],
+    "anchor": [
+      402,
+      330
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 8 x 4 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_low + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_bas_laverie",
+      "fs_bas_nouilles"
+    ],
+    "elevation_m": 2,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_8x4_low.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_8x8_a": {
+    "px": [
+      680,
+      828
+    ],
+    "anchor": [
+      402,
+      827
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 8 x 8 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_a + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_clubprive",
+      "fs_sexshop"
+    ],
+    "elevation_m": 10,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_8x8_a.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_8x8_b": {
+    "px": [
+      680,
+      828
+    ],
+    "anchor": [
+      402,
+      827
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 8 x 8 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_b + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_lovehotel"
+    ],
+    "elevation_m": 10,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_8x8_b.webp",
+    "status": "v1"
+  },
+  "fs_vol_toit_10x8_a": {
+    "px": [
+      780,
+      761
+    ],
+    "anchor": [
+      502,
+      760
+    ],
+    "footprint_m": [
+      10,
+      8
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit plat 10 x 8 m sur le haut de façade+côté ; ancre au coin avant-est au sol de l’emprise ; poser avec fond:true avant la façade",
+    "source": "GenerateImage (cursor) roof_a + PIL perspective iso",
+    "gabarit": true,
+    "utilise_par": [
+      "fs_club"
+    ],
+    "elevation_m": 8,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "file": "steel/frequence_strip/fs_vol_toit_10x8_a.webp",
+    "status": "v1"
+  },
+  "fs_sexshop_cote": {
+    "px": [
+      275,
+      692
+    ],
+    "anchor": [
+      0,
+      691
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 10,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_sexshop, face z pente 0,70, profondeur 8 m, même hauteur 10 m que la façade ; bâtiment nord : façade front z 6, volume vers le nord z -2 à 6 ; ancre (x_est ; 6) = coin est de la façade",
+    "source": "alias de fs_vol_cote_h10_d8_a (GenerateImage (cursor) side_a + PIL shear pente 0,70)",
+    "utilise_par": [
+      "fs_sexshop"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "gabarit_de": "fs_vol_cote_h10_d8_a",
+    "file": "steel/frequence_strip/fs_sexshop_cote.webp",
+    "status": "v1"
+  },
+  "fs_sexshop_toit": {
+    "px": [
+      680,
+      828
+    ],
+    "anchor": [
+      402,
+      827
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_sexshop : emprise 8 x 8 m à 10 m ; B(x_facade, -2, 8, 8) ancre coin avant-est (x+8 ; 6), fond:true",
+    "source": "alias de fs_vol_toit_8x8_a (GenerateImage (cursor) roof_a + PIL perspective iso)",
+    "utilise_par": [
+      "fs_sexshop"
+    ],
+    "elevation_m": 10,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "gabarit_de": "fs_vol_toit_8x8_a",
+    "file": "steel/frequence_strip/fs_sexshop_toit.webp",
+    "status": "v1"
+  },
+  "fs_sexshop_fenetres": {
+    "px": [
+      400,
+      632
+    ],
+    "anchor": [
+      398,
+      631
+    ],
+    "couche_de": "fs_sexshop",
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 10,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_sexshop ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_sexshop.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_sexshop_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_peep_cote": {
+    "px": [
+      138,
+      496
+    ],
+    "anchor": [
+      0,
+      495
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 8,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_peep, face z pente 0,70, profondeur 4 m, même hauteur 8 m que la façade ; bâtiment nord : façade front z 6, volume vers le nord z 2 à 6 ; ancre (x_est ; 6) = coin est de la façade",
+    "source": "alias de fs_vol_cote_h8_d4_a (GenerateImage (cursor) side_a + PIL shear pente 0,70)",
+    "utilise_par": [
+      "fs_peep"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "gabarit_de": "fs_vol_cote_h8_d4_a",
+    "file": "steel/frequence_strip/fs_peep_cote.webp",
+    "status": "v1"
+  },
+  "fs_peep_toit": {
+    "px": [
+      343,
+      565
+    ],
+    "anchor": [
+      202,
+      564
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_peep : emprise 4 x 4 m à 8 m ; B(x_facade, 2, 4, 4) ancre coin avant-est (x+4 ; 6), fond:true",
+    "source": "alias de fs_vol_toit_4x4_a (GenerateImage (cursor) roof_a + PIL perspective iso)",
+    "utilise_par": [
+      "fs_peep"
+    ],
+    "elevation_m": 8,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "gabarit_de": "fs_vol_toit_4x4_a",
+    "file": "steel/frequence_strip/fs_peep_toit.webp",
+    "status": "v1"
+  },
+  "fs_peep_fenetres": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "couche_de": "fs_peep",
+    "footprint_m": [
+      4,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_peep ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_peep.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_peep_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_salon_cote": {
+    "px": [
+      138,
+      496
+    ],
+    "anchor": [
+      0,
+      495
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 8,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_salon, face z pente 0,70, profondeur 4 m, même hauteur 8 m que la façade ; bâtiment nord : façade front z 6, volume vers le nord z 2 à 6 ; ancre (x_est ; 6) = coin est de la façade",
+    "source": "alias de fs_vol_cote_h8_d4_b (GenerateImage (cursor) side_b + PIL shear pente 0,70)",
+    "utilise_par": [
+      "fs_salon"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "gabarit_de": "fs_vol_cote_h8_d4_b",
+    "file": "steel/frequence_strip/fs_salon_cote.webp",
+    "status": "v1"
+  },
+  "fs_salon_toit": {
+    "px": [
+      343,
+      565
+    ],
+    "anchor": [
+      202,
+      564
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_salon : emprise 4 x 4 m à 8 m ; B(x_facade, 2, 4, 4) ancre coin avant-est (x+4 ; 6), fond:true",
+    "source": "alias de fs_vol_toit_4x4_b (GenerateImage (cursor) roof_b + PIL perspective iso)",
+    "utilise_par": [
+      "fs_salon"
+    ],
+    "elevation_m": 8,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "gabarit_de": "fs_vol_toit_4x4_b",
+    "file": "steel/frequence_strip/fs_salon_toit.webp",
+    "status": "v1"
+  },
+  "fs_salon_fenetres": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "couche_de": "fs_salon",
+    "footprint_m": [
+      4,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_salon ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_salon.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_salon_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_lovehotel_cote": {
+    "px": [
+      275,
+      692
+    ],
+    "anchor": [
+      0,
+      691
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 10,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_lovehotel, face z pente 0,70, profondeur 8 m, même hauteur 10 m que la façade ; bâtiment nord : façade front z 6, volume vers le nord z -2 à 6 ; ancre (x_est ; 6) = coin est de la façade",
+    "source": "alias de fs_vol_cote_h10_d8_b (GenerateImage (cursor) side_b + PIL shear pente 0,70)",
+    "utilise_par": [
+      "fs_lovehotel"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "gabarit_de": "fs_vol_cote_h10_d8_b",
+    "file": "steel/frequence_strip/fs_lovehotel_cote.webp",
+    "status": "v1"
+  },
+  "fs_lovehotel_toit": {
+    "px": [
+      680,
+      828
+    ],
+    "anchor": [
+      402,
+      827
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_lovehotel : emprise 8 x 8 m à 10 m ; B(x_facade, -2, 8, 8) ancre coin avant-est (x+8 ; 6), fond:true",
+    "source": "alias de fs_vol_toit_8x8_b (GenerateImage (cursor) roof_b + PIL perspective iso)",
+    "utilise_par": [
+      "fs_lovehotel"
+    ],
+    "elevation_m": 10,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "gabarit_de": "fs_vol_toit_8x8_b",
+    "file": "steel/frequence_strip/fs_lovehotel_toit.webp",
+    "status": "v1"
+  },
+  "fs_lovehotel_fenetres": {
+    "px": [
+      400,
+      632
+    ],
+    "anchor": [
+      398,
+      631
+    ],
+    "couche_de": "fs_lovehotel",
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 10,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_lovehotel ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_lovehotel.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_lovehotel_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_clubprive_cote": {
+    "px": [
+      275,
+      642
+    ],
+    "anchor": [
+      0,
+      641
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 9,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_clubprive, face z pente 0,70, profondeur 8 m, même hauteur 9 m que la façade ; bâtiment nord : façade front z 6, volume vers le nord z -2 à 6 ; ancre (x_est ; 6) = coin est de la façade",
+    "source": "alias de fs_vol_cote_h9_d8_a (GenerateImage (cursor) side_b + PIL shear pente 0,70)",
+    "utilise_par": [
+      "fs_clubprive"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "gabarit_de": "fs_vol_cote_h9_d8_a",
+    "file": "steel/frequence_strip/fs_clubprive_cote.webp",
+    "status": "v1"
+  },
+  "fs_clubprive_toit": {
+    "px": [
+      680,
+      828
+    ],
+    "anchor": [
+      402,
+      827
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_clubprive : emprise 8 x 8 m à 9 m ; B(x_facade, -2, 8, 8) ancre coin avant-est (x+8 ; 6), fond:true",
+    "source": "alias de fs_vol_toit_8x8_a (GenerateImage (cursor) roof_a + PIL perspective iso)",
+    "utilise_par": [
+      "fs_clubprive"
+    ],
+    "elevation_m": 9,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "gabarit_de": "fs_vol_toit_8x8_a",
+    "file": "steel/frequence_strip/fs_clubprive_toit.webp",
+    "status": "v1"
+  },
+  "fs_clubprive_fenetres": {
+    "px": [
+      400,
+      582
+    ],
+    "anchor": [
+      398,
+      581
+    ],
+    "couche_de": "fs_clubprive",
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 9,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_clubprive ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_clubprive.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_clubprive_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_club_cote": {
+    "px": [
+      275,
+      592
+    ],
+    "anchor": [
+      0,
+      591
+    ],
+    "footprint_m": [
+      0.5,
+      8
+    ],
+    "height_m": 8,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_club, face z pente 0,70, profondeur 8 m, même hauteur 8 m que la façade ; bâtiment nord : façade front z 6, volume vers le nord z -2 à 6 ; ancre (x_est ; 6) = coin est de la façade",
+    "source": "alias de fs_vol_cote_h8_d8_a (GenerateImage (cursor) side_a + PIL shear pente 0,70)",
+    "utilise_par": [
+      "fs_club"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "gabarit_de": "fs_vol_cote_h8_d8_a",
+    "file": "steel/frequence_strip/fs_club_cote.webp",
+    "status": "v1"
+  },
+  "fs_club_toit": {
+    "px": [
+      780,
+      761
+    ],
+    "anchor": [
+      502,
+      760
+    ],
+    "footprint_m": [
+      10,
+      8
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_club : emprise 10 x 8 m à 8 m ; B(x_facade, -2, 10, 8) ancre coin avant-est (x+10 ; 6), fond:true",
+    "source": "alias de fs_vol_toit_10x8_a (GenerateImage (cursor) roof_a + PIL perspective iso)",
+    "utilise_par": [
+      "fs_club"
+    ],
+    "elevation_m": 8,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "gabarit_de": "fs_vol_toit_10x8_a",
+    "file": "steel/frequence_strip/fs_club_toit.webp",
+    "status": "v1"
+  },
+  "fs_club_fenetres": {
+    "px": [
+      500,
+      565
+    ],
+    "anchor": [
+      498,
+      564
+    ],
+    "couche_de": "fs_club",
+    "footprint_m": [
+      10,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_club ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_club.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_club_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_bouche_nord_cote": {
+    "px": [
+      138,
+      496
+    ],
+    "anchor": [
+      0,
+      495
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 8,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bouche_nord, face z pente 0,70, profondeur 4 m, même hauteur 8 m que la façade ; bâtiment nord : façade front z 6, volume vers le nord z 2 à 6 ; ancre (x_est ; 6) = coin est de la façade",
+    "source": "alias de fs_vol_cote_h8_d4_a (GenerateImage (cursor) side_a + PIL shear pente 0,70)",
+    "utilise_par": [
+      "fs_bouche_nord"
+    ],
+    "note": "côté générique réutilisable ; les clés <bâtiment>_cote pointent sur la même image",
+    "gabarit_de": "fs_vol_cote_h8_d4_a",
+    "file": "steel/frequence_strip/fs_bouche_nord_cote.webp",
+    "status": "v1"
+  },
+  "fs_bouche_nord_toit": {
+    "px": [
+      343,
+      565
+    ],
+    "anchor": [
+      202,
+      564
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bouche_nord : emprise 4 x 4 m à 8 m ; B(x_facade, 2, 4, 4) ancre coin avant-est (x+4 ; 6), fond:true",
+    "source": "alias de fs_vol_toit_4x4_b (GenerateImage (cursor) roof_b + PIL perspective iso)",
+    "utilise_par": [
+      "fs_bouche_nord"
+    ],
+    "elevation_m": 8,
+    "note": "toit générique ; caissons, tuyaux, balises peints allumés ; pas de fumée animée (proposition : particule code plus tard)",
+    "gabarit_de": "fs_vol_toit_4x4_b",
+    "file": "steel/frequence_strip/fs_bouche_nord_toit.webp",
+    "status": "v1"
+  },
+  "fs_bouche_nord_fenetres": {
+    "px": [
+      200,
+      466
+    ],
+    "anchor": [
+      198,
+      465
+    ],
+    "couche_de": "fs_bouche_nord",
+    "footprint_m": [
+      4,
+      1.5
+    ],
+    "height_m": 8,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_bouche_nord ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_bouche_nord.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_bouche_nord_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_cabines_cote": {
+    "px": [
+      138,
+      396
+    ],
+    "anchor": [
+      0,
+      395
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 6,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_cabines : arête x 46, profondeur 4 m vers le nord (z 20 à 24), hauteur 6 m ; ancre au pied ( 46 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h6_d4_a",
+    "file": "steel/frequence_strip/fs_cabines_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h6_d4_a"
+  },
+  "fs_cabines_toit": {
+    "px": [
+      543,
+      531
+    ],
+    "anchor": [
+      402,
+      530
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_cabines : B(38, 20, 8, 4) à 6 m ; ancre coin avant-est (46 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_8x4_a",
+    "elevation_m": 6,
+    "file": "steel/frequence_strip/fs_cabines_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_8x4_a"
+  },
+  "fs_cabines_fenetres": {
+    "px": [
+      400,
+      432
+    ],
+    "anchor": [
+      398,
+      431
+    ],
+    "couche_de": "fs_cabines",
+    "footprint_m": [
+      8,
+      1.5
+    ],
+    "height_m": 6,
+    "face": "x",
+    "pente": 0.33,
+    "pose": "même pose et même ancre que fs_cabines ; calque des fenêtres ambre/rouges allumées seul, pour battement ou vacillement par le code",
+    "source": "extraction PIL des glows ambre/roses de fs_cabines.webp",
+    "note": "comme les calques _neon : même taille, même ancre ; le code l’allume / la fait vaciller en additif ; ne pas inclure l’enseigne néon",
+    "file": "steel/frequence_strip/fs_cabines_fenetres.webp",
+    "status": "v1"
+  },
+  "fs_bas_nouilles_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_nouilles : arête x 8, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 8 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_a",
+    "file": "steel/frequence_strip/fs_bas_nouilles_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_a"
+  },
+  "fs_bas_nouilles_toit": {
+    "px": [
+      543,
+      331
+    ],
+    "anchor": [
+      402,
+      330
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_nouilles : B(0, 20, 8, 4) à 2 m ; ancre coin avant-est (8 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_8x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_nouilles_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_8x4_low"
+  },
+  "fs_bas_fleurs_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_fleurs : arête x 12, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 12 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_b",
+    "file": "steel/frequence_strip/fs_bas_fleurs_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_b"
+  },
+  "fs_bas_fleurs_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_fleurs : B(8, 20, 4, 4) à 2 m ; ancre coin avant-est (12 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_fleurs_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_tabac_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_tabac : arête x 16, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 16 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_a",
+    "file": "steel/frequence_strip/fs_bas_tabac_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_a"
+  },
+  "fs_bas_tabac_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_tabac : B(12, 20, 4, 4) à 2 m ; ancre coin avant-est (16 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_tabac_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_preservatifs_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_preservatifs : arête x 28, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 28 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_b",
+    "file": "steel/frequence_strip/fs_bas_preservatifs_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_b"
+  },
+  "fs_bas_preservatifs_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_preservatifs : B(24, 20, 4, 4) à 2 m ; ancre coin avant-est (28 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_preservatifs_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_shots_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_shots : arête x 38, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 38 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_a",
+    "file": "steel/frequence_strip/fs_bas_shots_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_a"
+  },
+  "fs_bas_shots_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_shots : B(34, 20, 4, 4) à 2 m ; ancre coin avant-est (38 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_shots_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_distributeur_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_distributeur : arête x 50, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 50 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_b",
+    "file": "steel/frequence_strip/fs_bas_distributeur_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_b"
+  },
+  "fs_bas_distributeur_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_distributeur : B(46, 20, 4, 4) à 2 m ; ancre coin avant-est (50 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_distributeur_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_massages_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_massages : arête x 54, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 54 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_a",
+    "file": "steel/frequence_strip/fs_bas_massages_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_a"
+  },
+  "fs_bas_massages_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_massages : B(50, 20, 4, 4) à 2 m ; ancre coin avant-est (54 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_massages_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_laverie_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_laverie : arête x 68, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 68 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_b",
+    "file": "steel/frequence_strip/fs_bas_laverie_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_b"
+  },
+  "fs_bas_laverie_toit": {
+    "px": [
+      543,
+      331
+    ],
+    "anchor": [
+      402,
+      330
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_laverie : B(60, 20, 8, 4) à 2 m ; ancre coin avant-est (68 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_8x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_laverie_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_8x4_low"
+  },
+  "fs_bas_gage_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_gage : arête x 72, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 72 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_b",
+    "file": "steel/frequence_strip/fs_bas_gage_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_b"
+  },
+  "fs_bas_gage_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_gage : B(68, 20, 4, 4) à 2 m ; ancre coin avant-est (72 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_gage_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_perruques_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_perruques : arête x 76, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 76 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_a",
+    "file": "steel/frequence_strip/fs_bas_perruques_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_a"
+  },
+  "fs_bas_perruques_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_perruques : B(72, 20, 4, 4) à 2 m ; ancre coin avant-est (76 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_perruques_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
+  },
+  "fs_bas_implants_cote": {
+    "px": [
+      138,
+      196
+    ],
+    "anchor": [
+      0,
+      195
+    ],
+    "footprint_m": [
+      0.5,
+      4
+    ],
+    "height_m": 2,
+    "face": "z",
+    "pente": 0.7,
+    "pose": "retour est de fs_bas_implants : arête x 80, profondeur 4 m vers le nord (z 20 à 24), hauteur 2 m ; ancre au pied ( 80 ; 24 ). Même gabarit que les retours nord (face z visible à droite).",
+    "source": "copie du gabarit fs_vol_cote_h2_d4_b",
+    "file": "steel/frequence_strip/fs_bas_implants_cote.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_cote_h2_d4_b"
+  },
+  "fs_bas_implants_toit": {
+    "px": [
+      343,
+      265
+    ],
+    "anchor": [
+      202,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 0.4,
+    "face": "toit",
+    "pente": "plat iso (0,33 / 0,70)",
+    "pose": "toit de fs_bas_implants : B(76, 20, 4, 4) à 2 m ; ancre coin avant-est (80 ; 24), fond:true. Emprise entre la façade (z 24) et z 20.",
+    "source": "copie du gabarit fs_vol_toit_4x4_low",
+    "elevation_m": 2,
+    "file": "steel/frequence_strip/fs_bas_implants_toit.webp",
+    "status": "v1",
+    "gabarit_de": "fs_vol_toit_4x4_low"
   }
 }
