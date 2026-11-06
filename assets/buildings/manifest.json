@@ -330,7 +330,8 @@
       4.5,
       7.5
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_st_usine": {
     "file": "buildings/b_st_usine.webp",
@@ -399,7 +400,8 @@
       2.5,
       7.5
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_st_jumelles": {
     "file": "buildings/b_st_jumelles.webp",
@@ -422,7 +424,8 @@
       6.5,
       3.5
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_st_galerie": {
     "file": "buildings/b_st_galerie.webp",
@@ -445,7 +448,8 @@
       8.0,
       6.0
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_st_blanc": {
     "file": "buildings/b_st_blanc.webp",
@@ -468,7 +472,8 @@
       7.0,
       5.5
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_st_douane": {
     "file": "buildings/b_st_douane.webp",
@@ -607,7 +612,8 @@
       15.0,
       12.0
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_st_ct_shop": {
     "file": "buildings/b_st_ct_shop.webp",
@@ -630,7 +636,8 @@
       8.0,
       8.0
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_st_ct_tower": {
     "file": "buildings/b_st_ct_tower.webp",
@@ -653,7 +660,8 @@
       9.0,
       9.0
     ],
-    "lot": "steel-l1 v12"
+    "lot": "steel-l1 v12",
+    "obsolete": true
   },
   "b_sv_cab0": {
     "file": "buildings/b_sv_cab0.webp",

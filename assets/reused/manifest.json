@@ -627,7 +627,8 @@
    1.4
   ],
   "status": "v13 Steel : échoppe de rue éclairée (généré)",
-  "src": "art-gen/gen_ct_props.jpg #0"
+  "src": "art-gen/gen_ct_props.jpg #0",
+  "obsolete": true
  },
  "st_drone": {
   "file": "generated/st_drone.webp",
@@ -655,7 +656,8 @@
    1.2
   ],
   "status": "v13 Steel : kiosque néon (généré)",
-  "src": "art-gen/gen_ct_props.jpg #2"
+  "src": "art-gen/gen_ct_props.jpg #2",
+  "obsolete": true
  },
  "st_holo": {
   "file": "generated/st_holo.webp",
@@ -669,7 +671,8 @@
    0.4
   ],
   "status": "v13 Steel : panneau holographique (généré)",
-  "src": "art-gen/gen_ct_props.jpg #3"
+  "src": "art-gen/gen_ct_props.jpg #3",
+  "obsolete": true
  },
  "st_borne": {
   "file": "generated/st_borne.webp",
@@ -683,7 +686,8 @@
    0.6
   ],
   "status": "v13 Steel : borne holographique (maquette city-props-v3)",
-  "src": "maquette art-source (planche city-*-v3)"
+  "src": "maquette art-source (planche city-*-v3)",
+  "obsolete": true
  },
  "st_lampadaire": {
   "file": "generated/st_lampadaire.webp",
@@ -697,7 +701,8 @@
    0.4
   ],
   "status": "v13 Steel : lampadaire néon (maquette city-props-v3)",
-  "src": "maquette art-source (planche city-*-v3)"
+  "src": "maquette art-source (planche city-*-v3)",
+  "obsolete": true
  },
  "st_voiture": {
   "file": "generated/st_voiture.webp",
@@ -711,7 +716,8 @@
    2.0
   ],
   "status": "v13 Steel : voiture (maquette city-props-v3)",
-  "src": "maquette art-source (planche city-*-v3)"
+  "src": "maquette art-source (planche city-*-v3)",
+  "obsolete": true
  },
  "st_banc": {
   "file": "generated/st_banc.webp",
@@ -725,7 +731,8 @@
    0.6
   ],
   "status": "v13 Steel : banc lumineux (maquette city-props-v3)",
-  "src": "maquette art-source (planche city-*-v3)"
+  "src": "maquette art-source (planche city-*-v3)",
+  "obsolete": true
  },
  "st_pylone": {
   "file": "generated/st_pylone.webp",
@@ -739,7 +746,8 @@
    0.7
   ],
   "status": "v13 Steel : pylône lumineux (maquette city-props-v3)",
-  "src": "maquette art-source (planche city-*-v3)"
+  "src": "maquette art-source (planche city-*-v3)",
+  "obsolete": true
  },
  "gen_elio": {
   "file": "generated/gen_elio.webp",
