@@ -144,3 +144,44 @@ L'enceinte `ar2_` (commit 58703a8, posée en 3e5a8c6) **reste telle quelle**.
 
 ## Playlist OST commune (`fecc483` / `27b3f1f`, `src/core/ost_centre.js`)
 - Playlist commune Groovy Crew posée sur `main` (4 titres MP3 `assets/audio/ost_centre/`, pack `fecc483`) et partagée en singleton avec Center-Town, Fréquence Strip et Pulse Plaza : franchir la grille `fs_est` / `ar_ouest` garde l'instance `<audio>` et sa position de lecture sans coupure ; API rythme `ostCentre` branchée sur la même lecture.
+
+## Calques rythmiques pulse [proposition Ocre 2026-11-06]
+Overlays additifs **même taille et même ancre** que les sprites existants (`ar2_*_pulse`, `ar_*_3q_pulse`) : rubans LED dôme/enceinte, projecteurs, cadres d’écrans. Props neufs : mâts, enceintes, gantry, strobe.
+
+| clé overlay | parent | px | ancre | bande | effet | prio mobile |
+|---|---|---|---|---|---|---|
+| `ar2_facade_entree_pulse` | `ar2_facade_entree` | [801, 1016] | [800, 1014] | kick | bandeaux LED entrée + appliques | 1 |
+| `ar2_facade_courbe_x_pulse` | `ar2_facade_courbe_x` | [801, 1016] | [800, 1014] | mid | filets façade sud | 2 |
+| `ar2_facade_courbe_z_pulse` | `ar2_facade_courbe_z` | [552, 1138] | [0, 1135] | mid | filets façade est | 3 |
+| `ar2_facade_angle_pulse` | `ar2_facade_angle` | [677, 854] | [0, 811] | kick | rubans angle SE | 2 |
+| `ar2_facade_retour_ouest_pulse` | `ar2_facade_retour_ouest` | [107, 847] | [105, 845] | aigus | liseré retour ouest | 4 |
+| `ar2_toit_x_pulse` | `ar2_toit_x` | [1841, 1853] | [804, 1852] | kick | anneau rive dôme + projecteurs | 1 |
+| `ar2_toit_z_pulse` | `ar2_toit_z` | [1501, 1600] | [1198, 1599] | kick | rive est dôme | 2 |
+| `ar2_toit_angle_se_pulse` | `ar2_toit_angle_se` | [1803, 1930] | [1204, 1929] | kick | projecteurs angle SE | 1 |
+| `ar2_toit_angle_so_pulse` | `ar2_toit_angle_so` | [1952, 1808] | [915, 1807] | kick | projecteurs angle SO | 2 |
+| `ar2_ecran_geant_x_pulse` | `ar2_ecran_geant_x` | [480, 803] | [479, 802] | mid | cadre écran géant | 2 |
+| `ar2_ecran_geant_z_pulse` | `ar2_ecran_geant_z` | [275, 792] | [0, 792] | mid | cadre écran géant z | 3 |
+| `ar_tribunes_3q_pulse` | `ar_tribunes_3q` | [725, 469] | [496, 467] | kick | écrans tribunes + rubans | 1 |
+| `ar_regie_3q_pulse` | `ar_regie_3q` | [447, 314] | [332, 312] | mid | voyants régie | 3 |
+| `ar_guichets_3q_pulse` | `ar_guichets_3q` | [282, 267] | [167, 265] | aigus | liserés guichets | 4 |
+| `ar_booking_3q_pulse` | `ar_booking_3q` | [282, 299] | [167, 297] | mid | enseigne booking | 4 |
+| `ar_securite_3q_pulse` | `ar_securite_3q` | [282, 255] | [167, 253] | kick | voyants portiques | 3 |
+| `ar_tech_ouest_a_3q_pulse` | `ar_tech_ouest_a_3q` | [561, 694] | [332, 691] | mid | bandes technique | 3 |
+| `ar_stand_merch_b_3q_pulse` | `ar_stand_merch_b_3q` | [282, 216] | [167, 213] | aigus | vitrine merch | 4 |
+| `ar_foodtruck_nouilles_3q_pulse` | `ar_foodtruck_nouilles_3q` | [447, 317] | [332, 315] | mid | auvent truck | 4 |
+| `ar_mat_projecteur_pulse_3q_pulse` | prop | [143, 338] | [84, 335] | kick | faisceau mât | 2 |
+| `ar_enceinte_pulse_3q_pulse` | prop | [184, 242] | [125, 239] | kick | enceinte parvis | 3 |
+| `ar_gantry_led_pulse_3q_pulse` | prop | [390, 376] | [331, 373] | mid | gantry LED | 2 |
+| `ar_strobe_pulse_3q_pulse` | prop | [108, 154] | [64, 152] | aigus | strobe ambre | 3 |
+
+### Props rythmiques Arena (clés neuves)
+| clé | emprise proposée (x,z,w,d) | B(...) |
+|---|---|---|
+| `ar_mat_projecteur_pulse_3q` | voir pose | `B('ar_mat_p0', '', 'ar_mat_projecteur_pulse_3q', 40, 36, 2, 2, { named: false })` |
+| `ar_enceinte_pulse_3q` | voir pose | `B('ar_ence_p0', '', 'ar_enceinte_pulse_3q', 48, 38, 3, 2, { named: false })` |
+| `ar_gantry_led_pulse_3q` | voir pose | `B('ar_gantry0', '', 'ar_gantry_led_pulse_3q', 30, 34, 8, 2, { solid: [], named: false })` |
+| `ar_strobe_pulse_3q` | voir pose | `B('ar_strobe0', '', 'ar_strobe_pulse_3q', 56, 36, 1.5, 1.5, { named: false })` |
+
+### Chevauchements Arena détectés dans src/
+- `ar_toit_so` ∩ `ar_f_retour` = 16.0 m² — [0.0, 0.0, 20.0, 30.0] vs [0.0, 26.0, 4.0, 4.0] (**toit fond** au-dessus façade : attendu, pas un bug de pose au sol).
+- `ar_toit_se` ∩ `ar_f_angle` = 64.0 m² — [68.0, 14.0, 24.0, 16.0] vs [84.0, 22.0, 8.0, 8.0] (**toit fond** au-dessus façade : attendu, pas un bug de pose au sol).
