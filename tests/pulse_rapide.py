@@ -4,7 +4,7 @@
 import time,os,sys,io
 from PIL import Image
 from playwright.sync_api import sync_playwright
-URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/pulse/'; CAP='/tmp/nml-test-out/pulse_revue3/apres_'; os.makedirs(OUT,exist_ok=True); os.makedirs(os.path.dirname(CAP),exist_ok=True); fails=[]; n=0
+URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/pulse_3q/'; CAP='/tmp/nml-test-out/pulse_3q/apres_'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 with sync_playwright() as p:
@@ -24,9 +24,12 @@ with sync_playwright() as p:
         ok(len(L['ex'])==8 and len(set(L['ex']+L['wk']))==len(L['ex']+L['wk']) and all(x.startswith('gen_pp_foule_') and x[-1] in 'cdefghij' for x in L['ex']),f'{name} 8 figurants distincts, aucun clone',L)
         ok(L['skin']=='g_pp_dalle_sombre' and 'g_pp_allee' in L['paint'],f'{name} dalle sombre et allées (ground.paint)',L['skin'])
         ok(E("document.querySelectorAll('.wlabel.junction,.wlabel.edge').length")==0 and E("[...document.querySelectorAll('.wlabel')].every(l=>!/Escalier|Center-Town|Strip/.test(l.textContent))"),f'{name} aucune étiquette sur les accès')
-        W=E("window.__nml.world.LOCATIONS.steel_pulse.buildings.filter(b=>/^pp_(facade|mur)/.test(b.sprite)).map(b=>[b.id,b.x,b.z,b.x+b.w,b.z+b.d])")
+        W=E("window.__nml.world.LOCATIONS.steel_pulse.buildings.filter(b=>/^pp_(facade|mur|nord|ouest)/.test(b.sprite)).map(b=>[b.id,b.x,b.z,b.x+b.w,b.z+b.d])")
         chev=[(a[0],b[0]) for i,a in enumerate(W) for b in W[i+1:] if a[1]<b[3]-1e-6 and b[1]<a[3]-1e-6 and a[2]<b[4]-1e-6 and b[2]<a[4]-1e-6]
-        ok(not chev,f'{name} aucun mur ne chevauche un autre ({len(W)} pièces)',chev)
+        ok(not chev,f'{name} aucun mur ou façade 3/4 ne chevauche un autre ({len(W)} pièces)',chev)
+        SOL=E("window.__nml.world.LOCATIONS.steel_pulse.buildings.flatMap(b=>(b.solid??[{x:b.x,z:b.z,w:b.w,d:b.d}]).map(s=>[b.id,s.x,s.z,s.x+s.w,s.z+s.d]))")
+        chev_sol=[(a[0],b[0]) for i,a in enumerate(SOL) for b in SOL[i+1:] if a[0]!=b[0] and a[1]<b[3]-1e-6 and b[1]<a[3]-1e-6 and a[2]<b[4]-1e-6 and b[2]<a[4]-1e-6]
+        ok(not chev_sol,f'{name} aucun chevauchement d emprises solides sur la place',chev_sol)
         # revue 2 : bords fermés hors des accès (murs ou stands adossés au bord), immeuble blanc retiré, écran est e2 sur son mur porteur
         B=E("window.__nml.world.LOCATIONS.steel_pulse.buildings.map(b=>[b.id,b.sprite,b.x,b.z,b.x+b.w,b.z+b.d])")
         def trous(axe,ligne,lo,hi,acces):
@@ -39,7 +42,11 @@ with sync_playwright() as p:
             return t
         T={'nord':trous('x',0,0,48,(0,0)),'sud':trous('x',36,0,48,(20,28)),'ouest':trous('z',0,0,36,(12,16)),'est':trous('z',48,0,36,(12,16))}
         ok(not any(T.values()),f'{name} aucun trou vers le vide hors des accès (nord, sud, ouest, est)',T)
-        ok(not [b for b in B if b[1]=='pp_arcadius'] and [b[2] for b in B if b[0]=='pp_fac_n3']==[36],f'{name} immeuble blanc retiré, pp_facade_c sur x 36 à 48')
+        sprites_3q={b[1] for b in B if b[1].endswith('_3q')}
+        expected_3q={'pp_kiosque_3q','pp_guerite_3q','pp_nouilles_3q','pp_billboard_3q','pp_portique_3q','pp_distrib_3q','pp_kiosque_presse_3q','pp_kiosque_boissons_3q','pp_nord_a_3q','pp_nord_b_3q','pp_nord_c2_3q','pp_nord_c3_3q','pp_ouest_a_3q','pp_ouest_b_3q','pp_ecran_feed_3q'}
+        ok(sprites_3q==expected_3q and not E("!!document.getElementById('editor-map-invalid')") and all(b[1]!='pp_nord_c_3q' for b in B),f'{name} 15 clés *_3q posées (16 bâtiments avec nord_c2 en x 0, nord_c3 en x 36, 2 ouest_b ; nord_c obsolete exclu)',sorted(expected_3q^sprites_3q))
+        neon_bb=E("window.__nml.world.LOCATIONS.steel_pulse.enseignes.find(e=>e.building==='pp_billboard')?.neon")
+        ok(neon_bb=='pp_billboard_3q_neon2',f'{name} billboard branché sur pp_billboard_3q_neon2',neon_bb)
         e2=[b for b in B if b[0]=='pp_ecran_e2']; ok(e2 and e2[0][1]=='pp_ecran_haut_e2' and abs(e2[0][4]-48.4)<1e-6 and abs(e2[0][5]-24)<1e-6 and [b for b in B if b[1]=='pp_support_ecran_o' and abs(b[4]-48.4)<1e-6 and abs(b[5]-24)<1e-6] and not [b for b in B if b[1]=='pp_mur_bas_o'] and not [b for b in B if b[1]=='pp_ecran_haut_e1'],f'{name} écran est e2 sur son support léger, même ancre (48,4 ; 24), plus de mur bas de 4 m, e1 retiré',e2)
         ok(set(b[1] for b in B if b[0].startswith('pp_mur_s'))=={'pp_muret','pp_muret_4'} and E("window.__nml.world.LOCATIONS.steel_pulse.gardeCorps.length")==0,f'{name} sud fermé par les murets de 1,2 m (8 et 4 m), plus de garde-corps')
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=30;g.restore(s,true)})()"); time.sleep(1)
@@ -60,7 +67,9 @@ with sync_playwright() as p:
         im=Image.open(io.BytesIO(pg.screenshot())).convert('RGB'); px=[im.getpixel((int(cx)+i,int(cy)+j)) for i in range(-10,11,2) for j in range(-10,11,2)]
         lum=sum(sum(c) for c in px)/len(px)/3; ok(lum>40,f'{name} écran du Feed allumé (luminance {lum:.0f})',(cx,cy))
         pg.screenshot(path=CAP+f'concept_{vp[0]}.png'); E("window.__nml.view.setCamera(null)"); time.sleep(1)
-        st=E("window.__nml.view.animStats"); ok(st.get('on',0)<=(8 if mob else 16),f'{name} budget d animations {st}')
+        st=E("window.__nml.view.animStats"); pls=E("window.__nml.view.pulses()")
+        prio_on={p['key']:p['on'] for p in pls if p['key'] in ('pp_ecran_feed_3q_pulse','pp_nord_a_3q_pulse','pp_billboard_3q_ecran')}
+        ok(st.get('on',0)<=(8 if mob else 16) and st.get('pulses')==20 and st.get('pulsesOn',0)<=(8 if mob else 32) and all(prio_on.values()),f'{name} budget animations + calques rythmiques ({st}, prio={prio_on})',(st,prio_on))
         def acces(x0,z0,x1,z1,dest):
             E(f"(()=>{{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x={x0};s.player.z={z0};g.restore(s,true)}})()"); time.sleep(1); E(f"window.__nml.game.moveTo({x1},{z1})"); t0=time.time()
             while time.time()-t0<20 and E("window.__nml.state.location")=='steel_pulse': time.sleep(.3)

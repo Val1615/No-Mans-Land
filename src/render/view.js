@@ -31,7 +31,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -139,7 +139,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; beams = [];
+    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; pulses = []; beams = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -152,7 +152,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     // loc.enseignes ne fait que régler un bâtiment (effet, couleur, intensité, lettre qui saute). Idem pour les faisceaux : tout bâtiment dont le
     // manifeste donne source_faisceau_px (pylônes, anime_par_code) tire un faisceau depuis ce pixel ; loc.projecteurs règle ou ajoute.
     const ensDe = new Map((loc.enseignes || []).map(e => [e.building, e])), projDe = new Map((loc.projecteurs || []).filter(p => p.building).map(p => [p.building, p]));
+    const pulseDe = new Map((loc.pulses || []).map(p => [p.building + ':' + p.calque, p]));
     for (const b of loc.buildings) if (bman[b.sprite + '_fenetres']) fenetre(b);
+    for (const b of loc.buildings) for (const calque of ['ecran', 'pulse']) if (bman[b.sprite + '_' + calque]) calqueRythme(b, calque, pulseDe.get(b.id + ':' + calque));
     for (const b of loc.buildings) if (!ensDe.has(b.id) && bman[b.sprite + '_neon']) enseigne({ id: b.id + '_neon', building: b.id }, loc);
     for (const e of loc.enseignes || []) enseigne(e, loc);
     for (const b of loc.buildings) if (!projDe.has(b.id) && bman[b.sprite]?.source_faisceau_px) projecteur({ building: b.id }, loc);
@@ -291,6 +293,55 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     s.userData.fenetre = { i: 0.34, ph: fenetres.length * 1.37 }; s.userData.fondu = 1;
     world.add(s); item.extra.push(s); fenetres.push(s);
   }
+  // Calques rythmiques <clé>_ecran et <clé>_pulse (Pulse Plaza 3/4) : additifs, pilotés par l'analyseur Web Audio ostCentre (kick ~170 BPM ≈ 0,35 s, mid, énergie).
+  // Sur mobile (< 700 px), priorité aux calques marqués priorite > 0 dans un plafond de 8 animations rythmiques ; le surplus reste allumé fixe.
+  const T_KICK_REF = 60 / 170;
+  function calqueRythme(b, calque, cfg = {}) {
+    const key = cfg.key || (b.sprite + '_' + calque), m = bman[key], item = bills.find(i => i.obj.userData.buildingId === b.id);
+    if (!item || !m || !SKIN[key] || m.obsolete || m.anime || cfg.mode === 'eteint') return;
+    const k = b.k || 1, W = m.px[0] / K * k, H = m.px[1] / K * k * (b.sy || 1);
+    const t = new THREE.Texture(SKIN[key]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace;
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: cfg.couleur || '#ffffff', opacity: 0 }));
+    s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(W, H, 1); s.position.copy(item.obj.position);
+    s.userData.pulse = {
+      key,
+      building: b.id,
+      calque,
+      mode: cfg.mode || (calque === 'ecran' ? 'mid' : 'kick'),
+      i: cfg.intensite ?? (calque === 'ecran' ? 0.7 : 0.8),
+      ph: cfg.decale ?? (pulses.length * 0.19),
+      periode: cfg.periode || (calque === 'ecran' ? 9 : 8 * T_KICK_REF),
+      priorite: cfg.priorite || 0,
+    };
+    s.userData.fondu = 1;
+    world.add(s); item.extra.push(s); pulses.push(s);
+  }
+  function pulseK(u, t, ost) {
+    if (u.mode === 'fixe') return 0.72;
+    if (u.mode === 'balise') { const f = ((t / (u.periode || 2.8) + u.ph) % 1 + 1) % 1; return f < 0.28 ? 0.95 : 0.18; }
+    const on = !!ost?.playing, tc = on ? (ost.currentTime || t) : t;
+    if (!on) return u.mode === 'mesure' ? 0.5 + 0.12 * Math.sin((t / (u.periode || 9) + u.ph) * Math.PI * 2) : 0.45;
+    const beat = ost.beat || 0, bass = ost.bass || 0, mid = ost.mid || 0, nrj = ost.energy || 0;
+    if (u.mode === 'kick') {
+      const wave = Math.pow(0.5 + 0.5 * Math.cos(((tc / T_KICK_REF) + u.ph) * Math.PI * 2), 3);
+      const kBeat = beat * (u.ph ? 0.78 + 0.22 * Math.cos(u.ph * Math.PI * 2) : 1);
+      return 0.26 + 0.74 * Math.min(1, Math.max(kBeat, bass * 0.85, 0.36 * wave));
+    }
+    if (u.mode === 'demi_kick') {
+      const sub = Math.pow(0.5 + 0.5 * Math.cos(((tc / (T_KICK_REF * 2)) + u.ph) * Math.PI * 2), 2);
+      const alt = ((ost.kickCount || 0) + (u.ph >= 0.35 ? 1 : 0)) % 2 ? 1 : 0.45;
+      return 0.34 + 0.58 * Math.min(1, Math.max(beat * alt * 0.85, nrj * 0.7, 0.42 * sub));
+    }
+    if (u.mode === 'mid') {
+      const eq = Math.max(mid * 1.15, nrj * 0.8, 0.24 + 0.18 * Math.sin(tc * 3.2 + u.ph * 6.28));
+      return 0.30 + 0.70 * Math.min(1, eq);
+    }
+    if (u.mode === 'mesure') {
+      const w = 0.5 + 0.5 * Math.sin(((tc / (u.periode || 9)) + u.ph) * Math.PI * 2);
+      return 0.42 + 0.40 * w + 0.18 * Math.min(1, nrj + beat * 0.3);
+    }
+    return 0.7;
+  }
   const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
   function neonK(u, t) { const T = u.periode, ph = u.ph, f = ((t / T + ph) % 1 + 1) % 1;
     if (u.effet === 'pulse') return 0.6 + 0.4 * Math.sin(f * Math.PI * 2);
@@ -338,8 +389,21 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : neonK(u, t))); }
     for (const s of fenetres) { const u = s.userData.fenetre, k = calme ? 1 : 0.78 + 0.22 * (0.6 * Math.sin(t * 1.25 + u.ph) + 0.4 * Math.sin(t * 2.9 + u.ph * 1.7));
       s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k); }
+    let pulsesOn = 0;
+    if (pulses.length) {
+      const pMax = innerWidth < 700 ? 8 : 32, pv = new THREE.Vector3(), pl = player.position;
+      const ord = pulses.map(s => { pv.copy(s.position).project(cam); return { s, u: s.userData.pulse, in: Math.abs(pv.x) < 1.2 && Math.abs(pv.y) < 1.2, d: s.position.distanceToSquared(pl) }; })
+        .sort((a, b) => (b.u.priorite - a.u.priorite) || (b.in - a.in) || (a.d - b.d));
+      for (const { s, u, in: inn } of ord) {
+        const anim = !calme && u.mode !== 'fixe' && pulsesOn < pMax && (u.priorite > 0 || inn);
+        if (anim) pulsesOn++;
+        s.userData.pulseOn = anim;
+        const k = calme ? 0.68 : anim ? pulseK(u, t, ostCentre) : 0.58;
+        s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k);
+      }
+    }
     if (!calme) for (const m of beams) beamPose(m, t);
-    animStats.enseignes = neons.length; animStats.fenetres = fenetres.length; animStats.projecteurs = beams.length;
+    animStats.enseignes = neons.length; animStats.fenetres = fenetres.length; animStats.pulses = pulses.length; animStats.pulsesOn = pulsesOn; animStats.projecteurs = beams.length;
     for (const f of flick) f.m.opacity = f.base * (0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2));
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
     // planches jouées une fois (portique de la Mega-Line) : remplacent le sprite de base le temps du passage, hors budget d'animations
@@ -416,8 +480,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const o of phOf) { o.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === o), r = rectOf(o);
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
         if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
-      const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon || e.userData.fenetre) e.userData.fondu = m.opacity; else e.material.opacity = m.opacity; }
-    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre) e.userData.fondu = m.opacity; else e.material.opacity = Math.min(0.9, m.opacity); }
+      const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else e.material.opacity = m.opacity; }
+    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else e.material.opacity = Math.min(0.9, m.opacity); }
   }
   // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
   function furnitureOcclusion() {
@@ -711,5 +775,6 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const url = canvas.toDataURL('image/png'); hid.forEach(o => o.visible = true); return url; },
     ghostOf: id => { const n = npcSprites.find(s => s.userData.npc === id); return n?.userData.ghost ? { visible: n.userData.ghost.visible, opacity: n.userData.ghost.material.opacity, order: n.userData.ghost.renderOrder } : null; },
     ostCentre,
+    pulses: () => pulses.map(s => ({ ...s.userData.pulse, on: !!s.userData.pulseOn, opacity: +s.material.opacity.toFixed(3) })),
     orderOf: id => id === 'player' ? player.renderOrder : bsprites.find(s => s.userData.buildingId === id)?.renderOrder };
 }

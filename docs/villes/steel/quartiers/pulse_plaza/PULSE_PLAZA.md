@@ -128,7 +128,7 @@ Dans `concepts/` : `maquette_pulse_plaza_a.jpg` et `maquette_pulse_plaza_iso.jpg
 
 ## Bâtiments complets (3/4)
 
-Statut : **proposition d'Ocre**, à poser par Rivet. Même méthode que les `fs_*_3q` du Strip et les `ar_*_3q` de l'Arena (`7e5478b`, posée en `da2c189`). Valentin a rejeté les façades plates : chaque bâtiment est un seul sprite en 3/4 (façade + retour + toit peints ensemble), plus des calques additifs de même taille et même ancre.
+Statut : **posé sur `main`** (packs d'Ocre `b6510db` et `f2f8513`, branchés sur l'OST commune `27b3f1f`). Même méthode que les `fs_*_3q` du Strip et les `ar_*_3q` de l'Arena (`7e5478b`, posée en `da2c189`). Valentin a rejeté les façades plates : chaque bâtiment est un seul sprite en 3/4 (façade + retour + toit peints ensemble), plus des calques additifs de même taille et même ancre.
 
 Pour Pulse Plaza, le décor doit **réagir au rythme** de la playlist commune (Center-Town / Strip / Pulse / Arena). En plus de `_3q_neon` et `_3q_fenetres` (déjà lus par `view.js`), ce lot ajoute `_3q_ecran` (panneaux / zone écran) et `_3q_pulse` (bandes, balises, projecteurs) à brancher côté code sur le beat.
 
@@ -206,5 +206,12 @@ Les murets sud/est (`pp_muret*`), lampadaires, bancs, caméras, statues, jardini
 - `/workspace/nml-shots/pulse_3q.png` (maquette iso de la place avec les 14 bâtiments espacés comme en jeu, pas une capture)
 - `/workspace/nml-shots/pulse_3q_zoom.png` (gros plan 1:1 de 4 bâtiments avec calques)
 
-## Playlist OST commune (`fecc483`, `src/core/ost_centre.js`)
-- Playlist commune Groovy Crew posée sur `main` (4 titres MP3 `assets/audio/ost_centre/`, pack `fecc483`) et partagée en singleton entre Center-Town, Fréquence Strip, Pulse Plaza et Steel Arena (aucune coupure ni remise à zéro aux changements de zone). L'API Web Audio `window.__nml.ostCentre` (`beat`, `energy`, `bass`, `mid`, `high`, `kick`, `onKick`) est exposée sur cette même lecture pour piloter les calques `_3q_ecran` et `_3q_pulse`.
+### Pose retenue (3/4 + rythme OST, main)
+- Les 15 clés `*_3q` actives d'Ocre (`b6510db` + correctif `f2f8513`, 16 bâtiments posés ; `pp_nord_c_3q` marqué `obsolete` et exclu du catalogue) remplacent toutes les façades plates nord/ouest et tous les stands/kiosques de `BUILDINGS_PULSE` : nord en `pp_nord_c2_3q` (`x 0`, « Résidences du Pulse »), `pp_nord_a_3q` (`x 12`, « Pulse »), `pp_nord_b_3q` (`x 28`, « Lounge ») et `pp_nord_c3_3q` (`x 36`, « Arcades Nord ») sur `z -4 → 0` ; ouest en `pp_ouest_a_3q` (`z 0–12`) et deux `pp_ouest_b_3q` (`z 16–24` et `z 24–32`) sur `x -4 → 0` (accès ouest `z 12–16` libre) ; place en `pp_portique_3q` `(20, 0, 4, 4)`, `pp_ecran_feed_3q` `(12, 8, 20, 4)`, `pp_billboard_3q` `(0, 8, 4, 4)` avec néon renforcé `pp_billboard_3q_neon2`, `pp_kiosque_3q` `(44, 8, 4, 4)`, `pp_distrib_3q` `(40, 20, 4, 4)`, `pp_guerite_3q` `(0, 28, 4, 4)`, `pp_kiosque_presse_3q` `(8, 28, 4, 4)`, `pp_kiosque_boissons_3q` `(36, 28, 4, 4)` et `pp_nouilles_3q` `(44, 28, 4, 4)`. Murets `pp_muret*`, Holo-Tron, écrans hauts `pp_ecran_haut_*`, statues, lampadaires, bornes, jardinières, bancs et caméras conservés.
+- Écran du Feed 3/4 : `ECRAN_FEED.coins` recalé sur la dalle avant de `pp_ecran_feed_3q` (`[[133, 48], [740, 253], [740, 537], [133, 332]]`).
+- Calques rythmiques additifs (`view.js` + `LOCATIONS_PULSE.pulses`, 20 calques `*_3q_ecran` et `*_3q_pulse`, 13 `*_3q_fenetres`, 13 `*_3q_neon`) pilotés en direct par l'analyseur Web Audio `ostCentre` (`27b3f1f`, ~170 BPM, kick ≈ 0,35 s ; modes `kick`, `demi_kick`, `mid`, `mesure`, `balise`, au plus un calque fort par bâtiment). Sur mobile (`< 700 px`), plafond `animStats.pulsesOn <= 8` avec priorité garantie à `pp_ecran_feed_3q_pulse`, `pp_nord_a_3q_pulse` et `pp_billboard_3q_ecran` (`animStats.on <= 8`).
+- Dégagement `view.masques()` et abords 4×4 : Dorian en `(41 ; 8,4)`, Agente Brisset en `(5,4 ; 32,4)`, Oncle Pham en `(43,2 ; 32,6)`, passant sud sur `x 13,5–34,5`, `PIEDS`, mobilier proche et halos recalés (`view.masques()` vide, accès ouest, Fréquence Strip et escalier sud libres). Captures de vérification : `/tmp/nml-test-out/pulse_3q/`.
+
+## Playlist OST commune (`fecc483` / `27b3f1f`, `src/core/ost_centre.js`)
+- Playlist commune Groovy Crew posée sur `main` en `27b3f1f` (4 titres MP3 `assets/audio/ost_centre/`, pack `fecc483`) et partagée en singleton entre Center-Town, Fréquence Strip, Pulse Plaza et Steel Arena (aucune coupure ni remise à zéro aux changements de zone). L'API Web Audio `window.__nml.ostCentre` (`beat`, `energy`, `bass`, `mid`, `high`, `kick`, `onKick`) pilote en direct les calques `*_3q_ecran` et `*_3q_pulse` de Pulse Plaza.
+

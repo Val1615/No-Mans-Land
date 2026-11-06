@@ -194,6 +194,17 @@ with sync_playwright() as p:
               and kicks_logged >= 1 and first_kick and first_kick['beat'] == 1,
               (max_energy, max_bass, max_beat, kicks_logged, first_kick))
         check(f'{prof}: désabonnement onKick() respecté', kicks_still == kicks_after_off, (kicks_after_off, kicks_still))
+        # Calques *_3q_ecran / *_3q_pulse de Pulse Plaza : varient au rythme de la lecture OST et respectent la priorité mobile
+        pulse_samples = []
+        for _ in range(12):
+            time.sleep(0.08)
+            pulse_samples.append(E("Object.fromEntries(window.__nml.view.pulses().filter(p=>p.priorite>0).map(p=>[p.key,p.opacity]))"))
+        feed_ops = [x.get('pp_ecran_feed_3q_pulse', 0) for x in pulse_samples]
+        nord_ops = [x.get('pp_nord_a_3q_pulse', 0) for x in pulse_samples]
+        bb_ops = [x.get('pp_billboard_3q_ecran', 0) for x in pulse_samples]
+        check(f'{prof}: calques Pulse Plaza *_3q_pulse / *_3q_ecran modulés en direct par ostCentre',
+              max(feed_ops) - min(feed_ops) > 0.03 and max(nord_ops) - min(nord_ops) > 0.03 and max(bb_ops) > 0.2,
+              (round(min(feed_ops), 3), round(max(feed_ops), 3), round(min(nord_ops), 3), round(max(nord_ops), 3)))
 
         if prof == 'desktop':
             # Enchaînement complet fin de piste -> piste suivante sur les 4 titres puis retour à la piste 01

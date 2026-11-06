@@ -5,7 +5,7 @@ const copy=o=>JSON.parse(JSON.stringify(o));
 export const REFERENCE_LOCATIONS=['dusk_q1','dusk_q2','dusk_q3','dusk_q4'];
 export const REFERENCE_INTERIORS=['clinic_in','bar_in','mara_in','grocery_in','guet_in','atelier_in','citerne_in'];
 // Clés de lieu purement narratives ou d'interface : elles restent dans le code du jeu et ne passent pas par l'éditeur.
-export const NATIVE_LOCATION_KEYS=['city','arrive','labelsProches','accessLabels','cadre'];
+export const NATIVE_LOCATION_KEYS=['city','arrive','labelsProches','accessLabels','cadre','pulses'];
 export const REGION_NAMES={dusk:'Dusk-Town',steel:'Steel',autre:'Autres zones'};
 const exteriorRegion=l=>l.city==='steel'||/^(steel_|sv_)/.test(l.id)?'steel':/^dusk_/.test(l.id)?'dusk':'autre';
 // Région de chaque zone : un extérieur par son identifiant / sa ville, un intérieur par l'extérieur auquel ses portes mènent.
@@ -23,7 +23,7 @@ export function createEditorBase(world,{sprites,bman,iman,sols={}}){
  const locations=Object.fromEntries(all.filter(l=>l.kind!=='interior').map(l=>[l.id,prepare(l.id,false)]));
  const interiorTemplates=Object.fromEntries(all.filter(l=>l.kind==='interior').map(l=>[l.id,prepare(l.id,true)]));
  const every=[...Object.values(locations),...Object.values(interiorTemplates)];
- const keys=new Set([...every.flatMap(l=>l.buildings.flatMap(b=>[b.sprite,b.sprite+'_neon',b.sprite+'_fenetres'])),...every.flatMap(l=>(l.enseignes||[]).map(e=>e.neon).filter(Boolean))]) /* calques _neon et _fenetres des bâtiments */,buildings=Object.fromEntries([...keys].filter(k=>bman[k]).map(k=>[k,bman[k]]));
+ const keys=new Set([...every.flatMap(l=>l.buildings.flatMap(b=>[b.sprite,b.sprite+'_neon',b.sprite+'_fenetres',b.sprite+'_ecran',b.sprite+'_pulse'])),...every.flatMap(l=>(l.enseignes||[]).map(e=>e.neon).filter(Boolean))]) /* calques _neon et _fenetres des bâtiments */,buildings=Object.fromEntries([...keys].filter(k=>bman[k]).map(k=>[k,bman[k]]));
  const characterAssets=[{sprite:'player',label:'Voyageur'},{sprite:'nilo',label:'Nilo'}];for(const n of world.NPCS.filter(n=>typeof n.sprite==='string'&&n.sprite))if(!characterAssets.some(a=>a.sprite===n.sprite))characterAssets.push({sprite:n.sprite,label:n.name});
  const furnitureNames={clinic_cabinet:'Armoire médicale',clinic_table:'Table médicale',clinic_cot_b:'Lit médical',clinic_stretcher_b:'Brancard',m_archive_shelf:'Étagère',m_desk:'Bureau',bar_backshelf_b:'Étagères de bar',bar_counter_b:'Comptoir de bar',bar_table_b:'Table de bistrot',home_mattress_d:'Matelas',home_curtain:'Rideau',home_table:'Table',home_water:'Réserve d’eau',shop_shelf:'Rayonnage',shop_counter:'Comptoir'};
  const furnitureKeys=new Set(every.flatMap(l=>l.props.filter(p=>p.furn).map(p=>p.furn)));

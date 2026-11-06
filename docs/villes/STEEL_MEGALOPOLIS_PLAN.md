@@ -120,5 +120,5 @@ Toutes closes le 21/10/2026 [décision] : Nilo retiré dès le début ; race cho
 - Assets : bâtiments générés (planche 2x2 de cabanes, tripot, atelier, monte-charge) corrigés à l'angle v4 (`tools_steel.py`, cisaillement + pentes mesurées), PNJ générés (`tools_npcs_sv.py`), props `sv_*` (`tools_steel_decor.py`), meubles et surfaces (`tools_interiors.py` : table de jeu rejetée par le contrôle d'angle).
 - Monnaie : dollar (proposition, voir CANON §9 octies).
 
-## Playlist OST commune Center-Town (`fecc483`, `src/core/ost_centre.js`)
+## Playlist OST commune Center-Town (`fecc483` / `27b3f1f`, `src/core/ost_centre.js`)
 - Playlist commune Groovy Crew (4 titres MP3 servis tels quels depuis `assets/audio/ost_centre/`, pack `fecc483`) branchée en singleton sur `<audio id="music">` pour `steel_center` (et `change_in`, atténué), `steel_strip`, `steel_pulse` et `steel_arena` : aucune coupure ni remise à zéro aux transitions entre ces quatre zones, enchaînement `01 → 02 → 03 → 04 → 01` en boucle, analyseur Web Audio `ostCentre` (`beat`, `energy`, `bass`, `mid`, `high`, `onKick`) prêt pour les calques rythmiques de Pulse Plaza.
