@@ -2053,5 +2053,820 @@
     "pose": "façade est, sur ar2_facade_courbe_z : z 11 à 19, de 7,5 à 12 m ; même ancre que ar_ecran_geant_z (92,8 ; 19) ; longueur 8 au lieu de 10",
     "file": "steel/steel_arena/ar2_ecran_geant_z.webp",
     "status": "v1"
+  },
+  "ar_guichets_3q": {
+    "file": "steel/steel_arena/ar_guichets_3q.webp",
+    "px": [
+      282,
+      267
+    ],
+    "anchor": [
+      167,
+      265
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_guichets', 'Guichets', 'ar_guichets_3q', 6, 44, 4, 4) (remplace ar_guichets)",
+    "source": "GenerateImage (cursor), f1a87a61, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_guichets_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Guichets",
+    "neon": "ar_guichets_3q_neon",
+    "neon_coins": [
+      [
+        44,
+        122
+      ],
+      [
+        145,
+        155
+      ],
+      [
+        145,
+        176
+      ],
+      [
+        44,
+        143
+      ]
+    ],
+    "remplace": "ar_guichets"
+  },
+  "ar_guichets_3q_neon": {
+    "file": "steel/steel_arena/ar_guichets_3q_neon.webp",
+    "px": [
+      282,
+      267
+    ],
+    "anchor": [
+      167,
+      265
+    ],
+    "couche_de": "ar_guichets_3q",
+    "texte": "GUICHETS",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_guichets_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_guichets_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_guichets_3q_fenetres": {
+    "file": "steel/steel_arena/ar_guichets_3q_fenetres.webp",
+    "px": [
+      282,
+      267
+    ],
+    "anchor": [
+      167,
+      265
+    ],
+    "couche_de": "ar_guichets_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_guichets_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_guichets_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_booking_3q": {
+    "file": "steel/steel_arena/ar_booking_3q.webp",
+    "px": [
+      282,
+      299
+    ],
+    "anchor": [
+      167,
+      297
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_booking', 'Booking', 'ar_booking_3q', 10, 48, 4, 4) (nouveau)",
+    "source": "GenerateImage (cursor), 2b001f78, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_booking_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Booking",
+    "neon": "ar_booking_3q_neon",
+    "neon_coins": [
+      [
+        39,
+        118
+      ],
+      [
+        113,
+        142
+      ],
+      [
+        113,
+        171
+      ],
+      [
+        39,
+        147
+      ]
+    ]
+  },
+  "ar_booking_3q_neon": {
+    "file": "steel/steel_arena/ar_booking_3q_neon.webp",
+    "px": [
+      282,
+      299
+    ],
+    "anchor": [
+      167,
+      297
+    ],
+    "couche_de": "ar_booking_3q",
+    "texte": "BOOKING",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_booking_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_booking_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_booking_3q_fenetres": {
+    "file": "steel/steel_arena/ar_booking_3q_fenetres.webp",
+    "px": [
+      282,
+      299
+    ],
+    "anchor": [
+      167,
+      297
+    ],
+    "couche_de": "ar_booking_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_booking_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_booking_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_securite_3q": {
+    "file": "steel/steel_arena/ar_securite_3q.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_securite', 'Poste Human Corp', 'ar_securite_3q', 14, 52, 4, 4) (remplace ar_securite)",
+    "source": "GenerateImage (cursor), dd966c0e, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_securite_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Contrôle IO",
+    "neon": "ar_securite_3q_neon",
+    "neon_coins": [
+      [
+        48,
+        93
+      ],
+      [
+        142,
+        124
+      ],
+      [
+        142,
+        143
+      ],
+      [
+        48,
+        112
+      ]
+    ],
+    "remplace": "ar_securite"
+  },
+  "ar_securite_3q_neon": {
+    "file": "steel/steel_arena/ar_securite_3q_neon.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "couche_de": "ar_securite_3q",
+    "texte": "CONTRÔLE IO",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_securite_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_securite_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_securite_3q_fenetres": {
+    "file": "steel/steel_arena/ar_securite_3q_fenetres.webp",
+    "px": [
+      282,
+      255
+    ],
+    "anchor": [
+      167,
+      253
+    ],
+    "couche_de": "ar_securite_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_securite_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_securite_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_stand_merch_b_3q": {
+    "file": "steel/steel_arena/ar_stand_merch_b_3q.webp",
+    "px": [
+      282,
+      216
+    ],
+    "anchor": [
+      167,
+      213
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_merch_b', 'Merch officiel', 'ar_stand_merch_b_3q', 26, 40, 4, 4) (remplace ar_stand_merch_b ; était 3×2)",
+    "source": "GenerateImage (cursor), d0f4b3de, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_stand_merch_b_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Merch officiel",
+    "neon": "ar_stand_merch_b_3q_neon",
+    "neon_coins": [
+      [
+        31,
+        36
+      ],
+      [
+        148,
+        75
+      ],
+      [
+        148,
+        100
+      ],
+      [
+        31,
+        61
+      ]
+    ],
+    "remplace": "ar_stand_merch_b"
+  },
+  "ar_stand_merch_b_3q_neon": {
+    "file": "steel/steel_arena/ar_stand_merch_b_3q_neon.webp",
+    "px": [
+      282,
+      216
+    ],
+    "anchor": [
+      167,
+      213
+    ],
+    "couche_de": "ar_stand_merch_b_3q",
+    "texte": "MERCH OFFICIEL",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_stand_merch_b_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_stand_merch_b_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_stand_merch_b_3q_fenetres": {
+    "file": "steel/steel_arena/ar_stand_merch_b_3q_fenetres.webp",
+    "px": [
+      282,
+      216
+    ],
+    "anchor": [
+      167,
+      213
+    ],
+    "couche_de": "ar_stand_merch_b_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_stand_merch_b_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_stand_merch_b_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_stand_merch_c_3q": {
+    "file": "steel/steel_arena/ar_stand_merch_c_3q.webp",
+    "px": [
+      282,
+      240
+    ],
+    "anchor": [
+      167,
+      237
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_merch_c', 'Chariot de merch', 'ar_stand_merch_c_3q', 54, 40, 4, 4) (remplace ar_stand_merch_c ; était 3×2)",
+    "source": "GenerateImage (cursor), 56f36c8d, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_stand_merch_c_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Merch",
+    "neon": "ar_stand_merch_c_3q_neon",
+    "neon_coins": [
+      [
+        45,
+        85
+      ],
+      [
+        142,
+        118
+      ],
+      [
+        142,
+        145
+      ],
+      [
+        45,
+        112
+      ]
+    ],
+    "remplace": "ar_stand_merch_c"
+  },
+  "ar_stand_merch_c_3q_neon": {
+    "file": "steel/steel_arena/ar_stand_merch_c_3q_neon.webp",
+    "px": [
+      282,
+      240
+    ],
+    "anchor": [
+      167,
+      237
+    ],
+    "couche_de": "ar_stand_merch_c_3q",
+    "texte": "MERCH",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_stand_merch_c_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_stand_merch_c_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_stand_merch_c_3q_fenetres": {
+    "file": "steel/steel_arena/ar_stand_merch_c_3q_fenetres.webp",
+    "px": [
+      282,
+      240
+    ],
+    "anchor": [
+      167,
+      237
+    ],
+    "couche_de": "ar_stand_merch_c_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_stand_merch_c_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_stand_merch_c_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_foodtruck_nouilles_3q": {
+    "file": "steel/steel_arena/ar_foodtruck_nouilles_3q.webp",
+    "px": [
+      447,
+      317
+    ],
+    "anchor": [
+      332,
+      315
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 3.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_truck_n', 'Nouilles du parvis', 'ar_foodtruck_nouilles_3q', 16, 46, 8, 4) (remplace ar_foodtruck_nouilles ; était 6×2,5)",
+    "source": "GenerateImage (cursor), 932256db, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_foodtruck_nouilles_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Nouilles du parvis",
+    "neon": "ar_foodtruck_nouilles_3q_neon",
+    "neon_coins": [
+      [
+        110,
+        77
+      ],
+      [
+        299,
+        139
+      ],
+      [
+        299,
+        167
+      ],
+      [
+        110,
+        105
+      ]
+    ],
+    "remplace": "ar_foodtruck_nouilles"
+  },
+  "ar_foodtruck_nouilles_3q_neon": {
+    "file": "steel/steel_arena/ar_foodtruck_nouilles_3q_neon.webp",
+    "px": [
+      447,
+      317
+    ],
+    "anchor": [
+      332,
+      315
+    ],
+    "couche_de": "ar_foodtruck_nouilles_3q",
+    "texte": "NOUILLES DU PARVIS",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_foodtruck_nouilles_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_foodtruck_nouilles_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_foodtruck_nouilles_3q_fenetres": {
+    "file": "steel/steel_arena/ar_foodtruck_nouilles_3q_fenetres.webp",
+    "px": [
+      447,
+      317
+    ],
+    "anchor": [
+      332,
+      315
+    ],
+    "couche_de": "ar_foodtruck_nouilles_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_foodtruck_nouilles_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_foodtruck_nouilles_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_foodtruck_boissons_3q": {
+    "file": "steel/steel_arena/ar_foodtruck_boissons_3q.webp",
+    "px": [
+      447,
+      317
+    ],
+    "anchor": [
+      332,
+      315
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 3.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_truck_b', 'Boissons', 'ar_foodtruck_boissons_3q', 68, 46, 8, 4) (remplace ar_foodtruck_boissons ; était 6×2,5)",
+    "source": "GenerateImage (cursor), 4059c170, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_foodtruck_boissons_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Hydratation",
+    "neon": "ar_foodtruck_boissons_3q_neon",
+    "neon_coins": [
+      [
+        111,
+        77
+      ],
+      [
+        295,
+        138
+      ],
+      [
+        295,
+        167
+      ],
+      [
+        111,
+        106
+      ]
+    ],
+    "remplace": "ar_foodtruck_boissons"
+  },
+  "ar_foodtruck_boissons_3q_neon": {
+    "file": "steel/steel_arena/ar_foodtruck_boissons_3q_neon.webp",
+    "px": [
+      447,
+      317
+    ],
+    "anchor": [
+      332,
+      315
+    ],
+    "couche_de": "ar_foodtruck_boissons_3q",
+    "texte": "HYDRATATION",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_foodtruck_boissons_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_foodtruck_boissons_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_foodtruck_boissons_3q_fenetres": {
+    "file": "steel/steel_arena/ar_foodtruck_boissons_3q_fenetres.webp",
+    "px": [
+      447,
+      317
+    ],
+    "anchor": [
+      332,
+      315
+    ],
+    "couche_de": "ar_foodtruck_boissons_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_foodtruck_boissons_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_foodtruck_boissons_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_regie_3q": {
+    "file": "steel/steel_arena/ar_regie_3q.webp",
+    "px": [
+      447,
+      314
+    ],
+    "anchor": [
+      332,
+      312
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 3.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_regie', 'Camion régie', 'ar_regie_3q', 76, 50, 8, 4) (remplace ar_regie ; était 6×4)",
+    "source": "GenerateImage (cursor), dceee0a6, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_regie_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Régie",
+    "neon": "ar_regie_3q_neon",
+    "neon_coins": [
+      [
+        109,
+        96
+      ],
+      [
+        219,
+        132
+      ],
+      [
+        219,
+        167
+      ],
+      [
+        109,
+        130
+      ]
+    ],
+    "remplace": "ar_regie"
+  },
+  "ar_regie_3q_neon": {
+    "file": "steel/steel_arena/ar_regie_3q_neon.webp",
+    "px": [
+      447,
+      314
+    ],
+    "anchor": [
+      332,
+      312
+    ],
+    "couche_de": "ar_regie_3q",
+    "texte": "RÉGIE",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_regie_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_regie_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_regie_3q_fenetres": {
+    "file": "steel/steel_arena/ar_regie_3q_fenetres.webp",
+    "px": [
+      447,
+      314
+    ],
+    "anchor": [
+      332,
+      312
+    ],
+    "couche_de": "ar_regie_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_regie_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_regie_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_tribunes_3q": {
+    "file": "steel/steel_arena/ar_tribunes_3q.webp",
+    "px": [
+      725,
+      469
+    ],
+    "anchor": [
+      496,
+      467
+    ],
+    "footprint_m": [
+      12,
+      8
+    ],
+    "height_m": 4.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_tribunes', 'Tribunes', 'ar_tribunes_3q', 20, 32, 12, 8) (nouveau ; gradins du parvis)",
+    "source": "GenerateImage (cursor), 881dfcf2, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_tribunes_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Tribunes",
+    "neon": "ar_tribunes_3q_neon",
+    "neon_coins": [
+      [
+        174,
+        170
+      ],
+      [
+        423,
+        253
+      ],
+      [
+        423,
+        286
+      ],
+      [
+        174,
+        204
+      ]
+    ]
+  },
+  "ar_tribunes_3q_neon": {
+    "file": "steel/steel_arena/ar_tribunes_3q_neon.webp",
+    "px": [
+      725,
+      469
+    ],
+    "anchor": [
+      496,
+      467
+    ],
+    "couche_de": "ar_tribunes_3q",
+    "texte": "TRIBUNES",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_tribunes_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_tribunes_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_tribunes_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tribunes_3q_fenetres.webp",
+    "px": [
+      725,
+      469
+    ],
+    "anchor": [
+      496,
+      467
+    ],
+    "couche_de": "ar_tribunes_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tribunes_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tribunes_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_tech_ouest_a_3q": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_3q.webp",
+    "px": [
+      561,
+      694
+    ],
+    "anchor": [
+      332,
+      691
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 8.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_tech_a', 'Technique ouest', 'ar_tech_ouest_a_3q', 0, 30, 8, 8) (remplace ar_bord_o0 / pp_facade_a_o)",
+    "source": "GenerateImage (cursor), 953c45d7, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_tech_ouest_a_3q_fenetres",
+    "status": "v1",
+    "enseigne": "Technique",
+    "neon": "ar_tech_ouest_a_3q_neon",
+    "neon_coins": [
+      [
+        93,
+        405
+      ],
+      [
+        123,
+        415
+      ],
+      [
+        123,
+        433
+      ],
+      [
+        93,
+        423
+      ]
+    ]
+  },
+  "ar_tech_ouest_a_3q_neon": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_3q_neon.webp",
+    "px": [
+      561,
+      694
+    ],
+    "anchor": [
+      332,
+      691
+    ],
+    "couche_de": "ar_tech_ouest_a_3q",
+    "texte": "TECHNIQUE",
+    "source": "extraction PIL de l'enseigne lumineuse de ar_tech_ouest_a_3q.webp",
+    "note": "couche néon séparée, même taille et même ancre que ar_tech_ouest_a_3q ; posée en additif par view.js",
+    "status": "v1"
+  },
+  "ar_tech_ouest_a_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_3q_fenetres.webp",
+    "px": [
+      561,
+      694
+    ],
+    "anchor": [
+      332,
+      691
+    ],
+    "couche_de": "ar_tech_ouest_a_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tech_ouest_a_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tech_ouest_a_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_tech_ouest_b_3q": {
+    "file": "steel/steel_arena/ar_tech_ouest_b_3q.webp",
+    "px": [
+      396,
+      506
+    ],
+    "anchor": [
+      167,
+      504
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 7.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_tech_b', '', 'ar_tech_ouest_b_3q', 0, 46, 4, 8, { named: false }) (remplace ar_bord_o1 / pp_facade_b_o)",
+    "source": "GenerateImage (cursor), ae32cce1, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_tech_ouest_b_3q_fenetres",
+    "status": "v1",
+    "neon": null,
+    "note": "bâtiment technique sans enseigne (bord ouest)"
+  },
+  "ar_tech_ouest_b_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tech_ouest_b_3q_fenetres.webp",
+    "px": [
+      396,
+      506
+    ],
+    "anchor": [
+      167,
+      504
+    ],
+    "couche_de": "ar_tech_ouest_b_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tech_ouest_b_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tech_ouest_b_3q, pour vacillement par le code",
+    "status": "v1"
+  },
+  "ar_tech_ouest_c_3q": {
+    "file": "steel/steel_arena/ar_tech_ouest_c_3q.webp",
+    "px": [
+      396,
+      499
+    ],
+    "anchor": [
+      167,
+      496
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 7.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('ar_tech_c', '', 'ar_tech_ouest_c_3q', 0, 54, 4, 8, { named: false }) (remplace ar_bord_o2 / pp_facade_b_o2)",
+    "source": "GenerateImage (cursor), 49f647df, réf. arena_a/arena_b + recalage PIL 3/4",
+    "fenetres": "ar_tech_ouest_c_3q_fenetres",
+    "status": "v1",
+    "neon": null,
+    "note": "bâtiment technique sans enseigne (bord ouest)"
+  },
+  "ar_tech_ouest_c_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tech_ouest_c_3q_fenetres.webp",
+    "px": [
+      396,
+      499
+    ],
+    "anchor": [
+      167,
+      496
+    ],
+    "couche_de": "ar_tech_ouest_c_3q",
+    "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tech_ouest_c_3q.webp",
+    "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tech_ouest_c_3q, pour vacillement par le code",
+    "status": "v1"
   }
 }

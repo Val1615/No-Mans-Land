@@ -83,3 +83,55 @@ Limites : la façade est s'arrête à z 6 comme avant, le bout nord-est du toit 
 - Écrans code : pages BATTLE et FRONTON enrichies, périodes un peu plus courtes et décalées. Projecteurs : balayages et périodes différenciés (hors `animStats.on`).
 - Figurants FIXES densifiés autour des stands/trucks et un second rang devant les portiques (sprites du pool existant). Plan large d'arrivée et enceinte ar2 inchangés.
 - Ambres des stands/trucks/guichets : `flicker` lent (sol + lampes y), sans teinte violette.
+
+## Bâtiments complets (3/4)
+
+Statut : **proposition d'Ocre**, à poser par Rivet. Même méthode que les 19 `fs_*_3q` du Strip (`FREQUENCE_STRIP.md`). Valentin a rejeté les façades plates et les volumes assemblés par pièces : chaque bâtiment est un seul sprite en 3/4 avec façade, retour et toit peints ensemble, plus des calques `_3q_neon` et `_3q_fenetres` de même taille et même ancre (additif par le code).
+
+L'enceinte `ar2_` (commit 58703a8, posée en 3e5a8c6) **reste telle quelle**.
+
+### Géométrie
+- 50 px/m ; façade rue (face x) = W × 41,21 px ; retour (face z) = D × 28,32 px ; pentes 0,33 / 0,70.
+- Ancre au pied du coin avant sud-est `(x+W ; z+D)`.
+- Emprises en multiples de 4 m, profondeur min 4 m.
+- Palette anthracite et ambre (réfs de direction seulement : `nml-refs/steel_arena/arena_a.png`, `arena_b.png`).
+
+### Tableau
+
+| clé `_3q` | remplace / nouveau | enseigne | px | ancre | emprise (W × D) | h (m) | pose | calques |
+|---|---|---|---|---|---|---|---|---|
+| `ar_guichets_3q` | ar_guichets | « Guichets » | 282 × 267 | [167, 265] | 4 × 4 m | 3,5 | `B('ar_guichets', 'Guichets', 'ar_guichets_3q', 6, 44, 4, 4)` | `_neon`, `_fenetres` |
+| `ar_booking_3q` | *(nouveau)* | « Booking » | 282 × 299 | [167, 297] | 4 × 4 m | 3,2 | `B('ar_booking', 'Booking', 'ar_booking_3q', 10, 48, 4, 4)` | `_neon`, `_fenetres` |
+| `ar_securite_3q` | ar_securite | « Contrôle IO » | 282 × 255 | [167, 253] | 4 × 4 m | 3,5 | `B('ar_securite', 'Poste Human Corp', 'ar_securite_3q', 14, 52, 4, 4)` | `_neon`, `_fenetres` |
+| `ar_stand_merch_b_3q` | ar_stand_merch_b (3×2) | « Merch officiel » | 282 × 216 | [167, 213] | 4 × 4 m | 2,8 | `B('ar_merch_b', 'Merch officiel', 'ar_stand_merch_b_3q', 26, 40, 4, 4)` | `_neon`, `_fenetres` |
+| `ar_stand_merch_c_3q` | ar_stand_merch_c (3×2) | « Merch » | 282 × 240 | [167, 237] | 4 × 4 m | 2,8 | `B('ar_merch_c', 'Chariot de merch', 'ar_stand_merch_c_3q', 54, 40, 4, 4)` | `_neon`, `_fenetres` |
+| `ar_foodtruck_nouilles_3q` | ar_foodtruck_nouilles (6×2,5) | « Nouilles du parvis » | 447 × 317 | [332, 315] | 8 × 4 m | 3,2 | `B('ar_truck_n', 'Nouilles du parvis', 'ar_foodtruck_nouilles_3q', 16, 46, 8, 4)` | `_neon`, `_fenetres` |
+| `ar_foodtruck_boissons_3q` | ar_foodtruck_boissons (6×2,5) | « Hydratation » | 447 × 317 | [332, 315] | 8 × 4 m | 3,2 | `B('ar_truck_b', 'Boissons', 'ar_foodtruck_boissons_3q', 68, 46, 8, 4)` | `_neon`, `_fenetres` |
+| `ar_regie_3q` | ar_regie (6×4) | « Régie » | 447 × 314 | [332, 312] | 8 × 4 m | 3,5 | `B('ar_regie', 'Camion régie', 'ar_regie_3q', 76, 50, 8, 4)` | `_neon`, `_fenetres` |
+| `ar_tribunes_3q` | *(nouveau)* | « Tribunes » | 725 × 469 | [496, 467] | 12 × 8 m | 4,0 | `B('ar_tribunes', 'Tribunes', 'ar_tribunes_3q', 20, 32, 12, 8)` | `_neon`, `_fenetres` |
+| `ar_tech_ouest_a_3q` | ar_bord_o0 / pp_facade_a_o | « Technique » | 561 × 694 | [332, 691] | 8 × 8 m | 8,0 | `B('ar_tech_a', 'Technique ouest', 'ar_tech_ouest_a_3q', 0, 30, 8, 8)` | `_neon`, `_fenetres` |
+| `ar_tech_ouest_b_3q` | ar_bord_o1 / pp_facade_b_o | « *(sans enseigne)* » | 396 × 506 | [167, 504] | 4 × 8 m | 7,0 | `B('ar_tech_b', '', 'ar_tech_ouest_b_3q', 0, 46, 4, 8, { named: false })` | `_fenetres` |
+| `ar_tech_ouest_c_3q` | ar_bord_o2 / pp_facade_b_o2 | « *(sans enseigne)* » | 396 × 499 | [167, 496] | 4 × 8 m | 7,0 | `B('ar_tech_c', '', 'ar_tech_ouest_c_3q', 0, 54, 4, 8, { named: false })` | `_fenetres` |
+
+### À faire côté code (Rivet)
+
+1. Remplacer les sprites plats / trucks / stands et les bords ouest `pp_facade_*_o` par les appels `B(...)` du tableau (emprises recalées en multiples de 4 m, profondeur min 4 m).
+2. Ajouter `ar_booking` (près des guichets) et `ar_tribunes` (gradins du parvis, ouest de la file).
+3. Enseignes `_3q_neon` : chargées automatiquement par `view.js` dès que `b.sprite` vaut `<clé>_3q` (sauf `ar_tech_ouest_b_3q` et `ar_tech_ouest_c_3q`, sans enseigne).
+4. Fenêtres `_3q_fenetres` : calque additif léger (vacillement lent / flicker ambre, hors plafond mobile).
+5. Lueurs existantes (ambre stands/trucks/guichets) : recalculer légèrement les centres si l'emprise change (trucks 8×4, merch 4×4, régie 8×4).
+6. Figurants près des bords ouest : vérifier qu'ils ne rentrent pas dans les nouvelles emprises 4×8 / 8×8.
+
+### Effets conseillés
+- `ar_guichets_3q_neon` : fixe (écran guichet déjà en `ar_ens_guichet`).
+- `ar_booking_3q_neon` : pulse lent.
+- `ar_securite_3q_neon` : fixe ; voyants verts des portiques éventuellement en code.
+- `ar_stand_merch_*_3q_neon` : flicker ambre lent (comme aujourd'hui).
+- `ar_foodtruck_*_3q_neon` : fixe ou grésillement très léger.
+- `ar_regie_3q_neon` : pulse lent.
+- `ar_tribunes_3q_neon` : fixe.
+- `ar_tech_ouest_a_3q_neon` : fixe (stencil TECHNIQUE).
+
+### Planches
+- `/workspace/nml-shots/arena_3q.png` (maquette iso du parvis avec enceinte `ar2_` et les 12 bâtiments, pas une capture du jeu)
+- `/workspace/nml-shots/arena_3q_zoom.png` (gros plan 1:1 de 4 bâtiments avec calques `_neon` / `_fenetres`)
