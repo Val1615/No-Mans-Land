@@ -1,4 +1,4 @@
-# Test rapide Steel Arena : grille est du Strip -> Arena, traversée du parvis, retour, aucune erreur JS ;
+# Test rapide Steel Arena : sortie est de Pulse Plaza -> Arena, traversée du parvis jusqu'à la sortie est -> Strip, retours, aucune erreur JS ;
 # fps, enseignes animées, calques rythmiques ar2_*_pulse2 / *_faisceau / ar_*_3q_pulse + props rythmiques (b3bd9a6 + 769c16d), 0 chevauchement ni inversion d'ordre (1280 et 390).
 import time,os,sys
 from playwright.sync_api import sync_playwright
@@ -13,9 +13,9 @@ with sync_playwright() as p:
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1)
         E("localStorage.removeItem('nml_save_auto')"); E("document.getElementById('m-new').click()"); time.sleep(.5)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_strip';s.player.x=78;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
-        E("window.__nml.game.useDoor('fs_est')"); time.sleep(2)
-        ok(E("window.__nml.state.location")=='steel_arena',f'{name} grille du Strip -> Steel Arena',E("window.__nml.state.location"))
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=46;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
+        E("window.__nml.game.useDoor('pp_est')"); time.sleep(2)
+        ok(E("window.__nml.state.location")=='steel_arena',f'{name} Pulse Plaza (pp_est) -> Steel Arena (ar_ouest)',E("window.__nml.state.location"))
         ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_arena').length")==11,f'{name} 11 PNJ (9 + revendeur et revendeuse)')
         pg.screenshot(path=OUT+f'{name}_arrivee.png')
         z0=E("window.__nml.view.camCible()"); D=E("window.__nml.view.decor()"); fx=[d for d in D if d['role'] not in ('passant','file','drone')]
@@ -31,7 +31,7 @@ with sync_playwright() as p:
         prio_ar={p['key']:p['on'] for p in pls if p['priorite']>=3}
         ok(req_props<=props_ar and st.get('pulses')==51 and st.get('pulsesOn',0)<=(8 if mob else 48)
            and prio_ar.get('ar2_ecran_geant_x_pulse2') and prio_ar.get('ar2_ecran_geant_z_pulse2')
-           and prio_ar.get('ar2_facade_entree_faisceau') and prio_ar.get('ar_mat_projecteur_pulse_3q_faisceau'),
+           and prio_ar.get('ar2_facade_entree_faisceau_fix') and prio_ar.get('ar_mat_projecteur_pulse_3q_faisceau_fix'),
            f'{name} sync rythme Arena : 51 calques pulse2/faisceau/pulse, 4 props rythmiques posés, priorité mobile écrans géants + projecteurs ({prio_ar})',(st,prio_ar))
         ok(E("window.__nml.view.masques()")==[],f'{name} aucun personnage masqué par un bâtiment',E("window.__nml.view.masques()"))
         STAB=E("""(()=>{const L=window.__nml.world.LOCATIONS.steel_arena,v=window.__nml.view,g=window.__nml.game,s=g.state;v.render();
@@ -49,6 +49,9 @@ with sync_playwright() as p:
         while time.time()-t0<60 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-88,p.z-46)>1.2})()"): time.sleep(.3)
         pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-88)<1.3 and abs(pz[1]-46)<1.3,f'{name} traversée ouest -> est à pied',pz)
         pg.screenshot(path=OUT+f'{name}_est.png')
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=2;s.player.z=44;g.restore(s,true)})()"); time.sleep(1); E("window.__nml.game.useDoor('ar_ouest')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_strip',f'{name} retour vers le Strip',E("window.__nml.state.location"))
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=94.5;s.player.z=44;g.restore(s,true)})()"); time.sleep(1); E("window.__nml.game.useDoor('ar_est')"); time.sleep(2)
+        ok(E("[window.__nml.state.location,window.__nml.state.player.x>75]")==['steel_strip',True],f'{name} sortie est Arena (ar_est) -> Fréquence Strip (grille est)',E("[window.__nml.state.location,window.__nml.state.player.x]"))
+        E("window.__nml.game.useDoor('fs_est')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_arena',f'{name} retour grille du Strip (fs_est) -> Steel Arena',E("window.__nml.state.location"))
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=2;s.player.z=44;g.restore(s,true)})()"); time.sleep(1); E("window.__nml.game.useDoor('ar_ouest')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_pulse',f'{name} retour ouest Arena (ar_ouest) -> Pulse Plaza',E("window.__nml.state.location"))
         ok(not errs,f'{name} aucune erreur JS',errs[:3]); ctx.close()
     print(f'{n}/{n+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)

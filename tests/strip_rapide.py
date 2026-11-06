@@ -1,4 +1,4 @@
-# Test rapide Fréquence Strip (80 x 24 m) : Pulse Plaza -> Strip (porte est), traversée jusqu'à la grille est et passage vers l'Arena, retour, aucune erreur JS ;
+# Test rapide Fréquence Strip (80 x 24 m, en marge derrière le dôme) : Center-Town (c_strip) <-> Strip <-> Steel Arena (fs_est/ar_est), aucune erreur JS ;
 # fps et enseignes animées (1280 et 390), façades bord à bord sans chevauchement ni trou ni inversion d'ordre dynamique, view.masques() vide, calques néon d'Ocre posés.
 import time,os,sys
 from playwright.sync_api import sync_playwright
@@ -13,9 +13,9 @@ with sync_playwright() as p:
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1)
         E("localStorage.removeItem('nml_save_auto')"); E("document.getElementById('m-new').click()"); time.sleep(.5)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=46;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
-        E("window.__nml.game.useDoor('pp_est')"); time.sleep(2)
-        ok(E("window.__nml.state.location")=='steel_strip',f'{name} Pulse Plaza (sortie est) -> Fréquence Strip',E("window.__nml.state.location"))
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=14;s.player.z=1.5;g.restore(s,true)})()"); time.sleep(1.2)
+        E("window.__nml.game.useDoor('c_strip')"); time.sleep(2)
+        ok(E("window.__nml.state.location")=='steel_strip',f'{name} Center-Town (c_strip) -> Fréquence Strip',E("window.__nml.state.location"))
         ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_strip').length")==19,f'{name} 19 PNJ (11 d origine dont Fusible et Ocre, 8 des compléments d Ocre)')
         STAB=E("""(()=>{const L=window.__nml.game.world.LOCATIONS.steel_strip,v=window.__nml.view,g=window.__nml.game,s=g.state;v.render();
           const B=L.buildings.map(b=>({id:b.id,x0:b.x,x1:b.x+b.w,z0:b.z,z1:b.z+b.d,fond:!!b.fond,cover:!!b.cover,sol:(b.solid??[1]).length,o0:v.orderOf(b.id)}));
@@ -61,8 +61,8 @@ with sync_playwright() as p:
         while time.time()-t0<60 and E("(()=>{const p=window.__nml.state.player;return Math.hypot(p.x-78,p.z-12.5)>1.2})()"): time.sleep(.3)
         pz=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); ok(abs(pz[0]-78)<1.3 and abs(pz[1]-12.5)<1.3,f'{name} traversée ouest -> est à pied',pz)
         pg.screenshot(path=OUT+f'{name}_est.png')
-        E("window.__nml.game.useDoor('fs_est')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_arena',f'{name} grille est -> Steel Arena',E("window.__nml.state.location"))
-        E("window.__nml.game.useDoor('ar_ouest')"); time.sleep(2); c=E("window.__nml.view.camCible()"); ok(c and c[0]<=71.1,f'{name} arrivée est : cadre centré sur la rue',c); pz=E("[window.__nml.state.location,window.__nml.state.player.x]"); ok(pz[0]=='steel_strip' and pz[1]>75,f'{name} retour de l Arena au bout est du Strip',pz)
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=2;s.player.z=10;g.restore(s,true)})()"); time.sleep(1); E("window.__nml.game.useDoor('fs_ouest')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_pulse',f'{name} retour vers Pulse Plaza',E("window.__nml.state.location"))
+        E("window.__nml.game.useDoor('fs_est')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_arena',f'{name} grille est -> Steel Arena (ar_est)',E("window.__nml.state.location"))
+        E("window.__nml.game.useDoor('ar_est')"); time.sleep(2); c=E("window.__nml.view.camCible()"); ok(c and c[0]<=71.1,f'{name} arrivée est : cadre centré sur la rue',c); pz=E("[window.__nml.state.location,window.__nml.state.player.x]"); ok(pz[0]=='steel_strip' and pz[1]>75,f'{name} retour de l Arena (ar_est) au bout est du Strip',pz)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=2;s.player.z=10;g.restore(s,true)})()"); time.sleep(1); E("window.__nml.game.useDoor('fs_ouest')"); time.sleep(2); ok(E("window.__nml.state.location")=='steel_center',f'{name} sortie ouest du Strip -> retour Center-Town (boucle complète)',E("window.__nml.state.location"))
         ok(not errs,f'{name} aucune erreur JS',errs[:3]); ctx.close()
     print(f'{n}/{n+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)

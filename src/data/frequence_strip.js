@@ -13,35 +13,35 @@ const ENS = (id, sprite, x, z, y) => B(id, '', sprite, x - 0.1, z - 0.1, 0.2, 0.
 // Nord : front aligné sur le trottoir (z 6), profondeur 4 ou 8 m (z 2 ou -2) ; ruelle Fusible fermée en z 0-3 (z 3-6 libre).
 // Sud : front au bord de la zone (z 24), profondeur 4 m (z 20-24, alignée sur Le Retour et l'hôtel capsule) ; aucun personnage dans leur ombre d'écran (view.masques() vide).
 export const BUILDINGS_STRIP = [
-  // façade nord, d'ouest en est (rue de 80 m, front z 6)
-  B('fs_fn0', '', 'fs_facade_nord', 0, 0, 8, 6, { named: false }),
+  // façade nord, d'ouest en est (rue de 80 m, front z 6 ; volumes legacy à ancre centrale recalés dans leur parcelle via ancre/k)
+  B('fs_fn0', '', 'fs_facade_nord', 0, 0, 8, 6, { named: false, ancre: [-2.4, 0], k: 1.32 }),
   B('fs_bouche0', '', 'fs_bouche_nord_3q', 8, 0, 2, 3, { ancre: [1, 0], named: false }), // ferme la ruelle x 8-10 bord à bord (z 3-6 libre autour de Fusible)
-  B('fs_neon7', 'Club Neon-7', 'fs_neon7', 10, 0, 12, 6),
+  B('fs_neon7', 'Club Neon-7', 'fs_neon7', 10, 0, 12, 6, { ancre: [-3.2, 0], k: 1.24 }),
   B('fs_sexshop', 'Jouets calibrés', 'fs_sexshop_3q', 22, -2, 8, 8), B('fs_peep', '3 secondes', 'fs_peep_3q', 30, 2, 4, 4), B('fs_salon', 'Tombé de rideau', 'fs_salon_3q', 34, 2, 4, 4),
-  B('fs_corestack', 'Core Stack', 'fs_corestack', 38, 0, 12, 6),
+  B('fs_corestack', 'Core Stack', 'fs_corestack', 38, 0, 12, 6, { ancre: [-3.4, 0], k: 1.28 }),
   B('fs_bouche1', '', 'fs_bouche_nord_3q', 50, 2, 4, 4, { named: false }),
   B('fs_club', 'L\u2019Effeuillée', 'fs_club_3q', 54, -2, 10, 8), B('fs_lovehotel', 'L\u2019Heure exquise', 'fs_lovehotel_3q', 64, -2, 8, 8), B('fs_clubprive', 'Club 404', 'fs_clubprive_3q', 72, -2, 8, 8),
   // côté sud, premier plan (front z 24, emprises 3/4 z 20-24)
   B('fs_nouilles', 'Nouilles de minuit', 'fs_bas_nouilles_3q', 0, 20, 8, 4), B('fs_fleurs', 'Excuses', 'fs_bas_fleurs_3q', 8, 20, 4, 4), B('fs_tabac', 'À crédit', 'fs_bas_tabac_3q', 12, 20, 4, 4),
-  B('fs_retour', 'Le Retour', 'fs_retour', 16, 18, 8, 6),
+  B('fs_retour', 'Le Retour', 'fs_retour', 16, 18, 8, 6, { ancre: [-1.2, 0] }),
   B('fs_couvert', 'Bien couvert', 'fs_bas_preservatifs_3q', 24, 20, 4, 4),
   B('fs_fresque_vibes', 'Fresque inachevée', 'fs_fresque_vibes', 28, 23.4, 6, 0.6), // caméo Ocre : mur de fresque au bord sud (x 28-34), média de Vibes, aucune animation
   B('fs_shots', 'Shot de grâce', 'fs_bas_shots_3q', 34, 20, 4, 4),
   B('fs_cabines', 'Cabines sans C.A.G.E.', 'fs_cabines_3q', 38, 20, 8, 4),
   B('fs_billets', 'Billets doux', 'fs_bas_distributeur_3q', 46, 20, 4, 4), B('fs_massages', 'Mains de fée', 'fs_bas_massages_3q', 50, 20, 4, 4),
-  B('fs_capsules', 'Hôtel capsule', 'fs_capsules', 54, 18, 6, 6),
+  B('fs_capsules', 'Hôtel capsule', 'fs_capsules', 54, 18, 6, 6, { ancre: [-1.2, 0] }),
   B('fs_laverie', 'Blanchiment', 'fs_bas_laverie_3q', 60, 20, 8, 4), B('fs_gage', 'Mont-de-piété', 'fs_bas_gage_3q', 68, 20, 4, 4), B('fs_perruques', 'Faux-semblants', 'fs_bas_perruques_3q', 72, 20, 4, 4), B('fs_implants', 'Rechromage', 'fs_bas_implants_3q', 76, 20, 4, 4),
   // rue
-  B('fs_tapis', '', 'fs_tapis', 14, 6, 4, 2, { solid: [], named: false }),
+  B('fs_tapis', '', 'fs_tapis', 14, 6, 4, 2, { solid: [], named: false, ancre: [-1.4, 0] }),
   B('fs_stand_brochettes', 'Brochettes de Yun', 'fs_stand_brochettes', 8, 14, 4, 4),
   B('fs_stand_merch', 'Merch « pas tout à fait officiel »', 'fs_stand_merch', 46, 14, 4, 4),
   B('fs_cam', '', 'pp_camera', 24.8, 14.8, 0.4, 0.4, { named: false }),
   B('fs_grille_est', 'Grille de l\u2019Arena', 'fs_grille_est', 76, 11, 4, 1, { solid: [] }), // ouverte : mène à la Steel Arena (fs_est)
   // enseignes animées (planches d'Ocre, 9 au total, au plus 8 visibles sur mobile) : Neon-7, Core Stack, cœur, Retour, capsules ; Vibes et Tron face à face sur le mur aveugle x 50-54 ; 2 panaches de vapeur
-  ENS('fs_e_neon7', 'fs_ens_neon7', 20, 6.2, 3.6), ENS('fs_e_core', 'fs_ens_corestack', 48, 6.2, 3.4),
-  ENS('fs_e_vibes', 'fs_ens_vibes', 51.4, 6.2, 1.2), ENS('fs_e_coeur', 'fs_ens_coeur', 6.4, 6.2, 2.6),
+  ENS('fs_e_neon7', 'fs_ens_neon7', 16.8, 6.2, 4.0), ENS('fs_e_core', 'fs_ens_corestack', 44.6, 6.2, 3.8),
+  ENS('fs_e_vibes', 'fs_ens_vibes', 51.4, 6.2, 1.2), ENS('fs_e_coeur', 'fs_ens_coeur', 4.2, 6.2, 2.8),
   ENS('fs_e_tron', 'fs_ens_tron', 53.8, 6.2, 1.2),
-  ENS('fs_e_retour', 'fs_ens_retour', 20, 24.2, 3.4), ENS('fs_e_capsules', 'fs_ens_capsules', 57, 24.2, 2.4),
+  ENS('fs_e_retour', 'fs_ens_retour', 18.4, 24.2, 3.4), ENS('fs_e_capsules', 'fs_ens_capsules', 55.8, 24.2, 2.4),
   ENS('fs_vap0', 'fs_vapeur', 5, 11, 0), ENS('fs_vap1', 'fs_vapeur', 69, 11, 0),
 ];
 export const CLOSED_STRIP = {
@@ -78,7 +78,7 @@ const PIECES = [ { image: 'fs_plaque_egout', x: 20, z: 12 }, { image: 'fs_plaque
   { image: 'fs_carton', x: 61.2, z: 19.4, rot: 15 }, { image: 'fs_carton', x: 9.2, z: 5.2, rot: -10 } ];
 export const LOCATIONS_STRIP = {
   steel_strip: { id: 'steel_strip', name: 'Steel-Megalopolis · Fréquence Strip', kind: 'exterior', size: { w: 80, d: 24 }, light: STRIP,
-    ground: { base: '#0c0a0e', skin: 'g_fs_asphalte', tileM: 10.24, clean: true, decals: [...CANIVEAUX, ...PIECES], zones: [
+    ground: { base: '#0c0a0e', skin: 'g_fs_asphalte', tileM: 10.24, clean: true, marge: { skin: 'g_fs_asphalte', tileM: 10.24, m: 60, voile: 'rgba(8,4,10,.62)' }, decals: [...CANIVEAUX, ...PIECES], zones: [
       { x: 0, z: 6, w: 80, d: 2, kind: 'plate', skin: 'g_fs_trottoir_etroit', tileM: 2.56 }, { x: 0, z: 16, w: 80, d: 8, kind: 'plate', skin: 'g_fs_trottoir_etroit', tileM: 2.56 },
       { x: 8, z: 3, w: 2, d: 3, kind: 'plate', skin: 'g_fs_trottoir_etroit', tileM: 2.56 }, // ruelle de Fusible
       // grilles vapeur : plaques isolées, une tuile chacune (jamais en motif)
@@ -143,12 +143,12 @@ export const LOCATIONS_STRIP = {
     // revue Régie : cadre borné sur la rue (arrivées ouest et est sans vide) ; étiquettes des groupes serrés à l'approche (3 m), comme Pulse Plaza
     cadre: { mobile: { x: [9, 71], z: [9, 10] }, desktop: { x: [17, 63], z: [12, 14] } },
     labelsProches: { ids: ['fs_rouge', 'fs_rubis', 'fs_fourrure', 'fs_racoleur', 'fs_flic_a', 'fs_flic_b', 'fs_racoleuse', 'fs_mac'], r: 3 },
-    arrive: { from: 'steel_pulse', text: 'Fréquence Strip. Néons mouillés, publicités qui chantent plus fort que les gens. Deux basses se battent au milieu de la rue.' } },
+    arrive: { from: 'steel_arena', text: 'Fréquence Strip. Néons mouillés, publicités qui chantent plus fort que les gens. Deux basses se battent au milieu de la rue.' } },
 };
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
 export const DOORS_STRIP = [
-  J('fs_ouest', 'steel_strip', 0, 10, 1, 10, 'pp_est', 'Pulse Plaza'),
-  J('pp_est', 'steel_pulse', 48, 13, 47, 13, 'fs_ouest', 'Fréquence Strip'),
+  J('fs_ouest', 'steel_strip', 0, 10, 1, 10, 'c_strip', 'Vers Center-Town'),
+  J('c_strip', 'steel_center', 14, 0, 14, 1, 'fs_ouest', 'Fréquence Strip'),
 ];
 const P = (id, name, sprite, x, z, faceTo) => ({ id, name, sprite, location: 'steel_strip', x, z, faceTo, dialogue: id });
 export const NPCS_STRIP = [ // aucun n'est Vibes ni Tron ; positions hors de l'ombre d'écran des façades sud (view.masques() vide)
@@ -156,7 +156,7 @@ export const NPCS_STRIP = [ // aucun n'est Vibes ni Tron ; positions hors de l'o
   P('fs_lila', 'Lila', 'gen_fs_lila', 22.5, 8, [20, 12]),
   P('fs_hugo', 'Hugo', 'gen_fs_hugo', 44, 8.4, [42, 12]),
   P('fs_sacha', 'Sacha', 'gen_fs_sacha', 49.6, 8, [48, 12]),
-  P('fs_okoro', 'Mme Okoro', 'gen_fs_okoro', 14.6, 17.2, [20, 14]),
+  P('fs_okoro', 'Mme Okoro', 'gen_fs_okoro', 14.2, 14.4, [20, 14]),
   P('fs_tibo', 'Tibo', 'gen_fs_tibo', 52, 10.5, [48, 14]),
   P('fs_yun', 'Yun', 'gen_fs_yun', 12.6, 15.6, [10, 12]),
   P('fs_gt', 'GT de promotion', 'gen_fs_gt_promo', 32, 12, [28, 12]),

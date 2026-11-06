@@ -38,7 +38,7 @@ const editorStory=bindEditorStory(game);
 const voyage = createVoyage({ game, manifest: mapsMan });
 const $ = id => document.getElementById(id);
 var shell = null;
-// Un seul élément <audio> pour toute la partie : ambiance Dusk-Town hors centre, rotation partagée Groovy Crew (4 titres) sur Center-Town / Strip / Pulse Plaza / Steel Arena.
+// Un seul élément <audio> pour toute la partie : OST dédiées en boucle sur Center-Town et Fréquence Strip, rotation partagée Groovy Crew (4 titres) sur Pulse Plaza + Steel Arena, ambiance ailleurs.
 const music = createMusic({
   el: $('music'),
   kSon: $('k-son'),

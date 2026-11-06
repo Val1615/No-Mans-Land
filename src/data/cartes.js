@@ -24,9 +24,9 @@ export const STEEL_COUCHES = [
     { key: 'lt_mille_marches', px: [980, 690], nom: 'Mille Marches (Center-Town)', type: 'lien', vers: 3, connu: vu('steel_asia') } ] }, // [proposition] repère ajouté par le code
   { n: 3, id: 'center_town', nom: 'Center-Town', court: 'Center', reperes: [
     { key: 'steel_center', nom: 'Center-Town', type: 'lieu', loc: 'steel_center' },
-    { key: 'steel_pulse', px: [880, 330], nom: 'Pulse Plaza', type: 'lieu', loc: 'steel_pulse' },
-    { key: 'steel_strip', px: [1010, 300], nom: 'Fréquence Strip', type: 'lieu', loc: 'steel_strip' },
-    { key: 'steel_arena', px: [1110, 250], nom: 'Steel Arena', type: 'lieu', loc: 'steel_arena' },
+    { key: 'steel_pulse', px: [910, 325], nom: 'Pulse Plaza', type: 'lieu', loc: 'steel_pulse' },
+    { key: 'steel_arena', px: [1110, 260], nom: 'Steel Arena', type: 'lieu', loc: 'steel_arena' },
+    { key: 'steel_strip', px: [820, 190], nom: 'Fréquence Strip', type: 'lieu', loc: 'steel_strip' },
     { key: 'steel_megaline', px: [560, 330], nom: 'Mega-Line', type: 'lieu', loc: 'steel_megaline' },
     { key: 'steel_terminus', px: [470, 230], nom: 'Terminus de fret', type: 'lieu', loc: 'steel_terminus' },
     { key: 'arcadius_center', nom: 'Arcadius Center', type: 'lieu', connu: s => !!(s.seen.steel_center || s.discovered.c_arcadius) },

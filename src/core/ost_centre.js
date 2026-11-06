@@ -1,13 +1,17 @@
-// Playlist OST commune des quatre quartiers centraux de Steel-Megalopolis (pack fecc483, Groovy Crew) :
-// Center-Town (steel_center + intérieur change_in), Fréquence Strip (steel_strip), Pulse Plaza (steel_pulse), Steel Arena (steel_arena).
-// Une seule instance <audio id="music"> partagée avec le reste du jeu : changer de zone parmi les quatre ne coupe ni ne relance le morceau.
-// Enchaînement 01 -> 02 -> 03 -> 04 -> 01 en boucle. Analyse de rythme Web Audio (AnalyserNode + détection de kick/basse) branchée sur cette même lecture.
+// Audio musical des quartiers centraux de Steel-Megalopolis (Groovy Crew, cc1e161) :
+// - Rotation commune des 4 remixes limitée à Pulse Plaza (steel_pulse) et Steel Arena (steel_arena), sans coupure ni remise à zéro entre les deux zones, avec analyse de rythme Web Audio (AnalyserNode + détection de kick/basse).
+// - OST dédiée en boucle à Center-Town (steel_center + intérieur change_in atténué à 0,25).
+// - OST dédiée en boucle à Fréquence Strip (steel_strip).
+// - Ambiance habituelle ailleurs, sur l'unique élément <audio id="music">.
 
 export const AMBIANCE_DUSK = './assets/audio/dusk_town_ambiance.mp3';
+export const OST_CENTER_TOWN = './assets/audio/ost_center_town/01_center_town.mp3';
+export const OST_STRIP = './assets/audio/ost_strip/01_we_already_knew_frequence_strip.mp3';
 
-export const OST_CENTRE_ZONES = Object.freeze(['steel_center', 'steel_strip', 'steel_pulse', 'steel_arena']);
-// change_in est l'intérieur du Change de Teng dans Center-Town : la piste commune continue atténuée à 0,25 sans coupure.
-const SHARED_LOCATIONS = new Set([...OST_CENTRE_ZONES, 'change_in']);
+export const OST_CENTRE_ZONES = Object.freeze(['steel_pulse', 'steel_arena']);
+const SHARED_LOCATIONS = new Set(OST_CENTRE_ZONES);
+const CENTER_TOWN_LOCATIONS = new Set(['steel_center', 'change_in']);
+const STRIP_LOCATIONS = new Set(['steel_strip']);
 
 export const OST_CENTRE_TRACKS = Object.freeze([
   Object.freeze({ index: 0, id: '01_bad_buzz_protocol_remix', file: './assets/audio/ost_centre/01_bad_buzz_protocol_remix.mp3', title: 'Bad Buzz Protocol (Remix)', artist: 'Groovy Crew' }),
@@ -20,12 +24,19 @@ export function isOstCentreZone(locationId) {
   return SHARED_LOCATIONS.has(locationId);
 }
 
+function modeForLocation(locationId) {
+  if (SHARED_LOCATIONS.has(locationId)) return 'ost_centre';
+  if (CENTER_TOWN_LOCATIONS.has(locationId)) return 'ost_center_town';
+  if (STRIP_LOCATIONS.has(locationId)) return 'ost_strip';
+  return 'ambiance';
+}
+
 export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, isMenuOpen }) {
   const KEY = 'nml_muted';
   let started = false;
-  let mode = 'ambiance'; // 'ambiance' | 'ost_centre'
+  let mode = 'ambiance'; // 'ambiance' | 'ost_centre' | 'ost_center_town' | 'ost_strip'
   let trackIndex = 0;
-  let savedTime = 0;
+  const savedTimes = { ambiance: 0, ost_centre: 0, ost_center_town: 0, ost_strip: 0 };
   let pendingSeek = 0;
 
   // Graphe Web Audio sur l'unique élément <audio id="music"> (créé au premier geste pour respecter l'autoplay navigateur)
@@ -89,7 +100,7 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
   }
 
   function applyPendingSeek() {
-    if (pendingSeek > 0 && mode === 'ost_centre' && Number.isFinite(el.duration) && el.duration > 1) {
+    if (pendingSeek > 0 && Number.isFinite(el.duration) && el.duration > 1) {
       const target = Math.min(pendingSeek, Math.max(0, el.duration - 1));
       if (el.seekable && el.seekable.length && el.seekable.end(el.seekable.length - 1) >= target) {
         try { el.currentTime = target; } catch {}
@@ -109,29 +120,32 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     if (started) safePlay();
   }
 
+  function mountLoopFile(src, resumeTime = 0) {
+    pendingSeek = resumeTime > 0 ? resumeTime : 0;
+    el.loop = true;
+    el.preload = 'auto';
+    el.src = src;
+    if (started) safePlay();
+  }
+
   function syncZone() {
     const loc = getLocation?.();
     if (!loc) return;
-    const want = isOstCentreZone(loc) ? 'ost_centre' : 'ambiance';
-    if (want === mode) return; // Déplacement entre Center-Town, Strip, Pulse Plaza et Steel Arena : même instance et position inchangée
-    if (mode === 'ost_centre' && want === 'ambiance') {
-      savedTime = Number.isFinite(el.currentTime) ? el.currentTime : 0;
-      pendingSeek = 0;
-      mode = 'ambiance';
-      el.loop = true;
-      el.preload = 'auto';
-      el.src = AMBIANCE_DUSK;
-      resetBeat();
-      if (started) safePlay();
-    } else if (want === 'ost_centre') {
-      mode = 'ost_centre';
-      mountTrack(trackIndex, savedTime);
-    }
+    const want = modeForLocation(loc);
+    if (want === mode) return; // Même mode (ex. Pulse <-> Arena, ou Center-Town <-> change_in) : même instance et position inchangée
+    savedTimes[mode] = Number.isFinite(el.currentTime) ? el.currentTime : 0;
+    pendingSeek = 0;
+    mode = want;
+    if (mode !== 'ost_centre') resetBeat();
+    if (mode === 'ost_centre') mountTrack(trackIndex, savedTimes.ost_centre);
+    else if (mode === 'ost_center_town') mountLoopFile(OST_CENTER_TOWN, savedTimes.ost_center_town);
+    else if (mode === 'ost_strip') mountLoopFile(OST_STRIP, savedTimes.ost_strip);
+    else mountLoopFile(AMBIANCE_DUSK, 0);
   }
 
   el.addEventListener('ended', () => {
     if (mode !== 'ost_centre') return;
-    savedTime = 0;
+    savedTimes.ost_centre = 0;
     mountTrack(trackIndex + 1, 0);
   });
 
@@ -259,6 +273,7 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     zones: OST_CENTRE_ZONES,
     tracks: OST_CENTRE_TRACKS,
     isSharedZone: isOstCentreZone,
+    get mode() { return mode; },
     get el() { return el; },
     get active() { return mode === 'ost_centre'; },
     get playing() { return mode === 'ost_centre' && !el.paused && !el.muted && el.volume > 0.001; },
@@ -282,13 +297,13 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
       return () => kickListeners.delete(fn);
     },
     nextTrack() {
-      savedTime = 0;
+      savedTimes.ost_centre = 0;
       if (mode === 'ost_centre') mountTrack(trackIndex + 1, 0);
       else trackIndex = (trackIndex + 1) % OST_CENTRE_TRACKS.length;
       return OST_CENTRE_TRACKS[trackIndex];
     },
     setTrack(idx) {
-      savedTime = 0;
+      savedTimes.ost_centre = 0;
       if (mode === 'ost_centre') mountTrack(idx, 0);
       else trackIndex = ((idx % OST_CENTRE_TRACKS.length) + OST_CENTRE_TRACKS.length) % OST_CENTRE_TRACKS.length;
       return OST_CENTRE_TRACKS[trackIndex];

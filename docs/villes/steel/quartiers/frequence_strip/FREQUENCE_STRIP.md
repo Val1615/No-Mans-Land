@@ -140,3 +140,7 @@ Planches de contrôle (maquettes hors jeu, pas des captures) :
 
 ## Playlist OST commune (`fecc483` / `27b3f1f`, `src/core/ost_centre.js`)
 - Playlist commune Groovy Crew posée sur `main` (4 titres MP3 `assets/audio/ost_centre/`, pack `fecc483`) et partagée en singleton avec Center-Town, Pulse Plaza et Steel Arena : traverser `pp_est` / `fs_ouest` ou `fs_est` / `ar_ouest` conserve la piste et le `currentTime` en cours sans coupure ; API rythme `ostCentre` active sur cette même lecture.
+
+## Correctifs hors-sol, OST dédiée et boucle circulaire (main)
+- **Hors-sol & raccords des volumes legacy** : ajout de `ground.marge` (`g_fs_asphalte`, 60 m) pour supprimer le vide noir sous les bords nord (`z = -2`) et sud (`z = 24`) ; recalage `ancre`/`k` des 5 volumes legacy à ancre centrale (`fs_fn0`, `fs_neon7`, `fs_corestack`, `fs_retour`, `fs_capsules`) + `fs_tapis` et enseignes associées pour fermer les trous visuels sans déborder sur les `*_3q` voisins (`view.masques()` vide, Mme Okoro en `(14,2 ; 14,4)`).
+- **Boucle circulaire & OST dédiée (`cc1e161`)** : Fréquence Strip en marge derrière le dôme relie `Steel Arena` (`ar_est` ↔ `fs_est`, grille est) à `Center-Town` (`fs_ouest` ↔ `c_strip` en `(14 ; 0)` à gauche du Dôme Fréquence), et joue en boucle son titre dédié `01_we_already_knew_frequence_strip.mp3`.

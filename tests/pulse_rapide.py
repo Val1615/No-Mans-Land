@@ -24,7 +24,7 @@ with sync_playwright() as p:
         L=E("(()=>{const l=window.__nml.world.LOCATIONS.steel_pulse;return {ex:l.extras.map(e=>e.sprite),wk:l.walkers.map(w=>w.sprite),skin:l.ground.skin,paint:(l.ground.paint||[]).map(r=>r.skin)}})()")
         ok(len(L['ex'])>=30 and len(L['wk'])>=4 and len(set(L['ex']+L['wk']))>=22 and {f'gen_pp_foule_{c}' for c in 'cdefghij'}<=set(L['ex']),f'{name} foule densifiée ({len(L["ex"])} figurants + {len(L["wk"])} passants, {len(set(L["ex"]+L["wk"]))} sprites distincts)',L)
         ok(L['skin']=='g_pp_dalle_sombre' and 'g_pp_allee' in L['paint'],f'{name} dalle sombre et allées (ground.paint)',L['skin'])
-        ok(E("document.querySelectorAll('.wlabel.junction,.wlabel.edge').length")==0 and E("[...document.querySelectorAll('.wlabel')].every(l=>!/Escalier|Center-Town|Strip/.test(l.textContent))"),f'{name} aucune étiquette sur les accès')
+        ok(E("document.querySelectorAll('.wlabel.junction,.wlabel.edge').length")==0 and E("[...document.querySelectorAll('.wlabel')].every(l=>!/Escalier|Center-Town|Strip|Arena/.test(l.textContent))"),f'{name} aucune étiquette sur les accès')
         W=E("window.__nml.world.LOCATIONS.steel_pulse.buildings.filter(b=>/^pp_(facade|mur|nord|ouest)/.test(b.sprite)).map(b=>[b.id,b.x,b.z,b.x+b.w,b.z+b.d])")
         chev=[(a[0],b[0]) for i,a in enumerate(W) for b in W[i+1:] if a[1]<b[3]-1e-6 and b[1]<a[3]-1e-6 and a[2]<b[4]-1e-6 and b[2]<a[4]-1e-6]
         ok(not chev,f'{name} aucun mur ou façade 3/4 ne chevauche un autre ({len(W)} pièces)',chev)
@@ -56,11 +56,11 @@ with sync_playwright() as p:
         expected_3q={
             'pp_kiosque_v2_3q','pp_guerite_3q','pp_nouilles_v2_3q','pp_billboard_v2_3q','pp_portique_v2_3q','pp_distrib_v2_3q',
             'pp_kiosque_presse_v2_3q','pp_kiosque_boissons_v2_3q','pp_nord_a_v2_3q','pp_nord_b_v2_3q','pp_nord_c2_v2_3q','pp_nord_c3_v2_3q',
-            'pp_ouest_a_v2_3q','pp_ouest_b_v2_3q','pp_ecran_feed_v2_3q',
-            'pp_dalle_pulse_a_3q','pp_dalle_pulse_b_3q','pp_arche_holo_3q','pp_pont_projecteurs_v2_3q','pp_totem_pulse_3q','pp_enceinte_pulse_3q'
+            'pp_ouest_a_v3_3q','pp_ouest_b_v3_3q','pp_ecran_feed_v3_3q',
+            'pp_dalle_pulse_a_3q','pp_dalle_pulse_b_3q','pp_arche_holo_3q','pp_pont_projecteurs_v3_3q','pp_totem_pulse_3q','pp_enceinte_pulse_3q'
         }
-        ok(sprites_3q==expected_3q and not E("!!document.getElementById('editor-map-invalid')") and all(b[1] not in ('pp_nord_c_3q','pp_pont_projecteurs_3q') for b in B),
-           f'{name} 14 bâtiments festifs *_v2_3q + guérite pp_guerite_3q + 6 props rythmiques dont pont v2 posés (aucun obsolète)',sorted(expected_3q^sprites_3q))
+        ok(sprites_3q==expected_3q and not E("!!document.getElementById('editor-map-invalid')") and all(b[1] not in ('pp_nord_c_3q','pp_pont_projecteurs_3q','pp_pont_projecteurs_v2_3q','pp_ouest_a_v2_3q','pp_ouest_b_v2_3q','pp_ecran_feed_v2_3q') for b in B),
+           f'{name} bâtiments festifs v2/v3 (ouest/feed/pont en v3) + guérite pp_guerite_3q + 6 props rythmiques posés (aucun obsolète)',sorted(expected_3q^sprites_3q))
         neon_bb=E("window.__nml.world.LOCATIONS.steel_pulse.enseignes.find(e=>e.building==='pp_billboard')?.neon")
         ok(neon_bb=='pp_billboard_v2_3q_neon',f'{name} billboard branché sur pp_billboard_v2_3q_neon',neon_bb)
         e2=[b for b in B if b[0]=='pp_ecran_e2']; ok(e2 and e2[0][1]=='pp_ecran_haut_e2' and abs(e2[0][4]-48.4)<1e-6 and abs(e2[0][5]-24)<1e-6 and [b for b in B if b[1]=='pp_support_ecran_o' and abs(b[4]-48.4)<1e-6 and abs(b[5]-24)<1e-6] and not [b for b in B if b[1]=='pp_mur_bas_o'] and not [b for b in B if b[1]=='pp_ecran_haut_e1'],f'{name} écran est e2 sur son support léger, même ancre (48,4 ; 24), plus de mur bas de 4 m, e1 retiré',e2)
@@ -79,22 +79,22 @@ with sync_playwright() as p:
             ok('feed' in vis(),f'{name} étiquette de l écran du Feed au survol',vis()); pg.mouse.move(5,5); time.sleep(.3)
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=27;g.restore(s,true)})()"); time.sleep(1.2)
         ppm=13 if mob else 22; E(f"window.__nml.view.setCamera({{x:24,z:17,ppm:{ppm}}})"); time.sleep(2.5)
-        a=E("window.__nml.project(32,0,12)"); cx,cy=a['x']-4.98*ppm,a['y']-7.84*ppm
+        a=E("window.__nml.project(32,0,12)"); cx,cy=a['x']-6.50*ppm,a['y']-8.80*ppm
         im=Image.open(io.BytesIO(pg.screenshot())).convert('RGB'); px=[im.getpixel((int(cx)+i,int(cy)+j)) for i in range(-10,11,2) for j in range(-10,11,2)]
-        lum=sum(sum(c) for c in px)/len(px)/3; ok(lum>40,f'{name} écran du Feed v2 allumé (luminance {lum:.0f})',(cx,cy))
+        lum=sum(sum(c) for c in px)/len(px)/3; ok(lum>40,f'{name} écran du Feed v3 allumé (luminance {lum:.0f})',(cx,cy))
         pg.screenshot(path=CAP+f'concept_{vp[0]}.png'); E("window.__nml.view.setCamera(null)"); time.sleep(1)
         st=E("window.__nml.view.animStats"); pls=E("window.__nml.view.pulses()")
-        prio_keys=('pp_ecran_feed_v2_3q_pulse','pp_ecran_feed_v2_3q_ecran','pp_nord_a_v2_3q_pulse','pp_nord_a_v2_3q_ecran','pp_billboard_v2_3q_pulse','pp_billboard_v2_3q_ecran')
+        prio_keys=('pp_ecran_feed_v3_3q_pulse','pp_ecran_feed_v3_3q_ecran','pp_nord_a_v2_3q_pulse','pp_nord_a_v2_3q_ecran','pp_billboard_v2_3q_pulse','pp_billboard_v2_3q_ecran')
         prio_on={p['key']:p['on'] for p in pls if p['key'] in prio_keys}
         modes_b={p['mode'] for p in pls if p['calque']=='pulse_b'}
-        ok(st.get('on',0)<=(8 if mob else 16) and st.get('pulses')==50 and st.get('pulsesOn',0)<=(8 if mob else 48)
+        ok(st.get('on',0)<=(8 if mob else 16) and st.get('pulses')==45 and st.get('pulsesOn',0)<=(8 if mob else 48)
            and len(prio_on)==6 and all(prio_on.values()) and modes_b<={'mid','high'},
-           f'{name} budget animations + 50 calques rythmiques (_pulse/faisceau->kick, _pulse_b->mid/high, prio={prio_on})',(st,prio_on,modes_b))
+           f'{name} budget animations + 45 calques rythmiques (_pulse/faisceau->kick, _pulse_b->mid/high, prio={prio_on})',(st,prio_on,modes_b))
         def acces(x0,z0,x1,z1,dest):
             E(f"(()=>{{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x={x0};s.player.z={z0};g.restore(s,true)}})()"); time.sleep(1); E(f"window.__nml.game.moveTo({x1},{z1})"); t0=time.time()
             while time.time()-t0<20 and E("window.__nml.state.location")=='steel_pulse': time.sleep(.3)
             return E("window.__nml.state.location")
-        loc=acces(40,16,47,13,'steel_strip'); ok(loc=='steel_strip',f'{name} jonction Fréquence Strip libre (à pied)',loc)
+        loc=acces(40,16,47,13,'steel_arena'); ok(loc=='steel_arena',f'{name} jonction Steel Arena libre (à pied, boucle Center -> Pulse -> Arena)',loc)
         loc=acces(8,14,1,14,'steel_center'); ok(loc=='steel_center',f'{name} accès ouest libre (à pied vers Center-Town)',loc)
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=3;s.player.z=14;g.restore(s,true)})()"); time.sleep(1.5)
         pg.screenshot(path=CAP+f'acces_ouest_{vp[0]}.png')

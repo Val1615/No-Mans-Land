@@ -183,7 +183,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const ensDe = new Map((loc.enseignes || []).map(e => [e.building, e])), projDe = new Map((loc.projecteurs || []).filter(p => p.building).map(p => [p.building, p]));
     const pulseDe = new Map((loc.pulses || []).map(p => [p.building + ':' + p.calque, p]));
     for (const b of loc.buildings) if (bman[b.sprite + '_fenetres']) fenetre(b);
-    for (const b of loc.buildings) for (const calque of ['ecran', 'pulse', 'pulse2', 'pulse_b', 'faisceau']) if (bman[b.sprite + '_' + calque] || pulseDe.get(b.id + ':' + calque)?.key) calqueRythme(b, calque, pulseDe.get(b.id + ':' + calque));
+    for (const b of loc.buildings) for (const calque of ['ecran', 'pulse', 'pulse2', 'pulse_b', 'faisceau']) { const cfg = pulseDe.get(b.id + ':' + calque), ck = cfg?.key || (bman[b.sprite + '_' + calque + '_fix'] ? b.sprite + '_' + calque + '_fix' : b.sprite + '_' + calque); if (bman[ck]) calqueRythme(b, calque, cfg); }
     for (const b of loc.buildings) if (!ensDe.has(b.id) && bman[b.sprite + '_neon']) enseigne({ id: b.id + '_neon', building: b.id }, loc);
     for (const e of loc.enseignes || []) enseigne(e, loc);
     for (const b of loc.buildings) if (!projDe.has(b.id) && bman[b.sprite]?.source_faisceau_px) projecteur({ building: b.id }, loc);
@@ -342,7 +342,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   const T_KICK_REF = 60 / 170;
   let kickAnchor = 0, prevOstBeat = 0;
   function calqueRythme(b, calque, cfg = {}) {
-    const key = cfg.key || (b.sprite + '_' + calque), m = bman[key], item = bills.find(i => i.obj.userData.buildingId === b.id);
+    const key = cfg.key || (bman[b.sprite + '_' + calque + '_fix'] ? b.sprite + '_' + calque + '_fix' : b.sprite + '_' + calque), m = bman[key], item = bills.find(i => i.obj.userData.buildingId === b.id);
     if (!item || !m || !SKIN[key] || m.obsolete || m.anime || cfg.mode === 'eteint') return;
     const k = b.k || 1, L = layerTex(key, m), W = L.cw / K * k, H = L.ch / K * k * (b.sy || 1);
     const col = new THREE.Color(cfg.couleur || '#ffffff');
@@ -421,12 +421,12 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // Paramètres : x, z (m) ou fx, fz (fraction de loc.size : suit l'agrandissement de la zone), y, couleur, longueur, ouverture (demi-angle, °),
   // inclinaison (° depuis la verticale), cap (° autour de la verticale), balayage (amplitude, °), periode (s), decale (s), intensite. Hors animStats.on.
   function projecteur(p, loc) {
-    const L = p.longueur || 24, r = L * Math.tan((p.ouverture || 4) * Math.PI / 180), seg = 6, g = new THREE.ConeGeometry(r, L, 20, seg, true);
+    const L = p.longueur || 18, r = L * Math.tan((p.ouverture || 3.0) * Math.PI / 180), seg = 8, g = new THREE.ConeGeometry(r, L, 20, seg, true);
     g.rotateX(Math.PI); g.translate(0, L / 2, 0); // apex en bas (source), ouverture vers le haut
     const c = new THREE.Color(p.couleur || '#5fd3f0'), col = [], pos = g.attributes.position;
-    for (let i = 0; i < pos.count; i++) { const k = Math.pow(1 - pos.getY(i) / L, 2.2); col.push(c.r * k, c.g * k, c.b * k); } // fondu vers le noir = rien en additif
+    for (let i = 0; i < pos.count; i++) { const k = Math.pow(1 - pos.getY(i) / L, 2.9); col.push(c.r * k, c.g * k, c.b * k); } // fondu rapide vers le noir = pas de lance blanche diagonale
     g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
-    const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: p.intensite ?? 0.25, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, side: THREE.DoubleSide }));
+    const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: p.intensite ?? 0.16, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, side: THREE.DoubleSide }));
     const it = p.building && bills.find(i => i.obj.userData.buildingId === p.building), bm = it && bman[loc.buildings.find(x => x.id === p.building)?.sprite];
     if (p.building && !it) return;
     if (it) { const s = it.obj, src = bm?.source_faisceau_px; m.position.copy(s.position); // pied du bâtiment (ancre), puis pixel source du manifeste dans le plan du sprite
@@ -446,10 +446,10 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const wv = on ? Math.pow(0.5 + 0.5 * Math.cos(((ost.currentTime || t) - kickAnchor) / tk * Math.PI * 2), 8) : 0;
     const kKick = on ? Math.min(1, Math.max(Math.pow(beat, 1.45) * 1.15, wv * Math.min(1, 0.25 + 0.85 * (ost.bass || 0)))) : 0;
     m.rotation.y = u.cap + u.bal * Math.sin((t + u.ph) / u.T * Math.PI * 2);
-    m.rotation.x = -(u.inc + (u.beat ? 0.075 * kKick : 0));
-    const sLat = u.beat ? 1 + 0.34 * kKick : 1;
+    m.rotation.x = -(u.inc + (u.beat ? 0.045 * kKick : 0));
+    const sLat = u.beat ? 1 + 0.14 * kKick : 1;
     m.scale.set(sLat, 1, sLat);
-    if (u.beat) m.material.opacity = Math.min(1, (m.userData.fondu ?? 1) * (u.base * (on ? 0.24 + 2.35 * kKick : 0.20)));
+    if (u.beat) m.material.opacity = Math.min(0.38, (m.userData.fondu ?? 1) * (u.base * (on ? 0.18 + 1.15 * kKick : 0.16)));
   }
   let glowT = null;
   function glowTex() { if (glowT) return glowT; const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);

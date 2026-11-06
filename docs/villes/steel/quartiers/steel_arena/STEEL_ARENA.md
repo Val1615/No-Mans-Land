@@ -239,3 +239,8 @@ rubans: ar2_facade_entree_pulse2, ar2_toit_*_pulse2, ar2_facade_*_pulse2, ar_tri
 Remplacent les `*_faisceau` trop saturés (aplats). Même parent/px/ancre. Anciens `*_faisceau` → obsolete.
 Clés : `ar2_toit_x_faisceau_fix`, `ar2_toit_z_faisceau_fix`, `ar2_toit_angle_se_faisceau_fix`, `ar2_toit_angle_so_faisceau_fix`, `ar2_facade_entree_faisceau_fix`, `ar_projecteur_faisceau_fix`, `ar_pylone_projecteur_faisceau_fix`, `ar_mat_projecteur_pulse_3q_faisceau_fix`.
 Rivet : brancher `calque: 'faisceau'` sur la clé `*_faisceau_fix` (ou alias catalogue).
+
+### Intégration code `_faisceau_fix`, hors-sol, OST et boucle circulaire (main)
+- **Faisceaux soft (`bcd74f5`)** : résolution automatique vers `*_faisceau_fix` dans `view.js` et `editor/base.js` (entrée, dôme `ar2_toit_*`, mâts `ar_mat_p0/1` et 4 pylônes ; anciens `*_faisceau` obsolètes exclus). Cônes code des 4 pylônes assouplis.
+- **Correctifs hors-sol & emprises** : `ar_gantry0` (`ar_gantry_led_pulse_3q`) recalé sur ses deux pieds réels en `(66, 32, 2.5, 7.6, { cover: true, ancre: [2.25, -3.36] })` ; `ar_ecran_s` et `ar_ecran_e` resserrés contre les façades (`d/w = 0,2`, `ancre` conservant `(18 ; 30,8)` et `(92,8 ; 19)`) ; halos au sol recentrés sous les pieds des 4 pylônes, 4 lampadaires, mâts et strobes.
+- **Boucle circulaire & OST (`cc1e161`)** : `ar_ouest` `(0, 44)` ↔ `pp_est` (`Pulse Plaza`, continuité sans coupure des 4 titres `ost_centre`) et nouvelle jonction est `ar_est` `(96, 44)` ↔ `fs_est` (`Fréquence Strip`, bascule sur l'OST dédiée du Strip).
