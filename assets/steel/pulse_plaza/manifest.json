@@ -2498,7 +2498,8 @@
       ]
     ],
     "pulse": "pp_nord_c_3q_pulse",
-    "remplace": "pp_facade_c"
+    "remplace": "pp_facade_c",
+    "obsolete": true
   },
   "pp_nord_c_3q_fenetres": {
     "file": "steel/pulse_plaza/pp_nord_c_3q_fenetres.webp",
@@ -2514,7 +2515,8 @@
     "source": "extraction PIL des fenêtres/vitrines chaudes de pp_nord_c_3q.webp",
     "note": "calque fenêtres allumées seules, même taille et même ancre que pp_nord_c_3q",
     "effet_conseille": "vacillement ambre / blanc chaud",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c_3q_ecran": {
     "file": "steel/pulse_plaza/pp_nord_c_3q_ecran.webp",
@@ -2530,7 +2532,8 @@
     "source": "extraction PIL des panneaux écran de pp_nord_c_3q.webp",
     "note": "calque écrans (contenu ou zone sombre), même taille et même ancre que pp_nord_c_3q ; à piloter sur le beat (Rivet)",
     "effet_conseille": "bande visualizer : sync kick",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_nord_c_3q_pulse": {
     "file": "steel/pulse_plaza/pp_nord_c_3q_pulse.webp",
@@ -2546,7 +2549,8 @@
     "source": "extraction PIL des bandes lumineuses / balises de pp_nord_c_3q.webp",
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_nord_c_3q ; pilotable sur le kick",
     "effet_conseille": "filets verticaux : balayage sur la mesure",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "pp_ouest_a_3q": {
     "file": "steel/pulse_plaza/pp_ouest_a_3q.webp",
@@ -2821,5 +2825,306 @@
     "note": "calque pulse (filets, projecteurs, balises), même taille et même ancre que pp_ecran_feed_3q ; pilotable sur le kick",
     "effet_conseille": "filets magentas du cadre + tirets cyan : pulse fort sur le kick ; budget prioritaire",
     "status": "v1"
+  },
+  "pp_nord_c2_3q": {
+    "file": "steel/pulse_plaza/pp_nord_c2_3q.webp",
+    "px": [
+      611,
+      748
+    ],
+    "anchor": [
+      496,
+      746
+    ],
+    "footprint_m": [
+      12,
+      4
+    ],
+    "height_m": 10.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_fac_n1', '', 'pp_nord_c2_3q', 0, -4, 12, 4, { named: false }) (remplace pp_nord_c_3q en x 0)",
+    "source": "GenerateImage (cursor), 1c41d6ba, réf. pulse_a/b + recalage PIL 3/4 ; remplace pp_nord_c_3q (texte parasite)",
+    "enseigne": "Résidences du Pulse",
+    "neon": "pp_nord_c2_3q_neon",
+    "fenetres": "pp_nord_c2_3q_fenetres",
+    "ecran_layer": "pp_nord_c2_3q_ecran",
+    "pulse": "pp_nord_c2_3q_pulse",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (Résidences du Pulse, ambre)",
+      "fenetres": "vacillement ambre",
+      "ecran": "égaliseur : sync kick",
+      "pulse": "bandes violettes : pulse kick"
+    },
+    "neon_coins": [
+      [
+        129,
+        253
+      ],
+      [
+        396,
+        341
+      ],
+      [
+        396,
+        374
+      ],
+      [
+        129,
+        285
+      ]
+    ],
+    "ecran_coins": [
+      [
+        101,
+        293
+      ],
+      [
+        592,
+        357
+      ],
+      [
+        592,
+        566
+      ],
+      [
+        101,
+        502
+      ]
+    ]
+  },
+  "pp_nord_c2_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_c2_3q_neon.webp",
+    "px": [
+      611,
+      748
+    ],
+    "anchor": [
+      496,
+      746
+    ],
+    "couche_de": "pp_nord_c2_3q",
+    "texte": "RÉSIDENCES DU PULSE",
+    "source": "extraction PIL enseigne de pp_nord_c2_3q.webp",
+    "note": "couche néon, même taille/ancre que pp_nord_c2_3q",
+    "effet_conseille": "fixe (Résidences du Pulse, ambre)",
+    "status": "v1"
+  },
+  "pp_nord_c2_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_c2_3q_fenetres.webp",
+    "px": [
+      611,
+      748
+    ],
+    "anchor": [
+      496,
+      746
+    ],
+    "couche_de": "pp_nord_c2_3q",
+    "source": "extraction PIL fenêtres de pp_nord_c2_3q.webp",
+    "note": "calque fenêtres, même taille/ancre que pp_nord_c2_3q",
+    "effet_conseille": "vacillement ambre",
+    "status": "v1"
+  },
+  "pp_nord_c2_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_nord_c2_3q_ecran.webp",
+    "px": [
+      611,
+      748
+    ],
+    "anchor": [
+      496,
+      746
+    ],
+    "couche_de": "pp_nord_c2_3q",
+    "source": "extraction PIL écrans de pp_nord_c2_3q.webp",
+    "note": "calque écrans, même taille/ancre que pp_nord_c2_3q",
+    "effet_conseille": "égaliseur : sync kick",
+    "status": "v1"
+  },
+  "pp_nord_c2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_c2_3q_pulse.webp",
+    "px": [
+      611,
+      748
+    ],
+    "anchor": [
+      496,
+      746
+    ],
+    "couche_de": "pp_nord_c2_3q",
+    "source": "extraction PIL pulse de pp_nord_c2_3q.webp",
+    "note": "calque pulse, même taille/ancre que pp_nord_c2_3q",
+    "effet_conseille": "bandes violettes : pulse kick",
+    "status": "v1"
+  },
+  "pp_nord_c3_3q": {
+    "file": "steel/pulse_plaza/pp_nord_c3_3q.webp",
+    "px": [
+      611,
+      692
+    ],
+    "anchor": [
+      496,
+      690
+    ],
+    "footprint_m": [
+      12,
+      4
+    ],
+    "height_m": 10.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "pose": "B('pp_fac_n3', '', 'pp_nord_c3_3q', 36, -4, 12, 4, { named: false }) (remplace pp_nord_c_3q en x 36 ; variante)",
+    "source": "GenerateImage (cursor), 32dc6cee, réf. pulse_a/b + recalage PIL 3/4 ; remplace pp_nord_c_3q (clone)",
+    "enseigne": "Arcades Nord",
+    "neon": "pp_nord_c3_3q_neon",
+    "fenetres": "pp_nord_c3_3q_fenetres",
+    "ecran_layer": "pp_nord_c3_3q_ecran",
+    "pulse": "pp_nord_c3_3q_pulse",
+    "status": "v1",
+    "rythme": {
+      "neon": "fixe (Arcades Nord)",
+      "fenetres": "vacillement ambre",
+      "ecran": "égaliseur : sync kick déphasé",
+      "pulse": "bandes violettes : pulse 1/2 kick"
+    },
+    "neon_coins": [
+      [
+        141,
+        106
+      ],
+      [
+        333,
+        169
+      ],
+      [
+        333,
+        189
+      ],
+      [
+        141,
+        125
+      ]
+    ],
+    "ecran_coins": [
+      [
+        102,
+        374
+      ],
+      [
+        594,
+        436
+      ],
+      [
+        594,
+        511
+      ],
+      [
+        102,
+        449
+      ]
+    ]
+  },
+  "pp_nord_c3_3q_neon": {
+    "file": "steel/pulse_plaza/pp_nord_c3_3q_neon.webp",
+    "px": [
+      611,
+      692
+    ],
+    "anchor": [
+      496,
+      690
+    ],
+    "couche_de": "pp_nord_c3_3q",
+    "texte": "ARCADES NORD",
+    "source": "extraction PIL enseigne de pp_nord_c3_3q.webp",
+    "note": "couche néon, même taille/ancre que pp_nord_c3_3q",
+    "effet_conseille": "fixe (Arcades Nord)",
+    "status": "v1"
+  },
+  "pp_nord_c3_3q_fenetres": {
+    "file": "steel/pulse_plaza/pp_nord_c3_3q_fenetres.webp",
+    "px": [
+      611,
+      692
+    ],
+    "anchor": [
+      496,
+      690
+    ],
+    "couche_de": "pp_nord_c3_3q",
+    "source": "extraction PIL fenêtres de pp_nord_c3_3q.webp",
+    "note": "calque fenêtres, même taille/ancre que pp_nord_c3_3q",
+    "effet_conseille": "vacillement ambre",
+    "status": "v1"
+  },
+  "pp_nord_c3_3q_ecran": {
+    "file": "steel/pulse_plaza/pp_nord_c3_3q_ecran.webp",
+    "px": [
+      611,
+      692
+    ],
+    "anchor": [
+      496,
+      690
+    ],
+    "couche_de": "pp_nord_c3_3q",
+    "source": "extraction PIL écrans de pp_nord_c3_3q.webp",
+    "note": "calque écrans, même taille/ancre que pp_nord_c3_3q",
+    "effet_conseille": "égaliseur : sync kick déphasé",
+    "status": "v1"
+  },
+  "pp_nord_c3_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_nord_c3_3q_pulse.webp",
+    "px": [
+      611,
+      692
+    ],
+    "anchor": [
+      496,
+      690
+    ],
+    "couche_de": "pp_nord_c3_3q",
+    "source": "extraction PIL pulse de pp_nord_c3_3q.webp",
+    "note": "calque pulse, même taille/ancre que pp_nord_c3_3q",
+    "effet_conseille": "bandes violettes : pulse 1/2 kick",
+    "status": "v1"
+  },
+  "pp_billboard_3q_neon2": {
+    "file": "steel/pulse_plaza/pp_billboard_3q_neon2.webp",
+    "px": [
+      282,
+      518
+    ],
+    "anchor": [
+      167,
+      516
+    ],
+    "couche_de": "pp_billboard_3q",
+    "texte": "HCM-88X / Status : Optimum",
+    "source": "renforcement PIL du cadre violet et textes du billboard (neon trop faible)",
+    "note": "couche néon renforcée, même taille et même ancre que pp_billboard_3q ; préférer à pp_billboard_3q_neon",
+    "effet_conseille": "fixe (cadre) + pulse léger sur HCM-88X",
+    "status": "v1",
+    "neon_coins": [
+      [
+        41,
+        64
+      ],
+      [
+        201,
+        64
+      ],
+      [
+        201,
+        342
+      ],
+      [
+        41,
+        342
+      ]
+    ]
   }
 }
