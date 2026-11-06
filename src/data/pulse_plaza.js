@@ -190,13 +190,13 @@ export const LOCATIONS_PULSE = {
     spawn: { player: { x: 1, z: 14 }, companion: { x: 1, z: 15 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'Pulse Plaza. Les écrans éclairent tout ; la nuit n’a plus le droit de tomber ici. La foule applaudit en même temps, puis se tait en même temps.' } },
 };
-const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
+const J = (id, loc, ox, oz, tx, tz, to, label, conditions = [], extra = {}) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions, ...extra });
 export const DOORS_PULSE = [
   J('pp_ouest', 'steel_pulse', 0, 14, 1, 14, 'c_nord', 'Vers Center-Town (rue d’arrivée)'),
   J('pp_est', 'steel_pulse', 48, 13, 47, 13, 'ar_ouest', 'Steel Arena'),
   J('pp_sud', 'steel_pulse', 24, 36, 24, 35, 'c_pp_sud', 'Escalier de service (vers Center-Town)'),
   J('c_pp_sud', 'steel_center', 26, 36, 26, 35, 'pp_sud', 'Escalier de Pulse Plaza'),
-  J('c_nord', 'steel_center', 33, 0, 33, 1, 'pp_ouest', 'Pulse Plaza'),
+  J('c_nord', 'steel_center', 33, 0, 33, 1, 'pp_ouest', 'Pulse Plaza', [], { labelPos: [31.4, 9.8] }),
 ];
 export const NPCS_PULSE = [ // positions recalées autour des emprises 4x4 des bâtiments *_v2_3q et props rythmiques (view.masques() vide) ; aucun n'est Vibes ni Tron
   { id: 'pp_maelle', name: 'Maëlle', sprite: 'gen_pp_maelle', location: 'steel_pulse', x: 17.2, z: 13.4, faceTo: [22, 10], dialogue: 'pp_maelle' },

@@ -1,33 +1,16 @@
-# Test rapide Center-Town · Carrefour Arcadius (f15bb50 + v2 47193c8) :
-# - 7 sols g_ct_* + vraie nuit noire (#05070d), 26 bâtiments ct_*_3q / *_v2_3q (0 clé obsolète, b_st_jumelles et FACADE_DOME retirés)
-# - Échelle v2 : cerisier 4,4 m (bac 2x2), taxi 4,5x1,8 m sans socle, 5 tours à pubs de 40–45 m + calques _pulse battant sur 01_center_town.mp3
+# Test rapide Center-Town · Carrefour Arcadius (f15bb50 + v2 47193c8 + retours Ocre/Régie) :
+# - 7 sols g_ct_* + vraie nuit noire (#05070d), 26 bâtiments ct_*_3q / *_v2_3q (0 clé obsolète, ct_taxi_v2_3q vérifié sur ct_taxi0/ct_taxi1)
+# - Étiquettes « Fréquence Strip » et « Pulse Plaza » calées sur les débouchés des sorties (labelPos), hors Dôme Fréquence, QG Arcadius et HUD
+# - Foule densifiée sur trottoirs, parvis et passages piétons (51 figurants + 8 passants <= 8 anims mobile), hors solids, view.masques() == []
 # - 10 portes joignables (findPath), c_change_door ([430, 1792] -> change_in), c_dome ([22, 12] -> steel_dome intact), fondu 30 % auto de Teng vers c_mega
-# - 0 chevauchement solide, 0 inversion de profondeur (zoom x0,6..x1,5), view.masques() == [], pulsesOn <= 8 sur mobile, captures 1280/390 sous /tmp/nml-test-out/center_arcadius/
+# - Calques _pulse des 5 tours battant sur 01_center_town.mp3, pulsesOn <= 8 sur mobile, captures 1280/390 sous /tmp/nml-test-out/center_arcadius2/
 import os, sys, time, json, re, urllib.request
 from playwright.sync_api import sync_playwright
 
 URL = os.environ.get('URL', 'http://127.0.0.1:8915/')
 if not URL.endswith('/'): URL += '/'
-OUT = os.environ.get('OUT', '/tmp/nml-test-out/center_arcadius/')
+OUT = os.environ.get('OUT', '/tmp/nml-test-out/center_arcadius2/')
 os.makedirs(OUT, exist_ok=True)
-
-CT_MP3 = urllib.request.urlopen(URL + 'assets/audio/ost_center_town/01_center_town.mp3').read()
-
-def serve_ct_mp3(route, request):
-    total = len(CT_MP3)
-    rng = request.headers.get('range')
-    if rng:
-        m = re.match(r'bytes=(\d+)-(\d*)', rng)
-        if m:
-            s = int(m.group(1))
-            e = min(int(m.group(2)) if m.group(2) else total - 1, total - 1)
-            return route.fulfill(status=206, body=CT_MP3[s:e + 1], headers={
-                'Content-Type': 'audio/mpeg', 'Accept-Ranges': 'bytes',
-                'Content-Range': f'bytes {s}-{e}/{total}', 'Content-Length': str(e - s + 1),
-            })
-    return route.fulfill(status=200, body=CT_MP3, headers={
-        'Content-Type': 'audio/mpeg', 'Accept-Ranges': 'bytes', 'Content-Length': str(total),
-    })
 
 fails = []
 n = 0
@@ -68,7 +51,6 @@ with sync_playwright() as p:
         errs = []
         ctx = (br.new_context(viewport={'width': vp[0], 'height': vp[1]}, has_touch=True, is_mobile=True, device_scale_factor=2)
                if mob else br.new_context(viewport={'width': vp[0], 'height': vp[1]}))
-        # audio servi nativement par le serveur HTTP
         pg = ctx.new_page()
         E = pg.evaluate
         gesture = pg.touchscreen.tap if mob else pg.mouse.click
@@ -100,7 +82,7 @@ with sync_playwright() as p:
         pg.wait_for_function("window.__nml.state.location === 'steel_center' && !window.__nml.music.paused && Math.abs(window.__nml.music.volume - 0.55) < 0.06", timeout=12000)
         time.sleep(0.6)
 
-        # 1. Sols, lumière nuit, clés v2 et absence d'obsolètes
+        # 1. Sols, lumière nuit, clés v2 (dont ct_taxi_v2_3q), foule densifiée et absence d'obsolètes
         info = E("""() => {
           const l = window.__nml.world.LOCATIONS.steel_center;
           return {
@@ -110,6 +92,9 @@ with sync_playwright() as p:
             paint: (l.ground.paint || []).map(r => r.skin),
             props: l.props.length,
             bs: l.buildings.map(b => [b.id, b.sprite, b.x, b.z, b.w, b.d]),
+            taxis: l.buildings.filter(b => b.id.startsWith('ct_taxi')).map(b => [b.id, b.sprite, b.x, b.z, b.w, b.d]),
+            extras: l.extras.map(e => [e.sprite, e.x, e.z]),
+            walkers: l.walkers.map(w => [w.sprite, w.path.length]),
             invalid: !!document.getElementById('editor-map-invalid'),
           };
         }""")
@@ -119,20 +104,30 @@ with sync_playwright() as p:
            f'{name} nuit #05070d + 7 sols g_ct_* + props vides + schéma valide', (info['bg'], sorted(EXPECTED_SOLS ^ sols_used), info['props']))
         ok(sprites_used == EXPECTED_SPRITES and not (sprites_used & OBSOLETE_V1) and len(info['bs']) == 26,
            f'{name} 22 clés ct_*_3q / *_v2_3q (26 instances, 0 clé obsolète, sans jumelles ni FACADE_DOME)', sorted(EXPECTED_SPRITES ^ sprites_used))
+        ok(len(info['taxis']) == 2 and all(t[1] == 'ct_taxi_v2_3q' and t[4] == 4.5 and t[5] == 1.8 for t in info['taxis']),
+           f'{name} ct_taxi0 et ct_taxi1 posent bien ct_taxi_v2_3q (4,5x1,8 m)', info['taxis'])
+        crowd_sprites = {e[0] for e in info['extras']} | {w[0] for w in info['walkers']}
+        ok(len(info['extras']) >= 40 and 5 <= len(info['walkers']) <= 8 and len(crowd_sprites) >= 14,
+           f'{name} foule densifiée ({len(info["extras"])} figurants + {len(info["walkers"])} passants <= 8, {len(crowd_sprites)} sprites distincts)',
+           (len(info['extras']), len(info['walkers']), len(crowd_sprites)))
 
-        # 2. Collisions solides, stabilité profondeur (x0,6..x1,5) et masques == []
+        # 2. Collisions solides, figurants/passants hors solids, stabilité profondeur (x0,6..x1,5) et masques == []
         SOL = E("window.__nml.world.LOCATIONS.steel_center.buildings.flatMap(b=>(b.solid??[{x:b.x,z:b.z,w:b.w,d:b.d}]).map(s=>[b.id,s.x,s.z,s.x+s.w,s.z+s.d]))")
         chev_sol = [(a[0], b[0]) for i, a in enumerate(SOL) for b in SOL[i + 1:]
                     if a[0] != b[0] and a[1] < b[3] - 1e-6 and b[1] < a[3] - 1e-6 and a[2] < b[4] - 1e-6 and b[2] < a[4] - 1e-6]
         ok(not chev_sol, f'{name} 0 chevauchement de sous-rectangles solides', chev_sol)
 
         stab = E("""() => {
-          const loc = window.__nml.world.LOCATIONS.steel_center, v = window.__nml.view, g = window.__nml.game, s = g.state;
+          const loc = window.__nml.world.LOCATIONS.steel_center, v = window.__nml.view, g = window.__nml.game, s = g.state, gr = g.grids.steel_center;
           v.render();
           const B = loc.buildings.map(b => ({ id: b.id, o0: v.orderOf(b.id) }));
           const rel = {};
           for (let i = 0; i < B.length; i++) for (let j = i + 1; j < B.length; j++) rel[B[i].id + '/' + B[j].id] = B[i].o0 < B[j].o0;
-          const flips = [], mq = [], snap = g.snapshot();
+          const flips = [], mq = [], inSol = [], snap = g.snapshot();
+          for (const [idx, e] of loc.extras.entries()) {
+            const [ci, cj] = gr.toCell(e.x, e.z);
+            if (!gr.free(ci, cj)) inSol.push('extra' + idx);
+          }
           for (const z of [0.6, 1.0, 1.5]) {
             v.setZoom(z, { user: false });
             for (const [px, pz] of [[2.5, 18], [13.5, 9.5], [22, 14], [30, 18], [44, 18], [26, 33]]) {
@@ -145,22 +140,24 @@ with sync_playwright() as p:
             }
           }
           v.setZoom(1.0, { user: false }); g.restore(snap, true); v.render();
-          for (const w of loc.walkers) {
+          for (const [wi, w] of loc.walkers.entries()) {
             const P = w.path;
             for (let i = 0; i < P.length; i++) {
-              const a = P[i], b = P[(i + 1) % P.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.max(2, Math.ceil(len * 2));
+              const a = P[i], b = P[(i + 1) % P.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.max(4, Math.ceil(len * 4));
               for (let k = 0; k <= n; k++) {
                 const x = a[0] + (b[0] - a[0]) * k / n, z = a[1] + (b[1] - a[1]) * k / n;
-                for (const bid of v.masqueEn(x, z)) mq.push(bid + '@walker');
+                const [ci, cj] = gr.toCell(x, z);
+                if (!gr.free(ci, cj)) inSol.push('walker' + wi + ':' + x.toFixed(1) + ',' + z.toFixed(1));
+                for (const bid of v.masqueEn(x, z)) mq.push(bid + '@walker' + wi);
               }
             }
           }
-          return { flips: [...new Set(flips)], mq: [...new Set(mq)] };
+          return { flips: [...new Set(flips)], mq: [...new Set(mq)], inSol: [...new Set(inSol)] };
         }""")
-        ok(not stab['flips'] and not stab['mq'], f'{name} 0 inversion de profondeur et view.masques() == [] (×0,6..×1,5)', stab)
+        ok(not stab['flips'] and not stab['mq'] and not stab['inSol'],
+           f'{name} 0 inversion de profondeur, 0 figurant/passant en solid et view.masques() == [] (×0,6..×1,5)', stab)
 
-        # 3. Calques additifs + rythme kick sur 01_center_town.mp3 (5 tours _pulse + balise Arcadius + mesure)
-        # Échantillonnage direct sur la boucle en cours (sans seek bloquant)
+        # 3. Calques additifs + rythme kick sur 01_center_town.mp3 + plafond mobile <= 8
         samples = []
         max_bass = max_energy = 0.0
         for _ in range(18):
@@ -169,11 +166,12 @@ with sync_playwright() as p:
             ost = E("({ mode: window.__nml.ostCentre.mode, active: window.__nml.ostCentre.active, playing: window.__nml.ostCentre.playing, bass: window.__nml.ostCentre.bass, energy: window.__nml.ostCentre.energy })")
             max_bass = max(max_bass, ost['bass'])
             max_energy = max(max_energy, ost['energy'])
-        st = E("({...window.__nml.view.animStats})")
+        st = E("({...window.__nml.view.animStats, walkers: window.__nml.world.LOCATIONS.steel_center.walkers.length})")
         tower_pulse_keys = [f'ct_tour_{t}_v2_3q_pulse' for t in ('teng', 'orc', 'archeon', 'nexus', 'humancorp')]
         spans = {k: round(max(s.get(k, 0) for s in samples) - min(s.get(k, 0) for s in samples), 3) for k in tower_pulse_keys}
-        ok(st['enseignes'] == 24 and st['fenetres'] == 26 and st['pulses'] == 19 and st['pulsesOn'] <= (8 if mob else 48) and st['pulsesOn'] >= (8 if mob else 12),
-           f'{name} calques additifs : enseignes=24, fenetres=26, pulses=19, pulsesOn={st["pulsesOn"]}', st)
+        ok(st['enseignes'] == 24 and st['fenetres'] == 26 and st['pulses'] == 19 and st['on'] <= 8 and st['walkers'] <= 8
+           and st['pulsesOn'] <= (8 if mob else 48) and st['pulsesOn'] >= (8 if mob else 12),
+           f'{name} calques additifs & plafond mobile <= 8 : on={st["on"]}, walkers={st["walkers"]}, pulsesOn={st["pulsesOn"]}', st)
         ok(ost['mode'] == 'ost_center_town' and not ost['active'] and ost['playing'] and max_bass > 0.05 and max_energy > 0.04 and all(v > 0.12 for v in spans.values()),
            f'{name} OST Center-Town pilote les 5 _pulse des tours v2 sur le kick (bass={max_bass:.2f}, spans={spans})', (ost, spans))
 
@@ -215,32 +213,55 @@ with sync_playwright() as p:
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=15;s.player.z=29;g.restore(s,true);g.useDoor('df_sortie')})()")
         pg.wait_for_function("window.__nml.state.location === 'steel_center'", timeout=8000)
 
-        # 7. Captures 1280 et 390 pour Régie sous /tmp/nml-test-out/center_arcadius/
+        # 7. Étiquettes des sorties hors monuments/HUD + Captures 1280 et 390 sous /tmp/nml-test-out/center_arcadius2/
         wtag = str(vp[0])
-        E("document.getElementById('msg').textContent = ''")
-        # Vue d'ensemble dézoomée x0,6 centrée sur le carrefour
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=27;s.player.z=18;g.restore(s,true)})()")
-        E("window.__nml.view.setZoom(0.6, { user: false })")
-        for _ in range(8): E("window.__nml.view.render()"); time.sleep(0.06)
-        pg.screenshot(path=OUT + f'carrefour_ensemble_{wtag}.png')
+        def check_labels_and_shot(fname, px, pz, zoom):
+            E(f"""() => {{
+              const g = window.__nml.game, s = g.snapshot();
+              s.location = 'steel_center'; s.player.x = {px}; s.player.z = {pz};
+              s.discovered = {{}}; delete s.flags.dome_ouvert;
+              g.restore(s, true);
+              window.__nml.view.setZoom({zoom}, {{ user: false }});
+              document.getElementById('msg').textContent = '';
+            }}""")
+            for _ in range(8):
+                E("window.__nml.view.render(); document.getElementById('msg').textContent = ''")
+                time.sleep(0.05)
+            pg.screenshot(path=OUT + fname)
+            return E("""() => {
+              const ids = ['hud','locbox','obj','msg','dialogue','panel','keys','zoom','act','mini'];
+              const H = ids.map(i => document.getElementById(i)).filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden').map(e => e.getBoundingClientRect());
+              const out = { hud: [], rects: {} };
+              for (const l of document.querySelectorAll('.wlabel')) {
+                if (l.hidden || l.style.visibility === 'hidden') continue;
+                const a = l.getBoundingClientRect();
+                if (!a.width) continue;
+                if (H.some(q => a.left < q.right && a.right > q.left && a.top < q.bottom && a.bottom > q.top)) out.hud.push(l.textContent);
+                if (l.dataset.door) out.rects[l.dataset.door] = [Math.round(a.left), Math.round(a.top), Math.round(a.right), Math.round(a.bottom)];
+              }
+              const dDome = window.__nml.view.project(22, 7, 12), dQg = window.__nml.view.project(42, 8, 12);
+              out.monuments = { dome: [Math.round(dDome.x), Math.round(dDome.y)], qg: [Math.round(dQg.x), Math.round(dQg.y)] };
+              return out;
+            }""")
 
-        # Vue carrefour central x1,0 (hologramme NEXUS, Dôme silhouette, QG Arcadius, tram, taxi v2)
-        E("window.__nml.view.setZoom(1.0, { user: false })")
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=28;s.player.z=17.5;g.restore(s,true)})()")
-        for _ in range(8): E("window.__nml.view.render()"); time.sleep(0.06)
-        pg.screenshot(path=OUT + f'carrefour_centre_{wtag}.png')
+        r_ens = check_labels_and_shot(f'carrefour_ensemble_{wtag}.png', 27, 18, 0.6)
+        r_ctr = check_labels_and_shot(f'carrefour_centre_{wtag}.png', 28, 17.5, 1.0)
+        r_qgd = check_labels_and_shot(f'qg_dome_bureau_{wtag}.png', 35, 18, 0.75)
+        r_ech = check_labels_and_shot(f'echelle_teng_cerisier_taxi_{wtag}.png', 13.2, 16.2, 1.0)
 
-        # Vue QG Arcadius + silhouette Dôme + Bureau des permis
-        E("window.__nml.view.setZoom(0.75, { user: false })")
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=35;s.player.z=18;g.restore(s,true)})()")
-        for _ in range(8): E("window.__nml.view.render()"); time.sleep(0.06)
-        pg.screenshot(path=OUT + f'qg_dome_bureau_{wtag}.png')
-
-        # Vue échelle 1:1 entrée ouest : joueur (1,8 m) à côté du taxi v2 (4,5x1,8 m), cerisier v2 (4,4 m), Tour Teng v2 (40,3 m)
-        E("window.__nml.view.setZoom(1.0, { user: false })")
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=13.2;s.player.z=16.2;g.restore(s,true)})()")
-        for _ in range(8): E("window.__nml.view.render()"); time.sleep(0.06)
-        pg.screenshot(path=OUT + f'echelle_teng_cerisier_taxi_{wtag}.png')
+        hud_ov = r_ens['hud'] + r_ctr['hud'] + r_qgd['hud'] + r_ech['hud']
+        # Ni c_strip ni c_nord ne recouvrent le cœur façade du Dôme (22,7,12) ou du QG Arcadius (42,8,12)
+        def hits_pt(rect, pt):
+            return rect and rect[0] - 8 <= pt[0] <= rect[2] + 8 and rect[1] - 8 <= pt[1] <= rect[3] + 8
+        mon_ov = []
+        for tag, r in [('ens', r_ens), ('ctr', r_ctr), ('qgd', r_qgd), ('ech', r_ech)]:
+            for did in ('c_strip', 'c_nord'):
+                rc = r['rects'].get(did)
+                if hits_pt(rc, r['monuments']['dome']): mon_ov.append(f'{tag}:{did}@dome')
+                if hits_pt(rc, r['monuments']['qg']): mon_ov.append(f'{tag}:{did}@qg')
+        ok(not hud_ov and not mon_ov,
+           f'{name} étiquettes « Fréquence Strip » et « Pulse Plaza » sur les sorties, hors Dôme / QG / HUD',
+           {'hud': hud_ov, 'mon': mon_ov, 'ens': r_ens['rects'], 'ctr': r_ctr['rects']})
 
         ok(not errs, f'{name} aucune erreur JS / console / réseau', errs[:3])
         ctx.close()

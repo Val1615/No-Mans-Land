@@ -16,6 +16,14 @@ const named = list => list.map(b => ({ ...b, named: true }));
 // extras = figurants immobiles (file d'attente, soldats), walkers = passants, drones = drones en orbite, glows = lumières au sol.
 const SOLDAT = 'gen_halloran';
 const civ = i => `st_civil${i % 6}`;
+const POOL_CT = [
+  'st_civil0', 'st_civil1', 'st_civil2', 'st_civil3', 'st_civil4', 'st_civil5',
+  'gen_ml_navetteur', 'gen_fs_client_costume', 'gen_fs_client_imper', 'gen_fs_passante', 'gen_fs_passant_canne',
+  'gen_ml_foule_a', 'gen_df_foule_a', 'gen_pp_foule_c',
+];
+const figCt = (pts, k0, role = 'foule') => pts.map(([x, z, f], i) => ({
+  sprite: POOL_CT[(k0 + i * 3) % POOL_CT.length], x, z, face: f ?? ((k0 + i) % 2 ? -1 : 1), role,
+}));
 const NIGHT_ROUTE = { bg: '#0c0f18', hemi: ['#8090b8', '#2a2430', 0.95], sun: ['#a8b8ff', 0.55], tint: '#c4c8d8', actor: '#c9cddc' };
 const NIGHT_CITY = { bg: '#05070d', hemi: ['#9ab0d4', '#141824', 1.08], sun: ['#dce4f5', 0.55], tint: '#d8dce8', actor: '#e2dee8' };
 // v14 : Sous-Ville (concept docs/villes/steel/ambiance/concept_sous_ville.jpg) : lumière orange des braseros, fumée, tôle rouillée.
@@ -124,19 +132,38 @@ export const LOCATIONS = {
       { x: 44, z: 18, rx: 2.8, rz: 1.8, color: WARM, i: 0.48 },
       { x: 2.4, z: 18, rx: 2.6, rz: 3.4, color: NEON_C, i: 0.46 },
     ],
+    // Foule densifiée sur les trottoirs, parvis et passages piétons (46 figurants + 8 passants <= 8 anims mobile, hors solids, view.masques() === []).
     extras: [
-      { sprite: SOLDAT, x: 41.2, z: 13.8, face: -1, role: 'soldat' },
-      { sprite: SOLDAT, x: 43.8, z: 13.8, face: -1, role: 'soldat' },
-      { sprite: civ(2), x: 19.6, z: 13.8, face: 1, role: 'client' },
-      { sprite: civ(4), x: 28.8, z: 13.8, face: -1, role: 'client' },
+      // Parvis du QG Arcadius IO : factionnaires et citoyens au contrôle
+      { sprite: SOLDAT, x: 40.6, z: 13.6, face: -1, role: 'soldat' },
+      { sprite: SOLDAT, x: 43.6, z: 13.6, face: -1, role: 'soldat' },
+      { sprite: SOLDAT, x: 39.8, z: 14.8, face: -1, role: 'soldat' },
+      ...figCt([[41.8, 14.6, 1], [43.2, 14.9, -1], [45.4, 15.8, -1]], 0, 'citoyen'),
+      // Parvis du Dôme Fréquence et sous le portique NEXUS (seuil c_dome 22;13 dégagé)
+      ...figCt([[17.6, 15.4, 1], [19.4, 13.6, 1], [20.5, 14.2, 1], [21.6, 15.2, -1], [23.4, 13.6, -1], [23.8, 14.8, 1], [26.8, 13.6, 1], [27.6, 14.5, -1]], 3, 'client'),
+      // Abords et traversées des 4 passages piétons du carrefour (nord, ouest, est, sud)
+      ...figCt([[28.6, 13.4, 1], [30.8, 13.4, -1], [33.4, 13.8, -1], [35.4, 14.2, -1]], 7, 'foule'),
+      ...figCt([[24.4, 16.6, 1], [25.8, 18.4, 1], [26.8, 17.2, -1]], 11, 'foule'),
+      ...figCt([[36.8, 16.2, 1], [39.4, 16.8, -1], [40.4, 18.2, -1]], 2, 'foule'),
+      ...figCt([[28.2, 20.6, 1], [29.2, 21.4, 1], [32.2, 21.2, -1]], 5, 'foule'),
+      // Quai de l'Arrêt Tram Central et débouché ruelle Teng
+      ...figCt([[6.2, 16.0, 1], [7.4, 15.0, 1], [10.6, 14.6, -1], [11.8, 14.6, -1]], 8, 'voyageur'),
+      // Échoppe Nouilles & Vapeur, Kiosque Presse & Médias et trottoir sud-ouest
+      ...figCt([[8.4, 20.2, -1], [9.2, 21.2, -1], [10.2, 22.6, 1], [11.6, 24.6, 1], [16.8, 20.2, 1]], 1, 'client'),
+      // Guichets Human Corp, trottoir est et file du Bureau des permis
+      ...figCt([[18.6, 20.8, 1], [21.4, 22.6, 1], [23.2, 23.4, -1], [26.0, 26.4, 1]], 4, 'foule'),
+      ...figCt([[43.2, 20.4, -1], [44.8, 21.2, 1], [45.6, 22.8, -1]], 9, 'citoyen'),
+      ...figCt([[34.8, 30.2, 1], [36.0, 31.6, 1], [37.2, 33.2, -1]], 12, 'attente'),
     ],
     walkers: [
-      { sprite: civ(0), path: [[18.5, 16.3], [32.6, 16.3], [32.6, 19.3], [18.5, 19.3]], speed: 1.15, t0: 2 },
-      { sprite: civ(1), path: [[32.2, 19.1], [18.8, 19.1], [18.8, 16.6], [32.2, 16.6]], speed: 1.05, t0: 9 },
-      { sprite: civ(3), path: [[18.0, 14.8], [30.8, 14.8], [30.8, 15.8], [18.0, 15.8]], speed: 1.1, t0: 1.5 },
-      { sprite: civ(5), path: [[28.4, 8.5], [28.4, 19.2], [30.4, 19.2], [30.4, 8.5]], speed: 1.2, t0: 4 },
-      { sprite: civ(4), path: [[27.0, 16.2], [32.4, 16.2], [32.4, 19.2], [27.0, 19.2]], speed: 1.0, t0: 3 },
-      { sprite: civ(2), path: [[30.2, 18.8], [30.2, 9.0], [28.8, 9.0], [28.8, 18.8]], speed: 1.15, t0: 8 },
+      { sprite: civ(0), path: [[18.5, 16.3], [32.6, 16.3], [32.6, 18.9], [18.5, 18.9]], speed: 1.15, t0: 2 },
+      { sprite: 'gen_ml_navetteur', path: [[32.2, 18.7], [18.8, 18.7], [18.8, 16.6], [32.2, 16.6]], speed: 1.05, t0: 9 },
+      { sprite: 'gen_fs_passante', path: [[19.2, 14.8], [30.8, 14.8], [30.8, 15.8], [19.2, 15.8]], speed: 1.1, t0: 1.5 },
+      { sprite: civ(5), path: [[28.4, 8.5], [28.4, 18.6], [30.4, 18.6], [30.4, 8.5]], speed: 1.2, t0: 4 },
+      { sprite: 'gen_fs_client_imper', path: [[24.4, 16.2], [32.4, 16.2], [32.4, 18.8], [24.4, 18.8]], speed: 1.0, t0: 3 },
+      { sprite: 'gen_pp_foule_c', path: [[30.2, 18.5], [30.2, 9.0], [28.8, 9.0], [28.8, 18.5]], speed: 1.15, t0: 8 },
+      { sprite: 'gen_fs_client_costume', path: [[32.6, 20.4], [32.6, 34.2], [33.3, 34.2], [33.3, 20.4]], speed: 1.1, t0: 5 },
+      { sprite: 'gen_df_foule_a', path: [[24.8, 24.4], [26.2, 24.4], [26.2, 33.6], [24.8, 33.6]], speed: 0.95, t0: 6.5 },
     ],
     drones: [ { x: 22, z: 17, r: 7, y: 6, speed: 0.22 }, { x: 38, z: 18, r: 5, y: 5.2, speed: -0.3, ph: 2 }, { x: 10, z: 18, r: 4, y: 6.5, speed: 0.35, ph: 4 } ],
     spawn: { player: { x: 1, z: 18 }, companion: { x: 1, z: 19 } }, city: 'steel' },

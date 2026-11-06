@@ -51,7 +51,19 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   // Personnages : texture propre à chaque sprite, car le miroir se fait par les UV (repeat.x = -1).
   // THREE.Sprite ignore le signe de scale.x (le shader prend la longueur de la colonne de la matrice) : c'était la cause du miroir invisible.
-  const actorTex = id => { const t = loader.load('./assets/' + (sprites[id].file || `reused/${id}.webp`)); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; return t; };
+  const actorBase = {};
+  const actorTex = id => {
+    let b = actorBase[id];
+    if (!b) {
+      const wait = [];
+      const tex = loader.load('./assets/' + (sprites[id].file || `reused/${id}.webp`), () => { for (const c of wait) { c.source = tex.source; c.needsUpdate = true; } wait.length = 0; });
+      tex.colorSpace = THREE.SRGBColorSpace; tex.wrapS = THREE.RepeatWrapping;
+      b = actorBase[id] = { tex, wait };
+    }
+    const c = b.tex.clone(); c.colorSpace = THREE.SRGBColorSpace; c.wrapS = THREE.RepeatWrapping;
+    if (b.tex.image) { c.source = b.tex.source; c.needsUpdate = true; } else b.wait.push(c);
+    return c;
+  };
   // pivot (manifeste) : hauteur des pieds en fraction de l'image, quand la pose n'a pas les deux pieds au bas du cadre
   function spriteMesh(id, heightOverride, actor = false) {
     const m = sprites[id], h = (heightOverride || m.height_m) * Math.cos(pitch), w = h * m.px[0] / m.px[1]; // hauteur vue par la caméra
@@ -123,7 +135,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   function building(b) {
     if (!bman[b.sprite]) return placeholder(b);
-    let m = bman[b.sprite]; const mobAnim = m.anime && innerWidth < 700 && bman[b.sprite + '_mobile'] && SKIN[b.sprite + '_mobile'];
+    let m = bman[b.sprite]; const mobAnim = m.anime && viewW < 700 && bman[b.sprite + '_mobile'] && SKIN[b.sprite + '_mobile'];
     const skKey = mobAnim ? b.sprite + '_mobile' : b.sprite;
     const t = m.anime ? Object.assign(new THREE.Texture(SKIN[skKey]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace }) : skinTex(skKey);
     // enseigne animée (planche horizontale, frames x frame_px, fps du manifeste) : une image de la planche, taille monde = image ordinateur ; version _mobile sur petit écran
@@ -216,7 +228,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.32, 0.4, 28), new THREE.MeshBasicMaterial({ color: '#e0b04a', transparent: true, opacity: 0.7 }));
       ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(d.threshold.x, 0.03, d.threshold.z); ring.userData.doorId = d.id; world.add(ring); pickables.push(ring);
       if (d.junction || d.edge) { ring.material.color.set(d.junction ? '#e0b04a' : '#b9a68a'); ring.material.opacity = d.junction ? 0.8 : 0.5; // v7 : bout de rue
-        if (loc.accessLabels !== false) addLabel(d.label, d.junction ? 'junction' : 'edge', () => new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); if (loc.accessLabels !== false) labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte : ne cache jamais le joueur au seuil
+        if (loc.accessLabels !== false) addLabel(d.label, d.junction ? 'junction' : 'edge', () => d.labelPos ? new THREE.Vector3(d.labelPos[0], d.labelPos[2] || 0, d.opening.z === 0 && d.threshold.z > 0 ? Math.min(d.labelPos[1], Math.max(-1.6, game.state.player.z - 2.4)) : d.labelPos[1]) : new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); if (loc.accessLabels !== false) labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte (ou débouché de sortie labelPos) : ne cache jamais le joueur au seuil
       if (loc.kind === 'interior') addLabel(d.label || 'Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
     // v13 : lumières au sol (néons reflétés sur la chaussée mouillée, pinceaux des projecteurs) : disques additifs étirés
@@ -498,7 +510,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k); }
     let pulsesOn = 0;
     if (pulses.length) {
-      const pMax = innerWidth < 700 ? 8 : 48, pv = new THREE.Vector3(), pl = player.position;
+      const pMax = viewW < 700 ? 8 : 48, pv = new THREE.Vector3(), pl = player.position;
       const ord = pulses.map(s => { pv.copy(s.position).project(cam); return { s, u: s.userData.pulse, in: Math.abs(pv.x) < 1.25 && Math.abs(pv.y) < 1.25, d: s.position.distanceToSquared(pl) }; })
         .sort((a, b) => (b.u.priorite - a.u.priorite) || (b.in - a.in) || (a.d - b.d));
       for (const { s, u, in: inn } of ord) {
@@ -528,7 +540,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     horloge = t; for (const u of [...uniques]) { const i = Math.floor((t - u.t0) * u.fps); if (i >= u.n) { u.s.material.map = u.base; u.s.material.needsUpdate = true; uniques.splice(uniques.indexOf(u), 1); joueEtat.fini = true; } else u.t.offset.x = i / u.n; }
     for (const mv of movers) { const k = ((t + (mv.ph || 0)) % mv.periode) / mv.passage; mv.s.visible = k < 1; if (k < 1) mv.s.position.x = mv.x0 + mv.dx * (k - 0.5); }
     // enseignes animées : seules les visibles à l'écran tournent, au plus ANIM_MAX (8 sur mobile) ; les autres restent sur leur première image
-    if (anims.length) { const max = innerWidth < 700 ? 8 : 16, v = new THREE.Vector3(); let on = 0; const pl = player.position;
+    if (anims.length) { const max = viewW < 700 ? 8 : 16, v = new THREE.Vector3(); let on = 0; const pl = player.position;
       const vis = anims.map(a => { v.copy(a.s.position).project(cam); return { a, in: Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, d: a.s.position.distanceToSquared(pl) }; }).sort((p, q) => (q.in - p.in) || (p.d - q.d));
       const admis = new Set(); let runs = 0;
       for (const { a, in: inn } of vis) { const k = a.g || a; let run = false;
@@ -656,13 +668,25 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     }
     for (const m of solids) for (const mt of [].concat(m.material)) { const o = mt.opacity; mt.opacity = o + (m.userData.targetOpacity - o) * 0.3; mt.depthWrite = mt.opacity > 0.9; }
   }
-  let ppm = 30, camCible = null, plan = 0, planLoc = null, planSort = false, planPos = [0, 0], planLarge = false; // plan : poids du plan d'arrivée (1 à l'arrivée, 0 après les premiers pas) // camCible : point du sol au centre de l'écran (contrôle des tests)
+  let ppm = 30, viewW = innerWidth, viewH = innerHeight, camCible = null, plan = 0, planLoc = null, planSort = false, planPos = [0, 0], planLarge = false; // plan : poids du plan d'arrivée (1 à l'arrivée, 0 après les premiers pas) // camCible : point du sol au centre de l'écran (contrôle des tests)
+  function measureView() {
+    const vv = typeof visualViewport !== 'undefined' ? visualViewport : null;
+    const w = Math.round(vv?.width || innerWidth || canvas.clientWidth || 1);
+    const h = Math.round(vv?.height || innerHeight || canvas.clientHeight || 1);
+    return [Math.max(1, w), Math.max(1, h)];
+  }
   function resize() {
-    const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false);
+    const [w, h] = measureView();
+    viewW = w; viewH = h;
+    renderer.setPixelRatio(Math.min((typeof devicePixelRatio !== 'undefined' && devicePixelRatio) || 1, 2));
+    renderer.setSize(w, h, !!canvas.style);
     ppm = w < 700 ? UNITS.camera.pxPerMeterMobile : UNITS.camera.pxPerMeterDesktop;
     cam.userData.zoom = null;
   }
-  addEventListener('resize', resize); resize();
+  addEventListener('resize', resize);
+  addEventListener('orientationchange', () => { resize(); if (typeof setTimeout === 'function') setTimeout(resize, 80); });
+  if (typeof visualViewport !== 'undefined' && visualViewport) visualViewport.addEventListener('resize', resize);
+  resize();
   let camOverride = null, camShift = 0, userZoom = 1;
   function setZoom(z, { user = true } = {}) {
     if (!Number.isFinite(z)) return userZoom;
@@ -673,6 +697,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   let groundMesh = null, cbt = null; // combat C1 : grille, cases atteignables, chemin, unités ennemies
   function render() {
+    const [mw, mh] = measureView(); if (mw !== viewW || mh !== viewH) resize();
     ({ LOCATIONS, DOORS, NPCS } = game.world);
     const s = game.state;
     if (builtFor !== s.location) build(s.location);
@@ -699,18 +724,18 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     // loc.cadre : { mobile|desktop: { x: [min, max], z: [min, max] } } : le cadre suit le joueur mais reste sur la rue (pas de vide aux arrivées par les bouts)
     // loc.cadre.arrivee : { mobile|desktop: { ppm, avance, u, w } } : plan d'arrivée (plan large qui montre le lieu : toit de l'Arena), tenu tant que le joueur n'a pas bougé, puis retour en douceur au cadre de jeu
     //   ppm (zoom), avance (m : le cadre regarde devant le joueur, vers le haut de l'écran), u et w (bornes en mètres dans les axes de l'écran : droite, profondeur), le joueur restant toujours dans le cadre
-    const mob = innerWidth < 700, pick = c => c && ((mob ? c.mobile : c.desktop) || (c.mobile || c.desktop ? null : c));
+    const mob = viewW < 700, pick = c => c && ((mob ? c.mobile : c.desktop) || (c.mobile || c.desktop ? null : c));
     if (planLoc !== s.location) { planLoc = s.location; plan = 1; planSort = false; planPos = [s.player.x, s.player.z]; }
     if (!planSort && (s.player.path.length > 0 || Math.hypot(s.player.x - planPos[0], s.player.z - planPos[1]) > 0.3)) planSort = true;
     if (planSort) plan = Math.max(0, plan - dt * 1.2);
     const CA = loc.cadre && !camOverride ? pick(loc.cadre) : null, PA = loc.cadre?.arrivee && !camOverride && plan > 0 ? pick(loc.cadre.arrivee) : null;
     const cl = (v, a, b) => Math.min(b, Math.max(a, v)), f = new THREE.Vector3(camDir.x, 0, camDir.z).normalize(), R = new THREE.Vector3(-f.z, 0, f.x);
-    const zPpm = ppm * userZoom, baseInt = Math.min(ppm * 1.8, innerWidth / (loc.size.w * 1.6));
+    const zPpm = ppm * userZoom, baseInt = Math.min(ppm * 1.8, viewW / (loc.size.w * 1.6));
     const cadrer = (t, C, z0) => { const up = t.dot(R), wp = t.dot(f); if (C.avance) t.addScaledVector(f, C.avance);
-      if (C.u || C.w) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, innerWidth / 2 / z0 - 1.5), lw = Math.max(1, (innerHeight / 2 / z0 - 2) / Math.sin(pitch));
+      if (C.u || C.w) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, viewW / 2 / z0 - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
         const u2 = cl(C.u ? cl(u, C.u[0], C.u[1]) : u, up - lu, up + lu), w2 = cl(C.w ? cl(w, C.w[0], C.w[1]) : w, wp - lw, wp + lw); t.addScaledVector(R, u2 - u).addScaledVector(f, w2 - w); }
       if (C.x) t.x = cl(t.x, C.x[0], C.x[1]); if (C.z) t.z = cl(t.z, C.z[0], C.z[1]);
-      if ((C.x || C.z) && userZoom > 1) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, innerWidth / 2 / z0 - 1.5), lw = Math.max(1, (innerHeight / 2 / z0 - 2) / Math.sin(pitch));
+      if ((C.x || C.z) && userZoom > 1) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, viewW / 2 / z0 - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
         t.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w); }
       return t; };
     let zoomCadre = null;
@@ -719,7 +744,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       target.lerp(tA, k); zoomCadre = 1 / ((1 - k) / (zoomCadre || zPpm) + k / zA); }
     if (loc.kind === 'interior' && !camOverride && userZoom > 1) {
       const zI = baseInt * userZoom, p0 = new THREE.Vector3(s.player.x, 0, s.player.z), up = p0.dot(R), wp = p0.dot(f);
-      const u = target.dot(R), w = target.dot(f), lu = Math.max(1, innerWidth / 2 / zI - 1.5), lw = Math.max(1, (innerHeight / 2 / zI - 2) / Math.sin(pitch));
+      const u = target.dot(R), w = target.dot(f), lu = Math.max(1, viewW / 2 / zI - 1.5), lw = Math.max(1, (viewH / 2 / zI - 2) / Math.sin(pitch));
       target.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w);
     }
     planLarge = !!PA && plan > 0.5; // plan large d'arrivée : les noms (PNJ, services) sont masqués, seules les sorties restent ; ils reviennent au premier pas
@@ -727,15 +752,15 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     // mobile : quand le dialogue est ouvert, le cadre remonte pour garder joueur et PNJ visibles au-dessus du panneau
     const dlg = document.getElementById('dialogue');
     let wantShift = 0;
-    if (!camOverride && innerWidth <= 600 && dlg && !dlg.hidden && dlg.offsetHeight) {
+    if (!camOverride && viewW <= 600 && dlg && !dlg.hidden && dlg.offsetHeight) {
       const top = dlg.getBoundingClientRect().top;
-      wantShift = Math.max(0, innerHeight / 2 - top / 2 - 20);
+      wantShift = Math.max(0, viewH / 2 - top / 2 - 20);
       if (loc.kind === 'interior') target.set((target.x + s.player.x) / 2, 0, (target.z + s.player.z) / 2);
     }
     camShift += (wantShift - camShift) * Math.min(1, dt * 8); if (Math.abs(wantShift - camShift) < 0.5) camShift = wantShift;
     cam.position.copy(target).addScaledVector(camDir, -80); cam.lookAt(target);
     const zoom = camOverride?.ppm || zoomCadre || (loc.kind === 'interior' ? baseInt * userZoom : zPpm);
-    if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift || cam.userData.cx!==camOverride?.cx || cam.userData.cy!==camOverride?.cy) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = innerWidth, h = innerHeight; const cx=camOverride?.cx??w/2,cy=camOverride?.cy??h/2;cam.userData.cx=camOverride?.cx;cam.userData.cy=camOverride?.cy;cam.left=-cx/zoom;cam.right=(w-cx)/zoom;cam.top=(cy-camShift)/zoom;cam.bottom=-(h-cy+camShift)/zoom; cam.updateProjectionMatrix(); }
+    if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift || cam.userData.cx!==camOverride?.cx || cam.userData.cy!==camOverride?.cy) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = viewW, h = viewH; const cx=camOverride?.cx??w/2,cy=camOverride?.cy??h/2;cam.userData.cx=camOverride?.cx;cam.userData.cy=camOverride?.cy;cam.left=-cx/zoom;cam.right=(w-cx)/zoom;cam.top=(cy-camShift)/zoom;cam.bottom=-(h-cy+camShift)/zoom; cam.updateProjectionMatrix(); }
     if (exterior) { painter(); spriteOcclusion(); npcGhosts(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     combatOverlay();
     for(const n of npcSprites)if(n.userData.ghost&&!visible('actor'))n.userData.ghost.visible=false;
@@ -747,12 +772,12 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; l.el.dataset.off = ''; if (!vis) continue; const q = toScr(l.getPos()); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = q.x, ly = q.y;
       const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'), npc = l.el.classList.contains('npc');
       if (planLarge && !sortie) { l.el.hidden = true; continue; }
-      if (!sortie && (lx < 0 || lx > innerWidth)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; }
-      if (lw && lw + 8 < innerWidth) lx = Math.min(innerWidth - 4 - lw / 2, Math.max(4 + lw / 2, lx));
+      if (!sortie && (lx < 0 || lx > viewW)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; }
+      if (lw && lw + 8 < viewW) lx = Math.min(viewW - 4 - lw / 2, Math.max(4 + lw / 2, lx));
       let foot = null; if (npc && l.foot) foot = toScr(l.foot());
-      if (!sortie && !(npc && foot && foot.y > 0 && ly - lh < 4) && (ly - lh > innerHeight || ly < 0)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; } // hors écran vertical : masqué (sorties : marqueur gardé au bord)
-      if (sortie && lh) ly = Math.min(innerHeight - 4, Math.max(lh + 4, ly));
-      let below = false; if (npc && foot && lh && ly - lh < 4) { if (foot.y < 0 || foot.y + lh + 6 > innerHeight) { l.el.hidden = true; continue; } ly = foot.y + lh + 6; below = true; } // PNJ en haut du cadre : libellé sous ses pieds, jamais sur sa tête [Régie B]
+      if (!sortie && !(npc && foot && foot.y > 0 && ly - lh < 4) && (ly - lh > viewH || ly < 0)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; } // hors écran vertical : masqué (sorties : marqueur gardé au bord)
+      if (sortie && lh) ly = Math.min(viewH - 4, Math.max(lh + 4, ly));
+      let below = false; if (npc && foot && lh && ly - lh < 4) { if (foot.y < 0 || foot.y + lh + 6 > viewH) { l.el.hidden = true; continue; } ly = foot.y + lh + 6; below = true; } // PNJ en haut du cadre : libellé sous ses pieds, jamais sur sa tête [Régie B]
       placed.push({ l, lx, ly, lw, lh, npc, below, foot }); }
     const hudRects = ['hud', 'locbox', 'obj', 'msg', 'dialogue', 'panel', 'keys', 'zoom', 'act', 'mini', 'cbt-file', 'cbt-res', 'cbt-actions'].map(id => document.getElementById(id))
       .filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden')
@@ -764,9 +789,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const clash = (a, x, y) => done.some(b => Math.abs(x - b.lx) < (a.lw + b.lw) / 2 + 3 && y > b.ly - b.lh - 3 && y - a.lh < b.ly + 3);
     // corps (tête aux pieds) de TOUS les PNJ visibles : aucun libellé ne s'y pose, ni le leur ni un autre [Régie B ; Régie 29/10 : Mei, Dorn, technicien, marchande]
     const bodies = labels.filter(l => l.foot && l.npcSprite?.visible !== false).map(l => { const f = toScr(l.foot()), h = toScr(l.getPos()), hw = Math.max(10, 0.22 * (f.y - h.y));
-      return { left: f.x - hw, right: f.x + hw, top: h.y + 2, bottom: f.y }; }).filter(q => q.bottom > 0 && q.top < innerHeight && q.right > 0 && q.left < innerWidth);
+      return { left: f.x - hw, right: f.x + hw, top: h.y + 2, bottom: f.y }; }).filter(q => q.bottom > 0 && q.top < viewH && q.right > 0 && q.left < viewW);
     for (const a of placed) {
-      const ok = (x, y, strict) => y - a.lh >= 2 && y <= innerHeight - 2 && free(a, x, y, bodies) && (!strict || !clash(a, x, y));
+      const ok = (x, y, strict) => y - a.lh >= 2 && y <= viewH - 2 && free(a, x, y, bodies) && (!strict || !clash(a, x, y));
       if (!ok(a.lx, a.ly, true)) { // positions candidates : bords des panneaux, sous les pieds du PNJ, voisinage des autres libellés ; la plus proche gagne
         const ys = [a.ly], xs = [a.lx];
         for (const q of hudRects) { ys.push(q.top - 3, q.bottom + a.lh + 3); xs.push(q.left - a.lw / 2 - 3, q.right + a.lw / 2 + 3); }
@@ -774,7 +799,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         for (const b of done) ys.push(b.ly - b.lh - 4, b.ly + a.lh + 4);
         for (const q of bodies) { ys.push(q.top - 3, q.bottom + a.lh + 3); xs.push(q.left - a.lw / 2 - 3, q.right + a.lw / 2 + 3); } // contourner les corps des PNJ
         let best = null, bd = Infinity;
-        for (const strict of [true, false]) { for (const x of xs) { if (x - a.lw / 2 < 2 || x + a.lw / 2 > innerWidth - 2) continue; for (const y of ys) { if (!ok(x, y, strict)) continue;
+        for (const strict of [true, false]) { for (const x of xs) { if (x - a.lw / 2 < 2 || x + a.lw / 2 > viewW - 2) continue; for (const y of ys) { if (!ok(x, y, strict)) continue;
           const d = Math.abs(y - a.ly) + 1.5 * Math.abs(x - a.lx); if (d < bd) { bd = d; best = [x, y]; } } } if (best) break; }
         if (best) [a.lx, a.ly] = best; }
       done.push(a); a.l.el.style.transform = `translate(-50%,-100%) translate(${a.lx}px,${a.ly}px)`;
@@ -854,7 +879,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // joue(id, cle) : planche cle (même taille et même ancre que le sprite de base, _mobile sur petit écran), jouée une fois puis retour au sprite de base
   const joueEtat = { id: null, cle: null, fini: true };
   function joue(id, cle) { const s = bsprites.find(o => o.userData.buildingId === id), m = bman[cle]; if (!s || !m) return false;
-    const mob = innerWidth < 700 && SKIN[cle + '_mobile'], t = new THREE.Texture(SKIN[mob ? cle + '_mobile' : cle]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace; t.repeat.set(1 / m.frames, 1);
+    const mob = viewW < 700 && SKIN[cle + '_mobile'], t = new THREE.Texture(SKIN[mob ? cle + '_mobile' : cle]); t.needsUpdate = true; t.colorSpace = THREE.SRGBColorSpace; t.repeat.set(1 / m.frames, 1);
     for (const u of uniques.filter(u => u.s === s)) { s.material.map = u.base; uniques.splice(uniques.indexOf(u), 1); }
     uniques.push({ s, t, base: s.material.map, n: m.frames, fps: m.fps, t0: horloge }); s.material.map = t; s.material.needsUpdate = true; Object.assign(joueEtat, { id, cle, fini: false }); return true; }
   // Update existing sprite transforms during a drag; rebuild terrain only on commit.
