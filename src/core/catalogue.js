@@ -8,9 +8,9 @@ export async function chargerCatalogue(get = async p => { const r = await fetch(
   const sprites = await get('./assets/reused/manifest.json');
   const iman = await get('./assets/interiors/manifest.json'); Object.assign(sprites, iman); // v6 : mobilier et textures d'intérieur
   const ppMan = {}; for (const q of QUARTIERS_STEEL) Object.assign(ppMan, await get(`./assets/steel/${q}/manifest.json`)); // manifestes d'Ocre (chemins relatifs à assets/)
-  for (const [k, v] of Object.entries(ppMan)) if (k.startsWith('gen_') || k.startsWith('portrait-')) sprites[k] = v; // PNJ et portraits -> sprites
+  for (const [k, v] of Object.entries(ppMan)) if (!v.obsolete && (k.startsWith('gen_') || k.startsWith('portrait-'))) sprites[k] = v; // PNJ et portraits -> sprites
   const bman = await get('./assets/buildings/manifest.json');
-  for (const [k, v] of Object.entries(ppMan)) if (/^(pp|fs|ar2?|df|ml)_/.test(k)) bman[k] = v; // décors des quartiers -> bâtiments (ar2_ : enceinte basse de l'Arena)
+  for (const [k, v] of Object.entries(ppMan)) if (!v.obsolete && /^(pp|fs|ar2?|df|ml)_/.test(k)) bman[k] = v; // décors des quartiers -> bâtiments (ar2_ : enceinte basse de l'Arena ; obsolete exclus)
   const sols = { ...Object.fromEntries(SOLS_BASE.map(n => [n, `./assets/mockup/${n}.webp`])), ...Object.fromEntries(SOLS_GENERES.map(n => [n, `./assets/generated/${n}.webp`])),
     ...Object.fromEntries(Object.keys(ppMan).filter(k => k.startsWith('g_')).map(n => [n, './assets/' + ppMan[n].file])) };
   return { sprites, iman, ppMan, bman, sols };

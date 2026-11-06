@@ -9,31 +9,28 @@ const STRIP = { bg: '#060a10', hemi: ['#e05870', '#2a0c16', 1.3], sun: ['#f2a04a
 const ROUGE = '#ff2a48', ROSE = '#ff5a8c', VIOLET = '#8a3cff', AMBRE = '#f2a04a', VELOURS = '#7a1428';
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: !!label, ...extra });
 const ENS = (id, sprite, x, z, y) => B(id, '', sprite, x - 0.1, z - 0.1, 0.2, 0.2, { y, solid: [], named: false }); // enseigne : point de pose (x, z) au pied de la façade, hauteur y (m)
-// Pose (lot construction) : façades nord alignées sur le trottoir (front z 6). Les blocs d'origine (fs_facade_nord, Neon-7, Core Stack) gardent z 0-6 ;
-// les devantures minces d'Ocre (profondeur 1,5 m, faces x pente 0,33) se posent z 4,5-6 pour que la rue reste droite (Ocre les note z 0-1,5 : même front recalé).
-// Côté sud, premier plan : rien de haut au-dessus des personnages. Devantures basses de 2 m (fs_bas_*) au bord de la zone (front z 24) ; Le Retour et l'hôtel capsule
-// (blocs z 18-24), la fresque d'Ocre et les cabines (6 m) restent, et aucun personnage ne se tient dans leur ombre d'écran (view.masques() vide).
-const FN = (id, label, sprite, x, w, extra = {}) => B(id, label, sprite, x, 4.5, w, 1.5, extra); // devanture mince nord, front sur le trottoir (z 6)
-const BAS = (id, label, sprite, x, w, extra = {}) => B(id, label, sprite, x, 23, w, 1, extra); // devanture basse sud, front au bord de la zone (z 24)
+// Pose 3/4 (0602bea) : bâtiments complets en 3/4 isométrique (*_3q, calques *_3q_neon et *_3q_fenetres), ancrés au pied du coin avant sud-est (x+W ; z+D).
+// Nord : front aligné sur le trottoir (z 6), profondeur 4 ou 8 m (z 2 ou -2) ; ruelle Fusible fermée en z 0-3 (z 3-6 libre).
+// Sud : front au bord de la zone (z 24), profondeur 4 m (z 20-24, alignée sur Le Retour et l'hôtel capsule) ; aucun personnage dans leur ombre d'écran (view.masques() vide).
 export const BUILDINGS_STRIP = [
-  // façade nord, d'ouest en est (rue de 80 m)
+  // façade nord, d'ouest en est (rue de 80 m, front z 6)
   B('fs_fn0', '', 'fs_facade_nord', 0, 0, 8, 6, { named: false }),
-  B('fs_bouche0', '', 'fs_bouche_nord', 7, 3, 4, 1.5, { named: false, solid: [{ x: 8, z: 3, w: 2, d: 1.5 }] }), // ferme la ruelle x 8-10 (rideau métallique) ; 1 m caché derrière chaque voisin, comme prévu par Ocre
+  B('fs_bouche0', '', 'fs_bouche_nord_3q', 7, -1, 4, 4, { named: false, solid: [{ x: 8, z: 0, w: 2, d: 3 }] }), // ferme la ruelle x 8-10 (z 3-6 libre autour de Fusible)
   B('fs_neon7', 'Club Neon-7', 'fs_neon7', 10, 0, 12, 6),
-  FN('fs_sexshop', 'Jouets calibrés', 'fs_sexshop', 22, 8), FN('fs_peep', '3 secondes', 'fs_peep', 30, 4), FN('fs_salon', 'Tombé de rideau', 'fs_salon', 34, 4),
+  B('fs_sexshop', 'Jouets calibrés', 'fs_sexshop_3q', 22, -2, 8, 8), B('fs_peep', '3 secondes', 'fs_peep_3q', 30, 2, 4, 4), B('fs_salon', 'Tombé de rideau', 'fs_salon_3q', 34, 2, 4, 4),
   B('fs_corestack', 'Core Stack', 'fs_corestack', 38, 0, 12, 6),
-  FN('fs_bouche1', '', 'fs_bouche_nord', 50, 4, { named: false }),
-  FN('fs_club', 'L\u2019Effeuillée', 'fs_club', 54, 10), FN('fs_lovehotel', 'L\u2019Heure exquise', 'fs_lovehotel', 64, 8), FN('fs_clubprive', 'Club 404', 'fs_clubprive', 72, 8),
-  // côté sud, premier plan (front z 24)
-  BAS('fs_nouilles', 'Nouilles de minuit', 'fs_bas_nouilles', 0, 8), BAS('fs_fleurs', 'Excuses', 'fs_bas_fleurs', 8, 4), BAS('fs_tabac', 'À crédit', 'fs_bas_tabac', 12, 4),
+  B('fs_bouche1', '', 'fs_bouche_nord_3q', 50, 2, 4, 4, { named: false }),
+  B('fs_club', 'L\u2019Effeuillée', 'fs_club_3q', 54, -2, 10, 8), B('fs_lovehotel', 'L\u2019Heure exquise', 'fs_lovehotel_3q', 64, -2, 8, 8), B('fs_clubprive', 'Club 404', 'fs_clubprive_3q', 72, -2, 8, 8),
+  // côté sud, premier plan (front z 24, emprises 3/4 z 20-24)
+  B('fs_nouilles', 'Nouilles de minuit', 'fs_bas_nouilles_3q', 0, 20, 8, 4), B('fs_fleurs', 'Excuses', 'fs_bas_fleurs_3q', 8, 20, 4, 4), B('fs_tabac', 'À crédit', 'fs_bas_tabac_3q', 12, 20, 4, 4),
   B('fs_retour', 'Le Retour', 'fs_retour', 16, 18, 8, 6),
-  BAS('fs_couvert', 'Bien couvert', 'fs_bas_preservatifs', 24, 4), // suite d'Ocre (15f934f) : huit devantures basses toutes différentes, à la place des répétitions
+  B('fs_couvert', 'Bien couvert', 'fs_bas_preservatifs_3q', 24, 20, 4, 4),
   B('fs_fresque_vibes', 'Fresque inachevée', 'fs_fresque_vibes', 28, 23.4, 6, 0.6), // caméo Ocre : mur de fresque au bord sud (x 28-34), média de Vibes, aucune animation
-  BAS('fs_shots', 'Shot de grâce', 'fs_bas_shots', 34, 4),
-  B('fs_cabines', 'Cabines sans C.A.G.E.', 'fs_cabines', 38, 22.5, 8, 1.5),
-  BAS('fs_billets', 'Billets doux', 'fs_bas_distributeur', 46, 4), BAS('fs_massages', 'Mains de fée', 'fs_bas_massages', 50, 4),
+  B('fs_shots', 'Shot de grâce', 'fs_bas_shots_3q', 34, 20, 4, 4),
+  B('fs_cabines', 'Cabines sans C.A.G.E.', 'fs_cabines_3q', 38, 20, 8, 4),
+  B('fs_billets', 'Billets doux', 'fs_bas_distributeur_3q', 46, 20, 4, 4), B('fs_massages', 'Mains de fée', 'fs_bas_massages_3q', 50, 20, 4, 4),
   B('fs_capsules', 'Hôtel capsule', 'fs_capsules', 54, 18, 6, 6),
-  BAS('fs_laverie', 'Blanchiment', 'fs_bas_laverie', 60, 8), BAS('fs_gage', 'Mont-de-pitié', 'fs_bas_gage', 68, 4), BAS('fs_perruques', 'Faux-semblants', 'fs_bas_perruques', 72, 4), BAS('fs_implants', 'Rechromage', 'fs_bas_implants', 76, 4),
+  B('fs_laverie', 'Blanchiment', 'fs_bas_laverie_3q', 60, 20, 8, 4), B('fs_gage', 'Mont-de-piété', 'fs_bas_gage_3q', 68, 20, 4, 4), B('fs_perruques', 'Faux-semblants', 'fs_bas_perruques_3q', 72, 20, 4, 4), B('fs_implants', 'Rechromage', 'fs_bas_implants_3q', 76, 20, 4, 4),
   // rue
   B('fs_tapis', '', 'fs_tapis', 14, 6, 4, 2, { solid: [], named: false }),
   B('fs_stand_brochettes', 'Brochettes de Yun', 'fs_stand_brochettes', 8, 14, 4, 4),
@@ -68,7 +65,7 @@ export const CLOSED_STRIP = {
   fs_billets: 'Billets doux. Un distributeur rafistolé au ruban rose. Il donne des billets, ou il les garde, selon son humeur.',
   fs_massages: 'Mains de fée. Un rideau de perles et une lampe tamisée. « Tarif à la minute, pourboire à la conscience. »',
   fs_laverie: 'Blanchiment. Laverie ouverte toute la nuit. Personne ne vient pour le linge.',
-  fs_gage: 'Mont-de-pitié. Montres, implants, alliances. Le prêteur pèse tout, même les excuses.',
+  fs_gage: 'Mont-de-piété. Montres, implants, alliances. Le prêteur pèse tout, même les excuses.',
   fs_perruques: 'Faux-semblants. Perruques et costumes. On ressort quelqu\u2019un d\u2019autre, au même prix.',
   fs_implants: 'Rechromage. Réparateur d\u2019implants. « Danse, sois plus chrome. » La garantie tient jusqu\u2019au trottoir.',
   fs_tabac: 'À crédit. Tabac, recharges, tickets. Le guichet sert depuis la rue et ne rend jamais la monnaie exacte.',
@@ -77,7 +74,7 @@ export const CLOSED_STRIP = {
 // caniveaux, plaques d'égout, détritus et cartons peints dans le sol (ground.decals) ; mouillé et reflets au moteur : lueurs étirées sous chaque enseigne.
 const CANIVEAUX = [...Array.from({ length: 20 }, (_, i) => ({ image: 'fs_caniveau', x: 2 + i * 4, z: 8.3, a: 0.6 })), ...Array.from({ length: 20 }, (_, i) => ({ image: 'fs_caniveau', x: 2 + i * 4, z: 15.7, a: 0.6 }))];
 const PIECES = [ { image: 'fs_plaque_egout', x: 20, z: 12 }, { image: 'fs_plaque_egout', x: 44, z: 10 }, { image: 'fs_plaque_egout', x: 64, z: 13 }, { image: 'fs_plaque_egout', x: 74, z: 9.6 },
-  { image: 'fs_detritus', x: 37.4, z: 6.6 }, { image: 'fs_detritus', x: 50.6, z: 6.7, rot: 30 }, { image: 'fs_detritus', x: 63.4, z: 6.6, rot: -20 }, { image: 'fs_detritus', x: 26, z: 22.4, rot: 60 }, { image: 'fs_detritus', x: 71, z: 22.3 },
+  { image: 'fs_detritus', x: 37.4, z: 6.6 }, { image: 'fs_detritus', x: 50.6, z: 6.7, rot: 30 }, { image: 'fs_detritus', x: 63.4, z: 6.6, rot: -20 }, { image: 'fs_detritus', x: 26, z: 19.3, rot: 60 }, { image: 'fs_detritus', x: 71, z: 19.2 },
   { image: 'fs_carton', x: 61.2, z: 19.4, rot: 15 }, { image: 'fs_carton', x: 9.2, z: 5.2, rot: -10 } ];
 export const LOCATIONS_STRIP = {
   steel_strip: { id: 'steel_strip', name: 'Steel-Megalopolis · Fréquence Strip', kind: 'exterior', size: { w: 80, d: 24 }, light: STRIP,
@@ -96,8 +93,8 @@ export const LOCATIONS_STRIP = {
       { x: 26, z: 7.4, rx: 3.6, rz: 1.6, color: ROSE, i: 0.7 }, { x: 32, z: 7.2, rx: 1.8, rz: 1.2, color: ROUGE, i: 0.6, flicker: true }, { x: 36, z: 7.2, rx: 1.8, rz: 1.2, color: ROUGE, i: 0.55 },
       { x: 59, z: 7.6, rx: 4.4, rz: 1.8, color: ROSE, i: 0.8, flicker: true }, { x: 68, z: 7.4, rx: 3.6, rz: 1.6, color: ROUGE, i: 0.7 }, { x: 76, z: 7.4, rx: 3.4, rz: 1.6, color: ROSE, i: 0.65, flicker: true },
       { x: 20, z: 16.6, rx: 3.6, rz: 1.6, color: AMBRE, i: 0.7 }, { x: 10, z: 13.4, rx: 2.4, rz: 1.4, color: AMBRE, i: 0.6, flicker: true },
-      { x: 4, z: 21.8, rx: 3.2, rz: 1.4, color: AMBRE, i: 0.55 }, { x: 10, z: 21.8, rx: 1.8, rz: 1.1, color: ROSE, i: 0.5 }, { x: 14, z: 21.8, rx: 1.8, rz: 1.1, color: AMBRE, i: 0.45, flicker: true },
-      { x: 42, z: 20.8, rx: 3.4, rz: 1.6, color: ROSE, i: 0.6, flicker: true },
+      { x: 4, z: 19.2, rx: 3.2, rz: 1.4, color: AMBRE, i: 0.55 }, { x: 10, z: 19.2, rx: 1.8, rz: 1.1, color: ROSE, i: 0.5 }, { x: 14, z: 19.2, rx: 1.8, rz: 1.1, color: AMBRE, i: 0.45, flicker: true },
+      { x: 42, z: 19.0, rx: 3.4, rz: 1.6, color: ROSE, i: 0.6, flicker: true },
       { x: 48, z: 13.4, rx: 2.4, rz: 1.4, color: ROUGE, i: 0.6 }, { x: 57, z: 16.6, rx: 2, rz: 1.2, color: ROSE, i: 0.45 },
       { x: 40, z: 12, rx: 38, rz: 4, color: ROUGE, i: 0.12 }, { x: 25, z: 15.4, rx: 0.6, rz: 0.4, color: '#c8323c', i: 0.5 } ],
     // enseignes _neon : effets poussés avec parcimonie (hors animStats.on) ; fleures/tabac/laverie/gage/perruques restent fixes
@@ -105,7 +102,7 @@ export const LOCATIONS_STRIP = {
       { id: 'fs_n_sexshop', building: 'fs_sexshop', effet: 'pulse', intensite: 0.85, periode: 4.2 },
       { id: 'fs_n_peep', building: 'fs_peep', effet: 'gresille', intensite: 0.9 },
       { id: 'fs_n_salon', building: 'fs_salon', effet: 'gresille', intensite: 0.75, decale: 0.7 },
-      { id: 'fs_n_club', building: 'fs_club', effet: 'saute', saute: [0.52, 0.58], intensite: 0.95, periode: 3 },
+      { id: 'fs_n_club', building: 'fs_club', effet: 'saute', saute: [0.334, 0.36], intensite: 0.95, periode: 3 },
       { id: 'fs_n_lovehotel', building: 'fs_lovehotel', effet: 'pulse', intensite: 0.85, periode: 5 },
       { id: 'fs_n_clubprive', building: 'fs_clubprive', effet: 'clignote', intensite: 0.9, periode: 4.04 }, // « 404 » qui s'éteint par moments
       { id: 'fs_n_cabines', building: 'fs_cabines', effet: 'gresille', intensite: 0.8, decale: 0.4 },
@@ -135,9 +132,9 @@ export const LOCATIONS_STRIP = {
       { sprite: 'gen_fs_client_imper', x: 75.0, z: 9.2, face: -1, role: 'client' },
       { sprite: 'gen_fs_videur_prive', x: 78, z: 7.1, face: -1, role: 'videur' },
       // cabines (position historique sûre) + quelques clients en pleine rue (z 12-14, hors ombres sud)
-      { sprite: 'gen_fs_client_imper', x: 45, z: 19.4, face: 1, role: 'client' },
+      { sprite: 'gen_fs_client_imper', x: 42.8, z: 14.8, face: 1, role: 'client' },
       { sprite: 'gen_fs_foule_b', x: 10.2, z: 12.8, face: 1, role: 'foule' }, { sprite: 'gen_fs_client_costume', x: 48.4, z: 12.6, face: -1, role: 'client' },
-      { sprite: 'gen_fs_foule_a', x: 28.8, z: 13.2, face: -1, role: 'foule' }, { sprite: 'gen_fs_passante', x: 38.4, z: 13.6, face: 1, role: 'foule' },
+      { sprite: 'gen_fs_foule_a', x: 28.8, z: 13.2, face: -1, role: 'foule' }, { sprite: 'gen_fs_passante', x: 38.4, z: 12.4, face: 1, role: 'foule' },
       { sprite: 'gen_fs_foule_b', x: 58.2, z: 13.4, face: -1, role: 'foule' }, { sprite: 'gen_fs_client_imper', x: 6.8, z: 12.6, face: 1, role: 'client' } ],
     walkers: [ { sprite: 'gen_fs_foule_a', path: [[4, 9.75], [67, 9.75]], speed: 0.8, t0: 2 }, { sprite: 'gen_fs_foule_b', path: [[66, 8.75], [5, 8.75]], speed: 0.7, t0: 8 },
       { sprite: 'gen_fs_passante', path: [[21, 8.2], [27, 11.6]], speed: 0.9, t0: 1 }, { sprite: 'gen_fs_passant_canne', path: [[40, 7.4], [52.6, 7.4]], speed: 0.35, t0: 4 },
@@ -165,15 +162,15 @@ export const NPCS_STRIP = [ // aucun n'est Vibes ni Tron ; positions hors de l'o
   P('fs_gt', 'GT de promotion', 'gen_fs_gt_promo', 32, 12, [28, 12]),
   // Fusible (fiche Mega-Line d'Ocre) : vendeur du Pique-Puce, au fond de la ruelle noire x 8-10 fermée par fs_bouche_nord (aucune enseigne ni lueur), loin du merch et de la caméra
   P('fs_fusible', 'Fusible', 'gen_ml_fusible', 9, 5.4, [9, 9]),
-  P('fs_ocre', 'Ocre', 'gen_fs_ocre', 27.5, 19.8, [30, 23.4]), // caméo du studio, sans mécanique, devant sa fresque
-  P('fs_marius', 'Vieux Marius', 'gen_fs_marius', 60.8, 17.2, [56, 12]),
+  P('fs_ocre', 'Ocre', 'gen_fs_ocre', 27.4, 18.6, [30, 23.4]), // caméo du studio, sans mécanique, devant sa fresque
+  P('fs_marius', 'Vieux Marius', 'gen_fs_marius', 61.4, 16.4, [56, 12]),
   // compléments d'Ocre : grappe devant L'Effeuillée (étalée le long de l'horizontale de l'écran : étiquettes côte à côte), rabatteuse des cabines et son patron un peu en retrait, patrouille qui regarde ailleurs
   P('fs_rouge', 'Rouge', 'gen_fs_rouge', 53.6, 9.4, [57, 12]),
   P('fs_rubis', 'Rubis', 'gen_fs_rubis', 59.4, 6.9, [55, 12]),
   P('fs_fourrure', 'Zibeline', 'gen_fs_fourrure', 56.4, 7.6, [58, 13]),
   P('fs_racoleur', 'Le rabatteur', 'gen_fs_racoleur', 64, 8, [60, 12]),
-  P('fs_racoleuse', 'La rabatteuse', 'gen_fs_racoleuse', 46.8, 20.2, [44, 16]),
-  P('fs_mac', 'Monsieur Velours', 'gen_fs_mac', 48.6, 19.6, [46, 20]),
+  P('fs_racoleuse', 'La rabatteuse', 'gen_fs_racoleuse', 43.8, 16, [41, 13]),
+  P('fs_mac', 'Monsieur Velours', 'gen_fs_mac', 45.2, 15.6, [43.8, 16]),
   P('fs_flic_a', 'Agente Brehm', 'gen_fs_flic_a', 65, 12.2, [74, 16]),
   P('fs_flic_b', 'Agent Kessler', 'gen_fs_flic_b', 69.4, 12.4, [74, 17]),
 ];

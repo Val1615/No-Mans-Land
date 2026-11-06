@@ -88,7 +88,7 @@ Planche de contrôle : `/workspace/nml-shots/strip_volumes.png` (maquette hors j
 Limites : les bâtiments sud partagent les gabarits nord (retour à droite) avec une emprise z 20–24 plutôt qu'un volume hors zone au sud ; texture de côté mutualisée (2 variantes) ; calques `_fenetres` = extraction des pixels chauds, à juger en jeu.
 
 ## Bâtiments complets (3/4)
-Statut : livré (`status: "v1"`), à poser par Rivet à la place des façades plates d'origine (les pièces séparées `fs_vol_*` / `*_cote` / `*_toit` / `*_fenetres` de `adb39df` sont marquées `"obsolete": true` et ne doivent pas être posées).
+Statut : **posé sur `main`** (pack d'Ocre `64fed9b` / `0602bea`), en remplacement des façades plates d'origine (les pièces séparées `fs_vol_*` / `*_cote` / `*_toit` / `*_fenetres` de `adb39df` restent marquées `"obsolete": true` et sont exclues du catalogue).
 
 ### Principe et conventions
 - Un seul sprite complet en 3/4 isométrique `<clé>_3q` par bâtiment (façade de rue `face x` pente 0,33 à gauche de l'ancre, retour de côté `face z` pente 0,70 à droite de l'ancre, toit plat industriel avec caissons, ventilateurs, tuyaux, cheminées et balises rouges peint d'un seul tenant).
@@ -132,3 +132,8 @@ Statut : livré (`status: "v1"`), à poser par Rivet à la place des façades pl
 Planches de contrôle (maquettes hors jeu, pas des captures) :
 - `/workspace/nml-shots/strip_3q.png` (assemblage iso complet de la rue de 80 m avec sols, lueurs et figurants `gen_fs_*`)
 - `/workspace/nml-shots/strip_3q_zoom.png` (gros plan 1:1 de 4 bâtiments avec échelle PNJ et calques `_neon` / `_fenetres`)
+
+### Pose retenue (3/4, main)
+- Les 19 sprites `*_3q` d'Ocre (`0602bea`, 20 poses avec `fs_bouche0` et `fs_bouche1`) remplacent `FN`, `BAS` et `fs_cabines` dans `BUILDINGS_STRIP` ; les volumes déjà en 3/4 (`fs_facade_nord`, `fs_neon7`, `fs_corestack`, `fs_retour`, `fs_capsules`) restent tels quels.
+- Catalogue et moteur : `src/core/catalogue.js` ignore les entrées `"obsolete": true` ; `src/render/view.js` et `editor/base.js` chargent automatiquement tout calque `<clé>_fenetres` en additif léger à vacillement lent (hors plafond mobile `animStats.on`, compté dans `animStats.fenetres`, fondu lié à l'occultation du support et figé en mouvement réduit), avant `<clé>_neon`. `fs_n_club` a sa tranche `saute` recalée à `[0.334, 0.36]` et `fs_gage` prend le libellé « Mont-de-piété ».
+- Dégagement `view.masques()` et trottoir sud : `fs_ocre` en `(27,4 ; 18,6)` devant sa fresque, `fs_racoleuse` en `(43,8 ; 16)` et `fs_mac` en `(45,2 ; 15,6)` au seuil des cabines, `fs_marius` en `(61,4 ; 16,4)`, ainsi que les figurants `gen_fs_client_imper` `(42,8 ; 14,8)` et `gen_fs_passante` `(38,4 ; 12,4)` ; reflets au sol et détritus sud avancés devant `z = 20`. `view.masques()` vide, accès ouest/est et ruelle Fusible libres, budget mobile `animStats.on <= 8` respecté.
