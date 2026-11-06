@@ -133,7 +133,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
     const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
-    if (b.ecran) { const e = ecranSprite(b, m, s); if (e) { world.add(e); item.extra.push(e); } } // écran dessiné par le code (Feed de Pulse Plaza)
+    if (b.ecran) { const e = ecranSprite(b, m, s); if (e) { world.add(e); item.extra.push(e); if (e.userData.ecran.flash) { world.add(e.userData.ecran.flash); item.extra.push(e.userData.ecran.flash); } } } // écran dessiné par le code (Feed de Pulse Plaza)
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
       c.scale.set(0.42, 0.42, 1); c.position.set(d.opening.x, 2.5, d.opening.z); world.add(c); item.extra.push(c);
@@ -292,8 +292,21 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       x.fillStyle = '#f2d8ff'; x.font = `${H * 0.075 | 0}px monospace`; x.fillText(P.sous, tx, H * 0.52, W - tx - 10);
       x.fillStyle = 'rgba(10,4,20,.75)'; x.fillRect(0, H * 0.84, W, H * 0.12); x.fillStyle = '#ffb860'; x.font = `${H * 0.06 | 0}px monospace`; x.fillText((E.marque ?? 'FEED 24/7') + ' · ' + P.bandeau, 8, H * 0.92, W - 16);
       x.setTransform(1, 0, 0, 1, 0, 0); t.needsUpdate = true; };
+    let flash = null;
+    if (E.beat) {
+      const cf = document.createElement('canvas'); cf.width = m.px[0]; cf.height = m.px[1]; const xf = cf.getContext('2d');
+      xf.setTransform((tr[0] - tl[0]) / W, (tr[1] - tl[1]) / W, 0, 1, tl[0], tl[1]);
+      const rg = xf.createRadialGradient(W * 0.5, H * 0.5, H * 0.05, W * 0.5, H * 0.5, Math.max(W, H) * 0.68);
+      rg.addColorStop(0, 'rgba(255,235,255,0.92)'); rg.addColorStop(0.55, 'rgba(235,155,255,0.62)'); rg.addColorStop(1, 'rgba(180,90,255,0.28)');
+      xf.fillStyle = rg; xf.fillRect(0, 0, W, H);
+      xf.strokeStyle = 'rgba(255,250,255,0.98)'; xf.lineWidth = Math.max(4, H * 0.045); xf.strokeRect(xf.lineWidth * 0.5, xf.lineWidth * 0.5, W - xf.lineWidth, H - xf.lineWidth);
+      const tf = new THREE.CanvasTexture(cf); tf.colorSpace = THREE.SRGBColorSpace;
+      flash = new THREE.Sprite(new THREE.SpriteMaterial({ map: tf, color: E.flash || '#f4a8ff', transparent: true, blending: THREE.AdditiveBlending, depthTest: false, depthWrite: false, opacity: 0 }));
+      flash.center.copy(base.center); flash.scale.copy(base.scale); flash.position.copy(base.position);
+      flash.userData.neon = 'ecran_flash'; flash.userData.fondu = 1;
+    }
     draw(E.decale || 0); const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
-    s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: -1, decale: E.decale || 0, periode: E.periode || 9, beat: E.beat ?? null }; ecrans.push(s); return s;
+    s.center.copy(base.center); s.scale.copy(base.scale); s.position.copy(base.position); s.userData.ecran = { draw, page: -1, decale: E.decale || 0, periode: E.periode || 9, beat: E.beat ?? null, flash, W: base.scale.x, H: base.scale.y }; ecrans.push(s); return s;
   }
   // Enseignes animées par le code (loc.enseignes, format : docs/villes/steel/ENSEIGNES_CODE.md) : calque « contour lumineux » additif posé
   // sur le support d'un bâtiment (même ancre monde), dont seule la luminosité varie (clignote, grésille, saute, pulse). Une couleur par image :
@@ -327,26 +340,35 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // Calques rythmiques <clé>_ecran et <clé>_pulse (Pulse Plaza 3/4) : additifs, pilotés par l'analyseur Web Audio ostCentre (kick ~170 BPM ≈ 0,35 s, mid, énergie).
   // Sur mobile (< 700 px), priorité aux calques marqués priorite > 0 dans un plafond de 8 animations rythmiques ; le surplus reste allumé fixe.
   const T_KICK_REF = 60 / 170;
+  let kickAnchor = 0, prevOstBeat = 0;
   function calqueRythme(b, calque, cfg = {}) {
     const key = cfg.key || (b.sprite + '_' + calque), m = bman[key], item = bills.find(i => i.obj.userData.buildingId === b.id);
     if (!item || !m || !SKIN[key] || m.obsolete || m.anime || cfg.mode === 'eteint') return;
     const k = b.k || 1, L = layerTex(key, m), W = L.cw / K * k, H = L.ch / K * k * (b.sy || 1);
-    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: L.tex, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: cfg.couleur || '#ffffff', opacity: 0 }));
+    const col = new THREE.Color(cfg.couleur || '#ffffff');
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: L.tex, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: col.clone(), opacity: 0 }));
     s.center.set((m.anchor[0] - L.x0) / L.cw, 1 - (m.anchor[1] - L.y0) / L.ch); s.scale.set(W, H, 1); s.position.copy(item.obj.position);
     const defMode = calque === 'pulse_b' ? 'mid' : calque === 'ecran' ? 'mid' : 'kick';
-    const defI = calque === 'faisceau' ? 1.0 : calque === 'pulse2' ? 0.98 : calque === 'pulse_b' ? 0.88 : calque === 'ecran' ? 0.84 : 0.96;
+    const defI = calque === 'faisceau' ? 1.0 : calque === 'pulse2' ? 1.0 : calque === 'pulse_b' ? 0.85 : calque === 'ecran' ? 0.90 : 0.98;
+    const defVeille = calque === 'faisceau' ? 0.02 : (calque === 'pulse' || calque === 'pulse2') ? 0.04 : 0.06;
+    const defGain = (calque === 'pulse' || calque === 'pulse2') ? 1.50 : calque === 'faisceau' ? 1.25 : 1.15;
     s.userData.pulse = {
       key,
       building: b.id,
       calque,
       mode: cfg.mode || defMode,
       i: cfg.intensite ?? defI,
-      ph: cfg.decale ?? (pulses.length * 0.17),
+      veille: cfg.veille ?? defVeille,
+      gain: cfg.gain ?? defGain,
+      cr: col.r,
+      cg: col.g,
+      cb: col.b,
+      ph: cfg.decale ?? ((cfg.mode || defMode) === 'kick' ? 0 : pulses.length * 0.17),
       periode: cfg.periode || (calque === 'ecran' ? 9 : 8 * T_KICK_REF),
       priorite: cfg.priorite || 0,
       W,
       H,
-      punch: cfg.punch ?? ((calque === 'pulse' || calque === 'pulse2' || calque === 'faisceau') ? 0.016 : 0.008),
+      punch: cfg.punch ?? ((calque === 'pulse' || calque === 'pulse2' || calque === 'faisceau') ? 0.026 : 0.012),
     };
     s.userData.fondu = 1;
     world.add(s); item.extra.push(s); pulses.push(s);
@@ -356,34 +378,36 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (u.mode === 'balise') { const f = ((t / (u.periode || 2.8) + u.ph) % 1 + 1) % 1; return f < 0.28 ? 0.98 : 0.14; }
     const on = !!ost?.playing, tc = on ? (ost.currentTime || t) : t;
     const tk = ost?.bpm >= 95 ? 60 / ost.bpm : T_KICK_REF;
+    const v = u.veille ?? 0.04;
     if (!on) {
-      return u.mode === 'mesure' ? 0.26 + 0.10 * Math.sin((t / (u.periode || 9) + u.ph) * Math.PI * 2) : 0.20;
+      return u.mode === 'mesure' ? 0.18 + 0.08 * Math.sin((t / (u.periode || 9) + u.ph) * Math.PI * 2) : v;
     }
     const beat = ost.beat || 0, bass = ost.bass || 0, mid = ost.mid || 0, high = ost.high || 0, nrj = ost.energy || 0;
+    const rel = (tc - kickAnchor) / tk;
     if (u.mode === 'kick') {
-      const wave = Math.pow(0.5 + 0.5 * Math.cos(((tc / tk) + u.ph) * Math.PI * 2), 5);
-      const env = Math.pow(beat, 1.15) * (u.ph ? 0.85 + 0.15 * Math.cos(u.ph * Math.PI * 2) : 1);
-      const subHit = Math.max(0, (bass - 0.55) * 0.9) * wave;
-      return 0.06 + 0.94 * Math.min(1, Math.max(env * 1.12, subHit, (0.35 + 0.45 * nrj) * wave));
+      const wave = Math.pow(0.5 + 0.5 * Math.cos((rel - (u.ph || 0)) * Math.PI * 2), 8);
+      const env = u.ph ? Math.pow(beat, 1.55) * (0.55 + 0.45 * wave) : Math.pow(beat, 1.55);
+      const drive = Math.max(env * 1.18, wave * Math.min(1, 0.28 + 0.85 * Math.max(bass, nrj * 0.85)));
+      return v + (1 - v) * Math.min(1, drive);
     }
     if (u.mode === 'demi_kick') {
-      const sub = Math.pow(0.5 + 0.5 * Math.cos(((tc / (tk * 2)) + u.ph) * Math.PI * 2), 3);
-      const alt = ((ost.kickCount || 0) + (u.ph >= 0.35 ? 1 : 0)) % 2 ? 1 : 0.22;
-      return 0.12 + 0.86 * Math.min(1, Math.max(Math.pow(beat, 1.2) * alt, bass * 0.55 * alt * sub, 0.45 * sub));
+      const sub = Math.pow(0.5 + 0.5 * Math.cos((rel * 0.5 - (u.ph || 0)) * Math.PI * 2), 5);
+      const alt = ((ost.kickCount || 0) + (u.ph >= 0.35 ? 1 : 0)) % 2 ? 1 : 0.14;
+      return v + (1 - v) * Math.min(1, Math.max(Math.pow(beat, 1.45) * alt, 0.55 * sub * Math.max(0.4, bass)));
     }
     if (u.mode === 'high' || u.mode === 'aigus') {
-      const shimmer = Math.pow(0.5 + 0.5 * Math.sin(((tc / (tk * 0.5)) + u.ph) * Math.PI * 2), 3);
-      const eq = Math.max(high * 1.45, mid * 0.75, beat * 0.45, 0.38 * shimmer);
-      return 0.10 + 0.90 * Math.min(1, eq);
+      const shimmer = Math.pow(0.5 + 0.5 * Math.sin((rel * 2 + u.ph) * Math.PI * 2), 4);
+      const eq = Math.max(high * 1.45, mid * 0.65, beat * 0.35, 0.32 * shimmer);
+      return v + (1 - v) * Math.min(1, eq);
     }
     if (u.mode === 'mid') {
-      const groove = Math.pow(0.5 + 0.5 * Math.sin(((tc / (tk * 2)) + u.ph + 0.25) * Math.PI * 2), 2);
-      const eq = Math.max(mid * 1.30, nrj * 0.95, 0.36 * groove);
-      return 0.14 + 0.84 * Math.min(1, eq);
+      const groove = Math.pow(0.5 + 0.5 * Math.sin((rel * 0.5 + u.ph + 0.25) * Math.PI * 2), 3);
+      const eq = Math.max(mid * 1.30, nrj * 0.90, 0.32 * groove);
+      return v + (1 - v) * Math.min(1, eq);
     }
     if (u.mode === 'mesure') {
       const w = 0.5 + 0.5 * Math.sin(((tc / (u.periode || 9)) + u.ph) * Math.PI * 2);
-      return 0.24 + 0.52 * w + 0.24 * Math.min(1, nrj * 0.8 + beat * 0.5);
+      return 0.18 + 0.54 * w + 0.28 * Math.min(1, nrj * 0.75 + beat * 0.6);
     }
     return 0.7;
   }
@@ -417,13 +441,15 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   function beamPose(m, t, ost) {
     const u = m.userData.beam;
-    const on = u.beat && !!ost?.playing, beat = on ? (ost.beat || 0) : 0, nrj = on ? (ost.energy || 0) : 0;
-    const kKick = on ? Math.max(Math.pow(beat, 1.25), (ost.bass || 0) * 0.75, nrj * 0.50) : 0;
+    const on = u.beat && !!ost?.playing, beat = on ? (ost.beat || 0) : 0;
+    const tk = ost?.bpm >= 95 ? 60 / ost.bpm : T_KICK_REF;
+    const wv = on ? Math.pow(0.5 + 0.5 * Math.cos(((ost.currentTime || t) - kickAnchor) / tk * Math.PI * 2), 8) : 0;
+    const kKick = on ? Math.min(1, Math.max(Math.pow(beat, 1.45) * 1.15, wv * Math.min(1, 0.25 + 0.85 * (ost.bass || 0)))) : 0;
     m.rotation.y = u.cap + u.bal * Math.sin((t + u.ph) / u.T * Math.PI * 2);
-    m.rotation.x = -(u.inc + (u.beat ? 0.055 * kKick : 0));
-    const sLat = u.beat ? 1 + 0.22 * kKick : 1;
+    m.rotation.x = -(u.inc + (u.beat ? 0.075 * kKick : 0));
+    const sLat = u.beat ? 1 + 0.34 * kKick : 1;
     m.scale.set(sLat, 1, sLat);
-    if (u.beat) m.material.opacity = Math.min(1, (m.userData.fondu ?? 1) * (u.base * (0.55 + 1.55 * kKick)));
+    if (u.beat) m.material.opacity = Math.min(1, (m.userData.fondu ?? 1) * (u.base * (on ? 0.24 + 2.35 * kKick : 0.20)));
   }
   let glowT = null;
   function glowTex() { if (glowT) return glowT; const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
@@ -439,16 +465,34 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
     const calme = !!document.body?.classList?.contains('reduce-motion');
     const ostOn = !!ostCentre?.playing;
-    const kickEnv = calme || !ostOn ? 0 : Math.max(Math.pow(ostCentre.beat || 0, 1.2), Math.max(0, ((ostCentre.bass || 0) - 0.35) * 0.9));
+    if (ostOn) {
+      const bNow = ostCentre.beat || 0, tcNow = ostCentre.currentTime || t;
+      if (bNow > prevOstBeat + 0.25 || bNow >= 0.96) kickAnchor = tcNow;
+      prevOstBeat = bNow;
+    } else prevOstBeat = 0;
+    const tkNow = ostCentre?.bpm >= 95 ? 60 / ostCentre.bpm : T_KICK_REF;
+    const kickWave = ostOn ? Math.pow(0.5 + 0.5 * Math.cos(((ostCentre.currentTime || t) - kickAnchor) / tkNow * Math.PI * 2), 8) : 0;
+    const kickEnv = calme || !ostOn ? 0 : Math.min(1, Math.max(Math.pow(ostCentre.beat || 0, 1.45) * 1.15, kickWave * Math.min(1, 0.25 + 0.85 * (ostCentre.bass || 0))));
     const midEnv = calme || !ostOn ? 0 : Math.max((ostCentre.mid || 0) * 1.25, (ostCentre.energy || 0) * 0.90);
     if (ecrans.length && !calme) for (const e of ecrans) {
       const u = e.userData.ecran, k = Math.floor(t / u.periode) + u.decale;
       if (k !== u.page) { u.page = k; u.draw(k); }
-      if (u.beat || pulses.length) e.userData.beatOp = ostOn ? 0.84 + 0.16 * Math.min(1, kickEnv * 0.85 + midEnv * 0.35) : 0.92;
+      if (u.beat || pulses.length) {
+        const hit = ostOn ? Math.min(1, kickEnv * 0.96 + midEnv * 0.08) : 0;
+        e.userData.beatOp = ostOn ? 0.66 + 0.34 * hit : 0.68;
+        const g = ostOn ? 0.86 + 0.90 * kickEnv : 0.86;
+        e.material.color.setRGB(g, g, g);
+        const sw = ostOn ? 1 + 0.022 * kickEnv : 1;
+        e.scale.set(u.W * sw, u.H * sw, 1);
+        if (u.flash) {
+          u.flash.material.opacity = ostOn ? Math.min(0.88, (u.flash.userData.fondu ?? 1) * 0.82 * Math.pow(kickEnv, 1.2)) : 0;
+          u.flash.scale.set(u.W * sw, u.H * sw, 1);
+        }
+      }
     }
     animStats.ecrans = ecrans.length;
     // enseignes code et projecteurs : une couleur ou une rotation par image, hors plafond animStats.on (catégories à part) ; figés si mouvement réduit
-    for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : neonK(u, t) * (pulses.length && u.effet === 'pulse' ? (ostOn ? 0.78 + 0.34 * kickEnv : 0.85) : 1))); }
+    for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : (pulses.length && u.effet === 'pulse' ? (ostOn ? 0.28 + 0.72 * kickEnv : 0.34 * neonK(u, t)) : neonK(u, t)))); }
     for (const s of fenetres) { const u = s.userData.fenetre, k = calme ? 1 : 0.78 + 0.22 * (0.6 * Math.sin(t * 1.25 + u.ph) + 0.4 * Math.sin(t * 2.9 + u.ph * 1.7));
       s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k); }
     let pulsesOn = 0;
@@ -460,9 +504,12 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         const anim = !calme && u.mode !== 'fixe' && pulsesOn < pMax && (u.priorite > 0 || inn);
         if (anim) pulsesOn++;
         s.userData.pulseOn = anim;
-        const k = calme ? 0.55 : anim ? pulseK(u, t, ostCentre) : (ostOn ? 0.38 : 0.18);
+        const k = calme ? 0.55 : anim ? pulseK(u, t, ostCentre) : (ostOn ? 0.26 : (u.veille ?? 0.04));
         s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k);
-        const swell = anim && ostOn && u.punch ? 1 + u.punch * Math.max(0, k - 0.35) : 1;
+        const span = Math.max(0.1, 1 - (u.veille ?? 0.04));
+        const g = anim && ostOn && u.gain > 1 ? 1 + (u.gain - 1) * Math.max(0, (k - (u.veille ?? 0.04)) / span) : 1;
+        s.material.color.setRGB(u.cr * g, u.cg * g, u.cb * g);
+        const swell = anim && ostOn && u.punch ? 1 + u.punch * Math.max(0, k - 0.22) : 1;
         s.scale.set(u.W * swell, u.H * swell, 1);
       }
     }
@@ -470,10 +517,10 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     else for (const m of beams) if (m.userData.beam?.beat) m.material.opacity = (m.userData.fondu ?? 1) * m.userData.beam.base;
     animStats.enseignes = neons.length; animStats.fenetres = fenetres.length; animStats.pulses = pulses.length; animStats.pulsesOn = pulsesOn; animStats.projecteurs = beams.length;
     for (const f of flick) {
-      const flk = f.flicker ? 0.82 + 0.18 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2) : 1;
-      const bk = !calme && f.beat ? (ostOn ? (f.beat === 'mid' ? 0.52 + 0.85 * midEnv : 0.40 + 1.10 * kickEnv) : 0.62) : 1;
-      f.m.opacity = Math.min(1, f.base * flk * bk);
-      if (f.obj && f.beat && !calme) { const sc = f.s0 * (1 + (ostOn ? 0.15 * (f.beat === 'mid' ? midEnv : kickEnv) : 0)); f.obj.scale.set(sc, sc, 1); }
+      const flk = f.flicker ? 0.84 + 0.16 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2) : 1;
+      const bk = !calme && f.beat ? (ostOn ? (f.beat === 'mid' ? 0.30 + 0.95 * midEnv : 0.14 + 1.40 * kickEnv) : 0.18) : 1;
+      f.m.opacity = Math.min(1, (f.obj?.userData.fondu ?? 1) * f.base * flk * bk);
+      if (f.obj && f.beat && !calme) { const sc = f.s0 * (1 + (ostOn ? (f.beat === 'mid' ? 0.16 * midEnv : 0.30 * kickEnv) : 0)); f.obj.scale.set(sc, sc, 1); }
     }
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
     // planches jouées une fois (portique de la Mega-Line) : remplacent le sprite de base le temps du passage, hors budget d'animations
@@ -585,7 +632,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
         if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
       const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else e.material.opacity = m.opacity; }
-    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse || e.userData.projecteur) e.userData.fondu = m.opacity; else if (e.userData.ecran) e.material.opacity = Math.min(0.98, m.opacity * (e.userData.beatOp ?? 0.92)); else e.material.opacity = Math.min(0.9, m.opacity); }
+    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse || e.userData.projecteur) e.userData.fondu = m.opacity; else if (e.userData.ecran) e.material.opacity = Math.min(1, m.opacity * (e.userData.beatOp ?? 0.9)); else e.material.opacity = Math.min(0.9, m.opacity); }
   }
   // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
   function furnitureOcclusion() {

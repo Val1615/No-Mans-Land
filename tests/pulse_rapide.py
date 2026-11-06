@@ -22,7 +22,7 @@ with sync_playwright() as p:
         pg.screenshot(path=OUT+f'{name}_arrivee.png')
         ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_pulse').length")==9,f'{name} 9 PNJ')
         L=E("(()=>{const l=window.__nml.world.LOCATIONS.steel_pulse;return {ex:l.extras.map(e=>e.sprite),wk:l.walkers.map(w=>w.sprite),skin:l.ground.skin,paint:(l.ground.paint||[]).map(r=>r.skin)}})()")
-        ok(len(L['ex'])==8 and len(set(L['ex']+L['wk']))==len(L['ex']+L['wk']) and all(x.startswith('gen_pp_foule_') and x[-1] in 'cdefghij' for x in L['ex']),f'{name} 8 figurants distincts, aucun clone',L)
+        ok(len(L['ex'])>=30 and len(L['wk'])>=4 and len(set(L['ex']+L['wk']))>=22 and {f'gen_pp_foule_{c}' for c in 'cdefghij'}<=set(L['ex']),f'{name} foule densifiée ({len(L["ex"])} figurants + {len(L["wk"])} passants, {len(set(L["ex"]+L["wk"]))} sprites distincts)',L)
         ok(L['skin']=='g_pp_dalle_sombre' and 'g_pp_allee' in L['paint'],f'{name} dalle sombre et allées (ground.paint)',L['skin'])
         ok(E("document.querySelectorAll('.wlabel.junction,.wlabel.edge').length")==0 and E("[...document.querySelectorAll('.wlabel')].every(l=>!/Escalier|Center-Town|Strip/.test(l.textContent))"),f'{name} aucune étiquette sur les accès')
         W=E("window.__nml.world.LOCATIONS.steel_pulse.buildings.filter(b=>/^pp_(facade|mur|nord|ouest)/.test(b.sprite)).map(b=>[b.id,b.x,b.z,b.x+b.w,b.z+b.d])")

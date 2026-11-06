@@ -200,13 +200,17 @@ with sync_playwright() as p:
             time.sleep(0.06)
             pulse_samples.append(E("Object.fromEntries(window.__nml.view.pulses().filter(p=>p.priorite>0).map(p=>[p.key,p.opacity]))"))
         feed_ops = [x.get('pp_ecran_feed_v2_3q_pulse', 0) for x in pulse_samples]
+        feed_ec = [x.get('pp_ecran_feed_v2_3q_ecran', 0) for x in pulse_samples]
         nord_ops = [x.get('pp_nord_a_v2_3q_pulse', 0) for x in pulse_samples]
         bb_ops = [x.get('pp_billboard_v2_3q_pulse', 0) for x in pulse_samples]
         bb_ec = [x.get('pp_billboard_v2_3q_ecran', 0) for x in pulse_samples]
-        check(f'{prof}: calques Pulse Plaza *_v2_3q_pulse / *_ecran modulés franchement par ostCentre',
-              max(feed_ops) - min(feed_ops) > 0.12 and max(nord_ops) - min(nord_ops) > 0.12
-              and max(bb_ops) - min(bb_ops) > 0.10 and max(bb_ec) > 0.3,
-              (round(min(feed_ops), 3), round(max(feed_ops), 3), round(min(nord_ops), 3), round(max(nord_ops), 3)))
+        pont_fs = [x.get('pp_pont_projecteurs_v2_3q_faisceau', 0) for x in pulse_samples]
+        check(f'{prof}: calques Pulse Plaza (Feed, Billboard, Nord_A, Pont faisceau<=0.5) frappent franchement sur le kick',
+              max(feed_ops) - min(feed_ops) > 0.45 and max(feed_ec) - min(feed_ec) > 0.45
+              and max(bb_ops) - min(bb_ops) > 0.45 and max(bb_ec) - min(bb_ec) > 0.45
+              and max(nord_ops) - min(nord_ops) > 0.45
+              and max(pont_fs) - min(pont_fs) > 0.22 and max(pont_fs) <= 0.51,
+              (round(min(feed_ops), 3), round(max(feed_ops), 3), round(min(pont_fs), 3), round(max(pont_fs), 3)))
 
         # Calques ar2_*_pulse2 / *_faisceau de Steel Arena : modulés sur la même lecture singleton ostCentre
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_arena';s.player.x=44;s.player.z=40;g.restore(s,true)})()")
@@ -217,10 +221,12 @@ with sync_playwright() as p:
             arena_samples.append(E("Object.fromEntries(window.__nml.view.pulses().filter(p=>p.priorite>=3).map(p=>[p.key,p.opacity]))"))
         ar_ex = [x.get('ar2_ecran_geant_x_pulse2', 0) for x in arena_samples]
         ar_ez = [x.get('ar2_ecran_geant_z_pulse2', 0) for x in arena_samples]
+        ar_ep = [x.get('ar2_facade_entree_pulse2', 0) for x in arena_samples]
         ar_fs = [x.get('ar2_facade_entree_faisceau', 0) for x in arena_samples]
-        check(f'{prof}: calques Steel Arena (écrans géants pulse2 + faisceaux) modulés franchement par ostCentre',
-              max(ar_ex) - min(ar_ex) > 0.12 and max(ar_ez) - min(ar_ez) > 0.10 and max(ar_fs) - min(ar_fs) > 0.10,
-              (round(min(ar_ex), 3), round(max(ar_ex), 3), round(min(ar_fs), 3), round(max(ar_fs), 3)))
+        check(f'{prof}: calques Steel Arena (écrans géants + entrée pulse2 + faisceaux) frappent franchement sur le kick',
+              max(ar_ex) - min(ar_ex) > 0.45 and max(ar_ez) - min(ar_ez) > 0.45
+              and max(ar_ep) - min(ar_ep) > 0.45 and max(ar_fs) - min(ar_fs) > 0.45,
+              (round(min(ar_ex), 3), round(max(ar_ex), 3), round(min(ar_ep), 3), round(max(ar_ep), 3)))
 
         if prof == 'desktop':
             # Enchaînement complet fin de piste -> piste suivante sur les 4 titres puis retour à la piste 01
