@@ -185,3 +185,47 @@ Overlays additifs **même taille et même ancre** que les sprites existants (`ar
 ### Chevauchements Arena détectés dans src/
 - `ar_toit_so` ∩ `ar_f_retour` = 16.0 m² — [0.0, 0.0, 20.0, 30.0] vs [0.0, 26.0, 4.0, 4.0] (**toit fond** au-dessus façade : attendu, pas un bug de pose au sol).
 - `ar_toit_se` ∩ `ar_f_angle` = 64.0 m² — [68.0, 14.0, 24.0, 16.0] vs [84.0, 22.0, 8.0, 8.0] (**toit fond** au-dessus façade : attendu, pas un bug de pose au sol).
+
+## Calques rythmiques pulse2 (kick fort) [proposition Ocre 2026-11-06]
+Les `_pulse` v1 étaient trop discrets (surtout toit, entrée, retour ouest, écrans). **Nouvelles clés `*_pulse2`** : même `px` / `ancre` que le parent ; rubans LED **larges et denses** ambre + blanc chaud (accents cyan), cohérents anthracite/ambre Arena. Anciennes `_pulse` correspondantes : `"obsolete": true` uniquement.
+**Priorité Rivet (kick)** : 1) `ar2_ecran_geant_x_pulse2` + `ar2_ecran_geant_z_pulse2` ; 2) faisceaux `*_faisceau` (toit + entrée + projecteurs) ; 3) `ar2_facade_entree_pulse2` + toits `ar2_toit_*_pulse2`.
+
+| clé | parent | px | ancre | bande | effet | prio mobile |
+|---|---|---|---|---|---|---|
+| `ar2_ecran_geant_x_pulse2` | `ar2_ecran_geant_x` | [480, 803] | [479, 802] | kick | cadre ambre/blanc + waveform/EQ lumineux (contenu additif) | 1 |
+| `ar2_ecran_geant_z_pulse2` | `ar2_ecran_geant_z` | [275, 792] | [0, 792] | kick | cadre ambre/blanc + waveform/EQ lumineux (contenu additif) | 1 |
+| `ar2_facade_entree_faisceau` | `ar2_facade_entree` | [801, 1016] | [800, 1014] | kick | cônes projecteurs ambre/blanc chaud visibles | 1 |
+| `ar2_toit_angle_se_faisceau` | `ar2_toit_angle_se` | [1803, 1930] | [1204, 1929] | kick | cônes projecteurs ambre/blanc chaud visibles | 1 |
+| `ar2_toit_x_faisceau` | `ar2_toit_x` | [1841, 1853] | [804, 1852] | kick | cônes projecteurs ambre/blanc chaud visibles | 1 |
+| `ar2_facade_entree_pulse2` | `ar2_facade_entree` | [801, 1016] | [800, 1014] | kick | bandeaux LED entrée + appliques | 2 |
+| `ar2_toit_angle_se_pulse2` | `ar2_toit_angle_se` | [1803, 1930] | [1204, 1929] | kick | rubans LED rive + anneaux dômes denses | 2 |
+| `ar2_toit_angle_so_faisceau` | `ar2_toit_angle_so` | [1952, 1808] | [915, 1807] | kick | cônes projecteurs ambre/blanc chaud visibles | 2 |
+| `ar2_toit_angle_so_pulse2` | `ar2_toit_angle_so` | [1952, 1808] | [915, 1807] | kick | rubans LED rive + anneaux dômes denses | 2 |
+| `ar2_toit_x_pulse2` | `ar2_toit_x` | [1841, 1853] | [804, 1852] | kick | rubans LED rive + anneaux dômes denses | 2 |
+| `ar2_toit_z_faisceau` | `ar2_toit_z` | [1501, 1600] | [1198, 1599] | kick | cônes projecteurs ambre/blanc chaud visibles | 2 |
+| `ar2_toit_z_pulse2` | `ar2_toit_z` | [1501, 1600] | [1198, 1599] | kick | rubans LED rive + anneaux dômes denses | 2 |
+| `ar_ens_faisceau` | `?` | [768, 256] | [64, 255] | kick | rubans horizontaux façade | 2 |
+| `ar_mat_projecteur_pulse_3q_faisceau` | `ar_mat_projecteur_pulse_3q` | [143, 338] | [84, 335] | kick | cônes projecteurs ambre/blanc chaud visibles | 2 |
+| `ar_projecteur_faisceau` | `ar_projecteur` | [160, 300] | [80, 299] | kick | cônes projecteurs ambre/blanc chaud visibles | 2 |
+| `ar_pylone_projecteur_faisceau` | `ar_pylone_projecteur` | [218, 600] | [105, 599] | kick | cônes projecteurs ambre/blanc chaud visibles | 2 |
+| `ar2_facade_angle_pulse2` | `ar2_facade_angle` | [677, 854] | [0, 811] | kick | rubans horizontaux façade | 3 |
+| `ar2_facade_courbe_x_pulse2` | `ar2_facade_courbe_x` | [801, 1016] | [800, 1014] | kick | rubans horizontaux façade | 3 |
+| `ar2_facade_courbe_z_pulse2` | `ar2_facade_courbe_z` | [552, 1138] | [0, 1135] | kick | rubans horizontaux façade | 3 |
+| `ar2_facade_retour_ouest_pulse2` | `ar2_facade_retour_ouest` | [107, 847] | [105, 845] | kick | bandeaux serrés retour ouest (ex-faible) | 3 |
+| `ar_tribunes_3q_pulse2` | `ar_tribunes_3q` | [725, 469] | [496, 467] | kick | rubans horizontaux façade | 3 |
+| `ar_regie_3q_pulse2` | `ar_regie_3q` | [447, 314] | [332, 312] | kick | rubans horizontaux façade | 4 |
+
+### Faisceaux projecteurs (calque séparé `_faisceau`)
+- Toits / entrée : `ar2_toit_x_faisceau`, `ar2_toit_z_faisceau`, `ar2_toit_angle_se_faisceau`, `ar2_toit_angle_so_faisceau`, `ar2_facade_entree_faisceau` — même taille/ancre que le parent ; brancher sur le **kick** (opacity pulse fort).
+- Props : `ar_projecteur_faisceau`, `ar_pylone_projecteur_faisceau`, `ar_mat_projecteur_pulse_3q_faisceau`.
+
+Maquettes : `/workspace/nml-shots/arena_pulse2.png` (avant `_pulse` / après `_pulse2`+`_faisceau`).
+
+### Branchement Rivet (résumé)
+```
+// kick fort — plafond mobile : garder en priorité
+ecrans: ar2_ecran_geant_x_pulse2, ar2_ecran_geant_z_pulse2
+faisceaux: ar2_toit_*_faisceau, ar2_facade_entree_faisceau, ar_*_faisceau
+rubans: ar2_facade_entree_pulse2, ar2_toit_*_pulse2, ar2_facade_*_pulse2, ar_tribunes_3q_pulse2
+// ne plus brancher les *_pulse obsolete (toit/entrée/écrans/facades listés)
+```

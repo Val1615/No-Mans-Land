@@ -3091,7 +3091,8 @@
     "parent": "ar2_facade_entree",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_facade_entree"
+    "source": "overlay LED/rubans from ar2_facade_entree",
+    "obsolete": true
   },
   "ar2_facade_courbe_x_pulse": {
     "file": "steel/steel_arena/ar2_facade_courbe_x_pulse.webp",
@@ -3107,7 +3108,8 @@
     "parent": "ar2_facade_courbe_x",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_facade_courbe_x"
+    "source": "overlay LED/rubans from ar2_facade_courbe_x",
+    "obsolete": true
   },
   "ar2_facade_courbe_z_pulse": {
     "file": "steel/steel_arena/ar2_facade_courbe_z_pulse.webp",
@@ -3123,7 +3125,8 @@
     "parent": "ar2_facade_courbe_z",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_facade_courbe_z"
+    "source": "overlay LED/rubans from ar2_facade_courbe_z",
+    "obsolete": true
   },
   "ar2_facade_angle_pulse": {
     "file": "steel/steel_arena/ar2_facade_angle_pulse.webp",
@@ -3139,7 +3142,8 @@
     "parent": "ar2_facade_angle",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_facade_angle"
+    "source": "overlay LED/rubans from ar2_facade_angle",
+    "obsolete": true
   },
   "ar2_facade_retour_ouest_pulse": {
     "file": "steel/steel_arena/ar2_facade_retour_ouest_pulse.webp",
@@ -3155,7 +3159,8 @@
     "parent": "ar2_facade_retour_ouest",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_facade_retour_ouest"
+    "source": "overlay LED/rubans from ar2_facade_retour_ouest",
+    "obsolete": true
   },
   "ar2_toit_x_pulse": {
     "file": "steel/steel_arena/ar2_toit_x_pulse.webp",
@@ -3171,7 +3176,8 @@
     "parent": "ar2_toit_x",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_toit_x"
+    "source": "overlay LED/rubans from ar2_toit_x",
+    "obsolete": true
   },
   "ar2_toit_z_pulse": {
     "file": "steel/steel_arena/ar2_toit_z_pulse.webp",
@@ -3187,7 +3193,8 @@
     "parent": "ar2_toit_z",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_toit_z"
+    "source": "overlay LED/rubans from ar2_toit_z",
+    "obsolete": true
   },
   "ar2_toit_angle_se_pulse": {
     "file": "steel/steel_arena/ar2_toit_angle_se_pulse.webp",
@@ -3203,7 +3210,8 @@
     "parent": "ar2_toit_angle_se",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_toit_angle_se"
+    "source": "overlay LED/rubans from ar2_toit_angle_se",
+    "obsolete": true
   },
   "ar2_toit_angle_so_pulse": {
     "file": "steel/steel_arena/ar2_toit_angle_so_pulse.webp",
@@ -3219,7 +3227,8 @@
     "parent": "ar2_toit_angle_so",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_toit_angle_so"
+    "source": "overlay LED/rubans from ar2_toit_angle_so",
+    "obsolete": true
   },
   "ar2_ecran_geant_x_pulse": {
     "file": "steel/steel_arena/ar2_ecran_geant_x_pulse.webp",
@@ -3235,7 +3244,8 @@
     "parent": "ar2_ecran_geant_x",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_ecran_geant_x"
+    "source": "overlay LED/rubans from ar2_ecran_geant_x",
+    "obsolete": true
   },
   "ar2_ecran_geant_z_pulse": {
     "file": "steel/steel_arena/ar2_ecran_geant_z_pulse.webp",
@@ -3251,7 +3261,8 @@
     "parent": "ar2_ecran_geant_z",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar2_ecran_geant_z"
+    "source": "overlay LED/rubans from ar2_ecran_geant_z",
+    "obsolete": true
   },
   "ar_tribunes_3q_pulse": {
     "file": "steel/steel_arena/ar_tribunes_3q_pulse.webp",
@@ -3267,7 +3278,8 @@
     "parent": "ar_tribunes_3q",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar_tribunes_3q"
+    "source": "overlay LED/rubans from ar_tribunes_3q",
+    "obsolete": true
   },
   "ar_regie_3q_pulse": {
     "file": "steel/steel_arena/ar_regie_3q_pulse.webp",
@@ -3283,7 +3295,8 @@
     "parent": "ar_regie_3q",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar_regie_3q"
+    "source": "overlay LED/rubans from ar_regie_3q",
+    "obsolete": true
   },
   "ar_guichets_3q_pulse": {
     "file": "steel/steel_arena/ar_guichets_3q_pulse.webp",
@@ -3380,5 +3393,383 @@
     "status": "v1",
     "layer": "pulse",
     "source": "overlay LED/rubans from ar_foodtruck_nouilles_3q"
+  },
+  "ar2_toit_x_pulse2": {
+    "file": "steel/steel_arena/ar2_toit_x_pulse2.webp",
+    "px": [
+      1841,
+      1853
+    ],
+    "anchor": [
+      804,
+      1852
+    ],
+    "additive": true,
+    "parent": "ar2_toit_x",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 261176
+  },
+  "ar2_toit_z_pulse2": {
+    "file": "steel/steel_arena/ar2_toit_z_pulse2.webp",
+    "px": [
+      1501,
+      1600
+    ],
+    "anchor": [
+      1198,
+      1599
+    ],
+    "additive": true,
+    "parent": "ar2_toit_z",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 171638
+  },
+  "ar2_toit_angle_se_pulse2": {
+    "file": "steel/steel_arena/ar2_toit_angle_se_pulse2.webp",
+    "px": [
+      1803,
+      1930
+    ],
+    "anchor": [
+      1204,
+      1929
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_se",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 322256
+  },
+  "ar2_toit_angle_so_pulse2": {
+    "file": "steel/steel_arena/ar2_toit_angle_so_pulse2.webp",
+    "px": [
+      1952,
+      1808
+    ],
+    "anchor": [
+      915,
+      1807
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_so",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 271176
+  },
+  "ar2_facade_entree_pulse2": {
+    "file": "steel/steel_arena/ar2_facade_entree_pulse2.webp",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "additive": true,
+    "parent": "ar2_facade_entree",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 136051
+  },
+  "ar2_facade_courbe_x_pulse2": {
+    "file": "steel/steel_arena/ar2_facade_courbe_x_pulse2.webp",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "additive": true,
+    "parent": "ar2_facade_courbe_x",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 85217
+  },
+  "ar2_facade_courbe_z_pulse2": {
+    "file": "steel/steel_arena/ar2_facade_courbe_z_pulse2.webp",
+    "px": [
+      552,
+      1138
+    ],
+    "anchor": [
+      0,
+      1135
+    ],
+    "additive": true,
+    "parent": "ar2_facade_courbe_z",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 59395
+  },
+  "ar2_facade_angle_pulse2": {
+    "file": "steel/steel_arena/ar2_facade_angle_pulse2.webp",
+    "px": [
+      677,
+      854
+    ],
+    "anchor": [
+      0,
+      811
+    ],
+    "additive": true,
+    "parent": "ar2_facade_angle",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 73198
+  },
+  "ar2_facade_retour_ouest_pulse2": {
+    "file": "steel/steel_arena/ar2_facade_retour_ouest_pulse2.webp",
+    "px": [
+      107,
+      847
+    ],
+    "anchor": [
+      105,
+      845
+    ],
+    "additive": true,
+    "parent": "ar2_facade_retour_ouest",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 10858
+  },
+  "ar2_ecran_geant_x_pulse2": {
+    "file": "steel/steel_arena/ar2_ecran_geant_x_pulse2.webp",
+    "px": [
+      480,
+      803
+    ],
+    "anchor": [
+      479,
+      802
+    ],
+    "additive": true,
+    "parent": "ar2_ecran_geant_x",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 37134
+  },
+  "ar2_ecran_geant_z_pulse2": {
+    "file": "steel/steel_arena/ar2_ecran_geant_z_pulse2.webp",
+    "px": [
+      275,
+      792
+    ],
+    "anchor": [
+      0,
+      792
+    ],
+    "additive": true,
+    "parent": "ar2_ecran_geant_z",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 19566
+  },
+  "ar_tribunes_3q_pulse2": {
+    "file": "steel/steel_arena/ar_tribunes_3q_pulse2.webp",
+    "px": [
+      725,
+      469
+    ],
+    "anchor": [
+      496,
+      467
+    ],
+    "additive": true,
+    "parent": "ar_tribunes_3q",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 68087
+  },
+  "ar_regie_3q_pulse2": {
+    "file": "steel/steel_arena/ar_regie_3q_pulse2.webp",
+    "px": [
+      447,
+      314
+    ],
+    "anchor": [
+      332,
+      312
+    ],
+    "additive": true,
+    "parent": "ar_regie_3q",
+    "status": "v2",
+    "layer": "pulse2",
+    "bande": "kick",
+    "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
+    "pulse_px": 42710
+  },
+  "ar2_toit_x_faisceau": {
+    "file": "steel/steel_arena/ar2_toit_x_faisceau.webp",
+    "px": [
+      1841,
+      1853
+    ],
+    "anchor": [
+      804,
+      1852
+    ],
+    "additive": true,
+    "parent": "ar2_toit_x",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "faisceaux projecteurs ambre visibles",
+    "pulse_px": 62743
+  },
+  "ar2_toit_z_faisceau": {
+    "file": "steel/steel_arena/ar2_toit_z_faisceau.webp",
+    "px": [
+      1501,
+      1600
+    ],
+    "anchor": [
+      1198,
+      1599
+    ],
+    "additive": true,
+    "parent": "ar2_toit_z",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "faisceaux projecteurs ambre visibles",
+    "pulse_px": 57571
+  },
+  "ar2_toit_angle_se_faisceau": {
+    "file": "steel/steel_arena/ar2_toit_angle_se_faisceau.webp",
+    "px": [
+      1803,
+      1930
+    ],
+    "anchor": [
+      1204,
+      1929
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_se",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "faisceaux projecteurs ambre visibles",
+    "pulse_px": 19824
+  },
+  "ar2_toit_angle_so_faisceau": {
+    "file": "steel/steel_arena/ar2_toit_angle_so_faisceau.webp",
+    "px": [
+      1952,
+      1808
+    ],
+    "anchor": [
+      915,
+      1807
+    ],
+    "additive": true,
+    "parent": "ar2_toit_angle_so",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "faisceaux projecteurs ambre visibles",
+    "pulse_px": 51862
+  },
+  "ar2_facade_entree_faisceau": {
+    "file": "steel/steel_arena/ar2_facade_entree_faisceau.webp",
+    "px": [
+      801,
+      1016
+    ],
+    "anchor": [
+      800,
+      1014
+    ],
+    "additive": true,
+    "parent": "ar2_facade_entree",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "faisceaux projecteurs ambre visibles",
+    "pulse_px": 115868
+  },
+  "ar_projecteur_faisceau": {
+    "file": "steel/steel_arena/ar_projecteur_faisceau.webp",
+    "px": [
+      160,
+      300
+    ],
+    "anchor": [
+      80,
+      299
+    ],
+    "additive": true,
+    "parent": "ar_projecteur",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "cone faisceau projecteur",
+    "pulse_px": 2972
+  },
+  "ar_pylone_projecteur_faisceau": {
+    "file": "steel/steel_arena/ar_pylone_projecteur_faisceau.webp",
+    "px": [
+      218,
+      600
+    ],
+    "anchor": [
+      105,
+      599
+    ],
+    "additive": true,
+    "parent": "ar_pylone_projecteur",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "cone faisceau projecteur",
+    "pulse_px": 10179
+  },
+  "ar_mat_projecteur_pulse_3q_faisceau": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q_faisceau.webp",
+    "px": [
+      143,
+      338
+    ],
+    "anchor": [
+      84,
+      335
+    ],
+    "additive": true,
+    "parent": "ar_mat_projecteur_pulse_3q",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick",
+    "source": "cone faisceau projecteur",
+    "pulse_px": 6383
   }
 }

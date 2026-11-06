@@ -5030,7 +5030,8 @@
     "pose": "B('pp_pont0', '', 'pp_pont_projecteurs_3q', 10, 20, 8, 2, { solid: [], named: false })",
     "layers": [
       "pulse"
-    ]
+    ],
+    "obsolete": true
   },
   "pp_pont_projecteurs_3q_pulse": {
     "file": "steel/pulse_plaza/pp_pont_projecteurs_3q_pulse.webp",
@@ -5045,7 +5046,8 @@
     "additive": true,
     "parent": "pp_pont_projecteurs_3q",
     "status": "v1",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "pp_pont_projecteurs_3q_pulse_b": {
     "file": "steel/pulse_plaza/pp_pont_projecteurs_3q_pulse_b.webp",
@@ -5060,6 +5062,79 @@
     "additive": true,
     "parent": "pp_pont_projecteurs_3q",
     "status": "v1",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
+  },
+  "pp_pont_projecteurs_v2_3q": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_v2_3q.webp",
+    "px": [
+      391,
+      403
+    ],
+    "anchor": [
+      332,
+      401
+    ],
+    "footprint_m": [
+      8,
+      2
+    ],
+    "height_m": 5.0,
+    "source": "GenerateImage festif pont v2 + faisceaux",
+    "status": "v2",
+    "pose": "B('pp_pont0', '', 'pp_pont_projecteurs_v2_3q', 10, 20, 8, 2, { solid: [], named: false })",
+    "layers": [
+      "pulse",
+      "faisceau",
+      "pulse_b"
+    ]
+  },
+  "pp_pont_projecteurs_v2_3q_pulse": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_v2_3q_pulse.webp",
+    "px": [
+      391,
+      403
+    ],
+    "anchor": [
+      332,
+      401
+    ],
+    "additive": true,
+    "parent": "pp_pont_projecteurs_v2_3q",
+    "status": "v2",
+    "layer": "pulse",
+    "bande": "kick"
+  },
+  "pp_pont_projecteurs_v2_3q_faisceau": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_v2_3q_faisceau.webp",
+    "px": [
+      391,
+      403
+    ],
+    "anchor": [
+      332,
+      401
+    ],
+    "additive": true,
+    "parent": "pp_pont_projecteurs_v2_3q",
+    "status": "v2",
+    "layer": "faisceau",
+    "bande": "kick"
+  },
+  "pp_pont_projecteurs_v2_3q_pulse_b": {
+    "file": "steel/pulse_plaza/pp_pont_projecteurs_v2_3q_pulse_b.webp",
+    "px": [
+      391,
+      403
+    ],
+    "anchor": [
+      332,
+      401
+    ],
+    "additive": true,
+    "parent": "pp_pont_projecteurs_v2_3q",
+    "status": "v2",
+    "layer": "pulse_b",
+    "bande": "aigus"
   }
 }

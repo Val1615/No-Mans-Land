@@ -286,3 +286,11 @@ Vérification automatique des rectangles au sol (lecture seule de `src/data/puls
 - **Propositions v2** : emprises bâtiments = inchangées → aucun nouveau chevauchement bâtiment/bâtiment.
 - **Pont projecteurs** : placé en (10, 20, 8, 2) pour **éviter** le socle Holo-Tron (20, 14, 8, 8). Ne pas le poser à (20, 20).
 - **Écran haut `pp_ecran_n1`** (39, −0,6, 8, 0,6) chevauche `pp_fac_n3` : rester en décor accroché façade, pas solid.
+
+## Pont projecteurs v2 [proposition Ocre 2026-11-06]
+`pp_pont_projecteurs_3q` trop industriel / faisceaux invisibles → **`pp_pont_projecteurs_v2_3q`** (même emprise 8×2). Ancien + ses `_pulse` : obsolete.
+| clé | px | ancre | emprise | B(...) | calques |
+|---|---|---|---|---|---|
+| `pp_pont_projecteurs_v2_3q` | 391×403 | [332, 401] | (10,20,8,2) | `B('pp_pont0', '', 'pp_pont_projecteurs_v2_3q', 10, 20, 8, 2, { solid: [], named: false })` | `_pulse` (kick), `_faisceau` (kick, cônes visibles), `_pulse_b` (aigus cyan) |
+
+Rivet : remplacer le sprite du pont par `pp_pont_projecteurs_v2_3q` ; brancher `_faisceau` en additif kick (priorité haute avec les écrans Arena).
