@@ -86,7 +86,7 @@ Limites : la façade est s'arrête à z 6 comme avant, le bout nord-est du toit 
 
 ## Bâtiments complets (3/4)
 
-Statut : **proposition d'Ocre**, à poser par Rivet. Même méthode que les 19 `fs_*_3q` du Strip (`FREQUENCE_STRIP.md`). Valentin a rejeté les façades plates et les volumes assemblés par pièces : chaque bâtiment est un seul sprite en 3/4 avec façade, retour et toit peints ensemble, plus des calques `_3q_neon` et `_3q_fenetres` de même taille et même ancre (additif par le code).
+Statut : **posé sur `main`** (pack d'Ocre `7e5478b`), en remplacement des sprites plats, trucks, stands et bords ouest `pp_facade_*_o` (les anciennes clés plates restent conservées dans le manifeste et les assets). Même méthode que les 19 `fs_*_3q` du Strip (`FREQUENCE_STRIP.md`). Valentin a rejeté les façades plates et les volumes assemblés par pièces : chaque bâtiment est un seul sprite en 3/4 avec façade, retour et toit peints ensemble, plus des calques `_3q_neon` et `_3q_fenetres` de même taille et même ancre (additif par le code).
 
 L'enceinte `ar2_` (commit 58703a8, posée en 3e5a8c6) **reste telle quelle**.
 
@@ -135,3 +135,9 @@ L'enceinte `ar2_` (commit 58703a8, posée en 3e5a8c6) **reste telle quelle**.
 ### Planches
 - `/workspace/nml-shots/arena_3q.png` (maquette iso du parvis avec enceinte `ar2_` et les 12 bâtiments, pas une capture du jeu)
 - `/workspace/nml-shots/arena_3q_zoom.png` (gros plan 1:1 de 4 bâtiments avec calques `_neon` / `_fenetres`)
+
+### Pose retenue (3/4, main)
+- Les 12 sprites `*_3q` d'Ocre (`7e5478b`) sont posés dans `BUILDINGS_ARENA`, enceinte `ar2_` inchangée (`3e5a8c6`) : `ar_guichets`, `ar_booking`, `ar_securite`, `ar_merch_b`, `ar_merch_c`, `ar_truck_n`, `ar_truck_b`, `ar_regie`, `ar_tribunes`, `ar_tech_a`, `ar_tech_b` et `ar_tech_c` ; répliques `CLOSED_ARENA` ajoutées pour `ar_booking`, `ar_tribunes` et `ar_tech_a`.
+- Ajustements géométriques : `ar_booking` posé en `(10, 44, 4, 4)` bord à bord à l'est d'`ar_guichets` sur `z 44–48` (`ar_e_guichet` recentré en `(8,2 ; 48,2)`) plutôt qu'en `(10, 48)`, où la perspective 3/4 recouvrait 51 % de l'enseigne « GUICHETS », 45 % des vitrines et masquait Anouk ; `ar_tribunes` conservé tel quel en `(20, 32, 12, 8)` (couloir de 4 m vers la file et les portiques libre). Lampadaire ouest `ar_lamp0` avancé en `(4 ; 40)` au sud de `ar_tech_a` (`8×8`), grille d'évacuation décalée en `(34 ; 36)`.
+- Calques additifs hors plafond mobile (`animStats.on <= 8`) : 12 `*_3q_fenetres` à vacillement lent (`animStats.fenetres = 12`) et 10 `*_3q_neon` (`animStats.enseignes = 10` : 5 fixes auto sur `ar_guichets`, `ar_securite`, `ar_truck_b`, `ar_tribunes`, `ar_tech_a` ; 5 réglés dans `loc.enseignes` — `ar_booking` et `ar_regie` en `pulse` lent, `ar_merch_b` et `ar_merch_c` en `pulse` ambre décalé, `ar_truck_n` en léger `gresille` ; `ar_tech_b` et `ar_tech_c` sans néon).
+- Lueurs ambre/orangé, zones d'usure, PNJ et foule recalés autour des emprises élargies (`4×4` et `8×4`) et des bords ouest (`8×8` et `4×8`) : Clém avancée en `(53,6 ; 45)` devant `ar_merch_c`, spectateurs de l'écran ouest et grappes des stands/trucks/régie dégagés + clients devant Booking et Tribunes (85 figurants fixes, `view.masques()` vide, accès file/portiques/parvis vérifiés).
