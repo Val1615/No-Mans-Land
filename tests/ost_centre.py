@@ -194,17 +194,33 @@ with sync_playwright() as p:
               and kicks_logged >= 1 and first_kick and first_kick['beat'] == 1,
               (max_energy, max_bass, max_beat, kicks_logged, first_kick))
         check(f'{prof}: désabonnement onKick() respecté', kicks_still == kicks_after_off, (kicks_after_off, kicks_still))
-        # Calques *_3q_ecran / *_3q_pulse de Pulse Plaza : varient au rythme de la lecture OST et respectent la priorité mobile
+        # Calques *_v2_3q_pulse / *_faisceau / *_ecran de Pulse Plaza : varient franchement au rythme OST et respectent la priorité mobile
         pulse_samples = []
-        for _ in range(12):
-            time.sleep(0.08)
+        for _ in range(16):
+            time.sleep(0.06)
             pulse_samples.append(E("Object.fromEntries(window.__nml.view.pulses().filter(p=>p.priorite>0).map(p=>[p.key,p.opacity]))"))
-        feed_ops = [x.get('pp_ecran_feed_3q_pulse', 0) for x in pulse_samples]
-        nord_ops = [x.get('pp_nord_a_3q_pulse', 0) for x in pulse_samples]
-        bb_ops = [x.get('pp_billboard_3q_ecran', 0) for x in pulse_samples]
-        check(f'{prof}: calques Pulse Plaza *_3q_pulse / *_3q_ecran modulés en direct par ostCentre',
-              max(feed_ops) - min(feed_ops) > 0.03 and max(nord_ops) - min(nord_ops) > 0.03 and max(bb_ops) > 0.2,
+        feed_ops = [x.get('pp_ecran_feed_v2_3q_pulse', 0) for x in pulse_samples]
+        nord_ops = [x.get('pp_nord_a_v2_3q_pulse', 0) for x in pulse_samples]
+        bb_ops = [x.get('pp_billboard_v2_3q_pulse', 0) for x in pulse_samples]
+        bb_ec = [x.get('pp_billboard_v2_3q_ecran', 0) for x in pulse_samples]
+        check(f'{prof}: calques Pulse Plaza *_v2_3q_pulse / *_ecran modulés franchement par ostCentre',
+              max(feed_ops) - min(feed_ops) > 0.12 and max(nord_ops) - min(nord_ops) > 0.12
+              and max(bb_ops) - min(bb_ops) > 0.10 and max(bb_ec) > 0.3,
               (round(min(feed_ops), 3), round(max(feed_ops), 3), round(min(nord_ops), 3), round(max(nord_ops), 3)))
+
+        # Calques ar2_*_pulse2 / *_faisceau de Steel Arena : modulés sur la même lecture singleton ostCentre
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_arena';s.player.x=44;s.player.z=40;g.restore(s,true)})()")
+        time.sleep(0.5)
+        arena_samples = []
+        for _ in range(16):
+            time.sleep(0.06)
+            arena_samples.append(E("Object.fromEntries(window.__nml.view.pulses().filter(p=>p.priorite>=3).map(p=>[p.key,p.opacity]))"))
+        ar_ex = [x.get('ar2_ecran_geant_x_pulse2', 0) for x in arena_samples]
+        ar_ez = [x.get('ar2_ecran_geant_z_pulse2', 0) for x in arena_samples]
+        ar_fs = [x.get('ar2_facade_entree_faisceau', 0) for x in arena_samples]
+        check(f'{prof}: calques Steel Arena (écrans géants pulse2 + faisceaux) modulés franchement par ostCentre',
+              max(ar_ex) - min(ar_ex) > 0.12 and max(ar_ez) - min(ar_ez) > 0.10 and max(ar_fs) - min(ar_fs) > 0.10,
+              (round(min(ar_ex), 3), round(max(ar_ex), 3), round(min(ar_fs), 3), round(max(ar_fs), 3)))
 
         if prof == 'desktop':
             # Enchaînement complet fin de piste -> piste suivante sur les 4 titres puis retour à la piste 01

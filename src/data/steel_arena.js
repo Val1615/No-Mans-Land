@@ -1,16 +1,15 @@
 // Steel Arena (zone steel_arena, 96 x 64 m, quartier de Center-Town). Pack d'Ocre : docs/villes/steel/quartiers/steel_arena/ (STEEL_ARENA.md, ASSETS.md, compléments 1 et 2).
 // [décision] entrée ouest par la grille du bout est du Fréquence Strip (aller-retour) ; le parvis se visite, l'enceinte reste fermée (réplique au clic).
 // Vibes et Tron n'apparaissent que sur les écrans géants dessinés par le code (pages tournantes). Aucun nom civil.
-// Enceinte basse ar2_ (moitié nord, x 0 à 92, z 0 à 30) : façades 15 m et dôme 23 m en six morceaux ; parvis et bord ouest en bâtiments complets 3/4 (*_3q, calques *_3q_neon et *_3q_fenetres additifs).
-// Animations au code (anime_par_code du manifeste) : faisceaux des 4 pylônes, écrans géants et fronton (pages), enseignes _neon et fenêtres _fenetres, file qui avance ; hors plafond mobile de 8.
+// Enceinte basse ar2_ (moitié nord, x 0 à 92, z 0 à 30) : façades 15 m et dôme 23 m en six morceaux ; parvis et bord ouest en bâtiments complets 3/4 (*_3q), calques rythmiques *_pulse2, *_faisceau et *_pulse/_pulse_b (b3bd9a6 + 769c16d).
+// Animations au code (anime_par_code du manifeste) : faisceaux des 4 pylônes (pulsant sur le kick), écrans géants et fronton (pages + beat), enseignes _neon, fenêtres _fenetres et calques rythmiques pilotés par ostCentre.
 // Planches peintes restantes : guichet, Human Corp, un cœur dans la file (les 4 ar_ens_faisceau, Vibes, Tron et le fronton peints sont retirés).
-export const ARENA_TAILLE_PROPOSEE = { w: 96, d: 64 }; // proposé à la préparation, appliqué au lot construction
-const ARENA = { bg: '#07080b', hemi: ['#9a96b0', '#1c1612', 1.15], sun: ['#e8b078', 0.45], tint: '#b4aeb0', actor: '#e6ded6' }; // revue Régie : moins de violet/cyan, appoint chaud
+export const ARENA_TAILLE_PROPOSEE = { w: 96, d: 64 };
+const ARENA = { bg: '#07080b', hemi: ['#9a96b0', '#1c1612', 1.15], sun: ['#e8b078', 0.45], tint: '#b4aeb0', actor: '#e6ded6' };
 const VIOLET = '#8a3cff', CYAN = '#5fd3f0', MAGENTA = '#e03ca8', BLANC = '#e8eef2', ROUGE = '#c8323c', AMBRE = '#ffa040', ORANGE = '#ff7a30';
 const B = (id, label, sprite, x, z, w, d, extra = {}) => ({ id, label, sprite, x, z, w, d, visitable: false, cue: null, named: !!label, ...extra });
 const ENS = (id, sprite, x, z, y, extra = {}) => B(id, '', sprite, x - 0.1, z - 0.1, 0.2, 0.2, { y, solid: [], named: false, ...extra });
-const AP = (id, sprite, ax, az, w, d, extra = {}) => B(id, '', sprite, ax - w, az - d, w, d, { named: false, ...extra }); // posé par son ancre (coin avant)
-// écrans géants et fronton : pages tournantes dessinées par le code dans ecran_coins / fronton_coins, comme le Feed de Pulse Plaza
+const AP = (id, sprite, ax, az, w, d, extra = {}) => B(id, '', sprite, ax - w, az - d, w, d, { named: false, ...extra });
 const BATTLE = [
   { fond: ['#2a0c4a', '#6a24b0'], image: 'ar_ens_ecran_vibes', crop: [0, 0, 256, 144], titre: 'GROOVY VIBES', sous: 'Battle du 31 · côté gauche', bandeau: 'Votez avec vos applaudissements. Ils sont mesurés.' },
   { fond: ['#061a2a', '#1a6a9a'], image: 'ar_ens_ecran_tron', crop: [0, 0, 256, 144], titre: 'GROOVY-TRON', sous: 'Battle du 31 · côté droit', bandeau: 'Statut : invaincu. Statut : mis à jour.' },
@@ -25,11 +24,9 @@ const FRONTON = [ { fond: ['#0a0a14', '#20204a'], titre: 'STEEL ARENA', sous: 'L
   { fond: ['#180a20', '#4a1860'], titre: 'FILE ACTIVE', sous: 'Attente estimée 42 min', bandeau: 'Le serpentin est une forme d\u2019art' },
   { fond: ['#0a1418', '#184858'], titre: 'HUMAN CORP', sous: 'Sponsor officiel', bandeau: 'Souriez. C\u2019est mesuré.' } ];
 const PYL = [[10, 40], [86, 40], [24, 58], [72, 58]], LAMP = [[4, 40], [92, 34], [36, 60], [60, 60]];
-// foule fixe : sprites de foule existants (Arena, Strip, Pulse, Méga-Line, Dôme), miroir alterné ; FIG(liste de [x, z]) les répartit sans répéter deux voisins
 const POOL = ['gen_ar_foule_a', 'gen_pp_foule_a', 'gen_fs_foule_a', 'gen_pp_foule_c', 'gen_ml_fan', 'gen_ar_foule_b', 'gen_pp_foule_e', 'gen_df_foule_a', 'gen_fs_passante', 'gen_pp_foule_g', 'gen_ml_foule_a', 'gen_pp_foule_b', 'gen_fs_foule_b', 'gen_pp_foule_i', 'gen_df_foule_b', 'gen_pp_foule_d', 'gen_ml_foule_b', 'gen_pp_foule_f', 'gen_fs_client_imper', 'gen_pp_foule_h', 'gen_pp_foule_j', 'gen_fs_client_costume'];
 const FIG = (pts, k0, role) => pts.map(([x, z, f], i) => ({ sprite: POOL[(k0 + i * 5) % POOL.length], x, z, face: f ?? ((k0 + i) % 2 ? -1 : 1), role }));
 export const BUILDINGS_ARENA = [
-  // enceinte basse d'Ocre (58703a8, clés ar2_) : façades de 15 m sur les mêmes lignes, dôme surbaissé (rive 15,6 m, faîte 23 m) couvrant x 0-92, z 0-30
   // dôme en six morceaux peints avant tout (fond), d'ouest en est puis ar2_toit_z avant l'angle ; le premier porte le solide de toute l'enceinte (z < 29)
   B('ar_toit_so', '', 'ar2_toit_angle_so', 0, 0, 20, 30, { named: false, fond: true, solid: [{ x: 0, z: 0, w: 96, d: 29 }] }),
   ...[20, 36, 52].map((x, i) => B(`ar_toit_x${i}`, '', 'ar2_toit_x', x, 0, 16, 30, { named: false, fond: true, solid: [] })),
@@ -38,30 +35,37 @@ export const BUILDINGS_ARENA = [
   // façades : est, sud d'ouest en est, retour ouest, angle ; écrans en dernier
   AP('ar_f_est', 'ar2_facade_courbe_z', 92, 22, 1, 16, { solid: [] }),
   AP('ar_f_s0', 'ar2_facade_courbe_x', 20, 30, 16, 1), AP('ar_f_s1', 'ar2_facade_courbe_x', 36, 30, 16, 1),
-  AP('ar_entree', 'ar2_facade_entree', 52, 30, 16, 1, { label: 'Entrée de l\u2019Arena', named: true, ecran: { coins: [[93, 414], [685, 609], [685, 705], [93, 510]], periode: 5.5, marque: 'STEEL ARENA', pages: FRONTON } }),
+  AP('ar_entree', 'ar2_facade_entree', 52, 30, 16, 1, { label: 'Entrée de l\u2019Arena', named: true, ecran: { coins: [[93, 414], [685, 609], [685, 705], [93, 510]], periode: 5.5, beat: true, marque: 'STEEL ARENA', pages: FRONTON } }),
   AP('ar_f_s2', 'ar2_facade_courbe_x', 68, 30, 16, 1), AP('ar_f_s3', 'ar2_facade_courbe_x', 84, 30, 16, 1),
   B('ar_f_retour', '', 'ar2_facade_retour_ouest', 0, 26, 4, 4, { named: false, solid: [{ x: 0, z: 29, w: 4, d: 1 }] }),
-  B('ar_f_angle', '', 'ar2_facade_angle', 84, 22, 8, 8, { named: false, ancre: [-8, 0] }), // ancre au raccord sud (84 ; 30), emprise x 84-92 z 22-30
-  AP('ar_ecran_s', 'ar2_ecran_geant_x', 18, 30.8, 9.6, 0.5, { solid: [], ecran: { periode: 7, marque: 'ARENA LIVE', pages: BATTLE } }),
-  AP('ar_ecran_e', 'ar2_ecran_geant_z', 92.8, 19, 0.5, 8, { solid: [], ecran: { periode: 8.5, decale: 2, marque: 'ARENA LIVE', pages: BATTLE } }),
+  B('ar_f_angle', '', 'ar2_facade_angle', 84, 22, 8, 8, { named: false, ancre: [-8, 0] }),
+  AP('ar_ecran_s', 'ar2_ecran_geant_x', 18, 30.8, 9.6, 0.5, { solid: [], ecran: { periode: 7, beat: true, marque: 'ARENA LIVE', pages: BATTLE } }),
+  AP('ar_ecran_e', 'ar2_ecran_geant_z', 92.8, 19, 0.5, 8, { solid: [], ecran: { periode: 8.5, decale: 2, beat: true, marque: 'ARENA LIVE', pages: BATTLE } }),
   // bord ouest : blocs techniques complets 3/4 d'Ocre (7e5478b) le long de x 0, arrivée ar_ouest libre (z 38 à 46)
   B('ar_tech_a', 'Technique ouest', 'ar_tech_ouest_a_3q', 0, 30, 8, 8),
   B('ar_tech_b', '', 'ar_tech_ouest_b_3q', 0, 46, 4, 8, { named: false }), B('ar_tech_c', '', 'ar_tech_ouest_c_3q', 0, 54, 4, 8, { named: false }),
   // bord sud : barrières de police le long de la rue (z 59,6), passages en x 32-40 et 56-64 (lampadaires)
   ...[4, 8, 12, 16, 20, 24, 28, 40, 44, 48, 52, 64, 68, 72, 76, 80, 84, 88].map((x, i) => B(`ar_police${i}`, '', 'ar_barriere_file', x, 59.6, 4, 0.4, { named: false })),
-  // parvis : serpentin de file devant l'entrée (ouvert en bout alterné), portiques peints sur l'entrée
+  // parvis : serpentin de file devant l'entrée
   B('ar_bar_l1', '', 'ar_barriere_file', 36, 34, 4, 0.4, { named: false }), B('ar_bar_l2', '', 'ar_barriere_file', 40, 34, 4, 0.4, { named: false }), B('ar_bar_l3', '', 'ar_barriere_file', 44, 34, 4, 0.4, { named: false }),
   B('ar_bar_m1', '', 'ar_barriere_file', 40, 37, 4, 0.4, { named: false }), B('ar_bar_m2', '', 'ar_barriere_file', 44, 37, 4, 0.4, { named: false }), B('ar_bar_m3', '', 'ar_barriere_file', 48, 37, 4, 0.4, { named: false }),
   B('ar_bar_s1', '', 'ar_barriere_file', 36, 40, 4, 0.4, { named: false }), B('ar_bar_s2', '', 'ar_barriere_file', 40, 40, 4, 0.4, { named: false }), B('ar_bar_s3', '', 'ar_barriere_file', 44, 40, 4, 0.4, { named: false }),
   B('ar_bar_e', '', 'ar_barriere_file_o', 51.6, 33, 0.4, 4, { named: false }), B('ar_bar_o', '', 'ar_barriere_file_o', 36, 36, 0.4, 4, { named: false }),
-  // prolongement (revue Régie) : deux lignes de plus (z 43 et 46), file deux fois plus longue
   B('ar_bar_n1', '', 'ar_barriere_file', 40, 43, 4, 0.4, { named: false }), B('ar_bar_n2', '', 'ar_barriere_file', 44, 43, 4, 0.4, { named: false }), B('ar_bar_n3', '', 'ar_barriere_file', 48, 43, 4, 0.4, { named: false }),
   B('ar_bar_t1', '', 'ar_barriere_file', 36, 46, 4, 0.4, { named: false }), B('ar_bar_t2', '', 'ar_barriere_file', 40, 46, 4, 0.4, { named: false }), B('ar_bar_t3', '', 'ar_barriere_file', 44, 46, 4, 0.4, { named: false }),
   B('ar_bar_e2', '', 'ar_barriere_file_o', 51.6, 39, 0.4, 4, { named: false }), B('ar_bar_o2', '', 'ar_barriere_file_o', 36, 42, 0.4, 4, { named: false }),
-  // bâtiments complets 3/4 du parvis (7e5478b) : booking aligné bord à bord à l'est des guichets (z 44) pour dégager la façade « GUICHETS », ar_ens_guichet et Anouk
+  // bâtiments complets 3/4 du parvis (7e5478b)
   B('ar_tribunes', 'Tribunes', 'ar_tribunes_3q', 20, 32, 12, 8),
   B('ar_merch_b', 'Merch officiel', 'ar_stand_merch_b_3q', 26, 40, 4, 4), B('ar_merch_c', 'Chariot de merch', 'ar_stand_merch_c_3q', 54, 40, 4, 4),
   B('ar_truck_n', 'Nouilles du parvis', 'ar_foodtruck_nouilles_3q', 16, 46, 8, 4), B('ar_truck_b', 'Boissons', 'ar_foodtruck_boissons_3q', 68, 46, 8, 4),
+  // props rythmiques du parvis (b3bd9a6 + 769c16d) : posés hors serpentin et hors ombres de foule (0 chevauchement solide/emprise, view.masques() vide)
+  B('ar_mat_p0', '', 'ar_mat_projecteur_pulse_3q', 60, 31, 2, 2, { named: false }),
+  B('ar_mat_p1', '', 'ar_mat_projecteur_pulse_3q', 78, 34, 2, 2, { named: false }),
+  B('ar_ence_p0', '', 'ar_enceinte_pulse_3q', 60, 36, 3, 2, { named: false }),
+  B('ar_ence_p1', '', 'ar_enceinte_pulse_3q', 64, 40, 3, 2, { named: false }),
+  B('ar_gantry0', '', 'ar_gantry_led_pulse_3q', 64, 34, 8, 2, { solid: [], named: false, cover: true }),
+  B('ar_strobe0', '', 'ar_strobe_pulse_3q', 56, 36, 1.5, 1.5, { named: false }),
+  B('ar_strobe1', '', 'ar_strobe_pulse_3q', 32.5, 34, 1.5, 1.5, { named: false }),
   ...PYL.map(([x, z], i) => AP(`ar_pyl${i}`, 'ar_pylone_projecteur', x + 0.75, z + 0.75, 1.5, 1.5)),
   ...LAMP.map(([x, z], i) => B(`ar_lamp${i}`, '', 'ar_lampadaire', x - 0.3, z - 0.3, 0.6, 0.6, { named: false })),
   B('ar_guichets', 'Guichets', 'ar_guichets_3q', 6, 44, 4, 4),
@@ -70,9 +74,8 @@ export const BUILDINGS_ARENA = [
   B('ar_regie', 'Camion régie', 'ar_regie_3q', 76, 50, 8, 4),
   B('ar_panneau', 'Panneau', 'ar_panneau_nml', 90, 60, 2, 0.5),
   B('ar_cam', '', 'pp_camera', 33.8, 31.8, 0.4, 0.4, { named: false }),
-  // planches peintes restantes : Human Corp, guichet, cœurs de la file (un seul animé)
   ENS('ar_e_hc', 'ar_ens_human_corp', 17.6, 56.2, 2.6), ENS('ar_e_guichet', 'ar_ens_guichet', 8.2, 48.2, 2.0),
-  ...[[35.4, 40.8], [35.4, 33.6]].map(([x, z], i) => ENS(`ar_e_coeur${i}`, 'ar_ens_coeurs', x, z, 1.5, { fige: i > 0, ph: 0 })), // aux bouts ouest du serpentin, hors de la file
+  ...[[35.4, 40.8], [35.4, 33.6]].map(([x, z], i) => ENS(`ar_e_coeur${i}`, 'ar_ens_coeurs', x, z, 1.5, { fige: i > 0, ph: 0 })),
 ];
 export const CLOSED_ARENA = {
   ar_entree: 'L\u2019entrée vitrée et ses six portiques blancs de Human Corp. « Building a better tomorrow. » Derrière, une clameur monte et s\u2019arrête net.',
@@ -88,64 +91,112 @@ export const CLOSED_ARENA = {
   ar_tech_a: 'Bloc technique ouest. Groupes froids, treuils et gaines haute tension qui alimentent l\u2019enceinte.',
   ar_panneau: '« Au-delà de ce point : pas de droits, pas de loi, pas de retour. »',
 };
-// sol : grandes dalles usées partout ; marquages de file et grilles d'évacuation peints dans le sol (ground.decals)
 const GRILLES = [[34, 36], [58, 36], [30, 48], [44, 49], [58, 48], [12, 38], [80, 38], [44, 58], [20, 31.4], [68, 31.4]].map(([x, z]) => ({ image: 'ar_grille_evacuation', x, z }));
 export const LOCATIONS_ARENA = {
   steel_arena: { id: 'steel_arena', name: 'Steel-Megalopolis · Steel Arena', kind: 'exterior', size: { ...ARENA_TAILLE_PROPOSEE }, light: ARENA,
-    // sols d'Ocre (809e51c) : dalles anthracite neutres partout, une rangée de marquages devant l'entrée, usure autour des stands, des trucks et des pylônes ; rue au sud et marge de rue hors zone
     ground: { base: '#101012', skin: 'g_ar_dalles_neutre', tileM: 10.24, clean: true, decals: GRILLES,
       marge: { skin: 'g_fs_asphalte', tileM: 10.24, m: 90 },
       zones: [ { x: 36, z: 31.6, w: 16, d: 10.24, kind: 'plate', skin: 'g_ar_parvis_marquages', tileM: 10.24 },
         ...[[24, 39, 9, 9], [52, 39, 10, 9], [6, 45, 20, 9], [66, 45, 20, 11], [8, 38, 5, 5], [84, 38, 5, 5], [21.5, 55.5, 5, 4], [69.5, 55.5, 5, 4]].map(([x, z, w, d]) => ({ x, z, w, d, kind: 'plate', skin: 'g_ar_parvis_use', tileM: 10.24 })),
         { x: 0, z: 60, w: 96, d: 4, kind: 'plate', skin: 'g_fs_asphalte', tileM: 10.24 } ] },
     buildings: BUILDINGS_ARENA, props: [],
-    // lueurs : chacune a sa source ; ambre/orangé aux stands, trucks, guichets, booking, régie et pieds des portiques (lueur au sol + petite lumière y), cyan réservé aux pylônes et à l'écran est
     glows: [
-      ...[38.5, 41.5, 44, 46.5, 49.5].map(x => ({ x, z: 31, rx: 1.4, rz: 0.8, color: AMBRE, i: 0.55 })), // pieds des portiques
-      ...[38.5, 44, 49.5].map(x => ({ x, z: 30.4, y: 2.4, r: 0.5, color: AMBRE, i: 0.7, building: 'ar_entree' })),
-      { x: 13.2, z: 31.8, rx: 5, rz: 1.6, color: VIOLET, i: 0.3 }, { x: 93.4, z: 14, rx: 1.6, rz: 5, color: CYAN, i: 0.35 }, // reflets des écrans géants
-      ...PYL.map(([x, z]) => ({ x, z: z + 1.1, rx: 2.2, rz: 1.3, color: CYAN, i: 0.4 })),
+      ...[38.5, 41.5, 44, 46.5, 49.5].map(x => ({ x, z: 31, rx: 1.5, rz: 0.9, color: AMBRE, i: 0.65, beat: 'kick' })),
+      ...[38.5, 44, 49.5].map(x => ({ x, z: 30.4, y: 2.4, r: 0.55, color: AMBRE, i: 0.8, building: 'ar_entree', beat: 'kick' })),
+      { x: 13.2, z: 31.8, rx: 6.2, rz: 2.2, color: VIOLET, i: 0.62, beat: 'kick' }, { x: 93.4, z: 14, rx: 2.2, rz: 6.0, color: CYAN, i: 0.62, beat: 'kick' },
+      ...PYL.map(([x, z]) => ({ x, z: z + 1.1, rx: 2.8, rz: 1.6, color: CYAN, i: 0.62, beat: 'kick' })),
       ...LAMP.map(([x, z]) => ({ x, z: z + 0.6, rx: 2, rz: 1.4, color: VIOLET, i: 0.35 })),
-      { x: 23.5, z: 40.8, rx: 3.6, rz: 1.2, color: AMBRE, i: 0.4 }, // pied des tribunes
+      { x: 25, z: 40.8, rx: 4.4, rz: 1.5, color: AMBRE, i: 0.58, beat: 'kick' },
+      { x: 61, z: 33.4, rx: 2.2, rz: 1.4, color: AMBRE, i: 0.58, beat: 'kick' }, { x: 79, z: 36.4, rx: 2.2, rz: 1.4, color: AMBRE, i: 0.58, beat: 'kick' },
+      { x: 68, z: 36.4, rx: 4.0, rz: 1.6, color: AMBRE, i: 0.55, beat: 'mid' },
+      { x: 56.8, z: 37.8, rx: 1.8, rz: 1.2, color: AMBRE, i: 0.65, beat: 'kick' }, { x: 33.2, z: 35.8, rx: 1.8, rz: 1.2, color: AMBRE, i: 0.65, beat: 'kick' },
       { x: 28, z: 44.8, rx: 2.8, rz: 1.3, color: AMBRE, i: 0.6, flicker: true }, { x: 28, z: 43.8, y: 2.1, r: 0.55, color: AMBRE, i: 0.75, building: 'ar_merch_b', flicker: true },
       { x: 56, z: 44.8, rx: 2.8, rz: 1.3, color: AMBRE, i: 0.6, flicker: true }, { x: 56, z: 43.8, y: 2.1, r: 0.5, color: AMBRE, i: 0.75, building: 'ar_merch_c', flicker: true },
       { x: 20, z: 51, rx: 4.2, rz: 1.5, color: ORANGE, i: 0.6, flicker: true }, { x: 20, z: 49.9, y: 2.4, r: 0.6, color: ORANGE, i: 0.8, building: 'ar_truck_n', flicker: true },
       { x: 72, z: 51, rx: 4.2, rz: 1.5, color: AMBRE, i: 0.6, flicker: true }, { x: 72, z: 49.9, y: 2.4, r: 0.6, color: AMBRE, i: 0.8, building: 'ar_truck_b', flicker: true },
-      { x: 8, z: 48.7, rx: 2.4, rz: 1, color: AMBRE, i: 0.45, flicker: true }, { x: 12, z: 48.7, rx: 2.4, rz: 1, color: AMBRE, i: 0.45, flicker: true }, // guichets, booking
-      { x: 35.4, z: 41.4, rx: 1.4, rz: 1, color: MAGENTA, i: 0.3 }, // cœur animé de la file
-      { x: 16, z: 56.7, rx: 2.4, rz: 1.1, color: AMBRE, i: 0.45 }, { x: 80, z: 54.8, rx: 3.8, rz: 1.3, color: AMBRE, i: 0.5, flicker: true }, // Contrôle IO, régie
+      { x: 8, z: 48.7, rx: 2.4, rz: 1, color: AMBRE, i: 0.45, flicker: true }, { x: 12, z: 48.7, rx: 2.4, rz: 1, color: AMBRE, i: 0.45, flicker: true },
+      { x: 35.4, z: 41.4, rx: 1.4, rz: 1, color: MAGENTA, i: 0.3 },
+      { x: 16, z: 56.7, rx: 2.4, rz: 1.1, color: AMBRE, i: 0.45 }, { x: 80, z: 54.8, rx: 3.8, rz: 1.3, color: AMBRE, i: 0.55, flicker: true, beat: 'mid' },
       { x: 34, z: 32.4, rx: 0.6, rz: 0.4, color: ROUGE, i: 0.5 }, { x: 91, z: 61, rx: 1.6, rz: 1.2, color: ROUGE, i: 0.3 } ],
-    // enseignes _3q_neon (hors animStats.on) : guichets, sécurité, boissons, tribunes et tech_a restent fixes par défaut ; booking/régie en pulse lent, merch en vacillement ambre lent, nouilles en léger grésillement
     enseignes: [
-      { id: 'ar_n_booking', building: 'ar_booking', effet: 'pulse', intensite: 0.85, periode: 5.4 },
-      { id: 'ar_n_merch_b', building: 'ar_merch_b', effet: 'pulse', intensite: 0.85, periode: 3.4, decale: 0.2 },
-      { id: 'ar_n_merch_c', building: 'ar_merch_c', effet: 'pulse', intensite: 0.85, periode: 3.9, decale: 0.6 },
-      { id: 'ar_n_truck_n', building: 'ar_truck_n', effet: 'gresille', intensite: 0.8, decale: 0.4 },
-      { id: 'ar_n_regie', building: 'ar_regie', effet: 'pulse', intensite: 0.85, periode: 6.0, decale: 0.5 } ],
-    // projecteurs : les 4 pylônes tirent leur faisceau depuis source_faisceau_px (automatique) ; ici seulement le réglage (balayage lent décalé, vers le ciel au-dessus du dôme)
-    projecteurs: PYL.map((_, i) => ({ building: `ar_pyl${i}`, couleur: CYAN, longueur: 42, ouverture: [3.2, 3.8, 3.4, 3.6][i], inclinaison: [26, 30, 28, 27][i],
-      cap: [24, -24, 10, -10][i], balayage: [32, 22, 36, 28][i], periode: [14, 18, 11, 16][i], decale: [0, 5, 9, 2][i], intensite: 0.22 })),
-    // figurants FIXES (hors budget d'animation) : fans d'Ocre, grappes recalées devant les emprises 3/4, file dans le serpentin, foule devant les portiques ; la file qui avance = passants en aller simple
+      { id: 'ar_n_tribunes', building: 'ar_tribunes', effet: 'pulse', intensite: 0.95, periode: 2.8 },
+      { id: 'ar_n_booking', building: 'ar_booking', effet: 'pulse', intensite: 0.9, periode: 4.2 },
+      { id: 'ar_n_merch_b', building: 'ar_merch_b', effet: 'pulse', intensite: 0.9, periode: 3.2, decale: 0.2 },
+      { id: 'ar_n_merch_c', building: 'ar_merch_c', effet: 'pulse', intensite: 0.9, periode: 3.6, decale: 0.6 },
+      { id: 'ar_n_truck_n', building: 'ar_truck_n', effet: 'gresille', intensite: 0.85, decale: 0.4 },
+      { id: 'ar_n_regie', building: 'ar_regie', effet: 'pulse', intensite: 0.9, periode: 4.8, decale: 0.5 } ],
+    // calques rythmiques pulse2 + faisceau (769c16d) et props *_pulse/_pulse_b (b3bd9a6) branchés sur ostCentre.
+    // Priorité mobile (plafond 8) : les 2 écrans géants (ar2_ecran_geant_*_pulse2) + projecteurs/faisceaux (entrée, dôme, mâts) + rubans entrée/tribunes.
+    pulses: [
+      { building: 'ar_ecran_s', calque: 'pulse2', mode: 'kick', intensite: 1.0, punch: 0.024, priorite: 8 },
+      { building: 'ar_ecran_e', calque: 'pulse2', mode: 'kick', intensite: 1.0, decale: 0.08, punch: 0.024, priorite: 7 },
+      { building: 'ar_entree', calque: 'faisceau', mode: 'kick', intensite: 1.0, punch: 0.022, priorite: 6 },
+      { building: 'ar_toit_x1', calque: 'faisceau', mode: 'kick', intensite: 1.0, priorite: 5 },
+      { building: 'ar_toit_se', calque: 'faisceau', mode: 'kick', intensite: 1.0, decale: 0.08, priorite: 4 },
+      { building: 'ar_mat_p0', calque: 'faisceau', mode: 'kick', intensite: 1.0, punch: 0.024, priorite: 3 },
+      { building: 'ar_entree', calque: 'pulse2', mode: 'kick', intensite: 1.0, punch: 0.018, priorite: 2 },
+      { building: 'ar_tribunes', calque: 'pulse2', mode: 'kick', intensite: 1.0, decale: 0.06, punch: 0.018, priorite: 1 },
+      // Autres faisceaux et rubans pulse2 du dôme et de l'enceinte
+      { building: 'ar_toit_so', calque: 'faisceau', mode: 'kick', intensite: 0.98, decale: 0.14 },
+      { building: 'ar_toit_x0', calque: 'faisceau', mode: 'kick', intensite: 0.98, decale: 0.06 },
+      { building: 'ar_toit_x2', calque: 'faisceau', mode: 'kick', intensite: 0.98, decale: 0.06 },
+      { building: 'ar_toit_z', calque: 'faisceau', mode: 'kick', intensite: 0.98, decale: 0.12 },
+      { building: 'ar_toit_so', calque: 'pulse2', mode: 'kick', intensite: 0.98, decale: 0.16 },
+      { building: 'ar_toit_x0', calque: 'pulse2', mode: 'kick', intensite: 0.98, decale: 0.08 },
+      { building: 'ar_toit_x1', calque: 'pulse2', mode: 'kick', intensite: 0.98 },
+      { building: 'ar_toit_x2', calque: 'pulse2', mode: 'kick', intensite: 0.98, decale: 0.08 },
+      { building: 'ar_toit_z', calque: 'pulse2', mode: 'kick', intensite: 0.98, decale: 0.14 },
+      { building: 'ar_toit_se', calque: 'pulse2', mode: 'kick', intensite: 0.98, decale: 0.10 },
+      { building: 'ar_f_s0', calque: 'pulse2', mode: 'kick', intensite: 0.94, decale: 0.10 },
+      { building: 'ar_f_s1', calque: 'pulse2', mode: 'kick', intensite: 0.94, decale: 0.20 },
+      { building: 'ar_f_s2', calque: 'pulse2', mode: 'kick', intensite: 0.94, decale: 0.30 },
+      { building: 'ar_f_s3', calque: 'pulse2', mode: 'kick', intensite: 0.94, decale: 0.40 },
+      { building: 'ar_f_angle', calque: 'pulse2', mode: 'kick', intensite: 0.96, decale: 0.18 },
+      { building: 'ar_f_est', calque: 'pulse2', mode: 'mid', intensite: 0.92, decale: 0.25 },
+      { building: 'ar_f_retour', calque: 'pulse2', mode: 'kick', intensite: 0.94, decale: 0.28 },
+      // Faisceaux des 4 pylônes + props rythmiques + bâtiments 3/4 du parvis
+      ...PYL.map((_, i) => ({ building: `ar_pyl${i}`, calque: 'faisceau', mode: 'kick', intensite: 1.0, decale: i * 0.08, punch: 0.022 })),
+      { building: 'ar_mat_p0', calque: 'pulse', mode: 'kick', intensite: 0.98, punch: 0.020 },
+      { building: 'ar_mat_p0', calque: 'pulse_b', mode: 'high', intensite: 0.92, decale: 0.20 },
+      { building: 'ar_mat_p1', calque: 'faisceau', mode: 'kick', intensite: 1.0, decale: 0.12, punch: 0.024 },
+      { building: 'ar_mat_p1', calque: 'pulse', mode: 'kick', intensite: 0.98, decale: 0.12, punch: 0.020 },
+      { building: 'ar_mat_p1', calque: 'pulse_b', mode: 'high', intensite: 0.92, decale: 0.36 },
+      { building: 'ar_gantry0', calque: 'pulse', mode: 'kick', intensite: 0.98, decale: 0.05, punch: 0.020 },
+      { building: 'ar_gantry0', calque: 'pulse_b', mode: 'mid', intensite: 0.92, decale: 0.25 },
+      { building: 'ar_ence_p0', calque: 'pulse', mode: 'kick', intensite: 0.98, punch: 0.024 },
+      { building: 'ar_ence_p0', calque: 'pulse_b', mode: 'mid', intensite: 0.90, decale: 0.18 },
+      { building: 'ar_ence_p1', calque: 'pulse', mode: 'kick', intensite: 0.98, decale: 0.10, punch: 0.024 },
+      { building: 'ar_ence_p1', calque: 'pulse_b', mode: 'mid', intensite: 0.90, decale: 0.28 },
+      { building: 'ar_strobe0', calque: 'pulse', mode: 'kick', intensite: 1.0, punch: 0.026 },
+      { building: 'ar_strobe0', calque: 'pulse_b', mode: 'high', intensite: 0.95, decale: 0.25 },
+      { building: 'ar_strobe1', calque: 'pulse', mode: 'kick', intensite: 1.0, decale: 0.5, punch: 0.026 },
+      { building: 'ar_strobe1', calque: 'pulse_b', mode: 'high', intensite: 0.95, decale: 0.75 },
+      { building: 'ar_regie', calque: 'pulse2', mode: 'kick', intensite: 0.94, decale: 0.15 },
+      { building: 'ar_guichets', calque: 'pulse', mode: 'high', intensite: 0.88, decale: 0.22 },
+      { building: 'ar_booking', calque: 'pulse', mode: 'mid', intensite: 0.90, decale: 0.30 },
+      { building: 'ar_securite', calque: 'pulse', mode: 'kick', intensite: 0.92, decale: 0.12 },
+      { building: 'ar_tech_a', calque: 'pulse', mode: 'mid', intensite: 0.90, decale: 0.40 },
+      { building: 'ar_merch_b', calque: 'pulse', mode: 'high', intensite: 0.90, decale: 0.26 },
+      { building: 'ar_truck_n', calque: 'pulse', mode: 'mid', intensite: 0.88, decale: 0.38 },
+    ],
+    projecteurs: PYL.map((_, i) => ({ building: `ar_pyl${i}`, couleur: CYAN, longueur: 44, ouverture: [3.5, 4.0, 3.6, 3.8][i], inclinaison: [26, 30, 28, 27][i],
+      cap: [24, -24, 10, -10][i], balayage: [34, 24, 38, 30][i], periode: [11, 14, 9.5, 12.5][i], decale: [0, 3.5, 7, 1.8][i], intensite: 0.30 })),
     extras: [ { sprite: 'gen_ar_fan_chignons', x: 40.4, z: 38.9, face: 1, role: 'fan' }, { sprite: 'gen_ar_techwear', x: 46, z: 35.9, face: -1, role: 'fan' },
       { sprite: 'gen_ar_manteau', x: 62, z: 48, face: -1, role: 'fan' }, { sprite: 'gen_ar_cuir', x: 25.6, z: 56.4, face: 1, role: 'fan' },
       { sprite: 'gen_ar_fan_echarpe', x: 34, z: 38.5, face: 1, role: 'fan' }, { sprite: 'gen_ar_fan_pancarte', x: 54, z: 33, face: -1, role: 'fan' },
       { sprite: 'gen_ar_fan_batons', x: 53, z: 47.6, face: -1, role: 'fan' }, { sprite: 'gen_ar_fans_duo', x: 26, z: 47, face: 1, role: 'fan' },
       ...FIG([[38.2, 31.2], [39.8, 30.9, -1], [41, 31.6], [42.4, 31], [43.4, 31.8, -1], [45.4, 31.1], [46.6, 31.7], [47.8, 30.9, -1], [49, 31.5], [36.6, 31.4], [38.8, 32.9, -1], [37.4, 32.4], [40.6, 32.6], [47.2, 32.7, -1], [50.2, 32.6]], 0, 'foule'),
       ...FIG([[39.2, 35.7], [42.2, 35.2], [44.6, 35.8, -1], [48.2, 35.2], [41.8, 38.9], [44.2, 38.2, -1], [47.6, 38.8], [38.8, 41.7], [41.4, 41.2], [45.6, 41.8, -1], [47.8, 41.3], [39.6, 44.8], [42.8, 44.2, -1], [45.2, 44.9], [47.4, 44.3]], 3, 'attente'),
-      // spectateurs de l'écran géant ouest : grappe tournée vers l'écran, hors de l'emprise 8x8 de ar_tech_a et hors de l'ombre d'écran de ar_tribunes
       ...FIG([[18.2, 36.6, -1], [8.8, 32.6, -1], [9.8, 33.8, -1], [11.2, 32.9, -1], [12.6, 34.2, -1], [14.2, 33.1, -1], [15.8, 34.4, -1], [8.8, 35.6, -1], [12, 36, -1], [16.2, 35.4, -1]], 19, 'ecran'),
       ...FIG([[26.6, 44.9], [28.0, 45.4, -1], [29.6, 44.8], [31.2, 44.6, -1], [24.8, 44.8], [27.4, 46.4, -1], [30.4, 46.0], [29.0, 45.8, -1]], 7, 'grappe'),
       ...FIG([[55.4, 44.9], [56.8, 45.5, -1], [59.0, 44.6, -1], [55.0, 46.1], [58.0, 45.2, -1]], 11, 'grappe'),
       ...FIG([[18.6, 51.8], [19.4, 53.0, -1], [21.8, 51.2], [23.0, 52.3, -1], [24.6, 51.1], [23.8, 50.8, -1]], 13, 'grappe'),
       ...FIG([[68.8, 50.9], [70.2, 51.8, -1], [71.6, 51.0], [72.8, 52.2, -1], [73.6, 51.3], [69.6, 52.6, -1], [77.4, 54.9], [81.4, 55.2, -1]], 17, 'grappe'),
       ...FIG([[10.8, 49.0], [11.8, 50.2, -1], [21.6, 41.4, -1], [23.4, 41.8, -1]], 5, 'grappe'),
-      // densification devant les portiques (deuxième rang, hors file serpentin)
       ...FIG([[36.2, 33.4], [51.4, 33.2, -1], [37.8, 34.6], [50.2, 34.8, -1], [35.4, 36.2], [48.6, 33.8, -1]], 21, 'foule') ],
     walkers: [ ...[0, 8, 16, 24, 32, 40, 48].map((t0, i) => ({ sprite: ['gen_ar_foule_a', 'gen_pp_foule_b', 'gen_ar_foule_b', 'gen_fs_foule_a', 'gen_ml_fan', 'gen_pp_foule_h', 'gen_df_foule_a'][i], path: [[50, 49], [50, 44.6], [38, 44.6], [38, 41.6], [49.4, 41.6], [49.4, 38.6], [38, 38.6], [38, 35.6], [49.4, 35.6], [49.4, 32.9], [44, 32.9]], speed: 0.3, t0, aller: true, role: 'file' })),
       { sprite: 'gen_ar_foule_a', path: [[3, 62.2], [94, 62.2]], speed: 0.6, t0: 3 }, { sprite: 'gen_pp_foule_c', path: [[93, 63.2], [3, 63.2]], speed: 0.6, t0: 10 } ],
     spawn: { player: { x: 1, z: 44 }, companion: { x: 1, z: 45 } }, city: 'steel',
-    // plan d'arrivée : même avec l'enceinte basse (ar2, 15 m), l'ovale fait 92 m de large ; au cadre de jeu (30 px/m, 24 en mobile) on n'en voit que l'angle ouest depuis le départ.
-    // À l'arrivée, plan large à 15 px/m qui regarde 40 m devant le joueur : ovale entier + dôme + foule du parvis ; dès les premiers pas, retour en douceur au cadre habituel
     cadre: { arrivee: { mobile: { ppm: 4, avance: 12, u: [26, 30] }, desktop: { ppm: 12, avance: 10, u: [26, 30] } } },
     arrive: { from: 'steel_strip', text: 'La Steel Arena. L\u2019enceinte noire mange tout le nord ; quatre faisceaux cyan balaient le plafond du sarcophage. « Human Corp sponsorise le sourire. »' } },
 };
@@ -154,7 +205,7 @@ export const DOORS_ARENA = [
   J('ar_ouest', 'steel_arena', 0, 44, 1, 44, 'fs_est', 'Fréquence Strip'),
   J('fs_est', 'steel_strip', 80, 13, 79, 13, 'ar_ouest', 'La grille de l\u2019Arena'),
 ];
-export const NPCS_ARENA = [ // mêmes PNJ et dialogues, recalés sur le parvis agrandi ; aucun n'est Vibes ni Tron
+export const NPCS_ARENA = [
   { id: 'ar_ferrand', name: 'Ferrand', sprite: 'gen_ar_ferrand', location: 'steel_arena', x: 53.4, z: 32.2, faceTo: [44, 34], dialogue: 'ar_ferrand' },
   { id: 'ar_anouk', name: 'Anouk', sprite: 'gen_ar_anouk', location: 'steel_arena', x: 8, z: 48.8, faceTo: [8, 52], dialogue: 'ar_anouk' },
   { id: 'ar_zelie', name: 'Zélie', sprite: 'gen_ar_zelie', location: 'steel_arena', x: 9, z: 52.4, faceTo: [14, 48], dialogue: 'ar_zelie' },
@@ -164,7 +215,6 @@ export const NPCS_ARENA = [ // mêmes PNJ et dialogues, recalés sur le parvis a
   { id: 'ar_garnier', name: 'Agent Garnier', sprite: 'gen_ar_garnier', location: 'steel_arena', x: 19, z: 57, faceTo: [24, 54], dialogue: 'ar_garnier' },
   { id: 'ar_bastien', name: 'Bastien', sprite: 'gen_ar_bastien', location: 'steel_arena', x: 84.4, z: 42.4, faceTo: [86, 40], dialogue: 'ar_bastien' },
   { id: 'ar_laure', name: 'Madame Laure', sprite: 'gen_ar_laure', location: 'steel_arena', x: 89, z: 61.6, faceTo: [84, 58], dialogue: 'ar_laure' },
-  // compléments d'Ocre : revendeurs de billets, hors du couloir des portiques
   { id: 'ar_revendeur', name: 'Le revendeur', sprite: 'gen_ar_revendeur', location: 'steel_arena', x: 33, z: 44, faceTo: [40, 40], dialogue: 'ar_revendeur' },
   { id: 'ar_revendeuse', name: 'La revendeuse', sprite: 'gen_ar_revendeuse', location: 'steel_arena', x: 60, z: 46.4, faceTo: [56, 42], dialogue: 'ar_revendeuse' },
 ];
