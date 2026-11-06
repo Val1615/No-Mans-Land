@@ -27,8 +27,8 @@ Planche de contrôle : `/workspace/nml-shots/strip_sud_suite.png` (maquette de p
 
 - Enseignes `_neon` : effets poussés avec parcimonie sur sexshop, salon, nouilles, couvert, shots, massages (en plus de peep, Effeuillée, lovehotel, Club 404, cabines, billets, implants). Fleurs, tabac, laverie, gage, perruques restent en néon fixe. Hors `animStats.on`.
 - Figurants densifiés devant les seuils du quartier chaud, aux cabines et aux stands (miroir `face` ±1, sprites existants). PNJ nommés et dialogues inchangés. Accès ouest/est et ruelle Fusible libres. `view.masques()` vide.
-## Volumes (côtés, toits, fenêtres)
-Statut : proposition d'Ocre, à poser par le code. Répond au retour de Valentin : certaines devantures n'étaient que des façades plates (carton).
+## Volumes en morceaux (côtés, toits, fenêtres) [ABANDONNÉ]
+Statut : **abandonné** (`"obsolete": true` dans `manifest.json`, clés conservées sans suppression). L'assemblage par morceaux (`fs_vol_*`, `<clé>_cote`, `<clé>_toit`, `<clé>_fenetres`) donnait des blocs artificiels ; Valentin a demandé des **bâtiments complets en 3/4** (voir section suivante « Bâtiments complets (3/4) »). Répond au retour de Valentin : certaines devantures n'étaient que des façades plates (carton).
 
 ### Constat
 - **Déjà en volume 3/4** (non refaits) : `fs_neon7`, `fs_corestack`, `fs_retour`, `fs_capsules`, `fs_facade_nord`, `fs_facade_sud` (ancres centrales, toit et retours déjà dans le sprite).
@@ -86,3 +86,49 @@ Les gabarits `fs_vol_cote_*` et `fs_vol_toit_*` portent `utilise_par` ; chaque `
 Planche de contrôle : `/workspace/nml-shots/strip_volumes.png` (maquette hors jeu, pas une capture).
 
 Limites : les bâtiments sud partagent les gabarits nord (retour à droite) avec une emprise z 20–24 plutôt qu'un volume hors zone au sud ; texture de côté mutualisée (2 variantes) ; calques `_fenetres` = extraction des pixels chauds, à juger en jeu.
+
+## Bâtiments complets (3/4)
+Statut : livré (`status: "v1"`), à poser par Rivet à la place des façades plates d'origine (les pièces séparées `fs_vol_*` / `*_cote` / `*_toit` / `*_fenetres` de `adb39df` sont marquées `"obsolete": true` et ne doivent pas être posées).
+
+### Principe et conventions
+- Un seul sprite complet en 3/4 isométrique `<clé>_3q` par bâtiment (façade de rue `face x` pente 0,33 à gauche de l'ancre, retour de côté `face z` pente 0,70 à droite de l'ancre, toit plat industriel avec caissons, ventilateurs, tuyaux, cheminées et balises rouges peint d'un seul tenant).
+- Échelle moteur exacte (`K = 50` px/m-écran, lacet 34,5°, tangage 28,8°) : largeur gauche = `W × 41,21` px, largeur droite = `D × 28,32` px, ancre au pied du coin avant sud-est `(x + W ; z + D)`, comme `fs_neon7`, `fs_corestack`, `fs_retour` et `fs_capsules`. Aucun chevauchement ni trou entre voisins sur toute la rue de 80 m.
+- Deux calques séparés à la même taille `px` et sur la même ancre `anchor` :
+  - `<clé>_3q_neon` : enseigne lumineuse seule (tubes peints éteints sur `<clé>_3q`), prise en charge automatiquement en additif par `view.js` dès que `b.sprite` vaut `<clé>_3q` (`fs_bouche_nord_3q` n'a pas d'enseigne, donc pas de `_3q_neon` pour préserver la ruelle noire de Fusible).
+  - `<clé>_3q_fenetres` : fenêtres, vitrines, comptoirs et ouvertures chaudes seules, pour vacillement ou pulsation par le code.
+
+### Tableau des 19 bâtiments `_3q`
+
+| clé `_3q` | remplace | enseigne | px | ancre | emprise (W × D) | h (m) | pose (`x, z, w, d`) | calques |
+|---|---|---|---|---|---|---|---|---|
+| `fs_bouche_nord_3q` | `fs_bouche_nord` | *(sans enseigne)* | 282 × 482 | [167, 480] | 4 × 4 m | 8,0 | `B(..., 7, -1, 4, 4)` (ruelle z 3) et `B(..., 50, 2, 4, 4)` (front z 6) | `_fenetres` |
+| `fs_sexshop_3q` | `fs_sexshop` | « Jouets calibrés » | 561 × 649 | [332, 647] | 8 × 8 m | 10,0 | `B(..., 22, -2, 8, 8)` (nord, front z 6) | `_neon`, `_fenetres` |
+| `fs_peep_3q` | `fs_peep` | « 3 secondes » | 282 × 491 | [167, 489] | 4 × 4 m | 8,0 | `B(..., 30, 2, 4, 4)` (nord, front z 6) | `_neon`, `_fenetres` |
+| `fs_salon_3q` | `fs_salon` | « Tombé de rideau » | 282 × 532 | [167, 529] | 4 × 4 m | 8,5 | `B(..., 34, 2, 4, 4)` (nord, front z 6) | `_neon`, `_fenetres` |
+| `fs_club_3q` | `fs_club` | « L’Effeuillée » | 643 × 654 | [414, 652] | 10 × 8 m | 8,5 | `B(..., 54, -2, 10, 8)` (nord, front z 6) | `_neon`, `_fenetres` |
+| `fs_lovehotel_3q` | `fs_lovehotel` | « L’Heure exquise » | 561 × 675 | [332, 673] | 8 × 8 m | 10,0 | `B(..., 64, -2, 8, 8)` (nord, front z 6) | `_neon`, `_fenetres` |
+| `fs_clubprive_3q` | `fs_clubprive` | « Club 404 » | 561 × 594 | [332, 592] | 8 × 8 m | 9,0 | `B(..., 72, -2, 8, 8)` (nord, front z 6) | `_neon`, `_fenetres` |
+| `fs_cabines_3q` | `fs_cabines` | « Cabines sans C.A.G.E. » | 447 × 417 | [332, 415] | 8 × 4 m | 6,0 | `B(..., 38, 20, 8, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_nouilles_3q` | `fs_bas_nouilles` | « Nouilles de minuit » | 447 × 296 | [332, 294] | 8 × 4 m | 2,6 | `B(..., 0, 20, 8, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_fleurs_3q` | `fs_bas_fleurs` | « Excuses » | 282 × 230 | [167, 228] | 4 × 4 m | 2,5 | `B(..., 8, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_tabac_3q` | `fs_bas_tabac` | « À crédit » | 282 × 232 | [167, 230] | 4 × 4 m | 2,4 | `B(..., 12, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_preservatifs_3q` | `fs_bas_preservatifs` | « Bien couvert » | 282 × 229 | [167, 227] | 4 × 4 m | 2,5 | `B(..., 24, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_shots_3q` | `fs_bas_shots` | « Shot de grâce » | 282 × 237 | [167, 235] | 4 × 4 m | 2,7 | `B(..., 34, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_distributeur_3q` | `fs_bas_distributeur` | « Billets doux » | 282 × 253 | [167, 251] | 4 × 4 m | 2,4 | `B(..., 46, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_massages_3q` | `fs_bas_massages` | « Mains de fée » | 282 × 237 | [167, 235] | 4 × 4 m | 2,8 | `B(..., 50, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_laverie_3q` | `fs_bas_laverie` | « Blanchiment » | 447 × 298 | [332, 296] | 8 × 4 m | 2,7 | `B(..., 60, 20, 8, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_gage_3q` | `fs_bas_gage` | « Mont-de-pitié » | 282 × 218 | [167, 216] | 4 × 4 m | 2,6 | `B(..., 68, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_perruques_3q` | `fs_bas_perruques` | « Faux-semblants » | 282 × 233 | [167, 231] | 4 × 4 m | 2,7 | `B(..., 72, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_implants_3q` | `fs_bas_implants` | « Rechromage » | 282 × 218 | [167, 216] | 4 × 4 m | 2,6 | `B(..., 76, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+
+### Notes d'intégration pour le code (Rivet)
+1. **Remplacement dans `BUILDINGS_STRIP`** :
+   - Nord (`front z = 6`) : remplacer `FN(id, label, '<clé>', x, w)` par `B(id, label, '<clé>_3q', x, 6 - d, w, d)` avec `d = 8` pour `fs_sexshop_3q`, `fs_club_3q`, `fs_lovehotel_3q`, `fs_clubprive_3q` (donc `z = -2`) et `d = 4` pour `fs_peep_3q`, `fs_salon_3q`, `fs_bouche1` (donc `z = 2`). Pour `fs_bouche0` (fond de la ruelle Fusible `x 8–10`), poser `B('fs_bouche0', '', 'fs_bouche_nord_3q', 7, -1, 4, 4, { named: false, solid: [{ x: 8, z: 0, w: 2, d: 3 }] })` pour laisser `z 3–6` libre autour de Fusible `(9 ; 5,4)`.
+   - Sud (`front z = 24`, aligné sur `fs_retour` et `fs_capsules`) : remplacer `BAS(id, label, '<clé>', x, w)` par `B(id, label, '<clé>_3q', x, 20, w, 4)` et `fs_cabines` par `B('fs_cabines', 'Cabines sans C.A.G.E.', 'fs_cabines_3q', 38, 20, 8, 4)`.
+2. **Enseignes `_3q_neon`** : chargées automatiquement par `view.js` (`b.sprite + '_neon'`). Pour `fs_n_club` (`effet: 'saute'`), recaler la tranche `saute` de `[0.52, 0.58]` (ancien sprite sans retour de côté) vers `[0.316, 0.35]` sur `fs_club_3q_neon` (le retour droit occupe la moitié droite de l'image).
+3. **Fenêtres `_3q_fenetres`** : brancher un calque additif léger (vacillement lent / réaction hors plafond mobile, sur le modèle de `_neon`).
+4. **Dégagement `view.masques()` côté sud** : l'emprise sud passant de `z 23–24` (1 m) à `z 20–24` (4 m, comme `fs_retour` et `fs_capsules`), avancer légèrement vers le nord sur le trottoir (`z ≈ 17,2–18,2`, comme Mme Okoro et Vieux Marius) les 4 personnages qui se tenaient à `z 19,4–20,2` (`fs_ocre`, `fs_racoleuse`, `fs_mac`, et le figurant `gen_fs_client_imper` en `(45 ; 19,4)`), ainsi que le figurant `(38,4 ; 13,6)` d'environ 0,8 m vers le nord si le haut de `fs_cabines_3q` l'effleure.
+
+Planches de contrôle (maquettes hors jeu, pas des captures) :
+- `/workspace/nml-shots/strip_3q.png` (assemblage iso complet de la rue de 80 m avec sols, lueurs et figurants `gen_fs_*`)
+- `/workspace/nml-shots/strip_3q_zoom.png` (gros plan 1:1 de 4 bâtiments avec échelle PNJ et calques `_neon` / `_fenetres`)
