@@ -154,7 +154,11 @@ Les murets sud/est (`pp_muret*`), lampadaires, bancs, caméras, statues, jardini
 | `pp_kiosque_boissons_3q` | pp_kiosque_boissons (2×2) | « Hydratation » | 282 × 252 | [167, 250] | 4 × 4 m | 3,0 | `B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_3q', 36, 28, 4, 4)` | `_neon`, `_fenetres` |
 | `pp_nord_a_3q` | pp_facade_a (16×2) | « Pulse » | 776 × 708 | [661, 706] | 16 × 4 m | 10,0 | `B('pp_fac_n2', '', 'pp_nord_a_3q', 12, -4, 16, 4, { named: false })` | `_neon`, `_fenetres`, `_ecran`, `_pulse` |
 | `pp_nord_b_3q` | pp_facade_b (8×1,5) | « Lounge » | 447 × 571 | [332, 569] | 8 × 4 m | 8,0 | `B('pp_fac_n4', '', 'pp_nord_b_3q', 28, -4, 8, 4, { named: false })` | `_neon`, `_fenetres`, `_pulse` |
-| `pp_nord_c_3q` | pp_facade_c (12×1,5) | « *(sans enseigne)* » | 611 × 632 | [496, 630] | 12 × 4 m | 10,0 | `B('pp_fac_n1', '', 'pp_nord_c_3q', 0, -4, 12, 4, { named: false }) (+ `pp_fac_n3` en x 36)` | `_fenetres`, `_ecran`, `_pulse` |
+| `pp_nord_c_3q` | — | — | — | — *(obsolete)* |
+| `pp_nord_c2_3q` | fixe (Résidences du Pulse, ambre) | vacillement ambre | égaliseur : sync kick | bandes violettes : pulse kick |
+| `pp_nord_c3_3q` | fixe (Arcades Nord) | vacillement ambre | égaliseur : sync kick déphasé | bandes violettes : pulse 1/2 kick |
+| `pp_nord_c2_3q` | pp_nord_c_3q (x 0) | « Résidences du Pulse » | 611 × 748 | [496, 746] | 12 × 4 m | 10 | `B('pp_fac_n1', '', 'pp_nord_c2_3q', 0, -4, 12, 4, { named: false })` | `_neon`, `_fenetres`, `_ecran`, `_pulse` |
+| `pp_nord_c3_3q` | pp_nord_c_3q (x 36) | « Arcades Nord » | 611 × 692 | [496, 690] | 12 × 4 m | 10 | `B('pp_fac_n3', '', 'pp_nord_c3_3q', 36, -4, 12, 4, { named: false })` | `_neon`, `_fenetres`, `_ecran`, `_pulse` |
 | `pp_ouest_a_3q` | pp_facade_a_o (2×12) | « *(sans enseigne)* » | 509 × 674 | [167, 672] | 4 × 12 m | 10,0 | `B('pp_fac_o1', '', 'pp_ouest_a_3q', -4, 0, 4, 12, { named: false })` | `_fenetres`, `_ecran`, `_pulse` |
 | `pp_ouest_b_3q` | pp_facade_b_o2 (1,5×8) | « *(sans enseigne)* » | 396 × 576 | [167, 573] | 4 × 8 m | 8,0 | `B('pp_fac_o2', '', 'pp_ouest_b_3q', -4, 16, 4, 8, { named: false }) (+ `pp_fac_o3` en z 24)` | `_fenetres`, `_pulse` |
 | `pp_ecran_feed_3q` | pp_ecran_feed | « Feed 24/7 » | 941 × 672 | [826, 670] | 20 × 4 m | 8,0 | `B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED })` | `_neon`, `_ecran`, `_pulse` |
@@ -191,6 +195,12 @@ Les murets sud/est (`pp_muret*`), lampadaires, bancs, caméras, statues, jardini
 4. Brancher `*_ecran` et `*_pulse` (additif, effets du tableau) ; pour `pp_ecran_feed_3q`, conserver `ECRAN_FEED` — mettre à jour `ecran_coins` d'après le manifeste si besoin.
 5. Recaler PNJ / figurants / lueurs autour des nouvelles emprises 4×4 (stands) et des bords 4 m de profondeur.
 6. Vérifier les trois accès (ouest, Strip, escalier sud) : aucun écran ni emprise ne doit les gêner.
+
+
+### Correctif nord_c / billboard (suite)
+- `pp_nord_c_3q` et ses calques sont `"obsolete": true` (texte parasite « 2175 cyberpunk Pulse Plaza », trop violet).
+- Poser `pp_nord_c2_3q` en x 0 (« Résidences du Pulse », façade ambre dominante) et `pp_nord_c3_3q` en x 36 (« Arcades Nord », variante non clonée).
+- Billboard : préférer le calque `pp_billboard_3q_neon2` (cadre violet + textes renforcés) à la place de `pp_billboard_3q_neon` trop faible ; même taille et même ancre. En `loc.enseignes` : `{ building: 'pp_billboard', neon: 'pp_billboard_3q_neon2', effet: 'fixe' }`.
 
 ### Planches
 - `/workspace/nml-shots/pulse_3q.png` (maquette iso de la place avec les 14 bâtiments espacés comme en jeu, pas une capture)
