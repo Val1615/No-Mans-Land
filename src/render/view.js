@@ -190,6 +190,7 @@ export function createView(canvas, game, sprites, bman, labelLayer) {
     // petite lumière en hauteur (g.y, m) : point additif posé sur sa source (g.building : trié juste après elle, ampoule de comptoir, lampe de truck)
     for (const g of (loc.glows || []).filter(g => g.y != null)) { const p = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
       const r = g.r || 0.8; p.scale.set(r * 2, r * 2, 1); p.position.set(g.x, g.y, g.z); p.renderOrder = 3; p.userData.neon = 'lampe'; world.add(p);
+      if (g.flicker) flick.push({ m: p.material, base: g.i ?? 0.6, ph: Math.random() * 6 }); // clignotement lent des ambres (stands, trucks)
       const it = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (it) it.extra.push(p); }
     for (const g of (loc.glows || []).filter(g => g.y == null)) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
       m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02, g.z); m.renderOrder = 2; world.add(m); if (g.flicker) flick.push({ m: m.material, base: g.i ?? 0.6, ph: Math.random() * 6 }); }

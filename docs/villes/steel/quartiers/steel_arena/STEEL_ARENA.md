@@ -77,3 +77,9 @@ Limites : la façade est s'arrête à z 6 comme avant, le bout nord-est du toit 
 - Moteur : `src/core/catalogue.js` ne faisait passer en bâtiments que `pp|fs|ar|df|ml_` ; `ar2_` ajouté (même chargement pour le jeu et l'éditeur).
 - Plan d'arrivée gardé, recalé : sans lui, au départ (1, 44) le cadre de jeu (30 px/m, 24 en mobile) ne montre que l'angle ouest (ovale de 92 m). Desktop 12 px/m, avance 10 ; mobile 4 px/m, avance 12 ; u [26, 30]. Les noms (PNJ, services) sont masqués tant que le plan large domine, les sorties restent.
 - Coin nord-est : la façade est s'arrête à z 6 ; en jeu, au bord est (95, 31), la coupe tombe en haut d'écran, sombre sur fond noir, sans trou clair. Une pièce z 0→6 fermerait la silhouette, non bloquante.
+
+## Densification de la vie (Régie, sans nouvelles pièces)
+
+- Écrans code : pages BATTLE et FRONTON enrichies, périodes un peu plus courtes et décalées. Projecteurs : balayages et périodes différenciés (hors `animStats.on`).
+- Figurants FIXES densifiés autour des stands/trucks et un second rang devant les portiques (sprites du pool existant). Plan large d'arrivée et enceinte ar2 inchangés.
+- Ambres des stands/trucks/guichets : `flicker` lent (sol + lampes y), sans teinte violette.

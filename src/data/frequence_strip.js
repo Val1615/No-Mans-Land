@@ -100,26 +100,48 @@ export const LOCATIONS_STRIP = {
       { x: 42, z: 20.8, rx: 3.4, rz: 1.6, color: ROSE, i: 0.6, flicker: true },
       { x: 48, z: 13.4, rx: 2.4, rz: 1.4, color: ROUGE, i: 0.6 }, { x: 57, z: 16.6, rx: 2, rz: 1.2, color: ROSE, i: 0.45 },
       { x: 40, z: 12, rx: 38, rz: 4, color: ROUGE, i: 0.12 }, { x: 25, z: 15.4, rx: 0.6, rz: 0.4, color: '#c8323c', i: 0.5 } ],
-    // enseignes au format d'Ocre (calques <clé>_neon posés en additif) : allumées fixes, quelques effets seulement ; les devantures répétées restent éteintes
+    // enseignes _neon : effets poussés avec parcimonie (hors animStats.on) ; fleures/tabac/laverie/gage/perruques restent fixes
     enseignes: [
+      { id: 'fs_n_sexshop', building: 'fs_sexshop', effet: 'pulse', intensite: 0.85, periode: 4.2 },
       { id: 'fs_n_peep', building: 'fs_peep', effet: 'gresille', intensite: 0.9 },
+      { id: 'fs_n_salon', building: 'fs_salon', effet: 'gresille', intensite: 0.75, decale: 0.7 },
       { id: 'fs_n_club', building: 'fs_club', effet: 'saute', saute: [0.52, 0.58], intensite: 0.95, periode: 3 },
       { id: 'fs_n_lovehotel', building: 'fs_lovehotel', effet: 'pulse', intensite: 0.85, periode: 5 },
       { id: 'fs_n_clubprive', building: 'fs_clubprive', effet: 'clignote', intensite: 0.9, periode: 4.04 }, // « 404 » qui s'éteint par moments
       { id: 'fs_n_cabines', building: 'fs_cabines', effet: 'gresille', intensite: 0.8, decale: 0.4 },
-      { id: 'fs_billets_n', building: 'fs_billets', effet: 'gresille' }, { id: 'fs_implants_n', building: 'fs_implants', effet: 'clignote', periode: 3.3 }, // les six autres devantures basses : néon fixe (automatique)
+      { id: 'fs_n_nouilles', building: 'fs_nouilles', effet: 'pulse', intensite: 0.7, periode: 6 },
+      { id: 'fs_n_couvert', building: 'fs_couvert', effet: 'gresille', intensite: 0.7, decale: 1.1 },
+      { id: 'fs_n_shots', building: 'fs_shots', effet: 'clignote', intensite: 0.85, periode: 2.8 },
+      { id: 'fs_billets_n', building: 'fs_billets', effet: 'gresille' },
+      { id: 'fs_n_massages', building: 'fs_massages', effet: 'pulse', intensite: 0.75, periode: 5.5, decale: 0.3 },
+      { id: 'fs_implants_n', building: 'fs_implants', effet: 'clignote', periode: 3.3 },
       // démo du contour par le même fichier (sans calque _neon), derrière ?dev=1
       { id: 'fs_n_neon7', building: 'fs_neon7', effet: 'saute', saute: [0.42, 0.58], couleur: ROSE, intensite: 0.28, periode: 3, dev: true },
       { id: 'fs_n_retour', building: 'fs_retour', effet: 'pulse', couleur: AMBRE, intensite: 0.25, periode: 4, decale: 0.5, dev: true } ],
-    // passants sur des couloirs hors de toute ombre d'écran (vérifiés avec view.masqueEn) ; figurants : grappes devant les portes, clients qui hésitent, videur du Club 404 ; quelques fans du Neon-7 et du Core Stack (clones réduits de 9 à 4)
+    // passants sur des couloirs hors de toute ombre d'écran (vérifiés avec view.masqueEn) ; figurants densifiés : grappes aux seuils du quartier chaud, clients hésitants ; miroir (face ±1) ; accès ouest/est et ruelle Fusible libres
     extras: [
+      // Neon-7 / sexshop (trottoir nord)
       { sprite: 'gen_fs_foule_a', x: 12, z: 8.6, face: -1, role: 'foule' }, { sprite: 'gen_fs_foule_b', x: 13.2, z: 9.4, face: 1, role: 'foule' },
+      { sprite: 'gen_fs_foule_a', x: 14.4, z: 7.4, face: 1, role: 'foule' }, { sprite: 'gen_fs_client_imper', x: 18.6, z: 7.3, face: -1, role: 'client' },
+      { sprite: 'gen_fs_foule_b', x: 23.4, z: 7.5, face: 1, role: 'foule' }, { sprite: 'gen_fs_passante', x: 25.2, z: 8.1, face: -1, role: 'foule' },
+      // peep / salon / Core Stack
+      { sprite: 'gen_fs_client_costume', x: 32.6, z: 7.9, face: -1, role: 'client' },
+      { sprite: 'gen_fs_foule_a', x: 35.2, z: 7.4, face: 1, role: 'foule' }, { sprite: 'gen_fs_foule_b', x: 36.8, z: 8.0, face: -1, role: 'foule' },
       { sprite: 'gen_fs_foule_a', x: 42.4, z: 7.6, face: 1, role: 'foule' }, { sprite: 'gen_fs_foule_b', x: 45.6, z: 7.4, face: -1, role: 'foule' },
-      { sprite: 'gen_fs_client_costume', x: 32.6, z: 7.9, face: -1, role: 'client' }, // devant le peep-show, regarde par-dessus l'épaule
-      { sprite: 'gen_fs_client_imper', x: 45, z: 19.4, face: 1, role: 'client' }, // hésite à distance des cabines, tourné vers la rue
-      { sprite: 'gen_fs_videur_prive', x: 78, z: 7.1, face: -1, role: 'videur' } ],
+      { sprite: 'gen_fs_passant_canne', x: 47.2, z: 8.2, face: 1, role: 'client' },
+      // L'Effeuillée / lovehotel / Club 404 (hors grappe des PNJ nommés)
+      { sprite: 'gen_fs_foule_b', x: 61.2, z: 7.3, face: -1, role: 'foule' }, { sprite: 'gen_fs_client_costume', x: 66.8, z: 7.2, face: 1, role: 'client' },
+      { sprite: 'gen_fs_foule_a', x: 69.6, z: 8.4, face: -1, role: 'foule' }, { sprite: 'gen_fs_foule_b', x: 73.2, z: 8.6, face: 1, role: 'foule' },
+      { sprite: 'gen_fs_client_imper', x: 75.0, z: 9.2, face: -1, role: 'client' },
+      { sprite: 'gen_fs_videur_prive', x: 78, z: 7.1, face: -1, role: 'videur' },
+      // cabines (position historique sûre) + quelques clients en pleine rue (z 12-14, hors ombres sud)
+      { sprite: 'gen_fs_client_imper', x: 45, z: 19.4, face: 1, role: 'client' },
+      { sprite: 'gen_fs_foule_b', x: 10.2, z: 12.8, face: 1, role: 'foule' }, { sprite: 'gen_fs_client_costume', x: 48.4, z: 12.6, face: -1, role: 'client' },
+      { sprite: 'gen_fs_foule_a', x: 28.8, z: 13.2, face: -1, role: 'foule' }, { sprite: 'gen_fs_passante', x: 38.4, z: 13.6, face: 1, role: 'foule' },
+      { sprite: 'gen_fs_foule_b', x: 58.2, z: 13.4, face: -1, role: 'foule' }, { sprite: 'gen_fs_client_imper', x: 6.8, z: 12.6, face: 1, role: 'client' } ],
     walkers: [ { sprite: 'gen_fs_foule_a', path: [[4, 9.75], [67, 9.75]], speed: 0.8, t0: 2 }, { sprite: 'gen_fs_foule_b', path: [[66, 8.75], [5, 8.75]], speed: 0.7, t0: 8 },
-      { sprite: 'gen_fs_passante', path: [[21, 8.2], [27, 11.6]], speed: 0.9, t0: 1 }, { sprite: 'gen_fs_passant_canne', path: [[40, 7.4], [52.6, 7.4]], speed: 0.35, t0: 4 } ],
+      { sprite: 'gen_fs_passante', path: [[21, 8.2], [27, 11.6]], speed: 0.9, t0: 1 }, { sprite: 'gen_fs_passant_canne', path: [[40, 7.4], [52.6, 7.4]], speed: 0.35, t0: 4 },
+      { sprite: 'gen_fs_foule_a', path: [[8, 11.2], [48, 11.2]], speed: 0.7, t0: 11 } ],
     spawn: { player: { x: 1, z: 10 }, companion: { x: 1, z: 11 } }, city: 'steel',
     // revue Régie : cadre borné sur la rue (arrivées ouest et est sans vide) ; étiquettes des groupes serrés à l'approche (3 m), comme Pulse Plaza
     cadre: { mobile: { x: [9, 71], z: [9, 10] }, desktop: { x: [17, 63], z: [12, 14] } },

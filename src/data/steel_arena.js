@@ -16,9 +16,14 @@ const BATTLE = [
   { fond: ['#061a2a', '#1a6a9a'], image: 'ar_ens_ecran_tron', crop: [0, 0, 256, 144], titre: 'GROOVY-TRON', sous: 'Battle du 31 · côté droit', bandeau: 'Statut : invaincu. Statut : mis à jour.' },
   { fond: ['#300818', '#a0203a'], titre: 'ROUND 3', sous: 'Vibes 48 % · Tron 52 %', bandeau: 'Le public décide. Human Corp arbitre.' },
   { fond: ['#101018', '#3a3a5a'], titre: 'PULSE OF STEEL', sous: 'Festival · 14/11 · complet', bandeau: 'Human Corp sponsorise le sourire.' },
+  { fond: ['#1a0828', '#7a2ab0'], titre: 'EN DIRECT', sous: 'Caméra 7 · gradins ouest', bandeau: 'Ne regardez pas les écrans. Ils vous regardent.' },
+  { fond: ['#081820', '#1a5a7a'], titre: 'SCORE LIVE', sous: 'Vibes 51 % · Tron 49 %', bandeau: 'Écart sous la marge d\u2019erreur Human Corp.' },
+  { fond: ['#281008', '#8a4020'], titre: 'MERCH OFFICIEL', sous: 'Stand B · parvis sud', bandeau: 'Casquettes qui déteignent. Sourires calibrés.' },
 ];
 const FRONTON = [ { fond: ['#0a0a14', '#20204a'], titre: 'STEEL ARENA', sous: 'Live tonight', bandeau: 'Portiques ouverts' },
-  { fond: ['#2a0c4a', '#5a1c9a'], titre: 'VIBES × TRON', sous: 'Battle du 31', bandeau: 'Billet, implant, sourire' } ];
+  { fond: ['#2a0c4a', '#5a1c9a'], titre: 'VIBES × TRON', sous: 'Battle du 31', bandeau: 'Billet, implant, sourire' },
+  { fond: ['#180a20', '#4a1860'], titre: 'FILE ACTIVE', sous: 'Attente estimée 42 min', bandeau: 'Le serpentin est une forme d\u2019art' },
+  { fond: ['#0a1418', '#184858'], titre: 'HUMAN CORP', sous: 'Sponsor officiel', bandeau: 'Souriez. C\u2019est mesuré.' } ];
 const PYL = [[10, 40], [86, 40], [24, 58], [72, 58]], LAMP = [[4, 34], [92, 34], [36, 60], [60, 60]];
 // foule fixe : sprites de foule existants (Arena, Strip, Pulse, Méga-Line, Dôme), miroir alterné ; FIG(liste de [x, z]) les répartit sans répéter deux voisins
 const POOL = ['gen_ar_foule_a', 'gen_pp_foule_a', 'gen_fs_foule_a', 'gen_pp_foule_c', 'gen_ml_fan', 'gen_ar_foule_b', 'gen_pp_foule_e', 'gen_df_foule_a', 'gen_fs_passante', 'gen_pp_foule_g', 'gen_ml_foule_a', 'gen_pp_foule_b', 'gen_fs_foule_b', 'gen_pp_foule_i', 'gen_df_foule_b', 'gen_pp_foule_d', 'gen_ml_foule_b', 'gen_pp_foule_f', 'gen_fs_client_imper', 'gen_pp_foule_h', 'gen_pp_foule_j', 'gen_fs_client_costume'];
@@ -33,12 +38,12 @@ export const BUILDINGS_ARENA = [
   // façades : est, sud d'ouest en est, retour ouest, angle ; écrans en dernier
   AP('ar_f_est', 'ar2_facade_courbe_z', 92, 22, 1, 16, { solid: [] }),
   AP('ar_f_s0', 'ar2_facade_courbe_x', 20, 30, 16, 1), AP('ar_f_s1', 'ar2_facade_courbe_x', 36, 30, 16, 1),
-  AP('ar_entree', 'ar2_facade_entree', 52, 30, 16, 1, { label: 'Entrée de l\u2019Arena', named: true, ecran: { coins: [[93, 414], [685, 609], [685, 705], [93, 510]], periode: 7, marque: 'STEEL ARENA', pages: FRONTON } }),
+  AP('ar_entree', 'ar2_facade_entree', 52, 30, 16, 1, { label: 'Entrée de l\u2019Arena', named: true, ecran: { coins: [[93, 414], [685, 609], [685, 705], [93, 510]], periode: 5.5, marque: 'STEEL ARENA', pages: FRONTON } }),
   AP('ar_f_s2', 'ar2_facade_courbe_x', 68, 30, 16, 1), AP('ar_f_s3', 'ar2_facade_courbe_x', 84, 30, 16, 1),
   B('ar_f_retour', '', 'ar2_facade_retour_ouest', 0, 26, 4, 4, { named: false, solid: [{ x: 0, z: 29, w: 4, d: 1 }] }),
   B('ar_f_angle', '', 'ar2_facade_angle', 84, 22, 8, 8, { named: false, ancre: [-8, 0] }), // ancre au raccord sud (84 ; 30), emprise x 84-92 z 22-30
-  AP('ar_ecran_s', 'ar2_ecran_geant_x', 18, 30.8, 9.6, 0.5, { solid: [], ecran: { periode: 9, marque: 'ARENA LIVE', pages: BATTLE } }),
-  AP('ar_ecran_e', 'ar2_ecran_geant_z', 92.8, 19, 0.5, 8, { solid: [], ecran: { periode: 11, decale: 1, marque: 'ARENA LIVE', pages: BATTLE } }),
+  AP('ar_ecran_s', 'ar2_ecran_geant_x', 18, 30.8, 9.6, 0.5, { solid: [], ecran: { periode: 7, marque: 'ARENA LIVE', pages: BATTLE } }),
+  AP('ar_ecran_e', 'ar2_ecran_geant_z', 92.8, 19, 0.5, 8, { solid: [], ecran: { periode: 8.5, decale: 2, marque: 'ARENA LIVE', pages: BATTLE } }),
   // bord ouest : façades basses de Steel (dos de Pulse Plaza) le long de x 0, arrivée ar_ouest libre (z 42 à 46)
   B('ar_bord_o0', '', 'pp_facade_a_o', 0, 30, 2, 12, { named: false }),
   B('ar_bord_o1', '', 'pp_facade_b_o', 0, 46, 1.5, 8, { named: false }), B('ar_bord_o2', '', 'pp_facade_b_o2', 0, 54, 1.5, 8, { named: false }),
@@ -95,17 +100,17 @@ export const LOCATIONS_ARENA = {
       { x: 12, z: 31.8, rx: 6, rz: 1.6, color: VIOLET, i: 0.3 }, { x: 93.4, z: 14, rx: 1.6, rz: 5, color: CYAN, i: 0.35 }, // reflets des écrans géants
       ...PYL.map(([x, z]) => ({ x, z: z + 1.1, rx: 2.2, rz: 1.3, color: CYAN, i: 0.4 })),
       ...LAMP.map(([x, z]) => ({ x, z: z + 0.6, rx: 2, rz: 1.4, color: VIOLET, i: 0.35 })),
-      { x: 28.5, z: 42.8, rx: 2.6, rz: 1.2, color: AMBRE, i: 0.6 }, { x: 28.6, z: 41.8, y: 2.3, r: 0.55, color: AMBRE, i: 0.8, building: 'ar_merch_b' },
-      { x: 56.5, z: 42.8, rx: 2.6, rz: 1.2, color: AMBRE, i: 0.6 }, { x: 56.6, z: 41.8, y: 2.2, r: 0.5, color: AMBRE, i: 0.8, building: 'ar_merch_c' },
-      { x: 19, z: 51, rx: 3.6, rz: 1.5, color: ORANGE, i: 0.6 }, { x: 19.6, z: 49.9, y: 2.6, r: 0.6, color: ORANGE, i: 0.85, building: 'ar_truck_n' },
-      { x: 71, z: 51, rx: 3.6, rz: 1.5, color: AMBRE, i: 0.6 }, { x: 71.4, z: 49.9, y: 2.6, r: 0.6, color: AMBRE, i: 0.85, building: 'ar_truck_b' },
-      { x: 8, z: 48.7, rx: 2.4, rz: 1, color: AMBRE, i: 0.45 }, // guichets
+      { x: 28.5, z: 42.8, rx: 2.6, rz: 1.2, color: AMBRE, i: 0.6, flicker: true }, { x: 28.6, z: 41.8, y: 2.3, r: 0.55, color: AMBRE, i: 0.8, building: 'ar_merch_b', flicker: true },
+      { x: 56.5, z: 42.8, rx: 2.6, rz: 1.2, color: AMBRE, i: 0.6, flicker: true }, { x: 56.6, z: 41.8, y: 2.2, r: 0.5, color: AMBRE, i: 0.8, building: 'ar_merch_c', flicker: true },
+      { x: 19, z: 51, rx: 3.6, rz: 1.5, color: ORANGE, i: 0.6, flicker: true }, { x: 19.6, z: 49.9, y: 2.6, r: 0.6, color: ORANGE, i: 0.85, building: 'ar_truck_n', flicker: true },
+      { x: 71, z: 51, rx: 3.6, rz: 1.5, color: AMBRE, i: 0.6, flicker: true }, { x: 71.4, z: 49.9, y: 2.6, r: 0.6, color: AMBRE, i: 0.85, building: 'ar_truck_b', flicker: true },
+      { x: 8, z: 48.7, rx: 2.4, rz: 1, color: AMBRE, i: 0.45, flicker: true }, // guichets
       { x: 35.4, z: 41.4, rx: 1.4, rz: 1, color: MAGENTA, i: 0.3 }, // cœur animé de la file
       { x: 17.4, z: 56.7, rx: 1.8, rz: 1, color: BLANC, i: 0.4 }, { x: 81, z: 54.6, rx: 2.4, rz: 1, color: BLANC, i: 0.25 }, // Human Corp, régie
       { x: 34, z: 32.4, rx: 0.6, rz: 0.4, color: ROUGE, i: 0.5 }, { x: 91, z: 61, rx: 1.6, rz: 1.2, color: ROUGE, i: 0.3 } ],
     // projecteurs : les 4 pylônes tirent leur faisceau depuis source_faisceau_px (automatique) ; ici seulement le réglage (balayage lent décalé, vers le ciel au-dessus du dôme)
-    projecteurs: PYL.map((_, i) => ({ building: `ar_pyl${i}`, couleur: CYAN, longueur: 42, ouverture: 3.5, inclinaison: 28, cap: [24, -24, 10, -10][i], balayage: 26,
-      periode: [17, 19, 23, 21][i], decale: [0, 6, 11, 3][i], intensite: 0.2 })),
+    projecteurs: PYL.map((_, i) => ({ building: `ar_pyl${i}`, couleur: CYAN, longueur: 42, ouverture: [3.2, 3.8, 3.4, 3.6][i], inclinaison: [26, 30, 28, 27][i],
+      cap: [24, -24, 10, -10][i], balayage: [32, 22, 36, 28][i], periode: [14, 18, 11, 16][i], decale: [0, 5, 9, 2][i], intensite: 0.22 })),
     // figurants FIXES (hors budget d'animation) : fans d'Ocre, grappes autour des stands et des trucks, file dans le serpentin, foule devant les portiques ; la file qui avance = passants en aller simple
     extras: [ { sprite: 'gen_ar_fan_chignons', x: 40.4, z: 38.9, face: 1, role: 'fan' }, { sprite: 'gen_ar_techwear', x: 46, z: 35.9, face: -1, role: 'fan' },
       { sprite: 'gen_ar_manteau', x: 62, z: 48, face: -1, role: 'fan' }, { sprite: 'gen_ar_cuir', x: 25.6, z: 56.4, face: 1, role: 'fan' },
@@ -115,10 +120,12 @@ export const LOCATIONS_ARENA = {
       ...FIG([[39.2, 35.7], [42.2, 35.2], [44.6, 35.8, -1], [48.2, 35.2], [41.8, 38.9], [44.2, 38.2, -1], [47.6, 38.8], [38.8, 41.7], [41.4, 41.2], [45.6, 41.8, -1], [47.8, 41.3], [39.6, 44.8], [42.8, 44.2, -1], [45.2, 44.9], [47.4, 44.3]], 3, 'attente'),
       // spectateurs de l'écran géant ouest : grappe tournée vers l'écran, visible dès l'arrivée
       ...FIG([[19, 35.6, -1], [7.8, 32.6, -1], [9.4, 33.8, -1], [11, 32.9, -1], [12.6, 34.2, -1], [14.2, 33.1, -1], [15.8, 34.4, -1], [8.6, 35.6, -1], [12, 36, -1], [17.4, 33.2, -1]], 19, 'ecran'),
-      ...FIG([[26.4, 42.8], [27.8, 43.6, -1], [29.6, 42.9], [31, 43.8, -1], [24.6, 44]], 7, 'grappe'),
-      ...FIG([[55.8, 43], [57.4, 43.8, -1], [59, 42.9]], 11, 'grappe'),
-      ...FIG([[17.6, 50.8], [18.2, 52.2, -1], [21.8, 51.2], [22.8, 52.3, -1], [24.4, 51]], 13, 'grappe'),
-      ...FIG([[70.8, 51.3], [72.2, 52.1, -1], [73.6, 51.2], [75, 52, -1], [76.4, 51.1]], 17, 'grappe') ],
+      ...FIG([[26.4, 42.8], [27.8, 43.6, -1], [29.6, 42.9], [31, 43.8, -1], [24.6, 44], [25.8, 45.2, -1], [30.2, 45.4], [28.4, 41.6, -1]], 7, 'grappe'),
+      ...FIG([[55.8, 43], [57.4, 43.8, -1], [59, 42.9], [54.6, 44.6], [58.2, 44.4, -1]], 11, 'grappe'),
+      ...FIG([[17.6, 50.8], [18.2, 52.2, -1], [21.8, 51.2], [22.8, 52.3, -1], [24.4, 51], [23.6, 49.8]], 13, 'grappe'),
+      ...FIG([[70.8, 51.3], [72.2, 52.1, -1], [73.6, 51.2], [75, 52, -1], [76.4, 51.1], [68.6, 50.4], [74.2, 50.0, -1], [77.0, 50.6]], 17, 'grappe'),
+      // densification devant les portiques (deuxième rang, hors file serpentin)
+      ...FIG([[36.2, 33.4], [51.4, 33.2, -1], [37.8, 34.6], [50.2, 34.8, -1], [35.4, 36.2], [48.6, 33.8, -1]], 21, 'foule') ],
     walkers: [ ...[0, 8, 16, 24, 32, 40, 48].map((t0, i) => ({ sprite: ['gen_ar_foule_a', 'gen_pp_foule_b', 'gen_ar_foule_b', 'gen_fs_foule_a', 'gen_ml_fan', 'gen_pp_foule_h', 'gen_df_foule_a'][i], path: [[50, 49], [50, 44.6], [38, 44.6], [38, 41.6], [49.4, 41.6], [49.4, 38.6], [38, 38.6], [38, 35.6], [49.4, 35.6], [49.4, 32.9], [44, 32.9]], speed: 0.3, t0, aller: true, role: 'file' })),
       { sprite: 'gen_ar_foule_a', path: [[3, 62.2], [94, 62.2]], speed: 0.6, t0: 3 }, { sprite: 'gen_pp_foule_c', path: [[93, 63.2], [3, 63.2]], speed: 0.6, t0: 10 } ],
     spawn: { player: { x: 1, z: 44 }, companion: { x: 1, z: 45 } }, city: 'steel',
