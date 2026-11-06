@@ -4559,20 +4559,20 @@
     "neon": "fs_sexshop_3q_neon",
     "neon_coins": [
       [
-        52,
-        377
+        50,
+        379
       ],
       [
-        294,
-        457
+        299,
+        462
       ],
       [
-        294,
-        489
+        299,
+        493
       ],
       [
-        52,
-        409
+        50,
+        411
       ]
     ]
   },
@@ -4633,20 +4633,20 @@
     "neon": "fs_peep_3q_neon",
     "neon_coins": [
       [
-        62,
-        287
+        83,
+        298
       ],
       [
-        141,
-        313
+        142,
+        317
       ],
       [
-        141,
-        424
+        142,
+        428
       ],
       [
-        62,
-        397
+        83,
+        408
       ]
     ]
   },
@@ -4707,20 +4707,20 @@
     "neon": "fs_salon_3q_neon",
     "neon_coins": [
       [
-        22,
-        279
+        21,
+        277
       ],
       [
-        138,
-        318
+        140,
+        317
       ],
       [
-        138,
-        352
+        140,
+        354
       ],
       [
-        22,
-        314
+        21,
+        315
       ]
     ]
   },
@@ -4821,25 +4821,25 @@
     "neon": "fs_club_3q_neon",
     "neon_coins": [
       [
-        69,
-        383
+        110,
+        280
       ],
       [
-        338,
-        473
+        320,
+        349
       ],
       [
-        338,
-        504
+        320,
+        387
       ],
       [
-        69,
-        414
+        110,
+        317
       ]
     ],
     "saute_conseille": [
-      0.316,
-      0.35
+      0.334,
+      0.36
     ]
   },
   "fs_club_3q_neon": {
@@ -4900,19 +4900,19 @@
     "neon_coins": [
       [
         83,
-        131
+        113
       ],
       [
-        278,
-        196
+        328,
+        194
       ],
       [
-        278,
-        216
+        328,
+        233
       ],
       [
         83,
-        151
+        152
       ]
     ]
   },
@@ -4973,20 +4973,20 @@
     "neon": "fs_clubprive_3q_neon",
     "neon_coins": [
       [
-        138,
-        358
+        137,
+        359
       ],
       [
-        256,
-        397
+        257,
+        399
       ],
       [
-        256,
-        427
+        257,
+        430
       ],
       [
-        138,
-        388
+        137,
+        390
       ]
     ]
   },
@@ -5047,20 +5047,20 @@
     "neon": "fs_cabines_3q_neon",
     "neon_coins": [
       [
-        37,
-        158
+        36,
+        155
       ],
       [
-        307,
+        313,
         247
       ],
       [
-        307,
-        272
+        313,
+        275
       ],
       [
-        37,
-        183
+        36,
+        184
       ]
     ]
   },
@@ -5121,20 +5121,20 @@
     "neon": "fs_bas_nouilles_3q_neon",
     "neon_coins": [
       [
-        144,
-        97
+        115,
+        61
       ],
       [
-        259,
-        135
+        289,
+        119
       ],
       [
-        259,
-        153
+        289,
+        163
       ],
       [
-        144,
-        115
+        115,
+        105
       ]
     ]
   },
@@ -5195,20 +5195,20 @@
     "neon": "fs_bas_fleurs_3q_neon",
     "neon_coins": [
       [
-        39,
-        61
+        38,
+        60
       ],
       [
-        131,
-        92
+        132,
+        91
       ],
       [
-        131,
-        113
+        132,
+        116
       ],
       [
-        39,
-        83
+        38,
+        85
       ]
     ]
   },
@@ -5269,20 +5269,20 @@
     "neon": "fs_bas_tabac_3q_neon",
     "neon_coins": [
       [
-        33,
-        66
+        31,
+        61
       ],
       [
-        120,
+        121,
+        91
+      ],
+      [
+        121,
+        125
+      ],
+      [
+        31,
         95
-      ],
-      [
-        120,
-        122
-      ],
-      [
-        33,
-        93
       ]
     ]
   },
@@ -5343,20 +5343,20 @@
     "neon": "fs_bas_preservatifs_3q_neon",
     "neon_coins": [
       [
-        30,
-        61
+        29,
+        49
       ],
       [
-        144,
-        99
+        145,
+        88
       ],
       [
-        144,
-        119
+        145,
+        120
       ],
       [
-        30,
-        81
+        29,
+        82
       ]
     ]
   },
@@ -5417,20 +5417,20 @@
     "neon": "fs_bas_shots_3q_neon",
     "neon_coins": [
       [
-        68,
-        90
+        54,
+        34
       ],
       [
-        146,
-        116
+        169,
+        72
       ],
       [
-        146,
-        143
+        169,
+        101
       ],
       [
-        68,
-        117
+        54,
+        63
       ]
     ]
   },
@@ -5491,20 +5491,20 @@
     "neon": "fs_bas_distributeur_3q_neon",
     "neon_coins": [
       [
-        77,
-        108
+        30,
+        59
       ],
       [
-        128,
+        159,
+        102
+      ],
+      [
+        159,
         125
       ],
       [
-        128,
-        153
-      ],
-      [
-        77,
-        136
+        30,
+        82
       ]
     ]
   },
@@ -5565,20 +5565,20 @@
     "neon": "fs_bas_massages_3q_neon",
     "neon_coins": [
       [
-        46,
-        63
+        45,
+        53
       ],
       [
-        136,
-        93
-      ],
-      [
-        136,
-        114
-      ],
-      [
-        46,
+        138,
         84
+      ],
+      [
+        138,
+        116
+      ],
+      [
+        45,
+        85
       ]
     ]
   },
@@ -5639,20 +5639,20 @@
     "neon": "fs_bas_laverie_3q_neon",
     "neon_coins": [
       [
-        40,
-        89
+        38,
+        86
       ],
       [
-        217,
-        147
+        218,
+        146
       ],
       [
-        217,
-        173
+        218,
+        175
       ],
       [
-        40,
-        114
+        38,
+        115
       ]
     ]
   },
@@ -5691,11 +5691,11 @@
     "file": "steel/frequence_strip/fs_bas_gage_3q.webp",
     "px": [
       282,
-      218
+      217
     ],
     "anchor": [
       167,
-      216
+      215
     ],
     "footprint_m": [
       4,
@@ -5705,27 +5705,27 @@
     "face": "3q",
     "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
     "remplace": "fs_bas_gage",
-    "pose": "côté sud : B('fs_gage', 'Mont-de-pitié', 'fs_bas_gage_3q', 68, 20, 4, 4) (front z 24, x 68 à 72 ; remplace fs_bas_gage)",
-    "source": "GenerateImage (cursor), 0f796793, réf. strip_a/strip_b + recalage PIL 3/4",
+    "pose": "côté sud : B('fs_gage', 'Mont-de-piété', 'fs_bas_gage_3q', 68, 20, 4, 4) (front z 24, x 68 à 72 ; remplace fs_bas_gage)",
+    "source": "GenerateImage (cursor), dc5495e8, réf. strip_a/strip_b + recalage PIL 3/4",
     "fenetres": "fs_bas_gage_3q_fenetres",
     "status": "v1",
-    "enseigne": "Mont-de-pitié",
+    "enseigne": "Mont-de-piété",
     "neon": "fs_bas_gage_3q_neon",
     "neon_coins": [
       [
-        28,
-        64
+        27,
+        60
       ],
       [
-        140,
-        101
+        141,
+        98
       ],
       [
-        140,
-        120
+        141,
+        121
       ],
       [
-        28,
+        27,
         83
       ]
     ]
@@ -5734,14 +5734,14 @@
     "file": "steel/frequence_strip/fs_bas_gage_3q_neon.webp",
     "px": [
       282,
-      218
+      217
     ],
     "anchor": [
       167,
-      216
+      215
     ],
     "couche_de": "fs_bas_gage_3q",
-    "texte": "MONT-DE-PITIÉ",
+    "texte": "MONT-DE-PIÉTÉ",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_gage_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_gage_3q ; posée en additif par view.js",
     "status": "v1"
@@ -5750,11 +5750,11 @@
     "file": "steel/frequence_strip/fs_bas_gage_3q_fenetres.webp",
     "px": [
       282,
-      218
+      217
     ],
     "anchor": [
       167,
-      216
+      215
     ],
     "couche_de": "fs_bas_gage_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_gage_3q.webp",
@@ -5787,20 +5787,20 @@
     "neon": "fs_bas_perruques_3q_neon",
     "neon_coins": [
       [
-        38,
-        67
+        37,
+        65
       ],
       [
-        157,
-        106
+        169,
+        108
       ],
       [
-        157,
-        126
+        169,
+        131
       ],
       [
-        38,
-        87
+        37,
+        88
       ]
     ]
   },
@@ -5861,20 +5861,20 @@
     "neon": "fs_bas_implants_3q_neon",
     "neon_coins": [
       [
-        43,
-        64
+        42,
+        63
       ],
       [
-        147,
-        99
+        148,
+        98
       ],
       [
-        147,
-        117
+        148,
+        118
       ],
       [
-        43,
-        82
+        42,
+        83
       ]
     ]
   },

@@ -117,7 +117,7 @@ Statut : livré (`status: "v1"`), à poser par Rivet à la place des façades pl
 | `fs_bas_distributeur_3q` | `fs_bas_distributeur` | « Billets doux » | 282 × 253 | [167, 251] | 4 × 4 m | 2,4 | `B(..., 46, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
 | `fs_bas_massages_3q` | `fs_bas_massages` | « Mains de fée » | 282 × 237 | [167, 235] | 4 × 4 m | 2,8 | `B(..., 50, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
 | `fs_bas_laverie_3q` | `fs_bas_laverie` | « Blanchiment » | 447 × 298 | [332, 296] | 8 × 4 m | 2,7 | `B(..., 60, 20, 8, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
-| `fs_bas_gage_3q` | `fs_bas_gage` | « Mont-de-pitié » | 282 × 218 | [167, 216] | 4 × 4 m | 2,6 | `B(..., 68, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
+| `fs_bas_gage_3q` | `fs_bas_gage` | « Mont-de-piété » | 282 × 217 | [167, 215] | 4 × 4 m | 2,6 | `B(..., 68, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
 | `fs_bas_perruques_3q` | `fs_bas_perruques` | « Faux-semblants » | 282 × 233 | [167, 231] | 4 × 4 m | 2,7 | `B(..., 72, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
 | `fs_bas_implants_3q` | `fs_bas_implants` | « Rechromage » | 282 × 218 | [167, 216] | 4 × 4 m | 2,6 | `B(..., 76, 20, 4, 4)` (sud, front z 24) | `_neon`, `_fenetres` |
 
@@ -125,7 +125,7 @@ Statut : livré (`status: "v1"`), à poser par Rivet à la place des façades pl
 1. **Remplacement dans `BUILDINGS_STRIP`** :
    - Nord (`front z = 6`) : remplacer `FN(id, label, '<clé>', x, w)` par `B(id, label, '<clé>_3q', x, 6 - d, w, d)` avec `d = 8` pour `fs_sexshop_3q`, `fs_club_3q`, `fs_lovehotel_3q`, `fs_clubprive_3q` (donc `z = -2`) et `d = 4` pour `fs_peep_3q`, `fs_salon_3q`, `fs_bouche1` (donc `z = 2`). Pour `fs_bouche0` (fond de la ruelle Fusible `x 8–10`), poser `B('fs_bouche0', '', 'fs_bouche_nord_3q', 7, -1, 4, 4, { named: false, solid: [{ x: 8, z: 0, w: 2, d: 3 }] })` pour laisser `z 3–6` libre autour de Fusible `(9 ; 5,4)`.
    - Sud (`front z = 24`, aligné sur `fs_retour` et `fs_capsules`) : remplacer `BAS(id, label, '<clé>', x, w)` par `B(id, label, '<clé>_3q', x, 20, w, 4)` et `fs_cabines` par `B('fs_cabines', 'Cabines sans C.A.G.E.', 'fs_cabines_3q', 38, 20, 8, 4)`.
-2. **Enseignes `_3q_neon`** : chargées automatiquement par `view.js` (`b.sprite + '_neon'`). Pour `fs_n_club` (`effet: 'saute'`), recaler la tranche `saute` de `[0.52, 0.58]` (ancien sprite sans retour de côté) vers `[0.316, 0.35]` sur `fs_club_3q_neon` (le retour droit occupe la moitié droite de l'image).
+2. **Enseignes `_3q_neon`** : chargées automatiquement par `view.js` (`b.sprite + '_neon'`). Pour `fs_n_club` (`effet: 'saute'`), recaler la tranche `saute` de `[0.52, 0.58]` (ancien sprite sans retour de côté) vers `[0.334, 0.36]` sur `fs_club_3q_neon` (le retour droit occupe la moitié droite de l'image).
 3. **Fenêtres `_3q_fenetres`** : brancher un calque additif léger (vacillement lent / réaction hors plafond mobile, sur le modèle de `_neon`).
 4. **Dégagement `view.masques()` côté sud** : l'emprise sud passant de `z 23–24` (1 m) à `z 20–24` (4 m, comme `fs_retour` et `fs_capsules`), avancer légèrement vers le nord sur le trottoir (`z ≈ 17,2–18,2`, comme Mme Okoro et Vieux Marius) les 4 personnages qui se tenaient à `z 19,4–20,2` (`fs_ocre`, `fs_racoleuse`, `fs_mac`, et le figurant `gen_fs_client_imper` en `(45 ; 19,4)`), ainsi que le figurant `(38,4 ; 13,6)` d'environ 0,8 m vers le nord si le haut de `fs_cabines_3q` l'effleure.
 
