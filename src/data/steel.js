@@ -144,8 +144,8 @@ export const LOCATIONS = {
       // Abords et traversées des 4 passages piétons du carrefour (nord, ouest, est, sud)
       ...figCt([[28.6, 13.4, 1], [30.8, 13.4, -1], [33.4, 13.8, -1], [35.4, 14.2, -1]], 7, 'foule'),
       ...figCt([[22.6, 16.4, 1], [23.0, 18.2, 1], [22.4, 17.4, -1]], 11, 'foule'),
-      ...figCt([[36.8, 16.2, 1], [39.4, 16.8, -1], [37.6, 17.8, -1]], 2, 'foule'),
-      ...figCt([[34.2, 20.8, 1], [35.2, 21.2, 1], [33.6, 19.8, -1]], 5, 'foule'),
+      ...figCt([[36.8, 16.2, 1], [39.4, 16.8, -1], [36.0, 16.8, -1]], 2, 'foule'),
+      ...figCt([[31.5, 20.0, 1], [31.4, 20.6, 1], [31.8, 21.2, -1]], 5, 'foule'),
       // Quai de l'Arrêt Tram Central et débouché ruelle Teng
       ...figCt([[6.2, 16.0, 1], [7.4, 15.0, 1], [10.6, 14.6, -1], [11.8, 14.6, -1]], 8, 'voyageur'),
       // Échoppe Nouilles & Vapeur, Kiosque Presse & Médias et trottoir sud-ouest
@@ -156,14 +156,14 @@ export const LOCATIONS = {
       ...figCt([[34.8, 30.2, 1], [36.0, 31.6, 1], [37.2, 33.2, -1]], 12, 'attente'),
     ],
     walkers: [
-      { sprite: civ(0), path: [[18.5, 16.3], [32.6, 16.3], [32.6, 18.9], [18.5, 18.9]], speed: 1.15, t0: 2 },
-      { sprite: 'gen_ml_navetteur', path: [[32.2, 18.7], [18.8, 18.7], [18.8, 16.6], [32.2, 16.6]], speed: 1.05, t0: 9 },
+      { sprite: civ(0), path: [[19.2, 13.6], [23.4, 13.6], [23.4, 14.4], [19.2, 14.4]], speed: 1.15, t0: 2 },
+      { sprite: 'gen_ml_navetteur', path: [[19.0, 16.8], [24.6, 16.8], [24.6, 18.2], [19.0, 18.2]], speed: 1.05, t0: 9 },
       { sprite: 'gen_fs_passante', path: [[19.2, 14.8], [30.8, 14.8], [30.8, 15.8], [19.2, 15.8]], speed: 1.1, t0: 1.5 },
-      { sprite: civ(5), path: [[28.4, 8.5], [28.4, 18.6], [30.4, 18.6], [30.4, 8.5]], speed: 1.2, t0: 4 },
-      { sprite: 'gen_fs_client_imper', path: [[24.4, 16.2], [32.4, 16.2], [32.4, 18.8], [24.4, 18.8]], speed: 1.0, t0: 3 },
-      { sprite: 'gen_pp_foule_c', path: [[30.2, 18.5], [30.2, 9.0], [28.8, 9.0], [28.8, 18.5]], speed: 1.15, t0: 8 },
-      { sprite: 'gen_fs_client_costume', path: [[32.6, 20.4], [32.6, 34.2], [33.3, 34.2], [33.3, 20.4]], speed: 1.1, t0: 5 },
-      { sprite: 'gen_df_foule_a', path: [[24.3, 24.6], [25.2, 24.6], [25.2, 33.4], [24.3, 33.4]], speed: 0.95, t0: 6.5 },
+      { sprite: civ(5), path: [[20.4, 13.2], [20.4, 18.0], [21.6, 18.0], [21.6, 13.2]], speed: 1.2, t0: 4 },
+      { sprite: 'gen_fs_client_imper', path: [[44.0, 19.6], [46.2, 19.6], [46.2, 21.0], [44.0, 21.0]], speed: 1.0, t0: 3 },
+      { sprite: 'gen_pp_foule_c', path: [[26.4, 13.4], [26.4, 15.8], [27.6, 15.8], [27.6, 13.4]], speed: 1.15, t0: 8 },
+      { sprite: 'gen_fs_client_costume', path: [[32.4, 31.0], [33.8, 31.0], [33.8, 34.0], [32.4, 34.0]], speed: 1.1, t0: 5 },
+      { sprite: 'gen_df_foule_a', path: [[28.4, 13.6], [30.6, 13.6], [30.6, 14.8], [28.4, 14.8]], speed: 0.95, t0: 6.5 },
     ],
     drones: [ { x: 22, z: 17, r: 7, y: 6, speed: 0.22 }, { x: 38, z: 18, r: 5, y: 5.2, speed: -0.3, ph: 2 }, { x: 10, z: 18, r: 4, y: 6.5, speed: 0.35, ph: 4 } ],
     spawn: { player: { x: 1, z: 18 }, companion: { x: 1, z: 19 } }, city: 'steel' },
@@ -219,7 +219,7 @@ export const LOCATIONS = {
 };
 const painted = (list, loc, T) => list.map(d => ({ id: d.id, buildingId: d.buildingId, location: loc, opening: { x: d.opening[0], z: d.opening[1], side: d.face === 's' ? 'south' : 'east' },
   threshold: { x: d.threshold[0], z: d.threshold[1] }, target: { doorId: T[d.id] }, conditions: [] }));
-const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
+const J = (id, loc, ox, oz, tx, tz, to, label, conditions = [], extra = {}) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions, ...extra });
 const E = (id, loc, ox, oz, tx, tz, label, text) => ({ id, location: loc, edge: text, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: null, conditions: [] });
 export const ROUTE_TEXT = 'La route file vers l\'est, celle des camions. Personne ne la prend à pied.';
 export const DOORS = [
@@ -257,7 +257,7 @@ export const DOORS = [
   { id: 'elio_in_door', location: 'elio_in', opening: { x: 3.5, z: 5, side: 'south' }, threshold: { x: 3.5, z: 4 }, target: { doorId: 'v_atelier_door' }, conditions: [] },
   { id: 'v_lift_door', buildingId: 'v_lift', location: 'sv_cuve', opening: { x: 32, z: 7.5, side: 'south' }, threshold: { x: 32, z: 8.5 }, target: { doorId: 'c_sud' },
     conditions: [{ test: s => !!s.flags.sv_passage, reason: 'lift', text: 'Le monte-charge. Un boîtier à clé, et un type assis dessus qui ne bougera pas pour toi.' }] },
-  J('c_sud', 'steel_center', 19.5, 36, 19.5, 35, 'v_lift_door', 'Vers la Sous-Ville', [{ test: s => !!s.flags.sv_passage, reason: 'grille', text: 'Une grille entre deux galeries. Fermée de l’intérieur.' }]),
+  J('c_sud', 'steel_center', 19.5, 36, 19.5, 35, 'v_lift_door', 'Vers la Sous-Ville', [{ test: s => !!s.flags.sv_passage, reason: 'grille', text: 'Une grille entre deux galeries. Fermée de l’intérieur.' }], { labelPos: [13.2, 32.4] }),
   E('r_ouest', 'steel_route', 0, 30, 1, 30, 'Désert', 'Du sable, et le mur du dôme qui ne finit pas.'),
 ];
 export const NPCS = [
@@ -268,7 +268,7 @@ export const NPCS = [
   { id: 'receleur', name: 'Le receleur', sprite: 'gen_sv_receleur', location: 'sv_poutres', x: 31.6, z: 11.6, faceTo: [28, 14], dialogue: 'receleur' },
   { id: 'dealer', name: 'Pic', sprite: 'gen_sv_dealer', location: 'tripot_in', x: 3.2, z: 2.2, faceTo: [4, 6], dialogue: 'dealer' },
   { id: 'elio', name: 'Elio', sprite: 'gen_elio', location: 'elio_in', x: 2.6, z: 1.9, faceTo: [3.5, 5], dialogue: 'elio' },
-  { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 26.2, z: 18.8, faceTo: [22, 18], dialogue: 'patrouilleur' },
+  { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 23.5, z: 19.5, faceTo: [28, 18], dialogue: 'patrouilleur' },
   ...NPCS_LOWER,
   ...NPCS_ASIA,
   ...NPCS_CHINA,
