@@ -1,8 +1,8 @@
-# Test rapide Center-Town · Carrefour Arcadius (f15bb50 + v2 47193c8 + retours Ocre/Régie) :
-# - 7 sols g_ct_* + vraie nuit noire (#05070d), 26 bâtiments ct_*_3q / *_v2_3q (0 clé obsolète, ct_taxi_v2_3q vérifié sur ct_taxi0/ct_taxi1)
+# Test rapide Center-Town · Carrefour Arcadius (lot v3 f6dbb6b + swap poses) :
+# - 7 sols g_ct_* + vraie nuit noire (#05070d), 26 bâtiments ct_*_v3_3q (0 clé obsolète, ct_taxi_v3_3q vérifié sur ct_taxi0/ct_taxi1)
 # - Étiquettes « Fréquence Strip » et « Pulse Plaza » calées sur les débouchés des sorties (labelPos), hors Dôme Fréquence, QG Arcadius et HUD
 # - Foule densifiée sur trottoirs, parvis et passages piétons (51 figurants + 8 passants <= 8 anims mobile), hors solids, view.masques() == []
-# - 10 portes joignables (findPath), c_change_door ([430, 1792] -> change_in), c_dome ([22, 12] -> steel_dome intact), fondu 30 % auto de Teng vers c_mega
+# - 10 portes joignables (findPath), c_change_door ([451, 1444] -> change_in), c_dome ([22, 12] -> steel_dome intact), fondu 30 % auto de Teng vers c_mega
 # - Calques _pulse des 5 tours battant sur 01_center_town.mp3, pulsesOn <= 8 sur mobile, captures 1280/390 sous /tmp/nml-test-out/center_arcadius2/
 import os, sys, time, json, re, urllib.request
 from playwright.sync_api import sync_playwright
@@ -23,13 +23,13 @@ def ok(c, m, d=''):
 
 DOORS_10 = ['c_ouest', 'c_est', 'c_mega', 'c_strip', 'c_nord', 'c_sud', 'c_pp_sud', 'c_sud_est', 'c_change_door', 'c_dome']
 EXPECTED_SPRITES = {
-    'ct_arcadius_qg_3q', 'ct_dome_frequence_3q', 'ct_bureau_permis_3q',
-    'ct_tour_teng_v2_3q', 'ct_tour_archeon_v2_3q', 'ct_tour_orc_v2_3q', 'ct_tour_humancorp_v2_3q', 'ct_tour_nexus_v2_3q',
-    'ct_bord_sud_a_3q', 'ct_bord_sud_b_3q', 'ct_bord_sud_c_3q',
-    'ct_monorail_viaduc_3q', 'ct_monorail_rame_3q', 'ct_holo_suspendu_3q',
-    'ct_arret_tram_3q', 'ct_tram_3q', 'ct_taxi_v2_3q',
-    'ct_echoppe_vapeur_3q', 'ct_kiosque_info_3q',
-    'ct_lampadaire_io_3q', 'ct_banniere_io_3q', 'ct_cerisier_bac_v2_3q',
+    'ct_arcadius_qg_v3_3q', 'ct_dome_frequence_v3_3q', 'ct_bureau_permis_v3_3q',
+    'ct_tour_teng_v3_3q', 'ct_tour_archeon_v3_3q', 'ct_tour_orc_v3_3q', 'ct_tour_humancorp_v3_3q', 'ct_tour_nexus_v3_3q',
+    'ct_bord_sud_a_v3_3q', 'ct_bord_sud_b_v3_3q', 'ct_bord_sud_c_v3_3q',
+    'ct_monorail_viaduc_v3_3q', 'ct_monorail_rame_v3_3q', 'ct_holo_suspendu_v3_3q',
+    'ct_arret_tram_v3_3q', 'ct_tram_v3_3q', 'ct_taxi_v3_3q',
+    'ct_echoppe_vapeur_v3_3q', 'ct_kiosque_info_v3_3q',
+    'ct_lampadaire_io_v3_3q', 'ct_banniere_io_v3_3q', 'ct_cerisier_bac_v3_3q',
 }
 OBSOLETE_V1 = {
     'ct_cerisier_bac_3q', 'ct_taxi_3q',
@@ -37,6 +37,13 @@ OBSOLETE_V1 = {
     'b_st_ct_tower', 'b_st_ct_dome', 'b_st_ct_shop', 'b_st_blanc',
     'b_st_immeuble', 'b_st_galerie', 'b_st_neon', 'b_st_jumelles',
     'df_ens_facade_vibes', 'df_ens_facade_tron',
+    'ct_arcadius_qg_3q', 'ct_dome_frequence_3q', 'ct_bureau_permis_3q',
+    'ct_tour_teng_v2_3q', 'ct_tour_archeon_v2_3q', 'ct_tour_orc_v2_3q', 'ct_tour_humancorp_v2_3q', 'ct_tour_nexus_v2_3q',
+    'ct_bord_sud_a_3q', 'ct_bord_sud_b_3q', 'ct_bord_sud_c_3q',
+    'ct_monorail_viaduc_3q', 'ct_monorail_rame_3q', 'ct_holo_suspendu_3q',
+    'ct_arret_tram_3q', 'ct_tram_3q', 'ct_taxi_v2_3q',
+    'ct_echoppe_vapeur_3q', 'ct_kiosque_info_3q',
+    'ct_lampadaire_io_3q', 'ct_banniere_io_3q', 'ct_cerisier_bac_v2_3q',
 }
 EXPECTED_SOLS = {
     'g_ct_trottoir_dalles', 'g_ct_asphalte_mouille', 'g_ct_rails_tram_ew',
@@ -82,7 +89,7 @@ with sync_playwright() as p:
         pg.wait_for_function("window.__nml.state.location === 'steel_center' && !window.__nml.music.paused && Math.abs(window.__nml.music.volume - 0.55) < 0.06", timeout=12000)
         time.sleep(0.6)
 
-        # 1. Sols, lumière nuit, clés v2 (dont ct_taxi_v2_3q), foule densifiée et absence d'obsolètes
+        # 1. Sols, lumière nuit, clés v3 (dont ct_taxi_v3_3q), foule densifiée et absence d'obsolètes
         info = E("""() => {
           const l = window.__nml.world.LOCATIONS.steel_center;
           return {
@@ -103,9 +110,9 @@ with sync_playwright() as p:
         ok(info['bg'] == '#05070d' and sols_used == EXPECTED_SOLS and info['props'] == 0 and not info['invalid'],
            f'{name} nuit #05070d + 7 sols g_ct_* + props vides + schéma valide', (info['bg'], sorted(EXPECTED_SOLS ^ sols_used), info['props']))
         ok(sprites_used == EXPECTED_SPRITES and not (sprites_used & OBSOLETE_V1) and len(info['bs']) == 26,
-           f'{name} 22 clés ct_*_3q / *_v2_3q (26 instances, 0 clé obsolète, sans jumelles ni FACADE_DOME)', sorted(EXPECTED_SPRITES ^ sprites_used))
-        ok(len(info['taxis']) == 2 and all(t[1] == 'ct_taxi_v2_3q' and t[4] == 4.5 and t[5] == 1.8 for t in info['taxis']),
-           f'{name} ct_taxi0 et ct_taxi1 posent bien ct_taxi_v2_3q (4,5x1,8 m)', info['taxis'])
+           f'{name} 22 clés ct_*_v3_3q (26 instances, 0 clé obsolète, sans jumelles ni FACADE_DOME)', sorted(EXPECTED_SPRITES ^ sprites_used))
+        ok(len(info['taxis']) == 2 and all(t[1] == 'ct_taxi_v3_3q' and t[4] == 4.5 and t[5] == 1.8 for t in info['taxis']),
+           f'{name} ct_taxi0 et ct_taxi1 posent bien ct_taxi_v3_3q (4,5x1,8 m)', info['taxis'])
         crowd_sprites = {e[0] for e in info['extras']} | {w[0] for w in info['walkers']}
         ok(len(info['extras']) >= 40 and 5 <= len(info['walkers']) <= 8 and len(crowd_sprites) >= 14,
            f'{name} foule densifiée ({len(info["extras"])} figurants + {len(info["walkers"])} passants <= 8, {len(crowd_sprites)} sprites distincts)',
@@ -167,13 +174,13 @@ with sync_playwright() as p:
             max_bass = max(max_bass, ost['bass'])
             max_energy = max(max_energy, ost['energy'])
         st = E("({...window.__nml.view.animStats, walkers: window.__nml.world.LOCATIONS.steel_center.walkers.length})")
-        tower_pulse_keys = [f'ct_tour_{t}_v2_3q_pulse' for t in ('teng', 'orc', 'archeon', 'nexus', 'humancorp')]
+        tower_pulse_keys = [f'ct_tour_{t}_v3_3q_pulse' for t in ('teng', 'orc', 'archeon', 'nexus', 'humancorp')]
         spans = {k: round(max(s.get(k, 0) for s in samples) - min(s.get(k, 0) for s in samples), 3) for k in tower_pulse_keys}
         ok(st['enseignes'] == 24 and st['fenetres'] == 26 and st['pulses'] == 19 and st['on'] <= 8 and st['walkers'] <= 8
            and st['pulsesOn'] <= (8 if mob else 48) and st['pulsesOn'] >= (8 if mob else 12),
            f'{name} calques additifs & plafond mobile <= 8 : on={st["on"]}, walkers={st["walkers"]}, pulsesOn={st["pulsesOn"]}', st)
         ok(ost['mode'] == 'ost_center_town' and not ost['active'] and ost['playing'] and max_bass > 0.05 and max_energy > 0.04 and all(v > 0.12 for v in spans.values()),
-           f'{name} OST Center-Town pilote les 5 _pulse des tours v2 sur le kick (bass={max_bass:.2f}, spans={spans})', (ost, spans))
+           f'{name} OST Center-Town pilote les 5 _pulse des tours v3 sur le kick (bass={max_bass:.2f}, spans={spans})', (ost, spans))
 
         # 4. 10 portes joignables depuis l'entrée (1, 18) et depuis le carrefour (30, 18)
         reach = E(f"""() => {{
@@ -190,19 +197,19 @@ with sync_playwright() as p:
         ok(len(reach) == 10 and all(v['free'] and v['p1'] >= 1 and v['p2'] >= 2 for v in reach.values()),
            f'{name} 10/10 portes libres et joignables depuis (1;18) et (30;18)', reach)
 
-        # 5. Fondu auto 30 % de Tour Teng v2 (40,3 m) vers c_mega (8 ; 1)
+        # 5. Fondu auto 30 % de Tour Teng v3 (~29 m) vers c_mega (8 ; 1)
         if not mob:
             E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=8;s.player.z=1.2;g.restore(s,true)})()")
             for _ in range(18):
                 E("window.__nml.view.render()"); time.sleep(0.03)
             op_teng = E("window.__nml.view.opacityOf('c_change')")
-            ok(op_teng is not None and op_teng < 0.35, f'desktop fondu 30 % auto de Tour Teng v2 devant c_mega (opacity={op_teng:.2f})', op_teng)
+            ok(op_teng is not None and op_teng < 0.35, f'desktop fondu 30 % auto de Tour Teng v3 devant c_mega (opacity={op_teng:.2f})', op_teng)
             pg.screenshot(path=OUT + 'teng_fondu_mega_1280.png')
 
         # 6. Transitions intérieures : c_change_door -> change_in et c_dome -> steel_dome (non reconstruit, 10 PNJ)
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=13;s.player.z=8.5;g.restore(s,true);g.useDoor('c_change_door')})()")
         pg.wait_for_function("window.__nml.state.location === 'change_in'", timeout=8000)
-        ok(E("window.__nml.state.location") == 'change_in', f'{name} porte c_change_door ([430, 1792]) -> change_in')
+        ok(E("window.__nml.state.location") == 'change_in', f'{name} porte c_change_door ([451, 1444]) -> change_in')
         E("window.__nml.game.useDoor('change_in_door')")
         pg.wait_for_function("window.__nml.state.location === 'steel_center'", timeout=8000)
 

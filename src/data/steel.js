@@ -143,15 +143,15 @@ export const LOCATIONS = {
       ...figCt([[17.6, 15.4, 1], [19.4, 13.6, 1], [20.5, 14.2, 1], [21.6, 15.2, -1], [23.4, 13.6, -1], [23.8, 14.8, 1], [26.8, 13.6, 1], [27.6, 14.5, -1]], 3, 'client'),
       // Abords et traversées des 4 passages piétons du carrefour (nord, ouest, est, sud)
       ...figCt([[28.6, 13.4, 1], [30.8, 13.4, -1], [33.4, 13.8, -1], [35.4, 14.2, -1]], 7, 'foule'),
-      ...figCt([[24.4, 16.6, 1], [25.8, 18.4, 1], [26.8, 17.2, -1]], 11, 'foule'),
-      ...figCt([[36.8, 16.2, 1], [39.4, 16.8, -1], [40.4, 18.2, -1]], 2, 'foule'),
-      ...figCt([[28.2, 20.6, 1], [29.2, 21.4, 1], [32.2, 21.2, -1]], 5, 'foule'),
+      ...figCt([[22.6, 16.4, 1], [23.0, 18.2, 1], [22.4, 17.4, -1]], 11, 'foule'),
+      ...figCt([[36.8, 16.2, 1], [39.4, 16.8, -1], [37.6, 17.8, -1]], 2, 'foule'),
+      ...figCt([[34.2, 20.8, 1], [35.2, 21.2, 1], [33.6, 19.8, -1]], 5, 'foule'),
       // Quai de l'Arrêt Tram Central et débouché ruelle Teng
       ...figCt([[6.2, 16.0, 1], [7.4, 15.0, 1], [10.6, 14.6, -1], [11.8, 14.6, -1]], 8, 'voyageur'),
       // Échoppe Nouilles & Vapeur, Kiosque Presse & Médias et trottoir sud-ouest
       ...figCt([[8.4, 20.2, -1], [9.2, 21.2, -1], [10.2, 22.6, 1], [11.6, 24.6, 1], [16.8, 20.2, 1]], 1, 'client'),
       // Guichets Human Corp, trottoir est et file du Bureau des permis
-      ...figCt([[18.6, 20.8, 1], [21.4, 22.6, 1], [23.2, 23.4, -1], [26.0, 26.4, 1]], 4, 'foule'),
+      ...figCt([[18.6, 20.8, 1], [21.4, 22.6, 1], [23.2, 23.4, -1], [23.8, 25.8, 1]], 4, 'foule'),
       ...figCt([[43.2, 20.4, -1], [44.8, 21.2, 1], [45.6, 22.8, -1]], 9, 'citoyen'),
       ...figCt([[34.8, 30.2, 1], [36.0, 31.6, 1], [37.2, 33.2, -1]], 12, 'attente'),
     ],
@@ -163,7 +163,7 @@ export const LOCATIONS = {
       { sprite: 'gen_fs_client_imper', path: [[24.4, 16.2], [32.4, 16.2], [32.4, 18.8], [24.4, 18.8]], speed: 1.0, t0: 3 },
       { sprite: 'gen_pp_foule_c', path: [[30.2, 18.5], [30.2, 9.0], [28.8, 9.0], [28.8, 18.5]], speed: 1.15, t0: 8 },
       { sprite: 'gen_fs_client_costume', path: [[32.6, 20.4], [32.6, 34.2], [33.3, 34.2], [33.3, 20.4]], speed: 1.1, t0: 5 },
-      { sprite: 'gen_df_foule_a', path: [[24.8, 24.4], [26.2, 24.4], [26.2, 33.6], [24.8, 33.6]], speed: 0.95, t0: 6.5 },
+      { sprite: 'gen_df_foule_a', path: [[24.3, 24.6], [25.2, 24.6], [25.2, 33.4], [24.3, 33.4]], speed: 0.95, t0: 6.5 },
     ],
     drones: [ { x: 22, z: 17, r: 7, y: 6, speed: 0.22 }, { x: 38, z: 18, r: 5, y: 5.2, speed: -0.3, ph: 2 }, { x: 10, z: 18, r: 4, y: 6.5, speed: 0.35, ph: 4 } ],
     spawn: { player: { x: 1, z: 18 }, companion: { x: 1, z: 19 } }, city: 'steel' },
@@ -268,7 +268,7 @@ export const NPCS = [
   { id: 'receleur', name: 'Le receleur', sprite: 'gen_sv_receleur', location: 'sv_poutres', x: 31.6, z: 11.6, faceTo: [28, 14], dialogue: 'receleur' },
   { id: 'dealer', name: 'Pic', sprite: 'gen_sv_dealer', location: 'tripot_in', x: 3.2, z: 2.2, faceTo: [4, 6], dialogue: 'dealer' },
   { id: 'elio', name: 'Elio', sprite: 'gen_elio', location: 'elio_in', x: 2.6, z: 1.9, faceTo: [3.5, 5], dialogue: 'elio' },
-  { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 30.5, z: 19.8, faceTo: [22, 18], dialogue: 'patrouilleur' },
+  { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 26.2, z: 18.8, faceTo: [22, 18], dialogue: 'patrouilleur' },
   ...NPCS_LOWER,
   ...NPCS_ASIA,
   ...NPCS_CHINA,

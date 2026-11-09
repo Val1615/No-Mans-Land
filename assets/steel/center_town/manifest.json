@@ -113,7 +113,8 @@
     "neon": "ct_arcadius_qg_3q_neon",
     "fenetres": "ct_arcadius_qg_3q_fenetres",
     "ecran_layer": "ct_arcadius_qg_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_arcadius_qg_3q_fenetres": {
     "file": "steel/center_town/ct_arcadius_qg_3q_fenetres.webp",
     "px": [
@@ -130,7 +131,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_arcadius_qg_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_arcadius_qg_3q_neon": {
     "file": "steel/center_town/ct_arcadius_qg_3q_neon.webp",
     "px": [
@@ -147,7 +149,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_arcadius_qg_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_arcadius_qg_3q_ecran": {
     "file": "steel/center_town/ct_arcadius_qg_3q_ecran.webp",
     "px": [
@@ -164,7 +167,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_arcadius_qg_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_dome_frequence_3q": {
     "file": "steel/center_town/ct_dome_frequence_3q.webp",
     "px": [
@@ -203,7 +207,8 @@
       22.0,
       13.0
     ]
-  },
+  ,
+    "obsolete": true},
   "ct_dome_frequence_3q_fenetres": {
     "file": "steel/center_town/ct_dome_frequence_3q_fenetres.webp",
     "px": [
@@ -220,7 +225,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_dome_frequence_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_dome_frequence_3q_neon": {
     "file": "steel/center_town/ct_dome_frequence_3q_neon.webp",
     "px": [
@@ -237,7 +243,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_dome_frequence_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_dome_frequence_3q_ecran": {
     "file": "steel/center_town/ct_dome_frequence_3q_ecran.webp",
     "px": [
@@ -254,7 +261,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_dome_frequence_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bureau_permis_3q": {
     "file": "steel/center_town/ct_bureau_permis_3q.webp",
     "px": [
@@ -285,7 +293,8 @@
     "neon": "ct_bureau_permis_3q_neon",
     "fenetres": "ct_bureau_permis_3q_fenetres",
     "ecran_layer": "ct_bureau_permis_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_bureau_permis_3q_fenetres": {
     "file": "steel/center_town/ct_bureau_permis_3q_fenetres.webp",
     "px": [
@@ -302,7 +311,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_bureau_permis_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bureau_permis_3q_neon": {
     "file": "steel/center_town/ct_bureau_permis_3q_neon.webp",
     "px": [
@@ -319,7 +329,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_bureau_permis_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bureau_permis_3q_ecran": {
     "file": "steel/center_town/ct_bureau_permis_3q_ecran.webp",
     "px": [
@@ -336,7 +347,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_bureau_permis_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_teng_3q": {
     "file": "steel/center_town/ct_tour_teng_3q.webp",
     "px": [
@@ -810,7 +822,8 @@
     "neon": "ct_bord_sud_a_3q_neon",
     "fenetres": "ct_bord_sud_a_3q_fenetres",
     "ecran_layer": "ct_bord_sud_a_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_a_3q_fenetres": {
     "file": "steel/center_town/ct_bord_sud_a_3q_fenetres.webp",
     "px": [
@@ -827,7 +840,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_bord_sud_a_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_a_3q_neon": {
     "file": "steel/center_town/ct_bord_sud_a_3q_neon.webp",
     "px": [
@@ -844,7 +858,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_bord_sud_a_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_a_3q_ecran": {
     "file": "steel/center_town/ct_bord_sud_a_3q_ecran.webp",
     "px": [
@@ -861,7 +876,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_bord_sud_a_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_b_3q": {
     "file": "steel/center_town/ct_bord_sud_b_3q.webp",
     "px": [
@@ -892,7 +908,8 @@
     "neon": "ct_bord_sud_b_3q_neon",
     "fenetres": "ct_bord_sud_b_3q_fenetres",
     "ecran_layer": "ct_bord_sud_b_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_b_3q_fenetres": {
     "file": "steel/center_town/ct_bord_sud_b_3q_fenetres.webp",
     "px": [
@@ -909,7 +926,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_bord_sud_b_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_b_3q_neon": {
     "file": "steel/center_town/ct_bord_sud_b_3q_neon.webp",
     "px": [
@@ -926,7 +944,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_bord_sud_b_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_b_3q_ecran": {
     "file": "steel/center_town/ct_bord_sud_b_3q_ecran.webp",
     "px": [
@@ -943,7 +962,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_bord_sud_b_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_c_3q": {
     "file": "steel/center_town/ct_bord_sud_c_3q.webp",
     "px": [
@@ -974,7 +994,8 @@
     "neon": "ct_bord_sud_c_3q_neon",
     "fenetres": "ct_bord_sud_c_3q_fenetres",
     "ecran_layer": "ct_bord_sud_c_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_c_3q_fenetres": {
     "file": "steel/center_town/ct_bord_sud_c_3q_fenetres.webp",
     "px": [
@@ -991,7 +1012,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_bord_sud_c_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_c_3q_neon": {
     "file": "steel/center_town/ct_bord_sud_c_3q_neon.webp",
     "px": [
@@ -1008,7 +1030,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_bord_sud_c_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_bord_sud_c_3q_ecran": {
     "file": "steel/center_town/ct_bord_sud_c_3q_ecran.webp",
     "px": [
@@ -1025,7 +1048,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_bord_sud_c_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_monorail_viaduc_3q": {
     "file": "steel/center_town/ct_monorail_viaduc_3q.webp",
     "px": [
@@ -1053,7 +1077,8 @@
     ],
     "neon": "ct_monorail_viaduc_3q_neon",
     "fenetres": "ct_monorail_viaduc_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_monorail_viaduc_3q_fenetres": {
     "file": "steel/center_town/ct_monorail_viaduc_3q_fenetres.webp",
     "px": [
@@ -1070,7 +1095,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_monorail_viaduc_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_monorail_viaduc_3q_neon": {
     "file": "steel/center_town/ct_monorail_viaduc_3q_neon.webp",
     "px": [
@@ -1087,7 +1113,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_monorail_viaduc_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_monorail_rame_3q": {
     "file": "steel/center_town/ct_monorail_rame_3q.webp",
     "px": [
@@ -1116,7 +1143,8 @@
     "enseigne": "MEGA-LINE",
     "neon": "ct_monorail_rame_3q_neon",
     "fenetres": "ct_monorail_rame_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_monorail_rame_3q_fenetres": {
     "file": "steel/center_town/ct_monorail_rame_3q_fenetres.webp",
     "px": [
@@ -1133,7 +1161,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_monorail_rame_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_monorail_rame_3q_neon": {
     "file": "steel/center_town/ct_monorail_rame_3q_neon.webp",
     "px": [
@@ -1150,7 +1179,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_monorail_rame_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_holo_suspendu_3q": {
     "file": "steel/center_town/ct_holo_suspendu_3q.webp",
     "px": [
@@ -1181,7 +1211,8 @@
     "neon": "ct_holo_suspendu_3q_neon",
     "fenetres": "ct_holo_suspendu_3q_fenetres",
     "ecran_layer": "ct_holo_suspendu_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_holo_suspendu_3q_fenetres": {
     "file": "steel/center_town/ct_holo_suspendu_3q_fenetres.webp",
     "px": [
@@ -1198,7 +1229,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_holo_suspendu_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_holo_suspendu_3q_neon": {
     "file": "steel/center_town/ct_holo_suspendu_3q_neon.webp",
     "px": [
@@ -1215,7 +1247,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_holo_suspendu_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_holo_suspendu_3q_ecran": {
     "file": "steel/center_town/ct_holo_suspendu_3q_ecran.webp",
     "px": [
@@ -1232,7 +1265,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_holo_suspendu_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_arret_tram_3q": {
     "file": "steel/center_town/ct_arret_tram_3q.webp",
     "px": [
@@ -1263,7 +1297,8 @@
     "neon": "ct_arret_tram_3q_neon",
     "fenetres": "ct_arret_tram_3q_fenetres",
     "ecran_layer": "ct_arret_tram_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_arret_tram_3q_fenetres": {
     "file": "steel/center_town/ct_arret_tram_3q_fenetres.webp",
     "px": [
@@ -1280,7 +1315,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_arret_tram_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_arret_tram_3q_neon": {
     "file": "steel/center_town/ct_arret_tram_3q_neon.webp",
     "px": [
@@ -1297,7 +1333,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_arret_tram_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_arret_tram_3q_ecran": {
     "file": "steel/center_town/ct_arret_tram_3q_ecran.webp",
     "px": [
@@ -1314,7 +1351,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_arret_tram_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_tram_3q": {
     "file": "steel/center_town/ct_tram_3q.webp",
     "px": [
@@ -1343,7 +1381,8 @@
     "enseigne": "CENTER-TOWN",
     "neon": "ct_tram_3q_neon",
     "fenetres": "ct_tram_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_tram_3q_fenetres": {
     "file": "steel/center_town/ct_tram_3q_fenetres.webp",
     "px": [
@@ -1360,7 +1399,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tram_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_tram_3q_neon": {
     "file": "steel/center_town/ct_tram_3q_neon.webp",
     "px": [
@@ -1377,7 +1417,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_tram_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_taxi_3q": {
     "file": "steel/center_town/ct_taxi_3q.webp",
     "px": [
@@ -1474,7 +1515,8 @@
     "neon": "ct_kiosque_info_3q_neon",
     "fenetres": "ct_kiosque_info_3q_fenetres",
     "ecran_layer": "ct_kiosque_info_3q_ecran"
-  },
+  ,
+    "obsolete": true},
   "ct_kiosque_info_3q_fenetres": {
     "file": "steel/center_town/ct_kiosque_info_3q_fenetres.webp",
     "px": [
@@ -1491,7 +1533,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_kiosque_info_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_kiosque_info_3q_neon": {
     "file": "steel/center_town/ct_kiosque_info_3q_neon.webp",
     "px": [
@@ -1508,7 +1551,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_kiosque_info_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_kiosque_info_3q_ecran": {
     "file": "steel/center_town/ct_kiosque_info_3q_ecran.webp",
     "px": [
@@ -1525,7 +1569,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_kiosque_info_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_echoppe_vapeur_3q": {
     "file": "steel/center_town/ct_echoppe_vapeur_3q.webp",
     "px": [
@@ -1554,7 +1599,8 @@
     "enseigne": "NOUILLES & VAPEUR",
     "neon": "ct_echoppe_vapeur_3q_neon",
     "fenetres": "ct_echoppe_vapeur_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_echoppe_vapeur_3q_fenetres": {
     "file": "steel/center_town/ct_echoppe_vapeur_3q_fenetres.webp",
     "px": [
@@ -1571,7 +1617,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_echoppe_vapeur_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_echoppe_vapeur_3q_neon": {
     "file": "steel/center_town/ct_echoppe_vapeur_3q_neon.webp",
     "px": [
@@ -1588,7 +1635,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_echoppe_vapeur_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_lampadaire_io_3q": {
     "file": "steel/center_town/ct_lampadaire_io_3q.webp",
     "px": [
@@ -1617,7 +1665,8 @@
     "enseigne": "IO",
     "neon": "ct_lampadaire_io_3q_neon",
     "fenetres": "ct_lampadaire_io_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_lampadaire_io_3q_fenetres": {
     "file": "steel/center_town/ct_lampadaire_io_3q_fenetres.webp",
     "px": [
@@ -1634,7 +1683,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_lampadaire_io_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_lampadaire_io_3q_neon": {
     "file": "steel/center_town/ct_lampadaire_io_3q_neon.webp",
     "px": [
@@ -1651,7 +1701,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_lampadaire_io_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_banniere_io_3q": {
     "file": "steel/center_town/ct_banniere_io_3q.webp",
     "px": [
@@ -1680,7 +1731,8 @@
     "enseigne": "IO",
     "neon": "ct_banniere_io_3q_neon",
     "fenetres": "ct_banniere_io_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_banniere_io_3q_fenetres": {
     "file": "steel/center_town/ct_banniere_io_3q_fenetres.webp",
     "px": [
@@ -1697,7 +1749,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_banniere_io_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_banniere_io_3q_neon": {
     "file": "steel/center_town/ct_banniere_io_3q_neon.webp",
     "px": [
@@ -1714,7 +1767,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_banniere_io_3q.webp",
     "status": "v1"
-  },
+  ,
+    "obsolete": true},
   "ct_cerisier_bac_3q": {
     "file": "steel/center_town/ct_cerisier_bac_3q.webp",
     "px": [
@@ -1786,7 +1840,8 @@
       "fenetres"
     ],
     "fenetres": "ct_cerisier_bac_v2_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_cerisier_bac_v2_3q_fenetres": {
     "file": "steel/center_town/ct_cerisier_bac_v2_3q_fenetres.webp",
     "px": [
@@ -1803,7 +1858,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_cerisier_bac_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_taxi_v2_3q": {
     "file": "steel/center_town/ct_taxi_v2_3q.webp",
     "px": [
@@ -1833,7 +1889,8 @@
     ],
     "neon": "ct_taxi_v2_3q_neon",
     "fenetres": "ct_taxi_v2_3q_fenetres"
-  },
+  ,
+    "obsolete": true},
   "ct_taxi_v2_3q_fenetres": {
     "file": "steel/center_town/ct_taxi_v2_3q_fenetres.webp",
     "px": [
@@ -1850,7 +1907,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_taxi_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_taxi_v2_3q_neon": {
     "file": "steel/center_town/ct_taxi_v2_3q_neon.webp",
     "px": [
@@ -1867,7 +1925,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_taxi_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_teng_v2_3q": {
     "file": "steel/center_town/ct_tour_teng_v2_3q.webp",
     "px": [
@@ -1914,7 +1973,8 @@
     "fenetres": "ct_tour_teng_v2_3q_fenetres",
     "ecran_layer": "ct_tour_teng_v2_3q_ecran",
     "pulse": "ct_tour_teng_v2_3q_pulse"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_teng_v2_3q_fenetres": {
     "file": "steel/center_town/ct_tour_teng_v2_3q_fenetres.webp",
     "px": [
@@ -1931,7 +1991,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_teng_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_teng_v2_3q_neon": {
     "file": "steel/center_town/ct_tour_teng_v2_3q_neon.webp",
     "px": [
@@ -1948,7 +2009,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_teng_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_teng_v2_3q_pulse": {
     "file": "steel/center_town/ct_tour_teng_v2_3q_pulse.webp",
     "px": [
@@ -1966,7 +2028,8 @@
     "source": "extraction PIL pulse de ct_tour_teng_v2_3q.webp",
     "status": "v2",
     "bande": "kick"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_teng_v2_3q_ecran": {
     "file": "steel/center_town/ct_tour_teng_v2_3q_ecran.webp",
     "px": [
@@ -1983,7 +2046,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_teng_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_archeon_v2_3q": {
     "file": "steel/center_town/ct_tour_archeon_v2_3q.webp",
     "px": [
@@ -2017,7 +2081,8 @@
     "fenetres": "ct_tour_archeon_v2_3q_fenetres",
     "ecran_layer": "ct_tour_archeon_v2_3q_ecran",
     "pulse": "ct_tour_archeon_v2_3q_pulse"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_archeon_v2_3q_fenetres": {
     "file": "steel/center_town/ct_tour_archeon_v2_3q_fenetres.webp",
     "px": [
@@ -2034,7 +2099,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_archeon_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_archeon_v2_3q_neon": {
     "file": "steel/center_town/ct_tour_archeon_v2_3q_neon.webp",
     "px": [
@@ -2051,7 +2117,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_archeon_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_archeon_v2_3q_pulse": {
     "file": "steel/center_town/ct_tour_archeon_v2_3q_pulse.webp",
     "px": [
@@ -2069,7 +2136,8 @@
     "source": "extraction PIL pulse de ct_tour_archeon_v2_3q.webp",
     "status": "v2",
     "bande": "kick"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_archeon_v2_3q_ecran": {
     "file": "steel/center_town/ct_tour_archeon_v2_3q_ecran.webp",
     "px": [
@@ -2086,7 +2154,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_archeon_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_orc_v2_3q": {
     "file": "steel/center_town/ct_tour_orc_v2_3q.webp",
     "px": [
@@ -2120,7 +2189,8 @@
     "fenetres": "ct_tour_orc_v2_3q_fenetres",
     "ecran_layer": "ct_tour_orc_v2_3q_ecran",
     "pulse": "ct_tour_orc_v2_3q_pulse"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_orc_v2_3q_fenetres": {
     "file": "steel/center_town/ct_tour_orc_v2_3q_fenetres.webp",
     "px": [
@@ -2137,7 +2207,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_orc_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_orc_v2_3q_neon": {
     "file": "steel/center_town/ct_tour_orc_v2_3q_neon.webp",
     "px": [
@@ -2154,7 +2225,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_orc_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_orc_v2_3q_pulse": {
     "file": "steel/center_town/ct_tour_orc_v2_3q_pulse.webp",
     "px": [
@@ -2172,7 +2244,8 @@
     "source": "extraction PIL pulse de ct_tour_orc_v2_3q.webp",
     "status": "v2",
     "bande": "kick"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_orc_v2_3q_ecran": {
     "file": "steel/center_town/ct_tour_orc_v2_3q_ecran.webp",
     "px": [
@@ -2189,7 +2262,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_orc_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_humancorp_v2_3q": {
     "file": "steel/center_town/ct_tour_humancorp_v2_3q.webp",
     "px": [
@@ -2223,7 +2297,8 @@
     "fenetres": "ct_tour_humancorp_v2_3q_fenetres",
     "ecran_layer": "ct_tour_humancorp_v2_3q_ecran",
     "pulse": "ct_tour_humancorp_v2_3q_pulse"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_humancorp_v2_3q_fenetres": {
     "file": "steel/center_town/ct_tour_humancorp_v2_3q_fenetres.webp",
     "px": [
@@ -2240,7 +2315,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_humancorp_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_humancorp_v2_3q_neon": {
     "file": "steel/center_town/ct_tour_humancorp_v2_3q_neon.webp",
     "px": [
@@ -2257,7 +2333,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_humancorp_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_humancorp_v2_3q_pulse": {
     "file": "steel/center_town/ct_tour_humancorp_v2_3q_pulse.webp",
     "px": [
@@ -2275,7 +2352,8 @@
     "source": "extraction PIL pulse de ct_tour_humancorp_v2_3q.webp",
     "status": "v2",
     "bande": "kick"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_humancorp_v2_3q_ecran": {
     "file": "steel/center_town/ct_tour_humancorp_v2_3q_ecran.webp",
     "px": [
@@ -2292,7 +2370,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_humancorp_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_nexus_v2_3q": {
     "file": "steel/center_town/ct_tour_nexus_v2_3q.webp",
     "px": [
@@ -2326,7 +2405,8 @@
     "fenetres": "ct_tour_nexus_v2_3q_fenetres",
     "ecran_layer": "ct_tour_nexus_v2_3q_ecran",
     "pulse": "ct_tour_nexus_v2_3q_pulse"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_nexus_v2_3q_fenetres": {
     "file": "steel/center_town/ct_tour_nexus_v2_3q_fenetres.webp",
     "px": [
@@ -2343,7 +2423,8 @@
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_nexus_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_nexus_v2_3q_neon": {
     "file": "steel/center_town/ct_tour_nexus_v2_3q_neon.webp",
     "px": [
@@ -2360,7 +2441,8 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_nexus_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_nexus_v2_3q_pulse": {
     "file": "steel/center_town/ct_tour_nexus_v2_3q_pulse.webp",
     "px": [
@@ -2378,7 +2460,8 @@
     "source": "extraction PIL pulse de ct_tour_nexus_v2_3q.webp",
     "status": "v2",
     "bande": "kick"
-  },
+  ,
+    "obsolete": true},
   "ct_tour_nexus_v2_3q_ecran": {
     "file": "steel/center_town/ct_tour_nexus_v2_3q_ecran.webp",
     "px": [
@@ -2395,7 +2478,8 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_nexus_v2_3q.webp",
     "status": "v2"
-  },
+  ,
+    "obsolete": true},
   "ct_arcadius_qg_v3_3q": {
     "file": "steel/center_town/ct_arcadius_qg_v3_3q.webp",
     "px": [
