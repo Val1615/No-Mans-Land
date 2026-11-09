@@ -2395,5 +2395,2044 @@
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_nexus_v2_3q.webp",
     "status": "v2"
+  },
+  "ct_arcadius_qg_v3_3q": {
+    "file": "steel/center_town/ct_arcadius_qg_v3_3q.webp",
+    "px": [
+      833,
+      938
+    ],
+    "anchor": [
+      516,
+      935
+    ],
+    "footprint_m": [
+      12,
+      12
+    ],
+    "height_m": 12.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Arcadius Center, QG d'IO (granit noir et bronze art déco, 4 bannières IO rouges, balises rouges en toiture)",
+    "enseigne": "ARCADIUS CENTER · IO",
+    "pose": "B_CT('c_arcadius', 'Arcadius Center', 'ct_arcadius_qg_v3_3q', 36, 0, 12, 12)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 1.13059 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3f_arcadius_qg.jpg)",
+    "remplace": "ct_arcadius_qg_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 1.13059,
+      "emprise_mesuree_m": [
+        12.42,
+        10.99
+      ],
+      "comblement_pied_max_px": 8.0,
+      "dy": 0,
+      "arete_pied_g_deg": 18.35,
+      "arete_pied_d_deg": 34.99,
+      "arete_toit_g_deg": 35.28,
+      "arete_toit_d_deg": 18.06
+    },
+    "ecran_layer": "ct_arcadius_qg_v3_3q_ecran",
+    "fenetres": "ct_arcadius_qg_v3_3q_fenetres",
+    "neon": "ct_arcadius_qg_v3_3q_neon"
+  },
+  "ct_arcadius_qg_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_qg_v3_3q_fenetres.webp",
+    "px": [
+      833,
+      938
+    ],
+    "anchor": [
+      516,
+      935
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_qg_v3_3q",
+    "couche_de": "ct_arcadius_qg_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_arcadius_qg_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_arcadius_qg_v3_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_qg_v3_3q_neon.webp",
+    "px": [
+      833,
+      938
+    ],
+    "anchor": [
+      516,
+      935
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_qg_v3_3q",
+    "couche_de": "ct_arcadius_qg_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_arcadius_qg_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_arcadius_qg_v3_3q_ecran": {
+    "file": "steel/center_town/ct_arcadius_qg_v3_3q_ecran.webp",
+    "px": [
+      833,
+      938
+    ],
+    "anchor": [
+      516,
+      935
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_qg_v3_3q",
+    "couche_de": "ct_arcadius_qg_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_arcadius_qg_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_dome_frequence_v3_3q": {
+    "file": "steel/center_town/ct_dome_frequence_v3_3q.webp",
+    "px": [
+      840,
+      822
+    ],
+    "anchor": [
+      504,
+      819
+    ],
+    "footprint_m": [
+      12,
+      12
+    ],
+    "height_m": 9.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Le Dôme Fréquence, salle de concert à coupole dorée (entrée au milieu de la face rue, affiche Groovy Crew)",
+    "enseigne": "LE DÔME FRÉQUENCE · GROOVY CREW EN CONCERT",
+    "pose": "B_CT('c_tour', 'Le Dôme Fréquence', 'ct_dome_frequence_v3_3q', 16, 0, 12, 12, { visitable: true })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 1.06425 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_dome_frequence.jpg)",
+    "remplace": "ct_dome_frequence_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 1.06425,
+      "emprise_mesuree_m": [
+        12.15,
+        11.67
+      ],
+      "comblement_pied_max_px": 8.0,
+      "dy": 0,
+      "arete_pied_g_deg": 18.3,
+      "arete_pied_d_deg": 35.02,
+      "arete_toit_g_deg": 35.23,
+      "arete_toit_d_deg": 18.26
+    },
+    "ecran_layer": "ct_dome_frequence_v3_3q_ecran",
+    "fenetres": "ct_dome_frequence_v3_3q_fenetres",
+    "neon": "ct_dome_frequence_v3_3q_neon"
+  },
+  "ct_dome_frequence_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_dome_frequence_v3_3q_fenetres.webp",
+    "px": [
+      840,
+      822
+    ],
+    "anchor": [
+      504,
+      819
+    ],
+    "additive": true,
+    "parent": "ct_dome_frequence_v3_3q",
+    "couche_de": "ct_dome_frequence_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_dome_frequence_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_dome_frequence_v3_3q_neon": {
+    "file": "steel/center_town/ct_dome_frequence_v3_3q_neon.webp",
+    "px": [
+      840,
+      822
+    ],
+    "anchor": [
+      504,
+      819
+    ],
+    "additive": true,
+    "parent": "ct_dome_frequence_v3_3q",
+    "couche_de": "ct_dome_frequence_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_dome_frequence_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_dome_frequence_v3_3q_ecran": {
+    "file": "steel/center_town/ct_dome_frequence_v3_3q_ecran.webp",
+    "px": [
+      840,
+      822
+    ],
+    "anchor": [
+      504,
+      819
+    ],
+    "additive": true,
+    "parent": "ct_dome_frequence_v3_3q",
+    "couche_de": "ct_dome_frequence_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_dome_frequence_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bureau_permis_v3_3q": {
+    "file": "steel/center_town/ct_bureau_permis_v3_3q.webp",
+    "px": [
+      556,
+      590
+    ],
+    "anchor": [
+      342,
+      587
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 7.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Bureau des permis (administration IO, bureaux ambre, caissons techniques en toiture)",
+    "enseigne": "BUREAU DES PERMIS",
+    "pose": "B_CT('c_blanc', 'Bureau des permis', 'ct_bureau_permis_v3_3q', 40, 28, 8, 8)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.72161 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_bureau_permis.jpg)",
+    "remplace": "ct_bureau_permis_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.72161,
+      "emprise_mesuree_m": [
+        8.25,
+        7.41
+      ],
+      "comblement_pied_max_px": 7.7,
+      "dy": 0,
+      "arete_pied_g_deg": 18.3,
+      "arete_pied_d_deg": 34.96,
+      "arete_toit_g_deg": 35.03,
+      "arete_toit_d_deg": 18.4
+    },
+    "ecran_layer": "ct_bureau_permis_v3_3q_ecran",
+    "fenetres": "ct_bureau_permis_v3_3q_fenetres",
+    "neon": "ct_bureau_permis_v3_3q_neon"
+  },
+  "ct_bureau_permis_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_bureau_permis_v3_3q_fenetres.webp",
+    "px": [
+      556,
+      590
+    ],
+    "anchor": [
+      342,
+      587
+    ],
+    "additive": true,
+    "parent": "ct_bureau_permis_v3_3q",
+    "couche_de": "ct_bureau_permis_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bureau_permis_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bureau_permis_v3_3q_neon": {
+    "file": "steel/center_town/ct_bureau_permis_v3_3q_neon.webp",
+    "px": [
+      556,
+      590
+    ],
+    "anchor": [
+      342,
+      587
+    ],
+    "additive": true,
+    "parent": "ct_bureau_permis_v3_3q",
+    "couche_de": "ct_bureau_permis_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bureau_permis_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bureau_permis_v3_3q_ecran": {
+    "file": "steel/center_town/ct_bureau_permis_v3_3q_ecran.webp",
+    "px": [
+      556,
+      590
+    ],
+    "anchor": [
+      342,
+      587
+    ],
+    "additive": true,
+    "parent": "ct_bureau_permis_v3_3q",
+    "couche_de": "ct_bureau_permis_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bureau_permis_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_teng_v3_3q": {
+    "file": "steel/center_town/ct_tour_teng_v3_3q.webp",
+    "px": [
+      554,
+      1555
+    ],
+    "anchor": [
+      352,
+      1552
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 29.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour Change de Teng (banque, porte d'entrée au milieu de la face est, visitable)",
+    "enseigne": "TENG · BANQUE - CHANGE · CHANGE",
+    "pose": "B_CT('c_change', 'Change de Teng', 'ct_tour_teng_v3_3q', 4, 4, 8, 8, { visitable: true, cue: 'coin' })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 1.36521 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3c_tour_teng.jpg)",
+    "remplace": "ct_tour_teng_v2_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 1.36521,
+      "emprise_mesuree_m": [
+        8.41,
+        6.95
+      ],
+      "comblement_pied_max_px": 6.4,
+      "dy": 0,
+      "arete_pied_g_deg": 18.31,
+      "arete_pied_d_deg": 34.93,
+      "arete_toit_g_deg": 35.15,
+      "arete_toit_d_deg": 17.75
+    },
+    "porte_px": [
+      451,
+      1444
+    ],
+    "porte_face": "e",
+    "porte_opening": [
+      12.0,
+      8.5
+    ],
+    "porte_threshold": [
+      13.0,
+      8.5
+    ],
+    "ecran_layer": "ct_tour_teng_v3_3q_ecran",
+    "fenetres": "ct_tour_teng_v3_3q_fenetres",
+    "neon": "ct_tour_teng_v3_3q_neon",
+    "pulse": "ct_tour_teng_v3_3q_pulse"
+  },
+  "ct_tour_teng_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_teng_v3_3q_fenetres.webp",
+    "px": [
+      554,
+      1555
+    ],
+    "anchor": [
+      352,
+      1552
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v3_3q",
+    "couche_de": "ct_tour_teng_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_teng_v3_3q_neon": {
+    "file": "steel/center_town/ct_tour_teng_v3_3q_neon.webp",
+    "px": [
+      554,
+      1555
+    ],
+    "anchor": [
+      352,
+      1552
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v3_3q",
+    "couche_de": "ct_tour_teng_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_teng_v3_3q_pulse": {
+    "file": "steel/center_town/ct_tour_teng_v3_3q_pulse.webp",
+    "px": [
+      554,
+      1555
+    ],
+    "anchor": [
+      352,
+      1552
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v3_3q",
+    "couche_de": "ct_tour_teng_v3_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3",
+    "bande": "kick"
+  },
+  "ct_tour_teng_v3_3q_ecran": {
+    "file": "steel/center_town/ct_tour_teng_v3_3q_ecran.webp",
+    "px": [
+      554,
+      1555
+    ],
+    "anchor": [
+      352,
+      1552
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v3_3q",
+    "couche_de": "ct_tour_teng_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_archeon_v3_3q": {
+    "file": "steel/center_town/ct_tour_archeon_v3_3q.webp",
+    "px": [
+      548,
+      1563
+    ],
+    "anchor": [
+      357,
+      1560
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 29.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour Archeon Industries (panneau ambre à engrenage, écran multicolore)",
+    "enseigne": "ARCHEON · TOUR ARCHEON INDUSTRIES",
+    "pose": "B_CT('ct_archeon', 'Tour Archeon Industries', 'ct_tour_archeon_v3_3q', -8, 4, 8, 8)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 1.35188 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_tour_archeon.jpg)",
+    "remplace": "ct_tour_archeon_v2_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 1.35188,
+      "emprise_mesuree_m": [
+        8.53,
+        6.54
+      ],
+      "comblement_pied_max_px": 5.4,
+      "dy": 0,
+      "arete_pied_g_deg": 18.31,
+      "arete_pied_d_deg": 35.03,
+      "arete_toit_g_deg": 34.49,
+      "arete_toit_d_deg": 18.32
+    },
+    "ecran_layer": "ct_tour_archeon_v3_3q_ecran",
+    "fenetres": "ct_tour_archeon_v3_3q_fenetres",
+    "neon": "ct_tour_archeon_v3_3q_neon",
+    "pulse": "ct_tour_archeon_v3_3q_pulse"
+  },
+  "ct_tour_archeon_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_archeon_v3_3q_fenetres.webp",
+    "px": [
+      548,
+      1563
+    ],
+    "anchor": [
+      357,
+      1560
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v3_3q",
+    "couche_de": "ct_tour_archeon_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_archeon_v3_3q_neon": {
+    "file": "steel/center_town/ct_tour_archeon_v3_3q_neon.webp",
+    "px": [
+      548,
+      1563
+    ],
+    "anchor": [
+      357,
+      1560
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v3_3q",
+    "couche_de": "ct_tour_archeon_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_archeon_v3_3q_pulse": {
+    "file": "steel/center_town/ct_tour_archeon_v3_3q_pulse.webp",
+    "px": [
+      548,
+      1563
+    ],
+    "anchor": [
+      357,
+      1560
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v3_3q",
+    "couche_de": "ct_tour_archeon_v3_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3",
+    "bande": "kick"
+  },
+  "ct_tour_archeon_v3_3q_ecran": {
+    "file": "steel/center_town/ct_tour_archeon_v3_3q_ecran.webp",
+    "px": [
+      548,
+      1563
+    ],
+    "anchor": [
+      357,
+      1560
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v3_3q",
+    "couche_de": "ct_tour_archeon_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_orc_v3_3q": {
+    "file": "steel/center_town/ct_tour_orc_v3_3q.webp",
+    "px": [
+      555,
+      1490
+    ],
+    "anchor": [
+      350,
+      1487
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 27.7,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour Orc Énergie (conduites cyan, enseigne verte, égaliseur vert-jaune)",
+    "enseigne": "TOUR ORC ENERGIE",
+    "pose": "B_CT('ct_orc', 'Tour Orc Énergie', 'ct_tour_orc_v3_3q', 48, 2, 8, 8)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 1.29774 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_tour_orc.jpg)",
+    "remplace": "ct_tour_orc_v2_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 1.29774,
+      "emprise_mesuree_m": [
+        8.37,
+        7.06
+      ],
+      "comblement_pied_max_px": 6.6,
+      "dy": 0,
+      "arete_pied_g_deg": 18.33,
+      "arete_pied_d_deg": 35.02,
+      "arete_toit_g_deg": 33.74,
+      "arete_toit_d_deg": 17.0
+    },
+    "ecran_layer": "ct_tour_orc_v3_3q_ecran",
+    "fenetres": "ct_tour_orc_v3_3q_fenetres",
+    "neon": "ct_tour_orc_v3_3q_neon",
+    "pulse": "ct_tour_orc_v3_3q_pulse"
+  },
+  "ct_tour_orc_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_orc_v3_3q_fenetres.webp",
+    "px": [
+      555,
+      1490
+    ],
+    "anchor": [
+      350,
+      1487
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v3_3q",
+    "couche_de": "ct_tour_orc_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_orc_v3_3q_neon": {
+    "file": "steel/center_town/ct_tour_orc_v3_3q_neon.webp",
+    "px": [
+      555,
+      1490
+    ],
+    "anchor": [
+      350,
+      1487
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v3_3q",
+    "couche_de": "ct_tour_orc_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_orc_v3_3q_pulse": {
+    "file": "steel/center_town/ct_tour_orc_v3_3q_pulse.webp",
+    "px": [
+      555,
+      1490
+    ],
+    "anchor": [
+      350,
+      1487
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v3_3q",
+    "couche_de": "ct_tour_orc_v3_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3",
+    "bande": "kick"
+  },
+  "ct_tour_orc_v3_3q_ecran": {
+    "file": "steel/center_town/ct_tour_orc_v3_3q_ecran.webp",
+    "px": [
+      555,
+      1490
+    ],
+    "anchor": [
+      350,
+      1487
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v3_3q",
+    "couche_de": "ct_tour_orc_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_humancorp_v3_3q": {
+    "file": "steel/center_town/ct_tour_humancorp_v3_3q.webp",
+    "px": [
+      558,
+      1569
+    ],
+    "anchor": [
+      346,
+      1566
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 29.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour Human Corp (affiche de tournée Groovy Crew, écran bleu-orange)",
+    "enseigne": "HUMAN CORP · GROOVY CREW EN CONCERT",
+    "pose": "B_CT('ct_humancorp', 'Tour Human Corp', 'ct_tour_humancorp_v3_3q', 4, -8, 8, 8)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 1.38489 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_tour_humancorp.jpg)",
+    "remplace": "ct_tour_humancorp_v2_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 1.38489,
+      "emprise_mesuree_m": [
+        8.29,
+        7.3
+      ],
+      "comblement_pied_max_px": 5.1,
+      "dy": 0,
+      "arete_pied_g_deg": 18.35,
+      "arete_pied_d_deg": 35.01,
+      "arete_toit_g_deg": 35.04,
+      "arete_toit_d_deg": 17.86
+    },
+    "ecran_layer": "ct_tour_humancorp_v3_3q_ecran",
+    "fenetres": "ct_tour_humancorp_v3_3q_fenetres",
+    "neon": "ct_tour_humancorp_v3_3q_neon",
+    "pulse": "ct_tour_humancorp_v3_3q_pulse"
+  },
+  "ct_tour_humancorp_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_humancorp_v3_3q_fenetres.webp",
+    "px": [
+      558,
+      1569
+    ],
+    "anchor": [
+      346,
+      1566
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v3_3q",
+    "couche_de": "ct_tour_humancorp_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_humancorp_v3_3q_neon": {
+    "file": "steel/center_town/ct_tour_humancorp_v3_3q_neon.webp",
+    "px": [
+      558,
+      1569
+    ],
+    "anchor": [
+      346,
+      1566
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v3_3q",
+    "couche_de": "ct_tour_humancorp_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_humancorp_v3_3q_pulse": {
+    "file": "steel/center_town/ct_tour_humancorp_v3_3q_pulse.webp",
+    "px": [
+      558,
+      1569
+    ],
+    "anchor": [
+      346,
+      1566
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v3_3q",
+    "couche_de": "ct_tour_humancorp_v3_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3",
+    "bande": "kick"
+  },
+  "ct_tour_humancorp_v3_3q_ecran": {
+    "file": "steel/center_town/ct_tour_humancorp_v3_3q_ecran.webp",
+    "px": [
+      558,
+      1569
+    ],
+    "anchor": [
+      346,
+      1566
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v3_3q",
+    "couche_de": "ct_tour_humancorp_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_nexus_v3_3q": {
+    "file": "steel/center_town/ct_tour_nexus_v3_3q.webp",
+    "px": [
+      560,
+      1607
+    ],
+    "anchor": [
+      347,
+      1604
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 30.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Tour Nexus (enseigne verticale cyan NEXUS, écran multicolore)",
+    "enseigne": "NEXUS",
+    "pose": "B_CT('ct_nexus', 'Tour Nexus', 'ct_tour_nexus_v3_3q', 20, -8, 8, 8)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 1.41062 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_tour_nexus_d.jpg)",
+    "remplace": "ct_tour_nexus_v2_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 1.41062,
+      "emprise_mesuree_m": [
+        8.28,
+        7.33
+      ],
+      "comblement_pied_max_px": 6.1,
+      "dy": 0,
+      "arete_pied_g_deg": 18.33,
+      "arete_pied_d_deg": 35.05,
+      "arete_toit_g_deg": 35.19,
+      "arete_toit_d_deg": 17.81
+    },
+    "ecran_layer": "ct_tour_nexus_v3_3q_ecran",
+    "fenetres": "ct_tour_nexus_v3_3q_fenetres",
+    "neon": "ct_tour_nexus_v3_3q_neon",
+    "pulse": "ct_tour_nexus_v3_3q_pulse"
+  },
+  "ct_tour_nexus_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_nexus_v3_3q_fenetres.webp",
+    "px": [
+      560,
+      1607
+    ],
+    "anchor": [
+      347,
+      1604
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v3_3q",
+    "couche_de": "ct_tour_nexus_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_nexus_v3_3q_neon": {
+    "file": "steel/center_town/ct_tour_nexus_v3_3q_neon.webp",
+    "px": [
+      560,
+      1607
+    ],
+    "anchor": [
+      347,
+      1604
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v3_3q",
+    "couche_de": "ct_tour_nexus_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tour_nexus_v3_3q_pulse": {
+    "file": "steel/center_town/ct_tour_nexus_v3_3q_pulse.webp",
+    "px": [
+      560,
+      1607
+    ],
+    "anchor": [
+      347,
+      1604
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v3_3q",
+    "couche_de": "ct_tour_nexus_v3_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3",
+    "bande": "kick"
+  },
+  "ct_tour_nexus_v3_3q_ecran": {
+    "file": "steel/center_town/ct_tour_nexus_v3_3q_ecran.webp",
+    "px": [
+      560,
+      1607
+    ],
+    "anchor": [
+      347,
+      1604
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v3_3q",
+    "couche_de": "ct_tour_nexus_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_a_v3_3q": {
+    "file": "steel/center_town/ct_bord_sud_a_v3_3q.webp",
+    "px": [
+      444,
+      355
+    ],
+    "anchor": [
+      332,
+      352
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 3.7,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Immeuble Nexus Transit, R+1 commerçant de la bordure sud",
+    "enseigne": "NEXUS TRANSIT",
+    "pose": "B_CT('c_immeuble', 'Immeuble Nexus Transit', 'ct_bord_sud_a_v3_3q', 0, 32, 8, 4)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.50223 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3c_bord_sud_a.jpg)",
+    "remplace": "ct_bord_sud_a_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.50223,
+      "emprise_mesuree_m": [
+        8.02,
+        3.9
+      ],
+      "comblement_pied_max_px": 6.9,
+      "dy": 0,
+      "arete_pied_g_deg": 18.34,
+      "arete_pied_d_deg": 35.06,
+      "arete_toit_g_deg": 35.3,
+      "arete_toit_d_deg": 18.28
+    },
+    "ecran_layer": "ct_bord_sud_a_v3_3q_ecran",
+    "fenetres": "ct_bord_sud_a_v3_3q_fenetres",
+    "neon": "ct_bord_sud_a_v3_3q_neon"
+  },
+  "ct_bord_sud_a_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_bord_sud_a_v3_3q_fenetres.webp",
+    "px": [
+      444,
+      355
+    ],
+    "anchor": [
+      332,
+      352
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_a_v3_3q",
+    "couche_de": "ct_bord_sud_a_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bord_sud_a_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_a_v3_3q_neon": {
+    "file": "steel/center_town/ct_bord_sud_a_v3_3q_neon.webp",
+    "px": [
+      444,
+      355
+    ],
+    "anchor": [
+      332,
+      352
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_a_v3_3q",
+    "couche_de": "ct_bord_sud_a_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bord_sud_a_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_a_v3_3q_ecran": {
+    "file": "steel/center_town/ct_bord_sud_a_v3_3q_ecran.webp",
+    "px": [
+      444,
+      355
+    ],
+    "anchor": [
+      332,
+      352
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_a_v3_3q",
+    "couche_de": "ct_bord_sud_a_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bord_sud_a_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_b_v3_3q": {
+    "file": "steel/center_town/ct_bord_sud_b_v3_3q.webp",
+    "px": [
+      444,
+      341
+    ],
+    "anchor": [
+      332,
+      338
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 3.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Galerie du Carrefour, R+1 à vitrines ambre",
+    "enseigne": "GROOVY CREW EN CONCERT",
+    "pose": "B_CT('c_galerie', 'Galerie du Carrefour', 'ct_bord_sud_b_v3_3q', 8, 32, 8, 4)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.48437 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_bord_sud_b.jpg)",
+    "remplace": "ct_bord_sud_b_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.48437,
+      "emprise_mesuree_m": [
+        8.03,
+        3.86
+      ],
+      "comblement_pied_max_px": 6.4,
+      "dy": 0,
+      "arete_pied_g_deg": 18.25,
+      "arete_pied_d_deg": 35.02,
+      "arete_toit_g_deg": 35.17,
+      "arete_toit_d_deg": 17.92
+    },
+    "ecran_layer": "ct_bord_sud_b_v3_3q_ecran",
+    "fenetres": "ct_bord_sud_b_v3_3q_fenetres",
+    "neon": "ct_bord_sud_b_v3_3q_neon"
+  },
+  "ct_bord_sud_b_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_bord_sud_b_v3_3q_fenetres.webp",
+    "px": [
+      444,
+      341
+    ],
+    "anchor": [
+      332,
+      338
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_b_v3_3q",
+    "couche_de": "ct_bord_sud_b_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bord_sud_b_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_b_v3_3q_neon": {
+    "file": "steel/center_town/ct_bord_sud_b_v3_3q_neon.webp",
+    "px": [
+      444,
+      341
+    ],
+    "anchor": [
+      332,
+      338
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_b_v3_3q",
+    "couche_de": "ct_bord_sud_b_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bord_sud_b_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_b_v3_3q_ecran": {
+    "file": "steel/center_town/ct_bord_sud_b_v3_3q_ecran.webp",
+    "px": [
+      444,
+      341
+    ],
+    "anchor": [
+      332,
+      338
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_b_v3_3q",
+    "couche_de": "ct_bord_sud_b_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bord_sud_b_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_c_v3_3q": {
+    "file": "steel/center_town/ct_bord_sud_c_v3_3q.webp",
+    "px": [
+      397,
+      452
+    ],
+    "anchor": [
+      190,
+      449
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 5.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Guichets Human Corp, R+1 de service (face longue côté est)",
+    "enseigne": "GUICHETS · HUMAN CORP",
+    "pose": "B_CT('c_neon', 'Guichets Human Corp', 'ct_bord_sud_c_v3_3q', 20, 28, 4, 8)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.50487 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_bord_sud_c.jpg)",
+    "remplace": "ct_bord_sud_c_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.50487,
+      "emprise_mesuree_m": [
+        4.57,
+        7.24
+      ],
+      "comblement_pied_max_px": 6.2,
+      "dy": -1,
+      "arete_pied_g_deg": 18.5,
+      "arete_pied_d_deg": 34.95,
+      "arete_toit_g_deg": 34.71,
+      "arete_toit_d_deg": 18.51
+    },
+    "ecran_layer": "ct_bord_sud_c_v3_3q_ecran",
+    "fenetres": "ct_bord_sud_c_v3_3q_fenetres",
+    "neon": "ct_bord_sud_c_v3_3q_neon"
+  },
+  "ct_bord_sud_c_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_bord_sud_c_v3_3q_fenetres.webp",
+    "px": [
+      397,
+      452
+    ],
+    "anchor": [
+      190,
+      449
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_c_v3_3q",
+    "couche_de": "ct_bord_sud_c_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_bord_sud_c_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_c_v3_3q_neon": {
+    "file": "steel/center_town/ct_bord_sud_c_v3_3q_neon.webp",
+    "px": [
+      397,
+      452
+    ],
+    "anchor": [
+      190,
+      449
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_c_v3_3q",
+    "couche_de": "ct_bord_sud_c_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_bord_sud_c_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_bord_sud_c_v3_3q_ecran": {
+    "file": "steel/center_town/ct_bord_sud_c_v3_3q_ecran.webp",
+    "px": [
+      397,
+      452
+    ],
+    "anchor": [
+      190,
+      449
+    ],
+    "additive": true,
+    "parent": "ct_bord_sud_c_v3_3q",
+    "couche_de": "ct_bord_sud_c_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_bord_sud_c_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_monorail_viaduc_v3_3q": {
+    "file": "steel/center_town/ct_monorail_viaduc_v3_3q.webp",
+    "px": [
+      512,
+      643
+    ],
+    "anchor": [
+      231,
+      640
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 7.9,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Segment de viaduc Mega-Line sur deux piles (liseré LED ambre)",
+    "pose": "B_CT('ct_mono_v0', '', 'ct_monorail_viaduc_v3_3q', 0, 0, 4, 12, { cover: true, named: false, solid: [{ x: 0.4, z: 0.4, w: 2.0, d: 2.0 }, { x: 0.4, z: 9.8, w: 2.0, d: 2.0 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.86713 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_monorail_viaduc.jpg)",
+    "remplace": "ct_monorail_viaduc_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.86713,
+      "angle_ligne_piles_deg": 36.43,
+      "pile_arriere_ecart_m": [
+        -0.23,
+        -0.11
+      ]
+    },
+    "fenetres": "ct_monorail_viaduc_v3_3q_fenetres",
+    "neon": "ct_monorail_viaduc_v3_3q_neon"
+  },
+  "ct_monorail_viaduc_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_monorail_viaduc_v3_3q_fenetres.webp",
+    "px": [
+      512,
+      643
+    ],
+    "anchor": [
+      231,
+      640
+    ],
+    "additive": true,
+    "parent": "ct_monorail_viaduc_v3_3q",
+    "couche_de": "ct_monorail_viaduc_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_monorail_viaduc_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_monorail_viaduc_v3_3q_neon": {
+    "file": "steel/center_town/ct_monorail_viaduc_v3_3q_neon.webp",
+    "px": [
+      512,
+      643
+    ],
+    "anchor": [
+      231,
+      640
+    ],
+    "additive": true,
+    "parent": "ct_monorail_viaduc_v3_3q",
+    "couche_de": "ct_monorail_viaduc_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_monorail_viaduc_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_monorail_rame_v3_3q": {
+    "file": "steel/center_town/ct_monorail_rame_v3_3q.webp",
+    "px": [
+      511,
+      603
+    ],
+    "anchor": [
+      227,
+      600
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 7.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Viaduc Mega-Line portant une rame à fenêtres ambre",
+    "enseigne": "MEGA-LINE",
+    "pose": "B_CT('ct_mono_r0', 'Viaduc Mega-Line', 'ct_monorail_rame_v3_3q', 0, 12, 4, 12, { cover: true, named: false, solid: [{ x: 0.4, z: 12.4, w: 2.0, d: 2.0 }, { x: 0.4, z: 21.8, w: 2.0, d: 2.0 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.8206 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_monorail_rame.jpg)",
+    "remplace": "ct_monorail_rame_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.8206,
+      "angle_ligne_piles_deg": 33.91,
+      "pile_arriere_ecart_m": [
+        0.19,
+        -0.03
+      ]
+    },
+    "fenetres": "ct_monorail_rame_v3_3q_fenetres",
+    "neon": "ct_monorail_rame_v3_3q_neon"
+  },
+  "ct_monorail_rame_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_monorail_rame_v3_3q_fenetres.webp",
+    "px": [
+      511,
+      603
+    ],
+    "anchor": [
+      227,
+      600
+    ],
+    "additive": true,
+    "parent": "ct_monorail_rame_v3_3q",
+    "couche_de": "ct_monorail_rame_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_monorail_rame_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_monorail_rame_v3_3q_neon": {
+    "file": "steel/center_town/ct_monorail_rame_v3_3q_neon.webp",
+    "px": [
+      511,
+      603
+    ],
+    "anchor": [
+      227,
+      600
+    ],
+    "additive": true,
+    "parent": "ct_monorail_rame_v3_3q",
+    "couche_de": "ct_monorail_rame_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_monorail_rame_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_holo_suspendu_v3_3q": {
+    "file": "steel/center_town/ct_holo_suspendu_v3_3q.webp",
+    "px": [
+      417,
+      609
+    ],
+    "anchor": [
+      167,
+      606
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 7.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Portique en treillis avec écran holographique suspendu STEEL INFO",
+    "enseigne": "STEEL INFO",
+    "pose": "B_CT('ct_holo0', '', 'ct_holo_suspendu_v3_3q', 24, 12, 4, 12, { cover: true, named: false, solid: [{ x: 24.6, z: 12.6, w: 1.4, d: 1.4 }, { x: 24.6, z: 22.0, w: 1.4, d: 1.4 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.83472 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_holo_suspendu.jpg)",
+    "remplace": "ct_holo_suspendu_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.83472,
+      "angle_ligne_piles_deg": 31.89,
+      "pile_arriere_ecart_m": [
+        0.51,
+        0.4
+      ]
+    },
+    "ecran_layer": "ct_holo_suspendu_v3_3q_ecran",
+    "fenetres": "ct_holo_suspendu_v3_3q_fenetres",
+    "neon": "ct_holo_suspendu_v3_3q_neon"
+  },
+  "ct_holo_suspendu_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_holo_suspendu_v3_3q_fenetres.webp",
+    "px": [
+      417,
+      609
+    ],
+    "anchor": [
+      167,
+      606
+    ],
+    "additive": true,
+    "parent": "ct_holo_suspendu_v3_3q",
+    "couche_de": "ct_holo_suspendu_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_holo_suspendu_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_holo_suspendu_v3_3q_neon": {
+    "file": "steel/center_town/ct_holo_suspendu_v3_3q_neon.webp",
+    "px": [
+      417,
+      609
+    ],
+    "anchor": [
+      167,
+      606
+    ],
+    "additive": true,
+    "parent": "ct_holo_suspendu_v3_3q",
+    "couche_de": "ct_holo_suspendu_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_holo_suspendu_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_holo_suspendu_v3_3q_ecran": {
+    "file": "steel/center_town/ct_holo_suspendu_v3_3q_ecran.webp",
+    "px": [
+      417,
+      609
+    ],
+    "anchor": [
+      167,
+      606
+    ],
+    "additive": true,
+    "parent": "ct_holo_suspendu_v3_3q",
+    "couche_de": "ct_holo_suspendu_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_holo_suspendu_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_arret_tram_v3_3q": {
+    "file": "steel/center_town/ct_arret_tram_v3_3q.webp",
+    "px": [
+      442,
+      368
+    ],
+    "anchor": [
+      334,
+      365
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 4.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Arrêt Tram Central, cabine d'attente vitrée fumée",
+    "enseigne": "TRAM CENTRAL · PROCHAIN TRAM 2 MIN",
+    "pose": "B_CT('ct_arret0', 'Arrêt Tram Central', 'ct_arret_tram_v3_3q', 4, 12, 8, 4, { named: false, solid: [{ x: 4.5, z: 12.3, w: 7.0, d: 1.4 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.5082 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3e_arret_tram.jpg)",
+    "remplace": "ct_arret_tram_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.5082,
+      "emprise_mesuree_m": [
+        8.06,
+        3.72
+      ],
+      "comblement_pied_max_px": 7.3,
+      "dy": 0,
+      "arete_pied_g_deg": 18.31,
+      "arete_pied_d_deg": 35.02,
+      "arete_toit_g_deg": 35.03,
+      "arete_toit_d_deg": 18.0
+    },
+    "ecran_layer": "ct_arret_tram_v3_3q_ecran",
+    "fenetres": "ct_arret_tram_v3_3q_fenetres",
+    "neon": "ct_arret_tram_v3_3q_neon"
+  },
+  "ct_arret_tram_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_arret_tram_v3_3q_fenetres.webp",
+    "px": [
+      442,
+      368
+    ],
+    "anchor": [
+      334,
+      365
+    ],
+    "additive": true,
+    "parent": "ct_arret_tram_v3_3q",
+    "couche_de": "ct_arret_tram_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_arret_tram_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_arret_tram_v3_3q_neon": {
+    "file": "steel/center_town/ct_arret_tram_v3_3q_neon.webp",
+    "px": [
+      442,
+      368
+    ],
+    "anchor": [
+      334,
+      365
+    ],
+    "additive": true,
+    "parent": "ct_arret_tram_v3_3q",
+    "couche_de": "ct_arret_tram_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_arret_tram_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_arret_tram_v3_3q_ecran": {
+    "file": "steel/center_town/ct_arret_tram_v3_3q_ecran.webp",
+    "px": [
+      442,
+      368
+    ],
+    "anchor": [
+      334,
+      365
+    ],
+    "additive": true,
+    "parent": "ct_arret_tram_v3_3q",
+    "couche_de": "ct_arret_tram_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_arret_tram_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tram_v3_3q": {
+    "file": "steel/center_town/ct_tram_v3_3q.webp",
+    "px": [
+      490,
+      475
+    ],
+    "anchor": [
+      135,
+      472
+    ],
+    "footprint_m": [
+      4,
+      12
+    ],
+    "height_m": 4.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Rame de tramway de Center-Town (vitres ambre, pantographe)",
+    "enseigne": "CENTER-TOWN",
+    "pose": "B_CT('ct_tram0', 'Tramway Center-Town', 'ct_tram_v3_3q', 28, 22, 4, 12, { named: false, solid: [{ x: 28.8, z: 22.8, w: 2.4, d: 10.4 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.65979 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3c_tram.jpg)",
+    "remplace": "ct_tram_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.65979,
+      "emprise_mesuree_m": [
+        3.23,
+        12.42
+      ],
+      "comblement_pied_max_px": 6.5,
+      "dy": 0,
+      "arete_pied_g_deg": 18.37,
+      "arete_pied_d_deg": 34.99,
+      "arete_toit_g_deg": 33.11,
+      "arete_toit_d_deg": 21.73
+    },
+    "fenetres": "ct_tram_v3_3q_fenetres",
+    "neon": "ct_tram_v3_3q_neon"
+  },
+  "ct_tram_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_tram_v3_3q_fenetres.webp",
+    "px": [
+      490,
+      475
+    ],
+    "anchor": [
+      135,
+      472
+    ],
+    "additive": true,
+    "parent": "ct_tram_v3_3q",
+    "couche_de": "ct_tram_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tram_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_tram_v3_3q_neon": {
+    "file": "steel/center_town/ct_tram_v3_3q_neon.webp",
+    "px": [
+      490,
+      475
+    ],
+    "anchor": [
+      135,
+      472
+    ],
+    "additive": true,
+    "parent": "ct_tram_v3_3q",
+    "couche_de": "ct_tram_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tram_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_kiosque_info_v3_3q": {
+    "file": "steel/center_town/ct_kiosque_info_v3_3q.webp",
+    "px": [
+      279,
+      295
+    ],
+    "anchor": [
+      169,
+      292
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Kiosque Presse & Médias (guichet ambre, écran latéral multicolore)",
+    "enseigne": "PRESSE - MEDIAS",
+    "pose": "B_CT('ct_kiosque0', 'Kiosque Presse & Médias', 'ct_kiosque_info_v3_3q', 12, 20, 4, 4, { named: false, solid: [{ x: 12.6, z: 21.5, w: 2.8, d: 2.1 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.35303 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_kiosque_info.jpg)",
+    "remplace": "ct_kiosque_info_3q",
+    "status": "v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.35303,
+      "emprise_mesuree_m": [
+        4.07,
+        3.83
+      ],
+      "comblement_pied_max_px": 4.4,
+      "dy": 0,
+      "arete_pied_g_deg": 18.35,
+      "arete_pied_d_deg": 34.85,
+      "arete_toit_g_deg": 35.39,
+      "arete_toit_d_deg": 17.83
+    },
+    "ecran_layer": "ct_kiosque_info_v3_3q_ecran",
+    "fenetres": "ct_kiosque_info_v3_3q_fenetres",
+    "neon": "ct_kiosque_info_v3_3q_neon"
+  },
+  "ct_kiosque_info_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_kiosque_info_v3_3q_fenetres.webp",
+    "px": [
+      279,
+      295
+    ],
+    "anchor": [
+      169,
+      292
+    ],
+    "additive": true,
+    "parent": "ct_kiosque_info_v3_3q",
+    "couche_de": "ct_kiosque_info_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_kiosque_info_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_kiosque_info_v3_3q_neon": {
+    "file": "steel/center_town/ct_kiosque_info_v3_3q_neon.webp",
+    "px": [
+      279,
+      295
+    ],
+    "anchor": [
+      169,
+      292
+    ],
+    "additive": true,
+    "parent": "ct_kiosque_info_v3_3q",
+    "couche_de": "ct_kiosque_info_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_kiosque_info_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_kiosque_info_v3_3q_ecran": {
+    "file": "steel/center_town/ct_kiosque_info_v3_3q_ecran.webp",
+    "px": [
+      279,
+      295
+    ],
+    "anchor": [
+      169,
+      292
+    ],
+    "additive": true,
+    "parent": "ct_kiosque_info_v3_3q",
+    "couche_de": "ct_kiosque_info_v3_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_kiosque_info_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_echoppe_vapeur_v3_3q": {
+    "file": "steel/center_town/ct_echoppe_vapeur_v3_3q.webp",
+    "px": [
+      272,
+      297
+    ],
+    "anchor": [
+      176,
+      294
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Échoppe Nouilles & Vapeur (comptoir ambre, cheminée en toiture)",
+    "enseigne": "NOUILLES & VAPEUR",
+    "pose": "B_CT('ct_echoppe0', 'Nouilles & Vapeur', 'ct_echoppe_vapeur_v3_3q', 4, 20, 4, 4, { named: false, solid: [{ x: 4.5, z: 21.5, w: 3.0, d: 2.1 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.34397 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3c_echoppe_vapeur.jpg)",
+    "remplace": "ct_echoppe_vapeur_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.34397,
+      "emprise_mesuree_m": [
+        4.24,
+        3.35
+      ],
+      "comblement_pied_max_px": 8.0,
+      "dy": 0,
+      "arete_pied_g_deg": 18.43,
+      "arete_pied_d_deg": 35.1,
+      "arete_toit_g_deg": 30.84,
+      "arete_toit_d_deg": 16.42
+    },
+    "fenetres": "ct_echoppe_vapeur_v3_3q_fenetres",
+    "neon": "ct_echoppe_vapeur_v3_3q_neon"
+  },
+  "ct_echoppe_vapeur_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_echoppe_vapeur_v3_3q_fenetres.webp",
+    "px": [
+      272,
+      297
+    ],
+    "anchor": [
+      176,
+      294
+    ],
+    "additive": true,
+    "parent": "ct_echoppe_vapeur_v3_3q",
+    "couche_de": "ct_echoppe_vapeur_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_echoppe_vapeur_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_echoppe_vapeur_v3_3q_neon": {
+    "file": "steel/center_town/ct_echoppe_vapeur_v3_3q_neon.webp",
+    "px": [
+      272,
+      297
+    ],
+    "anchor": [
+      176,
+      294
+    ],
+    "additive": true,
+    "parent": "ct_echoppe_vapeur_v3_3q",
+    "couche_de": "ct_echoppe_vapeur_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_echoppe_vapeur_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_lampadaire_io_v3_3q": {
+    "file": "steel/center_town/ct_lampadaire_io_v3_3q.webp",
+    "px": [
+      279,
+      472
+    ],
+    "anchor": [
+      171,
+      469
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 7.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Lampadaire double ambre avec fanion IO rouge et balise rouge, sur dalle 4x4 m",
+    "enseigne": "IO",
+    "pose": "B_CT('ct_lamp0', '', 'ct_lampadaire_io_v3_3q', 16, 12, 4, 4, { named: false, solid: [{ x: 17.5, z: 13.5, w: 1.0, d: 1.0 }] }) ; B_CT('ct_lamp1', '', 'ct_lampadaire_io_v3_3q', 36, 20, 4, 4, { named: false, solid: [{ x: 37.5, z: 21.5, w: 1.0, d: 1.0 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.52364 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_lampadaire_io.jpg)",
+    "remplace": "ct_lampadaire_io_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.52364,
+      "emprise_mesuree_m": [
+        4.11,
+        3.75
+      ],
+      "comblement_pied_max_px": 4.4,
+      "dy": 0,
+      "arete_pied_g_deg": 18.24,
+      "arete_pied_d_deg": 35.0,
+      "arete_toit_g_deg": 31.61,
+      "arete_toit_d_deg": 20.04
+    },
+    "fenetres": "ct_lampadaire_io_v3_3q_fenetres",
+    "neon": "ct_lampadaire_io_v3_3q_neon"
+  },
+  "ct_lampadaire_io_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_lampadaire_io_v3_3q_fenetres.webp",
+    "px": [
+      279,
+      472
+    ],
+    "anchor": [
+      171,
+      469
+    ],
+    "additive": true,
+    "parent": "ct_lampadaire_io_v3_3q",
+    "couche_de": "ct_lampadaire_io_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_lampadaire_io_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_lampadaire_io_v3_3q_neon": {
+    "file": "steel/center_town/ct_lampadaire_io_v3_3q_neon.webp",
+    "px": [
+      279,
+      472
+    ],
+    "anchor": [
+      171,
+      469
+    ],
+    "additive": true,
+    "parent": "ct_lampadaire_io_v3_3q",
+    "couche_de": "ct_lampadaire_io_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_lampadaire_io_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_banniere_io_v3_3q": {
+    "file": "steel/center_town/ct_banniere_io_v3_3q.webp",
+    "px": [
+      280,
+      457
+    ],
+    "anchor": [
+      170,
+      454
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 7.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Mât cérémoniel à bannière rouge IO et balise rouge, sur dalle 4x4 m",
+    "enseigne": "IO",
+    "pose": "B_CT('ct_bann0', '', 'ct_banniere_io_v3_3q', 36, 12, 4, 4, { named: false, solid: [{ x: 37.4, z: 13.4, w: 1.2, d: 1.2 }] }) ; B_CT('ct_bann1', '', 'ct_banniere_io_v3_3q', 44, 12, 4, 4, { named: false, solid: [{ x: 45.4, z: 13.4, w: 1.2, d: 1.2 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.46339 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_banniere_io.jpg)",
+    "remplace": "ct_banniere_io_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.46339,
+      "emprise_mesuree_m": [
+        4.08,
+        3.81
+      ],
+      "comblement_pied_max_px": 6.2,
+      "dy": 0,
+      "arete_pied_g_deg": 18.48,
+      "arete_pied_d_deg": 35.03,
+      "arete_toit_g_deg": 30.88,
+      "arete_toit_d_deg": 19.03
+    },
+    "fenetres": "ct_banniere_io_v3_3q_fenetres",
+    "neon": "ct_banniere_io_v3_3q_neon"
+  },
+  "ct_banniere_io_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_banniere_io_v3_3q_fenetres.webp",
+    "px": [
+      280,
+      457
+    ],
+    "anchor": [
+      170,
+      454
+    ],
+    "additive": true,
+    "parent": "ct_banniere_io_v3_3q",
+    "couche_de": "ct_banniere_io_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_banniere_io_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_banniere_io_v3_3q_neon": {
+    "file": "steel/center_town/ct_banniere_io_v3_3q_neon.webp",
+    "px": [
+      280,
+      457
+    ],
+    "anchor": [
+      170,
+      454
+    ],
+    "additive": true,
+    "parent": "ct_banniere_io_v3_3q",
+    "couche_de": "ct_banniere_io_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_banniere_io_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_cerisier_bac_v3_3q": {
+    "file": "steel/center_town/ct_cerisier_bac_v3_3q.webp",
+    "px": [
+      282,
+      357
+    ],
+    "anchor": [
+      174,
+      354
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 5.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Cerisier urbain sur bac à liseré ambre, dalle 4x4 m",
+    "pose": "B_CT('ct_ceris0', '', 'ct_cerisier_bac_v3_3q', 12, 12, 4, 4, { named: false, solid: [{ x: 13.0, z: 13.0, w: 2.0, d: 2.0 }] }) ; B_CT('ct_ceris1', '', 'ct_cerisier_bac_v3_3q', 36, 24, 4, 4, { named: false, solid: [{ x: 37.0, z: 25.0, w: 2.0, d: 2.0 }] })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.38505 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_cerisier_bac.jpg)",
+    "remplace": "ct_cerisier_bac_v2_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.38505,
+      "emprise_mesuree_m": [
+        4.14,
+        3.68
+      ],
+      "comblement_pied_max_px": 7.6,
+      "dy": 0,
+      "arete_pied_g_deg": 18.31,
+      "arete_pied_d_deg": 35.0,
+      "arete_toit_g_deg": 38.6,
+      "arete_toit_d_deg": 56.68
+    },
+    "fenetres": "ct_cerisier_bac_v3_3q_fenetres"
+  },
+  "ct_cerisier_bac_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_cerisier_bac_v3_3q_fenetres.webp",
+    "px": [
+      282,
+      357
+    ],
+    "anchor": [
+      174,
+      354
+    ],
+    "additive": true,
+    "parent": "ct_cerisier_bac_v3_3q",
+    "couche_de": "ct_cerisier_bac_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_cerisier_bac_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_taxi_v3_3q": {
+    "file": "steel/center_town/ct_taxi_v3_3q.webp",
+    "px": [
+      205,
+      109
+    ],
+    "anchor": [
+      136,
+      106
+    ],
+    "footprint_m": [
+      4.5,
+      1.8
+    ],
+    "height_m": 1.45,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "role": "Taxi jaune de Steel à l'échelle piéton (~4,5 x 1,8 m, caisse ~1,45 m)",
+    "enseigne": "TAXI",
+    "pose": "B_CT('ct_taxi1', '', 'ct_taxi_v3_3q', 13.5, 17.1, 4.5, 1.8, { named: false }) ; B_CT('ct_taxi0', '', 'ct_taxi_v3_3q', 41.5, 17.1, 4.5, 1.8, { named: false })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu + build_center_town_v3.py : crop + échelle uniforme 0.24584 (sx=sy) + ancrage, sans warp ni cisaillement (gen_v3b_taxi.jpg)",
+    "remplace": "ct_taxi_v2_3q",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "geometrie_v3": {
+      "echelle_uniforme": 0.24584,
+      "emprise_mesuree_m": [
+        3.29,
+        2.39
+      ],
+      "comblement_pied_max_px": 0,
+      "dy": 0,
+      "arete_pied_g_deg": 17.51,
+      "arete_pied_d_deg": 11.86,
+      "arete_toit_g_deg": 10.45,
+      "arete_toit_d_deg": 31.5,
+      "caisse_m": 1.45,
+      "caisse_px_ppm30": 38.1
+    },
+    "fenetres": "ct_taxi_v3_3q_fenetres",
+    "neon": "ct_taxi_v3_3q_neon"
+  },
+  "ct_taxi_v3_3q_fenetres": {
+    "file": "steel/center_town/ct_taxi_v3_3q_fenetres.webp",
+    "px": [
+      205,
+      109
+    ],
+    "anchor": [
+      136,
+      106
+    ],
+    "additive": true,
+    "parent": "ct_taxi_v3_3q",
+    "couche_de": "ct_taxi_v3_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_taxi_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
+  },
+  "ct_taxi_v3_3q_neon": {
+    "file": "steel/center_town/ct_taxi_v3_3q_neon.webp",
+    "px": [
+      205,
+      109
+    ],
+    "anchor": [
+      136,
+      106
+    ],
+    "additive": true,
+    "parent": "ct_taxi_v3_3q",
+    "couche_de": "ct_taxi_v3_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_taxi_v3_3q.webp (même canevas, même ancre)",
+    "status": "v3"
   }
 }
