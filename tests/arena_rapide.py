@@ -1,5 +1,6 @@
 # Test rapide Steel Arena : sortie est de Pulse Plaza -> Arena, traversée du parvis jusqu'à la sortie est -> Strip, retours, aucune erreur JS ;
 # fps, enseignes animées, calques rythmiques ar2_*_pulse2 / *_faisceau / ar_*_v2_3q_pulse + props rythmiques v2 sans warp (lot arena_v2), 0 chevauchement ni inversion d'ordre (1280 et 390).
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys
 from playwright.sync_api import sync_playwright
 URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT=os.environ.get('OUT','/tmp/nml-test-out/arena_v2/'); os.makedirs(OUT,exist_ok=True); fails=[]; n=0
@@ -11,7 +12,7 @@ with sync_playwright() as p:
         errs=[]; ctx=br.new_context(viewport={'width':vp[0],'height':vp[1]},has_touch=mob,is_mobile=mob); pg=ctx.new_page(); E=pg.evaluate
         pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:m.type=='error' and errs.append(m.text))
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1)
-        E("localStorage.removeItem('nml_save_auto')"); E("document.getElementById('m-new').click()"); time.sleep(.5)
+        E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_pulse';s.player.x=46;s.player.z=13;g.restore(s,true)})()"); time.sleep(1.2)
         E("window.__nml.game.useDoor('pp_est')"); time.sleep(2)

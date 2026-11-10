@@ -1,6 +1,7 @@
 # Argent minimal : pour chaque race, origine Errant (15 $) ou, à défaut, l'origine au plus faible argent ; aucun gain d'argent.
 # De la route de Steel à Center-Town par le seul chemin de la race : implant -> douane (change réduit 10 $ -> 5 cr, Odile : « Bon. Je signe. ») ;
 # sans implant -> Sol, Bruno, trappe, Sous-Ville, Elio « Je n'ai pas vingt dollars » -> porter la caisse -> monte-charge. Mise en place reprise de steel_l1/l2.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json, base64, re
 import numpy as np
 from PIL import Image
@@ -96,7 +97,7 @@ with sync_playwright() as p:
     def cap(name): pg.screenshot(path=CAP + name + '.png'); time.sleep(0.1)
     pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
     E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-    press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+    passer_boot(pg); press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
     check('perso créé', st().get('character'))
     E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=30;s.player.z=17;Object.assign(s.flags,{q_start:true,q_fin:true,steel_passe:true,q_steel:true});g.restore(s,true)})()"); time.sleep(1.5)
     free = E("(()=>{const g=window.__nml.game.grids.steel_center,[i,j]=g.toCell(47,18);return g.free(i,j)})()")

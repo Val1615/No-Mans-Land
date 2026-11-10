@@ -1,6 +1,7 @@
 # Asia-Ground lot 2 (steel_asia), sans quêtes : boucle Center-Town -> Lower-Town -> Asia-Ground -> Center-Town, 4 intérieurs, PNJ, emprises d'Ocre, captures réelles.
 
 
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json, base64, re
 import numpy as np
 from PIL import Image
@@ -96,7 +97,7 @@ with sync_playwright() as p:
     def cap(name): pg.screenshot(path=CAP + name + '.png'); time.sleep(0.1)
     pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
     E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-    press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+    passer_boot(pg); press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
     check('perso créé', st().get('character'))
     def talk(nid, capname=None):
         close_dlg(); n0 = E(f"window.__nml.npcs.find(n=>n.id==='{nid}')"); walk(n0['x'], n0['z'] + 1.8, tol=1.6)

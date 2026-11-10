@@ -7,6 +7,7 @@
 #   * Taxi v2 (ct_taxi1, ct_taxi_v2_3q) -> h/l = 0,58-0,59 (avant correctif sous écart 100vh : ~0,70-0,71 ; identique partout après)
 # - Vérifie que pointer.js / pick() / labels utilisent exactement les mêmes dimensions (viewW x viewH == getBoundingClientRect)
 # - Mesure à ppm=30 (1280x720 zoom 1,0) la hauteur rendue en px : PNJ / passants vs ct_taxi_v2_3q
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import io, os, sys, time, json
 import numpy as np
 from PIL import Image
@@ -70,6 +71,7 @@ with sync_playwright() as p:
         pg.evaluate("localStorage.removeItem('nml_save_auto'); localStorage.removeItem('nml_zoom')")
         time.sleep(0.4)
         gesture = pg.touchscreen.tap if mob else pg.mouse.click
+        passer_boot(pg)
         for sel in ['#m-new', '[data-race="augmente"]', '#cr-next', '#cr-enter']:
             b = pg.locator(sel).first.bounding_box()
             gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2)

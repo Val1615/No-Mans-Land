@@ -3,6 +3,7 @@
 # trajet Dusk-Town -> Steel case par case avec temps cumulé = somme de la table des terrains, onCaseEntree appelé une fois par case,
 # halte + reprise (trajet intact), sauvegarde / rechargement en cours de trajet (reprise en halte), arrivée = chargement du lieu
 # (texte d'arrivée, autosave), mer bloquée, retour vers Dusk annulable, aucune erreur JS.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys,json
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); from _chev import chevauchements, dessus
 from playwright.sync_api import sync_playwright
@@ -29,7 +30,7 @@ with sync_playwright() as p:
         vis=lambda: E("!document.getElementById('nml').hidden")
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5)
         E("localStorage.removeItem('nml_save_auto')")
-        E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
+        passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
         E("(()=>{window.__msgs=[];const m=document.getElementById('msg');new MutationObserver(()=>window.__msgs.push(m.textContent)).observe(m,{childList:true,characterData:true,subtree:true})})()")
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='dusk_q2';s.player.x=42;s.player.z=18;Object.assign(s.flags,{q_start:true,q_cric:true,q_signal:true,q_fin:true});g.restore(s,true)})()"); time.sleep(1.2)
         # 1. consultation depuis la carte de Dusk-Town : pas de départ possible, brouillard, lieux connus
@@ -67,7 +68,7 @@ with sync_playwright() as p:
         E("document.getElementById('nml-partir').click()"); ok(wait(f"window.__calls.length>={n+1}",8),f'{name} reprise du trajet')
         pg.reload(); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.2)
         sv=E("JSON.parse(localStorage.getItem('nml_save_auto')).state"); ok(sv['region']['statut']=='route',f'{name} sauvegarde écrite en pleine marche',sv['region']['statut'])
-        E("document.getElementById('m-continue').click()"); ok(wait("!document.getElementById('nml').hidden",10),f'{name} partie rechargée en cours de trajet : carte NML rouverte')
+        passer_boot(E); E("document.getElementById('m-continue').click()"); ok(wait("!document.getElementById('nml').hidden",10),f'{name} partie rechargée en cours de trajet : carte NML rouverte')
         r=R(); ok(r['statut']=='halte' and r['case']==sv['region']['case'] and r['trajet']==sv['region']['trajet'] and r['vues']==sv['region']['vues'],f'{name} reprise en halte sur la dernière case, trajet et brouillard restaurés',(r['statut'],r['case'],sv['region']['case']))
         ok(set(lieux2)<=set(E("[...document.querySelectorAll('#nml-lieux .nl')].map(b=>b.dataset.lieu)")),f'{name} lieux connus restaurés')
         E("(()=>{const v=window.__nml.voyage;window.__calls=[];const f=v.crochets.onCaseEntree;v.crochets.onCaseEntree=(c,e)=>{window.__calls.push([c.col,c.row,c.terrain]);return f(c,e)}})()")

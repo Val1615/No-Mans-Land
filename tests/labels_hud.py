@@ -1,4 +1,5 @@
 # Mobile 390x844 : aucun libellé du monde visible ne chevauche un panneau d'interface, en plusieurs lieux, dialogue ouvert ou non.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,json,sys
 from playwright.sync_api import sync_playwright
 OUT='/tmp/nml-test-out/labels_hud/'; import os; os.makedirs(OUT,exist_ok=True); bad=0
@@ -6,7 +7,7 @@ with sync_playwright() as p:
     br=p.chromium.launch(channel='chrome',args=['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist'])
     ctx=br.new_context(viewport={'width':390,'height':844},has_touch=True,is_mobile=True,device_scale_factor=2); pg=ctx.new_page(); E=pg.evaluate
     pg.goto(os.environ.get('URL', 'http://127.0.0.1:8799/')); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5)
-    E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"augmente\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
+    passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"augmente\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
     CHK="""(()=>{const ids=['hud','locbox','obj','msg','dialogue','panel','keys','act'];const R=ids.map(i=>document.getElementById(i)).filter(e=>e&&!e.hidden&&e.getClientRects().length&&getComputedStyle(e).visibility!=='hidden').map(e=>e.getBoundingClientRect());
       const out=[];for(const l of document.querySelectorAll('.wlabel')){if(l.hidden||l.style.visibility==='hidden')continue;const a=l.getBoundingClientRect();if(!a.width)continue;
       if(R.some(q=>a.left<q.right&&a.right>q.left&&a.top<q.bottom&&a.bottom>q.top))out.push(l.textContent)}return out})()"""

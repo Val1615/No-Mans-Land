@@ -94,6 +94,7 @@
 #menu.term.booting.b-items .t-list .btn:nth-child(6){transition-delay:450ms}#menu.term.booting.b-items .t-list .btn:nth-child(7){transition-delay:540ms}#menu.term.booting.b-items .t-list .btn:nth-child(8){transition-delay:630ms}
 #menu.term.booting.b-status .t-status,#menu.term.booting.b-status .t-ticker,#menu.term.booting.b-status #menu-note,#menu.term.booting.b-status .t-exec{opacity:1;transition:opacity 300ms}
 #menu.term.booting.b-stamp .t-tampon{opacity:.85;transition:opacity 200ms;animation:t-tampon 200ms ease-out}
+#menu.term.booting .t-list{pointer-events:none}
 #menu.term.booting:not(.b-warm) .t-scan,#menu.term.booting:not(.b-warm) .t-vignette{opacity:0}
 /* mouvement réduit (prefers-reduced-motion ou option « Réduire les animations ») : état de repos, rien ne bouge */
 #menu.term.t-reduit .t-fond,#menu.term.t-reduit .t-scan,#menu.term.t-reduit .t-flicker{animation:none}

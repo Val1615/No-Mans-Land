@@ -1,6 +1,7 @@
 # Lot 2 interface : carte de Steel-Megalopolis (1280x800 et 390x844). Ouverture (M / icône carte), 4 couches empilées, couche du joueur par défaut,
 # marqueur du joueur sur la bonne couche, Upper-Town désaturée et verrouillée (non cliquable), découverts / silhouettes « ? », passages entre couches,
 # molette et flèches, Asia-Ground au sud de Lower-Town, Sous-Ville distincte de Lower-Town, carte de Dusk-Town inchangée hors de Steel, aucune erreur JS.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); from _chev import chevauchements
 from playwright.sync_api import sync_playwright
@@ -16,7 +17,7 @@ with sync_playwright() as p:
         ctx=br.new_context(viewport={'width':vp[0],'height':vp[1]},has_touch=mob,is_mobile=mob,device_scale_factor=1); pg=ctx.new_page(); E=pg.evaluate
         pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:m.type=='error' and errs.append(m.text))
         pg.goto(os.environ.get('URL','http://127.0.0.1:8862/')); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5)
-        E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"augmente\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
+        passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"augmente\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
         def go(loc,x,z,seen=()):
             E(f"(()=>{{const g=window.__nml.game,s=g.snapshot();s.location='{loc}';s.player.x={x};s.player.z={z};s.seen={{}};for(const k of {list(seen)!r})s.seen[k]=true;g.restore(s,true)}})()"); time.sleep(1.2)
         smap="(()=>{const m=document.querySelector('#panel .smap');if(!m||document.getElementById('panel').hidden)return null;const P=m.querySelector('.smap-plan').getBoundingClientRect();return {couche:+m.dataset.n,sel:[...m.querySelectorAll('.smap-pile button')].map(b=>[+b.dataset.couche,b.classList.contains('sel'),b.classList.contains('lock')]),here:[...m.querySelectorAll('.mk.here')].map(b=>b.dataset.key),me:m.querySelectorAll('.mk .me').length,known:[...m.querySelectorAll('.mk.known')].map(b=>b.dataset.key),unk:[...m.querySelectorAll('.mk.unk')].map(b=>[b.dataset.key,b.textContent]),locked:m.querySelector('.smap-plan').classList.contains('locked'),filt:getComputedStyle(m.querySelector('.fond')).filter,mkPE:[...m.querySelectorAll('.mk')].map(b=>getComputedStyle(b).pointerEvents),pos:Object.fromEntries([...m.querySelectorAll('.mk')].map(b=>{const r=b.getBoundingClientRect();return [b.dataset.key,[r.left,r.top]]})),plan:[P.left,P.top,P.right,P.bottom],vw:innerWidth,vh:innerHeight,bg:getComputedStyle(document.getElementById('panel')).backgroundColor}})()"

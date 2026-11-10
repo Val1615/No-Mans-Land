@@ -2,6 +2,7 @@
 # un fichier editor-maps.json (zone de la région modifiée, produit par l'éditeur) est chargé par le jeu, chaque zone se visite sans erreur JS,
 # et un fichier invalide laisse le jeu démarrer sur ses données intégrées. L'aller-retour enregistrer -> recharger est vérifié par
 # tests/editor-regions.mjs (node). Usage : python3 tests/editor_regions.py [steel|dusk]   (serveur local sur 8862)
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys,json
 from playwright.sync_api import sync_playwright
 URL=os.environ.get('URL','http://127.0.0.1:8862/'); REGION=(sys.argv[1] if len(sys.argv)>1 else 'steel'); fails=[]; n=0
@@ -30,7 +31,7 @@ with sync_playwright() as p:
         pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:m.type=='error' and errs.append(m.text))
         ctx.route('**/src/data/editor-maps.json*',(lambda b:lambda r:r.fulfill(status=200,content_type='application/json',body=b))(body))
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(.8)
-        E("localStorage.removeItem('nml_save_auto')"); E("document.getElementById('m-new').click()"); time.sleep(.4)
+        E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.4)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.2); E("document.getElementById('cr-next').click()"); time.sleep(.2); E("document.getElementById('cr-enter').click()"); time.sleep(1.2)
         x=E(f"window.__nml.world.LOCATIONS['{pub['zone']}'].buildings.find(b=>b.id==='{pub['id']}').x")
         if label=='carte éditée':

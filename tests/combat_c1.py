@@ -1,6 +1,7 @@
 # Combat C1 (docs/design/COMBAT.md §14) : combat:rodeur depuis la scène du rôdeur, autosave avant, grille 1 m affichée seulement en combat, aperçu et coût (1 / 1,5 PA), tours, 4 issues ; desktop 1280x800 et mobile 390x844. Port dédié 8862.
 
 
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json, base64, re
 import numpy as np
 from PIL import Image
@@ -97,7 +98,7 @@ with sync_playwright() as p:
     def cap(name): pg.screenshot(path=CAP + name + '.png'); time.sleep(0.1)
     pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
     E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-    press('#m-new', 0.6); press(f'[data-race="{RACE}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+    passer_boot(pg); press('#m-new', 0.6); press(f'[data-race="{RACE}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
     check('perso créé', st().get('character'))
     C = "window.__nml.state.combat"
     def cst(): return E(f"{C} && JSON.parse(JSON.stringify({{phase:{C}.phase,tour:{C}.tour,actif:{C}.actif,units:{C}.units.map(u=>({{id:u.id,i:u.i,j:u.j,pa:u.pa,actif:u.actif,moving:u.path.length}})),preview:{C}.preview,zone:{C}.zone}}))")
@@ -130,7 +131,7 @@ with sync_playwright() as p:
             onscreen = lambda pt: 20 < pt['x'] < VW - 20 and 130 < pt['y'] < VH - 120
             pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
             E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-            press('#m-new', 0.6); press(f'[data-race="{RACE}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+            passer_boot(pg); press('#m-new', 0.6); press(f'[data-race="{RACE}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
         T = prof
         E("localStorage.removeItem('nml_save_auto')")
         check(f'{T}: grille absente hors combat', E("!document.body.classList.contains('combat') && document.getElementById('cbt').hidden && !window.__nml.state.combat"))

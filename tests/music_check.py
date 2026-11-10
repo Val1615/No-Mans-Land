@@ -1,5 +1,6 @@
 # v9 : musique d'ambiance de Dusk-Town. Lecture réelle après le premier geste, boucle, coupure mémorisée, continuité entre quartiers,
 # atténuation en intérieur, fichier livré octet-identique (SHA-256) à celui fourni par Valentin.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, json, hashlib, urllib.request
 from playwright.sync_api import sync_playwright
 URL = os.environ.get('URL', 'http://127.0.0.1:8765/'); OUT = os.environ.get('OUT', '/tmp/nml-test-out/music_check/'); os.makedirs(OUT, exist_ok=True)
@@ -20,7 +21,7 @@ with sync_playwright() as p:
         def tapel(sel): b = pg.locator(sel).bounding_box(); gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.3)
         m = M(); check(f'{prof}: muette avant tout geste (règle autoplay)', m['paused'], m)
         check(f'{prof}: écran titre affiché, musique muette tant qu\'aucun geste', E('document.body.classList.contains("menu-open")') and m['paused'])
-        tapel('#m-new'); time.sleep(0.4); tapel('#cr-next'); tapel('#cr-enter'); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(0.5)  # premier geste réel : Nouveau jeu
+        passer_boot(pg); tapel('#m-new'); time.sleep(0.4); tapel('#cr-next'); tapel('#cr-enter'); pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(0.5)  # premier geste réel : Nouveau jeu
         pl = E('window.__nml.state.player'); pt = P(pl['x'] + 1.5, pl['z']); gesture(pt['x'], pt['y']); time.sleep(2.5)
         m1 = M(); time.sleep(1.5); m2 = M()
         check(f'{prof}: lecture effective après le premier geste (le temps avance)', not m1['paused'] and m2['t'] - m1['t'] > 1.0, (m1['t'], m2['t']))
@@ -43,7 +44,7 @@ with sync_playwright() as p:
         tapel('#k-son'); m5 = M()
         check(f'{prof}: bouton Son : coupe (muted), libellé « Muet »', m5['muted'] and 'Muet' in pg.locator('#k-son').inner_text() and E("localStorage.getItem('nml_muted')") == '1', m5['muted'])
         pg.screenshot(path=OUT + f'{prof}-son-coupe.png')
-        pg.reload(); pg.wait_for_function('window.__nml', timeout=60000); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(1.5)
+        pg.reload(); pg.wait_for_function('window.__nml', timeout=60000); passer_boot(pg); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(1.5)
         check(f'{prof}: réglage mémorisé après rechargement', M()['muted'] and 'Muet' in pg.locator('#k-son').inner_text())
         tapel('#k-son'); time.sleep(1.5); m6 = M()
         check(f'{prof}: rétabli par geste, lecture (le geste démarre la musique)', not m6['muted'] and not m6['paused'] and E("localStorage.getItem('nml_muted')") == '0', m6)

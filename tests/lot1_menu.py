@@ -1,4 +1,5 @@
 # v10 lot 1 : menu principal, pause, sauvegardes, options. Gestes réels (clic bureau 1280x800, tap mobile 390x844 dpr2), vérifs sur pixels.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json
 import numpy as np
 from PIL import Image
@@ -50,7 +51,7 @@ with sync_playwright() as p:
         pg.screenshot(path=OUT + f'{prof}-05-options-modifiees.png')
         if mob: press('#menu-sub .m-back')
         # 3. nouveau jeu : Dusk-Town direct, perso par défaut, sans Nilo
-        press('#m-new', 0.8); press('#cr-next'); press('#cr-enter', 1.2); s = st()
+        passer_boot(pg); press('#m-new', 0.8); press('#cr-next'); press('#cr-enter', 1.2); s = st()
         check(f'{prof}: Nouveau jeu : Dusk-Town, perso par défaut', not menu_open() and s['location'] == 'dusk_q1' and s['player']['money'] == 40 and s['player']['hp'] == 27, (s['location'], s['player']['money']))
         check(f'{prof}: Nilo absent (état + case HUD masquée)', s['companion']['mode'] == 'absent' and E('getComputedStyle(document.getElementById("nilo").closest(".cell")).display==="none"'))
         iso = np.asarray(Image.open(io.BytesIO(__import__('base64').b64decode(E("window.__nml.view.isolate('companion')").split(',')[1]))).convert('RGB')).astype(int)

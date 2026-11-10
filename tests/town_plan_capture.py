@@ -1,5 +1,6 @@
 # v7 : captures de documentation (pas un test) : vue d'ensemble de chaque quartier et plan global assemblé en croix.
 # Le placement du joueur se fait par commande ici : c'est une prise de vue, les trajets sont couverts par town_pixels.py.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io
 from PIL import Image, ImageDraw, ImageFont
 from playwright.sync_api import sync_playwright
@@ -9,7 +10,7 @@ Q = {'dusk_q1': 'La Pompe', 'dusk_q2': 'Le Transit', 'dusk_q3': 'Le Scellé', 'd
 ims = {}
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
-    pg = br.new_page(viewport={'width': 1280, 'height': 800}); pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2)
+    pg = br.new_page(viewport={'width': 1280, 'height': 800}); pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); passer_boot(pg); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2)
     pg.evaluate("document.getElementById('hud').style.visibility='hidden'; document.getElementById('act').style.visibility='hidden'")
     for i, (loc, name) in enumerate(Q.items()):
         pg.evaluate(f"()=>{{const s=__nml.state; s.location='{loc}'; s.junctionLock='x'; Object.assign(s.player,{{x:24,z:19,path:[]}}); Object.assign(s.companion,{{x:25,z:19.5,path:[],location:'{loc}'}})}}"); time.sleep(1.2)

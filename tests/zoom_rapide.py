@@ -1,5 +1,6 @@
 # Test rapide du zoom caméra (×0,6 … ×1,5) : boutons +/− discrets semi-transparents, molette, pincement 2 doigts, clavier (+/- / 0),
 # caméra centrée sur le joueur, HUD et étiquettes à taille fixe, plan d'arrivée de l'Arena préservé, tri de profondeur stable.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import os, sys, time
 from playwright.sync_api import sync_playwright
 
@@ -31,7 +32,7 @@ with sync_playwright() as p:
         # 1. Écran titre : boutons de zoom masqués
         ok(E("getComputedStyle(document.getElementById('zoom')).visibility === 'hidden'"), f'{name} écran titre : #zoom masqué')
         E("localStorage.removeItem('nml_save_auto'); localStorage.removeItem('nml_zoom')")
-        E("document.getElementById('m-new').click()"); time.sleep(0.4)
+        passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(0.4)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(0.25)
         E("document.getElementById('cr-next').click()"); time.sleep(0.25)
         E("document.getElementById('cr-enter').click()"); time.sleep(1.2)

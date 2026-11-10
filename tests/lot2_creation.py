@@ -1,5 +1,6 @@
 # v11 lot 2 : création de personnage. Gestes réels (clic 1280x800, tap 390x844 dpr2), clavier pour le nom, vérifs sur pixels rendus.
 # Bureau : cyborg ; mobile : mutant. Puis : jeu lancé, état dérivé, fiche, sauvegarde v2 + rechargement, migration v1.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json, re
 import numpy as np
 from PIL import Image
@@ -29,7 +30,7 @@ with sync_playwright() as p:
         txt = lambda sel: E(f'document.querySelector({json.dumps(sel)}).textContent')
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(2)
         # 1. Nouveau jeu -> écran 1
-        press('#m-new', 0.6)
+        passer_boot(pg); press('#m-new', 0.6)
         check(f'{prof}: Nouveau jeu ouvre la création (écran 1)', E('!document.getElementById("creation").hidden && document.getElementById("creation").dataset.screen==="1"'))
         S = shot(); amber = ((S[..., 0] > 200) & (S[..., 1] > 140) & (S[..., 1] < 200) & (S[..., 2] < 110)).sum()
         check(f'{prof}: titre et cadres ambre rendus (pixels)', amber > 300 * dpr * dpr, amber)
@@ -111,7 +112,7 @@ with sync_playwright() as p:
         sv = E('JSON.parse(localStorage.getItem("nml_save_1"))')
         check(f'{prof}: sauvegarde v2 avec le personnage', sv and sv['v'] == 2 and sv['state']['character']['name'] == NAME and NAME in sv['label'], sv and sv['label'])
         pg.reload(); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
-        press('#m-continue', 1.2); s2 = st()
+        passer_boot(pg); press('#m-continue', 1.2); s2 = st()
         check(f'{prof}: Continuer restaure le personnage', s2['character'] == c and s2['player']['maxHp'] == s['player']['maxHp'] and s2['player']['inv'] == s['player']['inv'])
         # 5. migration v1 -> v2 : sauvegarde du lot 1 sans personnage
         v1 = {'v': 1, 't': 1, 'label': 'La Pompe', 'state': {'location': 'dusk_q1', 'player': {'x': s['player']['x'], 'z': s['player']['z'], 'hp': 20, 'maxHp': 40, 'money': 61, 'inv': {'cric': 1}}, 'companion': {'mode': 'absent', 'location': '_none', 'x': -99, 'z': -99}, 'flags': {'q_start': True}, 'discovered': {}, 'seen': {'dusk_q1': True}, 'transitions': 3}}
@@ -123,7 +124,7 @@ with sync_playwright() as p:
         # 6. Échap / bouton Menu depuis la création : retour au menu sans lancer de partie
         if mob: press('#k-menu')
         else: pg.keyboard.press('Escape'); time.sleep(0.4)
-        press('#m-new', 0.5); press('#cr-next'); 
+        passer_boot(pg); press('#m-new', 0.5); press('#cr-next'); 
         if mob: press('#cr-menu'); press('#m-resume', 0.6)
         else:
             pg.keyboard.press('Escape'); time.sleep(0.3); check(f'{prof}: Échap sur l\'écran 2 : retour à l\'écran 1', E('document.getElementById("creation").dataset.screen') == '1')

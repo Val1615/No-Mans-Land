@@ -1,6 +1,7 @@
 # Argent minimal : pour chaque race, origine Errant (15 $) ou, à défaut, l'origine au plus faible argent ; aucun gain d'argent.
 # De la route de Steel à Center-Town par le seul chemin de la race : implant -> douane (change réduit 10 $ -> 5 cr, Odile : « Bon. Je signe. ») ;
 # sans implant -> Sol, Bruno, trappe, Sous-Ville, Elio « Je n'ai pas vingt dollars » -> porter la caisse -> monte-charge. Mise en place reprise de steel_l1/l2.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json, base64, re
 import numpy as np
 from PIL import Image
@@ -106,7 +107,7 @@ with sync_playwright() as p:
         ori = 'errant' if any(o['id'] == 'errant' for o in ORI) else min(ORI, key=lambda o: o['money'])['id']
         M0 = [o['money'] for o in ORI if o['id'] == ori][0]
         if ori != 'errant': print(f'NOTE  {T}: Errant non disponible pour {race} ; origine au plus faible argent : {ori} ({M0} $)', flush=True)
-        press('#m-new', 0.6); press(f'[data-race="{race}"]'); press(f'[data-origin="{ori}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+        passer_boot(pg); press('#m-new', 0.6); press(f'[data-race="{race}"]'); press(f'[data-origin="{ori}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
         c = st()['character']; s = st()['player']
         check(f'{T}: perso créé ({race}, {ori})', c and c['race'] == race and c['origin'] == ori and not E('document.body.classList.contains("menu-open")'), c and (c['race'], c['origin']))
         check(f'{T}: argent de départ = {M0} $, 0 cr', s['money'] == M0 and not s.get('credits'), (s['money'], s.get('credits')))

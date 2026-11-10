@@ -1,5 +1,6 @@
 # Ah-Lam au Barrage (a_sud) : Discours (parole:4, palier 3 = 10 cr), Intimider (jet opposé à sa Volonté 4), un seul essai, prix mémorisés, pauvre30 -> ruelle.
 # Toutes les branches, tirage forcé (game.setRng). Port dédié 8862 ; captures /tmp/nml-test-out/ahlam/.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import os, sys, json, time
 from playwright.sync_api import sync_playwright
 URL = os.environ.get('URL', 'http://127.0.0.1:8862/'); OUT = '/tmp/nml-test-out/ahlam/'; os.makedirs(OUT, exist_ok=True)
@@ -12,6 +13,7 @@ with sync_playwright() as p:
     pg = br.new_page(viewport={'width': 1280, 'height': 800}); errs = []
     pg.on('pageerror', lambda e: errs.append(str(e))); E = pg.evaluate
     pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
+    passer_boot(pg)
     for sel in ['#m-new', '[data-race="augmente"]', '#cr-next', '#cr-enter']:
         b = pg.locator(sel).first.bounding_box(); pg.mouse.click(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.6)
     st = lambda: E('JSON.parse(JSON.stringify(window.__nml.state))')

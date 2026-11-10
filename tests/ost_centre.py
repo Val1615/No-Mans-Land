@@ -3,6 +3,7 @@
 # - OST dédiée en boucle à Center-Town (steel_center + intérieur change_in atténué).
 # - OST dédiée en boucle à Fréquence Strip (steel_strip).
 # - Vérifie aussi la boucle circulaire des portes : Center-Town -> Pulse Plaza -> Steel Arena -> Fréquence Strip -> Center-Town, et l'absence de tout nom civil interdit.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, re, time, json, hashlib, urllib.request
 from playwright.sync_api import sync_playwright
 
@@ -127,7 +128,7 @@ with sync_playwright() as p:
         check(f'{prof}: muette avant tout geste utilisateur et zones ost_centre = [steel_pulse, steel_arena]',
               s0['paused'] and s0['nAudio'] == 1 and s0['sameEl'] and s0['zones'] == ['steel_pulse', 'steel_arena'], s0)
         E("localStorage.removeItem('nml_muted'); localStorage.removeItem('nml_save_auto')")
-        tapel('#m-new'); time.sleep(0.35); tapel('#cr-next'); tapel('#cr-enter')
+        passer_boot(pg); tapel('#m-new'); time.sleep(0.35); tapel('#cr-next'); tapel('#cr-enter')
         pg.wait_for_function('!document.body.classList.contains("menu-open")')
         time.sleep(0.6)
 

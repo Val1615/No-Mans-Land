@@ -1,5 +1,6 @@
 # Lot 1 interface : barre d'icônes compacte et repliable (Tab), bouton « entrer » jamais sur la barre (1280x800, 880x1000, 1000x880, 390x844),
 # étiquettes relevées par Régie hors du HUD, OBJECTIF sur une ligne en mobile, Mei visible depuis (24;34), étiquette de PNJ jamais sur sa tête.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys
 from playwright.sync_api import sync_playwright
 OUT='/tmp/nml-test-out/hud_barre/'; os.makedirs(OUT,exist_ok=True); fails=[]; errs=[]
@@ -16,7 +17,7 @@ with sync_playwright() as p:
         ctx=br.new_context(viewport={'width':vp[0],'height':vp[1]},has_touch=mob,is_mobile=mob,device_scale_factor=1); pg=ctx.new_page(); E=pg.evaluate
         pg.on('pageerror',lambda e:errs.append(str(e))); pg.on('console',lambda m:m.type=='error' and errs.append(m.text))
         pg.goto(os.environ.get('URL','http://127.0.0.1:8862/')); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5)
-        E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"augmente\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
+        passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"augmente\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
         go=lambda loc,x,z:(E(f"(()=>{{const g=window.__nml.game,s=g.snapshot();s.location='{loc}';s.player.x={x};s.player.z={z};g.restore(s,true)}})()"),time.sleep(2.2))
         # barre : 7 icônes compactes, semi-transparentes
         k=E("[...document.querySelectorAll('#keys button')].filter(b=>b.getClientRects().length).map(b=>{const r=b.getBoundingClientRect(),c=getComputedStyle(b).backgroundColor;return [r.width,r.height,c]})")

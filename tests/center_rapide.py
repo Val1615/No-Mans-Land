@@ -4,6 +4,7 @@
 # - Foule densifiée sur trottoirs, parvis et passages piétons (51 figurants + 8 passants <= 8 anims mobile), hors solids, view.masques() == []
 # - 10 portes joignables (findPath), c_change_door ([451, 1444] -> change_in), c_dome ([22, 12] -> steel_dome intact), fondu 30 % auto de Teng vers c_mega
 # - Calques _pulse des 5 tours battant sur 01_center_town.mp3, pulsesOn <= 8 sur mobile, captures 1280/390 sous /tmp/nml-test-out/center_arcadius2/
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import os, sys, time, json, re, urllib.request
 from playwright.sync_api import sync_playwright
 
@@ -76,7 +77,7 @@ with sync_playwright() as p:
             gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2)
             time.sleep(0.35)
 
-        tapel('#m-new'); tapel('[data-race="augmente"]'); tapel('#cr-next'); tapel('#cr-enter')
+        passer_boot(pg); tapel('#m-new'); tapel('[data-race="augmente"]'); tapel('#cr-next'); tapel('#cr-enter')
         pg.wait_for_function('!document.body.classList.contains("menu-open")', timeout=15000)
         time.sleep(0.6)
 

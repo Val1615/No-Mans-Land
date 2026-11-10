@@ -9,7 +9,7 @@ FORMATS = [  # (nom, largeur, hauteur, mobile, mode attendu)
     ('360x780', 360, 780, True, 'plein'), ('fold_plie_412x915', 412, 915, True, 'portrait'), ('fold_deplie_884x1104', 884, 1104, True, 'portrait')]
 if os.environ.get('FORMATS'): FORMATS = [f for f in FORMATS if f[0] in os.environ['FORMATS'].split(',')]
 SIX = ['m-continue', 'm-new', 'm-load', 'm-options', 'm-credits', 'm-quit']
-R = []
+R = []; R_TAMPON = {}
 def ok(c, n, d=''): R.append((bool(c), n)); print(('OK   ' if c else 'ECHEC ') + n + ('' if c else f'  {d}'), flush=True)
 ETAT = "window.__nml.shell.terminal.etat()"
 ANIMS = "document.getAnimations().filter(a => a.playState === 'running' && a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('#menu')).length"
@@ -21,6 +21,12 @@ CHOIX = """(ids) => { const t = document.getElementById('t-tampon'), tr = t.getB
     return { id, w: r.width, h: r.height, vis: !e.hidden && cs.display !== 'none' && cs.visibility !== 'hidden' && +cs.opacity > 0.4,
       dansEcran: r.left >= sc.left - 1 && r.right <= sc.right + 1 && r.top >= sc.top - 1 && r.bottom <= sc.bottom + 1 && r.top >= 0 && r.bottom <= innerHeight,
       dessus: pts.every(Boolean), tampon: tv && inter(r, tr), ticker: inter(r, tk), statut: inter(r, st), z: [cs.zIndex] }; }); }"""
+# Tampon : jamais sur un choix, le bandeau, la version ni le statut, avec 24 px de marge (canevas de base × échelle --k)
+MARGE = """() => { const t = document.getElementById('t-tampon'), tr = t.getBoundingClientRect(), cs = getComputedStyle(t);
+  const vis = +cs.opacity > 0.05 && !t.classList.contains('t-cache') && tr.width > 0, k = +getComputedStyle(document.getElementById('menu')).getPropertyValue('--k') || 1, m = 24 * k;
+  const cibles = [...document.querySelectorAll('#menu .t-list button:not([hidden])'), document.querySelector('#menu .t-ticker'), document.getElementById('m-version'), ...document.querySelectorAll('#menu .t-status span')];
+  const touche = cibles.filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.left - m < tr.right && r.right + m > tr.left && r.top - m < tr.bottom && r.bottom + m > tr.top; }).map(e => e.id || e.className || e.textContent.slice(0, 20));
+  return { vis, echelle: t.dataset.echelle, w: Math.round(tr.width), h: Math.round(tr.height), x: Math.round(tr.left), y: Math.round(tr.top), marge: +m.toFixed(1), touche }; }"""
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
     def ouvre(w, h, mob, reduit=False):
@@ -45,11 +51,22 @@ with sync_playwright() as p:
         time.sleep(2.6); b = E("[document.getElementById('t-boot').textContent, window.__nml.shell.terminal.etat()]")
         ok(b[1]['booting'] and len(b[0]) > 10 and b[0].startswith('HUMAN CORP'), f'{P} allumage en cours (journal tapé)', b)
         pg.screenshot(path=f'{OUT}{nom}_1_boot.png')
-        # 2. sauté par une touche (bureau) ou un tap hors des choix (mobile)
-        if mob: pg.touchscreen.tap(8, 8)
-        else: pg.keyboard.press('x')
-        time.sleep(0.5); et = E(ETAT)
-        ok(not et['booting'] and et['boot'] == 'repos' and E("document.getElementById('creation').hidden"), f'{P} allumage sauté ({"tap" if mob else "touche"}), menu au repos sans action', et)
+        # 2. un geste pendant l'allumage ne fait que le sauter : clic / tap sur la position de NOUVELLE PARTIE -> pas de partie
+        if not mob:  # bureau : une touche saute aussi, puis on rejoue l'allumage pour le test du clic
+            pg.keyboard.press('x'); time.sleep(0.4); et = E(ETAT)
+            ok(not et['booting'] and et['boot'] == 'repos' and E("document.getElementById('creation').hidden"), f'{P} allumage sauté par une touche, sans action', et)
+            E("window.__nml.shell.terminal.rejouer()"); time.sleep(2.6)
+        bb = pg.locator('#m-new').bounding_box(); geste = pg.touchscreen.tap if mob else pg.mouse.click
+        ok(E(ETAT)['booting'] and E("getComputedStyle(document.querySelector('#menu .t-list')).pointerEvents") == 'none', f'{P} pendant l\'allumage, la liste ne reçoit aucun geste')
+        geste(bb['x'] + bb['width'] / 2, bb['y'] + bb['height'] / 2); time.sleep(0.8); et = E(ETAT)
+        ok(not et['booting'] and et['boot'] == 'repos' and E("document.getElementById('creation').hidden") and E("document.body.classList.contains('menu-open') && !document.getElementById('menu').hidden"),
+           f'{P} {"tap" if mob else "clic"} sur NOUVELLE PARTIE pendant l\'allumage : séquence sautée, aucune partie lancée', et)
+        E("window.__nml.shell.terminal.rejouer()"); time.sleep(1.0); E("document.getElementById('m-new').click()"); time.sleep(0.3)
+        ok(E("document.getElementById('creation').hidden") and not E(ETAT)['booting'], f'{P} clic programmatique pendant l\'allumage : ignoré (séquence sautée)')
+        geste(bb['x'] + bb['width'] / 2, bb['y'] + bb['height'] / 2); time.sleep(0.6)
+        ok(not E("document.getElementById('creation').hidden"), f'{P} le geste suivant choisit : NOUVELLE PARTIE ouvre la création')
+        E("document.getElementById('cr-menu').click()"); time.sleep(0.6)
+        ok(E("document.getElementById('creation').hidden && !document.getElementById('menu').hidden") and not E(ETAT)['booting'], f'{P} retour au menu depuis la création, sans rallumage')
         time.sleep(0.4)
         # 3. six choix visibles, non recouverts, cibles >= 44 px
         c = E(CHOIX, SIX)
@@ -61,8 +78,11 @@ with sync_playwright() as p:
         ok(E("document.getElementById('m-continue').disabled && document.getElementById('m-quit').disabled"), f'{P} CONTINUER (sans sauvegarde) et QUITTER (écran titre) désactivés proprement')
         tk = E("(()=>{const t=document.getElementById('t-ticker-track');return [t.textContent.includes('HUMAN CORP'), getComputedStyle(t).animationName]})()")
         ok(tk[0] and tk[1] == 't-ticker', f'{P} bandeau de surveillance défilant', tk)
+        mg = E(MARGE); R_TAMPON[nom] = mg
+        ok(not mg['vis'] or not mg['touche'], f'{P} tampon : 24 px de marge (base) avec choix, bandeau, version et statut (échelle {mg["echelle"]}, {mg["w"]}x{mg["h"]} px)', mg)
         pg.screenshot(path=f'{OUT}{nom}_2_menu.png')
         # 4. navigation clavier (flèches, Début / Fin) puis survol / sélection
+        E("document.activeElement && document.activeElement.blur(); document.querySelectorAll('#menu .cur').forEach(b => b.classList.remove('cur'))")
         pg.keyboard.press('ArrowDown'); f1 = E("document.activeElement.id")
         pg.keyboard.press('ArrowDown'); f2 = E("document.activeElement.id")
         pg.keyboard.press('ArrowUp'); f3 = E("document.activeElement.id")
@@ -105,6 +125,7 @@ with sync_playwright() as p:
         rm = E("(()=>{const t=document.getElementById('t-ticker-track');return [getComputedStyle(t).animationName, t.children.length]})()")
         ok(et['reduit'] and not et['booting'] and et['boot'] == 'repos' and not et['glitch'] and E(ANIMS) == 0 and rm == ['none', 1], f'{P} prefers-reduced-motion : état de repos direct, 0 animation, bandeau sans défilement', (et, E(ANIMS), rm))
         c = E(CHOIX, SIX); ok(all(x['vis'] and x['dessus'] for x in c), f'{P} prefers-reduced-motion : six choix visibles d\'office', [x for x in c if not (x['vis'] and x['dessus'])])
+        mg = E(MARGE); ok(not mg['vis'] or not mg['touche'], f'{P} prefers-reduced-motion : tampon avec marge', mg)
         pg.screenshot(path=f'{OUT}{nom}_5_mouvement_reduit.png')
         ok(not errs, f'{P} mouvement réduit : aucune erreur', errs[:3]); ctx.close()
     # 9. séquence de 6 images de l'allumage + GIF (1280 × 800)
@@ -119,4 +140,4 @@ with sync_playwright() as p:
         ims[0].save(OUT + 'boot_1280.gif', save_all=True, append_images=ims[1:], duration=[400, 400, 700, 900, 900, 1600], loop=0)
         ok(len(frames) == 6, 'séquence GIF de l\'allumage (6 images, 1280)', OUT + 'boot_1280.gif'); ctx.close()
     br.close()
-n = sum(1 for c, _ in R if c); print(f'{n}/{len(R)} OK'); print('ECHECS', len(R) - n); sys.exit(0 if n == len(R) else 1)
+print('TAMPON', json.dumps(R_TAMPON)); n = sum(1 for c, _ in R if c); print(f'{n}/{len(R)} OK'); print('ECHECS', len(R) - n); sys.exit(0 if n == len(R) else 1)

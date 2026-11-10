@@ -1,6 +1,7 @@
 # Test rapide des enseignes animées par le code (loc.enseignes) et des projecteurs de la Steel Arena (loc.projecteurs), serveur local 8862.
 # Vérifie : démo DEV des enseignes visible seulement avec ?dev=1, luminosité qui varie, faisceaux qui balaient, budget mobile animStats.on <= 8
 # (enseignes et projecteurs comptés à part), schéma de l'éditeur (enseigne ou projecteur invalide refusé), aucune erreur JS.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys,json
 from playwright.sync_api import sync_playwright
 URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/strip_arena_prep/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
@@ -8,7 +9,7 @@ def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 def start(pg,q):
     E=pg.evaluate; pg.goto(URL+q); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1)
-    E("localStorage.removeItem('nml_save_auto')"); E("document.getElementById('m-new').click()"); time.sleep(.5)
+    E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
     E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
 def go(pg,zone,x,z): pg.evaluate(f"(()=>{{const g=window.__nml.game,s=g.snapshot();s.location='{zone}';s.player.x={x};s.player.z={z};g.restore(s,true)}})()"); time.sleep(2)
 with sync_playwright() as p:

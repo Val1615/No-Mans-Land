@@ -1,6 +1,7 @@
 # Argent minimal : pour chaque race, origine Errant (15 $) ou, à défaut, l'origine au plus faible argent ; aucun gain d'argent.
 # De la route de Steel à Center-Town par le seul chemin de la race : implant -> douane (change réduit 10 $ -> 5 cr, Odile : « Bon. Je signe. ») ;
 # sans implant -> Sol, Bruno, trappe, Sous-Ville, Elio « Je n'ai pas vingt dollars » -> porter la caisse -> monte-charge. Mise en place reprise de steel_l1/l2.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json, base64, re
 import numpy as np
 from PIL import Image
@@ -140,7 +141,7 @@ with sync_playwright() as p:
             idle(); return used
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
         E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-        press('#m-new', 0.6); press('[data-race="humain"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+        passer_boot(pg); press('#m-new', 0.6); press('[data-race="humain"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
         check(f'{T}: perso créé', st()['character'] is not None)
         E("(()=>{window.__msgs=[];const m=document.getElementById('msg');new MutationObserver(()=>window.__msgs.push(m.textContent)).observe(m,{childList:true,characterData:true,subtree:true})})()")
         E("window.__S0 = window.__nml.game.snapshot()")

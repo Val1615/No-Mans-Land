@@ -1,6 +1,7 @@
 # v6 : recette AU PIXEL des intérieurs (clinique, bar, épicerie, maison de Mara). Chrome headless, WebGL logiciel.
 # Gestes réels : clic souris 1280x800, tap tactile 390x844. Tout contrôle visuel lit les pixels rendus (capture d'écran
 # comparée au rendu isolé du même objet par le même pipeline), jamais seulement l'état interne.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, json, base64, io
 import numpy as np
 from PIL import Image
@@ -38,7 +39,7 @@ with sync_playwright() as p:
         pg = ctx.new_page(); errs = []
         pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and errs.append(m.text))
         pg.on('response', lambda r: r.status >= 400 and errs.append(f'{r.status} {r.url}'))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); passer_boot(pg); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         P = lambda x, y, z: pg.evaluate(f'window.__nml.project({x},{y},{z})')
         def tap_world(x, y, z): pt = P(x, y, z); gesture(pt['x'], pt['y'])

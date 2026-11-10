@@ -6,6 +6,7 @@
 # - allée centrale (x 22-26, hors socle holo), accès ouest / est (z 12-16) et escalier sud (x 20-28) sans prop posé ; portes pp_ouest, pp_est, pp_sud joignables (findPath)
 # - budget d'animations mobile (on <= 8), 45 calques rythmiques, aucune erreur JS / console / réseau
 # - captures 1280x800 et 390x844 : vue d'ensemble ×0,6, centre de la place ×1,0, bord sud avec la marge ×1,0 (OUT, préfixe TAG)
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import os, sys, time, json, re, io, math, urllib.request
 from PIL import Image
 from playwright.sync_api import sync_playwright
@@ -65,7 +66,7 @@ with sync_playwright() as p:
         time.sleep(0.6)
         def tapel(sel):
             b = pg.locator(sel).first.bounding_box(); gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.35)
-        tapel('#m-new'); tapel('[data-race="augmente"]'); tapel('#cr-next'); tapel('#cr-enter')
+        passer_boot(pg); tapel('#m-new'); tapel('[data-race="augmente"]'); tapel('#cr-next'); tapel('#cr-enter')
         pg.wait_for_function('!document.body.classList.contains("menu-open")', timeout=15000); time.sleep(0.6)
         E("""() => { const g = window.__nml.game, s = g.snapshot(); s.location = 'steel_center'; s.player.x = 33; s.player.z = 2;
           Object.assign(s.flags, { q_start: true, q_fin: true, steel_passe: true }); g.restore(s, true); }""")

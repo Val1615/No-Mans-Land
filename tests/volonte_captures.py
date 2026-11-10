@@ -1,4 +1,5 @@
 # Captures réelles (Playwright Chromium/swiftshader) des scènes de Volonté et éléments v15. Usage : python3 tests/volonte_captures.py [glow-avant|glow-apres]
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import json, os, sys, time
 from playwright.sync_api import sync_playwright
 URL = 'http://127.0.0.1:8799/'; OUT = 'docs/captures/volonte-v1/'; ONLY = sys.argv[1] if len(sys.argv) > 1 else None
@@ -15,7 +16,7 @@ with sync_playwright() as p:
             b = pg.locator(sel).first.bounding_box(); pg.mouse.click(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(wait)
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
         E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-        press('#m-new', 0.6); press(f'[data-race="{race}"]', 0.8)
+        passer_boot(pg); press('#m-new', 0.6); press(f'[data-race="{race}"]', 0.8)
         return ctx, pg, E, press
     def waitjs(E, js, t=20):
         t0 = time.time()

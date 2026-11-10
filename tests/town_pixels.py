@@ -2,6 +2,7 @@
 # Chaque jonction est franchie dans les deux sens par une vraie marche (clics souris 1280x800 / taps 390x844 sur le sol),
 # jamais par téléportation. Contrôles visuels : capture d'écran comparée au rendu isolé (même pipeline) du bâtiment,
 # du joueur et de Nilo. État conservé entre quartiers : argent, PV, lieux découverts (vérifiés dans le HUD et les étiquettes).
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, base64, json
 import numpy as np
 from PIL import Image
@@ -32,7 +33,7 @@ with sync_playwright() as p:
         pg = ctx.new_page(); errs = []
         pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: m.type == 'error' and 'Failed to load resource' not in m.text and errs.append(m.text))
         pg.on('response', lambda r: r.status >= 400 and errs.append(f'{r.status} {r.url}'))
-        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
+        pg.goto(URL); pg.wait_for_function('window.__nml', timeout=60000); passer_boot(pg); [(pg.locator(_s).tap if pg.evaluate('navigator.maxTouchPoints>0') else pg.locator(_s).click)() for _s in ('#m-new', '#cr-next', '#cr-enter')]; pg.wait_for_function('!document.body.classList.contains("menu-open")'); time.sleep(2.5)
         VW, VH = (1280, 800) if prof == 'desktop' else (390, 844)
         gesture = pg.touchscreen.tap if prof == 'mobile' else pg.mouse.click
         E = pg.evaluate

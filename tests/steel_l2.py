@@ -1,6 +1,7 @@
 # v14 Steel-Megalopolis L2 : la Sous-Ville. Parcours complet humain (refoulé) et mutant (desktop : fuite ; mobile : capture),
 # de Dusk-Town (bout du Transit) à Center-Town par la trappe, les Poutres, la Cuve, l'atelier d'Elio et le monte-charge.
 # Gestes réels (clic 1280x800, tap 390x844 dpr2), pixels rendus. Les allers-retours vers Sol et Bruno (Dusk-Town) sont posés par restore, comme steel_l1.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import sys, os, time, io, json, base64, re
 import numpy as np
 from PIL import Image
@@ -100,7 +101,7 @@ with sync_playwright() as p:
         # --- création : race choisie au geste ---
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
         E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)")
-        press('#m-new', 0.6); press(f'[data-race="{race}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+        passer_boot(pg); press('#m-new', 0.6); press(f'[data-race="{race}"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
         c = st()['character']; check(f'{T}: perso créé ({race})', c and c['race'] == race and not E('document.body.classList.contains("menu-open")'))
         lbl = lambda b: E(f"(()=>{{const e=document.querySelector('.wlabel[data-building=\"{b}\"]');return !!e && !e.hidden && getComputedStyle(e).display!=='none'}})()")
         def warm(a):  # part de pixels éclairés chauds (orange) et rapport R/B des pixels visibles

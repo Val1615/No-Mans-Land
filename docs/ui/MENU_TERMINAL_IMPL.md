@@ -29,21 +29,25 @@ REPRENDRE et CODEX ne sont affichés qu'en pause (fiche §4.2 : hors de la liste
 
 `menu_terminal.js` lit `assets/ui/menu_terminal/manifest.json` : clés paysage d'origine, plus l'objet `portrait`. Chaque variante donne canevas, rectangle écran, rayon, cadre, fond, masque et tampon. Un repli intégré reprend les valeurs paysage si le manifeste manque. Une variante n'est utilisée que si son cadre et son fond se chargent.
 
-- **Paysage** (largeur ≥ hauteur) : cadre 1920 × 1080 en `contain` uniforme, centré. Écran 168, 117, 1584 × 821, rayon 54. Tampon 1286, 708, 436 × 232, opacité 0,85.
+- **Paysage** (largeur ≥ hauteur) : cadre 1920 × 1080 en `contain` uniforme, centré. Écran 168, 117, 1584 × 821, rayon 54. Tampon recalé dans le code (le manifeste n'est pas modifié) : x = 1350, y = 590, w = 370, proportions du PNG conservées (h ≈ 197), opacité 0,85.
 - **Portrait** (hauteur > largeur, largeur ≥ 390 px) : cadre 1080 × 1920 en `contain` uniforme. Écran 122, 132, 832 × 1625, rayon 60. Tampon 309, 1416, 458 × 243, centré en bas au-dessus du bandeau.
 - **Repli plein cadre** (largeur < 390 px, ou échelle du cadre < 0,3) : pas de cadre métal. L'écran occupe toute la fenêtre. Le fond de ville (portrait si la fenêtre est en portrait) est en `cover`, c'est la seule image recadrée. Le tampon est réduit (46 % de la largeur, 220 px au plus) et centré en bas, au-dessus du bandeau. Scanlines, vignette et scintillement restent, en code.
 
 Le cadre n'est jamais étiré de façon non uniforme. Le fond est posé à l'échelle exacte du cadre, aligné sur son canevas, et vu par le rectangle arrondi de l'écran (`overflow:hidden` + `border-radius`, équivalent du masque PNG).
 
-Tailles : valeurs du canevas × échelle (`--k`), avec les planchers en px CSS de la fiche §8.2 (entrées 19 px, titre 44 px, journal 13,5 px, statut et bandeau 11 à 12 px). Cibles des choix : au moins 44 px de haut. Une garde, après chaque mise en page, réduit le tampon (× 0,7), puis le retire s'il touche encore un choix, la note ou un sous-panneau.
+Tailles : valeurs du canevas × échelle (`--k`), avec les planchers en px CSS de la fiche §8.2 (entrées 19 px, titre 44 px, journal 13,5 px, statut et bandeau 11 à 12 px). Cibles des choix : au moins 44 px de haut. Le tampon est décoratif et cède toujours. Il garde au moins 24 px (canevas de base, × échelle) de marge avec les choix, le bandeau, « proto v15 », le statut, la note, la commande EXEC et un sous-panneau ouvert. S'il manque de la place, une garde le réduit par paliers de 5 % (ancré au centre, puis en bas, puis en haut), jusqu'à 40 %, et ne le retire qu'en dernier recours. Le texte ne bouge jamais. La garde repasse à chaque mise en page, rendu ou nouvelle note. Au moment du lot correctif : taille nominale en 1920, 1280, 360 et Fold déplié ; × 0,6 en 390 × 844 et × 0,8 en Fold plié (412 × 915).
 
 ## Animation
 
 Allumage (§5.1) piloté par un seul `requestAnimationFrame` le temps de la séquence. Journal tapé à 36 car/s, pause de 60 ms entre les lignes. En portrait : journal de 6 lignes, silences d'allumage raccourcis (× 0,6). Ensuite, plus aucune boucle JS : curseur (530 / 530 ms), scanlines (dérive 3 px en 12 s), scintillement (paliers 96 à 100 %), dérive du fond et bandeau (~45 px/s à l'échelle) sont des animations CSS. Le glitch (120 ms, toutes les 8 à 20 s) est un minuteur unique ; sa bande évite la liste des choix et ne part pas pendant une confirmation.
 
-Saut : toute touche ou tout geste termine l'allumage. Une touche ne fait que sauter. Un geste sur un choix (déjà à sa place, invisible pendant l'allumage) le saute et active ce choix, pour qu'un joueur qui connaît le menu ne perde pas un clic.
+Saut : toute touche, tout clic ou tout tap termine l'allumage, **et ne fait que ça** : c'est le geste suivant qui choisit. Pendant l'allumage, la liste ne reçoit aucun geste (`pointer-events:none`), le clic qui suit le geste de saut est avalé, et un clic programmatique est ignoré. Les tests passent l'allumage par l'aide commune `tests/nml_boot.py` (`passer_boot`) avant leur premier clic sur `#m-new`.
 
-Confirmation : flash de 100 ms sur la ligne et commande `> EXEC ...` tapée à 36 car/s sous la liste. **Écart à la fiche :** l'action part tout de suite, sans attendre la fin de la frappe, pour garder un menu réactif.
+Confirmation : flash de 100 ms sur la ligne et commande `> EXEC ...` tapée à 36 car/s sous la liste.
+
+## Écart à la fiche
+
+Un seul : l'action part tout de suite, sans attendre la fin de la frappe de `> EXEC ...`, pour garder un menu réactif. Validé par Ocre.
 
 Pas de boucle hors du menu : en jeu, `#menu` est masqué (`display:none`, plus d'animation CSS) et le minuteur de glitch est coupé. Onglet caché : animations en pause (`animation-play-state`), glitch coupé, allumage terminé.
 

@@ -1,6 +1,7 @@
 # Tour de Valentin (mobile, 28/10/2026) : Pia (Lower-Town), marché couvert d'Asia-Ground (ordre de rendu, transparence),
 # passage praticable >= 2 m autour du stand d'implants (China Lake), message « : fermé. » sans libellé.
 # PHASE=avant : captures seules (état d'origine) ; PHASE=apres (défaut) : captures + assertions.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import os, time, json, io, base64
 import numpy as np
 from PIL import Image
@@ -21,7 +22,7 @@ def run(T, VW, VH, mob):
     def cap(name): pg.screenshot(path=f'{OUT}{PHASE}_{T}_{name}.png'); time.sleep(0.1)
     pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(1.5)
     E("import('./src/core/path.js').then(m => window.__findPath = m.findPath)"); E("import('./src/core/grid.js').then(m => window.__grid = m)")
-    press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
+    passer_boot(pg); press('#m-new', 0.6); press('[data-race="augmente"]'); press('#cr-next', 0.5); press('#cr-enter', 1.2)
     # Livrables d'Ocre (retours tour 1) : Chez Moss, Maison de thé, lac
     go('steel_lower', 38, 32); cap('2_chez_moss'); go('steel_china', 35, 9.5); cap('3_maison_the'); go('steel_china', 24, 29); cap('6_lac')
     if os.environ.get('ONLY') == 'ocre': ctx.close(); return

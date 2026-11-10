@@ -10,6 +10,10 @@ const DEFAUT = {
     tampon: { fichier: 'tampon_acces_non_autorise.png', x: 1286, y: 708, w: 436, h: 232, opacite: 0.85 } },
   portrait: null, // fourni par manifest.json (objet `portrait`) quand les fichiers existent
 };
+// Tampon paysage recalé (lot correctif, 10 nov. 2026) : plus petit et plus haut que la valeur du manifeste, pour garder la marge
+// au-dessus du bandeau et de la version. Proportions du PNG conservées. Le tampon cède toujours : réduit, puis retiré, jamais le texte.
+const TAMPON_PAYSAGE = { x: 1350, y: 590, w: 370 };
+const MARGE_TAMPON = 24; // px du canevas de base, autour des choix, du bandeau et de la version
 const LARGEUR_MIN_CADRE = 390; // en dessous : repli plein cadre, sans métal (fiche §8.3)
 const ECHELLE_MIN = 0.3;       // cadre `contain` trop mince : repli (plaques illisibles)
 
@@ -53,6 +57,7 @@ export function createTerminal({ M, getOptions, note }) {
   const charge = f => new Promise(r => { const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = DIR + f; });
   const pret = (async () => {
     try { const m = await (await fetch(DIR + 'manifest.json')).json(); cfg = { paysage: variante(m, 'paysage') || DEFAUT.paysage, portrait: variante(m, 'portrait') }; } catch { /* repli DEFAUT */ }
+    if (cfg.paysage.tampon) cfg.paysage = { ...cfg.paysage, tampon: { ...cfg.paysage.tampon, ...TAMPON_PAYSAGE, h: TAMPON_PAYSAGE.w * 539 / 1014 } };
     for (const k of ['paysage', 'portrait']) { const v = cfg[k]; dispo[k] = !!v && (await Promise.all([v.cadre, v.fond].map(charge))).every(Boolean); }
     layout();
   })();
@@ -81,15 +86,21 @@ export function createTerminal({ M, getOptions, note }) {
     }
     requestAnimationFrame(garde); tickerVitesse();
   }
-  // Le tampon ne recouvre jamais un choix : réduit, puis retiré si besoin (contrôlé après chaque mise en page / rendu).
+  // Le tampon ne recouvre jamais un choix, le bandeau, la version ni un texte (marge MARGE_TAMPON × échelle) : réduit par paliers
+  // autour de son centre, puis retiré en dernier recours. Le texte ne bouge jamais.
   function garde() {
     if (M.hidden) return;
-    tampon.classList.remove('t-cache'); tampon.style.transform = '';
-    const sub = !Q('#menu-sub').hidden;
-    const boites = [...list.querySelectorAll('button:not([hidden])'), Q('#menu-note'), Q('#m-exec'), ...(sub ? [Q('#menu-sub')] : [])].map(b => b.getBoundingClientRect()).filter(r => r.width && r.height);
-    const coupe = () => { const t = tampon.getBoundingClientRect(); return boites.some(r => r.left < t.right && r.right > t.left && r.top < t.bottom && r.bottom > t.top); };
-    if (coupe()) { tampon.style.transform = 'scale(.7)'; tampon.style.transformOrigin = '50% 100%'; if (coupe()) tampon.classList.add('t-cache'); }
+    tampon.classList.remove('t-cache'); tampon.style.transform = ''; tampon.dataset.echelle = '1';
+    const k = +getComputedStyle(M).getPropertyValue('--k') || 1, m = MARGE_TAMPON * k, sub = !Q('#menu-sub').hidden;
+    const els = [...list.querySelectorAll('button:not([hidden])'), Q('#menu-note'), Q('#m-exec'), Q('.t-ticker'), Q('#m-version'), ...M.querySelectorAll('.t-status span'), ...(sub ? [Q('#menu-sub')] : [])];
+    const boites = els.map(b => b.getBoundingClientRect()).filter(r => r.width > 0 && r.height > 0);
+    const coupe = () => { const t = tampon.getBoundingClientRect(); return boites.some(r => r.left - m < t.right && r.right + m > t.left && r.top - m < t.bottom && r.bottom + m > t.top); };
+    // paliers de 5 %, ancrés au centre, puis en bas (le tampon garde sa marge au-dessus du bandeau), puis en haut
+    for (let e = 1; e >= 0.4 - 1e-9; e -= 0.05) for (const o of e < 1 ? ['50% 50%', '50% 100%', '100% 100%', '50% 0%'] : ['50% 50%']) {
+      tampon.style.transformOrigin = o; tampon.style.transform = e < 1 ? `scale(${e.toFixed(2)})` : ''; if (!coupe()) { tampon.dataset.echelle = e.toFixed(2); tampon.dataset.ancre = o; return; } }
+    tampon.style.transform = ''; tampon.classList.add('t-cache'); tampon.dataset.echelle = '0';
   }
+  new MutationObserver(() => requestAnimationFrame(garde)).observe(Q('#menu-note'), { childList: true, characterData: true, subtree: true });
   addEventListener('resize', () => { if (ouvert) layout(); });
 
   // ---------- bandeau de surveillance : ~45 px/s à l'échelle du terminal ; en mouvement réduit, un message toutes les 4 s ----------
@@ -134,7 +145,12 @@ export function createTerminal({ M, getOptions, note }) {
   const saute = () => { if (boot) bootFin(); };
   // capture : une touche ou un geste pendant l'allumage le termine ; un geste sur un choix (déjà à sa place) agit aussi, une touche non.
   addEventListener('keydown', e => { if (!ouvert || M.hidden) return; if (boot) { bootFin(); if (e.key !== 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); } } }, true);
-  M.addEventListener('pointerdown', () => saute(), true);
+  // Un geste pendant l'allumage ne fait QUE le sauter : le clic qui suit ce geste est avalé, c'est le clic suivant qui choisit.
+  // Pendant l'allumage, la liste ne reçoit aucun geste (pointer-events) et un clic, même programmatique, est ignoré.
+  let avale = 0;
+  M.addEventListener('pointerdown', () => { if (boot) { bootFin(); avale = performance.now(); } }, true);
+  M.addEventListener('click', e => {
+    if (boot || (avale && performance.now() - avale < 1000)) { if (boot) bootFin(); avale = 0; e.preventDefault(); e.stopImmediatePropagation(); } }, true);
 
   // ---------- navigation clavier : flèches / Début / Fin, Entrée (bouton natif), Échap (géré par shell.js) ----------
   const choix = () => [...list.querySelectorAll('button:not([hidden]):not(:disabled)')];

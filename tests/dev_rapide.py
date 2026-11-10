@@ -1,5 +1,6 @@
 # Test rapide du mode DEV : absent sans ?dev=1 (ni panneau ni module chargé) ; avec ?dev=1 : Déplacement (zone, porte, PNJ), Réinitialisation (instantané, restauration),
 # sauvegardes du joueur intactes (emplacements DEV séparés), aucune erreur JS, en 1280 et 390.
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys,json
 from playwright.sync_api import sync_playwright
 URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/dev/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
@@ -18,7 +19,7 @@ with sync_playwright() as p:
         E("localStorage.setItem('nml_save_1', JSON.stringify({v:1,t:1,label:'témoin',state:{}})); localStorage.setItem('nml_save_auto','TEMOIN_AUTO')")
         avant=E("Object.fromEntries(Object.keys(localStorage).filter(k=>k.startsWith('nml_save_')).map(k=>[k,localStorage.getItem(k)]))")
         demarrer('?dev=1'); pg.wait_for_function('window.__nml.dev',timeout=20000)
-        E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
+        passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
         ok(E("!!document.getElementById('dev-tog')"),f'{name} ?dev=1 : bouton DEV présent')
         pg.click('#dev-tog'); time.sleep(.3)
         bb=E("(()=>{const r=document.getElementById('dev-box').getBoundingClientRect();return [r.left,r.right,r.top,r.bottom]})()")
@@ -46,7 +47,7 @@ with sync_playwright() as p:
         ok(E("Object.keys(localStorage).some(k=>k.startsWith('nml_dev_save_'))"),f'{name} autosave DEV dans nml_dev_save_*')
         # bouton « Mode DEV » d'Options (débloqué par la visite ?dev=1)
         def options_dev():
-            E("document.getElementById('m-options').click()"); time.sleep(.4); return E("!!document.getElementById('m-dev')")
+            passer_boot(E); E("document.getElementById('m-options').click()"); time.sleep(.4); return E("!!document.getElementById('m-dev')")
         E("localStorage.removeItem('nml_dev_unlocked')"); demarrer('')
         ok(not options_dev(),f'{name} sans drapeau : pas de bouton Mode DEV dans Options')
         demarrer('?dev=1'); ok(E("localStorage.getItem('nml_dev_unlocked')")=='1',f'{name} visite ?dev=1 : drapeau nml_dev_unlocked=1')
