@@ -70,7 +70,10 @@ with sync_playwright() as p:
         E("""() => { const g = window.__nml.game, s = g.snapshot(); s.location = 'steel_center'; s.player.x = 33; s.player.z = 2;
           Object.assign(s.flags, { q_start: true, q_fin: true, steel_passe: true }); g.restore(s, true); }""")
         time.sleep(1.0)
-        E("window.__nml.game.useDoor('c_nord')"); time.sleep(2)
+        E("window.__nml.game.useDoor('c_nord')")
+        try: pg.wait_for_function("window.__nml.state.location === 'steel_pulse'", timeout=15000)
+        except Exception: pass
+        time.sleep(1.5)
         ok(E("window.__nml.state.location") == 'steel_pulse', f'{name} porte Center-Town (c_nord) -> Pulse Plaza', E("window.__nml.state.location"))
 
         # 1. Données : PNJ, sol, marge
