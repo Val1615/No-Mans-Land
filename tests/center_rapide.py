@@ -167,7 +167,11 @@ with sync_playwright() as p:
         # 3. Calques additifs + rythme kick sur 01_center_town.mp3 + plafond mobile <= 8
         samples = []
         max_bass = max_energy = 0.0
-        for _ in range(18):
+        # l'OST peut mettre ~1,5 s à se charger (Pages, mobile) : on attend qu'elle joue vraiment, puis on mesure sur ~4 s
+        for _ in range(60):
+            if E("(() => { const m = window.__nml.music; return !!window.__nml.ostCentre.playing && !m.paused && m.currentTime > 0.5 && m.readyState >= 3; })()"): break
+            time.sleep(0.1)
+        for _ in range(60):
             time.sleep(0.06)
             E("window.__nml.view.render()"); samples.append(E("Object.fromEntries(window.__nml.view.pulses().map(p => [p.key, p.opacity]))"))
             ost = E("({ mode: window.__nml.ostCentre.mode, active: window.__nml.ostCentre.active, playing: window.__nml.ostCentre.playing, bass: window.__nml.ostCentre.bass, energy: window.__nml.ostCentre.energy })")

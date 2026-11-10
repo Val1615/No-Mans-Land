@@ -1,0 +1,122 @@
+/* Menu principal « Terminal Human Corp » (docs/ui/MENU_TERMINAL.md ; implémentation : docs/ui/MENU_TERMINAL_IMPL.md).
+   Géométrie posée par src/ui/menu_terminal.js : --k = échelle du terminal (1 à 1920 × 1080 ou 1080 × 1920), rectangle écran en px CSS.
+   Tailles : valeurs du canevas × --k, avec des planchers en px CSS (fiche §8.2) ; cibles des choix ≥ 44 px. */
+#menu.term{--ph:#f2b44a;--vif:#ffd078;--att:#c4892e;--noir:#0a0804;--alerte:#c43b2a;--k:1;
+  --glow:0 0 4px #f2b44a,0 0 12px rgba(242,180,74,.55),0 0 28px rgba(242,180,74,.22);overflow:hidden;color:var(--ph);background:#000}
+#menu.term .m-bg,#menu.term.pause .m-bg{background:#000;backdrop-filter:none}#menu.term .m-bg::after{display:none}
+#menu.term #t-screen{position:absolute;overflow:hidden;background:var(--noir);isolation:isolate;z-index:1}
+#menu.term .t-cadre{position:absolute;z-index:6;pointer-events:none;user-select:none}
+#menu.term .t-cadre[hidden]{display:none}
+/* empilement dans l'écran : fond 0 < tampon 1 < texte 2 < menu-sub 3 < glitch 4 < CRT 5 */
+#menu.term .t-fond{position:absolute;z-index:0;background-repeat:no-repeat;background-position:center;animation:t-derive 20s ease-in-out infinite alternate;will-change:transform}
+#menu.term[data-cadre=plein] .t-fond{transform:scale(1.03)}
+#menu.term .t-fond::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(10,8,4,.5),rgba(10,8,4,.3) 45%,rgba(10,8,4,.45) 100%)}
+#menu.term .t-warm{position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(255,208,120,.0)}
+#menu.term .t-tampon{position:absolute;z-index:1;opacity:.85;pointer-events:none;user-select:none;transition:opacity .2s}
+#menu.term .t-tampon.t-cache,#menu.term.sub-open .t-tampon{opacity:0!important}
+#menu.term .t-boot{position:absolute;z-index:2;left:calc(56px*var(--k));top:calc(48px*var(--k));margin:0;font:400 max(13.5px,calc(20px*var(--k)))/1.25 'VT',monospace;color:var(--att);
+  text-shadow:0 0 3px rgba(242,180,74,.6),0 0 10px rgba(242,180,74,.25);white-space:pre;pointer-events:none;opacity:0;max-width:calc(100% - 112px*var(--k));overflow:hidden}
+/* texte du terminal */
+#menu.term .m-main{position:absolute;inset:0;z-index:2;transform:none;width:auto;left:0;top:0;bottom:0;margin:0;background:none;border:0;box-shadow:none;backdrop-filter:none;
+  display:grid;grid-template-columns:1fr;justify-items:center;align-content:stretch;gap:0;padding:calc(40px*var(--k)) calc(56px*var(--k)) 0;box-sizing:border-box;
+  grid-template-rows:minmax(0,1fr) auto auto auto auto minmax(0,1.25fr) auto max(22px,calc(40px*var(--k)));overflow:hidden}
+#menu.term h1{grid-row:2;margin:0 0 calc(30px*var(--k));font:400 max(44px,calc(112px*var(--k)))/.9 'VT',monospace;letter-spacing:.08em;color:var(--vif);text-align:center;white-space:nowrap;
+  text-shadow:var(--glow),0 0 40px rgba(242,180,74,.12)}
+#menu.term .t-list{grid-row:3;display:flex;flex-direction:column;align-items:stretch;min-width:min(100%,calc(470px*var(--k)));max-width:100%}
+#menu.term .t-list .btn{all:unset;box-sizing:border-box;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:max(44px,calc(54px*var(--k)));
+  padding:0 calc(18px*var(--k)) 0 calc(48px*var(--k));font:400 max(19px,calc(34px*var(--k)))/1 'VT',monospace;letter-spacing:.04em;color:var(--ph);text-shadow:var(--glow);cursor:pointer;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#menu.term .t-list .btn[hidden]{display:none}
+#menu.term .t-list .btn::before{content:'>';position:absolute;left:calc(14px*var(--k));top:50%;transform:translateY(-50%);color:var(--att)}
+#menu.term .t-list .btn small{display:block;margin-top:2px;font:400 max(11px,calc(16px*var(--k)))/1.15 'Plex',monospace;letter-spacing:0;color:var(--att);text-shadow:none;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#menu.term .t-list .btn:empty small:empty,#menu.term .t-list .btn small:empty{display:none}
+#menu.term .t-list .btn.cur:not(:disabled),#menu.term .t-list .btn:focus-visible:not(:disabled),#menu.term .t-list .btn.sel{background:var(--ph);color:var(--noir);text-shadow:none;outline:0}
+#menu.term .t-list .btn.cur:not(:disabled)::before,#menu.term .t-list .btn:focus-visible::before,#menu.term .t-list .btn.sel::before{color:var(--noir)}
+#menu.term .t-list .btn.cur small,#menu.term .t-list .btn:focus-visible small,#menu.term .t-list .btn.sel small{color:var(--noir)}
+#menu.term .t-list .btn.cur:not(:disabled) span::after{content:'\2588';margin-left:.25em;animation:t-curseur 1060ms steps(1) infinite}
+#menu.term .t-list .btn:disabled{color:var(--att);opacity:.55;text-shadow:0 0 4px rgba(196,137,46,.5);cursor:default}
+#menu.term .t-list .btn.t-flash{background:var(--vif)!important;color:var(--noir)!important;box-shadow:0 0 18px rgba(255,208,120,.7)}
+#menu.term .t-exec{grid-row:4;min-height:max(14px,calc(22px*var(--k)));margin-top:calc(8px*var(--k));font:400 max(13.5px,calc(20px*var(--k)))/1.1 'VT',monospace;color:var(--vif);text-shadow:0 0 4px #f2b44a;white-space:pre}
+#menu.term #menu-note{grid-row:5;min-height:max(16px,calc(22px*var(--k)));max-width:100%;text-align:center;font:400 max(12px,calc(16px*var(--k)))/1.3 'Plex',monospace;color:var(--ph);opacity:.95;text-shadow:0 0 4px rgba(242,180,74,.5)}
+#menu.term .t-status{grid-row:7;justify-self:stretch;display:flex;flex-direction:column;align-items:flex-start;padding-bottom:calc(10px*var(--k));
+  font:400 max(11px,calc(16px*var(--k)))/1.35 'Plex',monospace;color:var(--att);text-shadow:0 0 3px rgba(196,137,46,.45);pointer-events:none;white-space:nowrap}
+#menu.term .t-status span{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+#menu.term #m-version{pointer-events:auto;align-self:flex-end;margin-top:-1.35em;padding:4px 0 4px 12px;font-size:max(10px,calc(13px*var(--k)));opacity:.7;cursor:default}
+#menu.term .t-ticker{grid-row:8;justify-self:stretch;margin:0 calc(-56px*var(--k));overflow:hidden;display:flex;align-items:center;border-top:1px solid rgba(196,137,46,.35);background:rgba(10,8,4,.55);pointer-events:none}
+#t-ticker-track{display:flex;white-space:nowrap;font:400 max(12px,calc(15px*var(--k)))/1 'Plex',monospace;color:var(--att);letter-spacing:.04em;animation:t-ticker 60s linear infinite;will-change:transform}
+#t-ticker-track span{padding-right:0}
+#menu.term.t-reduit #t-ticker-track{animation:none;padding-left:calc(56px*var(--k))}
+/* sous-panneaux (Charger, Options, Crédits, Codex) dans l'écran, même ambre */
+#menu.term #menu-sub{position:absolute;z-index:3;left:46%;right:calc(56px*var(--k));top:calc(56px*var(--k));bottom:max(60px,calc(110px*var(--k)));width:auto;max-height:none;transform:none;margin:0;
+  overflow:auto;padding:calc(18px*var(--k)) calc(22px*var(--k));box-sizing:border-box;background:rgba(10,8,4,.78);border:1px solid rgba(242,180,74,.45);box-shadow:0 0 18px rgba(242,180,74,.12) inset;
+  font:400 max(13px,calc(17px*var(--k)))/1.55 'Plex',monospace;color:#fde9c2}
+#menu.term #menu-sub h2{font:400 max(24px,calc(40px*var(--k)))/1 'VT',monospace;color:var(--vif);text-shadow:var(--glow);letter-spacing:.06em}
+#menu.term #menu-sub .btn{background:rgba(10,8,4,.6);border:1px solid rgba(242,180,74,.5);color:var(--ph);font-family:'Plex',monospace;min-height:36px}
+#menu.term #menu-sub .btn.sel,#menu.term #menu-sub .btn:hover,#menu.term #menu-sub .btn:focus-visible{background:var(--ph);color:var(--noir);outline:0}
+#menu.term.sub-open .m-main{justify-items:start}
+#menu.term.sub-open .t-list{min-width:0;width:min(40%,calc(520px*var(--k)))}
+#menu.term.sub-open h1{font-size:max(36px,calc(76px*var(--k)));justify-self:start}
+/* portrait (cadre 1080 × 1920) et repli plein cadre : titre sur deux lignes, statut sous le titre, sous-panneau en plein écran */
+#menu.term.t-portrait h1 span{display:block}
+#menu.term.t-portrait .m-main{grid-template-rows:minmax(0,.35fr) auto auto auto auto auto minmax(0,1fr) max(22px,calc(40px*var(--k)));padding:calc(36px*var(--k)) max(10px,calc(40px*var(--k))) 0}
+#menu.term.t-portrait h1{grid-row:2;margin-bottom:6px;font-size:max(44px,calc(112px*var(--k)))}
+#menu.term.t-portrait .t-status{grid-row:3;align-items:center;font-size:max(11px,calc(26px*var(--k)));padding:0 0 max(10px,calc(30px*var(--k)));white-space:normal;text-align:center}
+#menu.term.t-portrait #m-version{align-self:center;margin-top:0;padding:2px 8px}
+#menu.term.t-portrait .t-list{grid-row:4;min-width:min(100%,260px)}
+#menu.term.t-portrait .t-exec{grid-row:5}#menu.term.t-portrait #menu-note{grid-row:6}
+#menu.term.t-portrait .t-boot,#menu.term[data-cadre=plein] .t-boot{left:max(10px,calc(40px*var(--k)));top:max(12px,calc(40px*var(--k)));font-size:max(13px,calc(26px*var(--k)))}
+#menu.term.t-portrait .t-ticker,#menu.term[data-cadre=plein] .t-ticker{margin:0 calc(-1*max(10px,calc(40px*var(--k))))}
+#menu.term[data-cadre=plein] .m-main{padding-left:12px;padding-right:12px}
+#menu.term.t-portrait #menu-sub,#menu.term[data-cadre=plein] #menu-sub{left:max(8px,calc(30px*var(--k)));right:max(8px,calc(30px*var(--k)));top:max(10px,calc(36px*var(--k)));bottom:max(10px,calc(36px*var(--k)));padding:12px 14px}
+#menu.term.t-portrait.sub-open .m-main,#menu.term[data-cadre=plein].sub-open .m-main{display:none}
+#menu.term.t-portrait.sub-open h1,#menu.term.t-portrait.sub-open .t-list{justify-self:center}
+/* effets CRT, au-dessus du texte, sans capter les gestes */
+#menu.term .t-scan,#menu.term .t-flicker,#menu.term .t-vignette,#menu.term .t-line,#menu.term .t-glitch{position:absolute;inset:0;pointer-events:none}
+#menu.term .t-scan{z-index:5;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.1) 0 1px,transparent 1px 3px);animation:t-scan 12s linear infinite}
+#menu.term .t-flicker{z-index:5;background:#000;opacity:0;animation:t-flicker 1.3s step-end infinite}
+#menu.term .t-vignette{z-index:5;background:radial-gradient(ellipse at 50% 50%,transparent 62%,rgba(0,0,0,.42) 100%);box-shadow:inset 0 0 calc(60px*var(--k)) rgba(0,0,0,.55)}
+#menu.term .t-glitch{z-index:4;inset:auto 0;display:none;background:inherit;backdrop-filter:hue-rotate(-14deg) saturate(1.6) brightness(1.25);transform:translateX(var(--dx,8px));box-shadow:2px 0 rgba(255,60,40,.35),-2px 0 rgba(60,255,200,.25)}
+#menu.term.t-glitching .t-glitch{display:block}
+#menu.term.t-glitching .m-main h1,#menu.term.t-glitching .t-status{text-shadow:1.5px 0 rgba(255,40,30,.55),-1.5px 0 rgba(40,255,190,.4),var(--glow)}
+#menu.term .t-line{z-index:5;inset:auto 0;top:50%;height:2px;margin-top:-1px;background:var(--vif);box-shadow:0 0 12px var(--vif),0 0 30px rgba(255,208,120,.6);transform:scaleX(0);transform-origin:left center;opacity:0}
+/* séquence d'allumage : classes de phase cumulatives posées par menu_terminal.js */
+#menu.term.booting .t-fond,#menu.term.booting h1,#menu.term.booting .t-list .btn,#menu.term.booting .t-status,#menu.term.booting .t-ticker,#menu.term.booting .t-tampon,#menu.term.booting #menu-note,#menu.term.booting .t-exec{opacity:0}
+#menu.term.booting.b-line .t-line{opacity:1;transform:scaleX(1);transition:transform 200ms ease-out}
+#menu.term.booting.b-open .t-line{animation:t-ouvre 420ms ease-out forwards}
+#menu.term.booting.b-warm .t-fond{opacity:1;transition:opacity 800ms ease-in}
+#menu.term.booting.b-warm .t-warm{animation:t-chauffe 800ms ease-in-out}
+#menu.term.booting.b-log .t-boot{opacity:1}
+#menu.term.booting.b-logout .t-boot{opacity:0;transition:opacity 250ms}
+#menu.term.booting.b-title h1{opacity:1;animation:t-titre 800ms steps(16) both;text-shadow:var(--glow),0 0 40px rgba(242,180,74,.3),0 0 70px rgba(255,208,120,.2)}
+#menu.term.booting.b-items .t-list .btn{opacity:1;transition:opacity 60ms}
+#menu.term.booting.b-items .t-list .btn:nth-child(2){transition-delay:90ms}#menu.term.booting.b-items .t-list .btn:nth-child(3){transition-delay:180ms}
+#menu.term.booting.b-items .t-list .btn:nth-child(4){transition-delay:270ms}#menu.term.booting.b-items .t-list .btn:nth-child(5){transition-delay:360ms}
+#menu.term.booting.b-items .t-list .btn:nth-child(6){transition-delay:450ms}#menu.term.booting.b-items .t-list .btn:nth-child(7){transition-delay:540ms}#menu.term.booting.b-items .t-list .btn:nth-child(8){transition-delay:630ms}
+#menu.term.booting.b-status .t-status,#menu.term.booting.b-status .t-ticker,#menu.term.booting.b-status #menu-note,#menu.term.booting.b-status .t-exec{opacity:1;transition:opacity 300ms}
+#menu.term.booting.b-stamp .t-tampon{opacity:.85;transition:opacity 200ms;animation:t-tampon 200ms ease-out}
+#menu.term.booting:not(.b-warm) .t-scan,#menu.term.booting:not(.b-warm) .t-vignette{opacity:0}
+/* mouvement réduit (prefers-reduced-motion ou option « Réduire les animations ») : état de repos, rien ne bouge */
+#menu.term.t-reduit .t-fond,#menu.term.t-reduit .t-scan,#menu.term.t-reduit .t-flicker{animation:none}
+#menu.term.t-reduit .t-flicker{opacity:0}
+#menu.term.t-reduit .t-list .btn,#menu.term.t-reduit h1{text-shadow:0 0 4px #f2b44a}
+#menu.term.t-reduit .t-list .btn.cur span::after{animation:none}
+#menu.term.t-reduit .t-glitch{display:none!important}
+@media (prefers-reduced-motion:reduce){#menu.term *{animation:none!important;transition:none!important}}
+/* onglet caché ou menu masqué : animations en pause */
+#menu.term.t-paused *,#menu.term.t-paused *::before,#menu.term.t-paused *::after{animation-play-state:paused!important}
+body.readable #menu.term .t-list .btn,body.readable #menu.term h1,body.readable #menu.term .t-boot,body.readable #menu.term .t-exec{font-family:'Plex',monospace}
+body.readable #menu.term .t-list .btn{font-size:max(16px,calc(28px*var(--k)))}
+body.readable #menu.term h1{font-size:max(36px,calc(92px*var(--k)))}
+body.contrast #menu.term .t-fond::after{background:rgba(10,8,4,.78)}
+@keyframes t-derive{from{transform:translateX(-6px)}to{transform:translateX(6px)}}
+#menu.term[data-cadre=plein] .t-fond{animation-name:t-derive-plein}
+@keyframes t-derive-plein{from{transform:scale(1.03) translateX(-5px)}to{transform:scale(1.03) translateX(5px)}}
+@keyframes t-scan{from{background-position:0 0}to{background-position:0 3px}}
+@keyframes t-flicker{0%{opacity:.02}6%{opacity:0}11%{opacity:.035}17%{opacity:.01}22%{opacity:.04}28%{opacity:0}33%{opacity:.025}39%{opacity:.012}44%{opacity:.04}50%{opacity:.005}
+  56%{opacity:.03}61%{opacity:.015}67%{opacity:0}72%{opacity:.038}78%{opacity:.02}83%{opacity:.006}89%{opacity:.03}94%{opacity:.012}}
+@keyframes t-curseur{0%{opacity:1}50%{opacity:0}}
+@keyframes t-ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes t-ouvre{0%{opacity:1;transform:scaleX(1);height:2px;top:50%;margin-top:-1px;background:#fff3d6}55%{opacity:1;height:100%;top:0;margin-top:0;background:#fff3d6}100%{opacity:0;height:100%;top:0;margin-top:0}}
+@keyframes t-chauffe{0%{background:rgba(255,208,120,0)}62%{background:rgba(255,208,120,.16)}100%{background:rgba(255,208,120,0)}}
+@keyframes t-titre{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes t-tampon{0%{filter:brightness(2.4) sepia(1)}60%{filter:brightness(1.6)}100%{filter:none}}

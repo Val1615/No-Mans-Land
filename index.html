@@ -6,6 +6,7 @@
 <title>No Man's Land 2175 · Dusk-Town</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="./src/style.css">
+<link rel="stylesheet" href="./src/ui/menu_terminal.css">
 <script type="importmap">{"imports":{"three": "./vendor/three.module.js"}}</script>
 </head>
 <body>
@@ -39,22 +40,40 @@
   <button id="dlg-close" aria-label="Fermer">×</button>
 </div>
 <!-- v10 lot 1 : menu principal / pause, sauvegardes, options -->
-<div id="menu" hidden>
+<div id="menu" class="term" hidden>
   <div class="m-bg"></div>
-  <div class="m-main rp">
-    <h1>NO MAN'S LAND</h1><div class="lbl">Dusk-Town · 2175</div>
-    <button id="m-resume" class="btn" hidden><span>Reprendre</span></button>
-    <button id="m-continue" class="btn"><span>Continuer</span><small id="m-continue-info"></small></button>
-    <button id="m-new" class="btn"><span>Nouveau jeu</span></button>
-    <button id="m-load" class="btn" data-sub="load"><span>Charger</span></button>
-    <button id="m-options" class="btn" data-sub="options"><span>Options</span></button>
-    <button id="m-codex" class="btn" data-sub="codex"><span>Codex</span></button>
-    <button id="m-credits" class="btn" data-sub="credits"><span>Crédits</span></button>
-    <button id="m-quit" class="btn"><span>Quitter</span><small>retour à l'écran titre</small></button>
-    <div id="menu-note" class="muted" role="status"></div>
-    <small id="m-version" class="muted mono">proto v15</small>
+  <!-- Menu principal « Terminal Human Corp » (docs/ui/MENU_TERMINAL.md, implémentation : docs/ui/MENU_TERMINAL_IMPL.md).
+       Empilement : fond de ville < texte < tampon < effets CRT < cadre métal ; le texte (choix) reste au-dessus du tampon. -->
+  <div id="t-screen">
+    <div class="t-fond" aria-hidden="true"></div>
+    <div class="t-warm" aria-hidden="true"></div>
+    <img id="t-tampon" class="t-tampon" src="./assets/ui/menu_terminal/tampon_acces_non_autorise.png" alt="" aria-hidden="true" draggable="false">
+    <pre id="t-boot" class="t-boot" aria-hidden="true"></pre>
+    <div class="m-main">
+      <h1 aria-label="NO MAN'S LAND"><span>NO MAN'S</span> <span>LAND</span></h1>
+      <div class="t-list" role="menu" aria-label="Menu principal">
+        <button id="m-resume" class="btn" role="menuitem" hidden><span>REPRENDRE</span></button>
+        <button id="m-continue" class="btn" role="menuitem" data-exec="CONTINUER"><span>CONTINUER</span><small id="m-continue-info"></small></button>
+        <button id="m-new" class="btn" role="menuitem" data-exec="NOUVELLE_PARTIE"><span>NOUVELLE PARTIE</span></button>
+        <button id="m-load" class="btn" role="menuitem" data-sub="load" data-exec="CHARGER"><span>CHARGER</span></button>
+        <button id="m-options" class="btn" role="menuitem" data-sub="options" data-exec="OPTIONS"><span>OPTIONS</span></button>
+        <button id="m-codex" class="btn" role="menuitem" data-sub="codex" data-exec="CODEX" hidden><span>CODEX</span></button>
+        <button id="m-credits" class="btn" role="menuitem" data-sub="credits" data-exec="CREDITS"><span>CRÉDITS</span></button>
+        <button id="m-quit" class="btn" role="menuitem" data-exec="QUITTER"><span>QUITTER</span><small id="m-quit-info"></small></button>
+      </div>
+      <div id="m-exec" class="t-exec mono" aria-hidden="true"></div>
+      <div id="menu-note" class="muted" role="status"></div>
+      <div class="t-status"><span>TERMINAL HC-2175-TA &nbsp;//&nbsp; STEEL-MEGALOPOLIS &nbsp;//&nbsp; CENTER-TOWN</span><span>CITOYEN NON IDENTIFIE &nbsp;//&nbsp; ACCES SOUS SURVEILLANCE</span><small id="m-version" class="muted mono">proto v15</small></div>
+      <div class="t-ticker" aria-hidden="true"><div id="t-ticker-track"></div></div>
+    </div>
+    <section id="menu-sub" class="rp" hidden></section>
+    <div class="t-glitch" aria-hidden="true"></div>
+    <div class="t-scan" aria-hidden="true"></div>
+    <div class="t-flicker" aria-hidden="true"></div>
+    <div class="t-vignette" aria-hidden="true"></div>
+    <div class="t-line" aria-hidden="true"></div>
   </div>
-  <section id="menu-sub" class="rp" hidden></section>
+  <img id="t-cadre" class="t-cadre" alt="" aria-hidden="true" draggable="false">
 </div>
 <!-- lots 2 et 3 interface : carte des No Man's Land, voyage case par case (fond, brouillard et icônes d'Ocre) -->
 <section id="nml" class="rp" hidden aria-label="Carte des No Man's Land">

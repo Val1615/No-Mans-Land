@@ -17,10 +17,11 @@ with sync_playwright() as p:
         E = pg.evaluate; st = lambda: E('JSON.parse(JSON.stringify(window.__nml.state))')
         shot = lambda: np.asarray(Image.open(io.BytesIO(pg.screenshot())).convert('RGB')).astype(int)
         def press(sel, wait=0.5):
+            pg.locator(sel).first.scroll_into_view_if_needed(); time.sleep(0.05)  # sous-panneaux dans l'écran du terminal : défilement si besoin
             bb = pg.locator(sel).first.bounding_box(); assert bb, sel; gesture(bb['x'] + bb['width'] / 2, bb['y'] + bb['height'] / 2); time.sleep(wait)
         def menu_open(): return E('document.body.classList.contains("menu-open") && !document.getElementById("menu").hidden')
         def boot():
-            pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(2)
+            pg.wait_for_function('window.__nml && window.__nml.shell', timeout=60000); time.sleep(2); E('window.__nml.shell.terminal.saute()'); time.sleep(0.4)  # menu terminal : allumage sauté
         def topel(sel):  # l'élément est-il réellement au premier plan à son centre (rien ne le masque)
             return E(f'(()=>{{const e=document.querySelector("{sel}"),r=e.getBoundingClientRect(),t=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return !!t&&(t===e||e.contains(t))}})()')
         pg.goto(URL); boot()
@@ -30,13 +31,11 @@ with sync_playwright() as p:
         check(f'{prof}: fond de menu (image) rendu plein écran, pixels variés', mb[0] >= (390 if mob else 1280) - 1 and S.std() > 20, (mb, round(S.std(), 1)))
         amber = ((S[..., 0] > 200) & (S[..., 1] > 140) & (S[..., 1] < 200) & (S[..., 2] < 110)).sum()
         check(f'{prof}: titre ambre v8 visible (pixels)', amber > 200 * dpr * dpr, amber)
-        for b in ['m-continue', 'm-new', 'm-load', 'm-options', 'm-codex', 'm-credits', 'm-quit']: check(f'{prof}: bouton {b} accessible au geste', topel('#' + b))
+        for b in ['m-continue', 'm-new', 'm-load', 'm-options', 'm-credits', 'm-quit']: check(f'{prof}: bouton {b} accessible au geste', topel('#' + b))
         check(f'{prof}: Continuer désactivé sans sauvegarde', E('document.getElementById("m-continue").disabled'))
         pg.screenshot(path=OUT + f'{prof}-01-titre.png')
         # codex / crédits
-        press('#m-codex'); check(f'{prof}: Codex : panneau propre (placeholder)', 'se remplira en jouant' in E('document.getElementById("menu-sub").textContent'))
-        pg.screenshot(path=OUT + f'{prof}-02-codex.png')
-        if mob: press('#menu-sub .m-back')
+        check(f'{prof}: Codex hors des six choix de l écran titre (entrée de partie)', E('document.getElementById("m-codex").hidden'))
         press('#m-credits'); check(f'{prof}: Crédits', 'Valentin Sartorius' in E('document.getElementById("menu-sub").textContent'))
         pg.screenshot(path=OUT + f'{prof}-03-credits.png')
         if mob: press('#menu-sub .m-back')
@@ -83,6 +82,9 @@ with sync_playwright() as p:
         check(f'{prof}: pause ouverte ({"bouton Menu" if mob else "Échap"})', menu_open() and E('document.getElementById("menu").classList.contains("pause")') and topel('#m-resume'))
         x0 = st()['player']['x']; time.sleep(0.6); check(f'{prof}: jeu figé en pause', st()['player']['x'] == x0)
         pg.screenshot(path=OUT + f'{prof}-07-pause.png')
+        press('#m-codex'); check(f'{prof}: Codex (pause) : panneau propre (placeholder)', 'se remplira en jouant' in E('document.getElementById("menu-sub").textContent'))
+        pg.screenshot(path=OUT + f'{prof}-02-codex.png')
+        if mob: press('#menu-sub .m-back')
         press('#m-load'); press('#menu-sub [data-act="save"][data-slot="1"]')
         sv = E('JSON.parse(localStorage.getItem("nml_save_1"))'); ref = st()
         check(f'{prof}: sauvegarde emplacement 1', sv and sv['v'] == 2 and sv['state']['location'] == ref['location'] and abs(sv['state']['player']['x'] - ref['player']['x']) < 1e-6, sv and sv['label'])

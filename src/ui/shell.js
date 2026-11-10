@@ -2,6 +2,7 @@
 // Stockage localStorage versionné : nml_save_1..3, nml_save_auto ({ v, t, label, state }) ; options : nml_options ({ v, ... }).
 import { createCreation } from './creation.js';
 import { DEFAULT_DRAFT, buildCharacter, raceFlags } from '../data/character.js';
+import { createTerminal, LIGNES } from './menu_terminal.js'; // menu « Terminal Human Corp » (docs/ui/MENU_TERMINAL.md)
 // v2 (lot 2) : l'état contient le personnage (state.character). Une sauvegarde v1 (avant la création) reçoit le perso par défaut.
 export const SAVE_VERSION = 2, OPT_VERSION = 1;
 const SLOTS = ['1', '2', '3'], AUTO = 'auto';
@@ -45,20 +46,23 @@ export function createShell({ game, world, $, onStart, applyOptions }) {
   // 5 appuis sur le numéro de version en ~3 s : débloque le bouton « Mode DEV » d'Options (comme une visite avec ?dev=1)
   { let taps = []; const V = document.getElementById('m-version');
     V?.addEventListener('click', () => { const t = Date.now(); taps = [...taps.filter(x => t - x < 3000), t];
-      if (taps.length >= 5) { taps = []; LS.setItem('nml_dev_unlocked', '1'); const n = document.getElementById('menu-note'); if (n) n.textContent = 'Mode DEV débloqué : bouton « Mode DEV » dans Options.'; if (sub === 'options') render(); } }); }
+      if (taps.length >= 5) { taps = []; LS.setItem('nml_dev_unlocked', '1'); flash(LIGNES.maintenance + ' Bouton « Mode DEV » dans Options.'); if (sub === 'options') render(); } }); }
   let mode = 'title', sub = null; // mode : title | pause | closed
   const M = $('menu'), S = $('menu-sub');
+  const term = createTerminal({ M, getOptions: () => options, note: t => flash(t) });
   let before = 'title';
   const creation = createCreation({ $, onDone: draft => { onStart(null, draft); close(); }, onCancel: () => open(before) });
-  const open = m => { mode = m; M.hidden = false; document.body.classList.add('menu-open'); M.classList.toggle('pause', m === 'pause'); render(); };
-  const close = () => { mode = 'closed'; sub = null; M.hidden = true; creation.close(); document.body.classList.remove('menu-open'); };
+  const open = m => { mode = m; M.hidden = false; document.body.classList.add('menu-open'); M.classList.toggle('pause', m === 'pause'); render(); term.open(m); };
+  const close = () => { mode = 'closed'; sub = null; M.hidden = true; creation.close(); document.body.classList.remove('menu-open'); term.close(); };
   function render() {
     const last = latest(), inGame = mode === 'pause';
     $('m-resume').hidden = !inGame;
-    $('m-continue').disabled = !last; $('m-continue-info').textContent = last ? `${last.s === AUTO ? 'Auto' : 'Emplacement ' + last.s} · ${last.r.label} · ${fmt(last.r.t)}` : 'Aucune sauvegarde';
-    $('m-load').querySelector('span').textContent = inGame ? 'Charger / Sauvegarder' : 'Charger';
+    $('m-continue').disabled = !last; $('m-continue-info').textContent = last ? `${last.s === AUTO ? 'Auto' : 'Emplacement ' + last.s} · ${last.r.label} · ${fmt(last.r.t)}` : 'AUCUNE SESSION ANTERIEURE';
+    $('m-load').querySelector('span').textContent = inGame ? 'CHARGER / SAUVEGARDER' : 'CHARGER';
+    // Codex : entrée de partie (pause), hors des six choix de l'écran titre. Quitter : sans action sur l'écran titre (un onglet ne se ferme pas), désactivé.
+    $('m-codex').hidden = !inGame; $('m-quit').disabled = !inGame; $('m-quit-info').textContent = inGame ? "retour à l'écran titre" : 'aucune session ouverte';
     M.querySelectorAll('.m-main button').forEach(b => b.classList.toggle('sel', b.dataset.sub === sub));
-    S.hidden = !sub; M.classList.toggle('sub-open', !!sub); if (!sub) return;
+    S.hidden = !sub; M.classList.toggle('sub-open', !!sub); term.rendu(); if (!sub) return;
     if (sub === 'load') {
       const canSave = inGame && !game.state.dialogue;
       S.innerHTML = `<button class="btn m-back" data-back="1">‹ Retour</button><h2>${inGame ? 'CHARGER / SAUVEGARDER' : 'CHARGER'}</h2><ul class="slots">` + [AUTO, ...SLOTS].map(s => { const r = read(s);
@@ -84,24 +88,28 @@ export function createShell({ game, world, $, onStart, applyOptions }) {
   }
   function newGame() { before = mode; sub = null; mode = 'create'; M.hidden = true; creation.open(); }
   function load(slot) { const r = read(slot); if (!r || !game.restore(r.state)) { flash('Sauvegarde illisible : ignorée.'); return; } onStart(r); close(); }
-  function flash(t) { $('menu-note').textContent = t; setTimeout(() => $('menu-note').textContent = '', 3000); }
+  let flashT = 0; function flash(t) { $('menu-note').textContent = t; clearTimeout(flashT); flashT = setTimeout(() => $('menu-note').textContent = '', 3000); }
+  // choix grisés : un geste dessus affiche la ligne du terminal (fiche §6.4), sans action
+  M.addEventListener('pointerdown', e => { const b = e.target.closest('.t-list button'); if (!b || !b.disabled) return;
+    flash(b.id === 'm-continue' ? LIGNES.continuerVide : b.id === 'm-quit' ? LIGNES.nonPrevue : LIGNES.refus); });
   M.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b || b.disabled) return;
+    if (b.closest('.t-list')) term.confirmer(b);
     // Mode DEV (débloqué par une visite avec ?dev=1) : bascule par rechargement, pour garder les sauvegardes DEV séparées de celles du joueur
     if (b.id === 'm-dev') { const u = new URL(location.href); if (DEV) { u.searchParams.delete('dev'); u.searchParams.delete('devpanel'); } else { u.searchParams.set('dev', '1'); u.searchParams.set('devpanel', '1'); } location.href = u.toString(); return; }
     if (b.id === 'm-resume') return close();
     if (b.dataset.back) { sub = null; return render(); }
     if (b.id === 'm-continue') { const l = latest(); if (l) load(l.s); return; }
     if (b.id === 'm-new') return newGame();
-    if (b.id === 'm-quit') { sub = null; return open('title'); }
+    if (b.id === 'm-quit') { sub = null; open('title'); return flash(LIGNES.quitter); }
     if (b.dataset.sub) { sub = sub === b.dataset.sub ? null : b.dataset.sub; return render(); }
     if (b.dataset.act === 'load') return load(b.dataset.slot);
     if (b.dataset.act === 'save') { flash(write(b.dataset.slot) ? `Sauvegardé · emplacement ${b.dataset.slot}` : 'Échec de la sauvegarde (stockage plein ?)'); return render(); }
-    if (b.dataset.opt) { options[b.dataset.opt] = JSON.parse(b.dataset.val); saveOptions(); return render(); }
+    if (b.dataset.opt) { options[b.dataset.opt] = JSON.parse(b.dataset.val); saveOptions(); if (b.dataset.opt === 'reduceMotion') term.appliqueReduit(); return render(); }
   });
   M.addEventListener('input', e => { const k = e.target.dataset.range; if (!k) return; options[k] = +e.target.value; $('v-' + k).textContent = options[k]; saveOptions(); });
   addEventListener('keydown', e => { if (mode === 'closed' || e.key !== 'Escape') return; e.stopImmediatePropagation(); if (mode === 'create') creation.back(); else if (sub) { sub = null; render(); } else if (mode === 'pause') close(); }, true);
   applyOptions(options);
   open('title');
-  return { get creationDraft() { return creation.draft; }, isOpen: () => mode !== 'closed', pause: () => open('pause'), autosave: () => write(AUTO), get options() { return options; }, read, latest };
+  return { terminal: term, get creationDraft() { return creation.draft; }, isOpen: () => mode !== 'closed', pause: () => open('pause'), autosave: () => write(AUTO), get options() { return options; }, read, latest };
 }
