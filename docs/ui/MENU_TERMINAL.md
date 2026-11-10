@@ -5,7 +5,7 @@ Rédigée le 10 novembre 2026 (heure de Paris), par Ocre.
 
 La maquette de référence, `docs/ui/proto_menu_terminal.jpg`, est une **maquette générée**, pas une capture du jeu. Un contrôle de construction des calques (fond, tampon, cadre, sans le texte) se trouve dans `docs/ui/controle_menu_terminal.jpg`. Ce n'est pas non plus une capture.
 
-Les calques images sont dans `assets/ui/menu_terminal/`, décrits plus bas et dans `assets/ui/menu_terminal/manifest.json`.
+Les calques images sont dans `assets/ui/menu_terminal/`, décrits plus bas et dans `assets/ui/menu_terminal/manifest.json`. Une variante portrait (1080 × 1920), pour le téléphone, est décrite au §8.
 
 ---
 
@@ -290,7 +290,7 @@ Fichiers utiles en plus :
 - `assets/ui/menu_terminal/ecran_masque.png` : blanc = zone écran, transparent ailleurs.
 - `assets/ui/menu_terminal/manifest.json` : canevas, rectangle, positions, mêmes infos que cette table.
 
-Contrôle de construction (fond + tampon + cadre, sans texte) : `docs/ui/controle_menu_terminal.jpg`. Maquette générée complète, avec le texte peint pour le ton : `docs/ui/proto_menu_terminal.jpg`.
+Contrôle de construction (fond + tampon + cadre, sans texte) : `docs/ui/controle_menu_terminal.jpg`. Maquette générée complète, avec le texte peint pour le ton : `docs/ui/proto_menu_terminal.jpg`. La variante portrait (mêmes principes, canevas 1080 × 1920) est au §8.
 
 ### 7.2 Notes d'implémentation (propositions, pas un cahier des charges technique)
 
@@ -304,4 +304,74 @@ Je n'écris pas le code, je propose une voie possible.
 
 ---
 
-Voilà pour Rivet de quoi construire. Je reste disponible pour caler un rythme, un libellé ou une passe sur le tampon une fois le premier allumage sous les yeux.
+## 8. Version portrait (mobile)
+
+Le jeu tourne aussi en portrait, notamment à 390 px de large sur téléphone. Ce n'est pas une autre direction : c'est le même terminal, redressé. **Proposition de bascule :** on prend la variante portrait quand la hauteur de la fenêtre est supérieure à sa largeur, la variante paysage sinon.
+
+Le canevas portrait est **1080 × 1920**. Comme en paysage, le terminal se pose en `contain` dans la fenêtre. **On n'étire jamais le cadre de façon non uniforme** (pas de `sx` différent de `sy`, pas de `cover` qui rogne une plaque). S'il ne tient pas honnêtement, on le retire : voir le repli plus bas.
+
+### 8.1 Calques portrait
+
+Même ordre d'empilement qu'en paysage. Le tampon réutilise le fichier déjà livré, simplement recentré.
+
+| Calque | Fichier | Animé ou fixe | Comment |
+|---|---|---|---|
+| Fond de ville ambre | `assets/ui/menu_terminal/fond_ecran_portrait.png` | Fixe. Même dérive lente optionnelle qu'en paysage, coupée si mouvement réduit | 1080 × 1920, visible par le trou |
+| Contenu texte | (code) | Animé | Boot raccourci, titre sur deux lignes, menu vertical, ticker en bas |
+| Tampon « Accès non autorisé » | `assets/ui/menu_terminal/tampon_acces_non_autorise.png` (le même) | Fixe, une fois posé. Apparaît en fin de boot avec un petit flash | Position **x = 309, y = 1416, w = 458, h = 243**, opacité **0,85**. Centré en bas de l'écran, largeur égale à 55 % de l'écran, au-dessus du ticker. Ne recouvre pas les choix |
+| Effets CRT | (code) | Animé | Scanlines, scintillement, vignette, courbure éventuelle. Figés ou coupés si mouvement réduit |
+| Cadre métal | `assets/ui/menu_terminal/cadre_portrait.png` | Fixe, toujours au-dessus | 1080 × 1920, zone écran entièrement transparente, même méthode que `cadre.png` (trou en rectangle arrondi, fondu vers l'intérieur, ombre interne conservée) |
+
+Masque : `assets/ui/menu_terminal/ecran_masque_portrait.png` (blanc = zone écran). Les géométries sont aussi dans `manifest.json`, clé ajoutée `portrait` (les clés paysage restent inchangées).
+
+Rectangle de l'écran, à 1080 × 1920 :
+
+| | px |
+|---|---|
+| x | 122 |
+| y | 132 |
+| w | 832 |
+| h | 1625 |
+| rayon d'angle | 60 |
+| fondu du bord | 5 px, uniquement vers l'intérieur |
+
+Contrôle de construction (fond + tampon + cadre, sans texte) : `docs/ui/controle_menu_terminal_portrait.jpg`. Ce n'est pas une capture de jeu.
+
+### 8.2 Disposition du texte
+
+Si on se contentait de réduire le titrage paysage à l'échelle du canevas, à 390 px de large les entrées du menu tomberaient à une douzaine de pixels : illisible, et injouable au doigt. Les tailles ci-dessous sont donc des **planchers en pixels CSS, calés pour une largeur de fenêtre de 390 px**. Quand la fenêtre grossit, on peut les laisser suivre l'échelle du terminal, sans redescendre sous ces valeurs.
+
+| Élément | Police | Taille à 390 px de large | Notes |
+|---|---|---|---|
+| Titre, sur deux lignes : `NO MAN'S` / `LAND` | VT323 | 44 à 48 px | Centré, chasse un peu serrée, lueur comme en paysage |
+| Entrées du menu | VT323 | 18 à 20 px | Une sous l'autre, au centre. **Hauteur de cible d'au moins 44 px** (48 px de préférence), préfixe `>` compris |
+| Journal de boot (6 lignes) | VT323 | 13 à 14 px | En haut à gauche, il s'efface avant le titre, comme en paysage |
+| Barre de statut | IBM Plex Mono | 12 px | Une ou deux lignes courtes, sous le titre ou juste au-dessus du ticker, jamais au milieu des choix |
+| Ticker | IBM Plex Mono | 12 px | Une bande en bas de l'écran, au-dessus de la lèvre du cadre, qui ne monte pas sur le menu ni sur le tampon |
+
+Ordre vertical, du haut vers le bas : journal de boot (le temps de la séquence), titre sur deux lignes, liste du menu, tampon, ticker. La barre de statut se glisse sous le titre ou au-dessus du ticker, selon ce qui reste le plus lisible. Le tampon, déjà placé en bas et au centre, laisse la colonne des choix libre.
+
+Journal de boot raccourci, **proposition**, six lignes :
+
+```
+HUMAN CORP  //  CITIZEN OS v4.7.19
+TERMINAL CITOYEN  HC-2175-TA
+SITE  STEEL-MEGALOPOLIS  //  CENTER-TOWN
+-- module de conformite        ACTIF
+-- identification citoyen      EN ATTENTE
+-- pret a recevoir les commandes
+```
+
+Les messages du ticker, les commandes `EXEC` et les lignes d'erreur restent ceux du §6. L'allumage, le clignotement du curseur, le scintillement, le glitch et le mouvement réduit suivent la timeline du §5. Sur un premier lancement en portrait, **proposition :** on peut raccourcir un peu les silences du boot (le journal a moins de lignes, le titre arrive plus tôt), sans changer les durées d'animation d'un caractère ou d'un flash.
+
+### 8.3 Repli, en dessous de 390 px ou sur un très petit écran
+
+Les plaques du cadre sont décoratives. On peut les retirer sans rien perdre du menu.
+
+**Proposition de repli :** si la fenêtre passe sous 390 px de large, ou si le cadre `contain` devient trop mince pour rester honnête (plaques illisibles, marges écrasées), on enlève le cadre entièrement. L'écran (fond de ville, texte, tampon, effets CRT) passe en plein cadre, avec une marge intérieure d'une dizaine de pixels. Les scanlines, la vignette et l'éventuelle courbure restent, rendues en code. Le fond portrait peut être conservé, recadré avec `cover` uniquement sur cette image de ville, jamais sur le cadre.
+
+Dans tous les cas, on n'étire pas le cadre pour le faire tenir.
+
+---
+
+Voilà pour Rivet de quoi construire, paysage et portrait. Je reste disponible pour caler un rythme, un libellé ou une passe sur le tampon une fois le premier allumage sous les yeux.

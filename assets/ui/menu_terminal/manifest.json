@@ -50,5 +50,59 @@
     }
   ],
   "masque": "ecran_masque.png",
-  "proto": "docs/ui/proto_menu_terminal.jpg"
+  "proto": "docs/ui/proto_menu_terminal.jpg",
+  "portrait": {
+    "canvas": {
+      "w": 1080,
+      "h": 1920
+    },
+    "ecran": {
+      "x": 122,
+      "y": 132,
+      "w": 832,
+      "h": 1625,
+      "rayon": 60,
+      "fondu_px": 5.0
+    },
+    "masque": "ecran_masque_portrait.png",
+    "selection": "quand la hauteur de la fenêtre est supérieure à sa largeur",
+    "repli": "En dessous de 390 px de large, ou sur un écran très petit : retirer le cadre, écran en plein cadre, effets CRT uniquement en code. Ne jamais étirer le cadre de façon non uniforme.",
+    "calques": [
+      {
+        "id": "fond_ecran",
+        "fichier": "fond_ecran_portrait.png",
+        "fixe": true,
+        "note": "Ville ambre atténuée, sous le cadre, visible par le trou. Dérive lente optionnelle en code."
+      },
+      {
+        "id": "contenu_texte",
+        "fichier": null,
+        "fixe": false,
+        "note": "Texte en code. En portrait : boot raccourci, titre sur deux lignes, entrées verticales, ticker en bas."
+      },
+      {
+        "id": "tampon",
+        "fichier": "tampon_acces_non_autorise.png",
+        "fixe": true,
+        "x": 309,
+        "y": 1416,
+        "w": 458,
+        "h": 243,
+        "opacite": 0.85,
+        "note": "Même fichier que le paysage, recentré en bas de l'écran, largeur d'environ 55 % de l'écran. Apparaît en fin de boot avec un petit flash."
+      },
+      {
+        "id": "effets_crt",
+        "fichier": null,
+        "fixe": false,
+        "note": "Scanlines, scintillement, vignette, courbure : code, animé."
+      },
+      {
+        "id": "cadre",
+        "fichier": "cadre_portrait.png",
+        "fixe": true,
+        "note": "Lunette métal portrait, toujours au-dessus. Zone écran entièrement transparente."
+      }
+    ]
+  }
 }
