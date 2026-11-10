@@ -61,3 +61,34 @@ Entrée type de `assets/steel/pulse_plaza/manifest.json` :
 ```json
 "gen_pp_maelle": {"file": "steel/pulse_plaza/gen_pp_maelle.webp", "source": "docs/villes/steel/quartiers/pulse_plaza/gen_placeholders.py", "height_m": 1.64, "px": [180, 512], "footprint_m": [0.6, 0.6], "status": "placeholder, pulse-plaza"}
 ```
+
+
+## Lot `pulse_v4` (régénération sans warp)
+
+Nouvelles clés (statut `pulse_v4`, champ `remplace`), voir `PULSE_PLAZA.md` § « Régénération v4 sans déformation » pour les mesures et les poses.
+
+| ancienne | nouvelle | px | ancre | calques |
+|---|---|---|---|---|
+| `pp_nord_a_v2_3q` | `pp_nord_a_v3_3q` | 796×823 | [660, 820] | _ecran, _fenetres, _neon, _pulse, _pulse_b |
+| `pp_nord_b_v2_3q` | `pp_nord_b_v3_3q` | 444×563 | [334, 560] | _fenetres, _neon, _pulse, _pulse_b |
+| `pp_nord_c2_v2_3q` | `pp_nord_c2_v3_3q` | 630×674 | [494, 671] | _ecran, _fenetres, _neon, _pulse, _pulse_b |
+| `pp_nord_c3_v2_3q` | `pp_nord_c3_v3_3q` | 622×670 | [495, 667] | _ecran, _fenetres, _neon, _pulse, _pulse_b |
+| `pp_ouest_a_v3_3q` | `pp_ouest_a_v4_3q` | 513×757 | [170, 754] | _ecran, _fenetres, _pulse |
+| `pp_ouest_b_v3_3q` | `pp_ouest_b_v4_3q` | 400×564 | [182, 561] | _fenetres, _pulse |
+| `pp_ecran_feed_v3_3q` | `pp_ecran_feed_v4_3q` | 951×864 | [828, 861] | _ecran, _neon, _pulse |
+| `pp_billboard_v2_3q` | `pp_billboard_v3_3q` | 281×409 | [168, 406] | _ecran, _neon, _pulse, _pulse_b |
+| `pp_kiosque_v2_3q` | `pp_kiosque_v3_3q` | 276×294 | [174, 291] | _fenetres, _neon, _pulse, _pulse_b |
+| `pp_nouilles_v2_3q` | `pp_nouilles_v3_3q` | 290×270 | [176, 267] | _fenetres, _neon |
+| `pp_kiosque_presse_v2_3q` | `pp_kiosque_presse_v3_3q` | 280×272 | [169, 269] | _ecran, _fenetres, _neon, _pulse, _pulse_b |
+| `pp_kiosque_boissons_v2_3q` | `pp_kiosque_boissons_v3_3q` | 289×270 | [172, 267] | _fenetres, _neon, _pulse, _pulse_b |
+| `pp_portique_v2_3q` | `pp_portique_v3_3q` | 281×283 | [167, 280] | _fenetres, _neon, _pulse, _pulse_b |
+| `pp_distrib_v2_3q` | `pp_distrib_v3_3q` | 281×241 | [166, 238] | _ecran, _neon, _pulse, _pulse_b |
+| `pp_guerite_3q` | `pp_guerite_v2_3q` | 293×285 | [177, 282] | _fenetres, _neon, _pulse |
+| `pp_dalle_pulse_a_3q` | `pp_dalle_pulse_a_v2_3q` | 280×146 | [166, 143] | _pulse, _pulse_b |
+| `pp_dalle_pulse_b_3q` | `pp_dalle_pulse_b_v2_3q` | 280×146 | [167, 143] | _pulse, _pulse_b |
+| `pp_totem_pulse_3q` | `pp_totem_pulse_v2_3q` | 141×284 | [84, 281] | _pulse, _pulse_b |
+| `pp_enceinte_pulse_3q` | `pp_enceinte_pulse_v2_3q` | 141×228 | [83, 225] | _pulse, _pulse_b |
+| `pp_arche_holo_3q` | `pp_arche_holo_v2_3q` | 305×334 | [249, 331] | _pulse, _pulse_b |
+| `pp_pont_projecteurs_v3_3q` | `pp_pont_projecteurs_v4_3q` | 367×375 | [328, 372] | _faisceau, _pulse |
+| `pp_banc_beton_o` | `pp_banc_beton_o_v2` | 81×87 | [23, 84] |  |
+| `pp_ecran_haut_e2` | `pp_ecran_haut_e2_v2` | 141×248 | [26, 245] |  |
