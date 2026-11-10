@@ -12,7 +12,7 @@ from playwright.sync_api import sync_playwright
 
 URL = os.environ.get('URL', 'http://127.0.0.1:8916/')
 if not URL.endswith('/'): URL += '/'
-OUT = os.environ.get('OUT', '/tmp/nml-test-out/pulse_fix/')
+OUT = os.environ.get('OUT', '/tmp/nml-test-out/pulse_v4/')
 TAG = os.environ.get('TAG', 'apres')
 os.makedirs(OUT, exist_ok=True)
 
@@ -158,6 +158,30 @@ with sync_playwright() as p:
         shot(f'{TAG}_ensemble_x06_{w}.png', 24, 25, 0.6)
         shot(f'{TAG}_centre_x10_{w}.png', 22, 25, 1.0)
         shot(f'{TAG}_bord_sud_marge_x10_{w}.png', 24, 34, 1.0)
+        # 7. Gros plans : Feed v4 (écran animé dans le cadre peint, ECRAN_FEED.coins) et stand de nouilles
+        dsf = 2 if mob else 1
+        def closeup(fname, cx, cz, ppm):
+            E(f"window.__nml.view.setCamera({{x:{cx},z:{cz},ppm:{ppm}}})")
+            for _ in range(10): E("window.__nml.view.render()"); time.sleep(0.08)
+            time.sleep(1.2); img = pg.screenshot(path=OUT + fname); return Image.open(io.BytesIO(img)).convert('RGB')
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=27;g.restore(s,true)})()"); time.sleep(0.8)
+        ppm = 14 if mob else 26
+        im = closeup(f'{TAG}_gros_plan_feed_{w}.png', 22, 9, ppm)
+        coins = E("window.__nml.world.LOCATIONS.steel_pulse.buildings.find(b => b.id === 'pp_ecran_feed').ecran.coins")
+        an = E("window.__nml.project(32, 0, 12)")
+        scr = lambda u, v: ((an['x'] + (u - 828) / 50 * ppm) * dsf, (an['y'] + (v - 861) / 50 * ppm) * dsf)
+        def lum(u, v, r=3):
+            x0, y0 = scr(u, v); px = [im.getpixel((int(x0) + i, int(y0) + j)) for i in range(-r, r + 1) for j in range(-r, r + 1)
+                                       if 0 <= int(x0) + i < im.width and 0 <= int(y0) + j < im.height]
+            return sum(sum(c) for c in px) / max(1, len(px)) / 3
+        (tl, tr, br_, bl) = coins
+        inside = [lum(tl[0] + 40, tl[1] + 60), lum(tr[0] - 40, tr[1] + 60), lum(br_[0] - 40, br_[1] - 60), lum(bl[0] + 40, bl[1] - 60), lum((tl[0] + br_[0]) / 2, (tl[1] + br_[1]) / 2)]
+        ok(coins == [[96, 18], [801, 251], [801, 706], [96, 472]] and min(inside) > 12 and max(inside) > 40,  # pages sombres du Feed possibles ; la dalle noire nue reste < 10
+           f'{name} écran animé du Feed v4 dans le cadre peint (coins {coins}, luminance intérieure {[round(v) for v in inside]})', inside)
+        E("window.__nml.view.setCamera(null)"); time.sleep(0.5)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=38;s.player.z=27;g.restore(s,true)})()"); time.sleep(0.8)
+        closeup(f'{TAG}_gros_plan_nouilles_{w}.png', 44, 28, 30 if mob else 48)
+        E("window.__nml.view.setCamera(null)"); time.sleep(0.5)
         ok(not errs, f'{name} aucune erreur JS / console / réseau', errs[:3])
         ctx.close()
     br.close()

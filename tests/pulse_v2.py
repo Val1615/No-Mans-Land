@@ -1,11 +1,11 @@
-# Test rapide Pulse Plaza : la zone se charge depuis Center-Town, se traverse (ouest -> sud), aucune erreur JS (1280 et 390).
+# Test de régression Pulse Plaza (ex-pulse_rapide v2, clés v4 sans warp depuis le swap pulse_v4) : la zone se charge depuis Center-Town, se traverse (ouest -> sud), aucune erreur JS (1280 et 390).
 # Chantier pilote + festif v2 (b3bd9a6 + 769c16d) : 9 PNJ nommés, 8 figurants distincts sans clone, aucune étiquette sur les accès, écran du Feed v2 allumé,
 # aucun chevauchement d'emprises ni inversion dynamique d'ordre (painter stable), aucun PNJ masqué, budget d'animations (view.animStats, 8 au plus sur mobile)
 # avec priorité Feed / Nord_A / Billboard, accès ouest et jonction de Fréquence Strip libres ; captures sous l'angle du concept.
 import time,os,sys,io
 from PIL import Image
 from playwright.sync_api import sync_playwright
-URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/pulse_v2/'; CAP='/tmp/nml-test-out/pulse_v2/apres_'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
+URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT=os.environ.get('OUT','/tmp/nml-test-out/pulse_v2/'); CAP=OUT+'apres_'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 with sync_playwright() as p:
@@ -54,16 +54,16 @@ with sync_playwright() as p:
         ok(not any(T.values()),f'{name} aucun trou vers le vide hors des accès (nord, sud, ouest, est)',T)
         sprites_3q={b[1] for b in B if b[1].endswith('_3q')}
         expected_3q={
-            'pp_kiosque_v2_3q','pp_guerite_3q','pp_nouilles_v2_3q','pp_billboard_v2_3q','pp_portique_v2_3q','pp_distrib_v2_3q',
-            'pp_kiosque_presse_v2_3q','pp_kiosque_boissons_v2_3q','pp_nord_a_v2_3q','pp_nord_b_v2_3q','pp_nord_c2_v2_3q','pp_nord_c3_v2_3q',
-            'pp_ouest_a_v3_3q','pp_ouest_b_v3_3q','pp_ecran_feed_v3_3q',
-            'pp_dalle_pulse_a_3q','pp_dalle_pulse_b_3q','pp_arche_holo_3q','pp_pont_projecteurs_v3_3q','pp_totem_pulse_3q','pp_enceinte_pulse_3q'
+            'pp_kiosque_v3_3q','pp_guerite_v2_3q','pp_nouilles_v3_3q','pp_billboard_v3_3q','pp_portique_v3_3q','pp_distrib_v3_3q',
+            'pp_kiosque_presse_v3_3q','pp_kiosque_boissons_v3_3q','pp_nord_a_v3_3q','pp_nord_b_v3_3q','pp_nord_c2_v3_3q','pp_nord_c3_v3_3q',
+            'pp_ouest_a_v4_3q','pp_ouest_b_v4_3q','pp_ecran_feed_v4_3q',
+            'pp_dalle_pulse_a_v2_3q','pp_dalle_pulse_b_v2_3q','pp_arche_holo_v2_3q','pp_pont_projecteurs_v4_3q','pp_totem_pulse_v2_3q','pp_enceinte_pulse_v2_3q'
         }
-        ok(sprites_3q==expected_3q and not E("!!document.getElementById('editor-map-invalid')") and all(b[1] not in ('pp_nord_c_3q','pp_pont_projecteurs_3q','pp_pont_projecteurs_v2_3q','pp_ouest_a_v2_3q','pp_ouest_b_v2_3q','pp_ecran_feed_v2_3q') for b in B),
-           f'{name} bâtiments festifs v2/v3 (ouest/feed/pont en v3) + guérite pp_guerite_3q + 6 props rythmiques posés (aucun obsolète)',sorted(expected_3q^sprites_3q))
+        ok(sprites_3q==expected_3q and not E("!!document.getElementById('editor-map-invalid')") and all(b[1] not in ('pp_nord_c_3q','pp_pont_projecteurs_3q','pp_pont_projecteurs_v2_3q','pp_pont_projecteurs_v3_3q','pp_ouest_a_v2_3q','pp_ouest_b_v2_3q','pp_ouest_a_v3_3q','pp_ouest_b_v3_3q','pp_ecran_feed_v2_3q','pp_ecran_feed_v3_3q','pp_guerite_3q') for b in B),
+           f'{name} bâtiments Pulse v4 sans warp (23 clés) + 6 props rythmiques posés (aucun obsolète)',sorted(expected_3q^sprites_3q))
         neon_bb=E("window.__nml.world.LOCATIONS.steel_pulse.enseignes.find(e=>e.building==='pp_billboard')?.neon")
-        ok(neon_bb=='pp_billboard_v2_3q_neon',f'{name} billboard branché sur pp_billboard_v2_3q_neon',neon_bb)
-        e2=[b for b in B if b[0]=='pp_ecran_e2']; ok(e2 and e2[0][1]=='pp_ecran_haut_e2' and abs(e2[0][4]-48.4)<1e-6 and abs(e2[0][5]-24)<1e-6 and [b for b in B if b[1]=='pp_support_ecran_o' and abs(b[4]-48.4)<1e-6 and abs(b[5]-24)<1e-6] and not [b for b in B if b[1]=='pp_mur_bas_o'] and not [b for b in B if b[1]=='pp_ecran_haut_e1'],f'{name} écran est e2 sur son support léger, même ancre (48,4 ; 24), plus de mur bas de 4 m, e1 retiré',e2)
+        ok(neon_bb=='pp_billboard_v3_3q_neon',f'{name} billboard branché sur pp_billboard_v3_3q_neon',neon_bb)
+        e2=[b for b in B if b[0]=='pp_ecran_e2']; ok(e2 and e2[0][1]=='pp_ecran_haut_e2_v2' and abs(e2[0][4]-48.4)<1e-6 and abs(e2[0][5]-24)<1e-6 and [b for b in B if b[1]=='pp_support_ecran_o' and abs(b[4]-48.4)<1e-6 and abs(b[5]-24)<1e-6] and not [b for b in B if b[1]=='pp_mur_bas_o'] and not [b for b in B if b[1]=='pp_ecran_haut_e1'],f'{name} écran est e2 v2 (panneau sur poteaux 0,6 x 4) sur son support léger, même ancre (48,4 ; 24), plus de mur bas de 4 m, e1 retiré',e2)
         ok(set(b[1] for b in B if b[0].startswith('pp_mur_s'))=={'pp_muret','pp_muret_4'} and E("window.__nml.world.LOCATIONS.steel_pulse.gardeCorps.length")==0,f'{name} sud fermé par les murets de 1,2 m (8 et 4 m), plus de garde-corps')
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=30;g.restore(s,true)})()"); time.sleep(1)
         mq=[]
@@ -79,12 +79,12 @@ with sync_playwright() as p:
             ok('feed' in vis(),f'{name} étiquette de l écran du Feed au survol',vis()); pg.mouse.move(5,5); time.sleep(.3)
         E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=24;s.player.z=27;g.restore(s,true)})()"); time.sleep(1.2)
         ppm=13 if mob else 22; E(f"window.__nml.view.setCamera({{x:24,z:17,ppm:{ppm}}})"); time.sleep(2.5)
-        a=E("window.__nml.project(32,0,12)"); cx,cy=a['x']-6.50*ppm,a['y']-8.80*ppm
+        a=E("window.__nml.project(32,0,12)"); cx,cy=a['x']-7.30*ppm,a['y']-9.90*ppm
         im=Image.open(io.BytesIO(pg.screenshot())).convert('RGB'); px=[im.getpixel((int(cx)+i,int(cy)+j)) for i in range(-10,11,2) for j in range(-10,11,2)]
-        lum=sum(sum(c) for c in px)/len(px)/3; ok(lum>40,f'{name} écran du Feed v3 allumé (luminance {lum:.0f})',(cx,cy))
+        lum=sum(sum(c) for c in px)/len(px)/3; ok(lum>40,f'{name} écran du Feed v4 allumé (luminance {lum:.0f})',(cx,cy))
         pg.screenshot(path=CAP+f'concept_{vp[0]}.png'); E("window.__nml.view.setCamera(null)"); time.sleep(1)
         st=E("window.__nml.view.animStats"); pls=E("window.__nml.view.pulses()")
-        prio_keys=('pp_ecran_feed_v3_3q_pulse','pp_ecran_feed_v3_3q_ecran','pp_nord_a_v2_3q_pulse','pp_nord_a_v2_3q_ecran','pp_billboard_v2_3q_pulse','pp_billboard_v2_3q_ecran')
+        prio_keys=('pp_ecran_feed_v4_3q_pulse','pp_ecran_feed_v4_3q_ecran','pp_nord_a_v3_3q_pulse','pp_nord_a_v3_3q_ecran','pp_billboard_v3_3q_pulse','pp_billboard_v3_3q_ecran')
         prio_on={p['key']:p['on'] for p in pls if p['key'] in prio_keys}
         modes_b={p['mode'] for p in pls if p['calque']=='pulse_b'}
         ok(st.get('on',0)<=(8 if mob else 16) and st.get('pulses')==45 and st.get('pulsesOn',0)<=(8 if mob else 48)

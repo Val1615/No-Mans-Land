@@ -11,15 +11,15 @@ const FIG = (pts, k0, role) => pts.map(([x, z, f], i) => ({ sprite: POOL[(k0 + i
 // Bords de la place sur trame de 4 m : nord en *_v2_3q (fronts z 0, emprises z -4 -> 0), ouest en *_v2_3q (fronts x 0, emprises x -4 -> 0, accès ouest z 12-16 libre),
 // sud et est fermés par les murets de 1,2 m et le support d'écran e2 (accès escalier sud x 20-28 et jonction Strip z 12-16 libres).
 const FACADES = [ // [id, sprite, x, z, w, d]
-  ['pp_fac_n1', 'pp_nord_c2_v2_3q', 0, -4, 12, 4], ['pp_fac_n2', 'pp_nord_a_v2_3q', 12, -4, 16, 4], ['pp_fac_n4', 'pp_nord_b_v2_3q', 28, -4, 8, 4], ['pp_fac_n3', 'pp_nord_c3_v2_3q', 36, -4, 12, 4],
-  ['pp_fac_o1', 'pp_ouest_a_v3_3q', -4, 0, 4, 12], ['pp_fac_o2', 'pp_ouest_b_v3_3q', -4, 16, 4, 8], ['pp_fac_o3', 'pp_ouest_b_v3_3q', -4, 24, 4, 8], ['pp_mur_o4', 'pp_muret_4_o', -0.4, 32, 0.4, 4],
+  ['pp_fac_n1', 'pp_nord_c2_v3_3q', 0, -4, 12, 4], ['pp_fac_n2', 'pp_nord_a_v3_3q', 12, -4, 16, 4], ['pp_fac_n4', 'pp_nord_b_v3_3q', 28, -4, 8, 4], ['pp_fac_n3', 'pp_nord_c3_v3_3q', 36, -4, 12, 4],
+  ['pp_fac_o1', 'pp_ouest_a_v4_3q', -4, 0, 4, 12], ['pp_fac_o2', 'pp_ouest_b_v4_3q', -4, 16, 4, 8], ['pp_fac_o3', 'pp_ouest_b_v4_3q', -4, 24, 4, 8], ['pp_mur_o4', 'pp_muret_4_o', -0.4, 32, 0.4, 4],
   ['pp_mur_s1', 'pp_muret', 0, 36, 8, 0.4], ['pp_mur_s2', 'pp_muret', 8, 36, 8, 0.4], ['pp_mur_s3', 'pp_muret_4', 16, 36, 4, 0.4],
   ['pp_mur_s4', 'pp_muret_4', 28, 36, 4, 0.4], ['pp_mur_s5', 'pp_muret', 32, 36, 8, 0.4], ['pp_mur_s6', 'pp_muret', 40, 36, 8, 0.4],
   ['pp_mur_e0', 'pp_muret_o', 48, 0, 0.4, 8], ['pp_mur_e1', 'pp_muret_4_o', 48, 8, 0.4, 4], ['pp_mur_e3', 'pp_muret_4_o', 48, 16, 0.4, 4], ['pp_mur_e4', 'pp_support_ecran_o', 48, 20, 0.4, 4],
   ['pp_mur_e5', 'pp_muret_4_o', 48, 24, 0.4, 4], ['pp_mur_e2', 'pp_muret_o', 48, 28, 0.4, 8],
 ];
 // Écrans en hauteur d'Ocre (accrochés devant leur façade nord en z 0..0.6 ou sur leur support est, non-solides, contenu dessiné par le code).
-const ECRANS_HAUTS = [ ['pp_ecran_n1', 'pp_ecran_haut_n1', 39, 0, 8, 0.2, [0.59, 1.26]], ['pp_ecran_n2', 'pp_ecran_haut_n2', 3, 0, 4, 0.2, [0.82, 1.60]], ['pp_ecran_e2', 'pp_ecran_haut_e2', 48.3, 20, 0.1, 4, [0, 0]] ];
+const ECRANS_HAUTS = [ ['pp_ecran_n1', 'pp_ecran_haut_n1', 39, 0, 8, 0.2, [0.59, 1.26]], ['pp_ecran_n2', 'pp_ecran_haut_n2', 3, 0, 4, 0.2, [0.82, 1.60]], ['pp_ecran_e2', 'pp_ecran_haut_e2_v2', 47.8, 20, 0.6, 4, [0, 0]] ];
 const GARDE_CORPS = [];
 // Bandes de grille assombrie au pied des façades et des stands 4x4
 const PIEDS = [
@@ -34,10 +34,10 @@ const MOBILIER = [
   ...[[17.5, 22.5], [14.5, 26], [44.5, 19.5]].map(([x, z], i) => [`pp_statue${i}`, 'pp_statue', x, z, 2, 2]),
   ...BORNES.map(([x, z], i) => [`pp_borne${i}`, 'pp_borne_neon', x, z, 0.5, 0.5]),
   ...[[14.1, 22.6], [38.6, 24.1]].map(([x, z], i) => [`pp_jard${i}`, 'pp_jardiniere', x, z, 1.6, 1.6]),
-  ['pp_banc3', 'pp_banc_bois', 36, 18.1, 2, 0.6], ['pp_banc4', 'pp_banc_beton_o', 46.8, 20, 0.6, 2],
+  ['pp_banc3', 'pp_banc_bois', 36, 18.1, 2, 0.6], ['pp_banc4', 'pp_banc_beton_o_v2', 46.8, 20, 0.6, 2],
 ];
-// Écran du Feed v3 3/4 (pp_ecran_feed_v3_3q, 941 x 771, ancre [826, 769]) : dalle noire dressée mesurée dans son cadre intérieur x [92..804], hauteur 338 px (au-dessus du bandeau FEED 24/7).
-const ECRAN_FEED = { coins: [[92, 36], [804, 228], [804, 566], [92, 374]], periode: 9, beat: true, pages: [
+// Écran du Feed v4 3/4 (pp_ecran_feed_v4_3q, 951 x 864, ancre [828, 861], sans warp) : dalle noire dressée = ecran_coins du manifeste (cadre intérieur x [96..801]).
+const ECRAN_FEED = { coins: [[96, 18], [801, 251], [801, 706], [96, 472]], periode: 9, beat: true, pages: [
   { fond: ['#3a1470', '#7a2cc8'], image: 'pp_billboard', crop: [40, 175, 128, 240], titre: 'GROOVY VIBES', sous: 'Clip officiel · Feed 24/7', bandeau: '100% connection stable. Jusqu’à la prochaine alerte.' },
   { fond: ['#200a40', '#5a1c9a'], titre: 'L’IDOLE DÉMASQUÉE', sous: 'Qui est vraiment Groovy Vibes ?', bandeau: '100% connection stable. Jusqu’à la prochaine alerte.' },
   { fond: ['#081a2c', '#2a5a8a'], image: 'pp_holo_tron', crop: [0, 0, 81, 180], titre: 'GROOVY-TRON.EXE', sous: 'Démarrage…', bandeau: 'Status : Optimum. Le sourire est une mise à jour.' },
@@ -45,23 +45,23 @@ const ECRAN_FEED = { coins: [[92, 36], [804, 228], [804, 566], [92, 374]], perio
 ] };
 export const BUILDINGS_PULSE = [
   // Dalles lumineuses de l'allée centrale (b3bd9a6, fond: true, praticables sans solide)
-  B('pp_dalle_pa0', '', 'pp_dalle_pulse_a_3q', 22, 12, 4, 4, { solid: [], named: false, fond: true }),
-  B('pp_dalle_pb0', '', 'pp_dalle_pulse_b_3q', 26, 12, 4, 4, { solid: [], named: false, fond: true }),
-  B('pp_portique', 'Portique IO', 'pp_portique_v2_3q', 34, 0, 4, 4),
-  B('pp_arche0', '', 'pp_arche_holo_3q', 30, 33.6, 6, 2, { solid: [], named: false, cover: true }),
-  B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_v3_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED }),
+  B('pp_dalle_pa0', '', 'pp_dalle_pulse_a_v2_3q', 22, 12, 4, 4, { solid: [], named: false, fond: true }),
+  B('pp_dalle_pb0', '', 'pp_dalle_pulse_b_v2_3q', 26, 12, 4, 4, { solid: [], named: false, fond: true }),
+  B('pp_portique', 'Portique IO', 'pp_portique_v3_3q', 34, 0, 4, 4),
+  B('pp_arche0', '', 'pp_arche_holo_v2_3q', 30, 33.6, 6, 2, { solid: [], named: false, cover: true }),
+  B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_v4_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED }),
   B('pp_holo', 'Projection Holo-Tron', 'pp_holo_socle', 20, 14, 8, 8, { ancre: [0.39, 2.91] }),
   B('pp_holo_tron', '', 'pp_holo_tron', 23.7, 17.7, 0.6, 0.6, { solid: [], named: false, cover: true, ancre: [-0.3, -0.3] }),
-  B('pp_totem0', '', 'pp_totem_pulse_3q', 9.5, 9.5, 2, 2, { named: false }),
-  B('pp_ence0', '', 'pp_enceinte_pulse_3q', 32.5, 9.5, 2, 2, { named: false }),
-  B('pp_pont0', '', 'pp_pont_projecteurs_v3_3q', 3, 17, 8, 2, { solid: [], named: false, cover: true }),
-  B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard_v2_3q', 0, 8, 4, 4),
-  B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque_v2_3q', 44, 8, 4, 4),
-  B('pp_guerite', 'Guérite SMPD', 'pp_guerite_3q', 0, 28, 4, 4),
-  B('pp_nouilles', 'Stand de nouilles', 'pp_nouilles_v2_3q', 44, 28, 4, 4),
-  B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib_v2_3q', 40, 20, 4, 4),
-  B('pp_kiosque_presse', 'Kiosque presse', 'pp_kiosque_presse_v2_3q', 8, 28, 4, 4),
-  B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_v2_3q', 36, 28, 4, 4),
+  B('pp_totem0', '', 'pp_totem_pulse_v2_3q', 9.5, 9.5, 2, 2, { named: false }),
+  B('pp_ence0', '', 'pp_enceinte_pulse_v2_3q', 32.5, 9.5, 2, 2, { named: false }),
+  B('pp_pont0', '', 'pp_pont_projecteurs_v4_3q', 3, 17, 8, 2, { solid: [], named: false, cover: true }),
+  B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard_v3_3q', 0, 8, 4, 4),
+  B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque_v3_3q', 44, 8, 4, 4),
+  B('pp_guerite', 'Guérite SMPD', 'pp_guerite_v2_3q', 0, 28, 4, 4),
+  B('pp_nouilles', 'Stand de nouilles', 'pp_nouilles_v3_3q', 44, 28, 4, 4),
+  B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib_v3_3q', 40, 20, 4, 4),
+  B('pp_kiosque_presse', 'Kiosque presse', 'pp_kiosque_presse_v3_3q', 8, 28, 4, 4),
+  B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_v3_3q', 36, 28, 4, 4),
   B('pp_banc1', '', 'pp_banc', 8.5, 21.5, 2, 1, { named: false }), B('pp_banc2', '', 'pp_banc', 4, 23, 2, 1, { named: false }),
   ...CAMS.map(([x, z], i) => B(`pp_cam${i}`, '', 'pp_camera', x - 0.2, z - 0.2, 0.4, 0.4, { named: false })),
   B('pp_escalier', '', 'pp_escalier', 22, 28, 4, 4, { solid: [], named: false, ancre: [-2, 0] }),
@@ -93,7 +93,7 @@ export const LOCATIONS_PULSE = {
     buildings: BUILDINGS_PULSE, props: [],
     // Enseignes _neon : pp_billboard_v2_3q_neon sur le billboard v2, pulse sur PULSE et le distributeur, léger grésillement sur les nouilles ; les autres restent fixes auto.
     enseignes: [
-      { id: 'pp_n_billboard', building: 'pp_billboard', neon: 'pp_billboard_v2_3q_neon', effet: 'pulse', periode: 3.6, intensite: 0.95 },
+      { id: 'pp_n_billboard', building: 'pp_billboard', neon: 'pp_billboard_v3_3q_neon', effet: 'pulse', periode: 3.6, intensite: 0.95 },
       { id: 'pp_n_nord_a', building: 'pp_fac_n2', effet: 'pulse', periode: 2.8, intensite: 0.95 },
       { id: 'pp_n_distrib', building: 'pp_distrib', effet: 'pulse', periode: 3.2, intensite: 0.9, decale: 0.6 },
       { id: 'pp_n_nouilles', building: 'pp_nouilles', effet: 'gresille', intensite: 0.85, decale: 0.5 },
@@ -175,7 +175,7 @@ export const LOCATIONS_PULSE = {
       ...FIG([[11.8, 13.6, 1], [12.4, 14.8, 1], [13.6, 15.6, -1], [18.8, 15.8, -1], [29.6, 15.8, -1], [31.8, 14.4, -1], [32.6, 15.6, -1], [33.4, 13.8, -1]], 0, 'foule'),
       ...FIG([[5.4, 11.2, -1], [6.4, 12.2, -1], [7.2, 10.8, -1]], 2, 'grappe'),
       ...FIG([[42.0, 9.6, 1], [41.2, 11.0, 1], [42.8, 10.8, -1], [45.4, 13.4, -1]], 5, 'grappe'),
-      ...FIG([[39.2, 25.2, 1], [40.4, 24.8, 1], [41.8, 25.4, -1], [43.0, 24.8, -1]], 8, 'grappe'),
+      ...FIG([[39.2, 25.2, 1], [40.4, 24.8, 1], [41.0, 24.6, -1], [40.6, 26.0, -1]], 8, 'grappe'),
       ...FIG([[8.2, 33.2, 1], [9.6, 33.8, -1], [11.0, 33.1, -1], [12.2, 33.6, -1]], 11, 'grappe'),
       ...FIG([[37.0, 32.8, 1], [38.2, 33.4, -1], [39.4, 32.8, -1], [40.4, 33.4, -1]], 4, 'grappe'),
       ...FIG([[42.2, 33.8, 1], [44.6, 33.6, 1], [45.8, 34.2, -1]], 9, 'grappe'),
