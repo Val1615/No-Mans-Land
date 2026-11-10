@@ -1,8 +1,8 @@
 # Test rapide Steel Arena : sortie est de Pulse Plaza -> Arena, traversée du parvis jusqu'à la sortie est -> Strip, retours, aucune erreur JS ;
-# fps, enseignes animées, calques rythmiques ar2_*_pulse2 / *_faisceau / ar_*_3q_pulse + props rythmiques (b3bd9a6 + 769c16d), 0 chevauchement ni inversion d'ordre (1280 et 390).
+# fps, enseignes animées, calques rythmiques ar2_*_pulse2 / *_faisceau / ar_*_v2_3q_pulse + props rythmiques v2 sans warp (lot arena_v2), 0 chevauchement ni inversion d'ordre (1280 et 390).
 import time,os,sys
 from playwright.sync_api import sync_playwright
-URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/arena_pulse2/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
+URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT=os.environ.get('OUT','/tmp/nml-test-out/arena_v2/'); os.makedirs(OUT,exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 with sync_playwright() as p:
@@ -27,12 +27,12 @@ with sync_playwright() as p:
         st=E("({...window.__nml.view.animStats})"); pls=E("window.__nml.view.pulses()"); print(f'   {name} fps={fps:.1f} enseignes animées {st}')
         ok(st['total']>=1 and st['on']<=(8 if mob else 16) and st['ecrans']==3 and st['projecteurs']==4,f'{name} animations : {st["on"]} planches animées sur {st["total"]} (plafond {"8" if mob else "16"}), 3 écrans code (2 géants + fronton), 4 faisceaux de pylône',st)
         props_ar=set(E("window.__nml.world.LOCATIONS.steel_arena.buildings.map(b=>b.sprite)"))
-        req_props={'ar_mat_projecteur_pulse_3q','ar_enceinte_pulse_3q','ar_gantry_led_pulse_3q','ar_strobe_pulse_3q'}
+        req_props={'ar_mat_projecteur_pulse_v2_3q','ar_enceinte_pulse_v2_3q','ar_gantry_led_pulse_v2_3q','ar_strobe_pulse_v2_3q'}
         prio_ar={p['key']:p['on'] for p in pls if p['priorite']>=3}
-        ok(req_props<=props_ar and st.get('pulses')==51 and st.get('pulsesOn',0)<=(8 if mob else 48)
+        ok(req_props<=props_ar and st.get('pulses')==53 and st.get('pulsesOn',0)<=(8 if mob else 48)
            and prio_ar.get('ar2_ecran_geant_x_pulse2') and prio_ar.get('ar2_ecran_geant_z_pulse2')
-           and prio_ar.get('ar2_facade_entree_faisceau_fix') and prio_ar.get('ar_mat_projecteur_pulse_3q_faisceau_fix'),
-           f'{name} sync rythme Arena : 51 calques pulse2/faisceau/pulse, 4 props rythmiques posés, priorité mobile écrans géants + projecteurs ({prio_ar})',(st,prio_ar))
+           and prio_ar.get('ar2_facade_entree_faisceau_fix') and prio_ar.get('ar_mat_projecteur_pulse_v2_3q_faisceau'),
+           f'{name} sync rythme Arena : 53 calques pulse2/faisceau/pulse, 4 props rythmiques posés, priorité mobile écrans géants + projecteurs ({prio_ar})',(st,prio_ar))
         ok(E("window.__nml.view.masques()")==[],f'{name} aucun personnage masqué par un bâtiment',E("window.__nml.view.masques()"))
         STAB=E("""(()=>{const L=window.__nml.world.LOCATIONS.steel_arena,v=window.__nml.view,g=window.__nml.game,s=g.state;v.render();
           const r=[],S=L.buildings.flatMap(b=>(b.solid??[{x:b.x,z:b.z,w:b.w,d:b.d}]).map(q=>({...q,id:b.id})));

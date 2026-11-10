@@ -1251,7 +1251,8 @@
     "pose": "serpentin de file devant ar_facade_entree : lignes x 36 à 52 à z 34, 37 et 40, ouvertes en bout alterné",
     "anime_par_code": "la file qui avance entre les barrières (avec ar_marquage_file)",
     "file": "steel/steel_arena/ar_barriere_file.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_barriere_file_o": {
     "px": [
@@ -1273,7 +1274,8 @@
     "pose": "retours du serpentin : x 36 et x 52, z 34 à 40",
     "anime_par_code": "la file qui avance",
     "file": "steel/steel_arena/ar_barriere_file_o.webp",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_stand_merch_b": {
     "px": [
@@ -2095,7 +2097,8 @@
         143
       ]
     ],
-    "remplace": "ar_guichets"
+    "remplace": "ar_guichets",
+    "obsolete": true
   },
   "ar_guichets_3q_neon": {
     "file": "steel/steel_arena/ar_guichets_3q_neon.webp",
@@ -2111,7 +2114,8 @@
     "texte": "GUICHETS",
     "source": "extraction PIL de l'enseigne lumineuse de ar_guichets_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_guichets_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_guichets_3q_fenetres": {
     "file": "steel/steel_arena/ar_guichets_3q_fenetres.webp",
@@ -2126,7 +2130,8 @@
     "couche_de": "ar_guichets_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_guichets_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_guichets_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_booking_3q": {
     "file": "steel/steel_arena/ar_booking_3q.webp",
@@ -2168,7 +2173,8 @@
         39,
         147
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "ar_booking_3q_neon": {
     "file": "steel/steel_arena/ar_booking_3q_neon.webp",
@@ -2184,7 +2190,8 @@
     "texte": "BOOKING",
     "source": "extraction PIL de l'enseigne lumineuse de ar_booking_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_booking_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_booking_3q_fenetres": {
     "file": "steel/steel_arena/ar_booking_3q_fenetres.webp",
@@ -2199,7 +2206,8 @@
     "couche_de": "ar_booking_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_booking_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_booking_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_securite_3q": {
     "file": "steel/steel_arena/ar_securite_3q.webp",
@@ -2242,7 +2250,8 @@
         112
       ]
     ],
-    "remplace": "ar_securite"
+    "remplace": "ar_securite",
+    "obsolete": true
   },
   "ar_securite_3q_neon": {
     "file": "steel/steel_arena/ar_securite_3q_neon.webp",
@@ -2258,7 +2267,8 @@
     "texte": "CONTRÔLE IO",
     "source": "extraction PIL de l'enseigne lumineuse de ar_securite_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_securite_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_securite_3q_fenetres": {
     "file": "steel/steel_arena/ar_securite_3q_fenetres.webp",
@@ -2273,7 +2283,8 @@
     "couche_de": "ar_securite_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_securite_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_securite_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_stand_merch_b_3q": {
     "file": "steel/steel_arena/ar_stand_merch_b_3q.webp",
@@ -2316,7 +2327,8 @@
         61
       ]
     ],
-    "remplace": "ar_stand_merch_b"
+    "remplace": "ar_stand_merch_b",
+    "obsolete": true
   },
   "ar_stand_merch_b_3q_neon": {
     "file": "steel/steel_arena/ar_stand_merch_b_3q_neon.webp",
@@ -2332,7 +2344,8 @@
     "texte": "MERCH OFFICIEL",
     "source": "extraction PIL de l'enseigne lumineuse de ar_stand_merch_b_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_stand_merch_b_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_stand_merch_b_3q_fenetres": {
     "file": "steel/steel_arena/ar_stand_merch_b_3q_fenetres.webp",
@@ -2347,7 +2360,8 @@
     "couche_de": "ar_stand_merch_b_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_stand_merch_b_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_stand_merch_b_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_stand_merch_c_3q": {
     "file": "steel/steel_arena/ar_stand_merch_c_3q.webp",
@@ -2390,7 +2404,8 @@
         112
       ]
     ],
-    "remplace": "ar_stand_merch_c"
+    "remplace": "ar_stand_merch_c",
+    "obsolete": true
   },
   "ar_stand_merch_c_3q_neon": {
     "file": "steel/steel_arena/ar_stand_merch_c_3q_neon.webp",
@@ -2406,7 +2421,8 @@
     "texte": "MERCH",
     "source": "extraction PIL de l'enseigne lumineuse de ar_stand_merch_c_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_stand_merch_c_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_stand_merch_c_3q_fenetres": {
     "file": "steel/steel_arena/ar_stand_merch_c_3q_fenetres.webp",
@@ -2421,7 +2437,8 @@
     "couche_de": "ar_stand_merch_c_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_stand_merch_c_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_stand_merch_c_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_foodtruck_nouilles_3q": {
     "file": "steel/steel_arena/ar_foodtruck_nouilles_3q.webp",
@@ -2612,7 +2629,8 @@
         130
       ]
     ],
-    "remplace": "ar_regie"
+    "remplace": "ar_regie",
+    "obsolete": true
   },
   "ar_regie_3q_neon": {
     "file": "steel/steel_arena/ar_regie_3q_neon.webp",
@@ -2628,7 +2646,8 @@
     "texte": "RÉGIE",
     "source": "extraction PIL de l'enseigne lumineuse de ar_regie_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_regie_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_regie_3q_fenetres": {
     "file": "steel/steel_arena/ar_regie_3q_fenetres.webp",
@@ -2643,7 +2662,8 @@
     "couche_de": "ar_regie_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_regie_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_regie_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_tribunes_3q": {
     "file": "steel/steel_arena/ar_tribunes_3q.webp",
@@ -2685,7 +2705,8 @@
         174,
         204
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "ar_tribunes_3q_neon": {
     "file": "steel/steel_arena/ar_tribunes_3q_neon.webp",
@@ -2701,7 +2722,8 @@
     "texte": "TRIBUNES",
     "source": "extraction PIL de l'enseigne lumineuse de ar_tribunes_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_tribunes_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_tribunes_3q_fenetres": {
     "file": "steel/steel_arena/ar_tribunes_3q_fenetres.webp",
@@ -2716,7 +2738,8 @@
     "couche_de": "ar_tribunes_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tribunes_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tribunes_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_tech_ouest_a_3q": {
     "file": "steel/steel_arena/ar_tech_ouest_a_3q.webp",
@@ -2758,7 +2781,8 @@
         93,
         423
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "ar_tech_ouest_a_3q_neon": {
     "file": "steel/steel_arena/ar_tech_ouest_a_3q_neon.webp",
@@ -2774,7 +2798,8 @@
     "texte": "TECHNIQUE",
     "source": "extraction PIL de l'enseigne lumineuse de ar_tech_ouest_a_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que ar_tech_ouest_a_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_tech_ouest_a_3q_fenetres": {
     "file": "steel/steel_arena/ar_tech_ouest_a_3q_fenetres.webp",
@@ -2789,7 +2814,8 @@
     "couche_de": "ar_tech_ouest_a_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tech_ouest_a_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tech_ouest_a_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_tech_ouest_b_3q": {
     "file": "steel/steel_arena/ar_tech_ouest_b_3q.webp",
@@ -2813,7 +2839,8 @@
     "fenetres": "ar_tech_ouest_b_3q_fenetres",
     "status": "v1",
     "neon": null,
-    "note": "bâtiment technique sans enseigne (bord ouest)"
+    "note": "bâtiment technique sans enseigne (bord ouest)",
+    "obsolete": true
   },
   "ar_tech_ouest_b_3q_fenetres": {
     "file": "steel/steel_arena/ar_tech_ouest_b_3q_fenetres.webp",
@@ -2828,7 +2855,8 @@
     "couche_de": "ar_tech_ouest_b_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tech_ouest_b_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tech_ouest_b_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_tech_ouest_c_3q": {
     "file": "steel/steel_arena/ar_tech_ouest_c_3q.webp",
@@ -2852,7 +2880,8 @@
     "fenetres": "ar_tech_ouest_c_3q_fenetres",
     "status": "v1",
     "neon": null,
-    "note": "bâtiment technique sans enseigne (bord ouest)"
+    "note": "bâtiment technique sans enseigne (bord ouest)",
+    "obsolete": true
   },
   "ar_tech_ouest_c_3q_fenetres": {
     "file": "steel/steel_arena/ar_tech_ouest_c_3q_fenetres.webp",
@@ -2867,7 +2896,8 @@
     "couche_de": "ar_tech_ouest_c_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de ar_tech_ouest_c_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que ar_tech_ouest_c_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "ar_mat_projecteur_pulse_3q": {
     "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q.webp",
@@ -2889,7 +2919,8 @@
     "pose": "B('ar_mat_p0', '', 'ar_mat_projecteur_pulse_3q', 40, 36, 2, 2, { named: false })",
     "layers": [
       "pulse"
-    ]
+    ],
+    "obsolete": true
   },
   "ar_mat_projecteur_pulse_3q_pulse": {
     "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q_pulse.webp",
@@ -2904,7 +2935,8 @@
     "additive": true,
     "parent": "ar_mat_projecteur_pulse_3q",
     "status": "v1",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "ar_mat_projecteur_pulse_3q_pulse_b": {
     "file": "steel/steel_arena/ar_mat_projecteur_pulse_3q_pulse_b.webp",
@@ -2919,7 +2951,8 @@
     "additive": true,
     "parent": "ar_mat_projecteur_pulse_3q",
     "status": "v1",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
   },
   "ar_enceinte_pulse_3q": {
     "file": "steel/steel_arena/ar_enceinte_pulse_3q.webp",
@@ -2941,7 +2974,8 @@
     "pose": "B('ar_ence_p0', '', 'ar_enceinte_pulse_3q', 48, 38, 3, 2, { named: false })",
     "layers": [
       "pulse"
-    ]
+    ],
+    "obsolete": true
   },
   "ar_enceinte_pulse_3q_pulse": {
     "file": "steel/steel_arena/ar_enceinte_pulse_3q_pulse.webp",
@@ -2956,7 +2990,8 @@
     "additive": true,
     "parent": "ar_enceinte_pulse_3q",
     "status": "v1",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "ar_enceinte_pulse_3q_pulse_b": {
     "file": "steel/steel_arena/ar_enceinte_pulse_3q_pulse_b.webp",
@@ -2971,7 +3006,8 @@
     "additive": true,
     "parent": "ar_enceinte_pulse_3q",
     "status": "v1",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
   },
   "ar_gantry_led_pulse_3q": {
     "file": "steel/steel_arena/ar_gantry_led_pulse_3q.webp",
@@ -2993,7 +3029,8 @@
     "pose": "B('ar_gantry0', '', 'ar_gantry_led_pulse_3q', 30, 34, 8, 2, { solid: [], named: false })",
     "layers": [
       "pulse"
-    ]
+    ],
+    "obsolete": true
   },
   "ar_gantry_led_pulse_3q_pulse": {
     "file": "steel/steel_arena/ar_gantry_led_pulse_3q_pulse.webp",
@@ -3008,7 +3045,8 @@
     "additive": true,
     "parent": "ar_gantry_led_pulse_3q",
     "status": "v1",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "ar_gantry_led_pulse_3q_pulse_b": {
     "file": "steel/steel_arena/ar_gantry_led_pulse_3q_pulse_b.webp",
@@ -3023,7 +3061,8 @@
     "additive": true,
     "parent": "ar_gantry_led_pulse_3q",
     "status": "v1",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
   },
   "ar_strobe_pulse_3q": {
     "file": "steel/steel_arena/ar_strobe_pulse_3q.webp",
@@ -3045,7 +3084,8 @@
     "pose": "B('ar_strobe0', '', 'ar_strobe_pulse_3q', 56, 36, 1.5, 1.5, { named: false })",
     "layers": [
       "pulse"
-    ]
+    ],
+    "obsolete": true
   },
   "ar_strobe_pulse_3q_pulse": {
     "file": "steel/steel_arena/ar_strobe_pulse_3q_pulse.webp",
@@ -3060,7 +3100,8 @@
     "additive": true,
     "parent": "ar_strobe_pulse_3q",
     "status": "v1",
-    "layer": "pulse"
+    "layer": "pulse",
+    "obsolete": true
   },
   "ar_strobe_pulse_3q_pulse_b": {
     "file": "steel/steel_arena/ar_strobe_pulse_3q_pulse_b.webp",
@@ -3075,7 +3116,8 @@
     "additive": true,
     "parent": "ar_strobe_pulse_3q",
     "status": "v1",
-    "layer": "pulse_b"
+    "layer": "pulse_b",
+    "obsolete": true
   },
   "ar2_facade_entree_pulse": {
     "file": "steel/steel_arena/ar2_facade_entree_pulse.webp",
@@ -3312,7 +3354,8 @@
     "parent": "ar_guichets_3q",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar_guichets_3q"
+    "source": "overlay LED/rubans from ar_guichets_3q",
+    "obsolete": true
   },
   "ar_booking_3q_pulse": {
     "file": "steel/steel_arena/ar_booking_3q_pulse.webp",
@@ -3328,7 +3371,8 @@
     "parent": "ar_booking_3q",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar_booking_3q"
+    "source": "overlay LED/rubans from ar_booking_3q",
+    "obsolete": true
   },
   "ar_securite_3q_pulse": {
     "file": "steel/steel_arena/ar_securite_3q_pulse.webp",
@@ -3344,7 +3388,8 @@
     "parent": "ar_securite_3q",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar_securite_3q"
+    "source": "overlay LED/rubans from ar_securite_3q",
+    "obsolete": true
   },
   "ar_tech_ouest_a_3q_pulse": {
     "file": "steel/steel_arena/ar_tech_ouest_a_3q_pulse.webp",
@@ -3360,7 +3405,8 @@
     "parent": "ar_tech_ouest_a_3q",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar_tech_ouest_a_3q"
+    "source": "overlay LED/rubans from ar_tech_ouest_a_3q",
+    "obsolete": true
   },
   "ar_stand_merch_b_3q_pulse": {
     "file": "steel/steel_arena/ar_stand_merch_b_3q_pulse.webp",
@@ -3376,7 +3422,8 @@
     "parent": "ar_stand_merch_b_3q",
     "status": "v1",
     "layer": "pulse",
-    "source": "overlay LED/rubans from ar_stand_merch_b_3q"
+    "source": "overlay LED/rubans from ar_stand_merch_b_3q",
+    "obsolete": true
   },
   "ar_foodtruck_nouilles_3q_pulse": {
     "file": "steel/steel_arena/ar_foodtruck_nouilles_3q_pulse.webp",
@@ -3608,7 +3655,8 @@
     "layer": "pulse2",
     "bande": "kick",
     "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
-    "pulse_px": 68087
+    "pulse_px": 68087,
+    "obsolete": true
   },
   "ar_regie_3q_pulse2": {
     "file": "steel/steel_arena/ar_regie_3q_pulse2.webp",
@@ -3626,7 +3674,8 @@
     "layer": "pulse2",
     "bande": "kick",
     "source": "pulse2 dense amber/warm LED ribbons (procedural on silhouette)",
-    "pulse_px": 42710
+    "pulse_px": 42710,
+    "obsolete": true
   },
   "ar2_toit_x_faisceau": {
     "file": "steel/steel_arena/ar2_toit_x_faisceau.webp",
@@ -3922,7 +3971,8 @@
     "layer": "faisceau",
     "bande": "kick",
     "source": "soft thin faisceau audit-sol",
-    "pulse_px": 6182
+    "pulse_px": 6182,
+    "obsolete": true
   },
   "ar_barriere_file_v2": {
     "file": "steel/steel_arena/ar_barriere_file_v2.webp",
