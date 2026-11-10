@@ -1,2 +1,4 @@
 node_modules/
 __pycache__/
+_site/
+_site_exclus.txt
