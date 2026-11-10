@@ -2,7 +2,7 @@
 
 Statut : [référence] document de travail, rédigé par Régie le 2026-11-10 à la demande de Valentin.
 Destinataire : Ocre, au moment de l'écriture des dialogues de No Man's Land.
-Ce document ne fixe aucun canon. Il décrit des techniques de Fallout 2 et montre comment les transposer à NML. Les exemples marqués **[NML]** sont des exemples inventés pour illustrer, pas des textes validés.
+Ce document ne fixe aucun canon. Les exemples complets sont en section 6. Il décrit des techniques de Fallout 2 et montre comment les transposer à NML. Les exemples marqués **[NML]** sont des exemples inventés pour illustrer, pas des textes validés.
 
 ## 1. Ce qui fait le ton de Fallout 2
 
@@ -104,3 +104,125 @@ Règles : quelques phrases au passé, factuelles, avec une chute ironique quand 
 
 ## 5. Pistes à creuser plus tard
 Les fichiers `.msg` complets d'autres PNJ sur The Fallout Wiki (Sulik, Marcus, Vic, l'Ancienne d'Arroyo, les fonctionnaires de Vault City, les familles de New Reno, Frank Horrigan) donnent des modèles pour chaque type de voix : tribal, mafieux, bureaucrate, militaire.
+
+## 6. Exemples
+
+Deux sortes d'exemples dans cette section :
+- **[FO2]** : de courtes citations de Fallout 2, en anglais d'origine avec une traduction de travail, tirées des sources de la section 4 ;
+- **[NML]** : des scènes écrites dans l'esprit de Fallout 2 pour No Man's Land. Elles servent de modèle de ton. Ce n'est pas du canon : noms, quêtes et lieux sont à valider avant tout usage en jeu.
+
+### 6.1 Description au regard
+
+**[FO2]** Myron (`NhMyron.msg`) :
+- *« You see Myron. He's looking around like a ferret. »* (Vous voyez Myron. Il regarde partout comme un furet.)
+- *« You see Myron. He looks bored. »* (Vous voyez Myron. Il a l'air de s'ennuyer.)
+
+**[NML]** Une vendeuse de nouilles de Pulse Plaza :
+- Premier regard : « Vous voyez une femme d'une soixantaine d'années, tablier taché de sauce, bras de cyborg bas de gamme. Le bras est plus propre que le tablier. »
+- Variante : « Vous voyez la vendeuse. Elle remue le bouillon sans le regarder. »
+- Variante : « Vous voyez la vendeuse. Elle compte les clients qui ne paient pas. Elle n'a pas besoin de ses doigts. »
+- Joueur Mutant : « Vous voyez la vendeuse. Elle vous suit des yeux et pose la main sur sa louche, comme on pose la main sur une arme. »
+
+### 6.2 Répliques flottantes
+
+**[FO2]** Myron selon la situation :
+- Normale : *« Thought I smelled something… »* (Il me semblait bien que ça sentait quelque chose…)
+- Blessé : *« Is this my blood? »* (C'est mon sang, ça ?) / *« Medic! »* (Médecin !)
+
+**[NML]** Un agent de la SMPD à Center-Town :
+- Normale : « Circulez. » / « Implant visible, s'il vous plaît. » / « Belle soirée pour un contrôle. »
+- Joueur armé : « Tu ranges ça ou je te le range. »
+- Joueur Mutant : « Toi, tu n'as rien à faire ici. » / « On a des cages pour ta taille. »
+- Joueur avec le titre « Celui qui a coupé le Feed » : « C'est lui. Appelle le central. »
+- Blessé : « Agent à terre ! » / « Ça, c'est dans le rapport. »
+
+### 6.3 Dialogue principal avec nœud central
+
+**[NML]** Le kiosquier de Pulse Plaza.
+
+> Kiosquier : Piles, chips, plans de la Mega-Line. Tout est neuf, sauf ce qui ne l'est pas.
+> 1. Qu'est-ce que tu vends, au juste ?
+> 2. Il se passe quoi sur la place ?
+> 3. Tu connais un moyen de prendre la Mega-Line sans implant ?
+> 4. Au revoir.
+
+> (1) Kiosquier : Ce qui se vend. Aujourd'hui, c'est les écouteurs contre le Feed. Demain, ce sera le Feed contre les écouteurs. *(Retour au nœud.)*
+
+> (2) Kiosquier : Concert au Dôme ce soir. Groovy Crew. La moitié de la ville va pleurer devant un écran, l'autre moitié va leur vendre des mouchoirs. *(Retour au nœud.)*
+
+> (3) Kiosquier : Sans implant ? T'es Humain, toi. Ça se voit à ta façon d'avoir l'air perdu. Il y a des gens qui bricolent des puces dans la Sous-Ville. Moi, je t'ai rien dit. *(Drapeau : piste du piratage. Retour au nœud.)*
+
+> (4) Kiosquier : Reviens quand t'auras des crédits. Ou des questions moins chères.
+
+Points à remarquer : le nœud revient après chaque question, une réponse fait avancer une quête, et la réplique (3) change selon la race du joueur.
+
+Variante (3) pour un joueur Augmenté :
+> Kiosquier : T'as un implant et tu me demandes comment t'en passer ? Ou bien t'es flic, ou bien t'es pire.
+
+### 6.4 Test de compétence
+
+**[NML]** Le portier du Dôme Fréquence, soir de concert.
+
+> Portier : Liste fermée. Si ton nom n'y est pas, t'existes pas.
+> 1. [Parole] Je suis de l'équipe technique. Tron m'attend pour les retours.
+> 2. [Intimider] Regarde-moi. Tu veux vraiment que mon nom y soit ?
+> 3. [Volonté] *(Attendre sans rien dire, le regarder en face.)*
+> 4. Tant pis.
+
+> [Parole] réussite : Portier : L'équipe technique… T'as pas de badge, mais t'as la tête de quelqu'un qui a oublié son badge. Entre.
+> [Parole] échec : Portier : Tron n'attend personne. Tron fait attendre. Dégage.
+> [Intimider] réussite : Portier : … Ça va. Entrée de service, à gauche. Je t'ai pas vu.
+> [Intimider] échec : Portier : Mignon. Les gars, on a un comique. *(Deux vigiles arrivent. Entrée fermée pour la soirée.)*
+> [Volonté] réussite : Portier *(après un long silence)* : … T'es bizarre, toi. Entre avant que je change d'avis.
+> Retour après échec : Portier : Encore toi ? J'ai une excellente mémoire des visages. Surtout des moches.
+
+### 6.5 Faible Intelligence
+
+**[FO2]** Torr, à Klamath. Il parle un sabir et le sens clair vient entre parenthèses :
+> Torr : *Me Torr* (Je suis Torr. Je peux t'aider ?)
+> Joueur : *You Torr* (Bonjour Torr. J'ai quelques questions.)
+
+**[FO2]** Sulik, devant un joueur peu intelligent, en substance : la plupart des gens ont de mauvais esprits, toi tu as des esprits stupides, va voir le chaman pour te faire un trou dans la tête, un très grand trou.
+
+**[NML]** Le même kiosquier, avec un joueur à faible Intelligence :
+> Kiosquier : Piles, chips, plans de la Mega-Line.
+> 1. Chips !
+> 2. Train ? *(Montrer la rame du doigt.)*
+> 3. *(Partir.)*
+
+> (1) Kiosquier : Bon choix. Le seul que t'aies fait aujourd'hui, j'imagine. *(Vente simple.)*
+> (2) Kiosquier : Oui. Train. Tchou-tchou. Il faut un implant. Im-plant. *(Il tapote sa nuque.)* T'en as un ? Non. Bien sûr que non.
+
+**[NML]** Un PNJ qui comprend le joueur peu intelligent, dans l'esprit de Torr : un vieux robot de nettoyage de la Mega-Line, qui ne parle que par codes d'erreur, traduits entre parenthèses.
+> Robot : BZZT. ERR-404. *(Je ne trouve pas mon chef. Personne ne me trouve. Tant mieux.)*
+> Joueur : Toi perdu ?
+> Robot : ERR-200. OK. *(Pas perdu. Oublié. C'est différent, et c'est mieux.)*
+> Joueur : Train ? Pas implant.
+> Robot : ERR-403… *(Interdit. Mais la porte du local technique ne ferme plus depuis 2091. Je ne l'ai jamais signalé.)*
+
+Seul un joueur à faible Intelligence obtient cette piste. Un joueur normal reçoit seulement les codes d'erreur.
+
+### 6.6 Compagnon
+
+**[NML]** Fusible, si on l'emmène :
+- Il s'ennuie : « On fait quelque chose, ou on regarde les néons jusqu'à ce qu'ils grillent ? »
+- En combat, coup raté contre lui : « Raté ! Raté ! Fais-le encore pour voir… non, en fait, non. »
+- Blessé : « J'ai une fuite. Une fuite de moi. »
+- On le laisse attendre : « Ici ? Tout seul ? Près des poubelles ? Super. Je vais me faire des amis. »
+- Le joueur ment à un PNJ : « T'as menti tellement bien que j'y ai cru, et j'étais là. »
+
+### 6.7 Réputation et titres
+
+**[NML]** Le même vigile de Human Corp, selon la réputation du joueur à Center-Town :
+- Réputation haute : « Ah, vous. La direction parle de vous. En bien. Ça m'inquiète un peu. »
+- Neutre : « Badge. »
+- Basse : « Ton visage est sur notre liste. Pas la bonne liste. »
+- Titre « Balance de la SMPD », PNJ de la Sous-Ville : « Les murs ont des oreilles. Toi, t'es une oreille avec des jambes. »
+
+### 6.8 Diapositive de fin
+
+**[FO2]** Myron, en substance : poignardé par un drogué au Jet dans un bar du Den, moins d'un an après la chute de l'Enclave ; sa découverte est vite oubliée, et personne ne se souvient de son nom.
+
+**[NML]** Deux fins pour le kiosquier de Pulse Plaza :
+- Si le joueur a coupé le Feed : « Sans le Feed, Pulse Plaza a découvert le silence. Le kiosquier a vendu des écouteurs pour ne pas l'entendre. Il a fait fortune en trois semaines, puis le Feed est revenu. »
+- Sinon : « Le kiosquier a continué de vendre des piles, des chips et des plans de la Mega-Line. Il n'a jamais pris la ligne. Il disait qu'il connaissait déjà le terminus. »
