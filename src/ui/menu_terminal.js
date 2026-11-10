@@ -193,7 +193,7 @@ export function createTerminal({ M, getOptions, note }) {
   return {
     pret,
     open(m) { // m : 'title' | 'pause'
-      const premier = !ouvert; ouvert = true; M.classList.add('term');
+      const premier = !ouvert; ouvert = true; M.classList.add('term'); cancelAnimationFrame(execT); execEl.textContent = ''; // pas de commande EXEC à moitié tapée au retour
       if (premier) { for (let i = ordre.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ordre[i], ordre[j]] = [ordre[j], ordre[i]]; } }
       layout(); M.classList.toggle('t-reduit', reduit());
       if (reduit()) tickerReduit(); else { if (premier || !track.children.length) tickerRemplit(); tickerVitesse(); }
