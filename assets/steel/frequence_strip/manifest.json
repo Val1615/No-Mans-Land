@@ -4574,7 +4574,8 @@
         50,
         411
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_sexshop_3q_neon": {
     "file": "steel/frequence_strip/fs_sexshop_3q_neon.webp",
@@ -4590,7 +4591,8 @@
     "texte": "JOUETS CALIBRÉS",
     "source": "extraction PIL de l'enseigne lumineuse de fs_sexshop_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_sexshop_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_sexshop_3q_fenetres": {
     "file": "steel/frequence_strip/fs_sexshop_3q_fenetres.webp",
@@ -4605,7 +4607,8 @@
     "couche_de": "fs_sexshop_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_sexshop_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_sexshop_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_peep_3q": {
     "file": "steel/frequence_strip/fs_peep_3q.webp",
@@ -4648,7 +4651,8 @@
         83,
         408
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_peep_3q_neon": {
     "file": "steel/frequence_strip/fs_peep_3q_neon.webp",
@@ -4664,7 +4668,8 @@
     "texte": "3 SECONDES",
     "source": "extraction PIL de l'enseigne lumineuse de fs_peep_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_peep_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_peep_3q_fenetres": {
     "file": "steel/frequence_strip/fs_peep_3q_fenetres.webp",
@@ -4679,7 +4684,8 @@
     "couche_de": "fs_peep_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_peep_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_peep_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_salon_3q": {
     "file": "steel/frequence_strip/fs_salon_3q.webp",
@@ -4722,7 +4728,8 @@
         21,
         315
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_salon_3q_neon": {
     "file": "steel/frequence_strip/fs_salon_3q_neon.webp",
@@ -4738,7 +4745,8 @@
     "texte": "TOMBÉ DE RIDEAU",
     "source": "extraction PIL de l'enseigne lumineuse de fs_salon_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_salon_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_salon_3q_fenetres": {
     "file": "steel/frequence_strip/fs_salon_3q_fenetres.webp",
@@ -4753,7 +4761,8 @@
     "couche_de": "fs_salon_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_salon_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_salon_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bouche_nord_3q": {
     "file": "steel/frequence_strip/fs_bouche_nord_3q.webp",
@@ -4778,7 +4787,8 @@
     "fenetres": "fs_bouche_nord_3q_fenetres",
     "status": "v1",
     "neon": null,
-    "note": "bâtiment de service sans enseigne (ruelle noire de Fusible et mur d'écrans)"
+    "note": "bâtiment de service sans enseigne (ruelle noire de Fusible et mur d'écrans)",
+    "obsolete": true
   },
   "fs_bouche_nord_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bouche_nord_3q_fenetres.webp",
@@ -4793,7 +4803,8 @@
     "couche_de": "fs_bouche_nord_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bouche_nord_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bouche_nord_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_club_3q": {
     "file": "steel/frequence_strip/fs_club_3q.webp",
@@ -4840,7 +4851,8 @@
     "saute_conseille": [
       0.334,
       0.36
-    ]
+    ],
+    "obsolete": true
   },
   "fs_club_3q_neon": {
     "file": "steel/frequence_strip/fs_club_3q_neon.webp",
@@ -4856,7 +4868,8 @@
     "texte": "L’EFFEUILLÉE",
     "source": "extraction PIL de l'enseigne lumineuse de fs_club_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_club_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_club_3q_fenetres": {
     "file": "steel/frequence_strip/fs_club_3q_fenetres.webp",
@@ -4871,7 +4884,8 @@
     "couche_de": "fs_club_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_club_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_club_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_lovehotel_3q": {
     "file": "steel/frequence_strip/fs_lovehotel_3q.webp",
@@ -4914,7 +4928,8 @@
         83,
         152
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_lovehotel_3q_neon": {
     "file": "steel/frequence_strip/fs_lovehotel_3q_neon.webp",
@@ -4930,7 +4945,8 @@
     "texte": "L’HEURE EXQUISE",
     "source": "extraction PIL de l'enseigne lumineuse de fs_lovehotel_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_lovehotel_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_lovehotel_3q_fenetres": {
     "file": "steel/frequence_strip/fs_lovehotel_3q_fenetres.webp",
@@ -4945,7 +4961,8 @@
     "couche_de": "fs_lovehotel_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_lovehotel_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_lovehotel_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_clubprive_3q": {
     "file": "steel/frequence_strip/fs_clubprive_3q.webp",
@@ -4988,7 +5005,8 @@
         137,
         390
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_clubprive_3q_neon": {
     "file": "steel/frequence_strip/fs_clubprive_3q_neon.webp",
@@ -5004,7 +5022,8 @@
     "texte": "CLUB 404",
     "source": "extraction PIL de l'enseigne lumineuse de fs_clubprive_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_clubprive_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_clubprive_3q_fenetres": {
     "file": "steel/frequence_strip/fs_clubprive_3q_fenetres.webp",
@@ -5019,7 +5038,8 @@
     "couche_de": "fs_clubprive_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_clubprive_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_clubprive_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_cabines_3q": {
     "file": "steel/frequence_strip/fs_cabines_3q.webp",
@@ -5062,7 +5082,8 @@
         36,
         184
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_cabines_3q_neon": {
     "file": "steel/frequence_strip/fs_cabines_3q_neon.webp",
@@ -5078,7 +5099,8 @@
     "texte": "CABINES SANS C.A.G.E.",
     "source": "extraction PIL de l'enseigne lumineuse de fs_cabines_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_cabines_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_cabines_3q_fenetres": {
     "file": "steel/frequence_strip/fs_cabines_3q_fenetres.webp",
@@ -5093,7 +5115,8 @@
     "couche_de": "fs_cabines_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_cabines_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_cabines_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_nouilles_3q": {
     "file": "steel/frequence_strip/fs_bas_nouilles_3q.webp",
@@ -5136,7 +5159,8 @@
         115,
         105
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_nouilles_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_nouilles_3q_neon.webp",
@@ -5152,7 +5176,8 @@
     "texte": "NOUILLES DE MINUIT",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_nouilles_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_nouilles_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_nouilles_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_nouilles_3q_fenetres.webp",
@@ -5167,7 +5192,8 @@
     "couche_de": "fs_bas_nouilles_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_nouilles_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_nouilles_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_fleurs_3q": {
     "file": "steel/frequence_strip/fs_bas_fleurs_3q.webp",
@@ -5210,7 +5236,8 @@
         38,
         85
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_fleurs_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_fleurs_3q_neon.webp",
@@ -5226,7 +5253,8 @@
     "texte": "EXCUSES",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_fleurs_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_fleurs_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_fleurs_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_fleurs_3q_fenetres.webp",
@@ -5241,7 +5269,8 @@
     "couche_de": "fs_bas_fleurs_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_fleurs_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_fleurs_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_tabac_3q": {
     "file": "steel/frequence_strip/fs_bas_tabac_3q.webp",
@@ -5284,7 +5313,8 @@
         31,
         95
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_tabac_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_tabac_3q_neon.webp",
@@ -5300,7 +5330,8 @@
     "texte": "À CRÉDIT",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_tabac_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_tabac_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_tabac_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_tabac_3q_fenetres.webp",
@@ -5315,7 +5346,8 @@
     "couche_de": "fs_bas_tabac_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_tabac_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_tabac_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_preservatifs_3q": {
     "file": "steel/frequence_strip/fs_bas_preservatifs_3q.webp",
@@ -5358,7 +5390,8 @@
         29,
         82
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_preservatifs_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_preservatifs_3q_neon.webp",
@@ -5374,7 +5407,8 @@
     "texte": "BIEN COUVERT",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_preservatifs_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_preservatifs_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_preservatifs_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_preservatifs_3q_fenetres.webp",
@@ -5389,7 +5423,8 @@
     "couche_de": "fs_bas_preservatifs_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_preservatifs_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_preservatifs_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_shots_3q": {
     "file": "steel/frequence_strip/fs_bas_shots_3q.webp",
@@ -5432,7 +5467,8 @@
         54,
         63
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_shots_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_shots_3q_neon.webp",
@@ -5448,7 +5484,8 @@
     "texte": "SHOT DE GRÂCE",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_shots_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_shots_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_shots_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_shots_3q_fenetres.webp",
@@ -5463,7 +5500,8 @@
     "couche_de": "fs_bas_shots_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_shots_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_shots_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_distributeur_3q": {
     "file": "steel/frequence_strip/fs_bas_distributeur_3q.webp",
@@ -5506,7 +5544,8 @@
         30,
         82
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_distributeur_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_distributeur_3q_neon.webp",
@@ -5522,7 +5561,8 @@
     "texte": "BILLETS DOUX",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_distributeur_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_distributeur_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_distributeur_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_distributeur_3q_fenetres.webp",
@@ -5537,7 +5577,8 @@
     "couche_de": "fs_bas_distributeur_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_distributeur_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_distributeur_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_massages_3q": {
     "file": "steel/frequence_strip/fs_bas_massages_3q.webp",
@@ -5580,7 +5621,8 @@
         45,
         85
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_massages_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_massages_3q_neon.webp",
@@ -5596,7 +5638,8 @@
     "texte": "MAINS DE FÉE",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_massages_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_massages_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_massages_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_massages_3q_fenetres.webp",
@@ -5611,7 +5654,8 @@
     "couche_de": "fs_bas_massages_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_massages_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_massages_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_laverie_3q": {
     "file": "steel/frequence_strip/fs_bas_laverie_3q.webp",
@@ -5654,7 +5698,8 @@
         38,
         115
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_laverie_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_laverie_3q_neon.webp",
@@ -5670,7 +5715,8 @@
     "texte": "BLANCHIMENT",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_laverie_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_laverie_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_laverie_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_laverie_3q_fenetres.webp",
@@ -5685,7 +5731,8 @@
     "couche_de": "fs_bas_laverie_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_laverie_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_laverie_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_gage_3q": {
     "file": "steel/frequence_strip/fs_bas_gage_3q.webp",
@@ -5728,7 +5775,8 @@
         27,
         83
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_gage_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_gage_3q_neon.webp",
@@ -5744,7 +5792,8 @@
     "texte": "MONT-DE-PIÉTÉ",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_gage_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_gage_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_gage_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_gage_3q_fenetres.webp",
@@ -5759,7 +5808,8 @@
     "couche_de": "fs_bas_gage_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_gage_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_gage_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_perruques_3q": {
     "file": "steel/frequence_strip/fs_bas_perruques_3q.webp",
@@ -5802,7 +5852,8 @@
         37,
         88
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_perruques_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_perruques_3q_neon.webp",
@@ -5818,7 +5869,8 @@
     "texte": "FAUX-SEMBLANTS",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_perruques_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_perruques_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_perruques_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_perruques_3q_fenetres.webp",
@@ -5833,7 +5885,8 @@
     "couche_de": "fs_bas_perruques_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_perruques_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_perruques_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_implants_3q": {
     "file": "steel/frequence_strip/fs_bas_implants_3q.webp",
@@ -5876,7 +5929,8 @@
         42,
         83
       ]
-    ]
+    ],
+    "obsolete": true
   },
   "fs_bas_implants_3q_neon": {
     "file": "steel/frequence_strip/fs_bas_implants_3q_neon.webp",
@@ -5892,7 +5946,8 @@
     "texte": "RECHROMAGE",
     "source": "extraction PIL de l'enseigne lumineuse de fs_bas_implants_3q.webp",
     "note": "couche néon séparée, même taille et même ancre que fs_bas_implants_3q ; posée en additif par view.js",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_bas_implants_3q_fenetres": {
     "file": "steel/frequence_strip/fs_bas_implants_3q_fenetres.webp",
@@ -5907,7 +5962,8 @@
     "couche_de": "fs_bas_implants_3q",
     "source": "extraction PIL des fenêtres et ouvertures chaudes de fs_bas_implants_3q.webp",
     "note": "calque des fenêtres/vitrines allumées seules, même taille et même ancre que fs_bas_implants_3q, pour vacillement par le code",
-    "status": "v1"
+    "status": "v1",
+    "obsolete": true
   },
   "fs_sexshop_v2_3q": {
     "file": "steel/frequence_strip/fs_sexshop_v2_3q.webp",
