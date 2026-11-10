@@ -1,0 +1,54 @@
+{
+  "id": "menu_terminal",
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "ecran": {
+    "x": 168,
+    "y": 117,
+    "w": 1584,
+    "h": 821,
+    "rayon": 54,
+    "fondu_px": 5.0
+  },
+  "calques": [
+    {
+      "id": "fond_ecran",
+      "fichier": "fond_ecran.png",
+      "fixe": true,
+      "note": "Ville ambre atténuée, sous le cadre, visible par le trou de l'écran. Dérive lente optionnelle en code."
+    },
+    {
+      "id": "contenu_texte",
+      "fichier": null,
+      "fixe": false,
+      "note": "Tout le texte (boot, titre, menu, barre de statut, curseur, ticker) est rendu en code, pas en image."
+    },
+    {
+      "id": "tampon",
+      "fichier": "tampon_acces_non_autorise.png",
+      "fixe": true,
+      "x": 1286,
+      "y": 708,
+      "w": 436,
+      "h": 232,
+      "opacite": 0.85,
+      "note": "Apparaît en fin de boot avec un petit flash. Ne doit pas recouvrir les choix du menu."
+    },
+    {
+      "id": "effets_crt",
+      "fichier": null,
+      "fixe": false,
+      "note": "Scanlines, scintillement, vignette, courbure : code, animé."
+    },
+    {
+      "id": "cadre",
+      "fichier": "cadre.png",
+      "fixe": true,
+      "note": "Lunette métal, toujours au-dessus. Zone écran entièrement transparente."
+    }
+  ],
+  "masque": "ecran_masque.png",
+  "proto": "docs/ui/proto_menu_terminal.jpg"
+}
