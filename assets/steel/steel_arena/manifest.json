@@ -3923,5 +3923,1274 @@
     "bande": "kick",
     "source": "soft thin faisceau audit-sol",
     "pulse_px": 6182
+  },
+  "ar_barriere_file_v2": {
+    "file": "steel/steel_arena/ar_barriere_file_v2.webp",
+    "px": [
+      180,
+      111
+    ],
+    "anchor": [
+      165,
+      108
+    ],
+    "footprint_m": [
+      4,
+      0.4
+    ],
+    "height_m": 1.0,
+    "face": "x",
+    "role": "Barrière de file anthracite (grille, liseré ambre, réflecteurs cyan), le long de x",
+    "pose": "B(..., 'ar_barriere_file_v2', x, z, 4, 0.4, { named: false })  // toutes les poses ar_barriere_file (ar_police0..17, ar_bar_l/m/s/n/t)",
+    "remplace": "ar_barriere_file",
+    "status": "arena_v2",
+    "layers": [],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.19217 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_barriere.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.19217,
+      "emprise_mesuree_m": [
+        3.99,
+        0.5
+      ],
+      "comblement_pied_max_px": 7.7,
+      "dy": 0,
+      "arete_pied_g_deg": 18.28,
+      "arete_pied_d_deg": 41.41,
+      "arete_toit_g_deg": 30.76,
+      "arete_toit_d_deg": 17.66
+    }
+  },
+  "ar_barriere_file_o_v2": {
+    "file": "steel/steel_arena/ar_barriere_file_o_v2.webp",
+    "px": [
+      135,
+      134
+    ],
+    "anchor": [
+      22,
+      131
+    ],
+    "footprint_m": [
+      0.4,
+      4
+    ],
+    "height_m": 1.0,
+    "face": "z",
+    "role": "Barrière de file anthracite (grille, liseré ambre, réflecteurs cyan), le long de z",
+    "pose": "B(..., 'ar_barriere_file_o_v2', x, z, 0.4, 4, { named: false })  // ar_bar_e, ar_bar_o, ar_bar_e2, ar_bar_o2",
+    "remplace": "ar_barriere_file_o",
+    "status": "arena_v2",
+    "layers": [],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.23251 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_barriere_o.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.23251,
+      "emprise_mesuree_m": [
+        0.51,
+        3.97
+      ],
+      "comblement_pied_max_px": 7.9,
+      "dy": 0,
+      "arete_pied_g_deg": 21.41,
+      "arete_pied_d_deg": 35.03,
+      "arete_toit_g_deg": 35.62,
+      "arete_toit_d_deg": 20.14
+    }
+  },
+  "ar_guichets_v2_3q": {
+    "file": "steel/steel_arena/ar_guichets_v2_3q.webp",
+    "px": [
+      279,
+      300
+    ],
+    "anchor": [
+      171,
+      297
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.7,
+    "face": "3q",
+    "role": "Guichets : kiosque anthracite, deux guichets ambre, enseigne blanc chaud, liseré cyan",
+    "enseigne": "GUICHETS",
+    "pose": "B('ar_guichets', 'Guichets', 'ar_guichets_v2_3q', 6, 44, 4, 4)",
+    "remplace": "ar_guichets_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.37742 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_guichets_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.37742,
+      "emprise_mesuree_m": [
+        4.11,
+        3.75
+      ],
+      "comblement_pied_max_px": 3.7,
+      "dy": 0,
+      "arete_pied_g_deg": 18.15,
+      "arete_pied_d_deg": 34.91,
+      "arete_toit_g_deg": 33.69,
+      "arete_toit_d_deg": 16.98
+    },
+    "fenetres": "ar_guichets_v2_3q_fenetres",
+    "neon": "ar_guichets_v2_3q_neon",
+    "pulse": "ar_guichets_v2_3q_pulse"
+  },
+  "ar_guichets_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_guichets_v2_3q_fenetres.webp",
+    "px": [
+      279,
+      300
+    ],
+    "anchor": [
+      171,
+      297
+    ],
+    "additive": true,
+    "parent": "ar_guichets_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_guichets_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_guichets_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_guichets_v2_3q_neon.webp",
+    "px": [
+      279,
+      300
+    ],
+    "anchor": [
+      171,
+      297
+    ],
+    "additive": true,
+    "parent": "ar_guichets_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_guichets_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_guichets_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_guichets_v2_3q_pulse.webp",
+    "px": [
+      279,
+      300
+    ],
+    "anchor": [
+      171,
+      297
+    ],
+    "additive": true,
+    "parent": "ar_guichets_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_guichets_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_booking_v2_3q": {
+    "file": "steel/steel_arena/ar_booking_v2_3q.webp",
+    "px": [
+      277,
+      284
+    ],
+    "anchor": [
+      171,
+      281
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.3,
+    "face": "3q",
+    "role": "Comptoir Booking : vitrine ambre, enseigne blanc chaud, gyrophare rouge",
+    "enseigne": "BOOKING",
+    "pose": "B('ar_booking', 'Booking', 'ar_booking_v2_3q', 10, 44, 4, 4)",
+    "remplace": "ar_booking_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.36778 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_booking.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.36778,
+      "emprise_mesuree_m": [
+        4.13,
+        3.69
+      ],
+      "comblement_pied_max_px": 5.1,
+      "dy": 0,
+      "arete_pied_g_deg": 18.12,
+      "arete_pied_d_deg": 34.98,
+      "arete_toit_g_deg": 34.44,
+      "arete_toit_d_deg": 16.7
+    },
+    "fenetres": "ar_booking_v2_3q_fenetres",
+    "neon": "ar_booking_v2_3q_neon",
+    "pulse": "ar_booking_v2_3q_pulse"
+  },
+  "ar_booking_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_booking_v2_3q_fenetres.webp",
+    "px": [
+      277,
+      284
+    ],
+    "anchor": [
+      171,
+      281
+    ],
+    "additive": true,
+    "parent": "ar_booking_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_booking_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_booking_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_booking_v2_3q_neon.webp",
+    "px": [
+      277,
+      284
+    ],
+    "anchor": [
+      171,
+      281
+    ],
+    "additive": true,
+    "parent": "ar_booking_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_booking_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_booking_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_booking_v2_3q_pulse.webp",
+    "px": [
+      277,
+      284
+    ],
+    "anchor": [
+      171,
+      281
+    ],
+    "additive": true,
+    "parent": "ar_booking_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_booking_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_securite_v2_3q": {
+    "file": "steel/steel_arena/ar_securite_v2_3q.webp",
+    "px": [
+      277,
+      291
+    ],
+    "anchor": [
+      172,
+      288
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 3.5,
+    "face": "3q",
+    "role": "Poste Human Corp : guérite blindée anthracite, vitre teintée, enseigne CONTRÔLE, bandes de danger",
+    "enseigne": "CONTRÔLE",
+    "pose": "B('ar_securite', 'Poste Human Corp', 'ar_securite_v2_3q', 14, 52, 4, 4)",
+    "remplace": "ar_securite_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.37079 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_securite_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.37079,
+      "emprise_mesuree_m": [
+        4.15,
+        3.64
+      ],
+      "comblement_pied_max_px": 4.4,
+      "dy": 0,
+      "arete_pied_g_deg": 18.19,
+      "arete_pied_d_deg": 35.05,
+      "arete_toit_g_deg": 35.11,
+      "arete_toit_d_deg": 18.19
+    },
+    "calques_repli": [
+      "fenetres"
+    ],
+    "fenetres": "ar_securite_v2_3q_fenetres",
+    "neon": "ar_securite_v2_3q_neon",
+    "pulse": "ar_securite_v2_3q_pulse"
+  },
+  "ar_securite_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_securite_v2_3q_fenetres.webp",
+    "px": [
+      277,
+      291
+    ],
+    "anchor": [
+      172,
+      288
+    ],
+    "additive": true,
+    "parent": "ar_securite_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_securite_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_securite_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_securite_v2_3q_neon.webp",
+    "px": [
+      277,
+      291
+    ],
+    "anchor": [
+      172,
+      288
+    ],
+    "additive": true,
+    "parent": "ar_securite_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_securite_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_securite_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_securite_v2_3q_pulse.webp",
+    "px": [
+      277,
+      291
+    ],
+    "anchor": [
+      172,
+      288
+    ],
+    "additive": true,
+    "parent": "ar_securite_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_securite_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_stand_merch_b_v2_3q": {
+    "file": "steel/steel_arena/ar_stand_merch_b_v2_3q.webp",
+    "px": [
+      277,
+      261
+    ],
+    "anchor": [
+      171,
+      258
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.8,
+    "face": "3q",
+    "role": "Stand Merch officiel : comptoir ouvert, étagères ambre (t-shirts, casquettes)",
+    "enseigne": "MERCH OFFICIEL",
+    "pose": "B('ar_merch_b', 'Merch officiel', 'ar_stand_merch_b_v2_3q', 26, 40, 4, 4)",
+    "remplace": "ar_stand_merch_b_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.36203 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_merch_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.36203,
+      "emprise_mesuree_m": [
+        4.13,
+        3.69
+      ],
+      "comblement_pied_max_px": 4.6,
+      "dy": 0,
+      "arete_pied_g_deg": 18.14,
+      "arete_pied_d_deg": 34.91,
+      "arete_toit_g_deg": 34.19,
+      "arete_toit_d_deg": 17.75
+    },
+    "fenetres": "ar_stand_merch_b_v2_3q_fenetres",
+    "neon": "ar_stand_merch_b_v2_3q_neon",
+    "pulse": "ar_stand_merch_b_v2_3q_pulse"
+  },
+  "ar_stand_merch_b_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_stand_merch_b_v2_3q_fenetres.webp",
+    "px": [
+      277,
+      261
+    ],
+    "anchor": [
+      171,
+      258
+    ],
+    "additive": true,
+    "parent": "ar_stand_merch_b_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_stand_merch_b_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_stand_merch_b_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_stand_merch_b_v2_3q_neon.webp",
+    "px": [
+      277,
+      261
+    ],
+    "anchor": [
+      171,
+      258
+    ],
+    "additive": true,
+    "parent": "ar_stand_merch_b_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_stand_merch_b_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_stand_merch_b_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_stand_merch_b_v2_3q_pulse.webp",
+    "px": [
+      277,
+      261
+    ],
+    "anchor": [
+      171,
+      258
+    ],
+    "additive": true,
+    "parent": "ar_stand_merch_b_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_stand_merch_b_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_stand_merch_c_v2_3q": {
+    "file": "steel/steel_arena/ar_stand_merch_c_v2_3q.webp",
+    "px": [
+      279,
+      267
+    ],
+    "anchor": [
+      170,
+      264
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.9,
+    "face": "3q",
+    "role": "Chariot de merch : caisson anthracite, vitrine ambre (sweats, casquettes), liseré cyan",
+    "enseigne": "MERCH",
+    "pose": "B('ar_merch_c', 'Chariot de merch', 'ar_stand_merch_c_v2_3q', 54, 40, 4, 4)",
+    "remplace": "ar_stand_merch_c_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.3647 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_merch_c_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.3647,
+      "emprise_mesuree_m": [
+        4.09,
+        3.8
+      ],
+      "comblement_pied_max_px": 4.8,
+      "dy": 0,
+      "arete_pied_g_deg": 18.48,
+      "arete_pied_d_deg": 35.07,
+      "arete_toit_g_deg": 35.01,
+      "arete_toit_d_deg": 18.22
+    },
+    "fenetres": "ar_stand_merch_c_v2_3q_fenetres",
+    "neon": "ar_stand_merch_c_v2_3q_neon"
+  },
+  "ar_stand_merch_c_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_stand_merch_c_v2_3q_fenetres.webp",
+    "px": [
+      279,
+      267
+    ],
+    "anchor": [
+      170,
+      264
+    ],
+    "additive": true,
+    "parent": "ar_stand_merch_c_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_stand_merch_c_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_stand_merch_c_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_stand_merch_c_v2_3q_neon.webp",
+    "px": [
+      279,
+      267
+    ],
+    "anchor": [
+      170,
+      264
+    ],
+    "additive": true,
+    "parent": "ar_stand_merch_c_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_stand_merch_c_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_regie_v2_3q": {
+    "file": "steel/steel_arena/ar_regie_v2_3q.webp",
+    "px": [
+      440,
+      347
+    ],
+    "anchor": [
+      335,
+      344
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 3.5,
+    "face": "3q",
+    "role": "Camion régie : caisson anthracite fermé, bandeau vitré ambre (consoles, écrans cyan)",
+    "enseigne": "RÉGIE",
+    "pose": "B('ar_regie', 'Camion régie', 'ar_regie_v2_3q', 76, 50, 8, 4)",
+    "remplace": "ar_regie_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse",
+      "pulse2"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.62113 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_regie_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.62113,
+      "emprise_mesuree_m": [
+        8.09,
+        3.59
+      ],
+      "comblement_pied_max_px": 7.1,
+      "dy": 0,
+      "arete_pied_g_deg": 18.26,
+      "arete_pied_d_deg": 35.05,
+      "arete_toit_g_deg": 32.76,
+      "arete_toit_d_deg": 16.62
+    },
+    "calques_repli": [
+      "pulse2"
+    ],
+    "fenetres": "ar_regie_v2_3q_fenetres",
+    "neon": "ar_regie_v2_3q_neon",
+    "pulse": "ar_regie_v2_3q_pulse",
+    "pulse2": "ar_regie_v2_3q_pulse2"
+  },
+  "ar_regie_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_regie_v2_3q_fenetres.webp",
+    "px": [
+      440,
+      347
+    ],
+    "anchor": [
+      335,
+      344
+    ],
+    "additive": true,
+    "parent": "ar_regie_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_regie_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_regie_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_regie_v2_3q_neon.webp",
+    "px": [
+      440,
+      347
+    ],
+    "anchor": [
+      335,
+      344
+    ],
+    "additive": true,
+    "parent": "ar_regie_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_regie_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_regie_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_regie_v2_3q_pulse.webp",
+    "px": [
+      440,
+      347
+    ],
+    "anchor": [
+      335,
+      344
+    ],
+    "additive": true,
+    "parent": "ar_regie_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_regie_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_regie_v2_3q_pulse2": {
+    "file": "steel/steel_arena/ar_regie_v2_3q_pulse2.webp",
+    "px": [
+      440,
+      347
+    ],
+    "anchor": [
+      335,
+      344
+    ],
+    "additive": true,
+    "parent": "ar_regie_v2_3q",
+    "layer": "pulse2",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse2 de ar_regie_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tribunes_v2_3q": {
+    "file": "steel/steel_arena/ar_tribunes_v2_3q.webp",
+    "px": [
+      718,
+      510
+    ],
+    "anchor": [
+      504,
+      507
+    ],
+    "footprint_m": [
+      12,
+      8
+    ],
+    "height_m": 4.1,
+    "face": "3q",
+    "role": "Tribunes de parvis : quatre gradins anthracite, LED ambre sous les nez de marche",
+    "enseigne": "TRIBUNES",
+    "pose": "B('ar_tribunes', 'Tribunes', 'ar_tribunes_v2_3q', 20, 32, 12, 8)",
+    "remplace": "ar_tribunes_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse",
+      "pulse2"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.91607 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_tribunes.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.91607,
+      "emprise_mesuree_m": [
+        12.16,
+        7.44
+      ],
+      "comblement_pied_max_px": 7.1,
+      "dy": -2,
+      "arete_pied_g_deg": 18.29,
+      "arete_pied_d_deg": 34.45,
+      "arete_toit_g_deg": 32.59,
+      "arete_toit_d_deg": 16.79
+    },
+    "calques_repli": [
+      "pulse2"
+    ],
+    "fenetres": "ar_tribunes_v2_3q_fenetres",
+    "neon": "ar_tribunes_v2_3q_neon",
+    "pulse": "ar_tribunes_v2_3q_pulse",
+    "pulse2": "ar_tribunes_v2_3q_pulse2"
+  },
+  "ar_tribunes_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tribunes_v2_3q_fenetres.webp",
+    "px": [
+      718,
+      510
+    ],
+    "anchor": [
+      504,
+      507
+    ],
+    "additive": true,
+    "parent": "ar_tribunes_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_tribunes_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tribunes_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_tribunes_v2_3q_neon.webp",
+    "px": [
+      718,
+      510
+    ],
+    "anchor": [
+      504,
+      507
+    ],
+    "additive": true,
+    "parent": "ar_tribunes_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_tribunes_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tribunes_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_tribunes_v2_3q_pulse.webp",
+    "px": [
+      718,
+      510
+    ],
+    "anchor": [
+      504,
+      507
+    ],
+    "additive": true,
+    "parent": "ar_tribunes_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_tribunes_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tribunes_v2_3q_pulse2": {
+    "file": "steel/steel_arena/ar_tribunes_v2_3q_pulse2.webp",
+    "px": [
+      718,
+      510
+    ],
+    "anchor": [
+      504,
+      507
+    ],
+    "additive": true,
+    "parent": "ar_tribunes_v2_3q",
+    "layer": "pulse2",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse2 de ar_tribunes_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tech_ouest_a_v2_3q": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_v2_3q.webp",
+    "px": [
+      554,
+      604
+    ],
+    "anchor": [
+      345,
+      601
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 7.6,
+    "face": "3q",
+    "role": "Bâtiment technique A1 : R+1 béton / bardage, rideau métallique, fenêtres ambre",
+    "enseigne": "TECHNIQUE A1",
+    "pose": "B('ar_tech_a', 'Technique ouest', 'ar_tech_ouest_a_v2_3q', 0, 30, 8, 8)",
+    "remplace": "ar_tech_ouest_a_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres",
+      "neon",
+      "pulse"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.79769 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_tech_a_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.79769,
+      "emprise_mesuree_m": [
+        8.3,
+        7.27
+      ],
+      "comblement_pied_max_px": 7.8,
+      "dy": 0,
+      "arete_pied_g_deg": 18.29,
+      "arete_pied_d_deg": 34.99,
+      "arete_toit_g_deg": 34.14,
+      "arete_toit_d_deg": 17.28
+    },
+    "fenetres": "ar_tech_ouest_a_v2_3q_fenetres",
+    "neon": "ar_tech_ouest_a_v2_3q_neon",
+    "pulse": "ar_tech_ouest_a_v2_3q_pulse"
+  },
+  "ar_tech_ouest_a_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_v2_3q_fenetres.webp",
+    "px": [
+      554,
+      604
+    ],
+    "anchor": [
+      345,
+      601
+    ],
+    "additive": true,
+    "parent": "ar_tech_ouest_a_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_tech_ouest_a_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tech_ouest_a_v2_3q_neon": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_v2_3q_neon.webp",
+    "px": [
+      554,
+      604
+    ],
+    "anchor": [
+      345,
+      601
+    ],
+    "additive": true,
+    "parent": "ar_tech_ouest_a_v2_3q",
+    "layer": "neon",
+    "status": "arena_v2",
+    "source": "extraction PIL neon de ar_tech_ouest_a_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tech_ouest_a_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_tech_ouest_a_v2_3q_pulse.webp",
+    "px": [
+      554,
+      604
+    ],
+    "anchor": [
+      345,
+      601
+    ],
+    "additive": true,
+    "parent": "ar_tech_ouest_a_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_tech_ouest_a_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tech_ouest_b_v2_3q": {
+    "file": "steel/steel_arena/ar_tech_ouest_b_v2_3q.webp",
+    "px": [
+      398,
+      507
+    ],
+    "anchor": [
+      179,
+      504
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 6.6,
+    "face": "3q",
+    "role": "Bâtiment technique étroit : rideau métallique, porte, fenêtres ambre (sans enseigne)",
+    "pose": "B('ar_tech_b', '', 'ar_tech_ouest_b_v2_3q', 0, 46, 4, 8, { named: false })",
+    "remplace": "ar_tech_ouest_b_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.67403 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_tech_b_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.67403,
+      "emprise_mesuree_m": [
+        4.3,
+        7.64
+      ],
+      "comblement_pied_max_px": 7.2,
+      "dy": 0,
+      "arete_pied_g_deg": 18.42,
+      "arete_pied_d_deg": 35.04,
+      "arete_toit_g_deg": 33.76,
+      "arete_toit_d_deg": 16.43
+    },
+    "fenetres": "ar_tech_ouest_b_v2_3q_fenetres"
+  },
+  "ar_tech_ouest_b_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tech_ouest_b_v2_3q_fenetres.webp",
+    "px": [
+      398,
+      507
+    ],
+    "anchor": [
+      179,
+      504
+    ],
+    "additive": true,
+    "parent": "ar_tech_ouest_b_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_tech_ouest_b_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_tech_ouest_c_v2_3q": {
+    "file": "steel/steel_arena/ar_tech_ouest_c_v2_3q.webp",
+    "px": [
+      399,
+      508
+    ],
+    "anchor": [
+      186,
+      505
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 6.6,
+    "face": "3q",
+    "role": "Sous-station électrique : brique anthracite, armoires, lanternes ambre (sans enseigne)",
+    "pose": "B('ar_tech_c', '', 'ar_tech_ouest_c_v2_3q', 0, 54, 4, 8, { named: false })",
+    "remplace": "ar_tech_ouest_c_3q",
+    "status": "arena_v2",
+    "layers": [
+      "fenetres"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.66965 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_tech_c.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.66965,
+      "emprise_mesuree_m": [
+        4.46,
+        7.42
+      ],
+      "comblement_pied_max_px": 6.1,
+      "dy": 0,
+      "arete_pied_g_deg": 18.37,
+      "arete_pied_d_deg": 34.97,
+      "arete_toit_g_deg": 33.84,
+      "arete_toit_d_deg": 17.69
+    },
+    "fenetres": "ar_tech_ouest_c_v2_3q_fenetres"
+  },
+  "ar_tech_ouest_c_v2_3q_fenetres": {
+    "file": "steel/steel_arena/ar_tech_ouest_c_v2_3q_fenetres.webp",
+    "px": [
+      399,
+      508
+    ],
+    "anchor": [
+      186,
+      505
+    ],
+    "additive": true,
+    "parent": "ar_tech_ouest_c_v2_3q",
+    "layer": "fenetres",
+    "status": "arena_v2",
+    "source": "extraction PIL fenetres de ar_tech_ouest_c_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_mat_projecteur_pulse_v2_3q": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_v2_3q.webp",
+    "px": [
+      141,
+      337
+    ],
+    "anchor": [
+      84,
+      334
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 6.1,
+    "face": "3q",
+    "role": "Mât projecteur en treillis, deux projecteurs blanc chaud, faisceau doux en calque",
+    "pose": "B('ar_mat_p0', '', 'ar_mat_projecteur_pulse_v2_3q', 60, 31, 2, 2, { named: false }), B('ar_mat_p1', '', 'ar_mat_projecteur_pulse_v2_3q', 78, 34, 2, 2, { named: false })",
+    "remplace": "ar_mat_projecteur_pulse_3q",
+    "status": "arena_v2",
+    "layers": [
+      "faisceau",
+      "pulse",
+      "pulse_b"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.34856 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_mat.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.34856,
+      "emprise_mesuree_m": [
+        2.02,
+        1.97
+      ],
+      "comblement_pied_max_px": 2.5,
+      "dy": 0,
+      "arete_pied_g_deg": 18.67,
+      "arete_pied_d_deg": 35.06,
+      "arete_toit_g_deg": 53.64,
+      "arete_toit_d_deg": 9.78
+    },
+    "faisceau": "ar_mat_projecteur_pulse_v2_3q_faisceau",
+    "pulse": "ar_mat_projecteur_pulse_v2_3q_pulse",
+    "pulse_b": "ar_mat_projecteur_pulse_v2_3q_pulse_b"
+  },
+  "ar_mat_projecteur_pulse_v2_3q_faisceau": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_v2_3q_faisceau.webp",
+    "px": [
+      141,
+      337
+    ],
+    "anchor": [
+      84,
+      334
+    ],
+    "additive": true,
+    "parent": "ar_mat_projecteur_pulse_v2_3q",
+    "layer": "faisceau",
+    "status": "arena_v2",
+    "source": "extraction PIL faisceau de ar_mat_projecteur_pulse_v2_3q.webp (même canevas, même ancre)",
+    "doux": true,
+    "sources_px": [
+      [
+        38,
+        65
+      ],
+      [
+        100,
+        69
+      ]
+    ]
+  },
+  "ar_mat_projecteur_pulse_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_v2_3q_pulse.webp",
+    "px": [
+      141,
+      337
+    ],
+    "anchor": [
+      84,
+      334
+    ],
+    "additive": true,
+    "parent": "ar_mat_projecteur_pulse_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_mat_projecteur_pulse_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_mat_projecteur_pulse_v2_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_mat_projecteur_pulse_v2_3q_pulse_b.webp",
+    "px": [
+      141,
+      337
+    ],
+    "anchor": [
+      84,
+      334
+    ],
+    "additive": true,
+    "parent": "ar_mat_projecteur_pulse_v2_3q",
+    "layer": "pulse_b",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse_b de ar_mat_projecteur_pulse_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_enceinte_pulse_v2_3q": {
+    "file": "steel/steel_arena/ar_enceinte_pulse_v2_3q.webp",
+    "px": [
+      181,
+      242
+    ],
+    "anchor": [
+      125,
+      239
+    ],
+    "footprint_m": [
+      3,
+      2
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "role": "Enceinte de concert : caisson anthracite, deux boomers cerclés d'ambre",
+    "pose": "B('ar_ence_p0', '', 'ar_enceinte_pulse_v2_3q', 60, 36, 3, 2, { named: false }), B('ar_ence_p1', '', 'ar_enceinte_pulse_v2_3q', 64, 40, 3, 2, { named: false })",
+    "remplace": "ar_enceinte_pulse_3q",
+    "status": "arena_v2",
+    "layers": [
+      "pulse",
+      "pulse_b"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.27716 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_enceinte_b.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.27716,
+      "emprise_mesuree_m": [
+        3.02,
+        1.92
+      ],
+      "comblement_pied_max_px": 4.0,
+      "dy": -1,
+      "arete_pied_g_deg": 18.17,
+      "arete_pied_d_deg": 34.66,
+      "arete_toit_g_deg": 34.41,
+      "arete_toit_d_deg": 17.83
+    },
+    "calques_repli": [
+      "pulse"
+    ],
+    "pulse": "ar_enceinte_pulse_v2_3q_pulse",
+    "pulse_b": "ar_enceinte_pulse_v2_3q_pulse_b"
+  },
+  "ar_enceinte_pulse_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_enceinte_pulse_v2_3q_pulse.webp",
+    "px": [
+      181,
+      242
+    ],
+    "anchor": [
+      125,
+      239
+    ],
+    "additive": true,
+    "parent": "ar_enceinte_pulse_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_enceinte_pulse_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_enceinte_pulse_v2_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_enceinte_pulse_v2_3q_pulse_b.webp",
+    "px": [
+      181,
+      242
+    ],
+    "anchor": [
+      125,
+      239
+    ],
+    "additive": true,
+    "parent": "ar_enceinte_pulse_v2_3q",
+    "layer": "pulse_b",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse_b de ar_enceinte_pulse_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_gantry_led_pulse_v2_3q": {
+    "file": "steel/steel_arena/ar_gantry_led_pulse_v2_3q.webp",
+    "px": [
+      331,
+      408
+    ],
+    "anchor": [
+      123,
+      405
+    ],
+    "footprint_m": [
+      2.5,
+      7.6
+    ],
+    "height_m": 5.0,
+    "face": "3q",
+    "role": "Portique LED en treillis le long de z (deux tours, poutre), barre LED ambre, pixels blanc chaud, touches cyan",
+    "pose": "B('ar_gantry0', '', 'ar_gantry_led_pulse_v2_3q', 66, 32, 2.5, 7.6, { solid: [], named: false, cover: true })  // portique dessiné le long de z sur l'emprise de pose 2,5 x 7,6 : plus besoin de b.ancre",
+    "remplace": "ar_gantry_led_pulse_3q",
+    "status": "arena_v2",
+    "layers": [
+      "pulse",
+      "pulse_b"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.71341 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_gantry_z.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.71341,
+      "emprise_mesuree_m": [
+        2.91,
+        7.25
+      ],
+      "comblement_pied_max_px": 8.0,
+      "dy": -2,
+      "arete_pied_g_deg": 18.43,
+      "arete_pied_d_deg": -21.64,
+      "arete_toit_g_deg": 33.79,
+      "arete_toit_d_deg": 19.01
+    },
+    "pulse": "ar_gantry_led_pulse_v2_3q_pulse",
+    "pulse_b": "ar_gantry_led_pulse_v2_3q_pulse_b"
+  },
+  "ar_gantry_led_pulse_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_gantry_led_pulse_v2_3q_pulse.webp",
+    "px": [
+      331,
+      408
+    ],
+    "anchor": [
+      123,
+      405
+    ],
+    "additive": true,
+    "parent": "ar_gantry_led_pulse_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_gantry_led_pulse_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_gantry_led_pulse_v2_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_gantry_led_pulse_v2_3q_pulse_b.webp",
+    "px": [
+      331,
+      408
+    ],
+    "anchor": [
+      123,
+      405
+    ],
+    "additive": true,
+    "parent": "ar_gantry_led_pulse_v2_3q",
+    "layer": "pulse_b",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse_b de ar_gantry_led_pulse_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_strobe_pulse_v2_3q": {
+    "file": "steel/steel_arena/ar_strobe_pulse_v2_3q.webp",
+    "px": [
+      105,
+      154
+    ],
+    "anchor": [
+      63,
+      151
+    ],
+    "footprint_m": [
+      1.5,
+      1.5
+    ],
+    "height_m": 2.3,
+    "face": "3q",
+    "role": "Tour stroboscope : flight-case, panneau flash blanc chaud, LED ambre",
+    "pose": "B('ar_strobe0', '', 'ar_strobe_pulse_v2_3q', 56, 36, 1.5, 1.5, { named: false }), B('ar_strobe1', '', 'ar_strobe_pulse_v2_3q', 32.5, 34, 1.5, 1.5, { named: false })",
+    "remplace": "ar_strobe_pulse_3q",
+    "status": "arena_v2",
+    "layers": [
+      "pulse",
+      "pulse_b"
+    ],
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°) + run_arena_v2.py : détourage, crop du pied, échelle uniforme 0.17362 (sx=sy), ancrage ; sans warp ni cisaillement (/workspace/ar_v2/raw/ar2_strobe.jpg)",
+    "geometrie_v2": {
+      "echelle_uniforme": 0.17362,
+      "emprise_mesuree_m": [
+        1.51,
+        1.47
+      ],
+      "comblement_pied_max_px": 3.2,
+      "dy": 0,
+      "arete_pied_g_deg": 17.47,
+      "arete_pied_d_deg": 34.72,
+      "arete_toit_g_deg": 32.45,
+      "arete_toit_d_deg": 17.7
+    },
+    "pulse": "ar_strobe_pulse_v2_3q_pulse",
+    "pulse_b": "ar_strobe_pulse_v2_3q_pulse_b"
+  },
+  "ar_strobe_pulse_v2_3q_pulse": {
+    "file": "steel/steel_arena/ar_strobe_pulse_v2_3q_pulse.webp",
+    "px": [
+      105,
+      154
+    ],
+    "anchor": [
+      63,
+      151
+    ],
+    "additive": true,
+    "parent": "ar_strobe_pulse_v2_3q",
+    "layer": "pulse",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse de ar_strobe_pulse_v2_3q.webp (même canevas, même ancre)"
+  },
+  "ar_strobe_pulse_v2_3q_pulse_b": {
+    "file": "steel/steel_arena/ar_strobe_pulse_v2_3q_pulse_b.webp",
+    "px": [
+      105,
+      154
+    ],
+    "anchor": [
+      63,
+      151
+    ],
+    "additive": true,
+    "parent": "ar_strobe_pulse_v2_3q",
+    "layer": "pulse_b",
+    "status": "arena_v2",
+    "source": "extraction PIL pulse_b de ar_strobe_pulse_v2_3q.webp (même canevas, même ancre)"
   }
 }
