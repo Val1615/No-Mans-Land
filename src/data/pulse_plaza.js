@@ -26,13 +26,15 @@ const PIEDS = [
   [0, 0, 48, 1], [0, 1, 0.8, 7], [0, 16, 0.8, 12], [0, 35.2, 20, 0.8], [28, 35.2, 20, 0.8],
   [34, 4, 4, 0.6], [44, 12, 4, 0.6], [0, 12, 4, 0.6], [40, 24, 4, 0.6], [0, 32, 4, 0.6], [8, 32, 4, 0.6], [36, 32, 4, 0.6], [44, 32, 4, 0.6],
 ];
-const LAMPES = [[8, 14], [8, 26], [40, 14], [34.5, 31]], BORNES = [[11, 11.8], [33.5, 11.8]];
+// Centre désengorgé (retour Valentin) : totem et enceinte encadrent l'écran du Feed, bornes néon de part et d'autre du socle holo, pont projecteurs au-dessus de l'allée
+// d'arrivée ouest, arche holo contre les murets sud-est ; boîtes écran des props sans recouvrement > 25 % (tests/pulse_rapide.py).
+const LAMPES = [[6.6, 9.6], [4.6, 26.1], [39.6, 14.1], [1.6, 18.1]], BORNES = [[19.2, 22.4], [29.6, 18.6]];
 const MOBILIER = [
   ...LAMPES.map(([x, z], i) => [`pp_lampe${i}`, 'pp_lampadaire', x, z, 0.6, 0.6]),
-  ...[[13, 19], [14.5, 26], [33, 25]].map(([x, z], i) => [`pp_statue${i}`, 'pp_statue', x, z, 2, 2]),
+  ...[[17.5, 22.5], [14.5, 26], [44.5, 19.5]].map(([x, z], i) => [`pp_statue${i}`, 'pp_statue', x, z, 2, 2]),
   ...BORNES.map(([x, z], i) => [`pp_borne${i}`, 'pp_borne_neon', x, z, 0.5, 0.5]),
-  ...[[4, 21.5], [39.2, 24]].map(([x, z], i) => [`pp_jard${i}`, 'pp_jardiniere', x, z, 1.6, 1.6]),
-  ['pp_banc3', 'pp_banc_bois', 38, 21, 2, 0.6], ['pp_banc4', 'pp_banc_beton_o', 46.8, 20, 0.6, 2],
+  ...[[14.1, 22.6], [38.6, 24.1]].map(([x, z], i) => [`pp_jard${i}`, 'pp_jardiniere', x, z, 1.6, 1.6]),
+  ['pp_banc3', 'pp_banc_bois', 36, 18.1, 2, 0.6], ['pp_banc4', 'pp_banc_beton_o', 46.8, 20, 0.6, 2],
 ];
 // Écran du Feed v3 3/4 (pp_ecran_feed_v3_3q, 941 x 771, ancre [826, 769]) : dalle noire dressée mesurée dans son cadre intérieur x [92..804], hauteur 338 px (au-dessus du bandeau FEED 24/7).
 const ECRAN_FEED = { coins: [[92, 36], [804, 228], [804, 566], [92, 374]], periode: 9, beat: true, pages: [
@@ -46,13 +48,13 @@ export const BUILDINGS_PULSE = [
   B('pp_dalle_pa0', '', 'pp_dalle_pulse_a_3q', 22, 12, 4, 4, { solid: [], named: false, fond: true }),
   B('pp_dalle_pb0', '', 'pp_dalle_pulse_b_3q', 26, 12, 4, 4, { solid: [], named: false, fond: true }),
   B('pp_portique', 'Portique IO', 'pp_portique_v2_3q', 34, 0, 4, 4),
-  B('pp_arche0', '', 'pp_arche_holo_3q', 21, 25, 6, 2, { solid: [], named: false, cover: true }),
+  B('pp_arche0', '', 'pp_arche_holo_3q', 30, 33.6, 6, 2, { solid: [], named: false, cover: true }),
   B('pp_ecran_feed', 'Écran du Feed 24/7', 'pp_ecran_feed_v3_3q', 12, 8, 20, 4, { sign: true, ecran: ECRAN_FEED }),
   B('pp_holo', 'Projection Holo-Tron', 'pp_holo_socle', 20, 14, 8, 8, { ancre: [0.39, 2.91] }),
   B('pp_holo_tron', '', 'pp_holo_tron', 23.7, 17.7, 0.6, 0.6, { solid: [], named: false, cover: true, ancre: [-0.3, -0.3] }),
-  B('pp_totem0', '', 'pp_totem_pulse_3q', 18, 18, 2, 2, { named: false }),
-  B('pp_ence0', '', 'pp_enceinte_pulse_3q', 16, 22, 2, 2, { named: false }),
-  B('pp_pont0', '', 'pp_pont_projecteurs_v3_3q', 10, 20, 8, 2, { solid: [], named: false, cover: true }),
+  B('pp_totem0', '', 'pp_totem_pulse_3q', 9.5, 9.5, 2, 2, { named: false }),
+  B('pp_ence0', '', 'pp_enceinte_pulse_3q', 32.5, 9.5, 2, 2, { named: false }),
+  B('pp_pont0', '', 'pp_pont_projecteurs_v3_3q', 3, 17, 8, 2, { solid: [], named: false, cover: true }),
   B('pp_billboard', 'Billboard HCM-88X', 'pp_billboard_v2_3q', 0, 8, 4, 4),
   B('pp_kiosque', 'Kiosque merch officiel', 'pp_kiosque_v2_3q', 44, 8, 4, 4),
   B('pp_guerite', 'Guérite SMPD', 'pp_guerite_3q', 0, 28, 4, 4),
@@ -60,7 +62,7 @@ export const BUILDINGS_PULSE = [
   B('pp_distrib', 'Distributeur « sourire calibré »', 'pp_distrib_v2_3q', 40, 20, 4, 4),
   B('pp_kiosque_presse', 'Kiosque presse', 'pp_kiosque_presse_v2_3q', 8, 28, 4, 4),
   B('pp_kiosque_boissons', 'Kiosque boissons', 'pp_kiosque_boissons_v2_3q', 36, 28, 4, 4),
-  B('pp_banc1', '', 'pp_banc', 4, 20, 2, 1, { named: false }), B('pp_banc2', '', 'pp_banc', 4, 23, 2, 1, { named: false }),
+  B('pp_banc1', '', 'pp_banc', 8.5, 21.5, 2, 1, { named: false }), B('pp_banc2', '', 'pp_banc', 4, 23, 2, 1, { named: false }),
   ...CAMS.map(([x, z], i) => B(`pp_cam${i}`, '', 'pp_camera', x - 0.2, z - 0.2, 0.4, 0.4, { named: false })),
   B('pp_escalier', '', 'pp_escalier', 22, 28, 4, 4, { solid: [], named: false, ancre: [-2, 0] }),
   ...FACADES.map(([id, sprite, x, z, w, d]) => B(id, '', sprite, x, z, w, d, { named: false })),
@@ -81,7 +83,7 @@ export const CLOSED_PULSE = { // textes des écrans, stands et façades (aucun n
 };
 export const LOCATIONS_PULSE = {
   steel_pulse: { id: 'steel_pulse', name: 'Steel-Megalopolis · Pulse Plaza', kind: 'exterior', size: { w: 48, d: 36 }, light: PULSE,
-    ground: { base: '#141826', skin: 'g_pp_dalle_sombre', tileM: 4, clean: true, marge: { skin: 'g_pp_dalle_sombre', tileM: 4, m: 48, voile: 'rgba(6,8,16,.58)' }, zones: [
+    ground: { base: '#141826', skin: 'g_pp_dalle_sombre', tileM: 4, clean: true, marge: { skin: 'g_pp_dalle_sombre', tileM: 4, m: 48, voile: 'rgba(6,10,16,.9)' }, zones: [ // marge voilée à 90 % : noir propre hors carte, comme l'Arena
       { x: 20, z: 30, w: 8, d: 6, kind: 'plate', tint: 'rgba(10,12,22,.55)' },
       { x: 12, z: 12, w: 20, d: 2, kind: 'wet', skin: 'g_pp_dalle_mouillee', tint: 'rgba(10,10,20,.35)' }, { x: 19, z: 22, w: 10, d: 1.5, kind: 'wet', skin: 'g_pp_dalle_mouillee', tint: 'rgba(10,10,20,.35)' },
       ...PIEDS.map(([x, z, w, d]) => ({ x, z, w, d, kind: 'plate', skin: 'g_pp_grille', tint: 'rgba(6,6,12,.55)' })) ],
@@ -155,16 +157,16 @@ export const LOCATIONS_PULSE = {
       { x: 24, z: 14, rx: 3.6, rz: 2.6, color: MAGENTA, i: 0.78, beat: 'kick' }, { x: 28, z: 14, rx: 3.4, rz: 2.4, color: CHAUD, i: 0.58, beat: 'mid' },
       { x: 24, z: 18, rx: 4.8, rz: 4.8, color: CYAN, i: 0.66, flicker: true, beat: 'mid' },
       { x: 2.8, z: 12.2, rx: 4.8, rz: 3.2, color: MAGENTA, i: 0.96, beat: 'kick' }, { x: 2.2, z: 10.4, y: 3.8, r: 2.2, color: MAGENTA, i: 0.90, building: 'pp_billboard', beat: 'kick' },
-      { x: 14, z: 21, rx: 4.8, rz: 2.8, color: CYAN, i: 0.90, beat: 'kick' }, { x: 18, z: 20, rx: 2.4, rz: 1.8, color: MAGENTA, i: 0.70, beat: 'kick' },
+      { x: 7, z: 19.6, rx: 4.8, rz: 2.8, color: CYAN, i: 0.90, beat: 'kick' }, { x: 10.5, z: 11.9, rx: 2.4, rz: 1.8, color: MAGENTA, i: 0.70, beat: 'kick' }, { x: 33.5, z: 11.9, rx: 2.4, rz: 1.8, color: MAGENTA, i: 0.70, beat: 'kick' },
       { x: 46, z: 12.6, rx: 2.4, rz: 1.8, color: CHAUD, i: 0.55 }, { x: 42, z: 24.5, rx: 2.6, rz: 1.8, color: VIOLET, i: 0.74, flicker: true, beat: 'kick' },
-      { x: 36, z: 4.6, rx: 3.0, rz: 1.6, color: CYAN, i: 0.55, beat: 'mid' }, { x: 24, z: 26, rx: 3.2, rz: 1.5, color: MAGENTA, i: 0.52, beat: 'mid' }, { x: 46, z: 32.6, rx: 2.6, rz: 1.8, color: CHAUD, i: 0.85, flicker: true }, { x: 2, z: 32.6, rx: 2.2, rz: 1.5, color: '#e8eef2', i: 0.45 },
+      { x: 36, z: 4.6, rx: 3.0, rz: 1.6, color: CYAN, i: 0.55, beat: 'mid' }, { x: 33, z: 34.6, rx: 3.2, rz: 1.5, color: MAGENTA, i: 0.52, beat: 'mid' }, { x: 46, z: 32.6, rx: 2.6, rz: 1.8, color: CHAUD, i: 0.85, flicker: true }, { x: 2, z: 32.6, rx: 2.2, rz: 1.5, color: '#e8eef2', i: 0.45 },
       { x: 10, z: 32.5, rx: 2.2, rz: 1.4, color: CYAN, i: 0.48 }, { x: 38, z: 32.5, rx: 2.2, rz: 1.4, color: CYAN, i: 0.48 },
       ...CAMS.map(([x, z]) => ({ x: x + 0.2, z: z + 0.2, rx: 0.6, rz: 0.4, color: ROUGE, i: 0.5 })),
       ...LAMPES.map(([x, z]) => ({ x, z, rx: 2.2, rz: 1.6, color: CYAN, i: 0.55 })), ...BORNES.map(([x, z]) => ({ x, z, rx: 1.4, rz: 1.1, color: MAGENTA, i: 0.72, flicker: true, beat: 'kick' })),
       ...[[2, 1.2], [6, 1.2], [10, 1.2], [14.5, 1.2], [20, 1.2], [26, 1.2], [31, 1.2], [38.5, 1.2], [42.5, 1.2], [46, 1.2], [1.2, 4.5], [1.2, 18], [1.2, 22], [1.2, 26]].map(([x, z], idx) => ({ x, z, rx: 1.8, rz: 1.2, color: idx % 3 === 1 ? MAGENTA : CHAUD, i: 0.55, beat: idx % 2 === 0 ? 'kick' : 'mid' })) ],
     // Foule densifiée (style Arena/Strip, hors budget animStats.on, view.masques() vide) : grappes devant le Feed 24/7, le billboard, le kiosque merch, le distributeur, les kiosques presse/boissons et les nouilles.
     extras: [
-      ...[['c', 15, 14.5], ['d', 19, 13.6], ['e', 29, 15], ['f', 14, 16.6], ['g', 26, 23.4], ['h', 19.6, 24.4], ['i', 30.5, 16.8], ['j', 27, 13.8]].map(([k, x, z]) => ({ sprite: 'gen_pp_foule_' + k, x, z, face: x < 24 ? 1 : -1, role: 'foule' })),
+      ...[['c', 15, 14.5], ['d', 19, 13.6], ['e', 29, 15], ['f', 14, 16.6], ['g', 26, 23.4], ['h', 19.6, 24.4], ['i', 30.5, 16.8], ['j', 27, 13.1]].map(([k, x, z]) => ({ sprite: 'gen_pp_foule_' + k, x, z, face: x < 24 ? 1 : -1, role: 'foule' })),
       { sprite: 'gen_ar_fan_batons', x: 14.2, z: 14.0, face: 1, role: 'fan' },
       { sprite: 'gen_ar_fan_chignons', x: 13.2, z: 13.6, face: 1, role: 'fan' },
       { sprite: 'gen_ar_techwear', x: 18.2, z: 14.8, face: -1, role: 'fan' },
@@ -175,17 +177,17 @@ export const LOCATIONS_PULSE = {
       ...FIG([[42.0, 9.6, 1], [41.2, 11.0, 1], [42.8, 10.8, -1], [45.4, 13.4, -1]], 5, 'grappe'),
       ...FIG([[39.2, 25.2, 1], [40.4, 24.8, 1], [41.8, 25.4, -1], [43.0, 24.8, -1]], 8, 'grappe'),
       ...FIG([[8.2, 33.2, 1], [9.6, 33.8, -1], [11.0, 33.1, -1], [12.2, 33.6, -1]], 11, 'grappe'),
-      ...FIG([[36.2, 33.2, 1], [37.6, 33.8, -1], [39.0, 33.1, -1], [40.2, 33.6, -1]], 4, 'grappe'),
+      ...FIG([[37.0, 32.8, 1], [38.2, 33.4, -1], [39.4, 32.8, -1], [40.4, 33.4, -1]], 4, 'grappe'),
       ...FIG([[42.2, 33.8, 1], [44.6, 33.6, 1], [45.8, 34.2, -1]], 9, 'grappe'),
       ...FIG([[20.8, 24.2, 1], [23.8, 24.4, 1], [25.2, 24.6, -1], [27.4, 23.8, -1], [28.6, 24.4, -1]], 13, 'foule'),
       ...FIG([[9.8, 23.4, 1], [11.0, 24.4, -1], [12.8, 26.8, 1]], 6, 'grappe'),
       ...FIG([[34.8, 19.4, 1], [36.2, 20.2, -1], [35.4, 21.4, 1]], 10, 'grappe'),
     ],
     walkers: [
-      { sprite: 'gen_pp_foule_a', path: [[2, 16], [44, 16]], speed: 0.7, t0: 4 },
-      { sprite: 'gen_pp_foule_b', path: [[13.5, 33.2], [13.5, 26.8], [34.5, 26.8]], speed: 0.6, t0: 11 },
-      { sprite: 'gen_ml_etudiante', path: [[34.5, 14.4], [44.5, 14.4]], speed: 0.65, t0: 2 },
-      { sprite: 'gen_fs_passante', path: [[30.5, 26.8], [30.5, 17.6], [38.5, 17.6]], speed: 0.65, t0: 7 },
+      { sprite: 'gen_pp_foule_a', path: [[2, 15.5], [18.6, 15.5]], speed: 0.7, t0: 4 },
+      { sprite: 'gen_pp_foule_b', path: [[13.5, 33.2], [13.5, 27.5], [17.5, 27.5]], speed: 0.6, t0: 11 },
+      { sprite: 'gen_ml_etudiante', path: [[34.5, 14.4], [40.2, 14.4]], speed: 0.65, t0: 2 },
+      { sprite: 'gen_fs_passante', path: [[30.5, 26.6], [30.5, 16.6], [38.5, 16.6], [30.5, 16.6]], speed: 0.65, t0: 7 },
     ],
     spawn: { player: { x: 1, z: 14 }, companion: { x: 1, z: 15 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'Pulse Plaza. Les écrans éclairent tout ; la nuit n’a plus le droit de tomber ici. La foule applaudit en même temps, puis se tait en même temps.' } },
