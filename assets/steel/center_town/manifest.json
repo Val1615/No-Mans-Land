@@ -5782,5 +5782,229 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_remplissage_16x8_b.webp (même canevas, même ancre)",
     "status": "v4"
+  },
+  "g_ct_voie_tirets_ns": {
+    "file": "steel/center_town/g_ct_voie_tirets_ns.webp",
+    "px": [
+      512,
+      1536
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      12
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "tiret blanc usé 3 m tous les 6 m (largeur 0,15 m), axe à x=2 m de la tuile ; motif 4 x 12 m tuilable en z. Poser en bande x66-70 et x78-82 pour tomber sur les séparations de voies x=68 et x=80 de l'avenue NS",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_asphalte_mouille existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement.",
+    "note": "tuile non carrée (512 x 1536 / 1536 x 512) : le moteur doit lire motif_m, pas tile_m seul"
+  },
+  "g_ct_voie_tirets_ew": {
+    "file": "steel/center_town/g_ct_voie_tirets_ew.webp",
+    "px": [
+      1536,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      12,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "rotation 90° de g_ct_voie_tirets_ns ; motif 12 x 4 m tuilable en x. Poser en bande z58-62 et z70-74 (séparations z=60 et z=72 de l'avenue EW)",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_asphalte_mouille existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement.",
+    "note": "tuile non carrée (512 x 1536 / 1536 x 512) : le moteur doit lire motif_m, pas tile_m seul"
+  },
+  "g_ct_ligne_arret_ns": {
+    "file": "steel/center_town/g_ct_ligne_arret_ns.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "ligne d'arrêt blanche 0,5 m en travers d'une voie NS, centrée (z 1,75-2,25 m de la tuile) ; poser sur la tuile avant le passage piéton",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_asphalte_mouille existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_ligne_arret_ew": {
+    "file": "steel/center_town/g_ct_ligne_arret_ew.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "ligne d'arrêt blanche 0,5 m en travers d'une voie EW, centrée (x 1,75-2,25 m de la tuile)",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_asphalte_mouille existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_case_jaune_12m": {
+    "file": "steel/center_town/g_ct_case_jaune_12m.webp",
+    "px": [
+      1536,
+      1536
+    ],
+    "tile_m": 12.0,
+    "motif_m": [
+      12,
+      12
+    ],
+    "tuilable": false,
+    "px_par_m": 128,
+    "remplace": "g_ct_carrefour_jaune",
+    "status": "v4",
+    "pose": "case jaune hachurée 12 x 12 m d'un seul tenant (cadre 0,2 m, hachures croisées 45° au pas de 1,5 m) ; poser une seule fois en x68 z60 w12 d12, sans répétition",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_asphalte_mouille existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_n": {
+    "file": "steel/center_town/g_ct_bordure_n.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "trottoir en dalles, chaussée côté nord : bordure granit 0,3 m (3,3-3,6 m) + caniveau humide 0,4 m sur le bord nord de la tuile ; tuilable le long de la bordure",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_s": {
+    "file": "steel/center_town/g_ct_bordure_s.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "trottoir en dalles, chaussée côté sud : bordure granit 0,3 m (3,3-3,6 m) + caniveau humide 0,4 m sur le bord sud de la tuile ; tuilable le long de la bordure",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_e": {
+    "file": "steel/center_town/g_ct_bordure_e.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "trottoir en dalles, chaussée côté est : bordure granit 0,3 m (3,3-3,6 m) + caniveau humide 0,4 m sur le bord est de la tuile ; tuilable le long de la bordure",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_o": {
+    "file": "steel/center_town/g_ct_bordure_o.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "trottoir en dalles, chaussée côté ouest : bordure granit 0,3 m (3,3-3,6 m) + caniveau humide 0,4 m sur le bord ouest de la tuile ; tuilable le long de la bordure",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_angle_se": {
+    "file": "steel/center_town/g_ct_bordure_angle_se.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "angle de trottoir arrondi R 2 m (face extérieure de la bordure), chaussée côtés sud et est ; raccord exact avec g_ct_bordure_* ; au-delà du caniveau, asphalte mouillé",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_angle_so": {
+    "file": "steel/center_town/g_ct_bordure_angle_so.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "angle de trottoir arrondi R 2 m (face extérieure de la bordure), chaussée côtés sud et ouest ; raccord exact avec g_ct_bordure_* ; au-delà du caniveau, asphalte mouillé",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_angle_ne": {
+    "file": "steel/center_town/g_ct_bordure_angle_ne.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "angle de trottoir arrondi R 2 m (face extérieure de la bordure), chaussée côtés nord et est ; raccord exact avec g_ct_bordure_* ; au-delà du caniveau, asphalte mouillé",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "g_ct_bordure_angle_no": {
+    "file": "steel/center_town/g_ct_bordure_angle_no.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "angle de trottoir arrondi R 2 m (face extérieure de la bordure), chaussée côtés nord et ouest ; raccord exact avec g_ct_bordure_* ; au-delà du caniveau, asphalte mouillé",
+    "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
   }
 }

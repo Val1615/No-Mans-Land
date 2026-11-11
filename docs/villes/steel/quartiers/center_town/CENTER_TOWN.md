@@ -285,3 +285,18 @@ Dix sprites neufs pour les emplacements `ct_rempl0` à `ct_rempl10` (silhouettes
 | ct_remplissage_8x16_bas_b | 8 x 16 x 6 m | 6,1 m | 794 x 702 | rempl6 | génération unique, x0,87 |
 
 La hauteur mesurée inclut les édicules de toiture (antennes, groupes de clim). Vitrines et enseignes uniquement sur les faces sud et est, les seules que montre la caméra. Les enseignes sont des pictogrammes sans lettres. Le 8x8_c garde plus d'étages que la norme (env. 9 pour 20 m) : lecture « logements serrés » assumée. Planche de contrôle hors jeu : `nml-shots/ct_v4_remplissage_controle_echelle.jpg` (non versionnée).
+
+### D. Sol du carrefour (tuiles dérivées du plan v2)
+
+Treize tuiles neuves à 128 px/m, dessinées en procédural sur les bases existantes `g_ct_asphalte_mouille` et `g_ct_trottoir_dalles` (marquage usé, bruit périodique, donc tuilables). Aucun agrandissement.
+
+| Clé | px | Motif | Pose conseillée |
+|---|---|---|---|
+| g_ct_voie_tirets_ns | 512 x 1536 | 4 x 12 m | bandes x66-70 et x78-82 (tiret 3 m / 3 m, axe à 2 m) |
+| g_ct_voie_tirets_ew | 1536 x 512 | 12 x 4 m | bandes z58-62 et z70-74 |
+| g_ct_ligne_arret_ns / _ew | 512 x 512 | 4 m | tuile avant chaque passage piéton, ligne 0,5 m centrée |
+| g_ct_bordure_n / _s / _e / _o | 512 x 512 | 4 m | dernière rangée de trottoir côté chaussée (granit 0,3 m + caniveau 0,4 m) |
+| g_ct_bordure_angle_se / _so / _ne / _no | 512 x 512 | 4 m | les 4 angles du carrefour, R 2 m, raccord exact avec les bordures droites |
+| g_ct_case_jaune_12m | 1536 x 1536 | 12 m | une seule pose en x68 z60, `remplace` g_ct_carrefour_jaune |
+
+Les deux tuiles de tirets ne sont pas carrées : le manifest porte `motif_m` en plus de `tile_m`. Planche de contrôle hors jeu : `nml-shots/ct_v4_sol_controle_echelle.jpg` (non versionnée).
