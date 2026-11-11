@@ -6616,7 +6616,8 @@
       "neon"
     ],
     "fenetres": "ct_arcadius_grille_s1_v4_3q_fenetres",
-    "neon": "ct_arcadius_grille_s1_v4_3q_neon"
+    "neon": "ct_arcadius_grille_s1_v4_3q_neon",
+    "obsolete": true
   },
   "ct_arcadius_grille_s1_v4_3q_fenetres": {
     "file": "steel/center_town/ct_arcadius_grille_s1_v4_3q_fenetres.webp",
@@ -6633,7 +6634,8 @@
     "couche_de": "ct_arcadius_grille_s1_v4_3q",
     "layer": "fenetres",
     "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
-    "status": "v4"
+    "status": "v4",
+    "obsolete": true
   },
   "ct_arcadius_grille_s1_v4_3q_neon": {
     "file": "steel/center_town/ct_arcadius_grille_s1_v4_3q_neon.webp",
@@ -6650,7 +6652,8 @@
     "couche_de": "ct_arcadius_grille_s1_v4_3q",
     "layer": "neon",
     "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
-    "status": "v4"
+    "status": "v4",
+    "obsolete": true
   },
   "ct_arcadius_portail_io_v4_3q": {
     "file": "steel/center_town/ct_arcadius_portail_io_v4_3q.webp",
@@ -6785,7 +6788,8 @@
       "neon"
     ],
     "fenetres": "ct_arcadius_grille_s2_v4_3q_fenetres",
-    "neon": "ct_arcadius_grille_s2_v4_3q_neon"
+    "neon": "ct_arcadius_grille_s2_v4_3q_neon",
+    "obsolete": true
   },
   "ct_arcadius_grille_s2_v4_3q_fenetres": {
     "file": "steel/center_town/ct_arcadius_grille_s2_v4_3q_fenetres.webp",
@@ -6802,7 +6806,8 @@
     "couche_de": "ct_arcadius_grille_s2_v4_3q",
     "layer": "fenetres",
     "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
-    "status": "v4"
+    "status": "v4",
+    "obsolete": true
   },
   "ct_arcadius_grille_s2_v4_3q_neon": {
     "file": "steel/center_town/ct_arcadius_grille_s2_v4_3q_neon.webp",
@@ -6819,7 +6824,8 @@
     "couche_de": "ct_arcadius_grille_s2_v4_3q",
     "layer": "neon",
     "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
-    "status": "v4"
+    "status": "v4",
+    "obsolete": true
   },
   "ct_arcadius_grille_s3_v4_3q": {
     "file": "steel/center_town/ct_arcadius_grille_s3_v4_3q.webp",

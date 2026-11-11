@@ -31,7 +31,7 @@ SORTIES_V2 = {'c_strip': [58, 0, 58, 1], 'c_nord': [90, 0, 90, 1], 'c_mega': [0,
 EXPECTED_SPRITES = {
     'ct_arcadius_arriere_v4_3q', 'ct_arcadius_aile_est_v4_3q', 'ct_arcadius_facade_v4_3q', 'ct_dome_frequence_v3_3q', 'ct_bureau_permis_v3_3q',
     'ct_tour_teng_v4_3q', 'ct_tour_archeon_v4_3q', 'ct_tour_orc_v4_3q', 'ct_tour_humancorp_v4_3q', 'ct_tour_nexus_v4_3q',
-    'ct_arcadius_grille_s1_v4_3q', 'ct_arcadius_grille_s2_v4_3q', 'ct_arcadius_grille_s3_v4_3q', 'ct_arcadius_portail_io_v4_3q',
+    'ct_arcadius_grille_s1_17m_v4_3q', 'ct_arcadius_grille_s2_6m_v4_3q', 'ct_arcadius_grille_s3_v4_3q', 'ct_arcadius_portail_io_v4_3q',
     'ct_arcadius_grille_e1_v4_3q', 'ct_arcadius_grille_e2_v4_3q', 'ct_arcadius_grille_e3_v4_3q',
     'ct_bord_sud_a_v3_3q', 'ct_bord_sud_b_v3_3q', 'ct_bord_sud_c_v3_3q',
     'ct_monorail_viaduc_v3_3q', 'ct_monorail_rame_v3_3q', 'ct_holo_suspendu_v3_3q',
@@ -217,17 +217,31 @@ with sync_playwright() as p:
               v.render();
               const scrFoot = v.project(Bx, By, Bz), scrGate = v.project(gateMid, 0, zf), ppm = v.ppm();
               const passage = []; for (let x = 30.5; x <= 35.5; x += 0.5) passage.push(f(x, 46));
-              const bloque = [[14, 46], [20, 46], [29.5, 46], [36.4, 46], [40, 46], [50, 46], [54, 10], [54, 25], [54, 40]].map(([x, z]) => f(x, z));
+              const bloque = [[14, 46], [20, 46], [26, 46], [29.5, 46], [36.4, 46], [40, 46], [42, 46], [50, 46], [54, 10], [54, 25], [54, 40]].map(([x, z]) => f(x, z));
+              const trous = [], libres = [];
+              for (let x = 12; x <= 53.5; x += 0.5) { const libre = f(x, 46); if (x >= 30.5 && x <= 35.5) { if (!libre) libres.push(+x.toFixed(2)); } else if (libre) trous.push(+x.toFixed(2)); }
               const p = window.__findPath(gr, { x: 33, z: 49 }, { x: 33, z: 40 });
-              const b = Object.fromEntries(L.buildings.filter(b => /^c_arc_(grille|portail)/.test(b.id)).map(b => [b.id, b.sprite]));
-              return { passage, bloque, chemin: p ? +p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0).toFixed(1) : null,
-                n: Object.keys(b).length, pas: man?.passage, fenceX: +fenceX.toFixed(2), gateMid: +gateMid.toFixed(2),
+              const segs = Object.fromEntries(L.buildings.filter(b => /^c_arc_(grille|portail)/.test(b.id)).map(b => [b.id, { sprite: b.sprite, x: b.x, z: b.z, w: b.w, d: b.d }]));
+              const want = { c_arc_grille_s1: ['ct_arcadius_grille_s1_17m_v4_3q', 12, 17], c_arc_portail_io: ['ct_arcadius_portail_io_v4_3q', 29, 8],
+                c_arc_grille_s2: ['ct_arcadius_grille_s2_6m_v4_3q', 37, 6], c_arc_grille_s3: ['ct_arcadius_grille_s3_v4_3q', 43, 10.55] };
+              const poses = Object.entries(want).filter(([id, [sp, x, w]]) => { const s = segs[id]; return !s || s.sprite !== sp || s.x !== x || s.w !== w; }).map(([id]) => id);
+              const about = [segs.c_arc_grille_s1?.x + segs.c_arc_grille_s1?.w, segs.c_arc_portail_io?.x, segs.c_arc_portail_io?.x + segs.c_arc_portail_io?.w, segs.c_arc_grille_s2?.x, segs.c_arc_grille_s2?.x + segs.c_arc_grille_s2?.w, segs.c_arc_grille_s3?.x];
+              const etire = [];
+              for (const id of ['c_arc_grille_s1', 'c_arc_grille_s2', 'c_arc_grille_s3', 'c_arc_portail_io']) {
+                const s = segs[id], m = window.__nml.bman[s.sprite], ppmA = m.px_par_m || K;
+                const rendu = s.w * Math.abs(sr.x) + s.d * Math.abs(sr.z), natif = m.px[0] / ppmA, ratio = rendu / natif;
+                if (Math.abs(ratio - 1) > 0.08) etire.push({ id, rendu: +rendu.toFixed(3), natif: +natif.toFixed(3), ratio: +ratio.toFixed(3) });
+              }
+              return { passage, bloque, trous, passageBouche: libres, chemin: p ? +p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0).toFixed(1) : null,
+                n: Object.keys(segs).length, pas: man?.passage, fenceX: +fenceX.toFixed(2), gateMid: +gateMid.toFixed(2),
                 dWorld: +Math.abs(gateMid - fenceX).toFixed(3), dEcranM: +(Math.abs(scrFoot.x - scrGate.x) / ppm).toFixed(3),
-                painted_px: px, port: [port.x, port.z, port.w, port.d] }; }""")
-            ok(grille['n'] == 7 and all(grille['passage']) and not any(grille['bloque']) and grille['chemin'] and grille['chemin'] < 10.5
+                painted_px: px, port: [port.x, port.z, port.w, port.d], poses, about, etire }; }""")
+            ok(grille['n'] == 7 and all(grille['passage']) and not any(grille['bloque']) and not grille['trous'] and not grille['passageBouche']
+               and not grille['poses'] and grille['about'] == [29, 29, 37, 37, 43, 43] and not grille['etire']
+               and grille['chemin'] and grille['chemin'] < 10.5
                and grille['pas'] and abs((grille['pas']['x'][0] + grille['pas']['x'][1]) / 2 - grille['gateMid']) < 0.05
                and grille['dWorld'] <= 0.5 and grille['dEcranM'] <= 0.5,
-               f'{name} clôture et portail IO : 7 sprites, passage x30,5-35,5 franchissable ({grille["chemin"]} m), axé sur le pied d\'escalier peint (x={grille.get("fenceX")} sur z46, écart monde {grille.get("dWorld")} m, écran {grille.get("dEcranM")} m)', grille)
+               f'{name} clôture IO continue x12-53,55 (0 trou, 0 chevauchement, s1 17 m + portail + s2 6 m + s3), passage x30,5-35,5 franchissable ({grille["chemin"]} m), axé sur le pied d\'escalier peint (x={grille.get("fenceX")} sur z46, écart monde {grille.get("dWorld")} m, écran {grille.get("dEcranM")} m)', grille)
             cede = E("""async () => { const v = window.__nml.view, g = window.__nml.game, s = g.state, L = v.vehicules(); const i = L.findIndex(q => q.axe === 'z' && q.z > 5 && q.z < 100);
               if (i < 0) return null; const q = L[i], x0 = s.player.x, z0 = s.player.z; s.player.x = q.x; s.player.z = q.z + (q.path[1][1] > q.path[0][1] ? 3 : -3); s.player.path = [];
               const w = ms => new Promise(r => setTimeout(r, ms)); await w(250); v.render(); const a = v.vehicules()[i]; const t0 = [a.x, a.z]; await w(400); v.render(); const b = v.vehicules()[i]; s.player.x = x0; s.player.z = z0;

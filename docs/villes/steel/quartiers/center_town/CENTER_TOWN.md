@@ -361,3 +361,5 @@ Deux segments neufs générés à leur longueur réelle (même rendu, mêmes mat
 | `ct_arcadius_grille_s2_6m_v4_3q` | `ct_arcadius_grille_s2_v4_3q` | 37, 45,7, 6, 0,6 (x37-43, du pilier est du portail au premier pilier de s3) | 274 x 209 | [253, 205] | `B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_6m_v4_3q', 37, 45.7, 6, 0.6, { named: false })` |
 
 `ct_arcadius_grille_s3_v4_3q` (x43-53,55) est inchangé. Le chevauchement s2/s3 sur x43-48 disparaît, et le `solid` partiel de s2 n'est plus nécessaire. Planche hors jeu : `nml-shots/ct_arcadius_grille_io_controle_v2.jpg`.
+
+Poses basculées par Rivet : clôture continue x12-29 (s1), portail x29-37, s2 x37-43 aboutant s3 x43-53,55, sans trou ni chevauchement visuel. Les anciennes clés `ct_arcadius_grille_s1_v4_3q` et `ct_arcadius_grille_s2_v4_3q` (et leurs calques `_neon` / `_fenetres`) portent `obsolete: true`.
