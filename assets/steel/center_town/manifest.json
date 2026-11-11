@@ -4871,5 +4871,916 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_arcadius_facade_v4_3q.webp (même canevas, même ancre)",
     "status": "v4"
+  },
+  "ct_remplissage_8x8_a": {
+    "file": "steel/center_town/ct_remplissage_8x8_a.webp",
+    "px": [
+      614,
+      806
+    ],
+    "anchor": [
+      357,
+      802
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 12.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "immeuble de remplissage 12 m, rez commerçant",
+    "pose": "RES('ct_rempl1', 'ct_remplissage_8x8_a', 92, 16, 8, 8, 12) ; RES('ct_rempl5', 'ct_remplissage_8x8_a', 36, 84, 8, 8, 12)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 8x8x12 m (fond chroma), calage silhouette IoU 0.956, réduction uniforme x0.8174 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 8,
+      "d": 8,
+      "h": 12
+    },
+    "emplacements": [
+      "ct_rempl1",
+      "ct_rempl5"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_8x8_a_ecran",
+    "fenetres": "ct_remplissage_8x8_a_fenetres",
+    "neon": "ct_remplissage_8x8_a_neon"
+  },
+  "ct_remplissage_8x8_a_ecran": {
+    "file": "steel/center_town/ct_remplissage_8x8_a_ecran.webp",
+    "px": [
+      614,
+      806
+    ],
+    "anchor": [
+      357,
+      802
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_a",
+    "couche_de": "ct_remplissage_8x8_a",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_8x8_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_a_fenetres": {
+    "file": "steel/center_town/ct_remplissage_8x8_a_fenetres.webp",
+    "px": [
+      614,
+      806
+    ],
+    "anchor": [
+      357,
+      802
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_a",
+    "couche_de": "ct_remplissage_8x8_a",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_8x8_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_a_neon": {
+    "file": "steel/center_town/ct_remplissage_8x8_a_neon.webp",
+    "px": [
+      614,
+      806
+    ],
+    "anchor": [
+      357,
+      802
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_a",
+    "couche_de": "ct_remplissage_8x8_a",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_8x8_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_b": {
+    "file": "steel/center_town/ct_remplissage_8x8_b.webp",
+    "px": [
+      611,
+      987
+    ],
+    "anchor": [
+      362,
+      982
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 16.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "immeuble de remplissage 16 m, clinique au rez",
+    "pose": "RES('ct_rempl2', 'ct_remplissage_8x8_b', 92, 32, 8, 8, 16)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 8x8x16 m (fond chroma), calage silhouette IoU 0.925, réduction uniforme x0.9074 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 8,
+      "d": 8,
+      "h": 16
+    },
+    "emplacements": [
+      "ct_rempl2"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_8x8_b_ecran",
+    "fenetres": "ct_remplissage_8x8_b_fenetres",
+    "neon": "ct_remplissage_8x8_b_neon"
+  },
+  "ct_remplissage_8x8_b_ecran": {
+    "file": "steel/center_town/ct_remplissage_8x8_b_ecran.webp",
+    "px": [
+      611,
+      987
+    ],
+    "anchor": [
+      362,
+      982
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_b",
+    "couche_de": "ct_remplissage_8x8_b",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_8x8_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_b_fenetres": {
+    "file": "steel/center_town/ct_remplissage_8x8_b_fenetres.webp",
+    "px": [
+      611,
+      987
+    ],
+    "anchor": [
+      362,
+      982
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_b",
+    "couche_de": "ct_remplissage_8x8_b",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_8x8_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_b_neon": {
+    "file": "steel/center_town/ct_remplissage_8x8_b_neon.webp",
+    "px": [
+      611,
+      987
+    ],
+    "anchor": [
+      362,
+      982
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_b",
+    "couche_de": "ct_remplissage_8x8_b",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_8x8_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_c": {
+    "file": "steel/center_town/ct_remplissage_8x8_c.webp",
+    "px": [
+      637,
+      1182
+    ],
+    "anchor": [
+      374,
+      1177
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 20.7,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "immeuble de remplissage 20 m, bandes néon cyan",
+    "pose": "RES('ct_rempl0', 'ct_remplissage_8x8_c', 92, 0, 8, 8, 20)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 8x8x20 m (fond chroma), calage silhouette IoU 0.943, réduction uniforme x1.0 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 8,
+      "d": 8,
+      "h": 20
+    },
+    "emplacements": [
+      "ct_rempl0"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_8x8_c_ecran",
+    "fenetres": "ct_remplissage_8x8_c_fenetres",
+    "neon": "ct_remplissage_8x8_c_neon"
+  },
+  "ct_remplissage_8x8_c_ecran": {
+    "file": "steel/center_town/ct_remplissage_8x8_c_ecran.webp",
+    "px": [
+      637,
+      1182
+    ],
+    "anchor": [
+      374,
+      1177
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_c",
+    "couche_de": "ct_remplissage_8x8_c",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_8x8_c.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_c_fenetres": {
+    "file": "steel/center_town/ct_remplissage_8x8_c_fenetres.webp",
+    "px": [
+      637,
+      1182
+    ],
+    "anchor": [
+      374,
+      1177
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_c",
+    "couche_de": "ct_remplissage_8x8_c",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_8x8_c.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_c_neon": {
+    "file": "steel/center_town/ct_remplissage_8x8_c_neon.webp",
+    "px": [
+      637,
+      1182
+    ],
+    "anchor": [
+      374,
+      1177
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_c",
+    "couche_de": "ct_remplissage_8x8_c",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_8x8_c.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_bas_a": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_a.webp",
+    "px": [
+      579,
+      490
+    ],
+    "anchor": [
+      348,
+      485
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 4.9,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "bâti bas 5 m, épicerie",
+    "pose": "RES('ct_rempl8', 'ct_remplissage_8x8_bas_a', 124, 84, 8, 8, 5)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 8x8x5 m (fond chroma), calage silhouette IoU 0.797, réduction uniforme x0.6179 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 8,
+      "d": 8,
+      "h": 5
+    },
+    "emplacements": [
+      "ct_rempl8"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_8x8_bas_a_ecran",
+    "fenetres": "ct_remplissage_8x8_bas_a_fenetres",
+    "neon": "ct_remplissage_8x8_bas_a_neon"
+  },
+  "ct_remplissage_8x8_bas_a_ecran": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_a_ecran.webp",
+    "px": [
+      579,
+      490
+    ],
+    "anchor": [
+      348,
+      485
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_bas_a",
+    "couche_de": "ct_remplissage_8x8_bas_a",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_8x8_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_bas_a_fenetres": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_a_fenetres.webp",
+    "px": [
+      579,
+      490
+    ],
+    "anchor": [
+      348,
+      485
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_bas_a",
+    "couche_de": "ct_remplissage_8x8_bas_a",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_8x8_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_bas_a_neon": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_a_neon.webp",
+    "px": [
+      579,
+      490
+    ],
+    "anchor": [
+      348,
+      485
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_bas_a",
+    "couche_de": "ct_remplissage_8x8_bas_a",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_8x8_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_bas_b": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_b.webp",
+    "px": [
+      556,
+      554
+    ],
+    "anchor": [
+      343,
+      550
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 6.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "bâti bas 6 m, cantine aux lanternes",
+    "pose": "RES('ct_rempl10', 'ct_remplissage_8x8_bas_b', 92, 108, 8, 8, 6)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 8x8x6 m (fond chroma), calage silhouette IoU 0.847, réduction uniforme x0.6643 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 8,
+      "d": 8,
+      "h": 6
+    },
+    "emplacements": [
+      "ct_rempl10"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_8x8_bas_b_ecran",
+    "fenetres": "ct_remplissage_8x8_bas_b_fenetres",
+    "neon": "ct_remplissage_8x8_bas_b_neon"
+  },
+  "ct_remplissage_8x8_bas_b_ecran": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_b_ecran.webp",
+    "px": [
+      556,
+      554
+    ],
+    "anchor": [
+      343,
+      550
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_bas_b",
+    "couche_de": "ct_remplissage_8x8_bas_b",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_8x8_bas_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_bas_b_fenetres": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_b_fenetres.webp",
+    "px": [
+      556,
+      554
+    ],
+    "anchor": [
+      343,
+      550
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_bas_b",
+    "couche_de": "ct_remplissage_8x8_bas_b",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_8x8_bas_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x8_bas_b_neon": {
+    "file": "steel/center_town/ct_remplissage_8x8_bas_b_neon.webp",
+    "px": [
+      556,
+      554
+    ],
+    "anchor": [
+      343,
+      550
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x8_bas_b",
+    "couche_de": "ct_remplissage_8x8_bas_b",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_8x8_bas_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_bas_a": {
+    "file": "steel/center_town/ct_remplissage_16x8_bas_a.webp",
+    "px": [
+      921,
+      646
+    ],
+    "anchor": [
+      679,
+      642
+    ],
+    "footprint_m": [
+      16,
+      8
+    ],
+    "height_m": 6.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "bâti bas 6 m, quatre échoppes sous auvents",
+    "pose": "RES('ct_rempl7', 'ct_remplissage_16x8_bas_a', 108, 84, 16, 8, 6)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 16x8x6 m (fond chroma), calage silhouette IoU 0.961, réduction uniforme x0.8348 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 16,
+      "d": 8,
+      "h": 6
+    },
+    "emplacements": [
+      "ct_rempl7"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_16x8_bas_a_ecran",
+    "fenetres": "ct_remplissage_16x8_bas_a_fenetres",
+    "neon": "ct_remplissage_16x8_bas_a_neon"
+  },
+  "ct_remplissage_16x8_bas_a_ecran": {
+    "file": "steel/center_town/ct_remplissage_16x8_bas_a_ecran.webp",
+    "px": [
+      921,
+      646
+    ],
+    "anchor": [
+      679,
+      642
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_bas_a",
+    "couche_de": "ct_remplissage_16x8_bas_a",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_16x8_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_bas_a_fenetres": {
+    "file": "steel/center_town/ct_remplissage_16x8_bas_a_fenetres.webp",
+    "px": [
+      921,
+      646
+    ],
+    "anchor": [
+      679,
+      642
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_bas_a",
+    "couche_de": "ct_remplissage_16x8_bas_a",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_16x8_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_bas_a_neon": {
+    "file": "steel/center_town/ct_remplissage_16x8_bas_a_neon.webp",
+    "px": [
+      921,
+      646
+    ],
+    "anchor": [
+      679,
+      642
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_bas_a",
+    "couche_de": "ct_remplissage_16x8_bas_a",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_16x8_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x16_bas_a": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_a.webp",
+    "px": [
+      857,
+      699
+    ],
+    "anchor": [
+      381,
+      695
+    ],
+    "footprint_m": [
+      8,
+      16
+    ],
+    "height_m": 6.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "bâti bas 6 m, galerie vitrée en angle",
+    "pose": "RES('ct_rempl9', 'ct_remplissage_8x16_bas_a', 92, 92, 8, 16, 6)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 8x16x6 m (fond chroma), calage silhouette IoU 0.924, réduction uniforme x0.8909 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 8,
+      "d": 16,
+      "h": 6
+    },
+    "emplacements": [
+      "ct_rempl9"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_8x16_bas_a_ecran",
+    "fenetres": "ct_remplissage_8x16_bas_a_fenetres",
+    "neon": "ct_remplissage_8x16_bas_a_neon"
+  },
+  "ct_remplissage_8x16_bas_a_ecran": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_a_ecran.webp",
+    "px": [
+      857,
+      699
+    ],
+    "anchor": [
+      381,
+      695
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x16_bas_a",
+    "couche_de": "ct_remplissage_8x16_bas_a",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_8x16_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x16_bas_a_fenetres": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_a_fenetres.webp",
+    "px": [
+      857,
+      699
+    ],
+    "anchor": [
+      381,
+      695
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x16_bas_a",
+    "couche_de": "ct_remplissage_8x16_bas_a",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_8x16_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x16_bas_a_neon": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_a_neon.webp",
+    "px": [
+      857,
+      699
+    ],
+    "anchor": [
+      381,
+      695
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x16_bas_a",
+    "couche_de": "ct_remplissage_8x16_bas_a",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_8x16_bas_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x16_bas_b": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_b.webp",
+    "px": [
+      794,
+      702
+    ],
+    "anchor": [
+      338,
+      698
+    ],
+    "footprint_m": [
+      8,
+      16
+    ],
+    "height_m": 6.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "bâti bas 6 m, bar à comptoir sous marquise",
+    "pose": "RES('ct_rempl6', 'ct_remplissage_8x16_bas_b', 48, 100, 8, 16, 6)",
+    "source": "Ocre 2026-11-11, plan v2. Génération unique sur guide boîte 8x16x6 m (fond chroma), calage silhouette IoU 0.843, réduction uniforme x0.8727 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 8,
+      "d": 16,
+      "h": 6
+    },
+    "emplacements": [
+      "ct_rempl6"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_8x16_bas_b_ecran",
+    "fenetres": "ct_remplissage_8x16_bas_b_fenetres",
+    "neon": "ct_remplissage_8x16_bas_b_neon"
+  },
+  "ct_remplissage_8x16_bas_b_ecran": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_b_ecran.webp",
+    "px": [
+      794,
+      702
+    ],
+    "anchor": [
+      338,
+      698
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x16_bas_b",
+    "couche_de": "ct_remplissage_8x16_bas_b",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_8x16_bas_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x16_bas_b_fenetres": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_b_fenetres.webp",
+    "px": [
+      794,
+      702
+    ],
+    "anchor": [
+      338,
+      698
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x16_bas_b",
+    "couche_de": "ct_remplissage_8x16_bas_b",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_8x16_bas_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_8x16_bas_b_neon": {
+    "file": "steel/center_town/ct_remplissage_8x16_bas_b_neon.webp",
+    "px": [
+      794,
+      702
+    ],
+    "anchor": [
+      338,
+      698
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_8x16_bas_b",
+    "couche_de": "ct_remplissage_8x16_bas_b",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_8x16_bas_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_a": {
+    "file": "steel/center_town/ct_remplissage_16x8_a.webp",
+    "px": [
+      942,
+      1007
+    ],
+    "anchor": [
+      691,
+      1002
+    ],
+    "footprint_m": [
+      16,
+      8
+    ],
+    "height_m": 14.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "immeuble de remplissage 14 m, rez commerçant",
+    "pose": "RES('ct_rempl4', 'ct_remplissage_16x8_a', 0, 84, 16, 8, 14)",
+    "source": "Ocre 2026-11-11, plan v2. Maître généré entier (guide boîte sur fond chroma) puis 2 tuiles redessinées par le modèle à 52 px/m d'après le maître, recalées (échelle 0,994) et recomposées ; réduction uniforme 1/1,04 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 16,
+      "d": 8,
+      "h": 14
+    },
+    "emplacements": [
+      "ct_rempl4"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_16x8_a_ecran",
+    "fenetres": "ct_remplissage_16x8_a_fenetres",
+    "neon": "ct_remplissage_16x8_a_neon"
+  },
+  "ct_remplissage_16x8_a_ecran": {
+    "file": "steel/center_town/ct_remplissage_16x8_a_ecran.webp",
+    "px": [
+      942,
+      1007
+    ],
+    "anchor": [
+      691,
+      1002
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_a",
+    "couche_de": "ct_remplissage_16x8_a",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_16x8_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_a_fenetres": {
+    "file": "steel/center_town/ct_remplissage_16x8_a_fenetres.webp",
+    "px": [
+      942,
+      1007
+    ],
+    "anchor": [
+      691,
+      1002
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_a",
+    "couche_de": "ct_remplissage_16x8_a",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_16x8_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_a_neon": {
+    "file": "steel/center_town/ct_remplissage_16x8_a_neon.webp",
+    "px": [
+      942,
+      1007
+    ],
+    "anchor": [
+      691,
+      1002
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_a",
+    "couche_de": "ct_remplissage_16x8_a",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_16x8_a.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_b": {
+    "file": "steel/center_town/ct_remplissage_16x8_b.webp",
+    "px": [
+      939,
+      1225
+    ],
+    "anchor": [
+      688,
+      1220
+    ],
+    "footprint_m": [
+      16,
+      8
+    ],
+    "height_m": 19.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "immeuble de bureaux 18 m, balise rouge en toiture",
+    "pose": "RES('ct_rempl3', 'ct_remplissage_16x8_b', 112, 40, 16, 8, 18)",
+    "source": "Ocre 2026-11-11, plan v2. Maître généré entier (guide boîte sur fond chroma) puis 2 tuiles redessinées par le modèle à 52 px/m d'après le maître, recalées (échelle 0,994) et recomposées ; réduction uniforme 1/1,04 vers 50 px/m. Aucun agrandissement, aucun étirement.",
+    "status": "v4",
+    "cible_plan": {
+      "w": 16,
+      "d": 8,
+      "h": 18
+    },
+    "emplacements": [
+      "ct_rempl3"
+    ],
+    "remplace_note": "nouvel emplacement du plan v2 (RES de Rivet), ne remplace aucune clé v3",
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_remplissage_16x8_b_ecran",
+    "fenetres": "ct_remplissage_16x8_b_fenetres",
+    "neon": "ct_remplissage_16x8_b_neon"
+  },
+  "ct_remplissage_16x8_b_ecran": {
+    "file": "steel/center_town/ct_remplissage_16x8_b_ecran.webp",
+    "px": [
+      939,
+      1225
+    ],
+    "anchor": [
+      688,
+      1220
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_b",
+    "couche_de": "ct_remplissage_16x8_b",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_remplissage_16x8_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_b_fenetres": {
+    "file": "steel/center_town/ct_remplissage_16x8_b_fenetres.webp",
+    "px": [
+      939,
+      1225
+    ],
+    "anchor": [
+      688,
+      1220
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_b",
+    "couche_de": "ct_remplissage_16x8_b",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_remplissage_16x8_b.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_remplissage_16x8_b_neon": {
+    "file": "steel/center_town/ct_remplissage_16x8_b_neon.webp",
+    "px": [
+      939,
+      1225
+    ],
+    "anchor": [
+      688,
+      1220
+    ],
+    "additive": true,
+    "parent": "ct_remplissage_16x8_b",
+    "couche_de": "ct_remplissage_16x8_b",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_remplissage_16x8_b.webp (même canevas, même ancre)",
+    "status": "v4"
   }
 }

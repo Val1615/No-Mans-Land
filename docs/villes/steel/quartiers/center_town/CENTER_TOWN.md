@@ -266,3 +266,22 @@ Le générateur sort au plus 1280 px de côté. Un Arcadius de 60 m à 50 px/m m
 Les trois emprises ne se chevauchent pas : le tri par emprise de `canvas-view.js` / `view.js` les ordonne correctement (arrière, puis aile est, puis façade). L'escalier est peint dans le sprite de façade, hors de son emprise : il est praticable, sans `solid`, et un personnage qui s'y tient est trié devant la façade. Pas de clôture IO dans ce lot (la grille z46 / x54 du plan reste à faire).
 
 Planche de contrôle (image composée hors jeu, **pas une capture**) : `/workspace/nml-shots/ct_v4_arcadius_controle_echelle.jpg`.
+
+### C. Remplissage (façades continues du plan v2)
+
+Dix sprites neufs pour les emplacements `ct_rempl0` à `ct_rempl10` (silhouettes `RES` en attente). Les clés reprennent exactement les noms du plan (`ct_remplissage_*`), sans suffixe, pour que le branchement soit direct. Toutes à 50 px/m, ancre au coin avant (x+w, z+d), calques `_ecran`, `_fenetres`, `_neon` extraits sur le même canevas. Ce sont de nouveaux emplacements : aucune clé v3 n'est remplacée.
+
+| Clé | Emprise x hauteur cible | Hauteur mesurée | px | Emplacements | Méthode |
+|---|---|---|---|---|---|
+| ct_remplissage_8x8_a | 8 x 8 x 12 m | 12,1 m | 614 x 806 | rempl1, rempl5 | génération unique, réduction x0,82 |
+| ct_remplissage_8x8_b | 8 x 8 x 16 m | 16,2 m | 611 x 987 | rempl2 | génération unique, x0,91 |
+| ct_remplissage_8x8_c | 8 x 8 x 20 m | 20,7 m | 637 x 1182 | rempl0 | génération unique, x1,00 (bornée à 1) |
+| ct_remplissage_16x8_a | 16 x 8 x 14 m | 14,2 m | 942 x 1007 | rempl4 | maître + 2 tuiles à 52 px/m, x0,96 |
+| ct_remplissage_16x8_b | 16 x 8 x 18 m | 19,1 m | 939 x 1225 | rempl3 | maître + 2 tuiles à 52 px/m, x0,96 |
+| ct_remplissage_8x8_bas_a | 8 x 8 x 5 m | 4,9 m | 579 x 490 | rempl8 | génération unique, x0,62 |
+| ct_remplissage_8x8_bas_b | 8 x 8 x 6 m | 6,4 m | 556 x 554 | rempl10 | génération unique, x0,66 |
+| ct_remplissage_16x8_bas_a | 16 x 8 x 6 m | 6,0 m | 921 x 646 | rempl7 | génération unique, x0,83 |
+| ct_remplissage_8x16_bas_a | 8 x 16 x 6 m | 6,1 m | 857 x 699 | rempl9 | génération unique, x0,89 |
+| ct_remplissage_8x16_bas_b | 8 x 16 x 6 m | 6,1 m | 794 x 702 | rempl6 | génération unique, x0,87 |
+
+La hauteur mesurée inclut les édicules de toiture (antennes, groupes de clim). Vitrines et enseignes uniquement sur les faces sud et est, les seules que montre la caméra. Les enseignes sont des pictogrammes sans lettres. Le 8x8_c garde plus d'étages que la norme (env. 9 pour 20 m) : lecture « logements serrés » assumée. Planche de contrôle hors jeu : `nml-shots/ct_v4_remplissage_controle_echelle.jpg` (non versionnée).
