@@ -314,3 +314,15 @@ Audit contre le plan v2 (132 x 116 m) : les cinq tours font 8 x 8 m pour 27,7 à
 | ct_tour_humancorp_v4_3q | ct_tour_humancorp_v3_3q | 29,5 -> 48 m | 562 x 2399 | [342, 2394] | ct_humancorp, x104 z40 |
 
 Méthode : la génération reproduit d'elle-même les proportions v3 (environ 30 m). Le maître est donc calé en largeur sur l'emprise (échelle uniforme), puis élevé en répétant des étages entiers par translation verticale (pas d'étirement), redessiné en tuiles à 52 px/m et réduit à 50 px/m. Gardés tels quels, car à l'échelle : Dôme 12 x 12 x 9,4 m (inchangé au plan), Bureau des permis 8 x 8 x 7,2 m, bords sud a/b/c (rez commerçants 3,4 à 5,3 m), viaduc du monorail, mobilier et véhicules. Planche hors jeu : `nml-shots/ct_v4_tours_controle_echelle.jpg` (non versionnée).
+
+### F. Taxi : vraie deuxième vue `vue_axe2` (axe N-S)
+
+En miroir, l'enseigne de toit « TAXI » de `ct_taxi_v3_3q` se lit à l'envers sur l'axe N-S. Nouvelle clé `ct_taxi_v3_axe2_3q` (+ `_fenetres`, `_neon`), qui ne remplace rien : `ct_taxi_v3_3q` reste la vue de l'axe E-O.
+
+| Clé | px | `anchor` | Emprise | Champs |
+|---|---|---|---|---|
+| `ct_taxi_v3_axe2_3q` | 205 x 109 (identique) | `[69, 106]` (= 205 - 136, ancre miroir) | 4,5 x 1,8 m, h 1,45 m | `axe: 'z'`, `vue_axe2_de: 'ct_taxi_v3_3q'`, calques `_fenetres` / `_neon` au même canevas |
+
+Méthode : miroir horizontal pixel pour pixel de la caisse et des deux calques (échelle 1, aucun étirement), puis lettrage miroir effacé dans le caisson de toit et « TAXI » repeint à l'endroit, cisaillé sur la face du caisson à la pente du toit miroir (0,33), rendu x24 puis réduit en boîte vers 1x. Dans `_neon`, le caisson est comblé et les lettres sont creusées dans la lueur.
+
+Branchement (Rivet, `src/data/vehicules.js`) : `ct_taxi_v3_3q: { axe: 'x', vue_axe2: 'ct_taxi_v3_axe2_3q' }`. `view.js` prend alors `ct_taxi_v3_axe2_3q`, `_fenetres` et `_neon` sur l'axe z, sans miroir. Le champ `vue_axe2` n'est pas posé dans l'entrée manifeste de `ct_taxi_v3_3q`, pour ne pas modifier une clé existante. Planche hors jeu : `nml-shots/ct_taxi_vue_axe2_controle.png` (non versionnée).

@@ -6498,5 +6498,70 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_humancorp_v4_3q.webp (même canevas, même ancre)",
     "status": "v4"
+  },
+  "ct_taxi_v3_axe2_3q": {
+    "file": "steel/center_town/ct_taxi_v3_axe2_3q.webp",
+    "px": [
+      205,
+      109
+    ],
+    "anchor": [
+      69,
+      106
+    ],
+    "footprint_m": [
+      4.5,
+      1.8
+    ],
+    "height_m": 1.45,
+    "face": "3q",
+    "pente": "iso 3/4, vue de l’axe N-S (miroir de ct_taxi_v3_3q : face x 0,70 / face z 0,33)",
+    "role": "Taxi jaune de Steel, deuxième vue (roule le long de z, axe N-S) : caisse = miroir horizontal exact de ct_taxi_v3_3q, enseigne de toit « TAXI » repeinte à l’endroit",
+    "enseigne": "TAXI",
+    "axe": "z",
+    "vue_axe2_de": "ct_taxi_v3_3q",
+    "pose": "vue_axe2 de ct_taxi_v3_3q : data/vehicules.js -> VUES_VEHICULES.ct_taxi_v3_3q = { axe: 'x', vue_axe2: 'ct_taxi_v3_axe2_3q' } (le champ du manifeste de ct_taxi_v3_3q n’est pas modifié) ; même emprise 4,5 x 1,8 m, même pose que le miroir (ancre = 205 - 136 = 69)",
+    "source": "Ocre 2026-11-11 : miroir horizontal pixel pour pixel de ct_taxi_v3_3q (et de ses calques), échelle 1, aucun étirement ; lettrage miroir effacé dans le caisson de toit puis « TAXI » repeint à l’endroit, cisaillé sur la face du caisson (pente 0,33 du toit miroir), rendu x24 puis réduction boîte vers 1x. Même canevas 205 x 109 px.",
+    "status": "v3",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_taxi_v3_axe2_3q_fenetres",
+    "neon": "ct_taxi_v3_axe2_3q_neon"
+  },
+  "ct_taxi_v3_axe2_3q_fenetres": {
+    "file": "steel/center_town/ct_taxi_v3_axe2_3q_fenetres.webp",
+    "px": [
+      205,
+      109
+    ],
+    "anchor": [
+      69,
+      106
+    ],
+    "additive": true,
+    "parent": "ct_taxi_v3_axe2_3q",
+    "couche_de": "ct_taxi_v3_axe2_3q",
+    "layer": "fenetres",
+    "source": "miroir horizontal de ct_taxi_v3_3q_fenetres (même canevas, même ancre que ct_taxi_v3_axe2_3q)",
+    "status": "v3"
+  },
+  "ct_taxi_v3_axe2_3q_neon": {
+    "file": "steel/center_town/ct_taxi_v3_axe2_3q_neon.webp",
+    "px": [
+      205,
+      109
+    ],
+    "anchor": [
+      69,
+      106
+    ],
+    "additive": true,
+    "parent": "ct_taxi_v3_axe2_3q",
+    "couche_de": "ct_taxi_v3_axe2_3q",
+    "layer": "neon",
+    "source": "miroir horizontal de ct_taxi_v3_3q_neon ; caisson TAXI comblé puis lettrage à l’endroit creusé dans la lueur (même canevas, même ancre)",
+    "status": "v3"
   }
 }
