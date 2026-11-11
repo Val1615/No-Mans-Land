@@ -6006,5 +6006,467 @@
     "status": "v4",
     "pose": "angle de trottoir arrondi R 2 m (face extérieure de la bordure), chaussée côtés nord et ouest ; raccord exact avec g_ct_bordure_* ; au-delà du caniveau, asphalte mouillé",
     "source": "Ocre 2026-11-11, plan v2 (tuiles_sol_derivees). Dessin procédural PIL/numpy à 128 px/m sur la base g_ct_trottoir_dalles existante (marquage usé, bruit périodique pour rester tuilable). Aucun agrandissement."
+  },
+  "ct_tour_teng_v4_3q": {
+    "file": "steel/center_town/ct_tour_teng_v4_3q.webp",
+    "px": [
+      569,
+      1986
+    ],
+    "anchor": [
+      342,
+      1981
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 39.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "tour bancaire, bureau de change au rez (porte peinte face est)",
+    "enseigne": "TENG · BANQUE - CHANGE · CHANGE",
+    "pose": "B_CT('c_change', 'Change de Teng', 'ct_tour_teng_v4_3q', 0, 40, 8, 8, { visitable: true, cue: 'coin' })",
+    "source": "Ocre 2026-11-11. Maître : génération entière (identité de ct_tour_teng_v3_3q), calée en largeur sur l'emprise 8 x 8 m (échelle uniforme), puis élevée de 29.2 m (v3) à 39.0 m en répétant des étages entiers par translation verticale pure (aucun étirement). 3 tuiles redessinées par le modèle à 52 px/m d'après ce maître, recalées et recomposées ; réduction uniforme 1/1,04 vers 50 px/m (échelle nette max 0.9635). Aucun agrandissement des pixels finaux.",
+    "remplace": "ct_tour_teng_v3_3q",
+    "status": "v4",
+    "cible": {
+      "w": 8,
+      "d": 8,
+      "h": 39.0
+    },
+    "hauteur_v3_m": 29.2,
+    "painted_door": {
+      "face": "e",
+      "opening": [
+        8,
+        44.5
+      ],
+      "painted_px": [
+        441,
+        1873
+      ],
+      "note": "remplace painted_px [451,1444] du v3 (même convention : seuil de porte, ancre [342,1981])"
+    },
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_tour_teng_v4_3q_ecran",
+    "fenetres": "ct_tour_teng_v4_3q_fenetres",
+    "neon": "ct_tour_teng_v4_3q_neon"
+  },
+  "ct_tour_teng_v4_3q_ecran": {
+    "file": "steel/center_town/ct_tour_teng_v4_3q_ecran.webp",
+    "px": [
+      569,
+      1986
+    ],
+    "anchor": [
+      342,
+      1981
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v4_3q",
+    "couche_de": "ct_tour_teng_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_teng_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_teng_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_teng_v4_3q_fenetres.webp",
+    "px": [
+      569,
+      1986
+    ],
+    "anchor": [
+      342,
+      1981
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v4_3q",
+    "couche_de": "ct_tour_teng_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_teng_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_teng_v4_3q_neon": {
+    "file": "steel/center_town/ct_tour_teng_v4_3q_neon.webp",
+    "px": [
+      569,
+      1986
+    ],
+    "anchor": [
+      342,
+      1981
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v4_3q",
+    "couche_de": "ct_tour_teng_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_teng_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_archeon_v4_3q": {
+    "file": "steel/center_town/ct_tour_archeon_v4_3q.webp",
+    "px": [
+      569,
+      2196
+    ],
+    "anchor": [
+      343,
+      2191
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 43.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "tour de bureaux Archeon Industries",
+    "enseigne": "ARCHEON",
+    "pose": "B_CT('ct_archeon', 'Tour Archeon Industries', 'ct_tour_archeon_v4_3q', 16, 84, 8, 8)",
+    "source": "Ocre 2026-11-11. Maître : génération entière (identité de ct_tour_archeon_v3_3q), calée en largeur sur l'emprise 8 x 8 m (échelle uniforme), puis élevée de 29.3 m (v3) à 42.9 m en répétant des étages entiers par translation verticale pure (aucun étirement). 3 tuiles redessinées par le modèle à 52 px/m d'après ce maître, recalées et recomposées ; réduction uniforme 1/1,04 vers 50 px/m (échelle nette max 0.9596). Aucun agrandissement des pixels finaux.",
+    "remplace": "ct_tour_archeon_v3_3q",
+    "status": "v4",
+    "cible": {
+      "w": 8,
+      "d": 8,
+      "h": 42.9
+    },
+    "hauteur_v3_m": 29.3,
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_tour_archeon_v4_3q_ecran",
+    "fenetres": "ct_tour_archeon_v4_3q_fenetres",
+    "neon": "ct_tour_archeon_v4_3q_neon"
+  },
+  "ct_tour_archeon_v4_3q_ecran": {
+    "file": "steel/center_town/ct_tour_archeon_v4_3q_ecran.webp",
+    "px": [
+      569,
+      2196
+    ],
+    "anchor": [
+      343,
+      2191
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v4_3q",
+    "couche_de": "ct_tour_archeon_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_archeon_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_archeon_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_archeon_v4_3q_fenetres.webp",
+    "px": [
+      569,
+      2196
+    ],
+    "anchor": [
+      343,
+      2191
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v4_3q",
+    "couche_de": "ct_tour_archeon_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_archeon_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_archeon_v4_3q_neon": {
+    "file": "steel/center_town/ct_tour_archeon_v4_3q_neon.webp",
+    "px": [
+      569,
+      2196
+    ],
+    "anchor": [
+      343,
+      2191
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v4_3q",
+    "couche_de": "ct_tour_archeon_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_archeon_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_orc_v4_3q": {
+    "file": "steel/center_town/ct_tour_orc_v4_3q.webp",
+    "px": [
+      574,
+      2281
+    ],
+    "anchor": [
+      350,
+      2277
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 45.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "tour de bureaux Orc Énergie",
+    "enseigne": "ORC ENERGIE",
+    "pose": "B_CT('ct_orc', 'Tour Orc Énergie', 'ct_tour_orc_v4_3q', 92, 8, 8, 8)",
+    "source": "Ocre 2026-11-11. Maître : génération entière (identité de ct_tour_orc_v3_3q), calée en largeur sur l'emprise 8 x 8 m (échelle uniforme), puis élevée de 27.7 m (v3) à 45.0 m en répétant des étages entiers par translation verticale pure (aucun étirement). 3 tuiles redessinées par le modèle à 52 px/m d'après ce maître, recalées et recomposées ; réduction uniforme 1/1,04 vers 50 px/m (échelle nette max 0.9596). Aucun agrandissement des pixels finaux.",
+    "remplace": "ct_tour_orc_v3_3q",
+    "status": "v4",
+    "cible": {
+      "w": 8,
+      "d": 8,
+      "h": 45.0
+    },
+    "hauteur_v3_m": 27.7,
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_tour_orc_v4_3q_ecran",
+    "fenetres": "ct_tour_orc_v4_3q_fenetres",
+    "neon": "ct_tour_orc_v4_3q_neon"
+  },
+  "ct_tour_orc_v4_3q_ecran": {
+    "file": "steel/center_town/ct_tour_orc_v4_3q_ecran.webp",
+    "px": [
+      574,
+      2281
+    ],
+    "anchor": [
+      350,
+      2277
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v4_3q",
+    "couche_de": "ct_tour_orc_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_orc_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_orc_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_orc_v4_3q_fenetres.webp",
+    "px": [
+      574,
+      2281
+    ],
+    "anchor": [
+      350,
+      2277
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v4_3q",
+    "couche_de": "ct_tour_orc_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_orc_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_orc_v4_3q_neon": {
+    "file": "steel/center_town/ct_tour_orc_v4_3q_neon.webp",
+    "px": [
+      574,
+      2281
+    ],
+    "anchor": [
+      350,
+      2277
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v4_3q",
+    "couche_de": "ct_tour_orc_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_orc_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_nexus_v4_3q": {
+    "file": "steel/center_town/ct_tour_nexus_v4_3q.webp",
+    "px": [
+      565,
+      2286
+    ],
+    "anchor": [
+      337,
+      2281
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 45.9,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "tour de bureaux Nexus",
+    "enseigne": "NEXUS",
+    "pose": "B_CT('ct_nexus', 'Tour Nexus', 'ct_tour_nexus_v4_3q', 92, 24, 8, 8)",
+    "source": "Ocre 2026-11-11. Maître : génération entière (identité de ct_tour_nexus_v3_3q), calée en largeur sur l'emprise 8 x 8 m (échelle uniforme), puis élevée de 30.4 m (v3) à 45.9 m en répétant des étages entiers par translation verticale pure (aucun étirement). 3 tuiles redessinées par le modèle à 52 px/m d'après ce maître, recalées et recomposées ; réduction uniforme 1/1,04 vers 50 px/m (échelle nette max 0.9596). Aucun agrandissement des pixels finaux.",
+    "remplace": "ct_tour_nexus_v3_3q",
+    "status": "v4",
+    "cible": {
+      "w": 8,
+      "d": 8,
+      "h": 45.9
+    },
+    "hauteur_v3_m": 30.4,
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_tour_nexus_v4_3q_ecran",
+    "fenetres": "ct_tour_nexus_v4_3q_fenetres",
+    "neon": "ct_tour_nexus_v4_3q_neon"
+  },
+  "ct_tour_nexus_v4_3q_ecran": {
+    "file": "steel/center_town/ct_tour_nexus_v4_3q_ecran.webp",
+    "px": [
+      565,
+      2286
+    ],
+    "anchor": [
+      337,
+      2281
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v4_3q",
+    "couche_de": "ct_tour_nexus_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_nexus_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_nexus_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_nexus_v4_3q_fenetres.webp",
+    "px": [
+      565,
+      2286
+    ],
+    "anchor": [
+      337,
+      2281
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v4_3q",
+    "couche_de": "ct_tour_nexus_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_nexus_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_nexus_v4_3q_neon": {
+    "file": "steel/center_town/ct_tour_nexus_v4_3q_neon.webp",
+    "px": [
+      565,
+      2286
+    ],
+    "anchor": [
+      337,
+      2281
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v4_3q",
+    "couche_de": "ct_tour_nexus_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_nexus_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_humancorp_v4_3q": {
+    "file": "steel/center_town/ct_tour_humancorp_v4_3q.webp",
+    "px": [
+      562,
+      2399
+    ],
+    "anchor": [
+      342,
+      2394
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 48.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "tour de bureaux Human Corp, affiche de concert sans lettrage",
+    "enseigne": "HUMAN CORP",
+    "pose": "B_CT('ct_humancorp', 'Tour Human Corp', 'ct_tour_humancorp_v4_3q', 104, 40, 8, 8)",
+    "source": "Ocre 2026-11-11. Maître : génération entière (identité de ct_tour_humancorp_v3_3q), calée en largeur sur l'emprise 8 x 8 m (échelle uniforme), puis élevée de 29.5 m (v3) à 48.3 m en répétant des étages entiers par translation verticale pure (aucun étirement). 3 tuiles redessinées par le modèle à 52 px/m d'après ce maître, recalées et recomposées ; réduction uniforme 1/1,04 vers 50 px/m (échelle nette max 0.9596). Aucun agrandissement des pixels finaux.",
+    "remplace": "ct_tour_humancorp_v3_3q",
+    "status": "v4",
+    "cible": {
+      "w": 8,
+      "d": 8,
+      "h": 48.3
+    },
+    "hauteur_v3_m": 29.5,
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_tour_humancorp_v4_3q_ecran",
+    "fenetres": "ct_tour_humancorp_v4_3q_fenetres",
+    "neon": "ct_tour_humancorp_v4_3q_neon"
+  },
+  "ct_tour_humancorp_v4_3q_ecran": {
+    "file": "steel/center_town/ct_tour_humancorp_v4_3q_ecran.webp",
+    "px": [
+      562,
+      2399
+    ],
+    "anchor": [
+      342,
+      2394
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v4_3q",
+    "couche_de": "ct_tour_humancorp_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_tour_humancorp_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_humancorp_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_tour_humancorp_v4_3q_fenetres.webp",
+    "px": [
+      562,
+      2399
+    ],
+    "anchor": [
+      342,
+      2394
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v4_3q",
+    "couche_de": "ct_tour_humancorp_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_tour_humancorp_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_tour_humancorp_v4_3q_neon": {
+    "file": "steel/center_town/ct_tour_humancorp_v4_3q_neon.webp",
+    "px": [
+      562,
+      2399
+    ],
+    "anchor": [
+      342,
+      2394
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v4_3q",
+    "couche_de": "ct_tour_humancorp_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_tour_humancorp_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
   }
 }

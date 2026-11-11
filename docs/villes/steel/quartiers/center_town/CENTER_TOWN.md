@@ -300,3 +300,17 @@ Treize tuiles neuves à 128 px/m, dessinées en procédural sur les bases exista
 | g_ct_case_jaune_12m | 1536 x 1536 | 12 m | une seule pose en x68 z60, `remplace` g_ct_carrefour_jaune |
 
 Les deux tuiles de tirets ne sont pas carrées : le manifest porte `motif_m` en plus de `tile_m`. Planche de contrôle hors jeu : `nml-shots/ct_v4_sol_controle_echelle.jpg` (non versionnée).
+
+### E. Audit des bâtiments v3 et tours régénérées
+
+Audit contre le plan v2 (132 x 116 m) : les cinq tours font 8 x 8 m pour 27,7 à 30,4 m, trop basses face au concept et à un Arcadius de 60 m. L'emprise 8 x 8 m reste imposée par les façades continues du plan (NE façade O sans écart, SO façade N, passage Teng), donc la masse vient de la hauteur. Elles sont refaites en `*_v4_3q` avec `remplace` vers la clé v3 (sans `obsolete`).
+
+| Clé | Remplace | Hauteur v3 -> v4 | px | Ancre | Pose |
+|---|---|---|---|---|---|
+| ct_tour_teng_v4_3q | ct_tour_teng_v3_3q | 29,2 -> 39 m | 569 x 1986 | [342, 1981] | c_change, x0 z40 ; porte peinte face est, `painted_px` [441, 1873] (au lieu de [451, 1444]) |
+| ct_tour_archeon_v4_3q | ct_tour_archeon_v3_3q | 29,3 -> 43 m | 569 x 2196 | [343, 2191] | ct_archeon, x16 z84 |
+| ct_tour_orc_v4_3q | ct_tour_orc_v3_3q | 27,7 -> 45 m | 574 x 2281 | [350, 2277] | ct_orc, x92 z8 |
+| ct_tour_nexus_v4_3q | ct_tour_nexus_v3_3q | 30,4 -> 46 m | 565 x 2286 | [337, 2281] | ct_nexus, x92 z24 |
+| ct_tour_humancorp_v4_3q | ct_tour_humancorp_v3_3q | 29,5 -> 48 m | 562 x 2399 | [342, 2394] | ct_humancorp, x104 z40 |
+
+Méthode : la génération reproduit d'elle-même les proportions v3 (environ 30 m). Le maître est donc calé en largeur sur l'emprise (échelle uniforme), puis élevé en répétant des étages entiers par translation verticale (pas d'étirement), redessiné en tuiles à 52 px/m et réduit à 50 px/m. Gardés tels quels, car à l'échelle : Dôme 12 x 12 x 9,4 m (inchangé au plan), Bureau des permis 8 x 8 x 7,2 m, bords sud a/b/c (rez commerçants 3,4 à 5,3 m), viaduc du monorail, mobilier et véhicules. Planche hors jeu : `nml-shots/ct_v4_tours_controle_echelle.jpg` (non versionnée).
