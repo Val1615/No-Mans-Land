@@ -96,32 +96,33 @@ export const LOCATIONS = {
     buildings: BUILDINGS_CENTER, props: [],
     // taxis qui roulent sur les deux avenues (circulation à droite, voies de 4 m : E-O vers l'ouest z58, vers l'est z70/z74 ; N-S vers le sud x66/x70, vers le nord x82) ;
     // sur l'axe N-S, vue miroir du sprite x (data/vehicules.js) ; deux tournent à droite au carrefour. Entrée et sortie dans la marge sombre, hors carte.
+    carrefourVehicules: { x: 64, z: 56, w: 20, d: 20 }, // boîte du carrefour : un seul véhicule à la fois (view.js, rouler)
     vehicules: [
       { sprite: 'ct_taxi_v3_3q', path: [[-8, 74], [66, 74], [66, 124]], speed: 7, t0: 40 },   // vers l'est puis à droite vers le sud
       { sprite: 'ct_taxi_v3_3q', path: [[140, 58], [-8, 58]], speed: 7.5, t0: 30 },           // vers l'ouest, tout droit
       { sprite: 'ct_taxi_v3_3q', path: [[82, 124], [82, 74], [140, 74]], speed: 6.5, t0: 20 }, // vers le nord puis à droite vers l'est
       { sprite: 'ct_taxi_v3_3q', path: [[70, -8], [70, 124]], speed: 7, t0: 50 },             // vers le sud, tout droit
-      { sprite: 'ct_taxi_v3_3q', path: [[-8, 70], [140, 70]], speed: 8, t0: 90 },             // vers l'est, tout droit
+      { sprite: 'ct_taxi_v3_3q', path: [[-8, 70], [140, 70]], speed: 8, t0: 20 },             // vers l'est, tout droit
     ],
     enseignes: [
       { id: 'ct_n_arcadius', building: 'c_arcadius', effet: 'fixe', intensite: 0.92 },
       { id: 'ct_n_dome', building: 'c_tour', effet: 'fixe', intensite: 0.92 },
-      { id: 'ct_n_teng', building: 'c_change', effet: 'eteint', intensite: 0.90 },
-      { id: 'ct_n_archeon', building: 'ct_archeon', effet: 'eteint', intensite: 0.92 },
-      { id: 'ct_n_orc', building: 'ct_orc', effet: 'eteint', intensite: 0.92 },
-      { id: 'ct_n_humancorp', building: 'ct_humancorp', effet: 'eteint', intensite: 0.92 },
-      { id: 'ct_n_nexus', building: 'ct_nexus', effet: 'eteint', intensite: 0.92 },
+      { id: 'ct_n_teng', building: 'c_change', effet: 'fixe', intensite: 0.90 },
+      { id: 'ct_n_archeon', building: 'ct_archeon', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_orc', building: 'ct_orc', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_humancorp', building: 'ct_humancorp', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_nexus', building: 'ct_nexus', effet: 'fixe', intensite: 0.92 },
       { id: 'ct_n_holo', building: 'ct_holo0', effet: 'fixe', intensite: 0.95 },
       { id: 'ct_n_arret', building: 'ct_arret0', effet: 'fixe', intensite: 0.88 },
       { id: 'ct_n_echoppe', building: 'ct_echoppe0', effet: 'gresille', intensite: 0.85, decale: 0.4 },
     ],
-    // tours v4 : pas de calque _pulse livré ; le kick de l'OST passe par leur calque _neon (allumé en veille 0,55, punch au kick), l'enseigne fixe est éteinte pour ne pas doubler
+    // tours v4 : calques <clé>_pulse d'Ocre (§8H) sur le kick de l'OST ; enseignes _neon fixes
     pulses: [
-      { building: 'c_change', calque: 'pulse', key: 'ct_tour_teng_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0, priorite: 8 },
-      { building: 'ct_orc', calque: 'pulse', key: 'ct_tour_orc_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.04, priorite: 7 },
-      { building: 'ct_archeon', calque: 'pulse', key: 'ct_tour_archeon_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.08, priorite: 6 },
-      { building: 'ct_nexus', calque: 'pulse', key: 'ct_tour_nexus_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.12, priorite: 5 },
-      { building: 'ct_humancorp', calque: 'pulse', key: 'ct_tour_humancorp_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.16, priorite: 4 },
+      { building: 'c_change', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0, priorite: 8 },
+      { building: 'ct_orc', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.04, priorite: 7 },
+      { building: 'ct_archeon', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.08, priorite: 6 },
+      { building: 'ct_nexus', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.12, priorite: 5 },
+      { building: 'ct_humancorp', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.16, priorite: 4 },
       { building: 'c_arcadius', calque: 'ecran', mode: 'balise', periode: 2.6, intensite: 0.95, veille: 0.35, priorite: 3 },
       { building: 'c_tour', calque: 'ecran', mode: 'mesure', periode: 8.0, intensite: 1.15, veille: 0.55, priorite: 2 },
       { building: 'ct_holo0', calque: 'ecran', mode: 'mesure', periode: 6.5, intensite: 1.20, veille: 0.60, priorite: 1 },
@@ -161,7 +162,7 @@ export const LOCATIONS = {
       { sprite: 'gen_ml_navetteur', path: [[64.5, 77.4], [75.8, 77.4], [75.8, 78.6], [64.5, 78.6]], speed: 1.05, t0: 9 },
       { sprite: 'gen_fs_passante', path: [[61.2, 56.6], [61.2, 75.4], [62.8, 75.4], [62.8, 56.6]], speed: 1.1, t0: 1.5 },
       { sprite: civ(5), path: [[85.2, 56.6], [85.2, 75.4], [86.8, 75.4], [86.8, 56.6]], speed: 1.2, t0: 4 },
-      { sprite: 'gen_fs_client_imper', path: [[13, 45.2], [34.8, 45.2], [34.8, 46.4], [13, 46.4]], speed: 1.0, t0: 3 },
+      { sprite: 'gen_fs_client_imper', path: [[40, 48.4], [55, 48.4], [55, 49.6], [40, 49.6]], speed: 1.0, t0: 3 },
       { sprite: 'gen_pp_foule_c', path: [[24.2, 50.6], [38.5, 50.6], [38.5, 51.8], [24.2, 51.8]], speed: 1.15, t0: 8 },
       { sprite: 'gen_fs_client_costume', path: [[49.4, 6], [49.4, 40], [50.6, 40], [50.6, 6]], speed: 1.1, t0: 5 },
       { sprite: 'gen_df_foule_a', path: [[58.4, 3], [58.4, 23.5], [59.6, 23.5], [59.6, 3]], speed: 0.95, t0: 6.5 },

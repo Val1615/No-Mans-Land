@@ -159,19 +159,40 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         if (SKIN[k2] && o.material.map.image !== SKIN[k2]) { o.material.map.image = SKIN[k2]; o.material.map.needsUpdate = true; }
         o.material.map.repeat.x = sx; o.material.map.offset.x = sx < 0 ? 1 : 0; // miroir : signe seul, |échelle| = 1
         o.scale.set(mm.px[0] / K, mm.px[1] / K, 1); o.center.set(sx < 0 ? 1 - mm.anchor[0] / mm.px[0] : mm.anchor[0] / mm.px[0], 1 - mm.anchor[1] / mm.px[1]); } }
-    const f = bman[key].footprint_m || bman[u.cle].footprint_m || [4, 2], fl = Math.max(f[0], f[1]), fw = Math.min(f[0], f[1]);
-    const hx = (axe === 'x' ? fl : fw) / 2, hz = (axe === 'x' ? fw : fl) / 2;
-    u.emprise = { x0: p.x - hx, x1: p.x + hx, z0: p.z - hz, z1: p.z + hz }; u.cx = p.x; u.cz = p.z; u.dir = [p.dx, p.dz];
+    const e = empriseVeh(u, u.t), hx = (e.x1 - e.x0) / 2, hz = (e.z1 - e.z0) / 2;
+    u.emprise = e; u.cx = p.x; u.cz = p.z; u.dir = [p.dx, p.dz];
     for (const o of [s, ...u.extra]) o.position.set(p.x + hx, 0, p.z + hz); // ancre d'Ocre = coin avant de l'emprise
   }
-  function rouler(dt) {
-    const pietons = [player, companion, ...walkers].filter(a => a.visible !== false).map(a => [a.position.x, a.position.z]);
-    vehicules.forEach((s, i) => { const u = s.userData, d = u.dir || [1, 0];
+  // emprise au sol (footprint_m tournée selon l'axe du tronçon) du véhicule à l'abscisse t de son trajet
+  function empriseVeh(u, t) { const p = vehPos(u, Math.min(t, u.L)), axe = Math.abs(p.dx) >= Math.abs(p.dz) ? 'x' : 'z', f = bman[u.cle].footprint_m || [4, 2], fl = Math.max(f[0], f[1]), fw = Math.min(f[0], f[1]);
+    const hx = (axe === 'x' ? fl : fw) / 2, hz = (axe === 'x' ? fw : fl) / 2; return { x0: p.x - hx, x1: p.x + hx, z0: p.z - hz, z1: p.z + hz }; }
+  const recouvre = (a, b, m = 0) => a.x0 < b.x1 + m && b.x0 < a.x1 + m && a.z0 < b.z1 + m && b.z0 < a.z1 + m;
+  // Circulation : 1) le carrefour (loc.carrefourVehicules) est réservé à un seul véhicule à la fois : on n'y entre que s'il est vide et non réservé ;
+  // 2) on n'avance jamais si l'emprise un peu plus loin (1,5 m) toucherait celle d'un autre véhicule (marge 0,5 m) : distance minimale sur une voie et au croisement ;
+  // 3) on cède le passage aux piétons (joueur, compagnon, passants) devant soi.
+  function rouler(dt, { pietons: avecPietons = true } = {}) {
+    const pietons = avecPietons ? [player, companion, ...walkers].filter(a => a.visible !== false).map(a => [a.position.x, a.position.z]) : [];
+    const C = LOCATIONS[builtFor]?.carrefourVehicules, box = C && { x0: C.x, x1: C.x + C.w, z0: C.z, z1: C.z + C.d };
+    vehicules.forEach((s, i) => { const u = s.userData, d = u.dir || [1, 0], ds = dt * u.speed;
       const devant = ([x, z], loin, large) => { const rx = x - u.cx, rz = z - u.cz, av = rx * d[0] + rz * d[1], lat = Math.abs(-rx * d[1] + rz * d[0]); return av > 0 && av < loin && lat < large; };
-      u.attend = pietons.some(q => devant(q, 4.5, 1.6)) || vehicules.slice(0, i).some(o => devant([o.userData.cx, o.userData.cz], 7, 1.8));
-      if (!u.attend) { u.t += dt * u.speed; if (u.t >= u.L) u.t = 0; }
-      s.visible = true; for (const e of u.extra) e.visible = true; poseVeh(s); });
+      const suivant = u.t + ds >= u.L ? null : empriseVeh(u, u.t + ds + 1.5), autres = vehicules.filter(o => o !== s);
+      let attend = pietons.some(q => devant(q, 4.5, 1.6)) ? 'pieton' : null;
+      if (!attend && suivant && autres.some(o => recouvre(suivant, o.userData.emprise, 0.5))) attend = 'vehicule';
+      if (box) { const dedans = recouvre(u.emprise, box), entre = !dedans && suivant && recouvre(suivant, box);
+        if (entre && !attend) { if (autres.some(o => o.userData.reserve || recouvre(o.userData.emprise, box))) attend = 'carrefour'; else u.reserve = true; }
+        if (!entre && !dedans) u.reserve = false; if (dedans) u.reserve = true; }
+      u.attend = attend; if (!attend) { u.t += ds; u.parcouru = (u.parcouru || 0) + ds; if (u.t >= u.L) u.t = 0; }
+      s.visible = true; for (const e of u.extra) e.visible = true; poseVeh(s);
+      if (box) { const dedans = recouvre(u.emprise, box); if (!dedans && !(u.t + 2 < u.L && recouvre(empriseVeh(u, u.t + 2), box))) u.reserve = false; } });
   }
+  // simulation accélérée (tests) : sec secondes au pas dt, sans rendu ; renvoie les recouvrements d'emprises entre véhicules et le chemin parcouru
+  function simVehicules(sec = 60, dt = 1 / 30, opts = {}) { const hits = [], n = Math.round(sec / dt); let minEcart = Infinity;
+    for (const s of vehicules) s.userData.parcouru = 0;
+    for (let k = 0; k < n; k++) { rouler(dt, opts);
+      for (let i = 0; i < vehicules.length; i++) for (let j = i + 1; j < vehicules.length; j++) { const a = vehicules[i].userData.emprise, b = vehicules[j].userData.emprise;
+        const ecart = Math.max(b.x0 - a.x1, a.x0 - b.x1, b.z0 - a.z1, a.z0 - b.z1); minEcart = Math.min(minEcart, ecart);
+        if (ecart < 0 && hits.length < 10) hits.push({ t: +(k * dt).toFixed(2), i, j, a, b }); } }
+    return { pas: n, hits, minEcart: +minEcart.toFixed(2), parcouru: vehicules.map(s => +s.userData.parcouru.toFixed(1)), attentes: vehicules.map(s => s.userData.attend) }; }
   function building(b) {
     if (!bman[b.sprite]) return placeholder(b);
     let m = bman[b.sprite]; const mobAnim = m.anime && viewW < 700 && bman[b.sprite + '_mobile'] && SKIN[b.sprite + '_mobile'];
@@ -1014,6 +1035,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const r = rectOf(s), c = m.crop, u = (d.painted[0] - c[0]) / m.px[0], v = 1 - (d.painted[1] - c[1]) / m.px[1];
       const p = { x: r.x0 + u * (r.x1 - r.x0), y: r.y0 + v * (r.y1 - r.y0) }, o = scr(new THREE.Vector3(d.opening.x, 0, d.opening.z)); return +Math.hypot(p.x - o.x, p.y - o.y).toFixed(2); },
     // v13 : figurants (rôle, position monde) et rendu isolé d'un figurant, pour les contrôles au pixel (comptage à l'écran)
+    simVehicules,
     vehicules: () => vehicules.map(s => { const u = s.userData; return { cle: u.cle, key: u.key, axe: u.axe, sx: u.sx, scale: [+s.scale.x.toFixed(4), +s.scale.y.toFixed(4)], repeat: s.material.map.repeat.x, x: +u.cx.toFixed(2), z: +u.cz.toFixed(2), attend: u.attend, emprise: u.emprise, path: u.vehicule.path, natif: u.key === u.cle && u.sx === 1 && u.axe === u.vue.axe, px: bman[u.cle].px, K }; }),
     decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing, sprite: s.userData.sprite, ratio: +(Math.abs(s.scale.x) / s.scale.y).toFixed(3) })); },
     isolateDecor: i => { render(); const keep = decor.concat(drones)[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });

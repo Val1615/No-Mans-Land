@@ -21,6 +21,15 @@ export const BUILDINGS_CENTER = [
   B_CT('c_arcadius_n', '', 'ct_arcadius_arriere_v4_3q', 12, 4, 24, 22, { named: false }),
   B_CT('c_arcadius_e', '', 'ct_arcadius_aile_est_v4_3q', 36, 4, 8, 22, { named: false }),
   B_CT('c_arcadius', 'Arcadius Center', 'ct_arcadius_facade_v4_3q', 12, 26, 32, 10),
+  // clôture et portail IO du parvis (CENTER_TOWN.md §8G, poses d'Ocre telles quelles) : grille z46 x12-54 et x54 z4-46 ; portail face à l'escalier,
+  // solides sur ses deux piliers seulement : passage libre de 5,6 m (x25,2-30,8) dans l'axe du portail de façade x25-31
+  B_CT('c_arc_grille_s1', '', 'ct_arcadius_grille_s1_v4_3q', 12, 45.7, 12, 0.6, { named: false }),
+  B_CT('c_arc_portail_io', '', 'ct_arcadius_portail_io_v4_3q', 24, 45.4, 8, 1.2, { named: false, solid: [{ x: 24, z: 45.4, w: 1.2, d: 1.2 }, { x: 30.8, z: 45.4, w: 1.2, d: 1.2 }] }),
+  B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_v4_3q', 32, 45.7, 11, 0.6, { named: false }),
+  B_CT('c_arc_grille_s3', '', 'ct_arcadius_grille_s3_v4_3q', 43, 45.7, 10.55, 0.6, { named: false }),
+  B_CT('c_arc_grille_e1', '', 'ct_arcadius_grille_e1_v4_3q', 53.7, 4, 0.6, 14, { named: false }),
+  B_CT('c_arc_grille_e2', '', 'ct_arcadius_grille_e2_v4_3q', 53.7, 18, 0.6, 14, { named: false }),
+  B_CT('c_arc_grille_e3', '', 'ct_arcadius_grille_e3_v4_3q', 53.55, 32, 0.9, 14.45, { named: false }),
   B_CT('c_tour', 'Le Dôme Fréquence', 'ct_dome_frequence_v3_3q', 44, 84, 12, 12, { visitable: true }),
   B_CT('c_blanc', 'Bureau des permis', 'ct_bureau_permis_v3_3q', 92, 40, 8, 8),
   // 5 tours v4 d'Ocre (8 x 8 m, 50 px/m, échelle 1 ; CENTER_TOWN.md §8E) : Teng 39, Archeon 43, Orc 45, Nexus 46, Human Corp 48 m

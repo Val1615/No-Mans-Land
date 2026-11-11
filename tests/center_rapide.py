@@ -31,6 +31,8 @@ SORTIES_V2 = {'c_strip': [58, 0, 58, 1], 'c_nord': [90, 0, 90, 1], 'c_mega': [0,
 EXPECTED_SPRITES = {
     'ct_arcadius_arriere_v4_3q', 'ct_arcadius_aile_est_v4_3q', 'ct_arcadius_facade_v4_3q', 'ct_dome_frequence_v3_3q', 'ct_bureau_permis_v3_3q',
     'ct_tour_teng_v4_3q', 'ct_tour_archeon_v4_3q', 'ct_tour_orc_v4_3q', 'ct_tour_humancorp_v4_3q', 'ct_tour_nexus_v4_3q',
+    'ct_arcadius_grille_s1_v4_3q', 'ct_arcadius_grille_s2_v4_3q', 'ct_arcadius_grille_s3_v4_3q', 'ct_arcadius_portail_io_v4_3q',
+    'ct_arcadius_grille_e1_v4_3q', 'ct_arcadius_grille_e2_v4_3q', 'ct_arcadius_grille_e3_v4_3q',
     'ct_bord_sud_a_v3_3q', 'ct_bord_sud_b_v3_3q', 'ct_bord_sud_c_v3_3q',
     'ct_monorail_viaduc_v3_3q', 'ct_monorail_rame_v3_3q', 'ct_holo_suspendu_v3_3q',
     'ct_arret_tram_v3_3q', 'ct_tram_v3_3q', 'ct_taxi_v3_3q',
@@ -153,7 +155,7 @@ with sync_playwright() as p:
             ok(info['size'] == {'w': 132, 'd': 116} and info['bg'] == '#05070d' and sols_used == EXPECTED_SOLS and not (sols_used & OBSOLETE_SOLS) and info['props'] == 0 and not info['invalid'],
                f'{name} carte 132 x 116 m, nuit #05070d, {len(EXPECTED_SOLS)} sols g_ct_* (carrefour v4 compris), schéma valide', (info['size'], sorted(EXPECTED_SOLS ^ sols_used)))
             ok(sprites_used == EXPECTED_SPRITES and not (sprites_used & OBSOLETE_V1),
-               f'{name} 24 clés posées au plan v2 (Arcadius v4 x3, 5 tours v4, 16 v3 à l\'échelle), 0 clé obsolète', sorted(EXPECTED_SPRITES ^ sprites_used))
+               f'{name} 31 clés posées au plan v2 (Arcadius v4 x3 + clôture et portail IO x7, 5 tours v4, 16 v3 à l\'échelle), 0 clé obsolète', sorted(EXPECTED_SPRITES ^ sprites_used))
             echelles = [b['id'] for b in info['bs'] if (b['k'] not in (None, 1)) or (b['sy'] not in (None, 1))] + [f'extra@{e[1]},{e[2]}' for e in info['extras'] if e[3]]
             ok(not echelles, f'{name} aucune échelle de sprite différente de 1 en valeur absolue (ni b.k, ni b.sy, ni hauteur forcée ; miroir -1 admis)', echelles)
             bad = []
@@ -192,9 +194,23 @@ with sync_playwright() as p:
               return out.slice(0, 10); }""")
             ok(tram['x'] == 72 and tram['w'] == 4 and tram['sprite'] == 'ct_tram_v3_3q' and all(v['sprite'] != 'ct_tram_v3_3q' for v in info['vehicules']),
                f'{name} tram à l\'arrêt sur sa voie N-S (x72-76), hors des véhicules qui roulent', tram)
-            ok(len(info['vehicules']) >= 4 and not hors_voie and len(tourne) >= 2 and axes == {('x', 1), ('z', -1)} and not echV,
-               f'{name} {len(info["vehicules"])} taxis sur les deux axes ({len(tourne)} tournent au carrefour), voies de chaussée seulement ; axe N-S en miroir (scale.x = -1), |échelle| = 1, aucun étirement',
+            ok(len(info['vehicules']) >= 4 and not hors_voie and len(tourne) >= 2 and axes == {('x', 1), ('z', 1)} and all(v['key'] == ('ct_taxi_v3_axe2_3q' if v['axe'] == 'z' else 'ct_taxi_v3_3q') for v in flat) and not echV,
+               f'{name} {len(info["vehicules"])} taxis sur les deux axes ({len(tourne)} tournent au carrefour), voies de chaussée seulement ; axe N-S sur la vraie vue ct_taxi_v3_axe2_3q, sans miroir (scale.x = +1), |échelle| = 1, aucun étirement',
                {'hors_voie': hors_voie, 'axes': sorted(axes), 'tourne': len(tourne), 'etire': echV[:2]})
+            sim = E("window.__nml.view.simVehicules(60, 1 / 30, { pietons: false })")
+            sim2 = E("window.__nml.view.simVehicules(60, 1 / 30)")
+            ok(not sim['hits'] and not sim2['hits'] and sim['minEcart'] >= 0 and min(sim['parcouru']) > 150,
+               f'{name} 60 s simulées (x2, avec et sans piétons) : les emprises de deux véhicules ne se recouvrent jamais (écart mini {min(sim["minEcart"], sim2["minEcart"])} m), carrefour réservé à un véhicule, tous roulent (≥ {min(sim["parcouru"]):.0f} m)',
+               {'hits': (sim['hits'] + sim2['hits'])[:3], 'parcouru': sim['parcouru']})
+            grille = E("""() => { const gr = window.__nml.game.grids.steel_center, L = window.__nml.world.LOCATIONS.steel_center, f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
+              const passage = []; for (let x = 25.5; x <= 30.5; x += 0.5) passage.push(f(x, 46));
+              const bloque = [[14, 46], [20, 46], [24.5, 46], [31.4, 46], [38, 46], [50, 46], [54, 10], [54, 25], [54, 40]].map(([x, z]) => f(x, z));
+              const p = window.__findPath(gr, { x: 28, z: 49 }, { x: 28, z: 40 }), b = Object.fromEntries(L.buildings.filter(b => /^c_arc_(grille|portail)/.test(b.id)).map(b => [b.id, b.sprite]));
+              const man = window.__nml.bman['ct_arcadius_portail_io_v4_3q'];
+              return { passage, bloque, chemin: p ? +p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0).toFixed(1) : null, n: Object.keys(b).length, pas: man?.passage }; }""")
+            ok(grille['n'] == 7 and all(grille['passage']) and not any(grille['bloque']) and grille['chemin'] and grille['chemin'] < 10.5
+               and grille['pas'] and abs((grille['pas']['x'][0] + grille['pas']['x'][1]) / 2 - 28) < 0.01,
+               f'{name} clôture et portail IO : 7 sprites, grille pleine, passage libre x25,5-30,5 franchissable ({grille["chemin"]} m du trottoir aux marches), axé sur l\'escalier et le portail de façade (x28)', grille)
             cede = E("""async () => { const v = window.__nml.view, g = window.__nml.game, s = g.state, L = v.vehicules(); const i = L.findIndex(q => q.axe === 'z' && q.z > 5 && q.z < 100);
               if (i < 0) return null; const q = L[i], x0 = s.player.x, z0 = s.player.z; s.player.x = q.x; s.player.z = q.z + (q.path[1][1] > q.path[0][1] ? 3 : -3); s.player.path = [];
               const w = ms => new Promise(r => setTimeout(r, ms)); await w(250); v.render(); const a = v.vehicules()[i]; const t0 = [a.x, a.z]; await w(400); v.render(); const b = v.vehicules()[i]; s.player.x = x0; s.player.z = z0;
@@ -203,9 +219,15 @@ with sync_playwright() as p:
             crowd_sprites = {e[0] for e in info['extras']} | {w[0] for w in info['walkers']}
             ok(130 <= len(info['extras']) <= 150 and 8 <= len(info['walkers']) <= 12 and len(crowd_sprites) >= 14,
                f'{name} foule : {len(info["extras"])} figurants + {len(info["walkers"])} passants, {len(crowd_sprites)} sprites distincts', (len(info['extras']), len(info['walkers'])))
-            zones = E("""() => { const L = window.__nml.world.LOCATIONS.steel_center, n = { carrefour: 0, parvis: 0, autre: 0 };
-              for (const e of L.extras) { if (e.x >= 56 && e.x <= 92 && e.z >= 48 && e.z <= 84) n.carrefour++; else if (e.x >= 12 && e.x <= 56 && e.z >= 4 && e.z <= 48) n.parvis++; else n.autre++; } return n; }""")
-            ok(zones['carrefour'] + zones['parvis'] >= 0.7 * len(info['extras']), f'{name} foule concentrée : carrefour {zones["carrefour"]}, parvis {zones["parvis"]}, ailleurs {zones["autre"]}', zones)
+            rep = E("""() => { const X = window.__nml.world.LOCATIONS.steel_center.extras, G = {}, out = { paquets: [], proches: [], petits: 0, denses: 0, tailles: {} };
+              for (const e of X) if (e.groupe) (G[e.groupe] ||= []).push(e);
+              for (const [g, m] of Object.entries(G)) { const dense = m.some(e => e.role === 'attente' || e.role === 'porte'); if (dense) out.denses += m.length; else { out.petits += m.length; out.tailles[m.length] = (out.tailles[m.length] || 0) + 1; if (m.length > 3) out.paquets.push(g); } }
+              for (const e of X) { if (e.role === 'attente' || e.role === 'porte' || e.role === 'soldat') continue;
+                const n = X.filter(o => o !== e && Math.hypot(o.x - e.x, o.z - e.z) < 1.6).length; if (n > 2) out.paquets.push(e.x + ',' + e.z); }
+              for (let i = 0; i < X.length; i++) for (let j = i + 1; j < X.length; j++) if (Math.hypot(X[i].x - X[j].x, X[i].z - X[j].z) < 0.74) out.proches.push(X[i].x + ',' + X[i].z);
+              out.paquets = [...new Set(out.paquets)].slice(0, 8); return out; }""")
+            ok(not rep['paquets'] and not rep['proches'] and rep['petits'] >= 0.6 * len(info['extras']) and rep['denses'] <= 45,
+               f'{name} foule le long des trottoirs : {rep["petits"]} en petits groupes de 1 à 3 {rep["tailles"]}, {rep["denses"]} en groupes denses (passages, portes), 0 paquet, espacement ≥ 0,75 m', rep)
 
             # 2. Solides, foule hors solides et hors chaussée, profondeur stable, masques == []
             SOL = E("window.__nml.world.LOCATIONS.steel_center.buildings.flatMap(b=>(b.solid??[{x:b.x,z:b.z,w:b.w,d:b.d}]).map(s=>[b.id,s.x,s.z,s.x+s.w,s.z+s.d]))")
@@ -253,13 +275,13 @@ with sync_playwright() as p:
                 ost = E("({ mode: window.__nml.ostCentre.mode, active: window.__nml.ostCentre.active, playing: window.__nml.ostCentre.playing, bass: window.__nml.ostCentre.bass, energy: window.__nml.ostCentre.energy })")
                 max_bass = max(max_bass, ost['bass']); max_energy = max(max_energy, ost['energy'])
             st = E("({...window.__nml.view.animStats, walkers: window.__nml.world.LOCATIONS.steel_center.walkers.length})")
-            tower_pulse_keys = [f'ct_tour_{t}_v4_3q_neon' for t in ('teng', 'orc', 'archeon', 'nexus', 'humancorp')]
+            tower_pulse_keys = [f'ct_tour_{t}_v4_3q_pulse' for t in ('teng', 'orc', 'archeon', 'nexus', 'humancorp')]
             spans = {k: round(max(s.get(k, 0) for s in samples) - min(s.get(k, 0) for s in samples), 3) for k in tower_pulse_keys}
-            ok(st['enseignes'] == 30 and st['fenetres'] == 37 and st['pulses'] == 32 and st['on'] <= 8 and st['walkers'] <= 12
+            ok(st['enseignes'] == 42 and st['fenetres'] == 44 and st['pulses'] == 32 and st['on'] <= 8 and st['walkers'] <= 12
                and st['pulsesOn'] <= (8 if mob else 48) and st['pulsesOn'] >= (6 if mob else 8),
                f'{name} calques additifs & plafonds : on={st["on"]}, walkers={st["walkers"]}, pulsesOn={st["pulsesOn"]}', st)
             ok(ost['mode'] == 'ost_center_town' and not ost['active'] and ost['playing'] and max_bass > 0.05 and max_energy > 0.04 and all(v > 0.12 for v in spans.values()),
-               f'{name} OST Center-Town pilote les néons des 5 tours v4 sur le kick (bass={max_bass:.2f})', (ost, spans))
+               f'{name} OST Center-Town pilote les 5 _pulse des tours v4 sur le kick (bass={max_bass:.2f})', (ost, spans))
 
             # 4. Sorties et portes du plan v2, libres et atteignables ; temps de traversée et coût de l'A*
             reach = E(f"""() => {{
