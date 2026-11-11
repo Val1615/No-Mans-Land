@@ -17,6 +17,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .wlabel.exit,.wlabel.junction{color:var(--c)}
 .wlabel.edge{opacity:.75;border-color:rgba(248,221,164,.2);font-style:italic}
 .wlabel[hidden]{display:none}
+.wlabel[data-fleche]:not([data-fleche=""])::before{content:attr(data-fleche);margin-right:5px;opacity:.9} /* sortie hors écran : flèche vers son bord */
 #hud{position:fixed;top:calc(12px + var(--pad));left:12px;display:flex;gap:18px;align-items:center;padding:7px 12px;pointer-events:none}
 #hud b{font-family:'VT';font-size:23px;font-weight:400;line-height:1;color:var(--c)}
 .bar{height:5px;width:110px;border:1px solid var(--d);margin-top:2px}.bar i{display:block;height:100%;background:var(--c);transition:width .3s}

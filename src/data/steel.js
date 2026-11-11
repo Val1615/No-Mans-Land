@@ -9,6 +9,7 @@ import { LOCATIONS_ARENA, DOORS_ARENA, NPCS_ARENA, DIALOGUES_ARENA, CLOSED_ARENA
 import { LOCATIONS_STRIP, DOORS_STRIP, NPCS_STRIP, DIALOGUES_STRIP, CLOSED_STRIP } from './frequence_strip.js';
 import { LOCATIONS_PULSE, DOORS_PULSE, NPCS_PULSE, DIALOGUES_PULSE, CLOSED_PULSE } from './pulse_plaza.js';
 import { LOCATIONS_CHINA, DOORS_CHINA, NPCS_CHINA, DIALOGUES_CHINA } from './china_lake.js';
+import { CT_FOULE } from './center_foule.js';
 import { BUILDINGS_ROUTE, PAINTED_DOORS_ROUTE, BUILDINGS_CENTER, PAINTED_DOORS_CENTER, BUILDINGS_SV1, PAINTED_DOORS_SV1, BUILDINGS_SV2, PAINTED_DOORS_SV2 } from './buildings_steel.js';
 
 const named = list => list.map(b => ({ ...b, named: true }));
@@ -16,14 +17,6 @@ const named = list => list.map(b => ({ ...b, named: true }));
 // extras = figurants immobiles (file d'attente, soldats), walkers = passants, drones = drones en orbite, glows = lumières au sol.
 const SOLDAT = 'gen_halloran';
 const civ = i => `st_civil${i % 6}`;
-const POOL_CT = [
-  'st_civil0', 'st_civil1', 'st_civil2', 'st_civil3', 'st_civil4', 'st_civil5',
-  'gen_ml_navetteur', 'gen_fs_client_costume', 'gen_fs_client_imper', 'gen_fs_passante', 'gen_fs_passant_canne',
-  'gen_ml_foule_a', 'gen_df_foule_a', 'gen_pp_foule_c',
-];
-const figCt = (pts, k0, role = 'foule') => pts.map(([x, z, f], i) => ({
-  sprite: POOL_CT[(k0 + i * 3) % POOL_CT.length], x, z, face: f ?? ((k0 + i) % 2 ? -1 : 1), role,
-}));
 const NIGHT_ROUTE = { bg: '#0c0f18', hemi: ['#8090b8', '#2a2430', 0.95], sun: ['#a8b8ff', 0.55], tint: '#c4c8d8', actor: '#c9cddc' };
 const NIGHT_CITY = { bg: '#05070d', hemi: ['#9ab0d4', '#141824', 1.08], sun: ['#dce4f5', 0.55], tint: '#d8dce8', actor: '#e2dee8' };
 // v14 : Sous-Ville (concept docs/villes/steel/ambiance/concept_sous_ville.jpg) : lumière orange des braseros, fumée, tôle rouillée.
@@ -68,42 +61,67 @@ export const LOCATIONS = {
   // S1 : Center-Town · Carrefour Arcadius (docs/villes/steel/quartiers/center_town/CENTER_TOWN.md) : vraie nuit noire (#05070d),
   // dalles anthracite humides, rails tram, case jaune, QG Arcadius IO, silhouette extérieure du Dôme Fréquence (zone steel_dome à part),
   // Bureau des permis, 5 tours à pubs distinctes, viaduc Mega-Line, hologramme suspendu NEXUS, mobilier ct_*_3q.
-  steel_center: { id: 'steel_center', name: 'Steel-Megalopolis · Center-Town', kind: 'exterior', size: { w: 48, d: 36 }, light: NIGHT_CITY,
+  // Center-Town v2 (plan cible d'Ocre validé le 11/11/2026, docs : /workspace/nml-shots/center_town_plan_cible.md) : 132 x 116 m.
+  // Av. N-S : trottoir x56-64 | voies x64-72 | tram x72-76 | voies x76-84 | trottoir x84-92. Av. E-O : trottoir z48-56 | voies z56-64 | tram z64-68 | voies z68-76 | trottoir z76-84.
+  steel_center: { id: 'steel_center', name: 'Steel-Megalopolis · Center-Town', kind: 'exterior', size: { w: 132, d: 116 }, light: NIGHT_CITY,
     ground: { base: '#12151d', skin: 'g_ct_trottoir_dalles', tileM: 4, clean: true,
       marge: { skin: 'g_ct_asphalte_mouille', tileM: 4, m: 48, voile: 'rgba(4,6,12,.64)' },
       zones: [],
+      // sol du carrefour v4 d'Ocre (128 px/m, CENTER_TOWN.md §8D) : bordures + angles R 2 m sur la dernière rangée de trottoir, tirets de voie,
+      // lignes d'arrêt avant chaque passage piéton (circulation à droite), case jaune 12 m d'un seul tenant
       paint: [
-        { x: 32, z: 0, w: 4, d: 12, skin: 'g_ct_asphalte_mouille' },
-        { x: 32, z: 24, w: 4, d: 12, skin: 'g_ct_asphalte_mouille' },
-        { x: 0, z: 16, w: 24, d: 4, skin: 'g_ct_rails_tram_ew' },
-        { x: 40, z: 16, w: 8, d: 4, skin: 'g_ct_rails_tram_ew' },
-        { x: 28, z: 0, w: 4, d: 12, skin: 'g_ct_rails_tram_ns' },
-        { x: 28, z: 24, w: 4, d: 12, skin: 'g_ct_rails_tram_ns' },
-        { x: 24, z: 16, w: 4, d: 4, skin: 'g_ct_passage_pieton_ns' },
-        { x: 36, z: 16, w: 4, d: 4, skin: 'g_ct_passage_pieton_ns' },
-        { x: 28, z: 12, w: 8, d: 4, skin: 'g_ct_passage_pieton_ew' },
-        { x: 28, z: 20, w: 8, d: 4, skin: 'g_ct_passage_pieton_ew' },
-        { x: 28, z: 16, w: 8, d: 4, skin: 'g_ct_carrefour_jaune' },
+        { x: 64, z: 0, w: 8, d: 116, skin: 'g_ct_asphalte_mouille' }, { x: 76, z: 0, w: 8, d: 116, skin: 'g_ct_asphalte_mouille' },
+        { x: 0, z: 56, w: 132, d: 8, skin: 'g_ct_asphalte_mouille' }, { x: 0, z: 68, w: 132, d: 8, skin: 'g_ct_asphalte_mouille' },
+        { x: 72, z: 0, w: 4, d: 116, skin: 'g_ct_rails_tram_ns' },
+        { x: 0, z: 64, w: 64, d: 4, skin: 'g_ct_rails_tram_ew' }, { x: 84, z: 64, w: 48, d: 4, skin: 'g_ct_rails_tram_ew' },
+        { x: 64, z: 52, w: 20, d: 4, skin: 'g_ct_passage_pieton_ew' }, { x: 64, z: 76, w: 20, d: 4, skin: 'g_ct_passage_pieton_ew' },
+        { x: 60, z: 56, w: 4, d: 20, skin: 'g_ct_passage_pieton_ns' }, { x: 84, z: 56, w: 4, d: 20, skin: 'g_ct_passage_pieton_ns' },
+        // bordures : trottoirs de l'av. N-S (x60-64 / x84-88) et de l'av. E-O (z52-56 / z76-80), angles aux 4 coins du carrefour
+        { x: 60, z: 0, w: 4, d: 52, skin: 'g_ct_bordure_e' }, { x: 60, z: 80, w: 4, d: 36, skin: 'g_ct_bordure_e' },
+        { x: 84, z: 0, w: 4, d: 52, skin: 'g_ct_bordure_o' }, { x: 84, z: 80, w: 4, d: 36, skin: 'g_ct_bordure_o' },
+        { x: 0, z: 52, w: 60, d: 4, skin: 'g_ct_bordure_s' }, { x: 88, z: 52, w: 44, d: 4, skin: 'g_ct_bordure_s' },
+        { x: 0, z: 76, w: 60, d: 4, skin: 'g_ct_bordure_n' }, { x: 88, z: 76, w: 44, d: 4, skin: 'g_ct_bordure_n' },
+        { x: 60, z: 52, w: 4, d: 4, skin: 'g_ct_bordure_angle_se' }, { x: 84, z: 52, w: 4, d: 4, skin: 'g_ct_bordure_angle_so' },
+        { x: 60, z: 76, w: 4, d: 4, skin: 'g_ct_bordure_angle_ne' }, { x: 84, z: 76, w: 4, d: 4, skin: 'g_ct_bordure_angle_no' },
+        // tirets de séparation des voies (x68, x80 ; z60, z72), hors carrefour et passages
+        { x: 66, z: 0, w: 4, d: 52, skin: 'g_ct_voie_tirets_ns' }, { x: 78, z: 0, w: 4, d: 52, skin: 'g_ct_voie_tirets_ns' },
+        { x: 66, z: 80, w: 4, d: 36, skin: 'g_ct_voie_tirets_ns' }, { x: 78, z: 80, w: 4, d: 36, skin: 'g_ct_voie_tirets_ns' },
+        { x: 0, z: 58, w: 60, d: 4, skin: 'g_ct_voie_tirets_ew', tileM: 12 }, { x: 0, z: 70, w: 60, d: 4, skin: 'g_ct_voie_tirets_ew', tileM: 12 },
+        { x: 88, z: 58, w: 44, d: 4, skin: 'g_ct_voie_tirets_ew', tileM: 12 }, { x: 88, z: 70, w: 44, d: 4, skin: 'g_ct_voie_tirets_ew', tileM: 12 },
+        // lignes d'arrêt : sens sud x64-72 avant le passage nord, sens nord x76-84 avant le passage sud, sens est z68-76 avant le passage ouest, sens ouest z56-64 avant le passage est
+        { x: 64, z: 48, w: 8, d: 4, skin: 'g_ct_ligne_arret_ns' }, { x: 76, z: 80, w: 8, d: 4, skin: 'g_ct_ligne_arret_ns' },
+        { x: 56, z: 68, w: 4, d: 8, skin: 'g_ct_ligne_arret_ew' }, { x: 88, z: 56, w: 4, d: 8, skin: 'g_ct_ligne_arret_ew' },
+        { x: 68, z: 60, w: 12, d: 12, skin: 'g_ct_case_jaune_12m', tileM: 12 },
       ] },
     buildings: BUILDINGS_CENTER, props: [],
+    // taxis qui roulent sur les deux avenues (circulation à droite, voies de 4 m : E-O vers l'ouest z58, vers l'est z70/z74 ; N-S vers le sud x66/x70, vers le nord x82) ;
+    // sur l'axe N-S, vue miroir du sprite x (data/vehicules.js) ; deux tournent à droite au carrefour. Entrée et sortie dans la marge sombre, hors carte.
+    vehicules: [
+      { sprite: 'ct_taxi_v3_3q', path: [[-8, 74], [66, 74], [66, 124]], speed: 7, t0: 40 },   // vers l'est puis à droite vers le sud
+      { sprite: 'ct_taxi_v3_3q', path: [[140, 58], [-8, 58]], speed: 7.5, t0: 30 },           // vers l'ouest, tout droit
+      { sprite: 'ct_taxi_v3_3q', path: [[82, 124], [82, 74], [140, 74]], speed: 6.5, t0: 20 }, // vers le nord puis à droite vers l'est
+      { sprite: 'ct_taxi_v3_3q', path: [[70, -8], [70, 124]], speed: 7, t0: 50 },             // vers le sud, tout droit
+      { sprite: 'ct_taxi_v3_3q', path: [[-8, 70], [140, 70]], speed: 8, t0: 90 },             // vers l'est, tout droit
+    ],
     enseignes: [
       { id: 'ct_n_arcadius', building: 'c_arcadius', effet: 'fixe', intensite: 0.92 },
       { id: 'ct_n_dome', building: 'c_tour', effet: 'fixe', intensite: 0.92 },
-      { id: 'ct_n_teng', building: 'c_change', effet: 'fixe', intensite: 0.90 },
-      { id: 'ct_n_archeon', building: 'ct_archeon', effet: 'fixe', intensite: 0.92 },
-      { id: 'ct_n_orc', building: 'ct_orc', effet: 'fixe', intensite: 0.92 },
-      { id: 'ct_n_humancorp', building: 'ct_humancorp', effet: 'fixe', intensite: 0.92 },
-      { id: 'ct_n_nexus', building: 'ct_nexus', effet: 'fixe', intensite: 0.92 },
+      { id: 'ct_n_teng', building: 'c_change', effet: 'eteint', intensite: 0.90 },
+      { id: 'ct_n_archeon', building: 'ct_archeon', effet: 'eteint', intensite: 0.92 },
+      { id: 'ct_n_orc', building: 'ct_orc', effet: 'eteint', intensite: 0.92 },
+      { id: 'ct_n_humancorp', building: 'ct_humancorp', effet: 'eteint', intensite: 0.92 },
+      { id: 'ct_n_nexus', building: 'ct_nexus', effet: 'eteint', intensite: 0.92 },
       { id: 'ct_n_holo', building: 'ct_holo0', effet: 'fixe', intensite: 0.95 },
       { id: 'ct_n_arret', building: 'ct_arret0', effet: 'fixe', intensite: 0.88 },
       { id: 'ct_n_echoppe', building: 'ct_echoppe0', effet: 'gresille', intensite: 0.85, decale: 0.4 },
     ],
+    // tours v4 : pas de calque _pulse livré ; le kick de l'OST passe par leur calque _neon (allumé en veille 0,55, punch au kick), l'enseigne fixe est éteinte pour ne pas doubler
     pulses: [
-      { building: 'c_change', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0, priorite: 8 },
-      { building: 'ct_orc', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.04, priorite: 7 },
-      { building: 'ct_archeon', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.08, priorite: 6 },
-      { building: 'ct_nexus', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.12, priorite: 5 },
-      { building: 'ct_humancorp', calque: 'pulse', mode: 'kick', veille: 0.04, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.16, priorite: 4 },
+      { building: 'c_change', calque: 'pulse', key: 'ct_tour_teng_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0, priorite: 8 },
+      { building: 'ct_orc', calque: 'pulse', key: 'ct_tour_orc_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.04, priorite: 7 },
+      { building: 'ct_archeon', calque: 'pulse', key: 'ct_tour_archeon_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.2, punch: 0.030, decale: 0.08, priorite: 6 },
+      { building: 'ct_nexus', calque: 'pulse', key: 'ct_tour_nexus_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.12, priorite: 5 },
+      { building: 'ct_humancorp', calque: 'pulse', key: 'ct_tour_humancorp_v4_3q_neon', mode: 'kick', veille: 0.55, intensite: 1.0, gain: 2.1, punch: 0.028, decale: 0.16, priorite: 4 },
       { building: 'c_arcadius', calque: 'ecran', mode: 'balise', periode: 2.6, intensite: 0.95, veille: 0.35, priorite: 3 },
       { building: 'c_tour', calque: 'ecran', mode: 'mesure', periode: 8.0, intensite: 1.15, veille: 0.55, priorite: 2 },
       { building: 'ct_holo0', calque: 'ecran', mode: 'mesure', periode: 6.5, intensite: 1.20, veille: 0.60, priorite: 1 },
@@ -120,53 +138,43 @@ export const LOCATIONS = {
       { building: 'ct_kiosque0', calque: 'ecran', mode: 'fixe', intensite: 2.75, veille: 0.26 },
     ],
     glows: [
-      { x: 8, z: 14.5, rx: 3.6, rz: 2.2, color: NEON_C, i: 0.52 },
-      { x: 6, z: 23.8, rx: 2.8, rz: 2.2, color: WARM, i: 0.58, flicker: true },
-      { x: 14, z: 23.8, rx: 2.8, rz: 2.2, color: '#e042a8', i: 0.50 },
-      { x: 18, z: 14.2, rx: 2.6, rz: 2.2, color: WARM, i: 0.55 },
-      { x: 38, z: 21.8, rx: 2.6, rz: 2.2, color: WARM, i: 0.55 },
-      { x: 26, z: 18, rx: 3.8, rz: 4.2, color: NEON_C, i: 0.65, flicker: true },
-      { x: 22, z: 12.8, rx: 4.6, rz: 2.6, color: WARM, i: 0.52 },
-      { x: 42, z: 13, rx: 4.8, rz: 2.6, color: '#c8323c', i: 0.42 },
-      { x: 16, z: 18, rx: 2.8, rz: 1.8, color: WARM, i: 0.48 },
-      { x: 44, z: 18, rx: 2.8, rz: 1.8, color: WARM, i: 0.48 },
-      { x: 2.4, z: 18, rx: 2.6, rz: 3.4, color: NEON_C, i: 0.46 },
+      { x: 74, z: 66, rx: 7, rz: 7, color: NEON_C, i: 0.55, flicker: true },
+      { x: 28, z: 42, rx: 9, rz: 3.6, color: '#c8323c', i: 0.45 },
+      { x: 50, z: 22, rx: 3, rz: 8, color: '#c8323c', i: 0.36 },
+      { x: 50, z: 98.5, rx: 3.6, rz: 2.2, color: WARM, i: 0.55 },
+      { x: 20, z: 50.5, rx: 4.6, rz: 2.2, color: NEON_C, i: 0.5 },
+      { x: 38, z: 80, rx: 2.8, rz: 2.2, color: WARM, i: 0.58, flicker: true },
+      { x: 86.5, z: 40, rx: 2.6, rz: 2.2, color: '#e042a8', i: 0.5 },
+      { x: 62, z: 42, rx: 2.6, rz: 2.2, color: WARM, i: 0.55 },
+      { x: 86, z: 90, rx: 2.6, rz: 2.2, color: WARM, i: 0.55 },
+      { x: 9.5, z: 44.5, rx: 2.4, rz: 2.4, color: WARM, i: 0.5 },
+      { x: 96, z: 50, rx: 3.6, rz: 2.2, color: FLOOD, i: 0.42 },
+      { x: 2.4, z: 82, rx: 2.6, rz: 2.6, color: NEON_C, i: 0.46 },
     ],
-    // Foule densifiée sur les trottoirs, parvis et passages piétons (46 figurants + 8 passants <= 8 anims mobile, hors solids, view.masques() === []).
-    extras: [
-      // Parvis du QG Arcadius IO : factionnaires et citoyens au contrôle
-      { sprite: SOLDAT, x: 40.6, z: 13.6, face: -1, role: 'soldat' },
-      { sprite: SOLDAT, x: 43.6, z: 13.6, face: -1, role: 'soldat' },
-      { sprite: SOLDAT, x: 39.8, z: 14.8, face: -1, role: 'soldat' },
-      ...figCt([[41.8, 14.6, 1], [43.2, 14.9, -1], [45.4, 15.8, -1]], 0, 'citoyen'),
-      // Parvis du Dôme Fréquence et sous le portique NEXUS (seuil c_dome 22;13 dégagé)
-      ...figCt([[17.6, 15.4, 1], [19.4, 13.6, 1], [20.5, 14.2, 1], [21.6, 15.2, -1], [23.4, 13.6, -1], [23.8, 14.8, 1], [26.8, 13.6, 1], [27.6, 14.5, -1]], 3, 'client'),
-      // Abords et traversées des 4 passages piétons du carrefour (nord, ouest, est, sud)
-      ...figCt([[28.6, 13.4, 1], [30.8, 13.4, -1], [33.4, 13.8, -1], [35.4, 14.2, -1]], 7, 'foule'),
-      ...figCt([[22.6, 16.4, 1], [23.0, 18.2, 1], [22.4, 17.4, -1]], 11, 'foule'),
-      ...figCt([[36.8, 16.2, 1], [39.4, 16.8, -1], [36.0, 16.8, -1]], 2, 'foule'),
-      ...figCt([[31.5, 20.0, 1], [31.4, 20.6, 1], [31.8, 21.2, -1]], 5, 'foule'),
-      // Quai de l'Arrêt Tram Central et débouché ruelle Teng
-      ...figCt([[6.2, 16.0, 1], [7.4, 15.0, 1], [10.6, 14.6, -1], [11.8, 14.6, -1]], 8, 'voyageur'),
-      // Échoppe Nouilles & Vapeur, Kiosque Presse & Médias et trottoir sud-ouest
-      ...figCt([[8.4, 20.2, -1], [9.2, 21.2, -1], [10.2, 22.6, 1], [11.6, 24.6, 1], [16.8, 20.2, 1]], 1, 'client'),
-      // Guichets Human Corp, trottoir est et file du Bureau des permis
-      ...figCt([[18.6, 20.8, 1], [21.4, 22.6, 1], [23.2, 23.4, -1], [23.8, 25.8, 1]], 4, 'foule'),
-      ...figCt([[43.2, 20.4, -1], [44.8, 21.2, 1], [45.6, 22.8, -1]], 9, 'citoyen'),
-      ...figCt([[34.8, 30.2, 1], [36.0, 31.6, 1], [37.2, 33.2, -1]], 12, 'attente'),
-    ],
+    // Foule (environ 140 figurants) concentrée sur les angles du carrefour, les passages piétons et le parvis de l'Arcadius,
+    // tirée par tools_center132.py hors solides, hors seuils et hors masques ; dense: true = masqué en plan large d'arrivée (version allégée).
+    extras: CT_FOULE,
+    // Passants : boucles sur les trottoirs, les passages piétons et le parvis uniquement (jamais sur une case solide ni derrière un sprite qui les masquerait,
+    // portions libres relevées dans le jeu ; contrôlé par tests/center_rapide.py)
     walkers: [
-      { sprite: civ(0), path: [[19.2, 13.6], [23.4, 13.6], [23.4, 14.4], [19.2, 14.4]], speed: 1.15, t0: 2 },
-      { sprite: 'gen_ml_navetteur', path: [[19.0, 16.8], [24.6, 16.8], [24.6, 18.2], [19.0, 18.2]], speed: 1.05, t0: 9 },
-      { sprite: 'gen_fs_passante', path: [[19.2, 14.8], [30.8, 14.8], [30.8, 15.8], [19.2, 15.8]], speed: 1.1, t0: 1.5 },
-      { sprite: civ(5), path: [[20.4, 13.2], [20.4, 18.0], [21.6, 18.0], [21.6, 13.2]], speed: 1.2, t0: 4 },
-      { sprite: 'gen_fs_client_imper', path: [[44.0, 19.6], [46.2, 19.6], [46.2, 21.0], [44.0, 21.0]], speed: 1.0, t0: 3 },
-      { sprite: 'gen_pp_foule_c', path: [[26.4, 13.4], [26.4, 15.8], [27.6, 15.8], [27.6, 13.4]], speed: 1.15, t0: 8 },
-      { sprite: 'gen_fs_client_costume', path: [[32.4, 31.0], [33.8, 31.0], [33.8, 34.0], [32.4, 34.0]], speed: 1.1, t0: 5 },
-      { sprite: 'gen_df_foule_a', path: [[28.4, 13.6], [30.6, 13.6], [30.6, 14.8], [28.4, 14.8]], speed: 0.95, t0: 6.5 },
+      { sprite: civ(0), path: [[64.6, 53.2], [83.4, 53.2], [83.4, 54.8], [64.6, 54.8]], speed: 1.15, t0: 2 },
+      { sprite: 'gen_ml_navetteur', path: [[64.5, 77.4], [75.8, 77.4], [75.8, 78.6], [64.5, 78.6]], speed: 1.05, t0: 9 },
+      { sprite: 'gen_fs_passante', path: [[61.2, 56.6], [61.2, 75.4], [62.8, 75.4], [62.8, 56.6]], speed: 1.1, t0: 1.5 },
+      { sprite: civ(5), path: [[85.2, 56.6], [85.2, 75.4], [86.8, 75.4], [86.8, 56.6]], speed: 1.2, t0: 4 },
+      { sprite: 'gen_fs_client_imper', path: [[13, 45.2], [34.8, 45.2], [34.8, 46.4], [13, 46.4]], speed: 1.0, t0: 3 },
+      { sprite: 'gen_pp_foule_c', path: [[24.2, 50.6], [38.5, 50.6], [38.5, 51.8], [24.2, 51.8]], speed: 1.15, t0: 8 },
+      { sprite: 'gen_fs_client_costume', path: [[49.4, 6], [49.4, 40], [50.6, 40], [50.6, 6]], speed: 1.1, t0: 5 },
+      { sprite: 'gen_df_foule_a', path: [[58.4, 3], [58.4, 23.5], [59.6, 23.5], [59.6, 3]], speed: 0.95, t0: 6.5 },
+      { sprite: civ(2), path: [[109.8, 48.4], [129, 48.4], [129, 49.6], [109.8, 49.6]], speed: 1.1, t0: 7 },
+      { sprite: 'gen_ml_foule_a', path: [[112.6, 52.8], [129, 52.8], [129, 54], [112.6, 54]], speed: 1.05, t0: 2.5 },
+      { sprite: civ(3), path: [[57.6, 86], [57.6, 113], [58.8, 113], [58.8, 86]], speed: 1.0, t0: 4.5 },
+      { sprite: civ(4), path: [[60.4, 81], [60.4, 113], [61.6, 113], [61.6, 81]], speed: 1.1, t0: 6 },
     ],
-    drones: [ { x: 22, z: 17, r: 7, y: 6, speed: 0.22 }, { x: 38, z: 18, r: 5, y: 5.2, speed: -0.3, ph: 2 }, { x: 10, z: 18, r: 4, y: 6.5, speed: 0.35, ph: 4 } ],
-    spawn: { player: { x: 1, z: 18 }, companion: { x: 1, z: 19 } }, city: 'steel' },
+    drones: [ { x: 74, z: 66, r: 9, y: 7, speed: 0.2 }, { x: 34, z: 46, r: 6, y: 6, speed: -0.28, ph: 2 }, { x: 104, z: 62, r: 5, y: 6.5, speed: 0.32, ph: 4 } ],
+    // Plan large d'arrivée (view.js, loc.cadre.arrivee) : cadré sur le carrefour et le parvis de l'Arcadius (libre : plan d'ensemble, le joueur peut être hors cadre) ;
+    // tenu jusqu'au premier pas, geste ou zoom, puis retour en douceur à l'échelle de jeu (30 ppm ordinateur, 24 ppm téléphone).
+    cadre: { arrivee: { desktop: { ppm: 12, cible: [48, 38], libre: true }, mobile: { ppm: 7, cible: [52, 42], libre: true } } },
+    spawn: { player: { x: 1, z: 82 }, companion: { x: 1, z: 83 } }, city: 'steel' },
   change_in: { id: 'change_in', name: 'Center-Town · Change de Teng', kind: 'interior', size: { w: 6, d: 5 },
     light: { bg: '#07090e', hemi: ['#ffd9b0', '#2a2030', 1.2], sun: ['#ffc890', 1.0] },
     ground: { base: '#22232a', skin: 'f_io_dark', tileM: 2 }, wall: '#2a2e36', wallSkin: 'w_io_dark', doorSkin: 'door_io', buildings: [], props: [
@@ -232,11 +240,11 @@ export const DOORS = [
   { id: 'douane_in_est', location: 'douane_in', label: 'Vers Center-Town', opening: { x: 10, z: 4, side: 'east' }, threshold: { x: 9, z: 4 }, target: { doorId: 'c_ouest' },
     interrupt: { npc: 'odile', tree: 'odile_volonte', if: s => !!(s.flags.race_augmente || s.flags.race_cyborg) && !s.flags.odile_tenu && !s.flags.odile_signe && !s.flags.odile_payee },
     conditions: [{ test: s => !!s.flags.steel_passe, reason: 'douane', text: 'La barrière reste baissée. Il faut d\u2019abord passer au guichet.' }] },
-  J('c_ouest', 'steel_center', 0, 18, 1, 18, 'douane_in_est', 'Vers la douane'),
+  J('c_ouest', 'steel_center', 0, 82, 1, 82, 'douane_in_est', 'Vers la douane'), // Center-Town v2 : bout ouest du trottoir sud de l'av. E-O
   ...painted(PAINTED_DOORS_CENTER, 'steel_center', { c_change_door: 'change_in_door' }),
   { id: 'change_in_door', location: 'change_in', opening: { x: 3, z: 5, side: 'south' }, threshold: { x: 3, z: 4 }, target: { doorId: 'c_change_door' }, conditions: [] },
   // Lower-Town v1 : La Descente. c_est vérifié libre (aucun bâtiment ni prop sur x 47-48, z 18 ; test lower_town.py).
-  J('c_est', 'steel_center', 48, 18, 47, 18, 'l_ouest', 'La Descente (Lower-Town)'),
+  J('c_est', 'steel_center', 132, 50, 131, 50, 'l_ouest', 'La Descente (Lower-Town)'), // Center-Town v2 : bout est du trottoir nord de l'av. E-O
   ...DOORS_LOWER,
   ...DOORS_ASIA,
   ...DOORS_CHINA,
@@ -257,7 +265,7 @@ export const DOORS = [
   { id: 'elio_in_door', location: 'elio_in', opening: { x: 3.5, z: 5, side: 'south' }, threshold: { x: 3.5, z: 4 }, target: { doorId: 'v_atelier_door' }, conditions: [] },
   { id: 'v_lift_door', buildingId: 'v_lift', location: 'sv_cuve', opening: { x: 32, z: 7.5, side: 'south' }, threshold: { x: 32, z: 8.5 }, target: { doorId: 'c_sud' },
     conditions: [{ test: s => !!s.flags.sv_passage, reason: 'lift', text: 'Le monte-charge. Un boîtier à clé, et un type assis dessus qui ne bougera pas pour toi.' }] },
-  J('c_sud', 'steel_center', 19.5, 36, 19.5, 35, 'v_lift_door', 'Vers la Sous-Ville', [{ test: s => !!s.flags.sv_passage, reason: 'grille', text: 'Une grille entre deux galeries. Fermée de l’intérieur.' }], { labelPos: [13.2, 32.4] }),
+  J('c_sud', 'steel_center', 58, 116, 58, 115, 'v_lift_door', 'Vers la Sous-Ville', [{ test: s => !!s.flags.sv_passage, reason: 'grille', text: 'Une grille entre deux galeries. Fermée de l’intérieur.' }], { labelPos: [58, 113] }), // Center-Town v2 : bout sud du trottoir ouest de l'av. N-S
   E('r_ouest', 'steel_route', 0, 30, 1, 30, 'Désert', 'Du sable, et le mur du dôme qui ne finit pas.'),
 ];
 export const NPCS = [
@@ -268,7 +276,7 @@ export const NPCS = [
   { id: 'receleur', name: 'Le receleur', sprite: 'gen_sv_receleur', location: 'sv_poutres', x: 31.6, z: 11.6, faceTo: [28, 14], dialogue: 'receleur' },
   { id: 'dealer', name: 'Pic', sprite: 'gen_sv_dealer', location: 'tripot_in', x: 3.2, z: 2.2, faceTo: [4, 6], dialogue: 'dealer' },
   { id: 'elio', name: 'Elio', sprite: 'gen_elio', location: 'elio_in', x: 2.6, z: 1.9, faceTo: [3.5, 5], dialogue: 'elio' },
-  { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 23.5, z: 19.5, faceTo: [28, 18], dialogue: 'patrouilleur' },
+  { id: 'patrouilleur', name: 'Patrouilleur', sprite: 'gen_halloran', location: 'steel_center', x: 61, z: 50.5, faceTo: [74, 66], dialogue: 'patrouilleur' },
   ...NPCS_LOWER,
   ...NPCS_ASIA,
   ...NPCS_CHINA,

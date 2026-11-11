@@ -74,7 +74,7 @@ const OUT = (id, loc, w, d, to) => ({ id, location: loc, opening: { x: w / 2, z:
 export const DOORS_ASIA = [
   J('a_nord', 'steel_asia', 8, 0, 8, 1, 'l_sud', 'Vers Lower-Town'),                       // [plan] a_nord ↔ l_sud, aucune condition
   J('a_escalier', 'steel_asia', 43, 0, 43, 1, 'c_sud_est', 'Mille Marches (Center-Town)'),  // [plan] a_escalier ↔ c_sud_est ; Repérage +1 : système absent, non branché
-  J('c_sud_est', 'steel_center', 38, 36, 38, 35, 'a_escalier', 'Mille Marches (Asia-Ground)'),
+  J('c_sud_est', 'steel_center', 132, 82, 131, 82, 'a_escalier', 'Mille Marches (Asia-Ground)', [], { labelPos: [129, 82] }), // Center-Town v2 : bout est du trottoir sud de l'av. E-O
   // [plan] lot 3 : le Barrage s'ouvre contre 20 cr payés à Ah-Lam (la quête de Mei et le laissez-passer viendront au lot 4). China Lake reste joignable sans argent par Lower-Town (l_sud_est).
   J('a_sud', 'steel_asia', 24, 36, 24, 35, 'k_nord', 'Le Barrage (China Lake)', [{ test: s => !!s.flags.cl_barrage, reason: 'barrage',
     text: 'Des caisses en travers de la rue, trois types assis dessus. Ah-Lam tend la main : vingt crédits, ou tu fais demi-tour.' }]),

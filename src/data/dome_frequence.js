@@ -46,7 +46,7 @@ export const LOCATIONS_DOME = {
 };
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = []) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions });
 export const DOORS_DOME = [
-  { id: 'c_dome', buildingId: 'c_tour', location: 'steel_center', label: 'Le Dôme Fréquence', opening: { x: 22.0, z: 12, side: 'south' }, threshold: { x: 22.0, z: 13 }, target: { doorId: 'df_sortie' },
+  { id: 'c_dome', buildingId: 'c_tour', location: 'steel_center', label: 'Le Dôme Fréquence', opening: { x: 50.0, z: 96, side: 'south' }, threshold: { x: 50.0, z: 97 }, target: { doorId: 'df_sortie' },
     conditions: [{ test: s => !!s.flags.dome_ouvert, reason: 'dome', text: 'Le Dôme Fréquence. Des écrans sur toute la façade, et une porte qui ne s\u2019ouvre pas pour toi. Pas ce soir.' }] },
   J('df_sortie', 'steel_dome', 15, 30, 15, 29, 'c_dome', 'Sortie (Center-Town)'),
 ];

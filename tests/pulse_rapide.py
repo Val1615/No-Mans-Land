@@ -68,7 +68,7 @@ with sync_playwright() as p:
             b = pg.locator(sel).first.bounding_box(); gesture(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2); time.sleep(0.35)
         passer_boot(pg); tapel('#m-new'); tapel('[data-race="augmente"]'); tapel('#cr-next'); tapel('#cr-enter')
         pg.wait_for_function('!document.body.classList.contains("menu-open")', timeout=15000); time.sleep(0.6)
-        E("""() => { const g = window.__nml.game, s = g.snapshot(); s.location = 'steel_center'; s.player.x = 33; s.player.z = 2;
+        E("""() => { const g = window.__nml.game, s = g.snapshot(); s.location = 'steel_center'; s.player.x = 90; s.player.z = 1;
           Object.assign(s.flags, { q_start: true, q_fin: true, steel_passe: true }); g.restore(s, true); }""")
         time.sleep(1.0)
         E("window.__nml.game.useDoor('c_nord')")

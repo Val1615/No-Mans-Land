@@ -81,7 +81,8 @@
     "tuilable": true,
     "source": "dérivé PIL de g_ct_asphalte_mouille + case jaune hachurée",
     "status": "v1",
-    "pose": "case jaune hachurée centrale du carrefour (28,16,8,4)"
+    "pose": "case jaune hachurée centrale du carrefour (28,16,8,4)",
+    "obsolete": true
   },
   "ct_arcadius_qg_3q": {
     "file": "steel/center_town/ct_arcadius_qg_3q.webp",
@@ -2523,7 +2524,8 @@
     },
     "ecran_layer": "ct_arcadius_qg_v3_3q_ecran",
     "fenetres": "ct_arcadius_qg_v3_3q_fenetres",
-    "neon": "ct_arcadius_qg_v3_3q_neon"
+    "neon": "ct_arcadius_qg_v3_3q_neon",
+    "obsolete": true
   },
   "ct_arcadius_qg_v3_3q_fenetres": {
     "file": "steel/center_town/ct_arcadius_qg_v3_3q_fenetres.webp",
@@ -2540,7 +2542,8 @@
     "couche_de": "ct_arcadius_qg_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_arcadius_qg_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_arcadius_qg_v3_3q_neon": {
     "file": "steel/center_town/ct_arcadius_qg_v3_3q_neon.webp",
@@ -2557,7 +2560,8 @@
     "couche_de": "ct_arcadius_qg_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_arcadius_qg_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_arcadius_qg_v3_3q_ecran": {
     "file": "steel/center_town/ct_arcadius_qg_v3_3q_ecran.webp",
@@ -2574,7 +2578,8 @@
     "couche_de": "ct_arcadius_qg_v3_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_arcadius_qg_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_dome_frequence_v3_3q": {
     "file": "steel/center_town/ct_dome_frequence_v3_3q.webp",
@@ -2826,7 +2831,8 @@
     "ecran_layer": "ct_tour_teng_v3_3q_ecran",
     "fenetres": "ct_tour_teng_v3_3q_fenetres",
     "neon": "ct_tour_teng_v3_3q_neon",
-    "pulse": "ct_tour_teng_v3_3q_pulse"
+    "pulse": "ct_tour_teng_v3_3q_pulse",
+    "obsolete": true
   },
   "ct_tour_teng_v3_3q_fenetres": {
     "file": "steel/center_town/ct_tour_teng_v3_3q_fenetres.webp",
@@ -2843,7 +2849,8 @@
     "couche_de": "ct_tour_teng_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_teng_v3_3q_neon": {
     "file": "steel/center_town/ct_tour_teng_v3_3q_neon.webp",
@@ -2860,7 +2867,8 @@
     "couche_de": "ct_tour_teng_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_teng_v3_3q_pulse": {
     "file": "steel/center_town/ct_tour_teng_v3_3q_pulse.webp",
@@ -2878,7 +2886,8 @@
     "layer": "pulse",
     "source": "extraction PIL pulse de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
     "status": "v3",
-    "bande": "kick"
+    "bande": "kick",
+    "obsolete": true
   },
   "ct_tour_teng_v3_3q_ecran": {
     "file": "steel/center_town/ct_tour_teng_v3_3q_ecran.webp",
@@ -2895,7 +2904,8 @@
     "couche_de": "ct_tour_teng_v3_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_teng_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_archeon_v3_3q": {
     "file": "steel/center_town/ct_tour_archeon_v3_3q.webp",
@@ -2942,7 +2952,8 @@
     "ecran_layer": "ct_tour_archeon_v3_3q_ecran",
     "fenetres": "ct_tour_archeon_v3_3q_fenetres",
     "neon": "ct_tour_archeon_v3_3q_neon",
-    "pulse": "ct_tour_archeon_v3_3q_pulse"
+    "pulse": "ct_tour_archeon_v3_3q_pulse",
+    "obsolete": true
   },
   "ct_tour_archeon_v3_3q_fenetres": {
     "file": "steel/center_town/ct_tour_archeon_v3_3q_fenetres.webp",
@@ -2959,7 +2970,8 @@
     "couche_de": "ct_tour_archeon_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_archeon_v3_3q_neon": {
     "file": "steel/center_town/ct_tour_archeon_v3_3q_neon.webp",
@@ -2976,7 +2988,8 @@
     "couche_de": "ct_tour_archeon_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_archeon_v3_3q_pulse": {
     "file": "steel/center_town/ct_tour_archeon_v3_3q_pulse.webp",
@@ -2994,7 +3007,8 @@
     "layer": "pulse",
     "source": "extraction PIL pulse de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
     "status": "v3",
-    "bande": "kick"
+    "bande": "kick",
+    "obsolete": true
   },
   "ct_tour_archeon_v3_3q_ecran": {
     "file": "steel/center_town/ct_tour_archeon_v3_3q_ecran.webp",
@@ -3011,7 +3025,8 @@
     "couche_de": "ct_tour_archeon_v3_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_archeon_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_orc_v3_3q": {
     "file": "steel/center_town/ct_tour_orc_v3_3q.webp",
@@ -3058,7 +3073,8 @@
     "ecran_layer": "ct_tour_orc_v3_3q_ecran",
     "fenetres": "ct_tour_orc_v3_3q_fenetres",
     "neon": "ct_tour_orc_v3_3q_neon",
-    "pulse": "ct_tour_orc_v3_3q_pulse"
+    "pulse": "ct_tour_orc_v3_3q_pulse",
+    "obsolete": true
   },
   "ct_tour_orc_v3_3q_fenetres": {
     "file": "steel/center_town/ct_tour_orc_v3_3q_fenetres.webp",
@@ -3075,7 +3091,8 @@
     "couche_de": "ct_tour_orc_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_orc_v3_3q_neon": {
     "file": "steel/center_town/ct_tour_orc_v3_3q_neon.webp",
@@ -3092,7 +3109,8 @@
     "couche_de": "ct_tour_orc_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_orc_v3_3q_pulse": {
     "file": "steel/center_town/ct_tour_orc_v3_3q_pulse.webp",
@@ -3110,7 +3128,8 @@
     "layer": "pulse",
     "source": "extraction PIL pulse de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
     "status": "v3",
-    "bande": "kick"
+    "bande": "kick",
+    "obsolete": true
   },
   "ct_tour_orc_v3_3q_ecran": {
     "file": "steel/center_town/ct_tour_orc_v3_3q_ecran.webp",
@@ -3127,7 +3146,8 @@
     "couche_de": "ct_tour_orc_v3_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_orc_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_humancorp_v3_3q": {
     "file": "steel/center_town/ct_tour_humancorp_v3_3q.webp",
@@ -3174,7 +3194,8 @@
     "ecran_layer": "ct_tour_humancorp_v3_3q_ecran",
     "fenetres": "ct_tour_humancorp_v3_3q_fenetres",
     "neon": "ct_tour_humancorp_v3_3q_neon",
-    "pulse": "ct_tour_humancorp_v3_3q_pulse"
+    "pulse": "ct_tour_humancorp_v3_3q_pulse",
+    "obsolete": true
   },
   "ct_tour_humancorp_v3_3q_fenetres": {
     "file": "steel/center_town/ct_tour_humancorp_v3_3q_fenetres.webp",
@@ -3191,7 +3212,8 @@
     "couche_de": "ct_tour_humancorp_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_humancorp_v3_3q_neon": {
     "file": "steel/center_town/ct_tour_humancorp_v3_3q_neon.webp",
@@ -3208,7 +3230,8 @@
     "couche_de": "ct_tour_humancorp_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_humancorp_v3_3q_pulse": {
     "file": "steel/center_town/ct_tour_humancorp_v3_3q_pulse.webp",
@@ -3226,7 +3249,8 @@
     "layer": "pulse",
     "source": "extraction PIL pulse de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
     "status": "v3",
-    "bande": "kick"
+    "bande": "kick",
+    "obsolete": true
   },
   "ct_tour_humancorp_v3_3q_ecran": {
     "file": "steel/center_town/ct_tour_humancorp_v3_3q_ecran.webp",
@@ -3243,7 +3267,8 @@
     "couche_de": "ct_tour_humancorp_v3_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_humancorp_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_nexus_v3_3q": {
     "file": "steel/center_town/ct_tour_nexus_v3_3q.webp",
@@ -3290,7 +3315,8 @@
     "ecran_layer": "ct_tour_nexus_v3_3q_ecran",
     "fenetres": "ct_tour_nexus_v3_3q_fenetres",
     "neon": "ct_tour_nexus_v3_3q_neon",
-    "pulse": "ct_tour_nexus_v3_3q_pulse"
+    "pulse": "ct_tour_nexus_v3_3q_pulse",
+    "obsolete": true
   },
   "ct_tour_nexus_v3_3q_fenetres": {
     "file": "steel/center_town/ct_tour_nexus_v3_3q_fenetres.webp",
@@ -3307,7 +3333,8 @@
     "couche_de": "ct_tour_nexus_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_nexus_v3_3q_neon": {
     "file": "steel/center_town/ct_tour_nexus_v3_3q_neon.webp",
@@ -3324,7 +3351,8 @@
     "couche_de": "ct_tour_nexus_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tour_nexus_v3_3q_pulse": {
     "file": "steel/center_town/ct_tour_nexus_v3_3q_pulse.webp",
@@ -3342,7 +3370,8 @@
     "layer": "pulse",
     "source": "extraction PIL pulse de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
     "status": "v3",
-    "bande": "kick"
+    "bande": "kick",
+    "obsolete": true
   },
   "ct_tour_nexus_v3_3q_ecran": {
     "file": "steel/center_town/ct_tour_nexus_v3_3q_ecran.webp",
@@ -3359,7 +3388,8 @@
     "couche_de": "ct_tour_nexus_v3_3q",
     "layer": "ecran",
     "source": "extraction PIL ecran de ct_tour_nexus_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_bord_sud_a_v3_3q": {
     "file": "steel/center_town/ct_bord_sud_a_v3_3q.webp",

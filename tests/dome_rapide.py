@@ -13,7 +13,7 @@ with sync_playwright() as p:
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1)
         E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=22.0;s.player.z=14.0;g.restore(s,true)})()"); time.sleep(2)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=50.0;s.player.z=97.0;g.restore(s,true)})()"); time.sleep(2)
         st=E("({...window.__nml.view.animStats})"); pls=E("window.__nml.view.pulses()"); print('   center',st); ok(st['total']==0 and any(p['building']=='c_tour' and p['calque']=='ecran' for p in pls),f'{name} Center-Town : façade ct_dome_frequence_3q + calque _ecran intégré (sans FACADE_DOME)',st)
         pg.screenshot(path=OUT+f'{name}_facade.png')
         E("window.__nml.game.useDoor('c_dome')"); time.sleep(1.5); ok(E("window.__nml.state.location")=='steel_center',f'{name} porte du Dôme fermée sans le drapeau')

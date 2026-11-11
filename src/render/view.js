@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { UNITS } from '../data/units.js';
+import { VUES_VEHICULES } from '../data/vehicules.js';
 import { wallsOf } from '../core/grid.js';
 import { groundTexture, margeTexture, SKIN } from './textures.js?v=editor2';
 
@@ -72,7 +73,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -133,6 +134,44 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     bills.push({ obj: main, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra }); phOf.push(main);
     if (b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4, b.z + b.d), () => !!(b.sign || game.state.discovered[b.id])); labels[labels.length - 1].el.dataset.building = b.id; } // b.sign : enseigne lisible de la rue, libellé visible sans y être entré
   }
+  // Véhicules qui roulent (loc.vehicules : { sprite, path [[x, z], ...], speed m/s, t0 m, aller }) : sprite d'Ocre à l'échelle 1, emprise footprint_m tournée
+  // selon l'axe du tronçon ; sur l'axe que la vue livrée ne couvre pas : vue_axe2 si livrée, sinon miroir horizontal (|scale| = 1, signe seul ; data/vehicules.js).
+  // Ils cèdent le passage aux piétons (passants, joueur) devant eux et suivent le véhicule de rang inférieur qui les précède (pas d'interblocage).
+  function vueVeh(key) { const m = bman[key] || {}, t = VUES_VEHICULES[key] || {}; return { axe: m.axe || t.axe || 'x', vue2: m.vue_axe2 || t.vue_axe2 || null, miroir: m.miroir_axe2 ?? t.miroir_axe2 ?? true }; }
+  function vehicule(v) {
+    const m = bman[v.sprite]; if (!m || !SKIN[v.sprite] || m.obsolete) return null;
+    const mk = (key, add, lay = '') => { const mm = bman[key], t = Object.assign(new THREE.Texture(SKIN[key]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace });
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, ...(add ? { blending: THREE.AdditiveBlending, opacity: 0.8 } : { color: light?.tint || '#ffffff' }) }));
+      s.scale.set(mm.px[0] / K, mm.px[1] / K, 1); s.userData.m = mm; s.userData.lay = lay; world.add(s); return s; };
+    const s = mk(v.sprite, false), extra = [];
+    for (const c of ['_fenetres', '_neon']) if (bman[v.sprite + c] && SKIN[v.sprite + c] && !bman[v.sprite + c].obsolete) extra.push(mk(v.sprite + c, true, c));
+    const P = v.path, seg = []; let L = 0;
+    for (let i = 0; i < P.length - (v.aller === false ? 0 : 1); i++) { const a = P[i], b = P[(i + 1) % P.length], l = Math.hypot(b[0] - a[0], b[1] - a[1]); seg.push([a, b, l, L]); L += l; }
+    Object.assign(s.userData, { vehicule: v, seg, L, t: v.t0 || 0, speed: v.speed || 6, extra, vue: vueVeh(v.sprite), cle: v.sprite, sx: 1, axe: null, attend: false, role: 'vehicule' });
+    poseVeh(s); return s;
+  }
+  function vehPos(u, t) { for (const [a, b, l, l0] of u.seg) if (t <= l0 + l || l0 + l >= u.L - 1e-6) { const k = Math.min(1, Math.max(0, (t - l0) / l)); return { x: a[0] + (b[0] - a[0]) * k, z: a[1] + (b[1] - a[1]) * k, dx: (b[0] - a[0]) / l, dz: (b[1] - a[1]) / l }; } return null; }
+  function poseVeh(s) {
+    const u = s.userData, p = vehPos(u, u.t); if (!p) return; const axe = Math.abs(p.dx) >= Math.abs(p.dz) ? 'x' : 'z', natif = axe === u.vue.axe;
+    const key = natif || !u.vue.vue2 || !bman[u.vue.vue2] || !SKIN[u.vue.vue2] ? u.cle : u.vue.vue2, sx = !natif && key === u.cle && u.vue.miroir ? -1 : 1;
+    if (u.axe !== axe) { u.axe = axe; u.sx = sx; u.key = key;
+      for (const o of [s, ...u.extra]) { const k2 = key + o.userData.lay, mm = bman[k2] || o.userData.m;
+        if (SKIN[k2] && o.material.map.image !== SKIN[k2]) { o.material.map.image = SKIN[k2]; o.material.map.needsUpdate = true; }
+        o.material.map.repeat.x = sx; o.material.map.offset.x = sx < 0 ? 1 : 0; // miroir : signe seul, |échelle| = 1
+        o.scale.set(mm.px[0] / K, mm.px[1] / K, 1); o.center.set(sx < 0 ? 1 - mm.anchor[0] / mm.px[0] : mm.anchor[0] / mm.px[0], 1 - mm.anchor[1] / mm.px[1]); } }
+    const f = bman[key].footprint_m || bman[u.cle].footprint_m || [4, 2], fl = Math.max(f[0], f[1]), fw = Math.min(f[0], f[1]);
+    const hx = (axe === 'x' ? fl : fw) / 2, hz = (axe === 'x' ? fw : fl) / 2;
+    u.emprise = { x0: p.x - hx, x1: p.x + hx, z0: p.z - hz, z1: p.z + hz }; u.cx = p.x; u.cz = p.z; u.dir = [p.dx, p.dz];
+    for (const o of [s, ...u.extra]) o.position.set(p.x + hx, 0, p.z + hz); // ancre d'Ocre = coin avant de l'emprise
+  }
+  function rouler(dt) {
+    const pietons = [player, companion, ...walkers].filter(a => a.visible !== false).map(a => [a.position.x, a.position.z]);
+    vehicules.forEach((s, i) => { const u = s.userData, d = u.dir || [1, 0];
+      const devant = ([x, z], loin, large) => { const rx = x - u.cx, rz = z - u.cz, av = rx * d[0] + rz * d[1], lat = Math.abs(-rx * d[1] + rz * d[0]); return av > 0 && av < loin && lat < large; };
+      u.attend = pietons.some(q => devant(q, 4.5, 1.6)) || vehicules.slice(0, i).some(o => devant([o.userData.cx, o.userData.cz], 7, 1.8));
+      if (!u.attend) { u.t += dt * u.speed; if (u.t >= u.L) u.t = 0; }
+      s.visible = true; for (const e of u.extra) e.visible = true; poseVeh(s); });
+  }
   function building(b) {
     if (!bman[b.sprite]) return placeholder(b);
     let m = bman[b.sprite]; const mobAnim = m.anime && viewW < 700 && bman[b.sprite + '_mobile'] && SKIN[b.sprite + '_mobile'];
@@ -181,7 +220,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; pulses = []; beams = [];
+    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; pulses = []; beams = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -242,9 +281,10 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (g.flicker || g.beat) flick.push({ m: m.material, obj: m, s0: 1, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null }); }
     // v13 : figurants immobiles (file d'attente, soldats) et passants qui marchent : mêmes sprites animés que les PNJ, sans dialogue
     for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
-      if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; s.userData.sprite = e.sprite; world.add(s); decor.push(s); }
+      if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; s.userData.sprite = e.sprite; s.userData.dense = !!e.dense; world.add(s); decor.push(s); }
     for (const w of loc.walkers || []) { const s = spriteMesh(w.sprite, null, true); s.material.depthTest = false; s.material.transparent = true; if (light.actor) s.material.color.set(light.actor);
       s.userData.role = w.role || 'passant'; s.userData.aller = !!w.aller; /* aller : parcours ouvert (file qui avance vers les portiques), repart du début */ s.userData.route = w.path; s.userData.speed = w.speed || 1.1; s.userData.t = w.t0 || 0; world.add(s); decor.push(s); walkers.push(s); }
+    for (const v of loc.vehicules || []) { const s = vehicule(v); if (s) vehicules.push(s); }
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
       const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
@@ -475,6 +515,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       for (const [a, b, l] of seg) { if (r <= l) { const k = r / l; s.position.set(a[0] + (b[0] - a[0]) * k, 0, a[1] + (b[1] - a[1]) * k); face(s, Math.atan2(b[0] - a[0], b[1] - a[1])); break; } r -= l; }
       animate(s, true, dt, t); }
     for (const s of decor) if (!walkers.includes(s)) animate(s, false, dt, t);
+    if (vehicules.length) rouler(dt);
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
     const calme = !!document.body?.classList?.contains('reduce-motion');
     const ostOn = !!ostCentre?.playing;
@@ -510,7 +551,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k); }
     let pulsesOn = 0;
     if (pulses.length) {
-      const pMax = viewW < 700 ? 8 : 48, pv = new THREE.Vector3(), pl = player.position;
+      const pMax = tactile() ? 8 : 48, pv = new THREE.Vector3(), pl = player.position;
       const ord = pulses.map(s => { pv.copy(s.position).project(cam); return { s, u: s.userData.pulse, in: Math.abs(pv.x) < 1.25 && Math.abs(pv.y) < 1.25, d: s.position.distanceToSquared(pl) }; })
         .sort((a, b) => (b.u.priorite - a.u.priorite) || (b.in - a.in) || (a.d - b.d));
       for (const { s, u, in: inn } of ord) {
@@ -528,7 +569,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     }
     if (!calme) for (const m of beams) beamPose(m, t, ostCentre);
     else for (const m of beams) if (m.userData.beam?.beat) m.material.opacity = (m.userData.fondu ?? 1) * m.userData.beam.base;
-    animStats.enseignes = neons.length; animStats.fenetres = fenetres.length; animStats.pulses = pulses.length; animStats.pulsesOn = pulsesOn; animStats.projecteurs = beams.length;
+    animStats.enseignes = neons.length; animStats.fenetres = fenetres.length; animStats.pulses = pulses.length; animStats.pulsesOn = pulsesOn; animStats.pulsesMax = tactile() ? 8 : 48; animStats.projecteurs = beams.length;
     for (const f of flick) {
       const flk = f.flicker ? 0.84 + 0.16 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2) : 1;
       const bk = !calme && f.beat ? (ostOn ? (f.beat === 'mid' ? 0.30 + 0.95 * midEnv : 0.14 + 1.40 * kickEnv) : 0.18) : 1;
@@ -540,7 +581,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     horloge = t; for (const u of [...uniques]) { const i = Math.floor((t - u.t0) * u.fps); if (i >= u.n) { u.s.material.map = u.base; u.s.material.needsUpdate = true; uniques.splice(uniques.indexOf(u), 1); joueEtat.fini = true; } else u.t.offset.x = i / u.n; }
     for (const mv of movers) { const k = ((t + (mv.ph || 0)) % mv.periode) / mv.passage; mv.s.visible = k < 1; if (k < 1) mv.s.position.x = mv.x0 + mv.dx * (k - 0.5); }
     // enseignes animées : seules les visibles à l'écran tournent, au plus ANIM_MAX (8 sur mobile) ; les autres restent sur leur première image
-    if (anims.length) { const max = viewW < 700 ? 8 : 16, v = new THREE.Vector3(); let on = 0; const pl = player.position;
+    if (anims.length) { const max = tactile() ? 8 : 16, v = new THREE.Vector3(); let on = 0; const pl = player.position;
       const vis = anims.map(a => { v.copy(a.s.position).project(cam); return { a, in: Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, d: a.s.position.distanceToSquared(pl) }; }).sort((p, q) => (q.in - p.in) || (p.d - q.d));
       const admis = new Set(); let runs = 0;
       for (const { a, in: inn } of vis) { const k = a.g || a; let run = false;
@@ -585,7 +626,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (bz !== az) return bz;
     return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1;
   }
-  const actorItem = a => ({ obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [] });
+  const actorItem = a => { const e = a.userData?.emprise; if (e) return { obj: a, actor: true, x0: e.x0, x1: e.x1, z0: e.z0, z1: e.z1, extra: a.userData.extra || [] }; // véhicule : son emprise au sol
+    return { obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [] }; };
   function topoSort(list) {
     const n = list.length, R = list.map(i => rectOf(i.obj)), indeg = new Array(n).fill(0), out = list.map(() => []);
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
@@ -604,7 +646,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function painter() {
     // 1) Ordre mutuel des bâtiments/meubles calculé seul : un personnage ou passant mobile ne peut JAMAIS inverser deux bâtiments.
     const statics = topoSort(bills);
-    const actors = [player, companion].filter(a => a.visible).concat(npcSprites.filter(n => n.visible), decor, drones).map(actorItem);
+    const actors = [player, companion].filter(a => a.visible).concat(npcSprites.filter(n => n.visible), decor, drones, vehicules.filter(v => v.visible)).map(actorItem);
     actors.sort((a, b) => (a.x0 + a.x1 + a.z0 + a.z1) - (b.x0 + b.x1 + b.z0 + b.z1));
     // 2) Insertion de chaque acteur juste avant le premier bâtiment devant lui dont le rectangle écran le recouvre.
     const merged = [...statics];
@@ -669,6 +711,10 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const m of solids) for (const mt of [].concat(m.material)) { const o = mt.opacity; mt.opacity = o + (m.userData.targetOpacity - o) * 0.3; mt.depthWrite = mt.opacity > 0.9; }
   }
   let ppm = 30, viewW = innerWidth, viewH = innerHeight, camCible = null, plan = 0, planLoc = null, planSort = false, planPos = [0, 0], planLarge = false; // plan : poids du plan d'arrivée (1 à l'arrivée, 0 après les premiers pas) // camCible : point du sol au centre de l'écran (contrôle des tests)
+  // budget d'effets (pulses, planches animées) : celui du téléphone dès que l'écran est tactile (Fold déplié : 823 px de large mais GPU de téléphone)
+  const tactile = () => viewW < 700 || !!globalThis.matchMedia?.('(pointer: coarse)').matches;
+  // plan large d'arrivée : un geste (appui, molette) le termine comme un pas ; rejouerArrivee() le réarme (tests, retour de carte)
+  for (const ev of ['pointerdown', 'wheel']) canvas.addEventListener?.(ev, () => { if (plan > 0) planSort = true; }, { passive: true });
   function measureView() {
     const vv = typeof visualViewport !== 'undefined' ? visualViewport : null;
     const w = Math.round(vv?.width || innerWidth || canvas.clientWidth || 1);
@@ -724,16 +770,18 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     // loc.cadre : { mobile|desktop: { x: [min, max], z: [min, max] } } : le cadre suit le joueur mais reste sur la rue (pas de vide aux arrivées par les bouts)
     // loc.cadre.arrivee : { mobile|desktop: { ppm, avance, u, w } } : plan d'arrivée (plan large qui montre le lieu : toit de l'Arena), tenu tant que le joueur n'a pas bougé, puis retour en douceur au cadre de jeu
     //   ppm (zoom), avance (m : le cadre regarde devant le joueur, vers le haut de l'écran), u et w (bornes en mètres dans les axes de l'écran : droite, profondeur), le joueur restant toujours dans le cadre
-    const mob = viewW < 700, pick = c => c && ((mob ? c.mobile : c.desktop) || (c.mobile || c.desktop ? null : c));
+    // plan d'arrivée : cadrage téléphone sur tout écran tactile (Fold déplié compris) ; cadre de jeu : selon la largeur seule
+    const mob = viewW < 700, mobA = tactile(), pickA = c => c && ((mobA ? c.mobile : c.desktop) || (c.mobile || c.desktop ? null : c)), pick = c => c && ((mob ? c.mobile : c.desktop) || (c.mobile || c.desktop ? null : c));
     if (planLoc !== s.location) { planLoc = s.location; plan = 1; planSort = false; planPos = [s.player.x, s.player.z]; }
     if (!planSort && (s.player.path.length > 0 || Math.hypot(s.player.x - planPos[0], s.player.z - planPos[1]) > 0.3)) planSort = true;
     if (planSort) plan = Math.max(0, plan - dt * 1.2);
-    const CA = loc.cadre && !camOverride ? pick(loc.cadre) : null, PA = loc.cadre?.arrivee && !camOverride && plan > 0 ? pick(loc.cadre.arrivee) : null;
+    const CA = loc.cadre && !camOverride ? pick(loc.cadre) : null, PA = loc.cadre?.arrivee && !camOverride && plan > 0 ? pickA(loc.cadre.arrivee) : null;
     const cl = (v, a, b) => Math.min(b, Math.max(a, v)), f = new THREE.Vector3(camDir.x, 0, camDir.z).normalize(), R = new THREE.Vector3(-f.z, 0, f.x);
     const zPpm = ppm * userZoom, baseInt = Math.min(ppm * 1.8, viewW / (loc.size.w * 1.6));
-    const cadrer = (t, C, z0) => { const up = t.dot(R), wp = t.dot(f); if (C.avance) t.addScaledVector(f, C.avance);
-      if (C.u || C.w) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, viewW / 2 / z0 - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
-        const u2 = cl(C.u ? cl(u, C.u[0], C.u[1]) : u, up - lu, up + lu), w2 = cl(C.w ? cl(w, C.w[0], C.w[1]) : w, wp - lw, wp + lw); t.addScaledVector(R, u2 - u).addScaledVector(f, w2 - w); }
+    // C.cible [x, z] : point visé (plan large de Center-Town : carrefour et parvis de l'Arcadius), le joueur restant dans le cadre
+    const cadrer = (t, C, z0) => { const up = t.dot(R), wp = t.dot(f); if (C.cible) t.set(C.cible[0], 0, C.cible[1]); if (C.avance) t.addScaledVector(f, C.avance);
+      if (C.u || C.w || C.cible) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, viewW / 2 / z0 - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
+        const u1 = C.u ? cl(u, C.u[0], C.u[1]) : u, w1 = C.w ? cl(w, C.w[0], C.w[1]) : w, u2 = C.libre ? u1 : cl(u1, up - lu, up + lu), w2 = C.libre ? w1 : cl(w1, wp - lw, wp + lw); t.addScaledVector(R, u2 - u).addScaledVector(f, w2 - w); }
       if (C.x) t.x = cl(t.x, C.x[0], C.x[1]); if (C.z) t.z = cl(t.z, C.z[0], C.z[1]);
       if ((C.x || C.z) && userZoom > 1) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, viewW / 2 / z0 - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
         t.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w); }
@@ -747,7 +795,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const u = target.dot(R), w = target.dot(f), lu = Math.max(1, viewW / 2 / zI - 1.5), lw = Math.max(1, (viewH / 2 / zI - 2) / Math.sin(pitch));
       target.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w);
     }
-    planLarge = !!PA && plan > 0.5; // plan large d'arrivée : les noms (PNJ, services) sont masqués, seules les sorties restent ; ils reviennent au premier pas
+    planLarge = !!PA && plan > 0.5;
+    for (const d of decor) if (d.userData.dense) d.visible = !planLarge; // version allégée de la foule en plan large (extras dense: true) // plan large d'arrivée : les noms (PNJ, services) sont masqués, seules les sorties restent ; ils reviennent au premier pas
     camCible = [+target.x.toFixed(2), +target.z.toFixed(2)];
     // mobile : quand le dialogue est ouvert, le cadre remonte pour garder joueur et PNJ visibles au-dessus du panneau
     const dlg = document.getElementById('dialogue');
@@ -769,9 +818,13 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran (les deux axes), puis écartées des panneaux d'interface et entre elles
     const toScr = p => { const v = p.clone().project(cam); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; };
+    const horsEcran = []; // sorties hors écran (distance au joueur)
     for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; l.el.dataset.off = ''; if (!vis) continue; const q = toScr(l.getPos()); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = q.x, ly = q.y;
       const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'), npc = l.el.classList.contains('npc');
       if (planLarge && !sortie) { l.el.hidden = true; continue; }
+      // sortie hors écran : flèche vers son bord (← → ↑ ↓ et diagonales), libellé gardé au bord ; en 390, seules les plus proches restent (voir horsEcran)
+      if (sortie) { const hx = q.x < 0 ? -1 : q.x > viewW ? 1 : 0, hy = q.y < 0 ? -1 : q.y > viewH ? 1 : 0, f = (hx || hy) ? ({ '-1-1': '↖', '0-1': '↑', '1-1': '↗', '-10': '←', '10': '→', '-11': '↙', '01': '↓', '11': '↘' })[`${hx}${hy}`] : '';
+        if (l.el.dataset.fleche !== f) l.el.dataset.fleche = f; if (f) { const wp = l.getPos(), pp = game.state.player; horsEcran.push({ l, d: Math.hypot(wp.x - pp.x, wp.z - pp.z) }); } }
       if (!sortie && (lx < 0 || lx > viewW)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; }
       if (lw && lw + 8 < viewW) lx = Math.min(viewW - 4 - lw / 2, Math.max(4 + lw / 2, lx));
       let foot = null; if (npc && l.foot) foot = toScr(l.foot());
@@ -779,6 +832,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (sortie && lh) ly = Math.min(viewH - 4, Math.max(lh + 4, ly));
       let below = false; if (npc && foot && lh && ly - lh < 4) { if (foot.y < 0 || foot.y + lh + 6 > viewH) { l.el.hidden = true; continue; } ly = foot.y + lh + 6; below = true; } // PNJ en haut du cadre : libellé sous ses pieds, jamais sur sa tête [Régie B]
       placed.push({ l, lx, ly, lw, lh, npc, below, foot }); }
+    // téléphone : au plus 3 sorties hors écran (les plus proches), empilées au bord avec leur flèche ; les autres reviennent en s'approchant
+    if (viewW < 700 && horsEcran.length > 3) { const trop = new Set(horsEcran.sort((a, b) => a.d - b.d).slice(3).map(h => h.l));
+      for (let i = placed.length - 1; i >= 0; i--) if (trop.has(placed[i].l)) { placed[i].l.el.hidden = true; placed[i].l.el.dataset.off = '1'; placed.splice(i, 1); } }
     const hudRects = ['hud', 'locbox', 'obj', 'msg', 'dialogue', 'panel', 'keys', 'zoom', 'act', 'mini', 'cbt-file', 'cbt-res', 'cbt-actions'].map(id => document.getElementById(id))
       .filter(e => e && !e.hidden && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden')
       .map(e => e.getBoundingClientRect()).filter(q => q.width > 0 && q.height > 0); // barre : son cadre entier (fond semi-transparent)
@@ -921,7 +977,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);
       for(const h of hits){const s=h.object;const img=s.userData.img|| (s===player?'player':s.userData.npc?NPCS.find(n=>n.id===s.userData.npc)?.sprite:null);if(img&&h.uv&&alphaAt(img,h.uv.x,h.uv.y)<.3)continue;
       return {id:s.userData.buildingId||s.userData.editorId};}return null;
-    }, joue, joueEtat, animStats, masqueEn, camCible: () => camCible, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), fenetres: fenetres.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, zoom: () => userZoom, setZoom, zoomBounds: () => [ZOOM_MIN, ZOOM_MAX], ppm: () => cam.userData.zoom || ppm * userZoom, setCamera: o => { camOverride = o; if (!o) resize(); },
+    }, joue, joueEtat, animStats, masqueEn, rejouerArrivee: () => { planLoc = null; }, planArrivee: () => ({ plan, planLarge, sorti: planSort }), tactile, camCible: () => camCible, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), fenetres: fenetres.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, zoom: () => userZoom, setZoom, zoomBounds: () => [ZOOM_MIN, ZOOM_MAX], ppm: () => cam.userData.zoom || ppm * userZoom, setCamera: o => { camOverride = o; if (!o) resize(); },
     facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
     // rectangle écran (px CSS) d'un personnage, pour les contrôles au pixel
     actorRect: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who);
@@ -958,6 +1014,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const r = rectOf(s), c = m.crop, u = (d.painted[0] - c[0]) / m.px[0], v = 1 - (d.painted[1] - c[1]) / m.px[1];
       const p = { x: r.x0 + u * (r.x1 - r.x0), y: r.y0 + v * (r.y1 - r.y0) }, o = scr(new THREE.Vector3(d.opening.x, 0, d.opening.z)); return +Math.hypot(p.x - o.x, p.y - o.y).toFixed(2); },
     // v13 : figurants (rôle, position monde) et rendu isolé d'un figurant, pour les contrôles au pixel (comptage à l'écran)
+    vehicules: () => vehicules.map(s => { const u = s.userData; return { cle: u.cle, key: u.key, axe: u.axe, sx: u.sx, scale: [+s.scale.x.toFixed(4), +s.scale.y.toFixed(4)], repeat: s.material.map.repeat.x, x: +u.cx.toFixed(2), z: +u.cz.toFixed(2), attend: u.attend, emprise: u.emprise, path: u.vehicule.path, natif: u.key === u.cle && u.sx === 1 && u.axe === u.vue.axe, px: bman[u.cle].px, K }; }),
     decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing, sprite: s.userData.sprite, ratio: +(Math.abs(s.scale.x) / s.scale.y).toFixed(3) })); },
     isolateDecor: i => { render(); const keep = decor.concat(drones)[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');

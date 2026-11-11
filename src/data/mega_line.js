@@ -88,7 +88,7 @@ const BILLET_RETOUR = [{ test: aBillet, reason: 'billet_retour', text: 'Le lecte
 export const DOORS_MEGA = [
   J('ml_rame_quai', 'steel_megaline', 32, 14.4, 32, 15.2, 'tm_rame_quai', 'Portique : monter dans la rame (terminus)', AU_PORTIQUE),
   J('tm_rame_quai', 'steel_terminus', 6, 4.6, 6, 5.4, 'ml_rame_quai', 'Monter dans la rame (vers la ligne)', BILLET_RETOUR),
-  J('c_mega', 'steel_center', 8, 0, 8, 1, 'ml_sud', 'Mega-Line'),
+  J('c_mega', 'steel_center', 0, 50, 1, 50, 'ml_sud', 'Mega-Line', [], { labelPos: [3, 50] }), // Center-Town v2 : bout ouest du trottoir nord de l'av. E-O, au pied du viaduc
   J('ml_sud', 'steel_megaline', 24, 24, 24, 23, 'c_mega', 'Vers Center-Town'),
   J('ml_passerelle', 'steel_megaline', 48, 2, 47, 2, 'tm_sud', 'Passerelle de service (terminus)'),
   J('tm_sud', 'steel_terminus', 15, 20, 15, 19, 'ml_passerelle', 'Passerelle de service (vers la ligne)'),

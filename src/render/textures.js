@@ -154,7 +154,9 @@ export function groundTexture(loc, doors = []) {
   paintTerrain(x,loc,P);
   return tex(c);
 }
-function paintTerrain(ctx,loc,P){for(const r of loc.ground.paint||[]){ctx.fillStyle=pattern(ctx,r.skin,4,P)||loc.ground.base;ctx.fillRect(r.x*P,r.z*P,r.w*P,r.d*P);}}
+// r.tileM = largeur du motif en mètres (tuiles non carrées : g_ct_voie_tirets_ew 12 x 4 m, g_ct_case_jaune_12m 12 m) ; le motif part du coin (x, z) de la pose,
+// pour que tirets, lignes d'arrêt et case jaune tombent où Ocre les a dessinés (CENTER_TOWN.md §8D), quel que soit le pas global
+function paintTerrain(ctx,loc,P){for(const r of loc.ground.paint||[]){const pt=pattern(ctx,r.skin,r.tileM||4,P);if(pt&&pt.setTransform&&globalThis.DOMMatrix)pt.setTransform(new DOMMatrix().translateSelf(r.x*P,r.z*P));ctx.fillStyle=pt||loc.ground.base;ctx.fillRect(r.x*P,r.z*P,r.w*P,r.d*P);}}
 
 export function hiddenDoorTexture() {
   const c = document.createElement('canvas'); c.width = 64; c.height = 140; const x = c.getContext('2d');

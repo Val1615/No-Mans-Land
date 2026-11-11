@@ -148,7 +148,7 @@ export const LOCATIONS_STRIP = {
 const J = (id, loc, ox, oz, tx, tz, to, label, conditions = [], extra = {}) => ({ id, location: loc, junction: true, label, opening: { x: ox, z: oz, side: 'edge' }, threshold: { x: tx, z: tz }, target: { doorId: to }, conditions, ...extra });
 export const DOORS_STRIP = [
   J('fs_ouest', 'steel_strip', 0, 10, 1, 10, 'c_strip', 'Vers Center-Town'),
-  J('c_strip', 'steel_center', 14, 0, 14, 1, 'fs_ouest', 'Fréquence Strip', [], { labelPos: [13.6, 12.8] }),
+  J('c_strip', 'steel_center', 58, 0, 58, 1, 'fs_ouest', 'Fréquence Strip', [], { labelPos: [58, 3] }), // Center-Town v2 : bout nord du trottoir ouest de l'av. N-S
 ];
 const P = (id, name, sprite, x, z, faceTo) => ({ id, name, sprite, location: 'steel_strip', x, z, faceTo, dialogue: id });
 export const NPCS_STRIP = [ // aucun n'est Vibes ni Tron ; positions hors de l'ombre d'écran des façades sud (view.masques() vide)

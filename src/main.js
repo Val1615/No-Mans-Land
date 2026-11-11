@@ -31,6 +31,11 @@ const editorBase=createEditorBase(sourceWorld,{sprites,bman,iman,sols});
 let publishedMaps=null;try{publishedMaps=await loadPublishedMaps();}catch(error){console.error('Éditeur : chargement des cartes impossible.',error);const warning=document.createElement('div');warning.id='editor-map-warning';warning.textContent='Les cartes modifiées n’ont pas pu être chargées. La carte d’origine est utilisée.';warning.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:100;background:#472b1b;color:#fff;padding:12px';document.body.append(warning);}
 let world;try{world=applyEditorProject(sourceWorld,publishedMaps,editorBase);}catch(error){console.error('Carte publiée invalide :',error);world={...sourceWorld,editorProject:null};const warning=document.createElement('div');warning.id='editor-map-invalid';warning.textContent='Carte publiée invalide : le jeu utilise ses cartes intégrées. '+String(error.message).split('\n').slice(0,3).join(' ');warning.style.cssText='position:fixed;bottom:0;z-index:100;background:#472b1b;color:white;padding:12px';document.body.append(warning);}
 const mapQuery=new URLSearchParams(location.search);if(mapQuery.get('dev')==='1'&&world.LOCATIONS[mapQuery.get('map')])world={...world,START:{...world.START,location:mapQuery.get('map')}};
+// Emplacements en attente d'un asset d'Ocre (b.attente { cle, h }) : dès que la clé est livrée dans un manifeste, elle remplace le repli
+// (sprite v3 natif centré par b.ancre, ou silhouette b.ph) sur l'emprise réservée ; les éléments b.repliDe de ce bâtiment sont retirés.
+for (const L of Object.values(world.LOCATIONS)) { const livres = new Set();
+  for (const b of L.buildings || []) if (b.attente && bman[b.attente.cle]) { b.sprite = b.attente.cle; delete b.ancre; delete b.ph; livres.add(b.id); }
+  if (livres.size) L.buildings = L.buildings.filter(b => !livres.has(b.repliDe)); }
 const game=createGame({...world,DIALOGUES:{...DIALOGUES,editor_silence:{start:{text:'Cette personne n’a pas encore de dialogue.',options:[{label:'Partir.',next:'end'}]}}},ITEMS},sprites);
 const editorStory=bindEditorStory(game);
 
@@ -218,7 +223,7 @@ function trajetRame(versTerminus) { trajetEnCours = true; trajet.querySelector('
   trajet.className = 'on'; setTimeout(() => { trajet.className = 'on roule'; }, 600);
   setTimeout(() => { trajet.className = 'on'; }, 3400); setTimeout(() => { trajet.className = ''; trajetEnCours = false; say(VALIDATION(game.state)); }, 4000); }
 game.on(ev => { if (ev.type === 'transition') delete game.state.flags.ml_valide; if (ev.type === 'transition' && (ev.door === 'ml_rame_quai' || ev.door === 'tm_rame_quai')) trajetRame(ev.door === 'ml_rame_quai'); });
-window.__nml = { music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { bman, music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)

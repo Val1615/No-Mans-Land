@@ -14,7 +14,7 @@ with sync_playwright() as p:
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1)
         E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
         E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
-        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=14;s.player.z=1.5;g.restore(s,true)})()"); time.sleep(1.2)
+        E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_center';s.player.x=58;s.player.z=1;g.restore(s,true)})()"); time.sleep(1.2)
         E("window.__nml.game.useDoor('c_strip')"); time.sleep(2)
         ok(E("window.__nml.state.location")=='steel_strip',f'{name} Center-Town (c_strip) -> Fréquence Strip',E("window.__nml.state.location"))
         ok(E("window.__nml.game.world.NPCS.filter(n=>n.location==='steel_strip').length")==19,f'{name} 19 PNJ (11 d origine dont Fusible et Ocre, 8 des compléments d Ocre)')

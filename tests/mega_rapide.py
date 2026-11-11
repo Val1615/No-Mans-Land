@@ -19,7 +19,7 @@ with sync_playwright() as p:
             while time.time()-t0<t and E(f"(()=>{{const p=window.__nml.state.player;return Math.hypot(p.x-{x},p.z-{z})>1.2}})()"): time.sleep(.3)
             p_=E("[window.__nml.state.player.x,window.__nml.state.player.z]"); return abs(p_[0]-x)<1.3 and abs(p_[1]-z)<1.3, p_
         loc=lambda: E("window.__nml.state.location"); st=lambda: E("({...window.__nml.view.animStats})")
-        tp('steel_center',8,2); time.sleep(1.5); E("window.__nml.game.useDoor('c_mega')"); time.sleep(2)
+        tp('steel_center',1,50); time.sleep(1.5); E("window.__nml.game.useDoor('c_mega')"); time.sleep(2)
         ok(loc()=='steel_megaline',f'{name} Center-Town (c_mega) -> Mega-Line',loc())
         r,pz=walk(24,18); ok(r,f'{name} ligne : marche jusqu au quai',pz); time.sleep(3); a=st(); print(f'   {name} ligne {a}')
         ok(a['on']<=5,f'{name} ligne : {a["on"]} animations (<= 5)',a); pg.screenshot(path=OUT+f'{name}_ligne.png')

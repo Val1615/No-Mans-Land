@@ -197,8 +197,8 @@ export const DOORS_PULSE = [
   J('pp_ouest', 'steel_pulse', 0, 14, 1, 14, 'c_nord', 'Vers Center-Town (rue d’arrivée)'),
   J('pp_est', 'steel_pulse', 48, 13, 47, 13, 'ar_ouest', 'Steel Arena'),
   J('pp_sud', 'steel_pulse', 24, 36, 24, 35, 'c_pp_sud', 'Escalier de service (vers Center-Town)'),
-  J('c_pp_sud', 'steel_center', 26, 36, 26, 35, 'pp_sud', 'Escalier de Pulse Plaza', [], { labelPos: [29.6, 32.4] }),
-  J('c_nord', 'steel_center', 33, 0, 33, 1, 'pp_ouest', 'Pulse Plaza', [], { labelPos: [31.4, 9.8] }),
+  J('c_pp_sud', 'steel_center', 90, 116, 90, 115, 'pp_sud', 'Escalier de Pulse Plaza', [], { labelPos: [90, 113] }), // Center-Town v2 : bout sud du trottoir est de l'av. N-S
+  J('c_nord', 'steel_center', 90, 0, 90, 1, 'pp_ouest', 'Pulse Plaza', [], { labelPos: [90, 3] }), // Center-Town v2 : bout nord du trottoir est de l'av. N-S
 ];
 export const NPCS_PULSE = [ // positions recalées autour des emprises 4x4 des bâtiments *_v2_3q et props rythmiques (view.masques() vide) ; aucun n'est Vibes ni Tron
   { id: 'pp_maelle', name: 'Maëlle', sprite: 'gen_pp_maelle', location: 'steel_pulse', x: 17.2, z: 13.4, faceTo: [22, 10], dialogue: 'pp_maelle' },
