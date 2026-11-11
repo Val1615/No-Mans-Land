@@ -12,6 +12,6 @@ export async function chargerCatalogue(get = async p => { const r = await fetch(
   const bman = await get('./assets/buildings/manifest.json');
   for (const [k, v] of Object.entries(ppMan)) if (!v.obsolete && /^(pp|fs|ar2?|df|ml|ct)_/.test(k)) bman[k] = v; // décors des quartiers -> bâtiments (ar2_ : enceinte basse de l'Arena ; obsolete exclus)
   const sols = { ...Object.fromEntries(SOLS_BASE.map(n => [n, `./assets/mockup/${n}.webp`])), ...Object.fromEntries(SOLS_GENERES.map(n => [n, `./assets/generated/${n}.webp`])),
-    ...Object.fromEntries(Object.keys(ppMan).filter(k => k.startsWith('g_')).map(n => [n, './assets/' + ppMan[n].file])) };
-  return { sprites, iman, ppMan, bman, sols };
+    ...Object.fromEntries(Object.keys(ppMan).filter(k => k.startsWith('g_') && !ppMan[k].obsolete).map(n => [n, './assets/' + ppMan[n].file])) };
+  return { sprites, iman, ppMan, bman, sols }; // sols obsolete exclus : le site publié (.github/build_site.py) ne sert plus leurs fichiers
 }
