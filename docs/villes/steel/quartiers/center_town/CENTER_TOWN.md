@@ -243,3 +243,26 @@ Les sprites v1/v2 avaient été mis en perspective par `build_center_town.py` / 
 
 - `/workspace/nml-shots/center_town_v3_fix.png` : **planche de sprites avant / après** (assets du manifest sur fond neutre, emprise théorique et parallélogramme de toit en surimpression, angles mesurés). **Ce n'est pas une capture du jeu.**
 - `/workspace/nml-shots/center_town_v3_audit.png` : **vraie capture moteur hors dépôt** (`/tmp/nml-ct-v3`, clés v3 branchées dans la copie de `buildings_steel.js`). Elle contient la vue large, le carrefour avec passants, l'ouest, l'est, le taxi à ppm 30 avec la boîte théorique et le mobile `390 x 844`. Résultats : 0 erreur, 10/10 portes joignables, `pulsesOn` 13 en desktop et 8 en mobile, `masques()` listés au point C.4.
+
+## 8. v4 : sprites à l'échelle du plan cible 132 x 116 m (`*_v4_3q`)
+
+Plan validé par Valentin le 11/11/2026 (`center_town_plan_cible` v2 : 132 x 116 m, chaussées de 20 m). Consigne : « Les bâtiments trop petits sont à refaire. On n'étire pas les sprites et on ne les déforme pas non plus. Notamment l'Arcadius Tower. » Ce lot **ajoute** des clés : aucune clé existante n'est modifiée, chaque entrée porte `remplace`, et `obsolete` reste à poser par Rivet au moment du swap. Coordonnées des poses : repère absolu du plan v2.
+
+### A. Méthode (`/workspace/ct_v4/`, hors dépôt)
+
+Le générateur sort au plus 1280 px de côté. Un Arcadius de 60 m à 50 px/m mesure environ 2200 x 3400 px : il ne tient pas dans une seule génération sans agrandissement. D'où :
+1. **Maître** : socle 32 x 32 x 16 m et tour 16 x 16 x 44 m générés chacun en entier au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), puis posés par **échelle uniforme + translation** (ajustement de silhouette sur le gabarit, IoU 0,89 et 0,95). Le maître ne sert que de référence.
+2. **Tuiles** : 12 fenêtres de 1152 x 864 px, régénérées par le modèle à **52 px/m** d'après le maître. Chaque tuile est recalée sur le maître par translation + échelle uniforme seulement (0,994 à 0,998, corrélation 0,92 à 0,97), puis raccordée par couture (chaque pixel vient de la tuile la plus intérieure, transition sur une dizaine de pixels, pas de fondu large donc pas de fantômes).
+3. **Réduction uniforme 50/52** vers le pipeline à 50 px/m : le rendu final n'est jamais agrandi. Coupe alpha sous les arêtes de pied (escalier conservé), découpe en colonnes d'emprise (tri par emprise du moteur), ancre sur le coin avant de chaque emprise, calques `_ecran` / `_fenetres` / `_neon` extraits sur le même canevas.
+
+### B. Arcadius (3 sprites, remplacent `ct_arcadius_qg_v3_3q`)
+
+| Clé | Emprise (x, z, w, d) | `px` | `anchor` | Contenu | Pose proposée |
+|---|---|---|---|---|---|
+| `ct_arcadius_arriere_v4_3q` | 12, 4, 24, 22 | `1676 x 3172` | `[1041, 3168]` | tour 16 x 16 x 60 m (x20-36, z10-26) + toit nord-ouest du socle | `B_CT('c_arcadius_n', '', 'ct_arcadius_arriere_v4_3q', 12, 4, 24, 22, { named: false })` |
+| `ct_arcadius_aile_est_v4_3q` | 36, 4, 8, 22 | `889 x 1287` | `[332, 1283]` | façade est du socle | `B_CT('c_arcadius_e', '', 'ct_arcadius_aile_est_v4_3q', 36, 4, 8, 22, { named: false })` |
+| `ct_arcadius_facade_v4_3q` | 12, 26, 32, 10 | `1662 x 1407` | `[1374, 1402]` | façade sud (portail x25-31, enseigne, gardiens, bannières) + escalier peint à plat x22-34, z36-42,6 | `B_CT('c_arcadius', 'Arcadius Center', 'ct_arcadius_facade_v4_3q', 12, 26, 32, 10)` |
+
+Les trois emprises ne se chevauchent pas : le tri par emprise de `canvas-view.js` / `view.js` les ordonne correctement (arrière, puis aile est, puis façade). L'escalier est peint dans le sprite de façade, hors de son emprise : il est praticable, sans `solid`, et un personnage qui s'y tient est trié devant la façade. Pas de clôture IO dans ce lot (la grille z46 / x54 du plan reste à faire).
+
+Planche de contrôle (image composée hors jeu, **pas une capture**) : `/workspace/nml-shots/ct_v4_arcadius_controle_echelle.jpg`.

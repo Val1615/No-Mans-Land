@@ -4518,5 +4518,358 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_taxi_v3_3q.webp (même canevas, même ancre)",
     "status": "v3"
+  },
+  "ct_arcadius_arriere_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_arriere_v4_3q.webp",
+    "px": [
+      1676,
+      3172
+    ],
+    "anchor": [
+      1041,
+      3168
+    ],
+    "footprint_m": [
+      24,
+      22
+    ],
+    "height_m": 60.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Arcadius Center, QG d'IO : tour de 60 m (16x16, emblème IO hexagonal, liserés rouges, couronne art déco, balises) et partie nord-ouest du toit du socle",
+    "enseigne": "ARCADIUS · IO",
+    "pose": "B_CT('c_arcadius_n', '', 'ct_arcadius_arriere_v4_3q', 12, 4, 24, 22, { named: false })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu : maître (socle 32x32x16 et tour 16x16x44 générés en entier, posés par échelle uniforme), puis 12 tuiles régénérées à 52 px/m d'après le maître (référence seulement), recalage translation + échelle uniforme 0,994-0,998, raccord par couture ; réduction uniforme 50/52 ; coupe sous les arêtes de pied ; découpe en 3 colonnes d'emprise. Aucun warp, aucun étirement, aucun agrandissement du rendu final.",
+    "remplace": "ct_arcadius_qg_v3_3q",
+    "status": "v4",
+    "groupe": "ct_arcadius_v4",
+    "groupe_cles": [
+      "ct_arcadius_arriere_v4_3q",
+      "ct_arcadius_aile_est_v4_3q",
+      "ct_arcadius_facade_v4_3q"
+    ],
+    "volumes_m": {
+      "socle": [
+        12,
+        4,
+        32,
+        32,
+        16
+      ],
+      "tour": [
+        20,
+        10,
+        16,
+        16,
+        60
+      ]
+    },
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues",
+    "emprise_m": [
+      12,
+      4,
+      24,
+      22
+    ],
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_arcadius_arriere_v4_3q_ecran",
+    "fenetres": "ct_arcadius_arriere_v4_3q_fenetres",
+    "neon": "ct_arcadius_arriere_v4_3q_neon"
+  },
+  "ct_arcadius_arriere_v4_3q_ecran": {
+    "file": "steel/center_town/ct_arcadius_arriere_v4_3q_ecran.webp",
+    "px": [
+      1676,
+      3172
+    ],
+    "anchor": [
+      1041,
+      3168
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_arriere_v4_3q",
+    "couche_de": "ct_arcadius_arriere_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_arcadius_arriere_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_arriere_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_arriere_v4_3q_fenetres.webp",
+    "px": [
+      1676,
+      3172
+    ],
+    "anchor": [
+      1041,
+      3168
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_arriere_v4_3q",
+    "couche_de": "ct_arcadius_arriere_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_arcadius_arriere_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_arriere_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_arriere_v4_3q_neon.webp",
+    "px": [
+      1676,
+      3172
+    ],
+    "anchor": [
+      1041,
+      3168
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_arriere_v4_3q",
+    "couche_de": "ct_arcadius_arriere_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_arcadius_arriere_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_aile_est_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_aile_est_v4_3q.webp",
+    "px": [
+      889,
+      1287
+    ],
+    "anchor": [
+      332,
+      1283
+    ],
+    "footprint_m": [
+      8,
+      22
+    ],
+    "height_m": 16.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Arcadius Center : aile est du socle (façade est granit noir et bronze, fenêtres ambre, porte secondaire)",
+    "pose": "B_CT('c_arcadius_e', '', 'ct_arcadius_aile_est_v4_3q', 36, 4, 8, 22, { named: false })",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu : maître (socle 32x32x16 et tour 16x16x44 générés en entier, posés par échelle uniforme), puis 12 tuiles régénérées à 52 px/m d'après le maître (référence seulement), recalage translation + échelle uniforme 0,994-0,998, raccord par couture ; réduction uniforme 50/52 ; coupe sous les arêtes de pied ; découpe en 3 colonnes d'emprise. Aucun warp, aucun étirement, aucun agrandissement du rendu final.",
+    "remplace": "ct_arcadius_qg_v3_3q",
+    "status": "v4",
+    "groupe": "ct_arcadius_v4",
+    "groupe_cles": [
+      "ct_arcadius_arriere_v4_3q",
+      "ct_arcadius_aile_est_v4_3q",
+      "ct_arcadius_facade_v4_3q"
+    ],
+    "volumes_m": {
+      "socle": [
+        12,
+        4,
+        32,
+        32,
+        16
+      ],
+      "tour": [
+        20,
+        10,
+        16,
+        16,
+        60
+      ]
+    },
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues",
+    "emprise_m": [
+      36,
+      4,
+      8,
+      22
+    ],
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_arcadius_aile_est_v4_3q_ecran",
+    "fenetres": "ct_arcadius_aile_est_v4_3q_fenetres",
+    "neon": "ct_arcadius_aile_est_v4_3q_neon"
+  },
+  "ct_arcadius_aile_est_v4_3q_ecran": {
+    "file": "steel/center_town/ct_arcadius_aile_est_v4_3q_ecran.webp",
+    "px": [
+      889,
+      1287
+    ],
+    "anchor": [
+      332,
+      1283
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_aile_est_v4_3q",
+    "couche_de": "ct_arcadius_aile_est_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_arcadius_aile_est_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_aile_est_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_aile_est_v4_3q_fenetres.webp",
+    "px": [
+      889,
+      1287
+    ],
+    "anchor": [
+      332,
+      1283
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_aile_est_v4_3q",
+    "couche_de": "ct_arcadius_aile_est_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_arcadius_aile_est_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_aile_est_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_aile_est_v4_3q_neon.webp",
+    "px": [
+      889,
+      1287
+    ],
+    "anchor": [
+      332,
+      1283
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_aile_est_v4_3q",
+    "couche_de": "ct_arcadius_aile_est_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_arcadius_aile_est_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_facade_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_facade_v4_3q.webp",
+    "px": [
+      1662,
+      1407
+    ],
+    "anchor": [
+      1374,
+      1402
+    ],
+    "footprint_m": [
+      32,
+      10
+    ],
+    "height_m": 16.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Arcadius Center : façade sud du socle (portail ambre, enseigne ARCADIUS CENTER, deux gardiens de bronze, 4 bannières IO), escalier de 12 m peint à plat devant le portail (x22-34, z36-42,6, hors emprise)",
+    "enseigne": "ARCADIUS CENTER",
+    "pose": "B_CT('c_arcadius', 'Arcadius Center', 'ct_arcadius_facade_v4_3q', 12, 26, 32, 10)",
+    "source": "GenerateImage (cursor) au gabarit caméra du jeu : maître (socle 32x32x16 et tour 16x16x44 générés en entier, posés par échelle uniforme), puis 12 tuiles régénérées à 52 px/m d'après le maître (référence seulement), recalage translation + échelle uniforme 0,994-0,998, raccord par couture ; réduction uniforme 50/52 ; coupe sous les arêtes de pied ; découpe en 3 colonnes d'emprise. Aucun warp, aucun étirement, aucun agrandissement du rendu final.",
+    "remplace": "ct_arcadius_qg_v3_3q",
+    "status": "v4",
+    "groupe": "ct_arcadius_v4",
+    "groupe_cles": [
+      "ct_arcadius_arriere_v4_3q",
+      "ct_arcadius_aile_est_v4_3q",
+      "ct_arcadius_facade_v4_3q"
+    ],
+    "volumes_m": {
+      "socle": [
+        12,
+        4,
+        32,
+        32,
+        16
+      ],
+      "tour": [
+        20,
+        10,
+        16,
+        16,
+        60
+      ]
+    },
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues",
+    "emprise_m": [
+      12,
+      26,
+      32,
+      10
+    ],
+    "escalier_peint": {
+      "x": 22,
+      "z": 36,
+      "w": 12,
+      "d": 6,
+      "note": "peint à plat, au niveau du trottoir, praticable (pas de solide)"
+    },
+    "porte": {
+      "face": "s",
+      "x": [
+        25,
+        31
+      ],
+      "z": 36
+    },
+    "layers": [
+      "ecran",
+      "fenetres",
+      "neon"
+    ],
+    "ecran_layer": "ct_arcadius_facade_v4_3q_ecran",
+    "fenetres": "ct_arcadius_facade_v4_3q_fenetres",
+    "neon": "ct_arcadius_facade_v4_3q_neon"
+  },
+  "ct_arcadius_facade_v4_3q_ecran": {
+    "file": "steel/center_town/ct_arcadius_facade_v4_3q_ecran.webp",
+    "px": [
+      1662,
+      1407
+    ],
+    "anchor": [
+      1374,
+      1402
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_facade_v4_3q",
+    "couche_de": "ct_arcadius_facade_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_arcadius_facade_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_facade_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_facade_v4_3q_fenetres.webp",
+    "px": [
+      1662,
+      1407
+    ],
+    "anchor": [
+      1374,
+      1402
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_facade_v4_3q",
+    "couche_de": "ct_arcadius_facade_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_arcadius_facade_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_facade_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_facade_v4_3q_neon.webp",
+    "px": [
+      1662,
+      1407
+    ],
+    "anchor": [
+      1374,
+      1402
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_facade_v4_3q",
+    "couche_de": "ct_arcadius_facade_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_arcadius_facade_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
   }
 }
