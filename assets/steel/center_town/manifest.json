@@ -4832,7 +4832,15 @@
       "z": 36,
       "w": 12,
       "d": 6,
-      "note": "peint à plat, au niveau du trottoir, praticable (pas de solide)"
+      "note": "peint à plat, au niveau du trottoir, praticable (pas de solide)",
+      "painted_px": [645, 1228],
+      "pied_m": {
+        "x": 27.88,
+        "z": 38.29,
+        "note": "milieu du bord avant des marches praticables, inversé à y=0 (le sprite est plus court que z36-42,6)"
+      },
+      "align_cloture_x": 33.18,
+      "note_mesure": "2026-11-11 : milieu du pied mesuré en pixels peints [645, 1228], converti sur z46 par la projection 3/4 (même abscisse écran) : x=33,18. En x monde le pied reste à 27,88 (l'escalier n'est pas décentré sur le plan) ; le sprite est plus court que le rectangle documenté z36-42,6."
     },
     "porte": {
       "face": "s",
@@ -6662,17 +6670,17 @@
     "face": "3q",
     "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "portail d’entrée IO du parvis (x24-32, z46) : deux piliers, linteau à plaque IO lumineuse, grille coulissante rentrée (passage libre 5,6 m x25,2-30,8)",
+    "role": "portail d’entrée IO du parvis (x29-37, z46) : deux piliers, linteau à plaque IO lumineuse, grille coulissante rentrée (passage libre 5,6 m x30,2-35,8), axé sur le milieu du pied d’escalier peint (projection 3/4, x33,18)",
     "enseigne": "IO",
     "passage": {
       "x": [
-        25.2,
-        30.8
+        30.2,
+        35.8
       ],
       "z": 46,
-      "note": "grille coulissante rentrée : passage libre de 5,6 m face au portail x25-31 de la façade"
+      "note": "grille coulissante rentrée : passage libre de 5,6 m face au milieu du pied d’escalier peint (x33,18 sur z46)"
     },
-    "pose": "B_CT('c_arc_portail_io', '', 'ct_arcadius_portail_io_v4_3q', 24, 45.4, 8, 1.2, { named: false, solid: [{ x: 24, z: 45.4, w: 1.2, d: 1.2 }, { x: 30.8, z: 45.4, w: 1.2, d: 1.2 }] })",
+    "pose": "B_CT('c_arc_portail_io', '', 'ct_arcadius_portail_io_v4_3q', 29, 45.4, 8, 1.2, { named: false, solid: [{ x: 29, z: 45.4, w: 1.2, d: 1.2 }, { x: 35.8, z: 45.4, w: 1.2, d: 1.2 }] })",
     "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
     "status": "v4",
     "groupe": "ct_arcadius_grille_v4",
@@ -6686,7 +6694,7 @@
       "ct_arcadius_grille_e3_v4_3q"
     ],
     "emprise_m": [
-      24,
+      29,
       45.4,
       8,
       1.2
@@ -6751,8 +6759,8 @@
     "face": "3q",
     "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "clôture IO sud du parvis, est du portail (x32-43, z46)",
-    "pose": "B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_v4_3q', 32, 45.7, 11, 0.6, { named: false })",
+    "role": "clôture IO sud du parvis, est du portail (x37-48, z46)",
+    "pose": "B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_v4_3q', 37, 45.7, 11, 0.6, { named: false, solid: [{ x: 37, z: 45.7, w: 6, d: 0.6 }] })",
     "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
     "status": "v4",
     "groupe": "ct_arcadius_grille_v4",
@@ -6766,7 +6774,7 @@
       "ct_arcadius_grille_e3_v4_3q"
     ],
     "emprise_m": [
-      32,
+      37,
       45.7,
       11,
       0.6
@@ -6831,7 +6839,7 @@
     "face": "3q",
     "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "clôture IO sud du parvis (x43-53,55, z46), jusqu’au pilier d’angle",
+    "role": "clôture IO sud du parvis (x43-53,55, z46), jusqu’au pilier d’angle ; chevauche s2 visuellement sur x43-48 (segments à largeur fixe, sans étirement)",
     "pose": "B_CT('c_arc_grille_s3', '', 'ct_arcadius_grille_s3_v4_3q', 43, 45.7, 10.55, 0.6, { named: false })",
     "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
     "status": "v4",

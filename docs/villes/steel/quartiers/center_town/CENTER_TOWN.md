@@ -334,14 +334,14 @@ Il s'agit de la grille z46 / x54 du plan v2 (`facades_continues.NO` : clôture/g
 | Clé | Emprise (x, z, w, d) | px | `anchor` | h |
 |---|---|---|---|---|
 | `ct_arcadius_grille_s1_v4_3q` | 12, 45,7, 12, 0,6 | 527 x 319 | [506, 315] | 3,12 m |
-| `ct_arcadius_portail_io_v4_3q` | 24, 45,4, 8, 1,2 | 392 x 359 | [344, 353] | 5,1 m |
-| `ct_arcadius_grille_s2_v4_3q` | 32, 45,7, 11, 0,6 | 480 x 277 | [459, 273] | 3,12 m |
+| `ct_arcadius_portail_io_v4_3q` | 29, 45,4, 8, 1,2 | 392 x 359 | [344, 353] | 5,1 m |
+| `ct_arcadius_grille_s2_v4_3q` | 37, 45,7, 11, 0,6 | 480 x 277 | [459, 273] | 3,12 m |
 | `ct_arcadius_grille_s3_v4_3q` | 43, 45,7, 10,55, 0,6 | 467 x 299 | [445, 295] | 3,12 m |
 | `ct_arcadius_grille_e1_v4_3q` | 53,7, 4, 0,6, 14 | 437 x 430 | [29, 425] | 3,12 m |
 | `ct_arcadius_grille_e2_v4_3q` | 53,7, 18, 0,6, 14 | 437 x 430 | [29, 425] | 3,12 m |
 | `ct_arcadius_grille_e3_v4_3q` | 53,55, 32, 0,9, 14,45 | 461 x 440 | [46, 436] | 3,56 m (pilier d'angle) |
 
-Clôture : socle de pierre noire de 0,5 m avec un filet néon rouge, barreaux de métal sombre de 2,4 m à pointes laiton, piliers de 0,7 m sur 3,1 m tous les 3,5 m environ, chacun avec son applique ambre au pied. Le pilier d'angle (x54, z46) porte une balise rouge IO. Portail : deux piliers de 1,2 m à filets rouges verticaux (repris du pilier de façade), linteau de 3,7 à 4,9 m, plaque lumineuse « IO » de 3,2 x 0,8 m et deux balises rouges à 5,1 m. La grille coulissante est rentrée, ce qui laisse un passage libre de 5,6 m (x25,2-30,8) dans l'axe du portail x25-31 et de l'escalier. Le champ `passage` du manifeste le décrit. Pose proposée avec des `solid` sur les seuls piliers (champ `pose`).
+Clôture : socle de pierre noire de 0,5 m avec un filet néon rouge, barreaux de métal sombre de 2,4 m à pointes laiton, piliers de 0,7 m sur 3,1 m tous les 3,5 m environ, chacun avec son applique ambre au pied. Le pilier d'angle (x54, z46) porte une balise rouge IO. Portail : deux piliers de 1,2 m à filets rouges verticaux (repris du pilier de façade), linteau de 3,7 à 4,9 m, plaque lumineuse « IO » de 3,2 x 0,8 m et deux balises rouges à 5,1 m. La grille coulissante est rentrée, ce qui laisse un passage libre de 5,6 m. Le portail a été recentré par Rivet (11/11/2026) sur le milieu du pied d'escalier peint, mesuré en pixels dans `ct_arcadius_facade_v4_3q` (`escalier_peint.painted_px` [645, 1228]) et converti sur la ligne de clôture z46 par la projection 3/4 (même abscisse écran : x=33,18). Pose : portail x29-37, passage x30,2-35,8, s2 à x37-48, s3 inchangé en x43-53,55 (chevauchement de 5 m, segments à largeur fixe, sans étirement). s1 reste à x12-24 : un intervalle visuel de 5 m (x24-29) subsiste, faute de segment de cette longueur. En x monde, le pied d'escalier est à 27,88 (il n'est pas décentré sur le plan) ; le décalage apparent venait de la projection des sprites billboard. Le champ `passage` du manifeste le décrit. Pose avec des `solid` sur les seuls piliers (champ `pose`).
 
 Méthode : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), géométrie en mètres du plan, rendu x4 puis réduction en boîte vers 50 px/m. Il n'y a ni agrandissement ni déformation. Les matériaux reprennent ceux de `ct_arcadius_*_v4_3q`. Planche hors jeu avec silhouettes de 1,8 m : `nml-shots/ct_arcadius_grille_io_controle.jpg` (non versionnée).
 

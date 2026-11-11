@@ -21,11 +21,14 @@ export const BUILDINGS_CENTER = [
   B_CT('c_arcadius_n', '', 'ct_arcadius_arriere_v4_3q', 12, 4, 24, 22, { named: false }),
   B_CT('c_arcadius_e', '', 'ct_arcadius_aile_est_v4_3q', 36, 4, 8, 22, { named: false }),
   B_CT('c_arcadius', 'Arcadius Center', 'ct_arcadius_facade_v4_3q', 12, 26, 32, 10),
-  // clôture et portail IO du parvis (CENTER_TOWN.md §8G, poses d'Ocre telles quelles) : grille z46 x12-54 et x54 z4-46 ; portail face à l'escalier,
-  // solides sur ses deux piliers seulement : passage libre de 5,6 m (x25,2-30,8) dans l'axe du portail de façade x25-31
+  // clôture et portail IO du parvis (CENTER_TOWN.md §8G) : grille z46 x12-54 et x54 z4-46 ;
+  // portail recentré sur le milieu du pied d'escalier peint, projection 3/4 (même abscisse écran, x33,18 sur z46) :
+  // emprise x29-37, solides sur les seuls piliers, passage libre 5,6 m (x30,2-35,8). s1 inchangé (12 m, x12-24).
+  // s2 à x37-48 ; s3 reste à x43-53,55 (chevauchement 5 m, segments à largeur fixe, sans étirement).
+  // Trou visuel x24-29 (5 m) : aucun segment de 5 m livré, on n'étire pas s1 ; à combler quand Ocre livrera la pièce.
   B_CT('c_arc_grille_s1', '', 'ct_arcadius_grille_s1_v4_3q', 12, 45.7, 12, 0.6, { named: false }),
-  B_CT('c_arc_portail_io', '', 'ct_arcadius_portail_io_v4_3q', 24, 45.4, 8, 1.2, { named: false, solid: [{ x: 24, z: 45.4, w: 1.2, d: 1.2 }, { x: 30.8, z: 45.4, w: 1.2, d: 1.2 }] }),
-  B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_v4_3q', 32, 45.7, 11, 0.6, { named: false }),
+  B_CT('c_arc_portail_io', '', 'ct_arcadius_portail_io_v4_3q', 29, 45.4, 8, 1.2, { named: false, solid: [{ x: 29, z: 45.4, w: 1.2, d: 1.2 }, { x: 35.8, z: 45.4, w: 1.2, d: 1.2 }] }),
+  B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_v4_3q', 37, 45.7, 11, 0.6, { named: false, solid: [{ x: 37, z: 45.7, w: 6, d: 0.6 }] }),
   B_CT('c_arc_grille_s3', '', 'ct_arcadius_grille_s3_v4_3q', 43, 45.7, 10.55, 0.6, { named: false }),
   B_CT('c_arc_grille_e1', '', 'ct_arcadius_grille_e1_v4_3q', 53.7, 4, 0.6, 14, { named: false }),
   B_CT('c_arc_grille_e2', '', 'ct_arcadius_grille_e2_v4_3q', 53.7, 18, 0.6, 14, { named: false }),

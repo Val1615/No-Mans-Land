@@ -202,15 +202,32 @@ with sync_playwright() as p:
             ok(not sim['hits'] and not sim2['hits'] and sim['minEcart'] >= 0 and min(sim['parcouru']) > 150,
                f'{name} 60 s simulées (x2, avec et sans piétons) : les emprises de deux véhicules ne se recouvrent jamais (écart mini {min(sim["minEcart"], sim2["minEcart"])} m), carrefour réservé à un véhicule, tous roulent (≥ {min(sim["parcouru"]):.0f} m)',
                {'hits': (sim['hits'] + sim2['hits'])[:3], 'parcouru': sim['parcouru']})
-            grille = E("""() => { const gr = window.__nml.game.grids.steel_center, L = window.__nml.world.LOCATIONS.steel_center, f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
-              const passage = []; for (let x = 25.5; x <= 30.5; x += 0.5) passage.push(f(x, 46));
-              const bloque = [[14, 46], [20, 46], [24.5, 46], [31.4, 46], [38, 46], [50, 46], [54, 10], [54, 25], [54, 40]].map(([x, z]) => f(x, z));
-              const p = window.__findPath(gr, { x: 28, z: 49 }, { x: 28, z: 40 }), b = Object.fromEntries(L.buildings.filter(b => /^c_arc_(grille|portail)/.test(b.id)).map(b => [b.id, b.sprite]));
-              const man = window.__nml.bman['ct_arcadius_portail_io_v4_3q'];
-              return { passage, bloque, chemin: p ? +p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0).toFixed(1) : null, n: Object.keys(b).length, pas: man?.passage }; }""")
+            grille = E("""() => {
+              const v = window.__nml.view, gr = window.__nml.game.grids.steel_center, L = window.__nml.world.LOCATIONS.steel_center;
+              const f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
+              const fac = L.buildings.find(b => b.sprite === 'ct_arcadius_facade_v4_3q');
+              const port = L.buildings.find(b => b.id === 'c_arc_portail_io');
+              const mf = window.__nml.bman['ct_arcadius_facade_v4_3q'], man = window.__nml.bman['ct_arcadius_portail_io_v4_3q'];
+              const px = mf.escalier_peint.painted_px, K = 50, yaw = 34.5 * Math.PI / 180, pitch = 28.8 * Math.PI / 180;
+              const cy = Math.cos(yaw), sy = Math.sin(yaw), sp = Math.sin(pitch), cp = Math.cos(pitch);
+              const sr = { x: cy, y: 0, z: -sy }, cu = { x: -sy * sp, y: cp, z: -cy * sp };
+              const Ax = fac.x + fac.w, Az = fac.z + fac.d, sx = (px[0] - mf.anchor[0]) / K, syv = (mf.anchor[1] - px[1]) / K;
+              const Bx = Ax + sr.x * sx + cu.x * syv, By = cu.y * syv, Bz = Az + sr.z * sx + cu.z * syv, zf = 46;
+              const fenceX = (Bx * cy - Bz * sy + zf * sy) / cy, gateMid = port.x + port.w / 2;
+              v.render();
+              const scrFoot = v.project(Bx, By, Bz), scrGate = v.project(gateMid, 0, zf), ppm = v.ppm();
+              const passage = []; for (let x = 30.5; x <= 35.5; x += 0.5) passage.push(f(x, 46));
+              const bloque = [[14, 46], [20, 46], [29.5, 46], [36.4, 46], [40, 46], [50, 46], [54, 10], [54, 25], [54, 40]].map(([x, z]) => f(x, z));
+              const p = window.__findPath(gr, { x: 33, z: 49 }, { x: 33, z: 40 });
+              const b = Object.fromEntries(L.buildings.filter(b => /^c_arc_(grille|portail)/.test(b.id)).map(b => [b.id, b.sprite]));
+              return { passage, bloque, chemin: p ? +p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0).toFixed(1) : null,
+                n: Object.keys(b).length, pas: man?.passage, fenceX: +fenceX.toFixed(2), gateMid: +gateMid.toFixed(2),
+                dWorld: +Math.abs(gateMid - fenceX).toFixed(3), dEcranM: +(Math.abs(scrFoot.x - scrGate.x) / ppm).toFixed(3),
+                painted_px: px, port: [port.x, port.z, port.w, port.d] }; }""")
             ok(grille['n'] == 7 and all(grille['passage']) and not any(grille['bloque']) and grille['chemin'] and grille['chemin'] < 10.5
-               and grille['pas'] and abs((grille['pas']['x'][0] + grille['pas']['x'][1]) / 2 - 28) < 0.01,
-               f'{name} clôture et portail IO : 7 sprites, grille pleine, passage libre x25,5-30,5 franchissable ({grille["chemin"]} m du trottoir aux marches), axé sur l\'escalier et le portail de façade (x28)', grille)
+               and grille['pas'] and abs((grille['pas']['x'][0] + grille['pas']['x'][1]) / 2 - grille['gateMid']) < 0.05
+               and grille['dWorld'] <= 0.5 and grille['dEcranM'] <= 0.5,
+               f'{name} clôture et portail IO : 7 sprites, passage x30,5-35,5 franchissable ({grille["chemin"]} m), axé sur le pied d\'escalier peint (x={grille.get("fenceX")} sur z46, écart monde {grille.get("dWorld")} m, écran {grille.get("dEcranM")} m)', grille)
             cede = E("""async () => { const v = window.__nml.view, g = window.__nml.game, s = g.state, L = v.vehicules(); const i = L.findIndex(q => q.axe === 'z' && q.z > 5 && q.z < 100);
               if (i < 0) return null; const q = L[i], x0 = s.player.x, z0 = s.player.z; s.player.x = q.x; s.player.z = q.z + (q.path[1][1] > q.path[0][1] ? 3 : -3); s.player.path = [];
               const w = ms => new Promise(r => setTimeout(r, ms)); await w(250); v.render(); const a = v.vehicules()[i]; const t0 = [a.x, a.z]; await w(400); v.render(); const b = v.vehicules()[i]; s.player.x = x0; s.player.z = z0;
