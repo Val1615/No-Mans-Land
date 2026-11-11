@@ -350,3 +350,14 @@ Méthode : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28
 Cinq calques neufs, au format des `_pulse` v2/v3 (`additive`, `parent`, `couche_de`, `layer: 'pulse'`, `bande: 'kick'`), même canevas et même ancre que le sprite : `ct_tour_teng_v4_3q_pulse` (569 x 1986), `ct_tour_archeon_v4_3q_pulse` (569 x 2196), `ct_tour_orc_v4_3q_pulse` (574 x 2281), `ct_tour_nexus_v4_3q_pulse` (565 x 2286), `ct_tour_humancorp_v4_3q_pulse` (562 x 2399). Ils sont extraits du maître de chaque tour (`ct_v4/out`, même silhouette alpha que le sprite publié). Ils reprennent les bandeaux LED de nez de dalle cyan et ambre, les filets et pistes lumineuses fines (circuits d'Orc), les barres d'égaliseur, le lettrage néon saturé (NEXUS, cadre ARCHEON) et les balises rouges de toit. Les fenêtres et les grands écrans en sont exclus, car ils restent sur `_fenetres` et `_ecran`.
 
 Le champ `layers` des entrées v4 n'est pas modifié (aucune clé existante touchée). Il suffit que `calqueRythme` trouve `<clé>_pulse` dans le manifeste. Côté Rivet, dans `steel.js` `pulses`, il faut retirer `key: 'ct_tour_*_v4_3q_neon'` des cinq lignes `calque: 'pulse'` (ou pointer `key` sur `_pulse`), puis rallumer l'enseigne `_neon` en `fixe` si on veut. Planche hors jeu : `nml-shots/ct_tours_v4_pulse_controle.jpg` (non versionnée).
+
+### I. Clôture z46 recalée sur le portail recentré (x29-37, 49afc3e)
+
+Deux segments neufs générés à leur longueur réelle (même rendu, mêmes matières que §8G, 50 px/m, calques `_neon` / `_fenetres`) :
+
+| Clé | Remplace | Emprise (x, z, w, d) | px | `anchor` | Pose |
+|---|---|---|---|---|---|
+| `ct_arcadius_grille_s1_17m_v4_3q` | `ct_arcadius_grille_s1_v4_3q` | 12, 45,7, 17, 0,6 (x12-29, jusqu'au pilier ouest du portail) | 733 x 387 | [712, 383] | `B_CT('c_arc_grille_s1', '', 'ct_arcadius_grille_s1_17m_v4_3q', 12, 45.7, 17, 0.6, { named: false })` |
+| `ct_arcadius_grille_s2_6m_v4_3q` | `ct_arcadius_grille_s2_v4_3q` | 37, 45,7, 6, 0,6 (x37-43, du pilier est du portail au premier pilier de s3) | 274 x 209 | [253, 205] | `B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_6m_v4_3q', 37, 45.7, 6, 0.6, { named: false })` |
+
+`ct_arcadius_grille_s3_v4_3q` (x43-53,55) est inchangé. Le chevauchement s2/s3 sur x43-48 disparaît, et le `solid` partiel de s2 n'est plus nécessaire. Planche hors jeu : `nml-shots/ct_arcadius_grille_io_controle_v2.jpg`.

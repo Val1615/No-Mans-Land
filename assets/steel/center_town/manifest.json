@@ -7230,5 +7230,149 @@
     "source": "extraction PIL pulse du maître de ct_tour_humancorp_v4_3q (ct_v4/out, même silhouette alpha que le sprite publié, même canevas, même ancre) : bandeaux LED de nez de dalle cyan et ambre, filets et pistes lumineuses fines, barres d’égaliseur, lettrage néon saturé, balise rouge de toit ; fenêtres et grands écrans exclus",
     "status": "v4",
     "bande": "kick"
+  },
+  "ct_arcadius_grille_s1_17m_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_s1_17m_v4_3q.webp",
+    "px": [
+      733,
+      387
+    ],
+    "anchor": [
+      712,
+      383
+    ],
+    "footprint_m": [
+      17,
+      0.6
+    ],
+    "height_m": 3.12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO sud du parvis, ouest du portail recentré (x12-29, z46), jusqu’au pilier ouest du portail (x29)",
+    "pose": "B_CT('c_arc_grille_s1', '', 'ct_arcadius_grille_s1_17m_v4_3q', 12, 45.7, 17, 0.6, { named: false })",
+    "source": "Ocre 2026-11-11 : même rendu iso procédural que ct_arcadius_grille_s1-s3_v4_3q (yaw 34,5°, pitch 28,8°, 50 px/m), généré à sa longueur réelle, rendu x4 puis réduction boîte ; aucun agrandissement, étirement ni déformation",
+    "remplace": "ct_arcadius_grille_s1_v4_3q",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "emprise_m": [
+      12,
+      45.7,
+      17,
+      0.6
+    ],
+    "plan": "center_town_plan_cible v2, coordonnées absolues ; portail IO recentré x29-37 (49afc3e)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_s1_17m_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_s1_17m_v4_3q_neon"
+  },
+  "ct_arcadius_grille_s1_17m_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_s1_17m_v4_3q_fenetres.webp",
+    "px": [
+      733,
+      387
+    ],
+    "anchor": [
+      712,
+      383
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s1_17m_v4_3q",
+    "couche_de": "ct_arcadius_grille_s1_17m_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s1_17m_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_s1_17m_v4_3q_neon.webp",
+    "px": [
+      733,
+      387
+    ],
+    "anchor": [
+      712,
+      383
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s1_17m_v4_3q",
+    "couche_de": "ct_arcadius_grille_s1_17m_v4_3q",
+    "layer": "neon",
+    "source": "rendu du filet néon rouge du socle (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s2_6m_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_s2_6m_v4_3q.webp",
+    "px": [
+      274,
+      209
+    ],
+    "anchor": [
+      253,
+      205
+    ],
+    "footprint_m": [
+      6,
+      0.6
+    ],
+    "height_m": 3.12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO sud du parvis, est du portail recentré (x37-43, z46), du pilier est du portail (x37) au premier pilier de s3 (x43)",
+    "pose": "B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_6m_v4_3q', 37, 45.7, 6, 0.6, { named: false })",
+    "source": "Ocre 2026-11-11 : même rendu iso procédural que ct_arcadius_grille_s1-s3_v4_3q (yaw 34,5°, pitch 28,8°, 50 px/m), généré à sa longueur réelle, rendu x4 puis réduction boîte ; aucun agrandissement, étirement ni déformation",
+    "remplace": "ct_arcadius_grille_s2_v4_3q",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "emprise_m": [
+      37,
+      45.7,
+      6,
+      0.6
+    ],
+    "plan": "center_town_plan_cible v2, coordonnées absolues ; portail IO recentré x29-37 (49afc3e)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_s2_6m_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_s2_6m_v4_3q_neon"
+  },
+  "ct_arcadius_grille_s2_6m_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_s2_6m_v4_3q_fenetres.webp",
+    "px": [
+      274,
+      209
+    ],
+    "anchor": [
+      253,
+      205
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s2_6m_v4_3q",
+    "couche_de": "ct_arcadius_grille_s2_6m_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s2_6m_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_s2_6m_v4_3q_neon.webp",
+    "px": [
+      274,
+      209
+    ],
+    "anchor": [
+      253,
+      205
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s2_6m_v4_3q",
+    "couche_de": "ct_arcadius_grille_s2_6m_v4_3q",
+    "layer": "neon",
+    "source": "rendu du filet néon rouge du socle (même canevas, même ancre)",
+    "status": "v4"
   }
 }
