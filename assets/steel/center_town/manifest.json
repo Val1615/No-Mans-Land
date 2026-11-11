@@ -7132,5 +7132,95 @@
     "layer": "neon",
     "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
     "status": "v4"
+  },
+  "ct_tour_teng_v4_3q_pulse": {
+    "file": "steel/center_town/ct_tour_teng_v4_3q_pulse.webp",
+    "px": [
+      569,
+      1986
+    ],
+    "anchor": [
+      342,
+      1981
+    ],
+    "additive": true,
+    "parent": "ct_tour_teng_v4_3q",
+    "couche_de": "ct_tour_teng_v4_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse du maître de ct_tour_teng_v4_3q (ct_v4/out, même silhouette alpha que le sprite publié, même canevas, même ancre) : bandeaux LED de nez de dalle cyan et ambre, filets et pistes lumineuses fines, barres d’égaliseur, lettrage néon saturé, balise rouge de toit ; fenêtres et grands écrans exclus",
+    "status": "v4",
+    "bande": "kick"
+  },
+  "ct_tour_archeon_v4_3q_pulse": {
+    "file": "steel/center_town/ct_tour_archeon_v4_3q_pulse.webp",
+    "px": [
+      569,
+      2196
+    ],
+    "anchor": [
+      343,
+      2191
+    ],
+    "additive": true,
+    "parent": "ct_tour_archeon_v4_3q",
+    "couche_de": "ct_tour_archeon_v4_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse du maître de ct_tour_archeon_v4_3q (ct_v4/out, même silhouette alpha que le sprite publié, même canevas, même ancre) : bandeaux LED de nez de dalle cyan et ambre, filets et pistes lumineuses fines, barres d’égaliseur, lettrage néon saturé, balise rouge de toit ; fenêtres et grands écrans exclus",
+    "status": "v4",
+    "bande": "kick"
+  },
+  "ct_tour_orc_v4_3q_pulse": {
+    "file": "steel/center_town/ct_tour_orc_v4_3q_pulse.webp",
+    "px": [
+      574,
+      2281
+    ],
+    "anchor": [
+      350,
+      2277
+    ],
+    "additive": true,
+    "parent": "ct_tour_orc_v4_3q",
+    "couche_de": "ct_tour_orc_v4_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse du maître de ct_tour_orc_v4_3q (ct_v4/out, même silhouette alpha que le sprite publié, même canevas, même ancre) : bandeaux LED de nez de dalle cyan et ambre, filets et pistes lumineuses fines, barres d’égaliseur, lettrage néon saturé, balise rouge de toit ; fenêtres et grands écrans exclus",
+    "status": "v4",
+    "bande": "kick"
+  },
+  "ct_tour_nexus_v4_3q_pulse": {
+    "file": "steel/center_town/ct_tour_nexus_v4_3q_pulse.webp",
+    "px": [
+      565,
+      2286
+    ],
+    "anchor": [
+      337,
+      2281
+    ],
+    "additive": true,
+    "parent": "ct_tour_nexus_v4_3q",
+    "couche_de": "ct_tour_nexus_v4_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse du maître de ct_tour_nexus_v4_3q (ct_v4/out, même silhouette alpha que le sprite publié, même canevas, même ancre) : bandeaux LED de nez de dalle cyan et ambre, filets et pistes lumineuses fines, barres d’égaliseur, lettrage néon saturé, balise rouge de toit ; fenêtres et grands écrans exclus",
+    "status": "v4",
+    "bande": "kick"
+  },
+  "ct_tour_humancorp_v4_3q_pulse": {
+    "file": "steel/center_town/ct_tour_humancorp_v4_3q_pulse.webp",
+    "px": [
+      562,
+      2399
+    ],
+    "anchor": [
+      342,
+      2394
+    ],
+    "additive": true,
+    "parent": "ct_tour_humancorp_v4_3q",
+    "couche_de": "ct_tour_humancorp_v4_3q",
+    "layer": "pulse",
+    "source": "extraction PIL pulse du maître de ct_tour_humancorp_v4_3q (ct_v4/out, même silhouette alpha que le sprite publié, même canevas, même ancre) : bandeaux LED de nez de dalle cyan et ambre, filets et pistes lumineuses fines, barres d’égaliseur, lettrage néon saturé, balise rouge de toit ; fenêtres et grands écrans exclus",
+    "status": "v4",
+    "bande": "kick"
   }
 }
