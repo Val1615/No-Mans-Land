@@ -326,3 +326,21 @@ En miroir, l'enseigne de toit « TAXI » de `ct_taxi_v3_3q` se lit à l'envers s
 Méthode : miroir horizontal pixel pour pixel de la caisse et des deux calques (échelle 1, aucun étirement), puis lettrage miroir effacé dans le caisson de toit et « TAXI » repeint à l'endroit, cisaillé sur la face du caisson à la pente du toit miroir (0,33), rendu x24 puis réduit en boîte vers 1x. Dans `_neon`, le caisson est comblé et les lettres sont creusées dans la lueur.
 
 Branchement (Rivet, `src/data/vehicules.js`) : `ct_taxi_v3_3q: { axe: 'x', vue_axe2: 'ct_taxi_v3_axe2_3q' }`. `view.js` prend alors `ct_taxi_v3_axe2_3q`, `_fenetres` et `_neon` sur l'axe z, sans miroir. Le champ `vue_axe2` n'est pas posé dans l'entrée manifeste de `ct_taxi_v3_3q`, pour ne pas modifier une clé existante. Planche hors jeu : `nml-shots/ct_taxi_vue_axe2_controle.png` (non versionnée).
+
+### G. Clôture et portail IO du parvis de l'Arcadius (`ct_arcadius_grille_*_v4_3q`, `ct_arcadius_portail_io_v4_3q`)
+
+Il s'agit de la grille z46 / x54 du plan v2 (`facades_continues.NO` : clôture/grille IO continue x12-54 / z4-46, portail face sud), restée à faire au §8B. Ce sont sept sprites neufs, sans `remplace`, découpés en segments d'emprise pour le tri du moteur. Tous sont à 50 px/m, avec l'ancre au coin avant (x+w, z+d) et les calques `_neon` (filets rouges, balises, plaque IO) et `_fenetres` (appliques ambre) au même canevas.
+
+| Clé | Emprise (x, z, w, d) | px | `anchor` | h |
+|---|---|---|---|---|
+| `ct_arcadius_grille_s1_v4_3q` | 12, 45,7, 12, 0,6 | 527 x 319 | [506, 315] | 3,12 m |
+| `ct_arcadius_portail_io_v4_3q` | 24, 45,4, 8, 1,2 | 392 x 359 | [344, 353] | 5,1 m |
+| `ct_arcadius_grille_s2_v4_3q` | 32, 45,7, 11, 0,6 | 480 x 277 | [459, 273] | 3,12 m |
+| `ct_arcadius_grille_s3_v4_3q` | 43, 45,7, 10,55, 0,6 | 467 x 299 | [445, 295] | 3,12 m |
+| `ct_arcadius_grille_e1_v4_3q` | 53,7, 4, 0,6, 14 | 437 x 430 | [29, 425] | 3,12 m |
+| `ct_arcadius_grille_e2_v4_3q` | 53,7, 18, 0,6, 14 | 437 x 430 | [29, 425] | 3,12 m |
+| `ct_arcadius_grille_e3_v4_3q` | 53,55, 32, 0,9, 14,45 | 461 x 440 | [46, 436] | 3,56 m (pilier d'angle) |
+
+Clôture : socle de pierre noire de 0,5 m avec un filet néon rouge, barreaux de métal sombre de 2,4 m à pointes laiton, piliers de 0,7 m sur 3,1 m tous les 3,5 m environ, chacun avec son applique ambre au pied. Le pilier d'angle (x54, z46) porte une balise rouge IO. Portail : deux piliers de 1,2 m à filets rouges verticaux (repris du pilier de façade), linteau de 3,7 à 4,9 m, plaque lumineuse « IO » de 3,2 x 0,8 m et deux balises rouges à 5,1 m. La grille coulissante est rentrée, ce qui laisse un passage libre de 5,6 m (x25,2-30,8) dans l'axe du portail x25-31 et de l'escalier. Le champ `passage` du manifeste le décrit. Pose proposée avec des `solid` sur les seuls piliers (champ `pose`).
+
+Méthode : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), géométrie en mètres du plan, rendu x4 puis réduction en boîte vers 50 px/m. Il n'y a ni agrandissement ni déformation. Les matériaux reprennent ceux de `ct_arcadius_*_v4_3q`. Planche hors jeu avec silhouettes de 1,8 m : `nml-shots/ct_arcadius_grille_io_controle.jpg` (non versionnée).

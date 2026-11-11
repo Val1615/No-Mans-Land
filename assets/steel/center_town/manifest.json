@@ -6563,5 +6563,574 @@
     "layer": "neon",
     "source": "miroir horizontal de ct_taxi_v3_3q_neon ; caisson TAXI comblé puis lettrage à l’endroit creusé dans la lueur (même canevas, même ancre)",
     "status": "v3"
+  },
+  "ct_arcadius_grille_s1_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_s1_v4_3q.webp",
+    "px": [
+      527,
+      319
+    ],
+    "anchor": [
+      506,
+      315
+    ],
+    "footprint_m": [
+      12,
+      0.6
+    ],
+    "height_m": 3.12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO sud du parvis, ouest du portail (x12-24, z46)",
+    "pose": "B_CT('c_arc_grille_s1', '', 'ct_arcadius_grille_s1_v4_3q', 12, 45.7, 12, 0.6, { named: false })",
+    "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "groupe_cles": [
+      "ct_arcadius_grille_s1_v4_3q",
+      "ct_arcadius_portail_io_v4_3q",
+      "ct_arcadius_grille_s2_v4_3q",
+      "ct_arcadius_grille_s3_v4_3q",
+      "ct_arcadius_grille_e1_v4_3q",
+      "ct_arcadius_grille_e2_v4_3q",
+      "ct_arcadius_grille_e3_v4_3q"
+    ],
+    "emprise_m": [
+      12,
+      45.7,
+      12,
+      0.6
+    ],
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues ; parvis z36-48 + x44-56",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_s1_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_s1_v4_3q_neon"
+  },
+  "ct_arcadius_grille_s1_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_s1_v4_3q_fenetres.webp",
+    "px": [
+      527,
+      319
+    ],
+    "anchor": [
+      506,
+      315
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s1_v4_3q",
+    "couche_de": "ct_arcadius_grille_s1_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s1_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_s1_v4_3q_neon.webp",
+    "px": [
+      527,
+      319
+    ],
+    "anchor": [
+      506,
+      315
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s1_v4_3q",
+    "couche_de": "ct_arcadius_grille_s1_v4_3q",
+    "layer": "neon",
+    "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_portail_io_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_portail_io_v4_3q.webp",
+    "px": [
+      392,
+      359
+    ],
+    "anchor": [
+      344,
+      353
+    ],
+    "footprint_m": [
+      8,
+      1.2
+    ],
+    "height_m": 5.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "portail d’entrée IO du parvis (x24-32, z46) : deux piliers, linteau à plaque IO lumineuse, grille coulissante rentrée (passage libre 5,6 m x25,2-30,8)",
+    "enseigne": "IO",
+    "passage": {
+      "x": [
+        25.2,
+        30.8
+      ],
+      "z": 46,
+      "note": "grille coulissante rentrée : passage libre de 5,6 m face au portail x25-31 de la façade"
+    },
+    "pose": "B_CT('c_arc_portail_io', '', 'ct_arcadius_portail_io_v4_3q', 24, 45.4, 8, 1.2, { named: false, solid: [{ x: 24, z: 45.4, w: 1.2, d: 1.2 }, { x: 30.8, z: 45.4, w: 1.2, d: 1.2 }] })",
+    "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "groupe_cles": [
+      "ct_arcadius_grille_s1_v4_3q",
+      "ct_arcadius_portail_io_v4_3q",
+      "ct_arcadius_grille_s2_v4_3q",
+      "ct_arcadius_grille_s3_v4_3q",
+      "ct_arcadius_grille_e1_v4_3q",
+      "ct_arcadius_grille_e2_v4_3q",
+      "ct_arcadius_grille_e3_v4_3q"
+    ],
+    "emprise_m": [
+      24,
+      45.4,
+      8,
+      1.2
+    ],
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues ; parvis z36-48 + x44-56",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_portail_io_v4_3q_fenetres",
+    "neon": "ct_arcadius_portail_io_v4_3q_neon"
+  },
+  "ct_arcadius_portail_io_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_portail_io_v4_3q_fenetres.webp",
+    "px": [
+      392,
+      359
+    ],
+    "anchor": [
+      344,
+      353
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_portail_io_v4_3q",
+    "couche_de": "ct_arcadius_portail_io_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_portail_io_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_portail_io_v4_3q_neon.webp",
+    "px": [
+      392,
+      359
+    ],
+    "anchor": [
+      344,
+      353
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_portail_io_v4_3q",
+    "couche_de": "ct_arcadius_portail_io_v4_3q",
+    "layer": "neon",
+    "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s2_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_s2_v4_3q.webp",
+    "px": [
+      480,
+      277
+    ],
+    "anchor": [
+      459,
+      273
+    ],
+    "footprint_m": [
+      11,
+      0.6
+    ],
+    "height_m": 3.12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO sud du parvis, est du portail (x32-43, z46)",
+    "pose": "B_CT('c_arc_grille_s2', '', 'ct_arcadius_grille_s2_v4_3q', 32, 45.7, 11, 0.6, { named: false })",
+    "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "groupe_cles": [
+      "ct_arcadius_grille_s1_v4_3q",
+      "ct_arcadius_portail_io_v4_3q",
+      "ct_arcadius_grille_s2_v4_3q",
+      "ct_arcadius_grille_s3_v4_3q",
+      "ct_arcadius_grille_e1_v4_3q",
+      "ct_arcadius_grille_e2_v4_3q",
+      "ct_arcadius_grille_e3_v4_3q"
+    ],
+    "emprise_m": [
+      32,
+      45.7,
+      11,
+      0.6
+    ],
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues ; parvis z36-48 + x44-56",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_s2_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_s2_v4_3q_neon"
+  },
+  "ct_arcadius_grille_s2_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_s2_v4_3q_fenetres.webp",
+    "px": [
+      480,
+      277
+    ],
+    "anchor": [
+      459,
+      273
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s2_v4_3q",
+    "couche_de": "ct_arcadius_grille_s2_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s2_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_s2_v4_3q_neon.webp",
+    "px": [
+      480,
+      277
+    ],
+    "anchor": [
+      459,
+      273
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s2_v4_3q",
+    "couche_de": "ct_arcadius_grille_s2_v4_3q",
+    "layer": "neon",
+    "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s3_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_s3_v4_3q.webp",
+    "px": [
+      467,
+      299
+    ],
+    "anchor": [
+      445,
+      295
+    ],
+    "footprint_m": [
+      10.55,
+      0.6
+    ],
+    "height_m": 3.12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO sud du parvis (x43-53,55, z46), jusqu’au pilier d’angle",
+    "pose": "B_CT('c_arc_grille_s3', '', 'ct_arcadius_grille_s3_v4_3q', 43, 45.7, 10.55, 0.6, { named: false })",
+    "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "groupe_cles": [
+      "ct_arcadius_grille_s1_v4_3q",
+      "ct_arcadius_portail_io_v4_3q",
+      "ct_arcadius_grille_s2_v4_3q",
+      "ct_arcadius_grille_s3_v4_3q",
+      "ct_arcadius_grille_e1_v4_3q",
+      "ct_arcadius_grille_e2_v4_3q",
+      "ct_arcadius_grille_e3_v4_3q"
+    ],
+    "emprise_m": [
+      43,
+      45.7,
+      10.55,
+      0.6
+    ],
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues ; parvis z36-48 + x44-56",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_s3_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_s3_v4_3q_neon"
+  },
+  "ct_arcadius_grille_s3_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_s3_v4_3q_fenetres.webp",
+    "px": [
+      467,
+      299
+    ],
+    "anchor": [
+      445,
+      295
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s3_v4_3q",
+    "couche_de": "ct_arcadius_grille_s3_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_s3_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_s3_v4_3q_neon.webp",
+    "px": [
+      467,
+      299
+    ],
+    "anchor": [
+      445,
+      295
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_s3_v4_3q",
+    "couche_de": "ct_arcadius_grille_s3_v4_3q",
+    "layer": "neon",
+    "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_e1_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_e1_v4_3q.webp",
+    "px": [
+      437,
+      430
+    ],
+    "anchor": [
+      29,
+      425
+    ],
+    "footprint_m": [
+      0.6,
+      14
+    ],
+    "height_m": 3.12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO est du parvis (x54, z4-18)",
+    "pose": "B_CT('c_arc_grille_e1', '', 'ct_arcadius_grille_e1_v4_3q', 53.7, 4, 0.6, 14, { named: false })",
+    "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "groupe_cles": [
+      "ct_arcadius_grille_s1_v4_3q",
+      "ct_arcadius_portail_io_v4_3q",
+      "ct_arcadius_grille_s2_v4_3q",
+      "ct_arcadius_grille_s3_v4_3q",
+      "ct_arcadius_grille_e1_v4_3q",
+      "ct_arcadius_grille_e2_v4_3q",
+      "ct_arcadius_grille_e3_v4_3q"
+    ],
+    "emprise_m": [
+      53.7,
+      4,
+      0.6,
+      14
+    ],
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues ; parvis z36-48 + x44-56",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_e1_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_e1_v4_3q_neon"
+  },
+  "ct_arcadius_grille_e1_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_e1_v4_3q_fenetres.webp",
+    "px": [
+      437,
+      430
+    ],
+    "anchor": [
+      29,
+      425
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_e1_v4_3q",
+    "couche_de": "ct_arcadius_grille_e1_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_e1_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_e1_v4_3q_neon.webp",
+    "px": [
+      437,
+      430
+    ],
+    "anchor": [
+      29,
+      425
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_e1_v4_3q",
+    "couche_de": "ct_arcadius_grille_e1_v4_3q",
+    "layer": "neon",
+    "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_e2_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_e2_v4_3q.webp",
+    "px": [
+      437,
+      430
+    ],
+    "anchor": [
+      29,
+      425
+    ],
+    "footprint_m": [
+      0.6,
+      14
+    ],
+    "height_m": 3.12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO est du parvis (x54, z18-32)",
+    "pose": "B_CT('c_arc_grille_e2', '', 'ct_arcadius_grille_e2_v4_3q', 53.7, 18, 0.6, 14, { named: false })",
+    "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "groupe_cles": [
+      "ct_arcadius_grille_s1_v4_3q",
+      "ct_arcadius_portail_io_v4_3q",
+      "ct_arcadius_grille_s2_v4_3q",
+      "ct_arcadius_grille_s3_v4_3q",
+      "ct_arcadius_grille_e1_v4_3q",
+      "ct_arcadius_grille_e2_v4_3q",
+      "ct_arcadius_grille_e3_v4_3q"
+    ],
+    "emprise_m": [
+      53.7,
+      18,
+      0.6,
+      14
+    ],
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues ; parvis z36-48 + x44-56",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_e2_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_e2_v4_3q_neon"
+  },
+  "ct_arcadius_grille_e2_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_e2_v4_3q_fenetres.webp",
+    "px": [
+      437,
+      430
+    ],
+    "anchor": [
+      29,
+      425
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_e2_v4_3q",
+    "couche_de": "ct_arcadius_grille_e2_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_e2_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_e2_v4_3q_neon.webp",
+    "px": [
+      437,
+      430
+    ],
+    "anchor": [
+      29,
+      425
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_e2_v4_3q",
+    "couche_de": "ct_arcadius_grille_e2_v4_3q",
+    "layer": "neon",
+    "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_e3_v4_3q": {
+    "file": "steel/center_town/ct_arcadius_grille_e3_v4_3q.webp",
+    "px": [
+      461,
+      440
+    ],
+    "anchor": [
+      46,
+      436
+    ],
+    "footprint_m": [
+      0.9,
+      14.45
+    ],
+    "height_m": 3.56,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "clôture IO est du parvis (x54, z32-46) + pilier d’angle à balise IO (x54 z46)",
+    "pose": "B_CT('c_arc_grille_e3', '', 'ct_arcadius_grille_e3_v4_3q', 53.55, 32, 0.9, 14.45, { named: false })",
+    "source": "Ocre 2026-11-11 : rendu iso procédural au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, 50 px/m), géométrie en mètres du plan v2 (clôture/grille IO z46 x12-54 et x54 z4-46), matériaux de ct_arcadius_*_v4_3q (pierre noire, métal canon de fusil, laiton, filet néon rouge, appliques ambre) ; rendu x4 puis réduction boîte vers 50 px/m, aucun agrandissement ni déformation",
+    "status": "v4",
+    "groupe": "ct_arcadius_grille_v4",
+    "groupe_cles": [
+      "ct_arcadius_grille_s1_v4_3q",
+      "ct_arcadius_portail_io_v4_3q",
+      "ct_arcadius_grille_s2_v4_3q",
+      "ct_arcadius_grille_s3_v4_3q",
+      "ct_arcadius_grille_e1_v4_3q",
+      "ct_arcadius_grille_e2_v4_3q",
+      "ct_arcadius_grille_e3_v4_3q"
+    ],
+    "emprise_m": [
+      53.55,
+      32,
+      0.9,
+      14.45
+    ],
+    "plan": "center_town_plan_cible v2 (132 x 116 m), coordonnées absolues ; parvis z36-48 + x44-56",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_arcadius_grille_e3_v4_3q_fenetres",
+    "neon": "ct_arcadius_grille_e3_v4_3q_neon"
+  },
+  "ct_arcadius_grille_e3_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_arcadius_grille_e3_v4_3q_fenetres.webp",
+    "px": [
+      461,
+      440
+    ],
+    "anchor": [
+      46,
+      436
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_e3_v4_3q",
+    "couche_de": "ct_arcadius_grille_e3_v4_3q",
+    "layer": "fenetres",
+    "source": "rendu des appliques ambre au pied des piliers (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_arcadius_grille_e3_v4_3q_neon": {
+    "file": "steel/center_town/ct_arcadius_grille_e3_v4_3q_neon.webp",
+    "px": [
+      461,
+      440
+    ],
+    "anchor": [
+      46,
+      436
+    ],
+    "additive": true,
+    "parent": "ct_arcadius_grille_e3_v4_3q",
+    "couche_de": "ct_arcadius_grille_e3_v4_3q",
+    "layer": "neon",
+    "source": "rendu des filets néon rouges, balises et plaque IO (même canevas, même ancre)",
+    "status": "v4"
   }
 }
