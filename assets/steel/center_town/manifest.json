@@ -9995,6 +9995,248 @@
     "jamais_miroir": true,
     "vue": "miroir"
   },
+  "ct_veh_bus_avant_v5_3q": {
+    "file": "steel/center_town/ct_veh_bus_avant_v5_3q.webp",
+    "px": [
+      824,
+      451
+    ],
+    "anchor": [
+      747,
+      446
+    ],
+    "footprint_m": [
+      18.0,
+      2.55
+    ],
+    "height_m": 3.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; mesurée sur le sprite 0,331 / 0,7 (géométrie 3D à la caméra du jeu, §8K v5)",
+    "px_par_m": 50,
+    "role": "Bus articulé de Center-Town, vitres et bandeau ambre — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_bus_avant_v5_3q', X, Z, 18, 2.55, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 17.8, d: 2.3 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.55 x 18)",
+    "source": "Ocre 2026-11-12, bus v5 : géométrie = bus 3D 18 x 2,55 x 3,3 m rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes, ligne de toit et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par translation seule (IoU 0.9636), UNE réduction uniforme x0.6603 vers 50 px/m, part peinte 98.9 % de la silhouette ; aucun agrandissement, étirement, cisaillement ni déformation de la caisse (bruts nml-shots/bus_v5/raw/, hors dépôt) ; canevas calculé depuis la projection, ancre = coin avant de l'emprise (x+18, z+2,55)",
+    "status": "v5",
+    "groupe": "ct_vehicules_v4",
+    "lot": "bus v5 (correction du plongeon, 2026-11-12)",
+    "vehicule": "bus",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_bus_dos_v5_3q",
+    "orientations": {
+      "+x": "ct_veh_bus_avant_v5_3q (natif)",
+      "-x": "ct_veh_bus_dos_v5_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_bus_avant_v5_3q",
+      "-z": "miroir horizontal de ct_veh_bus_dos_v5_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "remplace": "ct_veh_bus_avant_v4_3q",
+    "enseigne": "B7 (calque texte, non retourné)",
+    "fenetres": "ct_veh_bus_avant_v5_3q_fenetres",
+    "neon": "ct_veh_bus_avant_v5_3q_neon",
+    "texte": "ct_veh_bus_avant_v5_3q_texte",
+    "texte_miroir": "ct_veh_bus_avant_v5_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_bus_avant_v5_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_bus_avant_v5_3q_fenetres.webp",
+    "anchor": [
+      747,
+      446
+    ],
+    "additive": true,
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_bus_avant_v5_3q.webp (même canevas, même ancre)",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_avant_v5_3q",
+    "couche_de": "ct_veh_bus_avant_v5_3q",
+    "status": "v5"
+  },
+  "ct_veh_bus_avant_v5_3q_neon": {
+    "file": "steel/center_town/ct_veh_bus_avant_v5_3q_neon.webp",
+    "anchor": [
+      747,
+      446
+    ],
+    "additive": true,
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_bus_avant_v5_3q.webp + complément bandeau ambre / feux par couleur (même canevas, même ancre)",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_avant_v5_3q",
+    "couche_de": "ct_veh_bus_avant_v5_3q",
+    "status": "v5"
+  },
+  "ct_veh_bus_avant_v5_3q_texte": {
+    "file": "steel/center_town/ct_veh_bus_avant_v5_3q_texte.webp",
+    "anchor": [
+      747,
+      446
+    ],
+    "additive": false,
+    "layer": "texte",
+    "source": "lettrage « B7 » PIL (Barlow Condensed ExtraBold, capitale 23 px, rendu x4 puis cisaillement du support selon la pente mesurée de la face courte v5 (-0.7) et réduction 1/4, plaque sombre serrée à liseré ambre), haut de la face avant, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "jamais_miroir": true,
+    "vue": "native",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_avant_v5_3q",
+    "couche_de": "ct_veh_bus_avant_v5_3q",
+    "status": "v5"
+  },
+  "ct_veh_bus_avant_v5_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_bus_avant_v5_3q_texte_miroir.webp",
+    "anchor": [
+      77,
+      446
+    ],
+    "additive": false,
+    "layer": "texte_miroir",
+    "source": "lettrage « B7 » repositionné pour la vue miroir (canevas miroir de ct_veh_bus_avant_v5_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "jamais_miroir": true,
+    "vue": "miroir",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_avant_v5_3q",
+    "couche_de": "ct_veh_bus_avant_v5_3q",
+    "status": "v5"
+  },
+  "ct_veh_bus_dos_v5_3q": {
+    "file": "steel/center_town/ct_veh_bus_dos_v5_3q.webp",
+    "px": [
+      824,
+      451
+    ],
+    "anchor": [
+      747,
+      446
+    ],
+    "footprint_m": [
+      18.0,
+      2.55
+    ],
+    "height_m": 3.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; mesurée sur le sprite 0,331 / 0,727 (géométrie 3D à la caméra du jeu, §8K v5)",
+    "px_par_m": 50,
+    "role": "Bus articulé de Center-Town, vitres et bandeau ambre — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_bus_dos_v5_3q', X, Z, 18, 2.55, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 17.8, d: 2.3 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.55 x 18)",
+    "source": "Ocre 2026-11-12, bus v5 : géométrie = bus 3D 18 x 2,55 x 3,3 m rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes, ligne de toit et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par translation seule (IoU 0.9846), UNE réduction uniforme x0.6603 vers 50 px/m, part peinte 98.8 % de la silhouette ; aucun agrandissement, étirement, cisaillement ni déformation de la caisse (bruts nml-shots/bus_v5/raw/, hors dépôt) ; canevas calculé depuis la projection, ancre = coin avant de l'emprise (x+18, z+2,55)",
+    "status": "v5",
+    "groupe": "ct_vehicules_v4",
+    "lot": "bus v5 (correction du plongeon, 2026-11-12)",
+    "vehicule": "bus",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_bus_avant_v5_3q",
+    "orientations": {
+      "+x": "ct_veh_bus_avant_v5_3q (natif)",
+      "-x": "ct_veh_bus_dos_v5_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_bus_avant_v5_3q",
+      "-z": "miroir horizontal de ct_veh_bus_dos_v5_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "remplace": "ct_veh_bus_dos_v4_3q",
+    "enseigne": "B7 (calque texte, non retourné)",
+    "fenetres": "ct_veh_bus_dos_v5_3q_fenetres",
+    "neon": "ct_veh_bus_dos_v5_3q_neon",
+    "texte": "ct_veh_bus_dos_v5_3q_texte",
+    "texte_miroir": "ct_veh_bus_dos_v5_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_bus_dos_v5_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_bus_dos_v5_3q_fenetres.webp",
+    "anchor": [
+      747,
+      446
+    ],
+    "additive": true,
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_bus_dos_v5_3q.webp (même canevas, même ancre)",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_dos_v5_3q",
+    "couche_de": "ct_veh_bus_dos_v5_3q",
+    "status": "v5"
+  },
+  "ct_veh_bus_dos_v5_3q_neon": {
+    "file": "steel/center_town/ct_veh_bus_dos_v5_3q_neon.webp",
+    "anchor": [
+      747,
+      446
+    ],
+    "additive": true,
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_bus_dos_v5_3q.webp + complément bandeau ambre / feux par couleur (même canevas, même ancre)",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_dos_v5_3q",
+    "couche_de": "ct_veh_bus_dos_v5_3q",
+    "status": "v5"
+  },
+  "ct_veh_bus_dos_v5_3q_texte": {
+    "file": "steel/center_town/ct_veh_bus_dos_v5_3q_texte.webp",
+    "anchor": [
+      747,
+      446
+    ],
+    "additive": false,
+    "layer": "texte",
+    "source": "lettrage « B7 » PIL (Barlow Condensed ExtraBold, capitale 23 px, rendu x4 puis cisaillement du support selon la pente mesurée de la face courte v5 (-0.727) et réduction 1/4, plaque sombre serrée à liseré ambre), haut de la face arrière, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "jamais_miroir": true,
+    "vue": "native",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_dos_v5_3q",
+    "couche_de": "ct_veh_bus_dos_v5_3q",
+    "status": "v5"
+  },
+  "ct_veh_bus_dos_v5_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_bus_dos_v5_3q_texte_miroir.webp",
+    "anchor": [
+      77,
+      446
+    ],
+    "additive": false,
+    "layer": "texte_miroir",
+    "source": "lettrage « B7 » repositionné pour la vue miroir (canevas miroir de ct_veh_bus_dos_v5_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "jamais_miroir": true,
+    "vue": "miroir",
+    "px": [
+      824,
+      451
+    ],
+    "parent": "ct_veh_bus_dos_v5_3q",
+    "couche_de": "ct_veh_bus_dos_v5_3q",
+    "status": "v5"
+  },
   "ct_veh_tram_avant_v4_3q": {
     "file": "steel/center_town/ct_veh_tram_avant_v4_3q.webp",
     "px": [

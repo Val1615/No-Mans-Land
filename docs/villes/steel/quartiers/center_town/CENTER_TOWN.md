@@ -791,3 +791,38 @@ Planches hors jeu (non versionnées) : `nml-shots/ct_v4_ne_bureaux_controle.png`
 Poses d'Ocre appliquées telles quelles (emprise native, aucun `b.k` / `b.sy`). Mobilier §8J / v3 réutilisé (stands, cerisiers, tables, bancs, lampadaires, arbres du jardin aussi dans la cour NE). Porche, segment et Nexus inchangés. Répétitions `d` × 2, `e1` × 2, `f` × 3 conservées. Sols jardin (pelouse, allées) et dalles / asphalte de cour et de ruelle de service posés dans `paint` après le carrefour. Vitrines sud du marché et rangée nord du jardin non déplacées. Rien en x ≥ 44 dans le jardin (passage Dôme z96-100 libre). Le lot §8P (e566eef) est posé dans le même commit que §8M / §8N.
 
 Figurants (après dbe987a) : 20 figurants statiques en 10 paires (g78–g87) ajoutés dans le marché SE, le jardin du Dôme (prioritaire, 5 paires) et le coin NE (une paire dans la bande est de la cour, seule poche non masquée ; une paire sur le trottoir sud de l'îlot), même logique que la foule du carrefour (petits groupes de 1 à 3, espacement ≥ 0,75 m, hors chaussée, hors solides et masques). La cour NE reste largement masquée par D/F/E, comme prévu. Les 12 walkers et le plafond de 8 anims mobiles restent inchangés. Laissés libres : passage du Dôme x44–56 z96–100 et seuil (50, 97), ruelle SE z92–95 et accès marché, ruelle NE z20–24 (et x100–110 jusqu'en z28) et ruelle de service. Lettrage TAXI / B7 / T1 de dbe987a pris tel quel (mêmes clés, canevas et ancres, texte jamais retourné) ; aucun changement de caisse ni de câblage.
+
+### R. Bus articulé v5 : correction du plongeon (`ct_veh_bus_*_v5_3q`, 2026-11-12)
+
+Le v4 peignait le flanc long à ~0,45–0,48 au lieu de 0,33 (biais du générateur, déjà noté au §8K). Sur 18 m, quand deux bus se côtoient, la perspective ne tient pas. Les clés v4 restent intactes. Dix nouvelles clés, avec `remplace` vers le v4. Même gabarit 18,0 × 2,55 × 3,3 m. Rien de posé ici : Rivet pointe `ct_vbus0` et le bus mobile vers les clés v5 (le marquage `obsolete` reste à Rivet).
+
+**Méthode.** Géométrie d'abord : bus 3D 18 × 2,55 × 3,3 m rendu par un rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m). Silhouette, arêtes, ligne de toit et alpha verrouillés par ce rendu. Matière : GenerateImage (cursor) image-à-image, style v4, puis translation seule (IoU 0,964 / 0,985) et UNE réduction uniforme ×0,660 vers 50 px/m (part peinte ~98,9 %). Aucun agrandissement, étirement, cisaillement ni déformation de la caisse. Le canevas 824×451 est calculé depuis la boîte projetée (+ 5 px de marge), pas recopié du v4 (celui-ci encodait la mauvaise pente). Ancre = projection exacte du coin avant de l'emprise (x+18, z+2,55, sol) : [747, 446] ; ancre miroir [77, 446].
+
+Lettrage B7 : même méthode que le correctif du 2026-11-12 (Barlow Condensed ExtraBold, capitale 23 px, rendu ×4, cisaillement du SUPPORT seul selon la pente mesurée de la face courte, réduction 1/4). Calques `_texte` / `_texte_miroir` jamais retournés, comme en v4.
+
+**Clés** :
+
+| Clé | px | ancre | empreinte (m) | h (m) | pente flanc / face | calques |
+|---|---|---|---|---|---|---|
+| `ct_veh_bus_avant_v5_3q` | 824×451 | [747, 446] | 18 × 2.55 | 3.3 | 0,331 / 0,700 | fenetres, neon, texte, texte_miroir |
+| `ct_veh_bus_dos_v5_3q` | 824×451 | [747, 446] | 18 × 2.55 | 3.3 | 0,331 / 0,727 | fenetres, neon, texte, texte_miroir |
+
+La face courte dos à 0,727 est un artefact de mesure sur une face d'environ 72 px (la géométrie donne 0,701). Le critère 0,33 ± 0,05 est tenu sur le flanc long (v4 : 0,453 / 0,484).
+
+**À câbler (Rivet, `src/` non touché ici).** Orientations inchangées : +x avant natif, −x dos natif, +z miroir de l'avant, −z miroir du dos. Le câblage avant/dos, miroir et lettrage (`jamais_miroir`) reste le même.
+
+```js
+B_CT('ct_vbus0', '', 'ct_veh_bus_dos_v5_3q', 100, 73.15, 18, 2.55, { named: false, solid: [{ x: 100.1, z: 73.25, w: 17.8, d: 2.3 }] }),
+```
+
+Bus mobile : dans `src/data/steel.js` (sprite `ct_veh_bus_avant_v4_3q`, voie z70) et `src/data/vehicules.js` (`ct_veh_bus_avant_v4_3q` → `vue_dos: ct_veh_bus_dos_v4_3q`), pointer les clés v5.
+
+**Défauts connus (honnêtes).**
+- Le v5 paraît plus long et plus plat que le v4 : c'est la caméra correcte, le changement est visible.
+- Les portes sont sur le flanc droit, donc visibles en vue avant, pas en vue dos (l'inverse du v4).
+- La plaque B7 tient lieu de girouette de destination, que le générateur n'a pas peinte ; en vue dos, elle chevauche un peu la vitre arrière.
+- Le style est un peu plus net et plus régulier que le v4.
+- Les lignes peintes du pare-brise sont un peu plus pentues que le contour 3D.
+- Les équipements de toit sont plus bas, pour rester sous 3,3 m.
+
+Planches hors jeu (non versionnées) : `nml-shots/bus_v5/qc/bus_v5_planche_controle.png` (titre : contrôle, pas une capture du jeu), `nml-shots/bus_v5/qc/bus_v5_maquette_cote_a_cote_v4.png` et `bus_v5_maquette_cote_a_cote_v5.png`.
