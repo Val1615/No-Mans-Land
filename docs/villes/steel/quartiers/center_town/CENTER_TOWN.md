@@ -614,3 +614,74 @@ B_CT('ct_se_distrib0', '', 'ct_mob_distributeurs_v4_3q', 120, 101, 2, 0.9, { nam
 Défauts connus : la maison de thé culmine à ~6,1 m au faîte (0,1 m au-dessus du plafond) ; pieds gauches de 0,27 (échoppes, étals) à 0,41 (ateliers) ; les échoppes reprennent un pictogramme théière déjà présent sur `ct_rempl7` ; **guirlandes entre poteaux non livrées** (deux essais rejetés : l'un recopiait la scène du concept avec des bannières « 10 », l'autre avait un style vectoriel et un pied à 0,18). Un lampadaire existant (hors de ce lot) porte une bannière « 10 » au nord-ouest de l'îlot, visible sur la maquette.
 
 Planches hors jeu (non versionnées) : `nml-shots/ct_v4_se_marche_controle.png`, `nml-shots/ct_v4_se_marche_maquette.jpg`.
+
+### N. Lot 2c coin SO : jardin du Dôme et stands d'après-concert (`ct_so_*_v4_3q`, 2026-11-12)
+
+Îlot x0-44 z92-116, au sud de la rangée nord (rempl4, Archeon, c_immeuble, rempl5). Accès depuis l'avenue par la trouée x24-28 z84-92. **Passage d'entrée du Dôme laissé libre** : x44-56 z96-100 (4 m), entre le Dôme (z84-96, inchangé, ~9,4 m) et `ct_rempl6` (z100-116) ; rien n'est posé en x ≥ 44. **Bande x32-44 ≤ 3 m** : seulement les trois stands (2,6 m) et deux tables hautes. **Grands arbres à l'ouest seulement** (x ≤ 25,5) ; à l'est, deux cerisiers en bac déjà publiés. Muret + haie de 1,2 m sur les bords de carte sud et ouest.
+
+| Clé | px | ancre | emprise (m) | h (m) | pieds mesurés g / d | calques |
+|---|---|---|---|---|---|---|
+| `ct_so_kiosque_jardin_v4_3q` | 394×415 | [250, 410] | 6 × 6 | 4 | 0.349 / 0.778 | `_fenetres`, `_neon` |
+| `ct_so_stand_concert_v4_3q` | 196×213 | [104, 210] | 3 × 2,5 | 2,6 | 0.396 / 0.72 | `_fenetres`, `_neon` |
+| `ct_so_fontaine_v4_3q` | 283×175 | [179, 172] | 4 × 4 | 1,6 | 0.313 / 0.919 | `_fenetres` |
+| `ct_so_arbre_jardin_v4_3q` | 264×370 | [153, 366] | 3 × 3 (couronne ~5 m) | ~6,5 | n/a | aucun |
+| `ct_so_muret_haie_x_v4_3q` | 188×126 | [168, 122] | 4 × 0,6 | 1,2 | 0.33 / 0.70 (exact) | aucun |
+| `ct_so_muret_haie_z_v4_3q` | 145×147 | [28, 143] | 0,6 × 4 | 1,2 | 0.33 / 0.70 (exact) | aucun |
+| `g_ct_jardin_pelouse` | 512×512 | n/a | tuile 4 m (128 px/m) | sol | tuilable | n/a |
+| `g_ct_jardin_allee` | 512×512 | n/a | tuile 4 m (128 px/m) | sol | tuilable | n/a |
+
+Bâti et objets : gabarit compensé comme au §8M, une seule réduction uniforme, aucun cisaillement. L'arbre est mis à l'échelle sur sa hauteur (ancre = centre du pied + demi-losange de l'emprise 3 × 3). **Muret/haie dessinés en procédural** à la géométrie exacte de la caméra (béton et feuillage en bruit périodique de 4 m, 50 px/m natif) : les essais générés avaient des pieds peints à 0,24 (x) et 0,86 (z), ce qui faisait un escalier visible d'un segment à l'autre ; deux autres essais ont été rejetés (pseudo-graffitis, ou recopie de l'orientation x pour le segment z).
+
+```js
+B_CT('ct_so_kiosque0', 'Kiosque du jardin', 'ct_so_kiosque_jardin_v4_3q', 3, 107, 6, 6, { named: true, solid: [{ x: 3, z: 107, w: 0.4, d: 0.4 }, { x: 8.6, z: 107, w: 0.4, d: 0.4 }, { x: 3, z: 112.6, w: 0.4, d: 0.4 }, { x: 8.6, z: 112.6, w: 0.4, d: 0.4 }] }),
+B_CT('ct_so_fontaine0', '', 'ct_so_fontaine_v4_3q', 18, 101, 4, 4, { named: false, solid: [{ x: 18, z: 101, w: 4, d: 4 }] }),
+B_CT('ct_so_stand0', '', 'ct_so_stand_concert_v4_3q', 32.5, 101.5, 3, 2.5, { named: false, solid: [{ x: 32.5, z: 102.3, w: 3, d: 1.2 }] }),
+B_CT('ct_so_stand1', '', 'ct_so_stand_concert_v4_3q', 35.8, 101.5, 3, 2.5, { named: false, solid: [{ x: 35.8, z: 102.3, w: 3, d: 1.2 }] }),
+B_CT('ct_so_stand2', '', 'ct_so_stand_concert_v4_3q', 39.1, 101.5, 3, 2.5, { named: false, solid: [{ x: 39.1, z: 102.3, w: 3, d: 1.2 }] }),
+B_CT('ct_so_arbre0', '', 'ct_so_arbre_jardin_v4_3q', 4, 94.5, 3, 3, { named: false, solid: [{ x: 5.1, z: 95.6, w: 0.8, d: 0.8 }] }),
+B_CT('ct_so_arbre1', '', 'ct_so_arbre_jardin_v4_3q', 8.5, 98.5, 3, 3, { named: false, solid: [{ x: 9.6, z: 99.6, w: 0.8, d: 0.8 }] }),
+B_CT('ct_so_arbre2', '', 'ct_so_arbre_jardin_v4_3q', 18.5, 94.5, 3, 3, { named: false, solid: [{ x: 19.6, z: 95.6, w: 0.8, d: 0.8 }] }),
+B_CT('ct_so_arbre3', '', 'ct_so_arbre_jardin_v4_3q', 22.5, 110.5, 3, 3, { named: false, solid: [{ x: 23.6, z: 111.6, w: 0.8, d: 0.8 }] }),
+B_CT('ct_so_arbre4', '', 'ct_so_arbre_jardin_v4_3q', 5, 100.5, 3, 3, { named: false, solid: [{ x: 6.1, z: 101.6, w: 0.8, d: 0.8 }] }),
+// mobilier déjà publié réutilisé (§8J et v3)
+B_CT('ct_so_ceris0', '', 'ct_cerisier_bac_v3_3q', 16, 110, 4, 4, { named: false, solid: [{ x: 17, z: 111, w: 2, d: 2 }] }),
+B_CT('ct_so_ceris1', '', 'ct_cerisier_bac_v3_3q', 24, 96.5, 4, 4, { named: false, solid: [{ x: 25, z: 97.5, w: 2, d: 2 }] }),
+B_CT('ct_so_table0', '', 'ct_mob_table_haute_v4_3q', 34, 105.4, 1.4, 1.4, { named: false, solid: [{ x: 34.3, z: 105.7, w: 0.8, d: 0.8 }] }),
+B_CT('ct_so_table1', '', 'ct_mob_table_haute_v4_3q', 38, 105.4, 1.4, 1.4, { named: false, solid: [{ x: 38.3, z: 105.7, w: 0.8, d: 0.8 }] }),
+B_CT('ct_so_banc0', '', 'ct_mob_banc_x_v4_3q', 18.6, 106.6, 1.8, 0.6, { named: false, solid: [{ x: 18.6, z: 106.6, w: 1.8, d: 0.6 }] }),
+B_CT('ct_so_bancz0', '', 'ct_mob_banc_z_v4_3q', 16.8, 101.6, 0.6, 1.8, { named: false, solid: [{ x: 16.8, z: 101.6, w: 0.6, d: 1.8 }] }),
+B_CT('ct_so_lampa0', '', 'ct_mob_lampadaire_ambre_v4_3q', 11, 100, 1, 1, { named: false, solid: [{ x: 11.2, z: 100.2, w: 0.6, d: 0.6 }] }),
+B_CT('ct_so_lampa1', '', 'ct_mob_lampadaire_ambre_v4_3q', 27, 104.6, 1, 1, { named: false, solid: [{ x: 27.2, z: 104.8, w: 0.6, d: 0.6 }] }),
+B_CT('ct_so_lampa2', '', 'ct_mob_lampadaire_ambre_v4_3q', 11, 112, 1, 1, { named: false, solid: [{ x: 11.2, z: 112.2, w: 0.6, d: 0.6 }] }),
+// muret 0,6 m + haie 0,6 m sur les bords de carte sud (z115.4-116) et ouest (x0-0.6), segments de 4 m bout à bout
+B_CT('ct_so_muret_s0', '', 'ct_so_muret_haie_x_v4_3q', 0, 115.4, 4, 0.6, { named: false, solid: [{ x: 0, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s1', '', 'ct_so_muret_haie_x_v4_3q', 4, 115.4, 4, 0.6, { named: false, solid: [{ x: 4, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s2', '', 'ct_so_muret_haie_x_v4_3q', 8, 115.4, 4, 0.6, { named: false, solid: [{ x: 8, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s3', '', 'ct_so_muret_haie_x_v4_3q', 12, 115.4, 4, 0.6, { named: false, solid: [{ x: 12, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s4', '', 'ct_so_muret_haie_x_v4_3q', 16, 115.4, 4, 0.6, { named: false, solid: [{ x: 16, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s5', '', 'ct_so_muret_haie_x_v4_3q', 20, 115.4, 4, 0.6, { named: false, solid: [{ x: 20, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s6', '', 'ct_so_muret_haie_x_v4_3q', 24, 115.4, 4, 0.6, { named: false, solid: [{ x: 24, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s7', '', 'ct_so_muret_haie_x_v4_3q', 28, 115.4, 4, 0.6, { named: false, solid: [{ x: 28, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s8', '', 'ct_so_muret_haie_x_v4_3q', 32, 115.4, 4, 0.6, { named: false, solid: [{ x: 32, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s9', '', 'ct_so_muret_haie_x_v4_3q', 36, 115.4, 4, 0.6, { named: false, solid: [{ x: 36, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_s10', '', 'ct_so_muret_haie_x_v4_3q', 40, 115.4, 4, 0.6, { named: false, solid: [{ x: 40, z: 115.4, w: 4, d: 0.6 }] }),
+B_CT('ct_so_muret_o0', '', 'ct_so_muret_haie_z_v4_3q', 0, 94, 0.6, 4, { named: false, solid: [{ x: 0, z: 94, w: 0.6, d: 4 }] }),
+B_CT('ct_so_muret_o1', '', 'ct_so_muret_haie_z_v4_3q', 0, 98, 0.6, 4, { named: false, solid: [{ x: 0, z: 98, w: 0.6, d: 4 }] }),
+B_CT('ct_so_muret_o2', '', 'ct_so_muret_haie_z_v4_3q', 0, 102, 0.6, 4, { named: false, solid: [{ x: 0, z: 102, w: 0.6, d: 4 }] }),
+B_CT('ct_so_muret_o3', '', 'ct_so_muret_haie_z_v4_3q', 0, 106, 0.6, 4, { named: false, solid: [{ x: 0, z: 106, w: 0.6, d: 4 }] }),
+B_CT('ct_so_muret_o4', '', 'ct_so_muret_haie_z_v4_3q', 0, 110, 0.6, 4, { named: false, solid: [{ x: 0, z: 110, w: 0.6, d: 4 }] }),
+B_CT('ct_so_muret_o5', '', 'ct_so_muret_haie_z_v4_3q', 0, 111.4, 0.6, 4, { named: false, solid: [{ x: 0, z: 111.4, w: 0.6, d: 4 }] }),
+```
+
+Sols (rectangles x, z, w, d, dans cet ordre, les allées par-dessus la pelouse) :
+- `g_ct_jardin_pelouse` : `(0, 92, 44, 24)`
+- `g_ct_jardin_allee` : `(0, 104, 32, 4)`
+- `g_ct_jardin_allee` : `(12, 92, 4, 24)`
+- `g_ct_jardin_allee` : `(28, 96, 16, 4)`
+- `g_ct_jardin_allee` : `(32, 100, 12, 8)`
+- `g_ct_jardin_allee` : `(16, 100, 8, 8)`
+- `g_ct_trottoir_dalles` : `(0, 92, 44, 2)`
+
+Défauts connus : pied droit de la fontaine à 0,92 (objet bas, peu visible) ; le muret/haie procédural est plus lisse que les sprites peints ; la couronne de l'arbre (~5 m) déborde son emprise de 3 m, ce qui est voulu (seul le tronc est solide). Pas de guirlande entre les stands (même refus qu'au §8M).
+
+Planches hors jeu (non versionnées) : `nml-shots/ct_v4_so_jardin_controle.png`, `nml-shots/ct_v4_so_jardin_maquette.jpg`.

@@ -10832,5 +10832,349 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_se_etals_couverts_v4_3q.webp (même canevas, même ancre)",
     "status": "v4"
+  },
+  "ct_so_kiosque_jardin_v4_3q": {
+    "file": "steel/center_town/ct_so_kiosque_jardin_v4_3q.webp",
+    "px": [
+      394,
+      415
+    ],
+    "anchor": [
+      250,
+      410
+    ],
+    "footprint_m": [
+      6,
+      6
+    ],
+    "height_m": 4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Kiosque de jardin ouvert, poteaux acier, garde-corps à claustra, bancs, plantes suspendues, liseré ambre sous l'avant-toit",
+    "pose": "B_CT('<id>', '', 'ct_so_kiosque_jardin_v4_3q', X, Z, 6, 6, { named: false, solid: [{ x: X+0, z: Z+0, w: 0.4, d: 0.4 }, { x: X+5.6, z: Z+0, w: 0.4, d: 0.4 }, { x: X+0, z: Z+5.6, w: 0.4, d: 0.4 }, { x: X+5.6, z: Z+5.6, w: 0.4, d: 0.4 }] })",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 6x6x4 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3°), fond chroma, détourage sans comblement, UNE réduction uniforme x0.6291 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/so_kiosque.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "dx": 5.6,
+        "dz": 0,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "dx": 0,
+        "dz": 5.6,
+        "w": 0.4,
+        "d": 0.4
+      },
+      {
+        "dx": 5.6,
+        "dz": 5.6,
+        "w": 0.4,
+        "d": 0.4
+      }
+    ],
+    "pente_mesuree": "pied gauche 0.349 / droit 0.778 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_so_kiosque_jardin_v4_3q_fenetres",
+    "neon": "ct_so_kiosque_jardin_v4_3q_neon"
+  },
+  "ct_so_kiosque_jardin_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_so_kiosque_jardin_v4_3q_fenetres.webp",
+    "px": [
+      394,
+      415
+    ],
+    "anchor": [
+      250,
+      410
+    ],
+    "additive": true,
+    "parent": "ct_so_kiosque_jardin_v4_3q",
+    "couche_de": "ct_so_kiosque_jardin_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_so_kiosque_jardin_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_so_kiosque_jardin_v4_3q_neon": {
+    "file": "steel/center_town/ct_so_kiosque_jardin_v4_3q_neon.webp",
+    "px": [
+      394,
+      415
+    ],
+    "anchor": [
+      250,
+      410
+    ],
+    "additive": true,
+    "parent": "ct_so_kiosque_jardin_v4_3q",
+    "couche_de": "ct_so_kiosque_jardin_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_so_kiosque_jardin_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_so_stand_concert_v4_3q": {
+    "file": "steel/center_town/ct_so_stand_concert_v4_3q.webp",
+    "px": [
+      196,
+      213
+    ],
+    "anchor": [
+      104,
+      210
+    ],
+    "footprint_m": [
+      3,
+      2.5
+    ],
+    "height_m": 2.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Stand de boissons d'après-concert, comptoir bois, auvent de toile, guirlande d'ampoules ambre (2,6 m)",
+    "pose": "B_CT('<id>', '', 'ct_so_stand_concert_v4_3q', X, Z, 3, 2.5, { named: false, solid: [{ x: X+0, z: Z+0.8, w: 3, d: 1.2 }] })",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 3x2.5x2.6 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3°), fond chroma, détourage sans comblement, UNE réduction uniforme x0.3411 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/so_stand.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0.8,
+        "w": 3,
+        "d": 1.2
+      }
+    ],
+    "pente_mesuree": "pied gauche 0.396 / droit 0.72 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_so_stand_concert_v4_3q_fenetres",
+    "neon": "ct_so_stand_concert_v4_3q_neon"
+  },
+  "ct_so_stand_concert_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_so_stand_concert_v4_3q_fenetres.webp",
+    "px": [
+      196,
+      213
+    ],
+    "anchor": [
+      104,
+      210
+    ],
+    "additive": true,
+    "parent": "ct_so_stand_concert_v4_3q",
+    "couche_de": "ct_so_stand_concert_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_so_stand_concert_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_so_stand_concert_v4_3q_neon": {
+    "file": "steel/center_town/ct_so_stand_concert_v4_3q_neon.webp",
+    "px": [
+      196,
+      213
+    ],
+    "anchor": [
+      104,
+      210
+    ],
+    "additive": true,
+    "parent": "ct_so_stand_concert_v4_3q",
+    "couche_de": "ct_so_stand_concert_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_so_stand_concert_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_so_fontaine_v4_3q": {
+    "file": "steel/center_town/ct_so_fontaine_v4_3q.webp",
+    "px": [
+      283,
+      175
+    ],
+    "anchor": [
+      179,
+      172
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 1.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Fontaine carrée de placette, bassin béton sombre, jet central, liseré ambre intérieur",
+    "pose": "B_CT('<id>', '', 'ct_so_fontaine_v4_3q', X, Z, 4, 4, { named: false, solid: [{ x: X+0, z: Z+0, w: 4, d: 4 }] })",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 4x4x1.6 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3°), fond chroma, détourage sans comblement, UNE réduction uniforme x0.343 vers 50 px/m (largeur de l'emprise), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/so_fontaine.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 4,
+        "d": 4
+      }
+    ],
+    "pente_mesuree": "pied gauche 0.313 / droit 0.919 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_so_fontaine_v4_3q_fenetres"
+  },
+  "ct_so_fontaine_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_so_fontaine_v4_3q_fenetres.webp",
+    "px": [
+      283,
+      175
+    ],
+    "anchor": [
+      179,
+      172
+    ],
+    "additive": true,
+    "parent": "ct_so_fontaine_v4_3q",
+    "couche_de": "ct_so_fontaine_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_so_fontaine_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_so_arbre_jardin_v4_3q": {
+    "file": "steel/center_town/ct_so_arbre_jardin_v4_3q.webp",
+    "px": [
+      264,
+      370
+    ],
+    "anchor": [
+      153,
+      366
+    ],
+    "footprint_m": [
+      3,
+      3
+    ],
+    "height_m": 6.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Grand arbre feuillu de jardin (~6,5 m, couronne ~5 m) sur grille d'arbre 1,5 m ; côté ouest seulement",
+    "pose": "B_CT('<id>', '', 'ct_so_arbre_jardin_v4_3q', X, Z, 3, 3, { named: false, solid: [{ x: X+1.1, z: Z+1.1, w: 0.8, d: 0.8 }] })",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 3x3x6.5 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3°), fond chroma, détourage sans comblement, UNE réduction uniforme x0.4022 vers 50 px/m (hauteur), ancre au centre du pied + demi-losange ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/so_arbre.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)",
+    "solid_relatif": [
+      {
+        "dx": 1.1,
+        "dz": 1.1,
+        "w": 0.8,
+        "d": 0.8
+      }
+    ]
+  },
+  "ct_so_muret_haie_x_v4_3q": {
+    "file": "steel/center_town/ct_so_muret_haie_x_v4_3q.webp",
+    "px": [
+      188,
+      126
+    ],
+    "anchor": [
+      168,
+      122
+    ],
+    "footprint_m": [
+      4.0,
+      0.6
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Muret béton 0,6 m + haie taillée 0,6 m (1,2 m), segment de 4 m le long de x, tuilable bout à bout (bord sud de carte)",
+    "pose": "B_CT('<id>', '', 'ct_so_muret_haie_x_v4_3q', X, Z, 4, 0.6, { named: false, solid: [{ x: X, z: Z, w: 4, d: 0.6 }] })",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : dessin procédural PIL/numpy à la géométrie exacte de la caméra du jeu (pieds 0,33 / 0,70), béton et feuillage en bruit périodique de 4 m, 50 px/m natif (muret_proc.py hors dépôt). Deux essais GenerateImage rejetés : pied peint à 0,24 et 0,86, escalier visible de segment en segment",
+    "status": "v4",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)",
+    "tuilable": "bout à bout tous les 4 m le long de x"
+  },
+  "ct_so_muret_haie_z_v4_3q": {
+    "file": "steel/center_town/ct_so_muret_haie_z_v4_3q.webp",
+    "px": [
+      145,
+      147
+    ],
+    "anchor": [
+      28,
+      143
+    ],
+    "footprint_m": [
+      0.6,
+      4.0
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Muret béton 0,6 m + haie taillée 0,6 m (1,2 m), segment de 4 m le long de z, tuilable bout à bout (bord ouest de carte)",
+    "pose": "B_CT('<id>', '', 'ct_so_muret_haie_z_v4_3q', X, Z, 0.6, 4, { named: false, solid: [{ x: X, z: Z, w: 0.6, d: 4 }] })",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : dessin procédural PIL/numpy à la géométrie exacte de la caméra du jeu (pieds 0,33 / 0,70), béton et feuillage en bruit périodique de 4 m, 50 px/m natif (muret_proc.py hors dépôt). Deux essais GenerateImage rejetés : pied peint à 0,24 et 0,86, escalier visible de segment en segment",
+    "status": "v4",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)",
+    "tuilable": "bout à bout tous les 4 m le long de z"
+  },
+  "g_ct_jardin_pelouse": {
+    "file": "steel/center_town/g_ct_jardin_pelouse.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "pelouse sombre nocturne du jardin SO (x0-44 z92-116 hors allées)",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : dessin procédural PIL/numpy à 128 px/m, bruit périodique (tuilable), aucun agrandissement (sol_jardin.py hors dépôt)",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)"
+  },
+  "g_ct_jardin_allee": {
+    "file": "steel/center_town/g_ct_jardin_allee.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "motif_m": [
+      4,
+      4
+    ],
+    "tuilable": true,
+    "px_par_m": 128,
+    "status": "v4",
+    "pose": "allées de gravier stabilisé du jardin SO, 4 m de large",
+    "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : dessin procédural PIL/numpy à 128 px/m, bruit périodique (tuilable), aucun agrandissement (sol_jardin.py hors dépôt)",
+    "groupe": "ct_ilot_so_v4",
+    "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)"
   }
 }
