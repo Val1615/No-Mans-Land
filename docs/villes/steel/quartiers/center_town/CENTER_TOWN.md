@@ -474,3 +474,82 @@ B_CT('ct_parv_arbre2', '', 'ct_mob_jardiniere_arbre_v4_3q', 48, 16, 2, 2, { name
 ```
 
 Planches hors jeu (non versionnées) : `nml-shots/ct_v4_mobilier_lot1_controle.png` (sprites et calques à x2, emprises, silhouette 1,8 m) et `nml-shots/ct_v4_mobilier_lot1_maquette_carrefour.jpg` (maquette de pose x40-108, z36-96).
+
+### K. Lot 1 : véhicules v2 cyberpunk au vrai gabarit (`ct_veh_*_v4_3q`, 2026-11-12)
+
+Consigne Régie validée par le groupe : seulement **deux vues peintes par véhicule (avant, dos)**, chacune retournée en miroir horizontal pour l'autre axe, soit **4 orientations** ; tram et bus suivent le même schéma ; le lettrage lisible (TAXI, numéros de ligne) est sur un **calque séparé jamais retourné**. Taxi corrigé (caisse allongée 5,4 m, patins plats et non plus roues, aucune lueur peinte dans la caisse, aucun lettrage sur les flancs).
+
+**Méthode.** GenerateImage (cursor) sur gabarit boîte L×l×h au gabarit caméra du jeu, références = planches concept véhicules v2 ; détourage chroma sans comblement ; **UNE réduction uniforme** (f ≤ 1, moyenne géométrique des facteurs hauteur/largeur) vers 50 px/m ; ancre au point bas du coin avant ; ombre de contact légère ; calques `_fenetres`/`_neon` extraits comme en v4. Aucun agrandissement, étirement ni cisaillement de la peinture. Tram : deux demi-rames générées séparément (tête + queue), même facteur 0,67, assemblées le long de la ligne de flanc mesurée (soufflet au milieu). Bruts hors dépôt (`ct_v5/raw/`).
+
+**Correspondance des orientations (véhicule natif x : avant à droite en bas).**
+
+| Sens de marche | Sprite | Calque texte |
+|---|---|---|
+| +x (vers l'est) | `…_avant_v4_3q` natif | `_texte` |
+| −x (vers l'ouest) | `…_dos_v4_3q` natif | `_texte` |
+| +z (vers le sud) | miroir horizontal de `…_avant_v4_3q` (ancre x → px_w − ax) | `_texte_miroir` (non retourné) |
+| −z (vers le nord) | miroir horizontal de `…_dos_v4_3q` | `_texte_miroir` (non retourné) |
+
+Tram (natif z, tête en bas à gauche) : +z = `ct_veh_tram_avant_v4_3q`, −z = `ct_veh_tram_dos_v4_3q`, ±x = leurs miroirs (champ `orientations` de chaque clé).
+
+**À câbler côté moteur (Rivet, `src/` non touché ici).** `data/vehicules.js`/`render/view.js` choisissent aujourd'hui la vue par axe seulement : il faut (1) choisir `vue_dos` quand le véhicule roule dans le sens −axe ; (2) sur l'axe 2, retourner la caisse et ses calques `_fenetres`/`_neon`/`_hover` (`suit_miroir`) avec l'ancre miroir ; (3) dessiner `_texte` (vue native) ou `_texte_miroir` (vue miroir) **par-dessus, jamais retourné, non additif** (`jamais_miroir: true`) ; (4) `_hover` (taxi) = lueur additive sous les patins, à moduler (pulsation lente) ou couper à l'arrêt. Le champ `miroir: true` des poses N-S ci-dessous est une proposition.
+
+**Clés** (px, ancre, empreinte L × l en m pour natif x — l × L pour le tram —, hauteur) :
+
+| Clé | px | ancre | empreinte (m) | h (m) | calques |
+|---|---|---|---|---|---|
+| `ct_veh_taxi_avant_v4_3q` | 313×169 | [242, 165] | 5.4 × 2 | 1.5 | fenetres, hover, neon, texte, texte_miroir |
+| `ct_veh_taxi_dos_v4_3q` | 316×169 | [218, 165] | 5.4 × 2 | 1.5 | fenetres, hover, neon, texte, texte_miroir |
+| `ct_veh_berline_avant_v4_3q` | 258×173 | [182, 168] | 4.8 × 1.9 | 1.4 | fenetres, neon |
+| `ct_veh_berline_dos_v4_3q` | 279×160 | [162, 155] | 4.8 × 1.9 | 1.4 | — |
+| `ct_veh_compacte_avant_v4_3q` | 235×181 | [159, 177] | 4.3 × 1.9 | 1.7 | fenetres, neon |
+| `ct_veh_compacte_dos_v4_3q` | 255×167 | [150, 163] | 4.3 × 1.9 | 1.7 | — |
+| `ct_veh_limo_avant_v4_3q` | 302×200 | [216, 195] | 6 × 2.1 | 1.4 | fenetres, neon |
+| `ct_veh_limo_dos_v4_3q` | 322×187 | [233, 183] | 6 × 2.1 | 1.4 | fenetres, neon |
+| `ct_veh_utilitaire_avant_v4_3q` | 302×245 | [168, 241] | 5.8 × 2.2 | 2.5 | fenetres, neon |
+| `ct_veh_utilitaire_dos_v4_3q` | 315×234 | [181, 230] | 5.8 × 2.2 | 2.5 | fenetres, neon |
+| `ct_veh_intercepteur_avant_v4_3q` | 272×184 | [196, 179] | 5 × 2.1 | 1.5 | fenetres, neon |
+| `ct_veh_intercepteur_dos_v4_3q` | 277×181 | [160, 176] | 5 × 2.1 | 1.5 | fenetres, neon |
+| `ct_veh_moto_avant_v4_3q` | 123×101 | [101, 97] | 2.3 × 0.8 | 1.1 | fenetres, neon |
+| `ct_veh_moto_dos_v4_3q` | 118×103 | [98, 99] | 2.3 × 0.8 | 1.1 | fenetres, neon |
+| `ct_veh_motolivr_avant_v4_3q` | 123×124 | [105, 120] | 2.4 × 0.9 | 1.4 | fenetres, neon |
+| `ct_veh_motolivr_dos_v4_3q` | 131×115 | [102, 111] | 2.4 × 0.9 | 1.4 | fenetres, neon |
+| `ct_veh_depanneuse_avant_v4_3q` | 404×381 | [290, 376] | 9 × 2.6 | 3.6 | fenetres, neon |
+| `ct_veh_depanneuse_dos_v4_3q` | 415×371 | [294, 366] | 9 × 2.6 | 3.6 | fenetres, neon |
+| `ct_veh_bus_avant_v4_3q` | 781×471 | [665, 467] | 18 × 2.55 | 3.3 | fenetres, neon, texte, texte_miroir |
+| `ct_veh_bus_dos_v4_3q` | 777×474 | [659, 470] | 18 × 2.55 | 3.3 | fenetres, neon, texte, texte_miroir |
+| `ct_veh_tram_avant_v4_3q` | 1075×820 | [113, 817] | 2.65 × 33.8 | 3.33 | fenetres, neon, texte, texte_miroir |
+| `ct_veh_tram_dos_v4_3q` | 1059×810 | [112, 807] | 2.65 × 33.2 | 3.33 | fenetres, neon, texte, texte_miroir |
+
+`remplace` : `ct_veh_taxi_avant_v4_3q` → `ct_taxi_v3_3q`, `ct_veh_taxi_dos_v4_3q` → `ct_taxi_v3_axe2_3q`, `ct_veh_tram_avant_v4_3q` → `ct_tram_v3_3q` (le marquage `obsolete` reste à Rivet).
+
+**Défauts connus (honnêtes).**
+- Le générateur dessine les flancs longs à ~0,5–0,65 de pente au lieu de 0,33 (lacet ~40–45° au lieu de 34,5°), comme pour le mobilier §8J ; la ligne de flanc rouge des planches montre l'écart. Sur le bus (18 m) l'écart est visible : le bus « plonge » légèrement vers l'avant par rapport à la voie E-O ; une 2e génération plus contrainte (gabarit repeint) n'a gagné que 0,03 et a été rejetée. Les sprites ne sont pas cisaillés pour compenser (règle : aucune déformation).
+- Tram : 33,8 m (avant) / 33,2 m (dos) × 2,65 m, h 3,33 m mesurée, au lieu de 32 × 3,8 m au concept : l'assemblage des deux moitiés impose un facteur commun ; la longueur dépasse de ~1,8 m, la hauteur est un peu basse. Calque `_texte` « T1 » sur la girouette avant.
+- Berline et compacte (vues dos) : aucun calque extrait (pas de vitre ambre ni de feu assez saturé détecté) ; feux arrière peints dans la caisse.
+- Intercepteur dos : brut dessiné arrière à gauche, retourné pixel pour pixel avant réduction (aucun texte dessus).
+- Dépanneuse avant : une plaque minuscule illisible à 50 px/m (aucun mot lisible) ; aucune autre inscription.
+- Motos : vues dos issues d'une génération séparée (`motos_dos`, couleurs recalées sur la vue avant) ; facteurs 0,27–0,42 selon le brut.
+- Lettrage TAXI (8 px) et B7 (11 px) petits, à vérifier à 390 px.
+
+**Poses proposées** (stationnement le long des bordures de la chaussée E-O z56-76, hors passages piétons x60-64 / x84-88 ; bus à l'arrêt bordure sud est ; tram en station sur le couloir N-S x72-76, tête avant le passage nord z52) :
+
+```js
+B_CT('ct_vtaxi0', '', 'ct_veh_taxi_avant_v4_3q', 40, 56.3, 5.4, 2, { named: false, solid: [{ x: 40.1, z: 56.4, w: 5.2, d: 1.8 }] }),
+B_CT('ct_vtaxi1', '', 'ct_veh_taxi_avant_v4_3q', 46.4, 56.3, 5.4, 2, { named: false, solid: [{ x: 46.5, z: 56.4, w: 5.2, d: 1.8 }] }),
+B_CT('ct_vmoto0', '', 'ct_veh_moto_avant_v4_3q', 52.5, 56.3, 2.3, 0.8, { named: false, solid: [{ x: 52.6, z: 56.4, w: 2.1, d: 0.6 }] }),
+B_CT('ct_vberl0', '', 'ct_veh_berline_dos_v4_3q', 30, 73.8, 4.8, 1.9, { named: false, solid: [{ x: 30.1, z: 73.9, w: 4.6, d: 1.7 }] }),
+B_CT('ct_vcomp0', '', 'ct_veh_compacte_dos_v4_3q', 36, 73.8, 4.3, 1.9, { named: false, solid: [{ x: 36.1, z: 73.9, w: 4.1, d: 1.7 }] }),
+B_CT('ct_vlivr0', '', 'ct_veh_motolivr_dos_v4_3q', 42, 74.8, 2.4, 0.9, { named: false, solid: [{ x: 42.1, z: 74.9, w: 2.2, d: 0.7 }] }),
+B_CT('ct_vutil0', '', 'ct_veh_utilitaire_avant_v4_3q', 96, 56.3, 5.8, 2.2, { named: false, solid: [{ x: 96.1, z: 56.4, w: 5.6, d: 2.0 }] }),
+B_CT('ct_vdep0', '', 'ct_veh_depanneuse_avant_v4_3q', 112, 56.3, 9, 2.6, { named: false, solid: [{ x: 112.1, z: 56.4, w: 8.8, d: 2.4 }] }),
+B_CT('ct_vbus0', '', 'ct_veh_bus_dos_v4_3q', 100, 73.15, 18, 2.55, { named: false, solid: [{ x: 100.1, z: 73.25, w: 17.8, d: 2.3 }] }),
+B_CT('ct_vlimo0', '', 'ct_veh_limo_dos_v4_3q', 121, 73.6, 6, 2.1, { named: false, solid: [{ x: 121.1, z: 73.7, w: 5.8, d: 1.9 }] }),
+B_CT('ct_vinter0', '', 'ct_veh_intercepteur_avant_v4_3q', 92, 73.6, 5, 2.1, { named: false, solid: [{ x: 92.1, z: 73.7, w: 4.8, d: 1.9 }] }),
+B_CT('ct_vtaxi2', '', 'ct_veh_taxi_avant_v4_3q', 64.3, 40, 2, 5.4, { named: false, miroir: true, solid: [{ x: 64.4, z: 40.1, w: 1.8, d: 5.2 }] }),  // axe N-S = miroir de la vue avant
+B_CT('ct_vberl1', '', 'ct_veh_berline_dos_v4_3q', 81.8, 86, 1.9, 4.8, { named: false, miroir: true, solid: [{ x: 81.9, z: 86.1, w: 1.7, d: 4.6 }] }),  // axe N-S = miroir de la vue dos
+B_CT('ct_vutil1', '', 'ct_veh_utilitaire_avant_v4_3q', 64.3, 90, 2.2, 5.8, { named: false, miroir: true, solid: [{ x: 64.4, z: 90.1, w: 2.0, d: 5.6 }] }),  // axe N-S = miroir de la vue avant
+B_CT('ct_tram1', 'Tram Center-Town', 'ct_veh_tram_avant_v4_3q', 72.68, 18, 2.65, 33.8, { named: false, solid: [{ x: 72.78, z: 18.3, w: 2.45, d: 33.2 }] }),  // couloir tram x72-76, tête au sud (z51,8), s'arrête avant le passage nord z52
+```
+
+Planche hors jeu (non versionnée) : `nml-shots/ct_v4_vehicules_lot1_controle.png` (chaque véhicule : avant, miroir de l'avant, dos, miroir du dos ; calques fenêtres/néon/hover/texte appliqués ; empreinte théorique depuis l'ancre ; piéton 1,8 m).

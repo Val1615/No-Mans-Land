@@ -8309,5 +8309,1922 @@
       "w": 0.8,
       "d": 0.8
     }
+  },
+  "ct_veh_taxi_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_taxi_avant_v4_3q.webp",
+    "px": [
+      313,
+      169
+    ],
+    "anchor": [
+      242,
+      165
+    ],
+    "footprint_m": [
+      5.4,
+      2.0
+    ],
+    "height_m": 1.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Taxi hover jaune (patins plats, barre de toit ambre) — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_taxi_avant_v4_3q', X, Z, 5.4, 2, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 5.2, d: 1.8 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2 x 5.4)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 5.4x2.0x1.5 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.3987 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/taxi_avant2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "taxi",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_taxi_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_taxi_avant_v4_3q (natif)",
+      "-x": "ct_veh_taxi_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_taxi_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_taxi_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "remplace": "ct_taxi_v3_3q",
+    "enseigne": "TAXI (calque texte, non retourné)",
+    "fenetres": "ct_veh_taxi_avant_v4_3q_fenetres",
+    "neon": "ct_veh_taxi_avant_v4_3q_neon",
+    "hover": "ct_veh_taxi_avant_v4_3q_hover",
+    "texte": "ct_veh_taxi_avant_v4_3q_texte",
+    "texte_miroir": "ct_veh_taxi_avant_v4_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "hover",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_taxi_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_taxi_avant_v4_3q_fenetres.webp",
+    "px": [
+      313,
+      169
+    ],
+    "anchor": [
+      242,
+      165
+    ],
+    "additive": true,
+    "parent": "ct_veh_taxi_avant_v4_3q",
+    "couche_de": "ct_veh_taxi_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_taxi_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_taxi_avant_v4_3q_hover": {
+    "file": "steel/center_town/ct_veh_taxi_avant_v4_3q_hover.webp",
+    "px": [
+      313,
+      169
+    ],
+    "anchor": [
+      242,
+      165
+    ],
+    "additive": true,
+    "parent": "ct_veh_taxi_avant_v4_3q",
+    "couche_de": "ct_veh_taxi_avant_v4_3q",
+    "layer": "hover",
+    "source": "lueur de sustentation additive dessinée PIL sous les patins (non peinte dans la caisse) ; même canevas, même ancre ; suit le miroir de la caisse",
+    "status": "v4",
+    "suit_miroir": true
+  },
+  "ct_veh_taxi_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_taxi_avant_v4_3q_neon.webp",
+    "px": [
+      313,
+      169
+    ],
+    "anchor": [
+      242,
+      165
+    ],
+    "additive": true,
+    "parent": "ct_veh_taxi_avant_v4_3q",
+    "couche_de": "ct_veh_taxi_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_taxi_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_taxi_avant_v4_3q_texte": {
+    "file": "steel/center_town/ct_veh_taxi_avant_v4_3q_texte.webp",
+    "px": [
+      313,
+      169
+    ],
+    "anchor": [
+      242,
+      165
+    ],
+    "additive": false,
+    "parent": "ct_veh_taxi_avant_v4_3q",
+    "couche_de": "ct_veh_taxi_avant_v4_3q",
+    "layer": "texte",
+    "source": "lettrage « TAXI » dessiné PIL (DejaVu Sans Bold 8 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ct_veh_taxi_avant_v4_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_taxi_avant_v4_3q_texte_miroir.webp",
+    "px": [
+      313,
+      169
+    ],
+    "anchor": [
+      71,
+      165
+    ],
+    "additive": false,
+    "parent": "ct_veh_taxi_avant_v4_3q",
+    "couche_de": "ct_veh_taxi_avant_v4_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « TAXI » repositionné pour la vue miroir (canevas miroir de ct_veh_taxi_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "miroir"
+  },
+  "ct_veh_taxi_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_taxi_dos_v4_3q.webp",
+    "px": [
+      316,
+      169
+    ],
+    "anchor": [
+      218,
+      165
+    ],
+    "footprint_m": [
+      5.4,
+      2.0
+    ],
+    "height_m": 1.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Taxi hover jaune (patins plats, barre de toit ambre) — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_taxi_dos_v4_3q', X, Z, 5.4, 2, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 5.2, d: 1.8 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2 x 5.4)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 5.4x2.0x1.5 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.6716 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v1_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "taxi",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_taxi_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_taxi_avant_v4_3q (natif)",
+      "-x": "ct_veh_taxi_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_taxi_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_taxi_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "remplace": "ct_taxi_v3_axe2_3q",
+    "enseigne": "TAXI (calque texte, non retourné)",
+    "fenetres": "ct_veh_taxi_dos_v4_3q_fenetres",
+    "neon": "ct_veh_taxi_dos_v4_3q_neon",
+    "hover": "ct_veh_taxi_dos_v4_3q_hover",
+    "texte": "ct_veh_taxi_dos_v4_3q_texte",
+    "texte_miroir": "ct_veh_taxi_dos_v4_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "hover",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_taxi_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_taxi_dos_v4_3q_fenetres.webp",
+    "px": [
+      316,
+      169
+    ],
+    "anchor": [
+      218,
+      165
+    ],
+    "additive": true,
+    "parent": "ct_veh_taxi_dos_v4_3q",
+    "couche_de": "ct_veh_taxi_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_taxi_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_taxi_dos_v4_3q_hover": {
+    "file": "steel/center_town/ct_veh_taxi_dos_v4_3q_hover.webp",
+    "px": [
+      316,
+      169
+    ],
+    "anchor": [
+      218,
+      165
+    ],
+    "additive": true,
+    "parent": "ct_veh_taxi_dos_v4_3q",
+    "couche_de": "ct_veh_taxi_dos_v4_3q",
+    "layer": "hover",
+    "source": "lueur de sustentation additive dessinée PIL sous les patins (non peinte dans la caisse) ; même canevas, même ancre ; suit le miroir de la caisse",
+    "status": "v4",
+    "suit_miroir": true
+  },
+  "ct_veh_taxi_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_taxi_dos_v4_3q_neon.webp",
+    "px": [
+      316,
+      169
+    ],
+    "anchor": [
+      218,
+      165
+    ],
+    "additive": true,
+    "parent": "ct_veh_taxi_dos_v4_3q",
+    "couche_de": "ct_veh_taxi_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_taxi_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_taxi_dos_v4_3q_texte": {
+    "file": "steel/center_town/ct_veh_taxi_dos_v4_3q_texte.webp",
+    "px": [
+      316,
+      169
+    ],
+    "anchor": [
+      218,
+      165
+    ],
+    "additive": false,
+    "parent": "ct_veh_taxi_dos_v4_3q",
+    "couche_de": "ct_veh_taxi_dos_v4_3q",
+    "layer": "texte",
+    "source": "lettrage « TAXI » dessiné PIL (DejaVu Sans Bold 8 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ct_veh_taxi_dos_v4_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_taxi_dos_v4_3q_texte_miroir.webp",
+    "px": [
+      316,
+      169
+    ],
+    "anchor": [
+      98,
+      165
+    ],
+    "additive": false,
+    "parent": "ct_veh_taxi_dos_v4_3q",
+    "couche_de": "ct_veh_taxi_dos_v4_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « TAXI » repositionné pour la vue miroir (canevas miroir de ct_veh_taxi_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "miroir"
+  },
+  "ct_veh_berline_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_berline_avant_v4_3q.webp",
+    "px": [
+      258,
+      173
+    ],
+    "anchor": [
+      182,
+      168
+    ],
+    "footprint_m": [
+      4.8,
+      1.9
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Berline civile grise usée — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_berline_avant_v4_3q', X, Z, 4.8, 1.9, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 4.6, d: 1.7 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 1.9 x 4.8)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 4.8x1.9x1.4 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.5846 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v1_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "berline",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_berline_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_berline_avant_v4_3q (natif)",
+      "-x": "ct_veh_berline_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_berline_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_berline_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_berline_avant_v4_3q_fenetres",
+    "neon": "ct_veh_berline_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_berline_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_berline_avant_v4_3q_fenetres.webp",
+    "px": [
+      258,
+      173
+    ],
+    "anchor": [
+      182,
+      168
+    ],
+    "additive": true,
+    "parent": "ct_veh_berline_avant_v4_3q",
+    "couche_de": "ct_veh_berline_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_berline_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_berline_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_berline_avant_v4_3q_neon.webp",
+    "px": [
+      258,
+      173
+    ],
+    "anchor": [
+      182,
+      168
+    ],
+    "additive": true,
+    "parent": "ct_veh_berline_avant_v4_3q",
+    "couche_de": "ct_veh_berline_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_berline_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_berline_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_berline_dos_v4_3q.webp",
+    "px": [
+      279,
+      160
+    ],
+    "anchor": [
+      162,
+      155
+    ],
+    "footprint_m": [
+      4.8,
+      1.9
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Berline civile grise usée — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_berline_dos_v4_3q', X, Z, 4.8, 1.9, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 4.6, d: 1.7 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 1.9 x 4.8)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 4.8x1.9x1.4 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.598 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v1_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "berline",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_berline_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_berline_avant_v4_3q (natif)",
+      "-x": "ct_veh_berline_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_berline_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_berline_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "layers": []
+  },
+  "ct_veh_compacte_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_compacte_avant_v4_3q.webp",
+    "px": [
+      235,
+      181
+    ],
+    "anchor": [
+      159,
+      177
+    ],
+    "footprint_m": [
+      4.3,
+      1.9
+    ],
+    "height_m": 1.7,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Compacte / petit SUV gris-vert usé — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_compacte_avant_v4_3q', X, Z, 4.3, 1.9, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 4.1, d: 1.7 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 1.9 x 4.3)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 4.3x1.9x1.7 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.56 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v1_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "compacte",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_compacte_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_compacte_avant_v4_3q (natif)",
+      "-x": "ct_veh_compacte_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_compacte_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_compacte_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_compacte_avant_v4_3q_fenetres",
+    "neon": "ct_veh_compacte_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_compacte_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_compacte_avant_v4_3q_fenetres.webp",
+    "px": [
+      235,
+      181
+    ],
+    "anchor": [
+      159,
+      177
+    ],
+    "additive": true,
+    "parent": "ct_veh_compacte_avant_v4_3q",
+    "couche_de": "ct_veh_compacte_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_compacte_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_compacte_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_compacte_avant_v4_3q_neon.webp",
+    "px": [
+      235,
+      181
+    ],
+    "anchor": [
+      159,
+      177
+    ],
+    "additive": true,
+    "parent": "ct_veh_compacte_avant_v4_3q",
+    "couche_de": "ct_veh_compacte_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_compacte_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_compacte_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_compacte_dos_v4_3q.webp",
+    "px": [
+      255,
+      167
+    ],
+    "anchor": [
+      150,
+      163
+    ],
+    "footprint_m": [
+      4.3,
+      1.9
+    ],
+    "height_m": 1.7,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Compacte / petit SUV gris-vert usé — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_compacte_dos_v4_3q', X, Z, 4.3, 1.9, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 4.1, d: 1.7 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 1.9 x 4.3)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 4.3x1.9x1.7 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.6145 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v1_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "compacte",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_compacte_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_compacte_avant_v4_3q (natif)",
+      "-x": "ct_veh_compacte_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_compacte_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_compacte_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "layers": []
+  },
+  "ct_veh_limo_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_limo_avant_v4_3q.webp",
+    "px": [
+      302,
+      200
+    ],
+    "anchor": [
+      216,
+      195
+    ],
+    "footprint_m": [
+      6.0,
+      2.1
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Limousine noire à liserés rouges — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_limo_avant_v4_3q', X, Z, 6, 2.1, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 5.8, d: 1.9 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.1 x 6)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 6.0x2.1x1.4 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.6073 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v1_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "limo",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_limo_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_limo_avant_v4_3q (natif)",
+      "-x": "ct_veh_limo_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_limo_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_limo_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_limo_avant_v4_3q_fenetres",
+    "neon": "ct_veh_limo_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_limo_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_limo_avant_v4_3q_fenetres.webp",
+    "px": [
+      302,
+      200
+    ],
+    "anchor": [
+      216,
+      195
+    ],
+    "additive": true,
+    "parent": "ct_veh_limo_avant_v4_3q",
+    "couche_de": "ct_veh_limo_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_limo_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_limo_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_limo_avant_v4_3q_neon.webp",
+    "px": [
+      302,
+      200
+    ],
+    "anchor": [
+      216,
+      195
+    ],
+    "additive": true,
+    "parent": "ct_veh_limo_avant_v4_3q",
+    "couche_de": "ct_veh_limo_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_limo_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_limo_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_limo_dos_v4_3q.webp",
+    "px": [
+      322,
+      187
+    ],
+    "anchor": [
+      233,
+      183
+    ],
+    "footprint_m": [
+      6.0,
+      2.1
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Limousine noire à liserés rouges — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_limo_dos_v4_3q', X, Z, 6, 2.1, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 5.8, d: 1.9 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.1 x 6)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 6.0x2.1x1.4 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.658 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v1_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "limo",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_limo_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_limo_avant_v4_3q (natif)",
+      "-x": "ct_veh_limo_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_limo_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_limo_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_limo_dos_v4_3q_fenetres",
+    "neon": "ct_veh_limo_dos_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_limo_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_limo_dos_v4_3q_fenetres.webp",
+    "px": [
+      322,
+      187
+    ],
+    "anchor": [
+      233,
+      183
+    ],
+    "additive": true,
+    "parent": "ct_veh_limo_dos_v4_3q",
+    "couche_de": "ct_veh_limo_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_limo_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_limo_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_limo_dos_v4_3q_neon.webp",
+    "px": [
+      322,
+      187
+    ],
+    "anchor": [
+      233,
+      183
+    ],
+    "additive": true,
+    "parent": "ct_veh_limo_dos_v4_3q",
+    "couche_de": "ct_veh_limo_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_limo_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_utilitaire_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_utilitaire_avant_v4_3q.webp",
+    "px": [
+      302,
+      245
+    ],
+    "anchor": [
+      168,
+      241
+    ],
+    "footprint_m": [
+      5.8,
+      2.2
+    ],
+    "height_m": 2.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Fourgon utilitaire orange rouillé — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_utilitaire_avant_v4_3q', X, Z, 5.8, 2.2, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 5.6, d: 2.0 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.2 x 5.8)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 5.8x2.2x2.5 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.7211 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v3_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "utilitaire",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_utilitaire_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_utilitaire_avant_v4_3q (natif)",
+      "-x": "ct_veh_utilitaire_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_utilitaire_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_utilitaire_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_utilitaire_avant_v4_3q_fenetres",
+    "neon": "ct_veh_utilitaire_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_utilitaire_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_utilitaire_avant_v4_3q_fenetres.webp",
+    "px": [
+      302,
+      245
+    ],
+    "anchor": [
+      168,
+      241
+    ],
+    "additive": true,
+    "parent": "ct_veh_utilitaire_avant_v4_3q",
+    "couche_de": "ct_veh_utilitaire_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_utilitaire_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_utilitaire_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_utilitaire_avant_v4_3q_neon.webp",
+    "px": [
+      302,
+      245
+    ],
+    "anchor": [
+      168,
+      241
+    ],
+    "additive": true,
+    "parent": "ct_veh_utilitaire_avant_v4_3q",
+    "couche_de": "ct_veh_utilitaire_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_utilitaire_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_utilitaire_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_utilitaire_dos_v4_3q.webp",
+    "px": [
+      315,
+      234
+    ],
+    "anchor": [
+      181,
+      230
+    ],
+    "footprint_m": [
+      5.8,
+      2.2
+    ],
+    "height_m": 2.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Fourgon utilitaire orange rouillé — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_utilitaire_dos_v4_3q', X, Z, 5.8, 2.2, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 5.6, d: 2.0 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.2 x 5.8)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 5.8x2.2x2.5 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.6652 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v3_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "utilitaire",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_utilitaire_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_utilitaire_avant_v4_3q (natif)",
+      "-x": "ct_veh_utilitaire_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_utilitaire_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_utilitaire_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_utilitaire_dos_v4_3q_fenetres",
+    "neon": "ct_veh_utilitaire_dos_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_utilitaire_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_utilitaire_dos_v4_3q_fenetres.webp",
+    "px": [
+      315,
+      234
+    ],
+    "anchor": [
+      181,
+      230
+    ],
+    "additive": true,
+    "parent": "ct_veh_utilitaire_dos_v4_3q",
+    "couche_de": "ct_veh_utilitaire_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_utilitaire_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_utilitaire_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_utilitaire_dos_v4_3q_neon.webp",
+    "px": [
+      315,
+      234
+    ],
+    "anchor": [
+      181,
+      230
+    ],
+    "additive": true,
+    "parent": "ct_veh_utilitaire_dos_v4_3q",
+    "couche_de": "ct_veh_utilitaire_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_utilitaire_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_intercepteur_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_intercepteur_avant_v4_3q.webp",
+    "px": [
+      272,
+      184
+    ],
+    "anchor": [
+      196,
+      179
+    ],
+    "footprint_m": [
+      5.0,
+      2.1
+    ],
+    "height_m": 1.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Intercepteur de patrouille gris, rampe rouge — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_intercepteur_avant_v4_3q', X, Z, 5, 2.1, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 4.8, d: 1.9 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.1 x 5)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 5.0x2.1x1.5 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.6147 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v3_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "intercepteur",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_intercepteur_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_intercepteur_avant_v4_3q (natif)",
+      "-x": "ct_veh_intercepteur_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_intercepteur_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_intercepteur_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_intercepteur_avant_v4_3q_fenetres",
+    "neon": "ct_veh_intercepteur_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_intercepteur_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_intercepteur_avant_v4_3q_fenetres.webp",
+    "px": [
+      272,
+      184
+    ],
+    "anchor": [
+      196,
+      179
+    ],
+    "additive": true,
+    "parent": "ct_veh_intercepteur_avant_v4_3q",
+    "couche_de": "ct_veh_intercepteur_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_intercepteur_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_intercepteur_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_intercepteur_avant_v4_3q_neon.webp",
+    "px": [
+      272,
+      184
+    ],
+    "anchor": [
+      196,
+      179
+    ],
+    "additive": true,
+    "parent": "ct_veh_intercepteur_avant_v4_3q",
+    "couche_de": "ct_veh_intercepteur_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_intercepteur_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_intercepteur_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_intercepteur_dos_v4_3q.webp",
+    "px": [
+      277,
+      181
+    ],
+    "anchor": [
+      160,
+      176
+    ],
+    "footprint_m": [
+      5.0,
+      2.1
+    ],
+    "height_m": 1.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Intercepteur de patrouille gris, rampe rouge — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_intercepteur_dos_v4_3q', X, Z, 5, 2.1, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 4.8, d: 1.9 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.1 x 5)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 5.0x2.1x1.5 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.6224 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; brut retourné en miroir horizontal pixel pour pixel avant réduction (le générateur avait dessiné l'arrière à gauche) ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v3_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "intercepteur",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_intercepteur_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_intercepteur_avant_v4_3q (natif)",
+      "-x": "ct_veh_intercepteur_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_intercepteur_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_intercepteur_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_intercepteur_dos_v4_3q_fenetres",
+    "neon": "ct_veh_intercepteur_dos_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_intercepteur_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_intercepteur_dos_v4_3q_fenetres.webp",
+    "px": [
+      277,
+      181
+    ],
+    "anchor": [
+      160,
+      176
+    ],
+    "additive": true,
+    "parent": "ct_veh_intercepteur_dos_v4_3q",
+    "couche_de": "ct_veh_intercepteur_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_intercepteur_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_intercepteur_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_intercepteur_dos_v4_3q_neon.webp",
+    "px": [
+      277,
+      181
+    ],
+    "anchor": [
+      160,
+      176
+    ],
+    "additive": true,
+    "parent": "ct_veh_intercepteur_dos_v4_3q",
+    "couche_de": "ct_veh_intercepteur_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_intercepteur_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_moto_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_moto_avant_v4_3q.webp",
+    "px": [
+      123,
+      101
+    ],
+    "anchor": [
+      101,
+      97
+    ],
+    "footprint_m": [
+      2.3,
+      0.8
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Moto de route noir et ambre — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_moto_avant_v4_3q', X, Z, 2.3, 0.8, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 2.1, d: 0.6 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 0.8 x 2.3)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 2.3x0.8x1.1 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.3996 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v3_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "moto",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_moto_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_moto_avant_v4_3q (natif)",
+      "-x": "ct_veh_moto_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_moto_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_moto_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_moto_avant_v4_3q_fenetres",
+    "neon": "ct_veh_moto_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_moto_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_moto_avant_v4_3q_fenetres.webp",
+    "px": [
+      123,
+      101
+    ],
+    "anchor": [
+      101,
+      97
+    ],
+    "additive": true,
+    "parent": "ct_veh_moto_avant_v4_3q",
+    "couche_de": "ct_veh_moto_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_moto_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_moto_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_moto_avant_v4_3q_neon.webp",
+    "px": [
+      123,
+      101
+    ],
+    "anchor": [
+      101,
+      97
+    ],
+    "additive": true,
+    "parent": "ct_veh_moto_avant_v4_3q",
+    "couche_de": "ct_veh_moto_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_moto_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_moto_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_moto_dos_v4_3q.webp",
+    "px": [
+      118,
+      103
+    ],
+    "anchor": [
+      98,
+      99
+    ],
+    "footprint_m": [
+      2.3,
+      0.8
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Moto de route noir et ambre — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_moto_dos_v4_3q', X, Z, 2.3, 0.8, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 2.1, d: 0.6 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 0.8 x 2.3)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 2.3x0.8x1.1 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.2688 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/motos_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "moto",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_moto_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_moto_avant_v4_3q (natif)",
+      "-x": "ct_veh_moto_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_moto_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_moto_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_moto_dos_v4_3q_fenetres",
+    "neon": "ct_veh_moto_dos_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_moto_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_moto_dos_v4_3q_fenetres.webp",
+    "px": [
+      118,
+      103
+    ],
+    "anchor": [
+      98,
+      99
+    ],
+    "additive": true,
+    "parent": "ct_veh_moto_dos_v4_3q",
+    "couche_de": "ct_veh_moto_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_moto_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_moto_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_moto_dos_v4_3q_neon.webp",
+    "px": [
+      118,
+      103
+    ],
+    "anchor": [
+      98,
+      99
+    ],
+    "additive": true,
+    "parent": "ct_veh_moto_dos_v4_3q",
+    "couche_de": "ct_veh_moto_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_moto_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_motolivr_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_motolivr_avant_v4_3q.webp",
+    "px": [
+      123,
+      124
+    ],
+    "anchor": [
+      105,
+      120
+    ],
+    "footprint_m": [
+      2.4,
+      0.9
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Moto de livraison à caisson ambre — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_motolivr_avant_v4_3q', X, Z, 2.4, 0.9, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 2.2, d: 0.7 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 0.9 x 2.4)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 2.4x0.9x1.4 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.417 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/v3_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "motolivr",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_motolivr_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_motolivr_avant_v4_3q (natif)",
+      "-x": "ct_veh_motolivr_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_motolivr_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_motolivr_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_motolivr_avant_v4_3q_fenetres",
+    "neon": "ct_veh_motolivr_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_motolivr_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_motolivr_avant_v4_3q_fenetres.webp",
+    "px": [
+      123,
+      124
+    ],
+    "anchor": [
+      105,
+      120
+    ],
+    "additive": true,
+    "parent": "ct_veh_motolivr_avant_v4_3q",
+    "couche_de": "ct_veh_motolivr_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_motolivr_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_motolivr_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_motolivr_avant_v4_3q_neon.webp",
+    "px": [
+      123,
+      124
+    ],
+    "anchor": [
+      105,
+      120
+    ],
+    "additive": true,
+    "parent": "ct_veh_motolivr_avant_v4_3q",
+    "couche_de": "ct_veh_motolivr_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_motolivr_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_motolivr_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_motolivr_dos_v4_3q.webp",
+    "px": [
+      131,
+      115
+    ],
+    "anchor": [
+      102,
+      111
+    ],
+    "footprint_m": [
+      2.4,
+      0.9
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Moto de livraison à caisson ambre — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_motolivr_dos_v4_3q', X, Z, 2.4, 0.9, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 2.2, d: 0.7 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 0.9 x 2.4)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 2.4x0.9x1.4 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.2984 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/motos_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "motolivr",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_motolivr_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_motolivr_avant_v4_3q (natif)",
+      "-x": "ct_veh_motolivr_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_motolivr_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_motolivr_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_motolivr_dos_v4_3q_fenetres",
+    "neon": "ct_veh_motolivr_dos_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_motolivr_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_motolivr_dos_v4_3q_fenetres.webp",
+    "px": [
+      131,
+      115
+    ],
+    "anchor": [
+      102,
+      111
+    ],
+    "additive": true,
+    "parent": "ct_veh_motolivr_dos_v4_3q",
+    "couche_de": "ct_veh_motolivr_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_motolivr_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_motolivr_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_motolivr_dos_v4_3q_neon.webp",
+    "px": [
+      131,
+      115
+    ],
+    "anchor": [
+      102,
+      111
+    ],
+    "additive": true,
+    "parent": "ct_veh_motolivr_dos_v4_3q",
+    "couche_de": "ct_veh_motolivr_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_motolivr_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_depanneuse_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_depanneuse_avant_v4_3q.webp",
+    "px": [
+      404,
+      381
+    ],
+    "anchor": [
+      290,
+      376
+    ],
+    "footprint_m": [
+      9.0,
+      2.6
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Dépanneuse lourde à grue, chevrons jaune-noir — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_depanneuse_avant_v4_3q', X, Z, 9, 2.6, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 8.8, d: 2.4 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.6 x 9)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 9.0x2.6x3.6 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.7545 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/dep.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "depanneuse",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_depanneuse_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_depanneuse_avant_v4_3q (natif)",
+      "-x": "ct_veh_depanneuse_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_depanneuse_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_depanneuse_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_depanneuse_avant_v4_3q_fenetres",
+    "neon": "ct_veh_depanneuse_avant_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_depanneuse_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_depanneuse_avant_v4_3q_fenetres.webp",
+    "px": [
+      404,
+      381
+    ],
+    "anchor": [
+      290,
+      376
+    ],
+    "additive": true,
+    "parent": "ct_veh_depanneuse_avant_v4_3q",
+    "couche_de": "ct_veh_depanneuse_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_depanneuse_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_depanneuse_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_depanneuse_avant_v4_3q_neon.webp",
+    "px": [
+      404,
+      381
+    ],
+    "anchor": [
+      290,
+      376
+    ],
+    "additive": true,
+    "parent": "ct_veh_depanneuse_avant_v4_3q",
+    "couche_de": "ct_veh_depanneuse_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_depanneuse_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_depanneuse_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_depanneuse_dos_v4_3q.webp",
+    "px": [
+      415,
+      371
+    ],
+    "anchor": [
+      294,
+      366
+    ],
+    "footprint_m": [
+      9.0,
+      2.6
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Dépanneuse lourde à grue, chevrons jaune-noir — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_depanneuse_dos_v4_3q', X, Z, 9, 2.6, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 8.8, d: 2.4 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.6 x 9)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 9.0x2.6x3.6 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.7546 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/dep.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "depanneuse",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_depanneuse_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_depanneuse_avant_v4_3q (natif)",
+      "-x": "ct_veh_depanneuse_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_depanneuse_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_depanneuse_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "fenetres": "ct_veh_depanneuse_dos_v4_3q_fenetres",
+    "neon": "ct_veh_depanneuse_dos_v4_3q_neon",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ct_veh_depanneuse_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_depanneuse_dos_v4_3q_fenetres.webp",
+    "px": [
+      415,
+      371
+    ],
+    "anchor": [
+      294,
+      366
+    ],
+    "additive": true,
+    "parent": "ct_veh_depanneuse_dos_v4_3q",
+    "couche_de": "ct_veh_depanneuse_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_depanneuse_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_depanneuse_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_depanneuse_dos_v4_3q_neon.webp",
+    "px": [
+      415,
+      371
+    ],
+    "anchor": [
+      294,
+      366
+    ],
+    "additive": true,
+    "parent": "ct_veh_depanneuse_dos_v4_3q",
+    "couche_de": "ct_veh_depanneuse_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_depanneuse_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_bus_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_bus_avant_v4_3q.webp",
+    "px": [
+      781,
+      471
+    ],
+    "anchor": [
+      665,
+      467
+    ],
+    "footprint_m": [
+      18.0,
+      2.55
+    ],
+    "height_m": 3.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Bus articulé de Center-Town, vitres et bandeau ambre — vue avant",
+    "pose": "B_CT('<id>', '', 'ct_veh_bus_avant_v4_3q', X, Z, 18, 2.55, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 17.8, d: 2.3 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.55 x 18)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 18.0x2.55x3.3 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.733 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/bus_avant.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "bus",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_bus_dos_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_bus_avant_v4_3q (natif)",
+      "-x": "ct_veh_bus_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_bus_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_bus_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "enseigne": "B7 (calque texte, non retourné)",
+    "fenetres": "ct_veh_bus_avant_v4_3q_fenetres",
+    "neon": "ct_veh_bus_avant_v4_3q_neon",
+    "texte": "ct_veh_bus_avant_v4_3q_texte",
+    "texte_miroir": "ct_veh_bus_avant_v4_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_bus_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_bus_avant_v4_3q_fenetres.webp",
+    "px": [
+      781,
+      471
+    ],
+    "anchor": [
+      665,
+      467
+    ],
+    "additive": true,
+    "parent": "ct_veh_bus_avant_v4_3q",
+    "couche_de": "ct_veh_bus_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_bus_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_bus_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_bus_avant_v4_3q_neon.webp",
+    "px": [
+      781,
+      471
+    ],
+    "anchor": [
+      665,
+      467
+    ],
+    "additive": true,
+    "parent": "ct_veh_bus_avant_v4_3q",
+    "couche_de": "ct_veh_bus_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_bus_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_bus_avant_v4_3q_texte": {
+    "file": "steel/center_town/ct_veh_bus_avant_v4_3q_texte.webp",
+    "px": [
+      781,
+      471
+    ],
+    "anchor": [
+      665,
+      467
+    ],
+    "additive": false,
+    "parent": "ct_veh_bus_avant_v4_3q",
+    "couche_de": "ct_veh_bus_avant_v4_3q",
+    "layer": "texte",
+    "source": "lettrage « B7 » dessiné PIL (DejaVu Sans Bold 11 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ct_veh_bus_avant_v4_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_bus_avant_v4_3q_texte_miroir.webp",
+    "px": [
+      781,
+      471
+    ],
+    "anchor": [
+      116,
+      467
+    ],
+    "additive": false,
+    "parent": "ct_veh_bus_avant_v4_3q",
+    "couche_de": "ct_veh_bus_avant_v4_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « B7 » repositionné pour la vue miroir (canevas miroir de ct_veh_bus_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "miroir"
+  },
+  "ct_veh_bus_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_bus_dos_v4_3q.webp",
+    "px": [
+      777,
+      474
+    ],
+    "anchor": [
+      659,
+      470
+    ],
+    "footprint_m": [
+      18.0,
+      2.55
+    ],
+    "height_m": 3.3,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Bus articulé de Center-Town, vitres et bandeau ambre — vue dos",
+    "pose": "B_CT('<id>', '', 'ct_veh_bus_dos_v4_3q', X, Z, 18, 2.55, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 17.8, d: 2.3 }] })  // axe E-O ; vue miroir pour l'axe N-S (empreinte 2.55 x 18)",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) sur gabarit boîte 18.0x2.55x3.3 m au gabarit caméra du jeu, fond chroma, détourage, UNE réduction uniforme x0.7426 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au point bas du coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/bus_dos.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "bus",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_bus_avant_v4_3q",
+    "orientations": {
+      "+x": "ct_veh_bus_avant_v4_3q (natif)",
+      "-x": "ct_veh_bus_dos_v4_3q (natif)",
+      "+z": "miroir horizontal de ct_veh_bus_avant_v4_3q",
+      "-z": "miroir horizontal de ct_veh_bus_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "enseigne": "B7 (calque texte, non retourné)",
+    "fenetres": "ct_veh_bus_dos_v4_3q_fenetres",
+    "neon": "ct_veh_bus_dos_v4_3q_neon",
+    "texte": "ct_veh_bus_dos_v4_3q_texte",
+    "texte_miroir": "ct_veh_bus_dos_v4_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_bus_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_bus_dos_v4_3q_fenetres.webp",
+    "px": [
+      777,
+      474
+    ],
+    "anchor": [
+      659,
+      470
+    ],
+    "additive": true,
+    "parent": "ct_veh_bus_dos_v4_3q",
+    "couche_de": "ct_veh_bus_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_bus_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_bus_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_bus_dos_v4_3q_neon.webp",
+    "px": [
+      777,
+      474
+    ],
+    "anchor": [
+      659,
+      470
+    ],
+    "additive": true,
+    "parent": "ct_veh_bus_dos_v4_3q",
+    "couche_de": "ct_veh_bus_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_bus_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_bus_dos_v4_3q_texte": {
+    "file": "steel/center_town/ct_veh_bus_dos_v4_3q_texte.webp",
+    "px": [
+      777,
+      474
+    ],
+    "anchor": [
+      659,
+      470
+    ],
+    "additive": false,
+    "parent": "ct_veh_bus_dos_v4_3q",
+    "couche_de": "ct_veh_bus_dos_v4_3q",
+    "layer": "texte",
+    "source": "lettrage « B7 » dessiné PIL (DejaVu Sans Bold 11 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ct_veh_bus_dos_v4_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_bus_dos_v4_3q_texte_miroir.webp",
+    "px": [
+      777,
+      474
+    ],
+    "anchor": [
+      118,
+      470
+    ],
+    "additive": false,
+    "parent": "ct_veh_bus_dos_v4_3q",
+    "couche_de": "ct_veh_bus_dos_v4_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « B7 » repositionné pour la vue miroir (canevas miroir de ct_veh_bus_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "miroir"
+  },
+  "ct_veh_tram_avant_v4_3q": {
+    "file": "steel/center_town/ct_veh_tram_avant_v4_3q.webp",
+    "px": [
+      1075,
+      820
+    ],
+    "anchor": [
+      113,
+      817
+    ],
+    "footprint_m": [
+      2.65,
+      33.8
+    ],
+    "height_m": 3.33,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Tram articulé de Center-Town (2 caisses + soufflet), vitres ambre — vue avant",
+    "pose": "B_CT('<id>', 'Tram Center-Town', 'ct_veh_tram_avant_v4_3q', X, Z, 2.65, 33.8, { named: false, solid: [{ x: X+0.1, z: Z+0.3, w: 2.45, d: 33.2 }] })  // couloir tram N-S x72-76",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) en deux demi-rames (tête avant + queue) au gabarit caméra du jeu, détourage chroma, UNE réduction uniforme x0.67 commune aux deux moitiés, assemblage le long de la ligne de flanc (pente mesurée ~0,65), ancre au coin avant ; aucun agrandissement, étirement ni déformation (bruts ct_v5/raw/tram_tete_avant.jpg + tram_queue.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "tram",
+    "vue": "avant",
+    "axe": "z",
+    "miroir_axe2": true,
+    "vue_dos": "ct_veh_tram_dos_v4_3q",
+    "orientations": {
+      "+z": "ct_veh_tram_avant_v4_3q (natif, tête au sud-ouest)",
+      "-z": "ct_veh_tram_dos_v4_3q (natif)",
+      "+x": "miroir horizontal de ct_veh_tram_avant_v4_3q",
+      "-x": "miroir horizontal de ct_veh_tram_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "remplace": "ct_tram_v3_3q",
+    "enseigne": "T1 (calque texte, non retourné)",
+    "fenetres": "ct_veh_tram_avant_v4_3q_fenetres",
+    "neon": "ct_veh_tram_avant_v4_3q_neon",
+    "texte": "ct_veh_tram_avant_v4_3q_texte",
+    "texte_miroir": "ct_veh_tram_avant_v4_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_tram_avant_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_tram_avant_v4_3q_fenetres.webp",
+    "px": [
+      1075,
+      820
+    ],
+    "anchor": [
+      113,
+      817
+    ],
+    "additive": true,
+    "parent": "ct_veh_tram_avant_v4_3q",
+    "couche_de": "ct_veh_tram_avant_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_tram_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_tram_avant_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_tram_avant_v4_3q_neon.webp",
+    "px": [
+      1075,
+      820
+    ],
+    "anchor": [
+      113,
+      817
+    ],
+    "additive": true,
+    "parent": "ct_veh_tram_avant_v4_3q",
+    "couche_de": "ct_veh_tram_avant_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_tram_avant_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_tram_avant_v4_3q_texte": {
+    "file": "steel/center_town/ct_veh_tram_avant_v4_3q_texte.webp",
+    "px": [
+      1075,
+      820
+    ],
+    "anchor": [
+      113,
+      817
+    ],
+    "additive": false,
+    "parent": "ct_veh_tram_avant_v4_3q",
+    "couche_de": "ct_veh_tram_avant_v4_3q",
+    "layer": "texte",
+    "source": "lettrage « T1 » dessiné PIL (DejaVu Sans Bold 13 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ct_veh_tram_avant_v4_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_tram_avant_v4_3q_texte_miroir.webp",
+    "px": [
+      1075,
+      820
+    ],
+    "anchor": [
+      962,
+      817
+    ],
+    "additive": false,
+    "parent": "ct_veh_tram_avant_v4_3q",
+    "couche_de": "ct_veh_tram_avant_v4_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « T1 » repositionné pour la vue miroir (canevas miroir de ct_veh_tram_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "miroir"
+  },
+  "ct_veh_tram_dos_v4_3q": {
+    "file": "steel/center_town/ct_veh_tram_dos_v4_3q.webp",
+    "px": [
+      1059,
+      810
+    ],
+    "anchor": [
+      112,
+      807
+    ],
+    "footprint_m": [
+      2.65,
+      33.2
+    ],
+    "height_m": 3.33,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70) ; flanc peint ~0,5-0,65 (biais du générateur, voir §8K)",
+    "px_par_m": 50,
+    "role": "Tram articulé de Center-Town (2 caisses + soufflet), vitres ambre — vue dos",
+    "pose": "B_CT('<id>', 'Tram Center-Town', 'ct_veh_tram_dos_v4_3q', X, Z, 2.65, 33.2, { named: false, solid: [{ x: X+0.1, z: Z+0.3, w: 2.45, d: 32.6 }] })  // couloir tram N-S x72-76",
+    "source": "Ocre 2026-11-12, lot 1 véhicules : GenerateImage (cursor) en deux demi-rames (tête dos + queue) au gabarit caméra du jeu, détourage chroma, UNE réduction uniforme x0.67 commune aux deux moitiés, assemblage le long de la ligne de flanc (pente mesurée ~0,65), ancre au coin avant ; aucun agrandissement, étirement ni déformation (bruts ct_v5/raw/tram_tete_dos.jpg + tram_queue.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_vehicules_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "vehicule": "tram",
+    "vue": "dos",
+    "axe": "z",
+    "miroir_axe2": true,
+    "vue_avant": "ct_veh_tram_avant_v4_3q",
+    "orientations": {
+      "+z": "ct_veh_tram_avant_v4_3q (natif, tête au sud-ouest)",
+      "-z": "ct_veh_tram_dos_v4_3q (natif)",
+      "+x": "miroir horizontal de ct_veh_tram_avant_v4_3q",
+      "-x": "miroir horizontal de ct_veh_tram_dos_v4_3q"
+    },
+    "note_moteur": "4 orientations = 2 vues peintes (avant, dos) + miroir horizontal de chacune ; texte_miroir/texte jamais retournés (voir CENTER_TOWN.md §8K)",
+    "enseigne": "T1 (calque texte, non retourné)",
+    "fenetres": "ct_veh_tram_dos_v4_3q_fenetres",
+    "neon": "ct_veh_tram_dos_v4_3q_neon",
+    "texte": "ct_veh_tram_dos_v4_3q_texte",
+    "texte_miroir": "ct_veh_tram_dos_v4_3q_texte_miroir",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ct_veh_tram_dos_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_veh_tram_dos_v4_3q_fenetres.webp",
+    "px": [
+      1059,
+      810
+    ],
+    "anchor": [
+      112,
+      807
+    ],
+    "additive": true,
+    "parent": "ct_veh_tram_dos_v4_3q",
+    "couche_de": "ct_veh_tram_dos_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_veh_tram_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_tram_dos_v4_3q_neon": {
+    "file": "steel/center_town/ct_veh_tram_dos_v4_3q_neon.webp",
+    "px": [
+      1059,
+      810
+    ],
+    "anchor": [
+      112,
+      807
+    ],
+    "additive": true,
+    "parent": "ct_veh_tram_dos_v4_3q",
+    "couche_de": "ct_veh_tram_dos_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_veh_tram_dos_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_veh_tram_dos_v4_3q_texte": {
+    "file": "steel/center_town/ct_veh_tram_dos_v4_3q_texte.webp",
+    "px": [
+      1059,
+      810
+    ],
+    "anchor": [
+      112,
+      807
+    ],
+    "additive": false,
+    "parent": "ct_veh_tram_dos_v4_3q",
+    "couche_de": "ct_veh_tram_dos_v4_3q",
+    "layer": "texte",
+    "source": "lettrage « T1 » dessiné PIL (DejaVu Sans Bold 13 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ct_veh_tram_dos_v4_3q_texte_miroir": {
+    "file": "steel/center_town/ct_veh_tram_dos_v4_3q_texte_miroir.webp",
+    "px": [
+      1059,
+      810
+    ],
+    "anchor": [
+      947,
+      807
+    ],
+    "additive": false,
+    "parent": "ct_veh_tram_dos_v4_3q",
+    "couche_de": "ct_veh_tram_dos_v4_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « T1 » repositionné pour la vue miroir (canevas miroir de ct_veh_tram_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v4",
+    "jamais_miroir": true,
+    "vue": "miroir"
   }
 }
