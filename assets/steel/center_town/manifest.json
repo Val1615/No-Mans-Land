@@ -10226,5 +10226,161 @@
     "status": "v4",
     "jamais_miroir": true,
     "vue": "miroir"
+  },
+  "ct_ne_segment_8x4_v4_3q": {
+    "file": "steel/center_town/ct_ne_segment_8x4_v4_3q.webp",
+    "px": [
+      455,
+      722
+    ],
+    "anchor": [
+      311,
+      718
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Segment de bureaux 8 x 4 m, 12 m (3 niveaux), béton sombre, vitres ambre, liseré cyan d'angle ; remplace la moitié nord de ct_rempl1",
+    "pose": "B_CT('ct_ne_seg0', '', 'ct_ne_segment_8x4_v4_3q', 92, 16, 8, 4, { named: false })",
+    "source": "Ocre 2026-11-12, lot 2a coin NE (concept 01 validé, consigne Régie : porche z20-24 + segment z16-20 dans le remplissage nord de Nexus) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x4x12 m au gabarit caméra du jeu, références concept NE + ct_remplissage_8x8_a, fond chroma, détourage, UNE réduction uniforme x0.6969 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/ne_seg.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_v4",
+    "lot": "lot 2a coin NE porche + segment (2026-11-12)",
+    "remplace_pose": "ct_rempl1 (ct_remplissage_8x8_a en x92 z16, 8 x 8) : retirer cette pose, la clé ct_remplissage_8x8_a reste utilisée par ct_rempl5",
+    "pente_mesuree": "pied gauche 0.446 / droit 0.768 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_segment_8x4_v4_3q_fenetres",
+    "neon": "ct_ne_segment_8x4_v4_3q_neon"
+  },
+  "ct_ne_segment_8x4_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_segment_8x4_v4_3q_fenetres.webp",
+    "px": [
+      455,
+      722
+    ],
+    "anchor": [
+      311,
+      718
+    ],
+    "additive": true,
+    "parent": "ct_ne_segment_8x4_v4_3q",
+    "couche_de": "ct_ne_segment_8x4_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_segment_8x4_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_segment_8x4_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_segment_8x4_v4_3q_neon.webp",
+    "px": [
+      455,
+      722
+    ],
+    "anchor": [
+      311,
+      718
+    ],
+    "additive": true,
+    "parent": "ct_ne_segment_8x4_v4_3q",
+    "couche_de": "ct_ne_segment_8x4_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_segment_8x4_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_porche_8x4_v4_3q": {
+    "file": "steel/center_town/ct_ne_porche_8x4_v4_3q.webp",
+    "px": [
+      476,
+      437
+    ],
+    "anchor": [
+      354,
+      432
+    ],
+    "footprint_m": [
+      8,
+      4
+    ],
+    "height_m": 5.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Porche couvert 8 x 4 m, 5,5 m : passage piéton libre 3,2 m x 4 m de l'avenue (trottoir est x84-92) vers la cour NE, piliers béton, toit à lames ajourées, lampe et liseré ambre",
+    "pose": "B_CT('ct_ne_porche0', 'Porche de la cour', 'ct_ne_porche_8x4_v4_3q', 92, 20, 8, 4, { named: false, solid: [{ x: 92, z: 20, w: 8, d: 0.4 }, { x: 92, z: 23.6, w: 8, d: 0.4 }] })",
+    "source": "Ocre 2026-11-12, lot 2a coin NE (concept 01 validé, consigne Régie : porche z20-24 + segment z16-20 dans le remplissage nord de Nexus) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x4x5.5 m au gabarit caméra du jeu, références concept NE + ct_remplissage_8x8_a, fond chroma, détourage, UNE réduction uniforme x0.5758 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/ne_porche.jpg, hors dépôt) ; deux pseudo-glyphes cyan peints au brut sur le linteau et un pilier, effacés au pinceau PIL avant détourage (aucune lettre)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_v4",
+    "lot": "lot 2a coin NE porche + segment (2026-11-12)",
+    "remplace_pose": "ct_rempl1 (ct_remplissage_8x8_a en x92 z16, 8 x 8) : retirer cette pose, la clé ct_remplissage_8x8_a reste utilisée par ct_rempl5",
+    "pente_mesuree": "pied gauche 0.457 / droit 0.777 (cible 0,33 / 0,70)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 8,
+        "d": 0.4
+      },
+      {
+        "dx": 0,
+        "dz": 3.6,
+        "w": 8,
+        "d": 0.4
+      }
+    ],
+    "passage_libre": {
+      "axe": "x",
+      "z": [
+        20.4,
+        23.6
+      ],
+      "hauteur_libre_m": 4.0
+    },
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_porche_8x4_v4_3q_fenetres",
+    "neon": "ct_ne_porche_8x4_v4_3q_neon"
+  },
+  "ct_ne_porche_8x4_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_porche_8x4_v4_3q_fenetres.webp",
+    "px": [
+      476,
+      437
+    ],
+    "anchor": [
+      354,
+      432
+    ],
+    "additive": true,
+    "parent": "ct_ne_porche_8x4_v4_3q",
+    "couche_de": "ct_ne_porche_8x4_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_porche_8x4_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_porche_8x4_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_porche_8x4_v4_3q_neon.webp",
+    "px": [
+      476,
+      437
+    ],
+    "anchor": [
+      354,
+      432
+    ],
+    "additive": true,
+    "parent": "ct_ne_porche_8x4_v4_3q",
+    "couche_de": "ct_ne_porche_8x4_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_porche_8x4_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
   }
 }

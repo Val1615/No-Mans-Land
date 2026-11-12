@@ -553,3 +553,26 @@ B_CT('ct_tram1', 'Tram Center-Town', 'ct_veh_tram_avant_v4_3q', 72.68, 18, 2.65,
 ```
 
 Planche hors jeu (non versionnée) : `nml-shots/ct_v4_vehicules_lot1_controle.png` (chaque véhicule : avant, miroir de l'avant, dos, miroir du dos ; calques fenêtres/néon/hover/texte appliqués ; empreinte théorique depuis l'ancre ; piéton 1,8 m).
+
+### L. Lot 2a coin NE : porche z20-24 et segment z16-20 (`ct_ne_*_8x4_v4_3q`, 2026-11-12)
+
+Consigne Régie : le porche de la cour NE passe en **z20-24** dans le remplissage nord de Nexus (aujourd'hui `ct_rempl1` = `ct_remplissage_8x8_a`, x92 z16, 8 x 8, 12 m), plus un **segment 8 x 4 pour z16-20**, tous deux à la vraie longueur (8 m en x). Nexus (x92 z24-32) n'est pas entamé.
+
+**Méthode.** GenerateImage (cursor) en retouche d'un gabarit boîte 8 x 4 x h au gabarit caméra du jeu (grille de sol visible, contour invisible demandé), références concept 01 NE et `ct_remplissage_8x8_a` ; détourage chroma sans comblement (les lames du toit du porche restent ajourées) ; UNE réduction uniforme (porche x0,576, segment x0,697 ; écart hauteur/largeur < 6 %) ; ancre au coin avant (x+w, z+d) ; calques `_fenetres`/`_neon`. Porche : deux pseudo-glyphes cyan peints par le générateur (linteau, pilier) effacés au brut avant détourage ; aucune lettre, aucun logo.
+
+| Clé | px | ancre | emprise | h | calques | pose |
+|---|---|---|---|---|---|---|
+| `ct_ne_segment_8x4_v4_3q` | 455×722 | [311, 718] | 8 × 4 m | 12 m (3 niveaux) | fenetres, neon | x92 z16 |
+| `ct_ne_porche_8x4_v4_3q` | 476×437 | [354, 432] | 8 × 4 m | 5,5 m (hauteur libre 4 m) | fenetres, neon | x92 z20 |
+
+```js
+// remplace la pose ct_rempl1 (la clé ct_remplissage_8x8_a reste utilisée par ct_rempl5)
+B_CT('ct_ne_seg0', '', 'ct_ne_segment_8x4_v4_3q', 92, 16, 8, 4, { named: false }),
+B_CT('ct_ne_porche0', 'Porche de la cour', 'ct_ne_porche_8x4_v4_3q', 92, 20, 8, 4, { named: false, solid: [{ x: 92, z: 20, w: 8, d: 0.4 }, { x: 92, z: 23.6, w: 8, d: 0.4 }] }),
+```
+
+Passage libre : axe x, z20,4-23,6 (3,2 m), hauteur libre 4 m, du trottoir est de l'avenue N-S (x84-92) vers la cour (x100). Conséquence pour la suite du coin NE : la ruelle ouest du concept (x100-110 z24-28) se décale en **z20-24** dans le prolongement du porche ; le bâti C se réduit à x100-110 z12-20 (D reste x100-110 z28-40, ruelle z24-28 rendue à D ou pavée).
+
+Défauts connus : pieds peints à ~0,45 / 0,77 au lieu de 0,33 / 0,70 (même biais du générateur que §8J/§8K), le bout ouest remonte d'environ 0,8 m sur l'emprise ; le porche est en grande partie masqué en jeu par Nexus et la rangée z40 (voir maquette réelle). Le segment montre des intérieurs plutôt « archives » que bureaux ouverts.
+
+Planches hors jeu (non versionnées) : `nml-shots/ct_v4_ne_porche_segment_controle.png`, `nml-shots/ct_v4_ne_porche_maquette.jpg`, `nml-shots/ct_v4_ne_porche_maquette_sans_nexus.jpg`.
