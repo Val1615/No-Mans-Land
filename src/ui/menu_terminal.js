@@ -119,8 +119,8 @@ export function createTerminal({ M, getOptions, note }) {
     if (M.hidden) return;
     tampon.classList.remove('t-cache'); tampon.style.transform = ''; tampon.dataset.echelle = '1';
     const k = +getComputedStyle(M).getPropertyValue('--k') || 1, m = MARGE_TAMPON * k, sub = !Q('#menu-sub').hidden;
-    const els = [...list.querySelectorAll('button:not([hidden])'), Q('#menu-note'), Q('#m-exec'), Q('.t-ticker'), Q('#m-version'), ...M.querySelectorAll('.t-status span'), ...(sub ? [Q('#menu-sub')] : [])];
-    const boites = els.map(b => b.getBoundingClientRect()).filter(r => r.width > 0 && r.height > 0);
+    const els = [...list.querySelectorAll('button:not([hidden])'), Q('#menu-note'), Q('#menu-note .nml-sceau'), Q('#m-exec'), Q('.t-ticker'), Q('#m-version'), ...M.querySelectorAll('.t-status span'), ...(sub ? [Q('#menu-sub')] : [])];
+    const boites = els.filter(Boolean).map(b => b.getBoundingClientRect()).filter(r => r.width > 0 && r.height > 0);
     const coupe = () => { const t = tampon.getBoundingClientRect(); return boites.some(r => r.left - m < t.right && r.right + m > t.left && r.top - m < t.bottom && r.bottom + m > t.top); };
     // paliers de 5 %, ancrés au centre, puis en bas (le tampon garde sa marge au-dessus du bandeau), puis en haut
     for (let e = 1; e >= 0.4 - 1e-9; e -= 0.05) for (const o of e < 1 ? ['50% 50%', '50% 100%', '100% 100%', '50% 0%'] : ['50% 50%']) {

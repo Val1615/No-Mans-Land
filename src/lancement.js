@@ -3,8 +3,9 @@
 // Optimisation (12/11) : le menu ne dépend plus de main.js pour son visage. Dès l'ouverture :
 // - la ligne sous CONTINUER est lue dans localStorage (même format que shell.js) ;
 // - la musique du menu part au premier geste, sur l'<audio id="music"> du HTML (autoplay navigateur respecté) ;
-// - un choix cliqué avant que main.js soit prêt garde le Terminal à l'écran avec la ligne CHARGEMENT DU SECTEUR, puis est rejoué.
+// - un choix cliqué avant que main.js soit prêt garde le Terminal à l'écran avec le sceau de chargement NML, puis est rejoué.
 import { createTerminal, LIGNES } from './ui/menu_terminal.js';
+import { sceau, echelleTerminal, placeTerminal } from './ui/monogramme.js';
 
 function optionsLancement() {
   if (window.__nml && window.__nml.shell && window.__nml.shell.options) return window.__nml.shell.options;
@@ -77,7 +78,7 @@ const principal = import('./main.js');
 term.open('title');
 window.__nmlMenuPret = true;
 
-// Un choix cliqué avant que main.js ait branché le shell : le Terminal reste là, ligne CHARGEMENT DU SECTEUR, puis le choix est rejoué.
+// Un choix cliqué avant que main.js ait branché le shell : le Terminal reste là, sceau NML (anneau à 0 %), puis le choix est rejoué.
 let choixAttendu = null;
 M.addEventListener('pointerdown', e => {
   if (window.__nml && window.__nml.shell) return;
@@ -92,7 +93,8 @@ M.addEventListener('click', e => {
   if (b.dataset.sub) return; // sous-menus (Charger, Options, Crédits) : rejoués dès que le shell est prêt, sans geler le Terminal
   term.confirmer(b);
   M.classList.add('t-charge'); M.querySelectorAll('.t-choisi').forEach(x => x.classList.remove('t-choisi')); b.classList.add('t-choisi');
-  const n = document.getElementById('menu-note'); if (n) n.textContent = 'CHARGEMENT DU SECTEUR…';
+  const n = document.getElementById('menu-note'), d = b.id === 'm-continue' ? derniereSauvegarde() : null;
+  if (n) { const s = sceau(n, { id: d ? d.r.state.location : '', nom: d ? (d.r.label || '').split('· ').pop().toUpperCase() : '', p: 0, echelle: echelleTerminal(M) }); placeTerminal(n, s); }
 }, true);
 
 principal.then(() => {

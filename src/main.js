@@ -10,6 +10,7 @@ import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
 import { createChargeur } from './core/chargement.js'; // optimisation (12/11) : images chargées par lieu, le reste en arrière-plan
 import { createShell } from './ui/shell.js';
+import { sceau, retireSceau, echelleTerminal, echelleJeu, placeTerminal } from './ui/monogramme.js'; // sceau de chargement NML (canvas)
 import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
 import { portraitUrl } from './ui/creation.js';
 import { placeLabels } from './ui/placement.js';
@@ -169,21 +170,26 @@ voyage.on(ev => { if ((ev.type === 'case' || ev.type === 'halte' || ev.type === 
 const chargementEl = document.createElement('div'); chargementEl.id = 'chargement'; chargementEl.setAttribute('role', 'status'); chargementEl.hidden = true; document.body.appendChild(chargementEl);
 let chargementLieu = null;
 const nomSecteur = id => (world.LOCATIONS[id]?.name || '').split('· ').pop().toUpperCase();
-// Une seule ligne phosphore, toujours (12/11, demande d'Ocre) : la ligne prend la forme la plus longue qui tient dans la largeur
-// de son élément (mesurée à 100 % pour ne pas changer de forme en cours de route), sans retour à la ligne (white-space:nowrap).
-const FORMES_LIGNE = [['CHARGEMENT DU SECTEUR · ', '  ', 12], ['CHARGEMENT DU SECTEUR · ', ' ', 8], ['CHARGEMENT · ', ' ', 8],
-  ['CHARGEMENT · ', ' ', 5], ['', ' ', 5]];
+// Monogramme NML (12/11, choix de Valentin, proposition B d'Ocre) : un sceau canvas à la place de la ligne de texte, dans le Terminal
+// (#menu-note, sous les choix gelés) et sur l'overlay en jeu (#chargement, badge en bas). L'anneau suit le vrai progrès du lieu (fait / total).
 function ligneChargement(id, fait, total, el = null) {
-  const p = total ? Math.min(100, Math.round(100 * fait / total)) : 0, nom = nomSecteur(id);
-  const forme = ([a, b, n], q) => { const k = Math.round(n * q / 100); return `${a}${nom}${b}[${'#'.repeat(k)}${'-'.repeat(n - k)}]\u00a0${q}\u00a0%`; };
-  let f = FORMES_LIGNE[0];
-  if (el && el.clientWidth > 0) for (f of FORMES_LIGNE) { el.textContent = forme(f, 100); if (el.scrollWidth <= el.clientWidth + 1) break; }
-  const t = forme(f, p); if (el) el.textContent = t; return t;
+  const p = total ? Math.min(1, fait / total) : 0, nom = nomSecteur(id);
+  if (!el) return `${nom} ${Math.round(100 * p)} %`;
+  const M = el.closest('#menu');
+  const s = sceau(el, { id, nom, p, echelle: M ? echelleTerminal(M) : echelleJeu() });
+  if (M) placeTerminal(el, s);
+  return s.lu.textContent;
 }
+// rotation, fold qui se plie / se déplie : le sceau reprend son échelle et sa place
+addEventListener('resize', () => requestAnimationFrame(() => {
+  if (!chargementEl.hidden && chargementEl._sceau) sceau(chargementEl, { id: chargementEl._sceau.id, nom: chargementEl._sceau.nom, p: chargementEl._sceau.cible, echelle: echelleJeu() });
+  const n = document.getElementById('menu-note'), M = document.getElementById('menu');
+  if (n && n._sceau && n._sceau.racine.isConnected && M.classList.contains('t-charge')) { sceau(n, { id: n._sceau.id, nom: n._sceau.nom, p: n._sceau.cible, echelle: echelleTerminal(M) }); placeTerminal(n, n._sceau); }
+}));
 function afficheChargement(on) {
-  if (!on) { if (!chargementEl.hidden) { chargementEl.hidden = true; document.body.classList.remove('chargement-lieu'); } chargementLieu = null; return; }
+  if (!on) { if (!chargementEl.hidden) { chargementEl.hidden = true; document.body.classList.remove('chargement-lieu'); retireSceau(chargementEl); } chargementLieu = null; return; }
   const id = game.state.location;
-  if (chargementEl.hidden) { chargementEl.hidden = false; document.body.classList.add('chargement-lieu'); } // visible avant la mesure de la ligne
+  if (chargementEl.hidden) { chargementEl.hidden = false; document.body.classList.add('chargement-lieu'); } // visible avant la mesure de la légende du sceau
   if (chargementLieu !== id) { chargementLieu = id; ligneChargement(id, 0, 1, chargementEl);
     chargeur.lieu(id, e => { if (chargementLieu === e.lieu) ligneChargement(e.lieu, e.fait, e.total, chargementEl); }); }
 }

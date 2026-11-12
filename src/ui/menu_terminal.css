@@ -129,20 +129,20 @@ body.contrast #menu.term .t-fond::after{background:rgba(10,8,4,.78)}
 #menu.term .t-attente b::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}
 #menu.term.t-attend .t-attente{display:block}
 #menu.term.t-attend #t-screen,#menu.term.t-attend .t-cadre{visibility:hidden}
-/* Lancement d'une partie : le Terminal reste à l'écran, choix gelés, et la ligne de chargement (#menu-note) passe en phosphore vif,
-   avec sa barre de progression, jusqu'à ce que le lieu soit jouable. */
+/* Lancement d'une partie : le Terminal reste à l'écran, choix gelés, et le monogramme NML (src/ui/monogramme.js, proposition B d'Ocre)
+   se pose sous les choix, dans la bande libre (au-dessus du statut en paysage, du bandeau en portrait), jusqu'à ce que le lieu soit jouable. */
 #menu.term.t-charge .t-list{pointer-events:none}
 #menu.term.t-charge .t-list .btn:not(.t-choisi){opacity:.4}
-#menu.term.t-charge #menu-note{font:400 max(17px,calc(28px*var(--k)))/1.2 'VT',monospace;color:var(--vif);text-shadow:var(--glow);white-space:nowrap;text-align:center;opacity:1;justify-self:stretch;min-width:0}
-#menu.term.t-charge #menu-note::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}
-#menu.term.t-charge.t-reduit #menu-note::after{animation:none}
-/* en jeu : lieu suivant pas encore chargé (passage de porte, voyage) : même ligne ambre, monde assombri derrière, interface de jeu masquée */
-/* une seule ligne (12/11) : boîte centrée par marges auto (pas de left:50%, qui bornait la largeur à la moitié droite), nowrap */
-#chargement{position:fixed;z-index:60;left:12px;right:12px;margin:0 auto;bottom:22%;width:max-content;max-width:calc(100% - 24px);padding:6px 14px;box-sizing:border-box;
-  font:400 clamp(17px,2.4vw,28px)/1.2 'VT',ui-monospace,monospace;color:#ffd078;white-space:nowrap;text-align:center;background:rgba(10,8,4,.72);border:1px solid rgba(242,180,74,.45);
-  text-shadow:0 0 4px #f2b44a,0 0 12px rgba(242,180,74,.55);pointer-events:none}
+#menu.term #menu-note .nml-sceau{position:absolute;left:50%;transform:translateX(-50%);z-index:2}
+/* sceau NML : canvas (hexagone, lettres, anneau) + légende Plex « SECTEUR   n % » sur une ligne, une seule unité visuelle */
+.nml-sceau{display:flex;flex-direction:column;align-items:center;pointer-events:none;user-select:none;line-height:1}
+.nml-sceau-cv{display:block;width:var(--sceau);height:var(--sceau)}
+.nml-sceau-leg{display:block;margin-top:calc(-4px*var(--sceau-e));font:400 max(11px,calc(15px*var(--sceau-e)))/1.2 'Plex',ui-monospace,monospace;color:#f2b44a;white-space:pre;
+  letter-spacing:0;text-shadow:0 0 3px rgba(242,180,74,.5);opacity:.95}
+.nml-sceau-lu{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+/* en jeu : lieu suivant pas encore chargé (passage de porte, voyage) : même sceau, badge en bas sans plaque, discret ; monde assombri derrière,
+   interface de jeu masquée. Centre de l'anneau vers 75,7 % de la hauteur (maquettes d'Ocre : 605 / 800 à 1280, 390 et fold au même endroit). */
+#chargement{position:fixed;z-index:60;left:50%;top:75.7%;transform:translate(-50%,calc(var(--sceau,120px)/-2));opacity:.96;pointer-events:none}
 #chargement[hidden]{display:none}
-#chargement::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}
-body.reduce-motion #chargement::after{animation:none}
 body.chargement-lieu #view{filter:brightness(.35)}
 body.chargement-lieu #labels,body.chargement-lieu #msg,body.chargement-lieu #hud,body.chargement-lieu #keys,body.chargement-lieu #zoom,body.chargement-lieu #locbox,body.chargement-lieu #obj,body.chargement-lieu #act,body.chargement-lieu #mini{visibility:hidden}

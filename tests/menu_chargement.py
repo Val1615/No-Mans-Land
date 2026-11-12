@@ -4,13 +4,15 @@
 # 2. menu complet sans attendre le catalogue (images du jeu retenues) : cadre, titre, choix
 # 3. CONTINUER renseigné depuis localStorage avant main.js (main.js retenu), même format que shell.js ; sauvegardes DEV séparées
 # 4. musique du menu au premier geste, avant main.js ; pas de préchargement du mp3 (preload none)
-# 5. ouverture d'une partie (Continuer -> Center-Town, images de Center-Town retenues) : Terminal visible, ligne CHARGEMENT DU SECTEUR
-#    avec progression, jamais de menu caché sur du vide ; puis le jeu ; aucun échantillon « silencieux »
+# 5. ouverture d'une partie (Continuer -> Center-Town, images de Center-Town retenues) : Terminal visible, monogramme NML
+#    avec progression (anneau = vrai %), jamais de menu caché sur du vide ; puis le jeu ; aucun échantillon « silencieux »
 # 6. Nouvelle partie : création puis Dusk-Town, sans silence
-# 7. en jeu : lieu pas encore chargé -> ligne de chargement, puis le lieu ; les autres quartiers se chargent à l'arrivée
+# 7. en jeu : lieu pas encore chargé -> monogramme NML en badge, puis le lieu ; les autres quartiers se chargent à l'arrivée
 # 8. un seul visage au repos : cadre + musique + progression, 1280 et 390 ; mouvement réduit
-# 9. (12/11, Ocre) ligne de chargement sur UNE SEULE LIGNE (barre et « % » ensemble), dans le Terminal et sur l'overlay en jeu,
-#    à 1280, 390 et fold (plié 412, déplié 884) ; lisible (≥ 17 px), dans la largeur utile
+# 9. (12/11, choix de Valentin : proposition B d'Ocre) monogramme NML à la place de la ligne, dans le Terminal et sur l'overlay en jeu,
+#    à 1280, 390 et fold (plié 412, déplié 884) : une seule unité (canvas net + légende Plex sur une ligne), dans l'écran, sans recouvrir
+#    de texte du Terminal, légende « SECTEUR   n % » (ou « n % » en petit format), texte lu (secteur + %), anneau sur le vrai progrès ;
+#    mouvement réduit : hexagone et lettres déjà là
 # 10. calques WebP (Ocre, 197def3) : tampon, cadre et fond servis en .webp ; PNG seulement en repli (WebP en échec), une seule fois
 # Captures : OUT (défaut /tmp/nml-test-out/menu_chargement/).
 import os, sys, time, json, re
@@ -54,15 +56,29 @@ class Retenue:
         try: self.pg.unroute(self.motif, self._h)
         except Exception: pass
 
-# une seule ligne : une seule rangée de boîtes de texte (Range), hauteur d'une ligne, rien qui déborde ; police lisible
-UNE_LIGNE = """sel => { const e = document.querySelector(sel); if (!e || !e.firstChild) return { une: false, raison: 'vide' };
-  const cs = getComputedStyle(e), lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.2, r = e.getBoundingClientRect();
-  const rg = document.createRange(); rg.selectNodeContents(e); const rs = [...rg.getClientRects()].filter(x => x.width > 0);
-  const tops = [...new Set(rs.map(x => Math.round(x.top)))], txt = e.textContent;
-  const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
-  const vw = innerWidth, dedans = r.left >= -1 && r.right <= vw + 1;
-  const une = tops.length === 1 && r.height - pad <= lh * 1.5 && e.scrollWidth <= e.clientWidth + 1 && dedans && /\\[[#-]+\\]/.test(txt) && txt.includes('%') && parseFloat(cs.fontSize) >= 17;
-  return { une, txt, tops: tops.length, h: Math.round(r.height - pad), lh, sw: e.scrollWidth, cw: e.clientWidth, fs: cs.fontSize, ws: cs.whiteSpace, l: Math.round(r.left), rt: Math.round(r.right), vw }; }"""
+# monogramme NML : canvas net (devicePixelRatio) et dessiné, légende sur une seule ligne (nowrap), unité dans la fenêtre (et dans l'écran
+# du Terminal), anneau visible (hors halo) sans croiser de texte du Terminal ; texte lu dans l'élément role=status ; plus de barre [###---]
+SCEAU = """sel => { const e = document.querySelector(sel); const r = e && e.querySelector('.nml-sceau'); if (!r) return { ok: false, raison: 'absent' };
+  const cv = r.querySelector('canvas'), leg = r.querySelector('.nml-sceau-leg'), lu = e.querySelector('.nml-sceau-lu'), s = e._sceau;
+  const b = r.getBoundingClientRect(), cb = cv.getBoundingClientRect(), dpr = devicePixelRatio, ech = parseFloat(r.style.getPropertyValue('--sceau-e'));
+  const g = cv.getContext('2d'), d = g.getImageData(0, 0, cv.width, cv.height).data; let enc = 0; for (let i = 3; i < d.length; i += 16) if (d[i] > 40) enc++;
+  const c = g.getImageData(Math.round(cv.width * .38), Math.round(cv.height * .44), Math.round(cv.width * .24), Math.round(cv.height * .12)).data; let lettres = 0; for (let i = 3; i < c.length; i += 4) if (c[i] > 120) lettres++;
+  const rg = document.createRange(); rg.selectNodeContents(leg); const tops = [...new Set([...rg.getClientRects()].filter(x => x.width > 0).map(x => Math.round(x.top)))];
+  const lc = leg.getBoundingClientRect(), cs = getComputedStyle(leg);
+  const m = (132 - 121) * ech, anneau = { left: cb.left + m, right: cb.right - m, top: cb.top + m, bottom: cb.bottom - m };
+  const vis = { left: Math.min(anneau.left, lc.left), right: Math.max(anneau.right, lc.right), top: anneau.top, bottom: lc.bottom };
+  const ecr = document.getElementById('t-screen'), er = e.closest('#menu') ? ecr.getBoundingClientRect() : { left: 0, top: 0, right: innerWidth, bottom: innerHeight };
+  const dedans = vis.left >= er.left - 1 && vis.right <= er.right + 1 && vis.top >= er.top - 1 && vis.bottom <= er.bottom + 1;
+  let croise = [];
+  if (e.closest('#menu')) { const M = e.closest('#menu'), T = el => { const q = document.createRange(); q.selectNodeContents(el); return [...q.getClientRects()].filter(x => x.width > 0); };
+    const els = [M.querySelector('h1'), ...M.querySelectorAll('.t-list .btn:not([hidden])'), M.querySelector('#m-exec'), ...M.querySelectorAll('.t-status span'), M.querySelector('#m-version')];
+    for (const el of els) for (const x of T(el)) if (x.left < vis.right && x.right > vis.left && x.top < vis.bottom && x.bottom > vis.top) croise.push(el.id || el.className || el.tagName);
+    const tk = M.querySelector('.t-ticker').getBoundingClientRect(); if (tk.top < vis.bottom && tk.bottom > vis.top) croise.push('ticker'); }
+  const ok = cv.width === Math.round(parseFloat(cv.style.width) * dpr) && enc > 30 && tops.length === 1 && cs.whiteSpace === 'pre' && leg.textContent.includes('%') && dedans && !croise.length
+    && /\d+ %/.test(lu.textContent) && !/\[[#-]+\]/.test(e.textContent);
+  return { ok, leg: leg.textContent.replace(/\u00a0/g, ' '), lu: lu.textContent, forme: leg.dataset.forme, ech: +ech.toFixed(3), w: Math.round(b.width), h: Math.round(b.height), cvw: cv.width, dpr, enc, lettres,
+    lignes: tops.length, fs: parseFloat(cs.fontSize), dedans, croise, cx: Math.round((anneau.left + anneau.right) / 2), cy: Math.round((anneau.top + anneau.bottom) / 2), vw: innerWidth, vh: innerHeight,
+    cible: s ? +s.cible.toFixed(3) : null, vu: s ? +s.vu.toFixed(3) : null, op: +getComputedStyle(e).opacity }; }"""
 
 def saute(pg):  # saute l'allumage (geste : aussi le premier geste pour la musique)
     pg.mouse.click(6, 6); time.sleep(0.25)
@@ -142,16 +158,25 @@ with sync_playwright() as p:
            f'{nom} repos : un seul visage, cadre + musique + progression sous CONTINUER', repos)
         pg.click('#m-continue'); t0 = time.time(); time.sleep(1.0)
         s = pg.evaluate(SONDE); pg.screenshot(path=f'{OUT}{nom}_4_chargement_partie.png')
-        ok(s['menu'] and s['charge'] and 'CHARGEMENT' in s['note'] and 'CENTER-TOWN' in s['note'] and '%' in s['note'] and '[' in s['note'],
-           f'{nom} ouverture de partie : le Terminal reste, ligne CHARGEMENT · CENTER-TOWN avec progression', s)
-        if nom == '1280': ok('CHARGEMENT DU SECTEUR' in s['note'], '1280 : forme longue « CHARGEMENT DU SECTEUR » (place suffisante)', s['note'])
-        taille = pg.evaluate("(() => { const n = document.getElementById('menu-note'); return parseFloat(getComputedStyle(n).fontSize); })()")
-        ok(taille >= 17, f'{nom} la ligne de chargement est lisible (≥ 17 px, phosphore vif)', taille)
-        time.sleep(2.0); hold.relache()
+        sc = pg.evaluate(SCEAU, '#menu-note')
+        ok(s['menu'] and s['charge'] and sc['ok'] and 'CENTER-TOWN' in sc['lu'] and '%' in sc['leg'],
+           f'{nom} ouverture de partie : le Terminal reste, monogramme NML (CENTER-TOWN, %) à la place de la ligne', sc)
+        if nom == '1280': ok(sc['forme'] == 'longue' and 'CENTER-TOWN' in sc['leg'], '1280 : légende longue « CENTER-TOWN   n % » (place suffisante)', sc['leg'])
+        ok(sc['fs'] >= 11, f'{nom} la légende du sceau est lisible (≥ 11 px, Plex)', sc['fs'])
+        # anneau = vrai progrès : on lâche une partie des images retenues, l'anneau avance d'autant
+        p0 = pg.evaluate("document.getElementById('menu-note')._sceau.cible"); n0 = len(hold.held)
+        for r in hold.held[:n0 // 2]:
+            try: r.continue_()
+            except Exception: pass
+        hold.held = hold.held[n0 // 2:]; time.sleep(1.5)
+        s1 = pg.evaluate(SCEAU, '#menu-note')
+        ok(s1['cible'] > p0 and s1['vu'] > 0 and abs(s1['vu'] - s1['cible']) < 0.2 and str(round(100 * s1['cible'])) in s1['leg'],
+           f'{nom} l\'anneau suit le vrai chargement (images lâchées : {p0:.2f} -> {s1["cible"]:.2f}), le % de la légende aussi', s1)
+        time.sleep(0.5); hold.relache()
         vides = []; fin = None
         while time.time() - t0 < 120:
             s = pg.evaluate(SONDE)
-            signe = (s['menu'] and ('CHARGEMENT' in s['note'] or s['charge'])) or s['chargeJeu']
+            signe = (s['menu'] and s['charge']) or s['chargeJeu']
             jouable = not s['menu'] and s['loc'] == 'steel_center' and s['pret'] and not s['chargeJeu']
             if jouable: fin = time.time() - t0; break
             if not signe: vides.append(round(time.time() - t0, 2))
@@ -178,15 +203,16 @@ with sync_playwright() as p:
     while time.time() - t0 < 60:
         s = pg.evaluate(SONDE)
         if not s['menu'] and not s['creation'] and s['pret'] and s['loc'] and not s['chargeJeu']: break
-        if not (s['creation'] or (s['menu'] and ('CHARGEMENT' in s['note'] or s['charge'])) or s['chargeJeu']): vides.append(round(time.time() - t0, 2))
+        if not (s['creation'] or (s['menu'] and s['charge']) or s['chargeJeu']): vides.append(round(time.time() - t0, 2))
         time.sleep(0.2)
     ok(not s['menu'] and not s['creation'] and s['pret'], 'Nouvelle partie : en jeu après la création', {'s': s, 'boutons': done[:8]})
     ok(len(vides) <= 1, 'Nouvelle partie : pas de silence entre la création et le jeu', vides[:8])
-    # 7. téléportation vers Pulse Plaza (images retenues) : ligne de chargement en jeu, puis le lieu
+    # 7. téléportation vers Pulse Plaza (images retenues) : monogramme NML en jeu, puis le lieu
     pg.evaluate("window.__nml.game.state.location = 'steel_pulse'"); time.sleep(0.8)
     s = pg.evaluate(SONDE); pg.screenshot(path=f'{OUT}1280_7_chargement_en_jeu.png')
-    ok(s['chargeJeu'] and 'CHARGEMENT DU SECTEUR' in s['ligneJeu'] and not s['pret'], 'en jeu : lieu pas encore chargé -> ligne CHARGEMENT DU SECTEUR, monde figé', s)
-    l1 = pg.evaluate(UNE_LIGNE, '#chargement'); ok(l1['une'], '1280 en jeu (Pulse Plaza) : overlay de chargement sur une seule ligne, « % » compris', l1)
+    ok(s['chargeJeu'] and 'PULSE PLAZA' in s['ligneJeu'] and not s['pret'], 'en jeu : lieu pas encore chargé -> monogramme NML (PULSE PLAZA), monde figé', s)
+    l1 = pg.evaluate(SCEAU, '#chargement'); ok(l1['ok'] and 'PULSE PLAZA' in l1['leg'] and 0.66 <= l1['cy'] / l1['vh'] <= 0.84 and abs(l1['cx'] - l1['vw'] / 2) <= 2 and 0.9 <= l1['op'] < 1,
+       '1280 en jeu (Pulse Plaza) : badge NML en bas, centré, discret (opacité ~0,96), légende « PULSE PLAZA   n % »', l1)
     hold.relache()
     pg.wait_for_function("window.__nml.lieuPret('steel_pulse') && document.getElementById('chargement').hidden", timeout=120000); time.sleep(0.5)
     n = pg.evaluate("window.__nml.chargeur.cles('steel_pulse').filter(k => !window.__nml.chargeur.charge(k)).length")
@@ -194,22 +220,23 @@ with sync_playwright() as p:
     pg.screenshot(path=f'{OUT}1280_8_pulse_charge.png')
     ok(not [e for e in errs if 'JS' in e], 'Nouvelle partie / passage : aucune erreur JS', errs[:3]); ctx.close()
 
-    # 9. une seule ligne, Terminal et overlay en jeu, 1280 / 390 / fold plié / fold déplié
+    # 9. monogramme NML, Terminal et overlay en jeu, 1280 / 390 / fold plié / fold déplié
     for nom, w, h, mob in [('1280', 1280, 800, False), ('390', 390, 844, True), ('fold_plie_412', 412, 915, True), ('fold_deplie_884', 884, 1104, True)]:
         ctx, pg, errs = contexte(br, w, h, mob, save=SAVE)
         hc = Retenue(pg, re.compile(r'.*/assets/steel/center_town/.*\.(webp|png)$')); hp = Retenue(pg, re.compile(r'.*/assets/steel/pulse_plaza/.*\.(webp|png)$'))
         pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=120000)
         saute(pg); pg.evaluate("window.__nml.shell.terminal.saute()"); time.sleep(0.3)
         pg.click('#m-continue'); time.sleep(1.0)
-        l = pg.evaluate(UNE_LIGNE, '#menu-note'); pg.screenshot(path=f'{OUT}{nom}_9_ligne_terminal.png')
-        ok(pg.evaluate(SONDE)['charge'] and l['une'], f'{nom} Terminal : ligne de chargement sur une seule ligne (barre et « % » ensemble, ≥ 17 px)', l)
+        l = pg.evaluate(SCEAU, '#menu-note'); pg.screenshot(path=f'{OUT}{nom}_9_sceau_terminal.png')
+        ok(pg.evaluate(SONDE)['charge'] and l['ok'] and l['lettres'] > 10, f'{nom} Terminal : monogramme NML net, dans l\'écran, sans recouvrir de texte, légende sur une ligne', l)
         hc.relache(); pg.wait_for_function("window.__nml.lieuPret('steel_center') && document.getElementById('menu').hidden", timeout=120000); time.sleep(0.3)
         pg.evaluate("window.__nml.game.state.location = 'steel_pulse'")  # la ligne paraît à l'image suivante (Center-Town : images lentes en swiftshader)
         pg.wait_for_function("!document.getElementById('chargement').hidden", timeout=20000); time.sleep(0.4)
-        l = pg.evaluate(UNE_LIGNE, '#chargement'); pg.screenshot(path=f'{OUT}{nom}_9_ligne_en_jeu.png')
-        ok(pg.evaluate(SONDE)['chargeJeu'] and l['une'], f'{nom} en jeu (Pulse Plaza) : overlay de chargement sur une seule ligne, « % » compris', l)
+        l = pg.evaluate(SCEAU, '#chargement'); pg.screenshot(path=f'{OUT}{nom}_9_sceau_en_jeu.png')
+        ok(pg.evaluate(SONDE)['chargeJeu'] and l['ok'] and l['lettres'] > 10 and 0.66 <= l['cy'] / l['vh'] <= 0.84 and l['forme'] == 'longue',
+           f'{nom} en jeu (Pulse Plaza) : badge NML en bas, dans la fenêtre, légende « PULSE PLAZA   n % » sur une ligne', l)
         hp.relache(); pg.wait_for_function("window.__nml.lieuPret('steel_pulse') && document.getElementById('chargement').hidden", timeout=120000)
-        ok(not [e for e in errs if 'JS' in e], f'{nom} ligne unique : aucune erreur JS', errs[:3]); ctx.close()
+        ok(not [e for e in errs if 'JS' in e], f'{nom} monogramme : aucune erreur JS', errs[:3]); ctx.close()
 
     # 10. calques WebP : tampon (et cadre, fond) en .webp ; PNG seulement en repli
     ctx, pg, errs = contexte(br); vus = []
@@ -240,6 +267,14 @@ with sync_playwright() as p:
     ok(et['reduit'] and not et['booting'] and et['mode'] == 'paysage', 'mouvement réduit : pas d\'allumage, cadre posé', et)
     ok(pg.evaluate("document.getElementById('m-continue-info').textContent") == ATTENDU, 'mouvement réduit : progression sous CONTINUER')
     ctx.close()
+    # mouvement réduit + images retenues : le monogramme (hexagone + lettres) est là d'emblée, seul l'anneau avance
+    ctx, pg, errs = contexte(br, save=SAVE, reduit=True); hold = Retenue(pg, re.compile(r'.*/assets/steel/center_town/.*\.(webp|png)$'))
+    pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=120000); time.sleep(0.3)
+    pg.click('#m-continue'); pg.wait_for_function("!!document.querySelector('#menu-note .nml-sceau')", timeout=10000)
+    pg.evaluate('() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))')
+    l = pg.evaluate(SCEAU, '#menu-note'); pg.screenshot(path=f'{OUT}1280_8_reduit_sceau.png')
+    ok(l['ok'] and l['lettres'] > 10 and l['vu'] == l['cible'], 'mouvement réduit : hexagone et lettres déjà là dès la première image, l\'anneau sur le % sans glissement', l)
+    hold.relache(); ctx.close()
     br.close()
 bons = sum(1 for c, _ in R if c)
 print(f'{bons}/{len(R)} OK'); print('ECHECS', len(R) - bons)
