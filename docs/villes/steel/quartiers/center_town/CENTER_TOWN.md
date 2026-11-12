@@ -771,3 +771,7 @@ Défauts connus :
 - La cour est masquée par les rangées D/F/E vues depuis la caméra (voir la maquette « cour »).
 
 Planches hors jeu (non versionnées) : `nml-shots/ct_v4_ne_bureaux_controle.png`, `nml-shots/ct_v4_ne_bureaux_maquette.jpg`, `nml-shots/ct_v4_ne_bureaux_maquette_cour.jpg`.
+
+### Q. Intégration Rivet (lots §8M, §8N, §8P)
+
+Poses d'Ocre appliquées telles quelles (emprise native, aucun `b.k` / `b.sy`). Mobilier §8J / v3 réutilisé (stands, cerisiers, tables, bancs, lampadaires, arbres du jardin aussi dans la cour NE). Porche, segment et Nexus inchangés. Répétitions `d` × 2, `e1` × 2, `f` × 3 conservées. Sols jardin (pelouse, allées) et dalles / asphalte de cour et de ruelle de service posés dans `paint` après le carrefour. Vitrines sud du marché et rangée nord du jardin non déplacées. Rien en x ≥ 44 dans le jardin (passage Dôme z96-100 libre). Le lot §8P (e566eef) est posé dans le même commit que §8M / §8N.

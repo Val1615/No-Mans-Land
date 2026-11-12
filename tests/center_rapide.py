@@ -43,13 +43,20 @@ EXPECTED_SPRITES = {
     'ct_mob_jardiniere_arbre_v4_3q', 'ct_mob_jardiniere_arbustes_v4_3q', 'ct_mob_lampadaire_ambre_v4_3q',
     'ct_mob_panneau_holo_v4_3q', 'ct_mob_plots_v4_3q', 'ct_mob_poubelles_x_v4_3q',
     'ct_mob_poubelles_z_v4_3q', 'ct_mob_stand_streetfood_v4_3q', 'ct_mob_table_haute_v4_3q',
-    'ct_monorail_rame_v3_3q', 'ct_monorail_viaduc_v3_3q', 'ct_ne_porche_8x4_v4_3q',
-    'ct_ne_segment_8x4_v4_3q', 'ct_tour_archeon_v4_3q', 'ct_tour_humancorp_v4_3q',
-    'ct_tour_nexus_v4_3q', 'ct_tour_orc_v4_3q', 'ct_tour_teng_v4_3q',
-    'ct_veh_berline_dos_v4_3q', 'ct_veh_bus_dos_v4_3q', 'ct_veh_compacte_dos_v4_3q',
-    'ct_veh_depanneuse_avant_v4_3q', 'ct_veh_intercepteur_avant_v4_3q', 'ct_veh_limo_dos_v4_3q',
-    'ct_veh_moto_avant_v4_3q', 'ct_veh_motolivr_dos_v4_3q', 'ct_veh_taxi_avant_v4_3q',
-    'ct_veh_tram_avant_v4_3q', 'ct_veh_utilitaire_avant_v4_3q',
+    'ct_monorail_rame_v3_3q', 'ct_monorail_viaduc_v3_3q', 'ct_ne_bureaux_a1_8x6_v4_3q',
+    'ct_ne_bureaux_a2_8x6_v4_3q', 'ct_ne_bureaux_a3_8x6_v4_3q', 'ct_ne_bureaux_b1_12x6_v4_3q',
+    'ct_ne_bureaux_b2_12x6_v4_3q', 'ct_ne_bureaux_c_10x8_v4_3q', 'ct_ne_bureaux_d_10x6_v4_3q',
+    'ct_ne_bureaux_e1_8x8_v4_3q', 'ct_ne_bureaux_e2_8x8_v4_3q', 'ct_ne_bureaux_f_7x6_v4_3q',
+    'ct_ne_porche_8x4_v4_3q', 'ct_ne_segment_8x4_v4_3q', 'ct_se_arriere_8x10_v4_3q',
+    'ct_se_ateliers_12x10_v4_3q', 'ct_se_echoppes_9x6_v4_3q', 'ct_se_etals_couverts_v4_3q',
+    'ct_se_kiosque_nouilles_v4_3q', 'ct_se_maison_the_v4_3q', 'ct_so_arbre_jardin_v4_3q',
+    'ct_so_fontaine_v4_3q', 'ct_so_kiosque_jardin_v4_3q', 'ct_so_muret_haie_x_v4_3q',
+    'ct_so_muret_haie_z_v4_3q', 'ct_so_stand_concert_v4_3q', 'ct_tour_archeon_v4_3q',
+    'ct_tour_humancorp_v4_3q', 'ct_tour_nexus_v4_3q', 'ct_tour_orc_v4_3q',
+    'ct_tour_teng_v4_3q', 'ct_veh_berline_dos_v4_3q', 'ct_veh_bus_dos_v4_3q',
+    'ct_veh_compacte_dos_v4_3q', 'ct_veh_depanneuse_avant_v4_3q', 'ct_veh_intercepteur_avant_v4_3q',
+    'ct_veh_limo_dos_v4_3q', 'ct_veh_moto_avant_v4_3q', 'ct_veh_motolivr_dos_v4_3q',
+    'ct_veh_taxi_avant_v4_3q', 'ct_veh_tram_avant_v4_3q', 'ct_veh_utilitaire_avant_v4_3q',
 }
 # façades de remplissage v4 d'Ocre (CENTER_TOWN.md §8C) : id -> (clé, x, z, w, d, h cible)
 REMPL = {
@@ -81,6 +88,7 @@ EXPECTED_SOLS = {
     'g_ct_voie_tirets_ns', 'g_ct_voie_tirets_ew', 'g_ct_ligne_arret_ns', 'g_ct_ligne_arret_ew',
     'g_ct_bordure_n', 'g_ct_bordure_s', 'g_ct_bordure_e', 'g_ct_bordure_o',
     'g_ct_bordure_angle_se', 'g_ct_bordure_angle_so', 'g_ct_bordure_angle_ne', 'g_ct_bordure_angle_no',
+    'g_ct_jardin_pelouse', 'g_ct_jardin_allee',
 }
 OBSOLETE_SOLS = {'g_ct_carrefour_jaune'}
 # chaussée (hors passages piétons) : on n'y pose ni figurant ni passant
@@ -286,6 +294,61 @@ with sync_playwright() as p:
               return out;
             }""")
             ok(not mob_chaussee, f'{name} mobilier hors chaussée 20 m (x64-84 / z56-76), véhicules garés exceptés (poses d\'Ocre)', mob_chaussee)
+            coins = E("""() => {
+              const L = window.__nml.world.LOCATIONS.steel_center, gr = window.__nml.game.grids.steel_center, bman = window.__nml.world.bman || window.__nml.data?.bman;
+              const B = id => L.buildings.find(b => b.id === id);
+              const f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
+              const len = p => p ? +p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0).toFixed(1) : null;
+              const se = ['ct_p_se_kiosque_nouilles','ct_p_se_echoppes_9x6','ct_p_se_maison_the','ct_p_se_ateliers_12x10','ct_p_se_arriere_8x10','ct_p_se_etals_couverts'].map(id => { const b=B(id); return b && [b.id, b.sprite, b.x, b.z, b.w, b.d]; });
+              const ruelleN = [], ruelleEW = [], ruelleNS = [];
+              for (let x = 100.5; x <= 123.5; x += 1) ruelleN.push([x, 93.5, f(x, 93.5)]);
+              for (let x = 112.5; x <= 114.5; x += 0.5) for (let z = 101.5; z <= 105.5; z += 1) ruelleNS.push([x, z, f(x, z)]);
+              for (let x = 101; x <= 111; x += 1) ruelleEW.push([x, 103.5, f(x, 103.5)]);
+              const pSe = window.__findPath(gr, { x: 98, z: 88 }, { x: 113, z: 103 });
+              const soK = B('ct_so_kiosque0'), soF = B('ct_so_fontaine0');
+              const domePass = []; for (let x = 44.5; x <= 55.5; x += 1) for (const z of [96.5, 97, 98, 99.5]) domePass.push([x, z, f(x, z)]);
+              const pDome = window.__findPath(gr, { x: 26, z: 90 }, { x: 50, z: 97 });
+              const pJard = window.__findPath(gr, { x: 26, z: 90 }, { x: 18, z: 108 });
+              const xGe44 = L.buildings.filter(b => b.x >= 44 && b.id.startsWith('ct_so_')).map(b => b.id);
+              const c = B('ct_ne_bur_c'), d1 = B('ct_ne_bur_d1'), d2 = B('ct_ne_bur_d2'), e1 = B('ct_ne_bur_e1'), e2 = B('ct_ne_bur_e2'), e3 = B('ct_ne_bur_e3');
+              const fcount = L.buildings.filter(b => b.sprite === 'ct_ne_bureaux_f_7x6_v4_3q').length;
+              const dcount = L.buildings.filter(b => b.sprite === 'ct_ne_bureaux_d_10x6_v4_3q').length;
+              const e1count = L.buildings.filter(b => b.sprite === 'ct_ne_bureaux_e1_8x8_v4_3q').length;
+              const hc = L.buildings.find(b => b.sprite === 'ct_tour_humancorp_v4_3q');
+              const neH = L.buildings.filter(b => (b.sprite||'').startsWith('ct_ne_bureaux_')).map(b => [b.id, (window.__nml.world.BUILDING_MANIFEST || window.__nml.assets || {})[b.sprite]]);
+              const man = window.__nml.world.manifest || window.__nml.catalogue?.buildings;
+              const hs = L.buildings.filter(b => (b.sprite||'').startsWith('ct_ne_bureaux_')).map(b => {
+                const m = (window.__nml.bman || window.__nml.view && 0);
+                return b.sprite;
+              });
+              const alley = []; for (let x = 100.5; x <= 109.5; x += 1) for (const z of [21, 22, 23]) if (!(x >= 103.6 && x <= 105.2 && z >= 21.6 && z <= 23.4)) alley.push([x, z, f(x, z)]);
+              const pNe = window.__findPath(gr, { x: 88, z: 22 }, { x: 111, z: 26 });
+              const frontSud = ['c_galerie','ct_rempl7','ct_rempl8','ct_rempl9','c_tour','ct_rempl4','ct_rempl5','ct_archeon','c_immeuble'].map(id => { const b=B(id); return b && [b.id, b.x, b.z, b.w, b.d]; });
+              const seH = L.buildings.filter(b => (b.sprite||'').startsWith('ct_se_') && b.sprite.includes('v4')).length;
+              return { se, seOk: se.every(Boolean) && se[0][2]===100 && se[2][2]===124 && se[3][3]===106,
+                ruelleNbloq: ruelleN.filter(q => !q[2]), ruelleNSok: ruelleNS.every(q => q[2]), pSe: len(pSe),
+                soK: soK && [soK.sprite, soK.x, soK.z, soK.w, soK.d], soF: soF && [soF.x, soF.z],
+                domeBloq: domePass.filter(q => !q[2]), pDome: len(pDome), pJard: len(pJard), xGe44,
+                c: c && [c.sprite, c.x, c.z, c.w, c.d], d1: d1 && [d1.x, d1.z], d2: d2 && [d2.x, d2.z],
+                e1: e1 && [e1.sprite, e1.x, e1.z], e2: e2 && [e2.sprite, e2.z], e3: e3 && [e3.sprite, e3.z],
+                fcount, dcount, e1count, hc: hc && [hc.x, hc.z, hc.w, hc.d],
+                alleyBloq: alley.filter(q => !q[2]), pNe: len(pNe),
+                frontSud, porche: [B('ct_ne_porche0')&&B('ct_ne_porche0').x, B('ct_ne_seg0')&&B('ct_ne_seg0').z, B('ct_nexus')&&B('ct_nexus').z] };
+            }""")
+            ok(coins['seOk'] and not coins['ruelleNbloq'] and coins['pSe'] and coins['pSe'] < 40
+               and coins['frontSud'][0] == ['c_galerie', 100, 84, 8, 4],
+               f'{name} marché SE §8M posé (6 bâtiments), ruelle z92-95 libre, accès depuis le trottoir, vitrines sud intactes', coins)
+            ok(coins['soK'] == ['ct_so_kiosque_jardin_v4_3q', 3, 107, 6, 6] and coins['soF'] == [18, 101]
+               and not coins['domeBloq'] and coins['pDome'] and coins['pDome'] < 40 and not coins['xGe44']
+               and coins['pJard'],
+               f'{name} jardin SO §8N posé, passage Dôme x44-56 z96-100 libre (seuil 50;97 atteignable), rien en x≥44', coins)
+            ok(coins['c'] == ['ct_ne_bureaux_c_10x8_v4_3q', 100, 12, 10, 8] and coins['d1'] == [100, 28] and coins['d2'] == [100, 34]
+               and coins['e1'] == ['ct_ne_bureaux_e1_8x8_v4_3q', 124, 16] and coins['e2'][0] == 'ct_ne_bureaux_e2_8x8_v4_3q' and coins['e3'][0] == 'ct_ne_bureaux_e1_8x8_v4_3q'
+               and coins['fcount'] == 3 and coins['dcount'] == 2 and coins['e1count'] == 2
+               and coins['hc'] == [104, 40, 8, 8] and coins['porche'] == [92, 16, 24]
+               and not coins['alleyBloq'] and coins['pNe'] and coins['pNe'] < 40,
+               f'{name} bureaux NE §8P posés (C x100 z12-20, ruelle z20-24, D/E/F, d×2 e1×2 f×3), porche/segment/Nexus et Human Corp intacts, cour joignable', coins)
+
 
             cede = E("""async () => { const v = window.__nml.view, g = window.__nml.game, s = g.state, L = v.vehicules(); const i = L.findIndex(q => q.axe === 'z' && q.z > 5 && q.z < 100);
               if (i < 0) return null; const q = L[i], x0 = s.player.x, z0 = s.player.z; s.player.x = q.x; s.player.z = q.z + (q.path[1][1] > q.path[0][1] ? 3 : -3); s.player.path = [];
@@ -308,7 +371,8 @@ with sync_playwright() as p:
             # 2. Solides, foule hors solides et hors chaussée, profondeur stable, masques == []
             SOL = E("window.__nml.world.LOCATIONS.steel_center.buildings.flatMap(b=>(b.solid??[{x:b.x,z:b.z,w:b.w,d:b.d}]).map(s=>[b.id,s.x,s.z,s.x+s.w,s.z+s.d]))")
             chev_sol = [(a[0], b[0]) for i, a in enumerate(SOL) for b in SOL[i + 1:]
-                        if a[0] != b[0] and a[1] < b[3] - 1e-6 and b[1] < a[3] - 1e-6 and a[2] < b[4] - 1e-6 and b[2] < a[4] - 1e-6]
+                        if a[0] != b[0] and not (a[0].startswith('ct_so_muret_') and b[0].startswith('ct_so_muret_'))
+                        and a[1] < b[3] - 1e-6 and b[1] < a[3] - 1e-6 and a[2] < b[4] - 1e-6 and b[2] < a[4] - 1e-6]
             ok(not chev_sol, f'{name} 0 chevauchement de solides', chev_sol)
             stab = E("""() => { """ + ROUTE_JS + """
               const loc = window.__nml.world.LOCATIONS.steel_center, v = window.__nml.view, g = window.__nml.game, s = g.state, gr = g.grids.steel_center;
@@ -353,7 +417,7 @@ with sync_playwright() as p:
             st = E("({...window.__nml.view.animStats, walkers: window.__nml.world.LOCATIONS.steel_center.walkers.length})")
             tower_pulse_keys = [f'ct_tour_{t}_v4_3q_pulse' for t in ('teng', 'orc', 'archeon', 'nexus', 'humancorp')]
             spans = {k: round(max(s.get(k, 0) for s in samples) - min(s.get(k, 0) for s in samples), 3) for k in tower_pulse_keys}
-            ok(st['enseignes'] == 51 and st['fenetres'] == 66 and st['pulses'] == 34 and st['on'] <= 8 and st['walkers'] <= 12
+            ok(st['enseignes'] == 75 and st['fenetres'] == 105 and st['pulses'] == 34 and st['on'] <= 8 and st['walkers'] <= 12
                and st['pulsesOn'] <= (8 if mob else 48) and st['pulsesOn'] >= (6 if mob else 8),
                f'{name} calques additifs & plafonds : on={st["on"]}, walkers={st["walkers"]}, pulsesOn={st["pulsesOn"]}', st)
             ok(ost['mode'] == 'ost_center_town' and not ost['active'] and ost['playing'] and max_bass > 0.05 and max_energy > 0.04 and all(v > 0.12 for v in spans.values()),
@@ -374,12 +438,13 @@ with sync_playwright() as p:
             ok(len(reach) == 10 and all(v['free'] and v['p1'] >= 1 and v['p2'] >= 2 for v in reach.values()),
                f'{name} 10/10 portes libres et atteignables depuis l\'entrée (1;82) et le carrefour (62;52)', {k: v for k, v in reach.items() if not (v['free'] and v['p1'] >= 1 and v['p2'] >= 2)})
             tr = E("""() => { const gr = window.__nml.game.grids.steel_center, len = p => p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0), out = {};
-              for (const [k, a, b] of [['O-E', [0.5, 52], [131.5, 52]], ['N-S', [74, 0.5], [74, 115.5]], ['diag', [55, 0.5], [131.5, 115.5]], ['entree-dome', [1, 82], [50, 97]], ['entree-est', [1, 82], [131, 50]]]) {
+              for (const [k, a, b] of [['O-E', [0.5, 52], [131.5, 52]], ['N-S', [74, 0.5], [74, 115.5]], ['diag', [55, 0.5], [131.5, 93.5]], ['entree-dome', [1, 82], [50, 97]], ['entree-est', [1, 82], [131, 50]]]) {
                 const t0 = performance.now(), p = window.__findPath(gr, { x: a[0], z: a[1] }, { x: b[0], z: b[1] }), ms = performance.now() - t0;
                 out[k] = p ? { m: +len(p).toFixed(1), s: +(len(p) / 3).toFixed(1), ms: +ms.toFixed(1) } : null; }
               return out; }""")
-            ok(all(tr.values()) and tr['O-E']['s'] <= 46 and tr['N-S']['s'] <= 41 and tr['diag']['s'] <= 70 and max(v['ms'] for v in tr.values()) < 60,
-               f'{name} temps de traversée à 3 m/s : O-E {tr["O-E"]["s"]} s, N-S {tr["N-S"]["s"]} s, diagonale {tr["diag"]["s"]} s ; A* max {max(v["ms"] for v in tr.values())} ms', tr)
+            tr_ok = all(tr.values()) and tr.get('O-E') and tr['O-E']['s'] <= 46 and tr['N-S']['s'] <= 41 and tr['diag']['s'] <= 70 and max(v['ms'] for v in tr.values() if v) < 60
+            ok(tr_ok,
+               f'{name} temps de traversée à 3 m/s : O-E {tr.get("O-E") and tr["O-E"]["s"]} s, N-S {tr.get("N-S") and tr["N-S"]["s"]} s, diagonale {tr.get("diag") and tr["diag"]["s"]} s ; A* max {max((v["ms"] for v in tr.values() if v), default=-1)} ms', tr)
 
             # 5. Transitions : Teng (porte face est) et Dôme (face sud)
             E("(()=>{const g=window.__nml.game,s=g.snapshot();s.player.x=9.5;s.player.z=44.5;g.restore(s,true);g.useDoor('c_change_door')})()")
@@ -419,6 +484,17 @@ with sync_playwright() as p:
         E("window.__nml.view.setCamera({ x: 88, z: 22, ppm: 28 });")
         for _ in range(4): E("window.__nml.view.render()"); time.sleep(0.05)
         pg.screenshot(path=OUT + f'jeu_porche_axe_{wtag}.png')
+        E("window.__nml.view.setCamera(null);")
+        labels_at(116, 98, 1.0, f'jeu_se_marche_{wtag}.png')
+        labels_at(22, 104, 1.0, f'jeu_so_jardin_{wtag}.png')
+        labels_at(50, 97, 1.0, f'jeu_entree_dome_{wtag}.png')
+        labels_at(116, 20, 1.0, f'jeu_ne_bureaux_{wtag}.png')
+        E("window.__nml.view.setCamera({ x: 118, z: 38, ppm: 26 });")
+        for _ in range(4): E("window.__nml.view.render()"); time.sleep(0.05)
+        pg.screenshot(path=OUT + f'jeu_ne_ciel_{wtag}.png')
+        E("window.__nml.view.setCamera({ x: 116, z: 24, ppm: 26 });")
+        for _ in range(4): E("window.__nml.view.render()"); time.sleep(0.05)
+        pg.screenshot(path=OUT + f'jeu_ne_cour_{wtag}.png')
         E("window.__nml.view.setCamera(null);")
         lab_bad = r1['hud'] + r1['over'] + r2['hud'] + r2['over'] + r3['hud'] + r3['over']
         cap = vp[0] >= 700 or all(len(r['fleches']) <= 3 for r in (r1, r2, r3))

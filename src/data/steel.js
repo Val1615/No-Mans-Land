@@ -92,6 +92,18 @@ export const LOCATIONS = {
         { x: 64, z: 48, w: 8, d: 4, skin: 'g_ct_ligne_arret_ns' }, { x: 76, z: 80, w: 8, d: 4, skin: 'g_ct_ligne_arret_ns' },
         { x: 56, z: 68, w: 4, d: 8, skin: 'g_ct_ligne_arret_ew' }, { x: 88, z: 56, w: 4, d: 8, skin: 'g_ct_ligne_arret_ew' },
         { x: 68, z: 60, w: 12, d: 12, skin: 'g_ct_case_jaune_12m', tileM: 12 },
+        // jardin du Dôme §8N (pelouse, puis allées par-dessus, trottoir nord en dernier)
+        { x: 0, z: 92, w: 44, d: 24, skin: 'g_ct_jardin_pelouse' },
+        { x: 0, z: 104, w: 32, d: 4, skin: 'g_ct_jardin_allee' },
+        { x: 12, z: 92, w: 4, d: 24, skin: 'g_ct_jardin_allee' },
+        { x: 28, z: 96, w: 16, d: 4, skin: 'g_ct_jardin_allee' },
+        { x: 32, z: 100, w: 12, d: 8, skin: 'g_ct_jardin_allee' },
+        { x: 16, z: 100, w: 8, d: 8, skin: 'g_ct_jardin_allee' },
+        { x: 0, z: 92, w: 44, d: 2, skin: 'g_ct_trottoir_dalles' },
+        // cour des bureaux NE §8P (dalles, pelouse de cour, asphalte de la ruelle de service)
+        { x: 100, z: 12, w: 32, d: 22, skin: 'g_ct_trottoir_dalles' },
+        { x: 111, z: 21, w: 12, d: 10, skin: 'g_ct_jardin_pelouse' },
+        { x: 115, z: 0, w: 5, d: 12, skin: 'g_ct_asphalte_mouille' },
       ] },
     buildings: BUILDINGS_CENTER, props: [],
     // taxis qui roulent sur les deux avenues (circulation à droite, voies de 4 m : E-O vers l'ouest z58, vers l'est z70/z74 ; N-S vers le sud x66/x70, vers le nord x82) ;
@@ -309,6 +321,8 @@ export const CLOSED_TEXT = {
   ct_arret0: 'Arrêt Tram Central. Le prochain passage s\u2019affiche en ambre, sans heure.',
   ct_tram0: 'Une rame du tramway de Center-Town, portes verrouillées à l\u2019arrêt.',
   ct_tram1: 'Une rame du tramway de Center-Town, portes verrouillées à l\u2019arrêt.',
+  ct_p_se_maison_the: 'Maison de thé. L\u2019odeur du jasmin passe sous la porte, le rideau est déjà baissé.',
+  ct_so_kiosque0: 'Kiosque du jardin. Programmes du Dôme, eau et tickets, le stock d\u2019après-concert.',
   ct_echoppe0: 'Nouilles et vapeur. Le bouillon fume derrière le comptoir en laiton ; paiement par implant uniquement.',
   ct_kiosque0: 'Kiosque Presse & Médias. Les éditions validées par IO tournent en boucle sur l\u2019écran latéral.',
   v_cab_a: 'Une cabane de tôle. Quelqu’un tousse derrière le rideau.', v_cab_b: 'Rideau tiré. Une radio grésille un match qui date.', v_cab_c: 'Des chiens grognent derrière la porte.',
