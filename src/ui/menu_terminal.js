@@ -6,8 +6,8 @@ const DIR = './assets/ui/menu_terminal/';
 // Configuration des cadres, lue dans manifest.json (clés paysage d'origine + objet `portrait`). Repli intégré si le manifeste manque.
 // Une variante = { canvas:{w,h}, ecran:{x,y,w,h,rayon}, cadre, fond, masque, tampon:{x,y,w,h,opacite} }.
 const DEFAUT = {
-  paysage: { canvas: { w: 1920, h: 1080 }, ecran: { x: 168, y: 117, w: 1584, h: 821, rayon: 54 }, cadre: 'cadre.png', fond: 'fond_ecran.png', masque: 'ecran_masque.png',
-    tampon: { fichier: 'tampon_acces_non_autorise.png', x: 1286, y: 708, w: 436, h: 232, opacite: 0.85 } },
+  paysage: { canvas: { w: 1920, h: 1080 }, ecran: { x: 168, y: 117, w: 1584, h: 821, rayon: 54 }, cadre: 'cadre.webp', fond: 'fond_ecran.webp', masque: 'ecran_masque.png',
+    tampon: { fichier: 'tampon_acces_non_autorise.webp', x: 1286, y: 708, w: 436, h: 232, opacite: 0.85 } },
   portrait: null, // fourni par manifest.json (objet `portrait`) quand les fichiers existent
 };
 // Tampon paysage recalé (lot correctif, 10 nov. 2026) : plus petit et plus haut que la valeur du manifeste, pour garder la marge
@@ -58,11 +58,16 @@ export function createTerminal({ M, getOptions, note }) {
   // l'autre orientation et le tampon suivent, sans bloquer. Tant que le cadre de l'écran n'est pas là, le Terminal montre sa ligne
   // d'attente ambre (#t-attente, posée dès le HTML) : jamais de repli plein cadre comme état d'attente (il reste réservé aux écrans
   // de moins de 390 px ou au cadre trop mince, et aux images introuvables).
-  const charge = f => new Promise(r => { const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = DIR + f; });
+  // Calques en WebP lossless (Ocre, 12/11) ; le PNG de même nom reste en repli, essayé une seule fois si le WebP échoue.
+  // Renvoie le fichier réellement chargé (webp, ou png de repli), ou null.
+  const repliPng = f => /\.webp$/i.test(f || '') ? f.replace(/\.webp$/i, '.png') : null;
+  const charge1 = f => new Promise(r => { const i = new Image(); i.onload = () => r(f); i.onerror = () => r(null); i.src = DIR + f; });
+  const charge = async f => (f && await charge1(f)) || (repliPng(f) && await charge1(repliPng(f))) || null;
   const orientation = () => innerHeight > innerWidth ? 'portrait' : 'paysage';
   const chargeVariante = k => { const v = cfg[k]; if (!v) { dispo[k] = false; return Promise.resolve(false); }
     if (dispo[k] === true || dispo[k] === false) return Promise.resolve(dispo[k]);
-    if (!chargeVariante[k]) { dispo[k] = undefined; chargeVariante[k] = Promise.all([v.cadre, v.fond].map(charge)).then(r => { dispo[k] = r.every(Boolean); if (ouvert || pretFait) layout(); return dispo[k]; }); }
+    if (!chargeVariante[k]) { dispo[k] = undefined; chargeVariante[k] = Promise.all([v.cadre, v.fond].map(charge)).then(r => {
+      dispo[k] = r.every(Boolean); if (dispo[k]) cfg[k] = { ...cfg[k], cadre: r[0], fond: r[1] }; if (ouvert || pretFait) layout(); return dispo[k]; }); }
     return chargeVariante[k]; };
   let pretFait = false;
   const pret = (async () => {
@@ -72,9 +77,13 @@ export function createTerminal({ M, getOptions, note }) {
     const ici = orientation();
     await chargeVariante(ici);
     pretFait = true; layout();
-    // ensuite, sans bloquer : tampon (fichier inchangé, déclaré dans le HTML en data-src). L'autre orientation n'est chargée qu'au besoin
-    // (rotation de l'appareil : ligne d'attente le temps du chargement), pour laisser la ligne au lieu de la partie.
-    if (tampon.dataset.src && !tampon.getAttribute('src')) tampon.src = tampon.dataset.src;
+    // ensuite, sans bloquer : tampon (WebP du manifeste, sinon data-src du HTML ; PNG en repli, une seule fois). L'autre orientation
+    // n'est chargée qu'au besoin (rotation de l'appareil : ligne d'attente le temps du chargement), pour laisser la ligne au lieu de la partie.
+    if (!tampon.getAttribute('src')) {
+      const tf = (cfg[ici] || cfg.paysage).tampon?.fichier, src = tf ? DIR + tf : tampon.dataset.src;
+      tampon.addEventListener('error', () => { const r = repliPng(tampon.getAttribute('src')); if (r && !tampon.dataset.repli) { tampon.dataset.repli = '1'; tampon.src = r; } });
+      if (src) tampon.src = src;
+    }
   })();
 
   // ---------- mise en page : contain uniforme du cadre, rectangle écran converti en px CSS ----------

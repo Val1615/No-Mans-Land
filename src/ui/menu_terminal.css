@@ -133,12 +133,13 @@ body.contrast #menu.term .t-fond::after{background:rgba(10,8,4,.78)}
    avec sa barre de progression, jusqu'à ce que le lieu soit jouable. */
 #menu.term.t-charge .t-list{pointer-events:none}
 #menu.term.t-charge .t-list .btn:not(.t-choisi){opacity:.4}
-#menu.term.t-charge #menu-note{font:400 max(17px,calc(28px*var(--k)))/1.2 'VT',monospace;color:var(--vif);text-shadow:var(--glow);white-space:pre-wrap;text-align:center;opacity:1}
+#menu.term.t-charge #menu-note{font:400 max(17px,calc(28px*var(--k)))/1.2 'VT',monospace;color:var(--vif);text-shadow:var(--glow);white-space:nowrap;text-align:center;opacity:1;justify-self:stretch;min-width:0}
 #menu.term.t-charge #menu-note::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}
 #menu.term.t-charge.t-reduit #menu-note::after{animation:none}
 /* en jeu : lieu suivant pas encore chargé (passage de porte, voyage) : même ligne ambre, monde assombri derrière, interface de jeu masquée */
-#chargement{position:fixed;z-index:60;left:50%;bottom:22%;transform:translateX(-50%);max-width:calc(100% - 24px);padding:6px 14px;box-sizing:border-box;
-  font:400 clamp(17px,2.4vw,28px)/1.2 'VT',ui-monospace,monospace;color:#ffd078;white-space:pre-wrap;text-align:center;background:rgba(10,8,4,.72);border:1px solid rgba(242,180,74,.45);
+/* une seule ligne (12/11) : boîte centrée par marges auto (pas de left:50%, qui bornait la largeur à la moitié droite), nowrap */
+#chargement{position:fixed;z-index:60;left:12px;right:12px;margin:0 auto;bottom:22%;width:max-content;max-width:calc(100% - 24px);padding:6px 14px;box-sizing:border-box;
+  font:400 clamp(17px,2.4vw,28px)/1.2 'VT',ui-monospace,monospace;color:#ffd078;white-space:nowrap;text-align:center;background:rgba(10,8,4,.72);border:1px solid rgba(242,180,74,.45);
   text-shadow:0 0 4px #f2b44a,0 0 12px rgba(242,180,74,.55);pointer-events:none}
 #chargement[hidden]{display:none}
 #chargement::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}

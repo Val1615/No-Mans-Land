@@ -61,7 +61,7 @@ export function createShell({ game, world, $, onStart, applyOptions, terminal, p
     if (mode === 'create' || M.hidden) { creation.close(); mode = before === 'pause' ? 'pause' : 'title'; M.hidden = false; document.body.classList.add('menu-open'); M.classList.toggle('pause', mode === 'pause'); sub = null; render(); term.open(mode); term.saute(); }
     sub = null; S.hidden = true; M.classList.remove('sub-open');
     M.classList.add('t-charge'); M.querySelectorAll('.t-choisi').forEach(x => x.classList.remove('t-choisi')); bouton?.classList.add('t-choisi');
-    clearTimeout(flashT); const note = $('menu-note'), ligne = (f, t) => { note.textContent = ligneChargement ? ligneChargement(loc, f, t) : 'CHARGEMENT DU SECTEUR…'; };
+    clearTimeout(flashT); const note = $('menu-note'), ligne = (f, t) => { if (ligneChargement) ligneChargement(loc, f, t, note); else note.textContent = 'CHARGEMENT DU SECTEUR…'; };
     ligne(0, 1);
     // lieu prêt : la ligne affiche 100 % et reste peinte pendant la mise en place de la scène (première image du lieu), puis le jeu s'ouvre
     const raf = () => new Promise(r => { requestAnimationFrame(() => r()); setTimeout(r, 120); }); // onglet caché : pas de rAF

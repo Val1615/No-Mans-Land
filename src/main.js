@@ -169,16 +169,23 @@ voyage.on(ev => { if ((ev.type === 'case' || ev.type === 'halte' || ev.type === 
 const chargementEl = document.createElement('div'); chargementEl.id = 'chargement'; chargementEl.setAttribute('role', 'status'); chargementEl.hidden = true; document.body.appendChild(chargementEl);
 let chargementLieu = null;
 const nomSecteur = id => (world.LOCATIONS[id]?.name || '').split('· ').pop().toUpperCase();
-function ligneChargement(id, fait, total) {
-  const p = total ? Math.round(100 * fait / total) : 0, n = 12, k = Math.round(n * p / 100);
-  return `CHARGEMENT DU SECTEUR · ${nomSecteur(id)}  [${'#'.repeat(k)}${'-'.repeat(n - k)}] ${p} %`;
+// Une seule ligne phosphore, toujours (12/11, demande d'Ocre) : la ligne prend la forme la plus longue qui tient dans la largeur
+// de son élément (mesurée à 100 % pour ne pas changer de forme en cours de route), sans retour à la ligne (white-space:nowrap).
+const FORMES_LIGNE = [['CHARGEMENT DU SECTEUR · ', '  ', 12], ['CHARGEMENT DU SECTEUR · ', ' ', 8], ['CHARGEMENT · ', ' ', 8],
+  ['CHARGEMENT · ', ' ', 5], ['', ' ', 5]];
+function ligneChargement(id, fait, total, el = null) {
+  const p = total ? Math.min(100, Math.round(100 * fait / total)) : 0, nom = nomSecteur(id);
+  const forme = ([a, b, n], q) => { const k = Math.round(n * q / 100); return `${a}${nom}${b}[${'#'.repeat(k)}${'-'.repeat(n - k)}]\u00a0${q}\u00a0%`; };
+  let f = FORMES_LIGNE[0];
+  if (el && el.clientWidth > 0) for (f of FORMES_LIGNE) { el.textContent = forme(f, 100); if (el.scrollWidth <= el.clientWidth + 1) break; }
+  const t = forme(f, p); if (el) el.textContent = t; return t;
 }
 function afficheChargement(on) {
   if (!on) { if (!chargementEl.hidden) { chargementEl.hidden = true; document.body.classList.remove('chargement-lieu'); } chargementLieu = null; return; }
   const id = game.state.location;
-  if (chargementLieu !== id) { chargementLieu = id; chargementEl.textContent = ligneChargement(id, 0, 1);
-    chargeur.lieu(id, e => { if (chargementLieu === e.lieu) chargementEl.textContent = ligneChargement(e.lieu, e.fait, e.total); }); }
-  if (chargementEl.hidden) { chargementEl.hidden = false; document.body.classList.add('chargement-lieu'); }
+  if (chargementEl.hidden) { chargementEl.hidden = false; document.body.classList.add('chargement-lieu'); } // visible avant la mesure de la ligne
+  if (chargementLieu !== id) { chargementLieu = id; ligneChargement(id, 0, 1, chargementEl);
+    chargeur.lieu(id, e => { if (chargementLieu === e.lieu) ligneChargement(e.lieu, e.fait, e.total, chargementEl); }); }
 }
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;

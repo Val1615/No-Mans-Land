@@ -9,6 +9,9 @@
 # 6. Nouvelle partie : création puis Dusk-Town, sans silence
 # 7. en jeu : lieu pas encore chargé -> ligne de chargement, puis le lieu ; les autres quartiers se chargent à l'arrivée
 # 8. un seul visage au repos : cadre + musique + progression, 1280 et 390 ; mouvement réduit
+# 9. (12/11, Ocre) ligne de chargement sur UNE SEULE LIGNE (barre et « % » ensemble), dans le Terminal et sur l'overlay en jeu,
+#    à 1280, 390 et fold (plié 412, déplié 884) ; lisible (≥ 17 px), dans la largeur utile
+# 10. calques WebP (Ocre, 197def3) : tampon, cadre et fond servis en .webp ; PNG seulement en repli (WebP en échec), une seule fois
 # Captures : OUT (défaut /tmp/nml-test-out/menu_chargement/).
 import os, sys, time, json, re
 from playwright.sync_api import sync_playwright
@@ -51,6 +54,16 @@ class Retenue:
         try: self.pg.unroute(self.motif, self._h)
         except Exception: pass
 
+# une seule ligne : une seule rangée de boîtes de texte (Range), hauteur d'une ligne, rien qui déborde ; police lisible
+UNE_LIGNE = """sel => { const e = document.querySelector(sel); if (!e || !e.firstChild) return { une: false, raison: 'vide' };
+  const cs = getComputedStyle(e), lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.2, r = e.getBoundingClientRect();
+  const rg = document.createRange(); rg.selectNodeContents(e); const rs = [...rg.getClientRects()].filter(x => x.width > 0);
+  const tops = [...new Set(rs.map(x => Math.round(x.top)))], txt = e.textContent;
+  const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+  const vw = innerWidth, dedans = r.left >= -1 && r.right <= vw + 1;
+  const une = tops.length === 1 && r.height - pad <= lh * 1.5 && e.scrollWidth <= e.clientWidth + 1 && dedans && /\\[[#-]+\\]/.test(txt) && txt.includes('%') && parseFloat(cs.fontSize) >= 17;
+  return { une, txt, tops: tops.length, h: Math.round(r.height - pad), lh, sw: e.scrollWidth, cw: e.clientWidth, fs: cs.fontSize, ws: cs.whiteSpace, l: Math.round(r.left), rt: Math.round(r.right), vw }; }"""
+
 def saute(pg):  # saute l'allumage (geste : aussi le premier geste pour la musique)
     pg.mouse.click(6, 6); time.sleep(0.25)
 
@@ -67,7 +80,7 @@ with sync_playwright() as p:
     # 1. première image : cadre retenu -> ligne d'attente ambre, pas de plein cadre ; puis le cadre se pose (transition unique)
     for nom, w, h, mob, variante in [('1280', 1280, 800, False, 'paysage'), ('390', 390, 844, True, 'portrait')]:
         ctx, pg, errs = contexte(br, w, h, mob, save=SAVE)
-        hold = Retenue(pg, re.compile(r'.*/assets/ui/menu_terminal/(cadre|fond).*\.png$'))
+        hold = Retenue(pg, re.compile(r'.*/assets/ui/menu_terminal/(cadre|fond).*\.(webp|png)$'))
         pg.goto(URL, wait_until='commit'); pg.wait_for_selector('#t-attente', state='attached'); time.sleep(0.6)
         s = pg.evaluate(SONDE); pg.screenshot(path=f'{OUT}{nom}_1_premiere_image.png')
         ok(s['attente'] and not s['plein'] and not s['ecran'] and not s['cadre'], f'{nom} première image : ligne d\'attente du Terminal visible, pas d\'écran noir, pas de repli plein cadre', s)
@@ -129,8 +142,9 @@ with sync_playwright() as p:
            f'{nom} repos : un seul visage, cadre + musique + progression sous CONTINUER', repos)
         pg.click('#m-continue'); t0 = time.time(); time.sleep(1.0)
         s = pg.evaluate(SONDE); pg.screenshot(path=f'{OUT}{nom}_4_chargement_partie.png')
-        ok(s['menu'] and s['charge'] and 'CHARGEMENT DU SECTEUR' in s['note'] and 'CENTER-TOWN' in s['note'] and '%' in s['note'],
-           f'{nom} ouverture de partie : le Terminal reste, ligne CHARGEMENT DU SECTEUR · CENTER-TOWN avec progression', s)
+        ok(s['menu'] and s['charge'] and 'CHARGEMENT' in s['note'] and 'CENTER-TOWN' in s['note'] and '%' in s['note'] and '[' in s['note'],
+           f'{nom} ouverture de partie : le Terminal reste, ligne CHARGEMENT · CENTER-TOWN avec progression', s)
+        if nom == '1280': ok('CHARGEMENT DU SECTEUR' in s['note'], '1280 : forme longue « CHARGEMENT DU SECTEUR » (place suffisante)', s['note'])
         taille = pg.evaluate("(() => { const n = document.getElementById('menu-note'); return parseFloat(getComputedStyle(n).fontSize); })()")
         ok(taille >= 17, f'{nom} la ligne de chargement est lisible (≥ 17 px, phosphore vif)', taille)
         time.sleep(2.0); hold.relache()
@@ -172,12 +186,52 @@ with sync_playwright() as p:
     pg.evaluate("window.__nml.game.state.location = 'steel_pulse'"); time.sleep(0.8)
     s = pg.evaluate(SONDE); pg.screenshot(path=f'{OUT}1280_7_chargement_en_jeu.png')
     ok(s['chargeJeu'] and 'CHARGEMENT DU SECTEUR' in s['ligneJeu'] and not s['pret'], 'en jeu : lieu pas encore chargé -> ligne CHARGEMENT DU SECTEUR, monde figé', s)
+    l1 = pg.evaluate(UNE_LIGNE, '#chargement'); ok(l1['une'], '1280 en jeu (Pulse Plaza) : overlay de chargement sur une seule ligne, « % » compris', l1)
     hold.relache()
     pg.wait_for_function("window.__nml.lieuPret('steel_pulse') && document.getElementById('chargement').hidden", timeout=120000); time.sleep(0.5)
     n = pg.evaluate("window.__nml.chargeur.cles('steel_pulse').filter(k => !window.__nml.chargeur.charge(k)).length")
     ok(n == 0, 'en jeu : Pulse Plaza chargé à l\'arrivée, toutes ses images présentes', n)
     pg.screenshot(path=f'{OUT}1280_8_pulse_charge.png')
     ok(not [e for e in errs if 'JS' in e], 'Nouvelle partie / passage : aucune erreur JS', errs[:3]); ctx.close()
+
+    # 9. une seule ligne, Terminal et overlay en jeu, 1280 / 390 / fold plié / fold déplié
+    for nom, w, h, mob in [('1280', 1280, 800, False), ('390', 390, 844, True), ('fold_plie_412', 412, 915, True), ('fold_deplie_884', 884, 1104, True)]:
+        ctx, pg, errs = contexte(br, w, h, mob, save=SAVE)
+        hc = Retenue(pg, re.compile(r'.*/assets/steel/center_town/.*\.(webp|png)$')); hp = Retenue(pg, re.compile(r'.*/assets/steel/pulse_plaza/.*\.(webp|png)$'))
+        pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=120000)
+        saute(pg); pg.evaluate("window.__nml.shell.terminal.saute()"); time.sleep(0.3)
+        pg.click('#m-continue'); time.sleep(1.0)
+        l = pg.evaluate(UNE_LIGNE, '#menu-note'); pg.screenshot(path=f'{OUT}{nom}_9_ligne_terminal.png')
+        ok(pg.evaluate(SONDE)['charge'] and l['une'], f'{nom} Terminal : ligne de chargement sur une seule ligne (barre et « % » ensemble, ≥ 17 px)', l)
+        hc.relache(); pg.wait_for_function("window.__nml.lieuPret('steel_center') && document.getElementById('menu').hidden", timeout=120000); time.sleep(0.3)
+        pg.evaluate("window.__nml.game.state.location = 'steel_pulse'")  # la ligne paraît à l'image suivante (Center-Town : images lentes en swiftshader)
+        pg.wait_for_function("!document.getElementById('chargement').hidden", timeout=20000); time.sleep(0.4)
+        l = pg.evaluate(UNE_LIGNE, '#chargement'); pg.screenshot(path=f'{OUT}{nom}_9_ligne_en_jeu.png')
+        ok(pg.evaluate(SONDE)['chargeJeu'] and l['une'], f'{nom} en jeu (Pulse Plaza) : overlay de chargement sur une seule ligne, « % » compris', l)
+        hp.relache(); pg.wait_for_function("window.__nml.lieuPret('steel_pulse') && document.getElementById('chargement').hidden", timeout=120000)
+        ok(not [e for e in errs if 'JS' in e], f'{nom} ligne unique : aucune erreur JS', errs[:3]); ctx.close()
+
+    # 10. calques WebP : tampon (et cadre, fond) en .webp ; PNG seulement en repli
+    ctx, pg, errs = contexte(br); vus = []
+    pg.on('request', lambda r: '/assets/ui/menu_terminal/' in r.url and vus.append(r.url.split('/')[-1]))
+    pg.goto(URL); pg.wait_for_function('window.__nmlMenuPret === true', timeout=30000)
+    pg.wait_for_function("document.getElementById('t-tampon').complete && document.getElementById('t-tampon').naturalWidth > 0", timeout=30000)
+    t = pg.evaluate("(() => { const t = document.getElementById('t-tampon'), c = document.getElementById('t-cadre'); return { tampon: t.currentSrc.split('/').pop(), w: t.naturalWidth, h: t.naturalHeight, data: t.dataset.src.split('/').pop(), cadre: c.currentSrc.split('/').pop(), fond: getComputedStyle(document.querySelector('.t-fond')).backgroundImage.split('/').pop() }; })()")
+    ok(t['tampon'] == 'tampon_acces_non_autorise.webp' and t['data'].endswith('.webp') and t['w'] > 0, 'tampon servi en .webp (data-src et image chargée)', t)
+    ok(t['cadre'] == 'cadre.webp' and 'fond_ecran.webp' in t['fond'], 'cadre et fond du manifeste pris en .webp par le code', t)
+    ok(not [u for u in vus if u.endswith('.png') and not u.startswith('ecran_masque')], 'aucun PNG de calque demandé quand le WebP passe (PNG = repli)', vus)
+    ctx.close()
+    for nom, w, h, mob in [('1280', 1280, 800, False), ('390', 390, 844, True)]:
+        ctx, pg, errs = contexte(br, w, h, mob); vus = []
+        pg.route(re.compile(r'.*/assets/ui/menu_terminal/.*\.webp$'), lambda r: r.abort())
+        pg.on('request', lambda r: '/assets/ui/menu_terminal/' in r.url and vus.append(r.url.split('/')[-1]))
+        pg.goto(URL); pg.wait_for_function('window.__nmlMenuPret === true', timeout=30000)
+        pg.wait_for_function("document.getElementById('t-tampon').complete && document.getElementById('t-tampon').naturalWidth > 0", timeout=30000); time.sleep(0.5)
+        t = pg.evaluate("(() => { const t = document.getElementById('t-tampon'), c = document.getElementById('t-cadre'); return { tampon: t.currentSrc.split('/').pop(), cadre: c.currentSrc.split('/').pop(), mode: document.getElementById('menu').dataset.cadre }; })()")
+        nt = len([u for u in vus if u.startswith('tampon_acces_non_autorise.png')])
+        ok(t['tampon'] == 'tampon_acces_non_autorise.png' and nt == 1, f'{nom} WebP en échec : tampon en PNG de repli, une seule requête (pas de boucle)', {'t': t, 'png': nt})
+        ok(t['cadre'].endswith('.png') and t['mode'] != 'plein', f'{nom} WebP en échec : cadre en PNG de repli, cadre posé (pas de plein cadre)', t)
+        pg.screenshot(path=f'{OUT}{nom}_10_repli_png.png'); ctx.close()
 
     # 8. mouvement réduit : la ligne d'attente et le chargement restent (sans animation), menu identique
     ctx, pg, errs = contexte(br, save=SAVE, reduit=True)
