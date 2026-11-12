@@ -33,7 +33,9 @@ function modeForLocation(locationId) {
 
 export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, isMenuOpen }) {
   const KEY = 'nml_muted';
-  let started = false;
+  // menu : lancement.js a pu démarrer l'ambiance au premier geste sur ce même élément ; on la reprend sans la couper (l'analyseur Web Audio
+  // viendra au geste suivant, pour ne pas brancher l'élément sur un contexte audio encore suspendu)
+  let started = !!(typeof window !== 'undefined' && window.__nmlMusiqueLancee && !el.paused);
   let mode = 'ambiance'; // 'ambiance' | 'ost_centre' | 'ost_center_town' | 'ost_strip'
   let trackIndex = 0;
   const savedTimes = { ambiance: 0, ost_centre: 0, ost_center_town: 0, ost_strip: 0 };

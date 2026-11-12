@@ -54,17 +54,35 @@ export function createTerminal({ M, getOptions, note }) {
   let cfg = { ...DEFAUT }, dispo = { paysage: true, portrait: false }, mode = 'plein', ouvert = false, bootFait = false, boot = null, glitchT = 0, tickerT = 0, tickI = 0;
 
   // ---------- configuration (manifest.json) et préchargement des calques ----------
+  // Optimisation du lancement (12/11) : seuls le cadre et le fond de l'orientation affichée sont attendus (~2,8 Mo au lieu de ~6 Mo) ;
+  // l'autre orientation et le tampon suivent, sans bloquer. Tant que le cadre de l'écran n'est pas là, le Terminal montre sa ligne
+  // d'attente ambre (#t-attente, posée dès le HTML) : jamais de repli plein cadre comme état d'attente (il reste réservé aux écrans
+  // de moins de 390 px ou au cadre trop mince, et aux images introuvables).
   const charge = f => new Promise(r => { const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = DIR + f; });
+  const orientation = () => innerHeight > innerWidth ? 'portrait' : 'paysage';
+  const chargeVariante = k => { const v = cfg[k]; if (!v) { dispo[k] = false; return Promise.resolve(false); }
+    if (dispo[k] === true || dispo[k] === false) return Promise.resolve(dispo[k]);
+    if (!chargeVariante[k]) { dispo[k] = undefined; chargeVariante[k] = Promise.all([v.cadre, v.fond].map(charge)).then(r => { dispo[k] = r.every(Boolean); if (ouvert || pretFait) layout(); return dispo[k]; }); }
+    return chargeVariante[k]; };
+  let pretFait = false;
   const pret = (async () => {
     try { const m = await (await fetch(DIR + 'manifest.json')).json(); cfg = { paysage: variante(m, 'paysage') || DEFAUT.paysage, portrait: variante(m, 'portrait') }; } catch { /* repli DEFAUT */ }
     if (cfg.paysage.tampon) cfg.paysage = { ...cfg.paysage, tampon: { ...cfg.paysage.tampon, ...TAMPON_PAYSAGE, h: TAMPON_PAYSAGE.w * 539 / 1014 } };
-    for (const k of ['paysage', 'portrait']) { const v = cfg[k]; dispo[k] = !!v && (await Promise.all([v.cadre, v.fond].map(charge))).every(Boolean); }
-    layout();
+    dispo = { paysage: undefined, portrait: undefined };
+    const ici = orientation();
+    await chargeVariante(ici);
+    pretFait = true; layout();
+    // ensuite, sans bloquer : tampon (fichier inchangé, déclaré dans le HTML en data-src). L'autre orientation n'est chargée qu'au besoin
+    // (rotation de l'appareil : ligne d'attente le temps du chargement), pour laisser la ligne au lieu de la partie.
+    if (tampon.dataset.src && !tampon.getAttribute('src')) tampon.src = tampon.dataset.src;
   })();
 
   // ---------- mise en page : contain uniforme du cadre, rectangle écran converti en px CSS ----------
   function layout() {
     const W = innerWidth, H = innerHeight, portrait = H > W, cle = portrait ? 'portrait' : 'paysage', v = cfg[cle];
+    // calques de cette orientation encore en route (rotation de l'appareil) : ligne d'attente, pas de repli plein cadre
+    if (v && dispo[cle] === undefined && W >= LARGEUR_MIN_CADRE) { M.classList.add('t-attend'); chargeVariante(cle); return; }
+    M.classList.remove('t-attend');
     let s = 0; if (v && dispo[cle]) s = Math.min(W / v.canvas.w, H / v.canvas.h);
     mode = v && dispo[cle] && W >= LARGEUR_MIN_CADRE && s >= ECHELLE_MIN ? cle : 'plein';
     M.dataset.cadre = mode; M.classList.toggle('t-portrait', portrait);
@@ -203,7 +221,7 @@ export function createTerminal({ M, getOptions, note }) {
     close() { ouvert = false; saute(); clearTimeout(glitchT); glitchT = 0; clearInterval(tickerT); tickerT = 0; cancelAnimationFrame(execT); execEl.textContent = ''; pause(); },
     rendu() { requestAnimationFrame(garde); },
     confirmer, saute, appliqueReduit,
-    etat: () => ({ mode, boot: M.dataset.boot || 'repos', booting: !!boot, reduit: reduit(), paused: M.classList.contains('t-paused'), dispo: { ...dispo }, glitch: !!glitchT }),
+    etat: () => ({ attente: M.classList.contains('t-attend'), mode, boot: M.dataset.boot || 'repos', booting: !!boot, reduit: reduit(), paused: M.classList.contains('t-paused'), dispo: { ...dispo }, glitch: !!glitchT }),
     rejouer() { bootFait = false; saute(); if (ouvert && !reduit()) bootStart(); },
   };
 }

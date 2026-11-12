@@ -8,7 +8,7 @@ import { createGame } from './core/game.js';
 import { QUESTS, QUEST_NOTES } from './data/quests.js';
 import { createView } from './render/view.js';
 import { bindPointer } from './input/pointer.js';
-import { loadSkins } from './render/textures.js?v=editor2';
+import { createChargeur } from './core/chargement.js'; // optimisation (12/11) : images chargées par lieu, le reste en arrière-plan
 import { createShell } from './ui/shell.js';
 import { buildCharacter, derived, raceFlags, ORIGIN_ITEMS, originOf } from './data/character.js';
 import { portraitUrl } from './ui/creation.js';
@@ -23,10 +23,12 @@ Object.assign(ITEMS, ITEMS_MEGA); // Mega-Line : passe-implant piraté (texte se
 
 // Tous les manifestes (reused, interiors, buildings, assets/steel/<quartier>) : src/core/catalogue.js, partagé avec l'éditeur de cartes
 const { sprites, iman, bman, sols } = await chargerCatalogue();
-await loadSkins(Object.keys(sols), n => sols[n]); // sols : mockup, générés (Steel), quartiers d'Ocre (g_*)
+// Optimisation du lancement (12/11) : plus de chargement de TOUTES les images (sols, bâtiments, intérieurs, décors de tous les quartiers)
+// avant de jouer. Chaque image garde son URL ; elles sont chargées par lieu (src/core/chargement.js) : d'abord le lieu d'entrée, le reste après.
+const urlsImages = { ...sols };
+for (const [k, v] of Object.entries(bman)) urlsImages[k] = './assets/' + v.file;
+for (const [k, v] of Object.entries(iman)) urlsImages[k] = './assets/' + v.file;
 const mapsMan = await (await fetch('./assets/ui/maps/manifest.json')).json(); // lots 2 et 3 interface : cartes d'Ocre
-await loadSkins(Object.keys(bman), n => './assets/' + bman[n].file);
-await loadSkins(Object.keys(iman), n => './assets/' + iman[n].file);
 const editorBase=createEditorBase(sourceWorld,{sprites,bman,iman,sols});
 let publishedMaps=null;try{publishedMaps=await loadPublishedMaps();}catch(error){console.error('Éditeur : chargement des cartes impossible.',error);const warning=document.createElement('div');warning.id='editor-map-warning';warning.textContent='Les cartes modifiées n’ont pas pu être chargées. La carte d’origine est utilisée.';warning.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:100;background:#472b1b;color:#fff;padding:12px';document.body.append(warning);}
 let world;try{world=applyEditorProject(sourceWorld,publishedMaps,editorBase);}catch(error){console.error('Carte publiée invalide :',error);world={...sourceWorld,editorProject:null};const warning=document.createElement('div');warning.id='editor-map-invalid';warning.textContent='Carte publiée invalide : le jeu utilise ses cartes intégrées. '+String(error.message).split('\n').slice(0,3).join(' ');warning.style.cssText='position:fixed;bottom:0;z-index:100;background:#472b1b;color:white;padding:12px';document.body.append(warning);}
@@ -38,6 +40,9 @@ for (const L of Object.values(world.LOCATIONS)) { const livres = new Set();
   if (livres.size) L.buildings = L.buildings.filter(b => !livres.has(b.repliDe)); }
 const game=createGame({...world,DIALOGUES:{...DIALOGUES,editor_silence:{start:{text:'Cette personne n’a pas encore de dialogue.',options:[{label:'Partir.',next:'end'}]}}},ITEMS},sprites);
 const editorStory=bindEditorStory(game);
+const chargeur = createChargeur({ world: game.world || world, urls: urlsImages, entree: k => bman[k] || iman[k] });
+const lieuPret = id => chargeur.pret(id);
+let imagesAutorisees = !window.__nmlMenu; // vrai dès que le cadre du Terminal est posé (ou sans Terminal : éditeur, tests isolés)
 
 // lot 3 : voyage régional (les sorties régionales ouvrent la carte des No Man's Land)
 const voyage = createVoyage({ game, manifest: mapsMan });
@@ -53,7 +58,7 @@ const music = createMusic({
   isMenuOpen: () => !!shell?.isOpen(),
 });
 game.on(ev => { if (ev.type === 'transition') music.syncZone(); });
-const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'), music.ostCentre);
+const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'), music.ostCentre, { pret: lieuPret, demande: id => { if (imagesAutorisees) chargeur.lieu(id); } });
 let msgTimer;
 const say = t => { $('msg').textContent = t; clearTimeout(msgTimer); msgTimer = setTimeout(() => $('msg').textContent = '', 3500); };
 game.on(ev => { if (ev.text) say(ev.text); });
@@ -160,9 +165,27 @@ function typeText(t) {
 let last = performance.now(), lastRegion;
 const nml = createCarteNml({ $, voyage, manifest: mapsMan, say });
 voyage.on(ev => { if ((ev.type === 'case' || ev.type === 'halte' || ev.type === 'arret') && shell && !shell.isOpen()) shell.autosave(); }); // reprise après rechargement : sur la dernière case
+// Ligne de chargement en jeu (même phosphore ambre que le Terminal) : visible tant que le lieu courant n'a pas ses images
+const chargementEl = document.createElement('div'); chargementEl.id = 'chargement'; chargementEl.setAttribute('role', 'status'); chargementEl.hidden = true; document.body.appendChild(chargementEl);
+let chargementLieu = null;
+const nomSecteur = id => (world.LOCATIONS[id]?.name || '').split('· ').pop().toUpperCase();
+function ligneChargement(id, fait, total) {
+  const p = total ? Math.round(100 * fait / total) : 0, n = 12, k = Math.round(n * p / 100);
+  return `CHARGEMENT DU SECTEUR · ${nomSecteur(id)}  [${'#'.repeat(k)}${'-'.repeat(n - k)}] ${p} %`;
+}
+function afficheChargement(on) {
+  if (!on) { if (!chargementEl.hidden) { chargementEl.hidden = true; document.body.classList.remove('chargement-lieu'); } chargementLieu = null; return; }
+  const id = game.state.location;
+  if (chargementLieu !== id) { chargementLieu = id; chargementEl.textContent = ligneChargement(id, 0, 1);
+    chargeur.lieu(id, e => { if (chargementLieu === e.lieu) chargementEl.textContent = ligneChargement(e.lieu, e.fait, e.total); }); }
+  if (chargementEl.hidden) { chargementEl.hidden = false; document.body.classList.add('chargement-lieu'); }
+}
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
-  if (!shell?.isOpen()) { if (game.state.region !== lastRegion) { voyage.restaure(); lastRegion = game.state.region; } // partie chargée en marche : halte
+  // lieu pas encore chargé (passage de porte, voyage, partie chargée) : ligne de chargement, le monde ne bouge pas
+  const enAttente = !lieuPret(game.state.location); afficheChargement(enAttente && !!shell && !shell.isOpen());
+  if (!enAttente && shell && !shell.isOpen()) chargeur.arrierePlan(game.state.location); // juste après l'entrée en jeu : le reste, sans bloquer
+  if (!enAttente && !shell?.isOpen()) { if (game.state.region !== lastRegion) { voyage.restaure(); lastRegion = game.state.region; } // partie chargée en marche : halte
     if (voyage.region().statut === 'lieu') game.step(dt); else { voyage.tick(dt * 1000 * (shell?.options.reduceMotion ? 0.5 : 1)); if (!nml.open && voyage.region().statut !== 'lieu') nml.show(true); } }
   nml.frame();
   const s = game.state, D = world.DOORS;
@@ -223,7 +246,7 @@ function trajetRame(versTerminus) { trajetEnCours = true; trajet.querySelector('
   trajet.className = 'on'; setTimeout(() => { trajet.className = 'on roule'; }, 600);
   setTimeout(() => { trajet.className = 'on'; }, 3400); setTimeout(() => { trajet.className = ''; trajetEnCours = false; say(VALIDATION(game.state)); }, 4000); }
 game.on(ev => { if (ev.type === 'transition') delete game.state.flags.ml_valide; if (ev.type === 'transition' && (ev.door === 'ml_rame_quai' || ev.door === 'tm_rame_quai')) trajetRame(ev.door === 'ml_rame_quai'); });
-window.__nml = { bman, music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { chargeur, lieuPret, bman, music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
@@ -320,7 +343,13 @@ function applyOptions(o) {
   B.toggle('contrast', o.contrast); B.toggle('readable', o.readable); B.toggle('reduce-motion', o.reduceMotion);
   B.toggle('ts-115', o.textSize === 115); B.toggle('ts-130', o.textSize === 130);
 }
-shell = createShell({ game, world, $, applyOptions, terminal: window.__nmlMenu && window.__nmlMenu.terminal, onStart(rec, draft) {
+// Le cadre du Terminal passe avant tout : aucune image du jeu n'est demandée avant qu'il soit posé. Ensuite, pendant que le joueur lit le menu,
+// on charge le lieu le plus probable : celui de la dernière sauvegarde (Continuer), sinon le départ d'une nouvelle partie.
+if (window.__nmlMenu && window.__nmlMenu.cadrePret) await window.__nmlMenu.cadrePret;
+imagesAutorisees = true;
+{ const d = window.__nmlMenu && window.__nmlMenu.derniere, cible = d && world.LOCATIONS[d.location] ? d.location : START_SNAP.location; chargeur.lieu(cible); }
+shell = createShell({ game, world, $, applyOptions, terminal: window.__nmlMenu && window.__nmlMenu.terminal, pretLieu: lieuPret,
+  prepare: (id, progres) => chargeur.lieu(id, progres), ligneChargement, departNouvelle: () => START_SNAP.location, onStart(rec, draft) {
   if (!rec) { // nouveau jeu : création -> Dusk-Town ; PV, PA et dollars dérivés du personnage
     game.restore(START_SNAP, true);
     if (draft) { const c = buildCharacter(draft), dv = derived(draft), s = game.state;

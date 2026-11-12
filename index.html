@@ -40,14 +40,18 @@
   <button id="dlg-close" aria-label="Fermer">×</button>
 </div>
 <!-- v10 lot 1 : menu principal / pause, sauvegardes, options -->
-<div id="menu" class="term booting b-off">
+<div id="menu" class="term booting b-off t-attend">
   <div class="m-bg"></div>
+  <!-- Optimisation du lancement (12/11) : ligne d'attente du Terminal, visible dès la première image, tant que le cadre de l'écran n'est pas chargé -->
+  <pre id="t-attente" class="t-attente" role="status" aria-live="polite">HUMAN CORP  //  CITIZEN OS v4.7.19
+TERMINAL CITOYEN  HC-2175-TA
+<b>&gt; MISE SOUS TENSION DU TERMINAL</b></pre>
   <!-- Menu principal « Terminal Human Corp » (docs/ui/MENU_TERMINAL.md, implémentation : docs/ui/MENU_TERMINAL_IMPL.md).
        Empilement : fond de ville < texte < tampon < effets CRT < cadre métal ; le texte (choix) reste au-dessus du tampon. -->
   <div id="t-screen">
     <div class="t-fond" aria-hidden="true"></div>
     <div class="t-warm" aria-hidden="true"></div>
-    <img id="t-tampon" class="t-tampon" src="./assets/ui/menu_terminal/tampon_acces_non_autorise.png" alt="" aria-hidden="true" draggable="false">
+    <img id="t-tampon" class="t-tampon" data-src="./assets/ui/menu_terminal/tampon_acces_non_autorise.png" alt="" aria-hidden="true" draggable="false">
     <pre id="t-boot" class="t-boot" aria-hidden="true"></pre>
     <div class="m-main">
       <h1 aria-label="NO MAN'S LAND"><span>NO MAN'S</span> <span>LAND</span></h1>
@@ -84,6 +88,6 @@
 <!-- v11 lot 2 : création de personnage -->
 <div id="creation" hidden></div>
 <script type="module" src="./src/lancement.js"></script>
-<audio id="music" src="./assets/audio/dusk_town_ambiance.mp3" loop preload="auto"></audio>
+<audio id="music" src="./assets/audio/dusk_town_ambiance.mp3" loop preload="none"></audio>
 </body>
 </html>

@@ -28,7 +28,7 @@ export function migrateOptions(raw) {
   return out;
 }
 
-export function createShell({ game, world, $, onStart, applyOptions, terminal }) {
+export function createShell({ game, world, $, onStart, applyOptions, terminal, prepare = null, pretLieu = null, ligneChargement = null, departNouvelle = null }) {
   const LS = window.localStorage;
   const DEV = new URLSearchParams(location.search).get('dev') === '1'; // mode DEV : emplacements séparés, jamais ceux du joueur
   const key = s => (DEV ? 'nml_dev_save_' : 'nml_save_') + s;
@@ -51,7 +51,23 @@ export function createShell({ game, world, $, onStart, applyOptions, terminal })
   const M = $('menu'), S = $('menu-sub');
   const term = terminal || createTerminal({ M, getOptions: () => options, note: t => flash(t) });
   let before = 'title';
-  const creation = createCreation({ $, onDone: draft => { onStart(null, draft); close(); }, onCancel: () => open(before) });
+  const creation = createCreation({ $, onDone: draft => lancer(departNouvelle && departNouvelle(), $('m-new'), () => { onStart(null, draft); close(); }), onCancel: () => open(before) });
+  // Optimisation (12/11) : ouvrir une partie attend que le lieu d'arrivée ait ses images. Pendant ce temps, le Terminal reste à l'écran,
+  // choix gelés, avec la ligne de chargement et sa progression ; jamais de menu caché sur du vide.
+  let jeton = 0;
+  function lancer(loc, bouton, fin) {
+    const id = ++jeton;
+    if (!prepare || !loc || (pretLieu && pretLieu(loc))) { M.classList.remove('t-charge'); return fin(); }
+    if (mode === 'create' || M.hidden) { creation.close(); mode = before === 'pause' ? 'pause' : 'title'; M.hidden = false; document.body.classList.add('menu-open'); M.classList.toggle('pause', mode === 'pause'); sub = null; render(); term.open(mode); term.saute(); }
+    sub = null; S.hidden = true; M.classList.remove('sub-open');
+    M.classList.add('t-charge'); M.querySelectorAll('.t-choisi').forEach(x => x.classList.remove('t-choisi')); bouton?.classList.add('t-choisi');
+    clearTimeout(flashT); const note = $('menu-note'), ligne = (f, t) => { note.textContent = ligneChargement ? ligneChargement(loc, f, t) : 'CHARGEMENT DU SECTEUR…'; };
+    ligne(0, 1);
+    // lieu prêt : la ligne affiche 100 % et reste peinte pendant la mise en place de la scène (première image du lieu), puis le jeu s'ouvre
+    const raf = () => new Promise(r => { requestAnimationFrame(() => r()); setTimeout(r, 120); }); // onglet caché : pas de rAF
+    prepare(loc, e => { if (id === jeton) ligne(e.fait, e.total); }).then(async () => { if (id !== jeton) return; ligne(1, 1); await raf(); await raf(); if (id !== jeton) return;
+      M.classList.remove('t-charge'); bouton?.classList.remove('t-choisi'); note.textContent = ''; fin(); });
+  }
   const open = m => { mode = m; M.hidden = false; document.body.classList.add('menu-open'); M.classList.toggle('pause', m === 'pause'); render(); term.open(m); };
   const close = () => { mode = 'closed'; sub = null; M.hidden = true; creation.close(); document.body.classList.remove('menu-open'); term.close(); };
   function render() {
@@ -87,7 +103,8 @@ export function createShell({ game, world, $, onStart, applyOptions, terminal })
     }
   }
   function newGame() { before = mode; sub = null; mode = 'create'; M.hidden = true; creation.open(); }
-  function load(slot) { const r = read(slot); if (!r || !game.restore(r.state)) { flash('Sauvegarde illisible : ignorée.'); return; } onStart(r); close(); }
+  function load(slot, bouton) { const r = read(slot); if (!r) { flash('Sauvegarde illisible : ignorée.'); return; }
+    lancer(world.LOCATIONS[r.state.location] ? r.state.location : null, bouton, () => { if (!game.restore(r.state)) { flash('Sauvegarde illisible : ignorée.'); return; } onStart(r); close(); }); }
   let flashT = 0; function flash(t) { $('menu-note').textContent = t; clearTimeout(flashT); flashT = setTimeout(() => $('menu-note').textContent = '', 3000); }
   // choix grisés : un geste dessus affiche la ligne du terminal (fiche §6.4), sans action
   M.addEventListener('pointerdown', e => { const b = e.target.closest('.t-list button'); if (!b || !b.disabled) return;
@@ -99,11 +116,11 @@ export function createShell({ game, world, $, onStart, applyOptions, terminal })
     if (b.id === 'm-dev') { const u = new URL(location.href); if (DEV) { u.searchParams.delete('dev'); u.searchParams.delete('devpanel'); } else { u.searchParams.set('dev', '1'); u.searchParams.set('devpanel', '1'); } location.href = u.toString(); return; }
     if (b.id === 'm-resume') return close();
     if (b.dataset.back) { sub = null; return render(); }
-    if (b.id === 'm-continue') { const l = latest(); if (l) load(l.s); return; }
+    if (b.id === 'm-continue') { const l = latest(); if (l) load(l.s, b); return; }
     if (b.id === 'm-new') return newGame();
     if (b.id === 'm-quit') { sub = null; open('title'); return flash(LIGNES.quitter); }
     if (b.dataset.sub) { sub = sub === b.dataset.sub ? null : b.dataset.sub; return render(); }
-    if (b.dataset.act === 'load') return load(b.dataset.slot);
+    if (b.dataset.act === 'load') return load(b.dataset.slot, $('m-load'));
     if (b.dataset.act === 'save') { flash(write(b.dataset.slot) ? `Sauvegardé · emplacement ${b.dataset.slot}` : 'Échec de la sauvegarde (stockage plein ?)'); return render(); }
     if (b.dataset.opt) { options[b.dataset.opt] = JSON.parse(b.dataset.val); saveOptions(); if (b.dataset.opt === 'reduceMotion') term.appliqueReduit(); return render(); }
   });

@@ -5,7 +5,7 @@ import { wallsOf } from '../core/grid.js';
 import { groundTexture, margeTexture, SKIN } from './textures.js?v=editor2';
 
 export const ZOOM_MIN = 0.6, ZOOM_MAX = 1.5;
-export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = null) {
+export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = null, chargement = null) {
   let { LOCATIONS, DOORS, NPCS, COMPANION } = game.world;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -85,7 +85,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   const masks = {};
   function maskOf(name) {
     if (masks[name]) return masks[name]; const img = SKIN[name] || sprites[name]?._img; if (!img) return null;
-    const c = document.createElement('canvas'); c.width = img.width; c.height = img.height; const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+    const c = document.createElement('canvas'); c.width = img.width; c.height = img.height; const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(img, 0, 0); // masque lu une fois : canevas en mémoire (pas de relecture GPU)
     return masks[name] = { w: img.width, h: img.height, data: x.getImageData(0, 0, img.width, img.height).data };
   }
   function alphaAt(name, u, v) { const m = maskOf(name); if (!m || u < 0 || u > 1 || v < 0 || v > 1) return 0;
@@ -826,7 +826,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const [mw, mh] = measureView(); if (mw !== viewW || mh !== viewH) resize();
     ({ LOCATIONS, DOORS, NPCS } = game.world);
     const s = game.state;
-    if (builtFor !== s.location) build(s.location);
+    // optimisation (12/11) : un lieu n'est construit qu'une fois ses images chargées (src/core/chargement.js) ; d'ici là, rien n'est redessiné
+    if (builtFor !== s.location) { if (chargement && !chargement.pret(s.location)) { chargement.demande?.(s.location); return; } build(s.location); }
     const visible=kind=>game.world.testing||game.world.editorLayers?.[kind]?.visible!==false;
     if(groundMesh)groundMesh.visible=visible('zone');
     for(const b of bsprites){b.visible=visible('building');const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible&&e.userData.actif!==false;}

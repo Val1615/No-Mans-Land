@@ -121,3 +121,27 @@ body.contrast #menu.term .t-fond::after{background:rgba(10,8,4,.78)}
 @keyframes t-chauffe{0%{background:rgba(255,208,120,0)}62%{background:rgba(255,208,120,.16)}100%{background:rgba(255,208,120,0)}}
 @keyframes t-titre{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes t-tampon{0%{filter:brightness(2.4) sepia(1)}60%{filter:brightness(1.6)}100%{filter:none}}
+/* Optimisation du lancement (12/11). Ligne d'attente : phosphore ambre sur le noir du Terminal, dès le HTML, tant que le cadre de l'écran
+   n'est pas chargé (jamais de repli plein cadre comme état d'attente). Le reste du Terminal est caché pendant ce temps. */
+#menu.term .t-attente{display:none;position:absolute;z-index:7;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;max-width:calc(100% - 32px);box-sizing:border-box;
+  font:400 clamp(15px,2.2vw,26px)/1.3 'VT',ui-monospace,monospace;color:var(--att);white-space:pre-wrap;text-shadow:0 0 3px rgba(242,180,74,.6),0 0 10px rgba(242,180,74,.25)}
+#menu.term .t-attente b{font-weight:400;color:var(--vif);text-shadow:0 0 4px #f2b44a,0 0 12px rgba(242,180,74,.55)}
+#menu.term .t-attente b::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}
+#menu.term.t-attend .t-attente{display:block}
+#menu.term.t-attend #t-screen,#menu.term.t-attend .t-cadre{visibility:hidden}
+/* Lancement d'une partie : le Terminal reste à l'écran, choix gelés, et la ligne de chargement (#menu-note) passe en phosphore vif,
+   avec sa barre de progression, jusqu'à ce que le lieu soit jouable. */
+#menu.term.t-charge .t-list{pointer-events:none}
+#menu.term.t-charge .t-list .btn:not(.t-choisi){opacity:.4}
+#menu.term.t-charge #menu-note{font:400 max(17px,calc(28px*var(--k)))/1.2 'VT',monospace;color:var(--vif);text-shadow:var(--glow);white-space:pre-wrap;text-align:center;opacity:1}
+#menu.term.t-charge #menu-note::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}
+#menu.term.t-charge.t-reduit #menu-note::after{animation:none}
+/* en jeu : lieu suivant pas encore chargé (passage de porte, voyage) : même ligne ambre, monde assombri derrière, interface de jeu masquée */
+#chargement{position:fixed;z-index:60;left:50%;bottom:22%;transform:translateX(-50%);max-width:calc(100% - 24px);padding:6px 14px;box-sizing:border-box;
+  font:400 clamp(17px,2.4vw,28px)/1.2 'VT',ui-monospace,monospace;color:#ffd078;white-space:pre-wrap;text-align:center;background:rgba(10,8,4,.72);border:1px solid rgba(242,180,74,.45);
+  text-shadow:0 0 4px #f2b44a,0 0 12px rgba(242,180,74,.55);pointer-events:none}
+#chargement[hidden]{display:none}
+#chargement::after{content:'\2588';margin-left:.15em;animation:t-curseur 1060ms steps(1) infinite}
+body.reduce-motion #chargement::after{animation:none}
+body.chargement-lieu #view{filter:brightness(.35)}
+body.chargement-lieu #labels,body.chargement-lieu #msg,body.chargement-lieu #hud,body.chargement-lieu #keys,body.chargement-lieu #zoom,body.chargement-lieu #locbox,body.chargement-lieu #obj,body.chargement-lieu #act,body.chargement-lieu #mini{visibility:hidden}
