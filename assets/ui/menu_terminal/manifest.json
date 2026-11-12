@@ -15,7 +15,7 @@
   "calques": [
     {
       "id": "fond_ecran",
-      "fichier": "fond_ecran.png",
+      "fichier": "fond_ecran.webp",
       "fixe": true,
       "note": "Ville ambre atténuée, sous le cadre, visible par le trou de l'écran. Dérive lente optionnelle en code."
     },
@@ -27,7 +27,7 @@
     },
     {
       "id": "tampon",
-      "fichier": "tampon_acces_non_autorise.png",
+      "fichier": "tampon_acces_non_autorise.webp",
       "fixe": true,
       "x": 1286,
       "y": 708,
@@ -44,7 +44,7 @@
     },
     {
       "id": "cadre",
-      "fichier": "cadre.png",
+      "fichier": "cadre.webp",
       "fixe": true,
       "note": "Lunette métal, toujours au-dessus. Zone écran entièrement transparente."
     }
@@ -70,7 +70,7 @@
     "calques": [
       {
         "id": "fond_ecran",
-        "fichier": "fond_ecran_portrait.png",
+        "fichier": "fond_ecran_portrait.webp",
         "fixe": true,
         "note": "Ville ambre atténuée, sous le cadre, visible par le trou. Dérive lente optionnelle en code."
       },
@@ -82,7 +82,7 @@
       },
       {
         "id": "tampon",
-        "fichier": "tampon_acces_non_autorise.png",
+        "fichier": "tampon_acces_non_autorise.webp",
         "fixe": true,
         "x": 309,
         "y": 1416,
@@ -99,7 +99,7 @@
       },
       {
         "id": "cadre",
-        "fichier": "cadre_portrait.png",
+        "fichier": "cadre_portrait.webp",
         "fixe": true,
         "note": "Lunette métal portrait, toujours au-dessus. Zone écran entièrement transparente."
       }

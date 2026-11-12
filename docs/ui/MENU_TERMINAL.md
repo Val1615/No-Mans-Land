@@ -17,7 +17,7 @@ Je distingue clairement trois choses.
 - **Décision.** Valentin, le 10 novembre 2026 (heure de Paris) : le menu principal suit la direction « Terminal Human Corp », un terminal CRT ambre diégétique de la mégacorporation. Il l'a voulu animé, et très « terminal informatique ».
 - **Proposition.** Tout le reste de cette fiche : nom du système d'exploitation, identifiants du poste, textes du boot et du bandeau, rythme des animations, traitement visuel du cadre. Rien de tout cela n'est canon tant que ce n'est pas joué et tenu.
 
-Les plaques déjà gravées sur le calque `cadre.png` (numéro de poste HC-2175-TA, « Secteur 09 / Zone 12 », slogan « L'unité avant tout », norme HC-STD-2175) sont des inventions de la maquette. Elles restent sur l'asset. Je les reprends dans les textes pour rester cohérente avec le cadre, sans les élever au canon.
+Les plaques déjà gravées sur le calque `cadre.webp` (numéro de poste HC-2175-TA, « Secteur 09 / Zone 12 », slogan « L'unité avant tout », norme HC-STD-2175) sont des inventions de la maquette. Elles restent sur l'asset. Je les reprends dans les textes pour rester cohérente avec le cadre, sans les élever au canon.
 
 ---
 
@@ -50,7 +50,7 @@ On reste cousu à l'ambre déjà en jeu (`--c: #f2b44a` dans `src/style.css`), p
 | Ambre clair | `#FDE9C2` | Déjà `--t` dans l'UI. À réserver aux sous-textes, pas au phosphore du tube |
 | Fond d'écran | `#0A0804` | Sous le calque ville, au cas où le fond manquerait |
 | Alerte | `#C43B2A` | Encre du tampon, messages d'erreur rares. Avec parcimonie, jamais en fond de menu |
-| Métal du cadre | (image) | On ne le repeint pas. Le calque `cadre.png` porte la lunette |
+| Métal du cadre | (image) | On ne le repeint pas. Le calque `cadre.webp` porte la lunette |
 
 **Lueurs (glow).** Sur le texte, un halo en trois couches, par exemple :
 
@@ -89,7 +89,7 @@ Canevas de référence : **1920 × 1080**. Le terminal se pose en `contain` dans
 
 ### 4.1 Rectangle de l'écran (trou du tube)
 
-Détecté sur la région noire de `cadre.png`, puis décrit en rectangle arrondi pour que le contenu code se cale pile.
+Détecté sur la région noire de `cadre.webp`, puis décrit en rectangle arrondi pour que le contenu code se cale pile.
 
 | | px |
 |---|---|
@@ -129,7 +129,7 @@ Sur mobile, on réduit typo et marges pour que les six choix restent tapables (4
 
 ### 4.3 Plaques du cadre (déjà dans l'image, on ne les redessine pas)
 
-Elles appartiennent à `cadre.png` :
+Elles appartiennent à `cadre.webp` :
 
 - haut : `HUMAN CORP` / `CITIZEN TERMINAL UNIT - HC-2175-TA`
 - haut droite : `HAUTE TENSION` / `NE PAS OUVRIR`
@@ -279,16 +279,18 @@ Tout ce qui n'est pas listé comme fichier image se fait **en code** (CSS, canva
 
 | Calque | Fichier | Animé ou fixe | Comment |
 |---|---|---|---|
-| Fond de ville ambre | `assets/ui/menu_terminal/fond_ecran.png` | Fixe. **Proposition :** très lente dérive (8 à 15 px en 20 s, aller-retour), coupée si mouvement réduit | 1920 × 1080. Il s'assied sous le cadre, visible uniquement par le trou (clip avec `ecran_masque.png` ou le rectangle arrondi). |
+| Fond de ville ambre | `assets/ui/menu_terminal/fond_ecran.webp` | Fixe. **Proposition :** très lente dérive (8 à 15 px en 20 s, aller-retour), coupée si mouvement réduit | 1920 × 1080. Il s'assied sous le cadre, visible uniquement par le trou (clip avec `ecran_masque.png` ou le rectangle arrondi). |
 | Contenu texte | (code) | Animé | Boot, titre, menu, statut, curseur, ticker. Clipé dans le rectangle écran. |
-| Tampon « Accès non autorisé » | `assets/ui/menu_terminal/tampon_acces_non_autorise.png` | Fixe, une fois posé. Apparaît en fin de boot avec un petit flash | Position 1286, 708 (436 × 232) à 1920 × 1080, opacité 0,85. Ne recouvre pas les choix. Fichier source recadré, fond blanc détouré, grain d'encre conservé. |
+| Tampon « Accès non autorisé » | `assets/ui/menu_terminal/tampon_acces_non_autorise.webp` | Fixe, une fois posé. Apparaît en fin de boot avec un petit flash | Position 1286, 708 (436 × 232) à 1920 × 1080, opacité 0,85. Ne recouvre pas les choix. Fichier source recadré, fond blanc détouré, grain d'encre conservé. |
 | Effets CRT | (code) | Animé | Scanlines, scintillement, vignette, éventuelle courbure légère. La courbure, si on en met, doit rester subtile et ne pas flouter le texte (on peut la limiter au fond). Coupés ou figés si mouvement réduit. |
-| Cadre métal | `assets/ui/menu_terminal/cadre.png` | Fixe, toujours au-dessus | 1920 × 1080, zone écran entièrement transparente (alpha 0), bord en rectangle arrondi légèrement fondu. L'ombre interne de la lunette reste sur ce calque. |
+| Cadre métal | `assets/ui/menu_terminal/cadre.webp` | Fixe, toujours au-dessus | 1920 × 1080, zone écran entièrement transparente (alpha 0), bord en rectangle arrondi légèrement fondu. L'ombre interne de la lunette reste sur ce calque. |
 
 Fichiers utiles en plus :
 
 - `assets/ui/menu_terminal/ecran_masque.png` : blanc = zone écran, transparent ailleurs.
 - `assets/ui/menu_terminal/manifest.json` : canevas, rectangle, positions, mêmes infos que cette table.
+
+**Encodage (2026-11-12).** Les cinq calques (cadres paysage et portrait, fonds, tampon) sont réencodés en WebP lossless : mêmes dimensions, pixels visibles identiques (pour le cadre, le RVB des pixels déjà totalement transparents est remis à zéro, sans effet visible). Poids : 5,89 Mo → 4,20 Mo. Le manifeste pointe vers les `.webp`. Les `.png` restent dans le dossier, pour le repli du code et le `data-src` du tampon dans `index.html` (encore en PNG jusqu'au câblage).
 
 Contrôle de construction (fond + tampon + cadre, sans texte) : `docs/ui/controle_menu_terminal.jpg`. Maquette générée complète, avec le texte peint pour le ton : `docs/ui/proto_menu_terminal.jpg`. La variante portrait (mêmes principes, canevas 1080 × 1920) est au §8.
 
@@ -316,11 +318,11 @@ Même ordre d'empilement qu'en paysage. Le tampon réutilise le fichier déjà l
 
 | Calque | Fichier | Animé ou fixe | Comment |
 |---|---|---|---|
-| Fond de ville ambre | `assets/ui/menu_terminal/fond_ecran_portrait.png` | Fixe. Même dérive lente optionnelle qu'en paysage, coupée si mouvement réduit | 1080 × 1920, visible par le trou |
+| Fond de ville ambre | `assets/ui/menu_terminal/fond_ecran_portrait.webp` | Fixe. Même dérive lente optionnelle qu'en paysage, coupée si mouvement réduit | 1080 × 1920, visible par le trou |
 | Contenu texte | (code) | Animé | Boot raccourci, titre sur deux lignes, menu vertical, ticker en bas |
-| Tampon « Accès non autorisé » | `assets/ui/menu_terminal/tampon_acces_non_autorise.png` (le même) | Fixe, une fois posé. Apparaît en fin de boot avec un petit flash | Position **x = 309, y = 1416, w = 458, h = 243**, opacité **0,85**. Centré en bas de l'écran, largeur égale à 55 % de l'écran, au-dessus du ticker. Ne recouvre pas les choix |
+| Tampon « Accès non autorisé » | `assets/ui/menu_terminal/tampon_acces_non_autorise.webp` (le même) | Fixe, une fois posé. Apparaît en fin de boot avec un petit flash | Position **x = 309, y = 1416, w = 458, h = 243**, opacité **0,85**. Centré en bas de l'écran, largeur égale à 55 % de l'écran, au-dessus du ticker. Ne recouvre pas les choix |
 | Effets CRT | (code) | Animé | Scanlines, scintillement, vignette, courbure éventuelle. Figés ou coupés si mouvement réduit |
-| Cadre métal | `assets/ui/menu_terminal/cadre_portrait.png` | Fixe, toujours au-dessus | 1080 × 1920, zone écran entièrement transparente, même méthode que `cadre.png` (trou en rectangle arrondi, fondu vers l'intérieur, ombre interne conservée) |
+| Cadre métal | `assets/ui/menu_terminal/cadre_portrait.webp` | Fixe, toujours au-dessus | 1080 × 1920, zone écran entièrement transparente, même méthode que `cadre.webp` (trou en rectangle arrondi, fondu vers l'intérieur, ombre interne conservée) |
 
 Masque : `assets/ui/menu_terminal/ecran_masque_portrait.png` (blanc = zone écran). Les géométries sont aussi dans `manifest.json`, clé ajoutée `portrait` (les clés paysage restent inchangées).
 
