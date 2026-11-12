@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="./src/ui/menu_terminal.css">
 <script type="importmap">{"imports":{"three": "./vendor/three.module.js"}}</script>
 </head>
-<body>
+<body class="menu-open">
 <canvas id="view"></canvas>
 <div id="labels"></div>
 <!-- v8 : interface « radio de récupération » (docs/ui/propositions/direction-A.png). Cadres fins, fonds semi-transparents, ambre réservé au texte. -->
@@ -40,7 +40,7 @@
   <button id="dlg-close" aria-label="Fermer">×</button>
 </div>
 <!-- v10 lot 1 : menu principal / pause, sauvegardes, options -->
-<div id="menu" class="term" hidden>
+<div id="menu" class="term booting b-off">
   <div class="m-bg"></div>
   <!-- Menu principal « Terminal Human Corp » (docs/ui/MENU_TERMINAL.md, implémentation : docs/ui/MENU_TERMINAL_IMPL.md).
        Empilement : fond de ville < texte < tampon < effets CRT < cadre métal ; le texte (choix) reste au-dessus du tampon. -->
@@ -83,7 +83,7 @@
 </section>
 <!-- v11 lot 2 : création de personnage -->
 <div id="creation" hidden></div>
-<script type="module" src="./src/main.js?v=editor2"></script>
+<script type="module" src="./src/lancement.js"></script>
 <audio id="music" src="./assets/audio/dusk_town_ambiance.mp3" loop preload="auto"></audio>
 </body>
 </html>

@@ -142,7 +142,7 @@ export function createTerminal({ M, getOptions, note }) {
     boot = requestAnimationFrame(step);
   }
   function bootFin() { if (boot) cancelAnimationFrame(boot); boot = null; bootFait = true; M.classList.remove('booting', ...phases); M.dataset.boot = 'repos'; bootEl.textContent = ''; glitchPlan(); requestAnimationFrame(garde); }
-  const saute = () => { if (boot) bootFin(); };
+  const saute = () => { bootFin(); }; // toujours nettoyer (classes HTML booting/b-off), même si l'allumage n'a pas démarré (mouvement réduit)
   // capture : une touche ou un geste pendant l'allumage le termine ; un geste sur un choix (déjà à sa place) agit aussi, une touche non.
   addEventListener('keydown', e => { if (!ouvert || M.hidden) return; if (boot) { bootFin(); if (e.key !== 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); } } }, true);
   // Un geste pendant l'allumage ne fait QUE le sauter : le clic qui suit ce geste est avalé, c'est le clic suivant qui choisit.

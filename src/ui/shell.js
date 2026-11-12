@@ -28,7 +28,7 @@ export function migrateOptions(raw) {
   return out;
 }
 
-export function createShell({ game, world, $, onStart, applyOptions }) {
+export function createShell({ game, world, $, onStart, applyOptions, terminal }) {
   const LS = window.localStorage;
   const DEV = new URLSearchParams(location.search).get('dev') === '1'; // mode DEV : emplacements séparés, jamais ceux du joueur
   const key = s => (DEV ? 'nml_dev_save_' : 'nml_save_') + s;
@@ -49,7 +49,7 @@ export function createShell({ game, world, $, onStart, applyOptions }) {
       if (taps.length >= 5) { taps = []; LS.setItem('nml_dev_unlocked', '1'); flash(LIGNES.maintenance + ' Bouton « Mode DEV » dans Options.'); if (sub === 'options') render(); } }); }
   let mode = 'title', sub = null; // mode : title | pause | closed
   const M = $('menu'), S = $('menu-sub');
-  const term = createTerminal({ M, getOptions: () => options, note: t => flash(t) });
+  const term = terminal || createTerminal({ M, getOptions: () => options, note: t => flash(t) });
   let before = 'title';
   const creation = createCreation({ $, onDone: draft => { onStart(null, draft); close(); }, onCancel: () => open(before) });
   const open = m => { mode = m; M.hidden = false; document.body.classList.add('menu-open'); M.classList.toggle('pause', m === 'pause'); render(); term.open(m); };

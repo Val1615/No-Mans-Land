@@ -3,6 +3,8 @@
 # nouvelle partie jusqu'en jeu (menu en pause, aucune animation), prefers-reduced-motion, onglet caché. Captures + séquence GIF du boot (1280).
 import os, sys, time, json
 from playwright.sync_api import sync_playwright
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from nml_boot import controler_lancement, vestige_absent, etat_affichage
 URL = os.environ.get('URL', 'http://127.0.0.1:8921/'); OUT = os.environ.get('OUT', '/tmp/nml-test-out/menu_terminal/'); os.makedirs(OUT, exist_ok=True)
 FORMATS = [  # (nom, largeur, hauteur, mobile, mode attendu)
     ('1920x1080', 1920, 1080, False, 'paysage'), ('1280x800', 1280, 800, False, 'paysage'), ('390x844', 390, 844, True, 'portrait'),
@@ -29,6 +31,15 @@ MARGE = """() => { const t = document.getElementById('t-tampon'), tr = t.getBoun
   return { vis, echelle: t.dataset.echelle, w: Math.round(tr.width), h: Math.round(tr.height), x: Math.round(tr.left), y: Math.round(tr.top), marge: +m.toFixed(1), touche }; }"""
 with sync_playwright() as p:
     br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'])
+    # Lancement : premier cadre sans vestige, Terminal avant le rendu de Center-Town
+    ctx0 = br.new_context(viewport={'width': 1280, 'height': 800}); pg0 = ctx0.new_page(); err0 = []
+    pg0.on('pageerror', lambda e: err0.append('JS ' + str(e)))
+    r0 = controler_lancement(pg0, hold_carte=True)
+    ok(r0['premier_ok'], 'lancement : premier cadre sans HUD / barre / zoom / monde / PROTO', r0['premier'])
+    ok(r0['menu_ok'], 'lancement : Terminal ouvert dès que son code est prêt, vestige absent', r0['menu'])
+    ok(r0['independant_ok'], 'lancement : Terminal ouvert sans attendre le rendu de Center-Town', {'cartePrete': r0['menu'].get('cartePrete'), 'held': len(r0.get('held') or [])})
+    ok(not err0, 'lancement : aucune erreur JS', err0[:3])
+    pg0.screenshot(path=OUT + 'lancement_menu_avant_carte.png'); ctx0.close()
     def ouvre(w, h, mob, reduit=False):
         ctx = br.new_context(viewport={'width': w, 'height': h}, has_touch=mob, is_mobile=mob, device_scale_factor=2 if mob else 1, reduced_motion='reduce' if reduit else 'no-preference')
         pg = ctx.new_page(); errs = []

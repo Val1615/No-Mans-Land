@@ -4,11 +4,12 @@ Notes de Rivet, 10 novembre 2026 (heure de Paris). La direction artistique reste
 
 ## Fichiers
 
-- `index.html` : structure de `#menu` (classe `term`). Calques dans l'ordre de la fiche : fond de ville (`.t-fond`) < tampon (`#t-tampon`) < texte (`.m-main` : titre, liste, commande EXEC, note, statut, bandeau) < sous-panneaux (`#menu-sub`) < glitch < effets CRT (scanlines, scintillement, vignette, ligne d'allumage) < cadre métal (`#t-cadre`). Le texte, et donc les choix, reste au-dessus du tampon.
+- `index.html` : structure de `#menu` (classe `term`). Calques dans l'ordre de la fiche : fond de ville (`.t-fond`) < tampon (`#t-tampon`) < texte (`.m-main` : titre, liste, commande EXEC, note, statut, bandeau) < sous-panneaux (`#menu-sub`) < glitch < effets CRT (scanlines, scintillement, vignette, ligne d'allumage) < cadre métal (`#t-cadre`). Le texte, et donc les choix, reste au-dessus du tampon. Le `body` porte `menu-open` dès le HTML, et `#menu` est déjà en `term booting b-off` : dès la première image, le HUD, la barre d'icônes et le monde sont cachés, l'écran est celui du Terminal éteint.
+- `src/lancement.js` : point d'entrée. Ouvre le Terminal dès que son code et ses calques sont prêts, puis charge `main.js` en arrière-plan. Le catalogue et le rendu de Center-Town ne bloquent plus l'écran titre. L'allumage, sautable, est inchangé.
 - `src/ui/menu_terminal.js` : mise en page, allumage, bandeau, glitch, navigation clavier, lignes de la fiche §6.
-- `src/ui/menu_terminal.css` : tout le style du terminal (préfixe `#menu.term`). `src/style.css` n'est pas modifié.
-- `src/ui/shell.js` : inchangé sur le fond (sauvegardes, options, mode DEV), branché sur le terminal (`open` / `close` / `confirmer`).
-- `tests/menu_rapide.py` : contrôle multi-formats.
+- `src/ui/menu_terminal.css` : tout le style du terminal (préfixe `#menu.term`).
+- `src/ui/shell.js` : sauvegardes, options, mode DEV, branché sur le terminal (`open` / `close` / `confirmer`). Réutilise le terminal déjà ouvert par `lancement.js`, sans relancer l'allumage.
+- `tests/menu_rapide.py`, `tests/nml_boot.py` : contrôle multi-formats, premier cadre sans vestige, Terminal indépendant du rendu de la carte.
 
 IDs et comportements conservés : `#m-resume`, `#m-continue`, `#m-new`, `#m-load`, `#m-options`, `#m-codex`, `#m-credits`, `#m-quit`, `#menu-sub`, `#menu-note`, `#m-version`, la création `[data-race]` / `#cr-next` / `#cr-enter`, la classe `body.menu-open`. La musique de menu reste celle d'avant (ambiance de Dusk-Town, `src/core/ost_centre.js`).
 

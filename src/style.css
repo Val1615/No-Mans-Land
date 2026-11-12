@@ -112,7 +112,8 @@ body.mini #keys{opacity:.55}
 #menu-sub .slots{list-style:none;padding:0;margin:0}#menu-sub .slots li{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px dashed rgba(242,180,74,.3);padding:8px 2px}
 #menu-sub .slots b{display:block;color:var(--c);font-weight:500}#menu-sub .slots .acts{display:flex;gap:6px}#menu-sub .slots .btn{font-size:13px;padding:5px 10px;min-height:34px}
 #menu-sub .muted{opacity:.65}
-body.menu-open #hud,body.menu-open #locbox,body.menu-open #keys,body.menu-open #obj,body.menu-open #msg,body.menu-open #actions,body.menu-open #labels,body.menu-open #dialogue,body.menu-open #panel,body.menu-open #mini{visibility:hidden}
+body.menu-open{background:#0a0804}
+body.menu-open #hud,body.menu-open #locbox,body.menu-open #keys,body.menu-open #obj,body.menu-open #msg,body.menu-open #actions,body.menu-open #labels,body.menu-open #dialogue,body.menu-open #panel,body.menu-open #mini,body.menu-open #view{visibility:hidden}
 @media (max-width:600px){
   #menu .m-main{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0));transform:none;left:12px;width:calc(100vw - 24px);gap:5px;padding:16px}
   #menu h1{font-size:38px}#menu .btn{min-height:42px;padding:7px 12px}

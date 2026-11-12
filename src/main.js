@@ -320,7 +320,7 @@ function applyOptions(o) {
   B.toggle('contrast', o.contrast); B.toggle('readable', o.readable); B.toggle('reduce-motion', o.reduceMotion);
   B.toggle('ts-115', o.textSize === 115); B.toggle('ts-130', o.textSize === 130);
 }
-shell = createShell({ game, world, $, applyOptions, onStart(rec, draft) {
+shell = createShell({ game, world, $, applyOptions, terminal: window.__nmlMenu && window.__nmlMenu.terminal, onStart(rec, draft) {
   if (!rec) { // nouveau jeu : création -> Dusk-Town ; PV, PA et dollars dérivés du personnage
     game.restore(START_SNAP, true);
     if (draft) { const c = buildCharacter(draft), dv = derived(draft), s = game.state;
@@ -346,4 +346,4 @@ function steelWatch() {
 }
 setInterval(steelWatch, 200);
 $('k-menu').addEventListener('click', () => { if (game.state.dialogue) game.closeDialogue(); if (panelOpen) openPanel(panelOpen); shell.pause(); });
-window.__nml.shell = shell;
+window.__nml.shell = shell; window.__nmlCartePrete = true;
