@@ -685,6 +685,7 @@ Sols (rectangles x, z, w, d, dans cet ordre, les allées par-dessus la pelouse) 
 Défauts connus : pied droit de la fontaine à 0,92 (objet bas, peu visible) ; le muret/haie procédural est plus lisse que les sprites peints ; la couronne de l'arbre (~5 m) déborde son emprise de 3 m, ce qui est voulu (seul le tronc est solide). Pas de guirlande entre les stands (même refus qu'au §8M).
 
 Planches hors jeu (non versionnées) : `nml-shots/ct_v4_so_jardin_controle.png`, `nml-shots/ct_v4_so_jardin_maquette.jpg`.
+
 ### O. Intégration Rivet (lots §8J, §8K, §8L)
 
 Poses d'Ocre appliquées telles quelles (emprise native, aucun `b.k` / `b.sy`). Kiosques, abris, lampadaires, cerisiers et échoppes v3 déjà en jeu réutilisés, pas de doublon. `ct_mob_gba_x_v4_3q` et `ct_mob_benne_v4_3q` n'ont pas de pose au §8J : non inventées. `ct_rempl1` remplacé par `ct_ne_seg0` + `ct_ne_porche0` ; la clé `ct_remplissage_8x8_a` reste sur `ct_rempl5` ; Nexus inchangé.
@@ -692,3 +693,81 @@ Poses d'Ocre appliquées telles quelles (emprise native, aucun `b.k` / `b.sy`). 
 Câblage véhicules dans `view.js` : vue de dos si marche vers −axe (`vue_dos`), miroir d'axe 2 sur caisse + `_fenetres` / `_neon` / `_hover`, texte `_texte` / `_texte_miroir` jamais retourné. Le champ `miroir` des poses N-S est honoré pour les véhicules garés. Le tram (`ct_tram1`) reste natif sur sa voie, sans miroir. Anciennes clés `ct_taxi_v3_3q`, `ct_taxi_v3_axe2_3q`, `ct_tram_v3_3q` (et leurs calques) marquées obsolete.
 
 Écart aux poses d'Ocre : les véhicules garés du §8K empiètent sur d'anciennes trajectoires de taxis (bord sud z56,3, bord nord z73,8, files N-S x64,3 / x81,8). Les poses sont conservées ; les cinq parcours de taxis ont été décalés (ouest z61, est z70, sud x70, nord x78) pour rester hors des solides et réserver le carrefour aux taxis. Figurants de `center_foule.js` et 12 parcours de passants reculés hors des nouveaux solides et hors des masques (mobilier, véhicules garés, feux).
+
+### P. Lot 2d coin NE : bureaux 12-18 m autour d'une cour (`ct_ne_bureaux_*_v4_3q`, 2026-11-12)
+
+Îlot x100-132 z0-40, à l'est de Nexus, du porche et du segment (§8L, non touchés). Tout le bâti fait **12 à 18 m** (rien en 22-25 m), **aucun logo ni texte** cuit (Human Corp reste sa tour existante en x104 z40).
+
+Plan :
+- **Bloc A** (x100-115 z0-12) : quatre volumes, a1 18 m et a2 16 m au fond (z0-6), a3 14 m et un `f` 12 m devant (z6-12).
+- **Ruelle de service** x115-120 z0-12 : 5 m entre a2/f et B, 4 m minimum demandés.
+- **Bloc B** (x120-132 z0-12) : b1 14 m au fond, b2 12 m devant.
+- **Bâti C** réduit à x100-110 z12-20 (14 m).
+- **Ruelle ouest** z20-24 dans le prolongement du porche, libre jusqu'en z28 entre C et D.
+- **Bâti D** : x100-110 z28-40, 12 m, deux poses de `d`.
+- **Bâti E** : x124-132 z16-40, trois volumes de 8 × 8 (e1 16 m, e2 13 m, e1 de nouveau 16 m).
+- **Bâti F** : x110-124 z34-40, deux poses de `f`, 12 m.
+- **Cour** x110-124 z12-34 (plus x124-132 z12-16) : pelouse x111-123 z21-31, trois grands arbres, un cerisier en bac, bancs et lampadaires.
+
+**Pourquoi des volumes de 6 à 8 m de profondeur** : une génération sort au plus 720 × 1 280 ou 864 × 1 152 px. Un bâtiment de 16 × 12 m sur 20 m demanderait ~1 000 × 1 330 px à 50 px/m, donc un agrandissement, interdit. Les blocs sont donc découpés en volumes distincts (matériaux et hauteurs différents, lus comme une rangée d'immeubles). Le plus haut faisable proprement est 18 m sur 8 × 6 ; **20 m n'est pas produit**.
+
+**Lacet** : le gabarit compensé du §8M (0,18 / 0,80) donnait encore des pieds droits à 0,82-0,94 sur ces volumes hauts et étroits. Deux nouveaux gabarits ont été utilisés : 0,18 / 0,62 (lacet 28,3°, tangage 19,5°) et 0,22 / 0,62 (lacet 30,8°, tangage 21,7°). Ils ramènent le pied droit à 0,69-0,78. Aucun sprite n'est cisaillé.
+
+| Clé | px | ancre | emprise (m) | h (m) | pieds mesurés g / d | calques |
+|---|---|---|---|---|---|---|
+| `ct_ne_bureaux_a1_8x6_v4_3q` | 508×1022 | [356, 1018] | 8 × 6 | 18 | 0.263 / 0.724 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_a2_8x6_v4_3q` | 507×940 | [369, 936] | 8 × 6 | 16 | 0.308 / 0.91 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_a3_8x6_v4_3q` | 512×842 | [341, 838] | 8 × 6 | 14 | 0.365 / 0.7 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_b1_12x6_v4_3q` | 692×878 | [520, 874] | 12 × 6 | 14 | 0.265 / 0.696 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_b2_12x6_v4_3q` | 680×806 | [522, 802] | 12 × 6 | 12 | 0.269 / 0.78 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_c_10x8_v4_3q` | 675×877 | [409, 874] | 10 × 8 | 14 | 0.398 / 0.703 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_d_10x6_v4_3q` | 605×769 | [450, 766] | 10 × 6 | 12 | 0.213 / 0.694 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_e1_8x8_v4_3q` | 566×972 | [371, 968] | 8 × 8 | 16 | 0.37 / 0.829 | `_fenetres`, `_neon` |
+| `ct_ne_bureaux_e2_8x8_v4_3q` | 572×834 | [363, 830] | 8 × 8 | 13 | 0.309 / 0.73 | `_fenetres` |
+| `ct_ne_bureaux_f_7x6_v4_3q` | 467×745 | [308, 742] | 7 × 6 | 12 | 0.29 / 0.713 | `_fenetres`, `_neon` |
+
+```js
+B_CT('ct_ne_bur_a1', '', 'ct_ne_bureaux_a1_8x6_v4_3q', 100, 0, 8, 6, { named: false, solid: [{ x: 100, z: 0, w: 8, d: 6 }] }),
+B_CT('ct_ne_bur_a2', '', 'ct_ne_bureaux_a2_8x6_v4_3q', 108, 0, 8, 6, { named: false, solid: [{ x: 108, z: 0, w: 8, d: 6 }] }),
+B_CT('ct_ne_bur_a3', '', 'ct_ne_bureaux_a3_8x6_v4_3q', 100, 6, 8, 6, { named: false, solid: [{ x: 100, z: 6, w: 8, d: 6 }] }),
+B_CT('ct_ne_bur_a4', '', 'ct_ne_bureaux_f_7x6_v4_3q', 108, 6, 7, 6, { named: false, solid: [{ x: 108, z: 6, w: 7, d: 6 }] }),
+B_CT('ct_ne_bur_b1', '', 'ct_ne_bureaux_b1_12x6_v4_3q', 120, 0, 12, 6, { named: false, solid: [{ x: 120, z: 0, w: 12, d: 6 }] }),
+B_CT('ct_ne_bur_b2', '', 'ct_ne_bureaux_b2_12x6_v4_3q', 120, 6, 12, 6, { named: false, solid: [{ x: 120, z: 6, w: 12, d: 6 }] }),
+B_CT('ct_ne_bur_c', '', 'ct_ne_bureaux_c_10x8_v4_3q', 100, 12, 10, 8, { named: false, solid: [{ x: 100, z: 12, w: 10, d: 8 }] }),
+B_CT('ct_ne_bur_d1', '', 'ct_ne_bureaux_d_10x6_v4_3q', 100, 28, 10, 6, { named: false, solid: [{ x: 100, z: 28, w: 10, d: 6 }] }),
+B_CT('ct_ne_bur_d2', '', 'ct_ne_bureaux_d_10x6_v4_3q', 100, 34, 10, 6, { named: false, solid: [{ x: 100, z: 34, w: 10, d: 6 }] }),
+B_CT('ct_ne_bur_e1', '', 'ct_ne_bureaux_e1_8x8_v4_3q', 124, 16, 8, 8, { named: false, solid: [{ x: 124, z: 16, w: 8, d: 8 }] }),
+B_CT('ct_ne_bur_e2', '', 'ct_ne_bureaux_e2_8x8_v4_3q', 124, 24, 8, 8, { named: false, solid: [{ x: 124, z: 24, w: 8, d: 8 }] }),
+B_CT('ct_ne_bur_e3', '', 'ct_ne_bureaux_e1_8x8_v4_3q', 124, 32, 8, 8, { named: false, solid: [{ x: 124, z: 32, w: 8, d: 8 }] }),
+B_CT('ct_ne_bur_f1', '', 'ct_ne_bureaux_f_7x6_v4_3q', 110, 34, 7, 6, { named: false, solid: [{ x: 110, z: 34, w: 7, d: 6 }] }),
+B_CT('ct_ne_bur_f2', '', 'ct_ne_bureaux_f_7x6_v4_3q', 117, 34, 7, 6, { named: false, solid: [{ x: 117, z: 34, w: 7, d: 6 }] }),
+// cour : mobilier déjà publié réutilisé (§8J, §8N, v3)
+B_CT('ct_ne_arbre0', '', 'ct_so_arbre_jardin_v4_3q', 111.5, 22, 3, 3, { named: false, solid: [{ x: 112.6, z: 23.1, w: 0.8, d: 0.8 }] }),
+B_CT('ct_ne_arbre1', '', 'ct_so_arbre_jardin_v4_3q', 119.5, 22, 3, 3, { named: false, solid: [{ x: 120.6, z: 23.1, w: 0.8, d: 0.8 }] }),
+B_CT('ct_ne_arbre2', '', 'ct_so_arbre_jardin_v4_3q', 115.5, 28.5, 3, 3, { named: false, solid: [{ x: 116.6, z: 29.6, w: 0.8, d: 0.8 }] }),
+B_CT('ct_ne_ceris0', '', 'ct_cerisier_bac_v3_3q', 115, 14.5, 4, 4, { named: false, solid: [{ x: 116, z: 15.5, w: 2, d: 2 }] }),
+B_CT('ct_ne_banc0', '', 'ct_mob_banc_x_v4_3q', 113, 26.2, 1.8, 0.6, { named: false, solid: [{ x: 113, z: 26.2, w: 1.8, d: 0.6 }] }),
+B_CT('ct_ne_banc1', '', 'ct_mob_banc_x_v4_3q', 118.6, 26.2, 1.8, 0.6, { named: false, solid: [{ x: 118.6, z: 26.2, w: 1.8, d: 0.6 }] }),
+B_CT('ct_ne_bancz0', '', 'ct_mob_banc_z_v4_3q', 122.6, 18, 0.6, 1.8, { named: false, solid: [{ x: 122.6, z: 18, w: 0.6, d: 1.8 }] }),
+B_CT('ct_ne_lampa0', '', 'ct_mob_lampadaire_ambre_v4_3q', 111, 17, 1, 1, { named: false, solid: [{ x: 111.2, z: 17.2, w: 0.6, d: 0.6 }] }),
+B_CT('ct_ne_lampa1', '', 'ct_mob_lampadaire_ambre_v4_3q', 122.5, 30, 1, 1, { named: false, solid: [{ x: 122.7, z: 30.2, w: 0.6, d: 0.6 }] }),
+B_CT('ct_ne_lampa2', '', 'ct_mob_lampadaire_ambre_v4_3q', 104, 22, 1, 1, { named: false, solid: [{ x: 104.2, z: 22.2, w: 0.6, d: 0.6 }] }),
+```
+
+Sols (rectangles x, z, w, d, dans cet ordre) :
+- `g_ct_trottoir_dalles` : `(100, 12, 32, 22)`
+- `g_ct_jardin_pelouse` : `(111, 21, 12, 10)`
+- `g_ct_asphalte_mouille` : `(115, 0, 5, 12)`
+
+Défauts connus :
+- **Pieds hors cible**, notés et non forcés :
+  - a2 : pied droit 0,91 (seule version à 4 niveaux crédibles ; deux régénérations avaient 7 rangées de fenêtres) ;
+  - e1 : pied droit 0,83 (même raison) ;
+  - d : pied gauche 0,21 ;
+  - a1, b1, b2 : pied gauche ~0,26.
+- **Niveaux un peu serrés** sur a1 (6 rangées pour 18 m), b1 et c (5 rangées pour 14 m), soit ~2,8-3 m par niveau.
+- **c** porte un léger socle-trottoir dessiné par le générateur (trois essais l'ont tous ; le quatrième ajoutait un texte « OFFICE » et a été rejeté). Cela réduit le corps du bâtiment d'environ 4 % dans son emprise.
+- **Répétitions** : `d` (posé deux fois), `e1` (deux fois, séparé par e2) et `f` (trois fois, dont une à l'avant du bloc A).
+- La cour est masquée par les rangées D/F/E vues depuis la caméra (voir la maquette « cour »).
+
+Planches hors jeu (non versionnées) : `nml-shots/ct_v4_ne_bureaux_controle.png`, `nml-shots/ct_v4_ne_bureaux_maquette.jpg`, `nml-shots/ct_v4_ne_bureaux_maquette_cour.jpg`.

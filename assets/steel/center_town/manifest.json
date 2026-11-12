@@ -11185,5 +11185,646 @@
     "source": "Ocre 2026-11-12, lot 2c coin SO jardin du Dôme (2026-11-12) : dessin procédural PIL/numpy à 128 px/m, bruit périodique (tuilable), aucun agrandissement (sol_jardin.py hors dépôt)",
     "groupe": "ct_ilot_so_v4",
     "lot": "lot 2c coin SO jardin du Dôme (2026-11-12)"
+  },
+  "ct_ne_bureaux_a1_8x6_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_a1_8x6_v4_3q.webp",
+    "px": [
+      508,
+      1022
+    ],
+    "anchor": [
+      356,
+      1018
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "height_m": 18,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 18 m, cadre béton anthracite, liserés cyan aux dalles, hall vitré (bloc A, fond nord)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_a1_8x6_v4_3q', X, Z, 8, 6, { named: false, solid: [{ x: X, z: Z, w: 8, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x6x18 m dessiné à caméra compensée (lacet 28,3°, tangage 19,5°, pentes de gabarit 0,18 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8784 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_a1_v2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.263 / droit 0.724 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_a1_8x6_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_a1_8x6_v4_3q_neon"
+  },
+  "ct_ne_bureaux_a1_8x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_a1_8x6_v4_3q_fenetres.webp",
+    "px": [
+      508,
+      1022
+    ],
+    "anchor": [
+      356,
+      1018
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_a1_8x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_a1_8x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_a1_8x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_a1_8x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_a1_8x6_v4_3q_neon.webp",
+    "px": [
+      508,
+      1022
+    ],
+    "anchor": [
+      356,
+      1018
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_a1_8x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_a1_8x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_a1_8x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_a2_8x6_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_a2_8x6_v4_3q.webp",
+    "px": [
+      507,
+      940
+    ],
+    "anchor": [
+      369,
+      936
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "height_m": 16,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 16 m, mur-rideau fumé à ailettes bronze (bloc A, fond nord)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_a2_8x6_v4_3q', X, Z, 8, 6, { named: false, solid: [{ x: X, z: Z, w: 8, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x6x16 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3°, pentes de gabarit 0,18 / 0,80), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8024 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_a2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.308 / droit 0.91 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_a2_8x6_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_a2_8x6_v4_3q_neon"
+  },
+  "ct_ne_bureaux_a2_8x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_a2_8x6_v4_3q_fenetres.webp",
+    "px": [
+      507,
+      940
+    ],
+    "anchor": [
+      369,
+      936
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_a2_8x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_a2_8x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_a2_8x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_a2_8x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_a2_8x6_v4_3q_neon.webp",
+    "px": [
+      507,
+      940
+    ],
+    "anchor": [
+      369,
+      936
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_a2_8x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_a2_8x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_a2_8x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_a3_8x6_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_a3_8x6_v4_3q.webp",
+    "px": [
+      512,
+      842
+    ],
+    "anchor": [
+      341,
+      838
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "height_m": 14,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 14 m en brique brun-rouge, châssis acier, citerne sur le toit (bloc A, avant)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_a3_8x6_v4_3q', X, Z, 8, 6, { named: false, solid: [{ x: X, z: Z, w: 8, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x6x14 m dessiné à caméra compensée (lacet 30,8°, tangage 21,7°, pentes de gabarit 0,22 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.7782 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_a3_v3.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.365 / droit 0.7 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_a3_8x6_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_a3_8x6_v4_3q_neon"
+  },
+  "ct_ne_bureaux_a3_8x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_a3_8x6_v4_3q_fenetres.webp",
+    "px": [
+      512,
+      842
+    ],
+    "anchor": [
+      341,
+      838
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_a3_8x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_a3_8x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_a3_8x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_a3_8x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_a3_8x6_v4_3q_neon.webp",
+    "px": [
+      512,
+      842
+    ],
+    "anchor": [
+      341,
+      838
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_a3_8x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_a3_8x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_a3_8x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_b1_12x6_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_b1_12x6_v4_3q.webp",
+    "px": [
+      692,
+      878
+    ],
+    "anchor": [
+      520,
+      874
+    ],
+    "footprint_m": [
+      12,
+      6
+    ],
+    "height_m": 14,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 14 m, bardage métal bleu-gris, liseré magenta en acrotère (bloc B, fond nord)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_b1_12x6_v4_3q', X, Z, 12, 6, { named: false, solid: [{ x: X, z: Z, w: 12, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 12x6x14 m dessiné à caméra compensée (lacet 28,3°, tangage 19,5°, pentes de gabarit 0,18 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8742 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_b1_v2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.265 / droit 0.696 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_b1_12x6_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_b1_12x6_v4_3q_neon"
+  },
+  "ct_ne_bureaux_b1_12x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_b1_12x6_v4_3q_fenetres.webp",
+    "px": [
+      692,
+      878
+    ],
+    "anchor": [
+      520,
+      874
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_b1_12x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_b1_12x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_b1_12x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_b1_12x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_b1_12x6_v4_3q_neon.webp",
+    "px": [
+      692,
+      878
+    ],
+    "anchor": [
+      520,
+      874
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_b1_12x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_b1_12x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_b1_12x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_b2_12x6_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_b2_12x6_v4_3q.webp",
+    "px": [
+      680,
+      806
+    ],
+    "anchor": [
+      522,
+      802
+    ],
+    "footprint_m": [
+      12,
+      6
+    ],
+    "height_m": 12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 12 m, béton banché, loggias et jardinières, pergola (bloc B, avant)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_b2_12x6_v4_3q', X, Z, 12, 6, { named: false, solid: [{ x: X, z: Z, w: 12, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 12x6x12 m dessiné à caméra compensée (lacet 30,8°, tangage 21,7°, pentes de gabarit 0,22 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8686 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_b2_v3.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.269 / droit 0.78 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_b2_12x6_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_b2_12x6_v4_3q_neon"
+  },
+  "ct_ne_bureaux_b2_12x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_b2_12x6_v4_3q_fenetres.webp",
+    "px": [
+      680,
+      806
+    ],
+    "anchor": [
+      522,
+      802
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_b2_12x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_b2_12x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_b2_12x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_b2_12x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_b2_12x6_v4_3q_neon.webp",
+    "px": [
+      680,
+      806
+    ],
+    "anchor": [
+      522,
+      802
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_b2_12x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_b2_12x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_b2_12x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_c_10x8_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_c_10x8_v4_3q.webp",
+    "px": [
+      675,
+      877
+    ],
+    "anchor": [
+      409,
+      874
+    ],
+    "footprint_m": [
+      10,
+      8
+    ],
+    "height_m": 14,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 14 m, angle vitré, arcade en rez-de-chaussée côté cour (bâti C, x100-110 z12-20)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_c_10x8_v4_3q', X, Z, 10, 8, { named: false, solid: [{ x: X, z: Z, w: 10, d: 8 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 10x8x14 m dessiné à caméra compensée (lacet 30,8°, tangage 21,7°, pentes de gabarit 0,22 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8233 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_c_v3.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.398 / droit 0.703 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_c_10x8_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_c_10x8_v4_3q_neon"
+  },
+  "ct_ne_bureaux_c_10x8_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_c_10x8_v4_3q_fenetres.webp",
+    "px": [
+      675,
+      877
+    ],
+    "anchor": [
+      409,
+      874
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_c_10x8_v4_3q",
+    "couche_de": "ct_ne_bureaux_c_10x8_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_c_10x8_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_c_10x8_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_c_10x8_v4_3q_neon.webp",
+    "px": [
+      675,
+      877
+    ],
+    "anchor": [
+      409,
+      874
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_c_10x8_v4_3q",
+    "couche_de": "ct_ne_bureaux_c_10x8_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_c_10x8_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_d_10x6_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_d_10x6_v4_3q.webp",
+    "px": [
+      605,
+      769
+    ],
+    "anchor": [
+      450,
+      766
+    ],
+    "footprint_m": [
+      10,
+      6
+    ],
+    "height_m": 12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 12 m en brique anthracite, baies cintrées au rez-de-chaussée ; posé deux fois bout à bout (bâti D)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_d_10x6_v4_3q', X, Z, 10, 6, { named: false, solid: [{ x: X, z: Z, w: 10, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 10x6x12 m dessiné à caméra compensée (lacet 28,3°, tangage 19,5°, pentes de gabarit 0,18 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.7602 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_d_v2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.213 / droit 0.694 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_d_10x6_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_d_10x6_v4_3q_neon"
+  },
+  "ct_ne_bureaux_d_10x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_d_10x6_v4_3q_fenetres.webp",
+    "px": [
+      605,
+      769
+    ],
+    "anchor": [
+      450,
+      766
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_d_10x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_d_10x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_d_10x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_d_10x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_d_10x6_v4_3q_neon.webp",
+    "px": [
+      605,
+      769
+    ],
+    "anchor": [
+      450,
+      766
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_d_10x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_d_10x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_d_10x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_e1_8x8_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_e1_8x8_v4_3q.webp",
+    "px": [
+      566,
+      972
+    ],
+    "anchor": [
+      371,
+      968
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 16,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 16 m, mur-rideau teinté sarcelle, édicule vitré (bâti E, posé en z16 et z32)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_e1_8x8_v4_3q', X, Z, 8, 8, { named: false, solid: [{ x: X, z: Z, w: 8, d: 8 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x8x16 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3°, pentes de gabarit 0,18 / 0,80), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8745 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_e1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.37 / droit 0.829 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_e1_8x8_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_e1_8x8_v4_3q_neon"
+  },
+  "ct_ne_bureaux_e1_8x8_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_e1_8x8_v4_3q_fenetres.webp",
+    "px": [
+      566,
+      972
+    ],
+    "anchor": [
+      371,
+      968
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_e1_8x8_v4_3q",
+    "couche_de": "ct_ne_bureaux_e1_8x8_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_e1_8x8_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_e1_8x8_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_e1_8x8_v4_3q_neon.webp",
+    "px": [
+      566,
+      972
+    ],
+    "anchor": [
+      371,
+      968
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_e1_8x8_v4_3q",
+    "couche_de": "ct_ne_bureaux_e1_8x8_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_e1_8x8_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_e2_8x8_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_e2_8x8_v4_3q.webp",
+    "px": [
+      572,
+      834
+    ],
+    "anchor": [
+      363,
+      830
+    ],
+    "footprint_m": [
+      8,
+      8
+    ],
+    "height_m": 13,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 13 m, panneaux de pierre sombre, terrasse bois et pergola (bâti E, milieu)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_e2_8x8_v4_3q', X, Z, 8, 8, { named: false, solid: [{ x: X, z: Z, w: 8, d: 8 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x8x13 m dessiné à caméra compensée (lacet 28,3°, tangage 19,5°, pentes de gabarit 0,18 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.7922 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_e2_v2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.309 / droit 0.73 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_ne_bureaux_e2_8x8_v4_3q_fenetres"
+  },
+  "ct_ne_bureaux_e2_8x8_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_e2_8x8_v4_3q_fenetres.webp",
+    "px": [
+      572,
+      834
+    ],
+    "anchor": [
+      363,
+      830
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_e2_8x8_v4_3q",
+    "couche_de": "ct_ne_bureaux_e2_8x8_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_e2_8x8_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_f_7x6_v4_3q": {
+    "file": "steel/center_town/ct_ne_bureaux_f_7x6_v4_3q.webp",
+    "px": [
+      467,
+      745
+    ],
+    "anchor": [
+      308,
+      742
+    ],
+    "footprint_m": [
+      7,
+      6
+    ],
+    "height_m": 12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Immeuble de bureaux 12 m, béton sombre et ventelles bois ; pignon est presque aveugle pour la pose bout à bout (bâti F, et avant du bloc A)",
+    "pose": "B_CT('<id>', '', 'ct_ne_bureaux_f_7x6_v4_3q', X, Z, 7, 6, { named: false, solid: [{ x: X, z: Z, w: 7, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2d coin NE bureaux et cour (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 7x6x12 m dessiné à caméra compensée (lacet 30,8°, tangage 21,7°, pentes de gabarit 0,22 / 0,62), fond chroma, détourage sans comblement, UNE réduction uniforme x0.7013 vers 50 px/m (moyenne géométrique hauteur/largeur), ancre au coin avant ; aucun agrandissement, étirement ni cisaillement ; aucun logo ni texte (brut ct_v5/raw/ne_f_v3.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_ne_bureaux_v4",
+    "lot": "lot 2d coin NE bureaux et cour (2026-11-12)",
+    "pente_mesuree": "pied gauche 0.29 / droit 0.713 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_ne_bureaux_f_7x6_v4_3q_fenetres",
+    "neon": "ct_ne_bureaux_f_7x6_v4_3q_neon"
+  },
+  "ct_ne_bureaux_f_7x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_ne_bureaux_f_7x6_v4_3q_fenetres.webp",
+    "px": [
+      467,
+      745
+    ],
+    "anchor": [
+      308,
+      742
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_f_7x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_f_7x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_ne_bureaux_f_7x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_ne_bureaux_f_7x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_ne_bureaux_f_7x6_v4_3q_neon.webp",
+    "px": [
+      467,
+      745
+    ],
+    "anchor": [
+      308,
+      742
+    ],
+    "additive": true,
+    "parent": "ct_ne_bureaux_f_7x6_v4_3q",
+    "couche_de": "ct_ne_bureaux_f_7x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_ne_bureaux_f_7x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
   }
 }
