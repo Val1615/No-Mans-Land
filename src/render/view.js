@@ -73,7 +73,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], hovers = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0, vehFiges = false; let decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], hovers = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -158,10 +158,14 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function appliquerFlip(o, key, sx) {
     const mm = bman[key] || o.userData.m, flip = o.userData.neverFlip ? 1 : sx;
     if (!SKIN[key] && !mm) return;
-    if (!o.userData.ownTex) {
-      const tex = Object.assign(new THREE.Texture(SKIN[key] || o.material.map.image), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace });
-      o.material.map = tex; o.userData.ownTex = true;
-    } else if (SKIN[key] && o.material.map.image !== SKIN[key]) { o.material.map.image = SKIN[key]; o.material.map.needsUpdate = true; }
+    // changement de vue (avant <-> dos, tailles d'image différentes) : TOUJOURS une nouvelle texture. Remplacer seulement map.image ne réalloue pas
+    // la texture GPU (three r170, texStorage2D figé à la 1re taille) : l'ancienne image restait affichée (vue avant sur un véhicule qui roule en dos = marche arrière).
+    const img = SKIN[key] || o.material.map.image;
+    if (!o.userData.ownTex || o.material.map.image !== img) {
+      const old = o.userData.ownTex ? o.material.map : null;
+      o.material.map = Object.assign(new THREE.Texture(img), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace }); o.userData.ownTex = true;
+      if (old) old.dispose();
+    }
     o.userData.m = mm; o.material.map.repeat.x = flip; o.material.map.offset.x = flip < 0 ? 1 : 0;
     o.scale.set(mm.px[0] / K, mm.px[1] / K, 1);
     o.center.set(flip < 0 ? 1 - mm.anchor[0] / mm.px[0] : mm.anchor[0] / mm.px[0], 1 - mm.anchor[1] / mm.px[1]);
@@ -175,21 +179,26 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const o of extra) o.userData.parentVeh = s.userData;
     poseVeh(s); return s;
   }
-  function vehPos(u, t) { for (const [a, b, l, l0] of u.seg) if (t <= l0 + l || l0 + l >= u.L - 1e-6) { const k = Math.min(1, Math.max(0, (t - l0) / l)); return { x: a[0] + (b[0] - a[0]) * k, z: a[1] + (b[1] - a[1]) * k, dx: (b[0] - a[0]) / l, dz: (b[1] - a[1]) / l }; } return null; }
+  // au point de virage exact (t = fin d'un tronçon), on prend déjà le cap du tronçon suivant : pas une image à l'ancien cap
+  function vehPos(u, t) { for (const [a, b, l, l0] of u.seg) if (t < l0 + l || l0 + l >= u.L - 1e-6) { const k = Math.min(1, Math.max(0, (t - l0) / l)); return { x: a[0] + (b[0] - a[0]) * k, z: a[1] + (b[1] - a[1]) * k, dx: (b[0] - a[0]) / l, dz: (b[1] - a[1]) / l }; } return null; }
+  // calque k2 d'un véhicule affichable dans l'orientation sx : il doit exister pour la vue courante ; un calque texte ne s'affiche que dans « sa » vue
+  function calqueActif(o, k2, sx) { const existe = !!(bman[k2] && SKIN[k2] && !bman[k2].obsolete);
+    return o.userData.vueTexte ? existe && (sx < 0) === (o.userData.vueTexte === 'miroir') : existe; }
   function poseVeh(s) {
     const u = s.userData, p = vehPos(u, u.t); if (!p) return;
     const axe = Math.abs(p.dx) >= Math.abs(p.dz) ? 'x' : 'z', natif = axe === u.vue.axe, sign = axe === 'x' ? (p.dx >= 0 ? 1 : -1) : (p.dz >= 0 ? 1 : -1);
     let key, sx;
     if (u.vue.vueDos && bman[u.vue.vueDos] && SKIN[u.vue.vueDos]) { key = sign < 0 ? u.vue.vueDos : u.cle; sx = !natif && u.vue.miroir !== false ? -1 : 1; }
     else { key = natif || !u.vue.vue2 || !bman[u.vue.vue2] || !SKIN[u.vue.vue2] ? u.cle : u.vue.vue2; sx = !natif && key === u.cle && u.vue.miroir ? -1 : 1; }
-    if (u.axe !== axe || u.sx !== sx || u.key !== key) { u.axe = axe; u.sx = sx; u.key = key;
-      appliquerFlip(s, key, sx);
-      for (const o of u.extra) {
-        const k2 = key + (o.userData.lay || '');
-        if (o.userData.vueTexte) o.visible = (sx < 0) === (o.userData.vueTexte === 'miroir');
-        else o.visible = !!(bman[k2] && SKIN[k2] && !bman[k2].obsolete);
-        if (o.visible) appliquerFlip(o, k2, sx);
-      } }
+    const change = u.axe !== axe || u.sx !== sx || u.key !== key;
+    if (change) { u.axe = axe; u.sx = sx; u.key = key; appliquerFlip(s, key, sx); }
+    // calques : visibilité réappliquée à CHAQUE pose (plus seulement au changement d'orientation) ; un seul calque texte, celui de l'orientation
+    // courante (_texte en vue native, _texte_miroir en vue miroir), et un calque de la vue avant n'est jamais laissé sur la vue dos qui n'en a pas.
+    for (const o of u.extra) {
+      const k2 = key + (o.userData.lay || ''); o.userData.actif = calqueActif(o, k2, sx);
+      o.visible = s.visible !== false && o.userData.actif;
+      if (o.userData.actif && (change || o.userData.m !== bman[k2])) appliquerFlip(o, k2, sx);
+    }
     const e = empriseVeh(u, u.t), hx = (e.x1 - e.x0) / 2, hz = (e.z1 - e.z0) / 2;
     u.emprise = e; u.cx = p.x; u.cz = p.z; u.dir = [p.dx, p.dz];
     for (const o of [s, ...u.extra]) o.position.set(p.x + hx, 0, p.z + hz); // ancre d'Ocre = coin avant de l'emprise
@@ -213,7 +222,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         if (entre && !attend) { if (autres.some(o => o.userData.reserve || recouvre(o.userData.emprise, box))) attend = 'carrefour'; else u.reserve = true; }
         if (!entre && !dedans) u.reserve = false; if (dedans) u.reserve = true; }
       u.attend = attend; if (!attend) { u.t += ds; u.parcouru = (u.parcouru || 0) + ds; if (u.t >= u.L) u.t = 0; }
-      s.visible = true; for (const e of u.extra) e.visible = true; poseVeh(s);
+      s.visible = true; poseVeh(s); // poseVeh règle la visibilité de chaque calque (un seul texte, jamais les deux)
       if (box) { const dedans = recouvre(u.emprise, box); if (!dedans && !(u.t + 2 < u.L && recouvre(empriseVeh(u, u.t + 2), box))) u.reserve = false; } });
   }
   // simulation accélérée (tests) : sec secondes au pas dt, sans rendu ; renvoie les recouvrements d'emprises entre véhicules et le chemin parcouru
@@ -441,8 +450,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     appliquerFlip(item.obj, cle, sx);
     for (const o of calquesVeh(cle)) {
       const k2 = cle + (o.userData.lay || '');
-      if (o.userData.vueTexte) o.visible = (sx < 0) === (o.userData.vueTexte === 'miroir');
-      if (o.visible !== false) appliquerFlip(o, k2, sx);
+      o.userData.actif = calqueActif(o, k2, sx); o.visible = o.userData.actif; // véhicule garé : une seule plaque, celle de son miroir
+      if (o.userData.actif) appliquerFlip(o, k2, sx);
       o.position.copy(item.obj.position); item.extra.push(o);
     }
   }
@@ -581,7 +590,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       for (const [a, b, l] of seg) { if (r <= l) { const k = r / l; s.position.set(a[0] + (b[0] - a[0]) * k, 0, a[1] + (b[1] - a[1]) * k); face(s, Math.atan2(b[0] - a[0], b[1] - a[1])); break; } r -= l; }
       animate(s, true, dt, t); }
     for (const s of decor) if (!walkers.includes(s)) animate(s, false, dt, t);
-    if (vehicules.length) rouler(dt);
+    if (vehicules.length && !vehFiges) rouler(dt);
     for (const s of drones) { const o = s.userData.orbit, a = t * (o.speed || 0.25) + (o.ph || 0); s.position.set(o.x + Math.cos(a) * o.r, (o.y || 5) + Math.sin(t * 2.1 + (o.ph || 0)) * 0.15, o.z + Math.sin(a) * o.r * 0.6); }
     const calme = !!document.body?.classList?.contains('reduce-motion');
     const ostOn = !!ostCentre?.playing;
@@ -817,7 +826,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (builtFor !== s.location) build(s.location);
     const visible=kind=>game.world.testing||game.world.editorLayers?.[kind]?.visible!==false;
     if(groundMesh)groundMesh.visible=visible('zone');
-    for(const b of bsprites){b.visible=visible('building');const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible;}
+    for(const b of bsprites){b.visible=visible('building');const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible&&e.userData.actif!==false;}
     for(const i of bills)if(i.obj.userData.editorId)i.obj.visible=visible('prop');
     for(const n of npcSprites)n.visible=visible('actor');
     player.visible=visible('actor');player.userData.editorId=s.player.editorId;
@@ -1083,6 +1092,20 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const p = { x: r.x0 + u * (r.x1 - r.x0), y: r.y0 + v * (r.y1 - r.y0) }, o = scr(new THREE.Vector3(d.opening.x, 0, d.opening.z)); return +Math.hypot(p.x - o.x, p.y - o.y).toFixed(2); },
     // v13 : figurants (rôle, position monde) et rendu isolé d'un figurant, pour les contrôles au pixel (comptage à l'écran)
     simVehicules,
+    // tests : figer la circulation et poser un véhicule (clé de sprite, abscisse t sur son trajet, ou point [x, z] le plus proche) ; renvoie son état
+    figerVehicules: (b = true) => { vehFiges = !!b; return vehFiges; },
+    placerVehicule: (cle, t) => { const s = vehicules.find(q => q.userData.cle === cle); if (!s) return null; const u = s.userData;
+      if (Array.isArray(t)) { let best = 0, bd = Infinity; for (let k = 0; k <= u.L; k += 0.25) { const p = vehPos(u, k), d = Math.hypot(p.x - t[0], p.z - t[1]); if (d < bd) { bd = d; best = k; } } t = best; }
+      u.t = Math.max(0, Math.min(u.L - 1e-3, t)); s.visible = true; poseVeh(s); return { t: u.t, L: u.L, x: u.cx, z: u.cz, key: u.key, sx: u.sx, axe: u.axe, dir: u.dir }; },
+    // tests : rendu isolé du seul corps d'un véhicule qui roule (fond magenta), pour vérifier au pixel l'image réellement affichée par la carte graphique
+    isolerVehicule: cle => { render(); const keep = vehicules.find(q => q.userData.cle === cle); if (!keep) return null; const hidden = [];
+      scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
+      const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
+      hidden.forEach(o => o.visible = true); scene.background = bg; return url; },
+    calquesVehicules: () => vehicules.map(s => ({ cle: s.userData.cle, t: s.userData.t, key: s.userData.key, sx: s.userData.sx, axe: s.userData.axe, dir: s.userData.dir,
+      calques: s.userData.extra.map(o => ({ lay: o.userData.lay, vue: o.userData.vueTexte, visible: o.visible, img: o.userData.m && Object.keys(bman).find(k => bman[k] === o.userData.m), repeat: o.material.map.repeat.x })) })),
+    calquesGares: () => bills.filter(i => i.obj.userData.buildingId && bman[LOCATIONS[builtFor].buildings.find(b => b.id === i.obj.userData.buildingId)?.sprite]?.vehicule)
+      .map(i => ({ id: i.obj.userData.buildingId, visible: i.obj.visible, repeat: i.obj.material.map.repeat.x, calques: i.extra.filter(o => o.userData.lay).map(o => ({ lay: o.userData.lay, vue: o.userData.vueTexte, visible: o.visible, repeat: o.material.map.repeat.x })) })),
     vehicules: () => vehicules.map(s => { const u = s.userData, tx = (u.extra || []).find(o => o.visible && o.userData.vueTexte);
       return { cle: u.cle, key: u.key, axe: u.axe, sx: u.sx, scale: [+s.scale.x.toFixed(4), +s.scale.y.toFixed(4)], repeat: s.material.map.repeat.x, x: +u.cx.toFixed(2), z: +u.cz.toFixed(2), attend: u.attend, emprise: u.emprise, path: u.vehicule.path, natif: u.key === u.cle && u.sx === 1 && u.axe === u.vue.axe, px: (bman[u.key] || bman[u.cle]).px, K, texte: tx ? { lay: tx.userData.lay, repeat: tx.material.map.repeat.x, sx: tx.material.map.repeat.x, visible: tx.visible } : null }; }),
     decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing, sprite: s.userData.sprite, ratio: +(Math.abs(s.scale.x) / s.scale.y).toFixed(3) })); },

@@ -5,7 +5,7 @@
 # - 8 sorties et seuils du plan v2 (portes miroir), portes Dôme (50;96) et Teng (8;44.5), 10/10 portes atteignables, temps de traversée à 3 m/s, A* en tas binaire
 # - plan large d'arrivée (12 ppm ordinateur, 6-8 ppm téléphone, foule allégée) terminé par un geste ; budget d'effets tactile (Fold) ; sorties hors écran empilées en 390
 # - captures 1280 et 390, échelle de jeu et plan large, sous /tmp/nml-test-out/ct_132/
-import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
+import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot; from vue_rendue import vue_rendue  # menu Terminal : sauter l'allumage
 import os, sys, time, json, re, urllib.request
 from playwright.sync_api import sync_playwright
 
@@ -234,6 +234,50 @@ with sync_playwright() as p:
                and sim.get('maxCarrefour', 99) <= 1 and sim2.get('maxCarrefour', 99) <= 1,
                f'{name} 60 s simulées (x2, avec et sans piétons) : les emprises de deux véhicules ne se recouvrent jamais (écart mini {min(sim["minEcart"], sim2["minEcart"])} m), carrefour à un seul véhicule (max {max(sim.get("maxCarrefour", -1), sim2.get("maxCarrefour", -1))}), tous roulent (≥ {min(sim["parcouru"]):.0f} m)',
                {'hits': (sim['hits'] + sim2['hits'])[:3], 'parcouru': sim['parcouru'], 'maxCarrefour': (sim.get('maxCarrefour'), sim2.get('maxCarrefour'))})
+            # 1b. Correctifs du 12/11 (Valentin) : (a) plus de marche arrière, (b) une seule plaque de lettrage, qui suit l'orientation
+            # (a) chaque véhicule posé tous les 1,5 m de son trajet (4 caps, juste avant / après chaque virage, début et fin = wrap) : la vue suit le
+            #     déplacement réel (+x avant natif, −x dos natif, +z avant miroir, −z dos miroir) et aucun calque d'une autre vue n'est laissé visible
+            cap = E("""() => { const v = window.__nml.view, L = window.__nml.world.LOCATIONS.steel_center, bad = [], caps = {}; let n = 0; v.figerVehicules(true); const t0 = v.calquesVehicules().map(c => [c.cle, c.t]);
+              const attendu = (dx, dz) => Math.abs(dx) >= Math.abs(dz) ? { dos: dx < 0, sx: 1, cap: dx < 0 ? '-x' : '+x' } : { dos: dz < 0, sx: -1, cap: dz < 0 ? '-z' : '+z' };
+              for (const veh of L.vehicules) { const r0 = v.placerVehicule(veh.sprite, 0), Lt = r0.L, ts = [];
+                for (let t = 0; t < Lt; t += 1.5) ts.push(t); let acc = 0; for (let k = 0; k + 1 < veh.path.length; k++) { const a = veh.path[k], b = veh.path[k + 1]; acc += Math.hypot(b[0] - a[0], b[1] - a[1]); ts.push(acc - 0.3, acc + 0.3); } ts.push(Lt - 0.01);
+                for (const t of ts) { if (t < 0 || t > Lt) continue; const a = v.placerVehicule(veh.sprite, t), b = v.placerVehicule(veh.sprite, Math.min(Lt - 0.001, t + 0.25)); v.placerVehicule(veh.sprite, t);
+                  const dx = b.x - a.x, dz = b.z - a.z; if (Math.hypot(dx, dz) < 1e-4) continue; const e = attendu(dx, dz), dos = String(a.key).endsWith('_dos_v4_3q'); n++;
+                  (caps[e.cap] = caps[e.cap] || new Set()).add(veh.sprite.replace('ct_veh_', '').replace('_avant_v4_3q', ''));
+                  const c = v.calquesVehicules().find(q => q.cle === veh.sprite), etr = c.calques.filter(q => q.visible && !q.vue && !String(q.img).startsWith(a.key + '_'));
+                  const tx = c.calques.filter(q => q.visible && q.vue);
+                  if (dos !== e.dos || a.sx !== e.sx || etr.length || tx.some(q => (q.vue === 'miroir') !== (a.sx < 0) || q.repeat !== 1 || !String(q.img).startsWith(a.key + '_'))) bad.push([veh.sprite, +t.toFixed(1), e.cap, a.key, a.sx, etr.map(q => q.img)]); } }
+              for (const [c, t] of t0) v.placerVehicule(c, t); v.figerVehicules(false); return { n, bad: bad.slice(0, 6), nbad: bad.length, caps: Object.fromEntries(Object.entries(caps).map(([k, s]) => [k, [...s]])) }; }""")
+            ok(cap['n'] > 300 and not cap['nbad'] and all(len(cap['caps'].get(k, [])) >= 1 for k in ('+x', '-x', '+z', '-z')),
+               f'{name} plus de marche arrière : {cap["n"]} poses sur les trajets (4 caps, avant / après virage, début / fin de trajet), la vue suit toujours le déplacement et aucun calque d\'une autre vue ne reste affiché', cap)
+            # (b) une seule plaque : en roulant (images successives) et pour chaque cap posé, au plus un calque texte visible, et exactement un quand la vue en a ;
+            #     garés (taxis, bus, tram) : une seule plaque, celle du miroir de la caisse ; _texte / _texte_miroir jamais retournés
+            pl = E("""async () => { const v = window.__nml.view, w = ms => new Promise(r => setTimeout(r, ms)), bad = [], vus = new Set(); let n = 0;
+              const chk = (lab, c, sx) => { const tx = c.calques.filter(q => q.vue), vis = tx.filter(q => q.visible); if (!tx.length) return; n++;
+                if (vis.length !== 1 || (vis[0].vue === 'miroir') !== (sx < 0) || vis[0].repeat !== 1) bad.push([lab, vis.map(q => q.lay)]); else vus.add(lab.split(':')[0] + ':' + vis[0].vue); };
+              for (let k = 0; k < 24; k++) { v.render(); for (const c of v.calquesVehicules()) chk(c.cle.replace('ct_veh_', '') + ':roule', c, c.sx); await w(60); }
+              v.figerVehicules(true); const t0 = v.calquesVehicules().map(c => [c.cle, c.t]);
+              for (const [cle, pts] of [['ct_veh_taxi_avant_v4_3q', [[70, 20], [40, 61]]], ['ct_veh_bus_avant_v4_3q', [[40, 70]]]]) for (const pt of pts) { const r = v.placerVehicule(cle, pt); v.render();
+                chk(cle.replace('ct_veh_', '') + ':' + r.key.replace(/^.*_(avant|dos)_.*$/, '$1') + (r.sx < 0 ? '_miroir' : '_natif'), v.calquesVehicules().find(q => q.cle === cle), r.sx); }
+              for (const [c, t] of t0) v.placerVehicule(c, t); v.figerVehicules(false); v.render();
+              const gares = v.calquesGares(), gbad = gares.filter(g => { const tx = g.calques.filter(q => q.vue); if (!tx.length) return false; const vis = tx.filter(q => q.visible);
+                return vis.length !== 1 || (vis[0].vue === 'miroir') !== (g.repeat < 0) || vis[0].repeat !== 1; }).map(g => g.id);
+              return { n, bad: bad.slice(0, 6), vus: [...vus], gares: gares.filter(g => g.calques.some(q => q.vue)).map(g => g.id), gbad }; }""")
+            ok(pl['n'] > 50 and not pl['bad'] and not pl['gbad'] and len(pl['gares']) >= 4,
+               f'{name} lettrage : une seule plaque à la fois ({pl["n"]} contrôles en roulant et posés, {len(pl["gares"])} véhicules garés), celle de l\'orientation (native / miroir), jamais retournée', pl)
+            # (a bis) au pixel : rendu isolé du corps, comparé aux 4 vues d'Ocre ; poses enchaînées comme en roulant (taxi sud puis ouest, compacte nord puis est,
+            #     limo ouest puis nord) : l'image affichée par la carte graphique doit être celle du cap (avant l'ancienne image restait après un virage)
+            POSES_PIX = [('ct_veh_taxi_avant_v4_3q', [70, 20]), ('ct_veh_taxi_avant_v4_3q', [30, 61]), ('ct_veh_compacte_avant_v4_3q', [78, 100]), ('ct_veh_compacte_avant_v4_3q', [110, 70]),
+                         ('ct_veh_limo_avant_v4_3q', [110, 61]), ('ct_veh_limo_avant_v4_3q', [78, 30]), ('ct_veh_bus_avant_v4_3q', [40, 70]), ('ct_veh_berline_avant_v4_3q', [40, 61]),
+                         ('ct_veh_moto_avant_v4_3q', [78, 90]), ('ct_veh_utilitaire_avant_v4_3q', [70, 90]), ('ct_veh_taxi_avant_v4_3q', [70, 30])]
+            t0p = E("window.__nml.view.figerVehicules(true) && window.__nml.view.calquesVehicules().map(c => [c.cle, c.t])"); pix_bad, pix_n = [], 0
+            for cle, pt in POSES_PIX:
+                r = E(f"window.__nml.view.placerVehicule('{cle}', {json.dumps(pt)})")
+                E(f"window.__nml.view.setCamera({{ x: {r['x']}, z: {r['z']}, ppm: 40 }})")
+                best, sc = vue_rendue(E(f"window.__nml.view.isolerVehicule('{cle}')"), cle); pix_n += 1
+                if best != (r['key'], r['sx']): pix_bad.append([cle[7:-12], pt, r['key'][7:], r['sx'], best and (best[0][7:], best[1])])
+            E(f"(() => {{ const v = window.__nml.view; for (const [c, t] of {json.dumps(t0p)}) v.placerVehicule(c, t); v.figerVehicules(false); v.setCamera(null); }})()")
+            ok(pix_n == len(POSES_PIX) and not pix_bad, f'{name} au pixel : {pix_n} poses (4 caps, après virage) affichent bien la vue du cap (avant / dos, natif / miroir), pas l\'image du cap précédent', pix_bad)
             grille = E("""() => {
               const v = window.__nml.view, gr = window.__nml.game.grids.steel_center, L = window.__nml.world.LOCATIONS.steel_center;
               const f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
@@ -534,6 +578,21 @@ with sync_playwright() as p:
             E("window.__nml.view.render()"); time.sleep(0.2)
         if dos:
             shot_cam(f'lettrage_taxi_dos_{wtag}.png', round(dos['x'], 1), round(dos['z'], 1), 56)
+        # gros plans circulation figée (correctifs 12/11) : un véhicule dans chaque cap, après virage, lettrage avant / dos sur les deux axes, bus 18 m le long du bus garé
+        GROS = [('cap_sud_taxi', 'ct_veh_taxi_avant_v4_3q', [70, 9], 56), ('cap_ouest_taxi_dos', 'ct_veh_taxi_avant_v4_3q', [40, 61], 56),
+                ('cap_nord_compacte', 'ct_veh_compacte_avant_v4_3q', [78, 96], 56), ('cap_est_compacte_apres_virage', 'ct_veh_compacte_avant_v4_3q', [96, 70], 56),
+                ('cap_ouest_berline', 'ct_veh_berline_avant_v4_3q', [110, 61], 56), ('cap_nord_limo_apres_virage', 'ct_veh_limo_avant_v4_3q', [78, 40], 56),
+                ('cap_ouest_limo_avant_virage', 'ct_veh_limo_avant_v4_3q', [100, 61], 56), ('cap_nord_moto', 'ct_veh_moto_avant_v4_3q', [78, 100], 64),
+                ('cap_sud_utilitaire', 'ct_veh_utilitaire_avant_v4_3q', [70, 96], 56), ('cap_ouest_depanneuse', 'ct_veh_depanneuse_avant_v4_3q', [116, 61], 48),
+                ('lettrage_bus_avant_est', 'ct_veh_bus_avant_v4_3q', [40, 70], 44), ('bus_le_long_du_bus_gare', 'ct_veh_bus_avant_v4_3q', [109, 70], 40)]
+        t0v = E("window.__nml.view.figerVehicules(true) && window.__nml.view.calquesVehicules().map(c => [c.cle, c.t])")
+        for fname, cle, pt, ppm in GROS:
+            r = E(f"(() => {{ const v = window.__nml.view; for (const [c, t] of {json.dumps(t0v)}) v.placerVehicule(c, t); return v.placerVehicule('{cle}', {json.dumps(pt)}); }})()")
+            if r: shot_cam(f'{fname}_{wtag}.png', round(r['x'], 1), round(r['z'], 1), ppm)
+        shot_cam(f'lettrage_bus_gare_dos_{wtag}.png', 109, 74, 44)
+        shot_cam(f'lettrage_taxis_gares_{wtag}.png', 45, 58, 60)
+        shot_cam(f'lettrage_taxi_gare_ns_miroir_{wtag}.png', 65, 43, 60)
+        E(f"(() => {{ const v = window.__nml.view; for (const [c, t] of {json.dumps(t0v)}) v.placerVehicule(c, t); v.figerVehicules(false); }})()")
         E("window.__nml.view.setCamera(null);")
         lab_bad = r1['hud'] + r1['over'] + r2['hud'] + r2['over'] + r3['hud'] + r3['over']
         cap = vp[0] >= 700 or all(len(r['fleches']) <= 3 for r in (r1, r2, r3))
