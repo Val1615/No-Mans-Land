@@ -10382,5 +10382,455 @@
     "layer": "neon",
     "source": "extraction PIL neon de ct_ne_porche_8x4_v4_3q.webp (même canevas, même ancre)",
     "status": "v4"
+  },
+  "ct_se_kiosque_nouilles_v4_3q": {
+    "file": "steel/center_town/ct_se_kiosque_nouilles_v4_3q.webp",
+    "px": [
+      408,
+      398
+    ],
+    "anchor": [
+      240,
+      394
+    ],
+    "footprint_m": [
+      6,
+      6
+    ],
+    "height_m": 4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Kiosque à nouilles K1, comptoir ouvert au sud sous auvent, lanternes rouges unies, vapeur",
+    "pose": "B_CT('ct_p_se_kiosque_nouilles', '', 'ct_se_kiosque_nouilles_v4_3q', 100, 95, 6, 6, { named: false, solid: [{ x: 100, z: 95, w: 6, d: 5.3 }] })",
+    "source": "Ocre 2026-11-12, lot 2b coin SE ruelle-marché (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 6x6x4 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3° : le générateur redresse vers ~0,33 / 0,70), fond chroma, détourage sans comblement, UNE réduction uniforme x0.5343 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/se_k1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_se_v4",
+    "lot": "lot 2b coin SE ruelle-marché (2026-11-12)",
+    "hauteur_hors_tout_m": 4.16,
+    "pente_mesuree": "pied gauche 0.34 / droit 0.745 (cible 0,33 / 0,70)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 6,
+        "d": 5.3
+      }
+    ],
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_se_kiosque_nouilles_v4_3q_fenetres",
+    "neon": "ct_se_kiosque_nouilles_v4_3q_neon"
+  },
+  "ct_se_kiosque_nouilles_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_se_kiosque_nouilles_v4_3q_fenetres.webp",
+    "px": [
+      408,
+      398
+    ],
+    "anchor": [
+      240,
+      394
+    ],
+    "additive": true,
+    "parent": "ct_se_kiosque_nouilles_v4_3q",
+    "couche_de": "ct_se_kiosque_nouilles_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_se_kiosque_nouilles_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_kiosque_nouilles_v4_3q_neon": {
+    "file": "steel/center_town/ct_se_kiosque_nouilles_v4_3q_neon.webp",
+    "px": [
+      408,
+      398
+    ],
+    "anchor": [
+      240,
+      394
+    ],
+    "additive": true,
+    "parent": "ct_se_kiosque_nouilles_v4_3q",
+    "couche_de": "ct_se_kiosque_nouilles_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_se_kiosque_nouilles_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_echoppes_9x6_v4_3q": {
+    "file": "steel/center_town/ct_se_echoppes_9x6_v4_3q.webp",
+    "px": [
+      574,
+      449
+    ],
+    "anchor": [
+      429,
+      444
+    ],
+    "footprint_m": [
+      9,
+      6
+    ],
+    "height_m": 5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Rangée de 3 échoppes à 2 niveaux bas, rideaux mi-levés, pictogrammes néon (bol, théière, poisson) sans lettres",
+    "pose": "B_CT('ct_p_se_echoppes_9x6', '', 'ct_se_echoppes_9x6_v4_3q', 115, 95, 9, 6, { named: false, solid: [{ x: 115, z: 95, w: 9, d: 6 }] })",
+    "source": "Ocre 2026-11-12, lot 2b coin SE ruelle-marché (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 9x6x5 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3° : le générateur redresse vers ~0,33 / 0,70), fond chroma, détourage sans comblement, UNE réduction uniforme x0.6386 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/se_echoppes.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_se_v4",
+    "lot": "lot 2b coin SE ruelle-marché (2026-11-12)",
+    "hauteur_hors_tout_m": 4.78,
+    "pente_mesuree": "pied gauche 0.273 / droit 0.785 (cible 0,33 / 0,70)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 9,
+        "d": 6
+      }
+    ],
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_se_echoppes_9x6_v4_3q_fenetres",
+    "neon": "ct_se_echoppes_9x6_v4_3q_neon"
+  },
+  "ct_se_echoppes_9x6_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_se_echoppes_9x6_v4_3q_fenetres.webp",
+    "px": [
+      574,
+      449
+    ],
+    "anchor": [
+      429,
+      444
+    ],
+    "additive": true,
+    "parent": "ct_se_echoppes_9x6_v4_3q",
+    "couche_de": "ct_se_echoppes_9x6_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_se_echoppes_9x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_echoppes_9x6_v4_3q_neon": {
+    "file": "steel/center_town/ct_se_echoppes_9x6_v4_3q_neon.webp",
+    "px": [
+      574,
+      449
+    ],
+    "anchor": [
+      429,
+      444
+    ],
+    "additive": true,
+    "parent": "ct_se_echoppes_9x6_v4_3q",
+    "couche_de": "ct_se_echoppes_9x6_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_se_echoppes_9x6_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_maison_the_v4_3q": {
+    "file": "steel/center_town/ct_se_maison_the_v4_3q.webp",
+    "px": [
+      500,
+      506
+    ],
+    "anchor": [
+      301,
+      502
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "height_m": 6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Maison de thé d'angle, portes à claustra, auvent de tuiles rouges, terrasse en toiture (faîte ~6 m)",
+    "pose": "B_CT('ct_p_se_maison_the', 'Maison de thé', 'ct_se_maison_the_v4_3q', 124, 95, 8, 6, { named: true, solid: [{ x: 124, z: 95, w: 8, d: 5.6 }] })",
+    "source": "Ocre 2026-11-12, lot 2b coin SE ruelle-marché (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x6x6 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3° : le générateur redresse vers ~0,33 / 0,70), fond chroma, détourage sans comblement, UNE réduction uniforme x0.6526 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/se_the.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_se_v4",
+    "lot": "lot 2b coin SE ruelle-marché (2026-11-12)",
+    "hauteur_hors_tout_m": 6.09,
+    "pente_mesuree": "pied gauche 0.377 / droit 0.696 (cible 0,33 / 0,70)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 8,
+        "d": 5.6
+      }
+    ],
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_se_maison_the_v4_3q_fenetres",
+    "neon": "ct_se_maison_the_v4_3q_neon"
+  },
+  "ct_se_maison_the_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_se_maison_the_v4_3q_fenetres.webp",
+    "px": [
+      500,
+      506
+    ],
+    "anchor": [
+      301,
+      502
+    ],
+    "additive": true,
+    "parent": "ct_se_maison_the_v4_3q",
+    "couche_de": "ct_se_maison_the_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_se_maison_the_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_maison_the_v4_3q_neon": {
+    "file": "steel/center_town/ct_se_maison_the_v4_3q_neon.webp",
+    "px": [
+      500,
+      506
+    ],
+    "anchor": [
+      301,
+      502
+    ],
+    "additive": true,
+    "parent": "ct_se_maison_the_v4_3q",
+    "couche_de": "ct_se_maison_the_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_se_maison_the_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_ateliers_12x10_v4_3q": {
+    "file": "steel/center_town/ct_se_ateliers_12x10_v4_3q.webp",
+    "px": [
+      753,
+      640
+    ],
+    "anchor": [
+      520,
+      636
+    ],
+    "footprint_m": [
+      12,
+      10
+    ],
+    "height_m": 5.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Bloc d'ateliers bas, atelier de réparation ouvert à l'est sur la ruelle N-S, dos aveugle au bord sud",
+    "pose": "B_CT('ct_p_se_ateliers_12x10', '', 'ct_se_ateliers_12x10_v4_3q', 100, 106, 12, 10, { named: false, solid: [{ x: 100, z: 106, w: 12, d: 10 }] })",
+    "source": "Ocre 2026-11-12, lot 2b coin SE ruelle-marché (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 12x10x5.6 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3° : le générateur redresse vers ~0,33 / 0,70), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8345 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/se_ateliers3.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_se_v4",
+    "lot": "lot 2b coin SE ruelle-marché (2026-11-12)",
+    "hauteur_hors_tout_m": 5.83,
+    "pente_mesuree": "pied gauche 0.412 / droit 0.77 (cible 0,33 / 0,70)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 12,
+        "d": 10
+      }
+    ],
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_se_ateliers_12x10_v4_3q_fenetres",
+    "neon": "ct_se_ateliers_12x10_v4_3q_neon"
+  },
+  "ct_se_ateliers_12x10_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_se_ateliers_12x10_v4_3q_fenetres.webp",
+    "px": [
+      753,
+      640
+    ],
+    "anchor": [
+      520,
+      636
+    ],
+    "additive": true,
+    "parent": "ct_se_ateliers_12x10_v4_3q",
+    "couche_de": "ct_se_ateliers_12x10_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_se_ateliers_12x10_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_ateliers_12x10_v4_3q_neon": {
+    "file": "steel/center_town/ct_se_ateliers_12x10_v4_3q_neon.webp",
+    "px": [
+      753,
+      640
+    ],
+    "anchor": [
+      520,
+      636
+    ],
+    "additive": true,
+    "parent": "ct_se_ateliers_12x10_v4_3q",
+    "couche_de": "ct_se_ateliers_12x10_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_se_ateliers_12x10_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_arriere_8x10_v4_3q": {
+    "file": "steel/center_town/ct_se_arriere_8x10_v4_3q.webp",
+    "px": [
+      578,
+      563
+    ],
+    "anchor": [
+      377,
+      560
+    ],
+    "footprint_m": [
+      8,
+      10
+    ],
+    "height_m": 4.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Bâti d'arrière-cour d'angle (bords sud et est de carte), échelle, porte arrière à lanterne",
+    "pose": "B_CT('ct_p_se_arriere_8x10', '', 'ct_se_arriere_8x10_v4_3q', 124, 106, 8, 10, { named: false, solid: [{ x: 124, z: 106, w: 8, d: 10 }] })",
+    "source": "Ocre 2026-11-12, lot 2b coin SE ruelle-marché (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 8x10x4.8 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3° : le générateur redresse vers ~0,33 / 0,70), fond chroma, détourage sans comblement, UNE réduction uniforme x0.8473 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/se_arriere4.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_se_v4",
+    "lot": "lot 2b coin SE ruelle-marché (2026-11-12)",
+    "hauteur_hors_tout_m": 5.15,
+    "pente_mesuree": "pied gauche 0.351 / droit 0.8 (cible 0,33 / 0,70)",
+    "solid_relatif": [
+      {
+        "dx": 0,
+        "dz": 0,
+        "w": 8,
+        "d": 10
+      }
+    ],
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_se_arriere_8x10_v4_3q_fenetres",
+    "neon": "ct_se_arriere_8x10_v4_3q_neon"
+  },
+  "ct_se_arriere_8x10_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_se_arriere_8x10_v4_3q_fenetres.webp",
+    "px": [
+      578,
+      563
+    ],
+    "anchor": [
+      377,
+      560
+    ],
+    "additive": true,
+    "parent": "ct_se_arriere_8x10_v4_3q",
+    "couche_de": "ct_se_arriere_8x10_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_se_arriere_8x10_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_arriere_8x10_v4_3q_neon": {
+    "file": "steel/center_town/ct_se_arriere_8x10_v4_3q_neon.webp",
+    "px": [
+      578,
+      563
+    ],
+    "anchor": [
+      377,
+      560
+    ],
+    "additive": true,
+    "parent": "ct_se_arriere_8x10_v4_3q",
+    "couche_de": "ct_se_arriere_8x10_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_se_arriere_8x10_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_etals_couverts_v4_3q": {
+    "file": "steel/center_town/ct_se_etals_couverts_v4_3q.webp",
+    "px": [
+      523,
+      342
+    ],
+    "anchor": [
+      433,
+      338
+    ],
+    "footprint_m": [
+      9,
+      5
+    ],
+    "height_m": 2.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Trois étals couverts sous un long toit de tôle sur poteaux, fruits et légumes, ouverts de tous côtés",
+    "pose": "B_CT('ct_p_se_etals_couverts', '', 'ct_se_etals_couverts_v4_3q', 115, 111, 9, 5, { named: false, solid: [{ x: 115.3, z: 112, w: 8.4, d: 1.6 }] })",
+    "source": "Ocre 2026-11-12, lot 2b coin SE ruelle-marché (2026-11-12) : GenerateImage (cursor) en retouche d'un gabarit boîte 9x5x2.6 m dessiné à caméra compensée (lacet 25,4°, tangage 22,3° : le générateur redresse vers ~0,33 / 0,70), fond chroma, détourage sans comblement, UNE réduction uniforme x0.6092 (moyenne géométrique hauteur/largeur) vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni cisaillement (brut ct_v5/raw/se_etals.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_ilot_se_v4",
+    "lot": "lot 2b coin SE ruelle-marché (2026-11-12)",
+    "hauteur_hors_tout_m": 2.59,
+    "pente_mesuree": "pied gauche 0.271 / droit 0.797 (cible 0,33 / 0,70)",
+    "solid_relatif": [
+      {
+        "dx": 0.3,
+        "dz": 1.0,
+        "w": 8.4,
+        "d": 1.6
+      }
+    ],
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_se_etals_couverts_v4_3q_fenetres",
+    "neon": "ct_se_etals_couverts_v4_3q_neon"
+  },
+  "ct_se_etals_couverts_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_se_etals_couverts_v4_3q_fenetres.webp",
+    "px": [
+      523,
+      342
+    ],
+    "anchor": [
+      433,
+      338
+    ],
+    "additive": true,
+    "parent": "ct_se_etals_couverts_v4_3q",
+    "couche_de": "ct_se_etals_couverts_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_se_etals_couverts_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_se_etals_couverts_v4_3q_neon": {
+    "file": "steel/center_town/ct_se_etals_couverts_v4_3q_neon.webp",
+    "px": [
+      523,
+      342
+    ],
+    "anchor": [
+      433,
+      338
+    ],
+    "additive": true,
+    "parent": "ct_se_etals_couverts_v4_3q",
+    "couche_de": "ct_se_etals_couverts_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_se_etals_couverts_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
   }
 }

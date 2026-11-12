@@ -576,3 +576,41 @@ Passage libre : axe x, z20,4-23,6 (3,2 m), hauteur libre 4 m, du trottoir est de
 Défauts connus : pieds peints à ~0,45 / 0,77 au lieu de 0,33 / 0,70 (même biais du générateur que §8J/§8K), le bout ouest remonte d'environ 0,8 m sur l'emprise ; le porche est en grande partie masqué en jeu par Nexus et la rangée z40 (voir maquette réelle). Le segment montre des intérieurs plutôt « archives » que bureaux ouverts.
 
 Planches hors jeu (non versionnées) : `nml-shots/ct_v4_ne_porche_segment_controle.png`, `nml-shots/ct_v4_ne_porche_maquette.jpg`, `nml-shots/ct_v4_ne_porche_maquette_sans_nexus.jpg`.
+
+### M. Lot 2b coin SE : ruelle-marché de nuit, tout ≤ 6 m (`ct_se_*_v4_3q`, 2026-11-12)
+
+Concept 02 validé, îlot x100-132 z92-116. **Raccord à l'existant** : une ruelle de 3 m (z92-95) longe les vitrines sud de la rangée déjà en jeu (Galerie du Carrefour « Groovy Crew en concert », échoppes sous auvents `ct_rempl7`, épicerie `ct_rempl8`) ; on y entre depuis le trottoir sud de l'avenue par le passage x96-100 z84-92 puis x100-108 z88-92 (laissés libres). Ruelles jouables : nord z92-95 (3 m), est-ouest z101-106 (5 m), nord-sud x112-115 (3 m). Aucune bannière « 10 », aucun écran dans les ruelles.
+
+**Lacet traité en amont.** Le gabarit boîte est dessiné à une caméra volontairement « compensée » (lacet 25,4°, tangage 22,3°, pentes de gabarit 0,18 / 0,80) : le générateur, qui redresse toujours vers ~45°, rend alors des pieds à **0,27-0,41 / 0,70-0,80** au lieu de 0,45 / 0,77 avec le gabarit exact (essai A/B sur le kiosque : 0,42 / 0,66 au gabarit exact, 0,34 / 0,745 au gabarit compensé). Aucun sprite n'est cisaillé ; mise à l'échelle et ancre restent celles de la caméra du jeu.
+
+| Clé | px | ancre | emprise (m) | h gabarit / hors tout (m) | pieds mesurés g / d |
+|---|---|---|---|---|---|
+| `ct_se_kiosque_nouilles_v4_3q` | 408×398 | [240, 394] | 6 × 6 | 4 / 4.16 | 0.34 / 0.745 |
+| `ct_se_echoppes_9x6_v4_3q` | 574×449 | [429, 444] | 9 × 6 | 5 / 4.78 | 0.273 / 0.785 |
+| `ct_se_maison_the_v4_3q` | 500×506 | [301, 502] | 8 × 6 | 6 / 6.09 | 0.377 / 0.696 |
+| `ct_se_ateliers_12x10_v4_3q` | 753×640 | [520, 636] | 12 × 10 | 5.6 / 5.83 | 0.412 / 0.77 |
+| `ct_se_arriere_8x10_v4_3q` | 578×563 | [377, 560] | 8 × 10 | 4.8 / 5.15 | 0.351 / 0.8 |
+| `ct_se_etals_couverts_v4_3q` | 523×342 | [433, 338] | 9 × 5 | 2.6 / 2.59 | 0.271 / 0.797 |
+
+Tous avec calques `_fenetres` et `_neon`. Hauteur hors tout = sommet de la silhouette (faîte, cheminée) ramené en hauteur de boîte.
+
+```js
+B_CT('ct_p_se_kiosque_nouilles', '', 'ct_se_kiosque_nouilles_v4_3q', 100, 95, 6, 6, { named: false, solid: [{ x: 100, z: 95, w: 6, d: 5.3 }] }),
+B_CT('ct_p_se_echoppes_9x6', '', 'ct_se_echoppes_9x6_v4_3q', 115, 95, 9, 6, { named: false, solid: [{ x: 115, z: 95, w: 9, d: 6 }] }),
+B_CT('ct_p_se_maison_the', 'Maison de thé', 'ct_se_maison_the_v4_3q', 124, 95, 8, 6, { named: true, solid: [{ x: 124, z: 95, w: 8, d: 5.6 }] }),
+B_CT('ct_p_se_ateliers_12x10', '', 'ct_se_ateliers_12x10_v4_3q', 100, 106, 12, 10, { named: false, solid: [{ x: 100, z: 106, w: 12, d: 10 }] }),
+B_CT('ct_p_se_arriere_8x10', '', 'ct_se_arriere_8x10_v4_3q', 124, 106, 8, 10, { named: false, solid: [{ x: 124, z: 106, w: 8, d: 10 }] }),
+B_CT('ct_p_se_etals_couverts', '', 'ct_se_etals_couverts_v4_3q', 115, 111, 9, 5, { named: false, solid: [{ x: 115.3, z: 112, w: 8.4, d: 1.6 }] }),
+// mobilier déjà publié réutilisé (§8J et v3)
+B_CT('ct_se_stand0', '', 'ct_mob_stand_streetfood_v4_3q', 106, 96.5, 3, 2, { named: false, solid: [{ x: 106.3, z: 96.5, w: 2.7, d: 1.2 }] }),
+B_CT('ct_se_stand1', '', 'ct_mob_stand_streetfood_v4_3q', 109, 96.5, 3, 2, { named: false, solid: [{ x: 109.3, z: 96.5, w: 2.7, d: 1.2 }] }),
+B_CT('ct_se_ceris0', '', 'ct_cerisier_bac_v3_3q', 115.5, 106.5, 4, 4, { named: false, solid: [{ x: 116.5, z: 107.5, w: 2, d: 2 }] }),
+B_CT('ct_se_ceris1', '', 'ct_cerisier_bac_v3_3q', 119.5, 106.5, 4, 4, { named: false, solid: [{ x: 120.5, z: 107.5, w: 2, d: 2 }] }),
+B_CT('ct_se_distrib0', '', 'ct_mob_distributeurs_v4_3q', 120, 101, 2, 0.9, { named: false, solid: [{ x: 120, z: 101, w: 2, d: 0.9 }] }),
+```
+
+Écarts au concept : le kiosque K1 (6 x 6 au lieu de 6 x 7), les échoppes (9 x 6) et la maison de thé (8 x 6 au lieu de 8 x 9) commencent en z95 pour garder la ruelle de raccord de 3 m devant les vitrines existantes ; le 3e cerisier au carrefour des ruelles est supprimé (il aurait réduit la ruelle à 2,5 m).
+
+Défauts connus : la maison de thé culmine à ~6,1 m au faîte (0,1 m au-dessus du plafond) ; pieds gauches de 0,27 (échoppes, étals) à 0,41 (ateliers) ; les échoppes reprennent un pictogramme théière déjà présent sur `ct_rempl7` ; **guirlandes entre poteaux non livrées** (deux essais rejetés : l'un recopiait la scène du concept avec des bannières « 10 », l'autre avait un style vectoriel et un pied à 0,18). Un lampadaire existant (hors de ce lot) porte une bannière « 10 » au nord-ouest de l'îlot, visible sur la maquette.
+
+Planches hors jeu (non versionnées) : `nml-shots/ct_v4_se_marche_controle.png`, `nml-shots/ct_v4_se_marche_maquette.jpg`.
