@@ -1,7 +1,7 @@
 # Test rapide Center-Town v2 · Carrefour Arcadius 132 x 116 m (plan cible d'Ocre validé par Valentin le 11/11/2026) :
 # - sols g_ct_* (dont le carrefour v4 : bordures, angles, tirets, lignes d'arrêt, case jaune 12 m) + vraie nuit noire ; 0 clé obsolète, AUCUNE échelle de sprite différente de 1
 # - Arcadius v4 (3 sprites d'emprise) et 10 façades de remplissage v4 + porche/segment NE (ct_remplissage_*) posés à l'échelle 1 sur leurs emprises, sans repli ni silhouette
-# - tram sur la voie tram N-S, taxis sur l'av. E-O ; environ 140 figurants (carrefour + parvis) et 12 passants, jamais sur un solide ni sur la chaussée hors passages
+# - tram sur la voie tram N-S, taxis sur l'av. E-O ; figurants du carrefour et des trois coins (marché, jardin, cour NE) et 12 passants, jamais sur un solide ni sur la chaussée hors passages
 # - 8 sorties et seuils du plan v2 (portes miroir), portes Dôme (50;96) et Teng (8;44.5), 10/10 portes atteignables, temps de traversée à 3 m/s, A* en tas binaire
 # - plan large d'arrivée (12 ppm ordinateur, 6-8 ppm téléphone, foule allégée) terminé par un geste ; budget d'effets tactile (Fold) ; sorties hors écran empilées en 390
 # - captures 1280 et 390, échelle de jeu et plan large, sous /tmp/nml-test-out/ct_132/
@@ -325,6 +325,18 @@ with sync_playwright() as p:
               const pNe = window.__findPath(gr, { x: 88, z: 22 }, { x: 111, z: 26 });
               const frontSud = ['c_galerie','ct_rempl7','ct_rempl8','ct_rempl9','c_tour','ct_rempl4','ct_rempl5','ct_archeon','c_immeuble'].map(id => { const b=B(id); return b && [b.id, b.x, b.z, b.w, b.d]; });
               const seH = L.buildings.filter(b => (b.sprite||'').startsWith('ct_se_') && b.sprite.includes('v4')).length;
+              const fouleSe = L.extras.filter(e => e.x >= 100 && e.z >= 95).length;
+              const fouleSo = L.extras.filter(e => e.x < 44 && e.z >= 92).length;
+              const fouleNe = L.extras.filter(e => e.x >= 100 && e.z >= 12 && e.z <= 50).length;
+              const fouleBloq = L.extras.filter(e =>
+                (e.x >= 44 && e.x <= 56 && e.z >= 96 && e.z <= 100) ||
+                (e.x >= 100 && e.z >= 92 && e.z <= 95) ||
+                (e.x >= 96 && e.x <= 100 && e.z >= 84 && e.z <= 92) ||
+                (e.x >= 100 && e.x <= 108 && e.z >= 88 && e.z <= 92) ||
+                (e.x >= 92 && e.z >= 20 && e.z <= 24) ||
+                (e.x >= 100 && e.x <= 110 && e.z > 20 && e.z <= 28) ||
+                (e.x >= 115 && e.x <= 120 && e.z >= 0 && e.z <= 12)
+              ).map(e => [e.x, e.z]);
               return { se, seOk: se.every(Boolean) && se[0][2]===100 && se[2][2]===124 && se[3][3]===106,
                 ruelleNbloq: ruelleN.filter(q => !q[2]), ruelleNSok: ruelleNS.every(q => q[2]), pSe: len(pSe),
                 soK: soK && [soK.sprite, soK.x, soK.z, soK.w, soK.d], soF: soF && [soF.x, soF.z],
@@ -333,21 +345,24 @@ with sync_playwright() as p:
                 e1: e1 && [e1.sprite, e1.x, e1.z], e2: e2 && [e2.sprite, e2.z], e3: e3 && [e3.sprite, e3.z],
                 fcount, dcount, e1count, hc: hc && [hc.x, hc.z, hc.w, hc.d],
                 alleyBloq: alley.filter(q => !q[2]), pNe: len(pNe),
-                frontSud, porche: [B('ct_ne_porche0')&&B('ct_ne_porche0').x, B('ct_ne_seg0')&&B('ct_ne_seg0').z, B('ct_nexus')&&B('ct_nexus').z] };
+                frontSud, porche: [B('ct_ne_porche0')&&B('ct_ne_porche0').x, B('ct_ne_seg0')&&B('ct_ne_seg0').z, B('ct_nexus')&&B('ct_nexus').z],
+                fouleSe, fouleSo, fouleNe, fouleBloq };
             }""")
             ok(coins['seOk'] and not coins['ruelleNbloq'] and coins['pSe'] and coins['pSe'] < 40
-               and coins['frontSud'][0] == ['c_galerie', 100, 84, 8, 4],
-               f'{name} marché SE §8M posé (6 bâtiments), ruelle z92-95 libre, accès depuis le trottoir, vitrines sud intactes', coins)
+               and coins['frontSud'][0] == ['c_galerie', 100, 84, 8, 4]
+               and coins['fouleSe'] >= 4 and not coins['fouleBloq'],
+               f'{name} marché SE §8M posé (6 bâtiments), ruelle z92-95 libre, accès depuis le trottoir, vitrines sud intactes, figurants hors passages', coins)
             ok(coins['soK'] == ['ct_so_kiosque_jardin_v4_3q', 3, 107, 6, 6] and coins['soF'] == [18, 101]
                and not coins['domeBloq'] and coins['pDome'] and coins['pDome'] < 40 and not coins['xGe44']
-               and coins['pJard'],
-               f'{name} jardin SO §8N posé, passage Dôme x44-56 z96-100 libre (seuil 50;97 atteignable), rien en x≥44', coins)
+               and coins['pJard'] and coins['fouleSo'] >= 8 and not coins['fouleBloq'],
+               f'{name} jardin SO §8N posé, passage Dôme x44-56 z96-100 libre (seuil 50;97 atteignable), rien en x≥44, figurants dans le jardin', coins)
             ok(coins['c'] == ['ct_ne_bureaux_c_10x8_v4_3q', 100, 12, 10, 8] and coins['d1'] == [100, 28] and coins['d2'] == [100, 34]
                and coins['e1'] == ['ct_ne_bureaux_e1_8x8_v4_3q', 124, 16] and coins['e2'][0] == 'ct_ne_bureaux_e2_8x8_v4_3q' and coins['e3'][0] == 'ct_ne_bureaux_e1_8x8_v4_3q'
                and coins['fcount'] == 3 and coins['dcount'] == 2 and coins['e1count'] == 2
                and coins['hc'] == [104, 40, 8, 8] and coins['porche'] == [92, 16, 24]
-               and not coins['alleyBloq'] and coins['pNe'] and coins['pNe'] < 40,
-               f'{name} bureaux NE §8P posés (C x100 z12-20, ruelle z20-24, D/E/F, d×2 e1×2 f×3), porche/segment/Nexus et Human Corp intacts, cour joignable', coins)
+               and not coins['alleyBloq'] and coins['pNe'] and coins['pNe'] < 40
+               and coins['fouleNe'] >= 3 and not coins['fouleBloq'],
+               f'{name} bureaux NE §8P posés (C x100 z12-20, ruelle z20-24, D/E/F, d×2 e1×2 f×3), porche/segment/Nexus et Human Corp intacts, cour joignable, figurants hors ruelles', coins)
 
 
             cede = E("""async () => { const v = window.__nml.view, g = window.__nml.game, s = g.state, L = v.vehicules(); const i = L.findIndex(q => q.axe === 'z' && q.z > 5 && q.z < 100);
@@ -356,7 +371,7 @@ with sync_playwright() as p:
               return { attend: b.attend, bouge: Math.hypot(b.x - t0[0], b.z - t0[1]) }; }""")
             ok(cede and cede['attend'] and cede['bouge'] < 0.05, f'{name} un taxi cède le passage à un piéton devant lui', cede)
             crowd_sprites = {e[0] for e in info['extras']} | {w[0] for w in info['walkers']}
-            ok(130 <= len(info['extras']) <= 150 and 8 <= len(info['walkers']) <= 12 and len(crowd_sprites) >= 14,
+            ok(130 <= len(info['extras']) <= 170 and 8 <= len(info['walkers']) <= 12 and len(crowd_sprites) >= 14,
                f'{name} foule : {len(info["extras"])} figurants + {len(info["walkers"])} passants, {len(crowd_sprites)} sprites distincts', (len(info['extras']), len(info['walkers'])))
             rep = E("""() => { const X = window.__nml.world.LOCATIONS.steel_center.extras, G = {}, out = { paquets: [], proches: [], petits: 0, denses: 0, tailles: {} };
               for (const e of X) if (e.groupe) (G[e.groupe] ||= []).push(e);
@@ -495,6 +510,24 @@ with sync_playwright() as p:
         E("window.__nml.view.setCamera({ x: 116, z: 24, ppm: 26 });")
         for _ in range(4): E("window.__nml.view.render()"); time.sleep(0.05)
         pg.screenshot(path=OUT + f'jeu_ne_cour_{wtag}.png')
+        E("window.__nml.view.setCamera(null);")
+        labels_at(109, 76, 1.0, f'jeu_bus_{wtag}.png')
+        labels_at(78, 48, 1.0, f'jeu_tram_{wtag}.png')
+        def shot_cam(fname, x, z, ppm):
+            E(f"window.__nml.view.setCamera({{ x: {x}, z: {z}, ppm: {ppm} }});")
+            for _ in range(4): E("window.__nml.view.render(); document.getElementById('msg').textContent = ''"); time.sleep(0.05)
+            pg.screenshot(path=OUT + fname)
+        shot_cam(f'lettrage_taxi_ew_{wtag}.png', 43, 58, 56)
+        shot_cam(f'lettrage_taxi_ns_{wtag}.png', 66, 43, 56)
+        shot_cam(f'lettrage_bus_{wtag}.png', 116, 75, 48)
+        shot_cam(f'lettrage_tram_{wtag}.png', 78, 50, 48)
+        dos = None
+        for _ in range(40):
+            dos = E("() => { const L = window.__nml.view.vehicules() || []; const t = L.find(q => q.key && String(q.key).includes('taxi') && String(q.key).includes('dos') && q.x > 16 && q.x < 120 && q.z > 16 && q.z < 100); return t ? { x: t.x, z: t.z, key: t.key, axe: t.axe } : null; }")
+            if dos: break
+            E("window.__nml.view.render()"); time.sleep(0.2)
+        if dos:
+            shot_cam(f'lettrage_taxi_dos_{wtag}.png', round(dos['x'], 1), round(dos['z'], 1), 56)
         E("window.__nml.view.setCamera(null);")
         lab_bad = r1['hud'] + r1['over'] + r2['hud'] + r2['over'] + r3['hud'] + r3['over']
         cap = vp[0] >= 700 or all(len(r['fleches']) <= 3 for r in (r1, r2, r3))

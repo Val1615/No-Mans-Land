@@ -1,4 +1,5 @@
 // Généré par tools_center132.py (Center-Town v2, 132 x 116 m) : foule en petits groupes le long des trottoirs (groupes denses aux passages et aux portes), hors solides, chaussée, passages piétons, seuils, trajets des passants et masques.
+// g78–g87 ajoutés à la main (Rivet) : petits groupes de 1 à 3 dans le marché SE, le jardin du Dôme et la cour NE ; passages et ruelles laissés libres. Pas de régénération par tools_center132.py.
 // dense: true = figurant masqué en plan large d'arrivée (version allégée).
 export const CT_FOULE = [
   {"sprite": "gen_halloran", "x": 28.4, "z": 47.7, "face": 1, "role": "soldat"},
@@ -142,5 +143,25 @@ export const CT_FOULE = [
   {"sprite": "gen_fs_client_costume", "x": 88.4, "z": 110.5, "face": -1, "role": "passant", "groupe": "g74", "dense": false},
   {"sprite": "gen_df_foule_a", "x": 85.7, "z": 105.7, "face": -1, "role": "passant", "groupe": "g75", "dense": true},
   {"sprite": "st_civil3", "x": 84.9, "z": 94.2, "face": 1, "role": "passant", "groupe": "g76", "dense": false},
-  {"sprite": "gen_fs_client_imper", "x": 85.3, "z": 101.1, "face": 1, "role": "passant", "groupe": "g77", "dense": true}
+  {"sprite": "gen_fs_client_imper", "x": 85.3, "z": 101.1, "face": 1, "role": "passant", "groupe": "g77", "dense": true},
+  {"sprite": "gen_fs_client_imper", "x": 107.5, "z": 100.5, "face": 1, "role": "passant", "groupe": "g78", "dense": false},
+  {"sprite": "st_civil3", "x": 108.5, "z": 101.5, "face": -1, "role": "passant", "groupe": "g78", "dense": false},
+  {"sprite": "gen_ml_foule_a", "x": 128.5, "z": 102.5, "face": 1, "role": "passant", "groupe": "g79", "dense": false},
+  {"sprite": "gen_fs_passant_canne", "x": 129.5, "z": 103.5, "face": -1, "role": "passant", "groupe": "g79", "dense": false},
+  {"sprite": "st_civil4", "x": 118.5, "z": 114.5, "face": 1, "role": "passant", "groupe": "g80", "dense": false},
+  {"sprite": "gen_fs_passante", "x": 119.5, "z": 114.5, "face": -1, "role": "passant", "groupe": "g80", "dense": false},
+  {"sprite": "st_civil4", "x": 20.5, "z": 111.5, "face": 1, "role": "passant", "groupe": "g81", "dense": false},
+  {"sprite": "gen_fs_passante", "x": 21.5, "z": 112.5, "face": -1, "role": "passant", "groupe": "g81", "dense": false},
+  {"sprite": "st_civil0", "x": 7.5, "z": 110.5, "face": 1, "role": "passant", "groupe": "g82", "dense": false},
+  {"sprite": "gen_ml_navetteur", "x": 8.5, "z": 111.5, "face": -1, "role": "passant", "groupe": "g82", "dense": false},
+  {"sprite": "gen_fs_client_costume", "x": 33.0, "z": 105.9, "face": 1, "role": "passant", "groupe": "g83", "dense": false},
+  {"sprite": "st_civil5", "x": 33.1, "z": 107.0, "face": -1, "role": "passant", "groupe": "g83", "dense": false},
+  {"sprite": "gen_pp_foule_c", "x": 39.8, "z": 105.9, "face": -1, "role": "passant", "groupe": "g84", "dense": false},
+  {"sprite": "st_civil1", "x": 40.6, "z": 106.6, "face": 1, "role": "passant", "groupe": "g84", "dense": false},
+  {"sprite": "gen_df_foule_a", "x": 8.8, "z": 105.6, "face": 1, "role": "passant", "groupe": "g85", "dense": false},
+  {"sprite": "st_civil2", "x": 9.7, "z": 106.3, "face": -1, "role": "passant", "groupe": "g85", "dense": false},
+  {"sprite": "st_civil0", "x": 129.5, "z": 12.5, "face": 1, "role": "passant", "groupe": "g86", "dense": false},
+  {"sprite": "gen_ml_navetteur", "x": 130.5, "z": 13.5, "face": -1, "role": "passant", "groupe": "g86", "dense": false},
+  {"sprite": "gen_fs_client_costume", "x": 128.5, "z": 48.2, "face": 1, "role": "passant", "groupe": "g87", "dense": false},
+  {"sprite": "st_civil5", "x": 129.4, "z": 48.8, "face": -1, "role": "passant", "groupe": "g87", "dense": false}
 ];

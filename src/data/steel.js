@@ -165,8 +165,9 @@ export const LOCATIONS = {
       { x: 96, z: 50, rx: 3.6, rz: 2.2, color: FLOOD, i: 0.42 },
       { x: 2.4, z: 82, rx: 2.6, rz: 2.6, color: NEON_C, i: 0.46 },
     ],
-    // Foule (environ 140 figurants) concentrée sur les angles du carrefour, les passages piétons et le parvis de l'Arcadius,
-    // tirée par tools_center132.py hors solides, hors seuils et hors masques ; dense: true = masqué en plan large d'arrivée (version allégée).
+    // Foule (carrefour + parvis, plus petits groupes dans le marché SE, le jardin du Dôme et la cour NE) :
+    // tools_center132.py pour le carrefour, g78–g87 ajoutés à la main ; hors solides, seuils, masques et ruelles/passages laissés libres.
+    // dense: true = masqué en plan large d'arrivée (version allégée).
     extras: CT_FOULE,
     // Passants : boucles sur les trottoirs, les passages piétons et le parvis uniquement (jamais sur une case solide ni derrière un sprite qui les masquerait,
     // portions libres relevées dans le jeu ; contrôlé par tests/center_rapide.py)
