@@ -1,7 +1,7 @@
 # Test rapide Center-Town v2 · Carrefour Arcadius 132 x 116 m (plan cible d'Ocre validé par Valentin le 11/11/2026) :
 # - sols g_ct_* (dont le carrefour v4 : bordures, angles, tirets, lignes d'arrêt, case jaune 12 m) + vraie nuit noire ; 0 clé obsolète, AUCUNE échelle de sprite différente de 1
 # - Arcadius v4 (3 sprites d'emprise) et 10 façades de remplissage v4 + porche/segment NE (ct_remplissage_*) posés à l'échelle 1 sur leurs emprises, sans repli ni silhouette
-# - tram sur la voie tram N-S, taxis sur l'av. E-O ; figurants du carrefour et des trois coins (marché, jardin, cour NE) et 12 passants, jamais sur un solide ni sur la chaussée hors passages
+# - tram à l'arrêt sur la voie tram N-S ; circulation mixte (taxi, berline, compacte, utilitaire, moto, limo, intercepteur, dépanneuse, bus) sur la chaussée, un seul véhicule au carrefour ; figurants du carrefour et des trois coins (marché, jardin, cour NE) et 12 passants, jamais sur un solide ni sur la chaussée hors passages
 # - 8 sorties et seuils du plan v2 (portes miroir), portes Dôme (50;96) et Teng (8;44.5), 10/10 portes atteignables, temps de traversée à 3 m/s, A* en tas binaire
 # - plan large d'arrivée (12 ppm ordinateur, 6-8 ppm téléphone, foule allégée) terminé par un geste ; budget d'effets tactile (Fold) ; sorties hors écran empilées en 390
 # - captures 1280 et 390, échelle de jeu et plan large, sous /tmp/nml-test-out/ct_132/
@@ -53,9 +53,10 @@ EXPECTED_SPRITES = {
     'ct_so_fontaine_v4_3q', 'ct_so_kiosque_jardin_v4_3q', 'ct_so_muret_haie_x_v4_3q',
     'ct_so_muret_haie_z_v4_3q', 'ct_so_stand_concert_v4_3q', 'ct_tour_archeon_v4_3q',
     'ct_tour_humancorp_v4_3q', 'ct_tour_nexus_v4_3q', 'ct_tour_orc_v4_3q',
-    'ct_tour_teng_v4_3q', 'ct_veh_berline_dos_v4_3q', 'ct_veh_bus_dos_v4_3q',
+    'ct_tour_teng_v4_3q', 'ct_veh_berline_avant_v4_3q', 'ct_veh_berline_dos_v4_3q',
+    'ct_veh_bus_avant_v4_3q', 'ct_veh_bus_dos_v4_3q', 'ct_veh_compacte_avant_v4_3q',
     'ct_veh_compacte_dos_v4_3q', 'ct_veh_depanneuse_avant_v4_3q', 'ct_veh_intercepteur_avant_v4_3q',
-    'ct_veh_limo_dos_v4_3q', 'ct_veh_moto_avant_v4_3q', 'ct_veh_motolivr_dos_v4_3q',
+    'ct_veh_limo_avant_v4_3q', 'ct_veh_limo_dos_v4_3q', 'ct_veh_moto_avant_v4_3q', 'ct_veh_motolivr_dos_v4_3q',
     'ct_veh_taxi_avant_v4_3q', 'ct_veh_tram_avant_v4_3q', 'ct_veh_utilitaire_avant_v4_3q',
 }
 # façades de remplissage v4 d'Ocre (CENTER_TOWN.md §8C) : id -> (clé, x, z, w, d, h cible)
@@ -213,21 +214,26 @@ with sync_playwright() as p:
                     const [ci, cj] = gr.toCell(x, z); if (!voie(x, z) || !gr.free(ci, cj)) out.push(i + ':' + x.toFixed(1) + ',' + z.toFixed(1)); } } }
               return out.slice(0, 10); }""")
             texte_ok = all(v.get('texte') and v['texte']['repeat'] == 1 and v['texte']['sx'] == 1 for v in flat if v.get('texte'))
-            dos_ouest = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] == 'ct_veh_taxi_dos_v4_3q' for v in flat)
-            avant_est = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] == 'ct_veh_taxi_avant_v4_3q' for v in flat)
-            miroir_ns = any(v['axe'] == 'z' and v['sx'] == -1 and v['key'] in ('ct_veh_taxi_avant_v4_3q', 'ct_veh_taxi_dos_v4_3q') for v in flat)
+            typ = lambda cle: (cle or '').replace('ct_veh_', '').replace('_avant_v4_3q', '').replace('_dos_v4_3q', '')
+            types = sorted({typ(v['cle']) for v in VS[0]})
+            want = {'taxi', 'berline', 'compacte', 'utilitaire', 'moto', 'limo', 'intercepteur', 'depanneuse', 'bus'}
+            dos_ouest = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] and v['key'].endswith('_dos_v4_3q') for v in flat)
+            avant_est = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] and v['key'].endswith('_avant_v4_3q') for v in flat)
+            miroir_ns = any(v['axe'] == 'z' and v['sx'] == -1 and v['key'] and ('_avant_v4_3q' in v['key'] or '_dos_v4_3q' in v['key']) for v in flat)
+            tram_mobile = any('tram' in typ(v['sprite']) for v in info['vehicules'])
             ok(tram['sprite'] == 'ct_veh_tram_avant_v4_3q' and abs(tram['x'] - 72.68) < 0.02 and abs(tram['z'] - 18) < 0.02 and abs(tram['w'] - 2.65) < 0.02 and abs(tram['d'] - 33.8) < 0.02
-               and all(v['sprite'] != 'ct_tram_v3_3q' for v in info['vehicules']) and tram['z'] + tram['d'] <= 52.01,
+               and all(v['sprite'] != 'ct_tram_v3_3q' for v in info['vehicules']) and tram['z'] + tram['d'] <= 52.01 and not tram_mobile,
                f'{name} tram v2 à l\'arrêt sur sa voie N-S (x72-76, z18-51,8), hors des véhicules qui roulent, tête avant le passage nord', tram)
-            ok(len(info['vehicules']) >= 4 and not hors_voie and len(tourne) >= 2 and not echV and texte_ok and dos_ouest and avant_est and miroir_ns
-               and all(v['cle'] == 'ct_veh_taxi_avant_v4_3q' for v in flat),
-               f'{name} {len(info["vehicules"])} taxis v2 sur les deux axes ({len(tourne)} tournent au carrefour), voies de chaussée, hors garés ; +x avant / −x dos / N-S miroir, texte non retourné, |échelle| = 1',
-               {'hors_voie': hors_voie, 'axes': sorted(axes), 'tourne': len(tourne), 'etire': echV[:2], 'texte': texte_ok, 'vues': (dos_ouest, avant_est, miroir_ns)})
+            ok(len(info['vehicules']) >= 8 and want <= set(types) and not hors_voie and len(tourne) >= 2 and not echV and texte_ok and dos_ouest and avant_est and miroir_ns
+               and 'tram' not in types,
+               f'{name} {len(info["vehicules"])} véhicules ({", ".join(types)}) sur les deux axes ({len(tourne)} tournent au carrefour), voies de chaussée, hors garés ; +x avant / −x dos / N-S miroir, texte non retourné, |échelle| = 1',
+               {'hors_voie': hors_voie, 'axes': sorted(axes), 'tourne': len(tourne), 'etire': echV[:2], 'texte': texte_ok, 'vues': (dos_ouest, avant_est, miroir_ns), 'types': types})
             sim = E("window.__nml.view.simVehicules(60, 1 / 30, { pietons: false })")
             sim2 = E("window.__nml.view.simVehicules(60, 1 / 30)")
-            ok(not sim['hits'] and not sim2['hits'] and sim['minEcart'] >= 0 and min(sim['parcouru']) > 150,
-               f'{name} 60 s simulées (x2, avec et sans piétons) : les emprises de deux véhicules ne se recouvrent jamais (écart mini {min(sim["minEcart"], sim2["minEcart"])} m), carrefour réservé à un véhicule, tous roulent (≥ {min(sim["parcouru"]):.0f} m)',
-               {'hits': (sim['hits'] + sim2['hits'])[:3], 'parcouru': sim['parcouru']})
+            ok(not sim['hits'] and not sim2['hits'] and sim['minEcart'] >= 0 and min(sim['parcouru']) > 150
+               and sim.get('maxCarrefour', 99) <= 1 and sim2.get('maxCarrefour', 99) <= 1,
+               f'{name} 60 s simulées (x2, avec et sans piétons) : les emprises de deux véhicules ne se recouvrent jamais (écart mini {min(sim["minEcart"], sim2["minEcart"])} m), carrefour à un seul véhicule (max {max(sim.get("maxCarrefour", -1), sim2.get("maxCarrefour", -1))}), tous roulent (≥ {min(sim["parcouru"]):.0f} m)',
+               {'hits': (sim['hits'] + sim2['hits'])[:3], 'parcouru': sim['parcouru'], 'maxCarrefour': (sim.get('maxCarrefour'), sim2.get('maxCarrefour'))})
             grille = E("""() => {
               const v = window.__nml.view, gr = window.__nml.game.grids.steel_center, L = window.__nml.world.LOCATIONS.steel_center;
               const f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
@@ -369,7 +375,7 @@ with sync_playwright() as p:
               if (i < 0) return null; const q = L[i], x0 = s.player.x, z0 = s.player.z; s.player.x = q.x; s.player.z = q.z + (q.path[1][1] > q.path[0][1] ? 3 : -3); s.player.path = [];
               const w = ms => new Promise(r => setTimeout(r, ms)); await w(250); v.render(); const a = v.vehicules()[i]; const t0 = [a.x, a.z]; await w(400); v.render(); const b = v.vehicules()[i]; s.player.x = x0; s.player.z = z0;
               return { attend: b.attend, bouge: Math.hypot(b.x - t0[0], b.z - t0[1]) }; }""")
-            ok(cede and cede['attend'] and cede['bouge'] < 0.05, f'{name} un taxi cède le passage à un piéton devant lui', cede)
+            ok(cede and cede['attend'] and cede['bouge'] < 0.05, f'{name} un véhicule cède le passage à un piéton devant lui', cede)
             crowd_sprites = {e[0] for e in info['extras']} | {w[0] for w in info['walkers']}
             ok(130 <= len(info['extras']) <= 170 and 8 <= len(info['walkers']) <= 12 and len(crowd_sprites) >= 14,
                f'{name} foule : {len(info["extras"])} figurants + {len(info["walkers"])} passants, {len(crowd_sprites)} sprites distincts', (len(info['extras']), len(info['walkers'])))

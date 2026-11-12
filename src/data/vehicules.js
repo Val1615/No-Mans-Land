@@ -6,6 +6,15 @@
 // se dessinent sans retournement (jamais_miroir). Un champ du manifeste d'Ocre prime sur cette table.
 export const VUES_VEHICULES = {
   ct_veh_taxi_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_taxi_dos_v4_3q', miroir_axe2: true },
+  ct_veh_berline_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_berline_dos_v4_3q', miroir_axe2: true },
+  ct_veh_compacte_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_compacte_dos_v4_3q', miroir_axe2: true },
+  ct_veh_limo_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_limo_dos_v4_3q', miroir_axe2: true },
+  ct_veh_utilitaire_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_utilitaire_dos_v4_3q', miroir_axe2: true },
+  ct_veh_intercepteur_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_intercepteur_dos_v4_3q', miroir_axe2: true },
+  ct_veh_moto_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_moto_dos_v4_3q', miroir_axe2: true },
+  ct_veh_motolivr_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_motolivr_dos_v4_3q', miroir_axe2: true },
+  ct_veh_depanneuse_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_depanneuse_dos_v4_3q', miroir_axe2: true },
+  ct_veh_bus_avant_v4_3q: { axe: 'x', vue_dos: 'ct_veh_bus_dos_v4_3q', miroir_axe2: true },
   ct_veh_tram_avant_v4_3q: { axe: 'z', vue_dos: 'ct_veh_tram_dos_v4_3q', miroir_axe2: true },
   // clés v3 conservées pour d'éventuelles scènes non basculées
   ct_taxi_v3_3q: { axe: 'x', vue_axe2: 'ct_taxi_v3_axe2_3q' },

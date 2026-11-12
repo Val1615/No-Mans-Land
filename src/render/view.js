@@ -217,13 +217,15 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (box) { const dedans = recouvre(u.emprise, box); if (!dedans && !(u.t + 2 < u.L && recouvre(empriseVeh(u, u.t + 2), box))) u.reserve = false; } });
   }
   // simulation accélérée (tests) : sec secondes au pas dt, sans rendu ; renvoie les recouvrements d'emprises entre véhicules et le chemin parcouru
-  function simVehicules(sec = 60, dt = 1 / 30, opts = {}) { const hits = [], n = Math.round(sec / dt); let minEcart = Infinity;
+  function simVehicules(sec = 60, dt = 1 / 30, opts = {}) { const hits = [], n = Math.round(sec / dt); let minEcart = Infinity, maxCarrefour = 0;
+    const C = LOCATIONS[builtFor]?.carrefourVehicules, box = C && { x0: C.x, x1: C.x + C.w, z0: C.z, z1: C.z + C.d };
     for (const s of vehicules) s.userData.parcouru = 0;
     for (let k = 0; k < n; k++) { rouler(dt, opts);
+      if (box) maxCarrefour = Math.max(maxCarrefour, vehicules.filter(s => recouvre(s.userData.emprise, box)).length);
       for (let i = 0; i < vehicules.length; i++) for (let j = i + 1; j < vehicules.length; j++) { const a = vehicules[i].userData.emprise, b = vehicules[j].userData.emprise;
         const ecart = Math.max(b.x0 - a.x1, a.x0 - b.x1, b.z0 - a.z1, a.z0 - b.z1); minEcart = Math.min(minEcart, ecart);
         if (ecart < 0 && hits.length < 10) hits.push({ t: +(k * dt).toFixed(2), i, j, a, b }); } }
-    return { pas: n, hits, minEcart: +minEcart.toFixed(2), parcouru: vehicules.map(s => +s.userData.parcouru.toFixed(1)), attentes: vehicules.map(s => s.userData.attend) }; }
+    return { pas: n, hits, minEcart: +minEcart.toFixed(2), maxCarrefour, parcouru: vehicules.map(s => +s.userData.parcouru.toFixed(1)), attentes: vehicules.map(s => s.userData.attend) }; }
   function building(b) {
     if (!bman[b.sprite]) return placeholder(b);
     let m = bman[b.sprite]; const mobAnim = m.anime && viewW < 700 && bman[b.sprite + '_mobile'] && SKIN[b.sprite + '_mobile'];

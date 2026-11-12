@@ -106,16 +106,20 @@ export const LOCATIONS = {
         { x: 115, z: 0, w: 5, d: 12, skin: 'g_ct_asphalte_mouille' },
       ] },
     buildings: BUILDINGS_CENTER, props: [],
-    // taxis qui roulent sur les deux avenues (circulation à droite, voies de 4 m : E-O vers l'ouest z58, vers l'est z70/z74 ; N-S vers le sud x66/x70, vers le nord x82) ;
-    // sur l'axe N-S, vue miroir du sprite x (data/vehicules.js) ; deux tournent à droite au carrefour. Entrée et sortie dans la marge sombre, hors carte.
-    carrefourVehicules: { x: 64, z: 56, w: 20, d: 20 }, // boîte du carrefour : un seul véhicule à la fois (view.js, rouler)
-    // taxis v2 : trajectoires reculées des véhicules garés d'Ocre (ouest z61, est z70, sud x70, nord x78)
+    // Circulation à droite sur les deux avenues, voies reculées des véhicules garés d'Ocre (ouest z61, est z70, sud x70, nord x78).
+    // Types variés (assets v2 déjà livrés) ; le bus 18 m reste tout droit sur un axe, sans virage. Entrée et sortie dans la marge sombre, hors carte.
+    // Carrefour : un seul véhicule à la fois, tous types confondus (view.js, rouler). Le tram posé (ct_tram1) reste à l'arrêt sur sa voie, hors de cette liste.
+    carrefourVehicules: { x: 64, z: 56, w: 20, d: 20 }, // boîte du carrefour : un seul véhicule à la fois, tous types (view.js, rouler)
     vehicules: [
-      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[-8, 70], [70, 70], [70, 124]], speed: 7, t0: 40 },   // vers l'est puis à droite vers le sud
-      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[140, 61], [-8, 61]], speed: 7.5, t0: 30 },           // vers l'ouest, tout droit
-      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[78, 124], [78, 70], [140, 70]], speed: 6.5, t0: 20 }, // vers le nord puis à droite vers l'est
-      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[70, -8], [70, 124]], speed: 7, t0: 50 },             // vers le sud, tout droit
-      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[-8, 70], [140, 70]], speed: 8, t0: 20 },             // vers l'est, tout droit
+      { sprite: 'ct_veh_bus_avant_v4_3q', path: [[-8, 70], [140, 70]], speed: 5.5, t0: 56 },                 // 18 m, vers l'est, tout droit
+      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[70, -8], [70, 61], [-8, 61]], speed: 7, t0: 38 },        // vers le sud puis à droite vers l'ouest
+      { sprite: 'ct_veh_berline_avant_v4_3q', path: [[140, 61], [-8, 61]], speed: 7.2, t0: 0 },             // vers l'ouest, tout droit
+      { sprite: 'ct_veh_compacte_avant_v4_3q', path: [[78, 124], [78, 70], [140, 70]], speed: 6.8, t0: 24 }, // vers le nord puis à droite vers l'est
+      { sprite: 'ct_veh_utilitaire_avant_v4_3q', path: [[70, -8], [70, 124]], speed: 6.2, t0: 18 },         // vers le sud, tout droit
+      { sprite: 'ct_veh_moto_avant_v4_3q', path: [[78, 124], [78, -8]], speed: 9.5, t0: 34 },               // vers le nord, tout droit
+      { sprite: 'ct_veh_limo_avant_v4_3q', path: [[140, 61], [78, 61], [78, -8]], speed: 6.5, t0: 20 },     // vers l'ouest puis à droite vers le nord
+      { sprite: 'ct_veh_intercepteur_avant_v4_3q', path: [[70, -8], [70, 124]], speed: 8, t0: 58 },         // vers le sud, tout droit
+      { sprite: 'ct_veh_depanneuse_avant_v4_3q', path: [[140, 61], [-8, 61]], speed: 5.8, t0: 90 },         // vers l'ouest, tout droit
     ],
     enseignes: [
       { id: 'ct_n_arcadius', building: 'c_arcadius', effet: 'fixe', intensite: 0.92 },
