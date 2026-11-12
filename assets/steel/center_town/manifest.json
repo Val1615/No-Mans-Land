@@ -8436,7 +8436,7 @@
     "parent": "ct_veh_taxi_avant_v4_3q",
     "couche_de": "ct_veh_taxi_avant_v4_3q",
     "layer": "texte",
-    "source": "lettrage « TAXI » dessiné PIL (DejaVu Sans Bold 8 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "source": "lettrage « TAXI » redessiné PIL le 2026-11-12 (Barlow Condensed ExtraBold, capitale 17 px, rendu x4 puis cisaillement du support et réduction 1/4, plaque sombre serrée ; v1 : DejaVu Sans Bold 8 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "native"
@@ -8455,7 +8455,7 @@
     "parent": "ct_veh_taxi_avant_v4_3q",
     "couche_de": "ct_veh_taxi_avant_v4_3q",
     "layer": "texte_miroir",
-    "source": "lettrage « TAXI » repositionné pour la vue miroir (canevas miroir de ct_veh_taxi_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "source": "lettrage « TAXI » (capitale 17 px, redessiné le 2026-11-12) repositionné pour la vue miroir (canevas miroir de ct_veh_taxi_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "miroir"
@@ -8577,7 +8577,7 @@
     "parent": "ct_veh_taxi_dos_v4_3q",
     "couche_de": "ct_veh_taxi_dos_v4_3q",
     "layer": "texte",
-    "source": "lettrage « TAXI » dessiné PIL (DejaVu Sans Bold 8 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "source": "lettrage « TAXI » redessiné PIL le 2026-11-12 (Barlow Condensed ExtraBold, capitale 17 px, rendu x4 puis cisaillement du support et réduction 1/4, plaque sombre serrée ; v1 : DejaVu Sans Bold 8 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "native"
@@ -8596,7 +8596,7 @@
     "parent": "ct_veh_taxi_dos_v4_3q",
     "couche_de": "ct_veh_taxi_dos_v4_3q",
     "layer": "texte_miroir",
-    "source": "lettrage « TAXI » repositionné pour la vue miroir (canevas miroir de ct_veh_taxi_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "source": "lettrage « TAXI » (capitale 17 px, redessiné le 2026-11-12) repositionné pour la vue miroir (canevas miroir de ct_veh_taxi_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "miroir"
@@ -9851,7 +9851,7 @@
     "parent": "ct_veh_bus_avant_v4_3q",
     "couche_de": "ct_veh_bus_avant_v4_3q",
     "layer": "texte",
-    "source": "lettrage « B7 » dessiné PIL (DejaVu Sans Bold 11 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "source": "lettrage « B7 » redessiné PIL le 2026-11-12 (Barlow Condensed ExtraBold, capitale 23 px, rendu x4 puis cisaillement du support et réduction 1/4, plaque sombre serrée ; v1 : DejaVu Sans Bold 11 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "native"
@@ -9870,7 +9870,7 @@
     "parent": "ct_veh_bus_avant_v4_3q",
     "couche_de": "ct_veh_bus_avant_v4_3q",
     "layer": "texte_miroir",
-    "source": "lettrage « B7 » repositionné pour la vue miroir (canevas miroir de ct_veh_bus_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "source": "lettrage « B7 » (capitale 23 px, redessiné le 2026-11-12) repositionné pour la vue miroir (canevas miroir de ct_veh_bus_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "miroir"
@@ -9971,7 +9971,7 @@
     "parent": "ct_veh_bus_dos_v4_3q",
     "couche_de": "ct_veh_bus_dos_v4_3q",
     "layer": "texte",
-    "source": "lettrage « B7 » dessiné PIL (DejaVu Sans Bold 11 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "source": "lettrage « B7 » redessiné PIL le 2026-11-12 (Barlow Condensed ExtraBold, capitale 23 px, rendu x4 puis cisaillement du support et réduction 1/4, plaque sombre serrée ; v1 : DejaVu Sans Bold 11 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "native"
@@ -9990,7 +9990,7 @@
     "parent": "ct_veh_bus_dos_v4_3q",
     "couche_de": "ct_veh_bus_dos_v4_3q",
     "layer": "texte_miroir",
-    "source": "lettrage « B7 » repositionné pour la vue miroir (canevas miroir de ct_veh_bus_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "source": "lettrage « B7 » (capitale 23 px, redessiné le 2026-11-12) repositionné pour la vue miroir (canevas miroir de ct_veh_bus_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "miroir"
@@ -10092,7 +10092,7 @@
     "parent": "ct_veh_tram_avant_v4_3q",
     "couche_de": "ct_veh_tram_avant_v4_3q",
     "layer": "texte",
-    "source": "lettrage « T1 » dessiné PIL (DejaVu Sans Bold 13 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "source": "lettrage « T1 » redessiné PIL le 2026-11-12 (Barlow Condensed ExtraBold, capitale 23 px, rendu x4 puis cisaillement du support et réduction 1/4, plaque sombre serrée ; v1 : DejaVu Sans Bold 13 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "native"
@@ -10111,7 +10111,7 @@
     "parent": "ct_veh_tram_avant_v4_3q",
     "couche_de": "ct_veh_tram_avant_v4_3q",
     "layer": "texte_miroir",
-    "source": "lettrage « T1 » repositionné pour la vue miroir (canevas miroir de ct_veh_tram_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "source": "lettrage « T1 » (capitale 23 px, redessiné le 2026-11-12) repositionné pour la vue miroir (canevas miroir de ct_veh_tram_avant_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "miroir"
@@ -10212,7 +10212,7 @@
     "parent": "ct_veh_tram_dos_v4_3q",
     "couche_de": "ct_veh_tram_dos_v4_3q",
     "layer": "texte",
-    "source": "lettrage « T1 » dessiné PIL (DejaVu Sans Bold 13 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
+    "source": "lettrage « T1 » redessiné PIL le 2026-11-12 (Barlow Condensed ExtraBold, capitale 23 px, rendu x4 puis cisaillement du support et réduction 1/4, plaque sombre serrée ; v1 : DejaVu Sans Bold 13 px), posé sur le support, NON additif ; JAMAIS retourné : à n'afficher qu'avec la vue native (non miroir)",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "native"
@@ -10231,7 +10231,7 @@
     "parent": "ct_veh_tram_dos_v4_3q",
     "couche_de": "ct_veh_tram_dos_v4_3q",
     "layer": "texte_miroir",
-    "source": "lettrage « T1 » repositionné pour la vue miroir (canevas miroir de ct_veh_tram_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
+    "source": "lettrage « T1 » (capitale 23 px, redessiné le 2026-11-12) repositionné pour la vue miroir (canevas miroir de ct_veh_tram_dos_v4_3q, ancre miroir), texte à l'endroit ; à afficher SANS retournement par-dessus la caisse retournée",
     "status": "v4",
     "jamais_miroir": true,
     "vue": "miroir"

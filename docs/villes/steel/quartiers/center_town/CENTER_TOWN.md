@@ -531,6 +531,20 @@ Tram (natif z, tête en bas à gauche) : +z = `ct_veh_tram_avant_v4_3q`, −z = 
 - Dépanneuse avant : une plaque minuscule illisible à 50 px/m (aucun mot lisible) ; aucune autre inscription.
 - Motos : vues dos issues d'une génération séparée (`motos_dos`, couleurs recalées sur la vue avant) ; facteurs 0,27–0,42 selon le brut.
 - Lettrage TAXI (8 px) et B7 (11 px) petits, à vérifier à 390 px.
+- **Lettrage agrandi (2026-11-12, après captures 390 de Rivet).** Les 12 calques `_texte` / `_texte_miroir` de TAXI, B7 et T1 (avant et dos) sont redessinés aux mêmes clés, chemins, canevas et ancres. Seule la valeur `source` du manifeste change.
+  - **Méthode :** Barlow Condensed ExtraBold rendu à 4×, cisaillé selon la pente mesurée du support, puis réduit à 1/4. Aucun bitmap existant n'est agrandi.
+  - **Capitales dessinées :**
+
+    | lettrage | avant | après | taille réelle |
+    |---|---|---|---|
+    | TAXI | ~6 px (corps 8) | 17 px | ~34 cm, plaque ~40 cm |
+    | B7 | ~8 px (corps 11) | 23 px | — |
+    | T1 | ~9 px (corps 13) | 23 px | — |
+
+    Le cœur lumineux mesuré fait ~16 px pour TAXI et ~19-21 px pour B7 et T1.
+  - **Plaque sombre :** une plaque serrée (marges 3 / 2 px, liseré ambre sourd) porte les lettres. TAXI tient sur une plaque posée sur la barre de toit et la déborde vers le haut. B7 et T1 sont centrés sur leur girouette, qu'ils débordent.
+  - **Inchangé :** toujours rien sur les flancs ; `_texte` et `_texte_miroir` sont chacun dessinés à l'endroit et jamais retournés.
+  - **Planche hors jeu :** `nml-shots/ct_v4_vehicules_lettrage_controle.png`.
 
 **Poses proposées** (stationnement le long des bordures de la chaussée E-O z56-76, hors passages piétons x60-64 / x84-88 ; bus à l'arrêt bordure sud est ; tram en station sur le couloir N-S x72-76, tête avant le passage nord z52) :
 
