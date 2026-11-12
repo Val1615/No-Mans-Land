@@ -111,7 +111,7 @@ export const LOCATIONS = {
     // Carrefour : un seul véhicule à la fois, tous types confondus (view.js, rouler). Le tram posé (ct_tram1) reste à l'arrêt sur sa voie, hors de cette liste.
     carrefourVehicules: { x: 64, z: 56, w: 20, d: 20 }, // boîte du carrefour : un seul véhicule à la fois, tous types (view.js, rouler)
     vehicules: [
-      { sprite: 'ct_veh_bus_avant_v4_3q', path: [[-8, 70], [140, 70]], speed: 5.5, t0: 56 },                 // 18 m, vers l'est, tout droit
+      { sprite: 'ct_veh_bus_avant_v5_3q', path: [[-8, 70], [140, 70]], speed: 5.5, t0: 56 },                 // 18 m, vers l'est, tout droit
       { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[70, -8], [70, 61], [-8, 61]], speed: 7, t0: 38 },        // vers le sud puis à droite vers l'ouest
       { sprite: 'ct_veh_berline_avant_v4_3q', path: [[140, 61], [-8, 61]], speed: 7.2, t0: 0 },             // vers l'ouest, tout droit
       { sprite: 'ct_veh_compacte_avant_v4_3q', path: [[78, 124], [78, 70], [140, 70]], speed: 6.8, t0: 24 }, // vers le nord puis à droite vers l'est

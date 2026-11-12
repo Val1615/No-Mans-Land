@@ -54,7 +54,7 @@ EXPECTED_SPRITES = {
     'ct_so_muret_haie_z_v4_3q', 'ct_so_stand_concert_v4_3q', 'ct_tour_archeon_v4_3q',
     'ct_tour_humancorp_v4_3q', 'ct_tour_nexus_v4_3q', 'ct_tour_orc_v4_3q',
     'ct_tour_teng_v4_3q', 'ct_veh_berline_avant_v4_3q', 'ct_veh_berline_dos_v4_3q',
-    'ct_veh_bus_avant_v4_3q', 'ct_veh_bus_dos_v4_3q', 'ct_veh_compacte_avant_v4_3q',
+    'ct_veh_bus_avant_v5_3q', 'ct_veh_bus_dos_v5_3q', 'ct_veh_compacte_avant_v4_3q',
     'ct_veh_compacte_dos_v4_3q', 'ct_veh_depanneuse_avant_v4_3q', 'ct_veh_intercepteur_avant_v4_3q',
     'ct_veh_limo_avant_v4_3q', 'ct_veh_limo_dos_v4_3q', 'ct_veh_moto_avant_v4_3q', 'ct_veh_motolivr_dos_v4_3q',
     'ct_veh_taxi_avant_v4_3q', 'ct_veh_tram_avant_v4_3q', 'ct_veh_utilitaire_avant_v4_3q',
@@ -78,6 +78,7 @@ OBSOLETE_V1 = {
     'ct_tour_teng_v3_3q', 'ct_tour_archeon_v3_3q', 'ct_tour_orc_v3_3q', 'ct_tour_humancorp_v3_3q', 'ct_tour_nexus_v3_3q',
     'ct_tour_teng_v2_3q', 'ct_tour_archeon_v2_3q', 'ct_tour_orc_v2_3q', 'ct_tour_humancorp_v2_3q', 'ct_tour_nexus_v2_3q',
     'ct_bord_sud_a_3q', 'ct_bord_sud_b_3q', 'ct_bord_sud_c_3q',
+    'ct_veh_bus_avant_v4_3q', 'ct_veh_bus_dos_v4_3q',  # bus v4 (plongeon 0,45-0,48) : plus posé, remplacé par le v5 (§8R)
     'ct_monorail_viaduc_3q', 'ct_monorail_rame_3q', 'ct_holo_suspendu_3q',
     'ct_arret_tram_3q', 'ct_tram_3q', 'ct_taxi_v2_3q',
     'ct_echoppe_vapeur_3q', 'ct_kiosque_info_3q',
@@ -214,12 +215,12 @@ with sync_playwright() as p:
                     const [ci, cj] = gr.toCell(x, z); if (!voie(x, z) || !gr.free(ci, cj)) out.push(i + ':' + x.toFixed(1) + ',' + z.toFixed(1)); } } }
               return out.slice(0, 10); }""")
             texte_ok = all(v.get('texte') and v['texte']['repeat'] == 1 and v['texte']['sx'] == 1 for v in flat if v.get('texte'))
-            typ = lambda cle: (cle or '').replace('ct_veh_', '').replace('_avant_v4_3q', '').replace('_dos_v4_3q', '')
+            typ = lambda cle: re.sub(r'_(avant|dos)_v[45]_3q$', '', (cle or '').replace('ct_veh_', ''))  # bus en v5 (§8R), les autres en v4
             types = sorted({typ(v['cle']) for v in VS[0]})
             want = {'taxi', 'berline', 'compacte', 'utilitaire', 'moto', 'limo', 'intercepteur', 'depanneuse', 'bus'}
-            dos_ouest = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] and v['key'].endswith('_dos_v4_3q') for v in flat)
-            avant_est = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] and v['key'].endswith('_avant_v4_3q') for v in flat)
-            miroir_ns = any(v['axe'] == 'z' and v['sx'] == -1 and v['key'] and ('_avant_v4_3q' in v['key'] or '_dos_v4_3q' in v['key']) for v in flat)
+            dos_ouest = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] and re.search(r'_dos_v[45]_3q$', v['key']) for v in flat)
+            avant_est = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] and re.search(r'_avant_v[45]_3q$', v['key']) for v in flat)
+            miroir_ns = any(v['axe'] == 'z' and v['sx'] == -1 and v['key'] and re.search(r'_(avant|dos)_v[45]_3q', v['key']) for v in flat)
             tram_mobile = any('tram' in typ(v['sprite']) for v in info['vehicules'])
             ok(tram['sprite'] == 'ct_veh_tram_avant_v4_3q' and abs(tram['x'] - 72.68) < 0.02 and abs(tram['z'] - 18) < 0.02 and abs(tram['w'] - 2.65) < 0.02 and abs(tram['d'] - 33.8) < 0.02
                and all(v['sprite'] != 'ct_tram_v3_3q' for v in info['vehicules']) and tram['z'] + tram['d'] <= 52.01 and not tram_mobile,
@@ -257,7 +258,7 @@ with sync_playwright() as p:
                 if (vis.length !== 1 || (vis[0].vue === 'miroir') !== (sx < 0) || vis[0].repeat !== 1) bad.push([lab, vis.map(q => q.lay)]); else vus.add(lab.split(':')[0] + ':' + vis[0].vue); };
               for (let k = 0; k < 24; k++) { v.render(); for (const c of v.calquesVehicules()) chk(c.cle.replace('ct_veh_', '') + ':roule', c, c.sx); await w(60); }
               v.figerVehicules(true); const t0 = v.calquesVehicules().map(c => [c.cle, c.t]);
-              for (const [cle, pts] of [['ct_veh_taxi_avant_v4_3q', [[70, 20], [40, 61]]], ['ct_veh_bus_avant_v4_3q', [[40, 70]]]]) for (const pt of pts) { const r = v.placerVehicule(cle, pt); v.render();
+              for (const [cle, pts] of [['ct_veh_taxi_avant_v4_3q', [[70, 20], [40, 61]]], ['ct_veh_bus_avant_v5_3q', [[40, 70]]]]) for (const pt of pts) { const r = v.placerVehicule(cle, pt); v.render();
                 chk(cle.replace('ct_veh_', '') + ':' + r.key.replace(/^.*_(avant|dos)_.*$/, '$1') + (r.sx < 0 ? '_miroir' : '_natif'), v.calquesVehicules().find(q => q.cle === cle), r.sx); }
               for (const [c, t] of t0) v.placerVehicule(c, t); v.figerVehicules(false); v.render();
               const gares = v.calquesGares(), gbad = gares.filter(g => { const tx = g.calques.filter(q => q.vue); if (!tx.length) return false; const vis = tx.filter(q => q.visible);
@@ -268,16 +269,30 @@ with sync_playwright() as p:
             # (a bis) au pixel : rendu isolé du corps, comparé aux 4 vues d'Ocre ; poses enchaînées comme en roulant (taxi sud puis ouest, compacte nord puis est,
             #     limo ouest puis nord) : l'image affichée par la carte graphique doit être celle du cap (avant l'ancienne image restait après un virage)
             POSES_PIX = [('ct_veh_taxi_avant_v4_3q', [70, 20]), ('ct_veh_taxi_avant_v4_3q', [30, 61]), ('ct_veh_compacte_avant_v4_3q', [78, 100]), ('ct_veh_compacte_avant_v4_3q', [110, 70]),
-                         ('ct_veh_limo_avant_v4_3q', [110, 61]), ('ct_veh_limo_avant_v4_3q', [78, 30]), ('ct_veh_bus_avant_v4_3q', [40, 70]), ('ct_veh_berline_avant_v4_3q', [40, 61]),
+                         ('ct_veh_limo_avant_v4_3q', [110, 61]), ('ct_veh_limo_avant_v4_3q', [78, 30]), ('ct_veh_bus_avant_v5_3q', [40, 70]), ('ct_veh_berline_avant_v4_3q', [40, 61]),
                          ('ct_veh_moto_avant_v4_3q', [78, 90]), ('ct_veh_utilitaire_avant_v4_3q', [70, 90]), ('ct_veh_taxi_avant_v4_3q', [70, 30])]
             t0p = E("window.__nml.view.figerVehicules(true) && window.__nml.view.calquesVehicules().map(c => [c.cle, c.t])"); pix_bad, pix_n = [], 0
             for cle, pt in POSES_PIX:
                 r = E(f"window.__nml.view.placerVehicule('{cle}', {json.dumps(pt)})")
-                E(f"window.__nml.view.setCamera({{ x: {r['x']}, z: {r['z']}, ppm: 40 }})")
+                E(f"window.__nml.view.setCamera({{ x: {r['x']}, z: {r['z']}, ppm: {14 if '_bus_' in cle else 40} }})")  # bus 18 m : entier dans les 390 px (à 40 ppm, l'écran coupait l'avant et l'arrière)
                 best, sc = vue_rendue(E(f"window.__nml.view.isolerVehicule('{cle}')"), cle); pix_n += 1
                 if best != (r['key'], r['sx']): pix_bad.append([cle[7:-12], pt, r['key'][7:], r['sx'], best and (best[0][7:], best[1])])
             E(f"(() => {{ const v = window.__nml.view; for (const [c, t] of {json.dumps(t0p)}) v.placerVehicule(c, t); v.figerVehicules(false); v.setCamera(null); }})()")
             ok(pix_n == len(POSES_PIX) and not pix_bad, f'{name} au pixel : {pix_n} poses (4 caps, après virage) affichent bien la vue du cap (avant / dos, natif / miroir), pas l\'image du cap précédent', pix_bad)
+            # bus v5 (pente 0,33, 12/11) : le bus 18 m qui roule (z 70) longe le bus garé ct_vbus0 (z 73,15) ; les deux sont le v5 d'Ocre (824 x 451, échelle 1),
+            #     le mobile, plus loin de la caméra, est peint avant le garé, et à chaque pose du passage côte à côte (x 84 à 126)
+            cc = E("""() => { const v = window.__nml.view; v.figerVehicules(true); const t0 = v.calquesVehicules().map(c => [c.cle, c.t]), bad = []; let n = 0, g0 = null;
+              for (let x = 84; x <= 126; x += 3) { v.placerVehicule('ct_veh_bus_avant_v5_3q', [x, 70]); v.render(); n++;
+                const b = v.vehicules().find(q => q.cle === 'ct_veh_bus_avant_v5_3q'), g = v.calquesGares().find(q => q.id === 'ct_vbus0'); g0 = g;
+                if (!b || !g || b.key !== 'ct_veh_bus_avant_v5_3q' || g.img !== 'ct_veh_bus_dos_v5_3q' || b.px[0] !== 824 || b.px[1] !== 451 || Math.abs(b.repeat) !== 1 || Math.abs(g.repeat) !== 1 || !(b.ordre < g.ordre))
+                  bad.push([x, b && b.key, b && b.ordre, g && g.img, g && g.ordre]); }
+              for (const [c, t] of t0) v.placerVehicule(c, t); v.figerVehicules(false); v.render(); return { n, bad, g: g0 && { img: g0.img, repeat: g0.repeat } }; }""")
+            ok(cc['n'] >= 14 and not cc['bad'], f'{name} bus v5 côte à côte : {cc["n"]} poses du bus 18 m le long du bus garé ct_vbus0, v5 des deux côtés, échelle 1, le mobile (z 70) peint derrière le garé (z 73,15)', cc)
+            # ordre de dessin des véhicules qui roulent (capture de Valentin, 12/11 : le bus mobile peint par-dessus le bus garé) : sur 40 images de circulation,
+            #     chaque véhicule est peint après tout ce qui est derrière lui et avant tout ce qui est devant, quand leurs rectangles écran se recouvrent
+            ov = E("""async () => { const v = window.__nml.view, w = ms => new Promise(r => setTimeout(r, ms)), bad = []; let n = 0;
+              for (let k = 0; k < 40; k++) { const o = v.ordreVehicules(); n += o.n; bad.push(...o.bad); await w(80); } return { n, nbad: bad.length, bad: bad.slice(0, 6) }; }""")
+            ok(ov['n'] > 200 and not ov['nbad'], f'{name} ordre de dessin des véhicules : {ov["n"]} recouvrements écran contrôlés sur 40 images (garés, bâtiments, passants), aucun véhicule peint par-dessus ce qui est devant lui', ov)
             grille = E("""() => {
               const v = window.__nml.view, gr = window.__nml.game.grids.steel_center, L = window.__nml.world.LOCATIONS.steel_center;
               const f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
@@ -584,7 +599,7 @@ with sync_playwright() as p:
                 ('cap_ouest_berline', 'ct_veh_berline_avant_v4_3q', [110, 61], 56), ('cap_nord_limo_apres_virage', 'ct_veh_limo_avant_v4_3q', [78, 40], 56),
                 ('cap_ouest_limo_avant_virage', 'ct_veh_limo_avant_v4_3q', [100, 61], 56), ('cap_nord_moto', 'ct_veh_moto_avant_v4_3q', [78, 100], 64),
                 ('cap_sud_utilitaire', 'ct_veh_utilitaire_avant_v4_3q', [70, 96], 56), ('cap_ouest_depanneuse', 'ct_veh_depanneuse_avant_v4_3q', [116, 61], 48),
-                ('lettrage_bus_avant_est', 'ct_veh_bus_avant_v4_3q', [40, 70], 44), ('bus_le_long_du_bus_gare', 'ct_veh_bus_avant_v4_3q', [109, 70], 40)]
+                ('lettrage_bus_avant_est', 'ct_veh_bus_avant_v5_3q', [40, 70], 44), ('bus_le_long_du_bus_gare', 'ct_veh_bus_avant_v5_3q', [109, 70], 40)]
         t0v = E("window.__nml.view.figerVehicules(true) && window.__nml.view.calquesVehicules().map(c => [c.cle, c.t])")
         for fname, cle, pt, ppm in GROS:
             r = E(f"(() => {{ const v = window.__nml.view; for (const [c, t] of {json.dumps(t0v)}) v.placerVehicule(c, t); return v.placerVehicule('{cle}', {json.dumps(pt)}); }})()")

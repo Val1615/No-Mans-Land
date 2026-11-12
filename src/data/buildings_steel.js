@@ -149,7 +149,7 @@ export const BUILDINGS_CENTER = [
   B_CT('ct_vlivr0', '', 'ct_veh_motolivr_dos_v4_3q', 42, 74.8, 2.4, 0.9, { named: false, solid: [{ x: 42.1, z: 74.9, w: 2.2, d: 0.7 }] }),
   B_CT('ct_vutil0', '', 'ct_veh_utilitaire_avant_v4_3q', 96, 56.3, 5.8, 2.2, { named: false, solid: [{ x: 96.1, z: 56.4, w: 5.6, d: 2.0 }] }),
   B_CT('ct_vdep0', '', 'ct_veh_depanneuse_avant_v4_3q', 112, 56.3, 9, 2.6, { named: false, solid: [{ x: 112.1, z: 56.4, w: 8.8, d: 2.4 }] }),
-  B_CT('ct_vbus0', '', 'ct_veh_bus_dos_v4_3q', 100, 73.15, 18, 2.55, { named: false, solid: [{ x: 100.1, z: 73.25, w: 17.8, d: 2.3 }] }),
+  B_CT('ct_vbus0', '', 'ct_veh_bus_dos_v5_3q', 100, 73.15, 18, 2.55, { named: false, solid: [{ x: 100.1, z: 73.25, w: 17.8, d: 2.3 }] }),
   B_CT('ct_vlimo0', '', 'ct_veh_limo_dos_v4_3q', 121, 73.6, 6, 2.1, { named: false, solid: [{ x: 121.1, z: 73.7, w: 5.8, d: 1.9 }] }),
   B_CT('ct_vinter0', '', 'ct_veh_intercepteur_avant_v4_3q', 92, 73.6, 5, 2.1, { named: false, solid: [{ x: 92.1, z: 73.7, w: 4.8, d: 1.9 }] }),
   B_CT('ct_vtaxi2', '', 'ct_veh_taxi_avant_v4_3q', 64.3, 40, 2, 5.4, { named: false, miroir: true, solid: [{ x: 64.4, z: 40.1, w: 1.8, d: 5.2 }] }),  // axe N-S = miroir de la vue avant

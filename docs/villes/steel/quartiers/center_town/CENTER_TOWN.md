@@ -817,6 +817,10 @@ B_CT('ct_vbus0', '', 'ct_veh_bus_dos_v5_3q', 100, 73.15, 18, 2.55, { named: fals
 
 Bus mobile : dans `src/data/steel.js` (sprite `ct_veh_bus_avant_v4_3q`, voie z70) et `src/data/vehicules.js` (`ct_veh_bus_avant_v4_3q` → `vue_dos: ct_veh_bus_dos_v4_3q`), pointer les clés v5.
 
+**Câblé (Rivet, 2026-11-12).** `ct_vbus0` (`buildings_steel.js`, pose et solide inchangés), bus mobile (`steel.js`, trajet z70 inchangé) et `VUES_VEHICULES` (`ct_veh_bus_avant_v5_3q` → `vue_dos: ct_veh_bus_dos_v5_3q`, miroir axe 2) pointent les clés v5. Les clés v4 ne sont plus posées ; le manifeste n'est pas modifié (pas de marquage `obsolete`). `tests/center_rapide.py` : v5 des deux côtés, échelle 1, mobile peint derrière le garé sur tout le passage côte à côte.
+
+**Ordre de dessin (view.js, `painter`).** La capture de Valentin (Pages mobile, 12/11) venait aussi du peintre : chaque acteur était inséré au plus tard de sa plage ; un véhicule ou un passant déjà inséré tard poussait le bus 18 m après le bus garé, et le mobile (z 70) était peint par-dessus `ct_vbus0` (z 73,15). Désormais : acteurs triés entre eux par tri topologique (comme les bâtiments, plus la somme x+z), insérés au plus tôt de leur plage. L'ordre mutuel des bâtiments n'est pas touché. Test : `ordreVehicules()` sur 40 images, aucun véhicule peint par-dessus ce qui est devant lui.
+
 **Défauts connus (honnêtes).**
 - Le v5 paraît plus long et plus plat que le v4 : c'est la caméra correcte, le changement est visible.
 - Les portes sont sur le flanc droit, donc visibles en vue avant, pas en vue dos (l'inverse du v4).

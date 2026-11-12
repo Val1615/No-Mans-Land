@@ -720,11 +720,12 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     }
     return res;
   }
+  let lastPaint = null; // tests : dernier ordre du peintre (ordreVehicules)
   function painter() {
     // 1) Ordre mutuel des bâtiments/meubles calculé seul : un personnage ou passant mobile ne peut JAMAIS inverser deux bâtiments.
     const statics = topoSort(bills);
-    const actors = [player, companion].filter(a => a.visible).concat(npcSprites.filter(n => n.visible), decor, drones, vehicules.filter(v => v.visible)).map(actorItem);
-    actors.sort((a, b) => (a.x0 + a.x1 + a.z0 + a.z1) - (b.x0 + b.x1 + b.z0 + b.z1));
+    const actors = topoSort([player, companion].filter(a => a.visible).concat(npcSprites.filter(n => n.visible), decor, drones, vehicules.filter(v => v.visible)).map(actorItem));
+    // ordre mutuel des acteurs (tri topologique, comme les bâtiments) : la somme x+z ne suffit pas pour un bus de 18 m (un passant au sud du bus passait avant lui)
     // 2) Insertion de chaque acteur juste avant le premier bâtiment devant lui dont le rectangle écran le recouvre.
     const merged = [...statics];
     const rectCache = new Map(merged.map(it => [it, rectOf(it.obj)]));
@@ -737,9 +738,11 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         if (inFront(ac, it)) lo = Math.max(lo, i + 1);
         else if (inFront(it, ac) && i < hi) hi = i;
       }
-      const pos = lo <= hi ? hi : lo;
+      const pos = lo; // au plus tôt : tout rang de [lo, hi] respecte les bâtiments recouverts ; au plus tard, un acteur déjà inséré (limo, passant) repoussait
+      //   le suivant (bus 18 m) derrière le bus garé ct_vbus0, et le mobile était peint par-dessus le garé (capture de Valentin, 12/11)
       merged.splice(pos, 0, ac);
     }
+    lastPaint = { merged, rectCache };
     let ord = 10;
     for (const it of merged) {
       it.obj.renderOrder = ord; for (const e of it.extra) e.renderOrder = ord + 1; ord += 2;
@@ -1102,12 +1105,19 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
       hidden.forEach(o => o.visible = true); scene.background = bg; return url; },
+    // tests : paires (véhicule qui roule, autre élément) qui se recouvrent à l'écran et dont l'ordre de dessin contredit inFront (le plus proche doit être peint après)
+    ordreVehicules: () => { render(); if (!lastPaint) return null; const M = lastPaint.merged, R = it => lastPaint.rectCache.get(it) || rectOf(it.obj), bad = []; let n = 0;
+      const nom = it => it.obj.userData.cle || it.obj.userData.buildingId || it.obj.userData.role || '?';
+      M.forEach((A, ia) => { if (!(A.actor && A.obj.userData.emprise)) return; const ra = R(A);
+        M.forEach((B, ib) => { if (A === B) return; const rb = R(B); if (ra.x1 < rb.x0 || rb.x1 < ra.x0 || ra.y1 < rb.y0 || rb.y1 < ra.y0) return;
+          const af = inFront(A, B), bf = inFront(B, A); if (af === bf) return; n++; if (af !== (ia > ib)) bad.push([nom(A), nom(B), ia, ib]); }); });
+      return { n, bad }; },
     calquesVehicules: () => vehicules.map(s => ({ cle: s.userData.cle, t: s.userData.t, key: s.userData.key, sx: s.userData.sx, axe: s.userData.axe, dir: s.userData.dir,
       calques: s.userData.extra.map(o => ({ lay: o.userData.lay, vue: o.userData.vueTexte, visible: o.visible, img: o.userData.m && Object.keys(bman).find(k => bman[k] === o.userData.m), repeat: o.material.map.repeat.x })) })),
     calquesGares: () => bills.filter(i => i.obj.userData.buildingId && bman[LOCATIONS[builtFor].buildings.find(b => b.id === i.obj.userData.buildingId)?.sprite]?.vehicule)
-      .map(i => ({ id: i.obj.userData.buildingId, visible: i.obj.visible, repeat: i.obj.material.map.repeat.x, calques: i.extra.filter(o => o.userData.lay).map(o => ({ lay: o.userData.lay, vue: o.userData.vueTexte, visible: o.visible, repeat: o.material.map.repeat.x })) })),
+      .map(i => ({ id: i.obj.userData.buildingId, img: i.obj.userData.img, ordre: i.obj.renderOrder, visible: i.obj.visible, repeat: i.obj.material.map.repeat.x, calques: i.extra.filter(o => o.userData.lay).map(o => ({ lay: o.userData.lay, vue: o.userData.vueTexte, visible: o.visible, repeat: o.material.map.repeat.x })) })),
     vehicules: () => vehicules.map(s => { const u = s.userData, tx = (u.extra || []).find(o => o.visible && o.userData.vueTexte);
-      return { cle: u.cle, key: u.key, axe: u.axe, sx: u.sx, scale: [+s.scale.x.toFixed(4), +s.scale.y.toFixed(4)], repeat: s.material.map.repeat.x, x: +u.cx.toFixed(2), z: +u.cz.toFixed(2), attend: u.attend, emprise: u.emprise, path: u.vehicule.path, natif: u.key === u.cle && u.sx === 1 && u.axe === u.vue.axe, px: (bman[u.key] || bman[u.cle]).px, K, texte: tx ? { lay: tx.userData.lay, repeat: tx.material.map.repeat.x, sx: tx.material.map.repeat.x, visible: tx.visible } : null }; }),
+      return { cle: u.cle, key: u.key, ordre: s.renderOrder, axe: u.axe, sx: u.sx, scale: [+s.scale.x.toFixed(4), +s.scale.y.toFixed(4)], repeat: s.material.map.repeat.x, x: +u.cx.toFixed(2), z: +u.cz.toFixed(2), attend: u.attend, emprise: u.emprise, path: u.vehicule.path, natif: u.key === u.cle && u.sx === 1 && u.axe === u.vue.axe, px: (bman[u.key] || bman[u.cle]).px, K, texte: tx ? { lay: tx.userData.lay, repeat: tx.material.map.repeat.x, sx: tx.material.map.repeat.x, visible: tx.visible } : null }; }),
     decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing, sprite: s.userData.sprite, ratio: +(Math.abs(s.scale.x) / s.scale.y).toFixed(3) })); },
     isolateDecor: i => { render(); const keep = decor.concat(drones)[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');
