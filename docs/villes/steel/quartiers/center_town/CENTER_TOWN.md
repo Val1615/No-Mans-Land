@@ -363,3 +363,114 @@ Deux segments neufs générés à leur longueur réelle (même rendu, mêmes mat
 `ct_arcadius_grille_s3_v4_3q` (x43-53,55) est inchangé. Le chevauchement s2/s3 sur x43-48 disparaît, et le `solid` partiel de s2 n'est plus nécessaire. Planche hors jeu : `nml-shots/ct_arcadius_grille_io_controle_v2.jpg`.
 
 Poses basculées par Rivet : clôture continue x12-29 (s1), portail x29-37, s2 x37-43 aboutant s3 x43-53,55, sans trou ni chevauchement visuel. Les anciennes clés `ct_arcadius_grille_s1_v4_3q` et `ct_arcadius_grille_s2_v4_3q` (et leurs calques `_neon` / `_fenetres`) portent `obsolete: true`.
+
+### J. Lot 1 : mobilier et signalétique du boulevard et du carrefour (`ct_mob_*_v4_3q`, 2026-11-12)
+
+Commande de Valentin (2026-11-12) : meubler le boulevard, le carrefour, les trottoirs de 8 m et le parvis avec les nouveaux assets (planches `03_mobilier_urbain` et `04_signaletique_vie`). Ce lot **ajoute** 22 sprites et 12 calques. Aucune clé existante n'est modifiée et aucun `remplace` n'est posé : ce sont des emplacements neufs. Sont réutilisés tels quels, sans doublon : `ct_kiosque_info_v3_3q` (kiosque), `ct_arret_tram_v3_3q` (abri), `ct_lampadaire_io_v3_3q` (lampadaire IO rouge, réservé aux abords de l'Arcadius), `ct_cerisier_bac_v3_3q` (cerisier en bac) et `ct_echoppe_vapeur_v3_3q`. L'enseigne murale (planche 04 n° 2), l'échafaudage, les étals et les caisses vont aux lots des coins.
+
+Méthode (`/workspace/ct_v5/`, hors dépôt) : planches de 4 objets générées par GenerateImage sur des gabarits boîte au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°, fond chroma), avec les planches 03/04 en référence de dessin. Ensuite : détourage sans comblement des jours (barreaux, pieds de tabouret), **une seule réduction uniforme** vers 50 px/m (facteurs 0,24 à 0,66, jamais d'agrandissement), ancre au coin avant de l'emprise `(x+w, z+d)`, `dy = 0`, ombre de contact légère, calques additifs extraits sur le même canevas. Échelle : hauteur calée pour les poteaux et les écrans ; moyenne géométrique hauteur/largeur pour les objets longs. Les feux `_e` sont des miroirs pixel (optiques face est), avec l'ancre recalculée sur le pied.
+
+| Clé | Rôle | Emprise (m) | h (m) | px | `anchor` | Calques |
+|---|---|---|---|---|---|---|
+| `ct_mob_lampadaire_ambre_v4_3q` | Lampadaire double à lumière ambre, porte-bannière vierge (civil, sans rouge IO) | 1 x 1 | 7 | 143 x 336 | [77, 332] | _fenetres |
+| `ct_mob_feu_tricolore_v4_3q` | Feu tricolore sur mât, optiques face sud-ouest (trafic E-O) | 0.6 x 0.6 | 4.5 | 63 x 215 | [46, 212] | _neon |
+| `ct_mob_feu_tricolore_e_v4_3q` | Feu tricolore sur mât, optiques face sud-est (miroir pixel de ct_mob_feu_tricolore_v4_3q, trafic N-S) | 0.6 x 0.6 | 4.5 | 63 x 215 | [25, 212] | _neon |
+| `ct_mob_feu_pieton_v4_3q` | Feu piéton sur poteau, face sud-ouest | 0.4 x 0.4 | 3.2 | 34 x 155 | [21, 152] | _neon |
+| `ct_mob_feu_pieton_e_v4_3q` | Feu piéton sur poteau, face sud-est (miroir pixel) | 0.4 x 0.4 | 3.2 | 34 x 155 | [18, 152] | _neon |
+| `ct_mob_borne_info_v4_3q` | Borne d'information publique, écran pâle sans texte lisible | 1 x 0.5 | 2.2 | 45 x 116 | [36, 113] | _ecran |
+| `ct_mob_banc_x_v4_3q` | Banc public acier et bois usé, axe E-O (dossier au nord) | 1.8 x 0.6 | 0.9 | 92 x 83 | [70, 80] | - |
+| `ct_mob_banc_z_v4_3q` | Banc public acier et bois usé, axe N-S (dossier à l'ouest) | 0.6 x 1.8 | 0.9 | 87 x 80 | [20, 76] | - |
+| `ct_mob_poubelles_x_v4_3q` | Rangée de 4 poubelles de tri rouillées, axe E-O | 2.6 x 0.6 | 1.1 | 122 x 106 | [99, 102] | - |
+| `ct_mob_poubelles_z_v4_3q` | Rangée de 4 poubelles de tri rouillées, axe N-S | 0.6 x 2.6 | 1.1 | 115 x 101 | [21, 98] | - |
+| `ct_mob_bornes_recharge_v4_3q` | Paire de bornes de recharge, voyants ambre | 1.8 x 0.6 | 1.7 | 93 x 124 | [89, 121] | _fenetres |
+| `ct_mob_distributeurs_v4_3q` | Distributeurs boissons (rouge) et nouilles (jaune), vitrines éclairées | 2 x 0.9 | 1.9 | 112 x 135 | [87, 132] | _fenetres, _neon |
+| `ct_mob_stand_streetfood_v4_3q` | Stand de street-food à auvent de tôle, grill ambre, 3 tabourets | 3 x 2 | 2.6 | 178 x 213 | [106, 208] | _fenetres |
+| `ct_mob_jardiniere_arbustes_v4_3q` | Jardinière acier rouillé avec arbustes, liseré ambre au pied | 2.5 x 1 | 1.4 | 132 x 126 | [87, 122] | _fenetres |
+| `ct_mob_jardiniere_arbre_v4_3q` | Jardinière béton 2 x 2 m avec arbre feuillu (~4,5 m) | 2 x 2 | 4.5 | 139 x 249 | [84, 245] | - |
+| `ct_mob_gba_x_v4_3q` | Glissière béton (GBA) usée, chevron jaune-noir, axe E-O | 2 x 0.6 | 1 | 104 x 89 | [81, 86] | - |
+| `ct_mob_gba_z_v4_3q` | Glissière béton (GBA) usée, chevron jaune-noir, axe N-S | 0.6 x 2 | 1 | 91 x 91 | [24, 88] | - |
+| `ct_mob_plots_v4_3q` | Paire de plots orange et blancs sur socle caoutchouc | 1.2 x 0.4 | 1.1 | 59 x 74 | [56, 70] | - |
+| `ct_mob_benne_v4_3q` | Benne à gravats rouillée ouverte (ruelles de service, chantiers) | 4 x 1.9 | 1.5 | 213 x 173 | [130, 170] | - |
+| `ct_mob_panneau_holo_v4_3q` | Panneau holo publicitaire sur mât, visuel abstrait sans lettrage (écran face sud) | 3.5 x 0.6 | 4.5 | 166 x 253 | [143, 249] | _ecran |
+| `ct_mob_barriere_x_v4_3q` | Garde-corps piéton bas en acier sombre, axe E-O (angles de trottoir, bords de passages) | 2 x 0.2 | 1 | 87 x 85 | [78, 82] | - |
+| `ct_mob_table_haute_v4_3q` | Table haute de bistrot en acier et deux tabourets | 1.4 x 1.4 | 1.1 | 77 x 84 | [47, 80] | - |
+
+Champs ajoutés au manifeste : `px_par_m: 50`, `groupe: 'ct_mobilier_v4'`, `solid_relatif` (`dx`, `dz`, `w`, `d` depuis `x`, `z` de la pose, ou `null` si l'objet n'a pas de collision, comme les plots) et `miroir_de` pour les feux `_e`. Le champ `pose` est un modèle `B_CT('<id>', '', clé, X, Z, w, d, ...)`.
+
+Défauts connus, honnêtement :
+- Le générateur dessine les objets longs avec un lacet d'environ 40° : les arêtes de pied mesurent environ 0,43 / 0,5 au lieu de 0,33 / 0,70. Sur 2 à 3 m, l'écart reste sous 0,4 m au sol, ce qui ne se voit qu'en le cherchant le long d'une bordure. Les variantes `_x` / `_z` sont deux vraies vues, pas des miroirs.
+- La rangée de poubelles porte une petite pastille rouge de tri, et l'un des distributeurs est rouge (planche validée) : ce ne sont ni des façades ni des devantures.
+- La borne d'information montre un écran pâle à lignes illisibles (aucun texte lisible), passé sur `_ecran`.
+- Le garde-corps n'existe qu'en `_x`. Sur l'axe N-S, on utilise `ct_mob_gba_z_v4_3q` ou les plots.
+
+Poses suggérées pour Rivet (repère absolu du plan v2 132 x 116 m). Elles évitent les passages piétons et leurs seuils (x60-64 / x84-88, z52-56 / z76-80), les sorties (demi-trottoirs côté façade), la porte de Teng, le portail IO (x29-37), l'escalier peint (x22-34, z36-42,6), la boîte du carrefour et la ligne de tram. Tout le mobilier reste dans les bandes de mobilier côté bordure (z52-56, z76-80, x60-64, x84-88), sauf les distributeurs et le stand, qui sont adossés à la façade sud de `ct_rempl3`, et le parvis :
+
+```js
+B_CT('ct_feu_no', '', 'ct_mob_feu_tricolore_v4_3q', 62.9, 54.9, 0.6, 0.6, { named: false, solid: [{ x: 63, z: 55, w: 0.4, d: 0.4 }] }),
+B_CT('ct_feu_ne', '', 'ct_mob_feu_tricolore_e_v4_3q', 84.5, 54.9, 0.6, 0.6, { named: false, solid: [{ x: 84.6, z: 55, w: 0.4, d: 0.4 }] }),
+B_CT('ct_feu_so', '', 'ct_mob_feu_tricolore_e_v4_3q', 62.9, 76.5, 0.6, 0.6, { named: false, solid: [{ x: 63, z: 76.6, w: 0.4, d: 0.4 }] }),
+B_CT('ct_feu_se', '', 'ct_mob_feu_tricolore_v4_3q', 84.5, 76.5, 0.6, 0.6, { named: false, solid: [{ x: 84.6, z: 76.6, w: 0.4, d: 0.4 }] }),
+B_CT('ct_fp_no', '', 'ct_mob_feu_pieton_e_v4_3q', 63.3, 51.2, 0.4, 0.4, { named: false, solid: [{ x: 63.4, z: 51.3, w: 0.25, d: 0.25 }] }),
+B_CT('ct_fp_ne', '', 'ct_mob_feu_pieton_v4_3q', 84.3, 51.2, 0.4, 0.4, { named: false, solid: [{ x: 84.4, z: 51.3, w: 0.25, d: 0.25 }] }),
+B_CT('ct_fp_so', '', 'ct_mob_feu_pieton_v4_3q', 63.3, 80.4, 0.4, 0.4, { named: false, solid: [{ x: 63.4, z: 80.5, w: 0.25, d: 0.25 }] }),
+B_CT('ct_fp_se', '', 'ct_mob_feu_pieton_e_v4_3q', 84.3, 80.4, 0.4, 0.4, { named: false, solid: [{ x: 84.4, z: 80.5, w: 0.25, d: 0.25 }] }),
+B_CT('ct_plots_no', '', 'ct_mob_plots_v4_3q', 56.6, 55.4, 1.2, 0.4, { named: false }),
+B_CT('ct_plots_ne', '', 'ct_mob_plots_v4_3q', 89.6, 55.4, 1.2, 0.4, { named: false }),
+B_CT('ct_plots_so', '', 'ct_mob_plots_v4_3q', 56.6, 76.3, 1.2, 0.4, { named: false }),
+B_CT('ct_plots_se', '', 'ct_mob_plots_v4_3q', 89.6, 76.3, 1.2, 0.4, { named: false }),
+B_CT('ct_gc_no', '', 'ct_mob_barriere_x_v4_3q', 57.8, 55.6, 2, 0.2, { named: false, solid: [{ x: 57.8, z: 55.6, w: 2, d: 0.2 }] }),
+B_CT('ct_gc_ne', '', 'ct_mob_barriere_x_v4_3q', 87.6, 55.6, 2, 0.2, { named: false, solid: [{ x: 87.6, z: 55.6, w: 2, d: 0.2 }] }),
+B_CT('ct_gc_so', '', 'ct_mob_barriere_x_v4_3q', 57.8, 76.2, 2, 0.2, { named: false, solid: [{ x: 57.8, z: 76.2, w: 2, d: 0.2 }] }),
+B_CT('ct_gc_se', '', 'ct_mob_barriere_x_v4_3q', 87.6, 76.2, 2, 0.2, { named: false, solid: [{ x: 87.6, z: 76.2, w: 2, d: 0.2 }] }),
+B_CT('ct_lampa0', '', 'ct_mob_lampadaire_ambre_v4_3q', 6.5, 54.5, 1, 1, { named: false, solid: [{ x: 6.7, z: 54.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa1', '', 'ct_mob_lampadaire_ambre_v4_3q', 30.5, 54.5, 1, 1, { named: false, solid: [{ x: 30.7, z: 54.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa2', '', 'ct_mob_lampadaire_ambre_v4_3q', 50.5, 54.5, 1, 1, { named: false, solid: [{ x: 50.7, z: 54.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa3', '', 'ct_mob_lampadaire_ambre_v4_3q', 98.5, 54.5, 1, 1, { named: false, solid: [{ x: 98.7, z: 54.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa4', '', 'ct_mob_lampadaire_ambre_v4_3q', 118.5, 54.5, 1, 1, { named: false, solid: [{ x: 118.7, z: 54.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_borne0', '', 'ct_mob_borne_info_v4_3q', 25, 53.4, 1, 0.5, { named: false, solid: [{ x: 25.1, z: 53.4, w: 0.8, d: 0.5 }] }),
+B_CT('ct_banc0', '', 'ct_mob_banc_x_v4_3q', 10, 54.6, 1.8, 0.6, { named: false, solid: [{ x: 10, z: 54.6, w: 1.8, d: 0.6 }] }),
+B_CT('ct_poub0', '', 'ct_mob_poubelles_x_v4_3q', 34, 54.6, 2.6, 0.6, { named: false, solid: [{ x: 34, z: 54.6, w: 2.6, d: 0.6 }] }),
+B_CT('ct_jard0', '', 'ct_mob_jardiniere_arbustes_v4_3q', 44.5, 54.2, 2.5, 1, { named: false, solid: [{ x: 44.5, z: 54.2, w: 2.5, d: 1 }] }),
+B_CT('ct_banc1', '', 'ct_mob_banc_x_v4_3q', 102, 54.6, 1.8, 0.6, { named: false, solid: [{ x: 102, z: 54.6, w: 1.8, d: 0.6 }] }),
+B_CT('ct_jarbre0', '', 'ct_mob_jardiniere_arbre_v4_3q', 114, 53.2, 2, 2, { named: false, solid: [{ x: 114, z: 53.2, w: 2, d: 2 }] }),
+B_CT('ct_poub1', '', 'ct_mob_poubelles_x_v4_3q', 124, 54.6, 2.6, 0.6, { named: false, solid: [{ x: 124, z: 54.6, w: 2.6, d: 0.6 }] }),
+B_CT('ct_distrib0', '', 'ct_mob_distributeurs_v4_3q', 115, 48.2, 2, 0.9, { named: false, solid: [{ x: 115, z: 48.2, w: 2, d: 0.9 }] }),
+B_CT('ct_stand0', '', 'ct_mob_stand_streetfood_v4_3q', 120.5, 49.2, 3, 2, { named: false, solid: [{ x: 120.8, z: 49.2, w: 2.7, d: 1.2 }] }),
+B_CT('ct_table0', '', 'ct_mob_table_haute_v4_3q', 118.6, 51.4, 1.4, 1.4, { named: false, solid: [{ x: 118.9, z: 51.7, w: 0.8, d: 0.8 }] }),
+B_CT('ct_holo_p0', '', 'ct_mob_panneau_holo_v4_3q', 104, 52.4, 3.5, 0.6, { named: false, solid: [{ x: 105.4, z: 52.5, w: 0.8, d: 0.5 }] }),
+B_CT('ct_lampa5', '', 'ct_mob_lampadaire_ambre_v4_3q', 8.5, 76.6, 1, 1, { named: false, solid: [{ x: 8.7, z: 76.8, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa6', '', 'ct_mob_lampadaire_ambre_v4_3q', 46.5, 76.6, 1, 1, { named: false, solid: [{ x: 46.7, z: 76.8, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa7', '', 'ct_mob_lampadaire_ambre_v4_3q', 98.5, 76.6, 1, 1, { named: false, solid: [{ x: 98.7, z: 76.8, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa8', '', 'ct_mob_lampadaire_ambre_v4_3q', 122.5, 76.6, 1, 1, { named: false, solid: [{ x: 122.7, z: 76.8, w: 0.6, d: 0.6 }] }),
+B_CT('ct_banc2', '', 'ct_mob_banc_x_v4_3q', 14, 77.2, 1.8, 0.6, { named: false, solid: [{ x: 14, z: 77.2, w: 1.8, d: 0.6 }] }),
+B_CT('ct_jarbre1', '', 'ct_mob_jardiniere_arbre_v4_3q', 30, 76.6, 2, 2, { named: false, solid: [{ x: 30, z: 76.6, w: 2, d: 2 }] }),
+B_CT('ct_poub2', '', 'ct_mob_poubelles_x_v4_3q', 42, 77.2, 2.6, 0.6, { named: false, solid: [{ x: 42, z: 77.2, w: 2.6, d: 0.6 }] }),
+B_CT('ct_jard1', '', 'ct_mob_jardiniere_arbustes_v4_3q', 50, 77, 2.5, 1, { named: false, solid: [{ x: 50, z: 77, w: 2.5, d: 1 }] }),
+B_CT('ct_recharge0', '', 'ct_mob_bornes_recharge_v4_3q', 104, 76.6, 1.8, 0.6, { named: false, solid: [{ x: 104, z: 76.6, w: 1.8, d: 0.6 }] }),
+B_CT('ct_banc3', '', 'ct_mob_banc_x_v4_3q', 112, 77.2, 1.8, 0.6, { named: false, solid: [{ x: 112, z: 77.2, w: 1.8, d: 0.6 }] }),
+B_CT('ct_jard2', '', 'ct_mob_jardiniere_arbustes_v4_3q', 126, 77, 2.5, 1, { named: false, solid: [{ x: 126, z: 77, w: 2.5, d: 1 }] }),
+B_CT('ct_lampa9', '', 'ct_mob_lampadaire_ambre_v4_3q', 60.6, 10.5, 1, 1, { named: false, solid: [{ x: 60.8, z: 10.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa10', '', 'ct_mob_lampadaire_ambre_v4_3q', 60.6, 94.5, 1, 1, { named: false, solid: [{ x: 60.8, z: 94.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa11', '', 'ct_mob_lampadaire_ambre_v4_3q', 60.6, 108.5, 1, 1, { named: false, solid: [{ x: 60.8, z: 108.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_bancz0', '', 'ct_mob_banc_z_v4_3q', 62.6, 14, 0.6, 1.8, { named: false, solid: [{ x: 62.6, z: 14, w: 0.6, d: 1.8 }] }),
+B_CT('ct_poubz0', '', 'ct_mob_poubelles_z_v4_3q', 62.6, 20, 0.6, 2.6, { named: false, solid: [{ x: 62.6, z: 20, w: 0.6, d: 2.6 }] }),
+B_CT('ct_jarbre2', '', 'ct_mob_jardiniere_arbre_v4_3q', 61.4, 34.5, 2, 2, { named: false, solid: [{ x: 61.4, z: 34.5, w: 2, d: 2 }] }),
+B_CT('ct_bancz1', '', 'ct_mob_banc_z_v4_3q', 62.6, 98, 0.6, 1.8, { named: false, solid: [{ x: 62.6, z: 98, w: 0.6, d: 1.8 }] }),
+B_CT('ct_gbaz0', '', 'ct_mob_gba_z_v4_3q', 62.8, 112, 0.6, 2, { named: false, solid: [{ x: 62.8, z: 112, w: 0.6, d: 2 }] }),
+B_CT('ct_lampa12', '', 'ct_mob_lampadaire_ambre_v4_3q', 84.6, 6.5, 1, 1, { named: false, solid: [{ x: 84.8, z: 6.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_lampa13', '', 'ct_mob_lampadaire_ambre_v4_3q', 84.6, 103.5, 1, 1, { named: false, solid: [{ x: 84.8, z: 103.7, w: 0.6, d: 0.6 }] }),
+B_CT('ct_bancz2', '', 'ct_mob_banc_z_v4_3q', 84.8, 10, 0.6, 1.8, { named: false, solid: [{ x: 84.8, z: 10, w: 0.6, d: 1.8 }] }),
+B_CT('ct_poubz1', '', 'ct_mob_poubelles_z_v4_3q', 84.8, 14.5, 0.6, 2.6, { named: false, solid: [{ x: 84.8, z: 14.5, w: 0.6, d: 2.6 }] }),
+B_CT('ct_borne1', '', 'ct_mob_borne_info_v4_3q', 84.6, 41.4, 1, 0.5, { named: false, solid: [{ x: 84.7, z: 41.4, w: 0.8, d: 0.5 }] }),
+B_CT('ct_jarbre3', '', 'ct_mob_jardiniere_arbre_v4_3q', 84.6, 96, 2, 2, { named: false, solid: [{ x: 84.6, z: 96, w: 2, d: 2 }] }),
+B_CT('ct_poubz2', '', 'ct_mob_poubelles_z_v4_3q', 84.8, 108, 0.6, 2.6, { named: false, solid: [{ x: 84.8, z: 108, w: 0.6, d: 2.6 }] }),
+B_CT('ct_parv_jard0', '', 'ct_mob_jardiniere_arbustes_v4_3q', 13, 44.4, 2.5, 1, { named: false, solid: [{ x: 13, z: 44.4, w: 2.5, d: 1 }] }),
+B_CT('ct_parv_banc0', '', 'ct_mob_banc_x_v4_3q', 16.5, 44.6, 1.8, 0.6, { named: false, solid: [{ x: 16.5, z: 44.6, w: 1.8, d: 0.6 }] }),
+B_CT('ct_parv_jard1', '', 'ct_mob_jardiniere_arbustes_v4_3q', 39.5, 44.4, 2.5, 1, { named: false, solid: [{ x: 39.5, z: 44.4, w: 2.5, d: 1 }] }),
+B_CT('ct_parv_banc1', '', 'ct_mob_banc_x_v4_3q', 43, 44.6, 1.8, 0.6, { named: false, solid: [{ x: 43, z: 44.6, w: 1.8, d: 0.6 }] }),
+B_CT('ct_parv_arbre0', '', 'ct_mob_jardiniere_arbre_v4_3q', 48, 40, 2, 2, { named: false, solid: [{ x: 48, z: 40, w: 2, d: 2 }] }),
+B_CT('ct_parv_arbre1', '', 'ct_mob_jardiniere_arbre_v4_3q', 48, 28, 2, 2, { named: false, solid: [{ x: 48, z: 28, w: 2, d: 2 }] }),
+B_CT('ct_parv_arbre2', '', 'ct_mob_jardiniere_arbre_v4_3q', 48, 16, 2, 2, { named: false, solid: [{ x: 48, z: 16, w: 2, d: 2 }] }),
+```
+
+Planches hors jeu (non versionnées) : `nml-shots/ct_v4_mobilier_lot1_controle.png` (sprites et calques à x2, emprises, silhouette 1,8 m) et `nml-shots/ct_v4_mobilier_lot1_maquette_carrefour.jpg` (maquette de pose x40-108, z36-96).

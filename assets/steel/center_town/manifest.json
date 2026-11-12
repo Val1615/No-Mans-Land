@@ -7380,5 +7380,934 @@
     "layer": "neon",
     "source": "rendu du filet néon rouge du socle (même canevas, même ancre)",
     "status": "v4"
+  },
+  "ct_mob_lampadaire_ambre_v4_3q": {
+    "file": "steel/center_town/ct_mob_lampadaire_ambre_v4_3q.webp",
+    "px": [
+      143,
+      336
+    ],
+    "anchor": [
+      77,
+      332
+    ],
+    "footprint_m": [
+      1.0,
+      1.0
+    ],
+    "height_m": 7.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Lampadaire double à lumière ambre, porte-bannière vierge (civil, sans rouge IO)",
+    "pose": "B_CT('<id>', '', 'ct_mob_lampadaire_ambre_v4_3q', X, Z, 1, 1, { named: false, solid: [{ x: X+0.2, z: Z+0.2, w: 0.6, d: 0.6 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 1.0x1.0x7.0 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.6317 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.2,
+      "dz": 0.2,
+      "w": 0.6,
+      "d": 0.6
+    },
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_mob_lampadaire_ambre_v4_3q_fenetres"
+  },
+  "ct_mob_lampadaire_ambre_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_mob_lampadaire_ambre_v4_3q_fenetres.webp",
+    "px": [
+      143,
+      336
+    ],
+    "anchor": [
+      77,
+      332
+    ],
+    "additive": true,
+    "parent": "ct_mob_lampadaire_ambre_v4_3q",
+    "couche_de": "ct_mob_lampadaire_ambre_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_mob_lampadaire_ambre_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_feu_tricolore_v4_3q": {
+    "file": "steel/center_town/ct_mob_feu_tricolore_v4_3q.webp",
+    "px": [
+      63,
+      215
+    ],
+    "anchor": [
+      46,
+      212
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 4.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Feu tricolore sur mât, optiques face sud-ouest (trafic E-O)",
+    "pose": "B_CT('<id>', '', 'ct_mob_feu_tricolore_v4_3q', X, Z, 0.6, 0.6, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 0.4, d: 0.4 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 0.6x0.6x4.5 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.4615 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.1,
+      "dz": 0.1,
+      "w": 0.4,
+      "d": 0.4
+    },
+    "layers": [
+      "neon"
+    ],
+    "neon": "ct_mob_feu_tricolore_v4_3q_neon"
+  },
+  "ct_mob_feu_tricolore_v4_3q_neon": {
+    "file": "steel/center_town/ct_mob_feu_tricolore_v4_3q_neon.webp",
+    "px": [
+      63,
+      215
+    ],
+    "anchor": [
+      46,
+      212
+    ],
+    "additive": true,
+    "parent": "ct_mob_feu_tricolore_v4_3q",
+    "couche_de": "ct_mob_feu_tricolore_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_mob_feu_tricolore_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_feu_tricolore_e_v4_3q": {
+    "file": "steel/center_town/ct_mob_feu_tricolore_e_v4_3q.webp",
+    "px": [
+      63,
+      215
+    ],
+    "anchor": [
+      25,
+      212
+    ],
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 4.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Feu tricolore sur mât, optiques face sud-est (miroir pixel de ct_mob_feu_tricolore_v4_3q, trafic N-S)",
+    "pose": "B_CT('<id>', '', 'ct_mob_feu_tricolore_e_v4_3q', X, Z, 0.6, 0.6, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 0.4, d: 0.4 }] })",
+    "source": "miroir horizontal pixel pour pixel de ct_mob_feu_tricolore_v4_3q (échelle 1, ancre recalculée sur le pied), Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 0.6x0.6x4.5 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.4615 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.1,
+      "dz": 0.1,
+      "w": 0.4,
+      "d": 0.4
+    },
+    "miroir_de": "ct_mob_feu_tricolore_v4_3q",
+    "layers": [
+      "neon"
+    ],
+    "neon": "ct_mob_feu_tricolore_e_v4_3q_neon"
+  },
+  "ct_mob_feu_tricolore_e_v4_3q_neon": {
+    "file": "steel/center_town/ct_mob_feu_tricolore_e_v4_3q_neon.webp",
+    "px": [
+      63,
+      215
+    ],
+    "anchor": [
+      25,
+      212
+    ],
+    "additive": true,
+    "parent": "ct_mob_feu_tricolore_e_v4_3q",
+    "couche_de": "ct_mob_feu_tricolore_e_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_mob_feu_tricolore_e_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_feu_pieton_v4_3q": {
+    "file": "steel/center_town/ct_mob_feu_pieton_v4_3q.webp",
+    "px": [
+      34,
+      155
+    ],
+    "anchor": [
+      21,
+      152
+    ],
+    "footprint_m": [
+      0.4,
+      0.4
+    ],
+    "height_m": 3.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Feu piéton sur poteau, face sud-ouest",
+    "pose": "B_CT('<id>', '', 'ct_mob_feu_pieton_v4_3q', X, Z, 0.4, 0.4, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 0.25, d: 0.25 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 0.4x0.4x3.2 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3682 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.1,
+      "dz": 0.1,
+      "w": 0.25,
+      "d": 0.25
+    },
+    "layers": [
+      "neon"
+    ],
+    "neon": "ct_mob_feu_pieton_v4_3q_neon"
+  },
+  "ct_mob_feu_pieton_v4_3q_neon": {
+    "file": "steel/center_town/ct_mob_feu_pieton_v4_3q_neon.webp",
+    "px": [
+      34,
+      155
+    ],
+    "anchor": [
+      21,
+      152
+    ],
+    "additive": true,
+    "parent": "ct_mob_feu_pieton_v4_3q",
+    "couche_de": "ct_mob_feu_pieton_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_mob_feu_pieton_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_feu_pieton_e_v4_3q": {
+    "file": "steel/center_town/ct_mob_feu_pieton_e_v4_3q.webp",
+    "px": [
+      34,
+      155
+    ],
+    "anchor": [
+      18,
+      152
+    ],
+    "footprint_m": [
+      0.4,
+      0.4
+    ],
+    "height_m": 3.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Feu piéton sur poteau, face sud-est (miroir pixel)",
+    "pose": "B_CT('<id>', '', 'ct_mob_feu_pieton_e_v4_3q', X, Z, 0.4, 0.4, { named: false, solid: [{ x: X+0.1, z: Z+0.1, w: 0.25, d: 0.25 }] })",
+    "source": "miroir horizontal pixel pour pixel de ct_mob_feu_pieton_v4_3q (échelle 1, ancre recalculée sur le pied), Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 0.4x0.4x3.2 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3682 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.1,
+      "dz": 0.1,
+      "w": 0.25,
+      "d": 0.25
+    },
+    "miroir_de": "ct_mob_feu_pieton_v4_3q",
+    "layers": [
+      "neon"
+    ],
+    "neon": "ct_mob_feu_pieton_e_v4_3q_neon"
+  },
+  "ct_mob_feu_pieton_e_v4_3q_neon": {
+    "file": "steel/center_town/ct_mob_feu_pieton_e_v4_3q_neon.webp",
+    "px": [
+      34,
+      155
+    ],
+    "anchor": [
+      18,
+      152
+    ],
+    "additive": true,
+    "parent": "ct_mob_feu_pieton_e_v4_3q",
+    "couche_de": "ct_mob_feu_pieton_e_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_mob_feu_pieton_e_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_borne_info_v4_3q": {
+    "file": "steel/center_town/ct_mob_borne_info_v4_3q.webp",
+    "px": [
+      45,
+      116
+    ],
+    "anchor": [
+      36,
+      113
+    ],
+    "footprint_m": [
+      1.0,
+      0.5
+    ],
+    "height_m": 2.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Borne d'information publique, écran pâle sans texte lisible",
+    "pose": "B_CT('<id>', '', 'ct_mob_borne_info_v4_3q', X, Z, 1, 0.5, { named: false, solid: [{ x: X+0.1, z: Z+0.0, w: 0.8, d: 0.5 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 1.0x0.5x2.2 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.2638 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p1.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.1,
+      "dz": 0.0,
+      "w": 0.8,
+      "d": 0.5
+    },
+    "layers": [
+      "ecran"
+    ],
+    "ecran_layer": "ct_mob_borne_info_v4_3q_ecran"
+  },
+  "ct_mob_borne_info_v4_3q_ecran": {
+    "file": "steel/center_town/ct_mob_borne_info_v4_3q_ecran.webp",
+    "px": [
+      45,
+      116
+    ],
+    "anchor": [
+      36,
+      113
+    ],
+    "additive": true,
+    "parent": "ct_mob_borne_info_v4_3q",
+    "couche_de": "ct_mob_borne_info_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_mob_borne_info_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_banc_x_v4_3q": {
+    "file": "steel/center_town/ct_mob_banc_x_v4_3q.webp",
+    "px": [
+      92,
+      83
+    ],
+    "anchor": [
+      70,
+      80
+    ],
+    "footprint_m": [
+      1.8,
+      0.6
+    ],
+    "height_m": 0.9,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Banc public acier et bois usé, axe E-O (dossier au nord)",
+    "pose": "B_CT('<id>', '', 'ct_mob_banc_x_v4_3q', X, Z, 1.8, 0.6, { named: false, solid: [{ x: X+0, z: Z+0, w: 1.8, d: 0.6 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 1.8x0.6x0.9 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.2791 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 1.8,
+      "d": 0.6
+    }
+  },
+  "ct_mob_banc_z_v4_3q": {
+    "file": "steel/center_town/ct_mob_banc_z_v4_3q.webp",
+    "px": [
+      87,
+      80
+    ],
+    "anchor": [
+      20,
+      76
+    ],
+    "footprint_m": [
+      0.6,
+      1.8
+    ],
+    "height_m": 0.9,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Banc public acier et bois usé, axe N-S (dossier à l'ouest)",
+    "pose": "B_CT('<id>', '', 'ct_mob_banc_z_v4_3q', X, Z, 0.6, 1.8, { named: false, solid: [{ x: X+0, z: Z+0, w: 0.6, d: 1.8 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 0.6x1.8x0.9 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.2656 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p6.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 0.6,
+      "d": 1.8
+    }
+  },
+  "ct_mob_poubelles_x_v4_3q": {
+    "file": "steel/center_town/ct_mob_poubelles_x_v4_3q.webp",
+    "px": [
+      122,
+      106
+    ],
+    "anchor": [
+      99,
+      102
+    ],
+    "footprint_m": [
+      2.6,
+      0.6
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Rangée de 4 poubelles de tri rouillées, axe E-O",
+    "pose": "B_CT('<id>', '', 'ct_mob_poubelles_x_v4_3q', X, Z, 2.6, 0.6, { named: false, solid: [{ x: X+0, z: Z+0, w: 2.6, d: 0.6 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 2.6x0.6x1.1 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3261 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 2.6,
+      "d": 0.6
+    }
+  },
+  "ct_mob_poubelles_z_v4_3q": {
+    "file": "steel/center_town/ct_mob_poubelles_z_v4_3q.webp",
+    "px": [
+      115,
+      101
+    ],
+    "anchor": [
+      21,
+      98
+    ],
+    "footprint_m": [
+      0.6,
+      2.6
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Rangée de 4 poubelles de tri rouillées, axe N-S",
+    "pose": "B_CT('<id>', '', 'ct_mob_poubelles_z_v4_3q', X, Z, 0.6, 2.6, { named: false, solid: [{ x: X+0, z: Z+0, w: 0.6, d: 2.6 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 0.6x2.6x1.1 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3072 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p6.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 0.6,
+      "d": 2.6
+    }
+  },
+  "ct_mob_bornes_recharge_v4_3q": {
+    "file": "steel/center_town/ct_mob_bornes_recharge_v4_3q.webp",
+    "px": [
+      93,
+      124
+    ],
+    "anchor": [
+      89,
+      121
+    ],
+    "footprint_m": [
+      1.8,
+      0.6
+    ],
+    "height_m": 1.7,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Paire de bornes de recharge, voyants ambre",
+    "pose": "B_CT('<id>', '', 'ct_mob_bornes_recharge_v4_3q', X, Z, 1.8, 0.6, { named: false, solid: [{ x: X+0, z: Z+0, w: 1.8, d: 0.6 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 1.8x0.6x1.7 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3117 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p2.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 1.8,
+      "d": 0.6
+    },
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_mob_bornes_recharge_v4_3q_fenetres"
+  },
+  "ct_mob_bornes_recharge_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_mob_bornes_recharge_v4_3q_fenetres.webp",
+    "px": [
+      93,
+      124
+    ],
+    "anchor": [
+      89,
+      121
+    ],
+    "additive": true,
+    "parent": "ct_mob_bornes_recharge_v4_3q",
+    "couche_de": "ct_mob_bornes_recharge_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_mob_bornes_recharge_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_distributeurs_v4_3q": {
+    "file": "steel/center_town/ct_mob_distributeurs_v4_3q.webp",
+    "px": [
+      112,
+      135
+    ],
+    "anchor": [
+      87,
+      132
+    ],
+    "footprint_m": [
+      2.0,
+      0.9
+    ],
+    "height_m": 1.9,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Distributeurs boissons (rouge) et nouilles (jaune), vitrines éclairées",
+    "pose": "B_CT('<id>', '', 'ct_mob_distributeurs_v4_3q', X, Z, 2, 0.9, { named: false, solid: [{ x: X+0, z: Z+0, w: 2.0, d: 0.9 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 2.0x0.9x1.9 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3694 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p6.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 2.0,
+      "d": 0.9
+    },
+    "layers": [
+      "fenetres",
+      "neon"
+    ],
+    "fenetres": "ct_mob_distributeurs_v4_3q_fenetres",
+    "neon": "ct_mob_distributeurs_v4_3q_neon"
+  },
+  "ct_mob_distributeurs_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_mob_distributeurs_v4_3q_fenetres.webp",
+    "px": [
+      112,
+      135
+    ],
+    "anchor": [
+      87,
+      132
+    ],
+    "additive": true,
+    "parent": "ct_mob_distributeurs_v4_3q",
+    "couche_de": "ct_mob_distributeurs_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_mob_distributeurs_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_distributeurs_v4_3q_neon": {
+    "file": "steel/center_town/ct_mob_distributeurs_v4_3q_neon.webp",
+    "px": [
+      112,
+      135
+    ],
+    "anchor": [
+      87,
+      132
+    ],
+    "additive": true,
+    "parent": "ct_mob_distributeurs_v4_3q",
+    "couche_de": "ct_mob_distributeurs_v4_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ct_mob_distributeurs_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_stand_streetfood_v4_3q": {
+    "file": "steel/center_town/ct_mob_stand_streetfood_v4_3q.webp",
+    "px": [
+      178,
+      213
+    ],
+    "anchor": [
+      106,
+      208
+    ],
+    "footprint_m": [
+      3.0,
+      2.0
+    ],
+    "height_m": 2.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Stand de street-food à auvent de tôle, grill ambre, 3 tabourets",
+    "pose": "B_CT('<id>', '', 'ct_mob_stand_streetfood_v4_3q', X, Z, 3, 2, { named: false, solid: [{ x: X+0.3, z: Z+0, w: 2.7, d: 1.2 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 3.0x2.0x2.6 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.6137 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p6.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.3,
+      "dz": 0,
+      "w": 2.7,
+      "d": 1.2
+    },
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_mob_stand_streetfood_v4_3q_fenetres"
+  },
+  "ct_mob_stand_streetfood_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_mob_stand_streetfood_v4_3q_fenetres.webp",
+    "px": [
+      178,
+      213
+    ],
+    "anchor": [
+      106,
+      208
+    ],
+    "additive": true,
+    "parent": "ct_mob_stand_streetfood_v4_3q",
+    "couche_de": "ct_mob_stand_streetfood_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_mob_stand_streetfood_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_jardiniere_arbustes_v4_3q": {
+    "file": "steel/center_town/ct_mob_jardiniere_arbustes_v4_3q.webp",
+    "px": [
+      132,
+      126
+    ],
+    "anchor": [
+      87,
+      122
+    ],
+    "footprint_m": [
+      2.5,
+      1.0
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Jardinière acier rouillé avec arbustes, liseré ambre au pied",
+    "pose": "B_CT('<id>', '', 'ct_mob_jardiniere_arbustes_v4_3q', X, Z, 2.5, 1, { named: false, solid: [{ x: X+0, z: Z+0, w: 2.5, d: 1.0 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 2.5x1.0x1.4 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.4195 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p3.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 2.5,
+      "d": 1.0
+    },
+    "layers": [
+      "fenetres"
+    ],
+    "fenetres": "ct_mob_jardiniere_arbustes_v4_3q_fenetres"
+  },
+  "ct_mob_jardiniere_arbustes_v4_3q_fenetres": {
+    "file": "steel/center_town/ct_mob_jardiniere_arbustes_v4_3q_fenetres.webp",
+    "px": [
+      132,
+      126
+    ],
+    "anchor": [
+      87,
+      122
+    ],
+    "additive": true,
+    "parent": "ct_mob_jardiniere_arbustes_v4_3q",
+    "couche_de": "ct_mob_jardiniere_arbustes_v4_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres de ct_mob_jardiniere_arbustes_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_jardiniere_arbre_v4_3q": {
+    "file": "steel/center_town/ct_mob_jardiniere_arbre_v4_3q.webp",
+    "px": [
+      139,
+      249
+    ],
+    "anchor": [
+      84,
+      245
+    ],
+    "footprint_m": [
+      2.0,
+      2.0
+    ],
+    "height_m": 4.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Jardinière béton 2 x 2 m avec arbre feuillu (~4,5 m)",
+    "pose": "B_CT('<id>', '', 'ct_mob_jardiniere_arbre_v4_3q', X, Z, 2, 2, { named: false, solid: [{ x: X+0, z: Z+0, w: 2.0, d: 2.0 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 2.0x2.0x4.5 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.5738 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p3.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 2.0,
+      "d": 2.0
+    }
+  },
+  "ct_mob_gba_x_v4_3q": {
+    "file": "steel/center_town/ct_mob_gba_x_v4_3q.webp",
+    "px": [
+      104,
+      89
+    ],
+    "anchor": [
+      81,
+      86
+    ],
+    "footprint_m": [
+      2.0,
+      0.6
+    ],
+    "height_m": 1.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Glissière béton (GBA) usée, chevron jaune-noir, axe E-O",
+    "pose": "B_CT('<id>', '', 'ct_mob_gba_x_v4_3q', X, Z, 2, 0.6, { named: false, solid: [{ x: X+0, z: Z+0, w: 2.0, d: 0.6 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 2.0x0.6x1.0 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3816 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p4.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 2.0,
+      "d": 0.6
+    }
+  },
+  "ct_mob_gba_z_v4_3q": {
+    "file": "steel/center_town/ct_mob_gba_z_v4_3q.webp",
+    "px": [
+      91,
+      91
+    ],
+    "anchor": [
+      24,
+      88
+    ],
+    "footprint_m": [
+      0.6,
+      2.0
+    ],
+    "height_m": 1.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Glissière béton (GBA) usée, chevron jaune-noir, axe N-S",
+    "pose": "B_CT('<id>', '', 'ct_mob_gba_z_v4_3q', X, Z, 0.6, 2, { named: false, solid: [{ x: X+0, z: Z+0, w: 0.6, d: 2.0 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 0.6x2.0x1.0 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3401 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p7.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 0.6,
+      "d": 2.0
+    }
+  },
+  "ct_mob_plots_v4_3q": {
+    "file": "steel/center_town/ct_mob_plots_v4_3q.webp",
+    "px": [
+      59,
+      74
+    ],
+    "anchor": [
+      56,
+      70
+    ],
+    "footprint_m": [
+      1.2,
+      0.4
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Paire de plots orange et blancs sur socle caoutchouc",
+    "pose": "B_CT('<id>', '', 'ct_mob_plots_v4_3q', X, Z, 1.2, 0.4, { named: false })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 1.2x0.4x1.1 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.2781 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p4.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": null
+  },
+  "ct_mob_benne_v4_3q": {
+    "file": "steel/center_town/ct_mob_benne_v4_3q.webp",
+    "px": [
+      213,
+      173
+    ],
+    "anchor": [
+      130,
+      170
+    ],
+    "footprint_m": [
+      4.0,
+      1.9
+    ],
+    "height_m": 1.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Benne à gravats rouillée ouverte (ruelles de service, chantiers)",
+    "pose": "B_CT('<id>', '', 'ct_mob_benne_v4_3q', X, Z, 4, 1.9, { named: false, solid: [{ x: X+0, z: Z+0, w: 4.0, d: 1.9 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 4.0x1.9x1.5 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.4692 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p4.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 4.0,
+      "d": 1.9
+    }
+  },
+  "ct_mob_panneau_holo_v4_3q": {
+    "file": "steel/center_town/ct_mob_panneau_holo_v4_3q.webp",
+    "px": [
+      166,
+      253
+    ],
+    "anchor": [
+      143,
+      249
+    ],
+    "footprint_m": [
+      3.5,
+      0.6
+    ],
+    "height_m": 4.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Panneau holo publicitaire sur mât, visuel abstrait sans lettrage (écran face sud)",
+    "pose": "B_CT('<id>', '', 'ct_mob_panneau_holo_v4_3q', X, Z, 3.5, 0.6, { named: false, solid: [{ x: X+1.4, z: Z+0.1, w: 0.8, d: 0.5 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 3.5x0.6x4.5 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.5537 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p5.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 1.4,
+      "dz": 0.1,
+      "w": 0.8,
+      "d": 0.5
+    },
+    "layers": [
+      "ecran"
+    ],
+    "ecran_layer": "ct_mob_panneau_holo_v4_3q_ecran"
+  },
+  "ct_mob_panneau_holo_v4_3q_ecran": {
+    "file": "steel/center_town/ct_mob_panneau_holo_v4_3q_ecran.webp",
+    "px": [
+      166,
+      253
+    ],
+    "anchor": [
+      143,
+      249
+    ],
+    "additive": true,
+    "parent": "ct_mob_panneau_holo_v4_3q",
+    "couche_de": "ct_mob_panneau_holo_v4_3q",
+    "layer": "ecran",
+    "source": "extraction PIL ecran de ct_mob_panneau_holo_v4_3q.webp (même canevas, même ancre)",
+    "status": "v4"
+  },
+  "ct_mob_barriere_x_v4_3q": {
+    "file": "steel/center_town/ct_mob_barriere_x_v4_3q.webp",
+    "px": [
+      87,
+      85
+    ],
+    "anchor": [
+      78,
+      82
+    ],
+    "footprint_m": [
+      2.0,
+      0.2
+    ],
+    "height_m": 1.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Garde-corps piéton bas en acier sombre, axe E-O (angles de trottoir, bords de passages)",
+    "pose": "B_CT('<id>', '', 'ct_mob_barriere_x_v4_3q', X, Z, 2, 0.2, { named: false, solid: [{ x: X+0, z: Z+0, w: 2.0, d: 0.2 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 2.0x0.2x1.0 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.3122 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p5.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0,
+      "dz": 0,
+      "w": 2.0,
+      "d": 0.2
+    }
+  },
+  "ct_mob_table_haute_v4_3q": {
+    "file": "steel/center_town/ct_mob_table_haute_v4_3q.webp",
+    "px": [
+      77,
+      84
+    ],
+    "anchor": [
+      47,
+      80
+    ],
+    "footprint_m": [
+      1.4,
+      1.4
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Table haute de bistrot en acier et deux tabourets",
+    "pose": "B_CT('<id>', '', 'ct_mob_table_haute_v4_3q', X, Z, 1.4, 1.4, { named: false, solid: [{ x: X+0.3, z: Z+0.3, w: 0.8, d: 0.8 }] })",
+    "source": "Ocre 2026-11-12, lot 1 (planches 03/04 validées) : GenerateImage (cursor) sur gabarit boîte 1.4x1.4x1.1 m au gabarit caméra du jeu (yaw 34,5°, pitch 28,8°), fond chroma, détourage, UNE réduction uniforme x0.2663 vers 50 px/m, ancre au coin avant ; aucun agrandissement, étirement ni déformation (brut ct_v5/raw/p5.jpg, hors dépôt)",
+    "status": "v4",
+    "groupe": "ct_mobilier_v4",
+    "lot": "lot 1 boulevard/carrefour (2026-11-12)",
+    "solid_relatif": {
+      "dx": 0.3,
+      "dz": 0.3,
+      "w": 0.8,
+      "d": 0.8
+    }
   }
 }
