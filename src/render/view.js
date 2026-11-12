@@ -73,7 +73,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0; let decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], hovers = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -137,28 +137,59 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // Véhicules qui roulent (loc.vehicules : { sprite, path [[x, z], ...], speed m/s, t0 m, aller }) : sprite d'Ocre à l'échelle 1, emprise footprint_m tournée
   // selon l'axe du tronçon ; sur l'axe que la vue livrée ne couvre pas : vue_axe2 si livrée, sinon miroir horizontal (|scale| = 1, signe seul ; data/vehicules.js).
   // Ils cèdent le passage aux piétons (passants, joueur) devant eux et suivent le véhicule de rang inférieur qui les précède (pas d'interblocage).
-  function vueVeh(key) { const m = bman[key] || {}, t = VUES_VEHICULES[key] || {}; return { axe: m.axe || t.axe || 'x', vue2: m.vue_axe2 || t.vue_axe2 || null, miroir: m.miroir_axe2 ?? t.miroir_axe2 ?? true }; }
+  function vueVeh(key) { const m = bman[key] || {}, t = VUES_VEHICULES[key] || {};
+    return { axe: m.axe || t.axe || 'x', vue2: m.vue_axe2 || t.vue_axe2 || null, miroir: m.miroir_axe2 ?? t.miroir_axe2 ?? true, vueDos: m.vue_dos || t.vue_dos || null }; }
+  function spriteVeh(key, add, lay = '', opt = {}) {
+    const mm = bman[key]; if (!mm || !SKIN[key] || mm.obsolete) return null;
+    const tex = Object.assign(new THREE.Texture(SKIN[key]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace });
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false, depthWrite: false, ...(add ? { blending: THREE.AdditiveBlending, opacity: 0.8 } : { color: light?.tint || '#ffffff' }) }));
+    s.scale.set(mm.px[0] / K, mm.px[1] / K, 1); Object.assign(s.userData, { m: mm, lay, neverFlip: !!opt.neverFlip, vueTexte: opt.vueTexte || null, ownTex: true }); world.add(s); return s;
+  }
+  function calquesVeh(cle) {
+    const extra = [];
+    for (const c of ['_fenetres', '_neon', '_hover']) if (bman[cle + c] && SKIN[cle + c] && !bman[cle + c].obsolete) {
+      const s = spriteVeh(cle + c, true, c); if (s) { if (c === '_hover') { s.userData.hover = { i: 0.72, ph: hovers.length * 1.1 }; hovers.push(s); } extra.push(s); }
+    }
+    for (const [c, vue] of [['_texte', 'native'], ['_texte_miroir', 'miroir']]) if (bman[cle + c] && SKIN[cle + c] && !bman[cle + c].obsolete) {
+      const s = spriteVeh(cle + c, false, c, { neverFlip: true, vueTexte: vue }); if (s) extra.push(s);
+    }
+    return extra;
+  }
+  function appliquerFlip(o, key, sx) {
+    const mm = bman[key] || o.userData.m, flip = o.userData.neverFlip ? 1 : sx;
+    if (!SKIN[key] && !mm) return;
+    if (!o.userData.ownTex) {
+      const tex = Object.assign(new THREE.Texture(SKIN[key] || o.material.map.image), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace });
+      o.material.map = tex; o.userData.ownTex = true;
+    } else if (SKIN[key] && o.material.map.image !== SKIN[key]) { o.material.map.image = SKIN[key]; o.material.map.needsUpdate = true; }
+    o.userData.m = mm; o.material.map.repeat.x = flip; o.material.map.offset.x = flip < 0 ? 1 : 0;
+    o.scale.set(mm.px[0] / K, mm.px[1] / K, 1);
+    o.center.set(flip < 0 ? 1 - mm.anchor[0] / mm.px[0] : mm.anchor[0] / mm.px[0], 1 - mm.anchor[1] / mm.px[1]);
+  }
   function vehicule(v) {
     const m = bman[v.sprite]; if (!m || !SKIN[v.sprite] || m.obsolete) return null;
-    const mk = (key, add, lay = '') => { const mm = bman[key], t = Object.assign(new THREE.Texture(SKIN[key]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace });
-      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, ...(add ? { blending: THREE.AdditiveBlending, opacity: 0.8 } : { color: light?.tint || '#ffffff' }) }));
-      s.scale.set(mm.px[0] / K, mm.px[1] / K, 1); s.userData.m = mm; s.userData.lay = lay; world.add(s); return s; };
-    const s = mk(v.sprite, false), extra = [];
-    for (const c of ['_fenetres', '_neon']) if (bman[v.sprite + c] && SKIN[v.sprite + c] && !bman[v.sprite + c].obsolete) extra.push(mk(v.sprite + c, true, c));
+    const s = spriteVeh(v.sprite, false), extra = calquesVeh(v.sprite);
     const P = v.path, seg = []; let L = 0;
     for (let i = 0; i < P.length - (v.aller === false ? 0 : 1); i++) { const a = P[i], b = P[(i + 1) % P.length], l = Math.hypot(b[0] - a[0], b[1] - a[1]); seg.push([a, b, l, L]); L += l; }
     Object.assign(s.userData, { vehicule: v, seg, L, t: v.t0 || 0, speed: v.speed || 6, extra, vue: vueVeh(v.sprite), cle: v.sprite, sx: 1, axe: null, attend: false, role: 'vehicule' });
+    for (const o of extra) o.userData.parentVeh = s.userData;
     poseVeh(s); return s;
   }
   function vehPos(u, t) { for (const [a, b, l, l0] of u.seg) if (t <= l0 + l || l0 + l >= u.L - 1e-6) { const k = Math.min(1, Math.max(0, (t - l0) / l)); return { x: a[0] + (b[0] - a[0]) * k, z: a[1] + (b[1] - a[1]) * k, dx: (b[0] - a[0]) / l, dz: (b[1] - a[1]) / l }; } return null; }
   function poseVeh(s) {
-    const u = s.userData, p = vehPos(u, u.t); if (!p) return; const axe = Math.abs(p.dx) >= Math.abs(p.dz) ? 'x' : 'z', natif = axe === u.vue.axe;
-    const key = natif || !u.vue.vue2 || !bman[u.vue.vue2] || !SKIN[u.vue.vue2] ? u.cle : u.vue.vue2, sx = !natif && key === u.cle && u.vue.miroir ? -1 : 1;
-    if (u.axe !== axe) { u.axe = axe; u.sx = sx; u.key = key;
-      for (const o of [s, ...u.extra]) { const k2 = key + o.userData.lay, mm = bman[k2] || o.userData.m;
-        if (SKIN[k2] && o.material.map.image !== SKIN[k2]) { o.material.map.image = SKIN[k2]; o.material.map.needsUpdate = true; }
-        o.material.map.repeat.x = sx; o.material.map.offset.x = sx < 0 ? 1 : 0; // miroir : signe seul, |échelle| = 1
-        o.scale.set(mm.px[0] / K, mm.px[1] / K, 1); o.center.set(sx < 0 ? 1 - mm.anchor[0] / mm.px[0] : mm.anchor[0] / mm.px[0], 1 - mm.anchor[1] / mm.px[1]); } }
+    const u = s.userData, p = vehPos(u, u.t); if (!p) return;
+    const axe = Math.abs(p.dx) >= Math.abs(p.dz) ? 'x' : 'z', natif = axe === u.vue.axe, sign = axe === 'x' ? (p.dx >= 0 ? 1 : -1) : (p.dz >= 0 ? 1 : -1);
+    let key, sx;
+    if (u.vue.vueDos && bman[u.vue.vueDos] && SKIN[u.vue.vueDos]) { key = sign < 0 ? u.vue.vueDos : u.cle; sx = !natif && u.vue.miroir !== false ? -1 : 1; }
+    else { key = natif || !u.vue.vue2 || !bman[u.vue.vue2] || !SKIN[u.vue.vue2] ? u.cle : u.vue.vue2; sx = !natif && key === u.cle && u.vue.miroir ? -1 : 1; }
+    if (u.axe !== axe || u.sx !== sx || u.key !== key) { u.axe = axe; u.sx = sx; u.key = key;
+      appliquerFlip(s, key, sx);
+      for (const o of u.extra) {
+        const k2 = key + (o.userData.lay || '');
+        if (o.userData.vueTexte) o.visible = (sx < 0) === (o.userData.vueTexte === 'miroir');
+        else o.visible = !!(bman[k2] && SKIN[k2] && !bman[k2].obsolete);
+        if (o.visible) appliquerFlip(o, k2, sx);
+      } }
     const e = empriseVeh(u, u.t), hx = (e.x1 - e.x0) / 2, hz = (e.z1 - e.z0) / 2;
     u.emprise = e; u.cx = p.x; u.cz = p.z; u.dir = [p.dx, p.dz];
     for (const o of [s, ...u.extra]) o.position.set(p.x + hx, 0, p.z + hz); // ancre d'Ocre = coin avant de l'emprise
@@ -241,7 +272,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; pulses = []; beams = [];
+    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; hovers = []; pulses = []; beams = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -255,9 +286,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     // manifeste donne source_faisceau_px (pylônes, anime_par_code) tire un faisceau depuis ce pixel ; loc.projecteurs règle ou ajoute.
     const ensDe = new Map((loc.enseignes || []).map(e => [e.building, e])), projDe = new Map((loc.projecteurs || []).filter(p => p.building).map(p => [p.building, p]));
     const pulseDe = new Map((loc.pulses || []).map(p => [p.building + ':' + p.calque, p]));
-    for (const b of loc.buildings) if (bman[b.sprite + '_fenetres']) fenetre(b);
+    for (const b of loc.buildings) if (bman[b.sprite]?.vehicule) poserVehiculePose(b); else if (bman[b.sprite + '_fenetres']) fenetre(b);
     for (const b of loc.buildings) for (const calque of ['ecran', 'pulse', 'pulse2', 'pulse_b', 'faisceau']) { const cfg = pulseDe.get(b.id + ':' + calque), ck = cfg?.key || (bman[b.sprite + '_' + calque + '_fix'] ? b.sprite + '_' + calque + '_fix' : b.sprite + '_' + calque); if (bman[ck]) calqueRythme(b, calque, cfg); }
-    for (const b of loc.buildings) if (!ensDe.has(b.id) && bman[b.sprite + '_neon']) enseigne({ id: b.id + '_neon', building: b.id }, loc);
+    for (const b of loc.buildings) if (!bman[b.sprite]?.vehicule && !ensDe.has(b.id) && bman[b.sprite + '_neon']) enseigne({ id: b.id + '_neon', building: b.id }, loc);
     for (const e of loc.enseignes || []) enseigne(e, loc);
     for (const b of loc.buildings) if (!projDe.has(b.id) && bman[b.sprite]?.source_faisceau_px) projecteur({ building: b.id }, loc);
     for (const pr of loc.projecteurs || []) projecteur(pr, loc);
@@ -400,6 +431,18 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       s.center.set(cx, cy); s.scale.set(sw, sh, 1); s.position.copy(item.obj.position);
       s.userData.neon = { effet: lettre ? 'gresille' : (e.effet === 'saute' ? 'fixe' : e.effet || 'fixe'), periode: e.periode || 3, ph: (e.decale || 0) + (lettre ? 0.37 : 0), i: e.intensite ?? 0.6 };
       s.userData.fondu = 1; world.add(s); item.extra.push(s); neons.push(s); }
+  }
+  // Véhicule posé en bâtiment : mêmes calques que les véhicules qui roulent ; b.miroir retourne caisse + _fenetres/_neon/_hover autour de l'ancre, _texte/_texte_miroir jamais retournés.
+  function poserVehiculePose(b) {
+    const item = bills.find(i => i.obj.userData.buildingId === b.id), cle = b.sprite, sx = b.miroir ? -1 : 1;
+    if (!item) return;
+    appliquerFlip(item.obj, cle, sx);
+    for (const o of calquesVeh(cle)) {
+      const k2 = cle + (o.userData.lay || '');
+      if (o.userData.vueTexte) o.visible = (sx < 0) === (o.userData.vueTexte === 'miroir');
+      if (o.visible !== false) appliquerFlip(o, k2, sx);
+      o.position.copy(item.obj.position); item.extra.push(o);
+    }
   }
   // Calque <clé>_fenetres d'Ocre (même taille et même ancre que le bâtiment) : lueur chaude additive à vacillement lent, hors plafond animStats.on.
   function fenetre(b) {
@@ -570,6 +613,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : (pulses.length && u.effet === 'pulse' ? (ostOn ? 0.28 + 0.72 * kickEnv : 0.34 * neonK(u, t)) : neonK(u, t)))); }
     for (const s of fenetres) { const u = s.userData.fenetre, k = calme ? 1 : 0.78 + 0.22 * (0.6 * Math.sin(t * 1.25 + u.ph) + 0.4 * Math.sin(t * 2.9 + u.ph * 1.7));
       s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k); }
+    for (const s of hovers) { const u = s.userData.hover, arret = s.userData.parentVeh?.attend, k = calme ? 0.55 : 0.5 + 0.35 * (0.5 + 0.5 * Math.sin(t * 2.15 + (u?.ph || 0)));
+      s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * (u?.i ?? 0.72) * k * (arret ? 0.35 : 1)); }
     let pulsesOn = 0;
     if (pulses.length) {
       const pMax = tactile() ? 8 : 48, pv = new THREE.Vector3(), pl = player.position;
@@ -1036,7 +1081,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const p = { x: r.x0 + u * (r.x1 - r.x0), y: r.y0 + v * (r.y1 - r.y0) }, o = scr(new THREE.Vector3(d.opening.x, 0, d.opening.z)); return +Math.hypot(p.x - o.x, p.y - o.y).toFixed(2); },
     // v13 : figurants (rôle, position monde) et rendu isolé d'un figurant, pour les contrôles au pixel (comptage à l'écran)
     simVehicules,
-    vehicules: () => vehicules.map(s => { const u = s.userData; return { cle: u.cle, key: u.key, axe: u.axe, sx: u.sx, scale: [+s.scale.x.toFixed(4), +s.scale.y.toFixed(4)], repeat: s.material.map.repeat.x, x: +u.cx.toFixed(2), z: +u.cz.toFixed(2), attend: u.attend, emprise: u.emprise, path: u.vehicule.path, natif: u.key === u.cle && u.sx === 1 && u.axe === u.vue.axe, px: bman[u.cle].px, K }; }),
+    vehicules: () => vehicules.map(s => { const u = s.userData, tx = (u.extra || []).find(o => o.visible && o.userData.vueTexte);
+      return { cle: u.cle, key: u.key, axe: u.axe, sx: u.sx, scale: [+s.scale.x.toFixed(4), +s.scale.y.toFixed(4)], repeat: s.material.map.repeat.x, x: +u.cx.toFixed(2), z: +u.cz.toFixed(2), attend: u.attend, emprise: u.emprise, path: u.vehicule.path, natif: u.key === u.cle && u.sx === 1 && u.axe === u.vue.axe, px: (bman[u.key] || bman[u.cle]).px, K, texte: tx ? { lay: tx.userData.lay, repeat: tx.material.map.repeat.x, sx: tx.material.map.repeat.x, visible: tx.visible } : null }; }),
     decor: () => { render(); return decor.concat(drones).map((s, i) => ({ i, role: s.userData.role, x: +s.position.x.toFixed(2), z: +s.position.z.toFixed(2), facing: s.userData.facing, sprite: s.userData.sprite, ratio: +(Math.abs(s.scale.x) / s.scale.y).toFixed(3) })); },
     isolateDecor: i => { render(); const keep = decor.concat(drones)[i]; const hidden = []; scene.traverse(o => { if ((o.isMesh || o.isSprite) && o !== keep && o.visible) { o.visible = false; hidden.push(o); } });
       const bg = scene.background; scene.background = new THREE.Color('#ff00ff'); renderer.render(scene, cam); const url = canvas.toDataURL('image/png');

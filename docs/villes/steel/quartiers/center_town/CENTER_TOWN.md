@@ -685,3 +685,10 @@ Sols (rectangles x, z, w, d, dans cet ordre, les allées par-dessus la pelouse) 
 Défauts connus : pied droit de la fontaine à 0,92 (objet bas, peu visible) ; le muret/haie procédural est plus lisse que les sprites peints ; la couronne de l'arbre (~5 m) déborde son emprise de 3 m, ce qui est voulu (seul le tronc est solide). Pas de guirlande entre les stands (même refus qu'au §8M).
 
 Planches hors jeu (non versionnées) : `nml-shots/ct_v4_so_jardin_controle.png`, `nml-shots/ct_v4_so_jardin_maquette.jpg`.
+### O. Intégration Rivet (lots §8J, §8K, §8L)
+
+Poses d'Ocre appliquées telles quelles (emprise native, aucun `b.k` / `b.sy`). Kiosques, abris, lampadaires, cerisiers et échoppes v3 déjà en jeu réutilisés, pas de doublon. `ct_mob_gba_x_v4_3q` et `ct_mob_benne_v4_3q` n'ont pas de pose au §8J : non inventées. `ct_rempl1` remplacé par `ct_ne_seg0` + `ct_ne_porche0` ; la clé `ct_remplissage_8x8_a` reste sur `ct_rempl5` ; Nexus inchangé.
+
+Câblage véhicules dans `view.js` : vue de dos si marche vers −axe (`vue_dos`), miroir d'axe 2 sur caisse + `_fenetres` / `_neon` / `_hover`, texte `_texte` / `_texte_miroir` jamais retourné. Le champ `miroir` des poses N-S est honoré pour les véhicules garés. Le tram (`ct_tram1`) reste natif sur sa voie, sans miroir. Anciennes clés `ct_taxi_v3_3q`, `ct_taxi_v3_axe2_3q`, `ct_tram_v3_3q` (et leurs calques) marquées obsolete.
+
+Écart aux poses d'Ocre : les véhicules garés du §8K empiètent sur d'anciennes trajectoires de taxis (bord sud z56,3, bord nord z73,8, files N-S x64,3 / x81,8). Les poses sont conservées ; les cinq parcours de taxis ont été décalés (ouest z61, est z70, sud x70, nord x78) pour rester hors des solides et réserver le carrefour aux taxis. Figurants de `center_foule.js` et 12 parcours de passants reculés hors des nouveaux solides et hors des masques (mobilier, véhicules garés, feux).

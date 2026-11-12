@@ -4050,7 +4050,8 @@
       "arete_toit_d_deg": 21.73
     },
     "fenetres": "ct_tram_v3_3q_fenetres",
-    "neon": "ct_tram_v3_3q_neon"
+    "neon": "ct_tram_v3_3q_neon",
+    "obsolete": true
   },
   "ct_tram_v3_3q_fenetres": {
     "file": "steel/center_town/ct_tram_v3_3q_fenetres.webp",
@@ -4067,7 +4068,8 @@
     "couche_de": "ct_tram_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_tram_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_tram_v3_3q_neon": {
     "file": "steel/center_town/ct_tram_v3_3q_neon.webp",
@@ -4084,7 +4086,8 @@
     "couche_de": "ct_tram_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_tram_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_kiosque_info_v3_3q": {
     "file": "steel/center_town/ct_kiosque_info_v3_3q.webp",
@@ -4513,7 +4516,8 @@
       "caisse_px_ppm30": 38.1
     },
     "fenetres": "ct_taxi_v3_3q_fenetres",
-    "neon": "ct_taxi_v3_3q_neon"
+    "neon": "ct_taxi_v3_3q_neon",
+    "obsolete": true
   },
   "ct_taxi_v3_3q_fenetres": {
     "file": "steel/center_town/ct_taxi_v3_3q_fenetres.webp",
@@ -4530,7 +4534,8 @@
     "couche_de": "ct_taxi_v3_3q",
     "layer": "fenetres",
     "source": "extraction PIL fenetres de ct_taxi_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_taxi_v3_3q_neon": {
     "file": "steel/center_town/ct_taxi_v3_3q_neon.webp",
@@ -4547,7 +4552,8 @@
     "couche_de": "ct_taxi_v3_3q",
     "layer": "neon",
     "source": "extraction PIL neon de ct_taxi_v3_3q.webp (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_arcadius_arriere_v4_3q": {
     "file": "steel/center_town/ct_arcadius_arriere_v4_3q.webp",
@@ -6536,7 +6542,8 @@
       "neon"
     ],
     "fenetres": "ct_taxi_v3_axe2_3q_fenetres",
-    "neon": "ct_taxi_v3_axe2_3q_neon"
+    "neon": "ct_taxi_v3_axe2_3q_neon",
+    "obsolete": true
   },
   "ct_taxi_v3_axe2_3q_fenetres": {
     "file": "steel/center_town/ct_taxi_v3_axe2_3q_fenetres.webp",
@@ -6553,7 +6560,8 @@
     "couche_de": "ct_taxi_v3_axe2_3q",
     "layer": "fenetres",
     "source": "miroir horizontal de ct_taxi_v3_3q_fenetres (même canevas, même ancre que ct_taxi_v3_axe2_3q)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_taxi_v3_axe2_3q_neon": {
     "file": "steel/center_town/ct_taxi_v3_axe2_3q_neon.webp",
@@ -6570,7 +6578,8 @@
     "couche_de": "ct_taxi_v3_axe2_3q",
     "layer": "neon",
     "source": "miroir horizontal de ct_taxi_v3_3q_neon ; caisson TAXI comblé puis lettrage à l’endroit creusé dans la lueur (même canevas, même ancre)",
-    "status": "v3"
+    "status": "v3",
+    "obsolete": true
   },
   "ct_arcadius_grille_s1_v4_3q": {
     "file": "steel/center_town/ct_arcadius_grille_s1_v4_3q.webp",

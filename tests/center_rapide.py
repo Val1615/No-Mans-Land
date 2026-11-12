@@ -1,6 +1,6 @@
 # Test rapide Center-Town v2 · Carrefour Arcadius 132 x 116 m (plan cible d'Ocre validé par Valentin le 11/11/2026) :
 # - sols g_ct_* (dont le carrefour v4 : bordures, angles, tirets, lignes d'arrêt, case jaune 12 m) + vraie nuit noire ; 0 clé obsolète, AUCUNE échelle de sprite différente de 1
-# - Arcadius v4 (3 sprites d'emprise) et 11 façades de remplissage v4 (ct_remplissage_*) posés à l'échelle 1 sur leurs emprises, sans repli ni silhouette
+# - Arcadius v4 (3 sprites d'emprise) et 10 façades de remplissage v4 + porche/segment NE (ct_remplissage_*) posés à l'échelle 1 sur leurs emprises, sans repli ni silhouette
 # - tram sur la voie tram N-S, taxis sur l'av. E-O ; environ 140 figurants (carrefour + parvis) et 12 passants, jamais sur un solide ni sur la chaussée hors passages
 # - 8 sorties et seuils du plan v2 (portes miroir), portes Dôme (50;96) et Teng (8;44.5), 10/10 portes atteignables, temps de traversée à 3 m/s, A* en tas binaire
 # - plan large d'arrivée (12 ppm ordinateur, 6-8 ppm téléphone, foule allégée) terminé par un geste ; budget d'effets tactile (Fold) ; sorties hors écran empilées en 390
@@ -29,19 +29,31 @@ SORTIES_V2 = {'c_strip': [58, 0, 58, 1], 'c_nord': [90, 0, 90, 1], 'c_mega': [0,
               'c_est': [132, 50, 131, 50], 'c_sud_est': [132, 82, 131, 82], 'c_sud': [58, 116, 58, 115], 'c_pp_sud': [90, 116, 90, 115],
               'c_dome': [50, 96, 50, 97], 'c_change_door': [8, 44.5, 9, 44.5]}
 EXPECTED_SPRITES = {
-    'ct_arcadius_arriere_v4_3q', 'ct_arcadius_aile_est_v4_3q', 'ct_arcadius_facade_v4_3q', 'ct_dome_frequence_v3_3q', 'ct_bureau_permis_v3_3q',
-    'ct_tour_teng_v4_3q', 'ct_tour_archeon_v4_3q', 'ct_tour_orc_v4_3q', 'ct_tour_humancorp_v4_3q', 'ct_tour_nexus_v4_3q',
-    'ct_arcadius_grille_s1_17m_v4_3q', 'ct_arcadius_grille_s2_6m_v4_3q', 'ct_arcadius_grille_s3_v4_3q', 'ct_arcadius_portail_io_v4_3q',
+    'ct_arcadius_aile_est_v4_3q', 'ct_arcadius_arriere_v4_3q', 'ct_arcadius_facade_v4_3q',
     'ct_arcadius_grille_e1_v4_3q', 'ct_arcadius_grille_e2_v4_3q', 'ct_arcadius_grille_e3_v4_3q',
+    'ct_arcadius_grille_s1_17m_v4_3q', 'ct_arcadius_grille_s2_6m_v4_3q', 'ct_arcadius_grille_s3_v4_3q',
+    'ct_arcadius_portail_io_v4_3q', 'ct_arret_tram_v3_3q', 'ct_banniere_io_v3_3q',
     'ct_bord_sud_a_v3_3q', 'ct_bord_sud_b_v3_3q', 'ct_bord_sud_c_v3_3q',
-    'ct_monorail_viaduc_v3_3q', 'ct_monorail_rame_v3_3q', 'ct_holo_suspendu_v3_3q',
-    'ct_arret_tram_v3_3q', 'ct_tram_v3_3q', 'ct_taxi_v3_3q',
-    'ct_echoppe_vapeur_v3_3q', 'ct_kiosque_info_v3_3q',
-    'ct_lampadaire_io_v3_3q', 'ct_banniere_io_v3_3q', 'ct_cerisier_bac_v3_3q',
+    'ct_bureau_permis_v3_3q', 'ct_cerisier_bac_v3_3q', 'ct_dome_frequence_v3_3q',
+    'ct_echoppe_vapeur_v3_3q', 'ct_holo_suspendu_v3_3q', 'ct_kiosque_info_v3_3q',
+    'ct_lampadaire_io_v3_3q', 'ct_mob_banc_x_v4_3q', 'ct_mob_banc_z_v4_3q',
+    'ct_mob_barriere_x_v4_3q', 'ct_mob_borne_info_v4_3q', 'ct_mob_bornes_recharge_v4_3q',
+    'ct_mob_distributeurs_v4_3q', 'ct_mob_feu_pieton_e_v4_3q', 'ct_mob_feu_pieton_v4_3q',
+    'ct_mob_feu_tricolore_e_v4_3q', 'ct_mob_feu_tricolore_v4_3q', 'ct_mob_gba_z_v4_3q',
+    'ct_mob_jardiniere_arbre_v4_3q', 'ct_mob_jardiniere_arbustes_v4_3q', 'ct_mob_lampadaire_ambre_v4_3q',
+    'ct_mob_panneau_holo_v4_3q', 'ct_mob_plots_v4_3q', 'ct_mob_poubelles_x_v4_3q',
+    'ct_mob_poubelles_z_v4_3q', 'ct_mob_stand_streetfood_v4_3q', 'ct_mob_table_haute_v4_3q',
+    'ct_monorail_rame_v3_3q', 'ct_monorail_viaduc_v3_3q', 'ct_ne_porche_8x4_v4_3q',
+    'ct_ne_segment_8x4_v4_3q', 'ct_tour_archeon_v4_3q', 'ct_tour_humancorp_v4_3q',
+    'ct_tour_nexus_v4_3q', 'ct_tour_orc_v4_3q', 'ct_tour_teng_v4_3q',
+    'ct_veh_berline_dos_v4_3q', 'ct_veh_bus_dos_v4_3q', 'ct_veh_compacte_dos_v4_3q',
+    'ct_veh_depanneuse_avant_v4_3q', 'ct_veh_intercepteur_avant_v4_3q', 'ct_veh_limo_dos_v4_3q',
+    'ct_veh_moto_avant_v4_3q', 'ct_veh_motolivr_dos_v4_3q', 'ct_veh_taxi_avant_v4_3q',
+    'ct_veh_tram_avant_v4_3q', 'ct_veh_utilitaire_avant_v4_3q',
 }
 # façades de remplissage v4 d'Ocre (CENTER_TOWN.md §8C) : id -> (clé, x, z, w, d, h cible)
 REMPL = {
-    'ct_rempl0': ('ct_remplissage_8x8_c', 92, 0, 8, 8, 20), 'ct_rempl1': ('ct_remplissage_8x8_a', 92, 16, 8, 8, 12),
+    'ct_rempl0': ('ct_remplissage_8x8_c', 92, 0, 8, 8, 20),
     'ct_rempl2': ('ct_remplissage_8x8_b', 92, 32, 8, 8, 16), 'ct_rempl3': ('ct_remplissage_16x8_b', 112, 40, 16, 8, 18),
     'ct_rempl4': ('ct_remplissage_16x8_a', 0, 84, 16, 8, 14), 'ct_rempl5': ('ct_remplissage_8x8_a', 36, 84, 8, 8, 12),
     'ct_rempl6': ('ct_remplissage_8x16_bas_b', 48, 100, 8, 16, 6), 'ct_rempl7': ('ct_remplissage_16x8_bas_a', 108, 84, 16, 8, 6),
@@ -155,7 +167,7 @@ with sync_playwright() as p:
             ok(info['size'] == {'w': 132, 'd': 116} and info['bg'] == '#05070d' and sols_used == EXPECTED_SOLS and not (sols_used & OBSOLETE_SOLS) and info['props'] == 0 and not info['invalid'],
                f'{name} carte 132 x 116 m, nuit #05070d, {len(EXPECTED_SOLS)} sols g_ct_* (carrefour v4 compris), schéma valide', (info['size'], sorted(EXPECTED_SOLS ^ sols_used)))
             ok(sprites_used == EXPECTED_SPRITES and not (sprites_used & OBSOLETE_V1),
-               f'{name} 31 clés posées au plan v2 (Arcadius v4 x3 + clôture et portail IO x7, 5 tours v4, 16 v3 à l\'échelle), 0 clé obsolète', sorted(EXPECTED_SPRITES ^ sprites_used))
+               f'{name} {len(EXPECTED_SPRITES)} clés posées (lot mobilier §8J, véhicules §8K, porche §8L), 0 clé obsolète', sorted(EXPECTED_SPRITES ^ sprites_used))
             echelles = [b['id'] for b in info['bs'] if (b['k'] not in (None, 1)) or (b['sy'] not in (None, 1))] + [f'extra@{e[1]},{e[2]}' for e in info['extras'] if e[3]]
             ok(not echelles, f'{name} aucune échelle de sprite différente de 1 en valeur absolue (ni b.k, ni b.sy, ni hauteur forcée ; miroir -1 admis)', echelles)
             bad = []
@@ -171,13 +183,13 @@ with sync_playwright() as p:
                f'{name} Arcadius v4 d\'Ocre posé aux emprises du §8 (socle 32x32, tour 60 m), sans ancre ni échelle', arc)
             emp = E("""() => { const l = window.__nml.world.LOCATIONS.steel_center, M = window.__nml.bman, out = [], H = {};
               for (const b of l.buildings) { const m = M[b.sprite]; if (!m) continue; H[b.id] = m.height_m ?? null;
-                if (m.footprint_m && (m.footprint_m[0] !== b.w || m.footprint_m[1] !== b.d)) out.push([b.id, b.sprite, [b.w, b.d], m.footprint_m]);
+                if (m.footprint_m && !((m.footprint_m[0] === b.w && m.footprint_m[1] === b.d) || (m.footprint_m[0] === b.d && m.footprint_m[1] === b.w && !!b.miroir))) out.push([b.id, b.sprite, [b.w, b.d], m.footprint_m, b.miroir || false]);
                 if (m.px_par_m && m.px_par_m !== 50) out.push([b.id, b.sprite, 'px_par_m', m.px_par_m]); }
               return { out, H }; }""")
             TOURS = {'c_change': 39, 'ct_archeon': 43, 'ct_orc': 45, 'ct_nexus': 46, 'ct_humancorp': 48, 'c_arcadius_n': 60}
             ok(not emp['out'] and all(emp['H'].get(k) is not None and abs(emp['H'][k] - h) < 1.0 for k, h in TOURS.items()),
                f'{name} emprises posées = footprint_m du manifeste ; tours v4 Teng 39, Archeon 43, Orc 45, Nexus 46, Human Corp 48, Arcadius 60 m', (emp['out'], {k: emp['H'].get(k) for k in TOURS}))
-            tram = next(b for b in info['bs'] if b['id'] == 'ct_tram0')
+            tram = next(b for b in info['bs'] if b['id'] == 'ct_tram1')
             VS = []
             for _ in range(40):
                 E("window.__nml.view.render()"); VS.append(E("window.__nml.view.vehicules()")); time.sleep(0.12)
@@ -192,11 +204,17 @@ with sync_playwright() as p:
                   for (let j = 0; j <= n; j++) { const x = a[0] + (b[0] - a[0]) * j / n, z = a[1] + (b[1] - a[1]) * j / n; if (x <= 0.5 || z <= 0.5 || x >= l.size.w - 0.5 || z >= l.size.d - 0.5) continue;
                     const [ci, cj] = gr.toCell(x, z); if (!voie(x, z) || !gr.free(ci, cj)) out.push(i + ':' + x.toFixed(1) + ',' + z.toFixed(1)); } } }
               return out.slice(0, 10); }""")
-            ok(tram['x'] == 72 and tram['w'] == 4 and tram['sprite'] == 'ct_tram_v3_3q' and all(v['sprite'] != 'ct_tram_v3_3q' for v in info['vehicules']),
-               f'{name} tram à l\'arrêt sur sa voie N-S (x72-76), hors des véhicules qui roulent', tram)
-            ok(len(info['vehicules']) >= 4 and not hors_voie and len(tourne) >= 2 and axes == {('x', 1), ('z', 1)} and all(v['key'] == ('ct_taxi_v3_axe2_3q' if v['axe'] == 'z' else 'ct_taxi_v3_3q') for v in flat) and not echV,
-               f'{name} {len(info["vehicules"])} taxis sur les deux axes ({len(tourne)} tournent au carrefour), voies de chaussée seulement ; axe N-S sur la vraie vue ct_taxi_v3_axe2_3q, sans miroir (scale.x = +1), |échelle| = 1, aucun étirement',
-               {'hors_voie': hors_voie, 'axes': sorted(axes), 'tourne': len(tourne), 'etire': echV[:2]})
+            texte_ok = all(v.get('texte') and v['texte']['repeat'] == 1 and v['texte']['sx'] == 1 for v in flat if v.get('texte'))
+            dos_ouest = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] == 'ct_veh_taxi_dos_v4_3q' for v in flat)
+            avant_est = any(v['axe'] == 'x' and v['sx'] == 1 and v['key'] == 'ct_veh_taxi_avant_v4_3q' for v in flat)
+            miroir_ns = any(v['axe'] == 'z' and v['sx'] == -1 and v['key'] in ('ct_veh_taxi_avant_v4_3q', 'ct_veh_taxi_dos_v4_3q') for v in flat)
+            ok(tram['sprite'] == 'ct_veh_tram_avant_v4_3q' and abs(tram['x'] - 72.68) < 0.02 and abs(tram['z'] - 18) < 0.02 and abs(tram['w'] - 2.65) < 0.02 and abs(tram['d'] - 33.8) < 0.02
+               and all(v['sprite'] != 'ct_tram_v3_3q' for v in info['vehicules']) and tram['z'] + tram['d'] <= 52.01,
+               f'{name} tram v2 à l\'arrêt sur sa voie N-S (x72-76, z18-51,8), hors des véhicules qui roulent, tête avant le passage nord', tram)
+            ok(len(info['vehicules']) >= 4 and not hors_voie and len(tourne) >= 2 and not echV and texte_ok and dos_ouest and avant_est and miroir_ns
+               and all(v['cle'] == 'ct_veh_taxi_avant_v4_3q' for v in flat),
+               f'{name} {len(info["vehicules"])} taxis v2 sur les deux axes ({len(tourne)} tournent au carrefour), voies de chaussée, hors garés ; +x avant / −x dos / N-S miroir, texte non retourné, |échelle| = 1',
+               {'hors_voie': hors_voie, 'axes': sorted(axes), 'tourne': len(tourne), 'etire': echV[:2], 'texte': texte_ok, 'vues': (dos_ouest, avant_est, miroir_ns)})
             sim = E("window.__nml.view.simVehicules(60, 1 / 30, { pietons: false })")
             sim2 = E("window.__nml.view.simVehicules(60, 1 / 30)")
             ok(not sim['hits'] and not sim2['hits'] and sim['minEcart'] >= 0 and min(sim['parcouru']) > 150,
@@ -242,6 +260,33 @@ with sync_playwright() as p:
                and grille['pas'] and abs((grille['pas']['x'][0] + grille['pas']['x'][1]) / 2 - grille['gateMid']) < 0.05
                and grille['dWorld'] <= 0.5 and grille['dEcranM'] <= 0.5,
                f'{name} clôture IO continue x12-53,55 (0 trou, 0 chevauchement, s1 17 m + portail + s2 6 m + s3), passage x30,5-35,5 franchissable ({grille["chemin"]} m), axé sur le pied d\'escalier peint (x={grille.get("fenceX")} sur z46, écart monde {grille.get("dWorld")} m, écran {grille.get("dEcranM")} m)', grille)
+            porche = E("""() => {
+              const gr = window.__nml.game.grids.steel_center, L = window.__nml.world.LOCATIONS.steel_center;
+              const f = (x, z) => { const [i, j] = gr.toCell(x, z); return gr.free(i, j); };
+              const seg = L.buildings.find(b => b.id === 'ct_ne_seg0'), po = L.buildings.find(b => b.id === 'ct_ne_porche0'), nx = L.buildings.find(b => b.id === 'ct_nexus');
+              const passage = []; for (let x = 84.5; x <= 100.5; x += 0.5) for (const z of [21, 22, 23]) passage.push([x, z, f(x, z)]);
+              const bloq = [[96, 16.5], [96, 18], [96, 19.5], [96, 20.2], [96, 23.8], [96, 25], [96, 28]].map(([x, z]) => [x, z, f(x, z)]);
+              const p = window.__findPath(gr, { x: 88, z: 22 }, { x: 102, z: 22 });
+              return { seg: seg && [seg.sprite, seg.x, seg.z, seg.w, seg.d], po: po && [po.sprite, po.x, po.z, po.w, po.d, po.solid],
+                nx: nx && [nx.x, nx.z, nx.w, nx.d], passageLibres: passage.filter(q => !q[2] && q[0] >= 92 && q[0] <= 100).map(q => q.slice(0, 2)),
+                trottoir: passage.filter(q => q[0] < 92 && !q[2]),
+                bloq, chemin: p ? +p.reduce((s, q, i) => i ? s + Math.hypot(q.x - p[i - 1].x, q.z - p[i - 1].z) : 0, 0).toFixed(1) : null };
+            }""")
+            ok(porche['seg'] == ['ct_ne_segment_8x4_v4_3q', 92, 16, 8, 4] and porche['po'] and porche['po'][0] == 'ct_ne_porche_8x4_v4_3q'
+               and porche['po'][1:5] == [92, 20, 8, 4] and porche['nx'] == [92, 24, 8, 8] and not porche['passageLibres']
+               and porche['chemin'] and porche['chemin'] < 20 and all(not q[2] for q in porche['bloq']),
+               f'{name} porche NE franchissable z20-24 (trottoir avenue → cour x100+), segment z16-20, Nexus intact z24-32', porche)
+            mob_chaussee = E("""() => {
+              const L = window.__nml.world.LOCATIONS.steel_center, out = [];
+              for (const b of L.buildings) {
+                if (b.sprite.startsWith('ct_veh_') || b.id === 'ct_tram1') continue; // véhicules garés : poses d'Ocre sur les bordures
+                const boxes = b.solid || [{ x: b.x, z: b.z, w: b.w, d: b.d }];
+                for (const s of boxes) if (s.x + s.w > 64 && s.x < 84 && s.z + s.d > 56 && s.z < 76) out.push([b.id, b.sprite, s]);
+              }
+              return out;
+            }""")
+            ok(not mob_chaussee, f'{name} mobilier hors chaussée 20 m (x64-84 / z56-76), véhicules garés exceptés (poses d\'Ocre)', mob_chaussee)
+
             cede = E("""async () => { const v = window.__nml.view, g = window.__nml.game, s = g.state, L = v.vehicules(); const i = L.findIndex(q => q.axe === 'z' && q.z > 5 && q.z < 100);
               if (i < 0) return null; const q = L[i], x0 = s.player.x, z0 = s.player.z; s.player.x = q.x; s.player.z = q.z + (q.path[1][1] > q.path[0][1] ? 3 : -3); s.player.path = [];
               const w = ms => new Promise(r => setTimeout(r, ms)); await w(250); v.render(); const a = v.vehicules()[i]; const t0 = [a.x, a.z]; await w(400); v.render(); const b = v.vehicules()[i]; s.player.x = x0; s.player.z = z0;
@@ -308,7 +353,7 @@ with sync_playwright() as p:
             st = E("({...window.__nml.view.animStats, walkers: window.__nml.world.LOCATIONS.steel_center.walkers.length})")
             tower_pulse_keys = [f'ct_tour_{t}_v4_3q_pulse' for t in ('teng', 'orc', 'archeon', 'nexus', 'humancorp')]
             spans = {k: round(max(s.get(k, 0) for s in samples) - min(s.get(k, 0) for s in samples), 3) for k in tower_pulse_keys}
-            ok(st['enseignes'] == 42 and st['fenetres'] == 44 and st['pulses'] == 32 and st['on'] <= 8 and st['walkers'] <= 12
+            ok(st['enseignes'] == 51 and st['fenetres'] == 66 and st['pulses'] == 34 and st['on'] <= 8 and st['walkers'] <= 12
                and st['pulsesOn'] <= (8 if mob else 48) and st['pulsesOn'] >= (6 if mob else 8),
                f'{name} calques additifs & plafonds : on={st["on"]}, walkers={st["walkers"]}, pulsesOn={st["pulsesOn"]}', st)
             ok(ost['mode'] == 'ost_center_town' and not ost['active'] and ost['playing'] and max_bass > 0.05 and max_energy > 0.04 and all(v > 0.12 for v in spans.values()),
@@ -370,6 +415,11 @@ with sync_playwright() as p:
         r1 = labels_at(4, 82, 1.0, f'jeu_entree_ouest_{wtag}.png')
         r2 = labels_at(62, 52, 1.0, f'jeu_carrefour_{wtag}.png')
         r3 = labels_at(30, 45, 1.0, f'jeu_parvis_arcadius_{wtag}.png')
+        r4 = labels_at(88, 22, 1.0, f'jeu_porche_{wtag}.png')
+        E("window.__nml.view.setCamera({ x: 88, z: 22, ppm: 28 });")
+        for _ in range(4): E("window.__nml.view.render()"); time.sleep(0.05)
+        pg.screenshot(path=OUT + f'jeu_porche_axe_{wtag}.png')
+        E("window.__nml.view.setCamera(null);")
         lab_bad = r1['hud'] + r1['over'] + r2['hud'] + r2['over'] + r3['hud'] + r3['over']
         cap = vp[0] >= 700 or all(len(r['fleches']) <= 3 for r in (r1, r2, r3))
         ok(not lab_bad and cap and r1['fleches'], f'{name} étiquettes de sortie hors HUD, sans chevauchement, flèches au bord (entrée : {len(r1["fleches"])} hors écran)', {'bad': lab_bad, 'r1': r1['fleches'], 'r2': r2['fleches']})

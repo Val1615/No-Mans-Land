@@ -97,12 +97,13 @@ export const LOCATIONS = {
     // taxis qui roulent sur les deux avenues (circulation à droite, voies de 4 m : E-O vers l'ouest z58, vers l'est z70/z74 ; N-S vers le sud x66/x70, vers le nord x82) ;
     // sur l'axe N-S, vue miroir du sprite x (data/vehicules.js) ; deux tournent à droite au carrefour. Entrée et sortie dans la marge sombre, hors carte.
     carrefourVehicules: { x: 64, z: 56, w: 20, d: 20 }, // boîte du carrefour : un seul véhicule à la fois (view.js, rouler)
+    // taxis v2 : trajectoires reculées des véhicules garés d'Ocre (ouest z61, est z70, sud x70, nord x78)
     vehicules: [
-      { sprite: 'ct_taxi_v3_3q', path: [[-8, 74], [66, 74], [66, 124]], speed: 7, t0: 40 },   // vers l'est puis à droite vers le sud
-      { sprite: 'ct_taxi_v3_3q', path: [[140, 58], [-8, 58]], speed: 7.5, t0: 30 },           // vers l'ouest, tout droit
-      { sprite: 'ct_taxi_v3_3q', path: [[82, 124], [82, 74], [140, 74]], speed: 6.5, t0: 20 }, // vers le nord puis à droite vers l'est
-      { sprite: 'ct_taxi_v3_3q', path: [[70, -8], [70, 124]], speed: 7, t0: 50 },             // vers le sud, tout droit
-      { sprite: 'ct_taxi_v3_3q', path: [[-8, 70], [140, 70]], speed: 8, t0: 20 },             // vers l'est, tout droit
+      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[-8, 70], [70, 70], [70, 124]], speed: 7, t0: 40 },   // vers l'est puis à droite vers le sud
+      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[140, 61], [-8, 61]], speed: 7.5, t0: 30 },           // vers l'ouest, tout droit
+      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[78, 124], [78, 70], [140, 70]], speed: 6.5, t0: 20 }, // vers le nord puis à droite vers l'est
+      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[70, -8], [70, 124]], speed: 7, t0: 50 },             // vers le sud, tout droit
+      { sprite: 'ct_veh_taxi_avant_v4_3q', path: [[-8, 70], [140, 70]], speed: 8, t0: 20 },             // vers l'est, tout droit
     ],
     enseignes: [
       { id: 'ct_n_arcadius', building: 'c_arcadius', effet: 'fixe', intensite: 0.92 },
@@ -158,18 +159,18 @@ export const LOCATIONS = {
     // Passants : boucles sur les trottoirs, les passages piétons et le parvis uniquement (jamais sur une case solide ni derrière un sprite qui les masquerait,
     // portions libres relevées dans le jeu ; contrôlé par tests/center_rapide.py)
     walkers: [
-      { sprite: civ(0), path: [[64.6, 53.2], [83.4, 53.2], [83.4, 54.8], [64.6, 54.8]], speed: 1.15, t0: 2 },
+      { sprite: civ(0), path: [[64.6, 53.2], [82, 53.2], [82, 54.8], [64.6, 54.8]], speed: 1.15, t0: 2 },
       { sprite: 'gen_ml_navetteur', path: [[64.5, 77.4], [75.8, 77.4], [75.8, 78.6], [64.5, 78.6]], speed: 1.05, t0: 9 },
-      { sprite: 'gen_fs_passante', path: [[61.2, 56.6], [61.2, 75.4], [62.8, 75.4], [62.8, 56.6]], speed: 1.1, t0: 1.5 },
+      { sprite: 'gen_fs_passante', path: [[61.2, 56.6], [61.2, 70], [62.8, 70], [62.8, 56.6]], speed: 1.1, t0: 1.5 },
       { sprite: civ(5), path: [[85.2, 56.6], [85.2, 75.4], [86.8, 75.4], [86.8, 56.6]], speed: 1.2, t0: 4 },
-      { sprite: 'gen_fs_client_imper', path: [[40, 48.4], [55, 48.4], [55, 49.6], [40, 49.6]], speed: 1.0, t0: 3 },
-      { sprite: 'gen_pp_foule_c', path: [[24.2, 50.6], [38.5, 50.6], [38.5, 51.8], [24.2, 51.8]], speed: 1.15, t0: 8 },
-      { sprite: 'gen_fs_client_costume', path: [[49.4, 6], [49.4, 40], [50.6, 40], [50.6, 6]], speed: 1.1, t0: 5 },
-      { sprite: 'gen_df_foule_a', path: [[58.4, 3], [58.4, 23.5], [59.6, 23.5], [59.6, 3]], speed: 0.95, t0: 6.5 },
-      { sprite: civ(2), path: [[109.8, 48.4], [129, 48.4], [129, 49.6], [109.8, 49.6]], speed: 1.1, t0: 7 },
-      { sprite: 'gen_ml_foule_a', path: [[112.6, 52.8], [129, 52.8], [129, 54], [112.6, 54]], speed: 1.05, t0: 2.5 },
-      { sprite: civ(3), path: [[57.6, 86], [57.6, 113], [58.8, 113], [58.8, 86]], speed: 1.0, t0: 4.5 },
-      { sprite: civ(4), path: [[60.4, 81], [60.4, 113], [61.6, 113], [61.6, 81]], speed: 1.1, t0: 6 },
+      { sprite: 'gen_fs_client_imper', path: [[40, 48.4], [44, 48.4], [44, 49.6], [40, 49.6]], speed: 1.0, t0: 3 },
+      { sprite: 'gen_pp_foule_c', path: [[32.5, 50.6], [38.5, 50.6], [38.5, 51.8], [32.5, 51.8]], speed: 1.15, t0: 8 },
+      { sprite: 'gen_fs_client_costume', path: [[49.4, 20], [49.4, 26], [50.6, 26], [50.6, 20]], speed: 1.1, t0: 5 },
+      { sprite: 'gen_df_foule_a', path: [[58.4, 13], [58.4, 23.5], [59.6, 23.5], [59.6, 13]], speed: 0.95, t0: 6.5 },
+      { sprite: civ(2), path: [[124, 48.4], [131, 48.4], [131, 49.6], [124, 49.6]], speed: 1.1, t0: 7 },
+      { sprite: 'gen_ml_foule_a', path: [[124, 52.8], [131, 52.8], [131, 54], [124, 54]], speed: 1.05, t0: 2.5 },
+      { sprite: civ(3), path: [[57.6, 110.2], [57.6, 113], [58.8, 113], [58.8, 110.2]], speed: 1.0, t0: 4.5 },
+      { sprite: civ(4), path: [[49.4, 32], [49.4, 38], [50.6, 38], [50.6, 32]], speed: 1.1, t0: 6 },
     ],
     drones: [ { x: 74, z: 66, r: 9, y: 7, speed: 0.2 }, { x: 34, z: 46, r: 6, y: 6, speed: -0.28, ph: 2 }, { x: 104, z: 62, r: 5, y: 6.5, speed: 0.32, ph: 4 } ],
     // Plan large d'arrivée (view.js, loc.cadre.arrivee) : cadré sur le carrefour et le parvis de l'Arcadius (libre : plan d'ensemble, le joueur peut être hors cadre) ;
@@ -307,6 +308,7 @@ export const CLOSED_TEXT = {
   ct_nexus: 'Tour Nexus. Le réseau tourne sans personne derrière la vitre.',
   ct_arret0: 'Arrêt Tram Central. Le prochain passage s\u2019affiche en ambre, sans heure.',
   ct_tram0: 'Une rame du tramway de Center-Town, portes verrouillées à l\u2019arrêt.',
+  ct_tram1: 'Une rame du tramway de Center-Town, portes verrouillées à l\u2019arrêt.',
   ct_echoppe0: 'Nouilles et vapeur. Le bouillon fume derrière le comptoir en laiton ; paiement par implant uniquement.',
   ct_kiosque0: 'Kiosque Presse & Médias. Les éditions validées par IO tournent en boucle sur l\u2019écran latéral.',
   v_cab_a: 'Une cabane de tôle. Quelqu’un tousse derrière le rideau.', v_cab_b: 'Rideau tiré. Une radio grésille un match qui date.', v_cab_c: 'Des chiens grognent derrière la porte.',
