@@ -45,12 +45,17 @@ export function cinematique() {
     if (Number.isFinite(v.duration) && v.duration > 1 && v.currentTime >= v.duration - FONDU_FIN) return fonduNoir(FONDU_FIN, 'naturelle');
     raf = requestAnimationFrame(surveilleFin);
   }
+  // Un geste très tôt (avant que le refus de l'autoplay soit tombé) : le navigateur rejette ensemble toutes les lectures en attente.
+  // On ignore les réponses d'un essai dépassé et, si le geste est encore actif, on relance une fois.
+  let essai = 0, relance = false;
   function lance(parGeste) {
+    const n = ++essai;
     pose('chargement'); invite.hidden = true; passer.hidden = false;
     clearTimeout(tImage); tImage = setTimeout(() => { if (!fini && !fondu && v.currentTime < 0.05) terminer('erreur'); }, DELAI_IMAGE);
     let p; try { p = v.play(); } catch (e) { p = Promise.reject(e); }
     Promise.resolve(p).then(() => { etat.mode = etat.mode || (parGeste ? 'geste' : 'autoplay'); }, err => {
-      if (fini) return;
+      if (fini || fondu || n !== essai) return;
+      if (err && err.name === 'NotAllowedError' && parGeste && !relance && navigator.userActivation && navigator.userActivation.isActive) { relance = true; return lance(true); }
       if (err && err.name === 'NotAllowedError') { clearTimeout(tImage); pose('invite'); etat.invite = true; invite.hidden = false; passer.hidden = true; return; }
       if (err && err.name === 'AbortError') return; // play() interrompu par un passage ou un nouveau play()
       terminer('erreur');
@@ -72,7 +77,7 @@ export function cinematique() {
     if (!declenche || fondu) return;
     if (e.type === 'keydown' && !['Escape', 'Enter', ' ', 'Spacebar'].includes(e.key) && etat.etat !== 'invite') return;
     const t = performance.now(); if (t - dernierGeste < ANTI_REBOND) return; dernierGeste = t;
-    if (etat.etat === 'invite') return lance(true);
+    if (etat.etat === 'invite') { relance = false; return lance(true); }
     etat.passee = true; fonduNoir(FONDU_PASSE, 'passee');
   }
   for (const g of GESTES) addEventListener(g, geste, g.startsWith('touch') ? { capture: true, passive: true } : true);

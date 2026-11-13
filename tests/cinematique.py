@@ -124,7 +124,7 @@ def sc_reglages(p):
     br = p.chromium.launch(channel='chrome', args=GESTE_REQUIS)
     # 2b. réglages son : musique à 40 % et muet mémorisé, OST qui reboucle
     ctx, pg, errs = ctx_de(br, 1280, 800, False, init="localStorage.setItem('nml_options', JSON.stringify({ v: 1, music: 40 })); localStorage.setItem('nml_muted', '1');")
-    pg.goto(URL + QI); attendre(pg, "window.__nmlIntro && window.__nmlIntro.etat === 'invite'", 15); geste(pg, False)
+    pg.goto(URL + QI); attendre(pg, "window.__nmlIntro && window.__nmlIntro.etat === 'invite'", 15); time.sleep(1.0); geste(pg, False)
     attendre(pg, "window.__nmlIntro.etat === 'lecture'", 20); time.sleep(0.8); pg.keyboard.press('Enter')
     attendre(pg, "!document.getElementById('intro') && !document.getElementById('music').paused", 10); time.sleep(0.6); e = pg.evaluate(ETAT)
     ok(e['a']['muted'] and abs(e['a']['vol'] - 0.22) < 0.04, 'réglages respectés : muet mémorisé, musique à 40 % (0,22)', e['a'])
@@ -154,7 +154,7 @@ def sc_reduit(p):
     # 6. mouvement réduit : gardée, passable (Espace)
     ctx, pg, errs = ctx_de(br, 390, 844, True, reduit=True)
     pg.goto(URL + QI); ok(attendre(pg, "window.__nmlIntro && window.__nmlIntro.etat === 'invite'", 15), 'mouvement réduit : cinématique gardée (invite)')
-    geste(pg, True); ok(attendre(pg, "window.__nmlIntro.etat === 'lecture'", 20), 'mouvement réduit : lecture au geste')
+    time.sleep(1.0); geste(pg, True); ok(attendre(pg, "window.__nmlIntro.etat === 'lecture'", 20), 'mouvement réduit : lecture au geste')
     time.sleep(0.8); pg.keyboard.press(' ')
     ok(attendre(pg, "!document.getElementById('intro') && window.__nmlMenuPret === true", 5), 'mouvement réduit : Espace passe, Terminal (allumage sauté par le mode réduit)', pg.evaluate(ETAT))
     ok(not errs, 'mouvement réduit : aucune erreur', errs[:3]); ctx.close()
@@ -194,7 +194,7 @@ def sc_session(p):
     ctx.close()
     save = {'v': 2, 't': int(time.time() * 1000), 'label': 'Steel-Megalopolis · Center-Town', 'state': etat}
     ctx, pg, errs = ctx_de(br, 1280, 800, False, init="if (!sessionStorage.getItem('_seed')) { localStorage.setItem('nml_save_auto', %s); sessionStorage.setItem('_seed', '1'); }" % json.dumps(json.dumps(save)))
-    pg.goto(URL + QI); attendre(pg, "window.__nmlIntro && window.__nmlIntro.etat === 'invite'", 15); geste(pg, False); attendre(pg, "window.__nmlIntro.etat === 'lecture'", 20)
+    pg.goto(URL + QI); attendre(pg, "window.__nmlIntro && window.__nmlIntro.etat === 'invite'", 15); time.sleep(1.0); geste(pg, False); attendre(pg, "window.__nmlIntro.etat === 'lecture'", 20)
     time.sleep(0.8); pg.keyboard.press('Escape')  # > anti-rebond de 450 ms après le geste qui a lancé la vidéo
     ok(attendre(pg, '!document.getElementById("intro") && window.__nmlMenuPret === true', 5), 'session : Échap passe la cinématique', pg.evaluate(ETAT)['intro'])
     attendre(pg, 'window.__nml && window.__nml.shell', 120); pg.evaluate('window.__nml.shell.terminal.saute()'); time.sleep(0.4)  # allumage sauté (comme passer_boot)
