@@ -81,7 +81,7 @@ def sc_formats(p):
     br = p.chromium.launch(channel='chrome', args=GESTE_REQUIS)
     for i, (nom, w, h, mob) in enumerate(FORMATS):
         P = f'[{nom}]'
-        ctx, pg, errs = ctx_de(br, w, h, mob, init="window.__premier = new Promise(r => requestAnimationFrame(() => { const M = document.getElementById('menu'), I = document.getElementById('intro'); r({ intro: !!I && getComputedStyle(I).display !== 'none', z: I ? +getComputedStyle(I).zIndex : 0, fond: I ? getComputedStyle(I).backgroundColor : '' }); }));" if nom == '1280x800' else None)
+        ctx, pg, errs = ctx_de(br, w, h, mob, init="window.__premier = new Promise(r => { const f = () => { const I = document.getElementById('intro'); r({ intro: !!I && getComputedStyle(I).display !== 'none', z: I ? +getComputedStyle(I).zIndex : 0, fond: I ? getComputedStyle(I).backgroundColor : '' }); }; if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(f)); else requestAnimationFrame(f); });" if nom == '1280x800' else None)
         pg.goto(URL + QI, wait_until='domcontentloaded')
         if nom == '1280x800':
             pr = pg.evaluate('window.__premier'); ok(pr['intro'] and pr['z'] >= 90 and pr['fond'] in ('rgb(0, 0, 0)',), f'{P} première image : calque noir de la cinématique au-dessus de tout (pas de Terminal)', pr)
