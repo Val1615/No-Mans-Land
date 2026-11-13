@@ -10,6 +10,17 @@
 <script type="importmap">{"imports":{"three": "./vendor/three.module.js"}}</script>
 </head>
 <body class="menu-open">
+<!-- Cinématique d'ouverture (fichier de Valentin, servi tel quel) : avant le Terminal, une fois par chargement de page. src/ui/cinematique.js -->
+<div id="intro" aria-label="Cinématique d'ouverture"><video id="intro-video" playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback></video><div id="intro-voile"></div><p id="intro-invite" hidden>&#9656; TOUCHER POUR COMMENCER</p><p id="intro-passer" hidden>PASSER &#9656;</p></div>
+<script>
+// Décision avant la première image (pas de flash du Terminal) : ?intro=0 ou ?dev=1&map=… la sautent ; navigateur piloté (tests) aussi, sauf ?intro=1.
+(function () { var q = new URLSearchParams(location.search), i = q.get('intro');
+  var saute = i === '0' || (q.get('dev') === '1' && q.get('map')) || (navigator.webdriver && i !== '1');
+  var el = document.getElementById('intro');
+  if (saute) { el.remove(); window.__nmlIntro = { etat: 'fini', fin: 'absente' }; return; }
+  document.documentElement.classList.add('intro'); window.__nmlIntroActive = true; window.__nmlIntro = { etat: 'chargement', fin: null, mode: null };
+  document.getElementById('intro-video').src = './assets/video/cinematique_ouverture.mp4'; })();
+</script>
 <canvas id="view"></canvas>
 <div id="labels"></div>
 <!-- v8 : interface « radio de récupération » (docs/ui/propositions/direction-A.png). Cadres fins, fonds semi-transparents, ambre réservé au texte. -->
@@ -88,6 +99,6 @@ TERMINAL CITOYEN  HC-2175-TA
 <!-- v11 lot 2 : création de personnage -->
 <div id="creation" hidden></div>
 <script type="module" src="./src/lancement.js"></script>
-<audio id="music" src="./assets/audio/dusk_town_ambiance.mp3" loop preload="none"></audio>
+<audio id="music" src="./assets/audio/ost_menu/01_ost_menu.mp3" loop preload="none"></audio>
 </body>
 </html>

@@ -128,5 +128,5 @@ export function createShell({ game, world, $, onStart, applyOptions, terminal, p
   addEventListener('keydown', e => { if (mode === 'closed' || e.key !== 'Escape') return; e.stopImmediatePropagation(); if (mode === 'create') creation.back(); else if (sub) { sub = null; render(); } else if (mode === 'pause') close(); }, true);
   applyOptions(options);
   open('title');
-  return { terminal: term, get creationDraft() { return creation.draft; }, isOpen: () => mode !== 'closed', pause: () => open('pause'), autosave: () => write(AUTO), get options() { return options; }, read, latest };
+  return { terminal: term, get creationDraft() { return creation.draft; }, isOpen: () => mode !== 'closed', get mode() { return mode; }, pause: () => open('pause'), autosave: () => write(AUTO), get options() { return options; }, read, latest };
 }

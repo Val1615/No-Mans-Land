@@ -2,9 +2,14 @@
 # Usage : passer_boot(pg) ou passer_boot(E) juste avant le premier clic sur #m-new.
 # Contrôle aussi le lancement : dès la première image, pas d'ancien HUD ; le Terminal s'ouvre
 # dès que son code est prêt, sans attendre le rendu de Center-Town.
+# (13/11) Cinématique d'ouverture : sautée pour un navigateur piloté (sauf ?intro=1) ; passer_boot la passe aussi si elle est là.
+# Section 3 : ?intro=1 -> première image = calque noir de la cinématique (pas de vestige, Terminal retenu), passage -> Terminal allumé ;
+# ?intro=0 -> Terminal direct.
 import os, sys, time
 
-SAUTE_JS = """async () => { for (let i = 0; i < 1200 && !(window.__nml && window.__nml.shell && window.__nml.shell.terminal); i++) await new Promise(r => setTimeout(r, 50));
+SAUTE_JS = """async () => {
+  if (window.__nmlIntroActive) { dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })); for (let i = 0; i < 100 && window.__nmlIntroActive; i++) await new Promise(r => setTimeout(r, 50)); }
+  for (let i = 0; i < 1200 && !(window.__nml && window.__nml.shell && window.__nml.shell.terminal); i++) await new Promise(r => setTimeout(r, 50));
   const t = window.__nml && window.__nml.shell && window.__nml.shell.terminal; if (t) t.saute(); return !!t; }"""
 
 def passer_boot(pg_ou_E):
@@ -142,4 +147,24 @@ if __name__ == '__main__':
                f'{nom} t=2 s : Terminal en allumage (ou repos), pas de vestige', et2)
             ctx.close()
         br.close()
+        # 3. cinématique d'ouverture : première image noire, Terminal retenu, passage, ?intro=0 (un navigateur neuf par format)
+        for nom, w, h, mob in FORMATS:
+            br = p.chromium.launch(channel='chrome', args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--autoplay-policy=user-gesture-required'])
+            ctx = br.new_context(viewport={'width': w, 'height': h}, has_touch=mob, is_mobile=mob, device_scale_factor=2 if mob else 1)
+            pg = ctx.new_page(); errs = []; pg.on('pageerror', lambda e: errs.append('JS ' + str(e)))
+            pg.add_init_script("window.__p = new Promise(r => { const f = () => { const I = document.getElementById('intro'); r({ intro: !!I && getComputedStyle(I).display !== 'none', fond: I ? getComputedStyle(I).backgroundColor : '' }); }; if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(f)); else requestAnimationFrame(f); });")
+            pg.goto(URL + ('&' if '?' in URL else '?') + 'intro=1', wait_until='domcontentloaded')
+            pr = pg.evaluate('window.__p'); et = etat_affichage(pg)
+            ok(pr['intro'] and pr['fond'] == 'rgb(0, 0, 0)' and not et['hud']['vis'] and not et['texteHud'] and not et['nilo'], f'{nom} ?intro=1 : première image = calque noir de la cinématique, aucun vestige', [pr, et])
+            pg.wait_for_function("window.__nmlIntro && window.__nmlIntro.etat === 'invite'", timeout=20000, polling=100); time.sleep(1.5)
+            ok(not pg.evaluate('!!window.__nmlMenuPret') and pg.evaluate("(document.getElementById('menu').dataset.boot || '') === ''"), f'{nom} pendant la cinématique : allumage du Terminal retenu')
+            pg.screenshot(path=f'{OUT}{nom}_cinematique_invite.png')
+            (pg.touchscreen.tap if mob else pg.mouse.click)(w / 2, h / 2); pg.wait_for_function("window.__nmlIntro.etat === 'lecture'", timeout=20000, polling=100)
+            time.sleep(1.0); ok(passer_boot(pg) and not pg.evaluate('!!document.getElementById("intro")'), f'{nom} passer_boot passe la cinématique puis l\'allumage')
+            et = etat_affichage(pg); ok(vestige_absent(et) and et['menu']['vis'] and et['menuPret'], f'{nom} après la cinématique : Terminal visible, vestige absent', et)
+            ok(not errs, f'{nom} cinématique : aucune erreur JS', errs[:3]); ctx.close()
+            ctx = br.new_context(viewport={'width': w, 'height': h}); pg = ctx.new_page()
+            pg.goto(URL + ('&' if '?' in URL else '?') + 'intro=0'); pg.wait_for_function('window.__nmlMenuPret === true', timeout=30000, polling=100)
+            ok(not pg.evaluate('!!document.getElementById("intro")') and pg.evaluate("window.__nmlIntro.fin") == 'absente', f'{nom} ?intro=0 : Terminal direct, sans cinématique')
+            ctx.close(); br.close()
     n = sum(1 for c, _ in R if c); print(f'{n}/{len(R)} OK'); print('ECHECS', len(R) - n); sys.exit(0 if n == len(R) else 1)

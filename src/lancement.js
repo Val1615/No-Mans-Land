@@ -2,10 +2,15 @@
 // sans attendre le catalogue ni le rendu de Center-Town (chargés ensuite par main.js).
 // Optimisation (12/11) : le menu ne dépend plus de main.js pour son visage. Dès l'ouverture :
 // - la ligne sous CONTINUER est lue dans localStorage (même format que shell.js) ;
-// - la musique du menu part au premier geste, sur l'<audio id="music"> du HTML (autoplay navigateur respecté) ;
+// - cinématique d'ouverture d'abord (src/ui/cinematique.js), pendant que cadre, main.js et lieu se chargent derrière ; l'allumage attend sa fin ;
+// - l'OST du menu (assets/audio/ost_menu) part à la fin de la cinématique (le geste a déjà eu lieu), sinon au premier geste, sur l'<audio id="music"> du HTML ;
 // - un choix cliqué avant que main.js soit prêt garde le Terminal à l'écran avec le sceau de chargement NML, puis est rejoué.
 import { createTerminal, LIGNES } from './ui/menu_terminal.js';
 import { sceau, echelleTerminal, placeTerminal } from './ui/monogramme.js';
+import { cinematique } from './ui/cinematique.js';
+
+// Cinématique : lancée tout de suite (avant tout le reste), elle avale les gestes tant qu'elle est là.
+const finIntro = cinematique();
 
 function optionsLancement() {
   if (window.__nml && window.__nml.shell && window.__nml.shell.options) return window.__nml.shell.options;
@@ -44,7 +49,7 @@ M.hidden = false;
 M.classList.add('term');
 const derniere = remplirTitre();
 
-// ---------- musique du menu au premier geste (main.js / ost_centre.js reprend le même élément, sans coupure) ----------
+// ---------- OST du menu à la fin de la cinématique, sinon au premier geste (main.js / ost_centre.js reprend le même élément, sans coupure) ----------
 const musique = document.getElementById('music');
 function gesteMusique(e) {
   if (e && e.type === 'pointerdown' && e.pointerType && e.pointerType !== 'mouse') return; // tactile : l'activation vient au pointerup
@@ -61,13 +66,24 @@ function gesteMusique(e) {
 }
 const GESTES = ['pointerdown', 'pointerup', 'touchend', 'keydown', 'click'];
 function fin() { if (window.__nmlMusiqueLancee || (window.__nml && window.__nml.music)) for (const g of GESTES) removeEventListener(g, gesteMusique, true); }
-for (const g of GESTES) addEventListener(g, gesteMusique, g === 'touchend' ? { capture: true, passive: true } : true);
+function demarrerMusique() {
+  if (window.__nml && window.__nml.demarrerMusique) { window.__nml.demarrerMusique(); return; } // ost_centre.js a la main
+  gesteMusique(null);
+}
+finIntro.then(fin => {
+  for (const g of GESTES) addEventListener(g, gesteMusique, g === 'touchend' ? { capture: true, passive: true } : true);
+  if (fin !== 'absente') demarrerMusique(); // fin naturelle, passage ou erreur : le geste (ou l'autoplay) a déjà eu lieu ; refus éventuel → premier geste
+});
 
 const term = createTerminal({
   M,
   getOptions: optionsLancement,
   note: t => { const n = document.getElementById('menu-note'); if (n) n.textContent = t; },
 });
+// Allumage retenu pendant la cinématique : un open() demandé (ici ou par le shell de main.js) est rejoué à sa fin, depuis le noir.
+{ const ouvrir = term.open.bind(term); let demande = null, introFinie = false;
+  term.open = m => { if (introFinie) return ouvrir(m); demande = m; };
+  finIntro.then(() => { introFinie = true; if (demande) { const m = demande; demande = null; ouvrir(m); if (m === 'title') window.__nmlMenuPret = true; } }); }
 
 let resoudreCadre; const cadrePret = new Promise(r => { resoudreCadre = r; });
 window.__nmlMenu = { terminal: term, derniere: derniere ? { slot: derniere.s, location: derniere.r.state.location } : null, cadrePret, derniereSauvegarde };
@@ -76,7 +92,7 @@ await term.pret;
 resoudreCadre(true);
 const principal = import('./main.js');
 term.open('title');
-window.__nmlMenuPret = true;
+if (!window.__nmlIntroActive) window.__nmlMenuPret = true; // sinon : posé à la fin de la cinématique, quand le Terminal s'allume vraiment
 
 // Un choix cliqué avant que main.js ait branché le shell : le Terminal reste là, sceau NML (anneau à 0 %), puis le choix est rejoué.
 let choixAttendu = null;

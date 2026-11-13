@@ -2,9 +2,12 @@
 // - Rotation commune des 4 remixes limitée à Pulse Plaza (steel_pulse) et Steel Arena (steel_arena), sans coupure ni remise à zéro entre les deux zones, avec analyse de rythme Web Audio (AnalyserNode + détection de kick/basse).
 // - OST dédiée en boucle à Center-Town (steel_center + intérieur change_in atténué à 0,25).
 // - OST dédiée en boucle à Fréquence Strip (steel_strip).
+// - OST du menu en boucle (assets/audio/ost_menu, Valentin, 13/11) tant que l'écran titre du Terminal (ou la création) est ouvert ;
+//   démarrée par lancement.js à la fin de la cinématique d'ouverture. Le menu pause garde la musique du lieu.
 // - Ambiance habituelle ailleurs, sur l'unique élément <audio id="music">.
 
 export const AMBIANCE_DUSK = './assets/audio/dusk_town_ambiance.mp3';
+export const OST_MENU = './assets/audio/ost_menu/01_ost_menu.mp3';
 export const OST_CENTER_TOWN = './assets/audio/ost_center_town/01_center_town.mp3';
 export const OST_STRIP = './assets/audio/ost_strip/01_we_already_knew_frequence_strip.mp3';
 
@@ -31,14 +34,15 @@ function modeForLocation(locationId) {
   return 'ambiance';
 }
 
-export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, isMenuOpen }) {
+export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, isMenuOpen, isMenuTitre }) {
   const KEY = 'nml_muted';
   // menu : lancement.js a pu démarrer l'ambiance au premier geste sur ce même élément ; on la reprend sans la couper (l'analyseur Web Audio
   // viendra au geste suivant, pour ne pas brancher l'élément sur un contexte audio encore suspendu)
   let started = !!(typeof window !== 'undefined' && window.__nmlMusiqueLancee && !el.paused);
-  let mode = 'ambiance'; // 'ambiance' | 'ost_centre' | 'ost_center_town' | 'ost_strip'
+  // 'menu' d'emblée si l'écran titre est là : l'élément porte déjà l'OST du menu (index.html), pas de rechargement
+  let mode = isMenuTitre?.() ? 'menu' : 'ambiance'; // 'menu' | 'ambiance' | 'ost_centre' | 'ost_center_town' | 'ost_strip'
   let trackIndex = 0;
-  const savedTimes = { ambiance: 0, ost_centre: 0, ost_center_town: 0, ost_strip: 0 };
+  const savedTimes = { menu: 0, ambiance: 0, ost_centre: 0, ost_center_town: 0, ost_strip: 0 };
   let pendingSeek = 0;
 
   // Graphe Web Audio sur l'unique élément <audio id="music"> (créé au premier geste pour respecter l'autoplay navigateur)
@@ -132,8 +136,9 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
 
   function syncZone() {
     const loc = getLocation?.();
-    if (!loc) return;
-    const want = modeForLocation(loc);
+    const titre = !!isMenuTitre?.();
+    if (!loc && !titre) return;
+    const want = titre ? 'menu' : modeForLocation(loc);
     if (want === mode) return; // Même mode (ex. Pulse <-> Arena, ou Center-Town <-> change_in) : même instance et position inchangée
     savedTimes[mode] = Number.isFinite(el.currentTime) ? el.currentTime : 0;
     pendingSeek = 0;
@@ -142,6 +147,7 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     if (mode === 'ost_centre') mountTrack(trackIndex, savedTimes.ost_centre);
     else if (mode === 'ost_center_town') mountLoopFile(OST_CENTER_TOWN, savedTimes.ost_center_town);
     else if (mode === 'ost_strip') mountLoopFile(OST_STRIP, savedTimes.ost_strip);
+    else if (mode === 'menu') mountLoopFile(OST_MENU, savedTimes.menu);
     else mountLoopFile(AMBIANCE_DUSK, 0);
   }
 
@@ -152,6 +158,7 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
   });
 
   function onGesture(e) {
+    if (window.__nmlIntroActive) return; // cinématique d'ouverture : pas de musique par-dessus (lancement.js la démarre à la fin)
     // Sur tactile, pointerdown précède l'activation utilisateur (accordée à pointerup/touchend/click) : éviter un play() rejeté prématurément
     if (e && e.type === 'pointerdown' && e.pointerType && e.pointerType !== 'mouse') return;
     ensureAnalyser();
@@ -167,6 +174,16 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
   addEventListener('touchend', onGesture, { capture: true, passive: true });
   addEventListener('keydown', onGesture, true);
   addEventListener('click', onGesture, true);
+
+  // Fin de la cinématique (lancement.js) : démarrage sans brancher l'analyseur (contexte audio peut-être encore suspendu, il viendra au geste suivant)
+  function demarrer() {
+    if (started && !el.paused) return;
+    started = true;
+    syncMute();
+    el.volume = Math.max(0, Math.min(1, (mode !== 'menu' && getKind?.() === 'interior' ? 0.25 : 0.55) * ((getMusicOption?.() ?? 100) / 100))); // volume réglé d'emblée (pas de rampe depuis 1)
+    syncZone();
+    safePlay();
+  }
 
   kSon?.addEventListener('click', () => {
     localStorage.setItem(KEY, muted() ? '0' : '1');
@@ -321,9 +338,11 @@ export function createMusic({ el, kSon, getLocation, getKind, getMusicOption, is
     el,
     ostCentre,
     syncZone,
+    demarrer,
+    get mode() { return mode; },
     update() {
       syncZone();
-      const v = (getKind?.() === 'interior' ? 0.25 : 0.55) * ((getMusicOption?.() ?? 100) / 100);
+      const v = (mode !== 'menu' && getKind?.() === 'interior' ? 0.25 : 0.55) * ((getMusicOption?.() ?? 100) / 100);
       if (Math.abs(el.volume - v) > 0.01) el.volume += Math.sign(v - el.volume) * 0.01;
       if (performance.now() / 1000 - lastSampleAt >= 0.012) sampleRhythm();
       frameKick = pendingFrameKick;

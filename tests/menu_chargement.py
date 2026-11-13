@@ -14,6 +14,9 @@
 #    de texte du Terminal, légende « SECTEUR   n % » (ou « n % » en petit format), texte lu (secteur + %), anneau sur le vrai progrès ;
 #    mouvement réduit : hexagone et lettres déjà là
 # 10. calques WebP (Ocre, 197def3) : tampon, cadre et fond servis en .webp ; PNG seulement en repli (WebP en échec), une seule fois
+# 11. (13/11) cinématique d'ouverture (?intro=1) : pendant qu'elle joue, main.js, le shell et le lieu de CONTINUER se chargent derrière ;
+#     au passage, le Terminal s'allume tout de suite (cadre déjà là, pas de ligne d'attente), OST du menu ; Continuer rapide jusqu'à Center-Town.
+#     Sans ?intro=1, un navigateur piloté saute la cinématique (sections 1 à 10 inchangées). Séquence complète : tests/cinematique.py
 # Captures : OUT (défaut /tmp/nml-test-out/menu_chargement/).
 import os, sys, time, json, re
 from playwright.sync_api import sync_playwright
@@ -129,7 +132,8 @@ with sync_playwright() as p:
         if mob: pg.tap('#menu', position={'x': 10, 'y': 10})
         else: saute(pg)
         time.sleep(0.5)
-        ok(pg.evaluate("!document.getElementById('music').paused"), f'{nom} musique du menu au premier geste, sans attendre main.js')
+        ok(pg.evaluate("!document.getElementById('music').paused && /\\/assets\\/audio\\/ost_menu\\/01_ost_menu\\.mp3$/.test(document.getElementById('music').currentSrc) && document.getElementById('music').loop"),
+           f'{nom} OST du menu (ost_menu/01_ost_menu.mp3, en boucle) au premier geste, sans attendre main.js', pg.evaluate("[document.getElementById('music').currentSrc, document.getElementById('music').paused]"))
         pg.evaluate("window.__nmlMenu.terminal.saute()"); time.sleep(0.4)
         pg.screenshot(path=f'{OUT}{nom}_2_menu_complet_avant_main.png')
         vis = pg.evaluate("(() => { const v = " + VIS + "; return { cadre: v('#t-cadre'), titre: v('#menu h1'), cont: v('#m-continue'), neuf: v('#m-new') }; })()")
@@ -276,6 +280,35 @@ with sync_playwright() as p:
     ok(l['ok'] and l['lettres'] > 10 and l['vu'] == l['cible'], 'mouvement réduit : hexagone et lettres déjà là dès la première image, l\'anneau sur le % sans glissement', l)
     hold.relache(); ctx.close()
     br.close()
+    # 11. cinématique d'ouverture : préchargement non bloqué, Terminal immédiat au passage, OST, Continuer rapide (navigateur neuf)
+    for nom, w, h, mob in [('1280', 1280, 800, False), ('390', 390, 844, True)]:
+        br = p.chromium.launch(channel='chrome', args=ARGS)
+        P = f'[{nom}] cinématique :'
+        ctx, pg, errs = contexte(br, w, h, mob, save=SAVE)
+        pg.goto(URL + ('&' if '?' in URL else '?') + 'intro=1')
+        pg.wait_for_function("window.__nmlIntro && window.__nmlIntro.etat === 'invite'", timeout=20000, polling=100)
+        (pg.touchscreen.tap if mob else pg.mouse.click)(w / 2, h / 2)
+        pg.wait_for_function("window.__nmlIntro.etat === 'lecture'", timeout=20000, polling=100)
+        try: pg.wait_for_function("window.__nml && window.__nml.shell && window.__nml.lieuPret('steel_center')", timeout=11000, polling=200); prec = True
+        except Exception: prec = False
+        e = pg.evaluate("({ intro: !!document.getElementById('intro'), t: (document.getElementById('intro-video') || {}).currentTime, menuPret: !!window.__nmlMenuPret, shell: !!(window.__nml && window.__nml.shell), musique: !document.getElementById('music').paused })")
+        ok(prec and e['intro'] and not e['menuPret'] and not e['musique'], f'{P} pendant la lecture, main.js, le shell et le lieu de CONTINUER sont prêts derrière (allumage et OST retenus)', e)
+        if mob: pg.touchscreen.tap(w / 2, h / 2)
+        else: pg.keyboard.press('Escape')
+        t0 = time.time(); pg.wait_for_function("!document.getElementById('intro') && window.__nmlMenuPret === true", timeout=5000, polling=50); dt = time.time() - t0
+        st = pg.evaluate("({ attente: document.getElementById('menu').classList.contains('t-attend'), cadre: document.getElementById('menu').dataset.cadre || '', boot: document.getElementById('menu').dataset.boot || '' })")
+        ok(dt < 1.2 and not st['attente'], f'{P} passage -> Terminal en {dt:.2f} s, cadre déjà là (pas de ligne d\'attente)', st)
+        try: pg.wait_for_function("!document.getElementById('music').paused && /ost_menu/.test(document.getElementById('music').currentSrc)", timeout=8000, polling=100); ost = True
+        except Exception: ost = False
+        ok(ost, f'{P} OST du menu après le fondu')
+        pg.evaluate("window.__nml.shell.terminal.saute()"); time.sleep(0.4)
+        t1 = time.time(); bb = pg.locator('#m-continue').bounding_box(); (pg.touchscreen.tap if mob else pg.mouse.click)(bb['x'] + bb['width'] / 2, bb['y'] + bb['height'] / 2)
+        try: pg.wait_for_function("!window.__nml.shell.isOpen() && window.__nml.state.location === 'steel_center'", timeout=20000, polling=100); cont = True
+        except Exception: cont = False
+        dc = time.time() - t1
+        ok(cont and dc < 10, f'{P} Continuer rapide : en jeu à Center-Town en {dc:.1f} s (seuil 10 s sous swiftshader, même ordre que sans cinématique)', pg.evaluate("[window.__nml.shell.mode, window.__nml.state.location]"))
+        pg.screenshot(path=f'{OUT}{nom}_11_continuer_apres_cinematique.png')
+        ok(not [x for x in errs if 'JS' in x or ('mp4' not in x and x[:1].isdigit())], f'{P} aucune erreur', errs[:3]); ctx.close(); br.close()
 bons = sum(1 for c, _ in R if c)
 print(f'{bons}/{len(R)} OK'); print('ECHECS', len(R) - bons)
 sys.exit(0 if bons == len(R) else 1)

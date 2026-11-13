@@ -57,6 +57,7 @@ const music = createMusic({
   getKind: () => game.location.kind,
   getMusicOption: () => (shell ? shell.options.music : 100),
   isMenuOpen: () => !!shell?.isOpen(),
+  isMenuTitre: () => (shell ? shell.mode === 'title' || shell.mode === 'create' : !!window.__nmlMenu), // OST du menu : écran titre et création, pas la pause
 });
 game.on(ev => { if (ev.type === 'transition') music.syncZone(); });
 const view = createView(document.getElementById('view'), game, sprites, bman, document.getElementById('labels'), music.ostCentre, { pret: lieuPret, demande: id => { if (imagesAutorisees) chargeur.lieu(id); } });
@@ -259,7 +260,7 @@ function trajetRame(versTerminus) { trajetEnCours = true; trajet.querySelector('
   trajet.className = 'on'; setTimeout(() => { trajet.className = 'on roule'; }, 600);
   setTimeout(() => { trajet.className = 'on'; }, 3400); setTimeout(() => { trajet.className = ''; trajetEnCours = false; say(VALIDATION(game.state)); }, 4000); }
 game.on(ev => { if (ev.type === 'transition') delete game.state.flags.ml_valide; if (ev.type === 'transition' && (ev.door === 'ml_rame_quai' || ev.door === 'tm_rame_quai')) trajetRame(ev.door === 'ml_rame_quai'); });
-window.__nml = { chargeur, lieuPret, bman, music: music.el, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { chargeur, lieuPret, bman, music: music.el, demarrerMusique: music.demarrer, musique: music, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)

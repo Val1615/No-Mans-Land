@@ -51,6 +51,9 @@ with sync_playwright() as p:
         ctx, pg, errs = ouvre(w, h, mob); E = pg.evaluate; P = f'{nom} :'
         E("window.__nml.shell.terminal.pret"); time.sleep(0.3)
         et = E(ETAT); ok(et['mode'] == attendu, f'{P} variante de cadre « {attendu} »', et)
+        au = E("(() => { const a = document.getElementById('music'); return { src: a.getAttribute('src'), loop: a.loop, preload: a.getAttribute('preload'), intro: !!document.getElementById('intro'), fin: (window.__nmlIntro || {}).fin, mode: window.__nml.musique && window.__nml.musique.mode }; })()")
+        ok(au['src'] == './assets/audio/ost_menu/01_ost_menu.mp3' and au['loop'] and au['preload'] == 'none' and au['mode'] == 'menu' and not au['intro'] and au['fin'] == 'absente',
+           f'{P} OST du menu sur <audio id=music> (boucle, preload none, mode menu) ; cinématique sautée sous pilote', au)
         if attendu != 'plein':
             g = E("(()=>{const c=document.getElementById('t-cadre').getBoundingClientRect();return {w:c.width,h:c.height}})()")
             ratio = (1920 / 1080) if attendu == 'paysage' else (1080 / 1920)
