@@ -109,14 +109,14 @@ passants qui marchent : un qui monte l'escalier ouest, traverse le quai et redes
 | zone | cotes (m) | dans le jeu |
 |---|---|---|
 | Voûte | x0–40, z0–2, clé 18 | pièce de fond (toujours derrière) ; suspensions sodium (lueurs du code) |
-| Mur et portes du sas | x0–40, z0–2 ; portes x10–30, h 13 | pleins ; **aucune porte de jeu vers le sas**, clic = « Elles ne s'ouvriront pas » ; 2 planches `ml_ens_sas` + lueurs rouges clignotantes |
+| Mur et portes du sas | x0–40, z0–2 ; portes x10–30, h 13 | sprites d'Ocre, joint plein ; **aucune porte de jeu vers le sas**, clic = « Elles ne s'ouvriront pas » ; 2 planches `ml_ens_sas` + lueurs rouges clignotantes |
 | Voie, heurtoir | x14–17, z3,4–28 ; heurtoir z2–3,4 | voie au ras du sol, traversable ; heurtoir plein |
 | Quai | x17–23, z3–24, +1,1 | bords en pente douce de 0,6 m (pas de marche ratée), rampe au sud ; panneau vierge x18,5–21,5 (phrase par le code) ; Régie côté sas face à la voie |
-| Voiture d'accès | x14–17, z20–28 | porte est éclairée orange : `tm_rame_quai` (seuil 18,2 ; 25,2) |
+| Rame à quai | x14–17, z3,4–20 (2 voitures) + voiture d'accès z20–28 | la vraie rame, violette (exception au terminus) ; porte est de la voiture : `tm_rame_quai` (seuil 18,2 ; 25,2) |
 | Bureau de fret + dock | x2–9 + x9–11, z9–14 | Odile Ferraz devant |
 | Portique de levage | x24–37, z8–21, h 13 | 4 pieds pleins ; 2 gyrophares orange (planche existante + lueurs) ; Bruno au pied, au sud |
-| Conteneurs | 3 rangées × 2 piles, x24,5–36,5, z9,5–19 | piles de 2 = `ml_conteneurs` existant ; piles de 3 = gabarit `ml_tm_conteneurs_x3_v2_3q` |
-| Hangar, locaux techniques | x0–9 z2–7 ; x0–8 z17–28 ; x37–40 z2–28 | gabarits pleins |
+| Conteneurs | 3 rangées × 2 piles, x24,5–36,5, z9,5–19 | piles de 2 = `ml_tm_conteneurs_x2_v2_3q`, piles de 3 = `ml_tm_conteneurs_x3_v2_3q` ; poutres `_avant` du portique dessinées après |
+| Hangar, locaux techniques | x0–9 z2–7 ; x0–8 z17–28 ; x37–40 z2–28 | sprites d'Ocre, pleins |
 | Passerelle sud-ouest | x8–12, z24–28 | arrivée ; porte `tm_sud` au bord sud (10 ; 28) -> `ml_passerelle` |
 
 ## Le quai à +6 m : choix de modélisation
@@ -138,7 +138,7 @@ ce qui est posé dessus et personnages en hauteur 2) quand deux emprises se reco
 `tests/megaline_rapide.py` (URL, OUT) ; `tests/mega_rapide.py` (rame jouable, 4 espèces) mis aux nouvelles coordonnées.
 
 ## Écarts connus
-- Ligne : lots 1 et 2 posés. Terminus : gabarits jusqu'au lot 3.
+- Ligne : lots 1 et 2 posés. Terminus : lot 3 posé. Plus aucun gabarit dans les deux lieux.
 - Quand on passe dans la ruelle derrière le quai, le tablier passe à 30 % (règle d'occultation commune) et laisse voir les échoppes. Le cadre caméra ordinateur (z16–24) montre peu la ruelle.
 - Le rez sous le quai n'est pas praticable (voir plus haut) ; la galerie couverte se voit, on n'y marche pas.
 - Bâti E : sa façade sur rue (ouest) est peu visible dans l'angle du jeu ; à soigner côté sud.
@@ -177,3 +177,29 @@ iso le projette en parallélogramme (pente 0,33). L'image garde sa taille (256 p
 
 **Échelle** : aucune pièce hors échelle. Largeur et hauteur des images mesurées par rapport à la boîte projetée (w × d × h à 50 px/m) : 1,01 à 1,07.
 Les écarts viennent des débords (auvents, socle de pile 2 × 2, escaliers de secours). La terrasse fait 0,76 parce que le mobilier ne remplit pas ses 2 × 2 m.
+
+## Lot 3 d'Ocre posé (terminus, f86e5ec)
+
+Poses de la fiche d'ASSETS.md (lot 3), base y 0, échelle 1. Les six écarts avec notre fiche, sa fiche gagne :
+1. `ml_tm_voiture_v2_3q` est la dernière voiture de la vraie rame, violette (exception au « pas de violet » du terminus) ;
+2. `ml_tm_rame_nord_v2_3q` (x14–17, z3,4–20, pleine) est posée avant la voiture ;
+3. les piles de deux conteneurs passent sur `ml_tm_conteneurs_x2_v2_3q`. L'ancien `ml_conteneurs` n'est pas à 50 px/m et n'est plus posé ;
+4. la passerelle est posée une seule fois, en 4 × 4 en (8 ; 24), avec les solides des deux garde-corps ;
+5. la rampe du quai va de z22 à z24 (déjà le cas dans `niveaux`) ;
+6. `ml_tm_portique_levage_v2_3q_avant` se dessine après les conteneurs.
+
+Tri : zone `cour` (portique 0 < conteneurs 1 < poutres `_avant` 2 < gyrophares 3) et zone `quai` (quai 1 < panneau 2, personnages sur le quai).
+Les portes du sas restent pleines et ne s'ouvrent jamais : aucune porte de jeu, le clic dit « Elles ne s'ouvriront pas ». Lampes d'alerte rouges
+`ml_ens_sas` sur les boîtiers éteints. La phrase « Dernier arrêt avant No Man's Land » est affichée par le code sur le panneau vierge.
+
+Échelle : rien n'est hors échelle (rapport image / boîte projetée entre 0,95 et 1,06). Trois exceptions, sans gravité :
+- la voûte (0,87 en hauteur) parce qu'elle est cintrée ;
+- le dock (1,26 en hauteur), à cause des caisses et des bidons posés dessus ;
+- la passerelle SO, plus étroite que son emprise : 249 px pour 278 attendus, et 91 px à droite de l'ancre pour 113, soit environ 3,2 m de profondeur sur 4. À reprendre si Ocre la refait.
+
+Le portique, peint à ×1,10 d'après sa fiche, mesure 944 × 1024 px pour 904 × 1031 attendus : il reste dans la tolérance.
+
+**Passage par le vestibule (choix de jeu, à valider par Régie et Ocre).** Avec la rame nord pleine (z3,4–20), la voiture (z20–28) et le heurtoir
+(z2–3,4), la voie est occupée sur toute sa longueur. Le quai, Régie, la cour et Bruno seraient alors coupés de l'arrivée (passerelle SO).
+On traverse donc par le vestibule de la voiture d'accès, portes ouvertes en z25–26 : le solide de la voiture laisse 1 m libre à cet endroit.
+La face ouest de la voiture ne se voit pas dans l'angle du jeu. La jonction `tm_rame_quai` reste au seuil (18,2 ; 25,2).

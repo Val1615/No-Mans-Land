@@ -1,7 +1,7 @@
 # Test rapide Mega-Line v2 (64 x 40 m) et terminus v2 (40 x 28 m), plan du 17/11 (docs/villes/steel/quartiers/mega_line/MEGALINE_V2_IMPL.md).
 # Vérifie : chargement des deux lieux, passages de portes (c_mega <-> ml_sud, ml_passerelle <-> tm_sud), quai à +6 m atteint seulement par les
 # escaliers (chemins, bande d'embarquement fermée, aucun saut de niveau), portes du sas jamais ouvrables, PNJ présents et abordables, gabarits en
-# modules d'Ocre posés (lots 1 et 2) sur la ligne, gabarits du terminus, rame avant/dos qui passe sans s'arrêter, tri du peintre (poutres _avant),
+# modules d'Ocre posés (lots 1 et 2 sur la ligne, lot 3 au terminus), rame avant/dos qui passe sans s'arrêter, tri du peintre (poutres _avant),
 # écrans Vibes O / Tron E dans les cadres, migration des sauvegardes de l'ancien plan, aucune erreur console. Captures 1280x800 et 390x844.
 # Env : URL (défaut http://127.0.0.1:8915/), OUT (défaut /tmp/nml-test-out/megaline_plan/). Intro sautée (navigateur piloté) ; ?dev=1&map=... possible via MAP=1.
 import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot
@@ -9,7 +9,7 @@ import time, os, sys, json
 from playwright.sync_api import sync_playwright
 URL = os.environ.get('URL', 'http://127.0.0.1:8915/')
 if not URL.endswith('/'): URL += '/'
-OUT = os.environ.get('OUT', '/tmp/nml-test-out/megaline_lots12/'); OUT = OUT if OUT.endswith('/') else OUT + '/'; os.makedirs(OUT + 'livraison', exist_ok=True)
+OUT = os.environ.get('OUT', '/tmp/nml-test-out/megaline_lot3/'); OUT = OUT if OUT.endswith('/') else OUT + '/'; os.makedirs(OUT + 'livraison', exist_ok=True)
 fails = []; n = 0
 def ok(c, m, d=''):
     global n; print(('OK   ' if c else 'ECHEC ') + m + ('' if c else f'  {d}'), flush=True); n += bool(c); c or fails.append(m)
@@ -107,6 +107,12 @@ with sync_playwright() as p:
         tp('steel_megaline', 46, 3); time.sleep(.5); E("window.__nml.game.useDoor('ml_passerelle')"); time.sleep(2.5); pret('steel_terminus')
         q = pos(); ok(loc() == 'steel_terminus' and q[1] > 25, f'{name} passerelle -> terminus (arrivée sud-ouest)', (loc(), q))
         time.sleep(1.5); pg.screenshot(path=OUT + f'{name}_terminus_arrivee.png')
+        L3 = E("Object.entries(window.__nml.bman).filter(([k,v])=>/^ml_tm_.*_v2_3q$/.test(k)&&v.footprint_m).map(([k])=>k)")
+        BT = E("window.__nml.world.LOCATIONS.steel_terminus.buildings.map(b=>b.sprite)"); manque = [k for k in L3 if k not in BT]
+        ok(len(L3) >= 18 and not manque and 'ml_tm_portique_levage_v2_3q_avant' in BT, f'{name} terminus : {len(L3)} modules du lot 3 posés (+ poutres _avant du portique)', manque)
+        ok(not E("window.__nml.world.LOCATIONS.steel_terminus.buildings.some(b=>b.attente||!window.__nml.bman[b.sprite]||b.sprite==='ml_conteneurs')"), f'{name} terminus : plus aucun gabarit, piles de 2 sur ml_tm_conteneurs_x2')
+        O = E("(()=>{const v=window.__nml.view;return Object.fromEntries(['ml_portique','ml_cont0','ml_cont5','tm2_portique_avant','ml_e_gyro0','tm2_rame_nord','tm2_voiture','tm2_quai','ml_panneau','tm2_voute','ml_sas'].map(i=>[i,v.ordreBat(i)]))})()")
+        ok(all(O.values()) and O['ml_portique'] < min(O['ml_cont0'], O['ml_cont5']) and max(O['ml_cont0'], O['ml_cont5']) < O['tm2_portique_avant'] < O['ml_e_gyro0'] and O['tm2_rame_nord'] < O['tm2_voiture'] and O['tm2_quai'] < O['ml_panneau'] and O['tm2_voute'] < O['ml_sas'], f'{name} tri terminus : portique < conteneurs < poutres _avant < gyrophares ; rame nord < voiture ; quai < panneau', O)
         pres = E("window.__nml.world.NPCS.filter(n=>n.location==='steel_terminus').map(n=>n.id)")
         ok(all(i in pres for i in NPC_TERM), f'{name} terminus : Régie, Odile, Bruno présents', pres)
         bad = []
@@ -139,28 +145,31 @@ with sync_playwright() as p:
         tp('steel_terminus', 15, 19, plans=False); time.sleep(.3); q = pos()
         ok(abs(q[0] - 10) < 0.1 and abs(q[1] - 26.4) < 0.1, f'{name} terminus : sauvegarde de l ancien plan -> arrivée', q)
         ok(not errs, f'{name} aucune erreur console', errs[:3]); ctx.close()
-    # cadrage de la maquette d'Ocre (lot2_maquette_ligne.png, 3850 x 2535 à 50 px/m) : vue entière à 25 px/m, mise côte à côte
-    ctx = br.new_context(viewport={'width': 1925, 'height': 1268}); pg = ctx.new_page(); E = pg.evaluate
-    pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=90000); time.sleep(1)
-    E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
-    E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
-    E("(()=>{const g=window.__nml.game,s=g.snapshot();s.location='steel_megaline';s.player.x=32;s.player.z=38.2;g.restore(s,true)})()")
-    t0 = time.time()
-    while time.time() - t0 < 60 and not E("window.__nml.lieuPret('steel_megaline')"): time.sleep(.3)
-    CX, CZ = float(os.environ.get('ISO_X', '30.5')), float(os.environ.get('ISO_Z', '17'))
-    E(f"window.__nml.view.setCamera({{x:{CX},z:{CZ},ppm:25}})"); E("for(const id of ['hud','locbox','obj','keys','zoom','act','mini','labels']){const e=document.getElementById(id);if(e)e.style.visibility='hidden'}")
-    t0 = time.time()
-    while time.time() - t0 < 32 and not (E("window.__nml.view.rameEtat()[0]||{}").get('passe') and 30 < E("window.__nml.view.rameEtat()[0].x") < 60): time.sleep(.4)
-    time.sleep(.3); pg.screenshot(path=OUT + 'iso_cadrage_maquette.png'); ctx.close()
-    try:
-        from PIL import Image
-        a = Image.open(OUT + 'iso_cadrage_maquette.png').convert('RGB'); m = Image.open('/workspace/nml-shots/megaline_sprites/lot2_maquette_ligne.png').convert('RGB').resize(a.size, Image.LANCZOS)
-        c = Image.new('RGB', (a.width * 2 + 20, a.height), '#000'); c.paste(m, (0, 0)); c.paste(a, (a.width + 20, 0)); c.save(OUT + 'livraison/comparaison_maquette_jeu.jpg', quality=85)
-    except Exception as e: print('comparaison :', e)
+    # cadrage des maquettes d'Ocre (50 px/m) : vue entière à 25 px/m, mise côte à côte avec la maquette réduite de moitié
+    def iso(lieu, sx, sz, cx, cz, maquette, nom, rame):
+        ctx = br.new_context(viewport={'width': 1925, 'height': 1268}); pg = ctx.new_page(); E = pg.evaluate
+        pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=90000); time.sleep(1)
+        E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
+        E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
+        E(f"(()=>{{const g=window.__nml.game,s=g.snapshot();s.location='{lieu}';s.player.x={sx};s.player.z={sz};g.restore(s,true)}})()")
+        t0 = time.time()
+        while time.time() - t0 < 60 and not E(f"window.__nml.lieuPret('{lieu}')"): time.sleep(.3)
+        E(f"window.__nml.view.setCamera({{x:{cx},z:{cz},ppm:25}})"); E("for(const id of ['hud','locbox','obj','keys','zoom','act','mini','labels']){const e=document.getElementById(id);if(e)e.style.visibility='hidden'}")
+        t0 = time.time()
+        while rame and time.time() - t0 < 32 and not (E("window.__nml.view.rameEtat()[0]||{}").get('passe') and 30 < E("window.__nml.view.rameEtat()[0].x") < 60): time.sleep(.4)
+        time.sleep(1.5); pg.screenshot(path=OUT + nom + '.png'); ctx.close()
+        try:
+            from PIL import Image
+            a = Image.open(OUT + nom + '.png').convert('RGB'); m = Image.open('/workspace/nml-shots/megaline_sprites/' + maquette).convert('RGB')
+            m = m.resize((m.width // 2, m.height // 2), Image.LANCZOS)  # 50 -> 25 px/m, même échelle que la capture
+            c = Image.new('RGB', (m.width + a.width + 20, max(a.height, m.height)), '#000'); c.paste(m, (0, 0)); c.paste(a, (m.width + 20, 0)); c.save(OUT + 'livraison/comparaison_' + nom + '.jpg', quality=85)
+        except Exception as e: print('comparaison :', e)
+    iso('steel_megaline', 32, 38.2, float(os.environ.get('ISO_X', '31')), float(os.environ.get('ISO_Z', '18.5')), 'lot2_maquette_ligne.png', 'iso_cadrage_maquette', True)
+    iso('steel_terminus', 10, 26.4, 24, 10, 'lot3_maquette_terminus.png', 'iso_cadrage_maquette_terminus', False)
     # sélection 1x (jpg) pour la livraison
     try:
         from PIL import Image
-        for f in ['desktop_ligne_arrivee', 'desktop_ligne_quai', 'desktop_ligne_sous_viaduc', 'desktop_ligne_echoppes', 'mobile_ligne_arrivee', 'mobile_ligne_quai', 'mobile_ligne_sous_viaduc', 'mobile_ligne_echoppes', 'desktop_terminus_arrivee', 'iso_cadrage_maquette']:
+        for f in ['desktop_ligne_arrivee', 'desktop_ligne_quai', 'desktop_ligne_sous_viaduc', 'desktop_ligne_echoppes', 'mobile_ligne_arrivee', 'mobile_ligne_quai', 'mobile_ligne_sous_viaduc', 'mobile_ligne_echoppes', 'desktop_terminus_arrivee', 'desktop_terminus_sas', 'mobile_terminus_arrivee', 'mobile_terminus_sas', 'iso_cadrage_maquette', 'iso_cadrage_maquette_terminus']:
             if os.path.exists(OUT + f + '.png'): Image.open(OUT + f + '.png').convert('RGB').save(OUT + 'livraison/' + f + '.jpg', quality=88)
     except Exception as e: print('livraison jpg :', e)
     print(f'{n}/{n + len(fails)} OK'); print('ECHECS', len(fails)); sys.exit(1 if fails else 0)

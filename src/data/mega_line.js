@@ -81,34 +81,39 @@ export const BUILDINGS_MEGA = [
   B('ml_banc2', '', 'ml_banc', 11, 36.6, 2, 0.6, { named: false }), B('ml_banc3', '', 'ml_banc', 51, 36.6, 2, 0.6, { named: false }),
 ];
 const CONT = [[24.5, 9.5, 2], [30.5, 9.5, 2], [24.5, 13, 3], [30.5, 13, 2], [24.5, 16.5, 2], [30.5, 16.5, 3]]; // 3 rangées de 2 piles (allées de 1 m), 2 ou 3 niveaux
+// Lot 3 d'Ocre (f86e5ec), poses de sa fiche (ASSETS.md, lot 3) : échelle 1, ancre au coin avant sud-est, base y 0 (quai et rame portent leur hauteur).
+// Tri : zone 'cour' (portique 0 < conteneurs 1 < poutres _avant du portique 2 < gyrophares 3), zone 'quai' (quai 1 < panneau 2, personnages sur le quai).
 export const BUILDINGS_TERMINUS = [
-  // Lot 3 · voûte (fond), mur et portes du sas (z0-2) : pleines, fermées, sans lumière de dehors
-  G('tm2_voute', 'ml_tm_voute_v2_3q', 0, 0, 40, 2, { h: 18, color: '#33373b' }, { solid: [], fond: true }),
-  G('tm2_mur_o', 'ml_tm_sas_mur_o_v2_3q', 0, 0, 10, 2, { h: 13, color: '#585d62' }),
-  B('ml_sas', 'Les portes du sas', 'ml_tm_sas_portes_v2_3q', 10, 0, 20, 2, { attente: { cle: 'ml_tm_sas_portes_v2_3q', h: 13 }, tint: '#ffffff',
-    ph: { h: 13, color: '#4c545c', lights: [{ x: 10, y: 6.5, w: 0.14, h: 13, c: '#121416' }, { x: 10, y: 0.7, w: 19.6, h: 0.6, c: '#b8962a' }, { x: 10, y: 12.2, w: 19.6, h: 0.4, c: '#b8962a' }] } }),
-  G('tm2_mur_e', 'ml_tm_sas_mur_e_v2_3q', 30, 0, 10, 2, { h: 13, color: '#585d62' }),
-  ENS('ml_e_sas0', 'ml_ens_sas', 13.5, 2.15, 12.4, { groupe: 'sas', ph: 0 }), ENS('ml_e_sas1', 'ml_ens_sas', 26.5, 2.15, 12.4, { groupe: 'sas', ph: 2 }), // lampes d'alerte rouges qui clignotent (planche existante)
-  // voie, heurtoir, quai à l'est de la voie (+1,1 m), voiture d'accès à la rame
-  G('tm2_voie', 'ml_tm_voie_v2_3q', 14, 3.4, 3, 24.6, { h: 0.2, color: '#2b2a28' }, { solid: [], fond: true }),
-  G('tm2_heurtoir', 'ml_tm_heurtoir_v2_3q', 14, 2, 3, 1.4, { h: 1.2, color: '#8a2a24' }),
-  G('tm2_quai', 'ml_tm_quai_v2_3q', 17, 3, 6, 21, { h: 1.1, color: '#55585a' }, { solid: [], etage: 1 }),
-  G('tm2_voiture', 'ml_tm_voiture_v2_3q', 14, 20, 3, 8, { h: 3.6, color: '#34383d', lightsE: [{ z: 5, y: 1.3, w: 1.2, h: 2, c: '#c9541e' }] }),
-  B('ml_panneau', 'Dernier arrêt avant No Man\u2019s Land', 'ml_panneau_terminus', 18.5, 3.4, 3, 0.5, { sign: true, y: 1.1, etage: 2 }), // phrase affichée par le code (libellé), panneau vierge
-  // bureau de la gare de fret et son dock (allée de 3 m jusqu'à la voie), hangar, locaux techniques
-  G('ml_bureau', 'ml_tm_bureau_fret_v2_3q', 2, 9, 7, 5, { h: 4, color: '#535960', lights: [{ x: 2.2, y: 2, w: 1.8, h: 1.1, c: '#e8a13a' }, { x: 5.4, y: 1.1, w: 1.2, h: 2.1, c: '#c98a3a' }] }, { label: 'Bureau de la gare de fret' }),
-  G('tm2_dock', 'ml_tm_dock_v2_3q', 9, 9, 2, 5, { h: 1.2, color: '#44474a' }),
-  G('tm2_hangar', 'ml_tm_hangar_v2_3q', 0, 2, 9, 5, { h: 6, color: '#50565b', roof: 'pitched', roofColor: '#3a3f43', lights: [{ x: 6.5, y: 1.6, w: 3, h: 3, c: '#c98a3a' }] }),
-  G('tm2_loc_so', 'ml_tm_locaux_so_v2_3q', 0, 17, 8, 11, { h: 5, color: '#4a5055', lights: [{ x: 2, y: 2.2, w: 1.4, h: 1, c: '#e8a13a' }], lightsE: [{ z: 3, y: 1.2, w: 1.1, h: 2.1, c: '#c98a3a' }] }),
-  G('tm2_loc_e', 'ml_tm_locaux_e_v2_3q', 37, 2, 3, 26, { h: 6, color: '#4a5055', lights: [{ x: 1.5, y: 2.2, w: 1.4, h: 1, c: '#e8a13a' }] }),
-  // portique de levage jaune (13 x 13 m, seuls les pieds sont pleins) et cour de conteneurs (piles de 2 : ml_conteneurs existant ; piles de 3 : gabarit)
-  B('ml_portique', 'Portique de levage', 'ml_tm_portique_levage_v2_3q', 24, 8, 13, 13, { attente: { cle: 'ml_tm_portique_levage_v2_3q', h: 13 }, tint: '#ffffff', etage: 1, ph: { kind: 'portique', h: 13, color: '#c9a227' },
+  // voûte (fond), murs et portes du sas (z0-2) : pleines, fermées, joint plein, sans lumière de dehors
+  B('tm2_voute', '', 'ml_tm_voute_v2_3q', 0, 0, 40, 2, { named: false, solid: [], fond: true }),
+  B('tm2_mur_o', '', 'ml_tm_sas_mur_o_v2_3q', 0, 0, 10, 2, { named: false }),
+  B('ml_sas', 'Les portes du sas', 'ml_tm_sas_portes_v2_3q', 10, 0, 20, 2, {}), // boîtiers éteints en x13,5 / 26,5 : les lampes ml_ens_sas tombent dessus
+  B('tm2_mur_e', '', 'ml_tm_sas_mur_e_v2_3q', 30, 0, 10, 2, { named: false }),
+  ENS('ml_e_sas0', 'ml_ens_sas', 13.5, 2.15, 12.4, { groupe: 'sas', ph: 0 }), ENS('ml_e_sas1', 'ml_ens_sas', 26.5, 2.15, 12.4, { groupe: 'sas', ph: 2 }), // lampes d'alerte rouges qui clignotent
+  // hangar, heurtoir, voie (fond), quai à l'est de la voie (+1,1 m sur z3-22, rampe z22-24)
+  B('tm2_hangar', '', 'ml_tm_hangar_v2_3q', 0, 2, 9, 5, { named: false }),
+  B('tm2_heurtoir', '', 'ml_tm_heurtoir_v2_3q', 14, 2, 3, 1.4, { named: false }),
+  B('tm2_voie', '', 'ml_tm_voie_v2_3q', 14, 3.4, 3, 24.6, { named: false, solid: [], fond: true }),
+  B('tm2_quai', '', 'ml_tm_quai_v2_3q', 17, 3, 6, 21, { zone: 'quai', named: false, solid: [], etage: 1 }),
+  // la vraie rame à quai (violette, exception au terminus) : deux voitures tête au nord, puis la voiture d'accès (porte est z25-26, jonction tm_rame_quai)
+  B('tm2_rame_nord', '', 'ml_tm_rame_nord_v2_3q', 14, 3.4, 3, 16.6, { named: false, solid: [{ x: 14, z: 3.4, w: 3, d: 16.6 }] }),
+  // la rame occupe toute la voie (z3,4-28) : on traverse par le vestibule de la voiture d'accès (portes ouvertes, z25-26), sinon le quai et la cour
+  // seraient coupés de l'arrivée (passerelle SO) ; la jonction tm_rame_quai reste sur le quai, au seuil (18,2 ; 25,2)
+  B('tm2_voiture', '', 'ml_tm_voiture_v2_3q', 14, 20, 3, 8, { named: false, solid: [{ x: 14, z: 20, w: 3, d: 5 }, { x: 14, z: 26, w: 3, d: 2 }] }),
+  B('ml_panneau', 'Dernier arrêt avant No Man\u2019s Land', 'ml_panneau_terminus', 18.5, 3.4, 3, 0.5, { zone: 'quai', sign: true, y: 1.1, etage: 2 }), // phrase affichée par le code (libellé), panneau vierge
+  // bureau de la gare de fret et son dock
+  B('ml_bureau', 'Bureau de la gare de fret', 'ml_tm_bureau_fret_v2_3q', 2, 9, 7, 5, {}),
+  B('tm2_dock', '', 'ml_tm_dock_v2_3q', 9, 9, 2, 5, { named: false }),
+  // portique de levage (seuls les pieds sont pleins), conteneurs (piles de 2 et de 3, z croissant), puis poutres _avant du portique
+  B('ml_portique', 'Portique de levage', 'ml_tm_portique_levage_v2_3q', 24, 8, 13, 13, { zone: 'cour', etage: 0,
     solid: [{ x: 24, z: 8, w: 1, d: 1 }, { x: 36, z: 8, w: 1, d: 1 }, { x: 24, z: 20, w: 1, d: 1 }, { x: 36, z: 20, w: 1, d: 1 }] }),
-  ...CONT.map(([x, z, n], i) => n === 2 ? B(`ml_cont${i}`, '', 'ml_conteneurs', x, z, 6, 2.5, { named: false })
-    : G(`ml_cont${i}`, 'ml_tm_conteneurs_x3_v2_3q', x, z, 6, 2.5, { h: 7.8, color: i % 2 ? '#2a3f66' : '#7a2a26' })),
-  ENS('ml_e_gyro0', 'ml_ens_gyrophare', 24.5, 8.6, 13.1, { groupe: 'gyrophares', ph: 0, etage: 2 }), ENS('ml_e_gyro1', 'ml_ens_gyrophare', 36.5, 8.6, 13.1, { groupe: 'gyrophares', ph: 2, etage: 2 }),
-  // passerelle de service (arrivée de la ligne, sud-ouest)
-  G('tm2_pass', 'ml_tm_passerelle_v2_3q', 8, 24, 0.3, 4, { h: 1.1, color: '#3d4246' }), G('tm2_pass_e', 'ml_tm_passerelle_v2_3q', 11.7, 24, 0.3, 4, { h: 1.1, color: '#3d4246' }, { repliDe: 'tm2_pass' }),
+  ...CONT.map(([x, z, n], i) => B(`ml_cont${i}`, '', n === 2 ? 'ml_tm_conteneurs_x2_v2_3q' : 'ml_tm_conteneurs_x3_v2_3q', x, z, 6, 2.5, { zone: 'cour', etage: 1, named: false })),
+  B('tm2_portique_avant', '', 'ml_tm_portique_levage_v2_3q_avant', 24, 8, 13, 13, { zone: 'cour', etage: 2, named: false, solid: [] }),
+  ENS('ml_e_gyro0', 'ml_ens_gyrophare', 24.5, 8.6, 13.1, { zone: 'cour', groupe: 'gyrophares', ph: 0, etage: 3 }), ENS('ml_e_gyro1', 'ml_ens_gyrophare', 36.5, 8.6, 13.1, { zone: 'cour', groupe: 'gyrophares', ph: 2, etage: 3 }),
+  // locaux techniques, passerelle de service (arrivée de la ligne, sud-ouest) : une pose 4 x 4, garde-corps pleins
+  B('tm2_loc_e', '', 'ml_tm_locaux_e_v2_3q', 37, 2, 3, 26, { named: false }),
+  B('tm2_loc_so', '', 'ml_tm_locaux_so_v2_3q', 0, 17, 8, 11, { named: false }),
+  B('tm2_pass', '', 'ml_tm_passerelle_v2_3q', 8, 24, 4, 4, { named: false, solid: [{ x: 8, z: 24, w: 0.3, d: 4 }, { x: 11.7, z: 24, w: 0.3, d: 4 }] }),
 ];
 export const CLOSED_MEGA = {
   ml_portique_implant: 'Le portique à implant. Deux piliers, deux volets vitrés, un lecteur éteint. Il lit la nuque des gens.',
@@ -138,7 +143,7 @@ export const LOCATIONS_MEGA = {
       { sprite: 'gen_ml_foule_b', path: [[3, 37.5], [61, 37.5]], speed: 0.8, t0: 10 }, { sprite: 'gen_ml_foule_a', path: [[13.5, 33], [13.5, 10.2], [50, 10.2], [50.5, 33]], speed: 0.85, t0: 30 } ],
     spawn: { player: { x: 32, z: 38.2 }, companion: { x: 33, z: 38.2 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'La Mega-Line. Le viaduc de fer noir passe à six mètres au-dessus de la rue ; la rame violette glisse sans s\u2019arrêter. Sur le quai, Vibes et Tron passent en boucle.' } },
-  steel_terminus: { id: 'steel_terminus', name: 'Steel-Megalopolis · Terminus de fret', kind: 'exterior', size: { w: 40, d: 28 }, light: FRET, plan: 2,
+  steel_terminus: { id: 'steel_terminus', name: 'Steel-Megalopolis · Terminus de fret', kind: 'exterior', size: { w: 40, d: 28 }, light: FRET, plan: 2, zoneNiveau: 'quai',
     cadre: { desktop: { x: [17, 23], z: [6, 16] }, mobile: { x: [8, 32], z: [4, 22] } }, // z min bas : on voit les portes du sas (13 m) en s'en approchant
     ground: { base: '#141414', skin: 'g_ml_fret', tileM: 4, clean: true },
     niveaux: [{ x: 17, z: 3, w: 6, d: 19, y: 1.1 }, { x: 17, z: 22, w: 6, d: 2, y0: 1.1, y1: 0, axe: 'z' }, { x: 16.4, z: 3, w: 0.6, d: 19, y0: 0, y1: 1.1, axe: 'x' }, { x: 23, z: 3, w: 0.6, d: 19, y0: 1.1, y1: 0, axe: 'x' }], // quai bas (+1,1 m) : bords en pente douce
