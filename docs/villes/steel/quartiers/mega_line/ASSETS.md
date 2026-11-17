@@ -204,3 +204,75 @@ B('ml_be', '', 'ml_bati_e_v2_3q', 54, 14, 10, 18, { solid: [{ x: 54, z: 14, w: 1
 - Le portique à implant, les bancs, les lampadaires et les PNJ ne sont pas des pièces de ce lot : ce sont les clés existantes à poser.
 
 Planche contact : `/workspace/nml-shots/megaline_sprites/lot2_planche_contact.png`. Maquettes de la zone avec les lots 1 et 2 : `lot2_maquette_ligne.png` et `lot2_maquette_ligne_nuit.png`. Ces images sont hors jeu.
+
+## Mega-Line v2 — lot 3 : terminus (Ocre, 2026-11-17)
+
+Dix-huit nouvelles clés `ml_tm_*_v2_3q` dans `assets/steel/mega_line/` (+ calques `_fenetres` / `_neon` par masque géométrique, + `ml_tm_portique_levage_v2_3q_avant`), groupe `ml_v2_terminus`, partie `terminus`. Noms de la liste de Rivet (`src/data/mega_line.js`), plus deux clés en plus (`ml_tm_rame_nord_v2_3q`, `ml_tm_conteneurs_x2_v2_3q`). Même méthode que les lots 1 et 2 : modèle 3D à la caméra du jeu (silhouette et alpha verrouillés), matière repeinte image-à-image, une seule mise à l'échelle uniforme. Pentes mesurées 0,33 / 0,70. Ancre = coin (x+w, z+d) au sol. Aucun ciel, aucun désert, aucune lumière du dehors ; le seul violet du terminus est la rame.
+
+| Clé | Emprise (m) | h | px | Ancre | Calques |
+|---|---|---|---|---|---|
+| `ml_tm_voute_v2_3q` | 40 × 2 | 18 | 1717 × 1192 | 1654, 1188 | neon |
+| `ml_tm_sas_mur_o_v2_3q` | 10 × 2 | 13 | 481 × 758 | 418, 752 | neon |
+| `ml_tm_sas_portes_v2_3q` | 20 × 2 | 13 | 905 × 903 | 841, 888 | — |
+| `ml_tm_sas_mur_e_v2_3q` | 10 × 2 | 13 | 481 × 758 | 418, 752 | neon |
+| `ml_tm_heurtoir_v2_3q` | 3 × 1,4 | 1,2 | 151 × 129 | 113, 125 | neon |
+| `ml_tm_voie_v2_3q` | 3 × 24,6 | 0,2 | 833 × 545 | 130, 539 | — |
+| `ml_tm_quai_v2_3q` | 6 × 21 | 1,1 | 854 × 560 | 253, 553 | — |
+| `ml_tm_rame_nord_v2_3q` (en plus) | 3 × 16,6 | 3,6 | 598 × 502 | 125, 498 | fenetres, neon |
+| `ml_tm_voiture_v2_3q` | 3 × 8 | 3,6 | 354 × 361 | 125, 357 | fenetres, neon |
+| `ml_tm_bureau_fret_v2_3q` | 7 × 5 | 4 | 456 × 387 | 301, 379 | fenetres |
+| `ml_tm_dock_v2_3q` | 2 × 5 | 1,2 | 237 × 226 | 88, 219 | — |
+| `ml_tm_portique_levage_v2_3q` (+ `_avant`) | 13 × 13 | 13,6 | 944 × 1024 | 556, 1011 | — |
+| `ml_tm_conteneurs_x3_v2_3q` | 6 × 2,5 | 7,8 | 331 × 486 | 253, 479 | — |
+| `ml_tm_conteneurs_x2_v2_3q` (en plus) | 6 × 2,5 | 5,2 | 331 × 372 | 253, 365 | — |
+| `ml_tm_hangar_v2_3q` | 9 × 5 | 6 | 525 × 463 | 377, 441 | neon |
+| `ml_tm_locaux_so_v2_3q` | 8 × 11 | 5 | 662 × 588 | 339, 580 | fenetres, neon |
+| `ml_tm_locaux_e_v2_3q` | 3 × 26 | 6 | 875 × 840 | 132, 833 | neon |
+| `ml_tm_passerelle_v2_3q` | 4 × 4 | 2,6 | 249 × 231 | 158, 227 | — |
+
+**Poses.** Celles du plan de Rivet, base y 0 partout (le quai et la rame portent leur hauteur dans l'image) :
+```js
+G('tm2_voute', 'ml_tm_voute_v2_3q', 0, 0, 40, 2, …, { solid: [], fond: true }),
+G('tm2_mur_o', 'ml_tm_sas_mur_o_v2_3q', 0, 0, 10, 2, …),
+B('ml_sas', 'Les portes du sas', 'ml_tm_sas_portes_v2_3q', 10, 0, 20, 2, …),   // boîtiers éteints en x 13,5 / 26,5 : ml_ens_sas (z 2,15, h 12,4) tombe dessus
+G('tm2_mur_e', 'ml_tm_sas_mur_e_v2_3q', 30, 0, 10, 2, …),
+G('tm2_hangar', 'ml_tm_hangar_v2_3q', 0, 2, 9, 5, …),
+G('tm2_heurtoir', 'ml_tm_heurtoir_v2_3q', 14, 2, 3, 1.4, …),
+G('tm2_voie', 'ml_tm_voie_v2_3q', 14, 3.4, 3, 24.6, …, { solid: [], fond: true }),
+G('tm2_quai', 'ml_tm_quai_v2_3q', 17, 3, 6, 21, …, { solid: [], etage: 1 }),   // plancher +1,1 sur z 3–22, rampe z 22–24
+G('tm2_rame_nord', 'ml_tm_rame_nord_v2_3q', 14, 3.4, 3, 16.6, { h: 3.6 }, { solid: [{ x: 14, z: 3.4, w: 3, d: 16.6 }] }),  // NOUVELLE
+G('tm2_voiture', 'ml_tm_voiture_v2_3q', 14, 20, 3, 8, …),   // porte est ouverte en z 25–26, face à la jonction tm_rame_quai (17 ; 25,2)
+G('ml_bureau', 'ml_tm_bureau_fret_v2_3q', 2, 9, 7, 5, …),
+G('tm2_dock', 'ml_tm_dock_v2_3q', 9, 9, 2, 5, …),
+B('ml_portique', 'Portique de levage', 'ml_tm_portique_levage_v2_3q', 24, 8, 13, 13, { solid: [4 pieds 1 × 1] }),
+// CONT : piles de 3 -> ml_tm_conteneurs_x3_v2_3q ; piles de 2 -> ml_tm_conteneurs_x2_v2_3q (au lieu de ml_conteneurs)
+G('tm2_portique_avant', 'ml_tm_portique_levage_v2_3q_avant', 24, 8, 13, 13, { solid: [] }),   // APRÈS les conteneurs
+G('tm2_loc_e', 'ml_tm_locaux_e_v2_3q', 37, 2, 3, 26, …),
+G('tm2_loc_so', 'ml_tm_locaux_so_v2_3q', 0, 17, 8, 11, …),
+G('tm2_pass', 'ml_tm_passerelle_v2_3q', 8, 24, 4, 4, { solid: [{ x: 8, z: 24, w: 0.3, d: 4 }, { x: 11.7, z: 24, w: 0.3, d: 4 }] }),  // UNE pose
+```
+**Ordre de dessin.**
+1. voûte (fond), murs et portes du sas ;
+2. hangar, heurtoir, voie, quai ;
+3. rame nord, puis voiture ; panneau `ml_panneau_terminus` ;
+4. bureau et dock ;
+5. portique, conteneurs (z croissant), puis `ml_tm_portique_levage_v2_3q_avant` ;
+6. locaux E, locaux SO, passerelle.
+Les gyrophares (`ml_ens_gyrophare`) se posent sur les embases vides aux coins du portique (h 13,1).
+
+**Écarts avec le plan de Rivet.**
+- `ml_tm_voiture_v2_3q` est la dernière voiture de la vraie rame, violette (Rivet attendait une voiture sombre `#34383d`) ; feux de queue rouges au sud.
+- `ml_tm_rame_nord_v2_3q` en plus (deux voitures, z 3,4–20, tête au nord hors champ) : sans elle, la voiture d'accès est seule à quai. À poser avant la voiture.
+- `ml_tm_conteneurs_x2_v2_3q` en plus : `ml_conteneurs` existant n'est pas à 50 px/m (280 px pour 6 × 2,5 m) et paraît trop petit à côté des piles de 3.
+- Passerelle : une seule pose 4 × 4 en (8, 24), pas deux garde-corps 0,3 × 4 ; les solides des garde-corps restent ceux de Rivet.
+- Quai : la rampe occupe z 22–24 (le plancher +1,1 s'arrête à z 22).
+
+**Défauts connus.**
+- Portique : peint d'un seul tenant, léger agrandissement ×1,10 (pièce fine, continuité des poutres) ; un reste d'échelle et de cabine du brut subsiste en haut du pied SE.
+- Voie : recalage plus lâche (IoU 0,86) ; moins de traverses que le modèle, rives jaunes irrégulières côté ouest. Pièce de sol, peu visible sous la rame.
+- Passerelle SO : pièce petite et pauvre (tôle des garde-corps pleine, IoU 0,96 mais matière peu lisible).
+- Portes du sas : pas de calque lumineux (boîtiers éteints, c'est voulu) ; l'alerte vient de `ml_ens_sas`.
+- Conteneurs : petites marques illisibles sur les portes (pas de lettrage lisible).
+- Maquette de nuit : la voûte reste sombre, ses suspensions sodium ne sont qu'en `_neon`.
+
+Planche contact : `/workspace/nml-shots/megaline_sprites/lot3_planche_contact.png`. Maquettes posées : `lot3_maquette_terminus.png` et `lot3_maquette_terminus_nuit.png`. Ces images sont hors jeu.

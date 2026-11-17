@@ -2628,5 +2628,785 @@
     "groupe": "ml_v2_rez_bati",
     "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
     "pente_mesuree": "pied gauche 0.333 / droit 0.667 (cible 0,33 / 0,70)"
+  },
+  "ml_tm_voute_v2_3q": {
+    "file": "steel/mega_line/ml_tm_voute_v2_3q.webp",
+    "px": [
+      1717,
+      1192
+    ],
+    "anchor": [
+      1654,
+      1188
+    ],
+    "footprint_m": [
+      40,
+      2
+    ],
+    "height_m": 18,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Voûte du terminus (fond) : tympan de béton banché taché en arc (naissance 8 m, clé 18 m), nervure de rive, nervures d'acier rivetées en x 4 / 12 / 28 / 36, cinq suspensions sodium allumées, chemin de câbles à 13,6 m ; aucun ciel, aucune ouverture",
+    "pose": "G('tm2_voute', 'ml_tm_voute_v2_3q', 0, 0, 40, 2, …, { solid: [], fond: true })  // dessiner en premier",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.8683 (IoU 0.9953), x0.8696 (IoU 0.9977), x0.7517 (IoU 0.9875), x0.8669 (IoU 0.9941)), raccord par fondu ; aucun étirement ni cisaillement (bruts ml_v1/gen/tm_voute_t00..t11_g1, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.331 / droit 0.667 (cible 0,33 / 0,70)",
+    "ordre": "fond : avant tout le reste du terminus",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_voute_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_voute_v2_3q_neon.webp",
+    "px": [
+      1717,
+      1192
+    ],
+    "anchor": [
+      1654,
+      1188
+    ],
+    "additive": true,
+    "parent": "ml_tm_voute_v2_3q",
+    "couche_de": "ml_tm_voute_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_voute_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_sas_mur_o_v2_3q": {
+    "file": "steel/mega_line/ml_tm_sas_mur_o_v2_3q.webp",
+    "px": [
+      481,
+      758
+    ],
+    "anchor": [
+      418,
+      752
+    ],
+    "footprint_m": [
+      10,
+      2
+    ],
+    "height_m": 13,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Mur ouest du sas : béton taché, pilastres et lisses d'acier, bande jaune et noire au pied, canalisation rouge, porte de service avec applique blanche, armoire, plaque VIERGE",
+    "pose": "G('tm2_mur_o', 'ml_tm_sas_mur_o_v2_3q', 0, 0, 10, 2)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9859), UNE mise à l'échelle uniforme x0.7242 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_mur_o_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.331 / droit 0.704 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_sas_mur_o_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_sas_mur_o_v2_3q_neon.webp",
+    "px": [
+      481,
+      758
+    ],
+    "anchor": [
+      418,
+      752
+    ],
+    "additive": true,
+    "parent": "ml_tm_sas_mur_o_v2_3q",
+    "couche_de": "ml_tm_sas_mur_o_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_sas_mur_o_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_sas_portes_v2_3q": {
+    "file": "steel/mega_line/ml_tm_sas_portes_v2_3q.webp",
+    "px": [
+      905,
+      903
+    ],
+    "anchor": [
+      841,
+      888
+    ],
+    "footprint_m": [
+      20,
+      2
+    ],
+    "height_m": 13,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Portes du sas : deux vantaux d'acier riveté PLEINS et fermés (x 1-9,98 / 10,02-19 local), raidisseurs, joint central noir continu sans aucune lumière du dehors, linteau à bande jaune et noire, deux boîtiers d'alerte rouges ÉTEINTS en x 3,5 et 16,5 local (où le code pose ml_ens_sas à h 12,4), chasse-roues jaunes et noirs",
+    "pose": "B('ml_sas', 'Les portes du sas', 'ml_tm_sas_portes_v2_3q', 10, 0, 20, 2, …)  // ENS ml_ens_sas en (13,5 / 26,5 ; z 2,15 ; h 12,4) : correspondent aux boîtiers",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9893), UNE mise à l'échelle uniforme x0.9639 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_portes_g1.jpg (tuiles t00-t11 abandonnées : raccords de nervures incohérents), hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.331 / droit 0.697 (cible 0,33 / 0,70)"
+  },
+  "ml_tm_sas_mur_e_v2_3q": {
+    "file": "steel/mega_line/ml_tm_sas_mur_e_v2_3q.webp",
+    "px": [
+      481,
+      758
+    ],
+    "anchor": [
+      418,
+      752
+    ],
+    "footprint_m": [
+      10,
+      2
+    ],
+    "height_m": 13,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Mur est du sas (miroir du mur ouest) : béton taché, pilastres d'acier, canalisation rouge, porte de service avec applique, armoire, plaque VIERGE",
+    "pose": "G('tm2_mur_e', 'ml_tm_sas_mur_e_v2_3q', 30, 0, 10, 2)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9941), UNE mise à l'échelle uniforme x0.7242 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_mur_e_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.714 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_sas_mur_e_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_sas_mur_e_v2_3q_neon.webp",
+    "px": [
+      481,
+      758
+    ],
+    "anchor": [
+      418,
+      752
+    ],
+    "additive": true,
+    "parent": "ml_tm_sas_mur_e_v2_3q",
+    "couche_de": "ml_tm_sas_mur_e_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_sas_mur_e_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_heurtoir_v2_3q": {
+    "file": "steel/mega_line/ml_tm_heurtoir_v2_3q.webp",
+    "px": [
+      151,
+      129
+    ],
+    "anchor": [
+      113,
+      125
+    ],
+    "footprint_m": [
+      3,
+      1.4
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Heurtoir de fin de voie : butoir d'acier rouge riveté à bande jaune et noire, deux tampons, feu rouge allumé",
+    "pose": "G('tm2_heurtoir', 'ml_tm_heurtoir_v2_3q', 14, 2, 3, 1.4)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9606), UNE mise à l'échelle uniforme x0.1386 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_heurtoir_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.323 / droit 0.059 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_heurtoir_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_heurtoir_v2_3q_neon.webp",
+    "px": [
+      151,
+      129
+    ],
+    "anchor": [
+      113,
+      125
+    ],
+    "additive": true,
+    "parent": "ml_tm_heurtoir_v2_3q",
+    "couche_de": "ml_tm_heurtoir_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_heurtoir_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_voie_v2_3q": {
+    "file": "steel/mega_line/ml_tm_voie_v2_3q.webp",
+    "px": [
+      833,
+      545
+    ],
+    "anchor": [
+      130,
+      539
+    ],
+    "footprint_m": [
+      3,
+      24.6
+    ],
+    "height_m": 0.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Voie du terminus : ballast sombre, traverses béton, deux rails, rives peintes en jaune ; pièce plate de sol",
+    "pose": "G('tm2_voie', 'ml_tm_voie_v2_3q', 14, 3.4, 3, 24.6, …, { solid: [], fond: true })",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8585), UNE mise à l'échelle uniforme x0.7605 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_voie_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.344 / droit 0.702 (cible 0,33 / 0,70)"
+  },
+  "ml_tm_quai_v2_3q": {
+    "file": "steel/mega_line/ml_tm_quai_v2_3q.webp",
+    "px": [
+      854,
+      560
+    ],
+    "anchor": [
+      253,
+      553
+    ],
+    "footprint_m": [
+      6,
+      21
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Quai est du terminus à +1,1 m : dalle de béton carrelée usée, nez de fer et bande jaune côté voie (ouest), tôle striée, rampe de tôle au sud (z local 19-21), garde-corps d'acier à l'est, deux bornes et un banc",
+    "pose": "G('tm2_quai', 'ml_tm_quai_v2_3q', 17, 3, 6, 21, …, { solid: [], etage: 1 })  // plancher +1,1 sur z 3-22, rampe z 22-24 ; ml_panneau_terminus en (18,5 ; 3,4 ; y 1,1)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9579), UNE mise à l'échelle uniforme x0.7902 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_quai_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.702 (cible 0,33 / 0,70)",
+    "rampe": "z monde 22-24 (local 19-21), de +1,1 au sol"
+  },
+  "ml_tm_rame_nord_v2_3q": {
+    "file": "steel/mega_line/ml_tm_rame_nord_v2_3q.webp",
+    "px": [
+      598,
+      502
+    ],
+    "anchor": [
+      125,
+      498
+    ],
+    "footprint_m": [
+      3,
+      16.6
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Rame à quai, partie nord (EN PLUS de la fiche) : voiture milieu + voiture de tête violettes de la vraie rame, fenêtres ambre allumées, liseré ambre, portes fermées, tête au nord (hors champ) ; bout sud = intercirculation fermée qui s'accole à ml_tm_voiture_v2_3q",
+    "pose": "G('tm2_rame_nord', 'ml_tm_rame_nord_v2_3q', 14, 3.4, 3, 16.6, { h: 3.6 }, { solid: [{ x: 14, z: 3.4, w: 3, d: 16.6 }] })  // NOUVELLE pose proposée, à dessiner AVANT la voiture",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.982), UNE mise à l'échelle uniforme x0.625 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_rame_nord_g2.jpg (g1 rejeté : pare-brise peint au bout d'attelage), hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.701 (cible 0,33 / 0,70)",
+    "ordre": "avant ml_tm_voiture_v2_3q",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_tm_rame_nord_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_tm_rame_nord_v2_3q_fenetres.webp",
+    "px": [
+      598,
+      502
+    ],
+    "anchor": [
+      125,
+      498
+    ],
+    "additive": true,
+    "parent": "ml_tm_rame_nord_v2_3q",
+    "couche_de": "ml_tm_rame_nord_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_rame_nord_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_rame_nord_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_rame_nord_v2_3q_neon.webp",
+    "px": [
+      598,
+      502
+    ],
+    "anchor": [
+      125,
+      498
+    ],
+    "additive": true,
+    "parent": "ml_tm_rame_nord_v2_3q",
+    "couche_de": "ml_tm_rame_nord_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_rame_nord_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_voiture_v2_3q": {
+    "file": "steel/mega_line/ml_tm_voiture_v2_3q.webp",
+    "px": [
+      354,
+      361
+    ],
+    "anchor": [
+      125,
+      357
+    ],
+    "footprint_m": [
+      3,
+      8
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Voiture d'accès = dernière voiture de la rame violette : fenêtres ambre allumées, liseré ambre, porte est OUVERTE (intérieur ambre, marchepied) en z local 5, feux de queue rouges au sud",
+    "pose": "G('tm2_voiture', 'ml_tm_voiture_v2_3q', 14, 20, 3, 8, …)  // porte ouverte en z 25-26 face au quai ; jonction tm_rame_quai (17 ; 25,2)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9904), UNE mise à l'échelle uniforme x0.3742 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_voiture_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.703 (cible 0,33 / 0,70)",
+    "ecart": "Rivet attendait une voiture sombre (#34383d) : c'est la vraie rame violette, seul violet du terminus",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_tm_voiture_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_tm_voiture_v2_3q_fenetres.webp",
+    "px": [
+      354,
+      361
+    ],
+    "anchor": [
+      125,
+      357
+    ],
+    "additive": true,
+    "parent": "ml_tm_voiture_v2_3q",
+    "couche_de": "ml_tm_voiture_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_voiture_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_voiture_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_voiture_v2_3q_neon.webp",
+    "px": [
+      354,
+      361
+    ],
+    "anchor": [
+      125,
+      357
+    ],
+    "additive": true,
+    "parent": "ml_tm_voiture_v2_3q",
+    "couche_de": "ml_tm_voiture_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_voiture_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_bureau_fret_v2_3q": {
+    "file": "steel/mega_line/ml_tm_bureau_fret_v2_3q.webp",
+    "px": [
+      456,
+      387
+    ],
+    "anchor": [
+      301,
+      379
+    ],
+    "footprint_m": [
+      7,
+      5
+    ],
+    "height_m": 4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Bureau de la gare de fret : tôle ondulée gris-bleu, UNE fenêtre ambre sous auvent, porte avec applique blanche, boîte aux lettres, porte de quai vers le dock (est) avec tableau VIERGE",
+    "pose": "G('ml_bureau', 'ml_tm_bureau_fret_v2_3q', 2, 9, 7, 5, …, { label: 'Bureau de la gare de fret' })",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9931), UNE mise à l'échelle uniforme x0.4862 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_bureau_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.695 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres"
+    ]
+  },
+  "ml_tm_bureau_fret_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_tm_bureau_fret_v2_3q_fenetres.webp",
+    "px": [
+      456,
+      387
+    ],
+    "anchor": [
+      301,
+      379
+    ],
+    "additive": true,
+    "parent": "ml_tm_bureau_fret_v2_3q",
+    "couche_de": "ml_tm_bureau_fret_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_bureau_fret_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_dock_v2_3q": {
+    "file": "steel/mega_line/ml_tm_dock_v2_3q.webp",
+    "px": [
+      237,
+      226
+    ],
+    "anchor": [
+      88,
+      219
+    ],
+    "footprint_m": [
+      2,
+      5
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Dock de chargement : plateau de tôle striée à rive jaune et noire, butoirs de caoutchouc, deux caisses de bois et un fût bleu rouillé",
+    "pose": "G('tm2_dock', 'ml_tm_dock_v2_3q', 9, 9, 2, 5)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9572), UNE mise à l'échelle uniforme x0.2461 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_dock_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.316 / droit 0.704 (cible 0,33 / 0,70)"
+  },
+  "ml_tm_portique_levage_v2_3q": {
+    "file": "steel/mega_line/ml_tm_portique_levage_v2_3q.webp",
+    "px": [
+      944,
+      1024
+    ],
+    "anchor": [
+      556,
+      1011
+    ],
+    "footprint_m": [
+      13,
+      13
+    ],
+    "height_m": 13.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Portique de levage jaune : quatre pieds 1 x 1 sur semelles, poutres de roulement N-S, entretoises, poutre-pont jaune et noire (z local 6) avec chariot, câble et palonnier, croix de contreventement, peinture jaune usée et rouille ; embases vides aux 4 coins pour ml_ens_gyrophare",
+    "pose": "B('ml_portique', 'Portique de levage', 'ml_tm_portique_levage_v2_3q', 24, 8, 13, 13, { solid: [pieds 1 x 1 aux 4 coins] })  // puis conteneurs, puis ml_tm_portique_levage_v2_3q_avant",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8724), UNE mise à l'échelle uniforme x1.0958 vers 50 px/m (léger agrandissement x1.0958 : pièce fine générée d'un seul tenant pour garder la continuité des poutres) ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_portique_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.641 / droit 0.641 (cible 0,33 / 0,70)",
+    "ordre": "dessiner le portique, PUIS les conteneurs (z croissant), PUIS la couche _avant"
+  },
+  "ml_tm_conteneurs_x3_v2_3q": {
+    "file": "steel/mega_line/ml_tm_conteneurs_x3_v2_3q.webp",
+    "px": [
+      331,
+      486
+    ],
+    "anchor": [
+      253,
+      479
+    ],
+    "footprint_m": [
+      6,
+      2.5
+    ],
+    "height_m": 7.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Pile de trois conteneurs de tôle ondulée 6 x 2,5 : rouge en bas, bleu, gris en haut ; portes à l'est avec barres de fermeture, rouille et bosses, aucun lettrage",
+    "pose": "G(`ml_cont${i}`, 'ml_tm_conteneurs_x3_v2_3q', x, z, 6, 2.5, …)  // piles de 3 de CONT : (24,5 ; 13) et (30,5 ; 16,5) ; piles de 2 = ml_conteneurs existant",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9944), UNE mise à l'échelle uniforme x0.4548 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_cont3_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.335 / droit 0.71 (cible 0,33 / 0,70)"
+  },
+  "ml_tm_hangar_v2_3q": {
+    "file": "steel/mega_line/ml_tm_hangar_v2_3q.webp",
+    "px": [
+      525,
+      463
+    ],
+    "anchor": [
+      377,
+      441
+    ],
+    "footprint_m": [
+      9,
+      5
+    ],
+    "height_m": 6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Hangar de tôle (séparé du bureau) : tôle ondulée rouillée, toit à deux pans, rideau roulant fermé, porte ouverte éclairée ambre, applique sodium, caisse et fût",
+    "pose": "G('tm2_hangar', 'ml_tm_hangar_v2_3q', 0, 2, 9, 5, …)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9856), UNE mise à l'échelle uniforme x0.5593 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_hangar_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.327 / droit 0.698 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_hangar_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_hangar_v2_3q_neon.webp",
+    "px": [
+      525,
+      463
+    ],
+    "anchor": [
+      377,
+      441
+    ],
+    "additive": true,
+    "parent": "ml_tm_hangar_v2_3q",
+    "couche_de": "ml_tm_hangar_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_hangar_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_locaux_so_v2_3q": {
+    "file": "steel/mega_line/ml_tm_locaux_so_v2_3q.webp",
+    "px": [
+      662,
+      588
+    ],
+    "anchor": [
+      339,
+      580
+    ],
+    "footprint_m": [
+      8,
+      11
+    ],
+    "height_m": 5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Locaux techniques sud-ouest : béton taché, portes techniques à l'est avec applique ambre, fenêtre grillagée froide, fenêtre sud ambre, armoires électriques à voyants bleus, extracteurs et climatiseur en toiture, chemin de câbles",
+    "pose": "G('tm2_loc_so', 'ml_tm_locaux_so_v2_3q', 0, 17, 8, 11, …)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9907), UNE mise à l'échelle uniforme x0.6993 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_loc_so_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.341 / droit 0.698 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_tm_locaux_so_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_tm_locaux_so_v2_3q_fenetres.webp",
+    "px": [
+      662,
+      588
+    ],
+    "anchor": [
+      339,
+      580
+    ],
+    "additive": true,
+    "parent": "ml_tm_locaux_so_v2_3q",
+    "couche_de": "ml_tm_locaux_so_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_locaux_so_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_locaux_so_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_locaux_so_v2_3q_neon.webp",
+    "px": [
+      662,
+      588
+    ],
+    "anchor": [
+      339,
+      580
+    ],
+    "additive": true,
+    "parent": "ml_tm_locaux_so_v2_3q",
+    "couche_de": "ml_tm_locaux_so_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_locaux_so_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_locaux_e_v2_3q": {
+    "file": "steel/mega_line/ml_tm_locaux_e_v2_3q.webp",
+    "px": [
+      875,
+      840
+    ],
+    "anchor": [
+      132,
+      833
+    ],
+    "footprint_m": [
+      3,
+      26
+    ],
+    "height_m": 6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Locaux techniques est : long bâtiment de béton taché à contreforts, centrales de ventilation et gaines en toiture, porte sud avec applique, panneau VIERGE",
+    "pose": "G('tm2_loc_e', 'ml_tm_locaux_e_v2_3q', 37, 2, 3, 26, …)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9901), UNE mise à l'échelle uniforme x0.9383 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_loc_e_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.702 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_locaux_e_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_locaux_e_v2_3q_neon.webp",
+    "px": [
+      875,
+      840
+    ],
+    "anchor": [
+      132,
+      833
+    ],
+    "additive": true,
+    "parent": "ml_tm_locaux_e_v2_3q",
+    "couche_de": "ml_tm_locaux_e_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_locaux_e_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus"
+  },
+  "ml_tm_passerelle_v2_3q": {
+    "file": "steel/mega_line/ml_tm_passerelle_v2_3q.webp",
+    "px": [
+      249,
+      231
+    ],
+    "anchor": [
+      158,
+      227
+    ],
+    "footprint_m": [
+      4,
+      4
+    ],
+    "height_m": 2.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Passerelle de service sud-ouest (arrivée depuis la ligne) : palier de tôle striée à +2 m (z local 2,2-4), escalier vers le nord jusqu'au sol, garde-corps d'acier",
+    "pose": "G('tm2_pass', 'ml_tm_passerelle_v2_3q', 8, 24, 4, 4, { solid: [{ x: 8, z: 24, w: 0.3, d: 4 }, { x: 11.7, z: 24, w: 0.3, d: 4 }] })  // UNE seule pose 4 x 4 (pas deux garde-corps)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9616), UNE mise à l'échelle uniforme x0.2608 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_pass_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.625 (cible 0,33 / 0,70)",
+    "ecart": "Rivet pose la clé deux fois en 0,3 x 4 (x 8 et 11,7) : le sprite couvre 4 x 4, une seule pose en (8, 24)"
+  },
+  "ml_tm_portique_levage_v2_3q_avant": {
+    "file": "steel/mega_line/ml_tm_portique_levage_v2_3q_avant.webp",
+    "px": [
+      944,
+      1024
+    ],
+    "anchor": [
+      556,
+      1011
+    ],
+    "additive": false,
+    "parent": "ml_tm_portique_levage_v2_3q",
+    "couche_de": "ml_tm_portique_levage_v2_3q",
+    "layer": "avant",
+    "ordre": "à dessiner APRÈS les conteneurs de la cour (même pose que le portique) : cadre est (pieds NE et SE, poutre de roulement est, contreventement est), pied SO et entretoise sud, qui passent devant les piles",
+    "source": "découpe exacte de ml_tm_portique_levage_v2_3q.webp par les enveloppes projetées du cadre est et du cadre sud (modèle 3D), même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus",
+    "groupe": "ml_v2_terminus"
+  },
+  "ml_tm_conteneurs_x2_v2_3q": {
+    "file": "steel/mega_line/ml_tm_conteneurs_x2_v2_3q.webp",
+    "px": [
+      331,
+      372
+    ],
+    "anchor": [
+      253,
+      365
+    ],
+    "footprint_m": [
+      6,
+      2.5
+    ],
+    "height_m": 5.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Pile de deux conteneurs de tôle ondulée 6 x 2,5 (EN PLUS de la fiche) : bleu en bas, rouge en haut ; portes à l'est, rouille, aucun lettrage ; remplace ml_conteneurs (ancien, plus petit que 50 px/m) dans la cour du terminus",
+    "pose": "piles de 2 de CONT : (24,5 ; 9,5) (30,5 ; 9,5) (30,5 ; 13) (24,5 ; 16,5) -> G(`ml_cont${i}`, 'ml_tm_conteneurs_x2_v2_3q', x, z, 6, 2.5, { h: 5.2 })",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9886), UNE mise à l'échelle uniforme x0.3945 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_cont2_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.708 (cible 0,33 / 0,70)",
+    "ecart": "ml_conteneurs existant n'est pas à 50 px/m (280 px pour 6 x 2,5 m) : clé nouvelle proposée"
   }
 }
