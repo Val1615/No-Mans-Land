@@ -3780,5 +3780,59 @@
       4
     ],
     "raccord": "sur la longueur (z) seulement"
+  },
+  "ml_tm_feu_finvoie_v2_3q": {
+    "file": "steel/mega_line/ml_tm_feu_finvoie_v2_3q.webp",
+    "px": [
+      275,
+      319
+    ],
+    "anchor": [
+      233,
+      315
+    ],
+    "footprint_m": [
+      5.4,
+      1.4
+    ],
+    "height_m": 5.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Mât de signal de fin de voie : fût d'acier de 5 m sur massif de béton et platine, coffret de câblage, panneau damier rouge et blanc (0,6 m, h 3,1-3,7, face au sud), tête noire à DEUX feux rouges allumés sous visières (h 4,25-4,85) ; source visible de la lueur rouge de fin de voie. Mât en (0,4 ; 0,5) local, le reste de l'emprise est la lueur au sol du _neon (pied du mât + heurtoir)",
+    "pose": "B('tm2_feu_finvoie', '', 'ml_tm_feu_finvoie_v2_3q', 11.8, 2, 5.4, 1.4, { named: false, solid: [{ x: 12, z: 2.3, w: 0.4, d: 0.4 }] })  // mât en (12,2 ; 2,5), à l'ouest du heurtoir (x 14-17)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus : feu de fin de voie (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9219), UNE mise à l'échelle uniforme x0.1997 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_feu_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus : feu de fin de voie (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.667 (cible 0,33 / 0,70)",
+    "mat_monde": [
+      12.2,
+      2.5
+    ],
+    "ordre": "après ml_tm_sas_portes et ml_tm_heurtoir, AVANT ml_tm_rame_nord et ml_tm_quai (la rame cache le pied : c'est juste) ; le _neon se dessine avec le sprite, additif",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_feu_finvoie_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_feu_finvoie_v2_3q_neon.webp",
+    "px": [
+      275,
+      319
+    ],
+    "anchor": [
+      233,
+      315
+    ],
+    "additive": true,
+    "parent": "ml_tm_feu_finvoie_v2_3q",
+    "couche_de": "ml_tm_feu_finvoie_v2_3q",
+    "layer": "neon",
+    "source": "calque procédural : lueur rouge au sol en dégradé sur la zone exacte du modèle 3D (pied du mât et heurtoir) + halo des deux feux du sprite, additif, même canevas, même ancre que ml_tm_feu_finvoie_v2_3q",
+    "status": "v2",
+    "partie": "terminus",
+    "groupe": "ml_v2_terminus"
   }
 }

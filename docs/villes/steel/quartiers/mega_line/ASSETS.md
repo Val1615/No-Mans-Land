@@ -352,3 +352,28 @@ ground: { base: '#101114', skin: 'g_ml_fret_v2', tileM: 4, clean: true, tint: 'r
 - Les câbles des suspensions montent jusqu'à h 14,5 sans plafond derrière : on les voit finir dans le noir au-dessus de la cour.
 
 Maquettes (images composées, pas des captures du jeu) : `/workspace/nml-shots/megaline_sprites/lot3_maquette_terminus.png` et `lot3_maquette_terminus_nuit.png`, mises à jour avec la halle, le sol et les poses ci-dessus. Planche : `halle_planche_contact.png`. Hors jeu.
+
+### Feu de fin de voie (Ocre, 2026-11-17)
+
+Régie demande que la lueur rouge de fin de voie vienne d'une source visible, puisque le heurtoir est caché à environ 83 % par la rame à quai. Cette source est un mât de signal.
+
+| Clé | px | Ancre | Emprise / h | Contenu |
+|---|---|---|---|---|
+| `ml_tm_feu_finvoie_v2_3q` (+ `_neon`) | 275 × 319 | 233, 315 | 5,4 × 1,4 / 5 | Mât de signal de 5 m sur massif de béton, panneau damier rouge et blanc (h 3,1–3,7, face au sud), tête noire à deux feux rouges allumés (h 4,25–4,85). Le mât est en (0,4 ; 0,5) local. Le `_neon` porte le halo des deux feux et la lueur rouge au sol au pied du mât et sur le heurtoir |
+
+**Pose** (dans `steel_terminus`) :
+```js
+B('tm2_feu_finvoie', '', 'ml_tm_feu_finvoie_v2_3q', 11.8, 2, 5.4, 1.4, { named: false, solid: [{ x: 12, z: 2.3, w: 0.4, d: 0.4 }] }),  // mât en (12,2 ; 2,5), à 1,8 m à l'ouest du heurtoir (x 14–17)
+```
+Ordre de dessin : après `ml_tm_sas_portes` et `ml_tm_heurtoir`, **avant** `ml_tm_voie`, `ml_tm_rame_nord` et `ml_tm_quai`. La rame cache le pied du mât, et c'est voulu. Le `_neon` se dessine avec le sprite, en additif. La lueur au sol couvre x 11,3–17,5 et z 2–3,4 : le pied du mât et le heurtoir.
+
+**Contrôle en projection** (géométrie de la maquette du terminus, rendu image par image dans l'ordre de dessin) : 73 % du mât reste visible. La tête et ses deux feux sont visibles à 100 %, le damier aussi, le fût entre 1,3 et 3 m à 85 %. Le pied, sous 1,3 m, est entièrement caché par la rame. Ce qui masque le reste : la rame, et dans le coin la poutre et la couche `_avant` du portique. Si la transparence du portique (prévue par Rivet) se déclenche, une part un peu plus grande du mât apparaît.
+- Le mât ne recouvre **aucun pixel** du panneau « Dernier arrêt » (x 18,5–21,5).
+- Sur le sas, il passe devant une bande étroite du vantail gauche des portes, vers x 12. Il ne touche ni le joint central (x 20) ni les boîtiers d'alerte du linteau (x 13,5 et 26,5, à h 12,4).
+
+Positions écartées :
+- à l'est du heurtoir (x 17,3 ; z 2,4) : 48 % visible, tête à 15 %, cachée par la poutre ouest du portique ;
+- sur le bout nord du quai est (x 22,6 ; z 3,3) : 3 % visible, derrière le cadre nord du portique ;
+- contre le heurtoir (x 13,4) : 45 % visible.
+
+Maquettes mises à jour, de jour et de nuit (images composées, pas des captures) : `/workspace/nml-shots/megaline_sprites/lot3_maquette_terminus.png` et `lot3_maquette_terminus_nuit.png`.
