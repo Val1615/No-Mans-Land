@@ -365,7 +365,7 @@ Régie demande que la lueur rouge de fin de voie vienne d'une source visible, pu
 ```js
 B('tm2_feu_finvoie', '', 'ml_tm_feu_finvoie_v2_3q', 11.8, 2, 5.4, 1.4, { named: false, solid: [{ x: 12, z: 2.3, w: 0.4, d: 0.4 }] }),  // mât en (12,2 ; 2,5), à 1,8 m à l'ouest du heurtoir (x 14–17)
 ```
-Ordre de dessin : après `ml_tm_sas_portes` et `ml_tm_heurtoir`, **avant** `ml_tm_voie`, `ml_tm_rame_nord` et `ml_tm_quai`. La rame cache le pied du mât, et c'est voulu. Le `_neon` se dessine avec le sprite, en additif. La lueur au sol couvre x 11,3–17,5 et z 2–3,4 : le pied du mât et le heurtoir.
+Ordre de dessin : après `ml_tm_sas_portes`, `ml_tm_heurtoir` et `ml_tm_voie` (pièce plate), **avant** `ml_tm_rame_nord` et `ml_tm_quai`. La rame cache le pied du mât, et c'est voulu. Le `_neon` se dessine avec le sprite, en additif. La lueur au sol couvre x 11,3–17,5 et z 2–3,4 : le pied du mât et le heurtoir.
 
 **Contrôle en projection** (géométrie de la maquette du terminus, rendu image par image dans l'ordre de dessin) : 73 % du mât reste visible. La tête et ses deux feux sont visibles à 100 %, le damier aussi, le fût entre 1,3 et 3 m à 85 %. Le pied, sous 1,3 m, est entièrement caché par la rame. Ce qui masque le reste : la rame, et dans le coin la poutre et la couche `_avant` du portique. Si la transparence du portique (prévue par Rivet) se déclenche, une part un peu plus grande du mât apparaît.
 - Le mât ne recouvre **aucun pixel** du panneau « Dernier arrêt » (x 18,5–21,5).
