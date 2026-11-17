@@ -40,10 +40,11 @@ Une ligne par lot publié : date, commit, ce qui marche en jeu, ce qui reste.
 - 2026-11-17 : chantier ouvert, document créé (Régie).
 - 2026-11-17 : `ff499ea` (Ocre) — [PILOTE.md](PILOTE.md), embuscade « L'appât de la piste » : décor, plan coté 30 × 24 m, dialogues, combat, butin, 20 clés d'assets. Rien en jeu encore. Reste : aligner le format sur `ARCHI.md`, validation des décisions DA/lore par Valentin, puis production des sprites.
 - 2026-11-17 : `8576eaa` (Rivet) — [ARCHI.md](ARCHI.md) : architecture (catalogue `src/data/rencontres.js`, `game.ajouterLieu`, gestionnaire `src/core/rencontres.js`, sortie de bord, sauvegarde dans la scène, combat existant étendu, DEV « forcer une rencontre ») et verdict sur le pilote (§6) : la sente reste (niveaux + solides, talus en couverture 1) ; ne rentrent pas : lit à −0,8 m, guetteur acheté neutre en combat, drapeau par case, trait « Œil de pillard », examen au survol. Technique : rien de codé encore, aucun fichier `src/` touché. Reste : jalon 1 (≈ 2 j de dev). Tester : rien à tester en jeu pour l'instant ; au jalon 1, `?dev=1` → DEV « Rencontre » → forcer `embuscade_piste`, puis `tests/rencontres_rapide.py` (URL, OUT ; 1280 et 390).
+- 2026-11-17 : `2b2013c` (Ocre) — PILOTE.md aligné sur ARCHI.md : les 7 points de Rivet intégrés, sente gardée (repli 390 noté), ennemis en positions absolues sur cases libres, §14 entrée au format ARCHI §4. Planche concept corrigée (Don Trapo contre la portière, épave sans roues), hors dépôt. Rien en jeu. Reste : sprites du pilote (en cours), puis câblage Rivet.
 
 ## Décisions de DA et de lore (Ocre)
 _À compléter à chaque lot._
-- Jalon 1 : voir [PILOTE.md §13](PILOTE.md#13-décisions-de-da-et-de-lore-à-valider-par-valentin) (bande sans faction, noms nouveaux, lien avec Anselme, biome désert).
+- Jalon 1 : voir [PILOTE.md §13](PILOTE.md#13-décisions-de-da-et-de-lore-à-valider-par-valentin) (bande sans faction, noms nouveaux, lien avec Anselme, biome désert ; depuis l'alignement sur ARCHI : lit au niveau 0 rendu par le sol et les berges, sols `g_rc_*` propres au pilote, Tuerto avec son propre sprite, Quilla en deux poses).
 
 ## Questions ouvertes pour Valentin
 - La consigne reçue s'arrête au milieu de l'étape 5 (« retour au voyage ») : il manque la suite.
