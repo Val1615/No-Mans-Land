@@ -79,6 +79,10 @@ export const BUILDINGS_MEGA = [
   // parvis sud (z32-40) : lampadaires à ampoule visible, bancs
   ...LAMPS.map(([x, z], i) => B(`ml_lamp${i}`, '', 'ml_lampadaire', x - 0.3, z - 0.3, 0.6, 0.6, { named: false })),
   B('ml_banc2', '', 'ml_banc', 11, 36.6, 2, 0.6, { named: false }), B('ml_banc3', '', 'ml_banc', 51, 36.6, 2, 0.6, { named: false }),
+  // bord sud (z40, Régie) : garde-corps bas d'acier sombre de Center-Town (ct_mob_barriere_x_v4_3q, 2 m, 1 m de haut, 50 px/m, échelle 1), ouvert sur 4 m
+  // au centre (x30-34) pour la porte c_mega ; au-delà, le parvis continue dans la marge sombre (ground.marge) au lieu du noir
+  ...[...Array(15).keys()].flatMap(i => [2 * i, 34 + 2 * i])
+    .map(x => B('ml_sud_gc' + x, '', 'ct_mob_barriere_x_v4_3q', x, 39.6, 2, 0.2, { named: false, solid: [{ x, z: 39.6, w: 2, d: 0.2 }] })),
 ];
 const CONT = [[24.5, 9.5, 2], [30.5, 9.5, 2], [24.5, 13, 3], [30.5, 13, 2], [24.5, 16.5, 2], [30.5, 16.5, 3]]; // 3 rangées de 2 piles (allées de 1 m), 2 ou 3 niveaux
 // Lot 3 d'Ocre (f86e5ec), poses de sa fiche (ASSETS.md, lot 3) : échelle 1, ancre au coin avant sud-est, base y 0 (quai et rame portent leur hauteur).
@@ -126,10 +130,27 @@ export const CLOSED_MEGA = {
   ml_bureau: 'Le bureau de la gare de fret. Une fenêtre ambrée, des bordereaux.',
   ml_portique: 'Le portique de levage jaune. Les conteneurs vont et viennent, toujours vers l\u2019intérieur.',
 };
+// Sol de la ligne : dalle g_ml_parvis_v2 (4 m) + variantes _b/_c/_d semées sur la grille de 4 m (ASSETS.md, « sol du parvis et de la rue »).
+// Les 11 carreaux de la fiche d'Ocre sont gardés ; le reste est un tirage déterministe (hachage de x, z), ~40 % de variantes,
+// jamais la même variante sur deux carreaux voisins (O, N, NO, NE) : pas de motif répété visible, même rendu à chaque chargement.
+const PARVIS = (() => {
+  const V = ['_b', '_c', '_d'], fiche = { '12,24': '_c', '24,24': '_b', '36,28': '_d', '48,24': '_c', '28,32': '_c', '8,36': '_b', '20,36': '_d', '40,36': '_b', '56,36': '_c', '12,8': '_b', '32,8': '_c' };
+  const h = (x, z) => { let n = Math.imul(x * 374761 + z * 668265 + 1013, 2246822519) >>> 0; n = Math.imul(n ^ (n >>> 13), 3266489917) >>> 0; return (n ^ (n >>> 16)) >>> 0; };
+  const g = {};
+  for (let z = 0; z < 40; z += 4) for (let x = 0; x < 64; x += 4) {
+    const k = x + ',' + z; if (fiche[k]) { g[k] = fiche[k]; continue; }
+    const r = h(x, z); if (r % 10 >= 4) continue; // ~60 % de dalle de base
+    const voisins = [[-4, 0], [0, -4], [-4, -4], [4, -4], [4, 0], [0, 4], [-4, 4], [4, 4]].map(([a, b]) => g[(x + a) + ',' + (z + b)] || fiche[(x + a) + ',' + (z + b)]);
+    for (let i = 0; i < 3; i++) { const v = V[(r + i) % 3]; if (!voisins.includes(v)) { g[k] = v; break; } }
+  }
+  return Object.entries(g).map(([k, v]) => { const [x, z] = k.split(',').map(Number); return { x, z, w: 4, d: 4, skin: 'g_ml_parvis_v2' + v }; });
+})();
 export const LOCATIONS_MEGA = {
   steel_megaline: { id: 'steel_megaline', name: 'Steel-Megalopolis · Mega-Line', kind: 'exterior', size: { w: 64, d: 40 }, light: LIGNE, plan: 2, zoneNiveau: 'quai', // personnage sur le quai ou l'escalier : trié avec le quai (devant son rez)
     cadre: { desktop: { x: [21, 43], z: [16, 24] }, mobile: { x: [8, 56], z: [10, 30] } }, // le cadre reste sur le lieu (pas de vide au sud à l'arrivée)
-    ground: { base: '#12121a', skin: 'g_ml_pave', tileM: 4, clean: true },
+    ground: { base: '#12121a', skin: 'g_ml_parvis_v2', tileM: 4, clean: true, paint: PARVIS, // dalle mate d'Ocre (27a0fd3) à la place de g_ml_pave (halos peints)
+      marge: { skin: 'g_ml_parvis_v2', tileM: 4, m: 48, voile: 'rgba(6,6,10,.62)' } }, // hors carte : le parvis continue vers Center-Town, voilé, au lieu du noir
+    labelsProches: { ids: ['ml_navetteur', 'ml_controleuse', 'ml_etudiante', 'ml_entretien', 'ml_nouilles', 'ml_vigile', 'ml_pancarte', 'ml_fan', 'ml_rivet', 'ml_rame_quai', 'ml_passerelle'], r: 4, petits: true }, // 390 (Régie) : noms des PNJ, du portique et de la passerelle à 4 m du joueur ou au toucher ; desktop inchangé
     // quai à +6 m et escaliers (montée vers le nord) : hauteur de sol au rendu ; l'accès est fait par les solides (BORDS_QUAI, COTES_ESC)
     niveaux: [{ x: 18, z: 14, w: 28, d: 8, y: QUAI }, ...[18, 43].flatMap(x => [{ x, z: 22, w: 3, d: 1, y: QUAI }, { x, z: 23, w: 3, d: 9, y0: QUAI, y1: 0, axe: 'z' }])], // fiche d'Ocre : palier z22-23 à +6, 36 marches jusqu'à z32
     buildings: BUILDINGS_MEGA, props: [],

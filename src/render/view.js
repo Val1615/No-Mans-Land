@@ -426,21 +426,26 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       bills.push({ obj: pan, x0: g.x, x1: g.x + g.w, z0: g.z, z1: g.z + g.d, extra: [neon] }); }
     // étiquettes rapprochées (loc.labelsProches : { ids, r }) : visibles seulement à moins de r m du joueur, ou au survol (souris)
     if (loc.labelsProches) { const P = loc.labelsProches, R = P.r || 3;
-      for (const l of labels) { const id = l.el.dataset.npc || l.el.dataset.building; if (!P.ids.includes(id)) continue;
-        const n = NPCS.find(n => n.id === id), b = loc.buildings.find(b => b.id === id), vis0 = l.visible;
-        const dist = () => { const q = game.state.player; if (n) return Math.hypot(q.x - n.x, q.z - n.z);
+      // P.petits : seulement sur petit écran (largeur < 700 px, comme les sorties hors écran) ; ailleurs l'étiquette reste permanente. P.ids peut nommer des portes (seuil).
+      for (const l of labels) { const id = l.el.dataset.npc || l.el.dataset.building || l.el.dataset.door; if (!P.ids.includes(id)) continue;
+        const n = NPCS.find(n => n.id === id), b = loc.buildings.find(b => b.id === id), d = !n && !b && DOORS.find(d => d.id === id), vis0 = l.visible;
+        const dist = () => { const q = game.state.player; if (n) return Math.hypot(q.x - n.x, q.z - n.z); if (d) return Math.hypot(q.x - d.threshold.x, q.z - d.threshold.z);
           return Math.hypot(q.x - Math.max(b.x, Math.min(q.x, b.x + b.w)), q.z - Math.max(b.z, Math.min(q.z, b.z + b.d))); };
-        l.proche = true; l.visible = () => (!vis0 || vis0()) && (survol === id || dist() <= R); } }
+        l.proche = true; l.visible = () => (!vis0 || vis0()) && ((P.petits && viewW >= 700) || survol === id || dist() <= R); } }
     builtFor = locId;
   }
   // survol à la souris (étiquettes rapprochées) : PNJ ou bâtiment sous le pointeur, au plus toutes les 150 ms
   let survol = null, survolT = 0;
-  canvas.addEventListener?.('pointermove', e => { if (e.pointerType !== 'mouse' || !LOCATIONS[builtFor]?.labelsProches) return; const t = performance.now(); if (t - survolT < 150) return; survolT = t;
+  // au toucher (pas de survol sur téléphone) : le PNJ ou le bâtiment touché montre son nom 2,5 s
+  let survolTap = 0;
+  canvas.addEventListener?.('pointerdown', e => { if (e.pointerType === 'mouse' || !LOCATIONS[builtFor]?.labelsProches) return; survolA(e); survolTap = performance.now(); const id = survol; setTimeout(() => { if (survol === id && performance.now() - survolTap >= 2400) survol = null; }, 2500); });
+  canvas.addEventListener?.('pointermove', e => { if (e.pointerType !== 'mouse' || !LOCATIONS[builtFor]?.labelsProches) return; const t = performance.now(); if (t - survolT < 150) return; survolT = t; survolA(e); });
+  function survolA(e) {
     const r = canvas.getBoundingClientRect(); ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), cam);
     const nh = ray.intersectObjects(npcSprites, false)[0]; if (nh) { survol = nh.object.userData.npc; return; }
     const c = scr(ray.ray.origin); let top = null; // sprite opaque le plus haut sous le pointeur, quelle que soit son emprise au sol
     for (const s of bsprites) { if (s.material.opacity < 0.5) continue; const q = uvOf(s, c); if (alphaAt(s.userData.img, q.u, q.v) > 0.5 && (!top || s.renderOrder > top.renderOrder)) top = s; }
-    survol = top?.userData.buildingId || null; });
+    survol = top?.userData.buildingId || null; }
   // contrôle (tests) : bâtiments ou garde-corps dessinés devant un personnage (PNJ, figurant, passant) et opaques sur lui
   // bâtiments qui masqueraient un personnage posé en (x, z) (même règle que masques()) : aide à la pose et aux tests
   // pièce basse (height_m < 1,2 m au manifeste : barrières de file) : ne cache pas un personnage, on voit sa tête et son buste au-dessus

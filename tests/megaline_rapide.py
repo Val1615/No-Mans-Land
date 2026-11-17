@@ -49,6 +49,19 @@ with sync_playwright() as p:
         tp('steel_center', 1, 50); pret('steel_center'); E("window.__nml.game.useDoor('c_mega')"); time.sleep(2); pret('steel_megaline')
         q = pos(); ok(loc() == 'steel_megaline' and abs(q[0] - 32) < 1.5 and q[1] > 37, f'{name} Center-Town (c_mega) -> Mega-Line, arrivée au parvis sud', (loc(), q))
         time.sleep(1.5); pg.screenshot(path=OUT + f'{name}_ligne_arrivee.png')
+        # sol de la ligne : dalle mate d'Ocre (g_ml_parvis_v2 + variantes semées), plus de g_ml_pave ; marge hors carte ; garde-corps sud ouvert sur la porte
+        G = E("(()=>{const g=window.__nml.world.LOCATIONS.steel_megaline.ground;return {skin:g.skin,paint:(g.paint||[]).map(r=>[r.x,r.z,r.w,r.d,r.skin]),marge:g.marge||null}})()")
+        ok(G['skin'] == 'g_ml_parvis_v2' and 'g_ml_pave' not in json.dumps(G), f'{name} sol : g_ml_parvis_v2 à la place de g_ml_pave', G['skin'])
+        vs = {r[4] for r in G['paint']}; voisins = {(r[0], r[1]): r[4] for r in G['paint']}
+        ok(len(G['paint']) >= 11 and vs == {'g_ml_parvis_v2_b', 'g_ml_parvis_v2_c', 'g_ml_parvis_v2_d'} and all(r[0] % 4 == 0 and r[1] % 4 == 0 and r[2] == 4 and r[3] == 4 for r in G['paint'])
+           and not any(voisins.get((x + a, z + b)) == v for (x, z), v in voisins.items() for a, b in [(4, 0), (0, 4), (4, 4), (-4, 4)]),
+           f'{name} sol : {len(G["paint"])} carreaux de variantes sur la grille de 4 m, jamais deux voisins identiques', sorted(vs))
+        ok(bool(G['marge']) and G['marge']['skin'] == 'g_ml_parvis_v2', f'{name} bord sud : marge hors carte (plus de noir)', G['marge'])
+        r = E("window.__nml.game.moveTo(12,39.9)"); P = E("window.__nml.state.player.path.map(p=>[p.x,p.z])"); E("window.__nml.state.player.path.length=0")
+        ok(not P or max(z for _, z in P) < 39.6, f'{name} bord sud : garde-corps, on ne longe pas le bord hors de la porte', P[-2:] if P else r)
+        tp('steel_megaline', 20, 37); time.sleep(.4); r = E("window.__nml.game.moveTo(32,39)"); E("window.__nml.state.player.path.length=0")
+        ok(bool(r.get('ok')), f'{name} bord sud : porte c_mega (32;40) praticable par l ouverture', r)
+        tp('steel_megaline', 32, 38.2); time.sleep(.4)
         # 2) quai à +6 m : chemin depuis la rue par un escalier, jamais de saut de niveau
         r = E("window.__nml.game.moveTo(31,20.4)"); P = E("window.__nml.state.player.path.map(p=>[p.x,p.z])")
         hs = [hsol(W['ml']['niv'], x, z) for x, z in P]
@@ -74,6 +87,11 @@ with sync_playwright() as p:
         while time.time() - t0 < 32 and not (E("window.__nml.view.rameEtat()[0]||{}").get('passe') and 14 < E("window.__nml.view.rameEtat()[0].x") < 70): time.sleep(.4)
         time.sleep(.3); pg.screenshot(path=OUT + f'{name}_ligne_quai.png')
         lab = E("[...document.querySelectorAll('#labels [data-npc]')].filter(e=>!e.hidden).map(e=>e.dataset.npc)")
+        # étiquettes (Régie) : en 390, noms des PNJ / portique / passerelle à 4 m du joueur seulement ; desktop : permanents
+        V = E("""(()=>{const q=window.__nml.state.player,N=window.__nml.world.NPCS,D=window.__nml.world.DOORS;return [...document.querySelectorAll('#labels [data-npc],#labels [data-door]')].filter(e=>!e.hidden&&e.style.display!=='none').map(e=>{const n=N.find(n=>n.id===e.dataset.npc),d=D.find(d=>d.id===e.dataset.door),p=n?[n.x,n.z]:[d.threshold.x,d.threshold.z];return [e.dataset.npc||e.dataset.door,Math.hypot(q.x-p[0],q.z-p[1])]})})()""")
+        loin = [v for v in V if v[1] > 4.3 and v[0] != 'ml_sud']
+        if mob: ok(not loin, f'{name} étiquettes : en 390, aucun nom de PNJ / portique / passerelle à plus de 4 m du joueur', V)
+        else: ok(len(loin) >= 3, f'{name} étiquettes : desktop inchangé, noms éloignés toujours affichés ({len(loin)})', V)
         # 3) PNJ présents et abordables (chemin à leur niveau)
         pres = E("window.__nml.world.NPCS.filter(n=>n.location==='steel_megaline').map(n=>n.id)")
         ok(all(i in pres for i in NPC_LIGNE), f'{name} ligne : 9 PNJ aux places du plan', pres)
