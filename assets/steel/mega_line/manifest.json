@@ -3834,5 +3834,35 @@
     "status": "v2",
     "partie": "terminus",
     "groupe": "ml_v2_terminus"
+  },
+  "ml_tm_nervures_e_v2b_3q": {
+    "file": "steel/mega_line/ml_tm_nervures_e_v2b_3q.webp",
+    "px": [
+      793,
+      916
+    ],
+    "anchor": [
+      47,
+      909
+    ],
+    "footprint_m": [
+      4.6,
+      26
+    ],
+    "height_m": 8.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Halle du terminus, côté EST (caméra), v2b : cinq contreforts verticaux de béton (x 40-40,6, h 0-8) avec socle et chapiteau, et seulement des départs de nervure très courts et courbés (x 40 -> 39,6 : 0,4 m vers l'intérieur, extrados 8,5 m au plus) ; plus de panne ni de nervure en diagonale : rien ne passe devant la cour, le portique ou les conteneurs ; la voûte se lit par l'arc ouest et le fond",
+    "pose": "G('tm2_nerv_e', 'ml_tm_nervures_e_v2b_3q', 36, 2, 4.6, 26, { h: 8.5 }, { solid: [] })  // REMPLACE ml_tm_nervures_e_v2_3q, même pose ; après ml_tm_locaux_e",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus : nervures est v2b (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.7953), UNE mise à l'échelle uniforme x0.9983 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_nerv_eb_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus : nervures est v2b (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.4 / droit 0.702 (cible 0,33 / 0,70)",
+    "remplace": "ml_tm_nervures_e_v2_3q (nervures longues lues comme des poutres en diagonale devant la cour)",
+    "ordre": "après ml_tm_locaux_e_v2_3q",
+    "recouvrement_portique_conteneurs": "0 px (contrôle en projection sur la maquette ; 8,13 % pour ml_tm_nervures_e_v2_3q)"
   }
 }

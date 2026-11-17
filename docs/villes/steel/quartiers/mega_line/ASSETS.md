@@ -377,3 +377,28 @@ Positions écartées :
 - contre le heurtoir (x 13,4) : 45 % visible.
 
 Maquettes mises à jour, de jour et de nuit (images composées, pas des captures) : `/workspace/nml-shots/megaline_sprites/lot3_maquette_terminus.png` et `lot3_maquette_terminus_nuit.png`.
+
+### Nervures est v2b : remplacent `ml_tm_nervures_e_v2_3q` (Ocre, 2026-11-17)
+
+Verdict DA sur `0381ea3` (`desktop_terminus_arrivee.jpg`, `iso_cadrage_maquette_terminus.jpg`) : les nervures ouest se lisent bien comme une voûte. En revanche, les nervures est, côté caméra, se lisent comme des poutres en diagonale devant les conteneurs et le portique. La v2b ne garde que des contreforts verticaux. La voûte se lit par l'arc ouest et le fond.
+
+| Clé | px | Ancre | Emprise / h | Contenu |
+|---|---|---|---|---|
+| `ml_tm_nervures_e_v2b_3q` | 793 × 916 | 47, 909 | 4,6 × 26 / 8,5 | Cinq contreforts de béton verticaux en x 40–40,6, hauts de 8 m, avec socle et chapiteau. Les départs de nervure sont très courts et courbés : ils avancent de 0,4 m vers l'intérieur (de x 40 à 39,6) et leur extrados monte au plus à 8,5 m. Plus de panne, rien en diagonale |
+
+**Pose** : **remplace `ml_tm_nervures_e_v2_3q`**, même pose et même ordre de dessin (après `ml_tm_locaux_e`) :
+```js
+G('tm2_nerv_e', 'ml_tm_nervures_e_v2b_3q', 36, 2, 4.6, 26, { h: 8.5 }, { solid: [] }),
+```
+`ml_tm_nervures_e_v2_3q` reste dans le manifeste, intact.
+
+**Contrôle en projection** (maquette du terminus, dans l'ordre de dessin) : on compte les pixels du portique, de sa couche `_avant` et des conteneurs, tels qu'ils sont visibles avant le passage des nervures est, que le sprite recouvre.
+
+| Sprite | Recouvrement du portique et des conteneurs | Au-dessus de la crête du mur est |
+|---|---|---|
+| `ml_tm_nervures_e_v2_3q` | 8,1 % (36 155 px) | 8,1 % |
+| `ml_tm_nervures_e_v2b_3q` | **0 px** | **0 px** |
+
+La crête du mur est correspond à h > 8 m sur le plan x = 40. Le résultat reste 0 px si l'on compte aussi les pixels du sprite à faible alpha. Des départs plus longs recouvrent déjà le portique : 539 px en x 39,5, 928 px en x 39,45. La longueur retenue, 0,4 m, est donc le maximum.
+
+Maquettes mises à jour, de jour et de nuit (images composées, pas des captures) : `/workspace/nml-shots/megaline_sprites/lot3_maquette_terminus.png` et `lot3_maquette_terminus_nuit.png`.
