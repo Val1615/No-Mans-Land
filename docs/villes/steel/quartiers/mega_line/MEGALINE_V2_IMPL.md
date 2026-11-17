@@ -85,19 +85,19 @@ Réutilisés : `ml_panneau_terminus` (vierge, x18,5–21,5 sur le quai, base y =
 ### La ligne (`steel_megaline`, 64 × 40, plan 2)
 | zone | cotes (m) | dans le jeu |
 |---|---|---|
-| Bâti nord N1 / N2 / N3 | x0–24 / x24–44 / x48–64, z0–8 (h 12 / 16 / 10) | gabarits pleins, fenêtres ambrées |
+| Bâti nord N1 / N2 / N3 | x0–24 / x24–44 / x48–64, z0–8 (h 12 / 16 / 10) | sprites d'Ocre (lot 2) |
 | Passerelle de service | x44–48, z0–8 | couloir ouvert entre deux garde-corps ; porte `ml_passerelle` au bord nord (46 ; 0) -> `tm_sud` |
 | Ruelle de service | z8–14 | praticable, passe sous le viaduc entre les piles ; bennes, caisses ; Marcel (entretien) sous le viaduc |
 | Viaduc | z10–14, sous-poutre 6, rails 6,8 | 3 segments (24, 24, 16 m) non bloquants ; 6 piles 1,6 × 1,6 pleines (x2…62) |
-| Rame | z10,5–13,5, base 6,8 | défile vers l'est toutes les 40 s (10 s de passage), ne s'arrête jamais ; repli `ml_rame` |
+| Rame | z10,5–13,5, base 6,8 | passe sans s'arrêter toutes les 30 s (12 s), sens alternés : vue avant vers l'est, vue dos vers l'ouest |
 | Quai | x18–46, z14–22, plancher +6 | tablier, poteaux de galerie, garde-corps laiton ; bande d'embarquement z14–17,5 fermée par 2 barrières et le portique |
 | Portique à implant | x31–32,6, z17–18 (+6) | planches accepté/refusé inchangées ; porte `ml_rame_quai` (seuil 31,8 ; 18,6) |
-| Écrans | x19,9–25,1 et x36,9–42,1, flanc du viaduc, base 7,2 | Vibes à l'ouest, Tron à l'est (planches existantes, comptées comme une animation) |
+| Écrans | cadres x19,8–25,2 et x36,8–42,2, z14–14,4, mâts depuis le quai ; dalle +10,5–13,38 | Vibes à l'ouest, Tron à l'est, posés dans la dalle (une seule animation) |
 | Rez sous le quai | z14–20 (galerie z20–22) | Mme Tran x18–24, câbles x24–30, Human Corp x30–38 (logo animé), atelier de Rivet x38–46 ; non bloquants (sous le tablier) |
-| Escaliers O / E | x18–21 / x43–46, z22–32 | montée de 6 m vers le nord, seuls accès au quai |
-| Rue piétonne, terrasses | x21–43, z22–32 | 6 terrasses, établi de Rivet, Mme Tran et Rivet devant leurs échoppes |
+| Escaliers O / E | x18–21 / x43–46, z22–32 | palier +6 (z22–23), puis 36 marches jusqu'à z32 ; seuls accès au quai |
+| Rue piétonne, terrasses | x21–43, z22–32 | 6 terrasses, Mme Tran et Rivet devant leurs échoppes |
 | Rues latérales | x10–18, x46–54 | praticables du parvis à la ruelle |
-| Bâti W / E | x0–10 / x54–64, z14–32 | gabarits pleins (h 12 / 10) |
+| Bâti W / E | x0–10 / x54–64, z14–32 | sprites d'Ocre (lot 2) |
 | Parvis sud | z32–40 | lampadaires, bancs ; porte `ml_sud` au centre du bord sud (32 ; 40) -> `c_mega` |
 
 PNJ (dialogues inchangés) : Sabine (contrôleuse, haut de l'escalier ouest), Anselme Roque (navetteur, bout est du quai), Kessler (vigile, au portique),
@@ -138,15 +138,42 @@ ce qui est posé dessus et personnages en hauteur 2) quand deux emprises se reco
 `tests/megaline_rapide.py` (URL, OUT) ; `tests/mega_rapide.py` (rame jouable, 4 espèces) mis aux nouvelles coordonnées.
 
 ## Écarts connus
-- Tout est en gabarits tant que les lots d'Ocre ne sont pas livrés (sauf mobilier, écrans, portique à implant, rame de repli, conteneurs de 2, panneau, lampes).
+- Ligne : lots 1 et 2 posés. Terminus : gabarits jusqu'au lot 3.
+- Quand on passe dans la ruelle derrière le quai, le tablier passe à 30 % (règle d'occultation commune) et laisse voir les échoppes. Le cadre caméra ordinateur (z16–24) montre peu la ruelle.
 - Le rez sous le quai n'est pas praticable (voir plus haut) ; la galerie couverte se voit, on n'y marche pas.
 - Bâti E : sa façade sur rue (ouest) est peu visible dans l'angle du jeu ; à soigner côté sud.
 - Le quai du terminus est à +1,1 m avec des bords en pente douce (pas d'escalier) : simplification de jeu.
 
-## Lots 1 et 2 d'Ocre reçus pendant la pose (ef04794, a203f03) : pas encore posés
+## Lots 1 et 2 d'Ocre posés (structure ef04794, rez et bâti a203f03)
 
-Le lot 1 (structure : 22 clés `*_v2_3q`, plus `ml_rame_3v_dos_v2_3q` et les couches `_avant`, `_neon`, `_fenetres`, `_texte`) est arrivé sur main pendant ce lot, suivi du lot 2 (rez et bâti, a203f03, poses dans ASSETS.md lot 2). Comme demandé, ni l'un ni l'autre n'est **posé** ici : `gabaritsSeuls: true` sur `steel_megaline` empêche la substitution automatique des clés `attente` (src/main.js), et les gabarits restent affichés. Pour le prochain lot, il faut :
-- retirer `gabaritsSeuls` ;
-- câbler `base_y` (rame 6,8, barrière et cadre 6,0) ;
-- poser les couches `_avant` du viaduc après la rame, avec les vues dos et miroir de la rame et leur `_texte_miroir` jamais retourné, puis l'image des écrans dans `ecran.quad_px` ;
-- reprendre les écarts de la fiche de poses (ASSETS.md, lot 1) : cadre d'écran en z14–14,4, largeur 5,4, avec des mâts depuis le quai ; poteaux de galerie du quai ; profil de l'escalier (palier z22–23 à +6, puis une pente jusqu'à z32).
+Toutes les poses suivent les fiches d'ASSETS.md (lots 1 et 2) : sprites à l'échelle 1 (50 px/m), ancre au coin avant sud-est, `base_y` -> `y`,
+octets inchangés. Plus aucun gabarit sur la ligne (`gabaritsSeuls` reste disponible dans main.js, inutilisé). Le terminus garde ses gabarits jusqu'au lot 3.
+
+| pièce | clé | pose |
+|---|---|---|
+| bâti nord | `ml_bati_n1/n2/n3_v2_3q` | x0 / x24 / x48, z0, pleins |
+| passerelle de service | `ml_passerelle_nord_v2_3q` | x44–48 z0–8, limons x44 et x47,7 (0,3 m) + borne x44,2 z6,4 ; libre x44,3–47,7 |
+| ruelle | `ml_ruelle_benne_v2_3q` ×2, `ml_ruelle_caisses_v2_3q` ×3 | (3 ; 8,4) (37 ; 8,4) ; (5,6 ; 8,6) (52 ; 8,6) (16,5 ; 30,5) |
+| viaduc | `ml_viaduc_seg24_v2_3q` ×2, `ml_viaduc_seg16_v2_3q`, `ml_viaduc_pile_v2_3q` ×6 | x0 / 24 / 48, z10 ; piles x2…62 tous les 12 m ; `_neon` automatique |
+| poutres sud | `ml_viaduc_seg24_v2_3q_avant` ×2, `ml_viaduc_seg16_v2_3q_avant` | mêmes places, étage 3 : après la rame |
+| rame | `ml_rame_3v_v2_3q` / `ml_rame_3v_dos_v2_3q` | base y 6,8, z10,5–13,5 ; un passage de 12 s toutes les 30 s, sens alternés (avant vers +x, dos vers −x), calques `_fenetres` `_neon` `_texte` de la vue courante, coupée aux bords du lieu |
+| échoppes sous le quai | `ml_echoppe_tran/cables_v2_3q`, `ml_facade_humancorp_v2_3q`, `ml_atelier_rivet_v2_3q` | x18 / 24 / 30 / 38, z14 ; logo `ml_ens_human_corp` dans `logo.quad_px` ; café froid sur l'établi (39,8 ; 20,1 ; y 0,98) |
+| quai | `ml_quai_tablier_v2_3q` | x18–46 z14–22, plancher +6 |
+| escaliers | `ml_escalier_v2_3q` ×2 | x18 / x43, z22–32 ; limons de 0,15 m ; niveau : palier +6 z22–23 puis pente jusqu'à z32 |
+| barrières | `ml_quai_barriere_v2_3q` ×2 | x18,4 / x32,6, z17,35, y 6 |
+| écrans | `ml_ecran_cadre_v2_3q` ×2 | x19,8 / x36,8, z14–14,4, y 6, mâts pleins ; Vibes (ouest) et Tron (est) posés dans `ecran.quad_px` |
+| terrasses | `ml_terrasse_v2_3q` ×6 | (22 ; 24) (26 ; 27,5) (30 ; 24) (34 ; 28) (37,5 ; 24) (40,5 ; 28), solide 0,8 × 0,8 |
+| bâti W / E | `ml_bati_w_v2_3q`, `ml_bati_e_v2_3q` | x0 / x54, z14–32, pleins |
+
+**Dalles posées par le code** (`b.dalles` : `{ champ, image }`) : plan vertical du monde, face sud, à la place exacte du quad du manifeste ; la caméra
+iso le projette en parallélogramme (pente 0,33). L'image garde sa taille (256 px = 5,12 m), aucune retaille.
+
+**Tri du peintre** : `b.zone` (quai et son rez, viaduc et ses piles). Dans une même zone, l'étage décide même sans emprise commune
+(piles 0 < viaduc 1 < rame 2 < poutres `_avant` 3 ; rez 0 < tablier 1 < posé sur le quai 2). Sans cette règle, un bâti voisin en x passait devant
+(tableau du quai derrière la façade Human Corp, poutre ouest derrière une pile). Personnage sur le quai ou l'escalier : zone `zoneNiveau` du lieu.
+
+**Écarts avec la fiche, assumés** : solides des échoppes (z14–20,6) et poteaux de galerie non posés, parce que le sol à cet endroit est le quai
+(un seul niveau de marche). Deux bouts de barrière invisibles (x18–18,4 et x45,2–46) ferment la bande d'embarquement aux extrémités.
+
+**Échelle** : aucune pièce hors échelle. Largeur et hauteur des images mesurées par rapport à la boîte projetée (w × d × h à 50 px/m) : 1,01 à 1,07.
+Les écarts viennent des débords (auvents, socle de pile 2 × 2, escaliers de secours). La terrasse fait 0,76 parce que le mobilier ne remplit pas ses 2 × 2 m.

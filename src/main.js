@@ -37,7 +37,7 @@ const mapQuery=new URLSearchParams(location.search);if(mapQuery.get('dev')==='1'
 // Emplacements en attente d'un asset d'Ocre (b.attente { cle, h }) : dès que la clé est livrée dans un manifeste, elle remplace le repli
 // (sprite v3 natif centré par b.ancre, ou silhouette b.ph) sur l'emprise réservée ; les éléments b.repliDe de ce bâtiment sont retirés.
 for (const L of Object.values(world.LOCATIONS)) { const livres = new Set();
-  // L.gabaritsSeuls : clés livrées mais pas encore câblées (fiche de poses à lire) : le gabarit reste affiché (Mega-Line v2, lot 1 d'Ocre arrivé pendant la pose du plan)
+  // L.gabaritsSeuls : clés livrées mais pas encore câblées (fiche de poses à lire) : le gabarit reste affiché (utilisé pendant la pose du plan Mega-Line v2)
   if (L.gabaritsSeuls) { for (const b of L.buildings || []) if (b.attente && b.sprite === b.attente.cle) b.sprite = 'gabarit:' + b.attente.cle; continue; }
   for (const b of L.buildings || []) if (b.attente && bman[b.attente.cle]) { b.sprite = b.attente.cle; delete b.ancre; delete b.ph; livres.add(b.id); }
   if (livres.size) L.buildings = L.buildings.filter(b => !livres.has(b.repliDe)); }

@@ -21,57 +21,61 @@ const FEN = (w, h, seed = 0, de = 0) => ({
 const FER = '#1b1d22', LAITON = '#3a332a', BETON = '#4a4844';
 const PILES = [2, 14, 26, 38, 50, 62]; // centres des piles du viaduc (tous les 12 m), passage libre 10,4 m
 const LAMPS = [[6, 33.6], [22, 33.6], [42, 33.6], [58, 33.6], [14, 20], [50, 20]];
-const TERR = [[22.5, 24], [26, 27.5], [22.5, 29], [37.5, 24], [40.5, 27.5], [36.5, 29]];
+const TERR = [[22, 24], [26, 27.5], [30, 24], [34, 28], [37.5, 24], [40.5, 28]]; // fiche de poses d'Ocre (lot 2)
 const QUAI = 6; // plancher du quai (m)
-// bords du quai et côtés des escaliers (solides) : le quai ne se rejoint que par les deux escaliers ; bande d'embarquement fermée par les barrières et le portique
+// bords du quai (solides) : le quai ne se rejoint que par les deux escaliers ; bande d'embarquement fermée par les barrières et le portique
 const BORDS_QUAI = [{ x: 18, z: 13.6, w: 28, d: 0.4 }, { x: 17.6, z: 14, w: 0.4, d: 8 }, { x: 46, z: 14, w: 0.4, d: 8 }, { x: 21, z: 21.8, w: 22, d: 0.4 }];
-const COTES_ESC = x => [{ x: x - 0.4, z: 22, w: 0.4, d: 9.5 }, { x: x + 3, z: 22, w: 0.4, d: 9.5 }];
+// côtés des escaliers : limons de la fiche d'Ocre (0,15 m), passage libre 2,7 m
+const COTES_ESC = x => [{ x, z: 22, w: 0.15, d: 10 }, { x: x + 2.85, z: 22, w: 0.15, d: 10 }];
+// Poses des lots 1 (ef04794) et 2 (a203f03) d'Ocre, d'après ses fiches (docs/villes/steel/quartiers/mega_line/ASSETS.md) : sprites à l'échelle 1,
+// ancre au coin avant sud-est, base_y -> y. Ordre de dessin : tri du peintre par emprise + étage (rez 0 < viaduc et tablier 1 < rame et ce qui
+// est posé sur le quai 2 < poutres _avant du viaduc 3). Le rez sous le tablier n'est pas praticable (un seul niveau de marche : le quai à +6).
 export const BUILDINGS_MEGA = [
   // Lot 2 · bâti nord, passerelle de service (sortie nord vers le terminus)
-  G('ml2_n1', 'ml_bati_n1_v2_3q', 0, 0, 24, 8, { h: 12, color: '#211f22', ...FEN(24, 12, 1) }),
-  G('ml2_n2', 'ml_bati_n2_v2_3q', 24, 0, 20, 8, { h: 16, color: '#1e1d21', ...FEN(20, 16, 2) }),
-  G('ml2_pass', 'ml_passerelle_nord_v2_3q', 44, 0, 0.4, 8, { h: 1.1, color: LAITON }),
-  G('ml2_pass_e', 'ml_passerelle_nord_v2_3q', 47.6, 0, 0.4, 8, { h: 1.1, color: LAITON }, { repliDe: 'ml2_pass' }),
-  G('ml2_n3', 'ml_bati_n3_v2_3q', 48, 0, 16, 8, { h: 10, color: '#221f20', ...FEN(16, 10, 3) }),
-  // Lot 2 · ruelle de service (z8-14)
-  G('ml2_benne0', 'ml_ruelle_benne_v2_3q', 5, 8.3, 2, 1.2, { h: 1.4, color: '#2c3328' }), G('ml2_benne1', 'ml_ruelle_benne_v2_3q', 53, 8.3, 2, 1.2, { h: 1.4, color: '#2c3328' }),
-  G('ml2_caisses0', 'ml_ruelle_caisses_v2_3q', 19, 8.3, 1.6, 1.2, { h: 1.2, color: '#3a2e22' }), G('ml2_caisses1', 'ml_ruelle_caisses_v2_3q', 56, 12.2, 1.6, 1.2, { h: 1.2, color: '#3a2e22' }),
-  // Lot 1 · viaduc (z10-14, sous-poutre 6 m, rails à 6,8 m), piles tous les 12 m, rame qui passe sans s'arrêter
-  G('ml2_viaduc0', 'ml_viaduc_seg24_v2_3q', 0, 10, 24, 4, { kind: 'viaduc', y0: 6, dessus: 6.8, h: 6.8 }, { solid: [], etage: 1 }),
-  G('ml2_viaduc1', 'ml_viaduc_seg24_v2_3q', 24, 10, 24, 4, { kind: 'viaduc', y0: 6, dessus: 6.8, h: 6.8 }, { solid: [], etage: 1 }),
-  G('ml2_viaduc2', 'ml_viaduc_seg16_v2_3q', 48, 10, 16, 4, { kind: 'viaduc', y0: 6, dessus: 6.8, h: 6.8 }, { solid: [], etage: 1 }),
-  ...PILES.map((cx, i) => G(`ml2_pile${i}`, 'ml_viaduc_pile_v2_3q', cx - 0.8, 11.2, 1.6, 1.6, { h: 6, color: '#17181c' })),
-  // repli : l'ancienne rame (24 m, déjà livrée) défile tant que la rame 3 voitures (28 m) n'est pas livrée ; déplacée par le code, ne s'arrête pas
-  B('ml_rame', '', 'ml_rame', 14, 10.5, 28, 3, { solid: [], named: false, y: 6.8, etage: 2, attente: { cle: 'ml_rame_3v_v2_3q', h: 3.6 }, defile: { dx: 110, passage: 10, periode: 40 } }),
-  // Lot 2 · rez sous le quai (z14-20, sous le tablier ; galerie couverte z20-22 au pied des poteaux)
-  G('ml2_tran', 'ml_echoppe_tran_v2_3q', 18, 14, 6, 6, { h: 5.4, color: '#2a1d1a', lights: [{ x: 1.6, y: 1.5, w: 2.2, h: 1.6, c: '#c9541e' }, { x: 4.4, y: 1.5, w: 2, h: 1.6, c: '#e8a13a' }] }, { solid: [], label: 'Nouilles de Mme Tran' }),
-  G('ml2_cables', 'ml_echoppe_cables_v2_3q', 24, 14, 6, 6, { h: 5.4, color: '#1f2124', lights: [{ x: 3, y: 1.5, w: 4.4, h: 1.5, c: '#c98a3a' }] }, { solid: [], label: 'Câbles et réparations' }),
-  G('ml2_hc', 'ml_facade_humancorp_v2_3q', 30, 14, 8, 6, { h: 5.4, color: '#1c2230', lights: [{ x: 1.5, y: 1.4, w: 2, h: 2.2, c: '#e8a13a' }, { x: 6.5, y: 1.4, w: 2, h: 2.2, c: '#e8a13a' }] }, { solid: [], label: 'Human Corp' }),
-  G('ml2_atelier', 'ml_atelier_rivet_v2_3q', 38, 14, 8, 6, { h: 5.4, color: '#24211c', lights: [{ x: 2, y: 1.4, w: 2.6, h: 1.4, c: '#e8a13a' }, { x: 6, y: 1.3, w: 1.6, h: 2.2, c: '#c98a3a' }] }, { solid: [], label: 'Atelier de Rivet' }),
-  ENS('ml_e_hc', 'ml_ens_human_corp', 34, 20.1, 1.8), // logo Human Corp (triangle, sans lettrage) qui respire, sous la galerie
-  // Lot 1 · quai à +6 m (x18-46, z14-22) : tablier, bande d'embarquement (z14-17,5, ligne jaune z15,2), barrières, portique à implant, deux escaliers vers la rue
-  G('ml2_quai', 'ml_quai_tablier_v2_3q', 18, 14, 28, 8, { kind: 'tablier', sol: QUAI, ep: 0.6, h: QUAI + 1.1, ligne: 15.2, bande: [14, 17.5], pas: 4,
-    gc: [[0, 0.2, 0.06, 8], [27.94, 0.2, 28, 8], [3, 7.94, 25, 8]] }, { solid: BORDS_QUAI, etage: 1 }),
-  G('ml2_esc_o', 'ml_escalier_v2_3q', 18, 22, 3, 10, { kind: 'escalier', monte: QUAI }, { solid: COTES_ESC(18), etage: 1 }),
-  G('ml2_esc_e', 'ml_escalier_v2_3q', 43, 22, 3, 10, { kind: 'escalier', monte: QUAI }, { solid: COTES_ESC(43), etage: 1 }),
-  G('ml2_barr_o', 'ml_quai_barriere_v2_3q', 18.4, 17.35, 12.6, 0.3, { h: 1.1, y0: QUAI, color: LAITON }, { y: QUAI, solid: [{ x: 18, z: 17.35, w: 13, d: 0.3 }], etage: 2 }),
-  G('ml2_barr_e', 'ml_quai_barriere_v2_3q', 32.6, 17.35, 12.6, 0.3, { h: 1.1, y0: QUAI, color: LAITON }, { y: QUAI, solid: [{ x: 32.6, z: 17.35, w: 13.4, d: 0.3 }], etage: 2 }),
-  B('ml_portique_implant', 'Portique à implant', 'ml_portique_implant', 31, 17, 1.6, 1, { y: QUAI, etage: 2, solid: [{ x: 31, z: 17, w: 1.6, d: 1 }] }), // éteint ; planches jouées une fois au passage (main.js)
-  B('ml_tableau', 'Tableau des départs', 'ml_tableau', 26.4, 19.6, 2.4, 0.4, { y: QUAI, etage: 2 }), ENS('ml_e_horaires', 'ml_ens_horaires', 27.6, 20.2, QUAI + 2.2, { etage: 3 }),
-  B('ml_borne', 'Borne de billets', 'ml_borne', 34.4, 18.4, 0.8, 0.6, { y: QUAI, etage: 2 }),
-  B('ml_banc0', '', 'ml_banc', 24, 19.2, 2, 0.6, { named: false, y: QUAI, etage: 2 }), B('ml_banc1', '', 'ml_banc', 37, 20.4, 2, 0.6, { named: false, y: QUAI, etage: 2 }),
-  B('ml_poub0', '', 'ml_poubelle', 29.6, 20.6, 0.6, 0.6, { named: false, y: QUAI, etage: 2 }), B('ml_poub1', '', 'ml_poubelle', 41, 18.2, 0.6, 0.6, { named: false, y: QUAI, etage: 2 }),
-  // Lot 1 · écrans du quai, en hauteur sur le flanc sud du viaduc : Vibes à l'ouest, Tron à l'est (planches déjà livrées, 5,12 m)
-  G('ml2_ecran_o', 'ml_ecran_cadre_v2_3q', 19.9, 13.6, 5.2, 0.4, { h: 3, y0: 7.2, color: '#141418' }, { y: 7.2, solid: [], etage: 2 }),
-  G('ml2_ecran_e', 'ml_ecran_cadre_v2_3q', 36.9, 13.6, 5.2, 0.4, { h: 3, y0: 7.2, color: '#141418' }, { y: 7.2, solid: [], etage: 2 }),
-  ENS('ml_e_vibes', 'ml_ens_ecran_vibes', 22.5, 13.95, 7.26, { groupe: 'ecrans_quai', ph: 0, etage: 3 }), ENS('ml_e_tron', 'ml_ens_ecran_tron', 39.5, 13.95, 7.26, { groupe: 'ecrans_quai', ph: 0, etage: 3 }),
-  // Lot 2 · rue piétonne et terrasses (x21-43, z22-32), atelier de Rivet : établi et café froid
-  ...TERR.map(([x, z], i) => G(`ml2_terr${i}`, 'ml_terrasse_v2_3q', x, z, 2, 2, { h: 1, color: '#3a2e24' })),
-  G('ml2_etabli', 'ml_etabli_v2_3q', 39.2, 22.5, 1.6, 0.6, { h: 0.9, color: '#4a3a28' }),
-  B('ml_cafe_froid', '', 'ml_cafe_froid', 39.9, 22.7, 0.2, 0.2, { solid: [], named: false, y: 0.9 }), // café froid de Rivet, sur l'établi (hauteur de plan de travail)
+  B('ml_n1', '', 'ml_bati_n1_v2_3q', 0, 0, 24, 8, { named: false, solid: [{ x: 0, z: 0, w: 24, d: 8 }] }),
+  B('ml_n2', '', 'ml_bati_n2_v2_3q', 24, 0, 20, 8, { named: false, solid: [{ x: 24, z: 0, w: 20, d: 8 }] }),
+  B('ml_pass_n', '', 'ml_passerelle_nord_v2_3q', 44, 0, 4, 8, { named: false, solid: [{ x: 44, z: 0, w: 0.3, d: 8 }, { x: 47.7, z: 0, w: 0.3, d: 8 }, { x: 44.2, z: 6.4, w: 0.4, d: 0.6 }] }), // libre x44,3-47,7
+  B('ml_n3', '', 'ml_bati_n3_v2_3q', 48, 0, 16, 8, { named: false, solid: [{ x: 48, z: 0, w: 16, d: 8 }] }),
+  // Lot 2 · ruelle de service (z8-10) et pied de l'escalier ouest
+  ...[[3, 8.4], [37, 8.4]].map(([x, z], i) => B('ml_benne' + i, '', 'ml_ruelle_benne_v2_3q', x, z, 2, 1.2, { named: false, solid: [{ x, z, w: 2, d: 1.2 }] })),
+  ...[[5.6, 8.6], [52, 8.6], [16.5, 30.5]].map(([x, z], i) => B('ml_caisses' + i, '', 'ml_ruelle_caisses_v2_3q', x, z, 1.6, 1.2, { named: false, solid: [{ x, z, w: 1.6, d: 1.2 }] })),
+  // Lot 1 · viaduc (z10-14, sous-poutre 6 m, rails à 6,8 m) sans solide, piles tous les 12 m
+  ...PILES.map((cx, i) => B('ml_v_pile' + i, '', 'ml_viaduc_pile_v2_3q', cx - 0.8, 11.2, 1.6, 1.6, { zone: 'viaduc', named: false, solid: [{ x: cx - 0.8, z: 11.2, w: 1.6, d: 1.6 }] })),
+  B('ml_v_seg0', '', 'ml_viaduc_seg24_v2_3q', 0, 10, 24, 4, { zone: 'viaduc', named: false, solid: [], etage: 1 }),
+  B('ml_v_seg1', '', 'ml_viaduc_seg24_v2_3q', 24, 10, 24, 4, { zone: 'viaduc', named: false, solid: [], etage: 1 }),
+  B('ml_v_seg2', '', 'ml_viaduc_seg16_v2_3q', 48, 10, 16, 4, { zone: 'viaduc', named: false, solid: [], etage: 1 }),
+  // rame 3 voitures (base y 6,8, z10,5-13,5) : passe sans s'arrêter, vue avant vers +x, vue dos vers −x (view.js, rame) ; boîte de tri = tout le viaduc
+  B('ml_rame', '', 'ml_rame_3v_v2_3q', 0, 10.5, 64, 3, { zone: 'viaduc', named: false, solid: [], y: 6.8, etage: 2, rame: { passage: 12, periode: 30, ph: 4 } }),
+  // poutres sud du viaduc (calques _avant) : APRÈS la rame, elles masquent ses bogies
+  B('ml_v_av0', '', 'ml_viaduc_seg24_v2_3q_avant', 0, 10, 24, 4, { zone: 'viaduc', named: false, solid: [], etage: 3 }),
+  B('ml_v_av1', '', 'ml_viaduc_seg24_v2_3q_avant', 24, 10, 24, 4, { zone: 'viaduc', named: false, solid: [], etage: 3 }),
+  B('ml_v_av2', '', 'ml_viaduc_seg16_v2_3q_avant', 48, 10, 16, 4, { zone: 'viaduc', named: false, solid: [], etage: 3 }),
+  // Lot 2 · échoppes sous le quai (z14-20, dessus à +5,4 caché par le tablier) : rez non praticable, solides de la fiche non posés (le sol y est le quai)
+  B('ml_ech_tran', 'Nouilles de Mme Tran', 'ml_echoppe_tran_v2_3q', 18, 14, 6, 6, { zone: 'quai', solid: [] }),
+  B('ml_ech_cables', 'Câbles et réparations', 'ml_echoppe_cables_v2_3q', 24, 14, 6, 6, { zone: 'quai', solid: [] }),
+  B('ml_hc', 'Human Corp', 'ml_facade_humancorp_v2_3q', 30, 14, 8, 6, { zone: 'quai', solid: [], dalles: [{ champ: 'logo', image: 'ml_ens_human_corp' }] }), // logo qui respire dans le caisson noir
+  B('ml_atelier', 'Atelier de Rivet', 'ml_atelier_rivet_v2_3q', 38, 14, 8, 6, { zone: 'quai', solid: [] }),
+  B('ml_cafe_froid', '', 'ml_cafe_froid', 39.7, 20, 0.2, 0.2, { zone: 'quai', solid: [], named: false, y: 0.98 }), // café froid de Rivet, sur l'établi de l'atelier (fiche : x≈39,8 z≈20,1 y 0,98)
+  // Lot 1 · quai à +6 m (x18-46, z14-22) : tablier, barrières, portique à implant, écrans ; deux escaliers vers la rue
+  B('ml_quai', '', 'ml_quai_tablier_v2_3q', 18, 14, 28, 8, { zone: 'quai', named: false, solid: BORDS_QUAI, etage: 1 }),
+  B('ml_esc_o', '', 'ml_escalier_v2_3q', 18, 22, 3, 10, { named: false, solid: COTES_ESC(18), etage: 1 }),
+  B('ml_esc_e', '', 'ml_escalier_v2_3q', 43, 22, 3, 10, { named: false, solid: COTES_ESC(43), etage: 1 }),
+  // barrières de la fiche (z17,4) + deux bouts de 0,4 et 0,8 m jusqu'aux garde-corps (sinon la bande d'embarquement s'ouvre aux extrémités)
+  B('ml_barr_o', '', 'ml_quai_barriere_v2_3q', 18.4, 17.35, 12.6, 0.3, { zone: 'quai', named: false, y: QUAI, etage: 2, solid: [{ x: 18.4, z: 17.4, w: 12.6, d: 0.2 }, { x: 18, z: 17.4, w: 0.4, d: 0.2 }] }),
+  B('ml_barr_e', '', 'ml_quai_barriere_v2_3q', 32.6, 17.35, 12.6, 0.3, { zone: 'quai', named: false, y: QUAI, etage: 2, solid: [{ x: 32.6, z: 17.4, w: 12.6, d: 0.2 }, { x: 45.2, z: 17.4, w: 0.8, d: 0.2 }] }),
+  B('ml_portique_implant', 'Portique à implant', 'ml_portique_implant', 31, 17, 1.6, 1, { zone: 'quai', y: QUAI, etage: 2, solid: [{ x: 31, z: 17, w: 1.6, d: 1 }] }), // éteint ; planches jouées une fois au passage (main.js)
+  B('ml_tableau', 'Tableau des départs', 'ml_tableau', 26.4, 19.6, 2.4, 0.4, { zone: 'quai', y: QUAI, etage: 2 }), ENS('ml_e_horaires', 'ml_ens_horaires', 27.6, 20.2, QUAI + 2.2, { zone: 'quai', etage: 3 }),
+  B('ml_borne', 'Borne de billets', 'ml_borne', 34.4, 18.4, 0.8, 0.6, { zone: 'quai', y: QUAI, etage: 2 }),
+  B('ml_banc0', '', 'ml_banc', 24, 19.2, 2, 0.6, { zone: 'quai', named: false, y: QUAI, etage: 2 }), B('ml_banc1', '', 'ml_banc', 37, 20.4, 2, 0.6, { zone: 'quai', named: false, y: QUAI, etage: 2 }),
+  B('ml_poub0', '', 'ml_poubelle', 29.6, 20.6, 0.6, 0.6, { zone: 'quai', named: false, y: QUAI, etage: 2 }), B('ml_poub1', '', 'ml_poubelle', 41, 18.2, 0.6, 0.6, { zone: 'quai', named: false, y: QUAI, etage: 2 }),
+  // écrans du quai (cadres vierges, mâts depuis le quai, dalle +10,5-13,38 au-dessus du toit de la rame) : Vibes à l'ouest, Tron à l'est, posés dans ecran.quad_px
+  B('ml_ecran_vibes', '', 'ml_ecran_cadre_v2_3q', 19.8, 14, 5.4, 0.4, { zone: 'quai', named: false, y: QUAI, etage: 2, solid: [{ x: 19.8, z: 14, w: 0.3, d: 0.2 }, { x: 24.9, z: 14, w: 0.3, d: 0.2 }], dalles: [{ champ: 'ecran', image: 'ml_ens_ecran_vibes', groupe: 'ecrans_quai' }] }),
+  B('ml_ecran_tron', '', 'ml_ecran_cadre_v2_3q', 36.8, 14, 5.4, 0.4, { zone: 'quai', named: false, y: QUAI, etage: 2, solid: [{ x: 36.8, z: 14, w: 0.3, d: 0.2 }, { x: 41.9, z: 14, w: 0.3, d: 0.2 }], dalles: [{ champ: 'ecran', image: 'ml_ens_ecran_tron', groupe: 'ecrans_quai' }] }),
+  // Lot 2 · rue piétonne et terrasses (x21-43, z22-32)
+  ...TERR.map(([x, z], i) => B('ml_ter' + i, '', 'ml_terrasse_v2_3q', x, z, 2, 2, { named: false, solid: [{ x: x + 0.6, z: z + 0.6, w: 0.8, d: 0.8 }] })),
   // Lot 2 · bâti ouest et est (z14-32), rez actifs sur les rues latérales (x10-18, x46-54)
-  G('ml2_w', 'ml_bati_w_v2_3q', 0, 14, 10, 18, { h: 12, color: '#1f1e22', ...FEN(10, 12, 4, 18) }),
-  G('ml2_e', 'ml_bati_e_v2_3q', 54, 14, 10, 18, { h: 10, color: '#201e21', ...FEN(10, 10, 5, 18) }),
+  B('ml_bw', '', 'ml_bati_w_v2_3q', 0, 14, 10, 18, { named: false, solid: [{ x: 0, z: 14, w: 10, d: 18 }] }),
+  B('ml_be', '', 'ml_bati_e_v2_3q', 54, 14, 10, 18, { named: false, solid: [{ x: 54, z: 14, w: 10, d: 18 }] }),
   // parvis sud (z32-40) : lampadaires à ampoule visible, bancs
   ...LAMPS.map(([x, z], i) => B(`ml_lamp${i}`, '', 'ml_lampadaire', x - 0.3, z - 0.3, 0.6, 0.6, { named: false })),
   B('ml_banc2', '', 'ml_banc', 11, 36.6, 2, 0.6, { named: false }), B('ml_banc3', '', 'ml_banc', 51, 36.6, 2, 0.6, { named: false }),
@@ -108,8 +112,8 @@ export const BUILDINGS_TERMINUS = [
 ];
 export const CLOSED_MEGA = {
   ml_portique_implant: 'Le portique à implant. Deux piliers, deux volets vitrés, un lecteur éteint. Il lit la nuque des gens.',
-  ml2_viaduc1: 'Le viaduc de fer noir. Les piles ruissellent ; le fer transpire.',
-  ml2_quai: 'Le quai, six mètres au-dessus de la rue. On y monte par les escaliers ; la rame ne s\u2019arrête pas pour qui n\u2019a pas de billet.',
+  ml_v_seg1: 'Le viaduc de fer noir. Les piles ruissellent ; le fer transpire.',
+  ml_quai: 'Le quai, six mètres au-dessus de la rue. On y monte par les escaliers ; la rame ne s\u2019arrête pas pour qui n\u2019a pas de billet.',
   ml_tableau: 'Le tableau des départs, en pictogrammes. Une ligne change. Aucune ne dit « terminus ».',
   ml_borne: 'La borne de billets reconnaît les bracelets, et les visages.',
   ml_sas: 'Les portes du sas. Pleines, si hautes qu\u2019on les prend pour un mur. Fermées. Elles ne s\u2019ouvriront pas.',
@@ -118,12 +122,11 @@ export const CLOSED_MEGA = {
   ml_portique: 'Le portique de levage jaune. Les conteneurs vont et viennent, toujours vers l\u2019intérieur.',
 };
 export const LOCATIONS_MEGA = {
-  steel_megaline: { id: 'steel_megaline', name: 'Steel-Megalopolis · Mega-Line', kind: 'exterior', size: { w: 64, d: 40 }, light: LIGNE, plan: 2,
-    gabaritsSeuls: true, // lots 1 et 2 d'Ocre (structure, rez et bâti) publiés pendant la pose du plan (ef04794, a203f03) : câblé au lot suivant, après lecture de sa fiche de poses (ASSETS.md)
+  steel_megaline: { id: 'steel_megaline', name: 'Steel-Megalopolis · Mega-Line', kind: 'exterior', size: { w: 64, d: 40 }, light: LIGNE, plan: 2, zoneNiveau: 'quai', // personnage sur le quai ou l'escalier : trié avec le quai (devant son rez)
     cadre: { desktop: { x: [21, 43], z: [16, 24] }, mobile: { x: [8, 56], z: [10, 30] } }, // le cadre reste sur le lieu (pas de vide au sud à l'arrivée)
     ground: { base: '#12121a', skin: 'g_ml_pave', tileM: 4, clean: true },
     // quai à +6 m et escaliers (montée vers le nord) : hauteur de sol au rendu ; l'accès est fait par les solides (BORDS_QUAI, COTES_ESC)
-    niveaux: [{ x: 18, z: 14, w: 28, d: 8, y: QUAI }, { x: 18, z: 22, w: 3, d: 10, y0: QUAI, y1: 0, axe: 'z' }, { x: 43, z: 22, w: 3, d: 10, y0: QUAI, y1: 0, axe: 'z' }],
+    niveaux: [{ x: 18, z: 14, w: 28, d: 8, y: QUAI }, ...[18, 43].flatMap(x => [{ x, z: 22, w: 3, d: 1, y: QUAI }, { x, z: 23, w: 3, d: 9, y0: QUAI, y1: 0, axe: 'z' }])], // fiche d'Ocre : palier z22-23 à +6, 36 marches jusqu'à z32
     buildings: BUILDINGS_MEGA, props: [],
     glows: [ ...LAMPS.map(([x, z]) => ({ x, z: z + 0.6, rx: 2.6, rz: 1.9, color: AMBRE, i: 0.55, flicker: true })), // lampadaires (code)
       { x: 22.5, z: 15.6, rx: 3, rz: 1.4, color: VIOLET, i: 0.6, flicker: true, sol: true }, { x: 39.5, z: 15.6, rx: 3, rz: 1.4, color: CYAN, i: 0.55, flicker: true, sol: true }, // reflets des écrans sur le quai
@@ -131,8 +134,8 @@ export const LOCATIONS_MEGA = {
       { x: 42, z: 23.2, rx: 2.6, rz: 1.1, color: AMBRE, i: 0.5 }, { x: 32, z: 19.6, rx: 12, rz: 2, color: AMBRE, i: 0.18, sol: true }, { x: 31.8, z: 18.3, rx: 1.4, rz: 0.8, color: AMBRE, i: 0.5, sol: true } ],
     extras: [ ...[[20.5, 15.8], [26.5, 16.2], [29, 15.6], [36, 15.7], [43.5, 16.1]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_ml_foule_b' : 'gen_ml_foule_a', x, z, face: i % 2 ? 1 : -1, role: 'voyageur' })), // bande d'embarquement
       ...[[30.6, 21], [14.4, 26], [25.2, 30.6], [38.8, 31], [8, 36.4], [55, 37.2], [24.6, 26.6], [41.4, 25.4]].map(([x, z], i) => ({ sprite: i % 2 ? 'gen_ml_foule_a' : 'gen_ml_foule_b', x, z, face: i % 2 ? -1 : 1, role: 'passant', dense: i > 5 })) ],
-    walkers: [ { sprite: 'gen_ml_foule_a', path: [[32, 36], [19.5, 33], [19.5, 22.6], [30, 19.6], [44.5, 22.6], [44.5, 33]], speed: 0.9, t0: 4 }, // monte l'escalier ouest, traverse le quai, redescend à l'est
-      { sprite: 'gen_ml_foule_b', path: [[3, 37.5], [61, 37.5]], speed: 0.8, t0: 10 }, { sprite: 'gen_ml_foule_a', path: [[13.5, 33], [13.5, 9.2], [50, 9.2], [50.5, 33]], speed: 0.85, t0: 30 } ],
+    walkers: [ { sprite: 'gen_ml_foule_a', path: [[32, 36], [19.5, 33], [19.5, 21.2], [30, 19.6], [44.5, 21.2], [44.5, 33]], speed: 0.9, t0: 4 }, // monte l'escalier ouest, traverse le quai, redescend à l'est
+      { sprite: 'gen_ml_foule_b', path: [[3, 37.5], [61, 37.5]], speed: 0.8, t0: 10 }, { sprite: 'gen_ml_foule_a', path: [[13.5, 33], [13.5, 10.2], [50, 10.2], [50.5, 33]], speed: 0.85, t0: 30 } ],
     spawn: { player: { x: 32, z: 38.2 }, companion: { x: 33, z: 38.2 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'La Mega-Line. Le viaduc de fer noir passe à six mètres au-dessus de la rue ; la rame violette glisse sans s\u2019arrêter. Sur le quai, Vibes et Tron passent en boucle.' } },
   steel_terminus: { id: 'steel_terminus', name: 'Steel-Megalopolis · Terminus de fret', kind: 'exterior', size: { w: 40, d: 28 }, light: FRET, plan: 2,
