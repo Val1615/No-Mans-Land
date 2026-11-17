@@ -1,5 +1,7 @@
 # Rencontres aléatoires et exploration régionale : suivi
 
+Point d'entrée unique du chantier. L'architecture est dans `ARCHI.md` (Rivet). Il n'y a pas d'autre fichier de suivi.
+
 Document de reprise. Il est tenu à jour à chaque lot publié, pour qu'un agent (Rivet, Ocre, Régie, ChatGPT ou autre) puisse reprendre le chantier sans relire les conversations.
 
 Consigne d'origine : Valentin, 17 novembre 2026 (heure de Paris), « CONSIGNE WORK : rencontres aléatoires et exploration régionale ».
@@ -14,7 +16,7 @@ Toute rencontre se joue dans une vraie scène isométrique, où l'on peut se dé
 
 ## Points techniques connus
 - `EVENEMENTS_ROUTE` (`src/data/nml.js`) est vide au départ, et `onCaseEntree()` existe déjà comme crochet remplaçable.
-- Les grilles des lieux sont construites au démarrage (`src/core/game.js`) : une scène ne s'injecte pas à chaud sans adapter l'architecture. L'architecture est décrite dans `docs/systemes/RENCONTRES_ARCHI.md` (Rivet).
+- Les grilles des lieux sont construites au démarrage (`src/core/game.js`) : une scène ne s'injecte pas à chaud sans adapter l'architecture. L'architecture est décrite dans `docs/rencontres/ARCHI.md` (Rivet).
 - Les probabilités de base de `nml.js` ne changent pas. Pour tester, on utilise le mode DEV, avec une fonction « forcer une rencontre ».
 - La maquette v0.13 (`reference/maquette/.../07_MAQUETTE_ARCHIVE_v0.13/`) est une réserve d'idées, pas du code à reprendre.
 
@@ -34,6 +36,9 @@ Décor (Ocre) : pick-up en panne au milieu de la route, capot ouvert, qui sert d
 Une ligne par lot publié : date, commit, ce qui marche en jeu, ce qui reste.
 
 - 2026-11-17 : chantier ouvert, document créé (Régie).
+
+## Décisions de DA et de lore (Ocre)
+_À compléter à chaque lot._
 
 ## Questions ouvertes pour Valentin
 - La consigne reçue s'arrête au milieu de l'étape 5 (« retour au voyage ») : il manque la suite.
