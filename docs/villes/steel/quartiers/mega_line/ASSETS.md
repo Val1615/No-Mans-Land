@@ -299,3 +299,56 @@ ground: { base: '#12121a', skin: 'g_ml_parvis_v2', tileM: 4, clean: true,
 Les carreaux proposés tombent sur la rue (z 22–32), le parvis (z 32–40) et la ruelle (z 8–10). Ceux qui passent sous un bâtiment ou sous le quai sont simplement invisibles. `g_ml_pave` reste dans le manifeste, intact. Les deux reflets d'écran au sol (`glows` violet et cyan en z 15,6, sur le quai) ont une source : ils restent.
 
 Planche : `/workspace/nml-shots/megaline_sprites/parvis_dalle_contact.png` (les quatre tuiles + un aperçu 6 × 6 raccordé à la caméra du jeu). Hors jeu.
+
+## Mega-Line v2 — terminus : halle et sol (Ocre, 2026-11-17)
+
+Retour de Régie : la halle du terminus n'a ni voûte ni plafond en jeu. La voûte (`ml_tm_voute_v2_3q`) s'arrête derrière les portes et le noir entoure la cour, si bien qu'on se croirait dehors. Les pièces ci-dessous ferment les côtés de la halle 40 × 28 avec le même arc que la voûte (naissance 8 m, clé 18 m en x 20, R 25), sans rien masquer du jeu. Il n'y a pas d'arc complet au sud : côté caméra, il couvrirait toute la cour. Le sol caillouteux `g_ml_fret` est remplacé par une dalle de béton lissé.
+
+| Clé | px | Ancre | Emprise / h | Contenu |
+|---|---|---|---|---|
+| `ml_tm_nervures_o_v2_3q` (+ `_neon`) | 1268 × 1271 | 542, 1267 | 13 × 26 / 17,8 | Côté OUEST : mur de béton (h 0–8), pilastres, cinq nervures en arc coupées en x 12,6, pannes d'acier, chemin de câbles, deux appliques sodium, tableaux vierges |
+| `ml_tm_nervures_e_v2_3q` | 916 × 1096 | 171, 1089 | 4,6 × 26 / 12,6 | Côté EST (caméra) : cinq contreforts (x 40–40,6) et départs de nervures coupés en x 36,6, une panne. Elle joue le rôle de nervure basse côté caméra, sans couche `_avant` séparée : la pièce entière passe déjà devant les locaux E |
+| `ml_tm_suspension_v2_3q` (+ `_neon`) | 312 × 746 | 194, 742 | 6 × 6 / 14,5 | Suspension sodium : câble de h 14,5 à h 9, abat-jour d'acier, ampoule allumée. Le `_neon` contient la flaque de lumière au sol (rayon 3 m, sodium #ffa550) et le halo de l'ampoule |
+| `ml_tm_alerte_murale_s_v2_3q` (+ `_neon`) | 103 × 132 | 64, 128 | 1,2 × 0,45 / 2,4 | Boîtier d'alerte rouge pour une face SUD de mur : platine, coffret à bande jaune et noire, feu rouge allumé, conduit. Le `_neon` donne le halo rouge sur le mur |
+| `ml_tm_alerte_murale_e_v2_3q` (+ `_neon`) | 75 × 134 | 38, 130 | 0,45 × 1,2 / 2,4 | Même boîtier, pour une face EST (mur ouest de la halle) |
+| `g_ml_fret_v2` | 512 × 512 | — | tuile 4 m | Dalle de béton lissé gris froid mat : joints de sciage tous les 2 m, talochage, traces de pneus continues, huile discrète |
+| `g_ml_fret_v2_b` | 512 × 512 | — | tuile 4 m | Variante avec une grosse tache d'huile et des traces de pneus marquées ; bords identiques à la base sur 48 px |
+| `g_ml_fret_v2_bande_ew` | 512 × 64 | — | **tileM 4** (4 × 0,5 m) | Bande de sécurité jaune et noire usée, posée le long d'un bord est-ouest |
+| `g_ml_fret_v2_bande_ns` | 64 × 512 | — | **tileM 0,5** (0,5 × 4 m) | La même pour un bord nord-sud. `pattern()` prend la LARGEUR en mètres et garde les proportions |
+
+**Pose** (dans `steel_terminus`, coordonnées monde) :
+```js
+G('tm2_nerv_o', 'ml_tm_nervures_o_v2_3q', 0, 2, 13, 26, { h: 17.8 }, { solid: [{ x: 0, z: 2, w: 0.6, d: 26 }], fond: true }),  // juste après ml_tm_voute
+G('tm2_nerv_e', 'ml_tm_nervures_e_v2_3q', 36, 2, 4.6, 26, { h: 12.6 }, { solid: [] }),  // après ml_tm_locaux_e (dépasse de 0,6 m à l'est de la carte : ne pas rogner)
+...[[4.5, 15.5], [11.5, 5], [11, 19], [30, 5], [30, 24.5], [20, 12]].map(([cx, cz], i) =>
+  B(`tm2_susp${i}`, '', 'ml_tm_suspension_v2_3q', cx - 3, cz - 3, 6, 6, { named: false, solid: [] })),  // lampe en (cx, cz) à h 9
+B('tm2_alerte_s1', '', 'ml_tm_alerte_murale_s_v2_3q', 31.9, 2, 1.2, 0.45, { y: 2, solid: [], named: false }),  // face sud du mur E du sas (x 30–37 libre)
+B('tm2_alerte_e1', '', 'ml_tm_alerte_murale_e_v2_3q', 0.6, 7.6, 0.45, 1.2, { y: 2, solid: [], named: false }),  // face est du mur ouest
+B('tm2_alerte_e2', '', 'ml_tm_alerte_murale_e_v2_3q', 0.6, 14.4, 0.45, 1.2, { y: 2, solid: [], named: false }),
+```
+Les six suspensions sont placées au-dessus du sol libre : allée x 9–14, bande z 14–17 entre le bureau et les locaux SO, nord et sud du portique, et une au-dessus du quai (sa flaque tombe sur le quai, la voie et la rame : c'est voulu). Une suspension posée au-dessus d'un bâtiment a sa flaque cachée par ce bâtiment.
+
+**Ordre de dessin** : `ml_tm_voute` → `ml_tm_nervures_o` (fond) → murs et portes du sas → alertes (juste après leur mur) → reste de la cour (tri habituel) → `ml_tm_locaux_e` → `ml_tm_nervures_e` → suspensions en dernier. Le `_neon` de la suspension réunit la flaque et l'ampoule. Si le tri du peintre fait passer la rame ou le portique sur la flaque, ce n'est pas gênant : la flaque est un additif au sol. En revanche, la lampe (h 9) doit rester au-dessus de tout.
+
+**Sol** : `g_ml_fret_v2` **remplace `g_ml_fret`**. Voile plus sombre suggéré : `tint: 'rgba(6,8,12,0.45)'` (bleu nuit froid, sans violet).
+```js
+ground: { base: '#101114', skin: 'g_ml_fret_v2', tileM: 4, clean: true, tint: 'rgba(6,8,12,0.45)',
+  paint: [
+    ...[[4, 4], [32, 4], [8, 20], [28, 20]].map(([x, z]) => ({ x, z, w: 4, d: 4, skin: 'g_ml_fret_v2_b', tileM: 4 })),
+    { x: 23, z: 3, w: 0.5, d: 21, skin: 'g_ml_fret_v2_bande_ns', tileM: 0.5 },     // pied est du quai
+    { x: 24, z: 8, w: 13, d: 0.5, skin: 'g_ml_fret_v2_bande_ew', tileM: 4 },       // dessous du portique : bord nord
+    { x: 24, z: 20.5, w: 13, d: 0.5, skin: 'g_ml_fret_v2_bande_ew', tileM: 4 },    //   bord sud
+    { x: 24, z: 8.5, w: 0.5, d: 12, skin: 'g_ml_fret_v2_bande_ns', tileM: 0.5 },   //   bord ouest
+    { x: 36.5, z: 8.5, w: 0.5, d: 12, skin: 'g_ml_fret_v2_bande_ns', tileM: 0.5 }, //   bord est
+  ] },
+```
+⚠ Dans `src/render/textures.js`, `ground.tint` est peint (ligne 152) **avant** `paintTerrain` (ligne 154). Les carreaux `paint` échappent donc au voile et ressortent plus clairs que la base. Deux solutions : déplacer le voile après `paintTerrain` (côté code, Rivet), ou baisser `tint` à 0,25 et ne garder que les bandes. `g_ml_fret` reste dans le manifeste, intact.
+
+**Heurtoir invisible dans les captures** (`ml_tm_heurtoir_v2_3q`, `B('tm2_heurtoir', …, 14, 2, 3, 1.4)`) : le sprite est sain (9 640 px opaques, ancre juste) et la pose suit la fiche. Le problème est géométrique : le heurtoir (h 1,2, z 2–3,4) est collé au nez de `ml_tm_rame_nord` (z 3,4, h 3,6). À la caméra du jeu, la rame et le bout du quai passent devant lui et en cachent environ 83 % ; il n'en reste qu'une tranche de quelques pixels. Pour le voir, il faudrait arrêter la rame au-delà de z ≈ 11,3, ce qui n'est pas crédible. Le sprite est hors de cause. Choix à faire côté code : accepter qu'on ne le voie pas, marquer la fin de voie par une lueur rouge au sol (glow) ou par le boîtier d'alerte, ou le dessiner après la rame (occlusion fausse, déconseillée).
+
+**Défauts connus** :
+- `ml_tm_nervures_e` : tuiles hautes recalées à IoU 0,75 et 0,84 (départs de nervures un peu plus épais que le modèle), léger écart de teinte entre les contreforts du nord et ceux du sud.
+- `ml_tm_suspension` : IoU 0,63. Le câble est fin et le générateur a dessiné un abat-jour plus étroit que le modèle ; le bord de l'abat-jour garde le rendu 3D retouché.
+- Les câbles des suspensions montent jusqu'à h 14,5 sans plafond derrière : on les voit finir dans le noir au-dessus de la cour.
+
+Maquettes (images composées, pas des captures du jeu) : `/workspace/nml-shots/megaline_sprites/lot3_maquette_terminus.png` et `lot3_maquette_terminus_nuit.png`, mises à jour avec la halle, le sol et les poses ci-dessus. Planche : `halle_planche_contact.png`. Hors jeu.

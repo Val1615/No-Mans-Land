@@ -3474,5 +3474,311 @@
     "remplace": "g_ml_pave (sol de steel_megaline : taches violettes et cyan sans source)",
     "variante_de": "g_ml_parvis_v2",
     "bords": "identiques à g_ml_parvis_v2 sur 48 px : se pose en carreau de 4 x 4 m aligné sur la grille de 4 m (x, z multiples de 4) via ground.paint"
+  },
+  "ml_tm_nervures_o_v2_3q": {
+    "file": "steel/mega_line/ml_tm_nervures_o_v2_3q.webp",
+    "px": [
+      1268,
+      1271
+    ],
+    "anchor": [
+      542,
+      1267
+    ],
+    "footprint_m": [
+      13,
+      26
+    ],
+    "height_m": 17.8,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Halle du terminus, côté OUEST : mur de béton taché (h 0-8) à pilastres et chapiteaux, cinq nervures de voûte en arc (même arc que ml_tm_voute : naissance 8, clé 18 à x 20) coupées à x 12,6, pannes d'acier N-S, chemin de câbles, deux appliques sodium allumées, tableaux électriques VIERGES ; ferme le côté gauche de la halle sans rien masquer de la cour",
+    "pose": "G('tm2_nerv_o', 'ml_tm_nervures_o_v2_3q', 0, 2, 13, 26, …, { solid: [{ x: 0, z: 2, w: 0.6, d: 26 }], fond: true })  // dessiner juste APRÈS ml_tm_voute, avant tout le reste",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.5977 (IoU 0.9942), x0.7327 (IoU 0.9706), x0.6659 (IoU 0.9683), x0.216 (IoU 0.9525)), raccord par fondu ; aucun étirement ni cisaillement (bruts ml_v1/gen/tm_nerv_o_t00..t11_g2 (g1 rejetés : pièce entière repeinte), hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.326 / droit 0.699 (cible 0,33 / 0,70)",
+    "ordre": "fond : après ml_tm_voute_v2_3q, avant hangar / bureau / locaux SO",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_nervures_o_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_nervures_o_v2_3q_neon.webp",
+    "px": [
+      1268,
+      1271
+    ],
+    "anchor": [
+      542,
+      1267
+    ],
+    "additive": true,
+    "parent": "ml_tm_nervures_o_v2_3q",
+    "couche_de": "ml_tm_nervures_o_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_tm_nervures_o_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "terminus",
+    "groupe": "ml_v2_terminus"
+  },
+  "ml_tm_nervures_e_v2_3q": {
+    "file": "steel/mega_line/ml_tm_nervures_e_v2_3q.webp",
+    "px": [
+      916,
+      1096
+    ],
+    "anchor": [
+      171,
+      1089
+    ],
+    "footprint_m": [
+      4.6,
+      26
+    ],
+    "height_m": 12.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Halle du terminus, côté EST (côté caméra) : cinq contreforts de béton (x 40-40,6, h 0-8) et départs de nervures de voûte coupés à x 36,6, une panne d'acier N-S ; fait office de nervure basse côté caméra : ferme la droite de l'écran sans couvrir la cour",
+    "pose": "G('tm2_nerv_e', 'ml_tm_nervures_e_v2_3q', 36, 2, 4.6, 26, …, { solid: [] })  // dessiner APRÈS ml_tm_locaux_e (contreforts devant les locaux)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.4835 (IoU 0.7528), x0.6387 (IoU 0.8428), x0.6408 (IoU 0.9705), x0.4461 (IoU 0.9961)), raccord par fondu ; aucun étirement ni cisaillement (bruts ml_v1/gen/tm_nerv_e_t00..t11_g1 (essai d'un seul tenant rejeté : IoU 0,77), hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17)",
+    "pente_mesuree": "pied gauche 1.574 / droit 0.699 (cible 0,33 / 0,70)",
+    "ordre": "après ml_tm_locaux_e_v2_3q ; la pièce sort de 0,6 m à l'est de la carte (x 40-40,6) : hors sol, ne pas la rogner"
+  },
+  "ml_tm_suspension_v2_3q": {
+    "file": "steel/mega_line/ml_tm_suspension_v2_3q.webp",
+    "px": [
+      312,
+      746
+    ],
+    "anchor": [
+      194,
+      742
+    ],
+    "footprint_m": [
+      6,
+      6
+    ],
+    "height_m": 14.5,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Suspension sodium de la halle : câble noir depuis la voûte (h 14,5) jusqu'à un abat-jour d'acier émaillé sombre à h 9, ampoule sodium allumée ; la flaque de lumière au sol (rayon 3 m) est dans le calque _neon, la base n'a aucun pixel au sol",
+    "pose": "B(`tm2_susp${i}`, '', 'ml_tm_suspension_v2_3q', cx - 3, cz - 3, 6, 6, { named: false, solid: [] })  // pièce de plancher (ancre au sol) : lampe au centre (cx, cz) à h 9, câble jusqu'à h 14,5 ; 6 points dans ASSETS.md",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.6289), UNE mise à l'échelle uniforme x0.2203 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_susp_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.556 / droit 0.263 (cible 0,33 / 0,70)",
+    "lampe_m": [
+      3,
+      3,
+      9
+    ],
+    "ordre": "au-dessus de tout le sol de la cour : poser APRÈS les objets qui sont sous la lampe (ou dans une couche haute) ; le _neon (flaque) se dessine au sol, additif",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_suspension_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_suspension_v2_3q_neon.webp",
+    "px": [
+      312,
+      746
+    ],
+    "anchor": [
+      194,
+      742
+    ],
+    "additive": true,
+    "parent": "ml_tm_suspension_v2_3q",
+    "couche_de": "ml_tm_suspension_v2_3q",
+    "layer": "neon",
+    "source": "calque procédural : flaque / halo en dégradé sur la zone exacte du modèle 3D (sol sous la lampe ou plan du mur) + lampe du sprite, additif, même canevas, même ancre que ml_tm_suspension_v2_3q",
+    "status": "v2",
+    "partie": "terminus",
+    "groupe": "ml_v2_terminus"
+  },
+  "ml_tm_alerte_murale_s_v2_3q": {
+    "file": "steel/mega_line/ml_tm_alerte_murale_s_v2_3q.webp",
+    "px": [
+      103,
+      132
+    ],
+    "anchor": [
+      64,
+      128
+    ],
+    "footprint_m": [
+      1.2,
+      0.45
+    ],
+    "height_m": 2.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Boîtier d'alerte mural rouge (face au sud) : platine d'acier, coffret rouge à bande jaune et noire, feu rouge allumé, conduit ; à poser sur une face SUD de mur ; halo rouge sur le mur dans le calque _neon",
+    "pose": "B('tm2_alerte_s1', '', 'ml_tm_alerte_murale_s_v2_3q', x, 2, 1.2, 0.45, { y: 2, solid: [], named: false })  // dos collé à une face SUD de mur (z = 2 pour les murs du sas) ; avec y 2 le coffret est à h 3-3,4 et le feu à 3,6",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9775), UNE mise à l'échelle uniforme x0.064 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_alerte_s_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.375 / droit 0.111 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_alerte_murale_s_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_alerte_murale_s_v2_3q_neon.webp",
+    "px": [
+      103,
+      132
+    ],
+    "anchor": [
+      64,
+      128
+    ],
+    "additive": true,
+    "parent": "ml_tm_alerte_murale_s_v2_3q",
+    "couche_de": "ml_tm_alerte_murale_s_v2_3q",
+    "layer": "neon",
+    "source": "calque procédural : flaque / halo en dégradé sur la zone exacte du modèle 3D (sol sous la lampe ou plan du mur) + lampe du sprite, additif, même canevas, même ancre que ml_tm_alerte_murale_s_v2_3q",
+    "status": "v2",
+    "partie": "terminus",
+    "groupe": "ml_v2_terminus"
+  },
+  "ml_tm_alerte_murale_e_v2_3q": {
+    "file": "steel/mega_line/ml_tm_alerte_murale_e_v2_3q.webp",
+    "px": [
+      75,
+      134
+    ],
+    "anchor": [
+      38,
+      130
+    ],
+    "footprint_m": [
+      0.45,
+      1.2
+    ],
+    "height_m": 2.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "terminus",
+    "role": "Boîtier d'alerte mural rouge (face à l'est) : même objet tourné, pour une face EST de mur (mur ouest de la halle) ; halo rouge sur le mur dans le calque _neon",
+    "pose": "B('tm2_alerte_e1', '', 'ml_tm_alerte_murale_e_v2_3q', 0.6, z, 0.45, 1.2, { y: 2, solid: [], named: false })  // dos collé à la face EST du mur ouest de la halle (x = 0,6)",
+    "source": "Ocre 2026-11-17, lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9553), UNE mise à l'échelle uniforme x0.0652 vers 50 px/m ; aucun étirement ni cisaillement (brut ml_v1/gen/tm_alerte_e_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_terminus",
+    "lot": "lot 3 Mega-Line v2, terminus : halle et sol (2026-11-17)",
+    "pente_mesuree": "pied gauche None / droit 0.2 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_tm_alerte_murale_e_v2_3q_neon": {
+    "file": "steel/mega_line/ml_tm_alerte_murale_e_v2_3q_neon.webp",
+    "px": [
+      75,
+      134
+    ],
+    "anchor": [
+      38,
+      130
+    ],
+    "additive": true,
+    "parent": "ml_tm_alerte_murale_e_v2_3q",
+    "couche_de": "ml_tm_alerte_murale_e_v2_3q",
+    "layer": "neon",
+    "source": "calque procédural : flaque / halo en dégradé sur la zone exacte du modèle 3D (sol sous la lampe ou plan du mur) + lampe du sprite, additif, même canevas, même ancre que ml_tm_alerte_murale_e_v2_3q",
+    "status": "v2",
+    "partie": "terminus",
+    "groupe": "ml_v2_terminus"
+  },
+  "g_ml_fret_v2": {
+    "file": "steel/mega_line/g_ml_fret_v2.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : béton lissé construit par script (raccord exact, 128 px/m) : joints de sciage tous les 2 m, talochage, traces de pneus continues d'un carreau à l'autre, huile ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "terminus",
+    "role": "base : dalle de béton lissé gris froid mat, joints de sciage tous les 2 m, talochage, traces de pneus et huile discrètes",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_fret (sol de steel_terminus en v1 : pavé caillouteux)"
+  },
+  "g_ml_fret_v2_b": {
+    "file": "steel/mega_line/g_ml_fret_v2_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : béton lissé construit par script (raccord exact, 128 px/m) : joints de sciage tous les 2 m, talochage, traces de pneus continues d'un carreau à l'autre, huile ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "terminus",
+    "role": "variante : grosse tache d'huile et traces de pneus plus marquées",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_fret (sol de steel_terminus en v1 : pavé caillouteux)",
+    "variante_de": "g_ml_fret_v2",
+    "bords": "identiques à g_ml_fret_v2 sur 48 px : se pose en carreau de 4 x 4 m aligné sur la grille de 4 m via ground.paint"
+  },
+  "g_ml_fret_v2_bande_ew": {
+    "file": "steel/mega_line/g_ml_fret_v2_bande_ew.webp",
+    "px": [
+      512,
+      64
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : béton lissé construit par script (raccord exact, 128 px/m) : joints de sciage tous les 2 m, talochage, traces de pneus continues d'un carreau à l'autre, huile ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "terminus",
+    "role": "bande de sécurité jaune et noire usée, 4 x 0,5 m, rayures en biais, pour longer un bord orienté est-ouest (512 x 64 px)",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_fret (sol de steel_terminus en v1 : pavé caillouteux)",
+    "variante_de": "g_ml_fret_v2",
+    "bande_m": [
+      4,
+      0.5
+    ],
+    "raccord": "sur la longueur (x) seulement"
+  },
+  "g_ml_fret_v2_bande_ns": {
+    "file": "steel/mega_line/g_ml_fret_v2_bande_ns.webp",
+    "px": [
+      64,
+      512
+    ],
+    "tile_m": 0.5,
+    "tile_m_note": "tileM = largeur en m (le code garde les proportions : 64 x 512 px -> 0,5 x 4 m)",
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : béton lissé construit par script (raccord exact, 128 px/m) : joints de sciage tous les 2 m, talochage, traces de pneus continues d'un carreau à l'autre, huile ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "terminus",
+    "role": "bande de sécurité jaune et noire usée, 0,5 x 4 m, pour longer un bord orienté nord-sud (quai, pieds du portique) (64 x 512 px)",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_fret (sol de steel_terminus en v1 : pavé caillouteux)",
+    "variante_de": "g_ml_fret_v2",
+    "bande_m": [
+      0.5,
+      4
+    ],
+    "raccord": "sur la longueur (z) seulement"
   }
 }
