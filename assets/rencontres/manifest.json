@@ -658,5 +658,368 @@
     "groupe": "rc_pilote_appat",
     "calque": "sol",
     "note": "à dessiner au sol, avant tout le décor"
+  },
+  "gen_rc_quilla": {
+    "file": "rencontres/gen_rc_quilla.webp",
+    "px": [
+      192,
+      512
+    ],
+    "anchor": [
+      96,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.78,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Quilla, cheffe de la bande : la cinquantaine, lunettes de soudeur relevées, poncho couleur sable, revolver à la ceinture, trousse à outils et gourde (ancienne mécanicienne de convois). Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_quilla : x 19, z 12, faceTo (1,5 ; 13), si emb_t1",
+      "combat quilla : x 19, z 12"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence de style gen_rodeur), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/quilla.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_dos": "gen_rc_quilla_dos"
+  },
+  "portrait-gen_rc_quilla": {
+    "file": "rencontres/portrait-gen_rc_quilla.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_quilla",
+    "source": "recadrage tête-épaules de gen_rc_quilla sur fond brun (58,44,32), comme les portraits gen_*",
+    "status": "v1",
+    "groupe": "rc_pilote_appat"
+  },
+  "gen_rc_quilla_dos": {
+    "file": "rencontres/gen_rc_quilla_dos.webp",
+    "px": [
+      174,
+      512
+    ],
+    "anchor": [
+      87,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.78,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Quilla, vue de dos 3/4 (même personnage, même échelle)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/quilla_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_de": "gen_rc_quilla"
+  },
+  "gen_rc_quilla_assise": {
+    "file": "rencontres/gen_rc_quilla_assise.webp",
+    "px": [
+      350,
+      512
+    ],
+    "anchor": [
+      175,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.9,
+      0.7
+    ],
+    "height_m": 1.35,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Quilla assise sur un bloc de grès à l'ombre, gobelet d'eau à la main (pose d'attente avant T1 ; le bloc fait partie du sprite)",
+    "pose": [
+      "pnj rc_quilla_assise : x 24.5, z 9.0, faceTo (1,5 ; 13), si !emb_t1"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/quilla_assise.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_dos": null,
+    "note": "pas de vue de dos : elle regarde toujours la piste vers l'ouest (miroir horizontal seulement)"
+  },
+  "gen_rc_pibe": {
+    "file": "rencontres/gen_rc_pibe.webp",
+    "px": [
+      192,
+      512
+    ],
+    "anchor": [
+      96,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.62,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Pibe, guetteur de la crête : seize ans « presque », maigre, foulard rouge sur le nez, jumelles au cou, fusil à verrou trop grand pour lui, sandales de pneu. Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_pibe : x 16.5, z 4.5, y 2.5 (niveau de crête), faceTo (16,5 ; 13), si emb_vu_talus",
+      "combat pibe : x 16.5, z 4.5"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence de style gen_rodeur), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/pibe.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_dos": "gen_rc_pibe_dos"
+  },
+  "portrait-gen_rc_pibe": {
+    "file": "rencontres/portrait-gen_rc_pibe.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_pibe",
+    "source": "recadrage tête-épaules de gen_rc_pibe sur fond brun (58,44,32), comme les portraits gen_*",
+    "status": "v1",
+    "groupe": "rc_pilote_appat"
+  },
+  "gen_rc_pibe_dos": {
+    "file": "rencontres/gen_rc_pibe_dos.webp",
+    "px": [
+      306,
+      512
+    ],
+    "anchor": [
+      153,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.62,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Pibe, vue de dos 3/4",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/pibe_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_de": "gen_rc_pibe"
+  },
+  "gen_rc_morsa": {
+    "file": "rencontres/gen_rc_morsa.webp",
+    "px": [
+      298,
+      512
+    ],
+    "anchor": [
+      149,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.8,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Morsa, guetteur de l'épave : la quarantaine, lourd, moustache de morse, chapeau de feutre bas sur les yeux, chemise kaki ouverte sur un maillot, cartouchière, carabine à levier. Debout (combat), vue de face 3/4",
+    "pose": [
+      "combat morsa : x 21.75, z 19.9 (niche de l'épave, case libre)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence de style gen_rodeur), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/morsa.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_dos": "gen_rc_morsa_dos"
+  },
+  "portrait-gen_rc_morsa": {
+    "file": "rencontres/portrait-gen_rc_morsa.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_morsa",
+    "source": "recadrage tête-épaules de gen_rc_morsa sur fond brun (58,44,32), comme les portraits gen_*",
+    "status": "v1",
+    "groupe": "rc_pilote_appat"
+  },
+  "gen_rc_morsa_dos": {
+    "file": "rencontres/gen_rc_morsa_dos.webp",
+    "px": [
+      362,
+      512
+    ],
+    "anchor": [
+      181,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.8,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Morsa, vue de dos 3/4",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/morsa_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_de": "gen_rc_morsa"
+  },
+  "gen_rc_morsa_couche": {
+    "file": "rencontres/gen_rc_morsa_couche.webp",
+    "px": [
+      538,
+      204
+    ],
+    "anchor": [
+      269,
+      203
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      1.8,
+      0.7
+    ],
+    "height_m": 0.74,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Morsa couché sur le dos, somnolent, chapeau sur les yeux, carabine en travers du ventre (pose du plateau de l'épave ; tête à l'ouest). Vue de côté : derrière la ridelle sud seuls le chapeau, le ventre et la carabine dépassent",
+    "pose": [
+      "pnj rc_morsa : x 21.75, z 19.9, y 1.3 (plancher du plateau de l'épave), si emb_vu_epave"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/morsa_couche.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_dos": null,
+    "note": "pose couchée : pas de vue de dos ; ne pas utiliser le miroir horizontal (la tête doit rester à l'ouest, vers le hayon)"
+  },
+  "gen_rc_tuerto": {
+    "file": "rencontres/gen_rc_tuerto.webp",
+    "px": [
+      248,
+      512
+    ],
+    "anchor": [
+      124,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.86,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Tuerto, le cogneur du lit : borgne (bandeau à gauche), crâne rasé balafré, épaules massives, gilet de cuir sans chemise, poignets bandés, couteau à la ceinture, barre de fer à crochet sur l'épaule. Silhouette distincte de gen_rodeur. Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_tuerto : x 6, z 22, faceTo (12 ; 22), si emb_t3",
+      "combat tuerto : x 10, z 20.5 (entreTour 2)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence de style gen_rodeur), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/tuerto.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_dos": "gen_rc_tuerto_dos"
+  },
+  "portrait-gen_rc_tuerto": {
+    "file": "rencontres/portrait-gen_rc_tuerto.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_tuerto",
+    "source": "recadrage tête-épaules de gen_rc_tuerto sur fond brun (58,44,32), comme les portraits gen_*",
+    "status": "v1",
+    "groupe": "rc_pilote_appat"
+  },
+  "gen_rc_tuerto_dos": {
+    "file": "rencontres/gen_rc_tuerto_dos.webp",
+    "px": [
+      274,
+      512
+    ],
+    "anchor": [
+      137,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.86,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Tuerto, vue de dos 3/4",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/tuerto_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_de": "gen_rc_tuerto"
+  },
+  "gen_rc_trapo": {
+    "file": "rencontres/gen_rc_trapo.webp",
+    "px": [
+      388,
+      512
+    ],
+    "anchor": [
+      194,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      1.2,
+      0.8
+    ],
+    "height_m": 1.55,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Don Trapo, le mannequin : chiffons bourrés de paille, chemise à carreaux cousue sur un sac, tête de toile, chapeau de paille vissé sur un manche à balai qui dépasse du col ; affalé assis, jambes tendues (de loin : un chauffeur blessé)",
+    "pose": [
+      "pnj rc_trapo : x 13.5, z 13.7 (adossé à la portière sud ouverte du pick-up), faceTo (1,5 ; 13), examen rc_trapo"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence de style gen_rodeur), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/trapo.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_dos": "gen_rc_trapo_dos"
+  },
+  "gen_rc_trapo_dos": {
+    "file": "rencontres/gen_rc_trapo_dos.webp",
+    "px": [
+      408,
+      512
+    ],
+    "anchor": [
+      204,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      1.2,
+      0.8
+    ],
+    "height_m": 1.55,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Don Trapo, vue de dos 3/4",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 rencontres, pilote « L'appât de la piste » : PNJ (Ocre, 2026-11-17) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés seulement, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut rc_v1/pnj/trapo_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "vue_de": "gen_rc_trapo"
   }
 }
