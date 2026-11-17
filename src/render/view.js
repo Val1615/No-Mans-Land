@@ -158,7 +158,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const g of ph.lightsE || []) extra.push(add(0.08, g.h || 0.8, g.w || 1.2, b.x + b.w + 0.05, y0 + g.y, b.z + g.z, g.c || '#e8a13a')); // face est
     for (const e of extra) { const c = e.material.color.getHex(); if ([0xe8a13a, 0xc9541e, 0xc98a3a].includes(c)) e.material.emissive.set(c); }
     if (ph.emissive) main.material.emissive.set(ph.emissive); // écran, fenêtres de rame : volume lumineux (violet réservé à la rame et aux écrans)
-    bills.push({ obj: main, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra, cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0, zone: b.zone || null }); phOf.push(main);
+    bills.push({ obj: main, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra, cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0, zone: b.zone || null, dessus: b.dessus || 0 }); phOf.push(main);
     if (b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4 + (b.y || y0 || 0), b.z + b.d), () => !!(b.sign || game.state.discovered[b.id])); labels[labels.length - 1].el.dataset.building = b.id; } // b.sign : enseigne lisible de la rue, libellé visible sans y être entré
   }
   // Véhicules qui roulent (loc.vehicules : { sprite, path [[x, z], ...], speed m/s, t0 m, aller }) : sprite d'Ocre à l'échelle 1, emprise footprint_m tournée
@@ -275,7 +275,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const obj = grp[0][0], H = bman[b.sprite].height_m || 3.6;
     obj.userData.box = { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, y0: b.y || 0, h: (b.y || 0) + H };
     Object.assign(obj.userData, { buildingId: b.id, img: b.sprite, targetOpacity: 1, rame: true });
-    bills.push({ obj, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: grp.flat().filter(o => o !== obj), cover: false, fond: false, etage: b.etage || 0, zone: b.zone || null });
+    bills.push({ obj, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: grp.flat().filter(o => o !== obj), cover: false, fond: false, etage: b.etage || 0, zone: b.zone || null, dessus: b.dessus || 0 });
     movers.push({ rame: true, grp, cles: vues, x0: b.x, x1: b.x + b.w, long: bman[b.sprite].footprint_m?.[0] || 28, passage: 12, periode: 30, ...b.rame });
   }
   // Dalle posée par le code dans un cadre d'Ocre (manifeste <champ>.quad_px, face sud) : plan vertical du monde à la place de la dalle, que la
@@ -309,7 +309,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     s.position.set(b.x + b.w + (b.ancre?.[0] || 0), b.y || 0, b.z + b.d + (b.ancre?.[1] || 0)); // b.y : hauteur (m) d'une enseigne posée en façade ; b.ancre : décalage (m) de l'ancre du sprite par rapport au coin avant (angle de l'Arena, ancre au raccord ouest)
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
-    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0, zone: b.zone || null }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
+    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0, zone: b.zone || null, dessus: b.dessus || 0 }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
     for (const d of b.dalles || []) dalle(b, bman[b.sprite], s, item, d);
     if (b.ecran) { const e = ecranSprite(b, m, s); if (e) { world.add(e); item.extra.push(e); if (e.userData.ecran.flash) { world.add(e.userData.ecran.flash); item.extra.push(e.userData.ecran.flash); } } } // écran dessiné par le code (Feed de Pulse Plaza)
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
@@ -768,6 +768,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   const under = (o, c) => o.x0 < c.x1 - 1e-6 && o.x1 > c.x0 + 1e-6 && o.z0 < c.z1 - 1e-6 && o.z1 > c.z0 + 1e-6;
   function inFront(b, a) {
     if (!!a.cover !== !!b.cover && under(a, b)) return !!b.cover; /* une halle couvre tout ce qui est sous son toit [tour Valentin] */
+    if ((a.dessus || 0) !== (b.dessus || 0)) return (b.dessus || 0) > (a.dessus || 0); /* b.dessus (rang) : pièces peintes après tout le reste, dans l'ordre du rang (terminus : locaux E 1 < nervures E 2 < suspensions 3, fiche d'Ocre) */
     if (!!a.fond !== !!b.fond) return !!a.fond; /* une pièce de fond (dalle/toit) reste toujours derrière les façades et acteurs */
     if ((a.etage || 0) !== (b.etage || 0) && (under(a, b) || (a.zone && a.zone === b.zone))) return (b.etage || 0) > (a.etage || 0); /* même zone (b.zone : quai et son rez, viaduc et ses piles) : l'étage décide même sans emprise commune */ /* Mega-Line v2 : à emprise commune, l'étage le plus haut passe devant (rez < tablier du quai < ce qui est posé dessus) */
     const bx = b.x0 >= a.x1 - 1e-6, ax = a.x0 >= b.x1 - 1e-6, bz = b.z0 >= a.z1 - 1e-6, az = a.z0 >= b.z1 - 1e-6;
@@ -836,6 +837,16 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         if (bi.cover) { const m = 1.5; if (a.position.x > bi.x0 - m && a.position.x < bi.x1 + m && a.position.z > bi.z0 - m && a.position.z < bi.z1 + m) s.userData.targetOpacity = 0.3; continue; } // halle : transparente dès l'emprise ou à 1,5 m
         if (!inFront(bi, ai)) continue;
         for (const hy of [0.3, 0.9, 1.5]) { const q = uvOf(s, scr(new THREE.Vector3(a.position.x, hy, a.position.z))); if (alphaAt(s.userData.img, q.u, q.v) > 0.3) { s.userData.targetOpacity = 0.3; break; } } } }
+    // loc.degage { cibles, sprites, r } : une scène du lieu (panneau, PNJ) cachée par ces sprites les rend transparents (30 %) quand le joueur est à moins de r m
+    // de la cible ; les sprites ne changent pas, seule l'opacité. Terminus : portique et conteneurs devant le panneau « Dernier arrêt… » et Régie.
+    const DG = LOCATIONS[builtFor]?.degage;
+    if (DG) { const q = game.state.player, L = LOCATIONS[builtFor];
+      for (const c of DG.cibles) { const n = c.npc && NPCS.find(n => n.id === c.npc), b = c.building && L.buildings.find(b => b.id === c.building); if (!n && !b) continue;
+        const cx = n ? n.x : b.x + b.w / 2, cz = n ? n.z : b.z + b.d / 2; if (Math.hypot(q.x - cx, q.z - cz) > (DG.r || 8)) continue;
+        const y0 = n ? hauteurSol(L, n.x, n.z) : (b.y || 0), hs = n ? [0.3, 0.9, 1.5] : [0.4, 1.2, 2];
+        const ti = n ? { x0: cx - 0.3, x1: cx + 0.3, z0: cz - 0.3, z1: cz + 0.3, etage: y0 > 0.06 ? 2 : 0, zone: y0 > 0.06 ? niv?.zoneNiveau || null : null } : bills.find(x => x.obj.userData?.buildingId === b.id) || { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, etage: b.etage || 0, zone: b.zone || null };
+        for (const s of bsprites) { if (!DG.sprites.includes(s.userData.buildingId) || s.userData.targetOpacity < 1) continue; const bi = bills.find(x => x.obj === s); if (!bi || !inFront(bi, ti)) continue;
+          for (const hy of hs) { const u = uvOf(s, scr(new THREE.Vector3(cx, y0 + hy, cz))); if (alphaAt(s.userData.img, u.u, u.v) > 0.3) { s.userData.targetOpacity = 0.3; break; } } } } }
     for (const o of phOf) { o.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === o), r = rectOf(o);
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
         if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
@@ -1137,7 +1148,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);
       for(const h of hits){const s=h.object;const img=s.userData.img|| (s===player?'player':s.userData.npc?NPCS.find(n=>n.id===s.userData.npc)?.sprite:null);if(img&&h.uv&&alphaAt(img,h.uv.x,h.uv.y)<.3)continue;
       return {id:s.userData.buildingId||s.userData.editorId};}return null;
-    }, joue, joueEtat, animStats, rameEtat: t => movers.filter(m => m.rame).map(m => t == null ? { ...m.etat } : rameA(m, t)), peintreGraphe: () => { const R = bills.map(i => rectOf(i.obj)), ids = bills.map(i => i.obj.userData.buildingId || i.obj.userData.img || '?'), E = [];
+    }, joue, joueEtat, animStats, opacites: () => Object.fromEntries(bsprites.map(s => [s.userData.buildingId, +s.material.opacity.toFixed(2)])), rameEtat: t => movers.filter(m => m.rame).map(m => t == null ? { ...m.etat } : rameA(m, t)), peintreGraphe: () => { const R = bills.map(i => rectOf(i.obj)), ids = bills.map(i => i.obj.userData.buildingId || i.obj.userData.img || '?'), E = [];
       for (let i = 0; i < bills.length; i++) for (let j = i + 1; j < bills.length; j++) { const a = R[i], b = R[j]; if (a.x1 < b.x0 || b.x1 < a.x0 || a.y1 < b.y0 || b.y1 < a.y0) continue;
         if (inFront(bills[j], bills[i])) E.push([i, j]); else E.push([j, i]); } return { ids, E }; }, peintreDebug: id => { const it = bills.find(i => i.obj.userData.buildingId === id); if (!it) return null; const ra = rectOf(it.obj);
       return bills.filter(o => o !== it).map(o => { const rb = rectOf(o.obj); if (ra.x1 < rb.x0 || rb.x1 < ra.x0 || ra.y1 < rb.y0 || rb.y1 < ra.y0) return null;

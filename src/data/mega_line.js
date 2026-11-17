@@ -90,14 +90,23 @@ const CONT = [[24.5, 9.5, 2], [30.5, 9.5, 2], [24.5, 13, 3], [30.5, 13, 2], [24.
 export const BUILDINGS_TERMINUS = [
   // voûte (fond), murs et portes du sas (z0-2) : pleines, fermées, joint plein, sans lumière de dehors
   B('tm2_voute', '', 'ml_tm_voute_v2_3q', 0, 0, 40, 2, { named: false, solid: [], fond: true }),
+  // halle (Ocre eb5d0d3, ASSETS.md « terminus : halle et sol ») : nervures ouest en fond, juste après la voûte
+  B('tm2_nerv_o', '', 'ml_tm_nervures_o_v2_3q', 0, 2, 13, 26, { named: false, solid: [{ x: 0, z: 2, w: 0.6, d: 26 }], fond: true }),
   B('tm2_mur_o', '', 'ml_tm_sas_mur_o_v2_3q', 0, 0, 10, 2, { named: false }),
   B('ml_sas', 'Les portes du sas', 'ml_tm_sas_portes_v2_3q', 10, 0, 20, 2, {}), // boîtiers éteints en x13,5 / 26,5 : les lampes ml_ens_sas tombent dessus
   B('tm2_mur_e', '', 'ml_tm_sas_mur_e_v2_3q', 30, 0, 10, 2, { named: false }),
+  // boîtiers d'alerte rouges muraux (feu allumé + halo _neon), juste après leur mur
+  B('tm2_alerte_s1', '', 'ml_tm_alerte_murale_s_v2_3q', 31.9, 2, 1.2, 0.45, { y: 2, solid: [], named: false }), // face sud du mur E du sas
+  B('tm2_alerte_e1', '', 'ml_tm_alerte_murale_e_v2_3q', 0.6, 7.6, 0.45, 1.2, { y: 2, solid: [], named: false }), // face est du mur ouest
+  B('tm2_alerte_e2', '', 'ml_tm_alerte_murale_e_v2_3q', 0.6, 14.4, 0.45, 1.2, { y: 2, solid: [], named: false }),
   ENS('ml_e_sas0', 'ml_ens_sas', 13.5, 2.15, 12.4, { groupe: 'sas', ph: 0 }), ENS('ml_e_sas1', 'ml_ens_sas', 26.5, 2.15, 12.4, { groupe: 'sas', ph: 2 }), // lampes d'alerte rouges qui clignotent
   // hangar, heurtoir, voie (fond), quai à l'est de la voie (+1,1 m sur z3-22, rampe z22-24)
   B('tm2_hangar', '', 'ml_tm_hangar_v2_3q', 0, 2, 9, 5, { named: false }),
-  B('tm2_heurtoir', '', 'ml_tm_heurtoir_v2_3q', 14, 2, 3, 1.4, { named: false }),
+  B('tm2_heurtoir', '', 'ml_tm_heurtoir_v2_3q', 14, 2, 3, 1.4, { named: false, zone: 'finvoie', etage: 0 }),
   B('tm2_voie', '', 'ml_tm_voie_v2_3q', 14, 3.4, 3, 24.6, { named: false, solid: [], fond: true }),
+  // feu de fin de voie (Ocre bc2c76d / db49e46) : mât en (12,2 ; 2,5) à l'ouest du heurtoir, deux feux rouges + reflet au sol dans le _neon ; après la voie et le heurtoir,
+  // avant la rame et le quai (la rame cache le pied du mât, voulu) ; aucune lueur séparée
+  B('tm2_feu_finvoie', '', 'ml_tm_feu_finvoie_v2_3q', 11.8, 2, 5.4, 1.4, { named: false, zone: 'finvoie', etage: 1, solid: [{ x: 12, z: 2.3, w: 0.4, d: 0.4 }] }),
   B('tm2_quai', '', 'ml_tm_quai_v2_3q', 17, 3, 6, 21, { zone: 'quai', named: false, solid: [], etage: 1 }),
   // la vraie rame à quai (violette, exception au terminus) : deux voitures tête au nord, puis la voiture d'accès (porte est z25-26, jonction tm_rame_quai)
   B('tm2_rame_nord', '', 'ml_tm_rame_nord_v2_3q', 14, 3.4, 3, 16.6, { named: false, solid: [{ x: 14, z: 3.4, w: 3, d: 16.6 }] }),
@@ -115,9 +124,12 @@ export const BUILDINGS_TERMINUS = [
   B('tm2_portique_avant', '', 'ml_tm_portique_levage_v2_3q_avant', 24, 8, 13, 13, { zone: 'cour', etage: 2, named: false, solid: [] }),
   ENS('ml_e_gyro0', 'ml_ens_gyrophare', 24.5, 8.6, 13.1, { zone: 'cour', groupe: 'gyrophares', ph: 0, etage: 3 }), ENS('ml_e_gyro1', 'ml_ens_gyrophare', 36.5, 8.6, 13.1, { zone: 'cour', groupe: 'gyrophares', ph: 2, etage: 3 }),
   // locaux techniques, passerelle de service (arrivée de la ligne, sud-ouest) : une pose 4 x 4, garde-corps pleins
-  B('tm2_loc_e', '', 'ml_tm_locaux_e_v2_3q', 37, 2, 3, 26, { named: false }),
+  B('tm2_loc_e', '', 'ml_tm_locaux_e_v2_3q', 37, 2, 3, 26, { dessus: 1, named: false }),
+  B('tm2_nerv_e', '', 'ml_tm_nervures_e_v2_3q', 36, 2, 4.6, 26, { dessus: 2, named: false, solid: [] }), // après les locaux E ; dépasse de 0,6 m à l'est (pas rognée)
   B('tm2_loc_so', '', 'ml_tm_locaux_so_v2_3q', 0, 17, 8, 11, { named: false }),
   B('tm2_pass', '', 'ml_tm_passerelle_v2_3q', 8, 24, 4, 4, { named: false, solid: [{ x: 8, z: 24, w: 0.3, d: 4 }, { x: 11.7, z: 24, w: 0.3, d: 4 }] }),
+  // six suspensions sodium (lampe à h 9, _neon = flaque au sol r 3 m + ampoule) : peintes après tout (dessus)
+  ...[[4.5, 15.5], [11.5, 5], [11, 19], [30, 5], [30, 24.5], [20, 12]].map(([cx, cz], i) => B(`tm2_susp${i}`, '', 'ml_tm_suspension_v2_3q', cx - 3, cz - 3, 6, 6, { named: false, solid: [], dessus: 3 })),
 ];
 export const CLOSED_MEGA = {
   ml_portique_implant: 'Le portique à implant. Deux piliers, deux volets vitrés, un lecteur éteint. Il lit la nuque des gens.',
@@ -166,7 +178,18 @@ export const LOCATIONS_MEGA = {
     arrive: { from: 'steel_center', text: 'La Mega-Line. Le viaduc de fer noir passe à six mètres au-dessus de la rue ; la rame violette glisse sans s\u2019arrêter. Sur le quai, Vibes et Tron passent en boucle.' } },
   steel_terminus: { id: 'steel_terminus', name: 'Steel-Megalopolis · Terminus de fret', kind: 'exterior', size: { w: 40, d: 28 }, light: FRET, plan: 2, zoneNiveau: 'quai',
     cadre: { desktop: { x: [17, 23], z: [6, 16] }, mobile: { x: [8, 32], z: [4, 22] } }, // z min bas : on voit les portes du sas (13 m) en s'en approchant
-    ground: { base: '#141414', skin: 'g_ml_fret', tileM: 4, clean: true },
+    // sol de la fiche d'Ocre (eb5d0d3) : béton lissé g_ml_fret_v2 à la place de g_ml_fret, variante _b, bandes jaune et noir ; voile peint APRÈS les paint (voileApres)
+    ground: { base: '#101114', skin: 'g_ml_fret_v2', tileM: 4, clean: true, tint: 'rgba(6,8,12,0.45)', voileApres: true,
+      paint: [
+        ...[[4, 4], [32, 4], [8, 20], [28, 20]].map(([x, z]) => ({ x, z, w: 4, d: 4, skin: 'g_ml_fret_v2_b', tileM: 4 })),
+        { x: 23, z: 3, w: 0.5, d: 21, skin: 'g_ml_fret_v2_bande_ns', tileM: 0.5 },     // pied est du quai
+        { x: 24, z: 8, w: 13, d: 0.5, skin: 'g_ml_fret_v2_bande_ew', tileM: 4 },       // dessous du portique : bord nord
+        { x: 24, z: 20.5, w: 13, d: 0.5, skin: 'g_ml_fret_v2_bande_ew', tileM: 4 },    //   bord sud
+        { x: 24, z: 8.5, w: 0.5, d: 12, skin: 'g_ml_fret_v2_bande_ns', tileM: 0.5 },   //   bord ouest
+        { x: 36.5, z: 8.5, w: 0.5, d: 12, skin: 'g_ml_fret_v2_bande_ns', tileM: 0.5 }, //   bord est
+      ] },
+    // Régie : le panneau « Dernier arrêt… » et Régie, derrière le portique et les conteneurs côté caméra : ceux-ci passent à 30 % quand ils les cachent et que le joueur est à moins de 10 m
+    degage: { cibles: [{ building: 'ml_panneau' }, { npc: 'ml_regie' }], sprites: ['ml_portique', 'tm2_portique_avant', ...CONT.map((_, i) => `ml_cont${i}`)], r: 10 },
     niveaux: [{ x: 17, z: 3, w: 6, d: 19, y: 1.1 }, { x: 17, z: 22, w: 6, d: 2, y0: 1.1, y1: 0, axe: 'z' }, { x: 16.4, z: 3, w: 0.6, d: 19, y0: 0, y1: 1.1, axe: 'x' }, { x: 23, z: 3, w: 0.6, d: 19, y0: 1.1, y1: 0, axe: 'x' }], // quai bas (+1,1 m) : bords en pente douce
     buildings: BUILDINGS_TERMINUS, props: [],
     glows: [ { x: 20, z: 2.8, rx: 11, rz: 1.6, color: ROUGE, i: 0.4, flicker: true }, // lampes d'alerte du sas : reflet rouge au sol (code)

@@ -145,6 +145,29 @@ with sync_playwright() as p:
         ok(q[1] > 2.2, f'{name} sas : on ne passe jamais les portes (bloqué devant, z = {q[1]:.1f})', (q, r))
         rr, q, _ = walk(18.6, 8, 40); ok(rr and abs(hsol(W['tm']['niv'], *q) - 1.1) < 0.01, f'{name} terminus : quai à l est de la voie (+1,1 m)', q)
         time.sleep(1.2); pg.screenshot(path=OUT + f'{name}_terminus_sas.png')
+        # halle (Ocre eb5d0d3) : nervures, suspensions, alertes, sol g_ml_fret_v2 + voile après les paint ; dégagement du panneau et de Régie
+        H = E("(()=>{const L=window.__nml.world.LOCATIONS.steel_terminus,B=L.buildings.map(b=>b.sprite);return {B,g:{skin:L.ground.skin,tint:L.ground.tint,apres:!!L.ground.voileApres,paint:(L.ground.paint||[]).map(r=>r.skin)}}})()")
+        ok(all(k in H['B'] for k in ['ml_tm_nervures_o_v2_3q', 'ml_tm_nervures_e_v2_3q', 'ml_tm_alerte_murale_s_v2_3q', 'ml_tm_alerte_murale_e_v2_3q']) and H['B'].count('ml_tm_suspension_v2_3q') == 6 and H['B'].count('ml_tm_alerte_murale_e_v2_3q') == 2,
+           f'{name} halle : nervures O/E, 6 suspensions sodium, 3 boîtiers d alerte posés')
+        ok('ml_tm_feu_finvoie_v2_3q' in H['B'] and O['tm2_rame_nord'] > E("window.__nml.view.ordreBat('tm2_feu_finvoie')") > max(E("window.__nml.view.ordreBat('tm2_heurtoir')"), -1e9) and E("window.__nml.view.ordreBat('tm2_feu_finvoie')") < O['tm2_quai'],
+           f'{name} halle : feu de fin de voie posé, après la voie et le heurtoir, avant la rame et le quai')
+        ok(H['g']['skin'] == 'g_ml_fret_v2' and H['g']['tint'] == 'rgba(6,8,12,0.45)' and H['g']['apres'] and H['g']['paint'].count('g_ml_fret_v2_b') == 4 and 'g_ml_fret' not in H['g']['paint'],
+           f'{name} halle : sol g_ml_fret_v2 (+ _b, bandes), voile 0,45 peint après les paint', H['g'])
+        O2 = E("(()=>{const v=window.__nml.view,L=window.__nml.world.LOCATIONS.steel_terminus;return Object.fromEntries(L.buildings.map(b=>[b.id,v.ordreBat(b.id)]))})()")
+        PG = E("window.__nml.view.peintreGraphe()"); ids = PG['ids']
+        su_avant = [(ids[a], ids[b]) for a, b in PG['E'] if ids[a].startswith('tm2_susp') and not ids[b].startswith('tm2_susp')]  # arête a -> b : a peint avant b (emprises écran qui se recouvrent)
+        su = [O2[f'tm2_susp{i}'] for i in range(6)]
+        ok(all(su) and not su_avant and O2['tm2_voute'] < O2['tm2_nerv_o'] < O2['ml_sas'] and O2['tm2_loc_e'] < O2['tm2_nerv_e'] and O2['tm2_mur_e'] < O2['tm2_alerte_s1'],
+           f'{name} halle : ordre de la fiche (voûte < nervures O < sas ; locaux E < nervures E ; alertes après leur mur ; suspensions en dernier)', {k: O2[k] for k in ['tm2_voute', 'tm2_nerv_o', 'ml_sas', 'tm2_loc_e', 'tm2_nerv_e', 'tm2_mur_e', 'tm2_alerte_s1']})
+        time.sleep(1.5); OP = E("window.__nml.view.opacites()")
+        dg = {k: v for k, v in OP.items() if k in ['ml_portique', 'tm2_portique_avant'] or k.startswith('ml_cont')}
+        ok(any(v < 0.6 for v in dg.values()), f'{name} terminus : sur le quai, portique / conteneurs qui cachent le panneau ou Régie passent en transparence', dg)
+        # joueur derrière le portique (vue quai -> portes) : le portique qui le cache passe en transparence
+        tp('steel_terminus', 30, 8.8); time.sleep(2.2); OP = E("window.__nml.view.opacites()"); pg.screenshot(path=OUT + f'{name}_terminus_derriere_portique.png')
+        dg = {k: v for k, v in OP.items() if k in ['ml_portique', 'tm2_portique_avant'] or k.startswith('ml_cont')}
+        ok(any(v < 0.6 for v in dg.values()), f'{name} terminus : joueur derrière le portique, ce qui le cache passe en transparence', dg)
+        tp('steel_terminus', 36, 25.5); time.sleep(2.2); OP = E("window.__nml.view.opacites()")
+        ok(all(OP.get(k, 1) > 0.95 for k in ['ml_portique', 'tm2_portique_avant']), f'{name} terminus : loin du panneau et de Régie, le portique reste opaque', {k: OP.get(k) for k in ['ml_portique', 'tm2_portique_avant']})
         a = E("({...window.__nml.view.animStats})"); print(f'   {name} terminus {a}'); ok(a['on'] <= 3, f'{name} terminus : {a["on"]} animations (<= 3)', a)
         labs = E("[...document.querySelectorAll('#labels *')].map(e=>e.textContent).filter(t=>t.includes('Dernier arrêt'))"); ok(bool(labs), f'{name} panneau « Dernier arrêt avant No Man\u2019s Land » affiché par le code', labs)
         # 7) retours : terminus -> ligne -> Center-Town
@@ -187,7 +210,7 @@ with sync_playwright() as p:
     # sélection 1x (jpg) pour la livraison
     try:
         from PIL import Image
-        for f in ['desktop_ligne_arrivee', 'desktop_ligne_quai', 'desktop_ligne_sous_viaduc', 'desktop_ligne_echoppes', 'mobile_ligne_arrivee', 'mobile_ligne_quai', 'mobile_ligne_sous_viaduc', 'mobile_ligne_echoppes', 'desktop_terminus_arrivee', 'desktop_terminus_sas', 'mobile_terminus_arrivee', 'mobile_terminus_sas', 'iso_cadrage_maquette', 'iso_cadrage_maquette_terminus']:
+        for f in ['desktop_ligne_arrivee', 'desktop_ligne_quai', 'desktop_ligne_sous_viaduc', 'desktop_ligne_echoppes', 'mobile_ligne_arrivee', 'mobile_ligne_quai', 'mobile_ligne_sous_viaduc', 'mobile_ligne_echoppes', 'desktop_terminus_derriere_portique', 'mobile_terminus_derriere_portique', 'desktop_terminus_arrivee', 'desktop_terminus_sas', 'mobile_terminus_arrivee', 'mobile_terminus_sas', 'iso_cadrage_maquette', 'iso_cadrage_maquette_terminus']:
             if os.path.exists(OUT + f + '.png'): Image.open(OUT + f + '.png').convert('RGB').save(OUT + 'livraison/' + f + '.jpg', quality=88)
     except Exception as e: print('livraison jpg :', e)
     print(f'{n}/{n + len(fails)} OK'); print('ECHECS', len(fails)); sys.exit(1 if fails else 0)

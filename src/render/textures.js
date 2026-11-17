@@ -149,9 +149,10 @@ export function groundTexture(loc, doors = []) {
     x.save(); x.translate(d.x * P, d.z * P); if (d.rot) x.rotate(d.rot * Math.PI / 180); x.globalAlpha = d.a ?? 1; x.drawImage(img, -w / 2, -h / 2, w, h); x.restore(); }
   for (const w of loc.ground.water || []) paintWater(x, w, loc.ground.waterSkin || 'g_cl_eau', w.tileM || 6, P, r);
   // herbes mortes (Ch. I §71)
-  if (loc.ground.tint) { x.fillStyle = loc.ground.tint; x.fillRect(0, 0, W, H); } // v13 : voile de nuit
+  if (loc.ground.tint && !loc.ground.voileApres) { x.fillStyle = loc.ground.tint; x.fillRect(0, 0, W, H); } // v13 : voile de nuit
   if (loc.kind === 'exterior' && !loc.ground.clean) { x.strokeStyle = 'rgba(150,130,70,.8)'; for (let i = 0; i < (loc.ground.skin ? 250 : 700); i++) { const px = r() * W, py = r() * H; for (let k = 0; k < 4; k++) { x.beginPath(); x.moveTo(px, py); x.lineTo(px + (r() - .5) * 8, py - 4 - r() * 6); x.stroke(); } } }
   paintTerrain(x,loc,P);
+  if (loc.ground.tint && loc.ground.voileApres) { x.fillStyle = loc.ground.tint; x.fillRect(0, 0, W, H); } // voileApres : le voile couvre aussi les carreaux paint (terminus v2, Ocre) ; les autres lieux gardent l'ordre historique
   return tex(c);
 }
 // r.tileM = largeur du motif en mètres (tuiles non carrées : g_ct_voie_tirets_ew 12 x 4 m, g_ct_case_jaune_12m 12 m) ; le motif part du coin (x, z) de la pose,

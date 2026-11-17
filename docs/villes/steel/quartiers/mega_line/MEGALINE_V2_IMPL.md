@@ -211,3 +211,19 @@ La face ouest de la voiture ne se voit pas dans l'angle du jeu. La jonction `tm_
 **Bord sud (z40).** On ne voit plus de noir à l'arrivée depuis Center-Town. Deux choses ferment le bord : `ground.marge` (le parvis continue hors carte, voilé à 62 %), et une rangée de garde-corps bas `ct_mob_barriere_x_v4_3q` de Center-Town (2 m, 1 m de haut, 50 px/m, échelle 1, avec solides) en z39,6. La rangée s'ouvre sur 4 m (x30–34) au droit de la porte `ml_sud` / `c_mega`. Pourquoi pas du bâti : poser du bâti sur le bord sud masquerait le parvis à la caméra iso, puisqu'un immeuble de 5 m cache environ 9 m de sol derrière lui. Le module qui manque à Ocre : un muret de parvis bas en `*_v2_3q` (segments de 4 m, 1–1,2 m de haut, deux piliers pour encadrer l'ouverture). Il remplacerait le garde-corps sans rien changer d'autre.
 
 **Étiquettes en 390.** `labelsProches` gagne deux choses. `petits: true` limite la règle aux écrans de moins de 700 px de large, le seuil déjà utilisé pour les sorties hors écran ; au-dessus, les étiquettes restent permanentes. Et `ids` accepte maintenant des portes, mesurées au seuil. Sur la ligne, ce sont les 9 PNJ, `ml_rame_quai` (portique) et `ml_passerelle`, à 4 m. Sur téléphone, toucher un PNJ ou un bâtiment affiche son nom 2,5 s ; à la souris, le survol reste comme avant. La sortie « Vers Center-Town » reste toujours affichée. Le desktop ne change pas.
+
+## Terminus : halle, sol, feu de fin de voie et dégagement de la scène (Ocre eb5d0d3, bc2c76d, db49e46 ; Régie)
+
+**Halle.** Poses de la fiche (ASSETS.md, « terminus : halle et sol »), toutes à l'échelle 1 :
+- `tm2_nerv_o` (`ml_tm_nervures_o_v2_3q`, 0 ; 2, 13 × 26) en fond, juste après la voûte, avec un solide x0–0,6 ;
+- `tm2_nerv_e` (`ml_tm_nervures_e_v2_3q`, 36 ; 2, 4,6 × 26), qui dépasse de 0,6 m à l'est et n'est pas rognée ;
+- six suspensions sodium (`ml_tm_suspension_v2_3q` + `_neon`, flaque au sol r 3 m), aux centres de la fiche ;
+- trois boîtiers d'alerte rouges muraux (`_s` sur le mur E du sas, deux `_e` sur le mur ouest), posés à y 2.
+
+Ordre de dessin : nouveau rang `b.dessus`, peint après tout le reste et dans l'ordre du rang. Les locaux E ont le rang 1, les nervures E le rang 2, les suspensions le rang 3. Sans ce rang, le tri géométrique bouclait entre `tm2_portique_avant`, `tm2_loc_e` et `tm2_nerv_e`, et les gyrophares passaient derrière les poutres du portique.
+
+**Sol.** `g_ml_fret_v2` remplace `g_ml_fret`, avec 4 carreaux `_b` et les bandes jaune et noir de la fiche (`tileM` 0,5 pour les bandes N-S). Le voile `tint: 'rgba(6,8,12,0.45)'` est maintenant peint **après** les `paint`, grâce au drapeau `ground.voileApres` (textures.js). Il est réservé au terminus : les autres lieux qui ont un voile et des `paint` gardent l'ordre historique, et leur rendu ne change pas. La ligne n'a pas de voile, son rendu reste identique. L'éditeur accepte `voileApres`, ainsi que `tileM` dans les carreaux `paint`.
+
+**Feu de fin de voie.** `tm2_feu_finvoie` (`ml_tm_feu_finvoie_v2_3q` + `_neon`, 11,8 ; 2, 5,4 × 1,4) a son mât en (12,2 ; 2,5), avec un solide de 0,4 m. Il appartient à la zone `finvoie`, avec le heurtoir à l'étage 0 et le feu à l'étage 1. Il se dessine après la voie et le heurtoir, avant la rame et le quai. Aucune lueur séparée : le reflet est dans le `_neon`, et les deux feux signalent la fin de voie. Le heurtoir reste masqué à environ 83 % par la rame à quai. C'est géométrique, le sprite est sain.
+
+**Dégagement (Régie).** `loc.degage { cibles, sprites, r }` (view.js, `spriteOcclusion`) fait passer à 30 % le portique, ses poutres `_avant` et les 6 piles de conteneurs, uniquement quand deux conditions sont réunies : ils cachent au pixel le panneau « Dernier arrêt… » ou Régie, et le joueur est à moins de 10 m de cette cible. Ailleurs, ils restent opaques. Les sprites ne changent pas, seule l'opacité varie. Le joueur caché derrière le portique le rendait déjà transparent (règle commune).
