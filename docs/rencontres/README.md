@@ -1,6 +1,6 @@
 # Rencontres aléatoires et exploration régionale : suivi
 
-Point d'entrée unique du chantier. L'architecture est dans `ARCHI.md` (Rivet). Il n'y a pas d'autre fichier de suivi.
+Point d'entrée unique du chantier. L'architecture est dans [`ARCHI.md`](ARCHI.md) (Rivet). Il n'y a pas d'autre fichier de suivi.
 
 Document de reprise. Il est tenu à jour à chaque lot publié, pour qu'un agent (Rivet, Ocre, Régie, ChatGPT ou autre) puisse reprendre le chantier sans relire les conversations.
 
@@ -39,6 +39,7 @@ Une ligne par lot publié : date, commit, ce qui marche en jeu, ce qui reste.
 
 - 2026-11-17 : chantier ouvert, document créé (Régie).
 - 2026-11-17 : `ff499ea` (Ocre) — [PILOTE.md](PILOTE.md), embuscade « L'appât de la piste » : décor, plan coté 30 × 24 m, dialogues, combat, butin, 20 clés d'assets. Rien en jeu encore. Reste : aligner le format sur `ARCHI.md`, validation des décisions DA/lore par Valentin, puis production des sprites.
+- 2026-11-17 : `8576eaa` (Rivet) — [ARCHI.md](ARCHI.md) : architecture (catalogue `src/data/rencontres.js`, `game.ajouterLieu`, gestionnaire `src/core/rencontres.js`, sortie de bord, sauvegarde dans la scène, combat existant étendu, DEV « forcer une rencontre ») et verdict sur le pilote (§6) : la sente reste (niveaux + solides, talus en couverture 1) ; ne rentrent pas : lit à −0,8 m, guetteur acheté neutre en combat, drapeau par case, trait « Œil de pillard », examen au survol. Technique : rien de codé encore, aucun fichier `src/` touché. Reste : jalon 1 (≈ 2 j de dev). Tester : rien à tester en jeu pour l'instant ; au jalon 1, `?dev=1` → DEV « Rencontre » → forcer `embuscade_piste`, puis `tests/rencontres_rapide.py` (URL, OUT ; 1280 et 390).
 
 ## Décisions de DA et de lore (Ocre)
 _À compléter à chaque lot._
