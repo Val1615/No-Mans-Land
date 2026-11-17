@@ -276,3 +276,26 @@ Les gyrophares (`ml_ens_gyrophare`) se posent sur les embases vides aux coins du
 - Maquette de nuit : la voûte reste sombre, ses suspensions sodium ne sont qu'en `_neon`.
 
 Planche contact : `/workspace/nml-shots/megaline_sprites/lot3_planche_contact.png`. Maquettes posées : `lot3_maquette_terminus.png` et `lot3_maquette_terminus_nuit.png`. Ces images sont hors jeu.
+
+## Mega-Line v2 — sol du parvis et de la rue (Ocre, 2026-11-17)
+
+Le sol actuel de `steel_megaline` (`g_ml_pave`) peint des halos violets et cyan dans la tuile. Répétés tous les 4 m, ils font des taches sans source sur toute la rue et le parvis (défaut de la consigne NML). Remplacement par une dalle mate, sans aucune lumière peinte : la couleur vient seulement des lumières du code (lampadaires, échoppes, reflets des écrans sur le quai).
+
+| Clé | px | Tuile | Contenu |
+|---|---|---|---|
+| `g_ml_parvis_v2` | 512 × 512 | 4 m | base : dalles de béton 1 × 0,5 m à joints décalés, gris-brun chaud, arêtes usées, crasse, deux petites taches d'huile, une fissure |
+| `g_ml_parvis_v2_b` | 512 × 512 | 4 m | variante : une flaque et deux taches d'huile |
+| `g_ml_parvis_v2_c` | 512 × 512 | 4 m | variante : fissures, une dalle ragréée, huile et crasse |
+| `g_ml_parvis_v2_d` | 512 × 512 | 4 m | variante : deux flaques, une tache d'huile |
+
+Même format que `g_ml_pave` (512 px = 4 m, raccordable). Les variantes ont des bords identiques à la base sur 48 px : elles se posent n'importe où sur la grille de 4 m sans couture. Pas de calque `_nuit` : aucune dalle de sol existante n'en a, la nuit passe par l'éclairage et `ground.tint`.
+
+**Pose** (dans `steel_megaline`, `src/data/mega_line.js`) : `g_ml_parvis_v2` **remplace `g_ml_pave`** comme skin du sol ; les variantes cassent la répétition par `ground.paint`, en carreaux de 4 × 4 m dont x et z sont multiples de 4 (le motif part du coin de la pose, donc il reste en phase).
+```js
+ground: { base: '#12121a', skin: 'g_ml_parvis_v2', tileM: 4, clean: true,
+  paint: [[12, 24, '_c'], [24, 24, '_b'], [36, 28, '_d'], [48, 24, '_c'], [28, 32, '_c'], [8, 36, '_b'], [20, 36, '_d'], [40, 36, '_b'], [56, 36, '_c'], [12, 8, '_b'], [32, 8, '_c']]
+    .map(([x, z, v]) => ({ x, z, w: 4, d: 4, skin: 'g_ml_parvis_v2' + v, tileM: 4 })) },
+```
+Les carreaux proposés tombent sur la rue (z 22–32), le parvis (z 32–40) et la ruelle (z 8–10). Ceux qui passent sous un bâtiment ou sous le quai sont simplement invisibles. `g_ml_pave` reste dans le manifeste, intact. Les deux reflets d'écran au sol (`glows` violet et cyan en z 15,6, sur le quai) ont une source : ils restent.
+
+Planche : `/workspace/nml-shots/megaline_sprites/parvis_dalle_contact.png` (les quatre tuiles + un aperçu 6 × 6 raccordé à la caméra du jeu). Hors jeu.

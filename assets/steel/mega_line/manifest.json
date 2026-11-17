@@ -3408,5 +3408,71 @@
     "lot": "lot 3 Mega-Line v2, terminus (2026-11-17)",
     "pente_mesuree": "pied gauche 0.333 / droit 0.708 (cible 0,33 / 0,70)",
     "ecart": "ml_conteneurs existant n'est pas à 50 px/m (280 px pour 6 x 2,5 m) : clé nouvelle proposée"
+  },
+  "g_ml_parvis_v2": {
+    "file": "steel/mega_line/g_ml_parvis_v2.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : pose de dalles et usure construites par script (raccord exact, 128 px/m), matière = photo de béton GenerateImage (cursor) rendue raccordable ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "ligne",
+    "role": "base : dalles de béton 1 x 0,5 m à joints décalés, gris-brun chaud mat, usure d'arêtes, crasse et deux petites taches d'huile discrètes, une fissure fine",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_pave (sol de steel_megaline : taches violettes et cyan sans source)"
+  },
+  "g_ml_parvis_v2_b": {
+    "file": "steel/mega_line/g_ml_parvis_v2_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : pose de dalles et usure construites par script (raccord exact, 128 px/m), matière = photo de béton GenerateImage (cursor) rendue raccordable ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "ligne",
+    "role": "variante : une flaque (eau sombre, reflet neutre, bord mouillé) et deux taches d'huile",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_pave (sol de steel_megaline : taches violettes et cyan sans source)",
+    "variante_de": "g_ml_parvis_v2",
+    "bords": "identiques à g_ml_parvis_v2 sur 48 px : se pose en carreau de 4 x 4 m aligné sur la grille de 4 m (x, z multiples de 4) via ground.paint"
+  },
+  "g_ml_parvis_v2_c": {
+    "file": "steel/mega_line/g_ml_parvis_v2_c.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : pose de dalles et usure construites par script (raccord exact, 128 px/m), matière = photo de béton GenerateImage (cursor) rendue raccordable ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "ligne",
+    "role": "variante : fissures, une dalle remplacée par un ragréage plus sombre, taches d'huile et de crasse",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_pave (sol de steel_megaline : taches violettes et cyan sans source)",
+    "variante_de": "g_ml_parvis_v2",
+    "bords": "identiques à g_ml_parvis_v2 sur 48 px : se pose en carreau de 4 x 4 m aligné sur la grille de 4 m (x, z multiples de 4) via ground.paint"
+  },
+  "g_ml_parvis_v2_d": {
+    "file": "steel/mega_line/g_ml_parvis_v2_d.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "source": "Ocre 2026-11-17 : pose de dalles et usure construites par script (raccord exact, 128 px/m), matière = photo de béton GenerateImage (cursor) rendue raccordable ; aucune lumière colorée peinte",
+    "status": "v2",
+    "partie": "ligne",
+    "role": "variante : deux flaques et une tache d'huile",
+    "groupe": "ml_v2_sol",
+    "remplace": "g_ml_pave (sol de steel_megaline : taches violettes et cyan sans source)",
+    "variante_de": "g_ml_parvis_v2",
+    "bords": "identiques à g_ml_parvis_v2 sur 48 px : se pose en carreau de 4 x 4 m aligné sur la grille de 4 m (x, z multiples de 4) via ground.paint"
   }
 }
