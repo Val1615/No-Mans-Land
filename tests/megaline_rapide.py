@@ -125,7 +125,8 @@ with sync_playwright() as p:
         tp('steel_megaline', 46, 3); time.sleep(.5); E("window.__nml.game.useDoor('ml_passerelle')"); time.sleep(2.5); pret('steel_terminus')
         q = pos(); ok(loc() == 'steel_terminus' and q[1] > 25, f'{name} passerelle -> terminus (arrivée sud-ouest)', (loc(), q))
         time.sleep(1.5); pg.screenshot(path=OUT + f'{name}_terminus_arrivee.png')
-        L3 = E("Object.entries(window.__nml.bman).filter(([k,v])=>/^ml_tm_.*_v2_3q$/.test(k)&&v.footprint_m).map(([k])=>k)")
+        # clés remplacées (champ « remplace » d'une clé plus récente, ex. nervures E v2b) : gardées au manifeste, plus posées
+        L3 = E("(()=>{const M=window.__nml.bman,R=new Set(Object.values(M).map(v=>String(v.remplace||'').split(' ')[0]).filter(Boolean));return Object.entries(M).filter(([k,v])=>/^ml_tm_.*_v2b?_3q$/.test(k)&&v.footprint_m&&!R.has(k)).map(([k])=>k)})()")
         BT = E("window.__nml.world.LOCATIONS.steel_terminus.buildings.map(b=>b.sprite)"); manque = [k for k in L3 if k not in BT]
         ok(len(L3) >= 18 and not manque and 'ml_tm_portique_levage_v2_3q_avant' in BT, f'{name} terminus : {len(L3)} modules du lot 3 posés (+ poutres _avant du portique)', manque)
         ok(not E("window.__nml.world.LOCATIONS.steel_terminus.buildings.some(b=>b.attente||!window.__nml.bman[b.sprite]||b.sprite==='ml_conteneurs')"), f'{name} terminus : plus aucun gabarit, piles de 2 sur ml_tm_conteneurs_x2')
@@ -147,7 +148,7 @@ with sync_playwright() as p:
         time.sleep(1.2); pg.screenshot(path=OUT + f'{name}_terminus_sas.png')
         # halle (Ocre eb5d0d3) : nervures, suspensions, alertes, sol g_ml_fret_v2 + voile après les paint ; dégagement du panneau et de Régie
         H = E("(()=>{const L=window.__nml.world.LOCATIONS.steel_terminus,B=L.buildings.map(b=>b.sprite);return {B,g:{skin:L.ground.skin,tint:L.ground.tint,apres:!!L.ground.voileApres,paint:(L.ground.paint||[]).map(r=>r.skin)}}})()")
-        ok(all(k in H['B'] for k in ['ml_tm_nervures_o_v2_3q', 'ml_tm_nervures_e_v2_3q', 'ml_tm_alerte_murale_s_v2_3q', 'ml_tm_alerte_murale_e_v2_3q']) and H['B'].count('ml_tm_suspension_v2_3q') == 6 and H['B'].count('ml_tm_alerte_murale_e_v2_3q') == 2,
+        ok(all(k in H['B'] for k in ['ml_tm_nervures_o_v2_3q', 'ml_tm_nervures_e_v2b_3q', 'ml_tm_alerte_murale_s_v2_3q', 'ml_tm_alerte_murale_e_v2_3q']) and H['B'].count('ml_tm_suspension_v2_3q') == 6 and H['B'].count('ml_tm_alerte_murale_e_v2_3q') == 2,
            f'{name} halle : nervures O/E, 6 suspensions sodium, 3 boîtiers d alerte posés')
         ok('ml_tm_feu_finvoie_v2_3q' in H['B'] and O['tm2_rame_nord'] > E("window.__nml.view.ordreBat('tm2_feu_finvoie')") > max(E("window.__nml.view.ordreBat('tm2_heurtoir')"), -1e9) and E("window.__nml.view.ordreBat('tm2_feu_finvoie')") < O['tm2_quai'],
            f'{name} halle : feu de fin de voie posé, après la voie et le heurtoir, avant la rame et le quai')

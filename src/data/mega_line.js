@@ -125,7 +125,7 @@ export const BUILDINGS_TERMINUS = [
   ENS('ml_e_gyro0', 'ml_ens_gyrophare', 24.5, 8.6, 13.1, { zone: 'cour', groupe: 'gyrophares', ph: 0, etage: 3 }), ENS('ml_e_gyro1', 'ml_ens_gyrophare', 36.5, 8.6, 13.1, { zone: 'cour', groupe: 'gyrophares', ph: 2, etage: 3 }),
   // locaux techniques, passerelle de service (arrivée de la ligne, sud-ouest) : une pose 4 x 4, garde-corps pleins
   B('tm2_loc_e', '', 'ml_tm_locaux_e_v2_3q', 37, 2, 3, 26, { dessus: 1, named: false }),
-  B('tm2_nerv_e', '', 'ml_tm_nervures_e_v2_3q', 36, 2, 4.6, 26, { dessus: 2, named: false, solid: [] }), // après les locaux E ; dépasse de 0,6 m à l'est (pas rognée)
+  B('tm2_nerv_e', '', 'ml_tm_nervures_e_v2b_3q', 36, 2, 4.6, 26, { dessus: 2, named: false, solid: [] }), // après les locaux E ; dépasse de 0,6 m à l'est (pas rognée)
   B('tm2_loc_so', '', 'ml_tm_locaux_so_v2_3q', 0, 17, 8, 11, { named: false }),
   B('tm2_pass', '', 'ml_tm_passerelle_v2_3q', 8, 24, 4, 4, { named: false, solid: [{ x: 8, z: 24, w: 0.3, d: 4 }, { x: 11.7, z: 24, w: 0.3, d: 4 }] }),
   // six suspensions sodium (lampe à h 9, _neon = flaque au sol r 3 m + ampoule) : peintes après tout (dessus)

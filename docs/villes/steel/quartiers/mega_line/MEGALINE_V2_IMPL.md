@@ -216,7 +216,7 @@ La face ouest de la voiture ne se voit pas dans l'angle du jeu. La jonction `tm_
 
 **Halle.** Poses de la fiche (ASSETS.md, « terminus : halle et sol »), toutes à l'échelle 1 :
 - `tm2_nerv_o` (`ml_tm_nervures_o_v2_3q`, 0 ; 2, 13 × 26) en fond, juste après la voûte, avec un solide x0–0,6 ;
-- `tm2_nerv_e` (`ml_tm_nervures_e_v2_3q`, 36 ; 2, 4,6 × 26), qui dépasse de 0,6 m à l'est et n'est pas rognée ;
+- `tm2_nerv_e` (`ml_tm_nervures_e_v2b_3q`, 36 ; 2, 4,6 × 26), qui dépasse de 0,6 m à l'est et n'est pas rognée ;
 - six suspensions sodium (`ml_tm_suspension_v2_3q` + `_neon`, flaque au sol r 3 m), aux centres de la fiche ;
 - trois boîtiers d'alerte rouges muraux (`_s` sur le mur E du sas, deux `_e` sur le mur ouest), posés à y 2.
 
