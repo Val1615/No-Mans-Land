@@ -1,0 +1,662 @@
+{
+  "g_rc_sable": {
+    "file": "rencontres/g_rc_sable.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "sable des bas-côtés et du plateau, cailloux épars",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_sable.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "ground.skin (toute la scène)",
+    "ordre": 0
+  },
+  "g_rc_sable_b": {
+    "file": "rencontres/g_rc_sable_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "sable, cailloux et empreintes de bottes (variante, centre seulement)",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_sable.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "semée à la place de g_rc_sable sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "variante_de": "g_rc_sable",
+    "bords": "identiques à g_rc_sable (seul l'intérieur, à plus de 48 px du bord, change)"
+  },
+  "g_rc_sable_c": {
+    "file": "rencontres/g_rc_sable_c.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "sable, rides de vent (variante)",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_sable.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "semée à la place de g_rc_sable sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "variante_de": "g_rc_sable",
+    "bords": "identiques à g_rc_sable (seul l'intérieur, à plus de 48 px du bord, change)"
+  },
+  "g_rc_piste": {
+    "file": "rencontres/g_rc_piste.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "piste damée, deux ornières continues en x (z local 1,0 et 2,8 m) : se raccorde bout à bout le long de la piste",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_piste.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "ground.paint { skin: 'g_rc_piste', x: 0, z: 10, w: 30, d: 6 } (les ornières tombent à z 11 et 12,8 ; la bande déborde de 2 m sous la berge, cachée)",
+    "ordre": 0
+  },
+  "g_rc_piste_b": {
+    "file": "rencontres/g_rc_piste_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "piste, tache d'huile et cailloux (variante)",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_piste.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "semée à la place de g_rc_piste sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "variante_de": "g_rc_piste",
+    "bords": "identiques à g_rc_piste (seul l'intérieur, à plus de 48 px du bord, change)"
+  },
+  "g_rc_piste_c": {
+    "file": "rencontres/g_rc_piste_c.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "piste, trace de pneu en travers (variante)",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_piste.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "semée à la place de g_rc_piste sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "variante_de": "g_rc_piste",
+    "bords": "identiques à g_rc_piste (seul l'intérieur, à plus de 48 px du bord, change)"
+  },
+  "g_rc_lit": {
+    "file": "rencontres/g_rc_lit.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "lit asséché : galets et graviers, plus froid et plus sombre que la piste",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_lit.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "ground.paint { skin: 'g_rc_lit', x: 0, z: 17, w: 30, d: 7 }",
+    "ordre": 0
+  },
+  "g_rc_lit_b": {
+    "file": "rencontres/g_rc_lit_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "lit asséché, plaque d'argile craquelée (variante)",
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : photo de matière GenerateImage (cursor, rc_v1/sol/mat_lit.jpg), étalonnée ambre/ocre et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; ornières, cailloux et taches procéduraux (rc_v1/sol/sols.py)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pose": "semée à la place de g_rc_lit sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "variante_de": "g_rc_lit",
+    "bords": "identiques à g_rc_lit (seul l'intérieur, à plus de 48 px du bord, change)"
+  },
+  "rc_ds_talus_a_3q": {
+    "file": "rencontres/rc_ds_talus_a_3q.webp",
+    "px": [
+      676,
+      431
+    ],
+    "anchor": [
+      418,
+      421
+    ],
+    "footprint_m": [
+      10.0,
+      8.5
+    ],
+    "height_m": 2.5,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Talus nord, module ouest (x 5-15 ; la surface déborde de 0,25 m à l’est sous le module suivant, sans falaise) : plateau de crête z 0-5 à +2,5 m, pente de terre ocre à strates z 5-8,5, éboulis, blocs de grès ; une ligne d'empreintes fraîches monte la pente (x 11-12,5, la trace ★ « Aucune ne redescend »)",
+    "pose": [
+      "{ sprite: 'rc_ds_talus_a_3q', x: 5, z: 0, w: 10, d: 8.5, solid: [{ x: 5, z: 5, w: 10, d: 3.5, couv: 1 }] }  // plateau z 0-5 = niveau y 2.5 ; empreintes peintes sur la pente x 11-12,5"
+    ],
+    "ordre": 11,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8974, part peinte 0.985), UNE mise à l'échelle uniforme x0.6395 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/talus_a_g3.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.71 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_talus_b_3q": {
+    "file": "rencontres/rc_ds_talus_b_3q.webp",
+    "px": [
+      676,
+      431
+    ],
+    "anchor": [
+      418,
+      421
+    ],
+    "footprint_m": [
+      10.0,
+      8.5
+    ],
+    "height_m": 2.5,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Talus nord, module central (x 15-25 ; débord de 0,25 m à l’est sous rc_ds_talus_fin_3q) : même profil, autres strates, ravines et touffes",
+    "pose": [
+      "{ sprite: 'rc_ds_talus_b_3q', x: 15, z: 0, w: 10, d: 8.5, solid: [{ x: 15, z: 5, w: 10, d: 3.5, couv: 1 }] }"
+    ],
+    "ordre": 12,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8957, part peinte 0.984), UNE mise à l'échelle uniforme x0.6428 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/talus_b_g3.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.35 / droit 0.7 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_talus_fin_3q": {
+    "file": "rencontres/rc_ds_talus_fin_3q.webp",
+    "px": [
+      459,
+      359
+    ],
+    "anchor": [
+      212,
+      352
+    ],
+    "footprint_m": [
+      5.0,
+      8.5
+    ],
+    "height_m": 2.5,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Talus nord, bout est (x 25-30) : même profil, falaise de grès feuilleté au bord est de la scène",
+    "pose": [
+      "{ sprite: 'rc_ds_talus_fin_3q', x: 25, z: 0, w: 5, d: 8.5, solid: [{ x: 25, z: 5, w: 5, d: 3.5, couv: 1 }] }  // falaise est au bord de la scène"
+    ],
+    "ordre": 13,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9902, part peinte 0.98), UNE mise à l'échelle uniforme x0.4509 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/talus_fin_g2.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.7 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_sente_3q": {
+    "file": "rencontres/rc_ds_sente_3q.webp",
+    "px": [
+      502,
+      393
+    ],
+    "anchor": [
+      212,
+      386
+    ],
+    "footprint_m": [
+      5.0,
+      10.0
+    ],
+    "height_m": 2.5,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Bout ouest du talus et sente : plateau z 0-3 à +2,5 m, sente de sable foulé bordée de pierres qui descend de z 3 à z 10 (x 2-5), flanc ouest éboulé",
+    "pose": [
+      "{ sprite: 'rc_ds_sente_3q', x: 0, z: 0, w: 5, d: 10, solid: [{ x: 0, z: 0, w: 5, d: 3, couv: 2 }, { x: 0, z: 3, w: 2, d: 5, couv: 1 }] }  // bout ouest du talus + sente ; la rampe x 2-5 z 3-10 = niveau { x 2, z 3, w 3, d 7, y0 2.5, y1 0, axe z }"
+    ],
+    "ordre": 10,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9791, part peinte 0.981), UNE mise à l'échelle uniforme x0.492 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/sente_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.7 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_rochers_3q": {
+    "file": "rencontres/rc_ds_rochers_3q.webp",
+    "px": [
+      133,
+      124
+    ],
+    "anchor": [
+      110,
+      120
+    ],
+    "footprint_m": [
+      3.0,
+      1.5
+    ],
+    "height_m": 1.6,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Blocs de grès de crête (R1, R3) : quatre blocs à strates, le plus haut 1,6 m",
+    "pose": [
+      "{ sprite: 'rc_ds_rochers_3q', x: 15, z: 2, w: 3, d: 1.5, y: 2.5, ancre: [-2.576, -3.748], solid: [{ x: 15, z: 2, w: 3, d: 1.5, couv: 1 }] }  // R1, sur la crête (Pibe au sud)",
+      "{ sprite: 'rc_ds_rochers_3q', x: 27, z: 1.5, w: 3, d: 1.5, y: 2.5, ancre: [-2.576, -3.748], solid: [{ x: 27, z: 1.5, w: 3, d: 1.5, couv: 1 }] }  // R3"
+    ],
+    "ordre": 14,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9361, part peinte 0.926), UNE mise à l'échelle uniforme x0.13 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/rochers_g5.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.25 / droit 1.71 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_rochers_b_3q": {
+    "file": "rencontres/rc_ds_rochers_b_3q.webp",
+    "px": [
+      136,
+      114
+    ],
+    "anchor": [
+      112,
+      110
+    ],
+    "footprint_m": [
+      3.0,
+      1.5
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Blocs de grès de crête, variante plus basse (R2), 1,2 m",
+    "pose": [
+      "{ sprite: 'rc_ds_rochers_b_3q', x: 22, z: 2.5, w: 3, d: 1.5, y: 2.5, ancre: [-2.576, -3.748], solid: [{ x: 22, z: 2.5, w: 3, d: 1.5, couv: 1 }] }  // R2"
+    ],
+    "ordre": 15,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9501, part peinte 0.927), UNE mise à l'échelle uniforme x0.1233 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/rochers_b_g4.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.14 / droit 0.5 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_berge_3q": {
+    "file": "rencontres/rc_ds_berge_3q.webp",
+    "px": [
+      453,
+      186
+    ],
+    "anchor": [
+      418,
+      180
+    ],
+    "footprint_m": [
+      10.0,
+      1.0
+    ],
+    "height_m": 0.4,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Berge nord du lit asséché : rebord de terre de 0,4 m, face érodée, galets au pied (le lit reste au niveau 0 : la berge le fait lire)",
+    "pose": [
+      "{ sprite: 'rc_ds_berge_3q', x: 0, z: 16, w: 10, d: 1 }  // rebord nord du lit",
+      "{ sprite: 'rc_ds_berge_3q', x: 20, z: 16, w: 10, d: 1 }  // même sprite que x 0, 20 m plus loin"
+    ],
+    "ordre": 2,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.7255, part peinte 0.935), UNE mise à l'échelle uniforme x0.3672 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/berge_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.75 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_berge_b_3q": {
+    "file": "rencontres/rc_ds_berge_b_3q.webp",
+    "px": [
+      453,
+      186
+    ],
+    "anchor": [
+      418,
+      180
+    ],
+    "footprint_m": [
+      10.0,
+      1.0
+    ],
+    "height_m": 0.4,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Berge du lit, variante (autres ravines et touffes)",
+    "pose": [
+      "{ sprite: 'rc_ds_berge_b_3q', x: 10, z: 16, w: 10, d: 1 }"
+    ],
+    "ordre": 2,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8553, part peinte 0.957), UNE mise à l'échelle uniforme x0.3702 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/berge_b_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.71 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_panneau_ufsa_3q": {
+    "file": "rencontres/rc_ds_panneau_ufsa_3q.webp",
+    "px": [
+      46,
+      141
+    ],
+    "anchor": [
+      24,
+      137
+    ],
+    "footprint_m": [
+      0.6,
+      0.2
+    ],
+    "height_m": 3.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Panneau routier UFSA criblé : poteau de bois penché calé par une pierre, plaque gris-bleu délavée, rouillée, impacts de balles, lettrage effacé (aucun texte lisible)",
+    "pose": [
+      "{ sprite: 'rc_ds_panneau_ufsa_3q', x: 3.2, z: 9.2, w: 0.6, d: 0.2, solid: [{ x: 3.4, z: 9.2, w: 0.2, d: 0.2, couv: 0 }] }"
+    ],
+    "ordre": 20,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8898, part peinte 0.726), UNE mise à l'échelle uniforme x0.1138 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/panneau_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche None / droit 0.2 (cible 0,33 / 0,70)"
+  },
+  "rc_emb_pickup_appat_3q": {
+    "file": "rencontres/rc_emb_pickup_appat_3q.webp",
+    "px": [
+      278,
+      206
+    ],
+    "anchor": [
+      217,
+      202
+    ],
+    "footprint_m": [
+      5.2,
+      2.2
+    ],
+    "height_m": 2.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Pick-up appât : rouge délavé et rouille, capot levé (avant à l'ouest), portière sud ouverte (Don Trapo s'y adosse), benne vide (râtelier à bidons vide, sangle coupée), quatre pneus lacérés à plat",
+    "pose": [
+      "{ sprite: 'rc_emb_pickup_appat_3q', x: 12, z: 11, w: 5.2, d: 2.2, solid: [{ x: 12, z: 11, w: 5.2, d: 2.2, couv: 1 }] }  // avant (capot) à l’ouest ; portière sud ouverte jusqu’à z ≈ 14 (non solide)"
+    ],
+    "ordre": 21,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9671, part peinte 0.943), UNE mise à l'échelle uniforme x0.2574 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/pickup_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.67 (cible 0,33 / 0,70)"
+  },
+  "rc_emb_caisses_eventrees_3q": {
+    "file": "rencontres/rc_emb_caisses_eventrees_3q.webp",
+    "px": [
+      87,
+      76
+    ],
+    "anchor": [
+      56,
+      69
+    ],
+    "footprint_m": [
+      1.2,
+      0.8
+    ],
+    "height_m": 0.7,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Caisse éventrée : planches blanchies arrachées, pleine de sable au lieu de marchandise, couvercle au sol devant",
+    "pose": [
+      "{ sprite: 'rc_emb_caisses_eventrees_3q', x: 8.5, z: 14.8, w: 1.2, d: 0.8, solid: [{ x: 8.5, z: 14.8, w: 1.2, d: 0.8, couv: 1 }] }  // C1",
+      "{ sprite: 'rc_emb_caisses_eventrees_3q', x: 17.8, z: 15, w: 1.2, d: 0.8, solid: [{ x: 17.8, z: 15, w: 1.2, d: 0.8, couv: 1 }] }  // C3"
+    ],
+    "ordre": 22,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9846, part peinte 0.87), UNE mise à l'échelle uniforme x0.0871 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/caisses_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.29 / droit 0.6 (cible 0,33 / 0,70)"
+  },
+  "rc_emb_caisses_eventrees_b_3q": {
+    "file": "rencontres/rc_emb_caisses_eventrees_b_3q.webp",
+    "px": [
+      109,
+      80
+    ],
+    "anchor": [
+      65,
+      65
+    ],
+    "footprint_m": [
+      1.2,
+      0.8
+    ],
+    "height_m": 0.62,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Caisse éventrée, variante (C2) : face sud défoncée, sable répandu en éventail, couvercle appuyé à l'est",
+    "pose": [
+      "{ sprite: 'rc_emb_caisses_eventrees_b_3q', x: 10.2, z: 15.6, w: 1.2, d: 0.8, solid: [{ x: 10.2, z: 15.6, w: 1.2, d: 0.8, couv: 1 }] }  // C2 (double fond) ; sable déversé au sud et couvercle à l’est hors emprise, non solides"
+    ],
+    "ordre": 23,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9086, part peinte 0.872), UNE mise à l'échelle uniforme x0.0952 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/caisses_b_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.31 / droit 0.18 (cible 0,33 / 0,70)"
+  },
+  "rc_emb_fil_boites_3q": {
+    "file": "rencontres/rc_emb_fil_boites_3q.webp",
+    "px": [
+      183,
+      148
+    ],
+    "anchor": [
+      12,
+      143
+    ],
+    "footprint_m": [
+      0.2,
+      6.0
+    ],
+    "height_m": 0.42,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Fil à boîtes : deux piquets calés de pierres, fil tendu à 0,33 m, cinq boîtes de conserve rouillées pendues",
+    "pose": [
+      "{ sprite: 'rc_emb_fil_boites_3q', x: 20.9, z: 10, w: 0.2, d: 6 }  // non solide (déclencheur T2)"
+    ],
+    "ordre": 25,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.267, part peinte 0.552), UNE mise à l'échelle uniforme x0.1819 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/fil_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche None / droit 0.69 (cible 0,33 / 0,70)"
+  },
+  "rc_emb_epave_service_3q": {
+    "file": "rencontres/rc_emb_epave_service_3q.webp",
+    "px": [
+      451,
+      301
+    ],
+    "anchor": [
+      377,
+      294
+    ],
+    "footprint_m": [
+      9.0,
+      2.8
+    ],
+    "height_m": 2.9,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Épave du camion bâché du Service : ensablée, SANS roues (moyeux nus), cabine kaki sans pare-brise ni portière, plateau de bois à 1,3 m, ridelle sud ouverte x local 3,9-5,65 (niche de Morsa, planche arrachée qui pend), arceaux nus, bâche déchirée à l'arrière et lambeaux qui ombrent la niche, sable contre le flanc sud",
+    "pose": [
+      "{ sprite: 'rc_emb_epave_service_3q', x: 17, z: 18, w: 9, d: 2.8, solid: [{ x: 17, z: 18, w: 9, d: 1, couv: 2 }, { x: 17, z: 19, w: 4, d: 1.8, couv: 2 }, { x: 22.5, z: 19, w: 3.5, d: 1.8, couv: 2 }] }  // niche de Morsa x 21-22,5 ; z 19-20,8 LIBRE ; plancher du plateau à 1,3 m"
+    ],
+    "ordre": 30,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.907, part peinte 0.93), UNE mise à l'échelle uniforme x0.4225 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/epave_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.77 (cible 0,33 / 0,70)"
+  },
+  "rc_emb_bache_cache_3q": {
+    "file": "rencontres/rc_emb_bache_cache_3q.webp",
+    "px": [
+      236,
+      163
+    ],
+    "anchor": [
+      140,
+      159
+    ],
+    "footprint_m": [
+      3.5,
+      3.5
+    ],
+    "height_m": 1.62,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Cache de la bande : bâche délavée tendue en appentis sur cinq perches, lestée de pierres, rabat devant ; dessous, les cinq bidons bleus de Dusk-Town volés au pick-up (lien avec le carnet du chauffeur), trois sacs de jute, une caisse",
+    "pose": [
+      "{ sprite: 'rc_emb_bache_cache_3q', x: 26.5, z: 20.5, w: 3.5, d: 3.5, solid: [{ x: 26.5, z: 20.5, w: 3.5, d: 0.5, couv: 1 }, { x: 29.5, z: 21, w: 0.5, d: 3, couv: 1 }] }  // bords nord et est solides, fouille par l’ouest (26,3 ; 22,2)"
+    ],
+    "ordre": 31,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8897, part peinte 0.886), UNE mise à l'échelle uniforme x0.2163 vers 50 px/m ; aucun étirement ni cisaillement (brut rc_v1/gen/bache_g2.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "pente_mesuree": "pied gauche 0.37 / droit 0.34 (cible 0,33 / 0,70)"
+  },
+  "rc_emb_miroir_3q_neon": {
+    "file": "rencontres/rc_emb_miroir_3q_neon.webp",
+    "px": [
+      22,
+      66
+    ],
+    "anchor": [
+      14,
+      62
+    ],
+    "additive": true,
+    "parent": "rc_emb_miroir_3q",
+    "couche_de": "rc_emb_miroir_3q",
+    "layer": "neon",
+    "source": "calque géométrique neon du modèle 3D de rc_emb_miroir_3q (matériau émissif du verre), même canevas, même ancre",
+    "status": "v1",
+    "groupe": "rc_pilote_appat"
+  },
+  "rc_emb_miroir_3q": {
+    "file": "rencontres/rc_emb_miroir_3q.webp",
+    "px": [
+      22,
+      66
+    ],
+    "anchor": [
+      14,
+      62
+    ],
+    "footprint_m": [
+      0.3,
+      0.3
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Miroir de poche sur piquet (crête, en (20 ; 3,2)) : le signal du guetteur ; piquet de bois calé d'une pierre, miroir rond tourné vers la piste",
+    "pose": [
+      "{ sprite: 'rc_emb_miroir_3q', x: 19.85, z: 3.05, w: 0.3, d: 0.3, y: 2.5, ancre: [-2.576, -3.748] }  // + _neon additif ; piquet en (20 ; 3,2)"
+    ],
+    "ordre": 16,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : géométrie = modèle 3D aux cotes de PILOTE.md, rendu par le rasteriseur logiciel de la Mega-Line à la caméra exacte du jeu (silhouette, arêtes et alpha VERROUILLÉS par ce rendu), lumière : soleil du désert seul (clé chaude haute venant du nord-ouest, ambiance ambre) ; objet trop petit (22 px de large) pour un repeint : rendu du modèle 3D publié tel quel",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "note_neon": "_neon = UN éclat ponctuel sur le verre (source visible), aucun halo au sol",
+    "layers": [
+      "neon"
+    ]
+  },
+  "rc_emb_traces_3q": {
+    "file": "rencontres/rc_emb_traces_3q.webp",
+    "px": [
+      119,
+      56
+    ],
+    "anchor": [
+      86,
+      51
+    ],
+    "footprint_m": [
+      2.0,
+      1.0
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque au sol : deux files d'empreintes de bottes fraîches vers le nord (la pente), alpha doux",
+    "pose": [
+      "{ sprite: 'rc_emb_traces_3q', x: 11, z: 8.6, w: 2, d: 1 }  // pied de la pente, sous les empreintes peintes dans rc_ds_talus_a_3q"
+    ],
+    "ordre": 1,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : décalque procédural (rc_v1/decals.py) calculé point par point dans le plan du sol à la projection exacte du jeu (50 px/m), couleur terre sombre, alpha ≤ 0,65",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "calque": "sol",
+    "note": "à dessiner au sol, avant tout le décor"
+  },
+  "rc_emb_trainees_3q": {
+    "file": "rencontres/rc_emb_trainees_3q.webp",
+    "px": [
+      549,
+      250
+    ],
+    "anchor": [
+      375,
+      246
+    ],
+    "footprint_m": [
+      9.0,
+      6.0
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque au sol : deux sillons de caisses traînées de (18,4 ; 15,9) vers (26,6 ; 21,5), bourrelets et piétinements (la trace ★ « traîné vers le lit »)",
+    "pose": [
+      "{ sprite: 'rc_emb_trainees_3q', x: 18, z: 15.5, w: 9, d: 6 }  // décalque au sol, sous tout le reste"
+    ],
+    "ordre": 1,
+    "source": "Ocre, lot 1 rencontres, pilote « L'appât de la piste » : sols et modules (Ocre, 2026-11-17) : décalque procédural (rc_v1/decals.py) calculé point par point dans le plan du sol à la projection exacte du jeu (50 px/m), couleur terre sombre, alpha ≤ 0,65",
+    "status": "v1",
+    "groupe": "rc_pilote_appat",
+    "calque": "sol",
+    "note": "à dessiner au sol, avant tout le décor"
+  }
+}
