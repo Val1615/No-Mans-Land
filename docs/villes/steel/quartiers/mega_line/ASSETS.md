@@ -147,3 +147,60 @@ Au terminus, la rame arrive par le sud, tête au nord : c'est le cas −z. Les c
 - Sous le viaduc, rien n'est encore posé : sol et rez arrivent au lot 2.
 
 Planche contact : `/workspace/nml-shots/megaline_sprites/lot1_planche_contact.png`. Maquettes de pose : `/workspace/nml-shots/megaline_sprites/lot1_maquette_pose.png` et `lot1_maquette_nuit.png`. Ces trois images sont hors jeu.
+
+## Mega-Line v2 — lot 2 : rez et bâti (Ocre, 2026-11-17)
+
+Ce lot reprend les clés de `MEGALINE_V2_IMPL.md` (lot 2) avec la même méthode que le lot 1 : modèle 3D aux cotes, rendu à la caméra du jeu qui verrouille l'alpha, repeint image-à-image et recalé (IoU de 0,94 à 0,999), une seule réduction. Les cinq immeubles sont repeints en 4 tuiles chacun. Pentes au pied mesurées entre 0,32 et 0,34 et entre 0,69 et 0,70 (la terrasse n'a pas de pied rectiligne). Calques `_fenetres` / `_neon` : masque géométrique des vitres allumées et des lampes du modèle, à la couleur du sprite. Il n'y a aucun halo sans source. Toutes les enseignes sont vierges et le caisson Human Corp est noir. Aucune clé existante n'a été modifiée.
+
+| clé | px | ancre | emprise × h (m) | calques | rôle |
+|---|---|---|---|---|---|
+| `ml_echoppe_tran_v2_3q` | 465 × 454 | [289, 444] | 6 × 6 × 5,4 | `_fenetres`, `_neon` | Nouilles de Mme Tran : comptoir, tabourets, marmites, auvent rouge, 4 lanternes rouges |
+| `ml_echoppe_cables_v2_3q` | 430 × 463 | [253, 444] | 6 × 6 × 5,4 | idem | Câbles et réparations : rideau à mi-hauteur, bobines, écran de test |
+| `ml_facade_humancorp_v2_3q` | 512 × 481 | [336, 471] | 8 × 6 × 5,4 | idem | Bardage bleu nuit, filets LED froids, vitrine blanche, caisson de logo noir |
+| `ml_atelier_rivet_v2_3q` | 512 × 484 | [336, 471] | 8 × 6 × 5,4 | idem | Établi, étau, outils, bouteilles de soudure, caisses ; flanc est avec une fenêtre |
+| `ml_bati_n1_v2_3q` | 1253 × 1047 | [1011, 1040] | 24 × 8 × 12 | idem | Brique, 3 niveaux, escalier de secours, rez de boutiques |
+| `ml_bati_n2_v2_3q` | 1078 × 1146 | [836, 1139] | 20 × 8 × 16 | idem | Enduit ocre-gris, 4 niveaux plus un édicule, escalier de secours |
+| `ml_bati_n3_v2_3q` | 923 × 848 | [681, 841] | 16 × 8 × 10 | idem | Béton brut à pilastres, 3 niveaux |
+| `ml_passerelle_nord_v2_3q` | 404 × 392 | [171, 386] | 4 × 8 × 4 | `_neon` | Passage de service couvert vers le terminus, passage libre de 3,4 m |
+| `ml_bati_w_v2_3q` | 990 × 1033 | [434, 1026] | 10 × 18 × 12 | `_fenetres`, `_neon` | Brique d'angle ; rez actif au sud ET à l'est, sur la rue latérale |
+| `ml_bati_e_v2_3q` | 959 × 971 | [434, 963] | 10 × 18 × 10 | idem | Enduit, face sud soignée ; escalier de secours sur la face est |
+| `ml_terrasse_v2_3q` | 106 × 89 | [66, 85] | 2 × 2 × 1 | `_neon` (photophore) | Guéridon et deux tabourets |
+| `ml_ruelle_benne_v2_3q` | 129 × 118 | [88, 114] | 2 × 1,2 × 1,4 | — | Benne verte, sacs noirs |
+| `ml_ruelle_caisses_v2_3q` | 107 × 106 | [72, 100] | 1,6 × 1,2 × 1,2 | — | Trois caisses cerclées |
+
+**Poses** (`B(...)`, ancre au sol au coin sud-est). Ordre de dessin, à intégrer à celui du lot 1 :
+1. bâti nord N1 / N2 / passerelle / N3 ;
+2. benne et caisses de la ruelle ;
+3. piles, viaduc, rame, couches `_avant` ;
+4. échoppes, toujours **avant** le tablier du quai, qui couvre leur dessus à +5,4 ;
+5. tablier, écrans, barrières ;
+6. bâti W et E ;
+7. escaliers ;
+8. terrasses.
+```js
+B('ml_n1', '', 'ml_bati_n1_v2_3q',  0, 0, 24, 8, { solid: [{ x: 0,  z: 0, w: 24, d: 8 }] }),
+B('ml_n2', '', 'ml_bati_n2_v2_3q', 24, 0, 20, 8, { solid: [{ x: 24, z: 0, w: 20, d: 8 }] }),
+B('ml_pass_n', '', 'ml_passerelle_nord_v2_3q', 44, 0, 4, 8, { solid: [{ x: 44, z: 0, w: 0.3, d: 8 }, { x: 47.7, z: 0, w: 0.3, d: 8 }, { x: 44.2, z: 6.4, w: 0.4, d: 0.6 }] }),  // libre x44,3–47,7, sortie au bord nord
+B('ml_n3', '', 'ml_bati_n3_v2_3q', 48, 0, 16, 8, { solid: [{ x: 48, z: 0, w: 16, d: 8 }] }),
+B('ml_benne0', '', 'ml_ruelle_benne_v2_3q', 3, 8.4, 2, 1.2, { solid: [{ x: 3, z: 8.4, w: 2, d: 1.2 }] }),              // 2e pose (37, 8.4)
+B('ml_caisses0', '', 'ml_ruelle_caisses_v2_3q', 5.6, 8.6, 1.6, 1.2, { solid: [{ x: 5.6, z: 8.6, w: 1.6, d: 1.2 }] }), // aussi (52, 8.6), (16.5, 30.5)
+B('ml_ech_tran',   '', 'ml_echoppe_tran_v2_3q',   18, 14, 6, 6, { solid: [{ x: 18, z: 14, w: 6, d: 6.5 }] }),
+B('ml_ech_cables', '', 'ml_echoppe_cables_v2_3q', 24, 14, 6, 6, { solid: [{ x: 24, z: 14, w: 6, d: 6.5 }] }),
+B('ml_hc',         '', 'ml_facade_humancorp_v2_3q', 30, 14, 8, 6, { solid: [{ x: 30, z: 14, w: 8, d: 6.6 }] }),
+B('ml_atelier',    '', 'ml_atelier_rivet_v2_3q',  38, 14, 8, 6, { solid: [{ x: 38, z: 14, w: 8, d: 6.6 }] }),   // ml_cafe_froid sur l'établi : x≈39,8, z≈20,1, base y 0,98
+B('ml_bw', '', 'ml_bati_w_v2_3q',  0, 14, 10, 18, { solid: [{ x: 0,  z: 14, w: 10, d: 18 }] }),
+B('ml_be', '', 'ml_bati_e_v2_3q', 54, 14, 10, 18, { solid: [{ x: 54, z: 14, w: 10, d: 18 }] }),
+...[[22, 24], [26, 27.5], [30, 24], [34, 28], [37.5, 24], [40.5, 28]].map(([x, z], i) =>
+  B('ml_ter' + i, '', 'ml_terrasse_v2_3q', x, z, 2, 2, { solid: [{ x: x + 0.6, z: z + 0.6, w: 0.8, d: 0.8 }] })),
+```
+**Logo Human Corp.** Le caisson noir de la façade est vierge. Le champ `logo` du manifeste donne `quad_px` : haut-gauche [226,3, 237,8], haut-droit [333,4, 273,3], bas-droit [333,4, 388,1], bas-gauche [226,3, 352,6]. Il donne aussi `affine_128x128` = [0,83672, 0,27734, 0, 0,89688, 226,3, 237,8]. Pour poser une image de `ml_ens_human_corp` (128 × 128) : `ctx.setTransform(a, b, c, d, X0 + e, Y0 + f)`, où X0, Y0 est le coin haut-gauche du sprite. Pour la planche `_mobile`, multiplier a à d par 2.
+
+**Défauts connus.**
+- Les toits des échoppes sont sombres et sans détail : ils restent cachés sous le tablier.
+- La façade Human Corp est volontairement lisse et froide. Elle tranche avec la rouille environnante, mais paraît un peu plus « rendu 3D » que ses voisines.
+- La passerelle nord : le caillebotis du toit laisse voir des trous repeints d'après le rendu (IoU 0,76). La pièce reste lisible, mais elle est plus pauvre que les immeubles.
+- N3 : léger dédoublement d'un climatiseur sur la face est, au raccord des tuiles.
+- Les fenêtres allumées par le générateur ne correspondent pas toujours au masque `_fenetres` : quelques fenêtres peintes allumées ne s'allument pas en plus la nuit.
+- Le portique à implant, les bancs, les lampadaires et les PNJ ne sont pas des pièces de ce lot : ce sont les clés existantes à poser.
+
+Planche contact : `/workspace/nml-shots/megaline_sprites/lot2_planche_contact.png`. Maquettes de la zone avec les lots 1 et 2 : `lot2_maquette_ligne.png` et `lot2_maquette_ligne_nuit.png`. Ces images sont hors jeu.

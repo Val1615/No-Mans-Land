@@ -1825,5 +1825,808 @@
     "source": "découpe exacte de ml_viaduc_seg16_v2_3q.webp par l'enveloppe projetée de la poutre sud (z 3,57-4,34 m local, h 5,78-7,45 m), même canevas, même ancre",
     "status": "v2",
     "partie": "ligne"
+  },
+  "ml_echoppe_tran_v2_3q": {
+    "file": "steel/mega_line/ml_echoppe_tran_v2_3q.webp",
+    "px": [
+      465,
+      454
+    ],
+    "anchor": [
+      289,
+      444
+    ],
+    "footprint_m": [
+      6,
+      6
+    ],
+    "height_m": 5.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Échoppe de nouilles de Mme Tran sous le quai : refends de fer, flanc de brique, comptoir bois et inox, quatre tabourets rouges, marmites fumantes, cuisine éclairée au passe-plat, auvent de tôle rouge, quatre lanternes rouges allumées, enseigne VIERGE",
+    "pose": "B('ml_ech_tran', '', 'ml_echoppe_tran_v2_3q', 18, 14, 6, 6, { solid: [{ x: 18, z: 14, w: 6, d: 6.5 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9595), UNE réduction uniforme x0.4834 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/tran_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.701 (cible 0,33 / 0,70)",
+    "ordre": "sous le tablier du quai (dessus à +5,4 = dessous de la dalle) : dessiner AVANT ml_quai_tablier_v2_3q ; partie visible de la devanture jusqu'à +4,5 environ (bord du tablier à z22)",
+    "enseigne_vierge": true,
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_echoppe_tran_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_echoppe_tran_v2_3q_fenetres.webp",
+    "px": [
+      465,
+      454
+    ],
+    "anchor": [
+      289,
+      444
+    ],
+    "additive": true,
+    "parent": "ml_echoppe_tran_v2_3q",
+    "couche_de": "ml_echoppe_tran_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_echoppe_tran_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_echoppe_tran_v2_3q_neon": {
+    "file": "steel/mega_line/ml_echoppe_tran_v2_3q_neon.webp",
+    "px": [
+      465,
+      454
+    ],
+    "anchor": [
+      289,
+      444
+    ],
+    "additive": true,
+    "parent": "ml_echoppe_tran_v2_3q",
+    "couche_de": "ml_echoppe_tran_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_echoppe_tran_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_echoppe_cables_v2_3q": {
+    "file": "steel/mega_line/ml_echoppe_cables_v2_3q.webp",
+    "px": [
+      430,
+      463
+    ],
+    "anchor": [
+      253,
+      444
+    ],
+    "footprint_m": [
+      6,
+      6
+    ],
+    "height_m": 5.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Échoppe câbles et réparations sous le quai : rideau de fer à mi-hauteur, étagères de bobines, câbles pendants, comptoir avec vieil écran de test allumé, touret au sol, lampe blanche, enseigne VIERGE",
+    "pose": "B('ml_ech_cables', '', 'ml_echoppe_cables_v2_3q', 24, 14, 6, 6, { solid: [{ x: 24, z: 14, w: 6, d: 6.5 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9831), UNE réduction uniforme x0.4857 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/cables_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.324 / droit 0.696 (cible 0,33 / 0,70)",
+    "ordre": "sous le tablier du quai (dessus à +5,4 = dessous de la dalle) : dessiner AVANT ml_quai_tablier_v2_3q ; partie visible de la devanture jusqu'à +4,5 environ (bord du tablier à z22)",
+    "enseigne_vierge": true,
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_echoppe_cables_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_echoppe_cables_v2_3q_fenetres.webp",
+    "px": [
+      430,
+      463
+    ],
+    "anchor": [
+      253,
+      444
+    ],
+    "additive": true,
+    "parent": "ml_echoppe_cables_v2_3q",
+    "couche_de": "ml_echoppe_cables_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_echoppe_cables_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_echoppe_cables_v2_3q_neon": {
+    "file": "steel/mega_line/ml_echoppe_cables_v2_3q_neon.webp",
+    "px": [
+      430,
+      463
+    ],
+    "anchor": [
+      253,
+      444
+    ],
+    "additive": true,
+    "parent": "ml_echoppe_cables_v2_3q",
+    "couche_de": "ml_echoppe_cables_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_echoppe_cables_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_facade_humancorp_v2_3q": {
+    "file": "steel/mega_line/ml_facade_humancorp_v2_3q.webp",
+    "px": [
+      512,
+      481
+    ],
+    "anchor": [
+      336,
+      471
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "height_m": 5.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Façade Human Corp sous le quai : bardage bleu nuit, filets LED bleus froids, porte vitrée double, vitrine blanche froide avec mannequin, jardinières ; caisson NOIR carré (sans logo ni lettrage) où le code pose ml_ens_human_corp",
+    "pose": "B('ml_hc', '', 'ml_facade_humancorp_v2_3q', 30, 14, 8, 6, { solid: [{ x: 30, z: 14, w: 8, d: 6.6 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9931), UNE réduction uniforme x0.5469 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/hc_g2.jpg (hc_g1 rejeté : décor de viaduc ajouté), hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.695 (cible 0,33 / 0,70)",
+    "ordre": "sous le tablier du quai (dessus à +5,4 = dessous de la dalle) : dessiner AVANT ml_quai_tablier_v2_3q ; partie visible de la devanture jusqu'à +4,5 environ (bord du tablier à z22)",
+    "logo": {
+      "quad_px": {
+        "haut_gauche": [
+          226.3,
+          237.8
+        ],
+        "haut_droit": [
+          333.4,
+          273.3
+        ],
+        "bas_droit": [
+          333.4,
+          388.1
+        ],
+        "bas_gauche": [
+          226.3,
+          352.6
+        ]
+      },
+      "taille_m": [
+        2.6,
+        2.62
+      ],
+      "affine_128x128": [
+        0.83672,
+        0.27734,
+        0.0,
+        0.89688,
+        226.3,
+        237.8
+      ],
+      "note": "caisson noir vierge de la façade (face sud, pente 0,33) : poser une image de ml_ens_human_corp (128 x 128) avec ctx.setTransform(a, b, c, d, X0 + e, Y0 + f), X0/Y0 = coin haut-gauche du sprite ; planche _mobile : multiplier a..d par 2"
+    },
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_facade_humancorp_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_facade_humancorp_v2_3q_fenetres.webp",
+    "px": [
+      512,
+      481
+    ],
+    "anchor": [
+      336,
+      471
+    ],
+    "additive": true,
+    "parent": "ml_facade_humancorp_v2_3q",
+    "couche_de": "ml_facade_humancorp_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_facade_humancorp_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_facade_humancorp_v2_3q_neon": {
+    "file": "steel/mega_line/ml_facade_humancorp_v2_3q_neon.webp",
+    "px": [
+      512,
+      481
+    ],
+    "anchor": [
+      336,
+      471
+    ],
+    "additive": true,
+    "parent": "ml_facade_humancorp_v2_3q",
+    "couche_de": "ml_facade_humancorp_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_facade_humancorp_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_atelier_rivet_v2_3q": {
+    "file": "steel/mega_line/ml_atelier_rivet_v2_3q.webp",
+    "px": [
+      512,
+      484
+    ],
+    "anchor": [
+      336,
+      471
+    ],
+    "footprint_m": [
+      8,
+      6
+    ],
+    "height_m": 5.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Atelier de Rivet sous le quai : grand rideau remonté, établi bois avec étau, caisse à outils rouge, panneau d'outils, lampe d'établi, réglettes blanches, bouteilles de soudure jaunes, chariot, caisses ; flanc est de brique avec une fenêtre ambre (vu depuis l'escalier est), enseigne VIERGE",
+    "pose": "B('ml_atelier', '', 'ml_atelier_rivet_v2_3q', 38, 14, 8, 6, { solid: [{ x: 38, z: 14, w: 8, d: 6.6 }] })  // café froid : ml_cafe_froid sur l'établi, x 39,5-40, z 20,1, base y 0,98",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9534), UNE réduction uniforme x0.5353 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/rivet_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.338 / droit 0.7 (cible 0,33 / 0,70)",
+    "ordre": "sous le tablier du quai (dessus à +5,4 = dessous de la dalle) : dessiner AVANT ml_quai_tablier_v2_3q ; partie visible de la devanture jusqu'à +4,5 environ (bord du tablier à z22)",
+    "etabli": {
+      "x": [
+        38.5,
+        42.3
+      ],
+      "z": [
+        19.4,
+        20.4
+      ],
+      "h": 0.98
+    },
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_atelier_rivet_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_atelier_rivet_v2_3q_fenetres.webp",
+    "px": [
+      512,
+      484
+    ],
+    "anchor": [
+      336,
+      471
+    ],
+    "additive": true,
+    "parent": "ml_atelier_rivet_v2_3q",
+    "couche_de": "ml_atelier_rivet_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_atelier_rivet_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_atelier_rivet_v2_3q_neon": {
+    "file": "steel/mega_line/ml_atelier_rivet_v2_3q_neon.webp",
+    "px": [
+      512,
+      484
+    ],
+    "anchor": [
+      336,
+      471
+    ],
+    "additive": true,
+    "parent": "ml_atelier_rivet_v2_3q",
+    "couche_de": "ml_atelier_rivet_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_atelier_rivet_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_n1_v2_3q": {
+    "file": "steel/mega_line/ml_bati_n1_v2_3q.webp",
+    "px": [
+      1253,
+      1047
+    ],
+    "anchor": [
+      1011,
+      1040
+    ],
+    "footprint_m": [
+      24,
+      8
+    ],
+    "height_m": 12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Bâti nord N1 : immeuble de brique noircie, rez + 2 étages (3 niveaux), corniches et appuis béton, escalier de secours, toit-terrasse avec réservoir d'eau bois, édicule et climatiseurs ; rez de boutiques (vitrines ambre sous auvents bleu et rouge, rideaux de fer, porte éclairée), enseignes VIERGES",
+    "pose": "B('ml_n1', '', 'ml_bati_n1_v2_3q', 0, 0, 24, 8, { solid: [{ x: 0, z: 0, w: 24, d: 8 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.7278 (IoU 0.9981), x0.6631 (IoU 0.9986), x0.6501 (IoU 0.9944), x0.7309 (IoU 0.997)), raccord par fondu de 80 px, gain de couleur moyen ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/n1_t00_g1, n1_t01_g2 (g1 rejeté : décor), n1_t10_g1, n1_t11_g1, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.704 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_bati_n1_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_bati_n1_v2_3q_fenetres.webp",
+    "px": [
+      1253,
+      1047
+    ],
+    "anchor": [
+      1011,
+      1040
+    ],
+    "additive": true,
+    "parent": "ml_bati_n1_v2_3q",
+    "couche_de": "ml_bati_n1_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_n1_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_n1_v2_3q_neon": {
+    "file": "steel/mega_line/ml_bati_n1_v2_3q_neon.webp",
+    "px": [
+      1253,
+      1047
+    ],
+    "anchor": [
+      1011,
+      1040
+    ],
+    "additive": true,
+    "parent": "ml_bati_n1_v2_3q",
+    "couche_de": "ml_bati_n1_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_n1_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_n2_v2_3q": {
+    "file": "steel/mega_line/ml_bati_n2_v2_3q.webp",
+    "px": [
+      1078,
+      1146
+    ],
+    "anchor": [
+      836,
+      1139
+    ],
+    "footprint_m": [
+      20,
+      8
+    ],
+    "height_m": 16,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Bâti nord N2 : immeuble d'enduit ocre-gris taché, rez + 3 étages (5 niveaux avec l'édicule), bandeaux béton, escalier de secours à l'ouest, toit avec réservoir, édicule et ventilations ; rez : rideaux de fer, vitrine sous auvent gris, porte éclairée, vitrine sous auvent vert",
+    "pose": "B('ml_n2', '', 'ml_bati_n2_v2_3q', 24, 0, 20, 8, { solid: [{ x: 24, z: 0, w: 20, d: 8 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.6698 (IoU 0.9986), x0.6298 (IoU 0.9974), x0.6308 (IoU 0.9939), x0.6719 (IoU 0.9951)), raccord par fondu de 80 px, gain de couleur moyen ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/n2_t00..t11_g1, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.693 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_bati_n2_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_bati_n2_v2_3q_fenetres.webp",
+    "px": [
+      1078,
+      1146
+    ],
+    "anchor": [
+      836,
+      1139
+    ],
+    "additive": true,
+    "parent": "ml_bati_n2_v2_3q",
+    "couche_de": "ml_bati_n2_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_n2_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_n2_v2_3q_neon": {
+    "file": "steel/mega_line/ml_bati_n2_v2_3q_neon.webp",
+    "px": [
+      1078,
+      1146
+    ],
+    "anchor": [
+      836,
+      1139
+    ],
+    "additive": true,
+    "parent": "ml_bati_n2_v2_3q",
+    "couche_de": "ml_bati_n2_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_n2_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_n3_v2_3q": {
+    "file": "steel/mega_line/ml_bati_n3_v2_3q.webp",
+    "px": [
+      923,
+      848
+    ],
+    "anchor": [
+      681,
+      841
+    ],
+    "footprint_m": [
+      16,
+      8
+    ],
+    "height_m": 10,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Bâti nord N3 : immeuble bas de béton brut sombre à pilastres, rez + 2 étages, toit avec réservoir et édicule ; rez : vitrine de bouteilles sous auvent rouge, rideau de fer, porte éclairée",
+    "pose": "B('ml_n3', '', 'ml_bati_n3_v2_3q', 48, 0, 16, 8, { solid: [{ x: 48, z: 0, w: 16, d: 8 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.5375 (IoU 0.999), x0.5472 (IoU 0.9973), x0.5637 (IoU 0.9866), x0.5469 (IoU 0.9943)), raccord par fondu de 80 px, gain de couleur moyen ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/n3_t00..t11_g1, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.323 / droit 0.695 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_bati_n3_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_bati_n3_v2_3q_fenetres.webp",
+    "px": [
+      923,
+      848
+    ],
+    "anchor": [
+      681,
+      841
+    ],
+    "additive": true,
+    "parent": "ml_bati_n3_v2_3q",
+    "couche_de": "ml_bati_n3_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_n3_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_n3_v2_3q_neon": {
+    "file": "steel/mega_line/ml_bati_n3_v2_3q_neon.webp",
+    "px": [
+      923,
+      848
+    ],
+    "anchor": [
+      681,
+      841
+    ],
+    "additive": true,
+    "parent": "ml_bati_n3_v2_3q",
+    "couche_de": "ml_bati_n3_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_n3_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_w_v2_3q": {
+    "file": "steel/mega_line/ml_bati_w_v2_3q.webp",
+    "px": [
+      990,
+      1033
+    ],
+    "anchor": [
+      434,
+      1026
+    ],
+    "footprint_m": [
+      10,
+      18
+    ],
+    "height_m": 12,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Bâti latéral ouest : immeuble de brique d'angle, 3 niveaux, rez actif sur la face sud (vitrine sous auvent bleu, porte) ET sur la face est le long de la rue latérale (rideau de fer, vitrines sous auvents verts, porte sous l'escalier de secours) ; toit avec réservoir et édicule",
+    "pose": "B('ml_bw', '', 'ml_bati_w_v2_3q', 0, 14, 10, 18, { solid: [{ x: 0, z: 14, w: 10, d: 18 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.6076 (IoU 0.9967), x0.6016 (IoU 0.9973), x0.6152 (IoU 0.9929), x0.601 (IoU 0.9931)), raccord par fondu de 80 px, gain de couleur moyen ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/w_t00..t11_g1, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.32 / droit 0.695 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_bati_w_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_bati_w_v2_3q_fenetres.webp",
+    "px": [
+      990,
+      1033
+    ],
+    "anchor": [
+      434,
+      1026
+    ],
+    "additive": true,
+    "parent": "ml_bati_w_v2_3q",
+    "couche_de": "ml_bati_w_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_w_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_w_v2_3q_neon": {
+    "file": "steel/mega_line/ml_bati_w_v2_3q_neon.webp",
+    "px": [
+      990,
+      1033
+    ],
+    "anchor": [
+      434,
+      1026
+    ],
+    "additive": true,
+    "parent": "ml_bati_w_v2_3q",
+    "couche_de": "ml_bati_w_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_w_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_e_v2_3q": {
+    "file": "steel/mega_line/ml_bati_e_v2_3q.webp",
+    "px": [
+      959,
+      971
+    ],
+    "anchor": [
+      434,
+      963
+    ],
+    "footprint_m": [
+      10,
+      18
+    ],
+    "height_m": 10,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Bâti latéral est : immeuble d'enduit ocre-gris taché, 3 niveaux, face sud soignée (vitrine sous auvent rouge, porte éclairée), face est avec escalier de secours et fenêtres grillagées au rez ; toit avec réservoir, édicule, ventilations",
+    "pose": "B('ml_be', '', 'ml_bati_e_v2_3q', 54, 14, 10, 18, { solid: [{ x: 54, z: 14, w: 10, d: 18 }] })",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 4 tuiles recalées chacune par échelle uniforme + translation (x0.5622 (IoU 0.9932), x0.5768 (IoU 0.9973), x0.5801 (IoU 0.9891), x0.5744 (IoU 0.9863)), raccord par fondu de 80 px, gain de couleur moyen ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/e_t00..t11_g1, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.336 / droit 0.697 (cible 0,33 / 0,70)",
+    "layers": [
+      "fenetres",
+      "neon"
+    ]
+  },
+  "ml_bati_e_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_bati_e_v2_3q_fenetres.webp",
+    "px": [
+      959,
+      971
+    ],
+    "anchor": [
+      434,
+      963
+    ],
+    "additive": true,
+    "parent": "ml_bati_e_v2_3q",
+    "couche_de": "ml_bati_e_v2_3q",
+    "layer": "fenetres",
+    "source": "masque géométrique fenetres (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_e_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_bati_e_v2_3q_neon": {
+    "file": "steel/mega_line/ml_bati_e_v2_3q_neon.webp",
+    "px": [
+      959,
+      971
+    ],
+    "anchor": [
+      434,
+      963
+    ],
+    "additive": true,
+    "parent": "ml_bati_e_v2_3q",
+    "couche_de": "ml_bati_e_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_bati_e_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_passerelle_nord_v2_3q": {
+    "file": "steel/mega_line/ml_passerelle_nord_v2_3q.webp",
+    "px": [
+      404,
+      392
+    ],
+    "anchor": [
+      171,
+      386
+    ],
+    "footprint_m": [
+      4,
+      8
+    ],
+    "height_m": 4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Passerelle de service nord (sortie vers le terminus) : passage couvert de portiques de fer rivetés, sol en tôle striée avec ligne jaune, toit en caillebotis, paroi de tôle à l'ouest, garde-corps à verre dépoli à l'est, bandeau jaune et noir, deux lampes ambre grillagées, borne de service à écran VIERGE",
+    "pose": "B('ml_pass_n', '', 'ml_passerelle_nord_v2_3q', 44, 0, 4, 8, { solid: [{ x: 44, z: 0, w: 0.3, d: 8 }, { x: 47.7, z: 0, w: 0.3, d: 8 }, { x: 44.2, z: 6.4, w: 0.4, d: 0.6 }] })  // passage libre x44,3-47,7, sortie au bord nord z0",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.7615), UNE réduction uniforme x0.4291 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/pass_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.7 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_passerelle_nord_v2_3q_neon": {
+    "file": "steel/mega_line/ml_passerelle_nord_v2_3q_neon.webp",
+    "px": [
+      404,
+      392
+    ],
+    "anchor": [
+      171,
+      386
+    ],
+    "additive": true,
+    "parent": "ml_passerelle_nord_v2_3q",
+    "couche_de": "ml_passerelle_nord_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_passerelle_nord_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_terrasse_v2_3q": {
+    "file": "steel/mega_line/ml_terrasse_v2_3q.webp",
+    "px": [
+      106,
+      89
+    ],
+    "anchor": [
+      66,
+      85
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 1.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Terrasse de rue : guéridon bois sur pied de fonte, photophore laiton allumé, bol de nouilles, deux tabourets de fer à coussin rouge",
+    "pose": "B('ml_ter0', '', 'ml_terrasse_v2_3q', 22, 24, 2, 2, { solid: [{ x: 22.6, z: 24.6, w: 0.8, d: 0.8 }] })  // poses : (22,24) (26,27.5) (30,24) (34,28) (37.5,24) (40.5,28)",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9386), UNE réduction uniforme x0.0886 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/terrasse_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.091 / droit 0.541 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_terrasse_v2_3q_neon": {
+    "file": "steel/mega_line/ml_terrasse_v2_3q_neon.webp",
+    "px": [
+      106,
+      89
+    ],
+    "anchor": [
+      66,
+      85
+    ],
+    "additive": true,
+    "parent": "ml_terrasse_v2_3q",
+    "couche_de": "ml_terrasse_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_terrasse_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_ruelle_benne_v2_3q": {
+    "file": "steel/mega_line/ml_ruelle_benne_v2_3q.webp",
+    "px": [
+      129,
+      118
+    ],
+    "anchor": [
+      88,
+      114
+    ],
+    "footprint_m": [
+      2,
+      1.2
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Benne à ordures vert sombre cabossée, couvercle entrouvert sur des sacs noirs, roulettes",
+    "pose": "B('ml_benne0', '', 'ml_ruelle_benne_v2_3q', 3, 8.4, 2, 1.2, { solid: [{ x: 3, z: 8.4, w: 2, d: 1.2 }] })  // ruelle de service z8-10 : aussi (37, 8.4)",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9742), UNE réduction uniforme x0.1302 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/benne_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.308 / droit 0.714 (cible 0,33 / 0,70)"
+  },
+  "ml_ruelle_caisses_v2_3q": {
+    "file": "steel/mega_line/ml_ruelle_caisses_v2_3q.webp",
+    "px": [
+      107,
+      106
+    ],
+    "anchor": [
+      72,
+      100
+    ],
+    "footprint_m": [
+      1.6,
+      1.2
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Trois caisses de bois cerclées de fer empilées",
+    "pose": "B('ml_caisses0', '', 'ml_ruelle_caisses_v2_3q', 5.6, 8.6, 1.6, 1.2, { solid: [{ x: 5.6, z: 8.6, w: 1.6, d: 1.2 }] })  // aussi (52, 8.6) et (16.5, 30.5) dans la rue latérale ouest",
+    "source": "Ocre 2026-11-17, lot 2 Mega-Line v2, rez et bâti (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9848), UNE réduction uniforme x0.1082 vers 50 px/m ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/caisses_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_rez_bati",
+    "lot": "lot 2 Mega-Line v2, rez et bâti (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.667 (cible 0,33 / 0,70)"
   }
 }
