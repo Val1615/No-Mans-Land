@@ -85,13 +85,13 @@ Vue de dessus, 1 caractère = 1 m. Légende : `=` piste (6 m), `t` talus nord (p
 | caisses ×3 | C1, C2 (double fond), C3 | 8,5-9,7 / 10,2-11,4 / 17,8-19 | 14,8-15,6 / 15,6-16,4 / 15-15,8 | 0,7 | oui | 1 |
 | fil | fil à boîtes | 20,9-21,1 | 10-16 | 0,3 | non (déclencheur T2) | 0 |
 | lit | lit asséché (sol `g_rc_lit`, berges peintes) | 0-30 | 17-24 | 0 | non | 0 |
-| epave | camion du Service ensablé, sans roues | 17-26 | 18-20,8 | 3,0 (plateau à 2,0) | oui, **sauf la niche de Morsa** x 21-22,5 ; z 19-20,8 (ouverte au sud, sur le lit) | 2 |
+| epave | camion du Service ensablé, sans roues | 17-26 | 18-20,8 | 2,9 (plancher du plateau à 1,3) | oui, **sauf la niche de Morsa** x 21-22,5 ; z 19-20,8 (ouverte au sud, sur le lit) | 2 |
 | pneus | tas de pneus et gravats | 5-7,5 | 19-21 | 1,2 | oui | 1 |
 | bache | bâche tendue, cache | 26,5-30 | 20,5-24 | 1,6 | oui (bords), fouille par le côté ouest | 1 |
 | panneau | panneau UFSA | 3,4-3,6 | 9,2-9,4 | 3,0 | oui | 0 |
 | miroir | miroir sur piquet | 20 ; 3,2 | — | 1,2 au-dessus de la crête | non | — |
 
-Un seul niveau de marche par point, comme sur la Mega-Line : la crête et la sente passent par `loc.niveaux` + solides (la pente en `couv: 1`). Le lit reste au niveau 0. Morsa est rendu à `y: 2.0` sur le PNJ (pas par `niveaux`) et sa case, dans la niche de l'épave, reste libre ; on l'approche par le lit. **Repli si le test 390 casse** : crête en décor plein, Pibe dans une niche praticable fermée de 2 × 2 m autour de (16,5 ; 4,2), hors d'atteinte en mêlée (il peut tirer et être visé), sente retirée ; on perd seulement « prendre la crête à revers ».
+Un seul niveau de marche par point, comme sur la Mega-Line : la crête et la sente passent par `loc.niveaux` + solides (la pente en `couv: 1`). Le lit reste au niveau 0. Morsa est rendu à `y: 1.3` sur le PNJ (pas par `niveaux`) et sa case, dans la niche de l'épave, reste libre ; on l'approche par le lit. **Repli si le test 390 casse** : crête en décor plein, Pibe dans une niche praticable fermée de 2 × 2 m autour de (16,5 ; 4,2), hors d'atteinte en mêlée (il peut tirer et être visé), sente retirée ; on perd seulement « prendre la crête à revers ».
 
 ### Apparition, sorties, déclencheurs
 | id | Type | Position (m) | Rôle |
@@ -120,7 +120,7 @@ Format des dialogues : celui de `src/data/dialogues_*.js` (nœuds `text` + `opti
 ### 6.1 Quilla, cheffe de la bande
 - Femme d'une cinquantaine d'années, lunettes de soudeur relevées sur le front, poncho couleur sable, pistolet à la ceinture. Ancienne mécanicienne de convois. Polie, lasse, jamais pressée. Elle tient au péage plus qu'au sang : un mort ne repasse pas payer.
 - Stats proposées : PV 18, PA 7, initiative 7, `pistolet`, mêlée 40 %, armes 55 %, Volonté 6.
-- Sprite : `gen_rc_quilla` (à produire) + portrait.
+- Sprite : `gen_rc_quilla` (produit, §15) + portrait.
 
 ```text
 start   « Doucement, voyageur. Tu ne poses rien, tu ne lèves rien. Tu marches sur ma route. »
@@ -194,7 +194,7 @@ demi       « Sage. La piste sera encore là demain. Moi aussi. » action flag:e
 ### 6.2 Pibe, guetteur de la crête
 - Seize ans « presque », fusil trop grand pour lui, foulard sur le nez. Il panique vite.
 - Stats : PV 10, PA 6, initiative 8, `fusil`, armes 35 %, Volonté 3, `fuitTour: 2`.
-- Sprite : `gen_rc_pibe` (à produire) + portrait. Position (16,5 ; 4,5) sur le plateau de crête (`loc.niveaux`, +2,5 m), au sud du rocher R1, regard au sud.
+- Sprite : `gen_rc_pibe` (produit, §15) + portrait. Position (16,5 ; 4,5) sur le plateau de crête (`loc.niveaux`, +2,5 m), au sud du rocher R1, regard au sud.
 - Parlable seulement si on l'atteint par la sente avant le combat.
 
 ```text
@@ -213,7 +213,7 @@ crie    « QUILLA ! » action combat:embuscade_piste
 ### 6.3 Morsa, guetteur de l'épave
 - La quarantaine, lourd, moustache tombante, chapeau sur les yeux. Couché sur le plateau du camion, fusil sur le ventre ; il somnole dans la chaleur, le regard tourné vers la piste (dos au lit).
 - Stats : PV 14, PA 6, initiative 5, `fusil`, armes 50 %, Volonté 5.
-- Sprite : `gen_rc_morsa` (à produire) + portrait. Position (21,75 ; 19,9), dans la niche de l'épave (case libre), rendu à `y: 2.0`.
+- Sprite : `gen_rc_morsa` (produit, §15) + portrait. Position (21,75 ; 19,9), dans la niche de l'épave (case libre), rendu à `y: 1.3` (plancher du plateau).
 - Abordable depuis le lit (côté sud de l'épave), avant le combat.
 
 ```text
@@ -268,7 +268,7 @@ Reprise du système existant (`src/core/combat.js`, `src/data/combat.js`) : une 
 |---|---|---|---|---|---|---|---|---|---|
 | quilla | gen_rc_quilla | (19 ; 12), à l'est du pick-up | libre (piste) | 18 | 7 | 7 | pistolet | 40 / 55 | `rendSous: 0.25` : quand elle se rend, la bande lâche la piste → **issue victoire** |
 | pibe | gen_rc_pibe | (16,5 ; 4,5), crête, au sud du rocher R1 | libre (plateau) | 10 | 6 | 8 | fusil | 10 / 35 | `fuitTour: 2` ; couverture 1 (R1) ; **absent** si `emb_pibe_parti`, `_ko` ou `_achete` |
-| morsa | gen_rc_morsa | (21,75 ; 19,9), niche de l'épave, rendu `y: 2.0` | libre (niche) | 14 | 6 | 5 | fusil | 30 / 50 | couverture 2 (épave) ; mains nues si `emb_morsa_desarme` ; **absent** si `_ko` ou `_achete` |
+| morsa | gen_rc_morsa | (21,75 ; 19,9), niche de l'épave, rendu `y: 1.3` | libre (niche) | 14 | 6 | 5 | fusil | 30 / 50 | couverture 2 (épave) ; mains nues si `emb_morsa_desarme` ; **absent** si `_ko` ou `_achete` |
 | tuerto | gen_rc_tuerto | (10 ; 20,5), lit, à l'est des pneus | libre (lit) | 14 | 6 | 6 | barre | 45 / 20 | `entreTour: 2` (renfort) ; **absent** si `emb_tuerto_achete` |
 
 Pas d'ennemi neutre : un guetteur acheté, chassé ou assommé n'est pas dans la liste du combat (`si` par ennemi). Distances à l'entrée (1,5 ; 13) : Quilla 17,5 m, Pibe 17,3 m, Morsa 21,4 m, Tuerto 11,3 m (toutes ≥ 8 m). 
@@ -293,36 +293,37 @@ Objets existants (`ITEMS`, armes du combat) sauf mention.
 | Plateau de l'épave (par le flanc sud) | Morsa absent ou neutralisé | son `fusil` s'il ne l'a plus pris, gourde vide, mégots (texte) |
 | Réservoir du pick-up | libre | vide : « Percé. Même le sable n'y reste pas. » |
 
-## 10. Clés d'assets à produire (_3q) et réutilisations
-Rien n'est produit avant la validation du format. Préfixe proposé `rc_` (rencontres), `rc_ds_` pour les modules du désert réutilisables, `rc_emb_` pour ceux propres à l'embuscade. Ancre et échelle comme les autres lots : sprite à l'échelle 1, 50 px/m, ancre au coin avant sud-est.
+## 10. Clés d'assets (_3q) et réutilisations
+**Produit** (lots `0f15e0c` sols et modules, `333215b` PNJ) : clés, tailles, ancres et poses dans le **§15** et dans `assets/rencontres/manifest.json`. Préfixes : `g_rc_` sols, `rc_ds_` modules du désert réutilisables, `rc_emb_` propres à l'embuscade, `gen_rc_` PNJ. Échelle 1, 50 px/m, ancre au coin avant sud-est (décor) ou au milieu des pieds (PNJ).
 
 | Clé | Rôle | Emprise L × P × H (m) | Notes |
 |---|---|---|---|
-| `g_rc_piste` | sol piste damée, ornières | tuile 4 × 4 | + variante `_b` (ornière croisée) ; ocre clair |
-| `g_rc_sable` | sol sable des bas-côtés et du talus | tuile 4 × 4 | + `_b` (cailloux, touffes sèches) ; jamais une dalle vide |
-| `g_rc_lit` | sol du lit asséché, galets et craquelures | tuile 4 × 4 | plus sombre et plus froid que la piste |
-| `rc_ds_talus_pente_3q` | pente du talus, module | 10 × 3,5 × 2,5 | ×3 en x (5-30) ; éboulis, racines mortes |
-| `rc_ds_talus_crete_3q` | plateau de crête | 10 × 5 × 0,3 | sur la pente, mêmes x |
-| `rc_ds_sente_3q` | rampe vers la crête | 3 × 7 × 2,5 | |
-| `rc_ds_rochers_3q` | blocs de crête | 3 × 1,5 × 1,6 | + `_b` (3 × 1,5) |
-| `rc_ds_berge_3q` | rebord peint du lit (le lit reste au niveau 0) | 10 × 1 × 0,4 | ×3 |
-| `rc_emb_pickup_appat_3q` | pick-up, capot ouvert, pneus lacérés | 5,2 × 2,2 × 2,0 | gris-bleu délavé et rouille ; boîte à gants ouverte côté ouest |
-| `rc_emb_trapo_3q` | Don Trapo, mannequin | 0,8 × 0,6 × 1,3 | assis contre la portière sud, chapeau de paille |
-| `rc_emb_caisses_eventrees_3q` | caisse ouverte pleine de sable | 1,2 × 0,8 × 0,7 | + `_b` (couvercle à côté) ; la C2 utilise `_b` |
-| `rc_emb_fil_boites_3q` | fil tendu et boîtes de conserve | 0,2 × 6 × 0,3 | piquets aux deux bouts |
-| `rc_emb_miroir_3q` + `_neon` | miroir de poche sur piquet | 0,3 × 0,3 × 1,2 | `_neon` = un seul éclat sur le verre, pas de halo au sol |
-| `rc_emb_epave_service_3q` | camion bâché du Service ensablé | 9 × 2,8 × 3,0 | ridelles cassées, pneus crevés ; plateau à 2,0 m |
-| `rc_emb_bache_cache_3q` | bâche tendue, sacs, bidons | 3,5 × 3,5 × 1,6 | bidons bleus de Dusk-Town (lien avec le carnet) |
-| `rc_emb_traces_3q` | décalques au sol : empreintes, traînées, mégots | 2 × 1 | calque sol, plusieurs poses |
+| `g_rc_piste` (+ `_b`, `_c`) | sol piste damée, ornières | tuile 4 × 4 | ornières continues bout à bout |
+| `g_rc_sable` (+ `_b`, `_c`) | sol sable des bas-côtés | tuile 4 × 4 | cailloux, touffes sèches |
+| `g_rc_lit` (+ `_b`) | sol du lit asséché, galets et craquelures | tuile 4 × 4 | plus sombre que la piste |
+| `rc_ds_talus_a_3q`, `rc_ds_talus_b_3q` | talus complet (pente + plateau de crête) | 10 × 8,5 × 2,5 | remplacent `talus_pente` + `talus_crete` ; `_a` porte les empreintes |
+| `rc_ds_talus_fin_3q` | bout est du talus, falaise | 5 × 8,5 × 2,5 | |
+| `rc_ds_sente_3q` | bout ouest du talus + rampe vers la crête | 5 × 10 × 2,5 | |
+| `rc_ds_rochers_3q` (+ `_b`) | blocs de crête R1-R3 | 3 × 1,5 × 1,6 (`_b` 1,2) | |
+| `rc_ds_berge_3q` (+ `_b`) | rebord peint du lit (niveau 0) | 10 × 1 × 0,4 | ×3 |
 | `rc_ds_panneau_ufsa_3q` | panneau routier UFSA criblé | 0,6 × 0,2 × 3,0 | sans texte lisible |
-| `gen_rc_quilla` | PNJ + portrait `portrait-gen_rc_quilla` | 1,8 m | lunettes de soudeur, poncho sable |
-| `gen_rc_pibe` | PNJ + portrait | 1,65 m | fusil trop grand, foulard |
-| `gen_rc_morsa` | PNJ couché + debout + portrait | 1,8 m | pose couchée pour le plateau |
+| `rc_emb_pickup_appat_3q` | pick-up, capot ouvert, pneus à plat | 5,2 × 2,2 × 2,0 | **rouge délavé** et rouille (§13 point 12) ; avant à l'ouest, portière sud ouverte |
+| `rc_emb_caisses_eventrees_3q` (+ `_b`) | caisse ouverte pleine de sable | 1,2 × 0,8 × 0,7 | C2 = `_b` (couvercle à côté) |
+| `rc_emb_fil_boites_3q` | fil tendu et boîtes de conserve | 0,2 × 6 × 0,42 | piquets aux deux bouts |
+| `rc_emb_miroir_3q` + `_neon` | miroir de poche sur piquet | 0,3 × 0,3 × 1,2 | `_neon` = un seul éclat sur le verre |
+| `rc_emb_epave_service_3q` | camion bâché du Service ensablé, sans roues | 9 × 2,8 × 2,9 | **plancher du plateau à 1,3 m** (§13 point 13) ; niche de Morsa ouverte au sud |
+| `rc_emb_bache_cache_3q` | bâche tendue, sacs, bidons | 3,5 × 3,5 × 1,6 | bidons bleus de Dusk-Town |
+| `rc_emb_traces_3q`, `rc_emb_trainees_3q` | décalques au sol (empreintes ; traînées vers l'épave) | 2 × 1 ; 9 × 6 | couche sol |
+| `gen_rc_quilla` (+ `_dos`, `_assise`) | PNJ + portrait | 1,78 m | lunettes de soudeur, poncho sable |
+| `gen_rc_pibe` (+ `_dos`) | PNJ + portrait | 1,62 m | fusil trop grand, foulard |
+| `gen_rc_morsa` (+ `_dos`, `_couche`) | PNJ + portrait | 1,8 m | pose couchée pour le plateau |
+| `gen_rc_tuerto` (+ `_dos`) | PNJ + portrait | 1,86 m | stats du rôdeur, silhouette propre |
+| `gen_rc_trapo` (+ `_dos`) | Don Trapo, mannequin (PNJ examinable) | 1,55 m | adossé à la portière sud, chapeau de paille ; remplace `rc_emb_trapo_3q` |
 
-Réutilisé tel quel : `gen_rodeur` (Tuerto), `assets/reused/tires.webp` et `rubble.webp` (tas du lit), `bush.webp` (touffes), `barrel.webp` (bidon près de la bâche), `assets/generated/sv_pneus.webp` en secours. Ces modules `rc_ds_*` et `g_rc_*` serviront de base au biome désert des jalons 2 et 3.
+Réutilisé tel quel : `assets/reused/tires.webp` (pneus du lit), `rubble.webp`, `bush.webp`, `barrel.webp` au besoin. Les modules `rc_ds_*` et `g_rc_*` serviront de base au biome désert des jalons 2 et 3.
 
 ## 11. Identité du biome désert (pour cette scène)
-- **Palette** : ocre et sable ambre (`#d9b47a`, `#c9a46a`), rouille, bois blanchi, gris-bleu délavé des tôles ; ombres brun chaud. L'ambre reste la couleur des No Man's Land (comme la carte NML), en opposition au bleu acier de Steel.
+- **Palette** : ocre et sable ambre (`#d9b47a`, `#c9a46a`), rouille, bois blanchi, tôles délavées, rouge délavé du pick-up, bleu des seuls bidons ; ombres brun chaud. L'ambre reste la couleur des No Man's Land (comme la carte NML), en opposition au bleu acier de Steel.
 - **Lumière** : soleil haut, ombres courtes, aucune source artificielle. Le seul point brillant est le miroir, sur un objet visible. Proposition de réglage : `bg '#1a1510'`, `hemi ['#f0dcb0', '#3a2a18', 1.3]`, `sun ['#ffd890', 0.9]`, `tint '#e8d0a0'`.
 - **Sol** : jamais uni. Ornières, cailloux, touffes sèches et décalques de traces cassent les tuiles ; le lit est plus froid et plus sombre que la piste.
 - **À éviter** : terrain plat avec trois ennemis au milieu, halo sans source, dalles vides, violet et cyan (réservés à Steel), végétation verte.
@@ -331,7 +332,7 @@ Réutilisé tel quel : `gen_rodeur` (Tuerto), `assets/reused/tires.webp` et `rub
 1. Catalogue `src/data/rencontres.js` (ARCHI §3) : entrée `embuscade_piste` du §14, `terrains: ['piste']`, `biomes: ['desert', 'rock']` ; `si(etat, case)` refuse une case déjà réglée dans `region.rencontres` ; taux de `TERRAINS` inchangés.
 2. Scène construite à la demande (§4) : sol, éléments, solides, apparition, sorties (S_O = halte, S_E_* = reprise), déclencheurs T1-T3.
 3. Visibilité différée : `si: '<drapeau>'` sur Pibe (`emb_vu_talus`), Morsa (`emb_vu_epave`), Tuerto (`emb_t3`) ; les zones < 6 m passent par des déclencheurs (`emb_pres_pibe`, `emb_pres_morsa`) ; le début du combat pose tous les drapeaux. Quilla : deux poses, `gen_rc_quilla_assise` si `!emb_t1`, debout si `emb_t1`.
-4. Hauteurs : crête +2,5 et sente par `loc.niveaux` ; Morsa par `y: 2.0` sur le PNJ ; lit au niveau 0.
+4. Hauteurs : crête +2,5 et sente par `loc.niveaux` ; Morsa par `y: 1.3` sur le PNJ ; lit au niveau 0.
 5. Sortie est gardée tant que `!emb_regle` (franchir x = 23 sur la piste).
 6. Combat : `ENCOUNTERS.embuscade_piste` (§8), ancre (18 ; 13) par scène de rencontre, renfort au tour 2, effets des drapeaux sur la liste des ennemis.
 7. Persistance : journal par case `region.rencontres` (réglée, cache vidée, morts) ; drapeaux `emb_*` remis à zéro par `retirerLieu` à la sortie.
@@ -351,6 +352,8 @@ Rien n'est imposé ; tout est [proposition].
 9. **Sols propres au pilote** plutôt que `g_sand` seul : `g_sand` est le sable de rue de Dusk-Town ; la scène a besoin de trois lectures distinctes (piste damée à ornières, sable des bas-côtés, lit de galets) pour que le joueur voie la route, le contournement et le creux. Variantes `_b`/`_c` contre la répétition.
 10. **Tuerto a son propre sprite** (`gen_rc_tuerto`) au lieu de réutiliser `gen_rodeur` (ARCHI le permettait) : quatre silhouettes distinctes, pas de clone dans la même scène. Ses stats restent celles du rôdeur.
 11. **Quilla a deux poses** (assise à l'ombre, debout près du pick-up) et Morsa une pose couchée : pas de PNJ qui marche, la scène change de pose au déclencheur T1.
+12. **Pick-up rouge délavé** (au lieu de gris-bleu) : décision de DA prise à la production ; un gris-bleu se perdait dans les tôles et l'épave, le rouge passé fait de l'appât le premier objet que l'œil trouve, sans sortir de la palette chaude. Réversible (un repeint).
+13. **Plancher de l'épave à 1,3 m** (au lieu de 2,0) : hauteur d'un plateau de camion réel à 50 px/m ; Morsa passe à `y: 1.3` (§4, §6.3, §8, §12, §14). ARCHI.md (Rivet) cite encore `y: 2.0`.
 
 ## 14. Entrée au format d'ARCHI.md §4
 Les poses des sprites (`buildings`, `props`, sols) sont dans le §15, avec la table des poses.
@@ -376,8 +379,8 @@ embuscade_piste: {
                   { id: 'pres_morsa', zone: { x: 15.75, z: 17, w: 12, d: 7 }, enter: 'flag:emb_vu_epave' } ],
   pnj: [ { id: 'rc_quilla_assise', name: 'Quilla', sprite: 'gen_rc_quilla_assise', x: 24.5, z: 9.0, faceTo: [1.5, 13], si: '!emb_t1' },
          { id: 'rc_quilla', name: 'Quilla', sprite: 'gen_rc_quilla', x: 19, z: 12, faceTo: [1.5, 13], dialogue: 'rc_quilla', si: 'emb_t1' },
-         { id: 'rc_pibe', name: 'Pibe', sprite: 'gen_rc_pibe', x: 16.5, z: 4.5, faceTo: [16.5, 13], dialogue: 'rc_pibe', si: 'emb_vu_talus' },
-         { id: 'rc_morsa', name: 'Morsa', sprite: 'gen_rc_morsa_couche', x: 21.75, z: 19.9, y: 2.0, faceTo: [21.75, 13], dialogue: 'rc_morsa', si: 'emb_vu_epave' },
+         { id: 'rc_pibe', name: 'Pibe', sprite: 'gen_rc_pibe', x: 16.5, z: 4.5, y: 2.5, faceTo: [16.5, 13], dialogue: 'rc_pibe', si: 'emb_vu_talus' },
+         { id: 'rc_morsa', name: 'Morsa', sprite: 'gen_rc_morsa_couche', x: 21.75, z: 19.9, y: 1.3, faceTo: [21.75, 13], dialogue: 'rc_morsa', si: 'emb_vu_epave' },
          { id: 'rc_tuerto', name: 'Tuerto', sprite: 'gen_rc_tuerto', x: 6, z: 22, faceTo: [12, 22], dialogue: 'rc_tuerto', si: 'emb_t3' },
          { id: 'rc_trapo', name: 'Don Trapo', sprite: 'gen_rc_trapo', x: 13.5, z: 13.7, faceTo: [1.5, 13], examen: 'rc_trapo' } ],
   dialogues: { /* §6 : rc_quilla, rc_pibe, rc_morsa, rc_tuerto */ },
@@ -397,3 +400,54 @@ embuscade_piste: {
 }
 ```
 Morsa désarmé (`emb_morsa_desarme`) combat à mains nues : le moteur prend l'arme dans `arme`, donc Rivet pose `arme: 'mains'` quand le drapeau est levé (ou une deuxième entrée `morsa_desarme` à `si` inverse).
+
+## 15. Table des poses (pour Rivet)
+Sprites publiés dans `assets/rencontres/` (manifeste `assets/rencontres/manifest.json`, champs `file, px, anchor, footprint_m, height_m, pose, ordre`). Repère de la scène : x vers l'est, z vers le sud, en mètres, origine au coin nord-ouest. Décor : `x, z, w, d` = emprise au sol, ancre du sprite = coin sud-est au sol (`x + w ; z + d`), comme `buildings` dans `canvas-view.js`. Planche : `nml-shots/rencontres/pilote_planche_sprites.png` ; maquette composée (MAQUETTE, pas une capture) : `nml-shots/rencontres/pilote_maquette.png` (hors dépôt).
+
+### Sols
+| Clé | Pose | Taille |
+|---|---|---|
+| `g_rc_sable` (+ `_b`, `_c`) | `ground.skin` de toute la scène ; `_b`/`_c` semées sur quelques tuiles, jamais deux voisines | 512 × 512 px = 4 × 4 m, tuilable |
+| `g_rc_piste` (+ `_b`, `_c`) | `ground.paint` x 0-30, z 10-16 (tuiles posées à z 10 et 14 ; les ornières tombent à z 11 et 12,8, continues bout à bout) | idem |
+| `g_rc_lit` (+ `_b`) | `ground.paint` x 0-30, z 17-24 (tuiles à z 17 et 21 ; la rangée z 16-17 est sous la berge) | idem |
+
+### Décor
+| Ordre | Clé | Position x ; z (m) | Emprise w × d × h (m) | Sprite (px) | Solides `{x, z, w, d, couv}` | Note |
+|---|---|---|---|---|---|---|
+| 1 | `rc_emb_traces_3q` | 11 ; 8,6 | 2 × 1 × 0 | 119 × 56, ancre (86 ; 51) | aucun | pied de la pente, sous les empreintes peintes dans rc_ds_talus_a_3q |
+| 1 | `rc_emb_trainees_3q` | 18 ; 15,5 | 9 × 6 × 0 | 549 × 250, ancre (375 ; 246) | aucun | décalque au sol, sous tout le reste |
+| 2 | `rc_ds_berge_3q` | 0 ; 16 | 10 × 1 × 0,4 | 453 × 186, ancre (418 ; 180) | aucun | rebord nord du lit |
+| 2 | `rc_ds_berge_b_3q` | 10 ; 16 | 10 × 1 × 0,4 | 453 × 186, ancre (418 ; 180) | aucun |  |
+| 2 | `rc_ds_berge_3q` | 20 ; 16 | 10 × 1 × 0,4 | 453 × 186, ancre (418 ; 180) | aucun | même sprite que x 0, 20 m plus loin |
+| 10 | `rc_ds_sente_3q` | 0 ; 0 | 5 × 10 × 2,5 | 502 × 393, ancre (212 ; 386) | (0 ; 0 ; 5 × 3, couv 2); (0 ; 3 ; 2 × 5, couv 1) | bout ouest du talus + sente ; la rampe x 2-5 z 3-10 = niveau { x 2, z 3, w 3, d 7, y0 2.5, y1 0, axe z } |
+| 11 | `rc_ds_talus_a_3q` | 5 ; 0 | 10 × 8,5 × 2,5 | 676 × 431, ancre (418 ; 421) | (5 ; 5 ; 10 × 3,5, couv 1) | plateau z 0-5 = niveau y 2.5 ; empreintes peintes sur la pente x 11-12,5 |
+| 12 | `rc_ds_talus_b_3q` | 15 ; 0 | 10 × 8,5 × 2,5 | 676 × 431, ancre (418 ; 421) | (15 ; 5 ; 10 × 3,5, couv 1) |  |
+| 13 | `rc_ds_talus_fin_3q` | 25 ; 0 | 5 × 8,5 × 2,5 | 459 × 359, ancre (212 ; 352) | (25 ; 5 ; 5 × 3,5, couv 1) | falaise est au bord de la scène |
+| 14 | `rc_ds_rochers_3q` | 15 ; 2, sur la crête (y 2,5 → `ancre: [-2.576, -3.748]`) | 3 × 1,5 × 1,6 | 133 × 124, ancre (110 ; 120) | (15 ; 2 ; 3 × 1,5, couv 1) | R1, sur la crête (Pibe au sud) |
+| 15 | `rc_ds_rochers_b_3q` | 22 ; 2,5, sur la crête (y 2,5 → `ancre: [-2.576, -3.748]`) | 3 × 1,5 × 1,2 | 136 × 114, ancre (112 ; 110) | (22 ; 2,5 ; 3 × 1,5, couv 1) | R2 |
+| 15 | `rc_ds_rochers_3q` | 27 ; 1,5, sur la crête (y 2,5 → `ancre: [-2.576, -3.748]`) | 3 × 1,5 × 1,6 | 133 × 124, ancre (110 ; 120) | (27 ; 1,5 ; 3 × 1,5, couv 1) | R3 |
+| 16 | `rc_emb_miroir_3q` | 19,85 ; 3,05, sur la crête (y 2,5 → `ancre: [-2.576, -3.748]`) | 0,3 × 0,3 × 1,2 | 22 × 66, ancre (14 ; 62) | aucun | + _neon additif ; piquet en (20 ; 3,2) |
+| 20 | `rc_ds_panneau_ufsa_3q` | 3,2 ; 9,2 | 0,6 × 0,2 × 3 | 46 × 141, ancre (24 ; 137) | (3,4 ; 9,2 ; 0,2 × 0,2, couv 0) |  |
+| 21 | `rc_emb_pickup_appat_3q` | 12 ; 11 | 5,2 × 2,2 × 2 | 278 × 206, ancre (217 ; 202) | (12 ; 11 ; 5,2 × 2,2, couv 1) | avant (capot) à l’ouest ; portière sud ouverte jusqu’à z ≈ 14 (non solide) |
+| 22 | `rc_emb_caisses_eventrees_3q` | 8,5 ; 14,8 | 1,2 × 0,8 × 0,7 | 87 × 76, ancre (56 ; 69) | (8,5 ; 14,8 ; 1,2 × 0,8, couv 1) | C1 |
+| 23 | `rc_emb_caisses_eventrees_b_3q` | 10,2 ; 15,6 | 1,2 × 0,8 × 0,62 | 109 × 80, ancre (65 ; 65) | (10,2 ; 15,6 ; 1,2 × 0,8, couv 1) | C2 (double fond) ; sable déversé au sud et couvercle à l’est hors emprise, non solides |
+| 24 | `rc_emb_caisses_eventrees_3q` | 17,8 ; 15 | 1,2 × 0,8 × 0,7 | 87 × 76, ancre (56 ; 69) | (17,8 ; 15 ; 1,2 × 0,8, couv 1) | C3 |
+| 25 | `rc_emb_fil_boites_3q` | 20,9 ; 10 | 0,2 × 6 × 0,42 | 183 × 148, ancre (12 ; 143) | aucun | non solide (déclencheur T2) |
+| 30 | `rc_emb_epave_service_3q` | 17 ; 18 | 9 × 2,8 × 2,9 | 451 × 301, ancre (377 ; 294) | (17 ; 18 ; 9 × 1, couv 2); (17 ; 19 ; 4 × 1,8, couv 2); (22,5 ; 19 ; 3,5 × 1,8, couv 2) | niche de Morsa x 21-22,5 ; z 19-20,8 LIBRE ; plancher du plateau à 1,3 m |
+| 31 | `rc_emb_bache_cache_3q` | 26,5 ; 20,5 | 3,5 × 3,5 × 1,62 | 236 × 163, ancre (140 ; 159) | (26,5 ; 20,5 ; 3,5 × 0,5, couv 1); (29,5 ; 21 ; 0,5 × 3, couv 1) | bords nord et est solides, fouille par l’ouest (26,3 ; 22,2) |
+
+Ordre : 0 sols, 1 décalques (couche sol, sous tout), 2 berges, 10-16 talus puis objets de crête, ≥ 20 décor de la piste et du lit trié avec les PNJ par la profondeur (`sort` de `canvas-view.js`). Deux cas où le tri par emprise ne suffit pas : les objets de crête (emprise **dans** celle du talus) et Morsa (dans celle de l'épave) doivent passer **après** leur hôte (`depth` +1). Réutilisé : `assets/reused/tires.webp` (pneus, emprise 5-7,5 × 19-21, couv 1), non revu dans ce lot.
+
+### PNJ
+Ancre au milieu des pieds = centre horizontal du sprite (le moteur pose les PNJ à x 0,5), `pivot: 0`. Deux vues par personnage, face 3/4 et dos 3/4 ; le miroir horizontal donne les deux autres orientations. Champ `vue_dos` sur la vue de face (à câbler : vue de dos quand le PNJ regarde vers le nord-ouest, à l'opposé de la caméra).
+| Clé (+ `_dos`) | Pose (scène / combat) | Hauteur | Sprite (px) | Ordre |
+|---|---|---|---|---|
+| `gen_rc_quilla_assise` | pnj rc_quilla_assise : x 24.5, z 9.0, faceTo (1,5 ; 13), si !emb_t1 | 1,35 m | 350 × 512 | tri normal |
+| `gen_rc_quilla` + `gen_rc_quilla_dos` | pnj rc_quilla : x 19, z 12, faceTo (1,5 ; 13), si emb_t1 ; combat quilla : x 19, z 12 | 1,78 m | 192 × 512 | tri normal |
+| `gen_rc_pibe` + `gen_rc_pibe_dos` | pnj rc_pibe : x 16.5, z 4.5, y 2.5 (niveau de crête), faceTo (16,5 ; 13), si emb_vu_talus ; combat pibe : x 16.5, z 4.5 | 1,62 m | 192 × 512 | après le talus et R1 (`depth` +1) |
+| `gen_rc_morsa_couche` | pnj rc_morsa : x 21.75, z 19.9, y 1.3 (plancher du plateau de l'épave), si emb_vu_epave | 0,74 m | 538 × 204 | après l'épave (`depth` +1) |
+| `gen_rc_morsa` + `gen_rc_morsa_dos` | combat morsa : x 21.75, z 19.9 (niche de l'épave, case libre) | 1,8 m | 298 × 512 | tri normal |
+| `gen_rc_tuerto` + `gen_rc_tuerto_dos` | pnj rc_tuerto : x 6, z 22, faceTo (12 ; 22), si emb_t3 ; combat tuerto : x 10, z 20.5 (entreTour 2) | 1,86 m | 248 × 512 | tri normal |
+| `gen_rc_trapo` + `gen_rc_trapo_dos` | pnj rc_trapo : x 13.5, z 13.7 (adossé à la portière sud ouverte du pick-up), faceTo (1,5 ; 13), examen rc_trapo | 1,55 m | 388 × 512 | après le pick-up (son emprise est au sud : le tri le fait) |
+
+Portraits : `portrait-gen_rc_quilla`, `portrait-gen_rc_pibe`, `portrait-gen_rc_morsa`, `portrait-gen_rc_tuerto` (192 × 192).
