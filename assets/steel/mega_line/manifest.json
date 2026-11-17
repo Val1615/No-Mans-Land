@@ -1159,5 +1159,671 @@
     "source": "recadrage de gen_ml_vigile.webp",
     "status": "v1",
     "partie": "ligne"
+  },
+  "ml_viaduc_seg24_v2_3q": {
+    "file": "steel/mega_line/ml_viaduc_seg24_v2_3q.webp",
+    "px": [
+      1125,
+      745
+    ],
+    "anchor": [
+      1003,
+      741
+    ],
+    "footprint_m": [
+      24,
+      4
+    ],
+    "height_m": 7.45,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Tablier du viaduc, segment de 24 m sans piles : auge de fer noir riveté (poutres latérales 1,45 m à raidisseurs, couvre-joint à 12 m), traverses béton, deux rails, chemin de câbles et feu de balisage ambre sous la poutre sud. Sous-poutre 6,0 m, dessus des rails 6,8 m",
+    "pose": "B('ml_v_seg0', '', 'ml_viaduc_seg24_v2_3q', 0, 10, 24, 4)  // et x24 ; aucun solide (passage sous le tablier)",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 2 tuiles recalées chacune par échelle uniforme + translation (x0.5359 (IoU 0.9916), x0.5331 (IoU 0.9863)), raccord par fondu de 80 px dans le recouvrement, gain de couleur moyen ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/seg24_t00_g1.jpg, seg24_t01_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.331 / droit 0.696 (cible 0,33 / 0,70)",
+    "sous_poutre_m": 6.0,
+    "dessus_rails_m": 6.8,
+    "ordre": "après les piles de la même rangée (le tablier couvre le chapiteau des piles)",
+    "layers": [
+      "avant",
+      "neon"
+    ],
+    "couche_avant": "ml_viaduc_seg24_v2_3q_avant"
+  },
+  "ml_viaduc_seg24_v2_3q_neon": {
+    "file": "steel/mega_line/ml_viaduc_seg24_v2_3q_neon.webp",
+    "px": [
+      1125,
+      745
+    ],
+    "anchor": [
+      1003,
+      741
+    ],
+    "additive": true,
+    "parent": "ml_viaduc_seg24_v2_3q",
+    "couche_de": "ml_viaduc_seg24_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_viaduc_seg24_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_viaduc_seg16_v2_3q": {
+    "file": "steel/mega_line/ml_viaduc_seg16_v2_3q.webp",
+    "px": [
+      796,
+      636
+    ],
+    "anchor": [
+      674,
+      632
+    ],
+    "footprint_m": [
+      16,
+      4
+    ],
+    "height_m": 7.45,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Tablier du viaduc, dernier segment de 16 m (bord est), même auge que le segment de 24 m. Sous-poutre 6,0 m, dessus des rails 6,8 m",
+    "pose": "B('ml_v_seg2', '', 'ml_viaduc_seg16_v2_3q', 48, 10, 16, 4)",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9897), UNE réduction uniforme x0.6812 vers 50 px/m, part peinte 98.3 % de la silhouette ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/seg16_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.332 / droit 0.692 (cible 0,33 / 0,70)",
+    "sous_poutre_m": 6.0,
+    "dessus_rails_m": 6.8,
+    "ordre": "après les piles de la même rangée",
+    "layers": [
+      "avant",
+      "neon"
+    ],
+    "couche_avant": "ml_viaduc_seg16_v2_3q_avant"
+  },
+  "ml_viaduc_seg16_v2_3q_neon": {
+    "file": "steel/mega_line/ml_viaduc_seg16_v2_3q_neon.webp",
+    "px": [
+      796,
+      636
+    ],
+    "anchor": [
+      674,
+      632
+    ],
+    "additive": true,
+    "parent": "ml_viaduc_seg16_v2_3q",
+    "couche_de": "ml_viaduc_seg16_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_viaduc_seg16_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_viaduc_pile_v2_3q": {
+    "file": "steel/mega_line/ml_viaduc_pile_v2_3q.webp",
+    "px": [
+      152,
+      339
+    ],
+    "anchor": [
+      86,
+      326
+    ],
+    "footprint_m": [
+      1.6,
+      1.6
+    ],
+    "height_m": 6.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Pile du viaduc 1,6 x 1,6 m en fer riveté à cornières, socle béton 2 x 2 m, chapiteau 1,8 m sous le tablier ; le fer transpire (coulures)",
+    "pose": "B('ml_v_pile0', '', 'ml_viaduc_pile_v2_3q', 1.2, 11.2, 1.6, 1.6, { solid: [{ x: 1.2, z: 11.2, w: 1.6, d: 1.6 }] })  // centres x2, 14, 26, 38, 50, 62",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9891), UNE réduction uniforme x0.2828 vers 50 px/m, part peinte 96.2 % de la silhouette ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/pile_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.333 / droit 0.692 (cible 0,33 / 0,70)",
+    "ordre": "avant le tablier"
+  },
+  "ml_rame_3v_v2_3q": {
+    "file": "steel/mega_line/ml_rame_3v_v2_3q.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "footprint_m": [
+      28,
+      3
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Rame Mega-Line 3 voitures (28 m), violette, fenêtres ambre avec voyageurs, liseré ambre — vue avant (phares blancs à l'est)",
+    "pose": "rame mobile : base y = 6,8 (dessus des rails), z10,5-13,5, défile le long de x ; empreinte 28 x 3",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; trois voitures modélisées séparément (queue 9,6 m, milieu 8,8 m, tête 9,6 m ; caisse 2,8 x 3,6 m), chacune repeinte par GenerateImage (cursor) image-à-image et recalée par échelle uniforme + translation (IoU queue 0.9903, milieu 0.9756, tete 0.9912, facteurs x0.4659, x0.4295, x0.4669) puis assemblées sur un canevas calculé depuis la boîte 28 x 3 x 3,8 m projetée ; feux de la face avant posés par masque géométrique (phares blancs en vue avant, feux rouges en vue dos) ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/rame_*, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.331 / droit 0.688 (cible 0,33 / 0,70)",
+    "base_y_m": 6.8,
+    "vehicule": "rame Mega-Line",
+    "vue": "avant",
+    "axe": "x",
+    "miroir_axe2": true,
+    "anchor_miroir": [
+      91,
+      614
+    ],
+    "vue_dos": "ml_rame_3v_dos_v2_3q",
+    "orientations": {
+      "+x": "ml_rame_3v_v2_3q (natif)",
+      "-x": "ml_rame_3v_dos_v2_3q (natif)",
+      "+z": "miroir horizontal de ml_rame_3v_v2_3q, texte : _texte_miroir",
+      "-z": "miroir horizontal de ml_rame_3v_dos_v2_3q, texte : _texte_miroir (terminus : rame arrivée par le sud, tête au nord)"
+    },
+    "voitures": {
+      "queue": [
+        0,
+        9.6
+      ],
+      "milieu": [
+        9.6,
+        18.4
+      ],
+      "tete": [
+        18.4,
+        28.0
+      ]
+    },
+    "caisse_m": [
+      28,
+      2.8,
+      3.6
+    ],
+    "note": "aucun lettrage sur les flancs ; girouette « MEGA-LINE » sur calque _texte / _texte_miroir, jamais retourné",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ml_rame_3v_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_rame_3v_v2_3q_fenetres.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "additive": true,
+    "parent": "ml_rame_3v_v2_3q",
+    "couche_de": "ml_rame_3v_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres (vitres ambre) de ml_rame_3v_v2_3q, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_rame_3v_v2_3q_neon": {
+    "file": "steel/mega_line/ml_rame_3v_v2_3q_neon.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "additive": true,
+    "parent": "ml_rame_3v_v2_3q",
+    "couche_de": "ml_rame_3v_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ml_rame_3v_v2_3q + feux de face posés par masque géométrique (phares / feux rouges), même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_rame_3v_v2_3q_texte": {
+    "file": "steel/mega_line/ml_rame_3v_v2_3q_texte.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "additive": false,
+    "parent": "ml_rame_3v_v2_3q",
+    "couche_de": "ml_rame_3v_v2_3q",
+    "layer": "texte",
+    "source": "lettrage « MEGA-LINE » PIL (Barlow Condensed ExtraBold rendu x4, plaque sombre à liseré ambre) posé par transformation affine sur la girouette du pare-brise incliné de la tête (3 coins projetés), puis réduction 1/4 ; NON additif ; jamais retourné ; à afficher avec la vue native",
+    "status": "v2",
+    "partie": "ligne",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ml_rame_3v_v2_3q_texte_miroir": {
+    "file": "steel/mega_line/ml_rame_3v_v2_3q_texte_miroir.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      91,
+      614
+    ],
+    "additive": false,
+    "parent": "ml_rame_3v_v2_3q",
+    "couche_de": "ml_rame_3v_v2_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « MEGA-LINE » PIL (Barlow Condensed ExtraBold rendu x4, plaque sombre à liseré ambre) posé par transformation affine sur la girouette du pare-brise incliné de la tête (3 coins projetés), puis réduction 1/4 ; NON additif ; jamais retourné ; repositionné sur le canevas miroir, texte à l'endroit, à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v2",
+    "partie": "ligne",
+    "jamais_miroir": true,
+    "vue": "miroir"
+  },
+  "ml_rame_3v_dos_v2_3q": {
+    "file": "steel/mega_line/ml_rame_3v_dos_v2_3q.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "footprint_m": [
+      28,
+      3
+    ],
+    "height_m": 3.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Rame Mega-Line 3 voitures (28 m), violette, fenêtres ambre avec voyageurs, liseré ambre — vue dos (feux rouges à l'est, la rame roule vers l'ouest)",
+    "pose": "rame mobile : base y = 6,8 (dessus des rails), z10,5-13,5, défile le long de x ; empreinte 28 x 3",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; trois voitures modélisées séparément (queue 9,6 m, milieu 8,8 m, tête 9,6 m ; caisse 2,8 x 3,6 m), chacune repeinte par GenerateImage (cursor) image-à-image et recalée par échelle uniforme + translation (IoU queue 0.9903, milieu 0.9756, tete 0.9912, facteurs x0.4659, x0.4295, x0.4669) puis assemblées sur un canevas calculé depuis la boîte 28 x 3 x 3,8 m projetée ; feux de la face avant posés par masque géométrique (phares blancs en vue avant, feux rouges en vue dos) ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/rame_*, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.331 / droit 0.714 (cible 0,33 / 0,70)",
+    "base_y_m": 6.8,
+    "vehicule": "rame Mega-Line",
+    "vue": "dos",
+    "axe": "x",
+    "miroir_axe2": true,
+    "anchor_miroir": [
+      91,
+      614
+    ],
+    "vue_avant": "ml_rame_3v_v2_3q",
+    "orientations": {
+      "+x": "ml_rame_3v_v2_3q (natif)",
+      "-x": "ml_rame_3v_dos_v2_3q (natif)",
+      "+z": "miroir horizontal de ml_rame_3v_v2_3q, texte : _texte_miroir",
+      "-z": "miroir horizontal de ml_rame_3v_dos_v2_3q, texte : _texte_miroir (terminus : rame arrivée par le sud, tête au nord)"
+    },
+    "voitures": {
+      "queue": [
+        0,
+        9.6
+      ],
+      "milieu": [
+        9.6,
+        18.4
+      ],
+      "tete": [
+        18.4,
+        28.0
+      ]
+    },
+    "caisse_m": [
+      28,
+      2.8,
+      3.6
+    ],
+    "note": "aucun lettrage sur les flancs ; girouette « MEGA-LINE » sur calque _texte / _texte_miroir, jamais retourné",
+    "layers": [
+      "fenetres",
+      "neon",
+      "texte",
+      "texte_miroir"
+    ]
+  },
+  "ml_rame_3v_dos_v2_3q_fenetres": {
+    "file": "steel/mega_line/ml_rame_3v_dos_v2_3q_fenetres.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "additive": true,
+    "parent": "ml_rame_3v_dos_v2_3q",
+    "couche_de": "ml_rame_3v_dos_v2_3q",
+    "layer": "fenetres",
+    "source": "extraction PIL fenetres (vitres ambre) de ml_rame_3v_dos_v2_3q, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_rame_3v_dos_v2_3q_neon": {
+    "file": "steel/mega_line/ml_rame_3v_dos_v2_3q_neon.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "additive": true,
+    "parent": "ml_rame_3v_dos_v2_3q",
+    "couche_de": "ml_rame_3v_dos_v2_3q",
+    "layer": "neon",
+    "source": "extraction PIL neon de ml_rame_3v_dos_v2_3q + feux de face posés par masque géométrique (phares / feux rouges), même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_rame_3v_dos_v2_3q_texte": {
+    "file": "steel/mega_line/ml_rame_3v_dos_v2_3q_texte.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      1160,
+      614
+    ],
+    "additive": false,
+    "parent": "ml_rame_3v_dos_v2_3q",
+    "couche_de": "ml_rame_3v_dos_v2_3q",
+    "layer": "texte",
+    "source": "lettrage « MEGA-LINE » PIL (Barlow Condensed ExtraBold rendu x4, plaque sombre à liseré ambre) posé par transformation affine sur la girouette du pare-brise incliné de la tête (3 coins projetés), puis réduction 1/4 ; NON additif ; jamais retourné ; à afficher avec la vue native",
+    "status": "v2",
+    "partie": "ligne",
+    "jamais_miroir": true,
+    "vue": "native"
+  },
+  "ml_rame_3v_dos_v2_3q_texte_miroir": {
+    "file": "steel/mega_line/ml_rame_3v_dos_v2_3q_texte_miroir.webp",
+    "px": [
+      1251,
+      621
+    ],
+    "anchor": [
+      91,
+      614
+    ],
+    "additive": false,
+    "parent": "ml_rame_3v_dos_v2_3q",
+    "couche_de": "ml_rame_3v_dos_v2_3q",
+    "layer": "texte_miroir",
+    "source": "lettrage « MEGA-LINE » PIL (Barlow Condensed ExtraBold rendu x4, plaque sombre à liseré ambre) posé par transformation affine sur la girouette du pare-brise incliné de la tête (3 coins projetés), puis réduction 1/4 ; NON additif ; jamais retourné ; repositionné sur le canevas miroir, texte à l'endroit, à afficher SANS retournement par-dessus la caisse retournée",
+    "status": "v2",
+    "partie": "ligne",
+    "jamais_miroir": true,
+    "vue": "miroir"
+  },
+  "ml_quai_tablier_v2_3q": {
+    "file": "steel/mega_line/ml_quai_tablier_v2_3q.webp",
+    "px": [
+      1394,
+      863
+    ],
+    "anchor": [
+      1161,
+      856
+    ],
+    "footprint_m": [
+      28,
+      8
+    ],
+    "height_m": 7.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Tablier du quai 28 x 8 m, plancher à +6,0 m (dalle béton 0,6 m, rives de fer riveté), poteaux de galerie tous les 4 m au bord sud (z22), bande d'embarquement en tôle striée (z14-17,5) avec ligne jaune z15,2 et repères de portes, zone publique en dalles usées avec grilles et taches ; garde-corps laiton 1,1 m à l'ouest, à l'est et au sud sauf trémies d'escalier x18-21 et x43-46, rien côté voie",
+    "pose": "B('ml_quai', '', 'ml_quai_tablier_v2_3q', 18, 14, 28, 8, { solid: [/* poteaux de galerie z21,5-21,9 aux x18,2 22 26 30 34 38 42 45,8 */] })  // plancher praticable à +6,0",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu en 3 tuiles recalées chacune par échelle uniforme + translation (x0.6489 (IoU 0.979), x0.6876 (IoU 0.9713), x0.6478 (IoU 0.9661)), raccord par fondu de 80 px dans le recouvrement, gain de couleur moyen ; aucun agrandissement, étirement ni cisaillement (bruts ml_v1/gen/quai_tablier_t00_g1.jpg, t01, t02, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.331 / droit 0.698 (cible 0,33 / 0,70)",
+    "plancher_m": 6.0,
+    "tremies_escalier_x": [
+      [
+        18,
+        21
+      ],
+      [
+        43,
+        46
+      ]
+    ],
+    "poteaux_galerie": {
+      "z": [
+        21.52,
+        21.88
+      ],
+      "x": [
+        18.2,
+        22,
+        26,
+        30,
+        34,
+        38,
+        42,
+        45.8
+      ],
+      "section_m": 0.36
+    }
+  },
+  "ml_quai_barriere_v2_3q": {
+    "file": "steel/mega_line/ml_quai_barriere_v2_3q.webp",
+    "px": [
+      535,
+      235
+    ],
+    "anchor": [
+      521,
+      231
+    ],
+    "footprint_m": [
+      12.6,
+      0.3
+    ],
+    "height_m": 1.1,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Barrière d'embarquement 12,6 m : poteaux d'acier sombre tous les 2 m, verre dépoli (semi-transparent), main courante à filet ambre ; sépare la bande d'embarquement de la zone publique",
+    "pose": "B('ml_barr_o', '', 'ml_quai_barriere_v2_3q', 18.4, 17.35, 12.6, 0.3, { base_y: 6, solid: [{ x: 18.4, z: 17.4, w: 12.6, d: 0.2 }] }),  B('ml_barr_e', '', 'ml_quai_barriere_v2_3q', 32.6, 17.35, 12.6, 0.3, { base_y: 6, solid: [{ x: 32.6, z: 17.4, w: 12.6, d: 0.2 }] })",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : modèle 3D rendu en procédural à la caméra exacte du jeu (50 px/m, sur-échantillonnage x4 puis UNE réduction), sans génération (pièce fine) ; verre à 42 % d'opacité",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.329 / droit None (cible 0,33 / 0,70)",
+    "base_y_m": 6.0,
+    "layers": [
+      "neon"
+    ]
+  },
+  "ml_quai_barriere_v2_3q_neon": {
+    "file": "steel/mega_line/ml_quai_barriere_v2_3q_neon.webp",
+    "px": [
+      535,
+      235
+    ],
+    "anchor": [
+      521,
+      231
+    ],
+    "additive": true,
+    "parent": "ml_quai_barriere_v2_3q",
+    "couche_de": "ml_quai_barriere_v2_3q",
+    "layer": "neon",
+    "source": "masque géométrique neon (matériaux émissifs du modèle 3D : vitres / lampes) de ml_quai_barriere_v2_3q, couleur du sprite, même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_escalier_v2_3q": {
+    "file": "steel/mega_line/ml_escalier_v2_3q.webp",
+    "px": [
+      419,
+      563
+    ],
+    "anchor": [
+      130,
+      553
+    ],
+    "footprint_m": [
+      3,
+      10
+    ],
+    "height_m": 7.0,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Escalier droit 3 x 10 m perpendiculaire au quai : palier haut de 1 m en caillebotis à +6 (z22-23), 36 marches en caillebotis à nez jaunes jusqu'au sol en z32, limons de fer riveté, mains courantes laiton des deux côtés, deux béquilles sur plots",
+    "pose": "B('ml_esc_o', '', 'ml_escalier_v2_3q', 18, 22, 3, 10, { solid: [{ x: 18, z: 22, w: 0.15, d: 10 }, { x: 20.85, z: 22, w: 0.15, d: 10 }] }),  B('ml_esc_e', '', 'ml_escalier_v2_3q', 43, 22, 3, 10, { solid: [{ x: 43, z: 22, w: 0.15, d: 10 }, { x: 45.85, z: 22, w: 0.15, d: 10 }] })  // rampe : y = 6 x (32 - z) / 9 pour z23-32, 6 sur le palier z22-23",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.8707), UNE réduction uniforme x0.5365 vers 50 px/m, part peinte 92.4 % de la silhouette ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/escalier_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 0.318 / droit 1.646 (cible 0,33 / 0,70)",
+    "montee": {
+      "z_haut": 22,
+      "z_palier": [
+        22,
+        23
+      ],
+      "z_bas": 32,
+      "h_haut_m": 6.0,
+      "marches": 36,
+      "giron_m": 0.25,
+      "hauteur_marche_m": 0.167
+    }
+  },
+  "ml_ecran_cadre_v2_3q": {
+    "file": "steel/mega_line/ml_ecran_cadre_v2_3q.webp",
+    "px": [
+      248,
+      437
+    ],
+    "anchor": [
+      229,
+      433
+    ],
+    "footprint_m": [
+      5.4,
+      0.4
+    ],
+    "height_m": 7.6,
+    "face": "3q",
+    "pente": "iso 3/4 (face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "partie": "ligne",
+    "role": "Cadre d'écran suspendu au flanc sud du viaduc : deux mâts de fer riveté boulonnés sur la poutre (depuis le niveau du quai), caisson d'acier noir, dalle d'écran VIERGE de 5,12 x 2,88 m (contenu posé par le code), boîtier d'alimentation et câble. Bas de l'écran à +10,5 m, au-dessus du toit de la rame (+10,4) : la rame reste visible",
+    "pose": "B('ml_ecran_vibes', '', 'ml_ecran_cadre_v2_3q', 19.8, 14, 5.4, 0.4, { base_y: 6, solid: [{ x: 19.8, z: 14, w: 0.3, d: 0.2 }, { x: 24.9, z: 14, w: 0.3, d: 0.2 }] }),  B('ml_ecran_tron', '', 'ml_ecran_cadre_v2_3q', 36.8, 14, 5.4, 0.4, { base_y: 6, solid: [{ x: 36.8, z: 14, w: 0.3, d: 0.2 }, { x: 41.9, z: 14, w: 0.3, d: 0.2 }] })",
+    "source": "Ocre 2026-11-17, lot 1 Mega-Line v2, structure de la ligne (2026-11-17) : géométrie = modèle 3D aux cotes de la fiche, rendu par rasteriseur logiciel à la caméra exacte du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; silhouette, arêtes et alpha VERROUILLÉS par ce rendu) ; matière = repeint GenerateImage (cursor) image-à-image du rendu, recalé par échelle uniforme + translation (IoU 0.9025), UNE réduction uniforme x0.3911 vers 50 px/m, part peinte 93.1 % de la silhouette ; aucun agrandissement, étirement ni cisaillement (brut ml_v1/gen/cadre2_g1.jpg, hors dépôt)",
+    "status": "v2",
+    "groupe": "ml_v2_ligne",
+    "lot": "lot 1 Mega-Line v2, structure de la ligne (2026-11-17)",
+    "pente_mesuree": "pied gauche 1.325 / droit None (cible 0,33 / 0,70)",
+    "base_y_m": 6.0,
+    "ecran": {
+      "quad_px": {
+        "haut_gauche": [
+          12.3,
+          37.9
+        ],
+        "haut_droit": [
+          223.2,
+          107.7
+        ],
+        "bas_droit": [
+          223.2,
+          233.9
+        ],
+        "bas_gauche": [
+          12.3,
+          164.1
+        ]
+      },
+      "taille_m": [
+        5.12,
+        2.88
+      ],
+      "affine_256x144": [
+        0.82383,
+        0.27266,
+        0.0,
+        0.87639,
+        12.3,
+        37.9
+      ],
+      "note": "la dalle est vue de biais (face sud, pente 0,33) : poser ml_ens_ecran_vibes / _tron (image 256 x 144) avec ctx.setTransform(a, b, c, d, e, f) = affine_256x144 relative au coin haut-gauche du sprite (diviser a..d par 2 pour les planches _mobile 128 x 72)"
+    }
+  },
+  "ml_viaduc_seg24_v2_3q_avant": {
+    "file": "steel/mega_line/ml_viaduc_seg24_v2_3q_avant.webp",
+    "px": [
+      1125,
+      745
+    ],
+    "anchor": [
+      1003,
+      741
+    ],
+    "additive": false,
+    "parent": "ml_viaduc_seg24_v2_3q",
+    "couche_de": "ml_viaduc_seg24_v2_3q",
+    "layer": "avant",
+    "ordre": "à dessiner APRÈS la rame (et avant le quai) : poutre sud du tablier qui masque les bogies de la rame (0,65 m sous le dessus de poutre)",
+    "source": "découpe exacte de ml_viaduc_seg24_v2_3q.webp par l'enveloppe projetée de la poutre sud (z 3,57-4,34 m local, h 5,78-7,45 m), même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
+  },
+  "ml_viaduc_seg16_v2_3q_avant": {
+    "file": "steel/mega_line/ml_viaduc_seg16_v2_3q_avant.webp",
+    "px": [
+      796,
+      636
+    ],
+    "anchor": [
+      674,
+      632
+    ],
+    "additive": false,
+    "parent": "ml_viaduc_seg16_v2_3q",
+    "couche_de": "ml_viaduc_seg16_v2_3q",
+    "layer": "avant",
+    "ordre": "à dessiner APRÈS la rame (et avant le quai) : poutre sud du tablier qui masque les bogies de la rame (0,65 m sous le dessus de poutre)",
+    "source": "découpe exacte de ml_viaduc_seg16_v2_3q.webp par l'enveloppe projetée de la poutre sud (z 3,57-4,34 m local, h 5,78-7,45 m), même canevas, même ancre",
+    "status": "v2",
+    "partie": "ligne"
   }
 }
