@@ -32,13 +32,17 @@ On ne passe pas au jalon suivant tant que le précédent n'est pas jouable sur P
 ## Jalon 1 : embuscade (pilote)
 Décor (Ocre) : pick-up en panne au milieu de la route, capot ouvert, qui sert d'appât ; caisses éventrées ; guetteurs sur les talus et derrière une carcasse, qui ne se montrent pas tous à l'arrivée ; traces qui trahissent le piège pour le joueur attentif.
 
+Fiche complète : [PILOTE.md](PILOTE.md) (plan coté provisoire, PNJ et dialogues, combat, butin, clés d'assets, accroches pour Rivet). À aligner sur `ARCHI.md` dès sa publication.
+
 ## Journal des lots
 Une ligne par lot publié : date, commit, ce qui marche en jeu, ce qui reste.
 
 - 2026-11-17 : chantier ouvert, document créé (Régie).
+- 2026-11-17 : `ff499ea` (Ocre) — [PILOTE.md](PILOTE.md), embuscade « L'appât de la piste » : décor, plan coté 30 × 24 m, dialogues, combat, butin, 20 clés d'assets. Rien en jeu encore. Reste : aligner le format sur `ARCHI.md`, validation des décisions DA/lore par Valentin, puis production des sprites.
 
 ## Décisions de DA et de lore (Ocre)
 _À compléter à chaque lot._
+- Jalon 1 : voir [PILOTE.md §13](PILOTE.md#13-décisions-de-da-et-de-lore-à-valider-par-valentin) (bande sans faction, noms nouveaux, lien avec Anselme, biome désert).
 
 ## Questions ouvertes pour Valentin
 - La consigne reçue s'arrête au milieu de l'étape 5 (« retour au voyage ») : il manque la suite.
