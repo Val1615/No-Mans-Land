@@ -125,6 +125,16 @@ with sync_playwright() as p:
         tp('steel_megaline', 46, 3); time.sleep(.5); E("window.__nml.game.useDoor('ml_passerelle')"); time.sleep(2.5); pret('steel_terminus')
         q = pos(); ok(loc() == 'steel_terminus' and q[1] > 25, f'{name} passerelle -> terminus (arrivée sud-ouest)', (loc(), q))
         time.sleep(1.5); pg.screenshot(path=OUT + f'{name}_terminus_arrivee.png')
+        # Régie 17/11 : en 390, pas de bande noire sous le bord sud à l'arrivée (butée du cadre téléphone) ; 1280 inchangé (coin sud-ouest hors carte, comme avant)
+        try:
+            from PIL import Image
+            im = Image.open(OUT + f'{name}_terminus_arrivee.png').convert('L'); W_, H_ = im.size; bande = im.crop((0, H_ - 290, W_, H_ - 160)); px = list(bande.getdata())
+            noir = sum(v < 14 for v in px) / len(px); mob and ok(noir < 0.25, f'{name} terminus arrivée : pas de vide noir au bas de l écran ({noir:.0%} de pixels noirs)', noir)
+        except ImportError: pass
+        # flaques des suspensions : calque _neon coupé, flaque au sol (6 : sous les 6 lampes), plus de lueurs sodium code sans lampe
+        FL = E("window.__nml.view.flaques()"); GL = E("window.__nml.world.LOCATIONS.steel_terminus.glows.map(g=>g.color)")
+        ok(len(FL) == 6 and sum(f['ordre'] == 2 for f in FL) == 5 and any(f['sur'] == 'tm2_quai' and f['ordre'] == E("window.__nml.view.ordreBat('tm2_quai')") + 1 for f in FL), f'{name} terminus : 6 flaques sodium peintes au sol (dont 1 sur le quai)', FL)
+        ok(len(GL) == 5, f"{name} terminus : lueurs code restantes = alerte + gyrophares (aucune flaque orpheline)", GL)
         # clés remplacées (champ « remplace » d'une clé plus récente, ex. nervures E v2b) : gardées au manifeste, plus posées
         L3 = E("(()=>{const M=window.__nml.bman,R=new Set(Object.values(M).map(v=>String(v.remplace||'').split(' ')[0]).filter(Boolean));return Object.entries(M).filter(([k,v])=>/^ml_tm_.*_v2b?_3q$/.test(k)&&v.footprint_m&&!R.has(k)).map(([k])=>k)})()")
         BT = E("window.__nml.world.LOCATIONS.steel_terminus.buildings.map(b=>b.sprite)"); manque = [k for k in L3 if k not in BT]

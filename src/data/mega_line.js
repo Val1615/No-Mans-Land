@@ -128,8 +128,8 @@ export const BUILDINGS_TERMINUS = [
   B('tm2_nerv_e', '', 'ml_tm_nervures_e_v2b_3q', 36, 2, 4.6, 26, { dessus: 2, named: false, solid: [] }), // après les locaux E ; dépasse de 0,6 m à l'est (pas rognée)
   B('tm2_loc_so', '', 'ml_tm_locaux_so_v2_3q', 0, 17, 8, 11, { named: false }),
   B('tm2_pass', '', 'ml_tm_passerelle_v2_3q', 8, 24, 4, 4, { named: false, solid: [{ x: 8, z: 24, w: 0.3, d: 4 }, { x: 11.7, z: 24, w: 0.3, d: 4 }] }),
-  // six suspensions sodium (lampe à h 9, _neon = flaque au sol r 3 m + ampoule) : peintes après tout (dessus)
-  ...[[4.5, 15.5], [11.5, 5], [11, 19], [30, 5], [30, 24.5], [20, 12]].map(([cx, cz], i) => B(`tm2_susp${i}`, '', 'ml_tm_suspension_v2_3q', cx - 3, cz - 3, 6, 6, { named: false, solid: [], dessus: 3 })),
+  // six suspensions sodium (lampe à h 9, _neon = flaque au sol r 3 m + ampoule) : peintes après tout (dessus) ; flaque : la flaque du _neon (sous la ligne 420 px) est peinte au sol (sur le quai pour la 6e), derrière ce qui est debout devant
+  ...[[4.5, 15.5], [11.5, 5], [11, 19], [30, 5], [30, 24.5], [20, 12]].map(([cx, cz], i) => B(`tm2_susp${i}`, '', 'ml_tm_suspension_v2_3q', cx - 3, cz - 3, 6, 6, { named: false, solid: [], dessus: 3, flaque: { px: 420, sur: i === 5 ? 'tm2_quai' : null } })),
 ];
 export const CLOSED_MEGA = {
   ml_portique_implant: 'Le portique à implant. Deux piliers, deux volets vitrés, un lecteur éteint. Il lit la nuque des gens.',
@@ -177,7 +177,7 @@ export const LOCATIONS_MEGA = {
     spawn: { player: { x: 32, z: 38.2 }, companion: { x: 33, z: 38.2 } }, city: 'steel',
     arrive: { from: 'steel_center', text: 'La Mega-Line. Le viaduc de fer noir passe à six mètres au-dessus de la rue ; la rame violette glisse sans s\u2019arrêter. Sur le quai, Vibes et Tron passent en boucle.' } },
   steel_terminus: { id: 'steel_terminus', name: 'Steel-Megalopolis · Terminus de fret', kind: 'exterior', size: { w: 40, d: 28 }, light: FRET, plan: 2, zoneNiveau: 'quai',
-    cadre: { desktop: { x: [17, 23], z: [6, 16] }, mobile: { x: [8, 32], z: [4, 22] } }, // z min bas : on voit les portes du sas (13 m) en s'en approchant
+    cadre: { desktop: { x: [17, 23], z: [6, 16] }, mobile: { x: [8, 32], z: [4, 22], butee: true } }, // z min bas : on voit les portes du sas (13 m) en s'en approchant ; butee : jamais de vide sous le bord sud (Régie 17/11)
     // sol de la fiche d'Ocre (eb5d0d3) : béton lissé g_ml_fret_v2 à la place de g_ml_fret, variante _b, bandes jaune et noir ; voile peint APRÈS les paint (voileApres)
     ground: { base: '#101114', skin: 'g_ml_fret_v2', tileM: 4, clean: true, tint: 'rgba(6,8,12,0.45)', voileApres: true,
       paint: [
@@ -195,9 +195,8 @@ export const LOCATIONS_MEGA = {
     glows: [ { x: 20, z: 2.8, rx: 11, rz: 1.6, color: ROUGE, i: 0.4, flicker: true }, // lampes d'alerte du sas : reflet rouge au sol (code)
       { x: 13.5, y: 12.6, z: 2.3, r: 1.1, color: ROUGE, i: 0.75, flicker: true }, { x: 26.5, y: 12.6, z: 2.3, r: 1.1, color: ROUGE, i: 0.75, flicker: true },
       { x: 24.5, y: 13.4, z: 8.8, r: 0.9, color: ORANGE, i: 0.7, flicker: true }, { x: 36.5, y: 13.4, z: 8.8, r: 0.9, color: ORANGE, i: 0.7, flicker: true }, // gyrophares
-      { x: 8, y: 13, z: 14, r: 1.2, color: SODIUM, i: 0.6 }, { x: 20, y: 15, z: 12, r: 1.2, color: SODIUM, i: 0.6 }, { x: 31, y: 15, z: 22, r: 1.2, color: SODIUM, i: 0.55 }, // suspensions sodium
-      { x: 8, z: 14.6, rx: 4, rz: 2, color: SODIUM, i: 0.3 }, { x: 20, z: 12, rx: 4, rz: 3, color: SODIUM, i: 0.22, sol: true }, { x: 30.5, z: 22, rx: 5, rz: 2, color: SODIUM, i: 0.25 },
-      { x: 18.4, z: 25, rx: 1.8, rz: 1.2, color: ORANGE, i: 0.5 }, { x: 10, z: 14.4, rx: 2.4, rz: 1.2, color: AMBRE, i: 0.45 } ],
+      // suspensions sodium : ampoule + flaque au sol viennent du calque _neon de ml_tm_suspension_v2_3q (tm2_susp0-5) ; les anciennes lueurs code de l'avant-plan (8;14,6 / 20;12 / 30,5;22) n'avaient plus de lampe au-dessus (Régie 17/11)
+    ], // (18,4;25) orange et (10;14,4) ambre retirées : aucune source au-dessus dans le plan v2 (Régie 17/11)
     extras: [ { sprite: 'gen_ml_foule_a', x: 12.4, z: 12.6, face: -1, role: 'docker' }, { sprite: 'gen_ml_foule_b', x: 21, z: 16, face: 1, role: 'voyageur' }, { sprite: 'gen_ml_foule_a', x: 27.6, z: 22.4, face: 1, role: 'docker' } ],
     walkers: [ { sprite: 'gen_ml_foule_b', path: [[11.6, 15.4], [13.4, 15.4], [13.4, 7.8], [11.6, 7.8]], speed: 0.7, t0: 3 } ],
     spawn: { player: { x: 10, z: 26.4 }, companion: { x: 11, z: 26.4 } }, city: 'steel',

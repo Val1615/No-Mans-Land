@@ -74,7 +74,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
-  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0, vehFiges = false; let dalles = [], decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], fenetres = [], hovers = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
+  const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0, vehFiges = false; let dalles = [], decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], flaques = [], fenetres = [], hovers = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
 
@@ -346,7 +346,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; niv = loc.niveaux ? loc : null; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; dalles = []; neons = []; fenetres = []; hovers = []; pulses = []; beams = [];
+    const loc = LOCATIONS[locId]; niv = loc.niveaux ? loc : null; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; dalles = []; neons = []; flaques = []; fenetres = []; hovers = []; pulses = []; beams = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -497,6 +497,14 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // aucun échange de texture, aucune planche, donc hors du plafond view.animStats.on (compté à part dans animStats.enseignes).
   // « saute » : la colonne [u0, u1] du calque (une lettre) est un sprite à part qui grésille seul. dev: true -> visible seulement avec ?dev=1.
   const NEON_DEV = typeof location !== 'undefined' && new URLSearchParams(location.search).get('dev') === '1';
+  // b.flaque { px, sur } (suspensions du terminus) : le calque _neon porte l'ampoule (en haut) et la flaque de lumière au sol (sous la ligne px de l'image) ;
+  // l'ampoule reste dans l'ordre de sa pièce (au-dessus de tout), la flaque est coupée en un second sprite peint au niveau du sol (juste après la pièce
+  // de plancher b.flaque.sur, sinon avec les lueurs au sol) : les objets debout devant elle (rame, conteneurs, portique) la recouvrent au lieu d'être tachés
+  function flaque(s, t, cy, sh, F, m, key) { const L = layerTex(key, m), r = Math.min(1, Math.max(0, (L.y0 + L.ch - F.px) / L.ch)); if (r <= 0 || r >= 1) return;
+    const tb = t.clone(); tb.needsUpdate = true; tb.repeat.set(1, r); tb.offset.set(0, 0); const th = t.clone(); th.needsUpdate = true; th.repeat.set(1, 1 - r); th.offset.set(0, r);
+    s.material.map = th; s.center.set(s.center.x, (cy - r) / (1 - r)); s.scale.set(s.scale.x, sh * (1 - r), 1);
+    const p = new THREE.Sprite(s.material.clone()); p.material.map = tb; p.center.set(s.center.x, cy / r); p.scale.set(s.scale.x, sh * r, 1); p.position.copy(s.position);
+    p.userData.neon = s.userData.neon; p.userData.fondu = 1; p.userData.flaque = F.sur || true; world.add(p); neons.push(p); flaques.push(p); }
   function enseigne(e, loc) {
     if ((e.dev && !NEON_DEV) || e.effet === 'eteint') return; /* eteint : façade répétée, calque néon non allumé */ const item = bills.find(i => i.obj.userData.buildingId === e.building), b = loc.buildings.find(x => x.id === e.building), key = e.neon || (bman[b?.sprite + '_neon'] ? b.sprite + '_neon' : b?.sprite), m = bman[key]; // calque <clé>_neon d'Ocre, sinon le support lui-même en additif (démo)
     if (!item || !b || !m || !SKIN[key] || m.anime) return; // planche animée : pas de calque code (l'animation d'Ocre reste seule)
@@ -509,7 +517,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: e.couleur || '#ffffff', opacity: 0 }));
       s.center.set(cx, cy); s.scale.set(sw, sh, 1); s.position.copy(item.obj.position);
       s.userData.neon = { effet: lettre ? 'gresille' : (e.effet === 'saute' ? 'fixe' : e.effet || 'fixe'), periode: e.periode || 3, ph: (e.decale || 0) + (lettre ? 0.37 : 0), i: e.intensite ?? 0.6 };
-      s.userData.fondu = 1; world.add(s); item.extra.push(s); neons.push(s); }
+      s.userData.fondu = 1; world.add(s); item.extra.push(s); neons.push(s);
+      if (b.flaque && u0 === 0 && u1 === 1) flaque(s, t, cy, sh, b.flaque, m, key); }
   }
   // Véhicule posé en bâtiment : mêmes calques que les véhicules qui roulent ; b.miroir retourne caisse + _fenetres/_neon/_hover autour de l'ancre, _texte/_texte_miroir jamais retournés.
   function poserVehiculePose(b) {
@@ -821,6 +830,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const it of merged) {
       it.obj.renderOrder = ord; for (const e of it.extra) e.renderOrder = ord + 1; ord += 2;
     }
+    for (const p of flaques) { const sous = p.userData.flaque !== true && merged.find(it => it.obj.userData.buildingId === p.userData.flaque); p.renderOrder = sous ? sous.obj.renderOrder + 1 : 2; }
     return merged;
   }
   // Règle d'occultation : un bâtiment passe à 30 % d'opacité quand un acteur est derrière lui (ordre du peintre)
@@ -948,9 +958,19 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (C.u || C.w || C.cible) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, viewW / 2 / z0 - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
         const u1 = C.u ? cl(u, C.u[0], C.u[1]) : u, w1 = C.w ? cl(w, C.w[0], C.w[1]) : w, u2 = C.libre ? u1 : cl(u1, up - lu, up + lu), w2 = C.libre ? w1 : cl(w1, wp - lw, wp + lw); t.addScaledVector(R, u2 - u).addScaledVector(f, w2 - w); }
       if (C.x) t.x = cl(t.x, C.x[0], C.x[1]); if (C.z) t.z = cl(t.z, C.z[0], C.z[1]);
+      if (C.butee) butee(t, C, z0, up, wp);
       if ((C.x || C.z) && userZoom > 1) { const u = t.dot(R), w = t.dot(f), lu = Math.max(1, viewW / 2 / z0 - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
         t.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w); }
       return t; };
+    // C.butee (cadre téléphone ; true ou marge basse en px) : les deux coins bas de l'écran, au-dessus de la barre d'actions, restent sur le sol du lieu (pas de bande noire sous le bord de la carte, terminus en 390),
+    // le cadre glisse vers l'intérieur par petites corrections, puis le joueur est ramené dans l'écran (il passe toujours avant la butée)
+    function butee(t, C, z0, up, wp) { const W = loc.size.w, D = loc.size.d, hu = viewW / 2 / z0, hw = (viewH / 2 - (C.butee === true ? 150 : C.butee)) / z0 / Math.sin(pitch); // coins bas pris au-dessus de la barre d'actions (150 px)
+      for (let k = 0; k < 24; k++) { let dx = 0, dz = 0;
+        for (const sg of [-1, 1]) { const px = t.x + R.x * hu * sg - f.x * hw, pz = t.z + R.z * hu * sg - f.z * hw;
+          if (px < 0) dx = Math.max(dx, -px); else if (px > W) dx = Math.min(dx, W - px); if (pz < 0) dz = Math.max(dz, -pz); else if (pz > D) dz = Math.min(dz, D - pz); }
+        if (!dx && !dz) break; t.x += dx; t.z += dz; }
+      const u = t.dot(R), w = t.dot(f), lu = Math.max(1, hu - 1.5), lw = Math.max(1, (viewH / 2 / z0 - 2) / Math.sin(pitch));
+      t.addScaledVector(R, cl(u, up - lu, up + lu) - u).addScaledVector(f, cl(w, wp - lw, wp + lw) - w); }
     let zoomCadre = null;
     if (CA) { const zC = (CA.ppm || ppm) * userZoom; cadrer(target, CA, zC); zoomCadre = CA.ppm ? zC : null; }
     if (PA) { const k = plan * plan * (3 - 2 * plan), zA = PA.ppm || zPpm, tA = cadrer(new THREE.Vector3(s.player.x, 0, s.player.z), PA, zA);
@@ -1152,7 +1172,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       for (let i = 0; i < bills.length; i++) for (let j = i + 1; j < bills.length; j++) { const a = R[i], b = R[j]; if (a.x1 < b.x0 || b.x1 < a.x0 || a.y1 < b.y0 || b.y1 < a.y0) continue;
         if (inFront(bills[j], bills[i])) E.push([i, j]); else E.push([j, i]); } return { ids, E }; }, peintreDebug: id => { const it = bills.find(i => i.obj.userData.buildingId === id); if (!it) return null; const ra = rectOf(it.obj);
       return bills.filter(o => o !== it).map(o => { const rb = rectOf(o.obj); if (ra.x1 < rb.x0 || rb.x1 < ra.x0 || ra.y1 < rb.y0 || rb.y1 < ra.y0) return null;
-        return { id: o.obj.userData.buildingId || o.obj.userData.img || '?', devant: inFront(o, it), ordre: o.obj.renderOrder }; }).filter(Boolean); }, ordreBat: id => bills.find(i => i.obj.userData.buildingId === id)?.obj.renderOrder ?? null, dalles: () => dalles.map(d => ({ ...d.userData.dalle, x: +d.position.x.toFixed(2), y: +d.position.y.toFixed(2), z: +d.position.z.toFixed(2), ordre: d.renderOrder, visible: d.visible })), masqueEn, rejouerArrivee: () => { planLoc = null; }, planArrivee: () => ({ plan, planLarge, sorti: planSort }), tactile, camCible: () => camCible, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), fenetres: fenetres.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, zoom: () => userZoom, setZoom, zoomBounds: () => [ZOOM_MIN, ZOOM_MAX], ppm: () => cam.userData.zoom || ppm * userZoom, setCamera: o => { camOverride = o; if (!o) resize(); },
+        return { id: o.obj.userData.buildingId || o.obj.userData.img || '?', devant: inFront(o, it), ordre: o.obj.renderOrder }; }).filter(Boolean); }, ordreBat: id => bills.find(i => i.obj.userData.buildingId === id)?.obj.renderOrder ?? null, flaques: () => flaques.map(p => ({ sur: p.userData.flaque, ordre: p.renderOrder, op: +p.material.opacity.toFixed(2), visible: p.visible, x: p.position.x, z: p.position.z })), dalles: () => dalles.map(d => ({ ...d.userData.dalle, x: +d.position.x.toFixed(2), y: +d.position.y.toFixed(2), z: +d.position.z.toFixed(2), ordre: d.renderOrder, visible: d.visible })), masqueEn, rejouerArrivee: () => { planLoc = null; }, planArrivee: () => ({ plan, planLarge, sorti: planSort }), tactile, camCible: () => camCible, codeAnims: () => ({ neons: neons.map(s => +s.material.opacity.toFixed(3)), fenetres: fenetres.map(s => +s.material.opacity.toFixed(3)), beams: beams.map(m => +m.rotation.y.toFixed(3)), sources: beams.map(m => m.position.toArray().map(v => +v.toFixed(2))) }), masques, render, pick, project, zoom: () => userZoom, setZoom, zoomBounds: () => [ZOOM_MIN, ZOOM_MAX], ppm: () => cam.userData.zoom || ppm * userZoom, setCamera: o => { camOverride = o; if (!o) resize(); },
     facingOf: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who); return sp && sp.userData.facing; },
     // rectangle écran (px CSS) d'un personnage, pour les contrôles au pixel
     actorRect: who => { render(); const sp = who === 'player' ? player : who === 'companion' ? companion : npcSprites.find(n => n.userData.npc === who);
