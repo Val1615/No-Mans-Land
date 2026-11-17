@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { hauteurSol, hauteurMax } from '../core/niveaux.js'; // Mega-Line v2 : quai à +6 m (hauteur de sol par zone)
 import { UNITS } from '../data/units.js';
 import { VUES_VEHICULES } from '../data/vehicules.js';
 import { wallsOf } from '../core/grid.js';
@@ -103,7 +104,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // (b.ph = { h, color, roof: 'sheds'|'pitched'|'flat', glow, kind }). Dès que le sprite existe, le chemin normal reprend.
   const phOf = [];
   function placeholder(b) {
-    const ph = b.ph || {}, h = ph.h || 6, M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.95, transparent: true, opacity: 1, depthTest: false, depthWrite: false });
+    const ph = b.ph || {}, h = ph.h || 6, y0 = ph.y0 || 0, M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.95, transparent: true, opacity: 1, depthTest: false, depthWrite: false });
     const add = (w, hh, d, x, y, z, c, geo) => { const m = new THREE.Mesh(geo || new THREE.BoxGeometry(w, hh, d), M(c)); m.position.set(x, y, z); world.add(m); return m; };
     const extra = []; let main;
     if (ph.kind === 'dalle') { // dalle haute de Center-Town : tablier en hauteur, pylônes, feux ambrés en sous-face
@@ -117,8 +118,33 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       extra.push(add(0.6, h, 0.6, b.x + 1, h / 2, z1 + 0.3, '#45484b'), add(0.6, h, 0.6, b.x + 1, h / 2, z0 + 0.1, '#45484b'),
         add(0.7, 0.6, z1 - z0 + 0.6, b.x + 1, h, (z0 + z1) / 2 + 0.2, '#3a3d40'), add(0.2, 0.25, 0.8, b.x + 1.4, h - 0.2, (z0 + z1) / 2, '#e8a13a'),
         add(0.08, 0.6, 0.9, b.x + 1.92, 1.6, b.z + 0.8, '#c98a3a'));
-    } else main = add(b.w, h, b.d, b.x + b.w / 2, h / 2, b.z + b.d / 2, ph.color || '#3a3632');
-    main.userData.box = { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, h: ph.kind === 'dalle' ? h + 1 : h + 2 }; main.userData.buildingId = b.id; main.userData.targetOpacity = 1;
+    } else if (ph.kind === 'tablier') { // Mega-Line v2 : quai porté (plancher à ph.sol, dalle de ph.ep), poteaux au bord sud, garde-corps laiton (ph.gc : segments [x0, z0, x1, z1] relatifs)
+      const sol = ph.sol, ep = ph.ep || 0.6;
+      main = add(b.w, ep, b.d, b.x + b.w / 2, sol - ep / 2, b.z + b.d / 2, ph.color || '#24262b');
+      extra.push(add(b.w, 0.02, b.d - 0.4, b.x + b.w / 2, sol + 0.01, b.z + b.d / 2 + 0.2, ph.plancher || '#3b3a37'));
+      if (ph.bande) extra.push(add(b.w, 0.025, ph.bande[1] - ph.bande[0], b.x + b.w / 2, sol + 0.02, (ph.bande[0] + ph.bande[1]) / 2, '#2e2d33'));
+      if (ph.ligne) extra.push(add(b.w, 0.03, 0.12, b.x + b.w / 2, sol + 0.03, ph.ligne, '#d8b23a'));
+      for (let x = 0; x <= b.w + 1e-6; x += ph.pas || 4) extra.push(add(0.3, sol - ep, 0.3, b.x + Math.min(b.w - 0.15, Math.max(0.15, x)), (sol - ep) / 2, b.z + b.d - 0.15, '#1b1d22'));
+      for (const [ax, az, bx, bz] of ph.gc || []) { const w = Math.max(0.06, bx - ax), d = Math.max(0.06, bz - az);
+        extra.push(add(w, 0.08, d, b.x + ax + w / 2, sol + 1.1, b.z + az + d / 2, '#b08a3e'), add(w, 1.1, d, b.x + ax + w / 2, sol + 0.55, b.z + az + d / 2, '#3a332a')); }
+    } else if (ph.kind === 'escalier') { // Mega-Line v2 : volée droite, ph.monte m de dénivelé, haut au bord nord (z min) ; garde-corps laiton des deux côtés
+      const n = Math.max(4, Math.round(ph.monte / 0.3)), pas = b.d / n;
+      main = add(b.w, 0.2, b.d, b.x + b.w / 2, 0.1, b.z + b.d / 2, '#2a2b2e');
+      for (let i = 0; i < n; i++) { const hh = ph.monte * (n - i) / n; extra.push(add(b.w - 0.2, hh, pas, b.x + b.w / 2, hh / 2, b.z + i * pas + pas / 2, i % 2 ? '#4a4844' : '#504d48')); }
+      for (const x of [b.x + 0.06, b.x + b.w - 0.06]) for (let i = 0; i < n; i += 2) { const hh = ph.monte * (n - i) / n; extra.push(add(0.08, 0.08, pas * 2, x, hh + 1.0, b.z + i * pas + pas, '#b08a3e')); }
+    } else if (ph.kind === 'viaduc') { // Mega-Line v2 : tablier de viaduc porté (sous-poutre y0, dessus ph.dessus), rails sur le dessus
+      main = add(b.w, ph.dessus - y0, b.d, b.x + b.w / 2, (y0 + ph.dessus) / 2, b.z + b.d / 2, ph.color || '#1b1d22');
+      for (const dz of [1.2, 2.8]) extra.push(add(b.w, 0.12, 0.12, b.x + b.w / 2, ph.dessus + 0.06, b.z + dz, '#6a6258'));
+      extra.push(add(b.w, 0.3, 0.12, b.x + b.w / 2, y0 + 0.2, b.z + b.d - 0.06, '#2c2a26'));
+    } else if (ph.kind === 'portique') { // terminus v2 : portique de levage (4 pieds aux coins, poutres hautes, chariot) ; les conteneurs restent visibles dessous
+      const c = ph.color || '#c9a227', p = ph.pied || 1;
+      main = add(b.w, 0.9, 0.9, b.x + b.w / 2, h - 0.45, b.z + b.d - 0.45, c);
+      for (const [x, z] of [[b.x, b.z], [b.x + b.w - p, b.z], [b.x, b.z + b.d - p], [b.x + b.w - p, b.z + b.d - p]]) extra.push(add(p, h - 0.9, p, x + p / 2, (h - 0.9) / 2, z + p / 2, c));
+      extra.push(add(b.w, 0.9, 0.9, b.x + b.w / 2, h - 0.45, b.z + 0.45, c), add(0.9, 0.7, b.d, b.x + 0.45, h - 0.35, b.z + b.d / 2, c), add(0.9, 0.7, b.d, b.x + b.w - 0.45, h - 0.35, b.z + b.d / 2, c),
+        add(2.2, 1.2, 2.2, b.x + b.w / 2, h - 1.5, b.z + b.d / 2, '#3a3a36'));
+    } else main = add(b.w, h, b.d, b.x + b.w / 2, y0 + h / 2, b.z + b.d / 2, ph.color || '#3a3632');
+    main.userData.box = ph.kind === 'tablier' ? { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, y0: 0, h: ph.sol + 1.2 } : ph.kind === 'escalier' ? { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, y0: 0, h: ph.monte + 1.1 }
+      : ph.kind === 'viaduc' ? { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, y0, h: ph.dessus + 0.3 } : { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, y0, h: y0 + (ph.kind === 'dalle' ? h + 1 : h + 2) }; main.userData.buildingId = b.id; main.userData.targetOpacity = 1;
     if (ph.roof === 'sheds') { const n = Math.max(2, Math.round(b.w / 3)), sw = b.w / n; // toit en dents de scie : prismes + vitrage nord
       for (let i = 0; i < n; i++) { const sh = new THREE.Shape(); sh.moveTo(0, 0); sh.lineTo(sw, 0); sh.lineTo(sw, 1.7); sh.lineTo(0, 0);
         const g = new THREE.ExtrudeGeometry(sh, { depth: b.d, bevelEnabled: false }); const t = new THREE.Mesh(g, M(ph.roofColor || '#2b2a28'));
@@ -128,11 +154,12 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (ph.chimney) extra.push(add(1.2, h + 6, 1.2, b.x + ph.chimney[0], (h + 6) / 2, b.z + ph.chimney[1], '#5a3a2a'));
     for (const f of ph.floors ? Array.from({ length: ph.floors - 1 }, (_, i) => i + 1) : []) // coursives : dalles en saillie sur la façade sud
       extra.push(add(b.w, 0.18, 0.9, b.x + b.w / 2, f * h / ph.floors, b.z + b.d + 0.45, '#4a4f53'));
-    for (const g of ph.lights || []) extra.push(add(g.w || 1.2, g.h || 0.8, 0.08, b.x + g.x, g.y, b.z + b.d + 0.05, g.c || '#e8a13a')); // fenêtres / portes éclairées (face sud)
-    for (const g of ph.lightsE || []) extra.push(add(0.08, g.h || 0.8, g.w || 1.2, b.x + b.w + 0.05, g.y, b.z + g.z, g.c || '#e8a13a')); // face est
+    for (const g of ph.lights || []) extra.push(add(g.w || 1.2, g.h || 0.8, 0.08, b.x + g.x, y0 + g.y, b.z + b.d + 0.05, g.c || '#e8a13a')); // fenêtres / portes éclairées (face sud)
+    for (const g of ph.lightsE || []) extra.push(add(0.08, g.h || 0.8, g.w || 1.2, b.x + b.w + 0.05, y0 + g.y, b.z + g.z, g.c || '#e8a13a')); // face est
     for (const e of extra) { const c = e.material.color.getHex(); if ([0xe8a13a, 0xc9541e, 0xc98a3a].includes(c)) e.material.emissive.set(c); }
-    bills.push({ obj: main, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra }); phOf.push(main);
-    if (b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4, b.z + b.d), () => !!(b.sign || game.state.discovered[b.id])); labels[labels.length - 1].el.dataset.building = b.id; } // b.sign : enseigne lisible de la rue, libellé visible sans y être entré
+    if (ph.emissive) main.material.emissive.set(ph.emissive); // écran, fenêtres de rame : volume lumineux (violet réservé à la rame et aux écrans)
+    bills.push({ obj: main, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra, cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0 }); phOf.push(main);
+    if (b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4 + (b.y || y0 || 0), b.z + b.d), () => !!(b.sign || game.state.discovered[b.id])); labels[labels.length - 1].el.dataset.building = b.id; } // b.sign : enseigne lisible de la rue, libellé visible sans y être entré
   }
   // Véhicules qui roulent (loc.vehicules : { sprite, path [[x, z], ...], speed m/s, t0 m, aller }) : sprite d'Ocre à l'échelle 1, emprise footprint_m tournée
   // selon l'axe du tronçon ; sur l'axe que la vue livrée ne couvre pas : vue_axe2 si livrée, sinon miroir horizontal (|scale| = 1, signe seul ; data/vehicules.js).
@@ -247,14 +274,14 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     s.position.set(b.x + b.w + (b.ancre?.[0] || 0), b.y || 0, b.z + b.d + (b.ancre?.[1] || 0)); // b.y : hauteur (m) d'une enseigne posée en façade ; b.ancre : décalage (m) de l'ancre du sprite par rapport au coin avant (angle de l'Arena, ancre au raccord ouest)
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
-    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
+    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0 }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
     if (b.ecran) { const e = ecranSprite(b, m, s); if (e) { world.add(e); item.extra.push(e); if (e.userData.ecran.flash) { world.add(e.userData.ecran.flash); item.extra.push(e.userData.ecran.flash); } } } // écran dessiné par le code (Feed de Pulse Plaza)
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
       c.scale.set(0.42, 0.42, 1); c.position.set(d.opening.x, 2.5, d.opening.z); world.add(c); item.extra.push(c);
     }
     const door = DOORS.find(d => d.buildingId === b.id);
-    if (!b.visitable && b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4, b.z + b.d), () => !!(b.sign || game.state.discovered[b.id])); labels[labels.length - 1].el.dataset.building = b.id; } // b.sign : enseigne lisible de la rue, libellé visible sans y être entré // v12 : lieu nommé une fois repéré
+    if (!b.visitable && b.named) { addLabel(b.label, 'service', () => new THREE.Vector3(b.x + b.w / 2, 3.4 + (b.y || 0), b.z + b.d), () => !!(b.sign || game.state.discovered[b.id])); labels[labels.length - 1].el.dataset.building = b.id; } // b.sign : enseigne lisible de la rue, libellé visible sans y être entré // v12 : lieu nommé une fois repéré
     if (b.visitable) { addLabel(b.label, 'service', () => new THREE.Vector3(door.opening.x, 3.4, door.opening.z), () => !!(b.sign || game.state.discovered[b.id])); labels[labels.length - 1].el.dataset.building = b.id; } // b.sign : enseigne lisible de la rue, libellé visible sans y être entré
   }
   // v6 : mur d'intérieur = texture réelle (1 image = 3 m x 3 m de mur), répétée selon la taille de chaque face.
@@ -283,7 +310,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; hovers = []; pulses = []; beams = [];
+    const loc = LOCATIONS[locId]; niv = loc.niveaux ? loc : null; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; neons = []; fenetres = []; hovers = []; pulses = []; beams = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -328,9 +355,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         leaf.material.transparent = true; leaf.material.opacity = 1; leaf.renderOrder = 100001; leaf.userData.targetOpacity = 1; solids.push(leaf); }
       frame.userData.doorId = d.id; leaf.userData.doorId = d.id; world.add(g); if (!exterior) pickables.push(frame, leaf);
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.32, 0.4, 28), new THREE.MeshBasicMaterial({ color: '#e0b04a', transparent: true, opacity: 0.7 }));
-      ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(d.threshold.x, 0.03, d.threshold.z); ring.userData.doorId = d.id; world.add(ring); pickables.push(ring);
+      ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(d.threshold.x, 0.03 + hauteurSol(loc, d.threshold.x, d.threshold.z), d.threshold.z); ring.userData.doorId = d.id; world.add(ring); pickables.push(ring);
       if (d.junction || d.edge) { ring.material.color.set(d.junction ? '#e0b04a' : '#b9a68a'); ring.material.opacity = d.junction ? 0.8 : 0.5; // v7 : bout de rue
-        if (loc.accessLabels !== false) addLabel(d.label, d.junction ? 'junction' : 'edge', () => d.labelPos ? new THREE.Vector3(d.labelPos[0], d.labelPos[2] || 0, d.opening.z === 0 && d.threshold.z > 0 ? Math.min(d.labelPos[1], Math.max(-1.6, game.state.player.z - 2.4)) : d.labelPos[1]) : new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, 0, d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); if (loc.accessLabels !== false) labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte (ou débouché de sortie labelPos) : ne cache jamais le joueur au seuil
+        if (loc.accessLabels !== false) addLabel(d.label, d.junction ? 'junction' : 'edge', () => d.labelPos ? new THREE.Vector3(d.labelPos[0], d.labelPos[2] || 0, d.opening.z === 0 && d.threshold.z > 0 ? Math.min(d.labelPos[1], Math.max(-1.6, game.state.player.z - 2.4)) : d.labelPos[1]) : new THREE.Vector3(d.opening.x - (d.threshold.x - d.opening.x) * 1.6, hauteurSol(loc, d.threshold.x, d.threshold.z), d.opening.z - (d.threshold.z - d.opening.z) * 1.6)); if (loc.accessLabels !== false) labels[labels.length - 1].el.dataset.door = d.id; } // étiquette hors carte (ou débouché de sortie labelPos) : ne cache jamais le joueur au seuil
       if (loc.kind === 'interior') addLabel(d.label || 'Sortie', 'exit', () => new THREE.Vector3(d.opening.x, UNITS.door.height + 0.35, d.opening.z)); // v6 : au-dessus de la porte, plus sur le seuil (cachait le joueur à l'arrivée)
     }
     // v13 : lumières au sol (néons reflétés sur la chaussée mouillée, pinceaux des projecteurs) : disques additifs étirés
@@ -340,7 +367,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (g.flicker || g.beat) flick.push({ m: p.material, obj: p, s0: r * 2, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null }); // clignotement lent des ambres ou pulsation rythmique
       const it = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (it) it.extra.push(p); }
     for (const g of (loc.glows || []).filter(g => g.y == null)) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
-      m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02, g.z); m.renderOrder = 2; world.add(m);
+      m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02 + (g.sol ? hauteurSol(loc, g.x, g.z) : 0), g.z); m.renderOrder = 2; world.add(m); // g.sol : lueur posée sur le niveau (quai)
       if (g.flicker || g.beat) flick.push({ m: m.material, obj: m, s0: 1, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null }); }
     // v13 : figurants immobiles (file d'attente, soldats) et passants qui marchent : mêmes sprites animés que les PNJ, sans dialogue
     for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
@@ -353,7 +380,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
       { const gm = s.material.clone(); gm.opacity = 0.62; gm.color.set('#ffd9a0'); gm.alphaTest = 0.2; /* lot 1 : 62 % et teinte ambre clair, lisible sur le toit sombre */ /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
-      addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05, n.z)); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, 0, n.z); labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
+      { const hn = hauteurSol(loc, n.x, n.z); addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05 + hn, n.z)); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, hn, n.z); } labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
     }
     // garde-corps bas (loc.gardeCorps : x, z, w, d, h en m) : pan sombre et liseré néon, dessinés par le code ; triés avec les sprites (ordre du peintre)
     for (const g of loc.gardeCorps || []) { const h = g.h || 1.1, grp = new THREE.Group();
@@ -673,7 +700,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   // Animation procédurale légère (aucun asset modifié) : demi-tour rapide (largeur 1 -> 0 -> 1 en 0,14 s, l'image bascule au milieu),
   // pas de marche (rebond, léger tassement, balancement), respiration à l'arrêt. Amplitudes en mètres : identiques sur mobile.
-  let tPrev = performance.now() / 1000;
+  let tPrev = performance.now() / 1000, niv = null; // niv : lieu courant s'il a des niveaux (loc.niveaux)
   function animate(s, moving, dt, t) {
     const u = s.userData; u.turn = Math.min(1, u.turn + dt / 0.14);
     if (u.turn >= 0.5) u.shown = u.facing * u.base;
@@ -682,12 +709,13 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     let bob = 0, sy = 1, sx = 1, rot = 0;
     if (moving) { const ph = t * 2 * Math.PI * 1.9 + u.phase; bob = Math.abs(Math.sin(ph)) * 0.045; sy = 1 - 0.025 * Math.cos(2 * ph); sx = 1 + 0.015 * Math.cos(2 * ph); rot = 0.03 * Math.sin(ph); }
     else { const ph = t * 2 * Math.PI * 0.25 + u.phase; sy = 1 + 0.012 * Math.sin(ph); }
-    s.scale.set(u.w * width * sx, u.h * sy, 1); s.position.y = bob; s.material.rotation = rot;
+    u.hsol = niv ? hauteurSol(niv, s.position.x, s.position.z) : 0; // Mega-Line v2 : hauteur du sol sous le personnage (quai, escalier)
+    s.scale.set(u.w * width * sx, u.h * sy, 1); s.position.y = u.hsol + bob; s.material.rotation = rot;
   }
   const camUp = new THREE.Vector3().crossVectors(screenRight, camDir).normalize();
   const scr0 = p => p.x * camDir.x + p.y * camDir.y + p.z * camDir.z;
   const scr = p => ({ x: p.x * screenRight.x + p.y * screenRight.y + p.z * screenRight.z, y: p.x * camUp.x + p.y * camUp.y + p.z * camUp.z });
-  function rectOf(o) { if (o.userData.box) { const B = o.userData.box, P = [B.x0, B.x1].flatMap(x => [B.z0, B.z1].flatMap(z => [0, B.h].map(y => scr({ x, y, z }))));
+  function rectOf(o) { if (o.userData.box) { const B = o.userData.box, P = [B.x0, B.x1].flatMap(x => [B.z0, B.z1].flatMap(z => [B.y0 || 0, B.h].map(y => scr({ x, y, z }))));
       return { x0: Math.min(...P.map(p => p.x)), x1: Math.max(...P.map(p => p.x)), y0: Math.min(...P.map(p => p.y)), y1: Math.max(...P.map(p => p.y)) }; }
     const a = scr(o.position), sx = Math.abs(o.scale.x), sy = o.scale.y; return { x0: a.x - o.center.x * sx, x1: a.x + (1 - o.center.x) * sx, y0: a.y - o.center.y * sy, y1: a.y + (1 - o.center.y) * sy }; }
   function uvOf(o, p) { const r = rectOf(o); let u = (p.x - r.x0) / (r.x1 - r.x0); if (o.material.map?.repeat.x < 0) u = 1 - u; return { u, v: (p.y - r.y0) / (r.y1 - r.y0) }; }
@@ -697,6 +725,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function inFront(b, a) {
     if (!!a.cover !== !!b.cover && under(a, b)) return !!b.cover; /* une halle couvre tout ce qui est sous son toit [tour Valentin] */
     if (!!a.fond !== !!b.fond) return !!a.fond; /* une pièce de fond (dalle/toit) reste toujours derrière les façades et acteurs */
+    if ((a.etage || 0) !== (b.etage || 0) && under(a, b)) return (b.etage || 0) > (a.etage || 0); /* Mega-Line v2 : à emprise commune, l'étage le plus haut passe devant (rez < tablier du quai < ce qui est posé dessus) */
     const bx = b.x0 >= a.x1 - 1e-6, ax = a.x0 >= b.x1 - 1e-6, bz = b.z0 >= a.z1 - 1e-6, az = a.z0 >= b.z1 - 1e-6;
     if ((bx || bz) && !(ax || az)) return true;
     if ((ax || az) && !(bx || bz)) return false;
@@ -704,7 +733,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     return b.x0 + b.x1 + b.z0 + b.z1 > a.x0 + a.x1 + a.z0 + a.z1;
   }
   const actorItem = a => { const e = a.userData?.emprise; if (e) return { obj: a, actor: true, x0: e.x0, x1: e.x1, z0: e.z0, z1: e.z1, extra: a.userData.extra || [] }; // véhicule : son emprise au sol
-    return { obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [] }; };
+    return { obj: a, actor: true, x0: a.position.x - 0.3, x1: a.position.x + 0.3, z0: a.position.z - 0.3, z1: a.position.z + 0.3, extra: [], etage: a.userData?.hsol > 0.06 ? 2 : 0 }; }; // personnage sur le quai ou l'escalier : devant le tablier
   function topoSort(list) {
     const n = list.length, R = list.map(i => rectOf(i.obj)), indeg = new Array(n).fill(0), out = list.map(() => []);
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
@@ -888,6 +917,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (loc.kind === 'interior') target.set((target.x + s.player.x) / 2, 0, (target.z + s.player.z) / 2);
     }
     camShift += (wantShift - camShift) * Math.min(1, dt * 8); if (Math.abs(wantShift - camShift) < 0.5) camShift = wantShift;
+    if (niv && !camOverride) target.y = (target.y || 0) + (player.userData.hsol || 0) * 0.85; // Mega-Line v2 : le cadre monte avec le joueur sur le quai (+6 m)
     cam.position.copy(target).addScaledVector(camDir, -80); cam.lookAt(target);
     const zoom = camOverride?.ppm || zoomCadre || (loc.kind === 'interior' ? baseInt * userZoom : zPpm);
     if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift || cam.userData.cx!==camOverride?.cx || cam.userData.cy!==camOverride?.cy) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = viewW, h = viewH; const cx=camOverride?.cx??w/2,cy=camOverride?.cy??h/2;cam.userData.cx=camOverride?.cx;cam.userData.cy=camOverride?.cy;cam.left=-cx/zoom;cam.right=(w-cx)/zoom;cam.top=(cy-camShift)/zoom;cam.bottom=-(h-cy+camShift)/zoom; cam.updateProjectionMatrix(); }
@@ -978,6 +1008,11 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (mine && pv) { const v = new THREE.Vector3(pv.i + 0.5, att ? 2.0 : 0.6, pv.j + 0.5).project(cam), r = canvas.getBoundingClientRect();
       cbt.cost.style.transform = `translate(-50%,-100%) translate(${r.left + (v.x + 1) / 2 * r.width}px,${r.top + (1 - v.y) / 2 * r.height}px)`; }
   }
+  // Mega-Line v2 : clic sur un niveau (quai à +6 m, escalier) : premier point du rayon qui touche la hauteur de sol du lieu, au lieu du plan y = 0
+  function solVise(g) { if (!niv || !g) return g; const o = ray.ray.origin, d = ray.ray.direction; if (d.y > -1e-6) return g;
+    const t0 = (hauteurMax(niv) + 0.2 - o.y) / d.y, t1 = -o.y / d.y;
+    for (let t = t0; t <= t1; t += 0.05) { const x = o.x + d.x * t, y = o.y + d.y * t, z = o.z + d.z * t; if (y <= hauteurSol(niv, x, z) + 1e-3) return { ...g, point: new THREE.Vector3(x, y, z) }; }
+    return g; }
   function pick(clientX, clientY) {
     render();
     const r = canvas.getBoundingClientRect();
@@ -989,7 +1024,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const c = scr(ray.ray.origin); let top = null;
       for (const s of bsprites) { if (s.material.opacity < 0.5) continue; const q = uvOf(s, c); if (alphaAt(s.userData.img, q.u, q.v) > 0.5 && (!top || s.renderOrder > top.renderOrder)) top = s; }
       if (top) { const u = top.userData;
-        const g = hits.find(h => h.object.userData.ground), b = LOCATIONS[builtFor].buildings.find(b => b.id === u.buildingId);
+        const g = solVise(hits.find(h => h.object.userData.ground)), b = LOCATIONS[builtFor].buildings.find(b => b.id === u.buildingId);
         if ((!u.visitable || (bman[u.img]?.height_m ?? 0) > 12) && g && (g.point.x < b.x - 1 || g.point.x > b.x + b.w + 1 || g.point.z < b.z - 1 || g.point.z > b.z + b.d + 1)) return { kind: 'ground', x: g.point.x, z: g.point.z };
         if (!u.visitable) { // clic sur un bâtiment fermé : si le sol visé est hors de son emprise (rue cachée derrière), on marche
           // décor praticable (halle, escalier, dalle : `solid` explicite) : le sol visé hors des parties pleines reste cliquable
@@ -997,7 +1032,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
           return { kind: 'closed', label: u.label, buildingId: u.buildingId }; }
         const ds = DOORS.filter(d => d.buildingId === u.buildingId).map(d => ({ d, p: scr(new THREE.Vector3(d.opening.x, 1, d.opening.z)) }));
         ds.sort((a, b) => Math.hypot(a.p.x - c.x, a.p.y - c.y) - Math.hypot(b.p.x - c.x, b.p.y - c.y)); return { kind: 'door', doorId: ds[0].d.id }; }
-      const g = hits.find(h => h.object.userData.ground); return g ? { kind: 'ground', x: g.point.x, z: g.point.z } : null;
+      const g = solVise(hits.find(h => h.object.userData.ground)); return g ? { kind: 'ground', x: g.point.x, z: g.point.z } : null;
     }
     for (const h of ray.intersectObjects(pickables, false)) {
       const u = h.object.userData, op = [].concat(h.object.material)[0].opacity;

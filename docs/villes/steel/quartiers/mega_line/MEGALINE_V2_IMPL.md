@@ -52,6 +52,7 @@ avec base y = 6 quand ils y sont). Repli de la rame : l'ancienne `ml_rame` (24 m
 | `ml_bati_w_v2_3q` | 10 × 18 | 12 | x0–10, z14–32 | rez actif sur la rue latérale (face est) |
 | `ml_bati_e_v2_3q` | 10 × 18 | 10 | x54–64, z14–32 | rez actif sur la rue latérale (face ouest, peu visible dans la vue : à soigner sur la face sud) |
 | `ml_terrasse_v2_3q` | 2 × 2 | 1,0 | 6 poses, rue piétonne x21–43, z23–31 | table et deux tabourets |
+| `ml_etabli_v2_3q` | 1,6 × 0,6 | 0,9 | x39,2–40,8, z22,5–23,1 | établi de Rivet devant l'atelier (le café froid est posé dessus par le code) |
 | `ml_ruelle_benne_v2_3q` | 2 × 1,2 | 1,4 | ruelle de service z8–10 | |
 | `ml_ruelle_caisses_v2_3q` | 1,6 × 1,2 | 1,2 | ruelle de service | |
 
@@ -78,3 +79,74 @@ Réutilisés : `ml_lampadaire` (parvis sud), `ml_banc`, `ml_poubelle`.
 | `ml_tm_passerelle_v2_3q` | 4 × 4 | 2 | x8–12, z24–28 | arrivée de la passerelle de service (sud-ouest) |
 
 Réutilisés : `ml_panneau_terminus` (vierge, x18,5–21,5 sur le quai, base y = 1,1), `ml_ens_sas`, `ml_ens_gyrophare`, `ml_conteneurs`.
+
+## Ce qui est posé (code, 17/11) — `src/data/mega_line.js`
+
+### La ligne (`steel_megaline`, 64 × 40, plan 2)
+| zone | cotes (m) | dans le jeu |
+|---|---|---|
+| Bâti nord N1 / N2 / N3 | x0–24 / x24–44 / x48–64, z0–8 (h 12 / 16 / 10) | gabarits pleins, fenêtres ambrées |
+| Passerelle de service | x44–48, z0–8 | couloir ouvert entre deux garde-corps ; porte `ml_passerelle` au bord nord (46 ; 0) -> `tm_sud` |
+| Ruelle de service | z8–14 | praticable, passe sous le viaduc entre les piles ; bennes, caisses ; Marcel (entretien) sous le viaduc |
+| Viaduc | z10–14, sous-poutre 6, rails 6,8 | 3 segments (24, 24, 16 m) non bloquants ; 6 piles 1,6 × 1,6 pleines (x2…62) |
+| Rame | z10,5–13,5, base 6,8 | défile vers l'est toutes les 40 s (10 s de passage), ne s'arrête jamais ; repli `ml_rame` |
+| Quai | x18–46, z14–22, plancher +6 | tablier, poteaux de galerie, garde-corps laiton ; bande d'embarquement z14–17,5 fermée par 2 barrières et le portique |
+| Portique à implant | x31–32,6, z17–18 (+6) | planches accepté/refusé inchangées ; porte `ml_rame_quai` (seuil 31,8 ; 18,6) |
+| Écrans | x19,9–25,1 et x36,9–42,1, flanc du viaduc, base 7,2 | Vibes à l'ouest, Tron à l'est (planches existantes, comptées comme une animation) |
+| Rez sous le quai | z14–20 (galerie z20–22) | Mme Tran x18–24, câbles x24–30, Human Corp x30–38 (logo animé), atelier de Rivet x38–46 ; non bloquants (sous le tablier) |
+| Escaliers O / E | x18–21 / x43–46, z22–32 | montée de 6 m vers le nord, seuls accès au quai |
+| Rue piétonne, terrasses | x21–43, z22–32 | 6 terrasses, établi de Rivet, Mme Tran et Rivet devant leurs échoppes |
+| Rues latérales | x10–18, x46–54 | praticables du parvis à la ruelle |
+| Bâti W / E | x0–10 / x54–64, z14–32 | gabarits pleins (h 12 / 10) |
+| Parvis sud | z32–40 | lampadaires, bancs ; porte `ml_sud` au centre du bord sud (32 ; 40) -> `c_mega` |
+
+PNJ (dialogues inchangés) : Sabine (contrôleuse, haut de l'escalier ouest), Anselme Roque (navetteur, bout est du quai), Kessler (vigile, au portique),
+Lou (étudiante, banc du quai), Yuna (fan, sous l'écran de Vibes), Noé (pancarte, pied de l'escalier est), Marcel (entretien, ruelle sous le viaduc),
+Mme Tran (devant son échoppe), Rivet (devant son atelier). Figurants : 5 voyageurs sur la bande d'embarquement, 8 passants (3 masqués en plan large) ;
+passants qui marchent : un qui monte l'escalier ouest, traverse le quai et redescend à l'est, un sur le parvis, un qui fait le tour par la ruelle.
+
+### Le terminus (`steel_terminus`, 40 × 28, plan 2)
+| zone | cotes (m) | dans le jeu |
+|---|---|---|
+| Voûte | x0–40, z0–2, clé 18 | pièce de fond (toujours derrière) ; suspensions sodium (lueurs du code) |
+| Mur et portes du sas | x0–40, z0–2 ; portes x10–30, h 13 | pleins ; **aucune porte de jeu vers le sas**, clic = « Elles ne s'ouvriront pas » ; 2 planches `ml_ens_sas` + lueurs rouges clignotantes |
+| Voie, heurtoir | x14–17, z3,4–28 ; heurtoir z2–3,4 | voie au ras du sol, traversable ; heurtoir plein |
+| Quai | x17–23, z3–24, +1,1 | bords en pente douce de 0,6 m (pas de marche ratée), rampe au sud ; panneau vierge x18,5–21,5 (phrase par le code) ; Régie côté sas face à la voie |
+| Voiture d'accès | x14–17, z20–28 | porte est éclairée orange : `tm_rame_quai` (seuil 18,2 ; 25,2) |
+| Bureau de fret + dock | x2–9 + x9–11, z9–14 | Odile Ferraz devant |
+| Portique de levage | x24–37, z8–21, h 13 | 4 pieds pleins ; 2 gyrophares orange (planche existante + lueurs) ; Bruno au pied, au sud |
+| Conteneurs | 3 rangées × 2 piles, x24,5–36,5, z9,5–19 | piles de 2 = `ml_conteneurs` existant ; piles de 3 = gabarit `ml_tm_conteneurs_x3_v2_3q` |
+| Hangar, locaux techniques | x0–9 z2–7 ; x0–8 z17–28 ; x37–40 z2–28 | gabarits pleins |
+| Passerelle sud-ouest | x8–12, z24–28 | arrivée ; porte `tm_sud` au bord sud (10 ; 28) -> `ml_passerelle` |
+
+## Le quai à +6 m : choix de modélisation
+Le moteur n'a qu'un niveau de marche par point (grille 0,5 m, A*). Plutôt qu'un vrai second niveau, chaque lieu peut déclarer `niveaux`
+(`src/core/niveaux.js`) : planchers plats `{ x, z, w, d, y }` et pentes `{ …, y0, y1, axe }` (escaliers, rampes). La hauteur sert au rendu
+(personnages, PNJ, figurants et passants posés à la hauteur du sol, étiquettes et anneaux de porte relevés, caméra qui monte avec le joueur,
+clic sur le quai résolu par lancer de rayon contre la hauteur du sol) et au jeu (on aborde un PNJ à son niveau, pas à travers le garde-corps).
+L'accès est fait par les solides : bords du quai (nord côté voie, ouest, est, sud entre les trémies), côtés des escaliers, barrières de la bande.
+Conséquences assumées : sous le tablier, le rez (z14–22) n'est pas praticable au sol, il se voit depuis la rue (échoppes ouvertes sur la galerie) ;
+Mme Tran et Rivet se tiennent devant, dans la rue piétonne. L'ordre de dessin utilise un champ `etage` (rez 0 < tablier, escaliers, viaduc 1 <
+ce qui est posé dessus et personnages en hauteur 2) quand deux emprises se recouvrent.
+
+## Portes et sauvegardes
+- `c_mega` (Center-Town, inchangée) <-> `ml_sud` (32 ; 40) ; `ml_passerelle` (46 ; 0) <-> `tm_sud` (10 ; 28) ; `ml_rame_quai` (portique) <-> `tm_rame_quai` (voiture).
+- Chaque lieu refait porte `plan: 2` ; l'instantané enregistre `plans`. Une sauvegarde sans version (ancien plan 48 × 24 / 30 × 20) reprend à
+  l'arrivée du lieu ; une position du bon plan mais coupée de l'arrivée (bande d'embarquement) aussi. Les autres sauvegardes ne bougent pas.
+
+## Tests
+`tests/megaline_rapide.py` (URL, OUT) ; `tests/mega_rapide.py` (rame jouable, 4 espèces) mis aux nouvelles coordonnées.
+
+## Écarts connus
+- Tout est en gabarits tant que les lots d'Ocre ne sont pas livrés (sauf mobilier, écrans, portique à implant, rame de repli, conteneurs de 2, panneau, lampes).
+- Le rez sous le quai n'est pas praticable (voir plus haut) ; la galerie couverte se voit, on n'y marche pas.
+- Bâti E : sa façade sur rue (ouest) est peu visible dans l'angle du jeu ; à soigner côté sud.
+- Le quai du terminus est à +1,1 m avec des bords en pente douce (pas d'escalier) : simplification de jeu.
+
+## Lots 1 et 2 d'Ocre reçus pendant la pose (ef04794, a203f03) : pas encore posés
+
+Le lot 1 (structure : 22 clés `*_v2_3q`, plus `ml_rame_3v_dos_v2_3q` et les couches `_avant`, `_neon`, `_fenetres`, `_texte`) est arrivé sur main pendant ce lot, suivi du lot 2 (rez et bâti, a203f03, poses dans ASSETS.md lot 2). Comme demandé, ni l'un ni l'autre n'est **posé** ici : `gabaritsSeuls: true` sur `steel_megaline` empêche la substitution automatique des clés `attente` (src/main.js), et les gabarits restent affichés. Pour le prochain lot, il faut :
+- retirer `gabaritsSeuls` ;
+- câbler `base_y` (rame 6,8, barrière et cadre 6,0) ;
+- poser les couches `_avant` du viaduc après la rame, avec les vues dos et miroir de la rame et leur `_texte_miroir` jamais retourné, puis l'image des écrans dans `ecran.quad_px` ;
+- reprendre les écarts de la fiche de poses (ASSETS.md, lot 1) : cadre d'écran en z14–14,4, largeur 5,4, avec des mâts depuis le quai ; poteaux de galerie du quai ; profil de l'escalier (palier z22–23 à +6, puis une pente jusqu'à z32).

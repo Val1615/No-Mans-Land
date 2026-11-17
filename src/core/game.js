@@ -4,11 +4,13 @@ import { ARGENT } from '../data/argent.js';
 import { buildGrid, coverSolids } from './grid.js';
 import { findPath } from './path.js';
 import { createCombat } from './combat.js';
+import { hauteurSol } from './niveaux.js';
 
 // État sérialisable + commandes à résultat typé. Aucune dépendance au rendu.
 export function createGame(world, sprites) {
   const { LOCATIONS, DOORS, NPCS = [], DIALOGUES = {}, ITEMS = {}, START, COMPANION, SPOTS = [], TRIGGERS = [] } = world;
   let rng = Math.random; // v15 : tirage injectable (tests : setRng)
+  const PLANS = Object.fromEntries(Object.entries(LOCATIONS).filter(([, l]) => l.plan).map(([k, l]) => [k, l.plan])); // versions de plan des lieux refaits (sauvegardes)
   const npcBox = n => ({ x: n.x - 0.3, z: n.z - 0.3, w: 0.6, d: 0.6 });
   const grids = Object.fromEntries(Object.keys(LOCATIONS).map(k => [k, buildGrid(LOCATIONS[k], DOORS, sprites, NPCS.filter(n => n.location === k).map(npcBox))]));
   const L0 = LOCATIONS[START.location], sp = L0.spawn;
@@ -68,6 +70,7 @@ export function createGame(world, sprites) {
     for (let di = -5; di <= 5; di++) for (let dj = -5; dj <= 5; dj++) {
       if (!g.free(ci + di, cj + dj)) continue; const w = g.toWorld(ci + di, cj + dj);
       if (Math.hypot(w.x - n.x, w.z - n.z) > 2.6) continue;
+      if (LOCATIONS[state.location].niveaux && Math.abs(hauteurSol(LOCATIONS[state.location], w.x, w.z) - hauteurSol(LOCATIONS[state.location], n.x, n.z)) > 1.2) continue; // Mega-Line v2 : on approche un PNJ à son niveau (pas à travers le garde-corps du quai)
       const d = Math.hypot(w.x - state.player.x, w.z - state.player.z); if (d < bd) { bd = d; best = w; }
     }
     if (!best) return refuse('chemin_bloque', 'Impossible d\'approcher.');
@@ -269,7 +272,7 @@ export function createGame(world, sprites) {
   function snapshot() {
     const p = state.player, c = state.companion;
     return JSON.parse(JSON.stringify({ location: state.location, player: { x: p.x, z: p.z, heading: p.heading || 0, hp: p.hp, maxHp: p.maxHp, money: p.money, credits: p.credits || 0, inv: p.inv },
-      companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions, osGains: state.osGains, character: state.character || null, heures: state.heures, region: state.region }));
+      companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, plans: PLANS, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions, osGains: state.osGains, character: state.character || null, heures: state.heures, region: state.region }));
   }
   function restore(snap, quiet) {
     if (!snap || !LOCATIONS[snap.location]) return false;
@@ -279,6 +282,11 @@ export function createGame(world, sprites) {
     Object.assign(p, { x: +sp0.x || 0, z: +sp0.z || 0, heading: +sp0.heading || 0, hp: sp0.hp ?? START.hp, maxHp: sp0.maxHp ?? START.maxHp, money: sp0.money ?? START.money, credits: sp0.credits || 0, inv: { ...(sp0.inv || {}) }, path: [], pending: null });
     const g = grids[state.location], [i, j] = g.toCell(p.x, p.z); if (!g.free(i, j)) { const w = nearestFree(g, p, p); if (w) Object.assign(p, w); }
     Object.assign(state.companion, { ...(snap.companion || {}), path: [] });
+    // Lieu refait depuis la sauvegarde (loc.plan : version du plan ; absente de la sauvegarde = 1) : coordonnées d'un autre plan -> arrivée du lieu.
+    // Filet : même plan mais position coupée de l'arrivée (îlot fermé, bande d'embarquement) -> arrivée aussi. Le compagnon suit.
+    const L = LOCATIONS[state.location], sp = L.spawn?.player;
+    if (sp && L.plan && ((snap.plans?.[state.location] ?? 1) !== L.plan || (Math.hypot(p.x - sp.x, p.z - sp.z) > 0.5 && !findPath(g, p, sp)))) {
+      Object.assign(p, { x: sp.x, z: sp.z }); if (state.companion.location === state.location) Object.assign(state.companion, { x: (L.spawn.companion || sp).x, z: (L.spawn.companion || sp).z }); }
     state.flags = { ...(snap.flags || {}) }; state.discovered = { ...(snap.discovered || {}) }; state.seen = { ...(snap.seen || {}) }; state.transitions = snap.transitions || 0; state.osGains = snap.osGains || 0; state.os = null; state.combat = null; state.combatPending = null;
     state.character = snap.character ? JSON.parse(JSON.stringify(snap.character)) : null; // v11 : personnage créé (lot 2)
     state.heures = snap.heures ?? null; state.region = snap.region ? JSON.parse(JSON.stringify(snap.region)) : null; // lot 3 : temps et voyage régional (absents : recréés)

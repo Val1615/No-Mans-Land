@@ -1,8 +1,9 @@
+# (17/11 : coordonnées du plan v2, 64 x 40 / 40 x 28 ; plan et quai : megaline_rapide.py)
 # Test rapide Mega-Line (et rame jouable : billet lié à l'implant, 4 espèces) et terminus : Center-Town -> ligne (c_mega), traversée, passerelle -> terminus, traversée, retours, budget d'animations, aucune erreur JS (1280 et 390).
 import sys as _s, os as _o; _s.path.insert(0, _o.path.dirname(_o.path.abspath(__file__))); from nml_boot import passer_boot  # menu Terminal : sauter l'allumage
 import time,os,sys
 from playwright.sync_api import sync_playwright
-URL=os.environ.get('URL','http://127.0.0.1:8862/'); OUT='/tmp/nml-test-out/mega/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
+URL=os.environ.get('URL','http://127.0.0.1:8915/'); OUT='/tmp/nml-test-out/mega/'; os.makedirs(OUT,exist_ok=True); fails=[]; n=0
 def ok(c,m,d=''):
     global n; print(('OK   ' if c else 'ECHEC ')+m+('' if c else f'  {d}'),flush=True); n+=c; c or fails.append(m)
 with sync_playwright() as p:
@@ -21,7 +22,7 @@ with sync_playwright() as p:
         loc=lambda: E("window.__nml.state.location"); st=lambda: E("({...window.__nml.view.animStats})")
         tp('steel_center',1,50); time.sleep(1.5); E("window.__nml.game.useDoor('c_mega')"); time.sleep(2)
         ok(loc()=='steel_megaline',f'{name} Center-Town (c_mega) -> Mega-Line',loc())
-        r,pz=walk(24,18); ok(r,f'{name} ligne : marche jusqu au quai',pz); time.sleep(3); a=st(); print(f'   {name} ligne {a}')
+        r,pz=walk(30,20,60); ok(r,f'{name} ligne : marche jusqu au quai',pz); time.sleep(3); a=st(); print(f'   {name} ligne {a}')
         ok(a['on']<=5,f'{name} ligne : {a["on"]} animations (<= 5)',a); pg.screenshot(path=OUT+f'{name}_ligne.png')
         r,pz=walk(46,2.5,60); ok(r,f'{name} ligne traversée jusqu a la passerelle',pz)
         E("window.__nml.game.useDoor('ml_passerelle')"); time.sleep(2); ok(loc()=='steel_terminus',f'{name} passerelle -> terminus',loc())
@@ -29,15 +30,15 @@ with sync_playwright() as p:
         ok(a['on']<=3,f'{name} terminus : {a["on"]} animations (<= 3)',a)
         lab=E("[...document.querySelectorAll('#labels *')].map(e=>e.textContent).filter(t=>t.includes('Dernier arrêt'))"); ok(bool(lab),f'{name} panneau « Dernier arrêt avant No Man\u2019s Land » affiché par le code',lab)
         pg.screenshot(path=OUT+f'{name}_terminus_panneau.png')
-        tp('steel_terminus',15,18.6); time.sleep(1); E("window.__nml.game.useDoor('tm_sud')"); time.sleep(2); ok(loc()=='steel_megaline',f'{name} retour terminus -> ligne',loc())
-        tp('steel_megaline',24,22.6); time.sleep(1); E("window.__nml.game.useDoor('ml_sud')"); time.sleep(2); ok(loc()=='steel_center',f'{name} retour ligne -> Center-Town',loc())
+        tp('steel_terminus',10,26.4); time.sleep(1); E("window.__nml.game.useDoor('tm_sud')"); time.sleep(2); ok(loc()=='steel_megaline',f'{name} retour terminus -> ligne',loc())
+        tp('steel_megaline',32,38.4); time.sleep(1); E("window.__nml.game.useDoor('ml_sud')"); time.sleep(2); ok(loc()=='steel_center',f'{name} retour ligne -> Center-Town',loc())
         msg=lambda: E("document.getElementById('msg').textContent")
         def choisir(txt):
             i=E(f"(()=>{{const n=window.__nml.game.currentNode?.()||null;return n?(n.options.find(o=>o.label.includes({txt!r}))||{{}}).index:null}})()")
             return E(f"window.__nml.game.choose({i})") if i is not None else None
         def portiqueEssai(): E("window.__nml.game.useDoor('ml_rame_quai')"); time.sleep(.25); return E("({...window.__nml.portique, cle: window.__nml.view.joueEtat.cle})")
         for race in ['humain','mutant','augmente','cyborg']:
-            tp('steel_megaline',32,16.4); time.sleep(4 if race=='humain' else 1); E(f"window.__nml.debugMega({{race:'{race}',passe:false,cr:0}})")
+            tp('steel_megaline',31.8,19.2); time.sleep(4 if race=='humain' else 1); E(f"window.__nml.debugMega({{race:'{race}',passe:false,cr:0}})")
             ok(E("window.__nml.state.character.race")==race,f'{name} {race} : espèce posée (state.character.race)')
             if race in ('humain','mutant'):
                 r=portiqueEssai(); time.sleep(1); m=msg()
@@ -57,7 +58,7 @@ with sync_playwright() as p:
                     ok(E("window.__nml.state.player.inv.pirate_implant")==1 and E("window.__nml.state.player.credits")==100,f'{name} Fusible : Pique-Puce acheté 600 cr',E("window.__nml.state.player"))
                     E("window.__nml.game.choose(window.__nml.game.currentNode().options[0].index)"); time.sleep(.3)
                     ok(E("window.__nml.game.useDoor('ml_rame_quai').reason")=='porte_absente',f'{name} Pique-Puce limité à la Mega-Line (aucune porte ailleurs)')
-                    tp('steel_megaline',32,16.4); time.sleep(1)
+                    tp('steel_megaline',31.8,19.2); time.sleep(1)
                 else: E("window.__nml.debugMega({passe:true})")
             r=portiqueEssai(); time.sleep(.5); r=E("({...window.__nml.portique, cle: window.__nml.view.joueEtat.cle})")
             ok(r['cle']=='ml_ens_portique_accepte',f'{name} {race} : planche « accepté »',r)
@@ -66,7 +67,7 @@ with sync_playwright() as p:
             if race=='cyborg': time.sleep(.4); pg.screenshot(path=OUT+f'{name}_trajet_rame.png')
             time.sleep(3.4); m=msg()
             ok(loc()=='steel_terminus' and not E("window.__nml.trajetActif()") and 'validé' in m,f'{name} {race} : rame -> terminus, validation',(loc(),m))
-            tp('steel_terminus',6,6.5); time.sleep(1); E("window.__nml.game.useDoor('tm_rame_quai')"); time.sleep(5)
+            tp('steel_terminus',18.6,25.6); time.sleep(1); E("window.__nml.game.useDoor('tm_rame_quai')"); time.sleep(5)
             ok(loc()=='steel_megaline',f'{name} {race} : rame retour -> ligne',loc())
         ok(not errs,f'{name} aucune erreur JS',errs[:3]); ctx.close()
     print(f'{n}/{n+len(fails)} OK'); print('ECHECS',len(fails)); sys.exit(1 if fails else 0)
