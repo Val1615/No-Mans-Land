@@ -3105,11 +3105,11 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "role": "tapis d'aiguilles de pin, rouille et ocre, terre sèche ; jamais uni, pas de vert « jardin »",
+    "role": "tapis d'aiguilles de pin, rouille et ocre, terre sèche, racines et litière ; jamais uni, pas de vert « jardin »",
     "pose": "ground.paint { skin: 'g_rc_aiguilles', toute la scène, variantes semées (jamais deux voisines) }",
     "ordre": 0,
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_aiguilles.jpg ou mat_piste_foret.jpg), tuilage périodique 512 px / 4 m, aucun étirement",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_litiere.jpg et mat_aiguilles.jpg), tuilage périodique 512 px / 4 m, joints invisibles, aucun étirement",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins"
   },
   "g_rc_aiguilles_b": {
@@ -3120,11 +3120,11 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "role": "variante : plus de terre à nu, une petite branche sèche",
+    "role": "variante : plus de terre à nu, racines, zone d'ombre, une branche sèche",
     "pose": "ground.paint { skin: 'g_rc_aiguilles_b', variante semée }",
     "ordre": 0,
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_aiguilles.jpg ou mat_piste_foret.jpg), tuilage périodique 512 px / 4 m, aucun étirement",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_litiere.jpg et mat_aiguilles.jpg), tuilage périodique 512 px / 4 m, joints invisibles, aucun étirement",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins"
   },
   "g_rc_aiguilles_c": {
@@ -3135,11 +3135,11 @@
     ],
     "tile_m": 4.0,
     "tuilable": true,
-    "role": "variante : tapis plus dense, brindilles",
+    "role": "variante : tapis plus dense, pommes de pin, litière",
     "pose": "ground.paint { skin: 'g_rc_aiguilles_c', variante semée }",
     "ordre": 0,
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_aiguilles.jpg ou mat_piste_foret.jpg), tuilage périodique 512 px / 4 m, aucun étirement",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_litiere.jpg et mat_aiguilles.jpg), tuilage périodique 512 px / 4 m, joints invisibles, aucun étirement",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins"
   },
   "g_rc_piste_foret": {
@@ -3153,8 +3153,8 @@
     "role": "piste tassée, aiguilles écrasées, deux ornières légères continues en x (raccord bout à bout le long de la piste)",
     "pose": "ground.paint { skin: 'g_rc_piste_foret', bande z 15-20, x 0-32 }",
     "ordre": 0,
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_aiguilles.jpg ou mat_piste_foret.jpg), tuilage périodique 512 px / 4 m, aucun étirement",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_litiere.jpg et mat_aiguilles.jpg), tuilage périodique 512 px / 4 m, joints invisibles, aucun étirement",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins"
   },
   "g_rc_piste_foret_b": {
@@ -3168,126 +3168,124 @@
     "role": "variante de la piste : ornières un peu décalées, plus d'aiguilles sur les bords",
     "pose": "ground.paint { skin: 'g_rc_piste_foret_b', variante de la bande }",
     "ordre": 0,
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_aiguilles.jpg ou mat_piste_foret.jpg), tuilage périodique 512 px / 4 m, aucun étirement",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, sur_v1/gen/mat_litiere.jpg et mat_aiguilles.jpg), tuilage périodique 512 px / 4 m, joints invisibles, aucun étirement",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins"
   },
   "rc_fo_pin_mort_3q": {
     "file": "rencontres/rc_fo_pin_mort_3q.webp",
     "px": [
-      144,
-      254
+      175,
+      480
     ],
     "anchor": [
-      105,
-      253
+      108,
+      479
     ],
     "footprint_m": [
-      4.0,
-      3.5
+      2.8,
+      2.6
     ],
-    "height_m": 5.5,
+    "height_m": 10.5,
     "face": "3q",
     "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "Pin foudroyé : tronc fendu, écorce éclatée, cicatrice noircie, branche basse au sud pour la lanterne. Silhouette de la scène.",
+    "role": "Pin foudroyé, 10,5 m : tronc fendu, cime brisée, cicatrice noircie, branche basse au sud pour la lanterne. Silhouette de la clairière.",
     "pose": [
-      "{ sprite: 'rc_fo_pin_mort_3q', x: 13.5, z: 9, w: 4, d: 3.5, solid: [{ x: 13.5, z: 9, w: 4, d: 3.5, couv: 2 }] }  // silhouette ; lanterne sur branche sud"
+      "{ sprite: 'rc_fo_pin_mort_3q', x: 14.6, z: 9.95, w: 2.8, d: 2.6, solid: [{ x: 15.3, z: 10.55, w: 1.4, d: 1.4, couv: 2 }] }  // clairière ; branche sud pour la lanterne ; Roque juste au sud"
     ],
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur du volume à la caméra du jeu (50 px/m), ancre au coin sud-est de l'emprise au sol ; aucun étirement (bruts sur_v1/gen/, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins",
-    "pente_mesuree": "pied gauche 0.1 / droit 0.39 (cible 0,33 / 0,70)",
+    "pente_mesuree": "pied gauche 0.41 / droit 0.3 (cible 0,33 / 0,70)",
     "ombre_contact": true
   },
   "rc_fo_pin_3q": {
     "file": "rencontres/rc_fo_pin_3q.webp",
     "px": [
-      177,
-      245
+      376,
+      541
     ],
     "anchor": [
-      102,
-      244
+      204,
+      540
     ],
     "footprint_m": [
-      2.2,
-      2.2
+      2.4,
+      2.4
     ],
-    "height_m": 5.5,
+    "height_m": 12.0,
     "face": "3q",
     "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "Pin sec debout, tronc pâle, frondaison olive-gris. Module forêt.",
+    "role": "Pin pignon sec, 12 m, tronc nu sur la moitié basse, houppier en parasol large et épais, olive-gris poussiéreux. Module forêt.",
     "pose": [
-      "{ sprite: 'rc_fo_pin_3q', x: 2, z: 1, w: 2.2, d: 2.2, solid: [{ x: 2, z: 1, w: 2.2, d: 2.2, couv: 2 }] }",
-      "{ sprite: 'rc_fo_pin_3q', x: 22, z: 1.5, w: 2.2, d: 2.2, solid: [{ x: 22, z: 1.5, w: 2.2, d: 2.2, couv: 2 }] }",
-      "{ sprite: 'rc_fo_pin_3q', x: 4, z: 22.5, w: 2.2, d: 2.2, solid: [{ x: 4, z: 22.5, w: 2.2, d: 2.2, couv: 2 }] }",
-      "{ sprite: 'rc_fo_pin_3q', x: 24, z: 22.8, w: 2.2, d: 2.2, solid: [{ x: 24, z: 22.8, w: 2.2, d: 2.2, couv: 2 }] }"
+      "{ sprite: 'rc_fo_pin_3q', x: 29.2, z: 8.6, w: 2.4, d: 2.4, solid: [{ x: 29.8, z: 9.2, w: 1.2, d: 1.2, couv: 2 }] }  // est, entre lisière et piste",
+      "{ sprite: 'rc_fo_pin_3q', x: 10.2, z: 2.8, w: 2.4, d: 2.4, solid: [{ x: 10.8, z: 3.4, w: 1.2, d: 1.2, couv: 2 }] }  // sous la lisière nord, pour épaissir",
+      "{ sprite: 'rc_fo_pin_3q', x: 20.4, z: 3.0, w: 2.4, d: 2.4, solid: [{ x: 21.0, z: 3.6, w: 1.2, d: 1.2, couv: 2 }] }  // sous la lisière nord, pour épaissir"
     ],
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur du volume à la caméra du jeu (50 px/m), ancre au coin sud-est de l'emprise au sol ; aucun étirement (bruts sur_v1/gen/, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins",
-    "pente_mesuree": "pied gauche 0.67 / droit 0.22 (cible 0,33 / 0,70)",
+    "pente_mesuree": "pied gauche 0.48 / droit 0.63 (cible 0,33 / 0,70)",
     "ombre_contact": true
   },
   "rc_fo_pin_b_3q": {
     "file": "rencontres/rc_fo_pin_b_3q.webp",
     "px": [
-      116,
-      215
+      257,
+      474
     ],
     "anchor": [
-      70,
-      214
+      142,
+      473
     ],
     "footprint_m": [
-      2.0,
-      2.0
+      2.2,
+      2.2
     ],
-    "height_m": 4.8,
+    "height_m": 10.5,
     "face": "3q",
     "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "Pin sec un peu plus petit et plus tordu, frondaison plus clairsemée. Module forêt.",
+    "role": "Pin sylvestre sec, 10,5 m, tronc nu sur la moitié basse, houppier plus irrégulier, un peu plus clairsemé. Module forêt.",
     "pose": [
-      "{ sprite: 'rc_fo_pin_b_3q', x: 7, z: 2, w: 2, d: 2, solid: [{ x: 7, z: 2, w: 2, d: 2, couv: 2 }] }",
-      "{ sprite: 'rc_fo_pin_b_3q', x: 28, z: 2, w: 2, d: 2, solid: [{ x: 28, z: 2, w: 2, d: 2, couv: 2 }] }",
-      "{ sprite: 'rc_fo_pin_b_3q', x: 12, z: 23, w: 2, d: 2, solid: [{ x: 12, z: 23, w: 2, d: 2, couv: 2 }] }",
-      "{ sprite: 'rc_fo_pin_b_3q', x: 29, z: 22.5, w: 2, d: 2, solid: [{ x: 29, z: 22.5, w: 2, d: 2, couv: 2 }] }"
+      "{ sprite: 'rc_fo_pin_b_3q', x: 29.0, z: 21.8, w: 2.2, d: 2.2, solid: [{ x: 29.5, z: 22.3, w: 1.2, d: 1.2, couv: 2 }] }  // sud-est, au sud de l'entrée",
+      "{ sprite: 'rc_fo_pin_b_3q', x: 7.6, z: 5.2, w: 2.2, d: 2.2, solid: [{ x: 8.1, z: 5.7, w: 1.2, d: 1.2, couv: 2 }] }  // lisière interne NO, bord de clairière",
+      "{ sprite: 'rc_fo_pin_b_3q', x: 22.8, z: 6.0, w: 2.2, d: 2.2, solid: [{ x: 23.3, z: 6.5, w: 1.2, d: 1.2, couv: 2 }] }  // entre fourré et lisière nord"
     ],
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur du volume à la caméra du jeu (50 px/m), ancre au coin sud-est de l'emprise au sol ; aucun étirement (bruts sur_v1/gen/, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins",
-    "pente_mesuree": "pied gauche 0.09 / droit 0.03 (cible 0,33 / 0,70)",
+    "pente_mesuree": "pied gauche 0.5 / droit 0.68 (cible 0,33 / 0,70)",
     "ombre_contact": true
   },
   "rc_fo_fourre_3q": {
     "file": "rencontres/rc_fo_fourre_3q.webp",
     "px": [
-      164,
-      127
+      194,
+      174
     ],
     "anchor": [
-      102,
-      126
+      121,
+      173
     ],
     "footprint_m": [
-      2.5,
-      2.2
+      3.0,
+      2.6
     ],
-    "height_m": 1.6,
+    "height_m": 1.8,
     "face": "3q",
     "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "Fourré de pins rabougris, cache de Paca.",
+    "role": "Fourré de genêts et broussailles, vu en iso (pas de dessus), creux intérieur : cache de Paca.",
     "pose": [
-      "{ sprite: 'rc_fo_fourre_3q', x: 24.5, z: 6.5, w: 2.5, d: 2.2, solid: [{ x: 24.5, z: 6.5, w: 2.5, d: 2.2, couv: 1 }] }"
+      "{ sprite: 'rc_fo_fourre_3q', x: 24.2, z: 6.2, w: 3.0, d: 2.6, solid: [{ x: 24.2, z: 6.2, w: 3.0, d: 2.6, couv: 1 }] }  // cache de Paca, nord-est de la piste ; Paca dépasse au sud"
     ],
-    "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur du volume à la caméra du jeu (50 px/m), ancre au coin sud-est de l'emprise au sol ; aucun étirement (bruts sur_v1/gen/, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
     "groupe": "rc_survivant_pins",
-    "pente_mesuree": "pied gauche 0.81 / droit 0.29 (cible 0,33 / 0,70)",
+    "pente_mesuree": "pied gauche 0.39 / droit 0.71 (cible 0,33 / 0,70)",
     "ombre_contact": true
   },
   "rc_fo_borne_3q": {
@@ -3440,7 +3438,7 @@
     "px_par_m": 50,
     "role": "Lanterne à huile accrochée, flamme visible (vraie source → calque _neon). Flaque nocturne générique au sol (enseigne, comme le bivouac).",
     "pose": [
-      "{ sprite: 'rc_sur_lanterne_3q', x: 15.6, z: 12.0, w: 0.25, d: 0.25 }  // + _neon ; ou portée par le pin, selon le câblage"
+      "{ sprite: 'rc_sur_lanterne_3q', x: 15.6, z: 12.0, w: 0.25, d: 0.25, y: 2.65 }  // + _neon ; accrochée à la branche sud du pin foudroyé ; forcer depth 30.5 (après le pin, depth 29.95)"
     ],
     "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur du volume à la caméra du jeu (50 px/m), ancre au coin sud-est de l'emprise au sol ; aucun étirement (bruts sur_v1/gen/, hors dépôt)",
     "status": "v1",
@@ -3632,5 +3630,596 @@
     "status": "v1",
     "groupe": "rc_survivant_pins",
     "vue_de": "gen_rc_paca"
+  },
+  "rc_fo_pin_c_3q": {
+    "file": "rencontres/rc_fo_pin_c_3q.webp",
+    "px": [
+      441,
+      606
+    ],
+    "anchor": [
+      236,
+      605
+    ],
+    "footprint_m": [
+      2.5,
+      2.5
+    ],
+    "height_m": 13.5,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Grand pin pignon sec, 13,5 m, tronc nu, houppier en parasol très large. Module forêt.",
+    "pose": [
+      "{ sprite: 'rc_fo_pin_c_3q', x: 0.4, z: 10.0, w: 2.5, d: 2.5, solid: [{ x: 1.05, z: 10.65, w: 1.2, d: 1.2, couv: 2 }] }  // ouest, juste au nord de la piste",
+      "{ sprite: 'rc_fo_pin_c_3q', x: 28.8, z: 11.4, w: 2.5, d: 2.5, solid: [{ x: 29.45, z: 12.05, w: 1.2, d: 1.2, couv: 2 }] }  // est, juste au nord de l'entrée"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.01 / droit 0.1 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_pin_bouquet_3q": {
+    "file": "rencontres/rc_fo_pin_bouquet_3q.webp",
+    "px": [
+      450,
+      592
+    ],
+    "anchor": [
+      281,
+      591
+    ],
+    "footprint_m": [
+      5.5,
+      4.0
+    ],
+    "height_m": 13.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Bouquet serré de trois pins secs, houppiers entrelacés, 13 m. Un seul sprite, pour fermer une lisière.",
+    "pose": [
+      "{ sprite: 'rc_fo_pin_bouquet_3q', x: 0.2, z: 4.2, w: 5.5, d: 4.0, solid: [{ x: 1.4, z: 5.2, w: 1.2, d: 1.2, couv: 2 }, { x: 3.0, z: 5.3, w: 1.2, d: 1.2, couv: 2 }, { x: 3.8, z: 6.4, w: 1.2, d: 1.2, couv: 2 }] }  // ouest, nord de la piste",
+      "{ sprite: 'rc_fo_pin_bouquet_3q', x: 26.2, z: 3.8, w: 5.5, d: 4.0, solid: [{ x: 27.4, z: 4.8, w: 1.2, d: 1.2, couv: 2 }, { x: 29.0, z: 4.9, w: 1.2, d: 1.2, couv: 2 }, { x: 29.8, z: 6.0, w: 1.2, d: 1.2, couv: 2 }] }  // est, nord de la piste",
+      "{ sprite: 'rc_fo_pin_bouquet_3q', x: 0.4, z: 21.4, w: 5.5, d: 4.0, solid: [{ x: 1.6, z: 22.4, w: 1.2, d: 1.2, couv: 2 }, { x: 3.2, z: 22.5, w: 1.2, d: 1.2, couv: 2 }, { x: 4.0, z: 23.6, w: 1.2, d: 1.2, couv: 2 }] }  // sud-ouest",
+      "{ sprite: 'rc_fo_pin_bouquet_3q', x: 21.5, z: 21.6, w: 5.5, d: 4.0, solid: [{ x: 22.7, z: 22.6, w: 1.2, d: 1.2, couv: 2 }, { x: 24.3, z: 22.7, w: 1.2, d: 1.2, couv: 2 }, { x: 25.1, z: 23.8, w: 1.2, d: 1.2, couv: 2 }] }  // sud-est"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.14 / droit 0.14 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_lisiere_3q": {
+    "file": "rencontres/rc_fo_lisiere_3q.webp",
+    "px": [
+      589,
+      632
+    ],
+    "anchor": [
+      451,
+      631
+    ],
+    "footprint_m": [
+      10.2,
+      3.8
+    ],
+    "height_m": 14.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Lisière dense : cinq pins en rang, houppiers continus, genêts au pied, 14 m. Mur de forêt, pas cinq objets isolés.",
+    "pose": [
+      "{ sprite: 'rc_fo_lisiere_3q', x: 0.0, z: 0, w: 10.2, d: 3.8, solid: [{ x: 1.1, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 3.05, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 5.0, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 6.95, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 8.9, z: 1.3, w: 1.2, d: 1.2, couv: 2 }] }  // lisière nord",
+      "{ sprite: 'rc_fo_lisiere_3q', x: 9.8, z: 0, w: 10.2, d: 3.8, solid: [{ x: 10.9, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 12.85, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 14.8, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 16.75, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 18.7, z: 1.3, w: 1.2, d: 1.2, couv: 2 }] }  // lisière nord",
+      "{ sprite: 'rc_fo_lisiere_3q', x: 19.6, z: 0, w: 10.2, d: 3.8, solid: [{ x: 20.7, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 22.65, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 24.6, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 26.55, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 28.5, z: 1.3, w: 1.2, d: 1.2, couv: 2 }] }  // lisière nord",
+      "{ sprite: 'rc_fo_lisiere_3q', x: 10.0, z: 22.0, w: 10.2, d: 3.8, solid: [{ x: 11.1, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 13.05, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 15.0, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 16.95, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 18.9, z: 23.3, w: 1.2, d: 1.2, couv: 2 }] }  // sud, hors piste"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.38 / droit 0.44 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_genet_3q": {
+    "file": "rencontres/rc_fo_genet_3q.webp",
+    "px": [
+      94,
+      83
+    ],
+    "anchor": [
+      57,
+      82
+    ],
+    "footprint_m": [
+      1.4,
+      1.3
+    ],
+    "height_m": 0.9,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Massif de genêt sec, compact, vert-olive poussiéreux, vue iso.",
+    "pose": [
+      "{ sprite: 'rc_fo_genet_3q', x: 5.0, z: 12.2, w: 1.4, d: 1.3 }  // ouest, au nord de la piste",
+      "{ sprite: 'rc_fo_genet_3q', x: 27.2, z: 13.0, w: 1.4, d: 1.3 }  // est, au nord de la piste",
+      "{ sprite: 'rc_fo_genet_3q', x: 18.6, z: 8.4, w: 1.4, d: 1.3 }  // bord de clairière, est du pin mort"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.24 / droit 0.36 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_genet_b_3q": {
+    "file": "rencontres/rc_fo_genet_b_3q.webp",
+    "px": [
+      79,
+      91
+    ],
+    "anchor": [
+      48,
+      90
+    ],
+    "footprint_m": [
+      1.2,
+      1.1
+    ],
+    "height_m": 1.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Genêt un peu plus dressé, quelques fleurs jaunes fanées, vue iso.",
+    "pose": [
+      "{ sprite: 'rc_fo_genet_b_3q', x: 8.8, z: 11.6, w: 1.2, d: 1.1 }  // bord ouest de la clairière",
+      "{ sprite: 'rc_fo_genet_b_3q', x: 23.0, z: 13.2, w: 1.2, d: 1.1 }  // près du fourré, au nord de la piste",
+      "{ sprite: 'rc_fo_genet_b_3q', x: 3.2, z: 21.0, w: 1.2, d: 1.1 }  // sud-ouest, lisière de piste"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.8 / droit 0.2 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_genet_c_3q": {
+    "file": "rencontres/rc_fo_genet_c_3q.webp",
+    "px": [
+      127,
+      95
+    ],
+    "anchor": [
+      82,
+      94
+    ],
+    "footprint_m": [
+      2.0,
+      1.6
+    ],
+    "height_m": 0.8,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Large massif bas de genêts et broussailles, vue iso.",
+    "pose": [
+      "{ sprite: 'rc_fo_genet_c_3q', x: 1.0, z: 13.4, w: 2.0, d: 1.6 }  // ouest, ourlet de la piste",
+      "{ sprite: 'rc_fo_genet_c_3q', x: 27.8, z: 20.2, w: 2.0, d: 1.6 }  // est, ourlet sud de la piste — ne bouche pas le couloir",
+      "{ sprite: 'rc_fo_genet_c_3q', x: 16.8, z: 21.0, w: 2.0, d: 1.6 }  // sud, ourlet de la piste"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.81 / droit 0.08 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_tronc_3q": {
+    "file": "rencontres/rc_fo_tronc_3q.webp",
+    "px": [
+      146,
+      101
+    ],
+    "anchor": [
+      127,
+      100
+    ],
+    "footprint_m": [
+      3.2,
+      0.8
+    ],
+    "height_m": 0.55,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Tronc de pin couché, écorce pâle, bois à nu par endroits.",
+    "pose": [
+      "{ sprite: 'rc_fo_tronc_3q', x: 8.6, z: 13.4, w: 3.2, d: 0.8, solid: [{ x: 8.7, z: 13.5, w: 3.0, d: 0.6, couv: 1 }] }  // bord ouest de la clairière, parallèle à la piste"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.45 / droit 1.14 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_souche_3q": {
+    "file": "rencontres/rc_fo_souche_3q.webp",
+    "px": [
+      51,
+      65
+    ],
+    "anchor": [
+      31,
+      64
+    ],
+    "footprint_m": [
+      0.9,
+      0.9
+    ],
+    "height_m": 0.6,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Souche de pin sèche, bois fendillé, racines apparentes.",
+    "pose": [
+      "{ sprite: 'rc_fo_souche_3q', x: 11.8, z: 8.6, w: 0.9, d: 0.9, solid: [{ x: 11.85, z: 8.65, w: 0.8, d: 0.8, couv: 1 }] }  // près du pin foudroyé, ouest",
+      "{ sprite: 'rc_fo_souche_3q', x: 21.6, z: 21.2, w: 0.9, d: 0.9, solid: [{ x: 21.65, z: 21.25, w: 0.8, d: 0.8, couv: 1 }] }  // sud de la piste"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.75 / droit 0.25 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_branche_3q": {
+    "file": "rencontres/rc_fo_branche_3q.webp",
+    "px": [
+      86,
+      56
+    ],
+    "anchor": [
+      63,
+      55
+    ],
+    "footprint_m": [
+      1.5,
+      0.8
+    ],
+    "height_m": 0.3,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Branches mortes au sol, bois gris, tas sec.",
+    "pose": [
+      "{ sprite: 'rc_fo_branche_3q', x: 12.2, z: 14.2, w: 1.5, d: 0.8 }  // devant le pin foudroyé, au nord de la piste",
+      "{ sprite: 'rc_fo_branche_3q', x: 19.4, z: 9.6, w: 1.5, d: 0.8 }  // clairière, est du pin",
+      "{ sprite: 'rc_fo_branche_3q', x: 6.4, z: 21.6, w: 1.5, d: 0.8 }  // sud-ouest"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.22 / droit 0.12 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_rocher_3q": {
+    "file": "rencontres/rc_fo_rocher_3q.webp",
+    "px": [
+      87,
+      78
+    ],
+    "anchor": [
+      54,
+      77
+    ],
+    "footprint_m": [
+      1.3,
+      1.1
+    ],
+    "height_m": 0.7,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Rocher pâle, lichen ocre et gris sec (jamais un mousse luisant).",
+    "pose": [
+      "{ sprite: 'rc_fo_rocher_3q', x: 9.4, z: 8.8, w: 1.3, d: 1.1, solid: [{ x: 9.5, z: 8.9, w: 1.1, d: 0.9, couv: 1 }] }  // bord de clairière",
+      "{ sprite: 'rc_fo_rocher_3q', x: 19.8, z: 13.6, w: 1.3, d: 1.1, solid: [{ x: 19.9, z: 13.7, w: 1.1, d: 0.9, couv: 1 }] }  // est de la clairière, au nord de la piste",
+      "{ sprite: 'rc_fo_rocher_3q', x: 4.6, z: 21.8, w: 1.3, d: 1.1, solid: [{ x: 4.7, z: 21.9, w: 1.1, d: 0.9, couv: 1 }] }  // sud-ouest"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.82 / droit 0.33 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_fougere_3q": {
+    "file": "rencontres/rc_fo_fougere_3q.webp",
+    "px": [
+      49,
+      53
+    ],
+    "anchor": [
+      31,
+      52
+    ],
+    "footprint_m": [
+      0.8,
+      0.7
+    ],
+    "height_m": 0.45,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Touffe de fougères sèches, rouille, sous-bois.",
+    "pose": [
+      "{ sprite: 'rc_fo_fougere_3q', x: 13.4, z: 8.6, w: 0.8, d: 0.7 }  // pied ouest du pin foudroyé",
+      "{ sprite: 'rc_fo_fougere_3q', x: 17.6, z: 9.4, w: 0.8, d: 0.7 }  // pied est du pin foudroyé",
+      "{ sprite: 'rc_fo_fougere_3q', x: 23.6, z: 9.2, w: 0.8, d: 0.7 }  // pied du fourré",
+      "{ sprite: 'rc_fo_fougere_3q', x: 6.8, z: 12.8, w: 0.8, d: 0.7 }  // ouest",
+      "{ sprite: 'rc_fo_fougere_3q', x: 11.0, z: 21.4, w: 0.8, d: 0.7 }  // sud"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.0 / droit None (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_fo_litiere_3q": {
+    "file": "rencontres/rc_fo_litiere_3q.webp",
+    "px": [
+      158,
+      93
+    ],
+    "anchor": [
+      111,
+      92
+    ],
+    "footprint_m": [
+      3.2,
+      2.4
+    ],
+    "height_m": 0.05,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque : tapis irrégulier d'aiguilles, pommes de pin, une racine, terre à nu.",
+    "pose": [
+      "{ sprite: 'rc_fo_litiere_3q', x: 13.4, z: 9.6, w: 3.2, d: 2.4 }  // sous le pin foudroyé, fond",
+      "{ sprite: 'rc_fo_litiere_3q', x: 8.0, z: 7.4, w: 3.2, d: 2.4 }  // clairière ouest, fond",
+      "{ sprite: 'rc_fo_litiere_3q', x: 18.8, z: 7.8, w: 3.2, d: 2.4 }  // clairière est, fond",
+      "{ sprite: 'rc_fo_litiere_3q', x: 23.4, z: 6.0, w: 3.2, d: 2.4 }  // sous le fourré, fond",
+      "{ sprite: 'rc_fo_litiere_3q', x: 1.2, z: 10.4, w: 3.2, d: 2.4 }  // ouest, fond",
+      "{ sprite: 'rc_fo_litiere_3q', x: 26.0, z: 10.8, w: 3.2, d: 2.4 }  // est, fond"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.68 / droit 0.42 (cible 0,33 / 0,70)",
+    "ombre_contact": false,
+    "ordre": 1
+  },
+  "rc_fo_ombre_3q": {
+    "file": "rencontres/rc_fo_ombre_3q.webp",
+    "px": [
+      129,
+      74
+    ],
+    "anchor": [
+      88,
+      73
+    ],
+    "footprint_m": [
+      3.9,
+      3.6
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque d'ombre de couronne de rc_fo_pin_3q : le soleil (ONO, fin d'après-midi) est la source. Fond, sombre semi-transparent (pas additif, pas _neon, pas une émission). Opacité 1 − lune ; éteint à 23 h (lune ≈ 1). Couplé à chaque pose de rc_fo_pin_3q, décalé de (x 4.28 ; z 1.78) par rapport à l'origine de l'arbre.",
+    "pose": [
+      "{ sprite: 'rc_fo_ombre_3q', x: 33.48, z: 10.38, w: 3.9, d: 3.6 }  // ombre de rc_fo_pin_3q en (29.2 ; 8.6) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_3q', x: 14.48, z: 4.58, w: 3.9, d: 3.6 }  // ombre de rc_fo_pin_3q en (10.2 ; 2.8) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_3q', x: 24.68, z: 4.78, w: 3.9, d: 3.6 }  // ombre de rc_fo_pin_3q en (20.4 ; 3.0) ; jour seulement, opacité 1 − lune"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.14 / droit 0.28 (cible 0,33 / 0,70)",
+    "ombre_contact": false,
+    "ordre": 1,
+    "jour_seulement": true,
+    "opacite": "1-lune",
+    "decalage_m": [
+      4.28,
+      1.78
+    ],
+    "pour": "rc_fo_pin_3q"
+  },
+  "rc_fo_ombre_b_3q": {
+    "file": "rencontres/rc_fo_ombre_b_3q.webp",
+    "px": [
+      119,
+      61
+    ],
+    "anchor": [
+      86,
+      60
+    ],
+    "footprint_m": [
+      3.66,
+      3.45
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque d'ombre de couronne de rc_fo_pin_b_3q : le soleil (ONO, fin d'après-midi) est la source. Fond, sombre semi-transparent (pas additif, pas _neon, pas une émission). Opacité 1 − lune ; éteint à 23 h (lune ≈ 1). Couplé à chaque pose de rc_fo_pin_b_3q, décalé de (x 3.68 ; z 1.38) par rapport à l'origine de l'arbre.",
+    "pose": [
+      "{ sprite: 'rc_fo_ombre_b_3q', x: 32.68, z: 23.18, w: 3.66, d: 3.45 }  // ombre de rc_fo_pin_b_3q en (29.0 ; 21.8) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_b_3q', x: 11.28, z: 6.58, w: 3.66, d: 3.45 }  // ombre de rc_fo_pin_b_3q en (7.6 ; 5.2) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_b_3q', x: 26.48, z: 7.38, w: 3.66, d: 3.45 }  // ombre de rc_fo_pin_b_3q en (22.8 ; 6.0) ; jour seulement, opacité 1 − lune"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.6 / droit 0.2 (cible 0,33 / 0,70)",
+    "ombre_contact": false,
+    "ordre": 1,
+    "jour_seulement": true,
+    "opacite": "1-lune",
+    "decalage_m": [
+      3.68,
+      1.38
+    ],
+    "pour": "rc_fo_pin_b_3q"
+  },
+  "rc_fo_ombre_c_3q": {
+    "file": "rencontres/rc_fo_ombre_c_3q.webp",
+    "px": [
+      144,
+      74
+    ],
+    "anchor": [
+      109,
+      73
+    ],
+    "footprint_m": [
+      4.19,
+      3.77
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque d'ombre de couronne de rc_fo_pin_c_3q : le soleil (ONO, fin d'après-midi) est la source. Fond, sombre semi-transparent (pas additif, pas _neon, pas une émission). Opacité 1 − lune ; éteint à 23 h (lune ≈ 1). Couplé à chaque pose de rc_fo_pin_c_3q, décalé de (x 4.94 ; z 2.02) par rapport à l'origine de l'arbre.",
+    "pose": [
+      "{ sprite: 'rc_fo_ombre_c_3q', x: 5.34, z: 12.02, w: 4.19, d: 3.77 }  // ombre de rc_fo_pin_c_3q en (0.4 ; 10.0) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_c_3q', x: 33.74, z: 13.42, w: 4.19, d: 3.77 }  // ombre de rc_fo_pin_c_3q en (28.8 ; 11.4) ; jour seulement, opacité 1 − lune"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.23 / droit 0.4 (cible 0,33 / 0,70)",
+    "ombre_contact": false,
+    "ordre": 1,
+    "jour_seulement": true,
+    "opacite": "1-lune",
+    "decalage_m": [
+      4.94,
+      2.02
+    ],
+    "pour": "rc_fo_pin_c_3q"
+  },
+  "rc_fo_ombre_mort_3q": {
+    "file": "rencontres/rc_fo_ombre_mort_3q.webp",
+    "px": [
+      141,
+      73
+    ],
+    "anchor": [
+      106,
+      72
+    ],
+    "footprint_m": [
+      4.27,
+      3.75
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque d'ombre de couronne de rc_fo_pin_mort_3q : le soleil (ONO, fin d'après-midi) est la source. Fond, sombre semi-transparent (pas additif, pas _neon, pas une émission). Opacité 1 − lune ; éteint à 23 h (lune ≈ 1). Couplé à chaque pose de rc_fo_pin_mort_3q, décalé de (x 3.73 ; z 1.45) par rapport à l'origine de l'arbre.",
+    "pose": [
+      "{ sprite: 'rc_fo_ombre_mort_3q', x: 18.33, z: 11.4, w: 4.27, d: 3.75 }  // ombre de rc_fo_pin_mort_3q en (14.6 ; 9.95) ; jour seulement, opacité 1 − lune"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche None / droit None (cible 0,33 / 0,70)",
+    "ombre_contact": false,
+    "ordre": 1,
+    "jour_seulement": true,
+    "opacite": "1-lune",
+    "decalage_m": [
+      3.73,
+      1.45
+    ],
+    "pour": "rc_fo_pin_mort_3q"
+  },
+  "rc_fo_ombre_bouquet_3q": {
+    "file": "rencontres/rc_fo_ombre_bouquet_3q.webp",
+    "px": [
+      213,
+      111
+    ],
+    "anchor": [
+      145,
+      110
+    ],
+    "footprint_m": [
+      5.41,
+      5.05
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque d'ombre de couronne de rc_fo_pin_bouquet_3q : le soleil (ONO, fin d'après-midi) est la source. Fond, sombre semi-transparent (pas additif, pas _neon, pas une émission). Opacité 1 − lune ; éteint à 23 h (lune ≈ 1). Couplé à chaque pose de rc_fo_pin_bouquet_3q, décalé de (x 5.53 ; z 1.98) par rapport à l'origine de l'arbre.",
+    "pose": [
+      "{ sprite: 'rc_fo_ombre_bouquet_3q', x: 5.73, z: 6.18, w: 5.41, d: 5.05 }  // ombre de rc_fo_pin_bouquet_3q en (0.2 ; 4.2) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_bouquet_3q', x: 31.73, z: 5.78, w: 5.41, d: 5.05 }  // ombre de rc_fo_pin_bouquet_3q en (26.2 ; 3.8) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_bouquet_3q', x: 5.93, z: 23.38, w: 5.41, d: 5.05 }  // ombre de rc_fo_pin_bouquet_3q en (0.4 ; 21.4) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_bouquet_3q', x: 27.03, z: 23.58, w: 5.41, d: 5.05 }  // ombre de rc_fo_pin_bouquet_3q en (21.5 ; 21.6) ; jour seulement, opacité 1 − lune"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.18 / droit 0.36 (cible 0,33 / 0,70)",
+    "ombre_contact": false,
+    "ordre": 1,
+    "jour_seulement": true,
+    "opacite": "1-lune",
+    "decalage_m": [
+      5.53,
+      1.98
+    ],
+    "pour": "rc_fo_pin_bouquet_3q"
+  },
+  "rc_fo_ombre_lisiere_3q": {
+    "file": "rencontres/rc_fo_ombre_lisiere_3q.webp",
+    "px": [
+      193,
+      105
+    ],
+    "anchor": [
+      145,
+      104
+    ],
+    "footprint_m": [
+      5.56,
+      4.85
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque d'ombre de couronne de rc_fo_lisiere_3q : le soleil (ONO, fin d'après-midi) est la source. Fond, sombre semi-transparent (pas additif, pas _neon, pas une émission). Opacité 1 − lune ; éteint à 23 h (lune ≈ 1). Couplé à chaque pose de rc_fo_lisiere_3q, décalé de (x 8.32 ; z 2.18) par rapport à l'origine de l'arbre.",
+    "pose": [
+      "{ sprite: 'rc_fo_ombre_lisiere_3q', x: 8.32, z: 2.18, w: 5.56, d: 4.85 }  // ombre de rc_fo_lisiere_3q en (0.0 ; 0.0) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_lisiere_3q', x: 18.12, z: 2.18, w: 5.56, d: 4.85 }  // ombre de rc_fo_lisiere_3q en (9.8 ; 0.0) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_lisiere_3q', x: 27.92, z: 2.18, w: 5.56, d: 4.85 }  // ombre de rc_fo_lisiere_3q en (19.6 ; 0.0) ; jour seulement, opacité 1 − lune",
+      "{ sprite: 'rc_fo_ombre_lisiere_3q', x: 18.32, z: 24.18, w: 5.56, d: 4.85 }  // ombre de rc_fo_lisiere_3q en (10.0 ; 22.0) ; jour seulement, opacité 1 − lune"
+    ],
+    "source": "Ocre, lot v1.1 « Le témoin sous les pins » : refonte forêt (Ocre, 2026-11-18) : GenerateImage (cursor) sur guide 3D à la caméra du jeu, fond vert, détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la hauteur (ou l'emprise pour les props allongés) à 50 px/m, ancre au coin sud-est ; aucun étirement (bruts sur_v1/v11/paint/, hors dépôt)",
+    "status": "v1.1",
+    "groupe": "rc_survivant_pins",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.12 (cible 0,33 / 0,70)",
+    "ombre_contact": false,
+    "ordre": 1,
+    "jour_seulement": true,
+    "opacite": "1-lune",
+    "decalage_m": [
+      8.32,
+      2.18
+    ],
+    "pour": "rc_fo_lisiere_3q"
   }
 }
