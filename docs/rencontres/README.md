@@ -30,7 +30,7 @@ Huit rencontres à rendre jouables avant toute finition (consigne §14 : phase D
 | 03 | Voyageur blessé | en jeu | « Le témoin sous les pins » |
 | 04 | Péage des pillards | en jeu, à compléter (intimider, contourner) | « L'appât de la piste » |
 | 05 | Mutants errants (hostiles) | fiche (pas en jeu) | [ERRANTS.md](ERRANTS.md), zone vitrifiée, modules du verre |
-| 06 | Patrouille IO | à faire | poste routier abandonné |
+| 06 | Patrouille IO | fiche (pas en jeu) | [PATROUILLE.md](PATROUILLE.md), poste routier abandonné (bibliothèque E) |
 | 07 | Tempête de poussière | fiche (pas en jeu) | [TEMPETE.md](TEMPETE.md), route désertique, modules du désert |
 | 08 | Faune mutante | en jeu | « L'écluse des Verriers » (harde de pécaris) |
 
@@ -91,6 +91,8 @@ Une ligne par lot publié : date, commit, ce qui marche en jeu, ce qui reste.
 
 - 2026-11-18 : (Ocre) — fiche courte **« Les Brûlés »** (rencontre 05, mutants errants) : [`ERRANTS.md`](ERRANTS.md). Groupe hostile dans le verre, distinct des Verriers ; trois dispositions (ronde, nid, file). « Attirer l'attention ailleurs » décrit pour Rivet, non implémenté. Maquette concept (MAQUETTE) hors dépôt : `nml-shots/rencontres/errants_concept.png`. Pas de sprites.
 
+- 2026-11-18 : (Ocre) — fiche courte **« La patrouille du Service (IO) »** (rencontre 06) : [`PATROUILLE.md`](PATROUILLE.md). Poste routier abandonné en scène de bibliothèque ; inspection selon implant / humain / mutant ; sérieux bureaucratique. Maquette concept (MAQUETTE) hors dépôt : `nml-shots/rencontres/patrouille_concept.png`. Pas de sprites.
+
 ## Décisions de DA et de lore (Ocre)
 _À compléter à chaque lot._
 - Jalon 1 : voir [PILOTE.md §13](PILOTE.md#13-décisions-de-da-et-de-lore-à-valider-par-valentin) (bande sans faction, noms nouveaux, lien avec Anselme, biome désert ; depuis l'alignement sur ARCHI : lit au niveau 0 rendu par le sol et les berges, sols `g_rc_*` propres au pilote, Tuerto avec son propre sprite, Quilla en deux poses).
@@ -135,6 +137,7 @@ _À compléter à chaque lot._
   - Objets nouveaux `bandage` et `tubes_radio` : pas des objets de quête. Drapeaux `monde_cv_*` : répliques seulement.
   - Tempête de poussière : voir [TEMPETE.md §13](TEMPETE.md#13-décisions-de-da-et-de-lore-à-signaler-à-valentin). Événement de météo, pas de nouvelle faction ; coût en heures réel ; l'épave du Service (IO) et le relais de la caravane ne sont pas réutilisés.
   - Mutants errants : voir [ERRANTS.md §13](ERRANTS.md#13-décisions-de-da-et-de-lore-à-signaler-à-valentin). Les Brûlés, mutants humains malades (type « mutants déments » de la maquette v0.13), pas une horde ; démence par les poches de croûte chaude du verre ; les Verriers restent pacifiques et les redoutent. `monde_errants_vus` : répliques seulement.
+  - Patrouille du Service (IO) : voir [PATROUILLE.md §13](PATROUILLE.md#13-décisions-de-da-et-de-lore-à-signaler-à-valentin). Implants d'immatriculation, mutant abattu à vue, guérite loin du dôme. Accent DA : graphite, laiton / ambre sale, rouge-oxyde au pochoir, pas de cyan ni de violet. Noms : Prato, Kenn, Orel. Antécédents en répliques seulement.
 
 ## Questions ouvertes pour Valentin
 - Tranché : la consigne complète est dans [`CONSIGNE.md`](CONSIGNE.md) (`6b13f86`). Les validations de lore encore ouvertes sont dans les §13 des fiches.
