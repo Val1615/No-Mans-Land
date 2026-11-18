@@ -1358,5 +1358,314 @@
     "calque": "sol",
     "fond": true,
     "note": "à dessiner au sol, avant tout le décor (fond: true)"
+  },
+  "gen_rc_remedios": {
+    "file": "rencontres/gen_rc_remedios.webp",
+    "px": [
+      226,
+      512
+    ],
+    "anchor": [
+      113,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.62,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Doña Remedios, la patronne : soixante ans, ronde et courte, chapeau de paille à large bord, châle garance noué sur une chemise d'homme, longue jupe brune, crayon derrière l'oreille, carnet de comptes pendu à la ceinture par une ficelle, sacoche de cuir ; poings sur les hanches. Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_remedios : x 25.5, z 14.3, faceTo (1,5 ; 21), si !car_vaincue",
+      "combat remedios : x 25.5, z 14.3 (rendSous 0.5)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_quilla (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/remedios.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_dos": "gen_rc_remedios_dos"
+  },
+  "portrait-gen_rc_remedios": {
+    "file": "rencontres/portrait-gen_rc_remedios.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_remedios",
+    "source": "recadrage tête-épaules de gen_rc_remedios sur fond brun (58,44,32), comme les portraits du pilote",
+    "status": "v1",
+    "groupe": "rc_caravane"
+  },
+  "gen_rc_remedios_dos": {
+    "file": "rencontres/gen_rc_remedios_dos.webp",
+    "px": [
+      178,
+      512
+    ],
+    "anchor": [
+      89,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.62,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Doña Remedios, vue de dos 3/4 (dos du chapeau, chignon gris, pointe du châle frangé, talons)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/remedios_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_de": "gen_rc_remedios"
+  },
+  "gen_rc_fierro": {
+    "file": "rencontres/gen_rc_fierro.webp",
+    "px": [
+      194,
+      512
+    ],
+    "anchor": [
+      97,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.84,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Fierro, le garde : la cinquantaine, grand et sec, chapeau brun à bord plat, moustache grise, long poncho brun effrangé sur un gilet de cuir, bottes hautes ; fusil à canon long tenu bas le long de la jambe. Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_fierro : x 13.2, z 16.8, faceTo (1,5 ; 21), si !car_vaincue",
+      "combat fierro : x 13.2, z 16.8"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_quilla (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/fierro.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_dos": "gen_rc_fierro_dos"
+  },
+  "portrait-gen_rc_fierro": {
+    "file": "rencontres/portrait-gen_rc_fierro.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_fierro",
+    "source": "recadrage tête-épaules de gen_rc_fierro sur fond brun (58,44,32), comme les portraits du pilote",
+    "status": "v1",
+    "groupe": "rc_caravane"
+  },
+  "gen_rc_fierro_dos": {
+    "file": "rencontres/gen_rc_fierro_dos.webp",
+    "px": [
+      240,
+      512
+    ],
+    "anchor": [
+      120,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.84,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Fierro, vue de dos 3/4 (capuche du poncho, nuque grise, fusil tenu bas) ; teinte du poncho harmonisée sur la vue de face (transfert Lab)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/fierro_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_de": "gen_rc_fierro"
+  },
+  "gen_rc_ciro": {
+    "file": "rencontres/gen_rc_ciro.webp",
+    "px": [
+      244,
+      512
+    ],
+    "anchor": [
+      122,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.7,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Ciro, le mécanicien : trente ans, rond, visage noir de graisse et grand sourire, bandana olive, maillot taché, salopette brune coupée aux genoux, chiffon à la poche, chaussettes et brodequins ; grosse clé à la main. Debout (après réparation et en combat), vue de face 3/4",
+    "pose": [
+      "pnj rc_ciro : x 30, z 14.2, faceTo (25,5 ; 14,3), si car_repare&!car_vaincue",
+      "combat ciro : x 31, z 14.2 (fuitTour 2)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_quilla (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/ciro.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_dos": "gen_rc_ciro_dos"
+  },
+  "portrait-gen_rc_ciro": {
+    "file": "rencontres/portrait-gen_rc_ciro.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_ciro",
+    "source": "recadrage tête-épaules de gen_rc_ciro sur fond brun (58,44,32), comme les portraits du pilote",
+    "status": "v1",
+    "groupe": "rc_caravane"
+  },
+  "gen_rc_ciro_dos": {
+    "file": "rencontres/gen_rc_ciro_dos.webp",
+    "px": [
+      254,
+      512
+    ],
+    "anchor": [
+      127,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.7,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Ciro, vue de dos 3/4 (nœud du bandana, bretelles croisées, chiffon à la poche arrière, clé à la main)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/ciro_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_de": "gen_rc_ciro"
+  },
+  "gen_rc_lena": {
+    "file": "rencontres/gen_rc_lena.webp",
+    "px": [
+      160,
+      512
+    ],
+    "anchor": [
+      80,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.66,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Lena, la passagère : dix-neuf ans, maigre, cheveux ras sous un foulard olive, chemise beige d'homme trop grande aux manches remontées, pantalon brun rapiécé, sandales, besace et gourde ; avant-bras couverts de plaques sombres et lisses (mutante, sobre, sans éclat). Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_lena : x 28.75, z 14.2, faceTo (1,5 ; 21), si car_vu_lena&!car_vaincue (jamais en combat)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_quilla (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/lena.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_dos": "gen_rc_lena_dos"
+  },
+  "portrait-gen_rc_lena": {
+    "file": "rencontres/portrait-gen_rc_lena.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_lena",
+    "source": "recadrage tête-épaules de gen_rc_lena sur fond brun (58,44,32), comme les portraits du pilote",
+    "status": "v1",
+    "groupe": "rc_caravane"
+  },
+  "gen_rc_lena_dos": {
+    "file": "rencontres/gen_rc_lena_dos.webp",
+    "px": [
+      156,
+      512
+    ],
+    "anchor": [
+      78,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.66,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Lena, vue de dos 3/4 (nœud du foulard, sangle de la besace, plaques sombres au revers des avant-bras)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut car_v1/pnj/lena_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "vue_de": "gen_rc_lena"
+  },
+  "gen_rc_ciro_dessous": {
+    "file": "rencontres/gen_rc_ciro_dessous.webp",
+    "px": [
+      132,
+      43
+    ],
+    "anchor": [
+      66,
+      42
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      1.3,
+      0.7
+    ],
+    "height_m": 0.981,
+    "face": "pose basse au sol, vue à la caméra du jeu (iso 3/4 d’en haut, PAS de profil) ; pas de miroir, pas de vue de dos",
+    "role": "Ciro sous la citerne : seules ses jambes dépassent (salopette coupée, mollets graisseux, brodequins, un genou à peine levé), le haut assombri là où elles entrent sous la cuve ; à côté, caisse à outils ouverte, clé de 17 et chiffon",
+    "pose": [
+      "pnj rc_ciro_dessous : x 31.83, z 13.75 (point d’ancrage = bas du sprite ; les talons tombent en (31,5 ; 13,27), les cuisses entrent sous le châssis de la citerne), sans faceTo, si !car_repare&!car_vaincue"
+    ],
+    "ordre": "trié avec le décor : son point (z 13,75) est au sud de la citerne (z ≤ 12,9) ; même tiré avant elle, ses jambes restent sous la silhouette de la cuve, donc visibles",
+    "vue_dos": null,
+    "note": "height_m = hauteur du sprite / (50 × cos 28,8°) : à cette valeur le billboard sort exactement à 50 px/m, comme les décors ; ne pas utiliser le miroir (la caisse doit rester à l’est)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : disposition tirée du modèle 3D car_v1/m_ciro.py (jambes, caisse, clé) rendu à la caméra du jeu, repeinte par GenerateImage (cursor) image-à-image puis retouchée (blocs du rendu retirés), détourage chroma, ombre de la cuve peinte sur le haut des jambes, UNE mise à l'échelle uniforme x0.085 vers 50 px/m ; aucun étirement (bruts car_v1/pnj/ciro_dessous.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane"
+  },
+  "icone_lame_ressort_64": {
+    "file": "rencontres/icone_lame_ressort_64.webp",
+    "px": [
+      64,
+      64
+    ],
+    "role": "icône d'objet : Lame de ressort (lame_ressort, objet de quête de la caravane)",
+    "icone_de": "lame_ressort",
+    "usage": "ITEMS : icon: 'rencontres/icone_lame_ressort_64.webp', icon128: 'rencontres/icone_lame_ressort_128.webp' (même format que pirate_implant)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, référence de style icone_pique_puce_128, détourage chroma, carré transparent, marge 6 %, mise à l'échelle uniforme (brut car_v1/pnj/lame_ressort.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane"
+  },
+  "icone_lame_ressort_128": {
+    "file": "rencontres/icone_lame_ressort_128.webp",
+    "px": [
+      128,
+      128
+    ],
+    "role": "icône d'objet : Lame de ressort (lame_ressort, objet de quête de la caravane)",
+    "icone_de": "lame_ressort",
+    "usage": "ITEMS : icon: 'rencontres/icone_lame_ressort_64.webp', icon128: 'rencontres/icone_lame_ressort_128.webp' (même format que pirate_implant)",
+    "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, référence de style icone_pique_puce_128, détourage chroma, carré transparent, marge 6 %, mise à l'échelle uniforme (brut car_v1/pnj/lame_ressort.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane"
   }
 }
