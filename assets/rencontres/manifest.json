@@ -3504,5 +3504,133 @@
     "source": "Ocre, lot 1 « Le témoin sous les pins » : sols et décors (Ocre, 2026-11-18) : décalque peint, projeté au sol à la caméra du jeu, 50 px/m, ancre au coin sud-est",
     "status": "v1",
     "groupe": "rc_survivant_pins"
+  },
+  "gen_rc_roque": {
+    "file": "rencontres/gen_rc_roque.webp",
+    "px": [
+      614,
+      512
+    ],
+    "anchor": [
+      307,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.9,
+      0.8
+    ],
+    "height_m": 1.4,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Roque, le muletier : la cinquantaine, peau sombre, veste poussiéreuse déchirée au flanc, chiffon sanglant autour de la cuisse gauche, gourde à la hanche. ASSIS au sol, vue de face 3/4. Il ne peut pas se lever tout seul.",
+    "pose": [
+      "pnj sur_roque : x 15.8, z 12.8, faceTo (30,5 ; 17) (assis contre le pin foudroyé, regard vers l'entrée)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ ; Roque assis : ancre au sol sous les hanches)",
+    "source": "Ocre, lot 2 « Le témoin sous les pins » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_fierro et gen_rc_tecla (caravane / écluse)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut sur_v1/pnj/roque.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_survivant_pins",
+    "vue_dos": "gen_rc_roque_dos",
+    "assise": true
+  },
+  "portrait-gen_rc_roque": {
+    "file": "rencontres/portrait-gen_rc_roque.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_roque",
+    "source": "recadrage tête-épaules de gen_rc_roque sur fond brun (58,44,32), comme les portraits du pilote, de la caravane et des Verriers",
+    "status": "v1",
+    "groupe": "rc_survivant_pins"
+  },
+  "gen_rc_roque_dos": {
+    "file": "rencontres/gen_rc_roque_dos.webp",
+    "px": [
+      636,
+      512
+    ],
+    "anchor": [
+      318,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.9,
+      0.8
+    ],
+    "height_m": 1.4,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Roque, assis, vue de dos 3/4 (dos de la veste déchirée, gourde à la hanche droite, bandage à la cuisse gauche)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ ; Roque assis : ancre au sol sous les hanches)",
+    "source": "Ocre, lot 2 « Le témoin sous les pins » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_tecla_dos / gen_rc_fierro_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut sur_v1/pnj/roque_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_survivant_pins",
+    "vue_de": "gen_rc_roque",
+    "assise": true
+  },
+  "gen_rc_paca": {
+    "file": "rencontres/gen_rc_paca.webp",
+    "px": [
+      244,
+      512
+    ],
+    "anchor": [
+      122,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.68,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Paca, la charognarde : la quarantaine, mince, châle poussiéreux, bâton, sac vide. Debout, vue de face 3/4. Elle n'a rien d'une assassin : elle vit de ce que la piste abandonne.",
+    "pose": [
+      "pnj sur_paca : x 25.5, z 8, faceTo (20 ; 16), si !sur_paca_partie (dans le fourré, regard vers la piste)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ ; Roque assis : ancre au sol sous les hanches)",
+    "source": "Ocre, lot 2 « Le témoin sous les pins » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_fierro et gen_rc_tecla (caravane / écluse)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut sur_v1/pnj/paca.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_survivant_pins",
+    "vue_dos": "gen_rc_paca_dos"
+  },
+  "portrait-gen_rc_paca": {
+    "file": "rencontres/portrait-gen_rc_paca.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_paca",
+    "source": "recadrage tête-épaules de gen_rc_paca sur fond brun (58,44,32), comme les portraits du pilote, de la caravane et des Verriers",
+    "status": "v1",
+    "groupe": "rc_survivant_pins"
+  },
+  "gen_rc_paca_dos": {
+    "file": "rencontres/gen_rc_paca_dos.webp",
+    "px": [
+      252,
+      512
+    ],
+    "anchor": [
+      126,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.68,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Paca, vue de dos 3/4 (nœud du châle, sac dans le dos, bâton dans la main droite)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ ; Roque assis : ancre au sol sous les hanches)",
+    "source": "Ocre, lot 2 « Le témoin sous les pins » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_tecla_dos / gen_rc_fierro_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut sur_v1/pnj/paca_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_survivant_pins",
+    "vue_de": "gen_rc_paca"
   }
 }
