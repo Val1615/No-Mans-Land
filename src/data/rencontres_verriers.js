@@ -195,7 +195,7 @@ export const VERRIERS = {
   arrivee: 'Un canal mort au bord du verre. Une écluse noire, un four qui rougeoie. Dans la cuve, des bêtes grises.',
   arriveeRetour: 'L\u2019écluse, au bord du verre.',
   scene: { size: { w: 36, d: 30 }, city: 'nml', ambiance: 'glass', // courbe glass (ambiances.js, §11) ; repli desert si elle manquait
-    nuitDecor: '^rc_', // tous les décors suivent la nuit (le verre ne luit jamais, §3)
+    // nuitDecor par défaut : tous les décors suivent la nuit (le verre ne luit jamais, §3)
     ground: { base: '#8a8270', skin: 'g_rc_cendre', tileM: 4, clean: true, marge: { skin: 'g_rc_verre', tileM: 4, m: 30, voile: 'rgba(14,12,8,.20)' },
       paint: [ { x: 0, z: 0, w: 36, d: 7, skin: 'g_rc_verre', tileM: 4 }, { x: 12, z: 0, w: 4, d: 4, skin: 'g_rc_verre_b', tileM: 4 }, { x: 28, z: 4, w: 4, d: 3, skin: 'g_rc_verre_c', tileM: 4 },
         { x: 0, z: 7, w: 36, d: 2, skin: 'g_rc_quai', tileM: 4 },

@@ -42,7 +42,10 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     const D = RENCONTRES[id], sc = D.scene, L = D.lieu, A = ambiance(sc.ambiance, heures);
     const loc = JSON.parse(JSON.stringify({ id: L, name: 'No Man\u2019s Land · ' + D.nom, kind: 'exterior', size: sc.size, city: sc.city, ground: sc.ground, light: A ? { bg: A.bg, hemi: A.hemi, sun: A.sun, tint: A.tint, actor: A.actor, lune: A.lune } : sc.light, niveaux: sc.niveaux,
       buildings: sc.buildings, props: sc.props || [], spawn: { player: { x: sc.entree.x, z: sc.entree.z }, companion: { x: sc.entree.x, z: sc.entree.z + 1 } }, accessLabels: true, cadre: sc.cadre, enseignes: sc.enseignes || [] }));
-    for (const b of loc.buildings) if (new RegExp(sc.nuitDecor || '^rc_ds_(talus|berge|rochers|sente)').test(b.sprite)) b.nuit = true; // décors de terrain : suivent la nuit (view.nuitTerrain)
+    // la nuit, tous les décors de la scène (bâtiments, véhicules posés, props) suivent la courbe nocturne comme le talus (view.nuitTerrain) [Régie 18/11] ;
+    // les calques _neon, les enseignes et les flaques sont des matériaux à part : ils restent lumineux. sc.nuitDecor (regex) restreint si besoin.
+    const nd = new RegExp(sc.nuitDecor || '.'); for (const b of loc.buildings) if (nd.test(b.sprite)) b.nuit = true;
+    for (const p of loc.props) if (!p.glow && nd.test(p.sprite || p.furn || '')) p.nuit = true;
     loc.rencontre = id; if (A && loc.ground?.marge) loc.ground.marge.voile = A.voile; // la marge hors scène suit aussi l'heure
     const doors = sc.sorties.map(s => ({ id: `${L}_${s.id}`, location: L, junction: true, quitter: s.id, effet: s.effet, label: s.label,
       opening: { x: s.x > sc.size.w / 2 ? sc.size.w : 0, z: s.z, side: 'edge' }, threshold: { x: s.x, z: s.z },

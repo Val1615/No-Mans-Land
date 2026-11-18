@@ -90,12 +90,23 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // intensité light.lune (courbe nocturne de data/ambiances.js, nulle le jour). Code seul : même texture que le personnage, assets inchangés [Ocre + Régie 18/11]
   const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30, liseresCoupes = false;
   function liseré(s, parent) { const m = new THREE.SpriteMaterial({ map: s.material.map, color: LUNE, transparent: true, depthTest: false, depthWrite: false, opacity: 0 });
-    // tête et épaules seulement (tiers supérieur de l'image, fondu sur 10 %), jamais les pieds ; 50 % d'opacité au plus [Ocre 18/11]
-    m.onBeforeCompile = sh => { sh.vertexShader = 'varying float vHaut;\n' + sh.vertexShader.replace('#include <uv_vertex>', '#include <uv_vertex>\n\tvHaut = uv.y;');
-      sh.fragmentShader = 'varying float vHaut;\n' + sh.fragmentShader.replace('#include <alphatest_fragment>', 'if ( diffuseColor.a < 0.5 * opacity ) discard; diffuseColor.rgb = diffuse; diffuseColor.a *= smoothstep( 0.62, 0.72, vHaut ); if ( diffuseColor.a < 0.01 ) discard;'); };
-    m.customProgramCacheKey = () => 'liseré-lune-haut';
+    // tête et épaules seulement, coupé net (aucun dégradé) : limite à 25 % de la hauteur réelle du personnage, mesurée depuis le haut de sa silhouette
+    // opaque (coupeLisere), pour tous les personnages ; jamais le bras, la canne ni les pieds ; 50 % d'opacité au plus [Ocre + Régie 18/11]
+    const uCoupe = { value: 0.75 }; m.userData.uCoupe = uCoupe;
+    m.onBeforeCompile = sh => { sh.uniforms.uCoupe = uCoupe; sh.vertexShader = 'varying float vHaut;\n' + sh.vertexShader.replace('#include <uv_vertex>', '#include <uv_vertex>\n\tvHaut = uv.y;');
+      sh.fragmentShader = 'varying float vHaut;\nuniform float uCoupe;\n' + sh.fragmentShader.replace('#include <alphatest_fragment>', 'if ( diffuseColor.a < 0.5 * opacity || vHaut < uCoupe ) discard; diffuseColor.rgb = diffuse;'); };
+    m.customProgramCacheKey = () => 'liseré-lune-coupe';
     const r = new THREE.Sprite(m); r.visible = false; r.userData.lisere = true; parent.add(r); liseres.push({ s, r }); return r; }
   liseré(player, scene); liseré(companion, scene);
+  // limite du liseré (uv.y, 1 = haut de l'image) : haut et bas de la silhouette opaque (alpha > 40) lus une fois par image, puis 25 % de cette hauteur
+  const COUPE_LISERE = 0.25, coupes = new WeakMap();
+  function coupeLisere(tex) { const im = tex?.image; if (!im || !im.width) return 0.75; if (coupes.has(im)) return coupes.get(im);
+    let v = 0.75; try { const c = document.createElement('canvas'); c.width = im.width; c.height = im.height; const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(im, 0, 0);
+      const d = g.getImageData(0, 0, c.width, c.height).data, W = c.width, H = c.height; let y0 = -1, y1 = -1;
+      for (let y = 0; y < H && y0 < 0; y++) for (let x = 0; x < W; x++) if (d[(y * W + x) * 4 + 3] > 40) { y0 = y; break; }
+      for (let y = H - 1; y >= 0 && y1 < 0; y--) for (let x = 0; x < W; x++) if (d[(y * W + x) * 4 + 3] > 40) { y1 = y; break; }
+      if (y0 >= 0 && y1 > y0) v = 1 - (y0 + COUPE_LISERE * (y1 - y0 + 1)) / H; } catch (e) { /* image non lisible : repli au quart haut */ }
+    coupes.set(im, v); return v; }
   // Décors de terrain (talus, berges, rochers : b.nuit) la nuit : la teinte seule les laisse ambre saturé, alors que le sol éclairé par la
   // scène passe au gris froid. On les désature et on les assombrit selon la courbe nocturne (k = light.lune) pour qu'ils suivent le sol.
   function nuitTerrain(mat, k) { const d = (0.6 * k).toFixed(3), f = (1 - 0.3 * k).toFixed(3);
@@ -105,7 +116,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function liseresMaj() { const k = Math.max(0, Math.min(1, light?.lune || 0));
     for (let i = liseres.length - 1; i >= 0; i--) { const { s, r } = liseres[i]; if (!r.parent) { liseres.splice(i, 1); continue; }
       r.visible = !liseresCoupes && k > 0.02 && s.visible && !!s.parent; if (!r.visible) continue;
-      if (r.material.map !== s.material.map) r.material.map = s.material.map;
+      if (r.material.map !== s.material.map || r.userData.coupeDe !== s.material.map?.image) { r.material.map = s.material.map; r.userData.coupeDe = s.material.map?.image?.width ? s.material.map.image : null; r.material.userData.uCoupe.value = coupeLisere(s.material.map); }
       const px = 1 / zoomVu; // 1 px écran, quel que soit le zoom : la silhouette décalée vers la lune (en haut à gauche) dépasse d'1 px de ce côté seulement [Ocre 18/11]
       r.center.copy(s.center); r.scale.copy(s.scale); r.material.rotation = s.material.rotation;
       r.position.copy(s.position).addScaledVector(screenRight, -px).addScaledVector(screenUp, px);
@@ -405,6 +416,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       else if (p.box) box(p, p.color,loc.wallSkin);
       else { const s = spriteMesh(p.sprite, (sprites[p.sprite].height_m || 1) * (p.editorScale || 1)); s.userData.editorId=p.id; s.position.set(p.x, p.y || 0, p.z); world.add(s);
         if (p.tint || light.tint) s.material.color.set(p.tint || light.tint);
+        if (p.nuit && !p.glow && light?.lune > 0.02) nuitTerrain(s.material, light.lune); // props des rencontres : suivent la nuit comme les décors
         if (p.glow) { s.material.blending = THREE.AdditiveBlending; s.material.opacity = p.glow; flick.push({ m: s.material, base: p.glow, ph: Math.random() * 6 }); } // hologramme : additif, scintille
         if (p.flip) { s.material.map = actorTex(p.sprite); s.material.map.repeat.x = -1; s.material.map.offset.x = 1; }
         { s.material.depthTest = false; s.material.transparent = true; const [w, d] = p.fp || (p.solid?[p.solid,p.solid]:sprites[p.sprite].footprint_m) || [0.6, 0.6];
@@ -1225,7 +1237,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   }
   return { flaquesNuit: () => neons.filter(o => o.userData.flaqueNuit).map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite })), // tests : flaques nocturnes posées
     acteurs: () => npcSprites.map(s => ({ id: s.userData.npc || s.userData.unit, cx: +s.center.x.toFixed(3), cy: +s.center.y.toFixed(3), miroir: s.material.map.repeat.x < 0, dos: !!s.userData.dos, visible: s.visible })), // tests : ancre, miroir et vue des PNJ et unités
-    liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
+    liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, limites: liseres.filter(o => o.r.visible).map(o => +o.r.material.userData.uCoupe.value.toFixed(3)), visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
     refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{
       const r=canvas.getBoundingClientRect();ray.setFromCamera({x:(x-r.left)/r.width*2-1,y:1-(y-r.top)/r.height*2},cam);
       const candidates=[...bsprites,...bills.map(b=>b.obj),...pickables.filter(o=>o.userData.propBox),player,...npcSprites].filter(s=>s.visible&&kinds.includes(s.userData.buildingId?'building':s===player||s.userData.npc?'actor':'prop'));
