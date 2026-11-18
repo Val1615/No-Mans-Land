@@ -216,5 +216,40 @@ with sync_playwright() as p:
             ok(not s['cbt'] and s['loc'] == LIEU and s['hp'] > 0, f'{name} défaite : réveil dans la scène', (s['loc'], s['hp'], s['x'], s['z']))
         ok(not errs, f'{name} aucune erreur console', errs[:6])
         ctx.close()
+    # nuit [Régie + Ocre 18/11] : flaque chaude du feu (3 m, vacille avec le _neon), talus assombri, liseré tête et épaules (Fierro, Ciro couché) ; jour : rien de tout ça
+    from PIL import Image; import io
+    nuit = {}
+    for h in (10, 23):
+        ctx = br.new_context(viewport={'width': 1280, 'height': 800}); pg = ctx.new_page(); E = pg.evaluate
+        pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=90000); time.sleep(1)
+        E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
+        E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(2)
+        E(f"(()=>{{window.__nml.state.heures={h};return window.__nml.rencontres.entrerMaintenant('caravane_relais')}})()")
+        t0 = time.time()
+        while time.time() - t0 < 60 and not E(f"window.__nml.state.location==='{LIEU}' && window.__nml.lieuPret('{LIEU}')"): time.sleep(.5)
+        time.sleep(2.5); E("document.getElementById('msg').textContent=''")
+        P = lambda x, y, z: E(f"(()=>{{const p=window.__nml.project({x},{y},{z});return [Math.round(p.x),Math.round(p.y)]}})()")
+        moy = lambda im, q, r=3: [sum(c[i] for c in [im.getpixel((q[0] + dx, q[1] + dy)) for dx in range(-r, r + 1) for dy in range(-r, r + 1)]) / (2 * r + 1) ** 2 for i in range(3)]
+        g = E(f"window.__nml.world.LOCATIONS['{LIEU}'].glows||[]"); fq, loin = P(17.5, 0, 16.3), P(17.5, 0, 20)
+        ech = []
+        for _ in range(8):
+            im = Image.open(io.BytesIO(pg.screenshot())).convert('RGB'); ech.append((moy(im, fq), moy(im, loin))); time.sleep(.7)
+        lumi = lambda c: 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]
+        nuit[h] = {'glows': g, 'fl_max': max(lumi(a) - lumi(b) for a, b in ech), 'fl_min': min(lumi(a) - lumi(b) for a, b in ech), 'chaud': min(a[0] - a[2] for a, b in ech)}
+        for who, (x, z, hh) in {'fierro': (13.2, 16.8, 1.84), 'ciro': (31.83, 13.75, 0.6)}.items():
+            a_, b_ = P(x, 0, z), P(x, hh, z); clip = {'x': a_[0] - 45, 'y': b_[1] - 10, 'width': 90, 'height': a_[1] - b_[1] + 16}
+            av = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); E("window.__nml.liseres(false)"); time.sleep(.4)
+            sa = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); E("window.__nml.liseres(true)"); time.sleep(.2)
+            H = a_[1] - b_[1]; ys = [i // av.width - 10 for i, (u, v) in enumerate(zip(av.getdata(), sa.getdata())) if u - v > 12]
+            nuit[h][who] = (len(ys), sum(1 for y in ys if y > 0.5 * H))
+        nuit[h]['op'] = E("window.__nml.liseres().opacite")
+        if h == 23: pg.screenshot(path=OUT + 'livraison/desktop_caravane_nuit_23h.jpg', type='jpeg', quality=88)
+        ctx.close()
+    J, N = nuit[10], nuit[23]
+    ok(not J['glows'] and len(N['glows']) == 1 and N['glows'][0].get('building') == 'car_bivouac' and N['glows'][0]['rx'] == 3 and N['glows'][0]['pulse']['periode'] == 5.5, 'flaque du feu : posée la nuit (3 m, même pulse 5,5 s que le _neon, peinte après le bivouac), absente le jour', (J['glows'], N['glows']))
+    ok(N['fl_min'] > 8 and N['fl_max'] - N['fl_min'] > 12 and N['chaud'] > 15, f'flaque du feu visible la nuit et chaude ({N["fl_min"]:.0f} à {N["fl_max"]:.0f} de luminance au-dessus du sol, elle vacille)', N)
+    ok(J['fl_max'] < 12, f'jour : pas de flaque ({J["fl_max"]:.0f})', J)
+    ok(N['fierro'][0] >= 4 and N['fierro'][1] == 0 and N['ciro'][1] == 0 and 0 < N['op'] <= 0.5, f'liseré de lune : Fierro tête et épaules ({N["fierro"][0]} px, 0 en bas), Ciro couché bord supérieur seulement ({N["ciro"]}), opacité {N["op"]:.2f} ≤ 0,5', N)
+    ok(J['fierro'][0] <= 2 and J['op'] == 0, 'jour : aucun liseré', J)
     br.close()
 print(f'\n{n} OK, {len(fails)} échec(s)'); [print('  -', f) for f in fails]; sys.exit(1 if fails else 0)

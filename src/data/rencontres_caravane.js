@@ -190,7 +190,8 @@ export const CARAVANE = {
       D('car_rochers_b', 'rc_ds_rochers_b_3q', 6, 24.4, 3, 1.5, { solid: [R(6, 24.4, 3, 1.5, 1)] }),
       D('car_rochers', 'rc_ds_rochers_3q', 24, 24.3, 3, 1.5, { solid: [R(24, 24.3, 3, 1.5, 1)] }),
     ],
-    enseignes: [{ id: 'car_feu', building: 'car_bivouac', effet: 'pulse', periode: 5.5, intensite: 0.8 }], // _neon du bivouac : seule lumière de la scène, vacillement lent
+    enseignes: [{ id: 'car_feu', building: 'car_bivouac', effet: 'pulse', periode: 5.5, intensite: 0.8 }],
+    feu: { x: 17.5, z: 15, r: 3, couleur: '#ff963c', i: 0.7, building: 'car_bivouac', pulse: { periode: 5.5, ph: 0 } }, // flaque chaude au sol sous le foyer (3 m), même pulse que le _neon (phase 0 = decale 0) // _neon du bivouac : seule lumière de la scène, vacillement lent
     props: [{ sprite: 'barrel', x: 12, z: 16.6, fp: [0.6, 0.6] }], // fût vide près du puits (assets/reused, réutilisé tel quel)
     entree: { x: 1.5, z: 21, heading: Math.PI / 2 },
     sorties: [

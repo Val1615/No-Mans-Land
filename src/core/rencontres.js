@@ -42,6 +42,8 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     const D = RENCONTRES[id], sc = D.scene, L = D.lieu, A = ambiance(sc.ambiance, heures);
     const loc = JSON.parse(JSON.stringify({ id: L, name: 'No Man\u2019s Land · ' + D.nom, kind: 'exterior', size: sc.size, city: sc.city, ground: sc.ground, light: A ? { bg: A.bg, hemi: A.hemi, sun: A.sun, tint: A.tint, actor: A.actor, lune: A.lune } : sc.light, niveaux: sc.niveaux,
       buildings: sc.buildings, props: sc.props || [], spawn: { player: { x: sc.entree.x, z: sc.entree.z }, companion: { x: sc.entree.x, z: sc.entree.z + 1 } }, accessLabels: true, cadre: sc.cadre, enseignes: sc.enseignes || [] }));
+    for (const b of loc.buildings) if (new RegExp(sc.nuitDecor || '^rc_ds_(talus|berge|rochers|sente)').test(b.sprite)) b.nuit = true; // décors de terrain : suivent la nuit (view.nuitTerrain)
+    if (A && sc.feu) { const i = +(sc.feu.i * A.lune).toFixed(3); if (i > 0.02) (loc.glows ||= []).push({ x: sc.feu.x, z: sc.feu.z, rx: sc.feu.r, rz: sc.feu.r, color: sc.feu.couleur, i, pulse: sc.feu.pulse, building: sc.feu.building }); } // flaque du feu : courbe nocturne, nulle le jour
     loc.rencontre = id; if (A && loc.ground?.marge) loc.ground.marge.voile = A.voile; // la marge hors scène suit aussi l'heure
     const doors = sc.sorties.map(s => ({ id: `${L}_${s.id}`, location: L, junction: true, quitter: s.id, effet: s.effet, label: s.label,
       opening: { x: s.x > sc.size.w / 2 ? sc.size.w : 0, z: s.z, side: 'edge' }, threshold: { x: s.x, z: s.z },

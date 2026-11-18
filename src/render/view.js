@@ -82,20 +82,28 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   player.userData.actor = 'player'; scene.add(player, companion);
   // liseré de lune (nuit) : silhouette bleu-gris froid peinte juste avant le personnage, un peu plus grande et décalée vers la lune (haut-gauche de l'écran) ;
   // intensité light.lune (courbe nocturne de data/ambiances.js, nulle le jour). Code seul : même texture que le personnage, assets inchangés [Ocre + Régie 18/11]
-  const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30;
+  const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30, liseresCoupes = false;
   function liseré(s, parent) { const m = new THREE.SpriteMaterial({ map: s.material.map, color: LUNE, transparent: true, depthTest: false, depthWrite: false, opacity: 0 });
-    m.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('#include <alphatest_fragment>', 'if ( diffuseColor.a < 0.5 * opacity ) discard; diffuseColor.rgb = diffuse;'); };
-    m.customProgramCacheKey = () => 'liseré-lune';
+    // tête et épaules seulement (tiers supérieur de l'image, fondu sur 10 %), jamais les pieds ; 50 % d'opacité au plus [Ocre 18/11]
+    m.onBeforeCompile = sh => { sh.vertexShader = 'varying float vHaut;\n' + sh.vertexShader.replace('#include <uv_vertex>', '#include <uv_vertex>\n\tvHaut = uv.y;');
+      sh.fragmentShader = 'varying float vHaut;\n' + sh.fragmentShader.replace('#include <alphatest_fragment>', 'if ( diffuseColor.a < 0.5 * opacity ) discard; diffuseColor.rgb = diffuse; diffuseColor.a *= smoothstep( 0.62, 0.72, vHaut ); if ( diffuseColor.a < 0.01 ) discard;'); };
+    m.customProgramCacheKey = () => 'liseré-lune-haut';
     const r = new THREE.Sprite(m); r.visible = false; r.userData.lisere = true; parent.add(r); liseres.push({ s, r }); return r; }
   liseré(player, scene); liseré(companion, scene);
+  // Décors de terrain (talus, berges, rochers : b.nuit) la nuit : la teinte seule les laisse ambre saturé, alors que le sol éclairé par la
+  // scène passe au gris froid. On les désature et on les assombrit selon la courbe nocturne (k = light.lune) pour qu'ils suivent le sol.
+  function nuitTerrain(mat, k) { const d = (0.6 * k).toFixed(3), f = (1 - 0.3 * k).toFixed(3);
+    mat.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('#include <alphatest_fragment>', `#include <alphatest_fragment>
+\tdiffuseColor.rgb = mix( diffuseColor.rgb, vec3( dot( diffuseColor.rgb, vec3( 0.299, 0.587, 0.114 ) ) ), ${d} ) * ${f};`); };
+    mat.customProgramCacheKey = () => 'nuit-terrain-' + d + '-' + f; }
   function liseresMaj() { const k = Math.max(0, Math.min(1, light?.lune || 0));
     for (let i = liseres.length - 1; i >= 0; i--) { const { s, r } = liseres[i]; if (!r.parent) { liseres.splice(i, 1); continue; }
-      r.visible = k > 0.02 && s.visible && !!s.parent; if (!r.visible) continue;
+      r.visible = !liseresCoupes && k > 0.02 && s.visible && !!s.parent; if (!r.visible) continue;
       if (r.material.map !== s.material.map) r.material.map = s.material.map;
       const px = 1 / zoomVu; // 1 px écran, quel que soit le zoom : la silhouette décalée vers la lune (en haut à gauche) dépasse d'1 px de ce côté seulement [Ocre 18/11]
       r.center.copy(s.center); r.scale.copy(s.scale); r.material.rotation = s.material.rotation;
       r.position.copy(s.position).addScaledVector(screenRight, -px).addScaledVector(screenUp, px);
-      r.material.opacity = 0.9 * k; r.renderOrder = s.renderOrder - 0.5; } }
+      r.material.opacity = 0.5 * k; r.renderOrder = s.renderOrder - 0.5; } }
 
   function mat(map, color) { return new THREE.MeshStandardMaterial({ map, color: map ? '#ffffff' : color, transparent: true, opacity: 1, roughness: 0.95 }); }
   function addLabel(text, cls, getPos, visible) { const el = document.createElement('div'); el.className = 'wlabel ' + cls; el.textContent = text; labelLayer.appendChild(el); labels.push({ el, getPos, visible }); }
@@ -324,6 +332,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     // enseigne animée (planche horizontale, frames x frame_px, fps du manifeste) : une image de la planche, taille monde = image ordinateur ; version _mobile sur petit écran
     if (m.anime) { t.repeat.set(1 / m.frames, 1); m = { ...m, px: m.frame_px }; }
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, depthWrite: false, color: b.tint || light?.tint || '#ffffff' }));
+    if (b.nuit && light?.lune > 0.02) nuitTerrain(s.material, light.lune);
     s.center.set(m.anchor[0] / m.px[0], 1 - m.anchor[1] / m.px[1]); s.scale.set(m.px[0] / K * (b.k || 1), m.px[1] / K * (b.k || 1) * (b.sy || 1), 1); // b.k : échelle uniforme corrigée par le code // b.sy : tassement vertical par le code quand le sprite livré est plus haut que l'illustration
     s.position.set(b.x + b.w + (b.ancre?.[0] || 0), b.y || 0, b.z + b.d + (b.ancre?.[1] || 0)); // b.y : hauteur (m) d'une enseigne posée en façade ; b.ancre : décalage (m) de l'ancre du sprite par rapport au coin avant (angle de l'Arena, ancre au raccord ouest)
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
@@ -423,7 +432,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const it = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (it) it.extra.push(p); }
     for (const g of (loc.glows || []).filter(g => g.y == null)) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
       m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02 + (g.sol ? hauteurSol(loc, g.x, g.z) : 0), g.z); m.renderOrder = 2; world.add(m); // g.sol : lueur posée sur le niveau (quai)
-      if (g.flicker || g.beat) flick.push({ m: m.material, obj: m, s0: 1, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null }); }
+      if (g.flicker || g.beat || g.pulse) flick.push({ m: m.material, obj: m, s0: 1, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null, pulse: g.pulse || null });
+      const itS = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (itS) { itS.extra.push(m); if (g.pulse) { // extra d'un décor : le fondu du décor pilote l'opacité, donc le vacillement passe par la boucle des enseignes (même neonK, même horloge)
+        const fi = flick.findIndex(f => f.obj === m); if (fi >= 0) flick.splice(fi, 1); m.userData.neon = { effet: 'pulse', periode: g.pulse.periode || 3, ph: g.pulse.ph || 0, i: g.i ?? 0.6 }; m.userData.fondu = 1; neons.push(m); } } } // g.building : flaque peinte juste après le décor qui porte la source (son sol peint ne la recouvre pas) ; g.pulse { periode, ph } : vacille en phase avec l'enseigne du même réglage (feu de bivouac)
     // v13 : figurants immobiles (file d'attente, soldats) et passants qui marchent : mêmes sprites animés que les PNJ, sans dialogue
     for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
       if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; s.userData.sprite = e.sprite; s.userData.dense = !!e.dense; world.add(s); decor.push(s); }
@@ -751,7 +762,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const f of flick) {
       const flk = f.flicker ? 0.84 + 0.16 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2) : 1;
       const bk = !calme && f.beat ? (ostOn ? (f.beat === 'mid' ? 0.30 + 0.95 * midEnv : 0.14 + 1.40 * kickEnv) : 0.18) : 1;
-      f.m.opacity = Math.min(1, (f.obj?.userData.fondu ?? 1) * f.base * flk * bk);
+      const pk = f.pulse && !calme ? neonK({ effet: 'pulse', periode: f.pulse.periode || 3, ph: f.pulse.ph || 0 }, t) : 1;
+      f.m.opacity = Math.min(1, (f.obj?.userData.fondu ?? 1) * f.base * flk * bk * pk);
       if (f.obj && f.beat && !calme) { const sc = f.s0 * (1 + (ostOn ? (f.beat === 'mid' ? 0.16 * midEnv : 0.30 * kickEnv) : 0)); f.obj.scale.set(sc, sc, 1); }
     }
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
@@ -1191,7 +1203,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const p=ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),new THREE.Vector3());
     return p && {x:p.x,z:p.z};
   }
-  return { refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{
+  return { liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
+    refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{
       const r=canvas.getBoundingClientRect();ray.setFromCamera({x:(x-r.left)/r.width*2-1,y:1-(y-r.top)/r.height*2},cam);
       const candidates=[...bsprites,...bills.map(b=>b.obj),...pickables.filter(o=>o.userData.propBox),player,...npcSprites].filter(s=>s.visible&&kinds.includes(s.userData.buildingId?'building':s===player||s.userData.npc?'actor':'prop'));
       const hits=ray.intersectObjects([...new Set(candidates)],false).sort((a,b)=>b.object.renderOrder-a.object.renderOrder);

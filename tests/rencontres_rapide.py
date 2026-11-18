@@ -175,14 +175,25 @@ with sync_playwright() as p:
         while time.time() - t0 < 60 and not E("window.__nml.state.location==='%s' && window.__nml.lieuPret('%s')" % (LIEU, LIEU)): time.sleep(.5)
         time.sleep(2); E("document.getElementById('msg').textContent=''")
         png = pg.screenshot(clip={'x': 240, 'y': 150, 'width': 800, 'height': 450}); pg.screenshot(path=OUT + f'livraison/lumiere_{lab}.jpg', type='jpeg', quality=82)
-        q = E("(()=>{const s=window.__nml.state.player,p=window.__nml.project(s.x,0,s.z);return [p.x,p.y]})()")
-        pim = Image.open(io.BytesIO(pg.screenshot(clip={'x': q[0] - 40, 'y': q[1] - 90, 'width': 80, 'height': 100}))).convert('RGB')
-        rim = sum(1 for (r_, g_, b_) in pim.getdata() if r_ + 8 <= b_ <= r_ + 45 and (r_ + g_ + b_) / 3 > 140)  # pixels blanc bleuté (#c8d2dc) autour du joueur : liseré de lune
-        lum[lab + '_lisere'] = rim
+        # liseré de lune : différence image avec / sans liseré autour du joueur (tête et épaules seulement, jamais les pieds ; 50 % au plus) [Ocre 18/11]
+        bb = E("(()=>{const s=window.__nml.state.player,a=window.__nml.project(s.x,0,s.z),b=window.__nml.project(s.x,1.8,s.z);return [a.x,a.y,b.y]})()")
+        pied, tete = bb[1], bb[2]; clip = {'x': bb[0] - 30, 'y': tete - 12, 'width': 60, 'height': pied - tete + 18}
+        avec = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); E("window.__nml.liseres(false)"); time.sleep(.4)
+        sans = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); lis = E("window.__nml.liseres(true)"); time.sleep(.2)
+        H = pied - tete; ys = [i // avec.width - 12 for i, (u, v) in enumerate(zip(avec.getdata(), sans.getdata())) if u - v > 12]
+        lum[lab + '_lisere'] = len(ys); lum[lab + '_lisere_bas'] = sum(1 for y in ys if y > 0.5 * H); lum[lab + '_lisere_op'] = round(E("window.__nml.liseres().opacite"), 2)
+        # talus et sol : luminance et saturation à deux points fixes de la scène (le talus suit la nuit, au moins aux deux tiers du sol) [Ocre 18/11]
+        full = Image.open(io.BytesIO(pg.screenshot())).convert('RGB')
+        for kp, (x_, y_, z_) in {'talus': (12, 3.5, 2), 'sol': (8, 0, 13)}.items():
+            pp = E(f"(()=>{{const p=window.__nml.project({x_},{y_},{z_});return [p.x,p.y]}})()")
+            px = [full.getpixel((int(pp[0]) + dx, int(pp[1]) + dy)) for dx in range(-4, 5) for dy in range(-4, 5)]
+            c = [sum(q[i] for q in px) / len(px) for i in range(3)]; lum[lab + '_' + kp] = (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2], (max(c) - min(c)) / max(1, max(c)))
         lum[lab] = (ImageStat.Stat(Image.open(io.BytesIO(png)).convert('L')).mean[0], E("window.__nml.state.heures") % 24, E("window.__nml.world.LOCATIONS['%s'].light.sun[1]" % LIEU))
         ctx.close()
     ok(lum['jour_9h'][1] == 9 and lum['nuit_0h'][1] == 0, 'lumière : rencontre forcée à 9 h puis à minuit (heure du voyage)', lum)
-    ok(lum['nuit_0h_lisere'] >= 12 and lum['jour_9h_lisere'] <= 3, f'liseré de lune : liseré 1 px blanc bleuté côté lune sur le joueur à minuit ({lum["nuit_0h_lisere"]} px), absent à 9 h ({lum["jour_9h_lisere"]} px)', lum)
+    ok(lum['nuit_0h_lisere'] >= 6 and lum['nuit_0h_lisere_bas'] == 0 and lum['jour_9h_lisere'] <= 2 and 0 < lum['nuit_0h_lisere_op'] <= 0.5, f'liseré de lune : à minuit sur la tête et les épaules seulement ({lum["nuit_0h_lisere"]} px, {lum["nuit_0h_lisere_bas"]} px dans la moitié basse), opacité {lum["nuit_0h_lisere_op"]} ≤ 0,5 ; absent à 9 h ({lum["jour_9h_lisere"]} px)', lum)
+    dT, dS = 1 - lum['nuit_0h_talus'][0] / lum['jour_9h_talus'][0], 1 - lum['nuit_0h_sol'][0] / lum['jour_9h_sol'][0]
+    ok(dT >= 2 / 3 * dS and lum['nuit_0h_talus'][1] <= 0.55, f'talus de nuit : assombri de {dT:.0%} (sol {dS:.0%}, au moins les deux tiers), saturation {lum["nuit_0h_talus"][1]:.2f} (plus d\u2019ambre plein soleil)', lum)
     ok(lum['jour_9h'][0] > 1.8 * lum['nuit_0h'][0] and lum['jour_9h'][0] > 90, f'lumière : nuit nettement plus sombre que le plein jour (luminance {lum["jour_9h"][0]:.0f} contre {lum["nuit_0h"][0]:.0f})', lum)
     br.close()
 print(f'\n{n} OK, {len(fails)} échec(s)'); [print(' -', f) for f in fails]
