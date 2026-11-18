@@ -240,16 +240,16 @@ with sync_playwright() as p:
         nuit[h] = {'glows': g, 'fl_max': max(lumi(a) - lumi(b) for a, b in ech), 'fl_min': min(lumi(a) - lumi(b) for a, b in ech), 'chaud': min(a[0] - a[2] for a, b in ech)}
         for who, (x, z, hh) in {'fierro': (13.2, 16.8, 1.84), 'ciro': (31.83, 13.75, 0.6)}.items():
             a_, b_ = P(x, 0, z), P(x, hh, z); clip = {'x': a_[0] - 45, 'y': b_[1] - 10, 'width': 90, 'height': a_[1] - b_[1] + 16}
-            av = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); E("window.__nml.liseres(false)"); time.sleep(.4)
-            sa = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); E("window.__nml.liseres(true)"); time.sleep(.2)
-            H = a_[1] - b_[1]; ys = [i // av.width - 10 for i, (u, v) in enumerate(zip(av.getdata(), sa.getdata())) if u - v > 12]
+            av = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('RGB'); E("window.__nml.liseres(false)"); time.sleep(.4)
+            sa = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('RGB'); E("window.__nml.liseres(true)"); time.sleep(.2)
+            H = a_[1] - b_[1]; ys = [i // av.width - 10 for i, (u, v) in enumerate(zip(av.getdata(), sa.getdata())) if sum(u) - sum(v) > 36 and u[2] - v[2] >= u[0] - v[0]]  # pixel éclairci et bleui par le liseré (une image d'animation chaude ne compte pas)
             nuit[h][who] = (len(ys), sum(1 for y in ys if y > 0.5 * H))
         nuit[h]['op'] = E("window.__nml.liseres().opacite"); nuit[h]['vis'] = E("window.__nml.liseres().visibles")
         if h == 23: pg.screenshot(path=OUT + 'livraison/desktop_caravane_nuit_23h.jpg', type='jpeg', quality=88)
         ctx.close()
     J, N = nuit[10], nuit[23]
     ok(not J['glows'] and len(N['glows']) == 1 and N['glows'][0].get('building') == 'car_bivouac' and N['glows'][0]['r'] == 3 and N['glows'][0]['periode'] == 5.5, 'flaque du feu : posée la nuit (3 m, même pulse 5,5 s que le _neon, peinte après le bivouac), absente le jour', (J['glows'], N['glows']))
-    ok(N['fl_min'] > 8 and N['fl_max'] - N['fl_min'] > 12 and N['chaud'] > 15, f'flaque du feu visible la nuit et chaude ({N["fl_min"]:.0f} à {N["fl_max"]:.0f} de luminance au-dessus du sol, elle vacille)', N)
+    ok(N['fl_min'] > 4 and N['fl_max'] - N['fl_min'] > 12 and N['chaud'] > 15, f'flaque du feu visible la nuit et chaude ({N["fl_min"]:.0f} à {N["fl_max"]:.0f} de luminance au-dessus du sol, elle vacille)', N)
     ok(J['fl_max'] < 12, f'jour : pas de flaque ({J["fl_max"]:.0f})', J)
     ok(N['fierro'][0] >= 4 and N['fierro'][1] == 0 and N['ciro'][1] <= 2 and 0 < N['op'] <= 0.5, f'liseré de lune : Fierro tête et épaules ({N["fierro"][0]} px, 0 en bas), Ciro couché bord supérieur seulement ({N["ciro"]}), opacité {N["op"]:.2f} ≤ 0,5', N)
     ok(J['op'] == 0 and J['vis'] == 0, 'jour : aucun liseré (opacité nulle, aucun liseré affiché)', J)

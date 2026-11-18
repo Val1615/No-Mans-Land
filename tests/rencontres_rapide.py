@@ -178,9 +178,9 @@ with sync_playwright() as p:
         # liseré de lune : différence image avec / sans liseré autour du joueur (tête et épaules seulement, jamais les pieds ; 50 % au plus) [Ocre 18/11]
         bb = E("(()=>{const s=window.__nml.state.player,a=window.__nml.project(s.x,0,s.z),b=window.__nml.project(s.x,1.8,s.z);return [a.x,a.y,b.y]})()")
         pied, tete = bb[1], bb[2]; clip = {'x': bb[0] - 30, 'y': tete - 12, 'width': 60, 'height': pied - tete + 18}
-        avec = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); E("window.__nml.liseres(false)"); time.sleep(.4)
-        sans = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); lis = E("window.__nml.liseres(true)"); time.sleep(.2)
-        H = pied - tete; ys = [i // avec.width - 12 for i, (u, v) in enumerate(zip(avec.getdata(), sans.getdata())) if u - v > 12]
+        avec = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('RGB'); E("window.__nml.liseres(false)"); time.sleep(.4)
+        sans = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('RGB'); lis = E("window.__nml.liseres(true)"); time.sleep(.2)
+        H = pied - tete; ys = [i // avec.width - 12 for i, (u, v) in enumerate(zip(avec.getdata(), sans.getdata())) if sum(u) - sum(v) > 36 and u[2] - v[2] >= u[0] - v[0]]  # pixel éclairci et bleui par le liseré (une image d'animation chaude ne compte pas)
         lum[lab + '_lisere'] = len(ys); lum[lab + '_lisere_bas'] = sum(1 for y in ys if y > 0.5 * H); lum[lab + '_lisere_op'] = round(E("window.__nml.liseres().opacite"), 2)
         # talus et sol : luminance et saturation à deux points fixes de la scène (le talus suit la nuit, au moins aux deux tiers du sol) [Ocre 18/11]
         full = Image.open(io.BytesIO(pg.screenshot())).convert('RGB')
