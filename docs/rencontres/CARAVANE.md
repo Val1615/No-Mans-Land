@@ -382,7 +382,7 @@ Objets existants (`ITEMS`, armes du combat, `cric` de Dusk-Town, `carnet_chauffe
 | `rc_car_tracteur_3q` (+ `_texte`) | camion tracteur à cabine avancée, bâché, cabine à l'ouest | 7,5 × 2,6 × 3,3 | portière sud peinte « TRANSPORTES REMEDIOS — NOVO CÓRDOBA · DUSK-TOWN » en calque `_texte` ; bâche rapiécée garance et ocre |
 | `rc_car_remorque_etal_3q` | remorque dont le flanc sud rabattu sur chaînes fait comptoir, auvent de toile, coffre sous le comptoir | 6 × 3,2 × 3,0 | marchandise lisible : bidons, rations, outils pendus |
 | `rc_car_citerne_3q` | citerne cylindrique sur remorque, **penchée vers l'est** (ressort cassé), trappe à l'avant, rangée de trous sur le dessus | 5,5 × 2,4 × 2,6 | l'inclinaison doit se voir de loin ; trous discrets (indice, pas signal) |
-| `rc_car_bivouac_3q` | trois pierres, marmite, tabourets-caisses, fumée mince peinte | 3 × 3 × 1,2 | fumée grise sans halo, foyer visible ; pas de calque `_neon` |
+| `rc_car_bivouac_3q` | trois pierres, marmite, tabourets-caisses, fumée mince peinte | 3 × 3 × 1,2 | fumée grise sans halo, foyer visible ; calque `_neon` serré sur les flammes (feu vert de Régie : vraie source, seule lumière de la scène) |
 | `rc_car_ballots_3q` (+ `_b`) | ballots de toile et caisses cordées | 2 × 1,2 × 1,2 | `_b` plus bas et plus long |
 | `rc_car_traces_3q` | décalque au sol : arcs de pneus, trous de cric, taches d'huile | 9 × 5 | couche sol |
 | `gen_rc_remedios` (+ `_dos`) | PNJ + portrait | 1,62 m | châle garance, chapeau de paille, carnet à la ficelle |
@@ -446,16 +446,17 @@ caravane_relais: {
       D('car_talus2', 'rc_ds_talus_a_3q', 10, 0, 10, 8.5, { solid: [{ x: 10, z: 5, w: 10, d: 3.5, couv: 1 }, { x: 10, z: 0, w: 10, d: 5, couv: 2 }] }),
       D('car_talus3', 'rc_ds_talus_b_3q', 20, 0, 10, 8.5, { solid: [{ x: 20, z: 5, w: 10, d: 3.5, couv: 1 }, { x: 20, z: 0, w: 10, d: 5, couv: 2 }] }),
       D('car_talus4', 'rc_ds_talus_fin_3q', 30, 0, 5, 8.5, { solid: [{ x: 30, z: 5, w: 5, d: 3.5, couv: 1 }, { x: 30, z: 0, w: 5, d: 5, couv: 2 }] }),
-      D('car_relais', 'rc_ds_relais_ufsa_3q', 1, 9.5, 7, 5, { solid: [{ x: 1, z: 9.5, w: 7, d: 5, couv: 2 }] }),
+      D('car_relais', 'rc_ds_relais_ufsa_3q', 1, 9.5, 7, 5, { solid: [{ x: 1.3, z: 9.7, w: 6.6, d: 4, couv: 2 }, { x: 6.3, z: 14, w: 0.7, d: 0.5, couv: 1 }] }),
       D('car_ferraille', 'rc_car_ferraille_3q', 8.5, 10, 3, 2, { solid: [{ x: 8.5, z: 10, w: 3, d: 2, couv: 1 }] }),
       D('car_tracteur', 'rc_car_tracteur_3q', 14, 9.5, 7.5, 2.6, { solid: [{ x: 14, z: 9.5, w: 7.5, d: 2.6, couv: 2 }] }),
+      D('car_tracteur_texte', 'rc_car_tracteur_3q_texte', 14, 9.5, 7.5, 2.6, { etage: 1 }),          // lettrage de la portière (calque normal, même ancre)
       D('car_remorque', 'rc_car_remorque_etal_3q', 22.5, 9.8, 6, 3.2, { solid: [{ x: 22.5, z: 9.8, w: 6, d: 2.5, couv: 2 }, { x: 22.5, z: 12.3, w: 6, d: 0.7, couv: 1 }] }),
       D('car_citerne', 'rc_car_citerne_3q', 29, 10.5, 5.5, 2.4, { solid: [{ x: 29, z: 10.5, w: 5.5, d: 2.4, couv: 2 }] }),
-      D('car_puits', 'rc_ds_puits_3q', 12.5, 13, 2, 2, { solid: [{ x: 12.5, z: 13, w: 2, d: 2, couv: 1 }] }),
+      D('car_puits', 'rc_ds_puits_3q', 12.5, 13, 2, 2, { solid: [{ x: 12.6, z: 13.1, w: 1.8, d: 1.8, couv: 1 }] }),
+      D('car_bivouac', 'rc_car_bivouac_3q', 16, 13.5, 3, 3, { solid: [{ x: 17, z: 14.5, w: 1, d: 1, couv: 0 }] }),   // en buildings pour que son _neon (feu) soit posé
       D('car_bache', 'rc_emb_bache_cache_3q', 30, 14.5, 3.5, 3.5, { solid: [{ x: 30, z: 14.5, w: 3.5, d: 0.5, couv: 1 }, { x: 33, z: 15, w: 0.5, d: 3, couv: 1 }] }),
       D('car_traces', 'rc_car_traces_3q', 21, 13, 9, 5, { fond: true }) ],
     props: [ { sprite: 'rc_car_ballots_3q', x: 20.4, z: 12.4, w: 2, d: 1.2, solid: 1 }, { sprite: 'rc_car_ballots_b_3q', x: 12, z: 9.6, w: 2, d: 1.2, solid: 1 },
-             { sprite: 'rc_car_bivouac_3q', x: 16, z: 13.5, w: 3, d: 3, solid: [{ x: 17, z: 14.5, w: 1, d: 1, couv: 0 }] },
              { sprite: 'barrel', x: 11.7, z: 16.3, w: 0.6, d: 0.6, solid: 1 },
              { sprite: 'rc_ds_panneau_ufsa_3q', x: 1.2, z: 17, w: 0.6, d: 0.2, solid: [{ x: 1.4, z: 17, w: 0.2, d: 0.2, couv: 0 }] },
              { sprite: 'rc_ds_rochers_b_3q', x: 6, z: 24.4, w: 3, d: 1.5, solid: 1 }, { sprite: 'rc_ds_rochers_3q', x: 24, z: 24.3, w: 3, d: 1.5, solid: 1 } ],
@@ -466,7 +467,7 @@ caravane_relais: {
                   { id: 'pres_citerne', zone: { x: 28.5, z: 12.9, w: 6.5, d: 1.6 }, examen: 'rc_citerne' } ],
   pnj: [ { id: 'rc_fierro', name: 'Fierro', sprite: 'gen_rc_fierro', x: 13.2, z: 16.8, faceTo: [1.5, 21], dialogue: 'rc_fierro', si: '!car_vaincue' },
          { id: 'rc_remedios', name: 'Remedios', sprite: 'gen_rc_remedios', x: 25.5, z: 14.3, faceTo: [1.5, 21], dialogue: 'rc_remedios', si: '!car_vaincue' },
-         { id: 'rc_ciro_dessous', name: 'Ciro', sprite: 'gen_rc_ciro_dessous', x: 31.5, z: 13.5, dialogue: 'rc_ciro', si: '!car_repare&!car_vaincue' },
+         { id: 'rc_ciro_dessous', name: 'Ciro', sprite: 'gen_rc_ciro_dessous', x: 31.83, z: 13.75, dialogue: 'rc_ciro', si: '!car_repare&!car_vaincue' },
          { id: 'rc_ciro', name: 'Ciro', sprite: 'gen_rc_ciro', x: 30, z: 14.2, faceTo: [25.5, 14.3], dialogue: 'rc_ciro:debout', si: 'car_repare&!car_vaincue' },
          { id: 'rc_lena', name: 'Lena', sprite: 'gen_rc_lena', x: 28.75, z: 14.2, faceTo: [1.5, 21], dialogue: 'rc_lena', si: 'car_vu_lena&!car_vaincue' } ],
   dialogues: { /* §6 : rc_fierro, rc_remedios, rc_ciro, rc_lena */ },
@@ -486,3 +487,44 @@ caravane_relais: {
 }
 ```
 `monde_remedios_vue` est posé à l'arrivée dans la scène (par le gestionnaire, ou par un `enter` d'arrivée), en plus du journal de la case.
+
+## 15. Table des poses pour Rivet (sprites produits le 2026-11-18)
+Monde en mètres ; `x, z` = coin nord-ouest de l'emprise, ancre du sprite au coin sud-est au sol (`x + w`, `z + d`) ; `depth` = (x + w) + (z + d), la clé de tri du décor (plus grand = dessiné plus tard). Ordre : 0 sols peints, 1 décalque (`fond: true`), 10-13 talus, puis le décor par `depth` croissant ; les PNJ sont triés par le moteur avec le décor (pied du PNJ). Solides : (x ; z) w×d, `c` = couverture. Aucune hauteur (`y`), aucun `etage` sauf le lettrage du tracteur.
+
+| Clé | x | z | w | d | Solides | Ordre | depth | Type et note |
+|---|---|---|---|---|---|---|---|---|
+| `rc_car_traces_3q` | 21 | 13 | 9 | 5 | — | 1 | 48 | buildings (fond: true) ; décalque, couche sol, sous tout le reste |
+| `rc_ds_talus_b_3q` | 0 | 0 | 10 | 8.5 | (0 ; 5) 10×3.5 c1; (0 ; 0) 10×5 c2 | 10 | 18.5 | buildings ; réutilisé (pilote) |
+| `rc_ds_talus_a_3q` | 10 | 0 | 10 | 8.5 | (10 ; 5) 10×3.5 c1; (10 ; 0) 10×5 c2 | 11 | 28.5 | buildings ; réutilisé |
+| `rc_ds_talus_b_3q` | 20 | 0 | 10 | 8.5 | (20 ; 5) 10×3.5 c1; (20 ; 0) 10×5 c2 | 12 | 38.5 | buildings ; réutilisé |
+| `rc_ds_talus_fin_3q` | 30 | 0 | 5 | 8.5 | (30 ; 5) 5×3.5 c1; (30 ; 0) 5×5 c2 | 13 | 43.5 | buildings ; réutilisé |
+| `rc_ds_panneau_ufsa_3q` | 1.2 | 17 | 0.6 | 0.2 | (1.4 ; 17) 0.2×0.2 c0 | 20 | 19 | props ; réutilisé |
+| `rc_ds_relais_ufsa_3q` | 1 | 9.5 | 7 | 5 | (1.3 ; 9.7) 6.6×4 c2; (6.3 ; 14) 0.7×0.5 c1 | 21 | 22.5 | buildings ; murs z 9,7-13,7 ; pompe (6,3-7 ; 14-14,5) ; banc non solide |
+| `rc_car_ferraille_3q` | 8.5 | 10 | 3 | 2 | (8.5 ; 10) 3×2 c1 | 22 | 23.5 | buildings |
+| `rc_car_ballots_b_3q` | 12 | 9.6 | 2 | 1.2 | (12 ; 9.6) 2×1.2 c1 | 23 | 24.8 | props |
+| `barrel` | 11.7 | 16.3 | 0.6 | 0.6 | (11.7 ; 16.3) 0.6×0.6 c1 | 24 | 29.2 | props ; réutilisé (base) |
+| `rc_ds_puits_3q` | 12.5 | 13 | 2 | 2 | (12.6 ; 13.1) 1.8×1.8 c1 | 25 | 29.5 | buildings |
+| `rc_car_tracteur_3q` | 14 | 9.5 | 7.5 | 2.6 | (14 ; 9.5) 7.5×2.6 c2 | 26 | 33.6 | buildings ; cabine à l'ouest ; + rc_car_tracteur_3q_texte en etage: 1 sur la même emprise |
+| `rc_ds_rochers_b_3q` | 6 | 24.4 | 3 | 1.5 | (6 ; 24.4) 3×1.5 c1 | 27 | 34.9 | props ; réutilisé |
+| `rc_car_bivouac_3q` | 16 | 13.5 | 3 | 3 | (17 ; 14.5) 1×1 c0 | 28 | 35.5 | buildings ; en buildings (et non props) pour que le moteur pose son _neon ; seul le foyer est solide |
+| `rc_car_ballots_3q` | 20.4 | 12.4 | 2 | 1.2 | (20.4 ; 12.4) 2×1.2 c1 | 29 | 36 | props |
+| `rc_car_remorque_etal_3q` | 22.5 | 9.8 | 6 | 3.2 | (22.5 ; 9.8) 6×2.5 c2; (22.5 ; 12.3) 6×0.7 c1 | 30 | 41.5 | buildings ; comptoir z 12,3-13,0 (couv 1) ; perches de l’auvent en z 12,9-13,0 non solides |
+| `rc_car_citerne_3q` | 29 | 10.5 | 5.5 | 2.4 | (29 ; 10.5) 5.5×2.4 c2 | 31 | 47.4 | buildings ; penchée vers l’est ; Ciro dessous au sud (31,5 ; 13,5) |
+| `rc_emb_bache_cache_3q` | 30 | 14.5 | 3.5 | 3.5 | (30 ; 14.5) 3.5×0.5 c1; (33 ; 15) 0.5×3 c1 | 32 | 51.5 | buildings ; réutilisé (pilote) |
+| `rc_ds_rochers_3q` | 24 | 24.3 | 3 | 1.5 | (24 ; 24.3) 3×1.5 c1 | 33 | 52.8 | props ; réutilisé |
+
+**PNJ** (pivot 0 au milieu des pieds, `vue_dos` au manifeste, miroir horizontal pour l'autre côté) :
+
+| Clé | Pose | Taille (px) | height_m | Dos |
+|---|---|---|---|---|
+| `gen_rc_fierro` | (13,2 ; 16,8), faceTo (1,5 ; 21) ; combat idem | 194 × 512 | 1,84 | `gen_rc_fierro_dos` |
+| `gen_rc_remedios` | (25,5 ; 14,3), faceTo (1,5 ; 21) ; combat idem | 226 × 512 | 1,62 | `gen_rc_remedios_dos` |
+| `gen_rc_ciro` | debout (30 ; 14,2), faceTo (25,5 ; 14,3) ; combat (31 ; 14,2) | 244 × 512 | 1,70 | `gen_rc_ciro_dos` |
+| `gen_rc_ciro_dessous` | **(31,83 ; 13,75)** : point d'ancrage = bas du sprite ; talons en (31,5 ; 13,27), cuisses sous le châssis ; pas de faceTo, pas de miroir | 132 × 43 | 0.981 (= hauteur px / (50 × cos 28,8°), échelle exacte du décor) | aucun |
+| `gen_rc_lena` | (28,75 ; 14,2), faceTo (1,5 ; 21), jamais en combat | 160 × 512 | 1,66 | `gen_rc_lena_dos` |
+
+Portraits 192 × 192 : `portrait-gen_rc_remedios`, `portrait-gen_rc_fierro`, `portrait-gen_rc_ciro`, `portrait-gen_rc_lena`. Icône de `lame_ressort` : `rencontres/icone_lame_ressort_64.webp` (`icon`) et `_128.webp` (`icon128`), même format que `pirate_implant`.
+
+**Calques** : `rc_car_bivouac_3q_neon` (additif, ≈ 35 px de flammes, orange (255,150,60), seule lumière de la scène ; vacillement lent conseillé par `loc.enseignes`) ; `rc_car_tracteur_3q_texte` (calque **normal**, non additif, jamais retourné) : le moteur ne lit `_texte` que sur les véhicules, d'où la pose en `etage: 1` sur l'emprise du tracteur.
+
+**Écarts avec §3 et §10, assumés** : le décalque `rc_car_traces_3q` montre les arcs de pneus et le piétinement devant le comptoir, sans taches d'huile ; les trois trous de cric tombent sous la citerne, donc cachés (le texte d'examen les garde) ; le bivouac montre trois gamelles posées sur les caisses (le texte en compte quatre : la quatrième peut être dans la marmite) ; la citerne est penchée de 2,5° à l'écran (rotation rigide du repeint), assez pour se lire de près, discret de loin.
