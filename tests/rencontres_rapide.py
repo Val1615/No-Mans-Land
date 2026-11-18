@@ -62,8 +62,24 @@ with sync_playwright() as p:
         ok(set(W['vis']) == {'rc_quilla_assise', 'rc_trapo'}, f'{name} à l\u2019arrivée : seules Quilla (assise) et Don Trapo sont visibles', W['vis'])
         ok(len(W['portes']) == 3 and W['spots'] >= 14, f'{name} 3 sorties de bord, {W["spots"]} points de fouille', W)
         time.sleep(1); shot(f'{name}_rencontre_arrivee.jpg')
+        # 1b) cadrage d'arrivée [retours Ocre + Régie 18/11] : sorties entières et loin du bord, joueur et pick-up dans le cadre, encart de récit hors des sorties, titre hors zoom, lumière de midi
+        CAD = """(()=>{const n=window.__nml,s=n.state,W=innerWidth,H=innerHeight,r=e=>{const q=e.getBoundingClientRect();return [q.left,q.top,q.right,q.bottom]};
+          const ex=[...document.querySelectorAll('#labels .wlabel.edge,#labels .wlabel.junction')].filter(e=>!e.hidden&&e.style.visibility!=='hidden'&&e.getClientRects().length).map(e=>({t:e.textContent,r:r(e)}));
+          const P=(x,z)=>{const p=n.project(x,0,z);return [p.x,p.y]},m=document.getElementById('msg');
+          return {W,H,ex,joueur:P(s.player.x,s.player.z),pickup:P(14.6,12.1),msg:m.textContent&&m.getClientRects().length?r(m):null,loc:r(document.getElementById('locbox')),zoom:r(document.getElementById('zoom'))}})()"""
+        inter = lambda a, b: a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
+        K0 = E(CAD); Wv, Hv = K0['W'], K0['H']
+        ok(len(K0['ex']) == 3 and all(e['r'][0] >= 6 and e['r'][2] <= Wv - 6 and e['r'][1] >= 0 and e['r'][3] <= Hv for e in K0['ex']), f'{name} cadrage : les 3 étiquettes de sortie entières, à 6 px au moins du bord', K0['ex'])
+        ok(all(8 <= q[0] <= Wv - 8 and 60 <= q[1] <= Hv - 150 for q in (K0['joueur'], K0['pickup'])), f'{name} cadrage : joueur et pick-up dans le cadre', (K0['joueur'], K0['pickup']))
+        ok(not inter(K0['loc'], K0['zoom']), f'{name} titre du lieu hors des boutons de zoom', (K0['loc'], K0['zoom']))
+        ARR = 'La piste file droit vers l\u2019est. Au milieu, un pick-up arrêté, capot ouvert. Quelqu\u2019un est affalé contre la portière.'
+        for _ in range(4):  # un minuteur de say() antérieur peut vider l'encart : on repose le texte
+            E("t=>{document.getElementById('msg').textContent=t}", ARR); time.sleep(.4); K1 = E(CAD)
+            if K1['msg']: break
+        ok(K1['msg'] and len(K1['ex']) == 3 and not any(inter(K1['msg'], e['r']) for e in K1['ex']), f'{name} encart de récit d\u2019arrivée : ne chevauche aucune étiquette de sortie (toutes visibles)', (K1['msg'], K1['ex']))
+        Lt = E("window.__nml.world.LOCATIONS['%s'].light" % LIEU); ok(Lt['sun'][1] >= 1.5 and Lt['hemi'][2] >= 1.5 and Lt['tint'] == '#f7efdf', f'{name} lumière de midi : soleil plein, voile brun divisé par trois', Lt)
         # 2) déplacement, fouille, examen
-        r = walk(6, 13); s = S(); ok(r['ok'] and abs(s['x'] - 6) < 0.8 and abs(s['z'] - 13) < 0.8, f'{name} déplacement sur la piste', (r, s['x'], s['z']))
+        r = walk(6, 13); s = S(); ok(E("document.getElementById('msg').textContent") != ARR, f'{name} encart d\u2019arrivée effacé au premier pas'); ok(r['ok'] and abs(s['x'] - 6) < 0.8 and abs(s['z'] - 13) < 0.8, f'{name} déplacement sur la piste', (r, s['x'], s['z']))
         E("(()=>{window.__ev=[];window.__nml.game.on(e=>window.__ev.push({type:e.type,id:e.id,text:e.text}))})()")
         E("window.__nml.game.useSpot('rc_panneau_ex')"); wait("window.__ev.some(e=>e.type==='pickup'&&e.id==='rc_panneau_ex')", 15)
         ok(E("window.__ev.some(e=>e.type==='pickup'&&e.id==='rc_panneau_ex'&&/flèche/.test(e.text))"), f'{name} examen du panneau UFSA')
@@ -82,6 +98,7 @@ with sync_playwright() as p:
         ok(E("window.__nml.state.dialogue?.npc") == 'rc_quilla' and E("window.__nml.game.currentNode().options.some(o=>/en chiffons/.test(o.label))"), f'{name} option « Ton chauffeur est en chiffons » (mannequin vu)')
         # 4) combat : [Attaquer] ; tirage figé (tout manque) pour un test stable
         E("window.__nml.game.setRng(()=>0.99)"); choisir('Attaquer'); ok(wait("window.__nml.state.combat", 10), f'{name} combat lancé depuis le dialogue')
+        ok(wait("document.getElementById('msg').textContent.includes('Morsa saute de l\u2019épave.')", 3), f'{name} récit d\u2019engagement : « Morsa saute de l\u2019épave. »', E("document.getElementById('msg').textContent"))
         Cb = E("(()=>{const c=window.__nml.state.combat;return {z:c.zone,u:c.units.map(u=>({id:u.id,i:u.i,j:u.j,a:u.actif,att:!!u.attend,arme:u.arme}))}})()")
         ids = {u['id'] for u in Cb['u']}; z = Cb['z']
         ok(z == {'i0': 9, 'i1': 27, 'j0': 4, 'j1': 22}, f'{name} zone de combat fixée sur la scène (centre 18 ; 13)', z)
