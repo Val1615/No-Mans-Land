@@ -25,7 +25,7 @@ Huit rencontres à rendre jouables avant toute finition (consigne §14 : phase D
 
 | N° | Rencontre de la consigne | État | Scène |
 |---|---|---|---|
-| 01 | Convoi ensablé | à faire | route désertique, modules du désert |
+| 01 | Convoi ensablé | fiche (pas en jeu) | [CONVOI.md](CONVOI.md), route désertique, modules du désert |
 | 02 | Caravane marchande | en jeu | « La citerne qui respire » |
 | 03 | Voyageur blessé | en cours | « Le témoin sous les pins » |
 | 04 | Péage des pillards | en jeu, à compléter (intimider, contourner) | « L'appât de la piste » |
@@ -81,6 +81,8 @@ Une ligne par lot publié : date, commit, ce qui marche en jeu, ce qui reste.
 
 - 2026-11-18 : (Ocre) — **forêt v1.1** de « Le témoin sous les pins » : pins 10–14 m en iso (3 variantes + bouquet + lisière), sous-bois, sols `g_rc_aiguilles` plus variés, ombres de couronne `rc_fo_ombre_*` (fond, opacité `1 − lune`, éteintes à 23 h). Groupe `rc_survivant_pins` seulement (23 → 41 clés) ; PNJ et props narratifs inchangés hors `y: 2.65` / depth 30,5 de la lanterne. Solides = troncs seulement. Poses : [SURVIVANT.md §15](SURVIVANT.md#15-poses-définitives-et-sprites-publiés). Maquettes jour, nuit 23 h et cadrage 1280 (MAQUETTE) hors dépôt : `nml-shots/rencontres/survivant_maquette.png`, `survivant_maquette_nuit.png`, `survivant_maquette_1280.png`, `survivant_planche_sprites.png`. Aucun `src/` touché.
 
+- 2026-11-18 : (Ocre) — fiche courte **« Le convoi ensablé »** (rencontre 01) : [`CONVOI.md`](CONVOI.md). Une scène-bibliothèque, quatre cargaisons (médical, eau, pièces, contrebande). Modules du désert réutilisés ; camion et équipage (Nando, Sola) à produire plus tard. Maquette concept (MAQUETTE) hors dépôt : `nml-shots/rencontres/convoi_concept.png`. Pas de sprites.
+
 ## Décisions de DA et de lore (Ocre)
 _À compléter à chaque lot._
 - Jalon 1 : voir [PILOTE.md §13](PILOTE.md#13-décisions-de-da-et-de-lore-à-valider-par-valentin) (bande sans faction, noms nouveaux, lien avec Anselme, biome désert ; depuis l'alignement sur ARCHI : lit au niveau 0 rendu par le sol et les berges, sols `g_rc_*` propres au pilote, Tuerto avec son propre sprite, Quilla en deux poses).
@@ -118,6 +120,11 @@ _À compléter à chaque lot._
     - une seule lumière, la lanterne du pin, avec une flaque chaude la nuit (enseigne générique, calque `_neon` publié) ;
     - courbe `forest` proposée, même nuit que le désert ;
     - sprites publiés (`014db7e`, `98a6fd2`).
+
+- Jalon 3 amorcé, convoi ensablé : voir [CONVOI.md §13](CONVOI.md#13-décisions-de-da-et-de-lore-à-signaler-à-valentin).
+  - **Alignement (question de Régie)** : « le Service » des fiches est le Service Militarisé d'IO, bras armé d'IO. Première mention : « le Service (IO) ».
+  - Nando et Sola, transporteurs civils indépendants ; la variante contrebande (lampes de radio pour un atelier de la Sous-Ville) n'étend pas la filière de Remedios.
+  - Objets nouveaux `bandage` et `tubes_radio` : pas des objets de quête. Drapeaux `monde_cv_*` : répliques seulement.
 
 ## Questions ouvertes pour Valentin
 - La consigne reçue s'arrête au milieu de l'étape 5 (« retour au voyage ») : il manque la suite.
