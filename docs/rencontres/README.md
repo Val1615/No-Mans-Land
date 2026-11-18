@@ -1,5 +1,7 @@
 # Rencontres aléatoires et exploration régionale : suivi
 
+Volet DA, assets et lore (pause du 18/11, heure de Paris) : [`ETAT_DA.md`](ETAT_DA.md).
+
 Point d'entrée unique du chantier. La consigne complète de Valentin est dans `CONSIGNE.md`. État au moment de la pause : `../RAPPORT_PAUSE_2026-11-18.md`. L'architecture est dans [`ARCHI.md`](ARCHI.md) (Rivet). Il n'y a pas d'autre fichier de suivi.
 
 Document de reprise. Il est tenu à jour à chaque lot publié, pour qu'un agent (Rivet, Ocre, Régie, ChatGPT ou autre) puisse reprendre le chantier sans relire les conversations.
