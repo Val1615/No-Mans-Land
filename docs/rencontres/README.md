@@ -1,6 +1,6 @@
 # Rencontres aléatoires et exploration régionale : suivi
 
-Point d'entrée unique du chantier. L'architecture est dans [`ARCHI.md`](ARCHI.md) (Rivet). Il n'y a pas d'autre fichier de suivi.
+Point d'entrée unique du chantier. La consigne complète de Valentin est dans `CONSIGNE.md`. L'architecture est dans [`ARCHI.md`](ARCHI.md) (Rivet). Il n'y a pas d'autre fichier de suivi.
 
 Document de reprise. Il est tenu à jour à chaque lot publié, pour qu'un agent (Rivet, Ocre, Régie, ChatGPT ou autre) puisse reprendre le chantier sans relire les conversations.
 
@@ -19,6 +19,25 @@ Toute rencontre se joue dans une vraie scène isométrique, où l'on peut se dé
 - Les grilles des lieux sont construites au démarrage (`src/core/game.js`) : une scène ne s'injecte pas à chaud sans adapter l'architecture. L'architecture est décrite dans `docs/rencontres/ARCHI.md` (Rivet).
 - Les probabilités de base de `nml.js` ne changent pas. Pour tester, on utilise le mode DEV, avec une fonction « forcer une rencontre ».
 - La maquette v0.13 (`reference/maquette/.../07_MAQUETTE_ARCHIVE_v0.13/`) est une réserve d'idées, pas du code à reprendre.
+
+## Catalogue prioritaire (consigne complète du 18/11, voir CONSIGNE.md)
+Huit rencontres à rendre jouables avant toute finition (consigne §14 : phase D seulement ensuite).
+
+| N° | Rencontre de la consigne | État | Scène |
+|---|---|---|---|
+| 01 | Convoi ensablé | à faire | route désertique, modules du désert |
+| 02 | Caravane marchande | en jeu | « La citerne qui respire » |
+| 03 | Voyageur blessé | en cours | « Le témoin sous les pins » |
+| 04 | Péage des pillards | en jeu, à compléter (intimider, contourner) | « L'appât de la piste » |
+| 05 | Mutants errants (hostiles) | à faire | zone vitrifiée, modules du verre |
+| 06 | Patrouille IO | à faire | poste routier abandonné |
+| 07 | Tempête de poussière | à faire | route désertique ou rocheuse, avec épave-abri |
+| 08 | Faune mutante | en jeu | « L'écluse des Verriers » (harde de pécaris) |
+
+Règles de production (consigne §15) : par lot, les cinq tests de la consigne et une passe de captures 1280/390. Les défauts non bloquants vont dans « À reprendre en phase D », pas dans un lot de retouches immédiat.
+
+### À reprendre en phase D
+- (vide pour l'instant)
 
 ## Jalons
 | Jalon | Contenu | État |
