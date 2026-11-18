@@ -3,12 +3,13 @@
 // combat du §8, butin du §9. Gestionnaire : src/core/rencontres.js. Les taux de TERRAINS (data/nml.js) ne sont pas touchés.
 // Repère de la scène : x vers l'est, z vers le sud, mètres, origine au coin nord-ouest. Décor : emprise x, z, w, d ; ancre du sprite au coin sud-est.
 // etage: 1 = posé sur la crête (passe après le talus qui le porte) ; fond: true = couche sol (décalques, berges) sous tout le reste.
+import { CARAVANE, ITEMS_CARAVANE } from './rencontres_caravane.js'; // jalon 2 : « La citerne qui respire »
 const CRETE = [-2.576, -3.748]; // ancre décalée de y 2,5 m (fiche d'Ocre : un sprite de décor n'a pas de champ y)
 const D = (id, sprite, x, z, w, d, extra = {}) => ({ id, label: '', sprite, x, z, w, d, visitable: false, cue: null, named: false, solid: [], ...extra });
 
 export const ITEMS_RENCONTRES = {
   carnet_chauffeur: { name: 'Carnet du chauffeur' }, // lore : « Livraison Anselme, Dusk-Town : 12 bidons filtrés… »
-  fusil: { name: 'Fusil' }, pistolet: { name: 'Pistolet' }, poignard: { name: 'Poignard' }, barre: { name: 'Barre de fer' }, // armes du combat (data/combat.js ARMES) gardées au Sac
+  ...ITEMS_CARAVANE, fusil: { name: 'Fusil' }, pistolet: { name: 'Pistolet' }, poignard: { name: 'Poignard' }, barre: { name: 'Barre de fer' }, // armes du combat (data/combat.js ARMES) gardées au Sac
 };
 
 const PEAGE = (prix, si = '') => [
@@ -99,6 +100,7 @@ const DIALOGUES_RENCONTRES = {
 export const RENCONTRES = {
   embuscade_piste: {
     nom: "L'appât de la piste", famille: 'pillards', terrains: ['piste'], biomes: ['desert', 'rock'], poids: 1, duree: 1, lieu: 'rc_embuscade_piste',
+    surDialogue: [{ npc: '^rc_quilla', flags: ['t1', 'parle'] }, { npc: '^rc_trapo$', flags: ['mannequin_vu'] }], // drapeaux de scène posés à l'ouverture d'un dialogue
     prefixe: 'emb_', // drapeaux de la scène, gardés au journal de la case puis retirés de la partie à la sortie
     arrivee: 'La piste file droit vers l\u2019est. Au milieu, un pick-up arrêté, capot ouvert. Quelqu\u2019un est affalé contre la portière.',
     scene: { size: { w: 30, d: 24 }, city: 'nml',
@@ -178,7 +180,7 @@ export const RENCONTRES = {
       { id: 'rc_plateau', x: 21.75, z: 21.2, si: '!emb_f_plateau&!emb_morsa_desarme&emb_morsa_ko|!emb_f_plateau&!emb_morsa_desarme&emb_vaincue', enter: 'give:fusil;flag:emb_f_plateau', text: 'Sur le plateau : le fusil de Morsa, une gourde vide, des mégots.', empty: 'Rien à prendre sur le plateau.' },
     ],
     dialogues: DIALOGUES_RENCONTRES,
-    combat: { nom: 'Embuscade de la piste', centre: { x: 18, z: 13 }, prefixe: 'emb_',
+    combat: { nom: 'Embuscade de la piste', centre: { x: 18, z: 13 }, prefixe: 'emb_', drapeauxDebut: ['t1', 'vu_talus', 'vu_epave', 'combat'],
       ennemis: [
         { id: 'quilla', nom: 'Quilla', sprite: 'gen_rc_quilla', x: 19, z: 12, pv: 18, pa: 7, initiative: 7, arme: 'pistolet', competences: { melee: 40, armes: 55 }, rendSous: 0.25 },
         { id: 'pibe', nom: 'Pibe', sprite: 'gen_rc_pibe', x: 16.5, z: 4.5, pv: 10, pa: 6, initiative: 8, arme: 'fusil', competences: { melee: 10, armes: 35 }, fuitTour: 2, si: '!emb_pibe_parti&!emb_pibe_ko&!emb_pibe_achete' },
@@ -192,4 +194,5 @@ export const RENCONTRES = {
         reddition: 'Tu jettes les billets dans le sable. Quilla les compte sans se presser.',
         defaite: 'Le ciel. Le sable. Don Trapo, qui te regarde.' } },
   },
+  caravane_relais: CARAVANE, // jalon 2 (docs/rencontres/CARAVANE.md)
 };

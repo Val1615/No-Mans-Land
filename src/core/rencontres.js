@@ -13,11 +13,16 @@ import { onCaseEntree } from './voyage.js';
 const K = c => c[0] + ',' + c[1];
 const dans = (z, x, y) => x >= z.x && x <= z.x + z.w && y >= z.z && y <= z.z + z.d;
 
-export function createRencontres({ game, voyage, say = () => {}, msg = () => '', rng = () => Math.random() }) {
+// gabarits gris : PNJ ou unité dont le sprite d'Ocre n'est pas encore livré -> silhouette grise d'un PNJ existant (gabarit: true, sans portrait)
+const GABARIT_PNJ = 'gen_rc_tuerto';
+export function createRencontres({ game, voyage, say = () => {}, msg = () => '', rng = () => Math.random(), sprites = null }) {
+  const livre = k => !sprites || !!sprites[k];
+  const gabarit = o => livre(o.sprite) ? o : { ...o, sprite: GABARIT_PNJ, gabarit: true, portrait: false, portraitDe: undefined };
   let arrTexte = null; // texte d'arrivée : effacé au premier pas (en 390 l'encart ne reste pas sur les sorties) [Régie 18/11]
   const S = game.state;
-  for (const [id, D] of Object.entries(RENCONTRES)) { ENCOUNTERS[id] = { ...D.combat, prefixe: D.prefixe }; Object.assign(game.world.DIALOGUES, D.dialogues); }
-  const TABLE = [...EVENEMENTS_ROUTE, ...Object.entries(RENCONTRES).map(([id, D]) => ({ id, rencontre: id, terrains: D.terrains, poids: D.poids || 1 }))];
+  for (const [id, D] of Object.entries(RENCONTRES)) { ENCOUNTERS[id] = { ...D.combat, prefixe: D.prefixe, ennemis: D.combat.ennemis.map(gabarit) }; Object.assign(game.world.DIALOGUES, D.dialogues); }
+  // table : événements de route + rencontres (terrains, biomes, si(etat) : caravane unique) ; taux des terrains inchangés (onCaseEntree)
+  const TABLE = [...EVENEMENTS_ROUTE, ...Object.entries(RENCONTRES).map(([id, D]) => ({ id, rencontre: id, terrains: D.terrains, biomes: D.biomes, si: D.si, poids: D.poids || 1 }))];
   const evenement = id => TABLE.find(e => e.rencontre === id);
   let forcee = null, quitterApres = null, dedans = {};
 
@@ -25,10 +30,11 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
   voyage.crochets.onCaseEntree = (c, etat) => {
     const R = etat.region, j = R?.rencontres?.[K([c.col, c.row])];
     if (forcee) { const id = forcee; forcee = null; return evenement(id); } // DEV : rencontre forcée sur la prochaine case
+    if (R?.escorte > 0) { R.escorte--; return null; } // escorte de la caravane : cases sans tirage (extension « escorte », CARAVANE §12.7)
     if (!api.actives) return null; // tests du voyage seul (carte_nml.py) : aucune rencontre
     if (j) return j.regle ? null : evenement(j.id); // case déjà rencontrée : jamais de nouveau tirage
     if (c.lieu) return null; // pas d'embuscade sur la case d'une ville
-    return onCaseEntree(c, etat, { rng, table: TABLE });
+    return onCaseEntree(c, etat, { rng, table: TABLE.filter(e => !e.biomes || !c.biome || e.biomes.includes(c.biome)) });
   };
 
   // --- construction de la scène (lieu, portes de bord, PNJ, points) ---
@@ -40,8 +46,12 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     const doors = sc.sorties.map(s => ({ id: `${L}_${s.id}`, location: L, junction: true, quitter: s.id, effet: s.effet, label: s.label,
       opening: { x: s.x > sc.size.w / 2 ? sc.size.w : 0, z: s.z, side: 'edge' }, threshold: { x: s.x, z: s.z },
       conditions: s.si ? [{ test: () => game.cond(s.si), reason: 'rencontre_bloquee', text: s.refus }] : [] }));
-    const npcs = D.pnj.map(n => ({ location: L, ...n }));
-    const spots = D.points.map(p => ({ location: L, kind: 'actions', r: 0.9, anneau: true, ...p, if: p.si ? () => game.cond(p.si) : null }));
+    const npcs = D.pnj.map(n => ({ location: L, ...gabarit(n), ...(livre(n.sprite) ? {} : { editorScale: n.gabaritH ? n.gabaritH / 1.8 : 1 }) }));
+    // points : alt [{ si, text, enter }] = variante selon l'état (premier qui tient), lue au moment de l'action
+    const spots = D.points.map(p => { const sp = { location: L, kind: 'actions', r: 0.9, anneau: true, ...p, if: p.si ? () => game.cond(p.si) : null };
+      if (p.alt) { const va = () => p.alt.find(a => game.cond(a.si)); delete sp.text; delete sp.enter;
+        Object.defineProperty(sp, 'text', { get: () => va()?.text ?? p.text, enumerable: true }); Object.defineProperty(sp, 'enter', { get: () => va() ? va().enter : p.enter, enumerable: true }); }
+      return sp; });
     game.ajouterLieu(L, loc, { doors, npcs, spots });
     dedans = {};
   }
@@ -61,8 +71,8 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     R.statut = 'rencontre'; // avant le warp : l'autosave de la transition voit la scène
     game.agir(`warp:${D.lieu}:${D.scene.entree.x}:${D.scene.entree.z}`); p.heading = D.scene.entree.heading ?? p.heading;
     dedans = {}; for (const t of D.declencheurs) dedans[t.id] = dans(t.zone, p.x, p.z);
-    setTimeout(() => { arrTexte = j.flags[prefixe(id) + 'vu'] ? 'La piste. Le pick-up est toujours là.' : D.arrivee; say(arrTexte); }, 60);
-    S.flags[prefixe(id) + 'vu'] = true;
+    setTimeout(() => { arrTexte = j.flags[prefixe(id) + 'vu'] ? (D.arriveeRetour || 'La piste. Le pick-up est toujours là.') : D.arrivee; say(arrTexte); }, 60);
+    S.flags[prefixe(id) + 'vu'] = true; if (D.drapeauArrivee) S.flags[D.drapeauArrivee] = true; // drapeau de monde (caravane unique) : jamais purgé
     return { ok: true };
   }
   // --- sortie : porte de bord (effet halte | reprise) ou fuite du combat ---
@@ -72,24 +82,27 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     j.flags = Object.fromEntries(Object.entries(S.flags).filter(([f]) => f.startsWith(pre)));
     j.regle = !!S.flags[pre + 'regle'];
     if (S.dialogue) game.closeDialogue();
+    // durée de la scène (heures) : duree + dureeSi { drapeau: h } (caravane : +1 h si la citerne a été réparée) ; escorte : +1 h, 12 $, 3 cases sans tirage
+    S.heures = (S.heures ?? 0) + (D.duree || 0) + Object.entries(D.dureeSi || {}).reduce((a, [f, h]) => a + (S.flags[f] ? h : 0), 0);
+    const escorte = effet === 'escorte'; if (escorte) { S.heures += 1; R.escorte = 3; game.agir('gain:12'); }
     purge(RC.id); delete R.rencontre; R.statut = 'halte';
     game.agir(`warp:${RC.retour.location}:${RC.retour.x}:${RC.retour.z}`);
     game.retirerLieu(D.lieu);
-    const repris = effet === 'reprise' && R.trajet.length ? voyage.reprendre().ok : false;
-    say(repris ? 'Tu reprends la piste.' : effet === 'fuite' ? 'Tu as semé la bande. La carte, de nouveau.' : 'Tu rebrousses chemin jusqu\u2019à la carte.');
-    return { ok: true, repris, regle: j.regle };
+    const repris = (effet === 'reprise' || escorte) && R.trajet.length ? voyage.reprendre().ok : false;
+    say(escorte ? 'La caravane repart. Tu voyages sur le toit du tracteur : douze dollars à l\u2019arrivée, et personne ne t\u2019arrête.' : repris ? 'Tu reprends la piste.' : effet === 'fuite' ? 'Tu as semé la bande. La carte, de nouveau.' : 'Tu rebrousses chemin jusqu\u2019à la carte.');
+    return { ok: true, repris, regle: j.regle, escorte };
   }
   game.onQuitter(d => quitter(d.effet));
-  game.onRencontre(x => { if (x === 'quitter') quitterApres = 'fuite'; }); // issue de combat : la scène est quittée après la fin du combat (tick)
+  game.onRencontre((x, y) => { if (x === 'quitter') quitterApres = y || 'fuite'; }); // issue de combat (fuite) ou dialogue (rencontre:quitter:escorte) : la scène est quittée à l'image suivante (tick)
   // sauvegarde prise dans la scène : le lieu n'existe qu'à chaud, on le recrée avant la restauration
   game.onLieuManquant(snap => { const RC = snap.region?.rencontre; if (RC && RENCONTRES[RC.id]?.lieu === snap.location) construire(RC.id, snap.heures); });
 
   // --- effets de dialogue et de combat propres à la scène ---
   game.on(ev => {
     const RC = S.region?.rencontre; if (!RC) return; const pre = prefixe(RC.id);
-    if (ev.type === 'dialogue_open' && /^rc_quilla/.test(ev.npc)) { S.flags[pre + 't1'] = true; S.flags[pre + 'parle'] = true; }
-    if (ev.type === 'dialogue_open' && ev.npc === 'rc_trapo') S.flags[pre + 'mannequin_vu'] = true;
-    if (ev.type === 'combat_start') for (const f of ['t1', 'vu_talus', 'vu_epave', 'combat']) S.flags[pre + f] = true;
+    const D = RENCONTRES[RC.id];
+    if (ev.type === 'dialogue_open') for (const r of D.surDialogue || []) if (new RegExp(r.npc).test(ev.npc)) for (const f of r.flags) S.flags[pre + f] = true;
+    if (ev.type === 'combat_start') for (const f of D.combat?.drapeauxDebut || ['combat']) S.flags[pre + f] = true;
     // textes.entrees { id: ligne } : récit d'entrée des unités engagées, ajouté au texte de début (say du début passe après ce crochet : micro-tâche)
     if (ev.type === 'combat_start') { const en = RENCONTRES[RC.id]?.combat?.textes?.entrees || {}, l = (S.combat?.units || []).filter(u => !u.joueur && en[u.id]).map(u => en[u.id]);
       if (l.length) { const t = [ev.text, ...l].filter(Boolean).join(' '); queueMicrotask(() => say(t)); } }

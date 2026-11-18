@@ -51,7 +51,7 @@ let imagesAutorisees = !window.__nmlMenu; // vrai dès que le cadre du Terminal 
 
 // lot 3 : voyage régional (les sorties régionales ouvrent la carte des No Man's Land)
 const voyage = createVoyage({ game, manifest: mapsMan });
-const rencontres = createRencontres({ game, voyage, say: t => say(t), msg: () => $('msg').textContent }); // crochet de case, scène à chaud, journal par case
+const rencontres = createRencontres({ game, voyage, say: t => say(t), msg: () => $('msg').textContent, sprites }); // crochet de case, scène à chaud, journal par case
 if (new URLSearchParams(location.search).get('rencontres') === '0') rencontres.actives = false; // tests du voyage seul : aucun tirage (forcer reste possible)
 const $ = id => document.getElementById(id);
 var shell = null;

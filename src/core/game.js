@@ -95,6 +95,7 @@ export function createGame(world, sprites) {
   function openDialogue(npcId) {
     const n = npcById(npcId);
     state.dialogue = { npc: npcId, node: 'start' };
+    { const e = (n.entrees || []).find(e => cond(e.si)); if (e) state.dialogue.node = e.node; } // rencontres : entrée de dialogue selon l'état (Fierro : start puis encore ; Ciro debout)
     if (n.dialogue === 'teo') { delete state.flags.os_bluff_fait; state.os = null; } // v15 : nouvelle visite = nouvelle partie de Trois Os
     state.player.heading = Math.atan2(n.x - state.player.x, n.z - state.player.z);
     if (!n.fige) state.npcs[npcId].heading = Math.atan2(state.player.x - n.x, state.player.z - n.z); // le PNJ se tourne vers le joueur (n.fige : pose fixe, mannequin, Morsa couché)
@@ -217,11 +218,14 @@ export function createGame(world, sprites) {
     state.flags[sp.flag] = true; act(`give:${sp.item}`); emit({ type: 'pickup', id: sp.id, text: sp.text }); }
   // rencontres : point de fouille ou d'examen { kind:'actions', text (chaîne ou fn(state, ok)), enter, test, testSi, pass, fail } ;
   // test (ex. discretion:6) tenté si testSi tient (sinon effet direct enter) ; un combat:… posé par l'effet démarre aussitôt
-  function spotActions(sp) { let ok = true, acts = sp.enter;
-    if (sp.test && (!sp.testSi || cond(sp.testSi))) { const r = tester(sp.test); ok = r.ok; acts = ok ? (sp.pass ?? sp.enter) : sp.fail; }
+  // tests: ['mecanique:4', 'force:6'] : l'un ou l'autre (ferraille de la caravane) ; dialogue 'pnj:noeud' (si dialogueSi) : ouvert après l'examen (citerne -> frapper)
+  function spotActions(sp) { let ok = true, acts = sp.enter; const tests = sp.tests || (sp.test ? [sp.test] : []);
+    if (tests.length && (!sp.testSi || cond(sp.testSi))) { ok = tests.some(t => tester(t).ok); acts = ok ? (sp.pass ?? sp.enter) : sp.fail; }
     const text = typeof sp.text === 'function' ? sp.text(state, ok) : sp.text;
     emit({ type: 'pickup', id: sp.id, text, ok });
-    agir(acts); closeDialogue(); return { ok: true, reussi: ok }; }
+    agir(acts); closeDialogue();
+    if (sp.dialogue && !state.combatPending && (!sp.dialogueSi || cond(sp.dialogueSi))) { const [n, nd] = sp.dialogue.split(':'); ouvrirDialogue(n, nd || 'start'); }
+    return { ok: true, reussi: ok }; }
   function agir(str) { for (const a of (str || '').split(';').filter(Boolean)) act(a); }
   function tester(spec, opposed = false) { const r = testOf({ test: spec, opposed });
     emit({ type: 'test', attr: r.k, ok: r.ok, total: r.total, contre: r.contre, text: r.ok ? 'Réussi.' : 'Raté.' }); return r; }
