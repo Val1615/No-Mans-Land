@@ -33,7 +33,7 @@ export function createRencontres({ game, voyage, say = () => {}, rng = () => Mat
   function construire(id) {
     const D = RENCONTRES[id], sc = D.scene, L = D.lieu;
     const loc = JSON.parse(JSON.stringify({ id: L, name: 'No Man\u2019s Land · ' + D.nom, kind: 'exterior', size: sc.size, city: sc.city, ground: sc.ground, light: sc.light, niveaux: sc.niveaux,
-      buildings: sc.buildings, props: sc.props || [], spawn: { player: { x: sc.entree.x, z: sc.entree.z }, companion: { x: sc.entree.x, z: sc.entree.z + 1 } }, accessLabels: true }));
+      buildings: sc.buildings, props: sc.props || [], spawn: { player: { x: sc.entree.x, z: sc.entree.z }, companion: { x: sc.entree.x, z: sc.entree.z + 1 } }, accessLabels: true, cadre: sc.cadre }));
     loc.rencontre = id;
     const doors = sc.sorties.map(s => ({ id: `${L}_${s.id}`, location: L, junction: true, quitter: s.id, effet: s.effet, label: s.label,
       opening: { x: s.x > sc.size.w / 2 ? sc.size.w : 0, z: s.z, side: 'edge' }, threshold: { x: s.x, z: s.z },
@@ -88,6 +88,9 @@ export function createRencontres({ game, voyage, say = () => {}, rng = () => Mat
     if (ev.type === 'dialogue_open' && /^rc_quilla/.test(ev.npc)) { S.flags[pre + 't1'] = true; S.flags[pre + 'parle'] = true; }
     if (ev.type === 'dialogue_open' && ev.npc === 'rc_trapo') S.flags[pre + 'mannequin_vu'] = true;
     if (ev.type === 'combat_start') for (const f of ['t1', 'vu_talus', 'vu_epave', 'combat']) S.flags[pre + f] = true;
+    // textes.entrees { id: ligne } : récit d'entrée des unités engagées, ajouté au texte de début (say du début passe après ce crochet : micro-tâche)
+    if (ev.type === 'combat_start') { const en = RENCONTRES[RC.id]?.combat?.textes?.entrees || {}, l = (S.combat?.units || []).filter(u => !u.joueur && en[u.id]).map(u => en[u.id]);
+      if (l.length) { const t = [ev.text, ...l].filter(Boolean).join(' '); queueMicrotask(() => say(t)); } }
   });
 
   // --- chaque image, dans la scène : déclencheurs au sol, fuite différée, ménage ---

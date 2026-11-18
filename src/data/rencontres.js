@@ -102,12 +102,15 @@ export const RENCONTRES = {
     prefixe: 'emb_', // drapeaux de la scène, gardés au journal de la case puis retirés de la partie à la sortie
     arrivee: 'La piste file droit vers l\u2019est. Au milieu, un pick-up arrêté, capot ouvert. Quelqu\u2019un est affalé contre la portière.',
     scene: { size: { w: 30, d: 24 }, city: 'nml',
-      ground: { base: '#a8875a', skin: 'g_rc_sable', tileM: 4, clean: true, marge: { skin: 'g_rc_sable', tileM: 4, m: 30, voile: 'rgba(14,10,6,.55)' }, // hors scène : le sable continue, voilé (pas de vide)
+      ground: { base: '#a8875a', skin: 'g_rc_sable', tileM: 4, clean: true, marge: { skin: 'g_rc_sable', tileM: 4, m: 30, voile: 'rgba(14,10,6,.18)' }, // hors scène : le sable continue, voilé (pas de vide)
         paint: [
         { x: 0, z: 10, w: 30, d: 6, skin: 'g_rc_piste', tileM: 4 }, { x: 8, z: 10, w: 4, d: 4, skin: 'g_rc_piste_b', tileM: 4 }, { x: 20, z: 10, w: 4, d: 4, skin: 'g_rc_piste_c', tileM: 4 },
         { x: 0, z: 17, w: 30, d: 7, skin: 'g_rc_lit', tileM: 4 }, { x: 12, z: 17, w: 4, d: 4, skin: 'g_rc_lit_b', tileM: 4 }, { x: 24, z: 21, w: 4, d: 3, skin: 'g_rc_lit_b', tileM: 4 },
         { x: 0, z: 4, w: 4, d: 4, skin: 'g_rc_sable_b', tileM: 4 }, { x: 24, z: 8, w: 4, d: 2, skin: 'g_rc_sable_c', tileM: 4 } ] },
-      light: { bg: '#1a1510', hemi: ['#f0dcb0', '#3a2a18', 1.3], sun: ['#ffd890', 0.9], tint: '#e8d0a0', actor: '#f2e6cc' },
+      // midi au désert : ambre franc de la maquette (voile brun divisé par trois : tint/acteurs presque neutres, soleil plein) [retours Ocre 18/11]
+      light: { bg: '#3a2c1c', hemi: ['#fff0d8', '#5a4630', 1.5], sun: ['#ffd890', 1.6], tint: '#f7efdf', actor: '#fcf7ee' },
+      // cadre : à l'arrivée, la caméra vise entre le joueur et le pick-up ; butée : pas de vide ni de sable voilé aux bords (comme le terminus) [Régie 18/11]
+      cadre: { desktop: { x: [8, 22], z: [9.5, 15], butee: true }, mobile: { x: [6.5, 23.5], z: [9, 15.5], butee: true } },
       niveaux: [{ x: 5, z: 0, w: 25, d: 5, y: 2.5 }, { x: 2, z: 3, w: 3, d: 7, y0: 2.5, y1: 0, axe: 'z' }],
       buildings: [ // PILOTE §15, dans l'ordre de la table
         D('rc_traces', 'rc_emb_traces_3q', 11, 8.6, 2, 1, { fond: true }), D('rc_trainees', 'rc_emb_trainees_3q', 18, 15.5, 9, 6, { fond: true }),
@@ -183,6 +186,7 @@ export const RENCONTRES = {
         { id: 'tuerto', nom: 'Tuerto', sprite: 'gen_rc_tuerto', x: 10, z: 20.5, pv: 14, pa: 6, initiative: 6, arme: 'barre', competences: { melee: 45, armes: 20 }, entreTour: 2, si: '!emb_tuerto_achete' } ],
       issues: { victoire: 'flag:emb_regle;flag:emb_vaincue', fuite: 'rencontre:quitter', reddition: 'payMax:20;flag:emb_regle', defaite: 'payMax:20;take:water;flag:emb_regle;warp:rc_embuscade_piste:1.5:13' },
       textes: { debut: 'Quilla siffle entre ses dents. Sur la crête et sur l\u2019épave, des fusils se lèvent.',
+        entrees: { morsa: 'Morsa saute de l\u2019épave.' }, // ligne de récit quand l'unité est engagée (Morsa reste au sol en (19 ; 17), niche inchangée) [retours Ocre 18/11]
         victoire: 'Quilla crache dans le sable. « Garde la piste, alors. Elle ne te gardera pas. » Ils s\u2019en vont par le lit.',
         fuite: 'Tu cours jusqu\u2019à ne plus entendre les boîtes de conserve.',
         reddition: 'Tu jettes les billets dans le sable. Quilla les compte sans se presser.',
