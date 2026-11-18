@@ -432,9 +432,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const it = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (it) it.extra.push(p); }
     for (const g of (loc.glows || []).filter(g => g.y == null)) { const m = new THREE.Mesh(new THREE.PlaneGeometry(g.rx * 2, g.rz * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: g.color, transparent: true, opacity: g.i ?? 0.6, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
       m.rotation.x = -Math.PI / 2; m.position.set(g.x, 0.02 + (g.sol ? hauteurSol(loc, g.x, g.z) : 0), g.z); m.renderOrder = 2; world.add(m); // g.sol : lueur posée sur le niveau (quai)
-      if (g.flicker || g.beat || g.pulse) flick.push({ m: m.material, obj: m, s0: 1, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null, pulse: g.pulse || null });
-      const itS = g.building && bills.find(i => i.obj.userData.buildingId === g.building); if (itS) { itS.extra.push(m); if (g.pulse) { // extra d'un décor : le fondu du décor pilote l'opacité, donc le vacillement passe par la boucle des enseignes (même neonK, même horloge)
-        const fi = flick.findIndex(f => f.obj === m); if (fi >= 0) flick.splice(fi, 1); m.userData.neon = { effet: 'pulse', periode: g.pulse.periode || 3, ph: g.pulse.ph || 0, i: g.i ?? 0.6 }; m.userData.fondu = 1; neons.push(m); } } } // g.building : flaque peinte juste après le décor qui porte la source (son sol peint ne la recouvre pas) ; g.pulse { periode, ph } : vacille en phase avec l'enseigne du même réglage (feu de bivouac)
+      if (g.flicker || g.beat) flick.push({ m: m.material, obj: m, s0: 1, base: g.i ?? 0.6, ph: flick.length * 1.13, flicker: !!g.flicker, beat: g.beat || null }); }
     // v13 : figurants immobiles (file d'attente, soldats) et passants qui marchent : mêmes sprites animés que les PNJ, sans dialogue
     for (const e of loc.extras || []) { const s = spriteMesh(e.sprite, e.h || null, true); s.position.set(e.x, 0, e.z); s.material.depthTest = false; s.material.transparent = true;
       if (light.actor) s.material.color.set(light.actor); s.userData.facing = e.face || 1; s.userData.role = e.role; s.userData.sprite = e.sprite; s.userData.dense = !!e.dense; world.add(s); decor.push(s); }
@@ -540,6 +538,20 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     s.material.map = th; s.center.set(s.center.x, (cy - r) / (1 - r)); s.scale.set(s.scale.x, sh * (1 - r), 1);
     const p = new THREE.Sprite(s.material.clone()); p.material.map = tb; p.center.set(s.center.x, cy / r); p.scale.set(s.scale.x, sh * r, 1); p.position.copy(s.position);
     p.userData.neon = s.userData.neon; p.userData.fondu = 1; p.userData.flaque = F.sur || true; world.add(p); neons.push(p); flaques.push(p); }
+  // Flaque nocturne d'une enseigne (e.flaque, voir docs/rencontres/ARCHI.md « Flaque nocturne ») : lumière posée au sol sous la source, peinte juste
+  // après le décor qui la porte (son sol peint ne la recouvre pas), qui vacille en phase avec l'enseigne (même effet, période, décalage).
+  // Opacité = i × k, k = light.lune (courbe nocturne) si présent, sinon 1 − luminance de la teinte ; rien si k·i < 0,02 (le jour).
+  // f.cle : décalque d'Ocre (additif, ancre du manifeste, emprise x/z/w/d) ; sinon gradient dessiné en code, disque de rayon f.r (m).
+  function flaqueNuit(e, b, item) { const f = e.flaque, tc = new THREE.Color(light?.tint || '#ffffff');
+    const k = light?.lune != null ? light.lune : 1 - (0.299 * tc.r + 0.587 * tc.g + 0.114 * tc.b), i = (f.i ?? 0.6) * k; if (i < 0.02) return;
+    let o; const mf = f.cle && bman[f.cle], cle = mf && SKIN[f.cle] ? f.cle : null;
+    if (cle) { const w = f.w ?? mf.w ?? 3, d = f.d ?? mf.d ?? 2, x = f.x ?? (b.x + b.w / 2 - w / 2), z = f.z ?? (b.z + b.d), tx = skinTex(cle);
+      o = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: f.couleur || '#ffffff', opacity: 0 }));
+      o.center.set(mf.anchor[0] / mf.px[0], 1 - mf.anchor[1] / mf.px[1]); o.scale.set(mf.px[0] / K, mf.px[1] / K, 1); o.position.set(x + w, 0, z + d); }
+    else { const r = f.r ?? 3; o = new THREE.Mesh(new THREE.PlaneGeometry(r * 2, r * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: f.couleur || '#ff963c', transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
+      o.rotation.x = -Math.PI / 2; o.position.set(f.x ?? (b.x + b.w / 2), 0.02, f.z ?? (b.z + b.d / 2)); }
+    o.userData.neon = { effet: e.effet || 'fixe', periode: e.periode || 3, ph: e.decale || 0, i }; o.userData.fondu = 1; o.userData.flaqueNuit = e.id;
+    world.add(o); item.extra.push(o); neons.push(o); }
   function enseigne(e, loc) {
     if ((e.dev && !NEON_DEV) || e.effet === 'eteint') return; /* eteint : façade répétée, calque néon non allumé */ const item = bills.find(i => i.obj.userData.buildingId === e.building), b = loc.buildings.find(x => x.id === e.building), key = e.neon || (bman[b?.sprite + '_neon'] ? b.sprite + '_neon' : b?.sprite), m = bman[key]; // calque <clé>_neon d'Ocre, sinon le support lui-même en additif (démo)
     if (!item || !b || !m || !SKIN[key] || m.anime) return; // planche animée : pas de calque code (l'animation d'Ocre reste seule)
@@ -554,6 +566,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       s.userData.neon = { effet: lettre ? 'gresille' : (e.effet === 'saute' ? 'fixe' : e.effet || 'fixe'), periode: e.periode || 3, ph: (e.decale || 0) + (lettre ? 0.37 : 0), i: e.intensite ?? 0.6 };
       s.userData.fondu = 1; world.add(s); item.extra.push(s); neons.push(s);
       if (b.flaque && u0 === 0 && u1 === 1) flaque(s, t, cy, sh, b.flaque, m, key); }
+    if (e.flaque) flaqueNuit(e, b, item);
   }
   // Véhicule posé en bâtiment : mêmes calques que les véhicules qui roulent ; b.miroir retourne caisse + _fenetres/_neon/_hover autour de l'ancre, _texte/_texte_miroir jamais retournés.
   function poserVehiculePose(b) {
@@ -762,8 +775,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const f of flick) {
       const flk = f.flicker ? 0.84 + 0.16 * Math.sin(t * 7 + f.ph) * Math.sin(t * 2.3 + f.ph * 2) : 1;
       const bk = !calme && f.beat ? (ostOn ? (f.beat === 'mid' ? 0.30 + 0.95 * midEnv : 0.14 + 1.40 * kickEnv) : 0.18) : 1;
-      const pk = f.pulse && !calme ? neonK({ effet: 'pulse', periode: f.pulse.periode || 3, ph: f.pulse.ph || 0 }, t) : 1;
-      f.m.opacity = Math.min(1, (f.obj?.userData.fondu ?? 1) * f.base * flk * bk * pk);
+      f.m.opacity = Math.min(1, (f.obj?.userData.fondu ?? 1) * f.base * flk * bk);
       if (f.obj && f.beat && !calme) { const sc = f.s0 * (1 + (ostOn ? (f.beat === 'mid' ? 0.16 * midEnv : 0.30 * kickEnv) : 0)); f.obj.scale.set(sc, sc, 1); }
     }
     // défilement par le code (rame de la Mega-Line) : de dx mètres sur x pendant passage s, toutes les periode s
@@ -1203,7 +1215,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const p=ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),new THREE.Vector3());
     return p && {x:p.x,z:p.z};
   }
-  return { liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
+  return { flaques: () => neons.filter(o => o.userData.flaqueNuit).map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite })), // tests : flaques nocturnes posées
+    liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
     refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{
       const r=canvas.getBoundingClientRect();ray.setFromCamera({x:(x-r.left)/r.width*2-1,y:1-(y-r.top)/r.height*2},cam);
       const candidates=[...bsprites,...bills.map(b=>b.obj),...pickables.filter(o=>o.userData.propBox),player,...npcSprites].filter(s=>s.visible&&kinds.includes(s.userData.buildingId?'building':s===player||s.userData.npc?'actor':'prop'));

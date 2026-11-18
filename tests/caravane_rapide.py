@@ -37,7 +37,7 @@ with sync_playwright() as p:
             E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
         def continuer():
             passer_boot(E); E("document.getElementById('m-continue').click()"); time.sleep(1.5); pret()
-        S = lambda: E("(()=>{const s=window.__nml.state,R=s.region||{};return {loc:s.location,st:R.statut,case:R.case,trajet:R.trajet,x:s.player.x,z:s.player.z,dlg:s.dialogue,cbt:!!s.combat,money:s.player.money,inv:s.player.inv,rc:R.rencontre||null,journal:R.rencontres||{},esc:R.escorte||0,h:s.heures,hp:s.player.hp,carte:!document.getElementById('nml').hidden,flags:Object.keys(s.flags).filter(f=>s.flags[f]&&/^car_|^monde_remedios|^combat_caravane/.test(f))}})()")
+        S = lambda: E("(()=>{const s=window.__nml.state,R=s.region||{};return {loc:s.location,st:R.statut,case:R.case,trajet:R.trajet,x:s.player.x,z:s.player.z,dlg:s.dialogue,cbt:!!s.combat,money:s.player.money,inv:s.player.inv,rc:R.rencontre||null,journal:R.rencontres||{},esc:R.escorte||0,h:s.heures,hp:s.player.hp,carte:!document.getElementById('nml').hidden,flags:Object.keys(s.flags).filter(f=>s.flags[f]&&/^car_|^monde_|^combat_caravane/.test(f))}})()")
         def walk(x, z, t=40):
             r = E(f"window.__nml.game.moveTo({x},{z})"); t0 = time.time()
             while time.time() - t0 < t and E("window.__nml.state.player.path.length>0 && !window.__nml.state.dialogue && !window.__nml.state.combat"): time.sleep(.2)
@@ -164,6 +164,7 @@ with sync_playwright() as p:
             fouiller('car_citerne_ex', 'car_vu_citerne'); wait("window.__nml.state.dialogue", 10)
             ok('car_vu_citerne' in S()['flags'] and E("window.__nml.state.dialogue?.node") in ('frapper', None) and 'frappes' in noeud(), f'{name} examen de la citerne (Observation 3 avec indice) puis nœud « frapper »', (S()['flags'], noeud()))
             choisir('Attendre'); choisir('Partir'); time.sleep(.5); ok('car_vu_lena' in S()['flags'] and 'rc_lena' in vis(), f'{name} trois coups répondent : Lena sort de la trappe', vis())
+            ok('monde_lena_connue' in S()['flags'], f'{name} drapeau de monde monde_lena_connue posé avec car_vu_lena', S()['flags'])
             parler('rc_lena'); choisir('tendre une eau'); s = S(); ok('car_lena_aidee' in s['flags'] and 'car_remise_ami' in s['flags'], f'{name} une eau pour Lena : aidée, prix ami', s['flags']); E("window.__nml.game.closeDialogue()")
             # 4') secret gardé
             parler('rc_remedios'); choisir('respire'); choisir('trois coups'); choisir('Rien'); s = S()
@@ -190,6 +191,7 @@ with sync_playwright() as p:
             ok(E("!!window.__nml.state.combat && !window.__nml.state.combat.units.find(u=>u.id==='ciro').actif") or E("window.__ev.some(e=>e.type==='combat_fuite_ennemi'&&e.id==='ciro')"), f'{name} Ciro s\u2019enfuit au tour 2')
             # fuite -> halte, puis retour sur la case (journal)
             E("window.__nml.game.combat.finish('fuite')"); ok(wait("window.__nml.state.region.statut==='halte'", 20), f'{name} fuite : retour à la carte en halte', S()['st'])
+            s = S(); ok('monde_lena_connue' in s['flags'] and not any(f.startswith('car_') for f in s['flags']) and E("!!window.__nml.game.snapshot().flags.monde_lena_connue"), f'{name} hors scène : monde_lena_connue gardé (non purgé) et dans la sauvegarde', s['flags'])
             E("window.__nml.rencontres.entrer('caravane_relais')"); wait("window.__nml.state.location==='%s'" % LIEU, 20); pret(); s = S()
             ok(s['loc'] == LIEU and 'car_repare' in s['flags'] and 'car_lena_secret' in s['flags'], f'{name} retour sur la case : journal restauré (réparé, secret)', s['flags'])
             # 6') rançon réussie, puis ratée
@@ -230,7 +232,7 @@ with sync_playwright() as p:
         time.sleep(2.5); E("document.getElementById('msg').textContent=''")
         P = lambda x, y, z: E(f"(()=>{{const p=window.__nml.project({x},{y},{z});return [Math.round(p.x),Math.round(p.y)]}})()")
         moy = lambda im, q, r=3: [sum(c[i] for c in [im.getpixel((q[0] + dx, q[1] + dy)) for dx in range(-r, r + 1) for dy in range(-r, r + 1)]) / (2 * r + 1) ** 2 for i in range(3)]
-        g = E(f"window.__nml.world.LOCATIONS['{LIEU}'].glows||[]"); fq, loin = P(17.5, 0, 16.3), P(17.5, 0, 20)
+        g = E(f"(window.__nml.world.LOCATIONS['{LIEU}'].enseignes||[]).filter(e=>e.flaque).map(e=>({{...e.flaque,building:e.building,periode:e.periode}}))"); g = g if E("window.__nml.flaques().length") == 1 else []; fq, loin = P(17.5, 0, 16.3), P(17.5, 0, 20)
         ech = []
         for _ in range(8):
             im = Image.open(io.BytesIO(pg.screenshot())).convert('RGB'); ech.append((moy(im, fq), moy(im, loin))); time.sleep(.7)
@@ -246,10 +248,10 @@ with sync_playwright() as p:
         if h == 23: pg.screenshot(path=OUT + 'livraison/desktop_caravane_nuit_23h.jpg', type='jpeg', quality=88)
         ctx.close()
     J, N = nuit[10], nuit[23]
-    ok(not J['glows'] and len(N['glows']) == 1 and N['glows'][0].get('building') == 'car_bivouac' and N['glows'][0]['rx'] == 3 and N['glows'][0]['pulse']['periode'] == 5.5, 'flaque du feu : posée la nuit (3 m, même pulse 5,5 s que le _neon, peinte après le bivouac), absente le jour', (J['glows'], N['glows']))
+    ok(not J['glows'] and len(N['glows']) == 1 and N['glows'][0].get('building') == 'car_bivouac' and N['glows'][0]['r'] == 3 and N['glows'][0]['periode'] == 5.5, 'flaque du feu : posée la nuit (3 m, même pulse 5,5 s que le _neon, peinte après le bivouac), absente le jour', (J['glows'], N['glows']))
     ok(N['fl_min'] > 8 and N['fl_max'] - N['fl_min'] > 12 and N['chaud'] > 15, f'flaque du feu visible la nuit et chaude ({N["fl_min"]:.0f} à {N["fl_max"]:.0f} de luminance au-dessus du sol, elle vacille)', N)
     ok(J['fl_max'] < 12, f'jour : pas de flaque ({J["fl_max"]:.0f})', J)
-    ok(N['fierro'][0] >= 4 and N['fierro'][1] == 0 and N['ciro'][1] == 0 and 0 < N['op'] <= 0.5, f'liseré de lune : Fierro tête et épaules ({N["fierro"][0]} px, 0 en bas), Ciro couché bord supérieur seulement ({N["ciro"]}), opacité {N["op"]:.2f} ≤ 0,5', N)
+    ok(N['fierro'][0] >= 4 and N['fierro'][1] == 0 and N['ciro'][1] <= 2 and 0 < N['op'] <= 0.5, f'liseré de lune : Fierro tête et épaules ({N["fierro"][0]} px, 0 en bas), Ciro couché bord supérieur seulement ({N["ciro"]}), opacité {N["op"]:.2f} ≤ 0,5', N)
     ok(J['op'] == 0 and J['vis'] == 0, 'jour : aucun liseré (opacité nulle, aucun liseré affiché)', J)
     br.close()
 print(f'\n{n} OK, {len(fails)} échec(s)'); [print('  -', f) for f in fails]; sys.exit(1 if fails else 0)

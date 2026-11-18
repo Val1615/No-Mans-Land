@@ -49,6 +49,23 @@ embuscade_piste: {
 ```
 Contraintes : 1 unité = 1 m, cases de 0,5 m ; sprites `_3q` à la caméra du jeu (lacet 34,5°, tangage 28,8°, 50 px/m), manifeste dans `assets/rencontres/manifest.json` (même champs que Mega-Line : `file, px, anchor, footprint_m, height_m, pose, ordre`), préfixe `rc_` (`rc_ds_` modules désert, `rc_emb_` propres à l'embuscade, `g_rc_` sols) ; webp ; chaque PNJ, caisse et sortie atteignable à pied depuis l'entrée ; ennemis à ≥ 8 m de l'entrée (positions **absolues** en m, plus de dx/dz) et pas tous au même endroit ; décor lisible en 1280 × 800 et 390 × 844. Sol réutilisé (`g_sand`) sauf besoin argumenté. Les gardes visibles au loin, les guetteurs `si: '<drapeau>'` apparaissent quand le drapeau est posé (examen, déclencheur de zone, début du combat).
 
+## 4 bis. Lumières de nuit (champs déclaratifs, aucun code par scène)
+- **Courbe d'ambiance** : `scene.ambiance` (`'desert'`, plus tard `'glass'`) → `src/data/ambiances.js`, qui rend `{ bg, hemi, sun, tint, actor, voile, lune }` à l'heure du voyage. `lune` (1 la nuit, 0,25 à l'aube, 0 le jour) pilote tout ce qui suit.
+- **Enseigne** : `scene.enseignes: [{ id, building, effet: 'pulse'|'fixe'|'clignote'|'gresille', periode, decale, intensite }]` règle le calque `_neon` du bâtiment (format de `docs/villes/steel/ENSEIGNES_CODE.md`).
+- **Flaque nocturne** (champ `flaque` de l'enseigne) : lumière posée au sol sous la source, peinte juste après le décor qui la porte, qui vacille **en phase** avec l'enseigne (même effet, même `periode`, même `decale`).
+  ```js
+  enseignes: [{ id: 'car_feu', building: 'car_bivouac', effet: 'pulse', periode: 5.5, intensite: 0.8,
+    flaque: { r: 3, x: 17.5, z: 15, couleur: '#ff963c', i: 0.7 } }]                    // gradient dessiné en code : disque de rayon r (m) centré en x, z
+  enseignes: [{ id: 'ver_feu', building: 'ver_four', effet: 'pulse', periode: 7, intensite: 0.7,
+    flaque: { cle: 'rc_ecl_four_flaque', x: 10, z: 19, w: 3, d: 2, i: 0.8 } }]            // décalque d'Ocre : additif, ancre du manifeste, emprise x, z, w, d
+  ```
+  - `cle` (optionnel) : décalque additif du manifeste ; sans `cle` (ou clé absente du manifeste), gradient radial dessiné, `r` en mètres (3 par défaut), `couleur` (`#ff963c` par défaut).
+  - Position : `x`, `z` ; par défaut le centre de l'emprise du bâtiment (gradient) ou le bord sud de l'emprise (décalque, w × d centré).
+  - Opacité = `i` × k, avec k = `lune` de l'ambiance si elle existe, sinon 1 − luminance de la teinte du lieu ; rien n'est posé quand `i` × k < 0,02 (le jour).
+  - Test : `window.__nml.flaques()` liste les flaques posées (`id`, `i`, opacité courante).
+- **Décors de terrain** : les bâtiments dont le sprite répond à `scene.nuitDecor` (par défaut `^rc_ds_(talus|berge|rochers|sente)`) sont désaturés et assombris selon `lune`, pour suivre le sol (le talus ne reste pas en plein soleil la nuit).
+- **Liseré de lune** : contour 1 px `#c8d2dc` côté lune sur les personnages, 50 % au plus × `lune`, tête et épaules seulement (tiers supérieur de l'image), jamais les pieds. `window.__nml.liseres()` le lit (et le coupe pour les tests).
+
 ## 5. Jalon 1 : l'embuscade de pillards, de bout en bout
 Piste en désert ou rocher. Arrêt du marqueur, pause, autosave, scène `rc_embuscade_piste` construite à la demande ; contourner (sortie nord par le talus), parler (payer / bluffer / intimider), combattre (combat existant, fuite par le bord = sortie), fouiller le pick-up et les caisses, partir ; retour carte en halte et reprise du trajet ; sauvegarde / chargement dans la scène ; DEV « forcer une rencontre » ; suite `tests/rencontres_rapide.py` (forcée, 1280 et 390, local puis Pages).
 **Estimation Rivet** : ≈ 2 jours de dev (ajouterLieu + gestionnaire + boucle + sortie : 0,5 j ; sauvegarde / reconstruction : 0,5 j ; combat positions absolues + issues : 0,25 j ; DEV + carte : 0,25 j ; tests et captures : 0,5 j), dès réception du décor d'Ocre ; câblage possible avant sur gabarits gris.
