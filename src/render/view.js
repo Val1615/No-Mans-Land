@@ -70,7 +70,10 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function spriteMesh(id, heightOverride, actor = false) {
     const m = sprites[id], h = (heightOverride || m.height_m) * Math.cos(pitch), w = h * m.px[0] / m.px[1]; // hauteur vue par la caméra
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: actor ? actorTex(id) : spriteTex(id), alphaTest: 0.5, transparent: false }));
-    s.center.set(0.5, m.pivot ?? 0.02); s.scale.set(w, h, 1); Object.assign(s.userData, { base: sprites[id].faces || 1, facing: 1, shown: 1, w, h, turn: 1, phase: Math.random() * 6.28 }); return s;
+    s.center.set(0.5, m.pivot ?? 0.02); s.scale.set(w, h, 1); Object.assign(s.userData, { base: sprites[id].faces || 1, facing: 1, shown: 1, w, h, turn: 1, phase: Math.random() * 6.28 });
+    // vue de dos (manifeste vue_dos, PNJ des rencontres) : prise quand le personnage regarde vers le fond de l'écran (nord-ouest), miroir pour l'autre côté
+    const dk = actor && m.vue_dos && sprites[m.vue_dos]; if (dk) Object.assign(s.userData, { texFace: s.material.map, texDos: actorTex(m.vue_dos), wFace: w, wDos: h * dk.px[0] / dk.px[1], dos: false });
+    return s;
   }
   let world = new THREE.Group(); scene.add(world);
   let solids = [], pickables = [], labels = [], npcSprites = [], bsprites = [], fsprites = [], bills = [], builtFor = null, exterior = false;
@@ -413,11 +416,16 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const v of loc.vehicules || []) { const s = vehicule(v); if (s) vehicules.push(s); }
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
-      const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
+      const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.userData.y0 = n.y || 0; s.userData.sansMiroir = !!n.sansMiroir; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
       { const gm = s.material.clone(); gm.opacity = 0.62; gm.color.set('#ffd9a0'); gm.alphaTest = 0.2; /* lot 1 : 62 % et teinte ambre clair, lisible sur le toit sombre */ /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
-      { const hn = hauteurSol(loc, n.x, n.z); addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, 2.05 + hn, n.z)); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, hn, n.z); } labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
+      { const hn = hauteurSol(loc, n.x, n.z) + (n.y || 0), vis = n.si || n.cacheCombat ? () => game.npcVisible(n) : undefined; addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, (n.sprite && sprites[n.sprite].height_m < 1.2 ? 1.1 : 2.05) + hn, n.z), vis); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, hn, n.z); } labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
     }
+    // rencontres : points de fouille et d'examen (SPOTS à anneau) : petit anneau sable au sol, caché quand il n'y a plus rien à faire
+    anneaux = [];
+    for (const sp of (game.world.SPOTS || []).filter(q => q.location === locId && q.anneau)) {
+      const ring = new THREE.Mesh(new THREE.RingGeometry(0.22, 0.28, 24), new THREE.MeshBasicMaterial({ color: '#e8c880', transparent: true, opacity: 0.55, depthTest: false }));
+      ring.rotation.x = -Math.PI / 2; ring.renderOrder = 1; ring.position.set(sp.x, 0.03 + hauteurSol(loc, sp.x, sp.z), sp.z); ring.userData.spot = sp.id; world.add(ring); anneaux.push({ ring, sp }); }
     // garde-corps bas (loc.gardeCorps : x, z, w, d, h en m) : pan sombre et liseré néon, dessinés par le code ; triés avec les sprites (ordre du peintre)
     for (const g of loc.gardeCorps || []) { const h = g.h || 1.1, grp = new THREE.Group();
       const pan = new THREE.Mesh(new THREE.BoxGeometry(g.w, h, g.d), new THREE.MeshBasicMaterial({ color: g.color || '#1c1a24', transparent: true, depthTest: false, depthWrite: false }));
@@ -442,7 +450,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   canvas.addEventListener?.('pointermove', e => { if (e.pointerType !== 'mouse' || !LOCATIONS[builtFor]?.labelsProches) return; const t = performance.now(); if (t - survolT < 150) return; survolT = t; survolA(e); });
   function survolA(e) {
     const r = canvas.getBoundingClientRect(); ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), cam);
-    const nh = ray.intersectObjects(npcSprites, false)[0]; if (nh) { survol = nh.object.userData.npc; return; }
+    const nh = ray.intersectObjects(npcSprites.filter(n => n.visible), false)[0]; if (nh) { survol = nh.object.userData.npc; return; }
     const c = scr(ray.ray.origin); let top = null; // sprite opaque le plus haut sous le pointeur, quelle que soit son emprise au sol
     for (const s of bsprites) { if (s.material.opacity < 0.5) continue; const q = uvOf(s, c); if (alphaAt(s.userData.img, q.u, q.v) > 0.5 && (!top || s.renderOrder > top.renderOrder)) top = s; }
     survol = top?.userData.buildingId || null; }
@@ -749,11 +757,13 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   const screenRight = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0, 1, 0)).normalize();
   function face(s, heading) {
     if (heading == null) return; const sx = Math.sin(heading) * screenRight.x + Math.cos(heading) * screenRight.z;
+    const u = s.userData; if (u.texDos) { const dos = Math.sin(heading) * camDir.x + Math.cos(heading) * camDir.z > 0.15; // dos à la caméra
+      if (dos !== u.dos) { u.dos = dos; s.material.map = dos ? u.texDos : u.texFace; u.w = dos ? u.wDos : u.wFace; s.material.needsUpdate = true; } }
     if (Math.abs(sx) > 0.2 && (sx > 0 ? 1 : -1) !== s.userData.facing) { s.userData.facing = sx > 0 ? 1 : -1; s.userData.turn = 0; } // quasi vertical : on garde le sens
   }
   // Animation procédurale légère (aucun asset modifié) : demi-tour rapide (largeur 1 -> 0 -> 1 en 0,14 s, l'image bascule au milieu),
   // pas de marche (rebond, léger tassement, balancement), respiration à l'arrêt. Amplitudes en mètres : identiques sur mobile.
-  let tPrev = performance.now() / 1000, niv = null; // niv : lieu courant s'il a des niveaux (loc.niveaux)
+  let tPrev = performance.now() / 1000, niv = null, anneaux = []; // niv : lieu courant s'il a des niveaux (loc.niveaux)
   function animate(s, moving, dt, t) {
     const u = s.userData; u.turn = Math.min(1, u.turn + dt / 0.14);
     if (u.turn >= 0.5) u.shown = u.facing * u.base;
@@ -762,7 +772,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     let bob = 0, sy = 1, sx = 1, rot = 0;
     if (moving) { const ph = t * 2 * Math.PI * 1.9 + u.phase; bob = Math.abs(Math.sin(ph)) * 0.045; sy = 1 - 0.025 * Math.cos(2 * ph); sx = 1 + 0.015 * Math.cos(2 * ph); rot = 0.03 * Math.sin(ph); }
     else { const ph = t * 2 * Math.PI * 0.25 + u.phase; sy = 1 + 0.012 * Math.sin(ph); }
-    u.hsol = niv ? hauteurSol(niv, s.position.x, s.position.z) : 0; // Mega-Line v2 : hauteur du sol sous le personnage (quai, escalier)
+    u.hsol = (niv ? hauteurSol(niv, s.position.x, s.position.z) : 0) + (u.y0 || 0); // u.y0 : PNJ posé plus haut que le sol (Morsa sur le plateau de l'épave) ; Mega-Line v2 : hauteur du sol sous le personnage (quai, escalier)
     s.scale.set(u.w * width * sx, u.h * sy, 1); s.position.y = u.hsol + bob; s.material.rotation = rot;
   }
   const camUp = new THREE.Vector3().crossVectors(screenRight, camDir).normalize();
@@ -926,7 +936,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if(groundMesh)groundMesh.visible=visible('zone');
     for(const b of bsprites){b.visible=visible('building');const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible&&e.userData.actif!==false;}
     for(const i of bills)if(i.obj.userData.editorId)i.obj.visible=visible('prop');
-    for(const n of npcSprites)n.visible=visible('actor');
+    for(const n of npcSprites)n.visible=visible('actor')&&(!n.userData.npc||!game.npcVisible||game.npcVisible(NPCS.find(q=>q.id===n.userData.npc))); // rencontres : PNJ présents sous condition
     player.visible=visible('actor');player.userData.editorId=s.player.editorId;
     const playerScale=game.world.testing?1:(s.player.editorScale||1), playerH=sprites.player.height_m*Math.cos(pitch)*playerScale;
     player.userData.h=playerH;player.userData.w=playerH*sprites.player.px[0]/sprites.player.px[1];
@@ -934,10 +944,11 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     companion.visible = s.companion.mode === 'follow' && s.companion.location === s.location;
     companion.position.set(s.companion.x, 0, s.companion.z);
     face(player, s.player.heading); face(companion, s.companion.heading);
-    for (const n of npcSprites) face(n, s.npcs[n.userData.npc]?.heading);
+    for (const n of npcSprites) if (!n.userData.sansMiroir) face(n, s.npcs[n.userData.npc]?.heading);
     const tNow = performance.now() / 1000, dt = Math.min(0.1, tNow - tPrev); tPrev = tNow;
     animate(player, s.player.path.length > 0, dt, tNow); animate(companion, s.companion.path.length > 0 && s.companion.location === s.location, dt, tNow);
     for (const n of npcSprites) animate(n, false, dt, tNow);
+    for (const a of anneaux) a.ring.visible = !s.combat && (!a.sp.if || a.sp.if(s));
     ambient(dt, tNow);
     const loc = LOCATIONS[s.location];
     const target = camOverride ? new THREE.Vector3(camOverride.x, 0, camOverride.z) : new THREE.Vector3(s.player.x, 0, s.player.z);
@@ -1095,7 +1106,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (arguments[2]) { const h = groundMesh && ray.intersectObject(groundMesh, false)[0]; return h ? { kind: 'ground', x: h.point.x, z: h.point.z } : null; } // combat : sol seul
     if (exterior) { // sprites : pixel opaque le plus haut dans l'ordre du peintre ; un bâtiment transparent laisse passer le clic
       const hits = ray.intersectObjects(pickables, false), ring = hits.find(h => h.object.userData.doorId); if (ring) return { kind: 'door', doorId: ring.object.userData.doorId };
-      const nh = hits.find(h => h.object.userData.npc); if (nh) return { kind: 'npc', npcId: nh.object.userData.npc }; // v12 : PNJ dehors (Steel)
+      const nh = hits.find(h => h.object.userData.npc && h.object.visible); if (nh) return { kind: 'npc', npcId: nh.object.userData.npc }; // v12 : PNJ dehors (Steel)
       const c = scr(ray.ray.origin); let top = null;
       for (const s of bsprites) { if (s.material.opacity < 0.5) continue; const q = uvOf(s, c); if (alphaAt(s.userData.img, q.u, q.v) > 0.5 && (!top || s.renderOrder > top.renderOrder)) top = s; }
       if (top) { const u = top.userData;
@@ -1111,7 +1122,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     }
     for (const h of ray.intersectObjects(pickables, false)) {
       const u = h.object.userData, op = [].concat(h.object.material)[0].opacity;
-      if (u.npc) return { kind: 'npc', npcId: u.npc };
+      if (u.npc && h.object.visible) return { kind: 'npc', npcId: u.npc };
       if (u.front) continue; // v6 : mur avant bas (coupe) : le clic passe au sol derrière
       if (u.doorId && !(h.object.isMesh && h.object.geometry.type === 'PlaneGeometry' && op < 0.5)) return { kind: 'door', doorId: u.doorId }; // porte estompée : le clic passe
       if (u.doorId) continue;

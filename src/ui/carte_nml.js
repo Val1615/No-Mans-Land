@@ -2,7 +2,7 @@ import { placeLabels } from './placement.js';
 // Lot 3 interface : carte des No Man's Land (fond, brouillard et icônes ambre d'Ocre), choix de destination, trajet case par case animé,
 // halte et reprise. Logique du voyage : core/voyage.js ; terrains et réglages : data/nml.js.
 const ICO = k => `./assets/ui/maps/icones/${k}_48.png`;
-export function createCarteNml({ $, voyage, manifest, say, onOpenChange }) {
+export function createCarteNml({ $, voyage, manifest, say, onOpenChange, onEvenement }) {
   const el = $('nml'), plan = $('nml-plan'), vue = $('nml-vue'), fog = $('nml-fog'), svg = $('nml-svg'), lieuxEl = $('nml-lieux'), moi = $('nml-moi');
   const N = manifest.nml_fond, F = manifest.brouillard_nml, COLS = N.grille.cols, ROWS = N.grille.rows;
   let open = false, zoom = 1, key = '', mobile = innerWidth < 700, fogImg = {}, fogKey = '';
@@ -57,7 +57,8 @@ export function createCarteNml({ $, voyage, manifest, say, onOpenChange }) {
   $('nml-zoom').addEventListener('click', () => { zoom = zoom >= 2 ? 1 : zoom + 0.5; $('nml-zoom').textContent = zoom >= 2 ? '−' : '+'; size(); render(); frame(); centrer(); });
   addEventListener('resize', () => open && size());
   function close() { const R = voyage.region(); if (R.statut === 'route' || R.statut === 'halte') return false; if (R.statut === 'depart') voyage.annuler(); show(false); return true; }
-  voyage.on(ev => { key = ''; if (ev.type === 'ouvrir') show(true); if (ev.type === 'arrivee' || ev.type === 'annule') show(false);
+  voyage.on(ev => { key = ''; if (ev.type === 'ouvrir') show(true);
+    if (ev.type === 'evenement' && ev.evenement?.rencontre && onEvenement) { show(false); onEvenement(ev.evenement); } if (ev.type === 'arrivee' || ev.type === 'annule') show(false); // rencontre de route : la carte se ferme sur la scène
     if (ev.type === 'arret') say(ev.lieu ? 'Halte. Ce lieu n\u2019a pas encore de terrain à explorer (prototype).' : 'Halte. Rien à explorer ici pour l\u2019instant.'); });
   return { get open() { return open; }, show, close, frame, render: () => { key = ''; render(); } };
 }

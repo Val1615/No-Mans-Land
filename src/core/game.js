@@ -30,6 +30,8 @@ export function createGame(world, sprites) {
   const doorById = id => DOORS.find(d => d.id === id);
   const doorOfBuilding = bid => DOORS.filter(d => d.buildingId === bid && d.location === state.location).sort((a, b) => Math.hypot(a.threshold.x - state.player.x, a.threshold.z - state.player.z) - Math.hypot(b.threshold.x - state.player.x, b.threshold.z - state.player.z))[0];
   const npcById = id => NPCS.find(n => n.id === id);
+  // rencontres : PNJ présent sous condition (n.si, ex. Pibe parti) ; n.cacheCombat : remplacé par son unité pendant le combat
+  const npcVisible = n => !!n && (!n.si || cond(n.si)) && !(n.cacheCombat && state.combat);
   const refuse = (reason, text) => { if (typeof text === 'function') text = text(state); /* v14 : texte selon l'état */ emit({ type: 'refus', reason, text }); return { ok: false, reason }; };
   const busy = () => state.dialogue ? refuse('dialogue_ouvert', 'Termine la conversation d\'abord.') : state.combat ? refuse('combat', 'Pas pendant le combat.') : null;
 
@@ -58,14 +60,14 @@ export function createGame(world, sprites) {
     const b = busy(); if (b) return b;
     const door = doorById(doorId);
     if (!door || door.location !== state.location) return refuse('porte_absente', 'Aucune porte ici.');
-    if(!door.edge&&!door.regional&&!door.target?.doorId)return refuse('sans_destination','Cette entrée n’a pas de destination.');
+    if(!door.edge&&!door.regional&&!door.quitter&&!door.target?.doorId)return refuse('sans_destination','Cette entrée n’a pas de destination.');
     for (const c of door.conditions) if (!c.test(state)) return refuse(c.reason, c.text);
     return goThen(door.threshold, { kind: 'door', id: doorId }) || refuse('chemin_bloque', 'Le seuil est inaccessible.');
   }
   function talkTo(npcId) {
     const b = busy(); if (b) return b;
     const n = npcById(npcId);
-    if (!n || n.location !== state.location) return refuse('absent', 'Personne ici.');
+    if (!n || n.location !== state.location || !npcVisible(n)) return refuse('absent', 'Personne ici.');
     const g = grid(); const [ci, cj] = g.toCell(n.x, n.z); let best = null, bd = Infinity;
     for (let di = -5; di <= 5; di++) for (let dj = -5; dj <= 5; dj++) {
       if (!g.free(ci + di, cj + dj)) continue; const w = g.toWorld(ci + di, cj + dj);
@@ -79,7 +81,7 @@ export function createGame(world, sprites) {
   function finishPending() {
     const p = state.player.pending; state.player.pending = null; if (!p) return;
     if (p.kind === 'door') { const d = doorById(p.id), bad = (d.conditions || []).find(c => !c.test(state)); if (d.edge || bad) { state.junctionLock = d.id; refuse(bad ? bad.reason : 'bord', bad ? bad.text : d.edge); } else if (!interrupt(d)) cross(d); }
-    if (p.kind === 'talk') openDialogue(p.id);
+    if (p.kind === 'talk' && npcVisible(npcById(p.id))) openDialogue(p.id);
     if (p.kind === 'scene') openDialogue(p.id);
     if (p.kind === 'spot') doSpot(SPOTS.find(s => s.id === p.id));
   }
@@ -95,7 +97,7 @@ export function createGame(world, sprites) {
     state.dialogue = { npc: npcId, node: 'start' };
     if (n.dialogue === 'teo') { delete state.flags.os_bluff_fait; state.os = null; } // v15 : nouvelle visite = nouvelle partie de Trois Os
     state.player.heading = Math.atan2(n.x - state.player.x, n.z - state.player.z);
-    state.npcs[npcId].heading = Math.atan2(state.player.x - n.x, state.player.z - n.z); // le PNJ se tourne vers le joueur
+    if (!n.fige) state.npcs[npcId].heading = Math.atan2(state.player.x - n.x, state.player.z - n.z); // le PNJ se tourne vers le joueur (n.fige : pose fixe, mannequin, Morsa couché)
     emit({ type: 'dialogue_open', npc: npcId });
   }
   function currentNode() {
@@ -113,9 +115,10 @@ export function createGame(world, sprites) {
   const cond1 = c => {
     let m = /^inv:(\w+)(>=|<=|>|<)(\d+)$/.exec(c) || /^(money|cr)(>=|<=|>|<)(\d+)$/.exec(c); // v15 : inv:objet>=N, money<N, cr<N
     if (m) { const v = m[1] === 'money' ? state.player.money : m[1] === 'cr' ? (state.player.credits || 0) : (state.player.inv[m[1]] || 0), n = +m[3]; return m[2] === '>=' ? v >= n : m[2] === '<=' ? v <= n : m[2] === '>' ? v > n : v < n; }
-    m = /^(\w+)(>=|<=|>|<)(\d+)$/.exec(c); if (m) { const v = attrOf(m[1]), n = +m[3]; return m[2] === '>=' ? v >= n : m[2] === '<=' ? v <= n : m[2] === '>' ? v > n : v < n; }
+    m = /^(\w+)(>=|<=|>|<)(\d+)$/.exec(c); if (m) { const v = scoreOf(m[1]), n = +m[3]; return m[2] === '>=' ? v >= n : m[2] === '<=' ? v <= n : m[2] === '>' ? v > n : v < n; }
     return c.startsWith('!') ? !cond1(c.slice(1)) : c === 'hurt' ? state.player.hp < state.player.maxHp : !!state.flags[c]; };
-  const cond = c => c.split('&').every(cond1);
+  // comparaisons « k>=n » : attribut, sinon compétence / 10 (rencontres : observation>=4)
+  const cond = c => c.split('|').some(o => o.split('&').every(cond1)); // « a&b|c » : ou de et (rencontres)
   // Tests de dialogue génériques. « k:n » : score de k + jet (VOLONTE.jet) >= n. Score : attribut, sinon compétence / 10 (arrondi),
   // « intimider » = max(Charisme, Force) (COMBAT.md §10). partial + partialAt : palier intermédiaire (total >= partialAt sans atteindre n).
   // opposed : jet opposé, n = valeur de l'attribut opposé du PNJ (ex. Volonté 4) ; réussite si ton total dépasse le sien (égalité : le PNJ).
@@ -175,6 +178,9 @@ export function createGame(world, sprites) {
       state.junctionLock = null; state.transitions++; emit({ type: 'transition', from, to: loc, warp: true }); return { ok: true }; }
     // v12 : crochet pour un système futur (combat) : signalé, sans effet propre
     if (k === 'combat') { state.combatPending = x; return { ok: true }; } // COMBAT C1 : lancé à la fermeture du dialogue (autosave juste avant)
+    // rencontres : payMax:N = paie N, ou tout ce que tu as si c'est moins (reddition, défaite) ; rencontre:quitter|… = crochet du gestionnaire (core/rencontres.js)
+    if (k === 'payMax') { const cost = Math.min(+x, pl.money); if (cost > 0) { pl.money -= cost; emit({ type: 'service', what: 'pay', text: `−${cost} $` }); } return { ok: true }; }
+    if (k === 'rencontre') { onRencontre?.(x, y); return { ok: true }; }
     if (k === 'hook') { state.hooks = state.hooks || []; state.hooks.push(x); emit({ type: 'hook', id: x }); return { ok: true }; }
     return { ok: false };
   }
@@ -207,7 +213,33 @@ export function createGame(world, sprites) {
     const g = grid(), w = (() => { const [i, j] = g.toCell(sp.x, sp.z); return g.free(i, j) ? { x: sp.x, z: sp.z } : nearestFree(g, sp, state.player); })();
     return goThen(w || sp, { kind: 'spot', id }) || refuse('chemin_bloque', 'Impossible d\'approcher.'); }
   function doSpot(sp) { if (sp.kind === 'scene') return openDialogue(sp.scene);
+    if (sp.kind === 'actions') return spotActions(sp);
     state.flags[sp.flag] = true; act(`give:${sp.item}`); emit({ type: 'pickup', id: sp.id, text: sp.text }); }
+  // rencontres : point de fouille ou d'examen { kind:'actions', text (chaîne ou fn(state, ok)), enter, test, testSi, pass, fail } ;
+  // test (ex. discretion:6) tenté si testSi tient (sinon effet direct enter) ; un combat:… posé par l'effet démarre aussitôt
+  function spotActions(sp) { let ok = true, acts = sp.enter;
+    if (sp.test && (!sp.testSi || cond(sp.testSi))) { const r = tester(sp.test); ok = r.ok; acts = ok ? (sp.pass ?? sp.enter) : sp.fail; }
+    const text = typeof sp.text === 'function' ? sp.text(state, ok) : sp.text;
+    emit({ type: 'pickup', id: sp.id, text, ok });
+    agir(acts); closeDialogue(); return { ok: true, reussi: ok }; }
+  function agir(str) { for (const a of (str || '').split(';').filter(Boolean)) act(a); }
+  function tester(spec, opposed = false) { const r = testOf({ test: spec, opposed });
+    emit({ type: 'test', attr: r.k, ok: r.ok, total: r.total, contre: r.contre, text: r.ok ? 'Réussi.' : 'Raté.' }); return r; }
+  // ouvre un dialogue à un nœud donné (déclencheur de scène) ; l'effet enter du nœud est appliqué
+  function ouvrirDialogue(npcId, node = 'start') { if (state.dialogue || state.combat) return false; openDialogue(npcId);
+    if (node !== 'start') state.dialogue.node = node; const nn = DIALOGUES[npcById(npcId).dialogue]?.[state.dialogue.node]; if (nn?.enter) agir(nn.enter);
+    if (state.dialogue && !DIALOGUES[npcById(npcId).dialogue]?.[state.dialogue.node]) closeDialogue(); return true; }
+  // lieu ajouté à chaud (scène de rencontre, docs/rencontres/ARCHI.md §3) : lieu, portes, PNJ, points ; grille recalculée
+  function ajouterLieu(id, loc, { doors = [], npcs = [], spots = [] } = {}) { retirerLieu(id);
+    LOCATIONS[id] = loc; DOORS.push(...doors); NPCS.push(...npcs); SPOTS.push(...spots);
+    for (const n of npcs) state.npcs[n.id] = { heading: n.faceTo ? Math.atan2(n.faceTo[0] - n.x, n.faceTo[1] - n.z) : 0 };
+    grids[id] = buildGrid(loc, DOORS, sprites, npcs.filter(n => n.bloque !== false).map(npcBox)); combat.oublierCouverture(id); }
+  function retirerLieu(id) { if (!LOCATIONS[id]) return;
+    const out = (arr, f) => { for (let k = arr.length - 1; k >= 0; k--) if (f(arr[k])) arr.splice(k, 1); };
+    for (const n of NPCS) if (n.location === id) delete state.npcs[n.id];
+    out(DOORS, d => d.location === id); out(NPCS, n => n.location === id); out(SPOTS, s => s.location === id);
+    delete LOCATIONS[id]; delete grids[id]; combat.oublierCouverture(id); }
+  let onQuitter = null, onRencontre = null, onLieuManquant = null;
   function useItem(id) { const it = ITEMS[id], pl = state.player; if (!it?.use || !pl.inv[id]) return { ok: false };
     pl.inv[id]--; if (!pl.inv[id]) delete pl.inv[id]; const before = pl.hp; pl.hp = Math.min(pl.maxHp, pl.hp + (it.use.heal || 0));
     emit({ type: 'service', what: 'use', text: `${it.name} : +${pl.hp - before} PV` }); return { ok: true, healed: pl.hp - before }; }
@@ -217,7 +249,8 @@ export function createGame(world, sprites) {
 
   // Lot 3 : une sortie régionale (door.regional, posée par core/voyage.js) ouvre la carte des No Man's Land au lieu de passer directement.
   let onRegional = null;
-  function cross(d) { if (d.regional && onRegional) { state.junctionLock = d.id; state.player.path = []; onRegional(d); } else enter(d); }
+  function cross(d) { if (d.quitter && onQuitter) { state.junctionLock = d.id; state.player.path = []; onQuitter(d); return; } // rencontres : porte de bord de la scène
+    if (d.regional && onRegional) { state.junctionLock = d.id; state.player.path = []; onRegional(d); } else enter(d); }
   // Arrivée d'un voyage régional : même transition de groupe, vers la porte d'arrivée du lieu (sortie de départ : compagnon, texte d'arrivée).
   function arriveVia(targetId, fromDoorId) { const from = fromDoorId && doorById(fromDoorId);
     enter({ ...(from && from.location === state.location ? from : { location: state.location, junction: true }), target: { doorId: targetId } }); }
@@ -267,7 +300,7 @@ export function createGame(world, sprites) {
       if (d <= sp) { a.x = n.x; a.z = n.z; a.path.shift(); sp -= d; } else { a.x += dx / d * sp; a.z += dz / d * sp; sp = 0; }
     }
   }
-  const combat = createCombat({ state, grids, emit, act, rand: () => rng(), coverOf: loc => coverSolids(LOCATIONS[loc], DOORS, sprites) });
+  const combat = createCombat({ state, grids, emit, act, cond, rand: () => rng(), coverOf: loc => coverSolids(LOCATIONS[loc], DOORS, sprites) });
   // v10 : sauvegarde. Instantané de tout l'état durable (jamais chemins, attentes, dialogue en cours).
   function snapshot() {
     const p = state.player, c = state.companion;
@@ -275,6 +308,7 @@ export function createGame(world, sprites) {
       companion: { x: c.x, z: c.z, mode: c.mode, location: c.location }, plans: PLANS, flags: state.flags, discovered: state.discovered, seen: state.seen, transitions: state.transitions, osGains: state.osGains, character: state.character || null, heures: state.heures, region: state.region }));
   }
   function restore(snap, quiet) {
+    if (snap && !LOCATIONS[snap.location] && onLieuManquant) onLieuManquant(snap); // rencontres : la scène n'existe qu'à chaud, le gestionnaire la recrée
     if (!snap || !LOCATIONS[snap.location]) return false;
     closeDialogue();
     const p = state.player, sp0 = snap.player || {};
@@ -296,7 +330,9 @@ export function createGame(world, sprites) {
     return true;
   }
   return { combat, startCombat: id => combat.start(id), state, setRng: f => { rng = f || Math.random; }, useSpot, useItem, sceneTriggers, step, snapshot, restore, moveTo, useDoor, arriveVia, onRegional: f => { onRegional = f; }, talkTo, startScene, cond, choose, closeDialogue, currentNode, doorOfBuilding, doorById, grids, world,
-    on: f => listeners.add(f), get location() { return LOCATIONS[state.location]; } };
+    on: f => listeners.add(f),
+    npcVisible, agir, tester, ouvrirDialogue, ajouterLieu, retirerLieu, npcById, onQuitter: f => { onQuitter = f; }, onRencontre: f => { onRencontre = f; }, onLieuManquant: f => { onLieuManquant = f; },
+    get location() { return LOCATIONS[state.location]; } };
 }
 function nearestFree(g, target, from) {
   const [ti, tj] = g.toCell(target.x, target.z); let best = null, bd = Infinity;

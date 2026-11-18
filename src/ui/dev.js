@@ -1,7 +1,7 @@
 // Mode DEV minimaliste (?dev=1) : Déplacement (zone, porte, PNJ) et Réinitialisation (instantané, restauration en mémoire).
 // Chargé à la demande par main.js. N'écrit jamais dans les sauvegardes du joueur : l'instantané reste en mémoire, l'autosave DEV va dans nml_dev_save_*.
 // À venir : Préparation, Combats, Inspection ; les accès existants (?dome=1, ?race=, __nml.debugMega, __nml.ouvrirDome) restent disponibles.
-export function createDev({ game, world, say }) {
+export function createDev({ game, world, say, rencontres = null }) {
   const L = world.LOCATIONS, esc = t => String(t).replace(/[&<>"]/g, c => `&#${c.charCodeAt(0)};`);
   const nom = id => (L[id]?.name || id).replace(/^.*· /, '');
   function tp(loc, x, z) { const g = game.grids[loc]; if (!g) return false;
@@ -21,6 +21,9 @@ export function createDev({ game, world, say }) {
     <a href="./editor/" target="_blank" style="color:#f2b44a">Éditeur de cartes ↗</a><b class="mono">Déplacement</b>
     <div class="dev-row"><select id="dev-type"><option value="zone">Zone</option><option value="porte">Porte</option><option value="pnj">PNJ</option></select><select id="dev-cible"></select></div>
     <button id="dev-go">Aller</button>
+    ${rencontres ? `<b class="mono">Rencontres</b>
+    <div class="dev-row"><select id="dev-rc">${Object.entries(rencontres.RENCONTRES).map(([k, r]) => `<option value="${esc(k)}">${esc(r.nom)}</option>`).join('')}</select></div>
+    <div class="dev-row"><button id="dev-rc-forcer" title="La prochaine case du voyage déclenche cette rencontre">Forcer une rencontre</button><button id="dev-rc-entrer" title="Sortie de la ville, un pas de trajet, scène">Entrer maintenant</button></div>` : ''}
     <b class="mono">Réinitialisation</b>
     <div class="dev-row"><button id="dev-snap">Instantané</button><button id="dev-rest" disabled>Restaurer</button></div>
     <button id="dev-oublier">Oublier le mode DEV</button>
@@ -36,6 +39,9 @@ export function createDev({ game, world, say }) {
   const rest = () => { if (!instantane) return false; if (game.state.dialogue) game.closeDialogue(); game.restore(JSON.parse(JSON.stringify(instantane)), true); info('Instantané restauré'); return true; };
   $('dev-oublier').onclick = () => { localStorage.removeItem('nml_dev_unlocked'); info('Mode DEV oublié : le bouton d\u2019Options disparaît.'); };
   if (new URLSearchParams(location.search).get('devpanel') === '1') $('dev-box').hidden = false; // ouvert depuis Options
+  if (rencontres) { // rencontres de route (?rencontre=<id> fait la même chose au lancement)
+    $('dev-rc-forcer').onclick = () => info(rencontres.forcer($('dev-rc').value) ? 'Rencontre forcée sur la prochaine case du voyage' : 'Rencontre inconnue');
+    $('dev-rc-entrer').onclick = () => { const r = rencontres.entrerMaintenant($('dev-rc').value); info(r.ok ? 'Rencontre : scène chargée' : 'Impossible : ' + (r.reason || 'pas de case')); }; }
   $('dev-snap').onclick = snap; $('dev-rest').onclick = rest;
   for (const e of ['pointerdown', 'pointerup', 'click', 'wheel', 'touchstart']) el.addEventListener(e, ev => ev.stopPropagation());
   const st = document.createElement('style'); st.textContent = `
@@ -48,5 +54,5 @@ export function createDev({ game, world, say }) {
 #dev select,#dev-box button{background:rgba(20,16,10,.85);color:#e8dcc0;border:1px solid rgba(242,180,74,.35);padding:4px;font:inherit;min-height:28px}
 #dev-box button{cursor:pointer;flex:1}#dev-box button:disabled{opacity:.4}`;
   document.head.appendChild(st);
-  return { tp, aller, cibles, instantane: snap, restaurer: rest };
+  return { tp, aller, cibles, instantane: snap, restaurer: rest, forcerRencontre: id => rencontres?.forcer(id), entrerRencontre: id => rencontres?.entrerMaintenant(id) };
 }

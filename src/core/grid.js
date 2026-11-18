@@ -18,7 +18,7 @@ function propSolids(loc, sprites) {
 }
 // Combat C2 (COMBAT.md §8) : solides avec leur hauteur de couverture. Bâtiments et murs = 2, props = 1 ; l'eau ne coupe pas la vue.
 export function coverSolids(loc, doors, sprites) {
-  return [...loc.buildings.flatMap(b => b.solid || [{ x: b.x, z: b.z, w: b.w, d: b.d }]), ...wallsOf(loc, doors)].map(s => ({ ...s, h: 2 }))
+  return [...loc.buildings.flatMap(b => b.solid || [{ x: b.x, z: b.z, w: b.w, d: b.d }]), ...wallsOf(loc, doors)].map(s => ({ ...s, h: s.couv ?? 2 })) // couv : couverture 0/1/2 d'un solide (rencontres : talus, caisses, épave)
     .concat(propSolids(loc, sprites).map(s => ({ ...s, h: 1 })));
 }
 export function buildGrid(loc, doors, sprites, extraBlocked = []) {

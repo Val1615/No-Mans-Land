@@ -28,7 +28,7 @@ with sync_playwright() as p:
             return False
         R=lambda: E("JSON.parse(JSON.stringify(window.__nml.voyage.region()))")
         vis=lambda: E("!document.getElementById('nml').hidden")
-        pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5)
+        pg.goto(URL + '?rencontres=0'); pg.wait_for_function('window.__nml && window.__nml.shell',timeout=60000); time.sleep(1.5) # voyage seul : rencontres de route coupées (tests/rencontres_rapide.py)
         E("localStorage.removeItem('nml_save_auto')")
         passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5); E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
         E("(()=>{window.__msgs=[];const m=document.getElementById('msg');new MutationObserver(()=>window.__msgs.push(m.textContent)).observe(m,{childList:true,characterData:true,subtree:true})})()")

@@ -53,15 +53,22 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
     const E = ENCOUNTERS[id]; if (!E) return { ok: false, reason: 'combat_inconnu' };
     emit({ type: 'combat_autosave', id }); // main.js écrit l'autosave AVANT que le combat n'existe (COMBAT.md §1)
     const p = state.player, anc = E.ancres?.[state.location]; if (anc) Object.assign(p, { x: anc.x, z: anc.z, path: [], pending: null }); // le rôdeur te coince sur le terrain dégagé
-    const [pi, pj] = cellOf(p.x, p.z), R = COMBAT.zoneRayon;
-    state.combat = { id, phase: 'joueur', tour: 1, actif: 0, issue: null, preview: null, zone: { i0: pi - R, i1: pi + R, j0: pj - R, j1: pj + R }, units: [] };
+    const R = COMBAT.zoneRayon; let [pi, pj] = cellOf(p.x, p.z);
+    // rencontres (docs/rencontres/ARCHI.md §4) : E.centre fixe la zone sur la scène ; le joueur y est ramené (case intérieure, jamais une case de sortie), sans téléportation au centre
+    const [ci, cj] = E.centre ? cellOf(E.centre.x, E.centre.z) : [pi, pj];
+    if (E.centre) { pi = Math.max(ci - R + 1, Math.min(ci + R - 1, pi)); pj = Math.max(cj - R + 1, Math.min(cj + R - 1, pj)); }
+    state.combat = { id, phase: 'joueur', tour: 1, actif: 0, issue: null, preview: null, zone: { i0: ci - R, i1: ci + R, j0: cj - R, j1: cj + R }, units: [] };
     const ch = state.character || {};
     const pu = { id: 'joueur', nom: ch.name || 'Toi', joueur: true, actif: true, i: pi, j: pj, x: pi + 0.5, z: pj + 0.5, path: [], paMax: ch.ap || 5, pa: ch.ap || 5, initiative: ch.initiative ?? 5 };
     pu.arme = ORDRE_ARMES.find(k => (state.player.inv?.[k] || 0) > 0) || 'mains'; pu.charge = ARMES[pu.arme].chargeur ?? null; // C2 : meilleure arme du Sac
     if (!cellFree(pi, pj)) { const f = nearestFree(pi, pj); if (f) Object.assign(pu, { i: f[0], j: f[1], x: f[0] + 0.5, z: f[1] + 0.5 }); }
     state.combat.units.push(pu);
-    for (const e of E.ennemis) { let [i, j] = [pu.i + e.dx, pu.j + e.dz]; if (!walkable(i, j, null)) { const f = nearestFree(i, j); if (f) [i, j] = f; }
-      state.combat.units.push({ ...e, joueur: false, actif: true, i, j, x: i + 0.5, z: j + 0.5, path: [], paMax: e.pa, pa: e.pa, pvMax: e.pv, arme: e.arme || 'mains', charge: ARMES[e.arme || 'mains'].chargeur ?? null }); }
+    // ennemis : e.si (condition de présence, ex. Pibe parti), e.x/e.z (position absolue sur la scène) sinon e.dx/e.dz (relative au joueur),
+    // e.armeSi { drapeau: arme } (Morsa désarmé : mains nues), e.entreTour (renfort : entre au début de ce tour), e.rendSous (se rend sous cette part de PV)
+    for (const e of E.ennemis) { if (e.si && ctx.cond && !ctx.cond(e.si)) continue;
+      let [i, j] = e.x != null ? cellOf(e.x, e.z) : [pu.i + e.dx, pu.j + e.dz]; if (!walkable(i, j, null)) { const f = nearestFree(i, j); if (f) [i, j] = f; }
+      const arme = Object.entries(e.armeSi || {}).find(([f]) => state.flags[f])?.[1] || e.arme || 'mains', attend = (e.entreTour || 0) > 1;
+      state.combat.units.push({ ...e, joueur: false, actif: !attend, attend, i, j, x: i + 0.5, z: j + 0.5, path: [], paMax: e.pa, pa: e.pa, pvMax: e.pv, arme, charge: ARMES[arme].chargeur ?? null }); }
     state.combat.units.sort((a, b) => b.initiative - a.initiative || (a.joueur ? -1 : 1)); // initiative décroissante ; égalité : le joueur d'abord
     Object.assign(p, { x: pu.x, z: pu.z, path: [], pending: null });
     emit({ type: 'combat_start', id, text: E.textes?.debut });
@@ -75,10 +82,14 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
   }
   function next() {
     const c = C(); if (!c || c.phase === 'fin') return;
-    let n = c.actif; for (let k = 0; k < c.units.length; k++) { n = (n + 1) % c.units.length; if (n === 0) c.tour++; if (c.units[n].actif) break; }
+    let n = c.actif; for (let k = 0; k < c.units.length; k++) { n = (n + 1) % c.units.length; if (n === 0) { c.tour++; renforts(); } if (c.units[n].actif) break; }
     c.actif = n; beginTurn();
   }
-  function checkEnd() { if (!C().units.some(u => !u.joueur && u.actif)) { finish('victoire'); return true; } return false; }
+  function renforts() { const c = C(); for (const u of c.units) if (u.attend && c.tour >= u.entreTour) { u.attend = false; u.actif = true;
+    if (!walkable(u.i, u.j, u)) { const f = nearestFree(u.i, u.j); if (f) Object.assign(u, { i: f[0], j: f[1], x: f[0] + 0.5, z: f[1] + 0.5 }); }
+    emit({ type: 'combat_renfort', id: u.id, text: `${u.nom} entre dans le combat.` }); } }
+  function checkEnd() { if (C().units.some(u => u.rendu)) { finish('victoire'); return true; } // le chef se rend : la bande lâche prise
+    if (!C().units.some(u => !u.joueur && (u.actif || u.attend))) { finish('victoire'); return true; } return false; }
   // --- commandes du joueur ---
   const mine = () => C() && C().phase === 'joueur' && actif()?.joueur && !player().path.length;
   function previewTo(x, z) { if (!mine()) return null; const [i, j] = cellOf(x, z), u = player(), p = path(u, i, j);
@@ -95,6 +106,7 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
   function surrender() { if (!mine()) return { ok: false, reason: 'pas_ton_tour' }; finish('reddition'); return { ok: true }; }
   // --- C2 : attaques, ligne de vue, couverture (COMBAT.md §6 à §8) ---
   const coverCache = {};
+  const oublierCouverture = loc => { delete coverCache[loc]; }; // lieu ajouté ou retiré à chaud (rencontres)
   function coverMap() { const loc = state.location; if (coverCache[loc]) return coverCache[loc]; const m = new Map(), e = 0.05;
     for (const s of (ctx.coverOf ? ctx.coverOf(loc) : [])) for (let i = Math.floor(s.x + e); i <= Math.floor(s.x + s.w - e); i++) for (let j = Math.floor(s.z + e); j <= Math.floor(s.z + s.d - e); j++) { const k = i + ',' + j; m.set(k, Math.max(m.get(k) || 0, s.h)); }
     return (coverCache[loc] = m); }
@@ -131,7 +143,8 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
     u.pa -= A.pa; if (A.chargeur) u.charge--; u.heading = Math.atan2(t.i - u.i, t.j - u.j);
     const roll = Math.floor(ctx.rand() * 100), touche = roll < ev.chance; let degats = 0;
     if (touche) { degats = A.degats[0] + Math.floor(ctx.rand() * (A.degats[1] - A.degats[0] + 1));
-      if (t.joueur) state.player.hp = Math.max(0, state.player.hp - degats); else { t.pv = Math.max(0, t.pv - degats); if (t.pv <= 0) t.actif = false; } }
+      if (t.joueur) state.player.hp = Math.max(0, state.player.hp - degats); else { t.pv = Math.max(0, t.pv - degats); if (t.pv <= 0) t.actif = false;
+        else if (t.rendSous && t.pv <= t.pvMax * t.rendSous) { t.actif = false; t.rendu = true; emit({ type: 'combat_rend', id: t.id, text: `${t.nom} lève les mains.` }); } } }
     const res = { ...ev, ok: true, roll, touche, degats, auteur: u.id };
     emit({ ...res, type: 'combat_attaque', text: `${u.nom} · ${A.nom} : ${touche ? '−' + degats + ' PV' : 'manqué'} (${ev.chance} %)` + (!t.joueur && !t.actif ? ` · ${t.nom} est hors de combat.` : '') });
     C().dernier = res; return res;
@@ -173,13 +186,14 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
   function finish(issue) {
     const c = C(), E = ENCOUNTERS[c.id]; c.phase = 'fin'; c.issue = issue;
     state.flags[`combat_${c.id}_${issue}`] = true;
+    if (E.prefixe) for (const u of c.units) if (!u.joueur && u.pv <= 0) state.flags[`${E.prefixe}${u.id}_ko`] = true; // rencontres : les morts restent (journal de la case)
+    const pu = player(); Object.assign(state.player, { x: pu.i + 0.5, z: pu.j + 0.5, path: [], pending: null }); // avant les issues : un warp d'issue (défaite) n'est pas écrasé
     for (const a of (E.issues[issue] || '').split(';').filter(Boolean)) ctx.act(a);
     if (state.player.hp < COMBAT.pvMinApres) state.player.hp = COMBAT.pvMinApres;
-    const pu = player(); Object.assign(state.player, { x: pu.i + 0.5, z: pu.j + 0.5, path: [], pending: null });
     emit({ type: 'combat_fin', id: c.id, issue, text: E.textes?.[issue] });
     state.combatLast = { id: c.id, issue, tour: c.tour }; state.combat = null;
   }
   // cases de la zone hors de la carte (vide) : doit rester vide
   function horsCarte() { const c = C(); if (!c) return null; const g = sub(), out = []; for (let i = c.zone.i0; i <= c.zone.i1; i++) for (let j = c.zone.j0; j <= c.zone.j1; j++) if (i < 0 || j < 0 || 2 * i + 1 >= g.w || 2 * j + 1 >= g.d) out.push([i, j]); return out; }
-  return { previewAttack, attack, reload, evaluer: id => C() && evaluer(player(), unit(id)), evaluerDe: (a, b) => C() && evaluer(unit(a), unit(b)), visee: (a, b) => visee(a, b), hauteur, unit, armeDe, horsCarte, start, previewTo, moveTo, endTurn, surrender, step, reachable, path: (i, j) => C() && path(player(), i, j), cellFree, isExit: (i, j) => C() && isExit(i, j), player, actif, finish };
+  return { previewAttack, attack, reload, evaluer: id => C() && evaluer(player(), unit(id)), evaluerDe: (a, b) => C() && evaluer(unit(a), unit(b)), visee: (a, b) => visee(a, b), hauteur, unit, armeDe, horsCarte, start, previewTo, moveTo, endTurn, surrender, step, reachable, path: (i, j) => C() && path(player(), i, j), cellFree, oublierCouverture, isExit: (i, j) => C() && isExit(i, j), player, actif, finish };
 }

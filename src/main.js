@@ -18,9 +18,11 @@ import { steelMapHtml, isSteel, coucheOf, drawSteelFog } from './ui/carte_steel.
 import { createVoyage } from './core/voyage.js';
 import { createMusic } from './core/ost_centre.js';
 import { createCarteNml } from './ui/carte_nml.js';
+import { createRencontres } from './core/rencontres.js'; // jalon 1 des rencontres : scènes de route (data/rencontres.js)
+import { ITEMS_RENCONTRES } from './data/rencontres.js';
 import { ITEMS_MEGA, VALIDATION, REFUS, CONSEIL, aBillet, aImplant, PIQUE_PUCE_P_REPERE, PIQUE_PUCE_P_GRILLE } from './data/mega_line.js';
 Object.assign(ITEMS, ORIGIN_ITEMS); // v11 : objets d'origine
-Object.assign(ITEMS, ITEMS_MEGA); // Mega-Line : passe-implant piraté (texte seul)
+Object.assign(ITEMS, ITEMS_MEGA); Object.assign(ITEMS, ITEMS_RENCONTRES); // rencontres : armes gardées au Sac, carnet du chauffeur // Mega-Line : passe-implant piraté (texte seul)
 
 // Tous les manifestes (reused, interiors, buildings, assets/steel/<quartier>) : src/core/catalogue.js, partagé avec l'éditeur de cartes
 const { sprites, iman, bman, sols } = await chargerCatalogue();
@@ -49,6 +51,8 @@ let imagesAutorisees = !window.__nmlMenu; // vrai dès que le cadre du Terminal 
 
 // lot 3 : voyage régional (les sorties régionales ouvrent la carte des No Man's Land)
 const voyage = createVoyage({ game, manifest: mapsMan });
+const rencontres = createRencontres({ game, voyage, say: t => say(t) }); // crochet de case, scène à chaud, journal par case
+if (new URLSearchParams(location.search).get('rencontres') === '0') rencontres.actives = false; // tests du voyage seul : aucun tirage (forcer reste possible)
 const $ = id => document.getElementById(id);
 var shell = null;
 // Un seul élément <audio> pour toute la partie : OST dédiées en boucle sur Center-Town et Fréquence Strip, rotation partagée Groovy Crew (4 titres) sur Pulse Plaza + Steel Arena, ambiance ailleurs.
@@ -153,7 +157,7 @@ function renderDialogue() {
   const n = game.currentNode(), key = n && [game.state.dialogue.npc, game.state.dialogue.tree, game.state.dialogue.node, game.state.player.money, n.text, n.options.length].join(':'); // v15 : sous-arbres (tree) et textes à gabarit
   $('dialogue').hidden = !n; if (!n || key === shownNode) { if (!n) shownNode = null; return; }
   shownNode = key;
-  $('dlg-portrait').hidden = n.npc.portrait === false; if (n.npc.portrait !== false) $("dlg-portrait").src = sprites["portrait-" + n.npc.sprite] ? "./assets/" + sprites["portrait-" + n.npc.sprite].file : n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
+  $('dlg-portrait').hidden = n.npc.portrait === false; if (n.npc.portrait !== false) $("dlg-portrait").src = sprites["portrait-" + (n.npc.portraitDe || n.npc.sprite)] ? "./assets/" + sprites["portrait-" + (n.npc.portraitDe || n.npc.sprite)].file : n.npc.sprite.startsWith("gen_") ? `./assets/generated/portrait-${n.npc.sprite}.webp` : `./assets/reused/portrait-${n.npc.sprite}.webp`; $('dlg-portrait').alt = n.npc.name;
   $('dlg-name').textContent = n.npc.name; typeText(n.text);
   const box = $('dlg-options'); box.replaceChildren();
   for (const [k, o] of n.options.entries()) { const b = document.createElement('button'); b.textContent = o.label; b.dataset.index = o.index; b.dataset.n = k + 1; b.addEventListener('click', () => game.choose(o.index)); box.appendChild(b); }
@@ -167,7 +171,7 @@ function typeText(t) {
   el.onclick = () => { clearInterval(typeTimer); el.textContent = t; };
 }
 let last = performance.now(), lastRegion;
-const nml = createCarteNml({ $, voyage, manifest: mapsMan, say });
+const nml = createCarteNml({ $, voyage, manifest: mapsMan, say, onEvenement: e => rencontres.entrer(e.rencontre) });
 voyage.on(ev => { if ((ev.type === 'case' || ev.type === 'halte' || ev.type === 'arret') && shell && !shell.isOpen()) shell.autosave(); }); // reprise après rechargement : sur la dernière case
 // Ligne de chargement en jeu (même phosphore ambre que le Terminal) : visible tant que le lieu courant n'a pas ses images
 const chargementEl = document.createElement('div'); chargementEl.id = 'chargement'; chargementEl.setAttribute('role', 'status'); chargementEl.hidden = true; document.body.appendChild(chargementEl);
@@ -202,7 +206,7 @@ function frame(now) {
   const enAttente = !lieuPret(game.state.location); afficheChargement(enAttente && !!shell && !shell.isOpen());
   if (!enAttente && shell && !shell.isOpen()) chargeur.arrierePlan(game.state.location); // juste après l'entrée en jeu : le reste, sans bloquer
   if (!enAttente && !shell?.isOpen()) { if (game.state.region !== lastRegion) { voyage.restaure(); lastRegion = game.state.region; } // partie chargée en marche : halte
-    if (voyage.region().statut === 'lieu') game.step(dt); else { voyage.tick(dt * 1000 * (shell?.options.reduceMotion ? 0.5 : 1)); if (!nml.open && voyage.region().statut !== 'lieu') nml.show(true); } }
+    const st = voyage.region().statut; if (st === 'lieu' || st === 'rencontre') { game.step(dt); rencontres.tick(); } else { rencontres.tick(); voyage.tick(dt * 1000 * (shell?.options.reduceMotion ? 0.5 : 1)); if (!nml.open && !['lieu', 'rencontre'].includes(voyage.region().statut)) nml.show(true); } }
   nml.frame();
   const s = game.state, D = world.DOORS;
   nearDoor = s.dialogue ? null : D.find(d => d.location === s.location && Math.hypot(d.threshold.x - s.player.x, d.threshold.z - s.player.z) < 2.5) || null;
@@ -238,7 +242,7 @@ function debugMega({ race, passe, cr } = {}) { const s = game.state;
 { const q = new URLSearchParams(location.search); if (q.get('race') || q.get('passe')) { let fait = false; game.on(ev => { if (!fait && ev.type === 'transition') { fait = true; debugMega({ race: q.get('race') || undefined, passe: q.get('passe') ? q.get('passe') === '1' : undefined }); } }); } }
 // Mode DEV (?dev=1) : panneau chargé à la demande (ui/dev.js), invisible et inactif sinon ; sauvegardes DEV séparées (shell.js, nml_dev_save_*)
 if (new URLSearchParams(location.search).get('dev') === '1') { localStorage.setItem('nml_dev_unlocked', '1'); } // débloque le bouton « Mode DEV » d'Options
-if (new URLSearchParams(location.search).get('dev') === '1') import('./ui/dev.js').then(m => { window.__nml.dev = m.createDev({ game, world, say }); });
+if (new URLSearchParams(location.search).get('dev') === '1') import('./ui/dev.js').then(m => { window.__nml.dev = m.createDev({ game, world, say, rencontres }); });
 // Trajet de la rame (décision Valentin) : fondu, rame qui défile, quelques secondes ; le passage a déjà eu lieu, l'écran le couvre.
 const trajet = document.createElement('div'); trajet.id = 'trajet';
 trajet.innerHTML = `<div class="tj-rame" style="background-image:url('./assets/${bman.ml_rame?.file || ''}')"></div><div class="tj-txt mono"></div>`; document.body.appendChild(trajet);
@@ -262,7 +266,7 @@ function trajetRame(versTerminus) { trajetEnCours = true; trajet.querySelector('
   trajet.className = 'on'; setTimeout(() => { trajet.className = 'on roule'; }, 600);
   setTimeout(() => { trajet.className = 'on'; }, 3400); setTimeout(() => { trajet.className = ''; trajetEnCours = false; say(VALIDATION(game.state)); }, 4000); }
 game.on(ev => { if (ev.type === 'transition') delete game.state.flags.ml_valide; if (ev.type === 'transition' && (ev.door === 'ml_rame_quai' || ev.door === 'tm_rame_quai')) trajetRame(ev.door === 'ml_rame_quai'); });
-window.__nml = { chargeur, lieuPret, bman, music: music.el, demarrerMusique: music.demarrer, musique: music, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
+window.__nml = { rencontres, chargeur, lieuPret, bman, music: music.el, demarrerMusique: music.demarrer, musique: music, ostCentre: music.ostCentre, portique, debugMega, trajetActif: () => trajetEnCours, ouvrirDome, mapsMan, voyage, carteNml: nml, game, state: game.state, project: view.project, pick: view.pick, opacityOf: view.opacityOf, setCamera: view.setCamera, zoom: view.zoom, setZoom: applyZoom, view, doors: world.DOORS, npcs: world.NPCS, world };
 
 // ---------- v8 : menus Sac / Journal / Carte, interface minimale (direction A) ----------
 let panelOpen = null, panelKey = '', steelCouche = null; // lot 2 : couche affichée de la carte de Steel (null = celle du joueur)
@@ -364,6 +368,7 @@ function applyOptions(o) {
 if (window.__nmlMenu && window.__nmlMenu.cadrePret) await window.__nmlMenu.cadrePret;
 imagesAutorisees = true;
 { const d = window.__nmlMenu && window.__nmlMenu.derniere, cible = d && world.LOCATIONS[d.location] ? d.location : START_SNAP.location; chargeur.lieu(cible); }
+let rencontreUrl = false;
 shell = createShell({ game, world, $, applyOptions, terminal: window.__nmlMenu && window.__nmlMenu.terminal, pretLieu: lieuPret,
   prepare: (id, progres) => chargeur.lieu(id, progres), ligneChargement, departNouvelle: () => START_SNAP.location, onStart(rec, draft) {
   if (!rec) { // nouveau jeu : création -> Dusk-Town ; PV, PA et dollars dérivés du personnage
@@ -372,6 +377,7 @@ shell = createShell({ game, world, $, applyOptions, terminal: window.__nmlMenu &
       s.character = c; Object.assign(s.player, { maxHp: dv.maxHp, hp: dv.hp, money: dv.money, inv: { [originOf(draft).item]: 1 } }); Object.assign(s.flags, raceFlags(c)); }
   }
   if (panelOpen) openPanel(panelOpen); shownNode = null;
+  { const id = new URLSearchParams(location.search).get('rencontre'); if (id && !rencontreUrl) { rencontreUrl = true; setTimeout(() => { const r = rencontres.entrerMaintenant(id); if (!r.ok) say('Rencontre inconnue : ' + id); }, 400); } } // ?rencontre=<id> : scène forcée (test, DEV)
   const wantMini = shell.options.minimal; if (wantMini !== document.body.classList.contains('mini')) toggleMini();
 } });
 game.on(ev => {
