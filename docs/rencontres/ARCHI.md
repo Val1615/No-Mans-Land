@@ -66,6 +66,13 @@ Contraintes : 1 unité = 1 m, cases de 0,5 m ; sprites `_3q` à la caméra du je
 - **Décors de terrain** : les bâtiments dont le sprite répond à `scene.nuitDecor` (par défaut `^rc_ds_(talus|berge|rochers|sente)`) sont désaturés et assombris selon `lune`, pour suivre le sol (le talus ne reste pas en plein soleil la nuit).
 - **Liseré de lune** : contour 1 px `#c8d2dc` côté lune sur les personnages, 50 % au plus × `lune`, tête et épaules seulement (tiers supérieur de l'image), jamais les pieds. `window.__nml.liseres()` le lit (et le coupe pour les tests).
 
+## 4 ter. Champs ajoutés au lot Verriers (jalon 2, lot 2)
+- **Créatures** : `sens: [face, dos]` (−1 ou 1) sur un PNJ ou un ennemi indique de quel côté de l'écran regarde l'image de face et l'image de dos (chanchos : `[-1, 1]`, face au sud-ouest, dos au nord-est). Si le `pivot` du manifeste n'est pas un nombre (« centre des pattes »), le moteur centre le sprite sur son `anchor`. Unité de combat : `heading` initial possible. Test : `window.__nml.view.acteurs()`.
+- **Reddition par ennemi** : `scene.textes.rend: { <id ennemi>: 'Le gris détale.' }` ; à défaut, « <nom> lève les mains. ».
+- **Action `pv:N`** : soin gratuit de N PV (`heal:N` reste le soin payant).
+- **Déclencheur texte à variantes** : un déclencheur sans `dialogue` ni `combat` peut porter `alt: [{ si, texte, enter }]` ; la première variante dont `si` est vrai s'applique (effet d'abord, puis texte affiché), sinon `texte`.
+- **Ambiance `glass`** : courbe propre dans `ambiances.js` (nuit bleu-gris commune) ; un biome sans courbe retombe sur `desert`.
+
 ## 5. Jalon 1 : l'embuscade de pillards, de bout en bout
 Piste en désert ou rocher. Arrêt du marqueur, pause, autosave, scène `rc_embuscade_piste` construite à la demande ; contourner (sortie nord par le talus), parler (payer / bluffer / intimider), combattre (combat existant, fuite par le bord = sortie), fouiller le pick-up et les caisses, partir ; retour carte en halte et reprise du trajet ; sauvegarde / chargement dans la scène ; DEV « forcer une rencontre » ; suite `tests/rencontres_rapide.py` (forcée, 1280 et 390, local puis Pages).
 **Estimation Rivet** : ≈ 2 jours de dev (ajouterLieu + gestionnaire + boucle + sortie : 0,5 j ; sauvegarde / reconstruction : 0,5 j ; combat positions absolues + issues : 0,25 j ; DEV + carte : 0,25 j ; tests et captures : 0,5 j), dès réception du décor d'Ocre ; câblage possible avant sur gabarits gris.
