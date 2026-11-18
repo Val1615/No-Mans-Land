@@ -110,7 +110,7 @@ export const RENCONTRES = {
       // midi au désert : ambre franc de la maquette (voile brun divisé par trois : tint/acteurs presque neutres, soleil plein) [retours Ocre 18/11]
       light: { bg: '#3a2c1c', hemi: ['#fff0d8', '#5a4630', 1.5], sun: ['#ffd890', 1.6], tint: '#f7efdf', actor: '#fcf7ee' },
       // cadre : à l'arrivée, la caméra vise entre le joueur et le pick-up ; butée : pas de vide ni de sable voilé aux bords (comme le terminus) [Régie 18/11]
-      cadre: { desktop: { x: [8, 22], z: [9.5, 15], butee: true }, mobile: { x: [6.5, 23.5], z: [9, 15.5], butee: true } },
+      cadre: { desktop: { x: [12, 22], z: [13.5, 15] }, mobile: { x: [11.5, 24], z: [16, 16] } },
       niveaux: [{ x: 5, z: 0, w: 25, d: 5, y: 2.5 }, { x: 2, z: 3, w: 3, d: 7, y0: 2.5, y1: 0, axe: 'z' }],
       buildings: [ // PILOTE §15, dans l'ordre de la table
         D('rc_traces', 'rc_emb_traces_3q', 11, 8.6, 2, 1, { fond: true }), D('rc_trainees', 'rc_emb_trainees_3q', 18, 15.5, 9, 6, { fond: true }),

@@ -1023,7 +1023,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       if (sortie) { const hx = q.x < 0 ? -1 : q.x > viewW ? 1 : 0, hy = q.y < 0 ? -1 : q.y > viewH ? 1 : 0, f = (hx || hy) ? ({ '-1-1': '↖', '0-1': '↑', '1-1': '↗', '-10': '←', '10': '→', '-11': '↙', '01': '↓', '11': '↘' })[`${hx}${hy}`] : '';
         if (l.el.dataset.fleche !== f) l.el.dataset.fleche = f; if (f) { const wp = l.getPos(), pp = game.state.player; horsEcran.push({ l, d: Math.hypot(wp.x - pp.x, wp.z - pp.z) }); } }
       if (!sortie && (lx < 0 || lx > viewW)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; }
-      if (lw && lw + 8 < viewW) lx = Math.min(viewW - 4 - lw / 2, Math.max(4 + lw / 2, lx));
+      { const mg = sortie ? 10 : 4; if (lw && lw + 2 * mg < viewW) lx = Math.min(viewW - mg - lw / 2, Math.max(mg + lw / 2, lx)); } // sorties : 10 px du bord, jamais collées [Ocre 18/11]
       let foot = null; if (npc && l.foot) foot = toScr(l.foot());
       if (!sortie && !(npc && foot && foot.y > 0 && ly - lh < 4) && (ly - lh > viewH || ly < 0)) { l.el.hidden = true; l.el.dataset.off = '1'; continue; } // hors écran vertical : masqué (sorties : marqueur gardé au bord)
       if (sortie && lh) ly = Math.min(viewH - 4, Math.max(lh + 4, ly));

@@ -12,7 +12,8 @@ import { onCaseEntree } from './voyage.js';
 const K = c => c[0] + ',' + c[1];
 const dans = (z, x, y) => x >= z.x && x <= z.x + z.w && y >= z.z && y <= z.z + z.d;
 
-export function createRencontres({ game, voyage, say = () => {}, rng = () => Math.random() }) {
+export function createRencontres({ game, voyage, say = () => {}, msg = () => '', rng = () => Math.random() }) {
+  let arrTexte = null; // texte d'arrivée : effacé au premier pas (en 390 l'encart ne reste pas sur les sorties) [Régie 18/11]
   const S = game.state;
   for (const [id, D] of Object.entries(RENCONTRES)) { ENCOUNTERS[id] = { ...D.combat, prefixe: D.prefixe }; Object.assign(game.world.DIALOGUES, D.dialogues); }
   const TABLE = [...EVENEMENTS_ROUTE, ...Object.entries(RENCONTRES).map(([id, D]) => ({ id, rencontre: id, terrains: D.terrains, poids: D.poids || 1 }))];
@@ -59,7 +60,7 @@ export function createRencontres({ game, voyage, say = () => {}, rng = () => Mat
     R.statut = 'rencontre'; // avant le warp : l'autosave de la transition voit la scène
     game.agir(`warp:${D.lieu}:${D.scene.entree.x}:${D.scene.entree.z}`); p.heading = D.scene.entree.heading ?? p.heading;
     dedans = {}; for (const t of D.declencheurs) dedans[t.id] = dans(t.zone, p.x, p.z);
-    setTimeout(() => say(j.flags[prefixe(id) + 'vu'] ? 'La piste. Le pick-up est toujours là.' : D.arrivee), 60);
+    setTimeout(() => { arrTexte = j.flags[prefixe(id) + 'vu'] ? 'La piste. Le pick-up est toujours là.' : D.arrivee; say(arrTexte); }, 60);
     S.flags[prefixe(id) + 'vu'] = true;
     return { ok: true };
   }
@@ -97,6 +98,7 @@ export function createRencontres({ game, voyage, say = () => {}, rng = () => Mat
   function tick() {
     const R = S.region;
     if (!R?.rencontre) { for (const [id, D] of Object.entries(RENCONTRES)) if (game.world.LOCATIONS[D.lieu] && S.location !== D.lieu) game.retirerLieu(D.lieu); return; } // scène orpheline (partie chargée ailleurs)
+    if (arrTexte && S.player.path.length) { if (msg() === arrTexte) say(''); arrTexte = null; }
     if (quitterApres && !S.combat) { const e = quitterApres; quitterApres = null; quitter(e); return; }
     if (S.dialogue || S.combat || S.combatPending) return;
     const D = RENCONTRES[R.rencontre.id], p = S.player;
