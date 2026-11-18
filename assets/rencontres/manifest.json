@@ -2298,5 +2298,379 @@
     "additive": true,
     "nuit_seulement": true,
     "note": "décalque ADDITIF, à n'afficher que la nuit (comme la retouche du bivouac, §12.9) ; jamais le jour. Sa source visible est la gueule du four."
+  },
+  "gen_rc_balta": {
+    "file": "rencontres/gen_rc_balta.webp",
+    "px": [
+      216,
+      512
+    ],
+    "anchor": [
+      108,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.82,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Balta, le garde : la quarantaine, large ; crête d'excroissances osseuses de la nuque à l'épaule, peau épaisse et grise au cou ; chemise sans col, gilet de toile, foulard rouille, trois cartouches à la poche de poitrine ; fusil à un coup tenu bas ; bandage frais au mollet droit. Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_balta : x 5.5, z 20.4, faceTo (1,5 ; 24) (à la cale, regard vers la piste)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_quilla (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/balta.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_dos": "gen_rc_balta_dos"
+  },
+  "portrait-gen_rc_balta": {
+    "file": "rencontres/portrait-gen_rc_balta.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_balta",
+    "source": "recadrage tête-épaules de gen_rc_balta sur fond brun (58,44,32), comme les portraits du pilote et de la caravane",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "gen_rc_balta_dos": {
+    "file": "rencontres/gen_rc_balta_dos.webp",
+    "px": [
+      210,
+      512
+    ],
+    "anchor": [
+      105,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.82,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Balta, vue de dos 3/4 (crête osseuse de la nuque à l'épaule, nœud du foulard, fusil canon vers le sol, bandage au mollet)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/balta_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_de": "gen_rc_balta"
+  },
+  "gen_rc_tecla": {
+    "file": "rencontres/gen_rc_tecla.webp",
+    "px": [
+      330,
+      512
+    ],
+    "anchor": [
+      165,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.9,
+      0.6
+    ],
+    "height_m": 1.1,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Tecla, l'aînée, ASSISE sur une caisse : soixante-dix ans, petite, couverture sur les genoux, excroissances calcifiées aux tempes (racines blanches sous la peau), yeux laiteux, talisman de verre vert sombre au cou, châle à capuche. Vue de face 3/4 ; la caisse fait partie du sprite",
+    "pose": [
+      "pnj rc_tecla : x 13.2, z 19.6, faceTo (1,5 ; 24) (assise contre le four, à droite de la gueule)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de pose et de style : gen_rc_quilla_assise (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/tecla.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_dos": "gen_rc_tecla_dos",
+    "assise": true
+  },
+  "portrait-gen_rc_tecla": {
+    "file": "rencontres/portrait-gen_rc_tecla.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_tecla",
+    "source": "recadrage tête-épaules de gen_rc_tecla sur fond brun (58,44,32), comme les portraits du pilote et de la caravane",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "gen_rc_tecla_dos": {
+    "file": "rencontres/gen_rc_tecla_dos.webp",
+    "px": [
+      334,
+      512
+    ],
+    "anchor": [
+      167,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.9,
+      0.6
+    ],
+    "height_m": 1.1,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Tecla, assise, vue de dos 3/4 (capuche du châle, cheveux gris noués, cordon du talisman, la caisse)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/tecla_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_de": "gen_rc_tecla",
+    "assise": true
+  },
+  "gen_rc_rufina": {
+    "file": "rencontres/gen_rc_rufina.webp",
+    "px": [
+      180,
+      512
+    ],
+    "anchor": [
+      90,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.74,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Rufina, la souffleuse : la trentaine, grande, cheveux noirs ras, tablier de cuir brûlé, manches retroussées sur des avant-bras couverts de plaques sombres et lisses (comme Lena ; mates, sans éclat), gants de cuir à la ceinture, canne de fer. Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_rufina : x 7.5, z 18.8, faceTo (11,5 ; 19) (devant l'établi, regard vers le four)"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_quilla (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/rufina.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_dos": "gen_rc_rufina_dos"
+  },
+  "portrait-gen_rc_rufina": {
+    "file": "rencontres/portrait-gen_rc_rufina.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_rufina",
+    "source": "recadrage tête-épaules de gen_rc_rufina sur fond brun (58,44,32), comme les portraits du pilote et de la caravane",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "gen_rc_rufina_dos": {
+    "file": "rencontres/gen_rc_rufina_dos.webp",
+    "px": [
+      154,
+      512
+    ],
+    "anchor": [
+      77,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.74,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Rufina, vue de dos 3/4 (bretelles croisées et nœud du tablier, plaques au revers des avant-bras, canne de fer)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/rufina_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_de": "gen_rc_rufina"
+  },
+  "gen_rc_nilo": {
+    "file": "rencontres/gen_rc_nilo.webp",
+    "px": [
+      160,
+      512
+    ],
+    "anchor": [
+      80,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.5,
+    "face": "pnj (3/4 face, miroir horizontal = autre côté)",
+    "role": "Nilo, quatorze ans : maigre, peau marbrée de taches plates brunes et ocre (mains, cou, une joue), petits nodules au-dessus des sourcils, chemise d'homme trop grande, culotte rapiécée, pieds nus. Debout, vue de face 3/4",
+    "pose": [
+      "pnj rc_nilo : x 25.5, z 20.6, faceTo (11,5 ; 19), si ver_nilo_libre (avant : invisible, dialogue par la fenêtre en (26 ; 20,4))"
+    ],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence de style : gen_rc_quilla (pilote)), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/nilo.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_dos": "gen_rc_nilo_dos"
+  },
+  "portrait-gen_rc_nilo": {
+    "file": "rencontres/portrait-gen_rc_nilo.webp",
+    "px": [
+      192,
+      192
+    ],
+    "portrait_de": "gen_rc_nilo",
+    "source": "recadrage tête-épaules de gen_rc_nilo sur fond brun (58,44,32), comme les portraits du pilote et de la caravane",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "gen_rc_nilo_dos": {
+    "file": "rencontres/gen_rc_nilo_dos.webp",
+    "px": [
+      154,
+      512
+    ],
+    "anchor": [
+      77,
+      511
+    ],
+    "pivot": 0.0,
+    "footprint_m": [
+      0.6,
+      0.6
+    ],
+    "height_m": 1.5,
+    "face": "pnj (3/4 dos, miroir horizontal = autre côté)",
+    "role": "Nilo, vue de dos 3/4 (nuque et mains marbrées, dos de la chemise trop grande, talons nus)",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (pied du PNJ)",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert (référence : la vue de face du même personnage + l'angle de gen_rc_quilla_dos), détourage chroma (rc_v1/cut_rc.py : distance au fond + dominance du vert, petits trous bouchés, dé-verdissement des bords), recadrage, UNE mise à l'échelle uniforme ; aucun étirement (brut mut_v1/pnj/nilo_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_de": "gen_rc_nilo"
+  },
+  "gen_rc_chancho": {
+    "file": "rencontres/gen_rc_chancho.webp",
+    "px": [
+      228,
+      231
+    ],
+    "anchor": [
+      128,
+      185
+    ],
+    "pivot": "centre des pattes",
+    "footprint_m": [
+      0.5,
+      1.1
+    ],
+    "height_m": 1.318,
+    "garrot_m": 0.75,
+    "longueur_m": 1.1,
+    "face": "créature quadrupède vue à la caméra du jeu (iso 3/4 d’en haut), de face ; miroir horizontal = autre côté ; pas de portrait",
+    "role": "Chancho de ceniza, jeune : pécari du verre, trapu, cuir gris de cendre pelé par plaques, soies raides croûtées de poussière de verre, défenses trop longues, groin large ; un ANIMAL (rien d'humain). Vue à la caméra du jeu, tête vers le bas-gauche (sud-ouest) ; miroir = tête vers le bas-droite",
+    "pose": [
+      "pnj figé rc_chancho_1 : x 24.5, z 10.5 (examen harde)",
+      "pnj figé rc_chancho_2 : x 26.5, z 13.5, miroir",
+      "pnj figé rc_chancho_3 : x 33, z 11.5",
+      "combat chancho ×3 : mêmes cases (§8)"
+    ],
+    "ordre": "trié avec le décor par profondeur (point d’ancrage = centre des pattes au sol)",
+    "note": "sprite stocké à 4× la résolution 50 px/m (200 px/m) pour rester net ; height_m = (hauteur du sprite / 4) / (50 × cos 28,8°) : à cette valeur le billboard sort à 50 px/m, comme les décors (même règle que gen_rc_ciro_dessous). L’ancre n’est pas le bas du sprite : c’est le point du sol sous le ventre, entre les quatre pattes.",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.75 m, longueur ≈ 1.1 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (bloc + référence de style gen_rc_quilla_assise), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_dos": "gen_rc_chancho_dos"
+  },
+  "gen_rc_chancho_dos": {
+    "file": "rencontres/gen_rc_chancho_dos.webp",
+    "px": [
+      228,
+      242
+    ],
+    "anchor": [
+      100,
+      193
+    ],
+    "pivot": "centre des pattes",
+    "footprint_m": [
+      0.5,
+      1.1
+    ],
+    "height_m": 1.381,
+    "garrot_m": 0.75,
+    "longueur_m": 1.1,
+    "face": "créature quadrupède vue à la caméra du jeu (iso 3/4 d’en haut), de dos ; miroir horizontal = autre côté ; pas de portrait",
+    "role": "Chancho jeune, vue de dos à la caméra du jeu (croupe et queue vers nous, tête vers le haut-droite = nord-est) ; miroir = tête vers le haut-gauche",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (point d’ancrage = centre des pattes au sol)",
+    "note": "sprite stocké à 4× la résolution 50 px/m (200 px/m) pour rester net ; height_m = (hauteur du sprite / 4) / (50 × cos 28,8°) : à cette valeur le billboard sort à 50 px/m, comme les décors (même règle que gen_rc_ciro_dessous). L’ancre n’est pas le bas du sprite : c’est le point du sol sous le ventre, entre les quatre pattes.",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.75 m, longueur ≈ 1.1 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (image-à-image du bloc de dos + la vue de face comme référence de matière), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_de": "gen_rc_chancho"
+  },
+  "gen_rc_chancho_gris": {
+    "file": "rencontres/gen_rc_chancho_gris.webp",
+    "px": [
+      308,
+      270
+    ],
+    "anchor": [
+      172,
+      213
+    ],
+    "pivot": "centre des pattes",
+    "footprint_m": [
+      0.6818181818181818,
+      1.5
+    ],
+    "height_m": 1.541,
+    "garrot_m": 0.95,
+    "longueur_m": 1.5,
+    "face": "créature quadrupède vue à la caméra du jeu (iso 3/4 d’en haut), de face ; miroir horizontal = autre côté ; pas de portrait",
+    "role": "Le gris, vieux mâle de la harde : presque blanc, massif, balafres, défenses longues et jaunies, oreille fendue (peu lisible à cette taille) ; un ANIMAL. Vue à la caméra du jeu, tête vers le bas-gauche ; miroir = tête vers le bas-droite (vers la porte de la cabane)",
+    "pose": [
+      "pnj figé rc_chancho_gris : x 29.5, z 12, miroir (tête vers la cabane au sud-est)",
+      "combat gris : x 29.5, z 12 (rendSous : « Le gris détale. »)"
+    ],
+    "ordre": "trié avec le décor par profondeur (point d’ancrage = centre des pattes au sol)",
+    "note": "sprite stocké à 4× la résolution 50 px/m (200 px/m) pour rester net ; height_m = (hauteur du sprite / 4) / (50 × cos 28,8°) : à cette valeur le billboard sort à 50 px/m, comme les décors (même règle que gen_rc_ciro_dessous). L’ancre n’est pas le bas du sprite : c’est le point du sol sous le ventre, entre les quatre pattes.",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.95 m, longueur ≈ 1.5 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (bloc + référence de style gen_rc_quilla_assise), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho_gris.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_dos": "gen_rc_chancho_gris_dos"
+  },
+  "gen_rc_chancho_gris_dos": {
+    "file": "rencontres/gen_rc_chancho_gris_dos.webp",
+    "px": [
+      308,
+      327
+    ],
+    "anchor": [
+      136,
+      258
+    ],
+    "pivot": "centre des pattes",
+    "footprint_m": [
+      0.6818181818181818,
+      1.5
+    ],
+    "height_m": 1.866,
+    "garrot_m": 0.95,
+    "longueur_m": 1.5,
+    "face": "créature quadrupède vue à la caméra du jeu (iso 3/4 d’en haut), de dos ; miroir horizontal = autre côté ; pas de portrait",
+    "role": "Le gris, vue de dos à la caméra du jeu (croupe et queue vers nous, tête vers le haut-droite) ; miroir = tête vers le haut-gauche",
+    "pose": [],
+    "ordre": "trié avec le décor par profondeur (point d’ancrage = centre des pattes au sol)",
+    "note": "sprite stocké à 4× la résolution 50 px/m (200 px/m) pour rester net ; height_m = (hauteur du sprite / 4) / (50 × cos 28,8°) : à cette valeur le billboard sort à 50 px/m, comme les décors (même règle que gen_rc_ciro_dessous). L’ancre n’est pas le bas du sprite : c’est le point du sol sous le ventre, entre les quatre pattes.",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.95 m, longueur ≈ 1.5 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (image-à-image du bloc de dos + la vue de face comme référence de matière), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho_gris_dos.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "vue_de": "gen_rc_chancho_gris"
   }
 }
