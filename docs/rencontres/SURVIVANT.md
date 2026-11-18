@@ -286,7 +286,7 @@ Objets existants (`water`, `ration`, `poignard`). Pas de nouvel objet obligatoir
 | Mulet | après `sur_laisse_mourir` ou victoire cruelle, ou pacte avec Paca | rien de vendre : un harnais, pas un item ; texte : « Le harnais viendrait, à qui voudrait le couper. Tu le laisses. » |
 
 ## 10. Clés d'assets : réutilisations et clés nouvelles à produire
-Sprites produits et publiés (groupe `rc_survivant_pins`) : lot 1 sols et décors `014db7e`, lot 2 PNJ `98a6fd2`. Même pipeline que le pilote, la caravane et l'écluse : caméra du jeu, 50 px/m, manifeste `assets/rencontres/manifest.json`, aucune clé existante modifiée, aucun étirement. Poses définitives au §15.
+Sprites produits et publiés (groupe `rc_survivant_pins`) : lot 1 sols et décors `014db7e`, lot 2 PNJ `98a6fd2`, **lot v1.1 forêt** (sols retouchés, pins 10–14 m, lisières, sous-bois, ombres de couronne). Même pipeline : caméra du jeu, 50 px/m, manifeste `assets/rencontres/manifest.json`, seules les clés de ce groupe ont été modifiées, aucun étirement. Poses définitives au §15.
 
 Préfixes :
 - `rc_fo_` pour les modules de la **forêt**, réutilisables par d'autres rencontres de ce biome ;
@@ -352,7 +352,7 @@ Préfixes :
 6. Action `pv:N` déjà posée au lot Verriers : le soin à l'eau l'utilise.
 7. À la sortie, poser les drapeaux de monde selon le §7 (Roque sauvé / dépouillé, Mateo pris).
 8. Tests : `?dev=1` → forcer `survivant_pins` sur F08, F09 ou G08, 1280 et 390. Rien à tester tant que les sprites et le câblage ne sont pas là.
-9. **Sprites** : produits (`014db7e` sols et décors, `98a6fd2` PNJ). Poses, mesures et défauts au §15. La lanterne porte le `_neon` ; la flaque nocturne est l'enseigne générique du §14 (comme le bivouac), pas un décalque.
+9. **Sprites** : produits (`014db7e` + v1.1 sols et décors, `98a6fd2` PNJ inchangés). Poses, mesures et défauts au §15. La lanterne porte le `_neon` (y 2,65, depth 30,5) ; la flaque nocturne est l'enseigne générique du §14 (comme le bivouac), pas un décalque. Les ombres de couronne (`rc_fo_ombre_*`) sont des décalques de fond, opacité `1 − lune`, éteintes à 23 h.
 
 ## 13. Décisions de DA et de lore à signaler à Valentin
 **Garde-fou (Régie, 18 novembre 2026)** : les drapeaux `monde_*` déjà posés par la caravane, les Verriers et maintenant Mateo servent seulement à des répliques et à des indices, sans aucune conséquence de quête, tant que Valentin n'a pas validé une quête de la filière.
@@ -412,92 +412,82 @@ survivant_pins: {
 ```
 
 ## 15. Poses définitives et sprites publiés
-Sprites produits et publiés dans `assets/rencontres/` (groupe `rc_survivant_pins`, manifeste sans clé existante modifiée, vérifié par script) : lot 1 sols et décors `014db7e`, lot 2 PNJ `98a6fd2`. Même pipeline que le pilote, la caravane et l'écluse : caméra du jeu (lacet 34,5°, tangage 28,8°, 50 px/m), échelle uniforme, aucun étirement. Ombres de contact au pied des décors (pas sur la lanterne, qui est accrochée). Planche : `/workspace/nml-shots/rencontres/survivant_planche_sprites.png` ; MAQUETTE : `/workspace/nml-shots/rencontres/survivant_maquette.png`.
 
-**Tirage** : cases de forêt F08, G08, F09 (G09 Temple exclu), §1 ; la scène ne dépend pas de la case.
+Lot v1.1 (forêt) : les pins font 10–14 m, en vraie boîte iso, avec au moins trois variantes, un bouquet serré et une lisière. Le sous-bois (genêts, tronc, souche, branches, rocher, fougères, litière) ferme la matière au sol. Les couronnes projettent une ombre au sol (`rc_fo_ombre_*`, fond, sombre semi-transparent) ; le soleil est la source, opacité `1 − lune` (éteint à 23 h). Les solides des pins sont le **tronc seulement** (~1,2 × 1,2), pour que l'on marche sous les houppiers. PNJ, mulet, besace, soulier, lanterne, traînée, ornières et borne sont inchangés (mêmes clés, mêmes px). La lanterne passe à `y: 2.65` (branche sud du pin foudroyé, désormais 10,5 m) et garde un `depth` forcé de 30,5 (le pin mort est à 29,95).
+
+Scène 32 × 26 m, zone de combat 19 × 19 centrée sur (18 ; 15) donc x 8,5–27,5, z 5,5–24,5. Entrée (30,5 ; 17) à l'est. Piste z 15–20 ouverte aux deux bouts (S_E, S_O). Lisières denses au nord (hors combat), à l'est et à l'ouest (couloir de piste laissé libre), clairière lisible autour du pin foudroyé.
 
 ### 15.1 Table des poses (décors)
-x, z = coin nord-ouest de l'emprise ; l'ancre du sprite tombe au coin sud-est au sol (x + w ; z + d). `depth` = (x + w) + (z + d) ; `ordre` = ordre de dessin conseillé (décalques `fond` d'abord). Deux ajustements par rapport au plan provisoire du §4, pour que les figures se lisent : Roque un peu plus au sud, Paca juste au sud du fourré.
 
-| Clé | x | z | w | d | Solides (x, z, w, d, couv) | Ordre | Depth |
-|---|---|---|---|---|---|---|---|
-| `rc_sur_trainee_3q` | 21.5 | 16.2 | 8 | 1.5 | fond | 1 | 47.2 |
-| `rc_sur_ornieres_3q` | 26.2 | 15.4 | 4 | 3 | fond | 2 | 48.6 |
-| `rc_fo_pin_3q` | 2 | 1 | 2.2 | 2.2 | 2, 1, 2.2, 2.2, 2 | 3 | 7.4 |
-| `rc_fo_pin_b_3q` | 7 | 2 | 2 | 2 | 7, 2, 2, 2, 2 | 4 | 13 |
-| `rc_fo_borne_3q` | 2.5 | 12 | 1.2 | 1.2 | 2.5, 12, 1.2, 1.2, 1 | 5 | 16.9 |
-| `rc_fo_pin_3q` | 22 | 1.5 | 2.2 | 2.2 | 22, 1.5, 2.2, 2.2, 2 | 6 | 27.9 |
-| `rc_fo_pin_mort_3q` | 13.5 | 9 | 4 | 3.5 | 13.5, 9, 4, 3.5, 2 | 7 | 30 |
-| `rc_sur_lanterne_3q` | 15.6 | 12.0 | 0.25 | 0.25 | — | 8 | 30.5 (forcer après le pin : elle est accrochée à la branche sud) |
-| `rc_fo_pin_3q` | 4 | 22.5 | 2.2 | 2.2 | 4, 22.5, 2.2, 2.2, 2 | 9 | 30.9 |
-| `rc_fo_pin_b_3q` | 28 | 2 | 2 | 2 | 28, 2, 2, 2, 2 | 10 | 34 |
-| `rc_fo_fourre_3q` | 24.5 | 6.5 | 2.5 | 2.2 | 24.5, 6.5, 2.5, 2.2, 1 | 11 | 35.7 |
-| `rc_sur_besace_3q` | 18.4 | 15.6 | 0.8 | 0.6 | — | 12 | 35.4 |
-| `rc_fo_pin_b_3q` | 12 | 23 | 2 | 2 | 12, 23, 2, 2, 2 | 13 | 39 |
-| `rc_sur_soulier_3q` | 22.2 | 16.8 | 0.3 | 0.3 | — | 14 | 39.6 |
-| `rc_sur_mulet_3q` | 20.2 | 16.0 | 2.4 | 1.3 | 20.2, 16.0, 2.4, 1.3, 1 | 15 | 39.9 |
-| `rc_fo_pin_3q` | 24 | 22.8 | 2.2 | 2.2 | 24, 22.8, 2.2, 2.2, 2 | 16 | 51.2 |
-| `rc_fo_pin_b_3q` | 29 | 22.5 | 2 | 2 | 29, 22.5, 2, 2, 2 | 17 | 55.5 |
+x, z = coin nord-ouest de l'emprise ; l'ancre tombe au coin sud-est (x + w ; z + d). Les poses complètes, y compris les solides de troncs et les décalques d'ombre (décalage inclus), sont dans le manifeste (`pose` de chaque clé) et se collent telles quelles.
+
+Objets narratifs (inchangés, sauf la lanterne) :
+
+| Clé | x | z | w | d | Solidité | Notes |
+|---|---|---|---|---|---|---|
+| `rc_fo_pin_mort_3q` | 14,6 | 9,95 | 2,8 | 2,6 | tronc 1,4 × 1,4 en (15,3 ; 10,55) | clairière ; branche sud pour la lanterne |
+| `rc_sur_lanterne_3q` | 15,6 | 12,0 | 0,25 | 0,25 | — | **y: 2,65** ; `_neon` ; **depth 30,5** (après le pin) ; flaque enseigne `sur_lampe` r 1,5 en (15,8 ; 12,6) |
+| `rc_sur_besace_3q` | 18,4 | 15,6 | 0,8 | 0,6 | — | sur la piste |
+| `rc_sur_soulier_3q` | 22,2 | 16,8 | 0,3 | 0,3 | — | sur la piste |
+| `rc_sur_mulet_3q` | 20,2 | 16,0 | 2,4 | 1,3 | 20,2, 16,0, 2,4, 1,3, 1 | sur la piste, lisible dès l'entrée |
+| `rc_fo_fourre_3q` | 24,2 | 6,2 | 3,0 | 2,6 | toute l'emprise, couv 1 | cache de Paca ; Paca dépasse au sud |
+| `rc_fo_borne_3q` | 2,5 | 12,0 | 1,2 | 1,2 | 2,5, 12, 1,2, 1,2, 1 | ouest, au nord de la piste |
+| `rc_sur_trainee_3q` | 21,5 | 16,2 | 8 | 1,5 | fond | vers l'est |
+| `rc_sur_ornieres_3q` | 26,2 | 15,4 | 4 | 3 | fond | est, sur la piste |
+
+Pins, lisières et bouquets (solides = troncs seulement, voir manifeste) : trois `rc_fo_lisiere_3q` au nord en x 0 / 9,8 / 19,6, z 0 (hors combat) ; une au sud en (10 ; 22) ; bouquets ouest (0,2 ; 4,2), est (26,2 ; 3,8), sud-ouest (0,4 ; 21,4), sud-est (21,5 ; 21,6) ; pins isolés pour épaissir les bords, jamais au milieu de la clairière ni sur la piste. Genêts, fougères, rochers, souches, tronc couché et litière sur les marges (poses au manifeste). Chaque pin / bouquet / lisière a son `rc_fo_ombre_*` en fond, décalé vers l'est-sud selon le soleil (ONO) ; opacité `1 − lune`.
 
 Calques : `rc_sur_lanterne_3q_neon` (additif, même canevas, même ancre, flamme seulement, orange `#ff9a48`, pas de halo). Flaque nocturne : enseigne générique du §14 (`sur_lampe`, `flaque` r 1,5 au sol en (15,8 ; 12,6)), comme le bivouac ; ce n'est pas un décalque.
 
 ### 15.2 PNJ
-| Clé | Position (x ; z) | Hauteur | Remarques |
-|---|---|---|---|
-| `gen_rc_roque` (+ `_dos`) | (15,8 ; 13,3) | 1,4 m assis | faceTo (30,5 ; 17) ; ancre au sol sous les hanches (`pivot: 0`) ; un peu plus au sud que le §4 (12,8), pour rester devant les racines du pin |
-| `gen_rc_paca` (+ `_dos`) | (25,8 ; 8,9) | 1,68 m | faceTo (20 ; 16) ; absente si `sur_paca_partie` ; un peu plus au sud que le §4 (25,5 ; 8), pour dépasser du fourré dès l'arrivée |
 
-Portraits `portrait-gen_rc_roque`, `portrait-gen_rc_paca` (192 px). Ancre au pied, au centre, comme les autres rencontres.
+Inchangés.
 
-### 15.3 Clés publiées
-| Clé | px | Ancre | Emprise L × P × H (m) |
-|---|---|---|---|
-| `g_rc_aiguilles` | 512 × 512 | — | tuile 4 m |
-| `g_rc_aiguilles_b` | 512 × 512 | — | tuile 4 m |
-| `g_rc_aiguilles_c` | 512 × 512 | — | tuile 4 m |
-| `g_rc_piste_foret` | 512 × 512 | — | tuile 4 m |
-| `g_rc_piste_foret_b` | 512 × 512 | — | tuile 4 m |
-| `rc_fo_pin_mort_3q` | 144 × 254 | [105, 253] | 4 × 3,5 × 5,5 |
-| `rc_fo_pin_3q` | 177 × 245 | [102, 244] | 2,2 × 2,2 × 5,5 |
-| `rc_fo_pin_b_3q` | 116 × 215 | [70, 214] | 2 × 2 × 4,8 |
-| `rc_fo_fourre_3q` | 164 × 127 | [102, 126] | 2,5 × 2,2 × 1,6 |
-| `rc_fo_borne_3q` | 56 × 85 | [35, 84] | 1,2 × 1,2 × 0,8 |
-| `rc_sur_mulet_3q` | 136 × 97 | [99, 96] | 2,4 × 1,3 × 0,9 |
-| `rc_sur_besace_3q` | 41 × 44 | [29, 43] | 0,8 × 0,6 × 0,3 |
-| `rc_sur_soulier_3q` | 20 × 24 | [12, 21] | 0,3 × 0,3 × 0,12 |
-| `rc_sur_lanterne_3q` | 12 × 23 | [7, 22] | 0,25 × 0,25 × 0,4 |
-| `rc_sur_lanterne_3q_neon` | 12 × 23 | [7, 22] | calque additif |
-| `rc_sur_trainee_3q` | 351 × 117 | [318, 116] | 8 × 1,5 × 0 |
-| `rc_sur_ornieres_3q` | 213 × 88 | [148, 87] | 4 × 3 × 0 |
-| `gen_rc_roque` | 614 × 512 | [307, 511] | height_m 1,4 ; pivot 0 |
-| `gen_rc_roque_dos` | 636 × 512 | [318, 511] | height_m 1,4 ; pivot 0 |
-| `portrait-gen_rc_roque` | 192 × 192 | — | portrait |
-| `gen_rc_paca` | 244 × 512 | [122, 511] | height_m 1,68 ; pivot 0 |
-| `gen_rc_paca_dos` | 252 × 512 | [126, 511] | height_m 1,68 ; pivot 0 |
-| `portrait-gen_rc_paca` | 192 × 192 | — | portrait |
+| PNJ | x | z | faceTo | Notes |
+|---|---|---|---|---|
+| Roque (`gen_rc_roque`) | 15,8 | 13,3 | (30,5 ; 17) | assis, juste au sud du pin foudroyé ; depth 30,2 (devant le pin) |
+| Paca (`gen_rc_paca`) | 25,8 | 8,9 | (20 ; 16) | dépasse du fourré au sud ; depth 36 (devant le fourré, depth ~36) |
 
-Pentes mesurées (cible 0,33 / 0,70), pied gauche / droit :
+### 15.3 Clés publiées (groupe `rc_survivant_pins`, 41 clés)
 
-| Clé | Pente mesurée |
-|---|---|
-| `rc_fo_pin_mort_3q` | 0,10 / 0,39 |
-| `rc_fo_pin_3q` | 0,67 / 0,22 |
-| `rc_fo_pin_b_3q` | 0,09 / 0,03 |
-| `rc_fo_fourre_3q` | 0,81 / 0,29 |
-| `rc_fo_borne_3q` | 0,50 / 1,00 |
-| `rc_sur_mulet_3q` | 0,67 / 0,12 |
-| `rc_sur_besace_3q` | 1,00 / 1,00 |
-| `rc_sur_soulier_3q` | — / 0,80 |
-| `rc_sur_lanterne_3q` | — / — (trop petite) |
+**Modifiées en v1.1** (déjà dans le groupe) : `g_rc_aiguilles` + `_b` + `_c`, `g_rc_piste_foret` + `_b`, `rc_fo_pin_3q`, `rc_fo_pin_b_3q`, `rc_fo_pin_mort_3q`, `rc_fo_fourre_3q`. Pose de la lanterne mise à jour (`y: 2.65`, depth 30,5).
 
-### 15.4 Défauts connus (v1)
-- Les pins (et le pin foudroyé) sont des silhouettes peintes, calées sur le volume à la caméra ; leurs flancs restent plus verticaux que la boîte iso (pentes mesurées loin de 0,33 / 0,70). Ce n'est pas un étirement : l'échelle est uniforme.
-- Le fourré se lit un peu plus « vu de dessus » que les pins debout.
-- Les racines du pin foudroyé sont amples : Roque, à la position provisoire (15,8 ; 12,8), disparaissait derrière. La pose du §15.2 le met juste au sud.
-- De même, Paca à (25,5 ; 8) tombait dans l'emprise du fourré. La pose du §15.2 la fait dépasser au sud. Si le moteur trie seulement sur le pied, garder un `ordre` / `depth` supérieur à celui du fourré.
-- La lanterne fait 12 × 23 px (c'est sa taille réelle, 0,4 m) : la flamme tient en quelques pixels. La poser **après** le pin (depth > 30), sinon la branche sud la cache. Pas de halo.
-- Le soulier fait 20 × 24 px : il se lit à 1280 ; en 390, l'anneau d'examen suffit, comme prévu.
-- Les étuis des ornières sont à peine visibles à 50 px/m (volontairement un peu plus gros que nature, mais encore discrets).
-- Les joints de la piste `g_rc_piste_foret` restent un peu lisibles tous les 4 m, en bande.
-- La vue de dos de Paca est un 3/4 un peu plus profilé que celle de Roque ; le dos, le nœud du châle et le sac se lisent quand même (ce n'est pas un profil).
-- Les cheveux de Roque sont un peu moins gris de dos que de face (illisible à la taille du jeu).
+**Ajoutées en v1.1** : `rc_fo_pin_c_3q`, `rc_fo_pin_bouquet_3q`, `rc_fo_lisiere_3q`, `rc_fo_genet_3q` + `_b` + `_c`, `rc_fo_tronc_3q`, `rc_fo_souche_3q`, `rc_fo_branche_3q`, `rc_fo_rocher_3q`, `rc_fo_fougere_3q`, `rc_fo_litiere_3q`, `rc_fo_ombre_3q` + `_b` + `_c` + `_mort` + `_bouquet` + `_lisiere`.
+
+| Clé | px | Ancre | Emprise L × P × H (m) | Pente mesurée (cible 0,33 / 0,70) |
+|---|---|---|---|---|
+| `rc_fo_pin_3q` | 376 × 541 | [204, 540] | 2,4 × 2,4 × 12,0 | 0,48 / 0,63 |
+| `rc_fo_pin_b_3q` | 257 × 474 | [142, 473] | 2,2 × 2,2 × 10,5 | 0,50 / 0,68 |
+| `rc_fo_pin_c_3q` | 441 × 606 | [236, 605] | 2,5 × 2,5 × 13,5 | 0,01 / 0,10 |
+| `rc_fo_pin_mort_3q` | 175 × 480 | [108, 479] | 2,8 × 2,6 × 10,5 | 0,41 / 0,30 |
+| `rc_fo_pin_bouquet_3q` | 450 × 592 | [281, 591] | 5,5 × 4,0 × 13,0 | 0,14 / 0,14 |
+| `rc_fo_lisiere_3q` | 589 × 632 | [451, 631] | 10,2 × 3,8 × 14,0 | 0,38 / 0,44 |
+| `rc_fo_fourre_3q` | 194 × 174 | [121, 173] | 3,0 × 2,6 × 1,8 | 0,39 / 0,71 |
+| `rc_fo_genet_3q` | 94 × 83 | [57, 82] | 1,4 × 1,3 × 0,9 | 0,24 / 0,36 |
+| `rc_fo_genet_b_3q` | 79 × 91 | [48, 90] | 1,2 × 1,1 × 1,0 | 0,80 / 0,20 |
+| `rc_fo_genet_c_3q` | 127 × 95 | [82, 94] | 2,0 × 1,6 × 0,8 | 0,81 / 0,08 |
+| `rc_fo_tronc_3q` | 146 × 101 | [127, 100] | 3,2 × 0,8 × 0,55 | 0,45 / 1,14 |
+| `rc_fo_souche_3q` | 51 × 65 | [31, 64] | 0,9 × 0,9 × 0,6 | 0,75 / 0,25 |
+| `rc_fo_branche_3q` | 86 × 56 | [63, 55] | 1,5 × 0,8 × 0,3 | 0,22 / 0,12 |
+| `rc_fo_rocher_3q` | 87 × 78 | [54, 77] | 1,3 × 1,1 × 0,7 | 0,82 / 0,33 |
+| `rc_fo_fougere_3q` | 49 × 53 | [31, 52] | 0,8 × 0,7 × 0,45 | 0,00 / — |
+| `rc_fo_litiere_3q` | 158 × 93 | [111, 92] | 3,2 × 2,4 × 0,05 | 0,68 / 0,42 |
+| `rc_fo_ombre_3q` | 129 × 74 | [88, 73] | 3,9 × 3,6 × 0 | fond, jour seulement |
+| `rc_fo_ombre_b_3q` | 119 × 61 | [86, 60] | 3,66 × 3,45 × 0 | fond, jour seulement |
+| `rc_fo_ombre_c_3q` | 144 × 74 | [109, 73] | 4,19 × 3,77 × 0 | fond, jour seulement |
+| `rc_fo_ombre_mort_3q` | 141 × 73 | [106, 72] | 4,27 × 3,75 × 0 | fond, jour seulement, plus légère |
+| `rc_fo_ombre_bouquet_3q` | 213 × 111 | [145, 110] | 5,41 × 5,05 × 0 | fond, jour seulement |
+| `rc_fo_ombre_lisiere_3q` | 193 × 105 | [145, 104] | 5,56 × 4,85 × 0 | fond, jour seulement |
+
+Les ombres portent `jour_seulement: true` et `opacite: '1-lune'` dans le manifeste, plus un `decalage_m` à appliquer à l'origine de l'arbre couple. Ce n'est **pas** un `_neon` ni une émission.
+
+### 15.4 Défauts connus (v1.1)
+
+- Ce n'est plus un champ d'arbres isolés : les lisières ferment le nord, l'est et l'ouest, une clairière se lit autour du pin foudroyé, la piste traverse. Il reste des défauts de finition.
+- `rc_fo_pin_3q` (et un peu `rc_fo_pin_c_3q`) garde une motte d'aiguilles trop carrée au pied, lisible en 1280.
+- Les pentes mesurées de `pin_c` (0,01 / 0,10), du bouquet (0,14 / 0,14) et du pin mort (0,41 / 0,30) restent loin de la cible 0,33 / 0,70 (mottes rondes, pas une plaque iso). `pin`, `pin_b` et la lisière sont plus proches.
+- `rc_fo_pin_3q` et `rc_fo_pin_c_3q` se ressemblent (deux pignons en parasol) ; `pin_b` (sylvestre) fait la vraie variante.
+- `rc_fo_genet_3q` se lit encore un peu trop de dessus ; `_b` et `_c` sont mieux en iso.
+- Les décalques d'ombre de couronne débordent un peu au sud-est de l'emprise 32 × 26 (le soleil projette vers l'est-sud) ; les rogner au sol ou les atténuer au bord.
+- Sur la maquette de nuit, la flaque de la lanterne est encore un peu timide (en jeu : enseigne générique, à calibrer comme le four / le bivouac).
+- Roque, à 1280, est petit contre le pin foudroyé (il est bien devant, depth 30,2) ; il se lit mieux en s'approchant.
