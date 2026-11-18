@@ -34,7 +34,7 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
   // --- construction de la scène (lieu, portes de bord, PNJ, points) ---
   function construire(id, heures = S.heures) {
     const D = RENCONTRES[id], sc = D.scene, L = D.lieu, A = ambiance(sc.ambiance, heures);
-    const loc = JSON.parse(JSON.stringify({ id: L, name: 'No Man\u2019s Land · ' + D.nom, kind: 'exterior', size: sc.size, city: sc.city, ground: sc.ground, light: A ? { bg: A.bg, hemi: A.hemi, sun: A.sun, tint: A.tint, actor: A.actor } : sc.light, niveaux: sc.niveaux,
+    const loc = JSON.parse(JSON.stringify({ id: L, name: 'No Man\u2019s Land · ' + D.nom, kind: 'exterior', size: sc.size, city: sc.city, ground: sc.ground, light: A ? { bg: A.bg, hemi: A.hemi, sun: A.sun, tint: A.tint, actor: A.actor, lune: A.lune } : sc.light, niveaux: sc.niveaux,
       buildings: sc.buildings, props: sc.props || [], spawn: { player: { x: sc.entree.x, z: sc.entree.z }, companion: { x: sc.entree.x, z: sc.entree.z + 1 } }, accessLabels: true, cadre: sc.cadre }));
     loc.rencontre = id; if (A && loc.ground?.marge) loc.ground.marge.voile = A.voile; // la marge hors scène suit aussi l'heure
     const doors = sc.sorties.map(s => ({ id: `${L}_${s.id}`, location: L, junction: true, quitter: s.id, effet: s.effet, label: s.label,

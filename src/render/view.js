@@ -80,6 +80,22 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   const animStats = { on: 0, total: 0 }; let uniques = [], horloge = 0, vehFiges = false; let dalles = [], decor = [], walkers = [], vehicules = [], drones = [], flick = [], anims = [], movers = [], ecrans = [], neons = [], flaques = [], fenetres = [], hovers = [], pulses = [], beams = [], light = null; // v13 : figurants (file, soldats, passants), drones, néons/hologrammes
   const player = spriteMesh('player', null, true), companion = spriteMesh(COMPANION.sprite, null, true);
   player.userData.actor = 'player'; scene.add(player, companion);
+  // liseré de lune (nuit) : silhouette bleu-gris froid peinte juste avant le personnage, un peu plus grande et décalée vers la lune (haut-gauche de l'écran) ;
+  // intensité light.lune (courbe nocturne de data/ambiances.js, nulle le jour). Code seul : même texture que le personnage, assets inchangés [Ocre + Régie 18/11]
+  const LUNE = '#a9bcdc', liseres = []; let zoomVu = 30;
+  function liseré(s, parent) { const m = new THREE.SpriteMaterial({ map: s.material.map, color: LUNE, transparent: true, depthTest: false, depthWrite: false, opacity: 0 });
+    m.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('#include <alphatest_fragment>', 'if ( diffuseColor.a < 0.5 * opacity ) discard; diffuseColor.rgb = diffuse;'); };
+    m.customProgramCacheKey = () => 'liseré-lune';
+    const r = new THREE.Sprite(m); r.visible = false; r.userData.lisere = true; parent.add(r); liseres.push({ s, r }); return r; }
+  liseré(player, scene); liseré(companion, scene);
+  function liseresMaj() { const k = Math.max(0, Math.min(1, light?.lune || 0));
+    for (let i = liseres.length - 1; i >= 0; i--) { const { s, r } = liseres[i]; if (!r.parent) { liseres.splice(i, 1); continue; }
+      r.visible = k > 0.02 && s.visible && !!s.parent; if (!r.visible) continue;
+      if (r.material.map !== s.material.map) r.material.map = s.material.map;
+      const zx = 3 / zoomVu, zy = 2 / zoomVu; // ~1,5 px de liseré de chaque côté, quel que soit le zoom
+      r.center.copy(s.center); r.scale.set(Math.sign(s.scale.x || 1) * (Math.abs(s.scale.x) + zx), s.scale.y + zy, 1); r.material.rotation = s.material.rotation;
+      r.position.copy(s.position).addScaledVector(screenRight, -zx * 0.35); r.position.y += zy * 0.3;
+      r.material.opacity = 0.85 * k; r.renderOrder = s.renderOrder - 0.5; } }
 
   function mat(map, color) { return new THREE.MeshStandardMaterial({ map, color: map ? '#ffffff' : color, transparent: true, opacity: 1, roughness: 0.95 }); }
   function addLabel(text, cls, getPos, visible) { const el = document.createElement('div'); el.className = 'wlabel ' + cls; el.textContent = text; labelLayer.appendChild(el); labels.push({ el, getPos, visible }); }
@@ -416,7 +432,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const v of loc.vehicules || []) { const s = vehicule(v); if (s) vehicules.push(s); }
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
-      const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.userData.y0 = n.y || 0; s.userData.sansMiroir = !!n.sansMiroir; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s);
+      const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.userData.y0 = n.y || 0; s.userData.sansMiroir = !!n.sansMiroir; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s); liseré(s, world);
       { const gm = s.material.clone(); gm.opacity = 0.62; gm.color.set('#ffd9a0'); gm.alphaTest = 0.2; /* lot 1 : 62 % et teinte ambre clair, lisible sur le toit sombre */ /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
       { const hn = hauteurSol(loc, n.x, n.z) + (n.y || 0), vis = n.si || n.cacheCombat ? () => game.npcVisible(n) : undefined; addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, (n.sprite && sprites[n.sprite].height_m < 1.2 ? 1.1 : 2.05) + hn, n.z), vis); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, hn, n.z); } labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
@@ -1005,13 +1021,13 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     camShift += (wantShift - camShift) * Math.min(1, dt * 8); if (Math.abs(wantShift - camShift) < 0.5) camShift = wantShift;
     if (niv && !camOverride) target.y = (target.y || 0) + (player.userData.hsol || 0) * 0.85; // Mega-Line v2 : le cadre monte avec le joueur sur le quai (+6 m)
     cam.position.copy(target).addScaledVector(camDir, -80); cam.lookAt(target);
-    const zoom = camOverride?.ppm || zoomCadre || (loc.kind === 'interior' ? baseInt * userZoom : zPpm);
+    const zoom = camOverride?.ppm || zoomCadre || (loc.kind === 'interior' ? baseInt * userZoom : zPpm); zoomVu = zoom;
     if (zoom !== cam.userData.zoom || camShift !== cam.userData.shift || cam.userData.cx!==camOverride?.cx || cam.userData.cy!==camOverride?.cy) { cam.userData.shift = camShift; cam.userData.zoom = zoom; const w = viewW, h = viewH; const cx=camOverride?.cx??w/2,cy=camOverride?.cy??h/2;cam.userData.cx=camOverride?.cx;cam.userData.cy=camOverride?.cy;cam.left=-cx/zoom;cam.right=(w-cx)/zoom;cam.top=(cy-camShift)/zoom;cam.bottom=-(h-cy+camShift)/zoom; cam.updateProjectionMatrix(); }
     if (exterior) { painter(); spriteOcclusion(); npcGhosts(); } else { painter(); furnitureOcclusion(); updateOcclusion(); }
     combatOverlay();
     for(const n of npcSprites)if(n.userData.ghost&&!visible('actor'))n.userData.ghost.visible=false;
     world.traverse(o=>{if(o.userData.wall)o.visible=visible('building');if(o.userData.propBox)o.visible=visible('prop');if(o.isMesh&&o.geometry.type==='RingGeometry'&&o.userData.doorId)o.visible=visible('building');});
-    for(const s of bsprites) { const b=LOCATIONS[game.state.location].buildings.find(b=>b.id===s.userData.buildingId); if(b) { const sh=(b.editorLayer||0)*10000+(b.editorDepth||0)+(b.fond?-100000:0); s.renderOrder += sh;/* b.fond : masse de fond (toit de l'Arena, dalles) peinte avant tout, derrière façades et acteurs, y compris ses calques _pulse */ if (sh) { const it = bills.find(i => i.obj === s); for (const e of it?.extra || []) e.renderOrder += sh; } if(b.editorGhost) s.material.opacity=.45; } } renderer.render(scene, cam);
+    for(const s of bsprites) { const b=LOCATIONS[game.state.location].buildings.find(b=>b.id===s.userData.buildingId); if(b) { const sh=(b.editorLayer||0)*10000+(b.editorDepth||0)+(b.fond?-100000:0); s.renderOrder += sh;/* b.fond : masse de fond (toit de l'Arena, dalles) peinte avant tout, derrière façades et acteurs, y compris ses calques _pulse */ if (sh) { const it = bills.find(i => i.obj === s); for (const e of it?.extra || []) e.renderOrder += sh; } if(b.editorGhost) s.material.opacity=.45; } } liseresMaj(); renderer.render(scene, cam);
     const r = canvas.getBoundingClientRect();
     const placed = []; // étiquettes : bornées à l'écran (les deux axes), puis écartées des panneaux d'interface et entre elles
     const toScr = p => { const v = p.clone().project(cam); return { x: r.left + (v.x + 1) / 2 * r.width, y: r.top + (1 - v.y) / 2 * r.height }; };
@@ -1019,6 +1035,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const l of labels) { const vis = !l.visible || l.visible(); l.el.hidden = !vis; l.el.dataset.off = ''; if (!vis) continue; const q = toScr(l.getPos()); const lw = l.el.offsetWidth || 0, lh = l.el.offsetHeight || 0; let lx = q.x, ly = q.y;
       const sortie = l.el.classList.contains('edge') || l.el.classList.contains('junction'), npc = l.el.classList.contains('npc');
       if (planLarge && !sortie) { l.el.hidden = true; continue; }
+      if (sortie && game.state.combat && LOCATIONS[game.state.location]?.rencontre) { l.el.hidden = true; l.el.dataset.off = '1'; continue; } // combat dans une scène de rencontre : sorties masquées (elles restaient sur le camion en 390) [Régie 18/11]
       // sortie hors écran : flèche vers son bord (← → ↑ ↓ et diagonales), libellé gardé au bord ; en 390, seules les plus proches restent (voir horsEcran)
       if (sortie) { const hx = q.x < 0 ? -1 : q.x > viewW ? 1 : 0, hy = q.y < 0 ? -1 : q.y > viewH ? 1 : 0, f = (hx || hy) ? ({ '-1-1': '↖', '0-1': '↑', '1-1': '↗', '-10': '←', '10': '→', '-11': '↙', '01': '↓', '11': '↘' })[`${hx}${hy}`] : '';
         if (l.el.dataset.fleche !== f) l.el.dataset.fleche = f; if (f) { const wp = l.getPos(), pp = game.state.player; horsEcran.push({ l, d: Math.hypot(wp.x - pp.x, wp.z - pp.z) }); } }
