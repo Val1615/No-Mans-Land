@@ -130,7 +130,7 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
       if (t.texte) say(t.texte + ' ' + (r.ok ? '' : t.echec || '')); game.agir(r.ok ? t.pass : t.fail); game.closeDialogue(); return; }
     if (t.combat && t.siDeja && game.cond(t.siDeja)) { p.path = []; p.pending = null; game.agir('combat:' + t.combat); game.closeDialogue(); return; }
     // texte seul (rayonnement du verre) : alt [{ si, texte, enter }] = variante selon l'état (premier qui tient), sinon texte / effet
-    if (!t.dialogue && !t.combat && (t.texte || t.alt)) { const va = (t.alt || []).find(a => !a.si || game.cond(a.si)); say(va?.texte ?? t.texte); if (va?.enter) game.agir(va.enter); return; }
+    if (!t.dialogue && !t.combat && (t.texte || t.alt)) { const va = (t.alt || []).find(a => !a.si || game.cond(a.si)); if (va?.enter) game.agir(va.enter); say(va?.texte ?? t.texte); return; } // effet d’abord : le texte reste affiché
     if (t.dialogue) { p.path = []; p.pending = null; if (t.texte) say(t.texte); const [npc, node] = t.dialogue.split(':'); game.ouvrirDialogue(npc, node || 'start'); }
   }
 
