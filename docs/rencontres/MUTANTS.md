@@ -18,9 +18,9 @@ Maquette concept (MAQUETTE, pas une capture) : `/workspace/nml-shots/rencontres/
 |---|---|
 | id | `ecluse_verriers` [proposition], préfixe de drapeaux `ver_` |
 | Famille | Créatures mutantes, variante « verre » : la harde est l'obstacle, les mutants sont les hôtes |
-| Terrains | `verre` (p = 0,20) de `src/data/nml.js` ; taux inchangés |
+| Terrains | `verre` (p = 0,20) **et** `piste` (p = 0,05) de `src/data/nml.js`, filtrés par le biome `glass` ; taux inchangés. Les deux sont nécessaires : une case traversée par la piste a le terrain `piste`, même dans le verre (`voyage.js`), et c'est le cas de I04, I03 et K03 |
 | Biome | verre (`glass` du manifeste) : plaine de sable vitrifié au bord de la zone d'impact de Big Larry, traversée par un canal UFSA mort et ensablé |
-| Cases de référence | la piste Dusk-Town → Big Larry : **I04 (8,3)**, la case de verre que la piste traverse juste à l'est de Dusk-Town ; voisines **I03 (8,2)** et **J04 (9,3)**. Toutes en biome `glass`. Pour le test : forcée par le mode DEV |
+| Cases de référence | **tirage sur n'importe quelle case de verre (I04, I03, J04 par exemple)** : aucune rencontre n'est attachée à une case, le catalogue tire sur terrain et biome, et le journal par case ne retient que ce qui s'est passé sur une case déjà visitée. Cases `glass` possibles : H02, I02, J02, K02, H03, J04, K04 (terrain `verre`) ; I03, I04, K03 (terrain `piste`). J03 (Big Larry, un lieu) ne tire jamais. Le pilote (désert, roche) et la caravane (désert) ne tirent pas sur le verre. Pour le test : forcée par le mode DEV |
 | Moment | toute heure : la lumière suit le voyage (courbe `glass`, §11) ; le texte d'arrivée ne parle ni du jour ni de la nuit |
 | Emprise | 36 × 30 m (x vers l'est, z vers le sud, origine au coin nord-ouest), **un seul niveau de marche, au sol** |
 | Faction | aucune : une communauté de mutants indépendante, les « Verriers » (voir §13) |
@@ -619,10 +619,10 @@ Préfixes :
 
 ## 12. Points d'accroche pour Rivet
 1. **Catalogue** `src/data/rencontres.js` : entrée `ecluse_verriers` du §14 (fichier `rencontres_verriers.js`, comme la caravane).
-   - `prefixe: 'ver_'`, `terrains: ['verre']`, `biomes: ['glass']`.
+   - `prefixe: 'ver_'`, `terrains: ['verre', 'piste']`, `biomes: ['glass']` : avec `['verre']` seul, la rencontre ne tomberait jamais sur I04, I03 ni K03, qui ont le terrain `piste`.
    - `si: etat => !etat.flags.monde_verriers_vus`, `drapeauArrivee: 'monde_verriers_vus'`.
    - Taux de `TERRAINS` inchangés.
-   - **Vérifier** que `BIOME_TERRAIN.glass = 'verre'` donne bien des cases `glass` à la table filtrée par biome (I04, I03, J04).
+   - Tirage sur n'importe quelle case de verre (I04, I03, J04 par exemple) ; vérifié sur la grille : 7 cases `glass` en terrain `verre`, 3 en terrain `piste`, J03 exclue (lieu).
 2. **Scène sans `niveaux`.**
    - Canal ensablé au niveau 0, creux rendu par `g_rc_limon` et l'épaisseur peinte des parapets (même principe que le lit du pilote, ARCHI §6.1).
    - Parapets en solides `couv: 1` avec trois passages.
@@ -706,7 +706,7 @@ Poses définitives après production des sprites (même principe que le §15 de 
 
 ```js
 export const VERRIERS = {
-  nom: 'L\u2019écluse des Verriers', famille: 'creatures', terrains: ['verre'], biomes: ['glass'], poids: 1, lieu: 'rc_ecluse_verriers', prefixe: 'ver_',
+  nom: 'L\u2019écluse des Verriers', famille: 'creatures', terrains: ['verre', 'piste'], biomes: ['glass'], poids: 1, lieu: 'rc_ecluse_verriers', prefixe: 'ver_',
   duree: 1, dureeSi: { ver_attendu: 4 },                                       // attendre la nuit avec eux (§6.2)
   si: etat => !etat.flags.monde_verriers_vus, drapeauArrivee: 'monde_verriers_vus',
   arrivee: 'Un canal mort au bord du verre. Une écluse noire, un four qui rougeoie. Dans la cuve, des bêtes grises.',
