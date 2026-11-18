@@ -1667,5 +1667,636 @@
     "source": "Ocre, lot 2 caravane « La citerne qui respire » : PNJ (Ocre, 2026-11-18) : GenerateImage (cursor) sur fond vert, référence de style icone_pique_puce_128, détourage chroma, carré transparent, marge 6 %, mise à l'échelle uniforme (brut car_v1/pnj/lame_ressort.jpg, hors dépôt)",
     "status": "v1",
     "groupe": "rc_caravane"
+  },
+  "g_rc_verre": {
+    "file": "rencontres/g_rc_verre.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "plaine de verre : dalles de sable fondu brun-noir et vert bouteille sale, fentes aux arêtes plus claires, mat (aucun reflet peint)",
+    "pose": "ground.paint { skin: 'g_rc_verre', x: 0, z: 0, w: 36, d: 7 }",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_verre.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "g_rc_verre_b": {
+    "file": "rencontres/g_rc_verre_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "verre, croûtes de sel blanc cassé (variante, centre seulement)",
+    "pose": "semée à la place de g_rc_verre sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_verre.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "g_rc_verre_c": {
+    "file": "rencontres/g_rc_verre_c.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "verre, fente noire bordée de lichen orange (variante)",
+    "pose": "semée à la place de g_rc_verre sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_verre.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "g_rc_quai": {
+    "file": "rencontres/g_rc_quai.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "béton du quai gris chaud, dalles fendues (≈ 1,3 m), joints ensablés ; jamais bleuté",
+    "pose": "ground.paint { skin: 'g_rc_quai', x: 0, z: 7, w: 36, d: 2 }  (la bande passe sous les parapets nord)",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_quai.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "g_rc_limon": {
+    "file": "rencontres/g_rc_limon.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "limon craquelé du canal ensablé, brun gris, plus sombre et plus froid que le sable",
+    "pose": "ground.paint { skin: 'g_rc_limon', x: 0, z: 9, w: 36, d: 6.5 }  (sous les parapets sud)",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_limon.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "g_rc_limon_b": {
+    "file": "rencontres/g_rc_limon_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "limon, tache de boue rouillée sèche et une file de sabots (variante)",
+    "pose": "semée à la place de g_rc_limon sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_limon.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "g_rc_cendre": {
+    "file": "rencontres/g_rc_cendre.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "sable cendré gris-ocre du camp et des bas-côtés, grains de verre noir ; même luminance que g_rc_piste au raccord",
+    "pose": "ground.skin (toute la scène) : camp z 15,5-21 et bas-côté z 27-30",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_cendre.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "g_rc_cendre_b": {
+    "file": "rencontres/g_rc_cendre_b.webp",
+    "px": [
+      512,
+      512
+    ],
+    "tile_m": 4.0,
+    "tuilable": true,
+    "role": "sable cendré, grains de verre noir et une file de pas nus (variante)",
+    "pose": "semée à la place de g_rc_cendre sur quelques tuiles (jamais deux voisines)",
+    "ordre": 0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : photo de matière GenerateImage (cursor, mut_v1/sol/mat_cendre.jpg, hors dépôt), étalonnée sur la palette de MUTANTS.md §11 et rendue raccordable par fondu avec sa copie décalée d'une demi-tuile ; sel, lichen, sabots et pas procéduraux (mut_v1/sol/sols_mut.py)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers"
+  },
+  "rc_vr_dalles_3q": {
+    "file": "rencontres/rc_vr_dalles_3q.webp",
+    "px": [
+      141,
+      118
+    ],
+    "anchor": [
+      80,
+      111
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Dalles de verre soulevées en éventail : sable fondu opaque brun-noir et vert bouteille sale, arêtes vives plus claires, fentes, croûtes de sel, un peu de lichen orange ; module du biome verre",
+    "pose": [
+      "{ sprite: 'rc_vr_dalles_3q', x: 5, z: 2, w: 2, d: 2, solid: [{ x: 5, z: 2, w: 2, d: 2, couv: 1 }] }"
+    ],
+    "ordre": 3,
+    "depth": 11,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9792), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.138 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/dalles_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.42 / droit 0.65 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_vr_dalles_b_3q": {
+    "file": "rencontres/rc_vr_dalles_b_3q.webp",
+    "px": [
+      141,
+      103
+    ],
+    "anchor": [
+      80,
+      96
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 0.9,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Dalles de verre (variante basse, trois plaques) ; module du biome verre",
+    "pose": [
+      "{ sprite: 'rc_vr_dalles_b_3q', x: 14, z: 3, w: 2, d: 2, solid: [{ x: 14, z: 3, w: 2, d: 2, couv: 1 }] }"
+    ],
+    "ordre": 7,
+    "depth": 21,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9932), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.1299 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/dalles_b_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.32 / droit 0.7 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_vr_blinde_vitrifie_3q": {
+    "file": "rencontres/rc_vr_blinde_vitrifie_3q.webp",
+    "px": [
+      293,
+      203
+    ],
+    "anchor": [
+      204,
+      196
+    ],
+    "footprint_m": [
+      5,
+      3
+    ],
+    "height_m": 2.4,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Blindé du Service enfoncé dans le verre jusqu'aux essieux : peinture grise brûlée, cloquée et rouillée, canon court, écoutille ouverte, galets et chenille pris dans le verre, sel autour ; module du biome verre",
+    "pose": [
+      "{ sprite: 'rc_vr_blinde_vitrifie_3q', x: 26, z: 1, w: 5, d: 3, solid: [{ x: 26, z: 1, w: 5, d: 3, couv: 2 }] }  // + rc_vr_blinde_vitrifie_3q_texte en etage: 1 sur la même emprise"
+    ],
+    "ordre": 18,
+    "depth": 35,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9434), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.2704 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/blinde_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.4 / droit 0.79 (cible 0,33 / 0,70)",
+    "ombre_contact": true,
+    "layers": [
+      "texte"
+    ]
+  },
+  "rc_vr_parapet_3q": {
+    "file": "rencontres/rc_vr_parapet_3q.webp",
+    "px": [
+      267,
+      128
+    ],
+    "anchor": [
+      248,
+      121
+    ],
+    "footprint_m": [
+      6,
+      0.5
+    ],
+    "height_m": 0.7,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Parapet de canal 6 m : fût de béton gris chaud, couronnement de pierre de taille, joints ensablés, bande de limon sec au pied côté visible ; poses bout à bout",
+    "pose": [
+      "{ sprite: 'rc_vr_parapet_3q', x: 0, z: 8.5, w: 6, d: 0.5, solid: [{ x: 0, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord",
+      "{ sprite: 'rc_vr_parapet_3q', x: 6, z: 8.5, w: 6, d: 0.5, solid: [{ x: 6, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord",
+      "{ sprite: 'rc_vr_parapet_3q', x: 6, z: 15, w: 6, d: 0.5, solid: [{ x: 6, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud",
+      "{ sprite: 'rc_vr_parapet_3q', x: 15, z: 8.5, w: 6, d: 0.5, solid: [{ x: 15, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord",
+      "{ sprite: 'rc_vr_parapet_3q', x: 12, z: 15, w: 6, d: 0.5, solid: [{ x: 12, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud",
+      "{ sprite: 'rc_vr_parapet_3q', x: 21, z: 8.5, w: 6, d: 0.5, solid: [{ x: 21, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord",
+      "{ sprite: 'rc_vr_parapet_3q', x: 18, z: 15, w: 6, d: 0.5, solid: [{ x: 18, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud",
+      "{ sprite: 'rc_vr_parapet_3q', x: 27, z: 8.5, w: 6, d: 0.5, solid: [{ x: 27, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord",
+      "{ sprite: 'rc_vr_parapet_3q', x: 27, z: 15, w: 6, d: 0.5, solid: [{ x: 27, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud (seuil x 24-27)"
+    ],
+    "ordre": 4,
+    "depth": 15.0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9843), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.2304 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/parapet_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.34 / droit 0.7 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_vr_parapet_b_3q": {
+    "file": "rencontres/rc_vr_parapet_b_3q.webp",
+    "px": [
+      143,
+      88
+    ],
+    "anchor": [
+      124,
+      81
+    ],
+    "footprint_m": [
+      3,
+      0.5
+    ],
+    "height_m": 0.7,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Parapet de canal 3 m (même module, pour finir les rangées)",
+    "pose": [
+      "{ sprite: 'rc_vr_parapet_b_3q', x: 0, z: 15, w: 3, d: 0.5, solid: [{ x: 0, z: 15, w: 3, d: 0.5, couv: 1 }] }  // parapet sud, bout ouest (cale x 3-6)",
+      "{ sprite: 'rc_vr_parapet_b_3q', x: 33, z: 8.5, w: 3, d: 0.5, solid: [{ x: 33, z: 8.5, w: 3, d: 0.5, couv: 1 }] }  // parapet nord, bout est",
+      "{ sprite: 'rc_vr_parapet_b_3q', x: 33, z: 15, w: 3, d: 0.5, solid: [{ x: 33, z: 15, w: 3, d: 0.5, couv: 1 }] }  // parapet sud, bout est"
+    ],
+    "ordre": 6,
+    "depth": 18.5,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9714), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.1322 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/parapet_b_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.71 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_vr_escalier_quai_3q": {
+    "file": "rencontres/rc_vr_escalier_quai_3q.webp",
+    "px": [
+      142,
+      100
+    ],
+    "anchor": [
+      123,
+      93
+    ],
+    "footprint_m": [
+      3,
+      0.5
+    ],
+    "height_m": 0.7,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Escalier du quai vers le limon : marches de pierre entre deux échiffres, sable sur les marches ; occupe le passage nord du parapet (x 12-15), non solide",
+    "pose": [
+      "{ sprite: 'rc_vr_escalier_quai_3q', x: 12, z: 8.5, w: 3, d: 0.5 }  // passage nord : non solide"
+    ],
+    "ordre": 9,
+    "depth": 24.0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.8677), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.1357 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/escalier_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.38 / droit 0.67 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_ecl_peniche_3q": {
+    "file": "rencontres/rc_ecl_peniche_3q.webp",
+    "px": [
+      604,
+      337
+    ],
+    "anchor": [
+      472,
+      330
+    ],
+    "footprint_m": [
+      11,
+      4.5
+    ],
+    "height_m": 3.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Péniche retournée, quille en l'air (elle se lit comme un toit), coque rivetée rouillée, ensablée dans le limon jusqu'au plat-bord ; porte découpée au chalumeau au sud (x 7-8 en scène), rideau de toile soufre",
+    "pose": [
+      "{ sprite: 'rc_ecl_peniche_3q', x: 2, z: 9.5, w: 11, d: 4.5, solid: [{ x: 2, z: 9.5, w: 11, d: 4.5, couv: 2 }] }  // porte au sud x 7-8 (on n’entre pas)"
+    ],
+    "ordre": 10,
+    "depth": 27.0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9655), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.5025 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/peniche_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.36 / droit 0.76 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_ecl_porte_nord_3q": {
+    "file": "rencontres/rc_ecl_porte_nord_3q.webp",
+    "px": [
+      153,
+      221
+    ],
+    "anchor": [
+      64,
+      214
+    ],
+    "footprint_m": [
+      1.5,
+      3
+    ],
+    "height_m": 3.4,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Porte nord de l'écluse, fermée : vantail riveté rouillé à entretoises, bajoyer de pierre, montants de fer, passerelle de caillebotis et garde-corps ; autour du montant est, le fil de perles (points rouges et verts) — la silhouette de la scène",
+    "pose": [
+      "{ sprite: 'rc_ecl_porte_nord_3q', x: 19, z: 9, w: 1.5, d: 3, solid: [{ x: 19, z: 9, w: 1.5, d: 3, couv: 2 }] }  // la silhouette de la scène ; perles côté est"
+    ],
+    "ordre": 15,
+    "depth": 32.5,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9879), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.2086 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/porte_nord_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.27 / droit 0.71 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_ecl_porte_sud_3q": {
+    "file": "rencontres/rc_ecl_porte_sud_3q.webp",
+    "px": [
+      162,
+      177
+    ],
+    "anchor": [
+      129,
+      170
+    ],
+    "footprint_m": [
+      3,
+      1
+    ],
+    "height_m": 3.4,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Porte sud de l'écluse, ouverte, rabattue derrière le bajoyer sud (à hauteur de parapet) ; treuil rouillé",
+    "pose": [
+      "{ sprite: 'rc_ecl_porte_sud_3q', x: 20.5, z: 14, w: 3, d: 1, solid: [{ x: 20.5, z: 14, w: 3, d: 1, couv: 2 }] }"
+    ],
+    "ordre": 22,
+    "depth": 38.5,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9454), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.1874 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/porte_sud_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.41 / droit 0.67 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_ecl_four_3q": {
+    "file": "rencontres/rc_ecl_four_3q.webp",
+    "px": [
+      206,
+      213
+    ],
+    "anchor": [
+      125,
+      206
+    ],
+    "footprint_m": [
+      3,
+      2.7
+    ],
+    "height_m": 3.4,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Four à verre de terre crue rapiécée de briques réfractaires, cheminée de briques, gueule cintrée au sud où rougissent les braises (vraie source -> calque _neon) ; canne de fer appuyée, deux moules, tas de dalles brisées à refondre",
+    "pose": [
+      "{ sprite: 'rc_ecl_four_3q', x: 10, z: 16.3, w: 3, d: 2.7, solid: [{ x: 10, z: 16.3, w: 3, d: 2.7, couv: 2 }] }  // gueule au sud en (11,5 ; 19) ; + _neon (le moteur le pose sur les buildings)"
+    ],
+    "ordre": 14,
+    "depth": 32.0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9088), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.2206 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/four_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.29 / droit 0.26 (cible 0,33 / 0,70)",
+    "ombre_contact": true,
+    "layers": [
+      "neon"
+    ]
+  },
+  "rc_ecl_condenseur_3q": {
+    "file": "rencontres/rc_ecl_condenseur_3q.webp",
+    "px": [
+      120,
+      146
+    ],
+    "anchor": [
+      59,
+      139
+    ],
+    "footprint_m": [
+      1.5,
+      2
+    ],
+    "height_m": 1.8,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Condenseur de rosée : cadre de perches grises, toile goudronnée tendue en pente vers le sud, une jarre debout et une renversée dessous ; trois poses, une en miroir",
+    "pose": [
+      "{ sprite: 'rc_ecl_condenseur_3q', x: 14, z: 16.3, w: 1.5, d: 2, solid: [{ x: 14, z: 16.3, w: 1.5, d: 2, couv: 1 }] }",
+      "{ sprite: 'rc_ecl_condenseur_3q', x: 16, z: 16.3, w: 1.5, d: 2, solid: [{ x: 16, z: 16.3, w: 1.5, d: 2, couv: 1 }], miroir: true }",
+      "{ sprite: 'rc_ecl_condenseur_3q', x: 18, z: 16.3, w: 1.5, d: 2, solid: [{ x: 18, z: 16.3, w: 1.5, d: 2, couv: 1 }] }"
+    ],
+    "ordre": 17,
+    "depth": 33.8,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9646), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.1485 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/condenseur_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.72 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_ecl_etabli_3q": {
+    "file": "rencontres/rc_ecl_etabli_3q.webp",
+    "px": [
+      149,
+      100
+    ],
+    "anchor": [
+      121,
+      93
+    ],
+    "footprint_m": [
+      3,
+      0.8
+    ],
+    "height_m": 0.9,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Établi de Rufina : planches grises, plaque de tôle où refroidissent des perles (points rouges et verts), rangée de lames de verre noir en feuille, pinces ; caisse dessous",
+    "pose": [
+      "{ sprite: 'rc_ecl_etabli_3q', x: 6, z: 17.2, w: 3, d: 0.8, solid: [{ x: 6, z: 17.2, w: 3, d: 0.8, couv: 1 }] }"
+    ],
+    "ordre": 11,
+    "depth": 27.0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.8894), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.139 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/etabli_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.31 / droit 0.9 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_ecl_cabane_3q": {
+    "file": "rencontres/rc_ecl_cabane_3q.webp",
+    "px": [
+      290,
+      256
+    ],
+    "anchor": [
+      176,
+      249
+    ],
+    "footprint_m": [
+      4,
+      3.8
+    ],
+    "height_m": 3.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Cabane de la pompe : briques, toit de tôle rouillée en appentis, fenêtre à barreaux et planches au sud (côté piste), tuyau de pompe ; la porte nord (côté cuve) est sur une face cachée à cette caméra : planches éclatées au coin nord-est pour la signaler",
+    "pose": [
+      "{ sprite: 'rc_ecl_cabane_3q', x: 24, z: 16.2, w: 4, d: 3.8, solid: [{ x: 24, z: 16.2, w: 4, d: 3.8, couv: 2 }] }  // porte au nord (face cachée, traces au coin NE), fenêtre au sud"
+    ],
+    "ordre": 28,
+    "depth": 48.0,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9738), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.324 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/cabane_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "pente_mesuree": "pied gauche 0.36 / droit 0.73 (cible 0,33 / 0,70)",
+    "ombre_contact": true
+  },
+  "rc_ecl_four_3q_neon": {
+    "file": "rencontres/rc_ecl_four_3q_neon.webp",
+    "px": [
+      206,
+      213
+    ],
+    "anchor": [
+      125,
+      206
+    ],
+    "additive": true,
+    "parent": "rc_ecl_four_3q",
+    "couche_de": "rc_ecl_four_3q",
+    "layer": "neon",
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : pixels de braise du repeint pris dans la gueule du modèle 3D (matériau émissif), légèrement floutés, orange (255,150,60), même canevas, même ancre ; serré sur la gueule seule",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "note_neon": "vraie source : les braises dans la gueule ; aucun halo sur les murs ni au sol (la lumière au sol, c'est rc_ecl_four_flaque, la nuit). Le verre ne luit jamais. Effet conseillé : vacillement lent."
+  },
+  "rc_vr_blinde_vitrifie_3q_texte": {
+    "file": "rencontres/rc_vr_blinde_vitrifie_3q_texte.webp",
+    "px": [
+      293,
+      203
+    ],
+    "anchor": [
+      204,
+      196
+    ],
+    "additive": false,
+    "parent": "rc_vr_blinde_vitrifie_3q",
+    "couche_de": "rc_vr_blinde_vitrifie_3q",
+    "layer": "texte",
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : craie blanc cassé, trait granuleux : un cercle et « ILS NE VIENNENT PAS », posés sur le flanc sud par projection affine du plan du flanc (pas d’étirement du sprite)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "texte": "○ ILS NE VIENNENT PAS",
+    "note": "calque normal (non additif), jamais retourné en miroir ; à poser en etage: 1 sur l’emprise du blindé, comme le tracteur de la caravane"
+  },
+  "rc_ecl_cuve_3q": {
+    "file": "rencontres/rc_ecl_cuve_3q.webp",
+    "px": [
+      493,
+      211
+    ],
+    "anchor": [
+      375,
+      206
+    ],
+    "footprint_m": [
+      9,
+      4
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque au sol de la cuve : flaque de boue rouillée piétinée de sabots, tessons de jarres en terre cuite, sabots épars dans le limon",
+    "pose": [
+      "{ sprite: 'rc_ecl_cuve_3q', x: 22, z: 10, w: 9, d: 4, fond: true }  // décalque sol : boue, tessons, sabots ; sous tout le reste"
+    ],
+    "ordre": 2,
+    "depth": 45,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : texture vue de dessus peinte par GenerateImage (cursor, mut_v1/gen/cuve_tex.jpg, hors dépôt) ; détourage par écart au limon du fond, bords fondus, alpha ≤ 0,9, projetée dans le plan du sol à la projection exacte du jeu (50 px/m) par une transformation affine du plan (pas d’étirement)",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "calque": "sol",
+    "fond": true,
+    "note": "à dessiner au sol, avant tout le décor (fond: true)"
+  },
+  "rc_ecl_four_flaque": {
+    "file": "rencontres/rc_ecl_four_flaque.webp",
+    "px": [
+      189,
+      89
+    ],
+    "anchor": [
+      128,
+      85
+    ],
+    "footprint_m": [
+      3,
+      2
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Flaque de lumière chaude au sol devant la gueule du four (nuit seulement)",
+    "pose": [
+      "{ sprite: 'rc_ecl_four_flaque', x: 10, z: 19, w: 3, d: 2, fond: true }  // flaque de lumière du four, nuit seulement (retouche à la manière du bivouac, §12.9)"
+    ],
+    "ordre": 1,
+    "depth": 34,
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : dégradé procédural orange (255,150,60) dans le plan du sol, centré sur la gueule (11,5 ; 19), alpha ≤ 0,55, projeté à la caméra du jeu",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "calque": "sol",
+    "fond": true,
+    "additive": true,
+    "nuit_seulement": true,
+    "note": "décalque ADDITIF, à n'afficher que la nuit (comme la retouche du bivouac, §12.9) ; jamais le jour. Sa source visible est la gueule du four."
   }
 }
