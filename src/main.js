@@ -142,7 +142,8 @@ function renderCombat() {
   const c = game.state.combat; document.body.classList.toggle('combat', !!c); $('cbt').hidden = !c; if (!c) { cbtKey = ''; return; }
   const u = c.units[c.actif], pl = c.units.find(q => q.joueur), pv = c.preview;
   const key = JSON.stringify([c.tour, c.actif, c.phase, pl.pa, pl.charge, pv && [pv.type, pv.i, pv.j, pv.pa, pv.chance, pv.ok], c.units.map(q => [q.actif, q.pv]), game.state.player.hp]); if (key === cbtKey) return; cbtKey = key;
-  $('cbt-file').innerHTML = `<b class="t">COMBAT · TOUR ${c.tour}</b>` + c.units.filter(q => q.actif).map(q => `<span class="${q === u ? 'cur' : ''}">${q.joueur ? 'Toi' : q.nom}</span>`).join('');
+  $('cbt-file').innerHTML = `<b class="t">COMBAT · TOUR ${c.tour}</b>` + c.units.filter(q => q.actif).filter((q, k, A) => !q.groupe || A.findIndex(r => r.groupe === q.groupe) === k) // q.groupe : un seul libellé pour le groupe (ARCHI)
+    .map(q => `<span class="${q === u || (q.groupe && u.groupe === q.groupe) ? 'cur' : ''}"${q.groupe ? ` data-groupe="${q.groupe}"` : ''}>${q.joueur ? 'Toi' : q.groupe || q.nom}</span>`).join('');
   const cost = pv && pv.ok ? pv.pa : 0;
   $('cbt-pa').innerHTML = Array.from({ length: pl.paMax }, (_, k) => `<i class="${k < pl.pa - cost ? 'on' : k < pl.pa ? 'cost' : ''}"></i>`).join('');
   const A = game.combat.armeDe(pl), arme = A.nom + (A.chargeur ? ` ${pl.charge}/${A.chargeur}` : '');

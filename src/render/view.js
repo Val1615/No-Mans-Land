@@ -88,7 +88,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   player.userData.actor = 'player'; scene.add(player, companion);
   // liseré de lune (nuit) : silhouette bleu-gris froid peinte juste avant le personnage, un peu plus grande et décalée vers la lune (haut-gauche de l'écran) ;
   // intensité light.lune (courbe nocturne de data/ambiances.js, nulle le jour). Code seul : même texture que le personnage, assets inchangés [Ocre + Régie 18/11]
-  const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30, liseresCoupes = false;
+  const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30, liseresCoupes = false, flaquesCoupees = false;
   function liseré(s, parent) { const m = new THREE.SpriteMaterial({ map: s.material.map, color: LUNE, transparent: true, depthTest: false, depthWrite: false, opacity: 0 });
     // tête et épaules seulement, coupé net (aucun dégradé) : limite à 25 % de la hauteur réelle du personnage, mesurée depuis le haut de sa silhouette
     // opaque (coupeLisere), pour tous les personnages ; jamais le bras, la canne ni les pieds ; 50 % d'opacité au plus [Ocre + Régie 18/11]
@@ -458,10 +458,17 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       s.userData.role = w.role || 'passant'; s.userData.aller = !!w.aller; /* aller : parcours ouvert (file qui avance vers les portiques), repart du début */ s.userData.route = w.path; s.userData.speed = w.speed || 1.1; s.userData.t = w.t0 || 0; world.add(s); decor.push(s); walkers.push(s); }
     for (const v of loc.vehicules || []) { const s = vehicule(v); if (s) vehicules.push(s); }
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
+    const groupesEtiq = {}; // n.groupe (libellé de groupe, voir docs/rencontres/ARCHI.md) : une seule étiquette pour tous les PNJ du groupe, au centre des présents
     for (const n of NPCS.filter(n => n.location === locId)) {
       const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true, n.sens);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); if (n.gabarit) s.material.color.set('#8e8e8e'); /* gabarit gris : sprite d'Ocre pas encore livré (rencontres) */ s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.userData.y0 = n.y || 0; s.userData.sansMiroir = !!n.sansMiroir; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s); liseré(s, world);
       { const gm = s.material.clone(); gm.opacity = 0.62; gm.color.set('#ffd9a0'); gm.alphaTest = 0.2; /* lot 1 : 62 % et teinte ambre clair, lisible sur le toit sombre */ /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
+      if (n.groupe) { const g = groupesEtiq[n.groupe]; if (g) { g.membres.push(n); continue; } } // membre suivant d'un groupe : pas d'étiquette propre
+      if (n.groupe) { const g = groupesEtiq[n.groupe] = { membres: [n] }, vu = q => !(q.si || q.cacheCombat) || game.npcVisible(q), pres = () => { const m = g.membres.filter(vu); return m.length ? m : g.membres; };
+        const centre = y => { const m = pres(), x = m.reduce((a, q) => a + q.x, 0) / m.length, z = m.reduce((a, q) => a + q.z, 0) / m.length; return new THREE.Vector3(x, y(m, x, z), z); };
+        const haut = q => (q.sprite && sprites[q.sprite].height_m < 1.2 ? 1.1 : 2.05) + hauteurSol(loc, q.x, q.z) + (q.y || 0);
+        addLabel(n.groupe, 'npc', () => centre(m => Math.max(...m.map(haut))), () => g.membres.some(vu)); const L = labels[labels.length - 1];
+        L.foot = () => centre((m, x, z) => hauteurSol(loc, x, z)); L.npcSprite = s; L.el.dataset.npc = n.id; L.el.dataset.groupe = n.groupe; continue; }
       { const hn = hauteurSol(loc, n.x, n.z) + (n.y || 0), vis = n.si || n.cacheCombat ? () => game.npcVisible(n) : undefined; addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, (n.sprite && sprites[n.sprite].height_m < 1.2 ? 1.1 : 2.05) + hn, n.z), vis); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, hn, n.z); } labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
     }
     // rencontres : points de fouille et d'examen (SPOTS à anneau) : petit anneau sable au sol, caché quand il n'y a plus rien à faire
@@ -560,13 +567,18 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   // après le décor qui la porte (son sol peint ne la recouvre pas), qui vacille en phase avec l'enseigne (même effet, période, décalage).
   // Opacité = i × k, k = light.lune (courbe nocturne) si présent, sinon 1 − luminance de la teinte ; rien si k·i < 0,02 (le jour).
   // f.cle : décalque d'Ocre (additif, ancre du manifeste, emprise x/z/w/d) ; sinon gradient dessiné en code, disque de rayon f.r (m).
+  function baryAlpha(im) { try { const c = document.createElement('canvas'); c.width = im.width; c.height = im.height; const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(im, 0, 0);
+      const d = g.getImageData(0, 0, c.width, c.height).data; let t = 0, sx = 0, sy = 0; for (let k = 3, n = 0; k < d.length; k += 4, n++) { const a = d[k]; if (!a) continue; t += a; sx += a * (n % c.width); sy += a * Math.floor(n / c.width); }
+      return t ? [(sx / t + 0.5) / c.width, 1 - (sy / t + 0.5) / c.height] : null; } catch (e) { return null; } } // uv (y vers le haut) du barycentre alpha d'une image
   function flaqueNuit(e, b, item) { const f = e.flaque, tc = new THREE.Color(light?.tint || '#ffffff');
     const k = light?.lune != null ? light.lune : 1 - (0.299 * tc.r + 0.587 * tc.g + 0.114 * tc.b), i = (f.i ?? 0.6) * k; if (i < 0.02) return;
     let o; const mf = f.cle && bman[f.cle], cle = mf && SKIN[f.cle] ? f.cle : null;
     if (cle) { const w = f.w ?? mf.w ?? 3, d = f.d ?? mf.d ?? 2, x = f.x ?? (b.x + b.w / 2 - w / 2), z = f.z ?? (b.z + b.d), tx = skinTex(cle);
       o = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, color: f.couleur || '#ffffff', opacity: 0 }));
-      o.center.set(mf.anchor[0] / mf.px[0], 1 - mf.anchor[1] / mf.px[1]); o.scale.set(mf.px[0] / K, mf.px[1] / K, 1); o.position.set(x + w, 0, z + d); }
-    else { const r = f.r ?? 3; o = new THREE.Mesh(new THREE.PlaneGeometry(r * 2, r * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: f.couleur || '#ff963c', transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
+      const ech = f.echelle || 1; o.userData.echelle = ech; // f.echelle : agrandit le décalque autour de son centre de lumière (barycentre alpha), qui reste en place au sol
+      const cx = mf.anchor[0] / mf.px[0], cy = 1 - mf.anchor[1] / mf.px[1], h = ech !== 1 ? baryAlpha(SKIN[cle]) : null;
+      o.center.set(h ? h[0] - (h[0] - cx) / ech : cx, h ? h[1] - (h[1] - cy) / ech : cy); o.scale.set(mf.px[0] / K * ech, mf.px[1] / K * ech, 1); o.position.set(x + w, 0, z + d); }
+    else { const r = (f.r ?? 3) * (f.echelle || 1); o = new THREE.Mesh(new THREE.PlaneGeometry(r * 2, r * 2), new THREE.MeshBasicMaterial({ map: glowTex(), color: f.couleur || '#ff963c', transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false }));
       o.rotation.x = -Math.PI / 2; o.position.set(f.x ?? (b.x + b.w / 2), 0.02, f.z ?? (b.z + b.d / 2)); }
     o.userData.neon = { effet: e.effet || 'fixe', periode: e.periode || 3, ph: e.decale || 0, i }; o.userData.fondu = 1; o.userData.flaqueNuit = e.id;
     world.add(o); item.extra.push(o); neons.push(o); }
@@ -764,7 +776,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     }
     animStats.ecrans = ecrans.length;
     // enseignes code et projecteurs : une couleur ou une rotation par image, hors plafond animStats.on (catégories à part) ; figés si mouvement réduit
-    for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : (pulses.length && u.effet === 'pulse' ? (ostOn ? 0.28 + 0.72 * kickEnv : 0.34 * neonK(u, t)) : neonK(u, t)))); }
+    for (const s of neons) { const u = s.userData.neon; s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * (calme ? 1 : (pulses.length && u.effet === 'pulse' ? (ostOn ? 0.28 + 0.72 * kickEnv : 0.34 * neonK(u, t)) : neonK(u, t)))); if (flaquesCoupees && s.userData.flaqueNuit) s.material.opacity = 0; }
     for (const s of fenetres) { const u = s.userData.fenetre, k = calme ? 1 : 0.78 + 0.22 * (0.6 * Math.sin(t * 1.25 + u.ph) + 0.4 * Math.sin(t * 2.9 + u.ph * 1.7));
       s.material.opacity = Math.min(1, (s.userData.fondu ?? 1) * u.i * k); }
     for (const s of hovers) { const u = s.userData.hover, arret = s.userData.parentVeh?.attend, k = calme ? 0.55 : 0.5 + 0.35 * (0.5 + 0.5 * Math.sin(t * 2.15 + (u?.ph || 0)));
@@ -1235,7 +1247,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const p=ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),new THREE.Vector3());
     return p && {x:p.x,z:p.z};
   }
-  return { flaquesNuit: () => neons.filter(o => o.userData.flaqueNuit).map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite })), // tests : flaques nocturnes posées
+  return { flaquesNuit: on => { const F = neons.filter(o => o.userData.flaqueNuit); if (on != null) flaquesCoupees = !on; /* tests : couper les flaques (mesure de leur apport) */ return F.map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite, echelle: o.userData.echelle || 1 })); }, // tests : flaques nocturnes posées
     acteurs: () => npcSprites.map(s => ({ id: s.userData.npc || s.userData.unit, cx: +s.center.x.toFixed(3), cy: +s.center.y.toFixed(3), miroir: s.material.map.repeat.x < 0, dos: !!s.userData.dos, visible: s.visible })), // tests : ancre, miroir et vue des PNJ et unités
     liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, limites: liseres.filter(o => o.r.visible).map(o => +o.r.material.userData.uCoupe.value.toFixed(3)), visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
     refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{

@@ -114,13 +114,17 @@ with sync_playwright() as p:
         CAD = """(()=>{const n=window.__nml,s=n.state,W=innerWidth,H=innerHeight,r=e=>{const q=e.getBoundingClientRect();return [q.left,q.top,q.right,q.bottom]};
           const ex=[...document.querySelectorAll('#labels .wlabel.edge,#labels .wlabel.junction')].filter(e=>!e.hidden&&e.style.visibility!=='hidden'&&e.getClientRects().length).map(e=>({t:e.textContent,r:r(e)}));
           const P=(x,z)=>{const p=n.project(x,0,z);return [p.x,p.y]},m=document.getElementById('msg');
-          return {W,H,ex,joueur:P(s.player.x,s.player.z),four:P(11.5,19),cabane:P(26,20),balta:P(5.5,20.4),msg:m.textContent&&m.getClientRects().length?r(m):null,loc:r(document.getElementById('locbox')),zoom:r(document.getElementById('zoom'))}})()"""
+          const B=[];for(const x of [26,31])for(const z of [1,4])for(const y of [0,3.2]){const p=n.project(x,y,z);B.push([p.x,p.y])}
+          const npcl=[...document.querySelectorAll('#labels .wlabel.npc')].filter(e=>!e.hidden&&e.style.visibility!=='hidden'&&e.getClientRects().length).map(e=>e.textContent);
+          return {W,H,ex,npcl,blinde:[Math.min(...B.map(q=>q[0])),Math.min(...B.map(q=>q[1])),Math.max(...B.map(q=>q[0])),Math.max(...B.map(q=>q[1]))],joueur:P(s.player.x,s.player.z),four:P(11.5,19),cabane:P(26,20),balta:P(5.5,20.4),msg:m.textContent&&m.getClientRects().length?r(m):null,loc:r(document.getElementById('locbox')),zoom:r(document.getElementById('zoom'))}})()"""
         inter = lambda a, b: a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
         K0 = E(CAD); Wv, Hv = K0['W'], K0['H']
         ok(len(K0['ex']) == 2 and all(e['r'][0] >= 6 and e['r'][2] <= Wv - 6 and e['r'][1] >= 0 and e['r'][3] <= Hv for e in K0['ex']), f'{name} cadrage : les 2 étiquettes de sortie entières, à 6 px au moins du bord', K0['ex'])
         cibles = (K0['joueur'], K0['balta']) if mob else (K0['joueur'], K0['balta'], K0['four'], K0['cabane'])
         ok(all(8 <= q[0] <= Wv - 8 and 60 <= q[1] <= Hv - 150 for q in cibles), f'{name} cadrage : joueur et Balta' + ('' if mob else ', four et cabane') + ' dans le cadre', cibles)
         ok(not inter(K0['loc'], K0['zoom']), f'{name} titre du lieu hors des boutons de zoom', (K0['loc'], K0['zoom']))
+        if not mob: ok(K0['blinde'][0] >= 0 and K0['blinde'][2] <= Wv and K0['blinde'][1] >= 0, f'{name} cadrage : le blindé entre en entier (repère de la scène)', K0['blinde'])
+        ok((K0['npcl'].count('La harde') <= 1 if mob else K0['npcl'].count('La harde') == 1 and K0['npcl'].count('Le gris') == 1) and 'Chancho' not in K0['npcl'], f'{name} étiquettes : une seule « La harde » sur les jeunes, plus « Le gris »', K0['npcl'])
         ARR = E(f"window.__nml.rencontres.RENCONTRES.{RID}.arrivee")
         for _ in range(4):
             E("t=>{document.getElementById('msg').textContent=t}", ARR); time.sleep(.4); K1 = E(CAD)
@@ -231,6 +235,7 @@ with sync_playwright() as p:
             ok(all(u['arme'] == 'defenses' for u in Cb['u'] if u['id'] != 'joueur') and [u['ft'] for u in Cb['u'] if u['id'].startswith('jeune')].count(3) == 2, f'{name} défenses ; jeunes fuient aux tours 3, 3 et 2 ; gris rendSous 0,5', Cb['u'])
             ok(not (VERRIERS | HARDE) & vis(), f'{name} en combat : Verriers et bêtes figées cachés', vis())
             wait("window.__nml.state.combat && window.__nml.state.combat.phase==='joueur'", 40); time.sleep(1); shot(f'{name}_verriers_combat.jpg')
+            F = E("[...document.querySelectorAll('#cbt-file span')].map(e=>e.textContent)"); ok(F.count('La harde') == 1 and F.count('Le gris') == 1 and 'Chancho' not in F, f'{name} barre de combat : « La harde » une fois pour les jeunes, « Le gris » à part', F)
             ok(not E("[...document.querySelectorAll('#labels .wlabel.edge,#labels .wlabel.junction')].some(e=>!e.hidden&&e.style.visibility!=='hidden'&&e.getClientRects().length)"), f'{name} combat : étiquettes de sortie masquées')
             for _ in range(4):
                 if not E("!!window.__nml.state.combat") or E("!window.__nml.state.combat.units.find(u=>u.id==='jeune_c').actif"): break

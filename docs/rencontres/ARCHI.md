@@ -71,6 +71,8 @@ Contraintes : 1 unité = 1 m, cases de 0,5 m ; sprites `_3q` à la caméra du je
 - **Reddition par ennemi** : `scene.textes.rend: { <id ennemi>: 'Le gris détale.' }` ; à défaut, « <nom> lève les mains. ».
 - **Action `pv:N`** : soin gratuit de N PV (`heal:N` reste le soin payant).
 - **Déclencheur texte à variantes** : un déclencheur sans `dialogue` ni `combat` peut porter `alt: [{ si, texte, enter }]` ; la première variante dont `si` est vrai s'applique (effet d'abord, puis texte affiché), sinon `texte`.
+- **Libellé de groupe** (`groupe: 'La harde'`, sur un PNJ de scène et sur un ennemi de combat) : en exploration, une seule étiquette pour tous les PNJ du même `groupe`, posée au centre des membres présents (visible tant qu'un membre l'est) ; dans la barre de combat, un seul libellé pour les unités actives du groupe (surligné quand l'une d'elles joue). Le `name`/`nom` individuel reste pour les dialogues et le journal de combat. Les Verriers : les trois jeunes chanchos en `groupe: 'La harde'`, le gris garde « Le gris ».
+- **Flaque nocturne, `echelle`** : agrandit la flaque (décalque : autour de son barycentre de lumière, qui reste en place au sol ; gradient : multiplie `r`). Four des Verriers : `echelle: 3.5`, `i: 2`, enseigne `intensite: 1.3`, calibrés sur le bivouac (sol réchauffé mesuré : bivouac 8 à 15 m², four 6 à 10 m²). `window.__nml.flaquesNuit(false)` coupe les flaques pour mesurer leur apport.
 - **Ambiance `glass`** : courbe propre dans `ambiances.js` (nuit bleu-gris commune) ; un biome sans courbe retombe sur `desert`.
 
 ## 5. Jalon 1 : l'embuscade de pillards, de bout en bout

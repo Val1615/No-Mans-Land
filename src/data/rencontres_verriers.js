@@ -202,7 +202,8 @@ export const VERRIERS = {
         { x: 0, z: 9, w: 36, d: 6.5, skin: 'g_rc_limon', tileM: 4 }, { x: 16, z: 9, w: 4, d: 4, skin: 'g_rc_limon_b', tileM: 4 },
         { x: 0, z: 21, w: 36, d: 6, skin: 'g_rc_piste', tileM: 4 }, { x: 8, z: 21, w: 4, d: 4, skin: 'g_rc_piste_b', tileM: 4 }, { x: 26, z: 23, w: 4, d: 4, skin: 'g_rc_piste_c', tileM: 4 },
         { x: 20, z: 27, w: 4, d: 3, skin: 'g_rc_cendre_b', tileM: 4 } ] },
-    cadre: { desktop: { x: [12, 28], z: [12, 20] }, mobile: { x: [6, 28], z: [16, 22] } },
+    cadre: { desktop: { x: [18, 32], z: [12, 20] }, // 1280 : 6 m vers l'est (2 m ne suffisaient pas) : blindé en entier, « Demi-tour » à 34 px du bord [Régie + Ocre 18/11]
+    mobile: { x: [6, 28], z: [16, 22] } },
     buildings: [ // §14 + table de poses du §15 (ancre au coin sud-est de l’emprise) ; ph : volume gris de repli si une clé manquait
       D('ver_cuve', 'rc_ecl_cuve_3q', 22, 10, 9, 4, { fond: true, ph: { h: 0.05 } }), // décalque sol : boue, tessons, sabots
       D('ver_dalles', 'rc_vr_dalles_3q', 5, 2, 2, 2, { ph: { h: 1.2 }, solid: [R(5, 2, 2, 2, 1)] }),
@@ -234,8 +235,9 @@ export const VERRIERS = {
     ],
     // gueule du four : seule lumière (§3) ; flaque rc_ecl_four_flaque = décalque additif au sol en (10 ; 19 ; 3 × 2), la nuit seulement,
     // par le mécanisme générique de flaque nocturne (ARCHI §4 bis, le même que le feu du bivouac) ; le verre ne luit jamais
-    enseignes: [{ id: 'ver_feu', building: 'ver_four', effet: 'pulse', periode: 7, intensite: 0.7,
-      flaque: { cle: 'rc_ecl_four_flaque', x: 10, z: 19, w: 3, d: 2, i: 0.8 } }],
+    // four = seule lumière (§3) : gueule et flaque calibrées sur le feu du bivouac (mesure : bivouac 8 à 15 m² de sol réchauffé, four 6 à 10 m² ; Régie + Ocre 18/11)
+    enseignes: [{ id: 'ver_feu', building: 'ver_four', effet: 'pulse', periode: 7, intensite: 1.3,
+      flaque: { cle: 'rc_ecl_four_flaque', x: 10, z: 19, w: 3, d: 2, i: 2, echelle: 3.5 } }],
     props: [{ sprite: 'barrel', x: 20.7, z: 17, fp: [0.6, 0.6] }], // fût (réutilisé)
     entree: { x: 1.5, z: 24, heading: Math.PI / 2 },
     sorties: [
@@ -259,9 +261,9 @@ export const VERRIERS = {
     { id: 'rc_nilo', name: 'Nilo', sprite: 'gen_rc_nilo', x: 25.5, z: 20.6, faceTo: [11.5, 19], dialogue: 'rc_nilo', entrees: [{ si: 'ver_nilo_libre', node: 'dehors' }], si: 'ver_nilo_libre&!ver_chasses', cacheCombat: true, bloque: false },
     // la harde hors combat : bêtes figées, ancre au centre des pattes (manifeste), face au sud-ouest et dos au nord-est (sens), examen rc_harde
     { id: 'rc_gris', name: 'Le gris', sprite: 'gen_rc_chancho_gris', x: 29.5, z: 12, faceTo: [26, 16], sens: BETE, fige: true, portrait: false, dialogue: 'rc_harde', si: '!ver_harde_partie', cacheCombat: true },
-    { id: 'rc_chancho_a', name: 'Chancho', sprite: 'gen_rc_chancho', x: 24.5, z: 10.5, faceTo: [27, 12], sens: BETE, fige: true, portrait: false, dialogue: 'rc_harde', si: '!ver_harde_partie', cacheCombat: true },
-    { id: 'rc_chancho_b', name: 'Chancho', sprite: 'gen_rc_chancho', x: 26.5, z: 13.5, faceTo: [26, 16], sens: BETE, fige: true, portrait: false, dialogue: 'rc_harde', si: '!ver_harde_partie', cacheCombat: true },
-    { id: 'rc_chancho_c', name: 'Chancho', sprite: 'gen_rc_chancho', x: 33, z: 11.5, faceTo: [28, 11], sens: BETE, fige: true, portrait: false, dialogue: 'rc_harde', si: '!ver_harde_partie', cacheCombat: true },
+    { id: 'rc_chancho_a', name: 'Chancho', groupe: 'La harde', sprite: 'gen_rc_chancho', x: 24.5, z: 10.5, faceTo: [27, 12], sens: BETE, fige: true, portrait: false, dialogue: 'rc_harde', si: '!ver_harde_partie', cacheCombat: true },
+    { id: 'rc_chancho_b', name: 'Chancho', groupe: 'La harde', sprite: 'gen_rc_chancho', x: 26.5, z: 13.5, faceTo: [26, 16], sens: BETE, fige: true, portrait: false, dialogue: 'rc_harde', si: '!ver_harde_partie', cacheCombat: true },
+    { id: 'rc_chancho_c', name: 'Chancho', groupe: 'La harde', sprite: 'gen_rc_chancho', x: 33, z: 11.5, faceTo: [28, 11], sens: BETE, fige: true, portrait: false, dialogue: 'rc_harde', si: '!ver_harde_partie', cacheCombat: true },
   ],
   // examens et fouilles (§3, §9) ; alt [{ si, text, enter }] : variante selon l’état (premier qui tient), sinon text / enter
   points: [
@@ -307,9 +309,9 @@ export const VERRIERS = {
     ennemis: [ // les Verriers jamais au combat (cacheCombat) ; positions absolues de la harde, mêmes cases que hors combat
       { id: 'gris', nom: 'Le gris', sprite: 'gen_rc_chancho_gris', sens: BETE, heading: cap(29.5, 12, [26, 16]), x: 29.5, z: 12, pv: 18, pa: 6, initiative: 5, arme: 'defenses', competences: { melee: 55, armes: 0 }, rendSous: 0.5, si: '!ver_conseil_gris' },
       { id: 'gris_c', nom: 'Le gris', sprite: 'gen_rc_chancho_gris', sens: BETE, heading: cap(29.5, 12, [26, 16]), x: 29.5, z: 12, pv: 18, pa: 6, initiative: 5, arme: 'defenses', competences: { melee: 55, armes: 0 }, rendSous: 0.6, si: 'ver_conseil_gris' },
-      { id: 'jeune_a', nom: 'Chancho', sprite: 'gen_rc_chancho', sens: BETE, heading: cap(24.5, 10.5, [27, 12]), x: 24.5, z: 10.5, pv: 8, pa: 7, initiative: 7, arme: 'defenses', competences: { melee: 40, armes: 0 }, fuitTour: 3 },
-      { id: 'jeune_b', nom: 'Chancho', sprite: 'gen_rc_chancho', sens: BETE, heading: cap(26.5, 13.5, [26, 16]), x: 26.5, z: 13.5, pv: 8, pa: 7, initiative: 6, arme: 'defenses', competences: { melee: 40, armes: 0 }, fuitTour: 3 },
-      { id: 'jeune_c', nom: 'Chancho', sprite: 'gen_rc_chancho', sens: BETE, heading: cap(33, 11.5, [28, 11]), x: 33, z: 11.5, pv: 8, pa: 7, initiative: 6, arme: 'defenses', competences: { melee: 35, armes: 0 }, fuitTour: 2 } ],
+      { id: 'jeune_a', nom: 'Chancho', groupe: 'La harde', sprite: 'gen_rc_chancho', sens: BETE, heading: cap(24.5, 10.5, [27, 12]), x: 24.5, z: 10.5, pv: 8, pa: 7, initiative: 7, arme: 'defenses', competences: { melee: 40, armes: 0 }, fuitTour: 3 },
+      { id: 'jeune_b', nom: 'Chancho', groupe: 'La harde', sprite: 'gen_rc_chancho', sens: BETE, heading: cap(26.5, 13.5, [26, 16]), x: 26.5, z: 13.5, pv: 8, pa: 7, initiative: 6, arme: 'defenses', competences: { melee: 40, armes: 0 }, fuitTour: 3 },
+      { id: 'jeune_c', nom: 'Chancho', groupe: 'La harde', sprite: 'gen_rc_chancho', sens: BETE, heading: cap(33, 11.5, [28, 11]), x: 33, z: 11.5, pv: 8, pa: 7, initiative: 6, arme: 'defenses', competences: { melee: 35, armes: 0 }, fuitTour: 2 } ],
     // aucune mort (§8) ; reddition et défaite ne quittent pas la scène (ver_recule), la harde reste
     issues: { victoire: 'flag:ver_harde_partie;flag:ver_harde_battue', fuite: 'rencontre:quitter',
               reddition: 'flag:ver_recule', defaite: 'flag:ver_recule;give:water;warp:rc_ecluse_verriers:11.5:20.5' },
