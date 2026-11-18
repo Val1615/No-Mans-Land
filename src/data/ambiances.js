@@ -1,7 +1,7 @@
 // Ambiances jour/nuit par biome (scènes de rencontre) : la lumière suit l'heure du voyage (state.heures), elle n'est jamais figée par scène.
 // Clés : heure (0-24) -> lumière au format view.applyLight ({ bg, hemi:[ciel, sol, intensité], sun:[couleur, intensité], tint, actor }) + voile de la marge hors scène.
 // Interpolation linéaire entre clés (couleurs et intensités). Désert de jour : ambre franc de la maquette d'Ocre (pilote_maquette.png) [Ocre + Régie 18/11].
-const NUIT_DESERT = { bg: '#0b0d16', hemi: ['#5c6a94', '#16121c', 0.6], sun: ['#8494c8', 0.35], tint: '#8a92b4', actor: '#aab2cc', voile: 'rgba(6,8,16,.62)' };
+const NUIT_DESERT = { bg: '#0b0d16', hemi: ['#5c6a94', '#16121c', 0.6], sun: ['#8494c8', 0.35], tint: '#5c6688', actor: '#8e96b4', voile: 'rgba(6,8,16,.62)' };
 const AUBE_DESERT = { bg: '#2a1c14', hemi: ['#f2b88a', '#3a2618', 1.05], sun: ['#ff9c58', 0.95], tint: '#ecc6a0', actor: '#f2d8bc', voile: 'rgba(20,12,8,.32)' };
 const JOUR_DESERT = { bg: '#3a2c1c', hemi: ['#fff0d8', '#5a4630', 1.5], sun: ['#ffd890', 1.6], tint: '#f7efdf', actor: '#fcf7ee', voile: 'rgba(14,10,6,.18)' };
 export const AMBIANCES = {
