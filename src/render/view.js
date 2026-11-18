@@ -359,7 +359,10 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     s.position.set(b.x + b.w + (b.ancre?.[0] || 0), b.y || 0, b.z + b.d + (b.ancre?.[1] || 0)); // b.y : hauteur (m) d'une enseigne posée en façade ; b.ancre : décalage (m) de l'ancre du sprite par rapport au coin avant (angle de l'Arena, ancre au raccord ouest)
     Object.assign(s.userData, { buildingId: b.id, visitable: b.visitable, label: b.label, img: b.sprite, targetOpacity: 1 });
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
-    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0, zone: b.zone || null, dessus: b.dessus || 0 }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
+    const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0, zone: b.zone || null, dessus: b.dessus || 0, id: b.id, apres: b.apres || null }; bills.push(item);
+    // ombre de couronne (manifeste opacite '1-lune', ou b.jour) : opacité 1 − lune, invisible la nuit ; ce n'est pas une émission [SURVIVANT §15, forêt v1.1]
+    if (b.jour || m.opacite === '1-lune') s.userData.kJour = Math.max(0, 1 - (light?.lune || 0));
+    if (b.houppier) s.userData.houppier = typeof b.houppier === 'number' ? b.houppier : 0.5; // cover : toit (halle) au-dessus de ce qui est dessous
     for (const d of b.dalles || []) dalle(b, bman[b.sprite], s, item, d);
     // calque <clé>_reflet du manifeste (layer 'reflet', jour_seulement) : reflets du soleil, additifs, opacité 1 − lune (0 la nuit) ; jamais une émission, à l'inverse
     // des _neon, enseignes et flaques (le verre ne luit jamais) ; b.reflet : false pour ne pas le poser, ou un facteur d'opacité [Ocre 18/11, MUTANTS §15.6]
@@ -884,6 +887,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function topoSort(list) {
     const n = list.length, R = list.map(i => rectOf(i.obj)), indeg = new Array(n).fill(0), out = list.map(() => []);
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+      if (list[i].apres && list[i].apres === list[j].id) { out[j].push(i); indeg[i]++; continue; } // b.apres : dessiné juste après ce bâtiment (lanterne accrochée au pin foudroyé)
+      if (list[j].apres && list[j].apres === list[i].id) { out[i].push(j); indeg[j]++; continue; }
       const a = R[i], b = R[j]; if (a.x1 < b.x0 || b.x1 < a.x0 || a.y1 < b.y0 || b.y1 < a.y0) continue;
       if (inFront(list[j], list[i])) { out[i].push(j); indeg[j]++; } else { out[j].push(i); indeg[i]++; }
     }
@@ -950,11 +955,20 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
         const ti = n ? { x0: cx - 0.3, x1: cx + 0.3, z0: cz - 0.3, z1: cz + 0.3, etage: y0 > 0.06 ? 2 : 0, zone: y0 > 0.06 ? niv?.zoneNiveau || null : null } : bills.find(x => x.obj.userData?.buildingId === b.id) || { x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, etage: b.etage || 0, zone: b.zone || null };
         for (const s of bsprites) { if (!DG.sprites.includes(s.userData.buildingId) || s.userData.targetOpacity < 1) continue; const bi = bills.find(x => x.obj === s); if (!bi || !inFront(bi, ti)) continue;
           for (const hy of hs) { const u = uvOf(s, scr(new THREE.Vector3(cx, y0 + hy, cz))); if (alphaAt(s.userData.img, u.u, u.v) > 0.3) { s.userData.targetOpacity = 0.3; break; } } } } }
+    // houppiers (b.houppier, forêt du survivant) : fondu partiel (pas de disparition) dès que la couronne cache le joueur, un PNJ visible ou un point d'examen du lieu
+    { const hs = bsprites.filter(s => s.userData.houppier); if (hs.length) { const L = LOCATIONS[builtFor], cib = [];
+      for (const a of [player, companion]) if (a.visible) cib.push({ id: a === player ? 'joueur' : 'compagnon', x: a.position.x, z: a.position.z, y0: 0, h: [0.3, 0.9, 1.5] });
+      for (const n of NPCS) if (n.location === builtFor && game.npcVisible(n)) cib.push({ id: n.id, x: n.x, z: n.z, y0: hauteurSol(L, n.x, n.z), h: [0.3, 0.8, 1.3] });
+      for (const p of game.world.SPOTS || []) if (p.location === builtFor && (!p.if || p.if())) cib.push({ id: p.id, x: p.x, z: p.z, y0: 0, h: [0.2, 0.6] });
+      for (const s of hs) { const bi = bills.find(b => b.obj === s); if (!bi) continue; const k = s.userData.houppier; s.userData.couvre = []; const deja = s.userData.targetOpacity < 1;
+        for (const c of cib) { const ti = { x0: c.x - 0.3, x1: c.x + 0.3, z0: c.z - 0.3, z1: c.z + 0.3, etage: 0, zone: null }; if (!inFront(bi, ti)) continue;
+          if (c.h.some(hy => { const u = uvOf(s, scr(new THREE.Vector3(c.x, c.y0 + hy, c.z))); return alphaAt(s.userData.img, u.u, u.v) > 0.3; })) s.userData.couvre.push(c.id); }
+        if (s.userData.couvre.length || deja) s.userData.targetOpacity = k; } } }
     for (const o of phOf) { o.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === o), r = rectOf(o);
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
         if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
       const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else if (e.userData.reflet) e.material.opacity = m.opacity * e.userData.kJour; else e.material.opacity = m.opacity; }
-    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse || e.userData.projecteur) e.userData.fondu = m.opacity; else if (e.userData.reflet) e.material.opacity = m.opacity * e.userData.kJour; else if (e.userData.ecran) e.material.opacity = Math.min(1, m.opacity * (e.userData.beatOp ?? 0.9)); else e.material.opacity = Math.min(0.9, m.opacity); }
+    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity * (s.userData.kJour ?? 1) - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse || e.userData.projecteur) e.userData.fondu = m.opacity; else if (e.userData.reflet) e.material.opacity = m.opacity * e.userData.kJour; else if (e.userData.ecran) e.material.opacity = Math.min(1, m.opacity * (e.userData.beatOp ?? 0.9)); else e.material.opacity = Math.min(0.9, m.opacity); }
   }
   // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
   function furnitureOcclusion() {
@@ -1017,7 +1031,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (builtFor !== s.location) { if (chargement && !chargement.pret(s.location)) { chargement.demande?.(s.location); return; } build(s.location); }
     const visible=kind=>game.world.testing||game.world.editorLayers?.[kind]?.visible!==false;
     if(groundMesh)groundMesh.visible=visible('zone');
-    for(const b of bsprites){b.visible=visible('building');const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible&&e.userData.actif!==false&&!(e.userData.reflet&&!(e.userData.kJour>0.001));}
+    for(const b of bsprites){b.visible=visible('building')&&!(b.userData.kJour<=0.001);const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible&&e.userData.actif!==false&&!(e.userData.reflet&&!(e.userData.kJour>0.001));}
     for(const i of bills)if(i.obj.userData.editorId)i.obj.visible=visible('prop');
     for(const n of npcSprites)n.visible=visible('actor')&&(!n.userData.npc||!game.npcVisible||game.npcVisible(NPCS.find(q=>q.id===n.userData.npc))); // rencontres : PNJ présents sous condition
     player.visible=visible('actor');player.userData.editorId=s.player.editorId;
@@ -1257,7 +1271,9 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const p=ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),new THREE.Vector3());
     return p && {x:p.x,z:p.z};
   }
-  return { reflets: () => reflets.map(r => ({ id: r.userData.reflet, opacite: r.material.opacity, visible: r.visible })), // tests : calques _reflet posés (0 la nuit)
+  return { ombres: () => bsprites.filter(s => s.userData.kJour != null).map(s => ({ id: s.userData.buildingId, opacite: s.material.opacity, visible: s.visible })), // tests : ombres de couronne (0 la nuit)
+    houppiers: () => bsprites.filter(s => s.userData.houppier).map(s => ({ id: s.userData.buildingId, cible: s.userData.targetOpacity, opacite: s.material.opacity, couvre: s.userData.couvre || [] })), // tests : fondu des houppiers
+    reflets: () => reflets.map(r => ({ id: r.userData.reflet, opacite: r.material.opacity, visible: r.visible })), // tests : calques _reflet posés (0 la nuit)
     flaquesNuit: on => { const F = neons.filter(o => o.userData.flaqueNuit); if (on != null) flaquesCoupees = !on; /* tests : couper les flaques (mesure de leur apport) */ return F.map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite, echelle: o.userData.echelle || 1 })); }, // tests : flaques nocturnes posées
     acteurs: () => npcSprites.map(s => ({ id: s.userData.npc || s.userData.unit, cx: +s.center.x.toFixed(3), cy: +s.center.y.toFixed(3), miroir: s.material.map.repeat.x < 0, dos: !!s.userData.dos, visible: s.visible })), // tests : ancre, miroir et vue des PNJ et unités
     liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, limites: liseres.filter(o => o.r.visible).map(o => +o.r.material.userData.uCoupe.value.toFixed(3)), visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune

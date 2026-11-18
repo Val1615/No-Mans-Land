@@ -9,6 +9,9 @@ import { SURVIVANT } from './rencontres_survivant.js'; // jalon 2, lot 3 : « Le
 const CRETE = [-2.576, -3.748]; // ancre décalée de y 2,5 m (fiche d'Ocre : un sprite de décor n'a pas de champ y)
 const D = (id, sprite, x, z, w, d, extra = {}) => ({ id, label: '', sprite, x, z, w, d, visitable: false, cue: null, named: false, solid: [], ...extra });
 
+// réglage global de la fréquence des rencontres (consigne §8) : multiplie les taux de base des terrains (data/nml.js, inchangés) ; 1 = taux d'origine
+export const RENCONTRES_FREQUENCE = 1;
+
 export const ITEMS_RENCONTRES = {
   carnet_chauffeur: { name: 'Carnet du chauffeur' }, // lore : « Livraison Anselme, Dusk-Town : 12 bidons filtrés… »
   ...ITEMS_CARAVANE, ...ITEMS_VERRIERS, fusil: { name: 'Fusil' }, pistolet: { name: 'Pistolet' }, poignard: { name: 'Poignard' }, barre: { name: 'Barre de fer' }, // armes du combat (data/combat.js ARMES) gardées au Sac

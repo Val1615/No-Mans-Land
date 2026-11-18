@@ -112,3 +112,18 @@ Piste en désert ou rocher. Arrêt du marqueur, pause, autosave, scène `rc_embu
 Format : clés `rc_*` et `g_rc_*` validées, ancre et 50 px/m comme les autres lots ; PNJ debout + pose assise pour Quilla et couchée pour Morsa (déjà prévue). Ocre peut lancer les sprites.
 
 Maquette v0.13 (idées seulement, code non repris ; `dist/` absent de l'archive) : convoi à fouiller, caravane à stock limité, récupératrice blessée, péage de pillards, mutants déments, drone IO, front de poussière (`README.md:70`, `tests/world.test.js:16-28`). Règles utiles : une case visitée ne relance pas sa rencontre, butin et morts persistants, sortie bloquée tant qu'un hostile tient la position, chargement en trajet = halte sur la dernière case.
+
+## Fréquence globale des rencontres
+`RENCONTRES_FREQUENCE` (src/data/rencontres.js, 1 par défaut) multiplie le taux de base du terrain (`TERRAINS[t].p`, data/nml.js, inchangé) dans `onCaseEntree` (core/voyage.js, option `frequence`) : tirage < p × fréquence. Le gestionnaire le relaie via `rencontres.frequence` (modifiable en test). 0 coupe toutes les rencontres tirées ; les rencontres forcées et les cases déjà rencontrées n'y sont pas soumises.
+
+## Mémoire des rencontres récentes
+`region.recentes` (sauvegardé avec la région) garde les 3 derniers ids de rencontre tirés. Au tirage, la rencontre du dernier id est retirée de la table ; si c'était la seule éligible, le pool est vide et aucune rencontre n'a lieu. Ni les rencontres forcées ni le retour sur une case déjà rencontrée ne passent par la mémoire.
+
+## Houppiers (fondu partiel)
+`b.houppier: 0.45` sur un décor : quand sa couronne (alpha > 0,3) passe devant le joueur, un PNJ visible du lieu ou un point d'examen (`SPOTS` dont `if` est vrai), et que le décor est devant lui (`inFront`), son opacité cible tombe à cette valeur, sans disparaître. Hook de test `window.__nml.houppiers()` (id, cible, opacité, `couvre` = ids cachés).
+
+## Ombres de jour
+Une clé dont le manifeste porte `opacite: '1-lune'` (ou `b.jour`) prend l'opacité 1 − lune et n'est plus dessinée à lune ≈ 1 ; ce n'est pas une émission. Hook `window.__nml.ombres()`.
+
+## Ordre forcé `apres`
+`b.apres: '<id>'` : le décor est dessiné juste après le décor nommé quand leurs rectangles se croisent (lanterne accrochée au pin foudroyé), en court-circuitant `inFront` pour cette paire dans `topoSort`.

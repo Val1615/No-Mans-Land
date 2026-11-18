@@ -4,7 +4,7 @@
 //   se rouvre telle qu'on l'a laissée (butin pris, morts, bande encore là) ; réglée, la case est libre ;
 // - scène = lieu ajouté à chaud (game.ajouterLieu), statut de voyage 'rencontre' ; sortie par les portes de bord ou par la fuite -> carte,
 //   en halte (demi-tour, fuite) ou trajet repris là où il s'était arrêté (est) ; sauvegarde dans la scène : recréée au chargement.
-import { RENCONTRES } from '../data/rencontres.js';
+import { RENCONTRES, RENCONTRES_FREQUENCE } from '../data/rencontres.js';
 import { ambiance } from '../data/ambiances.js';
 import { ENCOUNTERS } from '../data/combat.js';
 import { EVENEMENTS_ROUTE } from '../data/nml.js';
@@ -34,7 +34,11 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     if (!api.actives) return null; // tests du voyage seul (carte_nml.py) : aucune rencontre
     if (j) return j.regle ? null : evenement(j.id); // case déjà rencontrée : jamais de nouveau tirage
     if (c.lieu) return null; // pas d'embuscade sur la case d'une ville
-    return onCaseEntree(c, etat, { rng, table: TABLE.filter(e => !e.biomes || !c.biome || e.biomes.includes(c.biome)) });
+    // mémoire légère (consigne §9) : region.recentes = 3 derniers ids tirés (sauvegardés) ; le dernier est exclu du tirage (seul éligible : pas de rencontre)
+    const der = R?.recentes?.[R.recentes.length - 1];
+    const ev = onCaseEntree(c, etat, { rng, frequence: api.frequence, table: TABLE.filter(e => (!e.biomes || !c.biome || e.biomes.includes(c.biome)) && !(e.rencontre && e.rencontre === der)) });
+    if (ev?.rencontre && R) R.recentes = [...(R.recentes || []), ev.rencontre].slice(-3);
+    return ev;
   };
 
   // --- construction de la scène (lieu, portes de bord, PNJ, points) ---
@@ -153,7 +157,7 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     else if (R.statut === 'depart' || R.statut === 'halte') { if (!voyage.partir().ok) return { ok: false, reason: 'trajet_vide' }; }
     forcer(id); const ev = voyage.pas(); return { ok: !!ev?.rencontre, case: R.case };
   }
-  const api = { entrer, quitter, tick, forcer, entrerMaintenant, construire, RENCONTRES, actives: true, setRng: f => { rng = f || (() => Math.random()); },
+  const api = { entrer, quitter, tick, forcer, entrerMaintenant, construire, RENCONTRES, actives: true, frequence: RENCONTRES_FREQUENCE, setRng: f => { rng = f || (() => Math.random()); },
     get active() { return S.region?.rencontre || null; }, journal: () => S.region?.rencontres || {} };
   return api;
 }

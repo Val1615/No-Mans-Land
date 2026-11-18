@@ -1,8 +1,7 @@
 // Rencontre du jalon 2 : « Le témoin sous les pins » (survivant blessé, biome forêt), d’après docs/rencontres/SURVIVANT.md (Ocre, 3b85a96 + 81e4adb ;
 // sprites 014db7e + 98a6fd2) : plan 32 × 26 m (§4), sans niveaux, dialogues du §6, manières d’agir du §7, combat du §8 (Paca seulement, si on l’attaque),
 // butin du §9, entrée du §14, poses du §15, accroches du §12. Aucun ennemi d’office : Roque n’est jamais au combat (le frapper se règle en dialogue).
-// FORÊT EN GABARITS GRIS : Ocre refait les pins (vraie iso, massifs, troncs couchés, souches, ombres) ; pins, pin foudroyé et fourré restent des volumes
-// gris (gabarit: true) jusqu’à son nouveau SHA ; Roque, Paca, la lanterne, le mulet, la besace, le soulier, les décalques et les sols gardent leurs clés.
+// Forêt v1.1 d’Ocre (9957cc3 + 083b75f) : pins de 10 à 14 m, lisières, bouquets, sous-bois, ombres de couronne ; Roque, Paca, le mulet et la lanterne gardent leurs clés.
 // Drapeaux de scène sur_* purgés à la sortie (journal de la case) ; drapeaux de monde monde_sur_vu, monde_roque_*, monde_mateo_pris jamais purgés.
 // Garde-fou de Régie (§13) : les monde_* ne servent qu’à des répliques et à des indices, jamais à une conséquence de quête.
 const D = (id, sprite, x, z, w, d, extra = {}) => ({ id, label: '', sprite, x, z, w, d, visitable: false, cue: null, named: false, solid: [], ...extra });
@@ -10,9 +9,6 @@ const R = (x, z, w, d, couv = 1) => ({ x, z, w, d, couv });
 const FIN = [{ label: 'Partir.', next: 'end' }];
 const SUITE = next => [{ label: '…', next }];
 const cap = (x, z, [fx, fz]) => Math.atan2(fx - x, fz - z);
-// gabarit gris de la forêt (en attendant la refonte d’Ocre) : volume simple, olive-gris (§11), même emprise et mêmes solides que la pose du §15.1
-const PIN = { kind: 'arbre', h: 5.5, color: '#55553e' }, PIN_B = { kind: 'arbre', h: 4.8, color: '#55553e' };
-const ARBRE = (id, sprite, x, z, w, d, ph) => D(id, sprite, x, z, w, d, { gabarit: true, ph, solid: [R(x, z, w, d, 2)] });
 
 const ATTAQUER_ROQUE = { label: '[Attaquer]', if: '!sur_depouille', next: 'frappe' };
 const DEPOUILLER = { label: '« Je prends ce que tu as. »', if: '!sur_depouille', next: 'depouille' };
@@ -131,24 +127,81 @@ export const SURVIVANT = {
         { x: 24, z: 20, w: 4, d: 4, skin: 'g_rc_aiguilles_b', tileM: 4 }, { x: 12, z: 0, w: 4, d: 4, skin: 'g_rc_aiguilles_c', tileM: 4 },
         { x: 0, z: 15, w: 32, d: 5, skin: 'g_rc_piste_foret', tileM: 4 }, { x: 12, z: 15, w: 4, d: 5, skin: 'g_rc_piste_foret_b', tileM: 4 }, { x: 24, z: 15, w: 4, d: 5, skin: 'g_rc_piste_foret_b', tileM: 4 } ] },
     cadre: { desktop: { x: [15, 24], z: [11, 16] }, mobile: { x: [16, 24], z: [13, 17] } },
-    buildings: [ // table de poses du §15.1 (ancre au coin sud-est de l’emprise) ; décalques en fond d’abord
-      D('sur_trainee', 'rc_sur_trainee_3q', 21.5, 16.2, 8, 1.5, { fond: true }),
-      D('sur_ornieres', 'rc_sur_ornieres_3q', 26.2, 15.4, 4, 3, { fond: true }),
-      ARBRE('sur_pin_1', 'rc_fo_pin_3q', 2, 1, 2.2, 2.2, PIN),
-      ARBRE('sur_pin_2', 'rc_fo_pin_b_3q', 7, 2, 2, 2, PIN_B),
-      D('sur_borne', 'rc_fo_borne_3q', 2.5, 12, 1.2, 1.2, { ph: { h: 0.8 }, solid: [R(2.5, 12, 1.2, 1.2, 1)] }),
-      ARBRE('sur_pin_3', 'rc_fo_pin_3q', 22, 1.5, 2.2, 2.2, PIN),
-      ARBRE('sur_pin_mort', 'rc_fo_pin_mort_3q', 13.5, 9, 4, 3.5, { kind: 'arbre', h: 5.5, houppier: 0, fut: 0.9, futColor: '#8a8272' }),
-      D('sur_lanterne', 'rc_sur_lanterne_3q', 15.6, 12.0, 0.25, 0.25, { editorDepth: 1 }), // accrochée à la branche sud : après le pin
-      ARBRE('sur_pin_4', 'rc_fo_pin_3q', 4, 22.5, 2.2, 2.2, PIN),
-      ARBRE('sur_pin_5', 'rc_fo_pin_b_3q', 28, 2, 2, 2, PIN_B),
-      D('sur_fourre', 'rc_fo_fourre_3q', 24.5, 6.5, 2.5, 2.2, { gabarit: true, ph: { h: 1.6, color: '#5c5a3c' }, solid: [R(24.5, 6.5, 2.5, 2.2, 1)] }),
-      D('sur_besace', 'rc_sur_besace_3q', 18.4, 15.6, 0.8, 0.6, {}),
-      ARBRE('sur_pin_6', 'rc_fo_pin_b_3q', 12, 23, 2, 2, PIN_B),
-      D('sur_soulier', 'rc_sur_soulier_3q', 22.2, 16.8, 0.3, 0.3, {}),
-      D('sur_mulet', 'rc_sur_mulet_3q', 20.2, 16.0, 2.4, 1.3, { ph: { h: 0.9 }, solid: [R(20.2, 16.0, 2.4, 1.3, 1)] }),
-      ARBRE('sur_pin_7', 'rc_fo_pin_3q', 24, 22.8, 2.2, 2.2, PIN),
-      ARBRE('sur_pin_8', 'rc_fo_pin_b_3q', 29, 22.5, 2, 2, PIN_B),
+    // forêt v1.1 d’Ocre (9957cc3, SURVIVANT §15.1) : poses du manifeste collées telles quelles ; solides = troncs seulement (on marche sous les houppiers) ;
+    // houppier : fondu partiel quand la couronne cache le joueur, un PNJ ou un point d’examen ; ombres de couronne rc_fo_ombre_* à 1 − lune (manifeste), éteintes la nuit
+    buildings: [
+      D('sur_pin_mort', 'rc_fo_pin_mort_3q', 14.6, 9.95, 2.8, 2.6, { solid: [{ x: 15.3, z: 10.55, w: 1.4, d: 1.4, couv: 2 }], houppier: 0.45 }), // clairière ; branche sud pour la lanterne ; Roque juste au sud
+      D('sur_pin_1', 'rc_fo_pin_3q', 29.2, 8.6, 2.4, 2.4, { solid: [{ x: 29.8, z: 9.2, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // est, entre lisière et piste
+      D('sur_pin_2', 'rc_fo_pin_3q', 10.2, 2.8, 2.4, 2.4, { solid: [{ x: 10.8, z: 3.4, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // sous la lisière nord, pour épaissir
+      D('sur_pin_3', 'rc_fo_pin_3q', 20.4, 3, 2.4, 2.4, { solid: [{ x: 21, z: 3.6, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // sous la lisière nord, pour épaissir
+      D('sur_pin_b_1', 'rc_fo_pin_b_3q', 29, 21.8, 2.2, 2.2, { solid: [{ x: 29.5, z: 22.3, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // sud-est, au sud de l'entrée
+      D('sur_pin_b_2', 'rc_fo_pin_b_3q', 7.6, 5.2, 2.2, 2.2, { solid: [{ x: 8.1, z: 5.7, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // lisière interne NO, bord de clairière
+      D('sur_pin_b_3', 'rc_fo_pin_b_3q', 22.8, 6, 2.2, 2.2, { solid: [{ x: 23.3, z: 6.5, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // entre fourré et lisière nord
+      D('sur_fourre', 'rc_fo_fourre_3q', 24.2, 6.2, 3, 2.6, { solid: [{ x: 24.2, z: 6.2, w: 3, d: 2.6, couv: 1 }] }), // cache de Paca, nord-est de la piste ; Paca dépasse au sud
+      D('sur_borne', 'rc_fo_borne_3q', 2.5, 12, 1.2, 1.2, { solid: [{ x: 2.5, z: 12, w: 1.2, d: 1.2, couv: 1 }] }),
+      D('sur_mulet', 'rc_sur_mulet_3q', 20.2, 16, 2.4, 1.3, { solid: [{ x: 20.2, z: 16, w: 2.4, d: 1.3, couv: 1 }], ph: { h: 0.9 } }),
+      D('sur_besace', 'rc_sur_besace_3q', 18.4, 15.6, 0.8, 0.6),
+      D('sur_soulier', 'rc_sur_soulier_3q', 22.2, 16.8, 0.3, 0.3),
+      D('sur_lanterne', 'rc_sur_lanterne_3q', 15.6, 12, 0.25, 0.25, { y: 2.65, apres: 'sur_pin_mort' }), // + _neon ; accrochée à la branche sud du pin foudroyé ; forcer depth 30.5 (après le pin, depth 29.95)
+      D('sur_trainee', 'rc_sur_trainee_3q', 21.5, 16.2, 8, 1.5, { fond: true }), // fond, sous tout le reste
+      D('sur_ornieres', 'rc_sur_ornieres_3q', 26.2, 15.4, 4, 3, { fond: true }), // fond
+      D('sur_pin_c_1', 'rc_fo_pin_c_3q', 0.4, 10, 2.5, 2.5, { solid: [{ x: 1.05, z: 10.65, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // ouest, juste au nord de la piste
+      D('sur_pin_c_2', 'rc_fo_pin_c_3q', 28.8, 11.4, 2.5, 2.5, { solid: [{ x: 29.45, z: 12.05, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // est, juste au nord de l'entrée
+      D('sur_pin_bouquet_1', 'rc_fo_pin_bouquet_3q', 0.2, 4.2, 5.5, 4, { solid: [{ x: 1.4, z: 5.2, w: 1.2, d: 1.2, couv: 2 }, { x: 3, z: 5.3, w: 1.2, d: 1.2, couv: 2 }, { x: 3.8, z: 6.4, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // ouest, nord de la piste
+      D('sur_pin_bouquet_2', 'rc_fo_pin_bouquet_3q', 26.2, 3.8, 5.5, 4, { solid: [{ x: 27.4, z: 4.8, w: 1.2, d: 1.2, couv: 2 }, { x: 29, z: 4.9, w: 1.2, d: 1.2, couv: 2 }, { x: 29.8, z: 6, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // est, nord de la piste
+      D('sur_pin_bouquet_3', 'rc_fo_pin_bouquet_3q', 0.4, 21.4, 5.5, 4, { solid: [{ x: 1.6, z: 22.4, w: 1.2, d: 1.2, couv: 2 }, { x: 3.2, z: 22.5, w: 1.2, d: 1.2, couv: 2 }, { x: 4, z: 23.6, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // sud-ouest
+      D('sur_pin_bouquet_4', 'rc_fo_pin_bouquet_3q', 21.5, 21.6, 5.5, 4, { solid: [{ x: 22.7, z: 22.6, w: 1.2, d: 1.2, couv: 2 }, { x: 24.3, z: 22.7, w: 1.2, d: 1.2, couv: 2 }, { x: 25.1, z: 23.8, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // sud-est
+      D('sur_lisiere_1', 'rc_fo_lisiere_3q', 0, 0, 10.2, 3.8, { solid: [{ x: 1.1, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 3.05, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 5, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 6.95, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 8.9, z: 1.3, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // lisière nord
+      D('sur_lisiere_2', 'rc_fo_lisiere_3q', 9.8, 0, 10.2, 3.8, { solid: [{ x: 10.9, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 12.85, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 14.8, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 16.75, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 18.7, z: 1.3, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // lisière nord
+      D('sur_lisiere_3', 'rc_fo_lisiere_3q', 19.6, 0, 10.2, 3.8, { solid: [{ x: 20.7, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 22.65, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 24.6, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 26.55, z: 1.3, w: 1.2, d: 1.2, couv: 2 }, { x: 28.5, z: 1.3, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // lisière nord
+      D('sur_lisiere_4', 'rc_fo_lisiere_3q', 10, 22, 10.2, 3.8, { solid: [{ x: 11.1, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 13.05, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 15, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 16.95, z: 23.3, w: 1.2, d: 1.2, couv: 2 }, { x: 18.9, z: 23.3, w: 1.2, d: 1.2, couv: 2 }], houppier: 0.45 }), // sud, hors piste
+      D('sur_genet_1', 'rc_fo_genet_3q', 5, 12.2, 1.4, 1.3), // ouest, au nord de la piste
+      D('sur_genet_2', 'rc_fo_genet_3q', 27.2, 13, 1.4, 1.3), // est, au nord de la piste
+      D('sur_genet_3', 'rc_fo_genet_3q', 18.6, 8.4, 1.4, 1.3), // bord de clairière, est du pin mort
+      D('sur_genet_b_1', 'rc_fo_genet_b_3q', 8.8, 11.6, 1.2, 1.1), // bord ouest de la clairière
+      D('sur_genet_b_2', 'rc_fo_genet_b_3q', 23, 13.2, 1.2, 1.1), // près du fourré, au nord de la piste
+      D('sur_genet_b_3', 'rc_fo_genet_b_3q', 3.2, 21, 1.2, 1.1), // sud-ouest, lisière de piste
+      D('sur_genet_c_1', 'rc_fo_genet_c_3q', 1, 13.4, 2, 1.6), // ouest, ourlet de la piste
+      D('sur_genet_c_2', 'rc_fo_genet_c_3q', 27.8, 20.2, 2, 1.6), // est, ourlet sud de la piste — ne bouche pas le couloir
+      D('sur_genet_c_3', 'rc_fo_genet_c_3q', 16.8, 21, 2, 1.6), // sud, ourlet de la piste
+      D('sur_tronc', 'rc_fo_tronc_3q', 8.6, 13.4, 3.2, 0.8, { solid: [{ x: 8.7, z: 13.5, w: 3, d: 0.6, couv: 1 }] }), // bord ouest de la clairière, parallèle à la piste
+      D('sur_souche_1', 'rc_fo_souche_3q', 11.8, 8.6, 0.9, 0.9, { solid: [{ x: 11.85, z: 8.65, w: 0.8, d: 0.8, couv: 1 }] }), // près du pin foudroyé, ouest
+      D('sur_souche_2', 'rc_fo_souche_3q', 21.6, 21.2, 0.9, 0.9, { solid: [{ x: 21.65, z: 21.25, w: 0.8, d: 0.8, couv: 1 }] }), // sud de la piste
+      D('sur_branche_1', 'rc_fo_branche_3q', 12.2, 14.2, 1.5, 0.8), // devant le pin foudroyé, au nord de la piste
+      D('sur_branche_2', 'rc_fo_branche_3q', 19.4, 9.6, 1.5, 0.8), // clairière, est du pin
+      D('sur_branche_3', 'rc_fo_branche_3q', 6.4, 21.6, 1.5, 0.8), // sud-ouest
+      D('sur_rocher_1', 'rc_fo_rocher_3q', 9.4, 8.8, 1.3, 1.1, { solid: [{ x: 9.5, z: 8.9, w: 1.1, d: 0.9, couv: 1 }] }), // bord de clairière
+      D('sur_rocher_2', 'rc_fo_rocher_3q', 19.8, 13.6, 1.3, 1.1, { solid: [{ x: 19.9, z: 13.7, w: 1.1, d: 0.9, couv: 1 }] }), // est de la clairière, au nord de la piste
+      D('sur_rocher_3', 'rc_fo_rocher_3q', 4.6, 21.8, 1.3, 1.1, { solid: [{ x: 4.7, z: 21.9, w: 1.1, d: 0.9, couv: 1 }] }), // sud-ouest
+      D('sur_fougere_1', 'rc_fo_fougere_3q', 13.4, 8.6, 0.8, 0.7), // pied ouest du pin foudroyé
+      D('sur_fougere_2', 'rc_fo_fougere_3q', 17.6, 9.4, 0.8, 0.7), // pied est du pin foudroyé
+      D('sur_fougere_3', 'rc_fo_fougere_3q', 23.6, 9.2, 0.8, 0.7), // pied du fourré
+      D('sur_fougere_4', 'rc_fo_fougere_3q', 6.8, 12.8, 0.8, 0.7), // ouest
+      D('sur_fougere_5', 'rc_fo_fougere_3q', 11, 21.4, 0.8, 0.7), // sud
+      D('sur_litiere_1', 'rc_fo_litiere_3q', 13.4, 9.6, 3.2, 2.4, { fond: true }), // sous le pin foudroyé, fond
+      D('sur_litiere_2', 'rc_fo_litiere_3q', 8, 7.4, 3.2, 2.4, { fond: true }), // clairière ouest, fond
+      D('sur_litiere_3', 'rc_fo_litiere_3q', 18.8, 7.8, 3.2, 2.4, { fond: true }), // clairière est, fond
+      D('sur_litiere_4', 'rc_fo_litiere_3q', 23.4, 6, 3.2, 2.4, { fond: true }), // sous le fourré, fond
+      D('sur_litiere_5', 'rc_fo_litiere_3q', 1.2, 10.4, 3.2, 2.4, { fond: true }), // ouest, fond
+      D('sur_litiere_6', 'rc_fo_litiere_3q', 26, 10.8, 3.2, 2.4, { fond: true }), // est, fond
+      D('sur_ombre_1', 'rc_fo_ombre_3q', 33.48, 10.38, 3.9, 3.6, { fond: true }), // ombre de rc_fo_pin_3q en (29.2 ; 8.6) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_2', 'rc_fo_ombre_3q', 14.48, 4.58, 3.9, 3.6, { fond: true }), // ombre de rc_fo_pin_3q en (10.2 ; 2.8) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_3', 'rc_fo_ombre_3q', 24.68, 4.78, 3.9, 3.6, { fond: true }), // ombre de rc_fo_pin_3q en (20.4 ; 3.0) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_b_1', 'rc_fo_ombre_b_3q', 32.68, 23.18, 3.66, 3.45, { fond: true }), // ombre de rc_fo_pin_b_3q en (29.0 ; 21.8) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_b_2', 'rc_fo_ombre_b_3q', 11.28, 6.58, 3.66, 3.45, { fond: true }), // ombre de rc_fo_pin_b_3q en (7.6 ; 5.2) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_b_3', 'rc_fo_ombre_b_3q', 26.48, 7.38, 3.66, 3.45, { fond: true }), // ombre de rc_fo_pin_b_3q en (22.8 ; 6.0) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_c_1', 'rc_fo_ombre_c_3q', 5.34, 12.02, 4.19, 3.77, { fond: true }), // ombre de rc_fo_pin_c_3q en (0.4 ; 10.0) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_c_2', 'rc_fo_ombre_c_3q', 33.74, 13.42, 4.19, 3.77, { fond: true }), // ombre de rc_fo_pin_c_3q en (28.8 ; 11.4) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_mort', 'rc_fo_ombre_mort_3q', 18.33, 11.4, 4.27, 3.75, { fond: true }), // ombre de rc_fo_pin_mort_3q en (14.6 ; 9.95) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_bouquet_1', 'rc_fo_ombre_bouquet_3q', 5.73, 6.18, 5.41, 5.05, { fond: true }), // ombre de rc_fo_pin_bouquet_3q en (0.2 ; 4.2) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_bouquet_2', 'rc_fo_ombre_bouquet_3q', 31.73, 5.78, 5.41, 5.05, { fond: true }), // ombre de rc_fo_pin_bouquet_3q en (26.2 ; 3.8) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_bouquet_3', 'rc_fo_ombre_bouquet_3q', 5.93, 23.38, 5.41, 5.05, { fond: true }), // ombre de rc_fo_pin_bouquet_3q en (0.4 ; 21.4) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_bouquet_4', 'rc_fo_ombre_bouquet_3q', 27.03, 23.58, 5.41, 5.05, { fond: true }), // ombre de rc_fo_pin_bouquet_3q en (21.5 ; 21.6) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_lisiere_1', 'rc_fo_ombre_lisiere_3q', 8.32, 2.18, 5.56, 4.85, { fond: true }), // ombre de rc_fo_lisiere_3q en (0.0 ; 0.0) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_lisiere_2', 'rc_fo_ombre_lisiere_3q', 18.12, 2.18, 5.56, 4.85, { fond: true }), // ombre de rc_fo_lisiere_3q en (9.8 ; 0.0) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_lisiere_3', 'rc_fo_ombre_lisiere_3q', 27.92, 2.18, 5.56, 4.85, { fond: true }), // ombre de rc_fo_lisiere_3q en (19.6 ; 0.0) ; jour seulement, opacité 1 − lune
+      D('sur_ombre_lisiere_4', 'rc_fo_ombre_lisiere_3q', 18.32, 24.18, 5.56, 4.85, { fond: true }), // ombre de rc_fo_lisiere_3q en (10.0 ; 22.0) ; jour seulement, opacité 1 − lune
+
     ],
     // la lanterne, seule lumière (§3, §11) : calque _neon serré sur la flamme, pulse lent ; flaque générique au sol la nuit seulement (comme le bivouac), sans halo
     enseignes: [{ id: 'sur_lampe', building: 'sur_lanterne', effet: 'pulse', periode: 6, intensite: 0.6,

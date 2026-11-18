@@ -27,7 +27,7 @@ Huit rencontres à rendre jouables avant toute finition (consigne §14 : phase D
 |---|---|---|---|
 | 01 | Convoi ensablé | fiche (pas en jeu) | [CONVOI.md](CONVOI.md), route désertique, modules du désert |
 | 02 | Caravane marchande | en jeu | « La citerne qui respire » |
-| 03 | Voyageur blessé | en cours | « Le témoin sous les pins » |
+| 03 | Voyageur blessé | en jeu | « Le témoin sous les pins » |
 | 04 | Péage des pillards | en jeu, à compléter (intimider, contourner) | « L'appât de la piste » |
 | 05 | Mutants errants (hostiles) | à faire | zone vitrifiée, modules du verre |
 | 06 | Patrouille IO | à faire | poste routier abandonné |
@@ -37,7 +37,10 @@ Huit rencontres à rendre jouables avant toute finition (consigne §14 : phase D
 Règles de production (consigne §15) : par lot, les cinq tests de la consigne et une passe de captures 1280/390. Les défauts non bloquants vont dans « À reprendre en phase D », pas dans un lot de retouches immédiat.
 
 ### À reprendre en phase D
-- (vide pour l'instant)
+- Témoin : quelques ombres de couronne débordent hors du plateau (taches sur la marge, au sud et à l'est) ; à recadrer ou rogner.
+- Témoin : la flaque de la lanterne reste timide à 23 h ; Roque paraît petit à 1280 sous les pins de 10–14 m.
+- Témoin : aucune couronne ne passe devant le mulet au cadrage actuel (fondu vérifié sur Roque seulement) ; à revoir si les pins bougent.
+- Témoin : écarts de fiche : soin sans gain de `pv:`, « frapper Roque » en dialogue (pas de combat), drapeau `monde_roque_escorte` sans accent.
 
 ## Jalons
 | Jalon | Contenu | État |
@@ -80,6 +83,7 @@ Une ligne par lot publié : date, commit, ce qui marche en jeu, ce qui reste.
 - 2026-11-18 : jalon 2, lot 3 (Rivet) — **« Le témoin sous les pins » câblé** (`survivant_pins`, SURVIVANT §12, §14, §15 ; `3ae979b`, `159d2d6`) : catalogue `terrains: ['foret']`, `biomes: ['forest']`, unique (`monde_sur_vu`), jamais sur G09 (`si(etat, case)`) ; scène 32 × 26 sans niveaux, sorties est (reprise, jamais gardée) et ouest (halte, vers le Temple) avec leurs textes ; Roque (récit, soin à l'eau ou à la ration, eau laissée, escorte +1 h, 8 $ et couteau, dépouiller, frapper sans combat), Paca (témoin, aveu, partir, pacte, Intimidation 5, combat seulement si on l'attaque : bâton, se rend sous 50 %, fuit au tour 2, sac 1 ration et 4 $), 10 examens et fouilles (besace, soulier, traînée, ornières Observation 3, borne, fourré…) ; drapeaux de monde posés à la sortie par le nouveau champ `drapeauxSortie` (Roque sauvé, escorté, dépouillé ; Mateo pris), répliques et indices seulement (garde-fou de Régie) ; courbe `forest` ; la lanterne, seule lumière (enseigne `sur_lampe` et flaque générique r 1,5, nuit seulement). **Forêt en gabarits gris** (`gabarit: true`, `ph.kind: 'arbre'`) en attendant la refonte d'Ocre : pins, pin foudroyé et fourré ; Roque, Paca, la lanterne, le mulet, la besace, le soulier, la traînée, les ornières, la borne et les sols gardent leurs clés. Écarts : le soin donne de l'eau à Roque sans `pv:` (l'action soigne le joueur) ; frapper Roque se règle en dialogue (il se rend au premier coup) ; drapeau `monde_roque_escorte` sans accent. Tests : `tests/survivant_rapide.py`.
 
 - 2026-11-18 : (Ocre) — **forêt v1.1** de « Le témoin sous les pins » : pins 10–14 m en iso (3 variantes + bouquet + lisière), sous-bois, sols `g_rc_aiguilles` plus variés, ombres de couronne `rc_fo_ombre_*` (fond, opacité `1 − lune`, éteintes à 23 h). Groupe `rc_survivant_pins` seulement (23 → 41 clés) ; PNJ et props narratifs inchangés hors `y: 2.65` / depth 30,5 de la lanterne. Solides = troncs seulement. Poses : [SURVIVANT.md §15](SURVIVANT.md#15-poses-définitives-et-sprites-publiés). Maquettes jour, nuit 23 h et cadrage 1280 (MAQUETTE) hors dépôt : `nml-shots/rencontres/survivant_maquette.png`, `survivant_maquette_nuit.png`, `survivant_maquette_1280.png`, `survivant_planche_sprites.png`. Aucun `src/` touché.
+- 2026-11-18 : jalon 2, lot 3 suite (Rivet) — **forêt v1.1 posée, fréquence et mémoire** : poses du §15 (troncs seuls solides, lanterne y 2,65 dessinée après le pin foudroyé), fondu partiel des houppiers (0,45) sur joueur, PNJ et points d'examen, ombres de couronne à 1 − lune ; `RENCONTRES_FREQUENCE = 1` et `region.recentes` (3 ids, dernier exclu) ; survivant_rapide allégé (5 essentiels + fondu, ombres, fréquence, mémoire) 34/34, nml_boot 32/32, rencontres_rapide 91/91.
 
 - 2026-11-18 : (Ocre) — fiche courte **« Le convoi ensablé »** (rencontre 01) : [`CONVOI.md`](CONVOI.md). Une scène-bibliothèque, quatre cargaisons (médical, eau, pièces, contrebande). Modules du désert réutilisés ; camion et équipage (Nando, Sola) à produire plus tard. Maquette concept (MAQUETTE) hors dépôt : `nml-shots/rencontres/convoi_concept.png`. Pas de sprites.
 
