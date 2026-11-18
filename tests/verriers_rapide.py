@@ -184,9 +184,9 @@ with sync_playwright() as p:
             ok(s['hp'] == 28, f'{name} verre et blindé : −1 PV en marchant sur le verre (humain), −1 PV dans le blindé', s['hp'])
             # 8) rayonnement du verre : compteur, mutant (texte seul), une fois par scène
             for r, cpt, mot, dpv in [('humain', 1, 'crépiter', 1), ('mutant', 0, 'peau ne dit rien', 0)]:
-                oter('ver_verre_dit'); race(r); E(f"window.__nml.state.player.inv.compteur={cpt}"); walk(20, 7.8); hp0 = S()['hp']; walk(20, 5); time.sleep(.6)
+                oter('ver_verre_dit'); race(r); E(f"window.__nml.state.player.inv.compteur={cpt}"); walk(16.5, 7.8); hp0 = S()['hp']; walk(16.5, 5.6); time.sleep(.6)
                 ok(mot in msg() and S()['hp'] == hp0 - dpv and 'ver_verre_dit' in S()['flags'], f'{name} T_verre, {r}' + (' avec compteur' if cpt else '') + f' : « {mot} », −{dpv} PV', (msg(), hp0, S()['hp']))
-            walk(20, 7.8); hp0 = S()['hp']; walk(20, 5); ok(S()['hp'] == hp0, f'{name} T_verre : une fois par scène')
+            walk(16.5, 7.8); hp0 = S()['hp']; walk(16.5, 5.6); ok(S()['hp'] == hp0, f'{name} T_verre : une fois par scène')
             race('humain'); E("window.__nml.state.player.inv.compteur=0")
             # 9) filière (monde_remedios_vue + monde_lena_connue), Lena chez Rufina, perles (Observation 3), indice de rosée
             poser('monde_remedios_vue'); parler('rc_tecla'); choisir('caravane de Remedios'); L = labels()
