@@ -1215,7 +1215,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const p=ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),new THREE.Vector3());
     return p && {x:p.x,z:p.z};
   }
-  return { flaques: () => neons.filter(o => o.userData.flaqueNuit).map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite })), // tests : flaques nocturnes posées
+  return { flaquesNuit: () => neons.filter(o => o.userData.flaqueNuit).map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite })), // tests : flaques nocturnes posées
     liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
     refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{
       const r=canvas.getBoundingClientRect();ray.setFromCamera({x:(x-r.left)/r.width*2-1,y:1-(y-r.top)/r.height*2},cam);

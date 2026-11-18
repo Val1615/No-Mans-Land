@@ -62,7 +62,7 @@ Contraintes : 1 unité = 1 m, cases de 0,5 m ; sprites `_3q` à la caméra du je
   - `cle` (optionnel) : décalque additif du manifeste ; sans `cle` (ou clé absente du manifeste), gradient radial dessiné, `r` en mètres (3 par défaut), `couleur` (`#ff963c` par défaut).
   - Position : `x`, `z` ; par défaut le centre de l'emprise du bâtiment (gradient) ou le bord sud de l'emprise (décalque, w × d centré).
   - Opacité = `i` × k, avec k = `lune` de l'ambiance si elle existe, sinon 1 − luminance de la teinte du lieu ; rien n'est posé quand `i` × k < 0,02 (le jour).
-  - Test : `window.__nml.flaques()` liste les flaques posées (`id`, `i`, opacité courante).
+  - Test : `window.__nml.flaquesNuit()` liste les flaques posées (`id`, `i`, opacité courante).
 - **Décors de terrain** : les bâtiments dont le sprite répond à `scene.nuitDecor` (par défaut `^rc_ds_(talus|berge|rochers|sente)`) sont désaturés et assombris selon `lune`, pour suivre le sol (le talus ne reste pas en plein soleil la nuit).
 - **Liseré de lune** : contour 1 px `#c8d2dc` côté lune sur les personnages, 50 % au plus × `lune`, tête et épaules seulement (tiers supérieur de l'image), jamais les pieds. `window.__nml.liseres()` le lit (et le coupe pour les tests).
 

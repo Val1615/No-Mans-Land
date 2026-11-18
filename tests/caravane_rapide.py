@@ -232,7 +232,7 @@ with sync_playwright() as p:
         time.sleep(2.5); E("document.getElementById('msg').textContent=''")
         P = lambda x, y, z: E(f"(()=>{{const p=window.__nml.project({x},{y},{z});return [Math.round(p.x),Math.round(p.y)]}})()")
         moy = lambda im, q, r=3: [sum(c[i] for c in [im.getpixel((q[0] + dx, q[1] + dy)) for dx in range(-r, r + 1) for dy in range(-r, r + 1)]) / (2 * r + 1) ** 2 for i in range(3)]
-        g = E(f"(window.__nml.world.LOCATIONS['{LIEU}'].enseignes||[]).filter(e=>e.flaque).map(e=>({{...e.flaque,building:e.building,periode:e.periode}}))"); g = g if E("window.__nml.flaques().length") == 1 else []; fq, loin = P(17.5, 0, 16.3), P(17.5, 0, 20)
+        g = E(f"(window.__nml.world.LOCATIONS['{LIEU}'].enseignes||[]).filter(e=>e.flaque).map(e=>({{...e.flaque,building:e.building,periode:e.periode}}))"); g = g if E("window.__nml.flaquesNuit().length") == 1 else []; fq, loin = P(17.5, 0, 16.3), P(17.5, 0, 20)
         ech = []
         for _ in range(8):
             im = Image.open(io.BytesIO(pg.screenshot())).convert('RGB'); ech.append((moy(im, fq), moy(im, loin))); time.sleep(.7)
@@ -253,5 +253,16 @@ with sync_playwright() as p:
     ok(J['fl_max'] < 12, f'jour : pas de flaque ({J["fl_max"]:.0f})', J)
     ok(N['fierro'][0] >= 4 and N['fierro'][1] == 0 and N['ciro'][1] <= 2 and 0 < N['op'] <= 0.5, f'liseré de lune : Fierro tête et épaules ({N["fierro"][0]} px, 0 en bas), Ciro couché bord supérieur seulement ({N["ciro"]}), opacité {N["op"]:.2f} ≤ 0,5', N)
     ok(J['op'] == 0 and J['vis'] == 0, 'jour : aucun liseré (opacité nulle, aucun liseré affiché)', J)
+    # flaque nocturne, variante décalque (champ cle) : même mécanisme pour le four des Verriers (rc_ecl_four_flaque) ; ici avec un calque additif existant
+    ctx = br.new_context(viewport={'width': 1280, 'height': 800}); pg = ctx.new_page(); E = pg.evaluate; errs = []; pg.on('pageerror', lambda e: errs.append(str(e)))
+    pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=90000); time.sleep(1)
+    E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
+    E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(2)
+    E("(()=>{const f=window.__nml.rencontres.RENCONTRES.caravane_relais.scene.enseignes[0].flaque;window.__f0={...f};Object.assign(f,{cle:'rc_car_bivouac_3q_neon',x:16,z:13.5,w:3,d:3});window.__nml.state.heures=23;return window.__nml.rencontres.entrerMaintenant('caravane_relais')})()")
+    t0 = time.time()
+    while time.time() - t0 < 60 and not E(f"window.__nml.state.location==='{LIEU}' && window.__nml.lieuPret('{LIEU}')"): time.sleep(.5)
+    time.sleep(1.5); F = E("window.__nml.flaquesNuit()")
+    ok(len(F) == 1 and F[0]['cle'] and F[0]['i'] > 0.5 and not errs, 'flaque nocturne en décalque (champ cle) : posée par le même mécanisme, sans code de scène', (F, errs[:3]))
+    E("Object.assign(window.__nml.rencontres.RENCONTRES.caravane_relais.scene.enseignes[0].flaque={},window.__f0)"); ctx.close()
     br.close()
 print(f'\n{n} OK, {len(fails)} échec(s)'); [print('  -', f) for f in fails]; sys.exit(1 if fails else 0)
