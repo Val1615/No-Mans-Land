@@ -1,6 +1,6 @@
 # Rencontres aléatoires et exploration régionale : suivi
 
-Point d'entrée unique du chantier. La consigne complète de Valentin est dans `CONSIGNE.md`. L'architecture est dans [`ARCHI.md`](ARCHI.md) (Rivet). Il n'y a pas d'autre fichier de suivi.
+Point d'entrée unique du chantier. La consigne complète de Valentin est dans `CONSIGNE.md`. État au moment de la pause : `../RAPPORT_PAUSE_2026-11-18.md`. L'architecture est dans [`ARCHI.md`](ARCHI.md) (Rivet). Il n'y a pas d'autre fichier de suivi.
 
 Document de reprise. Il est tenu à jour à chaque lot publié, pour qu'un agent (Rivet, Ocre, Régie, ChatGPT ou autre) puisse reprendre le chantier sans relire les conversations.
 
@@ -45,9 +45,9 @@ Règles de production (consigne §15) : par lot, les cinq tests de la consigne e
 ## Jalons
 | Jalon | Contenu | État |
 |---|---|---|
-| 1 | **Une rencontre complète de bout en bout** : embuscade de pillards sur une route sèche. Arrêt du marqueur, pause du temps, sauvegarde de la position et de l'itinéraire, scène jouable (contourner, parler, combattre, fouiller, fuir), retour et reprise du voyage. Fonction DEV « forcer une rencontre ». Validé sur Pages, à 1280 et en 390. | En cours |
-| 2 | Quatre familles de rencontres : caravane marchande (échange), créatures mutantes, survivant blessé (choix), événement environnemental ou découverte. Variantes par biome. | À faire |
-| 3 | Patrouilles de factions, convoi en difficulté, négociant itinérant, voyageur isolé, lieu insolite. Probabilités selon la région, les factions, le scénario et les rencontres récentes. | À faire |
+| 1 | **Une rencontre complète de bout en bout** : embuscade de pillards sur une route sèche. Arrêt du marqueur, pause du temps, sauvegarde de la position et de l'itinéraire, scène jouable (contourner, parler, combattre, fouiller, fuir), retour et reprise du voyage. Fonction DEV « forcer une rencontre ». Validé sur Pages, à 1280 et en 390. | Fait (remplacé par le catalogue ci-dessus) |
+| 2 | Quatre familles de rencontres : caravane marchande (échange), créatures mutantes, survivant blessé (choix), événement environnemental ou découverte. Variantes par biome. | Remplacé par le catalogue ci-dessus |
+| 3 | Patrouilles de factions, convoi en difficulté, négociant itinérant, voyageur isolé, lieu insolite. Probabilités selon la région, les factions, le scénario et les rencontres récentes. | Remplacé par le catalogue ci-dessus |
 
 On ne passe pas au jalon suivant tant que le précédent n'est pas jouable sur Pages.
 

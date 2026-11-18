@@ -321,3 +321,7 @@ En humain, la quête bloquait (quart de quête manquant). Concept art : `villes/
 ### À vérifier
 - Monnaie de la Sous-Ville (dollar), noms des PNJ et quartiers : propositions.
 - Les bâtiments générés sont en 2:1 corrigé par cisaillement : arêtes basses justes, proportions du générateur.
+
+
+## 2026-11-18 : pause du projet
+Valentin met le projet en pause. Le point complet (monogramme, Mega-Line, rencontres aléatoires, ordre de reprise) est dans [RAPPORT_PAUSE_2026-11-18.md](RAPPORT_PAUSE_2026-11-18.md). Le suivi détaillé des rencontres est dans [rencontres/README.md](rencontres/README.md).
