@@ -1008,3 +1008,12 @@ Les `_reflet` se posent sur la même emprise que leur parent, le jour seulement.
 | `rc_vr_aiguilles_b_3q_reflet` | 52 × 57 | [35, 61] | calque `reflet` |
 
 Les ancres des décalques 4 m peuvent tomber un peu sous le bas de la toile : la matière opaque ne remplit pas tout le carré (alpha fondue, comme les autres décalques au sol).
+
+#### Retouche v1.1 (couleur, mêmes clés)
+Constat sur la capture `bande_nord_jour_1280` (lot Rivet, `/tmp/nml-test-out/rencontres_j2_verriers_fix/livraison/`) : les décalques `rc_vr_eclats_3q` / `_b` / `_c`, et dans une moindre mesure les plaques et les coulures, se lisaient comme des îlots de lichen vert pâle, pas comme du verre.
+
+Retouche **sur place**, mêmes clés, **mêmes px, mêmes ancres**, `_reflet` réalignés sur les nouvelles arêtes. Rien à recâbler. Le fill passe au brun-noir et au vert bouteille sombre ; les arêtes et les fissures de la mosaïque d'origine sont nettes, plus claires (sel, ambre pâle), sans halo ni émission. Les bords sont un peu durcis ; le calque `_reflet` reste additif, jour seulement, opacité `1 − lune`. `g_rc_verre` est inchangé.
+
+Maquette avant / après (MAQUETTE, pas une capture) : `/workspace/nml-shots/rencontres/verre_eclats_v11_avant_apres.png`. Aperçu sur sol de verre : `/workspace/nml-shots/rencontres/verre_eclats_v11_maquette.png`.
+
+**Défaut restant :** les grands décalques `eclats_*` ont encore un contour un peu lobé (la mosaïque interne est anguleuse, le pourtour l'est moins).
