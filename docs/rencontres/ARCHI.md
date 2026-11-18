@@ -63,8 +63,8 @@ Contraintes : 1 unité = 1 m, cases de 0,5 m ; sprites `_3q` à la caméra du je
   - Position : `x`, `z` ; par défaut le centre de l'emprise du bâtiment (gradient) ou le bord sud de l'emprise (décalque, w × d centré).
   - Opacité = `i` × k, avec k = `lune` de l'ambiance si elle existe, sinon 1 − luminance de la teinte du lieu ; rien n'est posé quand `i` × k < 0,02 (le jour).
   - Test : `window.__nml.flaquesNuit()` liste les flaques posées (`id`, `i`, opacité courante).
-- **Décors de terrain** : les bâtiments dont le sprite répond à `scene.nuitDecor` (par défaut `^rc_ds_(talus|berge|rochers|sente)`) sont désaturés et assombris selon `lune`, pour suivre le sol (le talus ne reste pas en plein soleil la nuit).
-- **Liseré de lune** : contour 1 px `#c8d2dc` côté lune sur les personnages, 50 % au plus × `lune`, tête et épaules seulement (tiers supérieur de l'image), jamais les pieds. `window.__nml.liseres()` le lit (et le coupe pour les tests).
+- **Décors la nuit** : tous les bâtiments et props de la scène (`scene.nuitDecor`, regex, par défaut tout) sont désaturés et assombris selon `lune`, au même niveau que le talus, pour suivre le sol. Les calques `_neon`, les enseignes et les flaques sont des matériaux à part et restent lumineux.
+- **Liseré de lune** : contour 1 px `#c8d2dc` côté lune sur les personnages, 50 % au plus × `lune`, tête et épaules seulement : coupé net (sans dégradé) à 25 % de la hauteur de la silhouette opaque, mesurée depuis son sommet, pour tous les personnages ; jamais le bras, la canne ni les pieds. `window.__nml.liseres()` le lit (`limites` en uv, et le coupe pour les tests).
 
 ## 4 ter. Champs ajoutés au lot Verriers (jalon 2, lot 2)
 - **Créatures** : `sens: [face, dos]` (−1 ou 1) sur un PNJ ou un ennemi indique de quel côté de l'écran regarde l'image de face et l'image de dos (chanchos : `[-1, 1]`, face au sud-ouest, dos au nord-est). Si le `pivot` du manifeste n'est pas un nombre (« centre des pattes »), le moteur centre le sprite sur son `anchor`. Unité de combat : `heading` initial possible. Test : `window.__nml.view.acteurs()`.
