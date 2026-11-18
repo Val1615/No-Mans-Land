@@ -100,8 +100,8 @@ with sync_playwright() as p:
         ok(not gab and not W['manque'], f'{name} sprites d\u2019Ocre câblés : décors, PNJ et créatures (aucun gabarit, aucune clé manquante)', (gab, W['manque']))
         ok(W['spots'] >= 14, f'{name} {W["spots"]} points d\u2019examen et de fouille', W['spots'])
         e0 = (W['ens'] or [{}])[0]
-        ok(e0.get('id') == 'ver_feu' and e0.get('building') == 'ver_four' and e0.get('periode') == 7 and e0.get('intensite') == 0.7 and e0.get('flaque', {}).get('cle') == 'rc_ecl_four_flaque' and not W['flaqueB'],
-           f'{name} four : enseigne ver_feu (pulse 7 s, 0,7) et flaque rc_ecl_four_flaque par le mécanisme générique (pas un décor posé en permanence)', (e0, W['flaqueB']))
+        ok(e0.get('id') == 'ver_feu' and e0.get('building') == 'ver_four' and e0.get('periode') == 7 and e0.get('intensite') == 1.3 and e0.get('flaque', {}).get('cle') == 'rc_ecl_four_flaque' and e0['flaque'].get('echelle') == 3.5 and not W['flaqueB'],
+           f'{name} four : enseigne ver_feu (pulse 7 s, 1,3, calibrée sur le bivouac) et flaque rc_ecl_four_flaque ×3,5 par le mécanisme générique (pas un décor posé en permanence)', (e0, W['flaqueB']))
         ok(W['miroirs'] == ['ver_cond2'] and W['texte'] and W['texte'].get('etage') == 1 and not W['texte'].get('miroir') and (W['texte']['x'], W['texte']['z'], W['texte']['w'], W['texte']['d']) == (26, 1, 5, 3),
            f'{name} condenseur du milieu en miroir ; lettrage du blindé en calque normal etage 1 sur (26 ; 1 ; 5 × 3), jamais en miroir', (W['miroirs'], W['texte']))
         ok(W['light'] and W['light'].get('tint') == '#efe9da' and W['light'].get('lune', 1) == 0, f'{name} ambiance glass de jour (plus blanche que le désert, liseré éteint)', W['light'])

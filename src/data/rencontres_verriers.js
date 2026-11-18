@@ -202,7 +202,7 @@ export const VERRIERS = {
         { x: 0, z: 9, w: 36, d: 6.5, skin: 'g_rc_limon', tileM: 4 }, { x: 16, z: 9, w: 4, d: 4, skin: 'g_rc_limon_b', tileM: 4 },
         { x: 0, z: 21, w: 36, d: 6, skin: 'g_rc_piste', tileM: 4 }, { x: 8, z: 21, w: 4, d: 4, skin: 'g_rc_piste_b', tileM: 4 }, { x: 26, z: 23, w: 4, d: 4, skin: 'g_rc_piste_c', tileM: 4 },
         { x: 20, z: 27, w: 4, d: 3, skin: 'g_rc_cendre_b', tileM: 4 } ] },
-    cadre: { desktop: { x: [18, 32], z: [12, 20] }, // 1280 : 6 m vers l'est (2 m ne suffisaient pas) : blindé en entier, « Demi-tour » à 34 px du bord [Régie + Ocre 18/11]
+    cadre: { desktop: { x: [18.5, 32.5], z: [12, 20] }, // 1280 : 6,5 m vers l'est (2 m ne suffisaient pas) : blindé en entier, « Demi-tour » à plus de 20 px du bord [Régie + Ocre 18/11]
     mobile: { x: [6, 28], z: [16, 22] } },
     buildings: [ // §14 + table de poses du §15 (ancre au coin sud-est de l’emprise) ; ph : volume gris de repli si une clé manquait
       D('ver_cuve', 'rc_ecl_cuve_3q', 22, 10, 9, 4, { fond: true, ph: { h: 0.05 } }), // décalque sol : boue, tessons, sabots
