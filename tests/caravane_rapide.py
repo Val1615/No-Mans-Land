@@ -70,7 +70,7 @@ with sync_playwright() as p:
         ok(abs(s['x'] - 1.5) < 0.6 and abs(s['z'] - 21) < 0.6, f'{name} arrivée à l\u2019ouest de la piste (1,5 ; 21)', (s['x'], s['z']))
         ok('monde_remedios_vue' in s['flags'], f'{name} drapeau monde_remedios_vue posé à l\u2019arrivée', s['flags'])
         pret()
-        W = E("""(()=>{const n=window.__nml,L=n.world.LOCATIONS['%s'];return {w:L.w,d:L.d,niv:(L.niveaux||[]).length,nb:L.buildings.length,manque:L.buildings.filter(x=>!n.bman[x.sprite]).map(x=>x.id),talus:L.buildings.filter(b=>/talus/.test(b.id)).map(b=>[b.couv,b.plein]),
+        W = E("""(()=>{const n=window.__nml,L=n.world.LOCATIONS['%s'];return {w:L.size.w,d:L.size.d,niv:(L.niveaux||[]).length,nb:L.buildings.length,manque:L.buildings.filter(x=>!n.bman[x.sprite]).map(x=>x.id),talus:L.buildings.filter(b=>/talus/.test(b.id)).map(b=>[b.couv,b.plein]),
           pnj:n.world.NPCS.filter(q=>q.location==='%s'),spots:n.world.SPOTS.filter(q=>q.location==='%s').length,portes:n.world.DOORS.filter(d=>d.location==='%s').map(d=>[d.id,d.effet,!!d.garde])}})()""" % ((LIEU,) * 4))
         gab = [q['id'] for q in W['pnj'] if q.get('gabarit')]
         ok(W['w'] == 35 and W['d'] == 26 and not W['niv'], f'{name} scène 35 × 26, sans niveaux', (W['w'], W['d'], W['niv']))
@@ -86,7 +86,8 @@ with sync_playwright() as p:
         inter = lambda a, b: a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
         K0 = E(CAD); Wv, Hv = K0['W'], K0['H']
         ok(len(K0['ex']) == 2 and all(e['r'][0] >= 6 and e['r'][2] <= Wv - 6 and e['r'][1] >= 0 and e['r'][3] <= Hv for e in K0['ex']), f'{name} cadrage : les 2 étiquettes de sortie entières, à 6 px au moins du bord', K0['ex'])
-        ok(all(8 <= q[0] <= Wv - 8 and 60 <= q[1] <= Hv - 150 for q in (K0['joueur'], K0['fierro'], K0['remorque'])) and 0 <= K0['citerne'][0] <= Wv, f'{name} cadrage : joueur, Fierro, remorque (et citerne) dans le cadre', (K0['joueur'], K0['fierro'], K0['remorque'], K0['citerne']))
+        cibles = (K0['joueur'], K0['fierro']) if mob else (K0['joueur'], K0['fierro'], K0['remorque'], K0['citerne'])
+        ok(all(8 <= q[0] <= Wv - 8 and 60 <= q[1] <= Hv - 150 for q in cibles), f'{name} cadrage : joueur et Fierro' + ('' if mob else ', remorque et citerne') + ' dans le cadre', cibles)
         ok(not inter(K0['loc'], K0['zoom']), f'{name} titre du lieu hors des boutons de zoom', (K0['loc'], K0['zoom']))
         ARR = E("window.__nml.rencontres.RENCONTRES.caravane_relais.arrivee")
         for _ in range(4):
@@ -136,18 +137,21 @@ with sync_playwright() as p:
             ok(wait("window.__nml.state.region.statut!=='rencontre'", 20), f'{name} escorte : la scène est quittée', S()['st']); time.sleep(1); s = S()
             ok(s['money'] == m3 + 12, f'{name} escorte : 12 $ à l\u2019arrivée', s['money'] - m3)
             ok(s['esc'] == 3 or s['esc'] == 2, f'{name} escorte : region.escorte = 3 cases (moins une si le trajet a déjà avancé)', s['esc'])
-            ok(abs((s['h'] - h1) - 3) < 0.01 or abs((s['h'] - h1) - 3 - E("window.__nml.voyage?.heuresParCase||0")) < 0.6, f'{name} durée : +1 h (scène) +1 h (réparé) +1 h (escorte)', s['h'] - h1)
+            dh = s['h'] - h1; hc = E("(()=>{const n=window.__nml,R=n.state.region,c=R.case;try{return n.voyage.heures(n.voyage.cellAt(c[0],c[1]))||0}catch(e){return null}})()")
+            ok(3 <= dh <= 3 + 4 and (hc is None or abs(dh - 3 - hc) < 0.01 or dh == 3), f'{name} durée : +1 h (scène) +1 h (réparé) +1 h (escorte), puis la case reprise ({dh} h dont {hc} h de piste)', (dh, hc)); e0 = s['esc'] + 1 if s['esc'] < 3 else 3
             j = s['journal'].get(str(s['case'])) or next(iter(s['journal'].values()), {})
             ok(not any(f.startswith('car_') for f in s['flags']) and {'monde_remedios_vue', 'monde_remedios_repartie'} <= set(s['flags']), f'{name} sortie : drapeaux car_* purgés, monde_remedios_* gardés', s['flags'])
             # 6) 3 cases sans tirage, puis la caravane n'est plus jamais tirée
             r = E("""(()=>{const n=window.__nml,R=n.state.region,h=n.voyage.crochets?.onCaseEntree||n.rencontres.crochet;if(!h)return null;n.rencontres.setRng&&n.rencontres.setRng(()=>0);const out=[];
                for(let i=0;i<5;i++){const c={col:10+i,row:4,terrain:'piste',biome:'desert'};const t=h(c,n.state);out.push([R.escorte||0,t&&(t.id||t.rencontre||t.type)||null]);}return out})()""")
-            ok(r and all(x[1] is None for x in r[:3]) and r[3][0] == 0, f'{name} escorte : 3 cases sans tirage, compteur à 0', r)
+            ok(r and all(x[1] is None for x in r[:s['esc']]) and r[s['esc']][1] is not None and r[s['esc'] - 1][0] == 0, f'{name} escorte : 3 cases sans tirage ({3 - s["esc"]} pendant la reprise, {s["esc"]} ensuite), puis tirage normal', (s['esc'], r))
             ok(r and all(x[1] != 'caravane_relais' for x in r), f'{name} si unique : la caravane n\u2019est plus tirée (monde_remedios_vue)', r)
             # 7) sauvegarde / rechargement : monde_remedios_* gardés
             E("window.__nml.game.save && window.__nml.game.save()"); pg.reload(); demarrer(); continuer(); s = S()
             ok({'monde_remedios_vue', 'monde_remedios_repartie'} <= set(s['flags']), f'{name} rechargement : monde_remedios_* sauvegardés', s['flags'])
         else:
+            # 1') T1 en 390 aussi : Fierro interpelle au talus ; « Je suis de passage »
+            walk(8, 21); wait("window.__nml.state.dialogue", 10); ok(E("window.__nml.state.dialogue?.npc") == 'rc_fierro', f'{name} T1 : Fierro interpelle le joueur au talus'); choisir('de passage'); choisir('Partir')
             pret(); E("window.__nml.state.player.money=100; window.__nml.state.player.inv.cric=1; window.__nml.state.player.inv.water=2")
             # 2') réparation avec le cric d'Anselme
             parler('rc_ciro_dessous'); choisir('Passer la clé'); choisir('Je vais voir') if 'Je vais voir' in ''.join(labels()) else None
