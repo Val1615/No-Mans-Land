@@ -2672,5 +2672,429 @@
     "status": "v1.1",
     "groupe": "rc_ecluse_verriers",
     "vue_de": "gen_rc_chancho_gris"
+  },
+  "rc_vr_eclats_3q": {
+    "file": "rencontres/rc_vr_eclats_3q.webp",
+    "px": [
+      232,
+      100
+    ],
+    "anchor": [
+      159,
+      125
+    ],
+    "footprint_m": [
+      4.0,
+      4.0
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque au sol, 4 m : champ d'éclats et de plaques de verre vitrifié (brun-noir et vert bouteille sale, arêtes plus claires, sel), bande nord. Module verre, fond.",
+    "pose": [
+      "{ sprite: 'rc_vr_eclats_3q', x: 0, z: 0, w: 4, d: 4, fond: true }  // bande nord, ouest, sous les dalles",
+      "{ sprite: 'rc_vr_eclats_3q', x: 32, z: 0, w: 4, d: 4, fond: true }  // bande nord, est du blindé"
+    ],
+    "ordre": 2,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : décalque vu de dessus, plaques découpées d'une photo de matière GenerateImage (cursor, verre_v1/gen/mat_eclats.jpg, hors dépôt) étalonnée sur la palette de MUTANTS.md §11 (brun-noir, vert bouteille sale, sel, rouille, soufre), projeté dans le plan du sol à la caméra exacte du jeu (50 px/m) par une transformation affine du plan (pas d'étirement). Aucun reflet peint dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "calque": "sol",
+    "fond": true,
+    "note": "à dessiner au sol, avant tout le décor (fond: true). Le calque _reflet se pose par-dessus, le jour seulement."
+  },
+  "rc_vr_eclats_3q_reflet": {
+    "file": "rencontres/rc_vr_eclats_3q_reflet.webp",
+    "px": [
+      232,
+      100
+    ],
+    "anchor": [
+      159,
+      125
+    ],
+    "additive": true,
+    "parent": "rc_vr_eclats_3q",
+    "couche_de": "rc_vr_eclats_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
+  },
+  "rc_vr_eclats_b_3q": {
+    "file": "rencontres/rc_vr_eclats_b_3q.webp",
+    "px": [
+      244,
+      108
+    ],
+    "anchor": [
+      160,
+      126
+    ],
+    "footprint_m": [
+      4.0,
+      4.0
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque au sol, 4 m, variante : mêmes éclats, davantage de croûtes de sel blanc cassé. Module verre, fond.",
+    "pose": [
+      "{ sprite: 'rc_vr_eclats_b_3q', x: 8, z: 0, w: 4, d: 4, fond: true }  // bande nord, entre les deux dalles ; plus de sel",
+      "{ sprite: 'rc_vr_eclats_b_3q', x: 21, z: 3, w: 4, d: 4, fond: true }  // bande nord, entre le décalque c et le parapet"
+    ],
+    "ordre": 2,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : décalque vu de dessus, plaques découpées d'une photo de matière GenerateImage (cursor, verre_v1/gen/mat_eclats.jpg, hors dépôt) étalonnée sur la palette de MUTANTS.md §11 (brun-noir, vert bouteille sale, sel, rouille, soufre), projeté dans le plan du sol à la caméra exacte du jeu (50 px/m) par une transformation affine du plan (pas d'étirement). Aucun reflet peint dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "calque": "sol",
+    "fond": true,
+    "note": "à dessiner au sol, avant tout le décor (fond: true). Le calque _reflet se pose par-dessus, le jour seulement."
+  },
+  "rc_vr_eclats_b_3q_reflet": {
+    "file": "rencontres/rc_vr_eclats_b_3q_reflet.webp",
+    "px": [
+      244,
+      108
+    ],
+    "anchor": [
+      160,
+      126
+    ],
+    "additive": true,
+    "parent": "rc_vr_eclats_b_3q",
+    "couche_de": "rc_vr_eclats_b_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
+  },
+  "rc_vr_eclats_c_3q": {
+    "file": "rencontres/rc_vr_eclats_c_3q.webp",
+    "px": [
+      215,
+      99
+    ],
+    "anchor": [
+      141,
+      116
+    ],
+    "footprint_m": [
+      4.0,
+      4.0
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque au sol, 4 m, variante : plaque fendue, longue fente noire bordée d'arêtes claires et de lichen soufre. Module verre, fond.",
+    "pose": [
+      "{ sprite: 'rc_vr_eclats_c_3q', x: 17, z: 0, w: 4, d: 4, fond: true }  // bande nord, entre dalles_b et le blindé ; fente et soufre"
+    ],
+    "ordre": 2,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : décalque vu de dessus, plaques découpées d'une photo de matière GenerateImage (cursor, verre_v1/gen/mat_eclats.jpg, hors dépôt) étalonnée sur la palette de MUTANTS.md §11 (brun-noir, vert bouteille sale, sel, rouille, soufre), projeté dans le plan du sol à la caméra exacte du jeu (50 px/m) par une transformation affine du plan (pas d'étirement). Aucun reflet peint dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "calque": "sol",
+    "fond": true,
+    "note": "à dessiner au sol, avant tout le décor (fond: true). Le calque _reflet se pose par-dessus, le jour seulement."
+  },
+  "rc_vr_eclats_c_3q_reflet": {
+    "file": "rencontres/rc_vr_eclats_c_3q_reflet.webp",
+    "px": [
+      215,
+      99
+    ],
+    "anchor": [
+      141,
+      116
+    ],
+    "additive": true,
+    "parent": "rc_vr_eclats_c_3q",
+    "couche_de": "rc_vr_eclats_c_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
+  },
+  "rc_vr_plaques_3q": {
+    "file": "rencontres/rc_vr_plaques_3q.webp",
+    "px": [
+      148,
+      80
+    ],
+    "anchor": [
+      95,
+      83
+    ],
+    "footprint_m": [
+      3.0,
+      2.5
+    ],
+    "height_m": 0.45,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Plaques de verre fendues, presque à plat, bords soulevés, sel et rouille dans les fentes. Module verre.",
+    "pose": [
+      "{ sprite: 'rc_vr_plaques_3q', x: 10, z: 4, w: 3, d: 2.5, solid: [{ x: 10, z: 4, w: 3, d: 2.5, couv: 1 }] }  // plaques fendues, entre les dalles et le canal"
+    ],
+    "ordre": 3,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : géométrie 3D aux cotes de MUTANTS.md §15.6, rendue par le rasteriseur de la Mega-Line à la caméra exacte du jeu (s=2 puis réduction uniforme vers 50 px/m, aucun étirement) ; albedo = photo de matière GenerateImage projetée en UV monde (mat_eclats / mat_coulures, hors dépôt), lumière chaude du pilote, arêtes mates plus claires, ombre de contact serrée au pied (alpha ≤ 0,43). Aucun reflet dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "ombre_contact": true
+  },
+  "rc_vr_plaques_3q_reflet": {
+    "file": "rencontres/rc_vr_plaques_3q_reflet.webp",
+    "px": [
+      148,
+      80
+    ],
+    "anchor": [
+      95,
+      83
+    ],
+    "additive": true,
+    "parent": "rc_vr_plaques_3q",
+    "couche_de": "rc_vr_plaques_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
+  },
+  "rc_vr_coulures_3q": {
+    "file": "rencontres/rc_vr_coulures_3q.webp",
+    "px": [
+      107,
+      90
+    ],
+    "anchor": [
+      91,
+      95
+    ],
+    "footprint_m": [
+      3.0,
+      2.0
+    ],
+    "height_m": 0.5,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Coulures de sable fondu figées, comme une scorie, descendant vers le sud. Module verre.",
+    "pose": [
+      "{ sprite: 'rc_vr_coulures_3q', x: 18.5, z: 4, w: 3, d: 2, solid: [{ x: 18.5, z: 4, w: 3, d: 2, couv: 0 }] }  // coulures figées vers le canal, franchissables"
+    ],
+    "ordre": 3,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : géométrie 3D aux cotes de MUTANTS.md §15.6, rendue par le rasteriseur de la Mega-Line à la caméra exacte du jeu (s=2 puis réduction uniforme vers 50 px/m, aucun étirement) ; albedo = photo de matière GenerateImage projetée en UV monde (mat_eclats / mat_coulures, hors dépôt), lumière chaude du pilote, arêtes mates plus claires, ombre de contact serrée au pied (alpha ≤ 0,43). Aucun reflet dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "ombre_contact": true
+  },
+  "rc_vr_coulures_3q_reflet": {
+    "file": "rencontres/rc_vr_coulures_3q_reflet.webp",
+    "px": [
+      107,
+      90
+    ],
+    "anchor": [
+      91,
+      95
+    ],
+    "additive": true,
+    "parent": "rc_vr_coulures_3q",
+    "couche_de": "rc_vr_coulures_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
+  },
+  "rc_vr_aiguilles_3q": {
+    "file": "rencontres/rc_vr_aiguilles_3q.webp",
+    "px": [
+      55,
+      80
+    ],
+    "anchor": [
+      41,
+      82
+    ],
+    "footprint_m": [
+      1.5,
+      1.2
+    ],
+    "height_m": 1.4,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Faisceau d'aiguilles de verre vitrifié, jusqu'à 1,4 m, pied semé de tessons. Module verre.",
+    "pose": [
+      "{ sprite: 'rc_vr_aiguilles_3q', x: 23.2, z: 1.2, w: 1.5, d: 1.2, solid: [{ x: 23.2, z: 1.2, w: 1.5, d: 1.2, couv: 1 }] }  // aiguilles à l'ouest du blindé"
+    ],
+    "ordre": 3,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : géométrie 3D aux cotes de MUTANTS.md §15.6, rendue par le rasteriseur de la Mega-Line à la caméra exacte du jeu (s=2 puis réduction uniforme vers 50 px/m, aucun étirement) ; albedo = photo de matière GenerateImage projetée en UV monde (mat_eclats / mat_coulures, hors dépôt), lumière chaude du pilote, arêtes mates plus claires, ombre de contact serrée au pied (alpha ≤ 0,43). Aucun reflet dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "ombre_contact": true
+  },
+  "rc_vr_aiguilles_3q_reflet": {
+    "file": "rencontres/rc_vr_aiguilles_3q_reflet.webp",
+    "px": [
+      55,
+      80
+    ],
+    "anchor": [
+      41,
+      82
+    ],
+    "additive": true,
+    "parent": "rc_vr_aiguilles_3q",
+    "couche_de": "rc_vr_aiguilles_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
+  },
+  "rc_vr_aiguilles_b_3q": {
+    "file": "rencontres/rc_vr_aiguilles_b_3q.webp",
+    "px": [
+      52,
+      57
+    ],
+    "anchor": [
+      35,
+      61
+    ],
+    "footprint_m": [
+      1.2,
+      1.0
+    ],
+    "height_m": 0.9,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Aiguilles de verre (variante basse, 0,9 m). Module verre.",
+    "pose": [
+      "{ sprite: 'rc_vr_aiguilles_b_3q', x: 33.5, z: 5, w: 1.2, d: 1, solid: [{ x: 33.5, z: 5, w: 1.2, d: 1, couv: 1 }] }  // aiguilles basses, est, près du canal"
+    ],
+    "ordre": 3,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : géométrie 3D aux cotes de MUTANTS.md §15.6, rendue par le rasteriseur de la Mega-Line à la caméra exacte du jeu (s=2 puis réduction uniforme vers 50 px/m, aucun étirement) ; albedo = photo de matière GenerateImage projetée en UV monde (mat_eclats / mat_coulures, hors dépôt), lumière chaude du pilote, arêtes mates plus claires, ombre de contact serrée au pied (alpha ≤ 0,43). Aucun reflet dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "ombre_contact": true
+  },
+  "rc_vr_aiguilles_b_3q_reflet": {
+    "file": "rencontres/rc_vr_aiguilles_b_3q_reflet.webp",
+    "px": [
+      52,
+      57
+    ],
+    "anchor": [
+      35,
+      61
+    ],
+    "additive": true,
+    "parent": "rc_vr_aiguilles_b_3q",
+    "couche_de": "rc_vr_aiguilles_b_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
+  },
+  "rc_vr_aretes_3q": {
+    "file": "rencontres/rc_vr_aretes_3q.webp",
+    "px": [
+      161,
+      80
+    ],
+    "anchor": [
+      150,
+      83
+    ],
+    "footprint_m": [
+      4.0,
+      1.0
+    ],
+    "height_m": 0.6,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Arête de verre relevée sur la tranche, 4 m, crête brisée, tessons au pied sud. Module verre.",
+    "pose": [
+      "{ sprite: 'rc_vr_aretes_3q', x: 1, z: 5, w: 4, d: 1, solid: [{ x: 1, z: 5, w: 4, d: 1, couv: 1 }] }  // crête d'arête le long du canal, ouest"
+    ],
+    "ordre": 3,
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : géométrie 3D aux cotes de MUTANTS.md §15.6, rendue par le rasteriseur de la Mega-Line à la caméra exacte du jeu (s=2 puis réduction uniforme vers 50 px/m, aucun étirement) ; albedo = photo de matière GenerateImage projetée en UV monde (mat_eclats / mat_coulures, hors dépôt), lumière chaude du pilote, arêtes mates plus claires, ombre de contact serrée au pied (alpha ≤ 0,43). Aucun reflet dans le sprite de base.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "layers": [
+      "reflet"
+    ],
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques.",
+    "ombre_contact": true
+  },
+  "rc_vr_aretes_3q_reflet": {
+    "file": "rencontres/rc_vr_aretes_3q_reflet.webp",
+    "px": [
+      161,
+      80
+    ],
+    "anchor": [
+      150,
+      83
+    ],
+    "additive": true,
+    "parent": "rc_vr_aretes_3q",
+    "couche_de": "rc_vr_aretes_3q",
+    "layer": "reflet",
+    "source": "Ocre, lot éclats du verre (identité du biome, bande nord de l'écluse) (Ocre, 2026-11-18) : calque _reflet, même canevas, même ancre ; points spéculaires 1–3 px, blanc chaud / ambre pâle, peints après projection sur les arêtes exposées au soleil (bas-droite). PAS une émission : le verre ne luit jamais.",
+    "status": "v1",
+    "groupe": "rc_ecluse_verriers",
+    "jour_seulement": true,
+    "note_reflet": "calque additif, même canevas, même ancre ; reflets spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées. PAS une émission : le verre ne luit jamais. À n'afficher que le jour (opacité conseillée : 1 − lune, donc 0 dès que lune > 0). Ce n'est pas un _neon : le moteur le coupe la nuit, contrairement aux enseignes et aux flaques."
   }
 }
