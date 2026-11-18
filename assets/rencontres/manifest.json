@@ -1021,5 +1021,342 @@
     "status": "v1",
     "groupe": "rc_pilote_appat",
     "vue_de": "gen_rc_trapo"
+  },
+  "rc_ds_relais_ufsa_3q": {
+    "file": "rencontres/rc_ds_relais_ufsa_3q.webp",
+    "px": [
+      436,
+      331
+    ],
+    "anchor": [
+      288,
+      330
+    ],
+    "footprint_m": [
+      7,
+      5
+    ],
+    "height_m": 3.2,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Relais UFSA en ruine : murs de pisé épais aux arêtes rongées, toit effondré (solives grises, tôles rouillées tombées dedans), porte au linteau de bois, fenêtre basse ; devant, la vieille pompe à essence au globe de verre poussiéreux (éteint) et un banc de planches ; sable entré",
+    "pose": [
+      "{ sprite: 'rc_ds_relais_ufsa_3q', x: 1, z: 9.5, w: 7, d: 5, solid: [{ x: 1.3, z: 9.7, w: 6.6, d: 4, couv: 2 }, { x: 6.3, z: 14, w: 0.7, d: 0.5, couv: 1 }] }  // murs z 9,7-13,7 ; pompe (6,3-7 ; 14-14,5) ; banc non solide"
+    ],
+    "ordre": 21,
+    "depth": 22.5,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9455), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.406 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/relais_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.42 / droit 0.51 (cible 0,33 / 0,70)"
+  },
+  "rc_ds_puits_3q": {
+    "file": "rencontres/rc_ds_puits_3q.webp",
+    "px": [
+      93,
+      159
+    ],
+    "anchor": [
+      58,
+      158
+    ],
+    "footprint_m": [
+      2,
+      2
+    ],
+    "height_m": 2.6,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Puits : margelle ronde de grès sec, deux montants et une traverse de bois gris, treuil à manivelle rouillée, corde et seau suspendu au-dessus du trou, seau de bois au pied",
+    "pose": [
+      "{ sprite: 'rc_ds_puits_3q', x: 12.5, z: 13, w: 2, d: 2, solid: [{ x: 12.6, z: 13.1, w: 1.8, d: 1.8, couv: 1 }] }"
+    ],
+    "ordre": 25,
+    "depth": 29.5,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9638), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.1462 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/puits_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.29 / droit 0.33 (cible 0,33 / 0,70)"
+  },
+  "rc_car_ferraille_3q": {
+    "file": "rencontres/rc_car_ferraille_3q.webp",
+    "px": [
+      155,
+      109
+    ],
+    "anchor": [
+      110,
+      108
+    ],
+    "footprint_m": [
+      3,
+      2
+    ],
+    "height_m": 1.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Tas de ferraille : jante debout, demi-essieu, fût couché, pneu, tôle pliée et, bien lisible dessus, un paquet de lames de ressort (la fouille rc_ferraille)",
+    "pose": [
+      "{ sprite: 'rc_car_ferraille_3q', x: 8.5, z: 10, w: 3, d: 2, solid: [{ x: 8.5, z: 10, w: 3, d: 2, couv: 1 }] }"
+    ],
+    "ordre": 22,
+    "depth": 23.5,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9681), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.1565 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/ferraille_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.31 / droit 0.28 (cible 0,33 / 0,70)"
+  },
+  "rc_car_tracteur_3q": {
+    "file": "rencontres/rc_car_tracteur_3q.webp",
+    "px": [
+      379,
+      274
+    ],
+    "anchor": [
+      310,
+      273
+    ],
+    "footprint_m": [
+      7.5,
+      2.6
+    ],
+    "height_m": 3.3,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Tracteur de la caravane : camion à cabine avancée (ouest) ocre jaune écaillé, vitres sales éteintes, caisse bâchée de toile garance rapiécée (une pièce beige), sangles de cuir, roue de secours et deux jerricans (kaki, bleu délavé) au flanc sud",
+    "pose": [
+      "{ sprite: 'rc_car_tracteur_3q', x: 14, z: 9.5, w: 7.5, d: 2.6, solid: [{ x: 14, z: 9.5, w: 7.5, d: 2.6, couv: 2 }] }  // cabine à l'ouest ; + rc_car_tracteur_3q_texte en etage: 1 sur la même emprise"
+    ],
+    "ordre": 26,
+    "depth": 33.6,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9469), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.3635 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/tracteur_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.3 / droit 0.82 (cible 0,33 / 0,70)",
+    "layers": [
+      "texte"
+    ]
+  },
+  "rc_car_remorque_etal_3q": {
+    "file": "rencontres/rc_car_remorque_etal_3q.webp",
+    "px": [
+      313,
+      279
+    ],
+    "anchor": [
+      228,
+      278
+    ],
+    "footprint_m": [
+      6,
+      3.2
+    ],
+    "height_m": 3.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Remorque-étal : caisse de planches blanchies sur deux essieux, toit de tôle rouillée, flanc sud ouvert en comptoir sur chaînes, auvent de toile ocre sur deux perches ; bidons bleus, rations kaki et olive, sac de jute, cuir roulé ; dedans, étagères et le coffre de fer cadenassé (fouille rc_coffre)",
+    "pose": [
+      "{ sprite: 'rc_car_remorque_etal_3q', x: 22.5, z: 9.8, w: 6, d: 3.2, solid: [{ x: 22.5, z: 9.8, w: 6, d: 2.5, couv: 2 }, { x: 22.5, z: 12.3, w: 6, d: 0.7, couv: 1 }] }  // comptoir z 12,3-13,0 (couv 1) ; perches de l’auvent en z 12,9-13,0 non solides"
+    ],
+    "ordre": 30,
+    "depth": 41.5,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9141), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.3488 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/remorque_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.36 / droit 0.76 (cible 0,33 / 0,70)"
+  },
+  "rc_car_citerne_3q": {
+    "file": "rencontres/rc_car_citerne_3q.webp",
+    "px": [
+      253,
+      218
+    ],
+    "anchor": [
+      202,
+      217
+    ],
+    "footprint_m": [
+      5.5,
+      2.4
+    ],
+    "height_m": 2.6,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Citerne sur remorque, penchée vers l’est (lame de ressort cassée qui pend sous l’essieu arrière, cric enfoncé) : cuve gris-bleu délavé cerclée de rouille, trappe carrée à l’avant ; le double fond ne se lit qu’à l’examen (rangée de minuscules trous d’aération sur le dessus), vanne et échelle à l’arrière",
+    "pose": [
+      "{ sprite: 'rc_car_citerne_3q', x: 29, z: 10.5, w: 5.5, d: 2.4, solid: [{ x: 29, z: 10.5, w: 5.5, d: 2.4, couv: 2 }] }  // penchée vers l’est ; Ciro dessous au sud (31,5 ; 13,5)"
+    ],
+    "ordre": 31,
+    "depth": 47.4,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.8943), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.2776 vers 50 px/m, inclinaison 2.5° (ressort cassé) appliquée par rotation rigide ; aucun étirement ni cisaillement (brut car_v1/gen/citerne_g2.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.43 / droit 0.57 (cible 0,33 / 0,70)"
+  },
+  "rc_car_bivouac_3q": {
+    "file": "rencontres/rc_car_bivouac_3q.webp",
+    "px": [
+      160,
+      111
+    ],
+    "anchor": [
+      100,
+      110
+    ],
+    "footprint_m": [
+      3,
+      3
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Bivouac : foyer de trois pierres et branches, petites flammes (vraie source -> calque _neon), marmite noire qui fume, quatre caisses-tabourets dont deux portent une gamelle, couverture garance pliée",
+    "pose": [
+      "{ sprite: 'rc_car_bivouac_3q', x: 16, z: 13.5, w: 3, d: 3, solid: [{ x: 17, z: 14.5, w: 1, d: 1, couv: 0 }] }  // en buildings (et non props) pour que le moteur pose son _neon ; seul le foyer est solide"
+    ],
+    "ordre": 28,
+    "depth": 35.5,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.855), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.1583 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/bivouac_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.31 / droit 0.36 (cible 0,33 / 0,70)",
+    "layers": [
+      "neon"
+    ]
+  },
+  "rc_car_ballots_3q": {
+    "file": "rencontres/rc_car_ballots_3q.webp",
+    "px": [
+      112,
+      100
+    ],
+    "anchor": [
+      81,
+      99
+    ],
+    "footprint_m": [
+      2,
+      1.2
+    ],
+    "height_m": 1.2,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Ballots de troc : balle de toile écrue coiffée d’un paquet garance sanglé, caisse de planches et sac de jute sanglés",
+    "pose": [
+      "{ sprite: 'rc_car_ballots_3q', x: 20.4, z: 12.4, w: 2, d: 1.2, solid: [{ x: 20.4, z: 12.4, w: 2, d: 1.2, couv: 1 }] }"
+    ],
+    "ordre": 29,
+    "depth": 36.0,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9574), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.1233 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/ballots_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.33 / droit 0.75 (cible 0,33 / 0,70)"
+  },
+  "rc_car_ballots_b_3q": {
+    "file": "rencontres/rc_car_ballots_b_3q.webp",
+    "px": [
+      107,
+      88
+    ],
+    "anchor": [
+      84,
+      87
+    ],
+    "footprint_m": [
+      2,
+      1.2
+    ],
+    "height_m": 0.9,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Ballots (variante basse) : trois sacs couchés (jute, toile, olive), un petit sac noué dessus, tapis garance roulé en travers",
+    "pose": [
+      "{ sprite: 'rc_car_ballots_b_3q', x: 12, z: 9.6, w: 2, d: 1.2, solid: [{ x: 12, z: 9.6, w: 2, d: 1.2, couv: 1 }] }"
+    ],
+    "ordre": 23,
+    "depth": 24.8,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de CARAVANE.md §4/§10 (car_v1/m_car2.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du désert seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.8837), alpha du repeint (part peinte 1,0 : aucun pixel procédural), UNE mise à l'échelle uniforme x0.1085 vers 50 px/m ; aucun étirement ni cisaillement (brut car_v1/gen/ballots_b_g1.jpg, hors dépôt)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "pente_mesuree": "pied gauche 0.32 / droit 0.79 (cible 0,33 / 0,70)"
+  },
+  "rc_car_bivouac_3q_neon": {
+    "file": "rencontres/rc_car_bivouac_3q_neon.webp",
+    "px": [
+      160,
+      111
+    ],
+    "anchor": [
+      100,
+      110
+    ],
+    "additive": true,
+    "parent": "rc_car_bivouac_3q",
+    "couche_de": "rc_car_bivouac_3q",
+    "layer": "neon",
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : lueur des flammes peintes (pixels de feu du repeint, ≈35 px) floutée, orange chaud (255,150,60), même canevas, même ancre ; aucune autre lumière dans la scène",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "note_neon": "vraie source : le feu ; halo serré sur les braises seulement (pas de tache au sol). Effet conseillé : vacillement lent."
+  },
+  "rc_car_tracteur_3q_texte": {
+    "file": "rencontres/rc_car_tracteur_3q_texte.webp",
+    "px": [
+      379,
+      274
+    ],
+    "anchor": [
+      310,
+      273
+    ],
+    "additive": false,
+    "parent": "rc_car_tracteur_3q",
+    "couche_de": "rc_car_tracteur_3q",
+    "layer": "texte",
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : lettrage peint à la main, usé, garance sombre « TRANSPORTES REMEDIOS — NOVO CÓRDOBA · DUSK-TOWN » posé sur la portière sud par projection affine du plan de la portière (pas d’étirement du sprite)",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "texte": "TRANSPORTES REMEDIOS — NOVO CÓRDOBA · DUSK-TOWN",
+    "note": "calque normal (non additif), jamais retourné en miroir ; à poser en etage: 1 sur l’emprise du tracteur (le moteur ne lit _texte que sur les véhicules)"
+  },
+  "rc_car_traces_3q": {
+    "file": "rencontres/rc_car_traces_3q.webp",
+    "px": [
+      521,
+      231
+    ],
+    "anchor": [
+      375,
+      226
+    ],
+    "footprint_m": [
+      9,
+      5
+    ],
+    "height_m": 0.0,
+    "face": "3q",
+    "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
+    "px_par_m": 50,
+    "role": "Décalque au sol : deux paires d’ornières de pneus à sculptures arrivant du sud-ouest et longeant le convoi vers l’est, piétinement de bottes devant le comptoir, une file de pas qui fait le tour vers la citerne (examen rc_traces)",
+    "pose": [
+      "{ sprite: 'rc_car_traces_3q', x: 21, z: 13, w: 9, d: 5, fond: true }  // décalque, couche sol, sous tout le reste"
+    ],
+    "ordre": 1,
+    "depth": 48,
+    "source": "Ocre, lot 1 caravane « La citerne qui respire » : décors (Ocre, 2026-11-18) : texture vue de dessus peinte par GenerateImage (cursor, car_v1/gen/traces_tex.jpg, hors dépôt) ; creux extraits par écart au sable local, projetés point par point dans le plan du sol à la projection exacte du jeu (50 px/m), couleur terre sombre, alpha ≤ 0,85",
+    "status": "v1",
+    "groupe": "rc_caravane",
+    "calque": "sol",
+    "fond": true,
+    "note": "à dessiner au sol, avant tout le décor (fond: true)"
   }
 }
