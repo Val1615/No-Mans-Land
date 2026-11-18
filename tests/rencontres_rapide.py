@@ -177,12 +177,12 @@ with sync_playwright() as p:
         png = pg.screenshot(clip={'x': 240, 'y': 150, 'width': 800, 'height': 450}); pg.screenshot(path=OUT + f'livraison/lumiere_{lab}.jpg', type='jpeg', quality=82)
         q = E("(()=>{const s=window.__nml.state.player,p=window.__nml.project(s.x,0,s.z);return [p.x,p.y]})()")
         pim = Image.open(io.BytesIO(pg.screenshot(clip={'x': q[0] - 40, 'y': q[1] - 90, 'width': 80, 'height': 100}))).convert('RGB')
-        rim = sum(1 for (r_, g_, b_) in pim.getdata() if b_ > r_ + 25 and (r_ + g_ + b_) / 3 > 110)  # pixels bleu-gris clairs autour du joueur : liseré de lune
+        rim = sum(1 for (r_, g_, b_) in pim.getdata() if r_ + 8 <= b_ <= r_ + 45 and (r_ + g_ + b_) / 3 > 140)  # pixels blanc bleuté (#c8d2dc) autour du joueur : liseré de lune
         lum[lab + '_lisere'] = rim
         lum[lab] = (ImageStat.Stat(Image.open(io.BytesIO(png)).convert('L')).mean[0], E("window.__nml.state.heures") % 24, E("window.__nml.world.LOCATIONS['%s'].light.sun[1]" % LIEU))
         ctx.close()
     ok(lum['jour_9h'][1] == 9 and lum['nuit_0h'][1] == 0, 'lumière : rencontre forcée à 9 h puis à minuit (heure du voyage)', lum)
-    ok(lum['nuit_0h_lisere'] >= 25 and lum['jour_9h_lisere'] <= 3, f'liseré de lune : contour bleu-gris sur le joueur à minuit ({lum["nuit_0h_lisere"]} px), absent à 9 h ({lum["jour_9h_lisere"]} px)', lum)
+    ok(lum['nuit_0h_lisere'] >= 12 and lum['jour_9h_lisere'] <= 3, f'liseré de lune : liseré 1 px blanc bleuté côté lune sur le joueur à minuit ({lum["nuit_0h_lisere"]} px), absent à 9 h ({lum["jour_9h_lisere"]} px)', lum)
     ok(lum['jour_9h'][0] > 1.8 * lum['nuit_0h'][0] and lum['jour_9h'][0] > 90, f'lumière : nuit nettement plus sombre que le plein jour (luminance {lum["jour_9h"][0]:.0f} contre {lum["nuit_0h"][0]:.0f})', lum)
     br.close()
 print(f'\n{n} OK, {len(fails)} échec(s)'); [print(' -', f) for f in fails]

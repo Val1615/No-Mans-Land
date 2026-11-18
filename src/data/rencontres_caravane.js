@@ -7,7 +7,7 @@ const D = (id, sprite, x, z, w, d, extra = {}) => ({ id, label: '', sprite, x, z
 const R = (x, z, w, d, couv = 1) => ({ x, z, w, d, couv });
 const FIN = [{ label: 'Partir.', next: 'end' }];
 
-export const ITEMS_CARAVANE = { lame_ressort: { name: 'Lame de ressort' } }; // objet de quête, sans valeur marchande (§9, §12.12)
+export const ITEMS_CARAVANE = { lame_ressort: { name: 'Lame de ressort', icon: 'rencontres/icone_lame_ressort_64.webp', icon128: 'rencontres/icone_lame_ressort_128.webp' } }; // objet de quête, sans valeur marchande (§9, §12.12)
 
 // --- commerce (§6.2, §12.5) : stock limité par drapeaux, prix selon car_remise_ami > car_remise > car_remise_eau > base (if exclusifs) ---
 const PALIERS = [['car_remise_ami', 'ami'], ['!car_remise_ami&car_remise', 'remise'], ['!car_remise_ami&!car_remise&car_remise_eau', 'eau'], ['!car_remise_ami&!car_remise&!car_remise_eau', 'base']];
@@ -168,27 +168,29 @@ export const CARAVANE = {
       paint: [ { x: 0, z: 18, w: 35, d: 6, skin: 'g_rc_piste', tileM: 4 }, { x: 6, z: 18, w: 4, d: 4, skin: 'g_rc_piste_b', tileM: 4 }, { x: 22, z: 20, w: 4, d: 4, skin: 'g_rc_piste_c', tileM: 4 },
         { x: 8, z: 12, w: 8, d: 4, skin: 'g_rc_lit', tileM: 4 }, { x: 12, z: 12, w: 4, d: 4, skin: 'g_rc_lit_b', tileM: 4 },
         { x: 20, z: 8.5, w: 4, d: 4, skin: 'g_rc_sable_b', tileM: 4 }, { x: 4, z: 24, w: 4, d: 2, skin: 'g_rc_sable_c', tileM: 4 } ] },
-    cadre: { desktop: { x: [14, 22], z: [17, 19] }, mobile: { x: [10, 26], z: [19, 19] } },
-    buildings: [ // §14 ; ph : volume gris de repli tant que la clé n'est pas livrée
+    cadre: { desktop: { x: [14, 22], z: [17, 19] }, mobile: { x: [6.5, 28], z: [18, 20] } },
+    buildings: [ // §14 + table de poses d'Ocre (manifeste) ; ph : volume gris de repli si une clé manquait
       D('car_traces', 'rc_car_traces_3q', 21, 13, 9, 5, { fond: true, ph: { h: 0.05 } }),
       D('car_talus1', 'rc_ds_talus_b_3q', 0, 0, 10, 8.5, { solid: [R(0, 5, 10, 3.5, 1), R(0, 0, 10, 5, 2)] }),
       D('car_talus2', 'rc_ds_talus_a_3q', 10, 0, 10, 8.5, { solid: [R(10, 5, 10, 3.5, 1), R(10, 0, 10, 5, 2)] }),
       D('car_talus3', 'rc_ds_talus_b_3q', 20, 0, 10, 8.5, { solid: [R(20, 5, 10, 3.5, 1), R(20, 0, 10, 5, 2)] }),
       D('car_talus4', 'rc_ds_talus_fin_3q', 30, 0, 5, 8.5, { solid: [R(30, 5, 5, 3.5, 1), R(30, 0, 5, 5, 2)] }),
-      D('car_relais', 'rc_ds_relais_ufsa_3q', 1, 9.5, 7, 5, { ph: { h: 3.2 }, solid: [R(1, 9.5, 7, 5, 2)] }),
+      D('car_relais', 'rc_ds_relais_ufsa_3q', 1, 9.5, 7, 5, { ph: { h: 3.2 }, solid: [R(1.3, 9.7, 6.6, 4, 2), R(6.3, 14, 0.7, 0.5, 1)] }), // murs, pompe ; banc non solide (table de poses d'Ocre),
       D('car_ferraille', 'rc_car_ferraille_3q', 8.5, 10, 3, 2, { ph: { h: 1 }, solid: [R(8.5, 10, 3, 2, 1)] }),
       D('car_ballots_b', 'rc_car_ballots_b_3q', 12, 9.6, 2, 1.2, { ph: { h: 1.1 }, solid: [R(12, 9.6, 2, 1.2, 1)] }),
       D('car_tracteur', 'rc_car_tracteur_3q', 14, 9.5, 7.5, 2.6, { ph: { h: 3.3 }, solid: [R(14, 9.5, 7.5, 2.6, 2)] }),
+      D('car_tracteur_texte', 'rc_car_tracteur_3q_texte', 14, 9.5, 7.5, 2.6, { etage: 1 }), // lettrage : calque normal (ni additif ni retourné), sur l'emprise du tracteur
       D('car_remorque', 'rc_car_remorque_etal_3q', 22.5, 9.8, 6, 3.2, { ph: { h: 3 }, solid: [R(22.5, 9.8, 6, 2.5, 2), R(22.5, 12.3, 6, 0.7, 1)] }),
       D('car_citerne', 'rc_car_citerne_3q', 29, 10.5, 5.5, 2.4, { ph: { h: 2.6 }, solid: [R(29, 10.5, 5.5, 2.4, 2)] }),
       D('car_ballots', 'rc_car_ballots_3q', 20.4, 12.4, 2, 1.2, { ph: { h: 1.2 }, solid: [R(20.4, 12.4, 2, 1.2, 1)] }),
-      D('car_puits', 'rc_ds_puits_3q', 12.5, 13, 2, 2, { ph: { h: 2.6 }, solid: [R(12.5, 13, 2, 2, 1)] }),
+      D('car_puits', 'rc_ds_puits_3q', 12.5, 13, 2, 2, { ph: { h: 2.6 }, solid: [R(12.6, 13.1, 1.8, 1.8, 1)] }),
       D('car_bivouac', 'rc_car_bivouac_3q', 16, 13.5, 3, 3, { ph: { h: 0.6 }, solid: [R(17, 14.5, 1, 1, 0)] }),
       D('car_bache', 'rc_emb_bache_cache_3q', 30, 14.5, 3.5, 3.5, { solid: [R(30, 14.5, 3.5, 0.5, 1), R(33, 15, 0.5, 3, 1)] }),
       D('car_panneau', 'rc_ds_panneau_ufsa_3q', 1.2, 17, 0.6, 0.2, { solid: [R(1.4, 17, 0.2, 0.2, 0)] }),
       D('car_rochers_b', 'rc_ds_rochers_b_3q', 6, 24.4, 3, 1.5, { solid: [R(6, 24.4, 3, 1.5, 1)] }),
       D('car_rochers', 'rc_ds_rochers_3q', 24, 24.3, 3, 1.5, { solid: [R(24, 24.3, 3, 1.5, 1)] }),
     ],
+    enseignes: [{ id: 'car_feu', building: 'car_bivouac', effet: 'pulse', periode: 5.5, intensite: 0.8 }], // _neon du bivouac : seule lumière de la scène, vacillement lent
     props: [{ sprite: 'barrel', x: 12, z: 16.6, fp: [0.6, 0.6] }], // fût vide près du puits (assets/reused, réutilisé tel quel)
     entree: { x: 1.5, z: 21, heading: Math.PI / 2 },
     sorties: [
@@ -198,7 +200,7 @@ export const CARAVANE = {
   pnj: [
     { id: 'rc_fierro', name: 'Fierro', sprite: 'gen_rc_fierro', x: 13.2, z: 16.8, faceTo: [1.5, 21], dialogue: 'rc_fierro', entrees: [{ si: 'car_salue', node: 'encore' }], si: '!car_vaincue', cacheCombat: true, bloque: false },
     { id: 'rc_remedios', name: 'Remedios', sprite: 'gen_rc_remedios', x: 25.5, z: 14.3, faceTo: [1.5, 21], dialogue: 'rc_remedios', si: '!car_vaincue', cacheCombat: true, bloque: false },
-    { id: 'rc_ciro_dessous', name: 'Ciro', sprite: 'gen_rc_ciro_dessous', gabaritH: 0.35, x: 31.5, z: 13.5, faceTo: [31.5, 20], fige: true, sansMiroir: true, dialogue: 'rc_ciro', si: '!car_repare&!car_vaincue', cacheCombat: true, bloque: false, portraitDe: 'gen_rc_ciro' },
+    { id: 'rc_ciro_dessous', name: 'Ciro', sprite: 'gen_rc_ciro_dessous', gabaritH: 0.35, x: 31.83, z: 13.75, /* ancre = bas du sprite : talons en (31,5 ; 13,27) */ faceTo: [31.5, 20], fige: true, sansMiroir: true, dialogue: 'rc_ciro', si: '!car_repare&!car_vaincue', cacheCombat: true, bloque: false, portraitDe: 'gen_rc_ciro' },
     { id: 'rc_ciro', name: 'Ciro', sprite: 'gen_rc_ciro', x: 30, z: 14.2, faceTo: [25.5, 14.3], dialogue: 'rc_ciro', entrees: [{ si: 'car_repare', node: 'debout' }], si: 'car_repare&!car_vaincue', cacheCombat: true, bloque: false },
     { id: 'rc_lena', name: 'Lena', sprite: 'gen_rc_lena', x: 28.75, z: 14.2, faceTo: [1.5, 21], dialogue: 'rc_lena', si: 'car_vu_lena&!car_vaincue', cacheCombat: true, bloque: false },
     { id: 'rc_citerne', name: 'La citerne', sprite: 'gen_rc_lena', x: 31.5, z: 13.2, dialogue: 'rc_citerne', si: 'car_jamais', fige: true, portrait: false, bloque: false }, // voix de la citerne : jamais visible

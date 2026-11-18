@@ -82,7 +82,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   player.userData.actor = 'player'; scene.add(player, companion);
   // liseré de lune (nuit) : silhouette bleu-gris froid peinte juste avant le personnage, un peu plus grande et décalée vers la lune (haut-gauche de l'écran) ;
   // intensité light.lune (courbe nocturne de data/ambiances.js, nulle le jour). Code seul : même texture que le personnage, assets inchangés [Ocre + Régie 18/11]
-  const LUNE = '#a9bcdc', liseres = []; let zoomVu = 30;
+  const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30;
   function liseré(s, parent) { const m = new THREE.SpriteMaterial({ map: s.material.map, color: LUNE, transparent: true, depthTest: false, depthWrite: false, opacity: 0 });
     m.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('#include <alphatest_fragment>', 'if ( diffuseColor.a < 0.5 * opacity ) discard; diffuseColor.rgb = diffuse;'); };
     m.customProgramCacheKey = () => 'liseré-lune';
@@ -92,10 +92,10 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (let i = liseres.length - 1; i >= 0; i--) { const { s, r } = liseres[i]; if (!r.parent) { liseres.splice(i, 1); continue; }
       r.visible = k > 0.02 && s.visible && !!s.parent; if (!r.visible) continue;
       if (r.material.map !== s.material.map) r.material.map = s.material.map;
-      const zx = 3 / zoomVu, zy = 2 / zoomVu; // ~1,5 px de liseré de chaque côté, quel que soit le zoom
-      r.center.copy(s.center); r.scale.set(Math.sign(s.scale.x || 1) * (Math.abs(s.scale.x) + zx), s.scale.y + zy, 1); r.material.rotation = s.material.rotation;
-      r.position.copy(s.position).addScaledVector(screenRight, -zx * 0.35); r.position.y += zy * 0.3;
-      r.material.opacity = 0.85 * k; r.renderOrder = s.renderOrder - 0.5; } }
+      const px = 1 / zoomVu; // 1 px écran, quel que soit le zoom : la silhouette décalée vers la lune (en haut à gauche) dépasse d'1 px de ce côté seulement [Ocre 18/11]
+      r.center.copy(s.center); r.scale.copy(s.scale); r.material.rotation = s.material.rotation;
+      r.position.copy(s.position).addScaledVector(screenRight, -px).addScaledVector(screenUp, px);
+      r.material.opacity = 0.9 * k; r.renderOrder = s.renderOrder - 0.5; } }
 
   function mat(map, color) { return new THREE.MeshStandardMaterial({ map, color: map ? '#ffffff' : color, transparent: true, opacity: 1, roughness: 0.95 }); }
   function addLabel(text, cls, getPos, visible) { const el = document.createElement('div'); el.className = 'wlabel ' + cls; el.textContent = text; labelLayer.appendChild(el); labels.push({ el, getPos, visible }); }
@@ -771,6 +771,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       animStats.on = on; animStats.sprites = runs; animStats.total = anims.length; } }
   // Miroir horizontal : l'image regarde à droite de l'écran par défaut (manifest.faces = -1 sinon).
   const screenRight = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0, 1, 0)).normalize();
+  const screenUp = new THREE.Vector3().crossVectors(screenRight, camDir).normalize(); // liseré de lune : haut de l'écran dans le monde
   function face(s, heading) {
     if (heading == null) return; const sx = Math.sin(heading) * screenRight.x + Math.cos(heading) * screenRight.z;
     const u = s.userData; if (u.texDos) { const dos = Math.sin(heading) * camDir.x + Math.cos(heading) * camDir.z > 0.15; // dos à la caméra

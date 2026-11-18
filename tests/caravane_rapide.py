@@ -70,13 +70,13 @@ with sync_playwright() as p:
         ok(abs(s['x'] - 1.5) < 0.6 and abs(s['z'] - 21) < 0.6, f'{name} arrivée à l\u2019ouest de la piste (1,5 ; 21)', (s['x'], s['z']))
         ok('monde_remedios_vue' in s['flags'], f'{name} drapeau monde_remedios_vue posé à l\u2019arrivée', s['flags'])
         pret()
-        W = E("""(()=>{const n=window.__nml,L=n.world.LOCATIONS['%s'];return {w:L.w,d:L.d,niv:(L.niveaux||[]).length,nb:L.buildings.length,talus:L.buildings.filter(b=>/talus/.test(b.id)).map(b=>[b.couv,b.plein]),
+        W = E("""(()=>{const n=window.__nml,L=n.world.LOCATIONS['%s'];return {w:L.w,d:L.d,niv:(L.niveaux||[]).length,nb:L.buildings.length,manque:L.buildings.filter(x=>!n.bman[x.sprite]).map(x=>x.id),talus:L.buildings.filter(b=>/talus/.test(b.id)).map(b=>[b.couv,b.plein]),
           pnj:n.world.NPCS.filter(q=>q.location==='%s'),spots:n.world.SPOTS.filter(q=>q.location==='%s').length,portes:n.world.DOORS.filter(d=>d.location==='%s').map(d=>[d.id,d.effet,!!d.garde])}})()""" % ((LIEU,) * 4))
         gab = [q['id'] for q in W['pnj'] if q.get('gabarit')]
         ok(W['w'] == 35 and W['d'] == 26 and not W['niv'], f'{name} scène 35 × 26, sans niveaux', (W['w'], W['d'], W['niv']))
         ok(len(W['portes']) == 2 and {p[0].split('_')[-1] for p in W['portes']} >= {'ouest', 'est'}, f'{name} 2 sorties : ouest (halte), est (reprise, jamais gardée)', W['portes'])
         ok(set(vis()) == {'rc_fierro', 'rc_remedios', 'rc_ciro_dessous'}, f'{name} à l\u2019arrivée : Fierro, Remedios, les jambes de Ciro (Lena cachée)', vis())
-        ok(len(gab) == len(W['pnj']), f'{name} PNJ en gabarit gris tant que les sprites d\u2019Ocre manquent ({len(gab)}/{len(W["pnj"])})', gab)
+        ok(not gab and not W['manque'], f'{name} sprites d\u2019Ocre câblés : décors et PNJ (aucun gabarit, aucune clé manquante)', (gab, W['manque']))
         ok(W['spots'] >= 10, f'{name} {W["spots"]} points de fouille / examen', W['spots'])
         # 1b) cadrage d'arrivée (comme le pilote) : sorties entières, joueur, citerne et remorque dans le cadre, encart hors des sorties, titre hors zoom
         CAD = """(()=>{const n=window.__nml,s=n.state,W=innerWidth,H=innerHeight,r=e=>{const q=e.getBoundingClientRect();return [q.left,q.top,q.right,q.bottom]};
