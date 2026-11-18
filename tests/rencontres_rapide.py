@@ -97,8 +97,9 @@ with sync_playwright() as p:
         E("window.__nml.game.closeDialogue()"); E("window.__nml.game.talkTo('rc_quilla')"); wait("window.__nml.state.dialogue", 15)
         ok(E("window.__nml.state.dialogue?.npc") == 'rc_quilla' and E("window.__nml.game.currentNode().options.some(o=>/en chiffons/.test(o.label))"), f'{name} option « Ton chauffeur est en chiffons » (mannequin vu)')
         # 4) combat : [Attaquer] ; tirage figé (tout manque) pour un test stable
+        E("(()=>{window.__msgs=[];new MutationObserver(()=>window.__msgs.push(document.getElementById('msg').textContent)).observe(document.getElementById('msg'),{childList:true,characterData:true,subtree:true})})()")  # l'ennemi le plus vif peut tirer aussitôt : on garde l'historique de l'encart
         E("window.__nml.game.setRng(()=>0.99)"); choisir('Attaquer'); ok(wait("window.__nml.state.combat", 10), f'{name} combat lancé depuis le dialogue')
-        ok(wait("document.getElementById('msg').textContent.includes('Morsa saute de l\u2019épave.')", 3), f'{name} récit d\u2019engagement : « Morsa saute de l\u2019épave. »', E("document.getElementById('msg').textContent"))
+        ok(wait("window.__msgs.some(t=>t.includes('Morsa saute de l\u2019épave.'))", 3), f'{name} récit d\u2019engagement : « Morsa saute de l\u2019épave. »', E("window.__msgs"))
         Cb = E("(()=>{const c=window.__nml.state.combat;return {z:c.zone,u:c.units.map(u=>({id:u.id,i:u.i,j:u.j,a:u.actif,att:!!u.attend,arme:u.arme}))}})()")
         ids = {u['id'] for u in Cb['u']}; z = Cb['z']
         ok(z == {'i0': 9, 'i1': 27, 'j0': 4, 'j1': 22}, f'{name} zone de combat fixée sur la scène (centre 18 ; 13)', z)
