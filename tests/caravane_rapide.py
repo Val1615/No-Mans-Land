@@ -242,7 +242,7 @@ with sync_playwright() as p:
             sa = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('L'); E("window.__nml.liseres(true)"); time.sleep(.2)
             H = a_[1] - b_[1]; ys = [i // av.width - 10 for i, (u, v) in enumerate(zip(av.getdata(), sa.getdata())) if u - v > 12]
             nuit[h][who] = (len(ys), sum(1 for y in ys if y > 0.5 * H))
-        nuit[h]['op'] = E("window.__nml.liseres().opacite")
+        nuit[h]['op'] = E("window.__nml.liseres().opacite"); nuit[h]['vis'] = E("window.__nml.liseres().visibles")
         if h == 23: pg.screenshot(path=OUT + 'livraison/desktop_caravane_nuit_23h.jpg', type='jpeg', quality=88)
         ctx.close()
     J, N = nuit[10], nuit[23]
@@ -250,6 +250,6 @@ with sync_playwright() as p:
     ok(N['fl_min'] > 8 and N['fl_max'] - N['fl_min'] > 12 and N['chaud'] > 15, f'flaque du feu visible la nuit et chaude ({N["fl_min"]:.0f} à {N["fl_max"]:.0f} de luminance au-dessus du sol, elle vacille)', N)
     ok(J['fl_max'] < 12, f'jour : pas de flaque ({J["fl_max"]:.0f})', J)
     ok(N['fierro'][0] >= 4 and N['fierro'][1] == 0 and N['ciro'][1] == 0 and 0 < N['op'] <= 0.5, f'liseré de lune : Fierro tête et épaules ({N["fierro"][0]} px, 0 en bas), Ciro couché bord supérieur seulement ({N["ciro"]}), opacité {N["op"]:.2f} ≤ 0,5', N)
-    ok(J['fierro'][0] <= 2 and J['op'] == 0, 'jour : aucun liseré', J)
+    ok(J['op'] == 0 and J['vis'] == 0, 'jour : aucun liseré (opacité nulle, aucun liseré affiché)', J)
     br.close()
 print(f'\n{n} OK, {len(fails)} échec(s)'); [print('  -', f) for f in fails]; sys.exit(1 if fails else 0)

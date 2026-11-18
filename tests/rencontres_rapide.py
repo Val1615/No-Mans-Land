@@ -191,7 +191,7 @@ with sync_playwright() as p:
         lum[lab] = (ImageStat.Stat(Image.open(io.BytesIO(png)).convert('L')).mean[0], E("window.__nml.state.heures") % 24, E("window.__nml.world.LOCATIONS['%s'].light.sun[1]" % LIEU))
         ctx.close()
     ok(lum['jour_9h'][1] == 9 and lum['nuit_0h'][1] == 0, 'lumière : rencontre forcée à 9 h puis à minuit (heure du voyage)', lum)
-    ok(lum['nuit_0h_lisere'] >= 6 and lum['nuit_0h_lisere_bas'] == 0 and lum['jour_9h_lisere'] <= 2 and 0 < lum['nuit_0h_lisere_op'] <= 0.5, f'liseré de lune : à minuit sur la tête et les épaules seulement ({lum["nuit_0h_lisere"]} px, {lum["nuit_0h_lisere_bas"]} px dans la moitié basse), opacité {lum["nuit_0h_lisere_op"]} ≤ 0,5 ; absent à 9 h ({lum["jour_9h_lisere"]} px)', lum)
+    ok(lum['nuit_0h_lisere'] >= 6 and lum['nuit_0h_lisere_bas'] == 0 and lum['jour_9h_lisere_op'] == 0 and 0 < lum['nuit_0h_lisere_op'] <= 0.5, f'liseré de lune : à minuit sur la tête et les épaules seulement ({lum["nuit_0h_lisere"]} px, {lum["nuit_0h_lisere_bas"]} px dans la moitié basse), opacité {lum["nuit_0h_lisere_op"]} ≤ 0,5 ; absent à 9 h (opacité {lum["jour_9h_lisere_op"]})', lum)
     dT, dS = 1 - lum['nuit_0h_talus'][0] / lum['jour_9h_talus'][0], 1 - lum['nuit_0h_sol'][0] / lum['jour_9h_sol'][0]
     ok(dT >= 2 / 3 * dS and lum['nuit_0h_talus'][1] <= 0.55, f'talus de nuit : assombri de {dT:.0%} (sol {dS:.0%}, au moins les deux tiers), saturation {lum["nuit_0h_talus"][1]:.2f} (plus d\u2019ambre plein soleil)', lum)
     ok(lum['jour_9h'][0] > 1.8 * lum['nuit_0h'][0] and lum['jour_9h'][0] > 90, f'lumière : nuit nettement plus sombre que le plein jour (luminance {lum["jour_9h"][0]:.0f} contre {lum["nuit_0h"][0]:.0f})', lum)
