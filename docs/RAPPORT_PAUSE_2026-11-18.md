@@ -44,7 +44,9 @@ Ce que fait le système :
 Quatre rencontres sont jouables et les quatre autres sont prêtes à être produites. Les fiches restantes réutilisent les modules du désert et du verre, avec peu de nouvelles clés.
 
 ## 3. Travail en cours, non publié
-- Rivet a commencé deux corrections du témoin : le soin doit vraiment rendre des points de vie, et frapper Roque doit lancer un vrai combat. Elles sont dans le clone de Rivet, non publiées, et il les reprendra avec le convoi.
+- Rivet a commencé deux corrections du témoin : le soin doit vraiment rendre des points de vie, et frapper Roque doit lancer un vrai combat. Elles sont commitées sur la branche locale `wip/convoi` de Rivet (`f521c8f`), non testées et pas encore sur GitHub. Il les reprendra avec le convoi.
+
+Le volet DA (sprites manquants par rencontre) est tenu par Ocre dans `rencontres/ETAT_DA.md`.
 
 ## 4. Ordre de reprise
 1. Le convoi ensablé (01), avec les deux corrections du témoin. Ce sont les premières variantes déclarées.
