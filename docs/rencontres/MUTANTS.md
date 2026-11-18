@@ -535,7 +535,7 @@ Objets existants (`water`, `ration`, `poignard`, `compteur`) sauf mention ; un s
 **Nouvel objet** : `perles_verre` (« Perles de verre », objet d'échange). Pas de prix de vente au jalon 2 : il ne se vend pas, il se montre. C'est une accroche, pas une monnaie.
 
 ## 10. Clés d'assets : réutilisations et clés nouvelles à produire
-**Rien n'est produit dans ce lot** (consigne). Même pipeline que le pilote et la caravane : Mega-Line, caméra du jeu, 50 px/m. Même manifeste `assets/rencontres/manifest.json`, mêmes champs.
+**Produit et publié depuis** (lots `08e8356` et `200bc62`, voir §15). Même pipeline que le pilote et la caravane : Mega-Line, caméra du jeu, 50 px/m. Même manifeste `assets/rencontres/manifest.json`, mêmes champs.
 
 Préfixes :
 - `rc_vr_` pour les modules du **verre**, réutilisables par les autres rencontres de ce biome ;
@@ -794,3 +794,150 @@ export const VERRIERS = {
 };
 ```
 `monde_verriers_vus` est posé à l'arrivée par `drapeauArrivee`, en plus du journal de la case. Le point de réveil de la défaite (11,5 ; 20,5) est devant la gueule du four, sur une case libre.
+## 15. Poses définitives et sprites publiés
+Sprites produits et publiés dans `assets/rencontres/` (groupe `rc_ecluse_verriers`, manifeste sans clé existante modifiée, vérifié par script) : lot 1 sols et décors `08e8356`, lot 2 PNJ et créatures `200bc62`. Même pipeline que le pilote et la caravane : modèle 3D aux cotes de ce document, rendu à la caméra du jeu (50 px/m), repeint image-à-image puis recalé par échelle uniforme + translation ; ombres de contact peintes au pied des décors ; aucun étirement. Planche : `nml-shots/rencontres/mutants_planche_sprites.png` ; MAQUETTE jour + nuit : `nml-shots/rencontres/mutants_maquette.png`.
+
+**Tirage** : n'importe quelle case de verre (I04, I03, J04 par exemple), §1 ; la scène ne dépend pas de la case.
+
+### 15.1 Table des poses (décors)
+x, z = coin nord-ouest de l'emprise ; l'ancre du sprite tombe au coin sud-est au sol (x + w ; z + d). `depth` = (x + w) + (z + d) ; `ordre` = ordre de dessin conseillé (décalques `fond` d'abord).
+
+| Clé | x | z | w | d | Solides (x, z, w, d, couv) | Ordre | Depth |
+|---|---|---|---|---|---|---|---|
+| `rc_ecl_four_flaque` | 10 | 19 | 3 | 2 | fond | 1 | 34 |
+| `rc_ecl_cuve_3q` | 22 | 10 | 9 | 4 | fond | 2 | 45 |
+| `rc_vr_dalles_3q` | 5 | 2 | 2 | 2 | 5, 2, 2, 2, 1 | 3 | 11 |
+| `rc_vr_parapet_3q` | 0 | 8.5 | 6 | 0.5 | 0, 8.5, 6, 0.5, 1 | 4 | 15 |
+| `rc_ds_panneau_ufsa_3q` | 1.2 | 16.4 | 0.6 | 0.2 | 1.4, 16.4, 0.2, 0.2, 0 | 5 | 18.4 |
+| `rc_vr_parapet_b_3q` | 0 | 15 | 3 | 0.5 | 0, 15, 3, 0.5, 1 | 6 | 18.5 |
+| `rc_vr_dalles_b_3q` | 14 | 3 | 2 | 2 | 14, 3, 2, 2, 1 | 7 | 21 |
+| `rc_vr_parapet_3q` | 6 | 8.5 | 6 | 0.5 | 6, 8.5, 6, 0.5, 1 | 8 | 21 |
+| `rc_vr_escalier_quai_3q` | 12 | 8.5 | 3 | 0.5 | — | 9 | 24 |
+| `rc_ecl_peniche_3q` | 2 | 9.5 | 11 | 4.5 | 2, 9.5, 11, 4.5, 2 | 10 | 27 |
+| `rc_ecl_etabli_3q` | 6 | 17.2 | 3 | 0.8 | 6, 17.2, 3, 0.8, 1 | 11 | 27 |
+| `rc_vr_parapet_3q` | 6 | 15 | 6 | 0.5 | 6, 15, 6, 0.5, 1 | 12 | 27.5 |
+| `rc_vr_parapet_3q` | 15 | 8.5 | 6 | 0.5 | 15, 8.5, 6, 0.5, 1 | 13 | 30 |
+| `rc_ecl_four_3q` | 10 | 16.3 | 3 | 2.7 | 10, 16.3, 3, 2.7, 2 | 14 | 32 |
+| `rc_ecl_porte_nord_3q` | 19 | 9 | 1.5 | 3 | 19, 9, 1.5, 3, 2 | 15 | 32.5 |
+| `rc_vr_parapet_3q` | 12 | 15 | 6 | 0.5 | 12, 15, 6, 0.5, 1 | 16 | 33.5 |
+| `rc_ecl_condenseur_3q` | 14 | 16.3 | 1.5 | 2 | 14, 16.3, 1.5, 2, 1 | 17 | 33.8 |
+| `rc_vr_blinde_vitrifie_3q` | 26 | 1 | 5 | 3 | 26, 1, 5, 3, 2 | 18 | 35 |
+| `rc_ecl_condenseur_3q (miroir)` | 16 | 16.3 | 1.5 | 2 | 16, 16.3, 1.5, 2, 1 | 19 | 35.8 |
+| `rc_vr_parapet_3q` | 21 | 8.5 | 6 | 0.5 | 21, 8.5, 6, 0.5, 1 | 20 | 36 |
+| `rc_ecl_condenseur_3q` | 18 | 16.3 | 1.5 | 2 | 18, 16.3, 1.5, 2, 1 | 21 | 37.8 |
+| `rc_ecl_porte_sud_3q` | 20.5 | 14 | 3 | 1 | 20.5, 14, 3, 1, 2 | 22 | 38.5 |
+| `barrel` | 20.7 | 17 | 0.6 | 0.6 | 20.7, 17, 0.6, 0.6, 1 | 23 | 38.9 |
+| `rc_vr_parapet_3q` | 18 | 15 | 6 | 0.5 | 18, 15, 6, 0.5, 1 | 24 | 39.5 |
+| `rc_ds_rochers_b_3q` | 8 | 27.8 | 3 | 1.5 | 8, 27.8, 3, 1.5, 1 | 25 | 40.3 |
+| `rc_vr_parapet_3q` | 27 | 8.5 | 6 | 0.5 | 27, 8.5, 6, 0.5, 1 | 26 | 42 |
+| `rc_vr_parapet_b_3q` | 33 | 8.5 | 3 | 0.5 | 33, 8.5, 3, 0.5, 1 | 27 | 45 |
+| `rc_ecl_cabane_3q` | 24 | 16.2 | 4 | 3.8 | 24, 16.2, 4, 3.8, 2 | 28 | 48 |
+| `rc_vr_parapet_3q` | 27 | 15 | 6 | 0.5 | 27, 15, 6, 0.5, 1 | 29 | 48.5 |
+| `rc_vr_parapet_b_3q` | 33 | 15 | 3 | 0.5 | 33, 15, 3, 0.5, 1 | 30 | 51.5 |
+| `rc_ds_rochers_3q` | 29 | 27.9 | 3 | 1.5 | 29, 27.9, 3, 1.5, 1 | 31 | 61.4 |
+
+Calques : `rc_ecl_four_3q_neon` (additif, posé par le moteur sur le bâtiment `ver_four`, vraie source : la gueule ; le verre ne luit jamais) ; `rc_vr_blinde_vitrifie_3q_texte` (calque normal, `etage: 1`, jamais en miroir). `rc_ecl_four_flaque` est un décalque additif à n'afficher que la nuit (§12.9).
+
+### 15.2 PNJ et créatures
+| Clé | Position (x ; z) | Hauteur | Remarques |
+|---|---|---|---|
+| `gen_rc_balta` (+ `_dos`) | (5.5 ; 20.4) | 1.82 m | faceTo (1,5 ; 24) |
+| `gen_rc_tecla` (+ `_dos`) | (13.2 ; 19.6) | 1.1 m | assise, faceTo (1,5 ; 24) |
+| `gen_rc_rufina` (+ `_dos`) | (7.5 ; 18.8) | 1.74 m | faceTo (11,5 ; 19) |
+| `gen_rc_nilo` (+ `_dos`) | (25.5 ; 20.6) | 1.5 m | si ver_nilo_libre, faceTo (11,5 ; 19) |
+| `gen_rc_chancho` (+ `_dos`) | (24.5 ; 10.5) | garrot 0.75 m, long. ≈ 1.1 m ; height_m 1.318 (hauteur du billboard, sprite à 200 px/m) | figé, examen harde |
+| `gen_rc_chancho` (+ `_dos`) | (26.5 ; 13.5) | garrot 0.75 m, long. ≈ 1.1 m ; height_m 1.318 (hauteur du billboard, sprite à 200 px/m) | figé, miroir |
+| `gen_rc_chancho` (+ `_dos`) | (33 ; 11.5) | garrot 0.75 m, long. ≈ 1.1 m ; height_m 1.318 (hauteur du billboard, sprite à 200 px/m) | figé |
+| `gen_rc_chancho_gris` (+ `_dos`) | (29.5 ; 12) | garrot 0.95 m, long. ≈ 1.5 m ; height_m 1.541 (hauteur du billboard, sprite à 200 px/m) | figé, tête vers la cabane (sud-est) |
+
+PNJ : ancre au pied, au centre (`anchor` du manifeste), portraits `portrait-gen_rc_balta`, `-tecla`, `-rufina`, `-nilo` (192 px). Créatures : ancre au **centre des pattes** au sol (pas le bas du sprite), vue de face tête vers le sud-ouest, vue de dos tête vers le nord-est, le miroir donne les deux autres côtés ; pas de portrait.
+
+### 15.3 Clés publiées
+| Clé | px | Ancre | Emprise L × P × H (m) |
+|---|---|---|---|
+| `g_rc_verre` | 512 × 512 | — | tuile 4 m |
+| `g_rc_verre_b` | 512 × 512 | — | tuile 4 m |
+| `g_rc_verre_c` | 512 × 512 | — | tuile 4 m |
+| `g_rc_quai` | 512 × 512 | — | tuile 4 m |
+| `g_rc_limon` | 512 × 512 | — | tuile 4 m |
+| `g_rc_limon_b` | 512 × 512 | — | tuile 4 m |
+| `g_rc_cendre` | 512 × 512 | — | tuile 4 m |
+| `g_rc_cendre_b` | 512 × 512 | — | tuile 4 m |
+| `rc_vr_dalles_3q` | 141 × 118 | [80, 111] | 2 × 2 × 1.2 |
+| `rc_vr_dalles_b_3q` | 141 × 103 | [80, 96] | 2 × 2 × 0.9 |
+| `rc_vr_blinde_vitrifie_3q` | 293 × 203 | [204, 196] | 5 × 3 × 2.4 |
+| `rc_vr_parapet_3q` | 267 × 128 | [248, 121] | 6 × 0.5 × 0.7 |
+| `rc_vr_parapet_b_3q` | 143 × 88 | [124, 81] | 3 × 0.5 × 0.7 |
+| `rc_vr_escalier_quai_3q` | 142 × 100 | [123, 93] | 3 × 0.5 × 0.7 |
+| `rc_ecl_peniche_3q` | 604 × 337 | [472, 330] | 11 × 4.5 × 3 |
+| `rc_ecl_porte_nord_3q` | 153 × 221 | [64, 214] | 1.5 × 3 × 3.4 |
+| `rc_ecl_porte_sud_3q` | 162 × 177 | [129, 170] | 3 × 1 × 3.4 |
+| `rc_ecl_four_3q` | 206 × 213 | [125, 206] | 3 × 2.7 × 3.4 |
+| `rc_ecl_condenseur_3q` | 120 × 146 | [59, 139] | 1.5 × 2 × 1.8 |
+| `rc_ecl_etabli_3q` | 149 × 100 | [121, 93] | 3 × 0.8 × 0.9 |
+| `rc_ecl_cabane_3q` | 290 × 256 | [176, 249] | 4 × 3.8 × 3 |
+| `rc_ecl_four_3q_neon` | 206 × 213 | [125, 206] | calque `neon` de `rc_ecl_four_3q` |
+| `rc_vr_blinde_vitrifie_3q_texte` | 293 × 203 | [204, 196] | calque `texte` de `rc_vr_blinde_vitrifie_3q` |
+| `rc_ecl_cuve_3q` | 493 × 211 | [375, 206] | 9 × 4 × 0 |
+| `rc_ecl_four_flaque` | 189 × 89 | [128, 85] | 3 × 2 × 0 |
+| `gen_rc_balta` | 216 × 512 | [108, 511] | 1.82 m de haut |
+| `portrait-gen_rc_balta` | 192 × 192 | — | portrait |
+| `gen_rc_balta_dos` | 210 × 512 | [105, 511] | 1.82 m de haut |
+| `gen_rc_tecla` | 330 × 512 | [165, 511] | 1.1 m de haut |
+| `portrait-gen_rc_tecla` | 192 × 192 | — | portrait |
+| `gen_rc_tecla_dos` | 334 × 512 | [167, 511] | 1.1 m de haut |
+| `gen_rc_rufina` | 180 × 512 | [90, 511] | 1.74 m de haut |
+| `portrait-gen_rc_rufina` | 192 × 192 | — | portrait |
+| `gen_rc_rufina_dos` | 154 × 512 | [77, 511] | 1.74 m de haut |
+| `gen_rc_nilo` | 160 × 512 | [80, 511] | 1.5 m de haut |
+| `portrait-gen_rc_nilo` | 192 × 192 | — | portrait |
+| `gen_rc_nilo_dos` | 154 × 512 | [77, 511] | 1.5 m de haut |
+| `gen_rc_chancho` | 228 × 231 | [128, 185] | garrot 0.75, long. 1.1 (billboard 1.318) |
+| `gen_rc_chancho_dos` | 228 × 242 | [100, 193] | garrot 0.75, long. 1.1 (billboard 1.381) |
+| `gen_rc_chancho_gris` | 308 × 270 | [172, 213] | garrot 0.95, long. 1.5 (billboard 1.541) |
+| `gen_rc_chancho_gris_dos` | 308 × 327 | [136, 258] | garrot 0.95, long. 1.5 (billboard 1.866) |
+
+### 15.4 Bloc JS aligné
+Le bloc du §14 est déjà aligné sur ces poses (mêmes x, z, w, d, solides, miroir du condenseur central, `fond` des deux décalques). Lignes générées depuis la table (mut_v1/poses_mut.py), à coller telles quelles si le §14 bouge :
+
+```js
+{ sprite: 'rc_ecl_four_flaque', x: 10, z: 19, w: 3, d: 2, fond: true }  // flaque de lumière du four, nuit seulement (retouche à la manière du bivouac, §12.9),
+{ sprite: 'rc_ecl_cuve_3q', x: 22, z: 10, w: 9, d: 4, fond: true }  // décalque sol : boue, tessons, sabots ; sous tout le reste,
+{ sprite: 'rc_vr_dalles_3q', x: 5, z: 2, w: 2, d: 2, solid: [{ x: 5, z: 2, w: 2, d: 2, couv: 1 }] },
+{ sprite: 'rc_vr_parapet_3q', x: 0, z: 8.5, w: 6, d: 0.5, solid: [{ x: 0, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord,
+{ sprite: 'rc_ds_panneau_ufsa_3q', x: 1.2, z: 16.4, w: 0.6, d: 0.2, solid: [{ x: 1.4, z: 16.4, w: 0.2, d: 0.2, couv: 0 }] }  // réutilisé,
+{ sprite: 'rc_vr_parapet_b_3q', x: 0, z: 15, w: 3, d: 0.5, solid: [{ x: 0, z: 15, w: 3, d: 0.5, couv: 1 }] }  // parapet sud, bout ouest (cale x 3-6),
+{ sprite: 'rc_vr_dalles_b_3q', x: 14, z: 3, w: 2, d: 2, solid: [{ x: 14, z: 3, w: 2, d: 2, couv: 1 }] },
+{ sprite: 'rc_vr_parapet_3q', x: 6, z: 8.5, w: 6, d: 0.5, solid: [{ x: 6, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord,
+{ sprite: 'rc_vr_escalier_quai_3q', x: 12, z: 8.5, w: 3, d: 0.5 }  // passage nord : non solide,
+{ sprite: 'rc_ecl_peniche_3q', x: 2, z: 9.5, w: 11, d: 4.5, solid: [{ x: 2, z: 9.5, w: 11, d: 4.5, couv: 2 }] }  // porte au sud x 7-8 (on n’entre pas),
+{ sprite: 'rc_ecl_etabli_3q', x: 6, z: 17.2, w: 3, d: 0.8, solid: [{ x: 6, z: 17.2, w: 3, d: 0.8, couv: 1 }] },
+{ sprite: 'rc_vr_parapet_3q', x: 6, z: 15, w: 6, d: 0.5, solid: [{ x: 6, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud,
+{ sprite: 'rc_vr_parapet_3q', x: 15, z: 8.5, w: 6, d: 0.5, solid: [{ x: 15, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord,
+{ sprite: 'rc_ecl_four_3q', x: 10, z: 16.3, w: 3, d: 2.7, solid: [{ x: 10, z: 16.3, w: 3, d: 2.7, couv: 2 }] }  // gueule au sud en (11,5 ; 19) ; + _neon (le moteur le pose sur les buildings),
+{ sprite: 'rc_ecl_porte_nord_3q', x: 19, z: 9, w: 1.5, d: 3, solid: [{ x: 19, z: 9, w: 1.5, d: 3, couv: 2 }] }  // la silhouette de la scène ; perles côté est,
+{ sprite: 'rc_vr_parapet_3q', x: 12, z: 15, w: 6, d: 0.5, solid: [{ x: 12, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud,
+{ sprite: 'rc_ecl_condenseur_3q', x: 14, z: 16.3, w: 1.5, d: 2, solid: [{ x: 14, z: 16.3, w: 1.5, d: 2, couv: 1 }] },
+{ sprite: 'rc_vr_blinde_vitrifie_3q', x: 26, z: 1, w: 5, d: 3, solid: [{ x: 26, z: 1, w: 5, d: 3, couv: 2 }] }  // + rc_vr_blinde_vitrifie_3q_texte en etage: 1 sur la même emprise,
+{ sprite: 'rc_ecl_condenseur_3q', x: 16, z: 16.3, w: 1.5, d: 2, solid: [{ x: 16, z: 16.3, w: 1.5, d: 2, couv: 1 }], miroir: true },
+{ sprite: 'rc_vr_parapet_3q', x: 21, z: 8.5, w: 6, d: 0.5, solid: [{ x: 21, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord,
+{ sprite: 'rc_ecl_condenseur_3q', x: 18, z: 16.3, w: 1.5, d: 2, solid: [{ x: 18, z: 16.3, w: 1.5, d: 2, couv: 1 }] },
+{ sprite: 'rc_ecl_porte_sud_3q', x: 20.5, z: 14, w: 3, d: 1, solid: [{ x: 20.5, z: 14, w: 3, d: 1, couv: 2 }] },
+{ sprite: 'rc_vr_parapet_3q', x: 18, z: 15, w: 6, d: 0.5, solid: [{ x: 18, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud,
+{ sprite: 'rc_ds_rochers_b_3q', x: 8, z: 27.8, w: 3, d: 1.5, solid: [{ x: 8, z: 27.8, w: 3, d: 1.5, couv: 1 }] }  // réutilisé,
+{ sprite: 'rc_vr_parapet_3q', x: 27, z: 8.5, w: 6, d: 0.5, solid: [{ x: 27, z: 8.5, w: 6, d: 0.5, couv: 1 }] }  // parapet nord,
+{ sprite: 'rc_vr_parapet_b_3q', x: 33, z: 8.5, w: 3, d: 0.5, solid: [{ x: 33, z: 8.5, w: 3, d: 0.5, couv: 1 }] }  // parapet nord, bout est,
+{ sprite: 'rc_ecl_cabane_3q', x: 24, z: 16.2, w: 4, d: 3.8, solid: [{ x: 24, z: 16.2, w: 4, d: 3.8, couv: 2 }] }  // porte au nord (face cachée, traces au coin NE), fenêtre au sud,
+{ sprite: 'rc_vr_parapet_3q', x: 27, z: 15, w: 6, d: 0.5, solid: [{ x: 27, z: 15, w: 6, d: 0.5, couv: 1 }] }  // parapet sud (seuil x 24-27),
+{ sprite: 'rc_vr_parapet_b_3q', x: 33, z: 15, w: 3, d: 0.5, solid: [{ x: 33, z: 15, w: 3, d: 0.5, couv: 1 }] }  // parapet sud, bout est,
+{ sprite: 'rc_ds_rochers_3q', x: 29, z: 27.9, w: 3, d: 1.5, solid: [{ x: 29, z: 27.9, w: 3, d: 1.5, couv: 1 }] }  // réutilisé,
+```
+
+### 15.5 Défauts connus (v1)
+- La porte nord de la cabane est sur une face cachée à cette caméra : elle est signalée par des planches éclatées au coin nord-est ; le dialogue passe par la fenêtre sud, visible.
+- Le blindé du repeint est plus rouillé que gris : la peinture grise brûlée ne se lit qu'à moitié.
+- Escalier : les marches se lisent mal comme une descente (IoU 0,87) ; à reprendre si Rivet trouve le passage peu lisible.
+- Le gris : l'oreille fendue ne se lit pas à la taille du jeu (visible seulement à la planche) ; le jeune chancho est plus brun que gris de cendre.
+- Les vues de dos des chanchos tiennent la pose du modèle bloc (tête au nord-est), mais les pattes avant, plus loin, montent haut à l'écran : à vérifier en jeu qu'elles ne lisent pas comme une bête qui se cabre.
+- Rufina : ses plaques d'avant-bras sont un peu « écailles » ; Nilo : les taches de sa chemise reprennent le motif de sa peau.
+- `g_rc_verre` : motif de dalles répétitif à 4 m sur les grandes surfaces ; semer `_b` et `_c`.
