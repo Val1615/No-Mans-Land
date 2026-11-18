@@ -5,6 +5,7 @@
 // - scène = lieu ajouté à chaud (game.ajouterLieu), statut de voyage 'rencontre' ; sortie par les portes de bord ou par la fuite -> carte,
 //   en halte (demi-tour, fuite) ou trajet repris là où il s'était arrêté (est) ; sauvegarde dans la scène : recréée au chargement.
 import { RENCONTRES } from '../data/rencontres.js';
+import { ambiance } from '../data/ambiances.js';
 import { ENCOUNTERS } from '../data/combat.js';
 import { EVENEMENTS_ROUTE } from '../data/nml.js';
 import { onCaseEntree } from './voyage.js';
@@ -31,11 +32,11 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
   };
 
   // --- construction de la scène (lieu, portes de bord, PNJ, points) ---
-  function construire(id) {
-    const D = RENCONTRES[id], sc = D.scene, L = D.lieu;
-    const loc = JSON.parse(JSON.stringify({ id: L, name: 'No Man\u2019s Land · ' + D.nom, kind: 'exterior', size: sc.size, city: sc.city, ground: sc.ground, light: sc.light, niveaux: sc.niveaux,
+  function construire(id, heures = S.heures) {
+    const D = RENCONTRES[id], sc = D.scene, L = D.lieu, A = ambiance(sc.ambiance, heures);
+    const loc = JSON.parse(JSON.stringify({ id: L, name: 'No Man\u2019s Land · ' + D.nom, kind: 'exterior', size: sc.size, city: sc.city, ground: sc.ground, light: A ? { bg: A.bg, hemi: A.hemi, sun: A.sun, tint: A.tint, actor: A.actor } : sc.light, niveaux: sc.niveaux,
       buildings: sc.buildings, props: sc.props || [], spawn: { player: { x: sc.entree.x, z: sc.entree.z }, companion: { x: sc.entree.x, z: sc.entree.z + 1 } }, accessLabels: true, cadre: sc.cadre }));
-    loc.rencontre = id;
+    loc.rencontre = id; if (A && loc.ground?.marge) loc.ground.marge.voile = A.voile; // la marge hors scène suit aussi l'heure
     const doors = sc.sorties.map(s => ({ id: `${L}_${s.id}`, location: L, junction: true, quitter: s.id, effet: s.effet, label: s.label,
       opening: { x: s.x > sc.size.w / 2 ? sc.size.w : 0, z: s.z, side: 'edge' }, threshold: { x: s.x, z: s.z },
       conditions: s.si ? [{ test: () => game.cond(s.si), reason: 'rencontre_bloquee', text: s.refus }] : [] }));
@@ -81,7 +82,7 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
   game.onQuitter(d => quitter(d.effet));
   game.onRencontre(x => { if (x === 'quitter') quitterApres = 'fuite'; }); // issue de combat : la scène est quittée après la fin du combat (tick)
   // sauvegarde prise dans la scène : le lieu n'existe qu'à chaud, on le recrée avant la restauration
-  game.onLieuManquant(snap => { const RC = snap.region?.rencontre; if (RC && RENCONTRES[RC.id]?.lieu === snap.location) construire(RC.id); });
+  game.onLieuManquant(snap => { const RC = snap.region?.rencontre; if (RC && RENCONTRES[RC.id]?.lieu === snap.location) construire(RC.id, snap.heures); });
 
   // --- effets de dialogue et de combat propres à la scène ---
   game.on(ev => {

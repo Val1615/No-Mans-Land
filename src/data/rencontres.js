@@ -102,13 +102,13 @@ export const RENCONTRES = {
     prefixe: 'emb_', // drapeaux de la scène, gardés au journal de la case puis retirés de la partie à la sortie
     arrivee: 'La piste file droit vers l\u2019est. Au milieu, un pick-up arrêté, capot ouvert. Quelqu\u2019un est affalé contre la portière.',
     scene: { size: { w: 30, d: 24 }, city: 'nml',
-      ground: { base: '#a8875a', skin: 'g_rc_sable', tileM: 4, clean: true, marge: { skin: 'g_rc_sable', tileM: 4, m: 30, voile: 'rgba(14,10,6,.18)' }, // hors scène : le sable continue, voilé (pas de vide)
+      ground: { base: '#a8875a', skin: 'g_rc_sable', tileM: 4, clean: true, marge: { skin: 'g_rc_sable', tileM: 4, m: 30, voile: 'rgba(14,10,6,.18)' }, // voile de jour : remplacé à l'entrée par celui de l'ambiance ; hors scène : le sable continue, voilé (pas de vide)
         paint: [
         { x: 0, z: 10, w: 30, d: 6, skin: 'g_rc_piste', tileM: 4 }, { x: 8, z: 10, w: 4, d: 4, skin: 'g_rc_piste_b', tileM: 4 }, { x: 20, z: 10, w: 4, d: 4, skin: 'g_rc_piste_c', tileM: 4 },
         { x: 0, z: 17, w: 30, d: 7, skin: 'g_rc_lit', tileM: 4 }, { x: 12, z: 17, w: 4, d: 4, skin: 'g_rc_lit_b', tileM: 4 }, { x: 24, z: 21, w: 4, d: 3, skin: 'g_rc_lit_b', tileM: 4 },
         { x: 0, z: 4, w: 4, d: 4, skin: 'g_rc_sable_b', tileM: 4 }, { x: 24, z: 8, w: 4, d: 2, skin: 'g_rc_sable_c', tileM: 4 } ] },
-      // midi au désert : ambre franc de la maquette (voile brun divisé par trois : tint/acteurs presque neutres, soleil plein) [retours Ocre 18/11]
-      light: { bg: '#3a2c1c', hemi: ['#fff0d8', '#5a4630', 1.5], sun: ['#ffd890', 1.6], tint: '#f7efdf', actor: '#fcf7ee' },
+      // lumière : suit l'heure du voyage, ambiance du biome désert (data/ambiances.js : ambre franc de la maquette en plein jour, nuit sombre) — jamais figée ici [Ocre + Régie 18/11]
+      ambiance: 'desert',
       // cadre : à l'arrivée, la caméra vise entre le joueur et le pick-up ; butée : pas de vide ni de sable voilé aux bords (comme le terminus) [Régie 18/11]
       cadre: { desktop: { x: [12, 22], z: [13.5, 15] }, mobile: { x: [11.5, 24], z: [16, 16] } },
       niveaux: [{ x: 5, z: 0, w: 25, d: 5, y: 2.5 }, { x: 2, z: 3, w: 3, d: 7, y0: 2.5, y1: 0, axe: 'z' }],
