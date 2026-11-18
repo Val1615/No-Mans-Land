@@ -21,6 +21,7 @@ export const ARMES = {
   poignard: { nom: 'Poignard',     type: 'melee', pa: 3, portee: 1,  degats: [3, 5] },
   barre:    { nom: 'Barre de fer', type: 'melee', pa: 3, portee: 1,  degats: [4, 6] },
   defenses: { nom: 'Défenses',     type: 'melee', pa: 3, portee: 1,  degats: [2, 5] }, // chanchos de l'écluse des Verriers (MUTANTS §12.6) ; jamais au Sac
+  baton:    { nom: 'Bâton',        type: 'melee', pa: 3, portee: 1,  degats: [2, 4] }, // Paca, le témoin sous les pins (SURVIVANT §8) ; jamais au Sac
   pistolet: { nom: 'Pistolet',     type: 'tir',   pa: 3, portee: 8,  degats: [4, 7],  chargeur: 6 },
   fusil:    { nom: 'Fusil',        type: 'tir',   pa: 4, portee: 15, degats: [6, 10], chargeur: 5 },
 };

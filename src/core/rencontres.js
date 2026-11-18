@@ -80,9 +80,13 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     return { ok: true };
   }
   // --- sortie : porte de bord (effet halte | reprise) ou fuite du combat ---
-  function quitter(effet = 'halte') {
+  function quitter(effet = 'halte', sid = null) {
     const R = voyage.region(), RC = R.rencontre; if (!RC) return { ok: false };
     const D = RENCONTRES[RC.id], pre = prefixe(RC.id), j = R.rencontres[K(RC.case)];
+    // drapeauxSortie { monde_x: 'cond' } : drapeaux de monde posés à la sortie selon les drapeaux de scène, avant leur purge (SURVIVANT §7 : Roque sauvé, Mateo pris)
+    for (const [f, c] of Object.entries(D.drapeauxSortie || {})) if (game.cond(c)) S.flags[f] = true;
+    // texte de sortie propre à la porte (sortie.texte, sortie.textes [{ si, texte }]) ; sortie trouvée par son id, sinon par son effet (rencontre:quitter:reprise)
+    const so = D.scene.sorties.find(s => s.id === sid) || D.scene.sorties.find(s => s.effet === effet), tso = so && ((so.textes || []).find(t => game.cond(t.si))?.texte ?? so.texte);
     j.flags = Object.fromEntries(Object.entries(S.flags).filter(([f]) => f.startsWith(pre)));
     j.regle = !!S.flags[pre + 'regle'];
     if (S.dialogue) game.closeDialogue();
@@ -93,10 +97,10 @@ export function createRencontres({ game, voyage, say = () => {}, msg = () => '',
     game.agir(`warp:${RC.retour.location}:${RC.retour.x}:${RC.retour.z}`);
     game.retirerLieu(D.lieu);
     const repris = (effet === 'reprise' || escorte) && R.trajet.length ? voyage.reprendre().ok : false;
-    say(escorte ? 'La caravane repart. Tu voyages sur le toit du tracteur : douze dollars à l\u2019arrivée, et personne ne t\u2019arrête.' : repris ? 'Tu reprends la piste.' : effet === 'fuite' ? 'Tu as semé la bande. La carte, de nouveau.' : 'Tu rebrousses chemin jusqu\u2019à la carte.');
+    say(tso && effet !== 'fuite' && !escorte ? tso : escorte ? 'La caravane repart. Tu voyages sur le toit du tracteur : douze dollars à l\u2019arrivée, et personne ne t\u2019arrête.' : repris ? 'Tu reprends la piste.' : effet === 'fuite' ? 'Tu as semé la bande. La carte, de nouveau.' : 'Tu rebrousses chemin jusqu\u2019à la carte.');
     return { ok: true, repris, regle: j.regle, escorte };
   }
-  game.onQuitter(d => quitter(d.effet));
+  game.onQuitter(d => quitter(d.effet, d.quitter));
   game.onRencontre((x, y) => { if (x === 'quitter') quitterApres = y || 'fuite'; }); // issue de combat (fuite) ou dialogue (rencontre:quitter:escorte) : la scène est quittée à l'image suivante (tick)
   // sauvegarde prise dans la scène : le lieu n'existe qu'à chaud, on le recrée avant la restauration
   game.onLieuManquant(snap => { const RC = snap.region?.rencontre; if (RC && RENCONTRES[RC.id]?.lieu === snap.location) construire(RC.id, snap.heures); });

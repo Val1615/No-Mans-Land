@@ -151,7 +151,12 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const ph = b.ph || {}, h = ph.h || 6, y0 = ph.y0 || 0, M = c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.95, transparent: true, opacity: 1, depthTest: false, depthWrite: false });
     const add = (w, hh, d, x, y, z, c, geo) => { const m = new THREE.Mesh(geo || new THREE.BoxGeometry(w, hh, d), M(c)); m.position.set(x, y, z); world.add(m); return m; };
     const extra = []; let main;
-    if (ph.kind === 'dalle') { // dalle haute de Center-Town : tablier en hauteur, pylônes, feux ambrés en sous-face
+    if (ph.kind === 'arbre') { // gabarit d'arbre (forêt du survivant, en attendant les pins d'Ocre) : fût fin, houppier en hauteur ; ph.houppier = part de h (0 : arbre mort, fût seul)
+      const hp = ph.houppier ?? 0.55, f = ph.fut || 0.5, cx = b.x + b.w / 2, cz = b.z + b.d / 2;
+      main = add(f, h * (1 - hp * 0.8), f, cx, y0 + h * (1 - hp * 0.8) / 2, cz, ph.futColor || '#6e665a');
+      if (hp > 0) extra.push(add(b.w * 0.85, h * hp, b.d * 0.85, cx, y0 + h * (1 - hp / 2), cz, ph.color || '#55553e'));
+      else extra.push(add(b.w * 0.7, 0.35, 0.35, cx, y0 + h * 0.62, cz, ph.futColor || '#6e665a'), add(0.35, 0.35, b.d * 0.6, cx, y0 + h * 0.48, cz, ph.futColor || '#6e665a'));
+    } else if (ph.kind === 'dalle') { // dalle haute de Center-Town : tablier en hauteur, pylônes, feux ambrés en sous-face
       main = add(b.w, 1.6, b.d + 2, b.x + b.w / 2, h, b.z + (b.d + 2) / 2 - 2, '#2a2826');
       for (const s of b.solid || []) extra.push(add(s.w, h, s.d, s.x + s.w / 2, h / 2, s.z + s.d / 2, '#34312d'));
       for (let x = 1.5; x < b.w; x += 3) { const l = add(0.5, 0.15, 0.3, b.x + x, h - 0.9, b.z + b.d - 0.2, '#e8a13a'); extra.push(l); }
@@ -342,7 +347,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const span = mv.x1 - mv.x0 + mv.long, x = sens > 0 ? mv.x0 + span * k : mv.x1 + mv.long - span * k; return { sens, passe: k < 1, x: +x.toFixed(2), i, cle: mv.cles[i] }; }
   function building(b) {
     if (b.rame && bman[b.sprite]) return rame(b);
-    if (!bman[b.sprite]) return placeholder(b);
+    if (!bman[b.sprite] || b.gabarit) return placeholder(b); // b.gabarit : volume gris forcé même si la clé existe (forêt du survivant, en attendant la refonte d'Ocre)
     let m = bman[b.sprite]; const mobAnim = m.anime && viewW < 700 && bman[b.sprite + '_mobile'] && SKIN[b.sprite + '_mobile'];
     const skKey = mobAnim ? b.sprite + '_mobile' : b.sprite;
     const t = m.anime ? Object.assign(new THREE.Texture(SKIN[skKey]), { needsUpdate: true, colorSpace: THREE.SRGBColorSpace }) : skinTex(skKey);

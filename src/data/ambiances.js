@@ -9,7 +9,11 @@ const JOUR_DESERT = { bg: '#3a2c1c', hemi: ['#fff0d8', '#5a4630', 1.5], sun: ['#
 const NUIT_VERRE = { bg: '#0a0c12', hemi: ['#5a6684', '#121216', 0.55], sun: ['#8090c0', 0.3], tint: '#586282', actor: '#8a92ae', voile: 'rgba(6,8,14,.64)', lune: 1 };
 const AUBE_VERRE = { bg: '#261c16', hemi: ['#ecc09a', '#30261c', 1.0], sun: ['#ffa864', 0.9], tint: '#e4c8a8', actor: '#eed8c0', voile: 'rgba(18,12,8,.32)', lune: 0.25 };
 const JOUR_VERRE = { bg: '#2c2a22', hemi: ['#f6efd8', '#4a4434', 1.45], sun: ['#fff0c8', 1.55], tint: '#efe9da', actor: '#fbf8f0', voile: 'rgba(14,12,8,.20)', lune: 0 };
+// Forêt (SURVIVANT §11, Ocre) : jour un peu plus doux et un peu plus olive que l'ambre du désert, sans devenir vert ; nuit bleu-gris commune (celle du désert).
+const AUBE_FORET = { bg: '#281c12', hemi: ['#eebc8c', '#34261a', 1.0], sun: ['#ffa05c', 0.9], tint: '#e8c8a2', actor: '#f0d8bc', voile: 'rgba(18,12,8,.32)', lune: 0.25 };
+const JOUR_FORET = { bg: '#30291a', hemi: ['#f4ecce', '#4c4430', 1.42], sun: ['#f8dc98', 1.48], tint: '#efe9d4', actor: '#f9f5e8', voile: 'rgba(12,10,6,.20)', lune: 0 };
 export const AMBIANCES = {
+  forest: [[0, NUIT_DESERT], [5, NUIT_DESERT], [7, AUBE_FORET], [8.5, JOUR_FORET], [17.5, JOUR_FORET], [19, AUBE_FORET], [21, NUIT_DESERT], [24, NUIT_DESERT]],
   glass: [[0, NUIT_VERRE], [5, NUIT_VERRE], [7, AUBE_VERRE], [8.5, JOUR_VERRE], [17.5, JOUR_VERRE], [19, AUBE_VERRE], [21, NUIT_VERRE], [24, NUIT_VERRE]],
   desert: [[0, NUIT_DESERT], [5, NUIT_DESERT], [7, AUBE_DESERT], [8.5, JOUR_DESERT], [17.5, JOUR_DESERT], [19, AUBE_DESERT], [21, NUIT_DESERT], [24, NUIT_DESERT]],
 };

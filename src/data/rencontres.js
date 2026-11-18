@@ -5,6 +5,7 @@
 // etage: 1 = posé sur la crête (passe après le talus qui le porte) ; fond: true = couche sol (décalques, berges) sous tout le reste.
 import { CARAVANE, ITEMS_CARAVANE } from './rencontres_caravane.js'; // jalon 2 : « La citerne qui respire »
 import { VERRIERS, ITEMS_VERRIERS } from './rencontres_verriers.js'; // jalon 2, lot 2 : « L’écluse des Verriers »
+import { SURVIVANT } from './rencontres_survivant.js'; // jalon 2, lot 3 : « Le témoin sous les pins »
 const CRETE = [-2.576, -3.748]; // ancre décalée de y 2,5 m (fiche d'Ocre : un sprite de décor n'a pas de champ y)
 const D = (id, sprite, x, z, w, d, extra = {}) => ({ id, label: '', sprite, x, z, w, d, visitable: false, cue: null, named: false, solid: [], ...extra });
 
@@ -197,4 +198,5 @@ export const RENCONTRES = {
   },
   caravane_relais: CARAVANE, // jalon 2 (docs/rencontres/CARAVANE.md)
   ecluse_verriers: VERRIERS, // jalon 2, lot 2 (docs/rencontres/MUTANTS.md) : biome verre, terrains verre et piste
+  survivant_pins: SURVIVANT, // jalon 2, lot 3 (docs/rencontres/SURVIVANT.md) : biome forêt, terrain forêt, jamais sur G09 (Temple)
 };

@@ -10,7 +10,7 @@ const K = (c, r) => c + ',' + r;
 export function onCaseEntree(c, etat, { rng = Math.random, table = D.EVENEMENTS_ROUTE, terrains = D.TERRAINS } = {}) {
   const t = terrains[c.terrain], tirage = rng();
   if (!t || tirage >= t.p) return null;
-  const pool = table.filter(e => (!e.terrains || e.terrains.includes(c.terrain)) && (!e.si || e.si(etat))); if (!pool.length) return null;
+  const pool = table.filter(e => (!e.terrains || e.terrains.includes(c.terrain)) && (!e.si || e.si(etat, c))); if (!pool.length) return null;
   let w = pool.reduce((a, e) => a + (e.poids || 1), 0) * rng(); for (const e of pool) { w -= e.poids || 1; if (w <= 0) return e; } return pool[pool.length - 1];
 }
 
