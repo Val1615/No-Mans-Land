@@ -65,6 +65,7 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
     state.combat.units.push(pu);
     // ennemis : e.si (condition de présence, ex. Pibe parti), e.x/e.z (position absolue sur la scène) sinon e.dx/e.dz (relative au joueur),
     // e.armeSi { drapeau: arme } (Morsa désarmé : mains nues), e.entreTour (renfort : entre au début de ce tour), e.rendSous (se rend sous cette part de PV)
+    // textes.rend { id: ligne } : texte de reddition propre à un ennemi (une bête ne lève pas les mains : « Le gris détale. »), sinon « X lève les mains. »
     for (const e of E.ennemis) { if (e.si && ctx.cond && !ctx.cond(e.si)) continue;
       let [i, j] = e.x != null ? cellOf(e.x, e.z) : [pu.i + e.dx, pu.j + e.dz]; if (!walkable(i, j, null)) { const f = nearestFree(i, j); if (f) [i, j] = f; }
       const arme = Object.entries(e.armeSi || {}).find(([f]) => state.flags[f])?.[1] || e.arme || 'mains', attend = (e.entreTour || 0) > 1;
@@ -144,7 +145,7 @@ export function createCombat(ctx) { // ctx = { state, grids, emit, act }
     const roll = Math.floor(ctx.rand() * 100), touche = roll < ev.chance; let degats = 0;
     if (touche) { degats = A.degats[0] + Math.floor(ctx.rand() * (A.degats[1] - A.degats[0] + 1));
       if (t.joueur) state.player.hp = Math.max(0, state.player.hp - degats); else { t.pv = Math.max(0, t.pv - degats); if (t.pv <= 0) t.actif = false;
-        else if (t.rendSous && t.pv <= t.pvMax * t.rendSous) { t.actif = false; t.rendu = true; emit({ type: 'combat_rend', id: t.id, text: `${t.nom} lève les mains.` }); } } }
+        else if (t.rendSous && t.pv <= t.pvMax * t.rendSous) { t.actif = false; t.rendu = true; emit({ type: 'combat_rend', id: t.id, text: ENCOUNTERS[C().id]?.textes?.rend?.[t.id] || `${t.nom} lève les mains.` }); } } }
     const res = { ...ev, ok: true, roll, touche, degats, auteur: u.id };
     emit({ ...res, type: 'combat_attaque', text: `${u.nom} · ${A.nom} : ${touche ? '−' + degats + ' PV' : 'manqué'} (${ev.chance} %)` + (!t.joueur && !t.actif ? ` · ${t.nom} est hors de combat.` : '') });
     C().dernier = res; return res;

@@ -4,12 +4,13 @@
 // Repère de la scène : x vers l'est, z vers le sud, mètres, origine au coin nord-ouest. Décor : emprise x, z, w, d ; ancre du sprite au coin sud-est.
 // etage: 1 = posé sur la crête (passe après le talus qui le porte) ; fond: true = couche sol (décalques, berges) sous tout le reste.
 import { CARAVANE, ITEMS_CARAVANE } from './rencontres_caravane.js'; // jalon 2 : « La citerne qui respire »
+import { VERRIERS, ITEMS_VERRIERS } from './rencontres_verriers.js'; // jalon 2, lot 2 : « L’écluse des Verriers »
 const CRETE = [-2.576, -3.748]; // ancre décalée de y 2,5 m (fiche d'Ocre : un sprite de décor n'a pas de champ y)
 const D = (id, sprite, x, z, w, d, extra = {}) => ({ id, label: '', sprite, x, z, w, d, visitable: false, cue: null, named: false, solid: [], ...extra });
 
 export const ITEMS_RENCONTRES = {
   carnet_chauffeur: { name: 'Carnet du chauffeur' }, // lore : « Livraison Anselme, Dusk-Town : 12 bidons filtrés… »
-  ...ITEMS_CARAVANE, fusil: { name: 'Fusil' }, pistolet: { name: 'Pistolet' }, poignard: { name: 'Poignard' }, barre: { name: 'Barre de fer' }, // armes du combat (data/combat.js ARMES) gardées au Sac
+  ...ITEMS_CARAVANE, ...ITEMS_VERRIERS, fusil: { name: 'Fusil' }, pistolet: { name: 'Pistolet' }, poignard: { name: 'Poignard' }, barre: { name: 'Barre de fer' }, // armes du combat (data/combat.js ARMES) gardées au Sac
 };
 
 const PEAGE = (prix, si = '') => [
@@ -195,4 +196,5 @@ export const RENCONTRES = {
         defaite: 'Le ciel. Le sable. Don Trapo, qui te regarde.' } },
   },
   caravane_relais: CARAVANE, // jalon 2 (docs/rencontres/CARAVANE.md)
+  ecluse_verriers: VERRIERS, // jalon 2, lot 2 (docs/rencontres/MUTANTS.md) : biome verre, terrains verre et piste
 };

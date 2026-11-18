@@ -170,6 +170,7 @@ export function createGame(world, sprites) {
       pl.money -= cost;
       if (it.consumeNow) pl.hp = Math.min(pl.maxHp, pl.hp + (it.heal || 0)); else pl.inv[x] = (pl.inv[x] || 0) + 1;
       emit({ type: 'service', what: x, text: `${it.name} : −${cost} $` }); return { ok: true }; }
+    if (k === 'pv') { pl.hp = Math.min(pl.maxHp, pl.hp + +x); emit({ type: 'service', what: 'pv', text: `+${x} PV` }); return { ok: true }; } // rencontres : soin gratuit (attendre la nuit chez les Verriers : +3 PV)
     if (k === 'hurt') { pl.hp = Math.max(1, pl.hp - +x); emit({ type: 'hurt', text: `−${x} PV` }); return { ok: true }; }
     // v12 : change dollars -> crédits (Steel) ; « change:20:11 » = 20 $ contre 11 cr
     if (k === 'change') { const cost = +x; if (pl.money < cost) return { ok: false, next: 'pauvre' }; pl.money -= cost; pl.credits = (pl.credits || 0) + +y; emit({ type: 'service', what: 'change', text: `−${cost} $ · +${y} cr` }); return { ok: true }; }

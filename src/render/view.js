@@ -67,12 +67,18 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     return c;
   };
   // pivot (manifeste) : hauteur des pieds en fraction de l'image, quand la pose n'a pas les deux pieds au bas du cadre
-  function spriteMesh(id, heightOverride, actor = false) {
+  // créatures (pivot non numérique au manifeste, ex. « centre des pattes ») : l'ancre du manifeste est le point du sol, pas le bas de l'image
+  const ancreActeur = mm => typeof mm.pivot === 'number' || !mm.anchor ? null : [mm.anchor[0] / mm.px[0], 1 - mm.anchor[1] / mm.px[1]];
+  // sens [face, dos] : sens de regard de l'image de face et de dos (1 = vers la droite de l'écran, -1 = vers la gauche ; chanchos : face au sud-ouest, dos au nord-est)
+  function spriteMesh(id, heightOverride, actor = false, sens = null) {
     const m = sprites[id], h = (heightOverride || m.height_m) * Math.cos(pitch), w = h * m.px[0] / m.px[1]; // hauteur vue par la caméra
     const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: actor ? actorTex(id) : spriteTex(id), alphaTest: 0.5, transparent: false }));
-    s.center.set(0.5, m.pivot ?? 0.02); s.scale.set(w, h, 1); Object.assign(s.userData, { base: sprites[id].faces || 1, facing: 1, shown: 1, w, h, turn: 1, phase: Math.random() * 6.28 });
+    const base = sens?.[0] ?? (sprites[id].faces || 1), ca = ancreActeur(m);
+    s.center.set(ca ? ca[0] : 0.5, ca ? ca[1] : m.pivot ?? 0.02); s.scale.set(w, h, 1); Object.assign(s.userData, { base, baseFace: base, baseDos: sens?.[1] ?? base, facing: 1, shown: 1, w, h, turn: 1, phase: Math.random() * 6.28 });
+    if (ca) Object.assign(s.userData, { cx: ca[0], cFace: ca, cDos: ca });
     // vue de dos (manifeste vue_dos, PNJ des rencontres) : prise quand le personnage regarde vers le fond de l'écran (nord-ouest), miroir pour l'autre côté
     const dk = actor && m.vue_dos && sprites[m.vue_dos]; if (dk) Object.assign(s.userData, { texFace: s.material.map, texDos: actorTex(m.vue_dos), wFace: w, wDos: h * dk.px[0] / dk.px[1], dos: false });
+    if (dk && ca) s.userData.cDos = ancreActeur(dk) || ca;
     return s;
   }
   let world = new THREE.Group(); scene.add(world);
@@ -441,7 +447,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const v of loc.vehicules || []) { const s = vehicule(v); if (s) vehicules.push(s); }
     for (const d of loc.drones || []) { const s = spriteMesh('st_drone'); s.material.depthTest = false; s.material.transparent = true; s.userData.role = 'drone'; s.userData.orbit = d; world.add(s); drones.push(s); }
     for (const n of NPCS.filter(n => n.location === locId)) {
-      const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); if (n.gabarit) s.material.color.set('#8e8e8e'); /* gabarit gris : sprite d'Ocre pas encore livré (rencontres) */ s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.userData.y0 = n.y || 0; s.userData.sansMiroir = !!n.sansMiroir; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s); liseré(s, world);
+      const s = spriteMesh(n.sprite, (sprites[n.sprite].height_m||1.8)*(n.editorScale||1), true, n.sens);s.userData.editorId=n.id; if (light.actor) s.material.color.set(light.actor); if (n.gabarit) s.material.color.set('#8e8e8e'); /* gabarit gris : sprite d'Ocre pas encore livré (rencontres) */ s.position.set(n.x, 0, n.z); s.userData.npc = n.id; s.userData.y0 = n.y || 0; s.userData.sansMiroir = !!n.sansMiroir; s.material.depthTest = false; s.material.transparent = true; world.add(s); pickables.push(s); npcSprites.push(s); liseré(s, world);
       { const gm = s.material.clone(); gm.opacity = 0.62; gm.color.set('#ffd9a0'); gm.alphaTest = 0.2; /* lot 1 : 62 % et teinte ambre clair, lisible sur le toit sombre */ /* alphaTest 0,5 des persos rejetait tout (alpha x 0,45) [Régie A] */ gm.depthTest = false; gm.depthWrite = false; const gh = new THREE.Sprite(gm); // silhouette à travers le toit d'une halle [Régie, 28/10]
         gh.center.copy(s.center); gh.scale.copy(s.scale); gh.position.copy(s.position); gh.visible = false; gh.renderOrder = 900000; gh.userData.ghostOf = n.id; world.add(gh); s.userData.ghost = gh; }
       { const hn = hauteurSol(loc, n.x, n.z) + (n.y || 0), vis = n.si || n.cacheCombat ? () => game.npcVisible(n) : undefined; addLabel(n.name, 'npc', () => new THREE.Vector3(n.x, (n.sprite && sprites[n.sprite].height_m < 1.2 ? 1.1 : 2.05) + hn, n.z), vis); labels[labels.length - 1].foot = () => new THREE.Vector3(n.x, hn, n.z); } labels[labels.length - 1].npcSprite = s; labels[labels.length - 1].el.dataset.npc = n.id;
@@ -799,7 +805,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function face(s, heading) {
     if (heading == null) return; const sx = Math.sin(heading) * screenRight.x + Math.cos(heading) * screenRight.z;
     const u = s.userData; if (u.texDos) { const dos = Math.sin(heading) * camDir.x + Math.cos(heading) * camDir.z > 0.15; // dos à la caméra
-      if (dos !== u.dos) { u.dos = dos; s.material.map = dos ? u.texDos : u.texFace; u.w = dos ? u.wDos : u.wFace; s.material.needsUpdate = true; } }
+      if (dos !== u.dos) { u.dos = dos; s.material.map = dos ? u.texDos : u.texFace; u.w = dos ? u.wDos : u.wFace; s.material.needsUpdate = true;
+        u.base = dos ? u.baseDos : u.baseFace; if (u.cFace) { const c = dos ? u.cDos : u.cFace; u.cx = c[0]; s.center.y = c[1]; } } }
     if (Math.abs(sx) > 0.2 && (sx > 0 ? 1 : -1) !== s.userData.facing) { s.userData.facing = sx > 0 ? 1 : -1; s.userData.turn = 0; } // quasi vertical : on garde le sens
   }
   // Animation procédurale légère (aucun asset modifié) : demi-tour rapide (largeur 1 -> 0 -> 1 en 0,14 s, l'image bascule au milieu),
@@ -809,6 +816,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const u = s.userData; u.turn = Math.min(1, u.turn + dt / 0.14);
     if (u.turn >= 0.5) u.shown = u.facing * u.base;
     const map = s.material.map; const flip = u.shown < 0; if ((map.repeat.x < 0) !== flip) { map.repeat.x = flip ? -1 : 1; map.offset.x = flip ? 1 : 0; }
+    if (u.cx != null) s.center.x = flip ? 1 - u.cx : u.cx; // ancre de créature hors du milieu de l'image : suit le miroir
     const width = Math.max(0.08, Math.abs(Math.cos(Math.PI * u.turn)));
     let bob = 0, sy = 1, sx = 1, rot = 0;
     if (moving) { const ph = t * 2 * Math.PI * 1.9 + u.phase; bob = Math.abs(Math.sin(ph)) * 0.045; sy = 1 - 0.025 * Math.cos(2 * ph); sx = 1 + 0.015 * Math.cos(2 * ph); rot = 0.03 * Math.sin(ph); }
@@ -1117,7 +1125,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
       const pathL = new THREE.InstancedMesh(new THREE.CircleGeometry(0.13, 16).rotateX(-Math.PI / 2), mk('#ffe2a8', 0.85), 64); pathL.renderOrder = 4; pathL.count = 0; group.add(pathL);
       const tgt = new THREE.Mesh(new THREE.RingGeometry(0.28, 0.4, 24).rotateX(-Math.PI / 2), mk('#ffe2a8', 0.8)); tgt.renderOrder = 4; group.add(tgt);
       const cost = document.createElement('div'); cost.className = 'wlabel cbt-cost'; labelLayer.appendChild(cost);
-      const enemies = c.units.filter(u => !u.joueur).map(u => { const sp = spriteMesh(u.sprite, null, true); sp.material.depthTest = false; sp.material.transparent = true; if (u.gabarit) sp.material.color.set('#8e8e8e'); sp.userData.unit = u.id; world.add(sp); npcSprites.push(sp); return sp; });
+      const enemies = c.units.filter(u => !u.joueur).map(u => { const sp = spriteMesh(u.sprite, null, true, u.sens); sp.material.depthTest = false; sp.material.transparent = true; if (u.gabarit) sp.material.color.set('#8e8e8e'); sp.userData.unit = u.id; world.add(sp); npcSprites.push(sp); return sp; });
       // anneau ennemi toujours visible (haillons couleur sable sur le sable) : liseré sombre + anneau rouge
       const rings = enemies.map(() => { const g2 = new THREE.Group(); const a = new THREE.Mesh(new THREE.RingGeometry(0.34, 0.5, 32).rotateX(-Math.PI / 2), mk('#1a1208', 0.55)); a.renderOrder = 4;
         const b = new THREE.Mesh(new THREE.RingGeometry(0.37, 0.46, 32).rotateX(-Math.PI / 2), mk('#e0503c', 0.9)); b.renderOrder = 5; b.position.y = 0.002; g2.add(a, b); group.add(g2); return g2; });
@@ -1216,6 +1224,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     return p && {x:p.x,z:p.z};
   }
   return { flaquesNuit: () => neons.filter(o => o.userData.flaqueNuit).map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite })), // tests : flaques nocturnes posées
+    acteurs: () => npcSprites.map(s => ({ id: s.userData.npc || s.userData.unit, cx: +s.center.x.toFixed(3), cy: +s.center.y.toFixed(3), miroir: s.material.map.repeat.x < 0, dos: !!s.userData.dos, visible: s.visible })), // tests : ancre, miroir et vue des PNJ et unités
     liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
     refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{
       const r=canvas.getBoundingClientRect();ray.setFromCamera({x:(x-r.left)/r.width*2-1,y:1-(y-r.top)/r.height*2},cam);
