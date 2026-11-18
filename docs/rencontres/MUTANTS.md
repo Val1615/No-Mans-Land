@@ -609,8 +609,9 @@ Préfixes :
   Scène `ambiance: 'glass'`. Repli si la courbe n'est pas ajoutée : `ambiance: 'desert'` ; c'est juste, en moins blanc.
 - **Liseré de lune** : celui de Rivet, 1 px `#c8d2dc` côté lune. **Je tranche la question de Régie** pour toutes les scènes : opacité **50 %**, et **pas de liseré sur les pieds**. Il s'arrête au-dessus des chevilles, pour ne pas dessiner une ligne claire au contact du sol. Cela vaut pour le pilote, la caravane et cette scène.
 - **Sol** : jamais uni. Fentes et sel sur le verre ; joints ensablés sur le quai ; craquelures et boue dans le canal ; traces de sabots autour des condenseurs.
+- **Éclats et arêtes** (lot du 18/11, §15.6) : de jour, `g_rc_verre` seul se lit comme un sol sombre et broussailleux. Pour que l'identité du biome passe, des décalques d'éclats, de plaques fendues, de coulures figées et d'aiguilles se posent sur la bande nord. Les petits reflets du soleil (blanc chaud / ambre pâle, 1–3 px) sont sur un calque séparé `_reflet`, **visible le jour seulement** (opacité conseillée : 1 − `lune`, donc 0 dès que `lune` > 0). **Le verre ne luit jamais** : ce n'est pas une émission, ce n'est pas un `_neon`. Le moteur doit couper ce calque la nuit, contrairement aux enseignes et aux flaques.
 - **À éviter** :
-  - le verre qui luit ou qui scintille comme des bijoux ;
+  - le verre qui luit ou qui scintille comme des bijoux (les reflets du soleil sont des points 1–3 px sur `_reflet`, jamais une émission ni un halo) ;
   - un halo autour du four ;
   - la brume verte « toxique » ;
   - des mutants difformes « de film d'horreur » (les mutations sont lisibles mais sobres, comme Lena) ;
@@ -937,7 +938,7 @@ Le bloc du §14 est déjà aligné sur ces poses (mêmes x, z, w, d, solides, mi
 - La porte nord de la cabane est sur une face cachée à cette caméra : elle est signalée par des planches éclatées au coin nord-est ; le dialogue passe par la fenêtre sud, visible.
 - Le gris : l'oreille fendue ne se lit pas à la taille du jeu (visible seulement à la planche).
 - Rufina : ses plaques d'avant-bras sont un peu « écailles » ; Nilo : les taches de sa chemise reprennent le motif de sa peau.
-- `g_rc_verre` : motif de dalles répétitif à 4 m sur les grandes surfaces ; semer `_b` et `_c`.
+- `g_rc_verre` : motif de dalles répétitif à 4 m sur les grandes surfaces ; semer `_b` et `_c`. La tuile elle-même n'a pas changé : l'identité du verre, de jour, passe maintenant par les décalques et les props du §15.6, posés sur la bande nord.
 - Escalier v1.1 : la descente se lit, mais l'emprise ne fait que 0,5 m de profondeur ; les cinq marches sont donc minces à la taille du jeu, et le liseré de sable du bas touche le bord gauche de la toile.
 
 **Corrigé en v1.1** (mêmes clés, mêmes px, mêmes ancres ; rien à recâbler) :
@@ -945,3 +946,65 @@ Le bloc du §14 est déjà aligné sur ces poses (mêmes x, z, w, d, solides, mi
 - `rc_vr_escalier_quai_3q` : géométrie refaite. Palier au niveau du quai au nord, cinq marches qui descendent vers le canal (sud), contremarches sombres, échiffres en pente, sable amassé au pied ; plus de mur en haut.
 - `rc_vr_blinde_vitrifie_3q` : tôle gris acier vitrifiée, quelques coulures de rouille seulement ; socle de verre intact. Le calque `_texte` n'a pas changé et reste aligné (même toile, même ancre).
 - `gen_rc_chancho` (le jeune) : cuir gris de cendre ; les défenses et le groin n'ont pas changé.
+
+
+### 15.6 Éclats et arêtes (identité du biome, bande nord)
+Lot du 18/11/2026 (heure de Paris), après le constat de Régie : de jour, `g_rc_verre` se lit comme un sol sombre et broussailleux, pas comme du verre. **Aucune clé existante n'a été modifiée.** Huit modules nouveaux, préfixe `rc_vr_`, groupe `rc_ecluse_verriers`, plus un calque `_reflet` pour chacun.
+
+**Calque `_reflet`.** Même canevas, même ancre que le parent, `additive: true`, `layer: 'reflet'`, `jour_seulement: true`. Ce sont des points spéculaires du soleil (blanc chaud / ambre pâle, 1–3 px) sur les arêtes exposées (bas-droite à l'écran). **Pas une émission** : le verre ne luit jamais. Opacité conseillée : `1 − lune` de l'ambiance, donc 0 dès que `lune` > 0 (nuit, et aussi l'aube et le crépuscule si l'on veut être strict ; un fondu avec `1 − lune` est plus juste). Ce n'est **pas** un `_neon` : le moteur doit le couper la nuit, contrairement aux enseignes et aux flaques. Si le calque n'est pas encore câblé, le corps seul doit déjà se lire comme du verre (plaques, sel, arêtes mates).
+
+Maquette avant / après (MAQUETTE, pas une capture) : `/workspace/nml-shots/rencontres/verre_eclats_maquette.png`. Planche des sprites : `/workspace/nml-shots/rencontres/verre_eclats_planche.png`.
+
+#### Table des poses (bande nord, à coller en plus du §15.4)
+x, z = coin nord-ouest de l'emprise ; l'ancre du sprite tombe au coin sud-est au sol (x + w ; z + d). Les cinq décalques `rc_vr_eclats_*` sont `fond: true` (sous tout le décor). Les emprises 4 × 4 m des décalques débordent un peu la matière opaque : c'est normal, l'alpha est fondue.
+
+| Clé | x | z | w | d | Solides (x, z, w, d, couv) | Ordre | Depth |
+|---|---|---|---|---|---|---|---|
+| `rc_vr_eclats_3q` | 0 | 0 | 4 | 4 | fond | 0 | 8 |
+| `rc_vr_eclats_b_3q` | 8 | 0 | 4 | 4 | fond | 0 | 16 |
+| `rc_vr_eclats_c_3q` | 17 | 0 | 4 | 4 | fond | 0 | 25 |
+| `rc_vr_eclats_b_3q` | 21 | 3 | 4 | 4 | fond | 0 | 32 |
+| `rc_vr_eclats_3q` | 32 | 0 | 4 | 4 | fond | 0 | 40 |
+| `rc_vr_aretes_3q` | 1 | 5 | 4 | 1 | 1, 5, 4, 1, 1 | 2 | 11 |
+| `rc_vr_plaques_3q` | 10 | 4 | 3 | 2.5 | 10, 4, 3, 2.5, 1 | 2 | 19.5 |
+| `rc_vr_coulures_3q` | 18.5 | 4 | 3 | 2 | 18.5, 4, 3, 2, 0 | 2 | 27.5 |
+| `rc_vr_aiguilles_3q` | 23.2 | 1.2 | 1.5 | 1.2 | 23.2, 1.2, 1.5, 1.2, 1 | 3 | 27.1 |
+| `rc_vr_aiguilles_b_3q` | 33.5 | 5 | 1.2 | 1 | 33.5, 5, 1.2, 1, 1 | 3 | 40.7 |
+
+Les `_reflet` se posent sur la même emprise que leur parent, le jour seulement. Rien à recâbler sur les clés déjà publiées (dalles, blindé, parapets, sols). Les poses évitent `rc_vr_dalles_3q` (5 ; 2), `rc_vr_dalles_b_3q` (14 ; 3) et `rc_vr_blinde_vitrifie_3q` (26 ; 1).
+
+```js
+{ sprite: 'rc_vr_eclats_3q', x: 0, z: 0, w: 4, d: 4, fond: true }  // bande nord, ouest, sous les dalles,
+{ sprite: 'rc_vr_eclats_b_3q', x: 8, z: 0, w: 4, d: 4, fond: true }  // bande nord, entre les deux dalles ; plus de sel,
+{ sprite: 'rc_vr_eclats_c_3q', x: 17, z: 0, w: 4, d: 4, fond: true }  // bande nord, entre dalles_b et le blindé ; fente et soufre,
+{ sprite: 'rc_vr_eclats_b_3q', x: 21, z: 3, w: 4, d: 4, fond: true }  // bande nord, entre le décalque c et le parapet,
+{ sprite: 'rc_vr_eclats_3q', x: 32, z: 0, w: 4, d: 4, fond: true }  // bande nord, est du blindé,
+{ sprite: 'rc_vr_aretes_3q', x: 1, z: 5, w: 4, d: 1, solid: [{ x: 1, z: 5, w: 4, d: 1, couv: 1 }] }  // crête d'arête le long du canal, ouest,
+{ sprite: 'rc_vr_plaques_3q', x: 10, z: 4, w: 3, d: 2.5, solid: [{ x: 10, z: 4, w: 3, d: 2.5, couv: 1 }] }  // plaques fendues, entre les dalles et le canal,
+{ sprite: 'rc_vr_coulures_3q', x: 18.5, z: 4, w: 3, d: 2, solid: [{ x: 18.5, z: 4, w: 3, d: 2, couv: 0 }] }  // coulures figées vers le canal, franchissables,
+{ sprite: 'rc_vr_aiguilles_3q', x: 23.2, z: 1.2, w: 1.5, d: 1.2, solid: [{ x: 23.2, z: 1.2, w: 1.5, d: 1.2, couv: 1 }] }  // aiguilles à l'ouest du blindé,
+{ sprite: 'rc_vr_aiguilles_b_3q', x: 33.5, z: 5, w: 1.2, d: 1, solid: [{ x: 33.5, z: 5, w: 1.2, d: 1, couv: 1 }] }  // aiguilles basses, est, près du canal,
+```
+
+#### Clés publiées (ce lot)
+
+| Clé | px | Ancre | Emprise L × P × H (m) |
+|---|---|---|---|
+| `rc_vr_eclats_3q` | 232 × 100 | [159, 125] | 4 × 4 × 0 (décalque) |
+| `rc_vr_eclats_3q_reflet` | 232 × 100 | [159, 125] | calque `reflet` de `rc_vr_eclats_3q` |
+| `rc_vr_eclats_b_3q` | 244 × 108 | [160, 126] | 4 × 4 × 0 (décalque) |
+| `rc_vr_eclats_b_3q_reflet` | 244 × 108 | [160, 126] | calque `reflet` |
+| `rc_vr_eclats_c_3q` | 215 × 99 | [141, 116] | 4 × 4 × 0 (décalque) |
+| `rc_vr_eclats_c_3q_reflet` | 215 × 99 | [141, 116] | calque `reflet` |
+| `rc_vr_plaques_3q` | 148 × 80 | [95, 83] | 3 × 2,5 × 0,45 |
+| `rc_vr_plaques_3q_reflet` | 148 × 80 | [95, 83] | calque `reflet` |
+| `rc_vr_coulures_3q` | 107 × 90 | [91, 95] | 3 × 2 × 0,5 |
+| `rc_vr_coulures_3q_reflet` | 107 × 90 | [91, 95] | calque `reflet` |
+| `rc_vr_aretes_3q` | 161 × 80 | [150, 83] | 4 × 1 × 0,6 |
+| `rc_vr_aretes_3q_reflet` | 161 × 80 | [150, 83] | calque `reflet` |
+| `rc_vr_aiguilles_3q` | 55 × 80 | [41, 82] | 1,5 × 1,2 × 1,4 |
+| `rc_vr_aiguilles_3q_reflet` | 55 × 80 | [41, 82] | calque `reflet` |
+| `rc_vr_aiguilles_b_3q` | 52 × 57 | [35, 61] | 1,2 × 1 × 0,9 |
+| `rc_vr_aiguilles_b_3q_reflet` | 52 × 57 | [35, 61] | calque `reflet` |
+
+Les ancres des décalques 4 m peuvent tomber un peu sous le bas de la toile : la matière opaque ne remplit pas tout le carré (alpha fondue, comme les autres décalques au sol).
