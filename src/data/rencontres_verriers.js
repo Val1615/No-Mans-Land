@@ -206,6 +206,17 @@ export const VERRIERS = {
     mobile: { x: [6, 28], z: [16, 22] } },
     buildings: [ // §14 + table de poses du §15 (ancre au coin sud-est de l’emprise) ; ph : volume gris de repli si une clé manquait
       D('ver_cuve', 'rc_ecl_cuve_3q', 22, 10, 9, 4, { fond: true, ph: { h: 0.05 } }), // décalque sol : boue, tessons, sabots
+      // éclats et arêtes de la bande nord (§15.6) : décalques en fond, props vitrifiés ; leurs calques _reflet (reflets du soleil) sont posés par le moteur, le jour seulement (1 − lune)
+      D('ver_eclats_1', 'rc_vr_eclats_3q', 0, 0, 4, 4, { fond: true }),
+      D('ver_eclats_2', 'rc_vr_eclats_b_3q', 8, 0, 4, 4, { fond: true }),
+      D('ver_eclats_3', 'rc_vr_eclats_c_3q', 17, 0, 4, 4, { fond: true }),
+      D('ver_eclats_4', 'rc_vr_eclats_b_3q', 21, 3, 4, 4, { fond: true }),
+      D('ver_eclats_5', 'rc_vr_eclats_3q', 32, 0, 4, 4, { fond: true }),
+      D('ver_aretes', 'rc_vr_aretes_3q', 1, 5, 4, 1, { ph: { h: 0.4 }, solid: [R(1, 5, 4, 1, 1)] }),
+      D('ver_plaques', 'rc_vr_plaques_3q', 10, 4, 3, 2.5, { ph: { h: 0.45 }, solid: [R(10, 4, 3, 2.5, 1)] }),
+      D('ver_coulures', 'rc_vr_coulures_3q', 18.5, 4, 3, 2, { ph: { h: 0.3 }, solid: [R(18.5, 4, 3, 2, 0)] }),
+      D('ver_aiguilles', 'rc_vr_aiguilles_3q', 23.2, 1.2, 1.5, 1.2, { ph: { h: 0.9 }, solid: [R(23.2, 1.2, 1.5, 1.2, 1)] }),
+      D('ver_aiguilles_b', 'rc_vr_aiguilles_b_3q', 33.5, 5, 1.2, 1, { ph: { h: 0.6 }, solid: [R(33.5, 5, 1.2, 1, 1)] }),
       D('ver_dalles', 'rc_vr_dalles_3q', 5, 2, 2, 2, { ph: { h: 1.2 }, solid: [R(5, 2, 2, 2, 1)] }),
       D('ver_dalles_b', 'rc_vr_dalles_b_3q', 14, 3, 2, 2, { ph: { h: 0.9 }, solid: [R(14, 3, 2, 2, 1)] }),
       D('ver_blinde', 'rc_vr_blinde_vitrifie_3q', 26, 1, 5, 3, { ph: { h: 2.4 }, solid: [R(26, 1, 5, 3, 2)] }),

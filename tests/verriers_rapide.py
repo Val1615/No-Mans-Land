@@ -301,7 +301,7 @@ with sync_playwright() as p:
         av = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('RGB'); E("window.__nml.liseres(false)"); time.sleep(.4)
         sa = Image.open(io.BytesIO(pg.screenshot(clip=clip))).convert('RGB'); E("window.__nml.liseres(true)"); time.sleep(.2)
         H = a_[1] - b_[1]; ys = [i // av.width - 10 for i, (u, v) in enumerate(zip(av.getdata(), sa.getdata())) if sum(u) - sum(v) > 36 and u[2] - v[2] >= u[0] - v[0]]
-        nuit[h]['balta'] = (len(ys), sum(1 for y in ys if y > 0.3 * H)); nuit[h]['op'] = E("window.__nml.liseres().opacite"); nuit[h]['lim'] = E("window.__nml.liseres().limites")
+        nuit[h]['balta'] = (len(ys), sum(1 for y in ys if y > 0.3 * H)); nuit[h]['op'] = E("window.__nml.liseres().opacite"); nuit[h]['lim'] = E("window.__nml.liseres().limites"); nuit[h]['refl'] = E("window.__nml.reflets()")
         nuit[h]['decor'] = E(f"(()=>{{const L=window.__nml.world.LOCATIONS['{LIEU}'];return {{b:L.buildings.length,bn:L.buildings.filter(b=>b.nuit).length,p:L.props.length,pn:L.props.filter(p=>p.nuit).length}}}})()")
         if h == 23: pg.screenshot(path=OUT + 'livraison/desktop_verriers_nuit_23h.jpg', type='jpeg', quality=88)
         ctx.close()
@@ -310,6 +310,8 @@ with sync_playwright() as p:
     ok(N['fl_min'] > 3 and N['chaud'] > 0 and N['chaud_max'] > 15, f'flaque du four visible la nuit et chaude, pulsée ({N["fl_min"]:.0f} à {N["fl_max"]:.0f} au-dessus du sol)', N)
     ok(J['tint'] == '#efe9da' and N['tint'] == '#586282', 'courbe glass : jour blanc dur, nuit bleu-gris commune', (J['tint'], N['tint']))
     ok(N['verre'] < 45 and N['verre_bleu'] < 30, f'le verre ne luit jamais : sombre la nuit (luminance {N["verre"]:.0f}), sans lueur bleue ni verte', N)
+    ok(len(J['refl']) == 10 and all(r['opacite'] > 0.9 and r['visible'] for r in J['refl']), f'éclats du verre : 10 calques _reflet posés, visibles de jour ({len(J["refl"])})', J['refl'])
+    ok(len(N['refl']) == 10 and all(r['opacite'] == 0 and not r['visible'] for r in N['refl']), 'le verre ne luit jamais : à 23 h, opacité des reflets à 0', N['refl'])
     ok(N['decor']['bn'] == N['decor']['b'] and N['decor']['pn'] == N['decor']['p'], f'nuit : tous les bâtiments et props suivent la courbe de nuit ({N["decor"]})', N['decor'])
     ok(N['lim'] and all(v >= 0.55 for v in N['lim']), f'liseré coupé net sous les épaules (limites uv {N["lim"]})', N['lim'])
     ok(N['balta'][0] >= 4 and N['balta'][1] == 0 and 0 < N['op'] <= 0.5 and J['op'] == 0, f'liseré de lune : Balta tête et épaules ({N["balta"][0]} px, 0 sous 30 %), opacité {N["op"]:.2f} ≤ 0,5 ; nul le jour', (N['balta'], N['op'], J['op']))

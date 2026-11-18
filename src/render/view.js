@@ -88,7 +88,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   player.userData.actor = 'player'; scene.add(player, companion);
   // liseré de lune (nuit) : silhouette bleu-gris froid peinte juste avant le personnage, un peu plus grande et décalée vers la lune (haut-gauche de l'écran) ;
   // intensité light.lune (courbe nocturne de data/ambiances.js, nulle le jour). Code seul : même texture que le personnage, assets inchangés [Ocre + Régie 18/11]
-  const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30, liseresCoupes = false, flaquesCoupees = false;
+  const LUNE = '#c8d2dc', liseres = []; let zoomVu = 30, liseresCoupes = false, flaquesCoupees = false, reflets = [];
   function liseré(s, parent) { const m = new THREE.SpriteMaterial({ map: s.material.map, color: LUNE, transparent: true, depthTest: false, depthWrite: false, opacity: 0 });
     // tête et épaules seulement, coupé net (aucun dégradé) : limite à 25 % de la hauteur réelle du personnage, mesurée depuis le haut de sa silhouette
     // opaque (coupeLisere), pour tous les personnages ; jamais le bras, la canne ni les pieds ; 50 % d'opacité au plus [Ocre + Régie 18/11]
@@ -356,6 +356,11 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     world.add(s); bsprites.push(s); if (b.defile) movers.push({ s, item: null, x0: s.position.x, ...b.defile }); if (m.anime) anims.push({ s, t, n: m.frames, fps: m.fps, ph: b.ph ?? Math.random() * m.frames, g: b.groupe || null, fige: !!b.fige }); // groupe : compte pour une seule animation ; fige : toujours sur l'image 1
     const item = { obj: s, x0: b.x, x1: b.x + b.w, z0: b.z, z1: b.z + b.d, extra: [], cover: !!b.cover, fond: !!b.fond, etage: b.etage || 0, zone: b.zone || null, dessus: b.dessus || 0 }; bills.push(item); // cover : toit (halle) au-dessus de ce qui est dessous
     for (const d of b.dalles || []) dalle(b, bman[b.sprite], s, item, d);
+    // calque <clé>_reflet du manifeste (layer 'reflet', jour_seulement) : reflets du soleil, additifs, opacité 1 − lune (0 la nuit) ; jamais une émission, à l'inverse
+    // des _neon, enseignes et flaques (le verre ne luit jamais) ; b.reflet : false pour ne pas le poser, ou un facteur d'opacité [Ocre 18/11, MUTANTS §15.6]
+    { const rk = b.sprite + '_reflet'; if (b.reflet !== false && bman[rk] && SKIN[rk]) { const k = Math.max(0, 1 - (light?.lune || 0)) * (typeof b.reflet === 'number' ? b.reflet : 1);
+      const r = new THREE.Sprite(new THREE.SpriteMaterial({ map: skinTex(rk), transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, opacity: k }));
+      r.center.copy(s.center); r.scale.copy(s.scale); r.position.copy(s.position); r.visible = k > 0.001; r.userData.reflet = b.id; r.userData.kJour = k; world.add(r); item.extra.push(r); reflets.push(r); } }
     if (b.ecran) { const e = ecranSprite(b, m, s); if (e) { world.add(e); item.extra.push(e); if (e.userData.ecran.flash) { world.add(e.userData.ecran.flash); item.extra.push(e.userData.ecran.flash); } } } // écran dessiné par le code (Feed de Pulse Plaza)
     for (const d of DOORS.filter(d => d.buildingId === b.id)) if (b.cue) { // indice discret sur la porte peinte
       const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cueTexture(b.cue), transparent: true, depthTest: false, depthWrite: false, opacity: 0.9 }));
@@ -391,7 +396,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
   function build(locId) {
     world.traverse(o => { o.geometry?.dispose(); if(o.material) { for(const m of [].concat(o.material)) { if(m.map && !Object.values(texCache).includes(m.map)) m.map.dispose(); m.dispose(); } } }); scene.remove(world); world = new THREE.Group(); scene.add(world); solids = []; pickables = []; npcSprites = []; bsprites = []; phOf.length = 0; fsprites = []; bills = [];
     labels.forEach(l => l.el.remove()); labels = [];
-    const loc = LOCATIONS[locId]; niv = loc.niveaux ? loc : null; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; dalles = []; neons = []; flaques = []; fenetres = []; hovers = []; pulses = []; beams = [];
+    const loc = LOCATIONS[locId]; niv = loc.niveaux ? loc : null; exterior = loc.kind === 'exterior'; light = applyLight(loc.light); decor = []; reflets = []; walkers = []; vehicules = []; drones = []; flick = []; anims = []; movers = []; uniques = []; ecrans = []; dalles = []; neons = []; flaques = []; fenetres = []; hovers = []; pulses = []; beams = [];
     for (const a of [player, companion]) { a.material.depthTest = false; a.material.transparent = true; } // v6 : intérieur aussi trié par l'ordre du peintre
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(loc.size.w, loc.size.d), new THREE.MeshStandardMaterial({ map: groundTexture(loc, DOORS), roughness: 1 }));
     ground.rotation.x = -Math.PI / 2; ground.position.set(loc.size.w / 2, 0, loc.size.d / 2); ground.userData.ground = true; groundMesh = ground;
@@ -943,8 +948,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     for (const o of phOf) { o.userData.targetOpacity = 1; const bi = bills.find(b => b.obj === o), r = rectOf(o);
       for (const a of [player, companion]) { if (!a.visible || !inFront(bi, actorItem(a))) continue; const q = scr(new THREE.Vector3(a.position.x, 0.9, a.position.z));
         if (q.x > r.x0 && q.x < r.x1 && q.y > r.y0 && q.y < r.y1) o.userData.targetOpacity = 0.3; }
-      const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else e.material.opacity = m.opacity; }
-    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse || e.userData.projecteur) e.userData.fondu = m.opacity; else if (e.userData.ecran) e.material.opacity = Math.min(1, m.opacity * (e.userData.beatOp ?? 0.9)); else e.material.opacity = Math.min(0.9, m.opacity); }
+      const m = o.material; m.opacity += (o.userData.targetOpacity - m.opacity) * 0.3; for (const e of bi.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse) e.userData.fondu = m.opacity; else if (e.userData.reflet) e.material.opacity = m.opacity * e.userData.kJour; else e.material.opacity = m.opacity; }
+    for (const s of bsprites) { const m = s.material; m.opacity += (s.userData.targetOpacity - m.opacity) * 0.3; for (const b of bills) if (b.obj === s) for (const e of b.extra) if (e.userData.neon || e.userData.fenetre || e.userData.pulse || e.userData.projecteur) e.userData.fondu = m.opacity; else if (e.userData.reflet) e.material.opacity = m.opacity * e.userData.kJour; else if (e.userData.ecran) e.material.opacity = Math.min(1, m.opacity * (e.userData.beatOp ?? 0.9)); else e.material.opacity = Math.min(0.9, m.opacity); }
   }
   // v6 : un meuble devant un personnage (joueur, compagnon, PNJ en dialogue) qui le cache au pixel passe à 35 %.
   function furnitureOcclusion() {
@@ -1007,7 +1012,7 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     if (builtFor !== s.location) { if (chargement && !chargement.pret(s.location)) { chargement.demande?.(s.location); return; } build(s.location); }
     const visible=kind=>game.world.testing||game.world.editorLayers?.[kind]?.visible!==false;
     if(groundMesh)groundMesh.visible=visible('zone');
-    for(const b of bsprites){b.visible=visible('building');const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible&&e.userData.actif!==false;}
+    for(const b of bsprites){b.visible=visible('building');const item=bills.find(i=>i.obj===b);for(const e of item?.extra||[])e.visible=b.visible&&e.userData.actif!==false&&!(e.userData.reflet&&!(e.userData.kJour>0.001));}
     for(const i of bills)if(i.obj.userData.editorId)i.obj.visible=visible('prop');
     for(const n of npcSprites)n.visible=visible('actor')&&(!n.userData.npc||!game.npcVisible||game.npcVisible(NPCS.find(q=>q.id===n.userData.npc))); // rencontres : PNJ présents sous condition
     player.visible=visible('actor');player.userData.editorId=s.player.editorId;
@@ -1247,7 +1252,8 @@ export function createView(canvas, game, sprites, bman, labelLayer, ostCentre = 
     const p=ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),new THREE.Vector3());
     return p && {x:p.x,z:p.z};
   }
-  return { flaquesNuit: on => { const F = neons.filter(o => o.userData.flaqueNuit); if (on != null) flaquesCoupees = !on; /* tests : couper les flaques (mesure de leur apport) */ return F.map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite, echelle: o.userData.echelle || 1 })); }, // tests : flaques nocturnes posées
+  return { reflets: () => reflets.map(r => ({ id: r.userData.reflet, opacite: r.material.opacity, visible: r.visible })), // tests : calques _reflet posés (0 la nuit)
+    flaquesNuit: on => { const F = neons.filter(o => o.userData.flaqueNuit); if (on != null) flaquesCoupees = !on; /* tests : couper les flaques (mesure de leur apport) */ return F.map(o => ({ id: o.userData.flaqueNuit, i: o.userData.neon.i, opacite: o.material.opacity, cle: o.isSprite, echelle: o.userData.echelle || 1 })); }, // tests : flaques nocturnes posées
     acteurs: () => npcSprites.map(s => ({ id: s.userData.npc || s.userData.unit, cx: +s.center.x.toFixed(3), cy: +s.center.y.toFixed(3), miroir: s.material.map.repeat.x < 0, dos: !!s.userData.dos, visible: s.visible })), // tests : ancre, miroir et vue des PNJ et unités
     liseres: on => { if (on != null) liseresCoupes = !on; return { coupes: liseresCoupes, limites: liseres.filter(o => o.r.visible).map(o => +o.r.material.userData.uCoupe.value.toFixed(3)), visibles: liseres.filter(o => o.r.visible).length, opacite: Math.max(0, ...liseres.map(o => o.r.visible ? o.r.material.opacity : 0)) }; }, // tests : couper / lire le liseré de lune
     refreshGround:()=>{if(groundMesh){groundMesh.material.map?.dispose();groundMesh.material.map=groundTexture(game.world.LOCATIONS[game.state.location],game.world.DOORS);groundMesh.material.needsUpdate=true;}}, editorUpdate, editorGround, invalidate:()=>{builtFor=null;}, editorPick:(x,y,kinds=['building','prop','actor'])=>{
