@@ -846,7 +846,7 @@ Calques : `rc_ecl_four_3q_neon` (additif, posé par le moteur sur le bâtiment `
 | `gen_rc_rufina` (+ `_dos`) | (7.5 ; 18.8) | 1.74 m | faceTo (11,5 ; 19) |
 | `gen_rc_nilo` (+ `_dos`) | (25.5 ; 20.6) | 1.5 m | si ver_nilo_libre, faceTo (11,5 ; 19) |
 | `gen_rc_chancho` (+ `_dos`) | (24.5 ; 10.5) | garrot 0.75 m, long. ≈ 1.1 m ; height_m 1.318 (hauteur du billboard, sprite à 200 px/m) | figé, examen harde |
-| `gen_rc_chancho` (+ `_dos`) | (26.5 ; 13.5) | garrot 0.75 m, long. ≈ 1.1 m ; height_m 1.318 (hauteur du billboard, sprite à 200 px/m) | figé, miroir |
+| `gen_rc_chancho` (+ `_dos`) | (26.5 ; 13.5) | garrot 0.75 m, long. ≈ 1.1 m ; height_m 1.318 (hauteur du billboard, sprite à 200 px/m) | figé ; orientation par faceTo du §14 (le §14 fait foi, pas de miroir forcé) |
 | `gen_rc_chancho` (+ `_dos`) | (33 ; 11.5) | garrot 0.75 m, long. ≈ 1.1 m ; height_m 1.318 (hauteur du billboard, sprite à 200 px/m) | figé |
 | `gen_rc_chancho_gris` (+ `_dos`) | (29.5 ; 12) | garrot 0.95 m, long. ≈ 1.5 m ; height_m 1.541 (hauteur du billboard, sprite à 200 px/m) | figé, tête vers la cabane (sud-est) |
 
