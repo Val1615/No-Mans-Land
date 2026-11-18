@@ -69,8 +69,7 @@ with sync_playwright() as p:
         ok(s0['loc'] == LIEU and not s0['carte'] and vis() == {'sur_roque', 'sur_paca'} and not W['manque'] and not W['gab'] and W['pins'] >= 12 and not W['sol'],
            f'{name} scène chargée : Roque et Paca, forêt v1.1 posée ({W["pins"]} pins), aucun gabarit, aucune clé manquante, décalques non solides', (s0['loc'], vis(), W))
         ok(abs(W['lant']['y'] - 2.65) < 1e-6 and W['lant'].get('apres') == 'sur_pin_mort', f'{name} lanterne accrochée au pin foudroyé (y 2,65, dessinée après lui)', W['lant'])
-        if not mob:
-            E("window.__nml.game.closeDialogue()"); shot(f'{name}_survivant_arrivee.jpg')
+        E("window.__nml.game.closeDialogue()"); shot(f'{name}_survivant_arrivee.jpg')
         # houppiers : fondu partiel quand la couronne cache Roque ou le mulet (son point d'examen)
         time.sleep(1.5); Hp = E("window.__nml.houppiers()")
         dev = lambda c: [q for q in Hp if c in q['couvre']]
