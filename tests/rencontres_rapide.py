@@ -77,7 +77,8 @@ with sync_playwright() as p:
             E("t=>{document.getElementById('msg').textContent=t}", ARR); time.sleep(.4); K1 = E(CAD)
             if K1['msg']: break
         ok(K1['msg'] and len(K1['ex']) == 3 and not any(inter(K1['msg'], e['r']) for e in K1['ex']), f'{name} encart de récit d\u2019arrivée : ne chevauche aucune étiquette de sortie (toutes visibles)', (K1['msg'], K1['ex']))
-        Lt = E("window.__nml.world.LOCATIONS['%s'].light" % LIEU); ok(Lt['sun'][1] >= 1.5 and Lt['hemi'][2] >= 1.5 and Lt['tint'] == '#f7efdf', f'{name} lumière de midi : soleil plein, voile brun divisé par trois', Lt)
+        Lt = E("window.__nml.world.LOCATIONS['%s'].light" % LIEU); hh = E("window.__nml.state.heures") % 24
+        ok(9 <= hh <= 17 and Lt['sun'][1] >= 1.5 and Lt['hemi'][2] >= 1.5 and Lt['tint'] == '#f7efdf', f'{name} lumière du voyage à {hh} h : plein jour du désert, soleil plein, voile brun divisé par trois', (hh, Lt))
         # 2) déplacement, fouille, examen
         r = walk(6, 13); s = S(); ok(E("document.getElementById('msg').textContent") != ARR, f'{name} encart d\u2019arrivée effacé au premier pas'); ok(r['ok'] and abs(s['x'] - 6) < 0.8 and abs(s['z'] - 13) < 0.8, f'{name} déplacement sur la piste', (r, s['x'], s['z']))
         E("(()=>{window.__ev=[];window.__nml.game.on(e=>window.__ev.push({type:e.type,id:e.id,text:e.text}))})()")
@@ -159,6 +160,24 @@ with sync_playwright() as p:
         errs2 = [e for e in errs if 'favicon' not in e]
         ok(not errs2, f'{name} aucune erreur console', errs2[:5])
         ctx.close()
+    # lumière jour/nuit : la scène suit l'heure du voyage (ambiance du biome désert), même rencontre forcée à 9 h puis à minuit [Régie 18/11]
+    from PIL import Image, ImageStat; import io
+    lum = {}
+    for hdep, lab in [(8, 'jour_9h'), (23, 'nuit_0h')]:
+        ctx = br.new_context(viewport={'width': 1280, 'height': 800}); pg = ctx.new_page(); E = pg.evaluate
+        pg.goto(URL); pg.wait_for_function('window.__nml && window.__nml.shell', timeout=90000); time.sleep(1)
+        E("localStorage.removeItem('nml_save_auto')"); passer_boot(E); E("document.getElementById('m-new').click()"); time.sleep(.5)
+        E("document.querySelector('[data-race=\"humain\"]').click()"); time.sleep(.3); E("document.getElementById('cr-next').click()"); time.sleep(.3); E("document.getElementById('cr-enter').click()"); time.sleep(1.5)
+        E("window.__nml.lieuPret(window.__nml.state.location)"); time.sleep(2)
+        r = E(f"(()=>{{window.__nml.state.heures={hdep};return window.__nml.rencontres.entrerMaintenant('embuscade_piste')}})()")
+        t0 = time.time()
+        while time.time() - t0 < 60 and not E("window.__nml.state.location==='%s' && window.__nml.lieuPret('%s')" % (LIEU, LIEU)): time.sleep(.5)
+        time.sleep(2); E("document.getElementById('msg').textContent=''")
+        png = pg.screenshot(clip={'x': 240, 'y': 150, 'width': 800, 'height': 450}); pg.screenshot(path=OUT + f'livraison/lumiere_{lab}.jpg', type='jpeg', quality=82)
+        lum[lab] = (ImageStat.Stat(Image.open(io.BytesIO(png)).convert('L')).mean[0], E("window.__nml.state.heures") % 24, E("window.__nml.world.LOCATIONS['%s'].light.sun[1]" % LIEU))
+        ctx.close()
+    ok(lum['jour_9h'][1] == 9 and lum['nuit_0h'][1] == 0, 'lumière : rencontre forcée à 9 h puis à minuit (heure du voyage)', lum)
+    ok(lum['jour_9h'][0] > 1.8 * lum['nuit_0h'][0] and lum['jour_9h'][0] > 90, f'lumière : nuit nettement plus sombre que le plein jour (luminance {lum["jour_9h"][0]:.0f} contre {lum["nuit_0h"][0]:.0f})', lum)
     br.close()
 print(f'\n{n} OK, {len(fails)} échec(s)'); [print(' -', f) for f in fails]
 sys.exit(1 if fails else 0)
