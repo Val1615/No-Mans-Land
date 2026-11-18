@@ -56,6 +56,7 @@ Tout est examinable (clic sur ordinateur ; sur mobile, appui sur le point d'exam
 Lecture à 1280 et en 390 : dès l'arrivée par l'est, l'œil trouve d'abord **le mulet sur la piste** (on ne peut pas ne pas le voir), puis **le pin et l'homme**, puis la lanterne. Paca ne se lit pas tout de suite. **Une seule lumière artificielle : la lanterne**, calque `_neon` serré sur la flamme, source visible, sans halo ; une flaque chaude au sol la nuit seulement, comme le feu du bivouac et le four. La lumière de la scène suit l'heure du voyage.
 
 ## 4. Plan coté (provisoire)
+Les poses définitives, après sprites, sont au §15. Deux figures ont été décalées un peu vers le sud (Roque 13,3 au lieu de 12,8 ; Paca 25,8 ; 8,9 au lieu de 25,5 ; 8) pour rester lisibles devant le pin et le fourré.
 Vue de dessus, 1 caractère = 1 m. Légende : `=` piste d'aiguilles (5 m, z 15-20), `p` pins, `P` pin mort, `R` Roque, `m` mulet, `b` besace, `s` soulier, `.` traînée, `O` ornières, `B` borne, `f` fourré de Paca, `2` Paca, `@` apparition, `t` sous-bois. `O>` sortie ouest (vers le Temple, halte), `<E` sortie est (reprise).
 
 ```text
@@ -108,14 +109,14 @@ Vue de dessus, 1 caractère = 1 m. Légende : `=` piste d'aiguilles (5 m, z 15-2
 | entree | apparition | (30,5 ; 17) | arrivée depuis la Station, face à l'ouest |
 | S_E | sortie | x 31,5 ; z 15-20 | reprise du voyage (vers la Station, d'où l'on vient, ou la suite du trajet) |
 | S_O | sortie | x 0,5 ; z 15-20 | halte (vers le Temple) ; ouverte dès l'arrivée |
-| pres_roque | déclencheur | autour de (15,8 ; 12,8), rayon 3 m | ouvre le dialogue de Roque |
-| pres_paca | déclencheur | autour de (25,5 ; 8), rayon 3 m | ouvre le dialogue de Paca ; `flag:sur_vu_paca` |
+| pres_roque | déclencheur | autour de (15,8 ; 13,3), rayon 3 m | ouvre le dialogue de Roque |
+| pres_paca | déclencheur | autour de (25,8 ; 8,9), rayon 3 m | ouvre le dialogue de Paca ; `flag:sur_vu_paca` |
 
 ### Zone de combat
 Centre (18 ; 15), zone 19 × 19 (x 8,5-27,5 ; z 5,5-24,5), entièrement dans l'emprise.
 - **Dedans** : le pin, Roque, le mulet, le fourré de Paca, une partie des ornières.
 - **Couverture** : le pin mort vaut 2 ; le mulet, les pins, le fourré et la borne valent 1.
-- L'entrée (30,5 ; 17) est hors de la zone. Distance à Paca (25,5 ; 8) : 10,3 m (≥ 8).
+- L'entrée (30,5 ; 17) est hors de la zone. Distance à Paca (25,8 ; 8,9) : 9,9 m (≥ 8).
 
 ## 5. Mise en scène échelonnée (découverte progressive)
 1. **Arrivée** (x 30,5) : la piste d'aiguilles, un mulet mort en travers, plus loin un pin mort et une lanterne. Rien n'impose de s'arrêter ; la sortie ouest est ouverte.
@@ -131,7 +132,7 @@ Centre (18 ; 15), zone 19 × 19 (x 8,5-27,5 ; z 5,5-24,5), entièrement dans l'e
 Homme d'une cinquantaine d'années, peau sombre, veste poussiéreuse déchirée au flanc, chiffon sanglant autour de la cuisse gauche, gourde presque vide à côté de lui. Il ne peut pas se lever tout seul. Il n'est pas un combattant.
 
 - Sprite : `gen_rc_roque` (+ `_dos`), pose assise contre le pin, faceTo (30,5 ; 17). Portrait 192 px.
-- Position : (15,8 ; 12,8). Hauteur 1,4 m assis.
+- Position : (15,8 ; 13,3). Hauteur 1,4 m assis. (Un peu plus au sud que le plan provisoire, pour rester devant les racines ; voir §15.2.)
 - Dialogue `sur_roque`, ouvert par `pres_roque` ou examen à 3 m.
 
 **start** (première approche)
@@ -196,7 +197,7 @@ Roque n'attaque pas. Si le joueur l'attaque, voir §8.
 Femme mince, la quarantaine, châle poussiéreux, bâton, sac vide. Elle n'a rien d'une assassin : elle vit de ce que la piste abandonne. Elle n'est pas venue avec le Service.
 
 - Sprite : `gen_rc_paca` (+ `_dos`), debout dans le fourré, faceTo (20 ; 16). Portrait 192 px.
-- Position : (25,5 ; 8). Hauteur 1,68 m.
+- Position : (25,8 ; 8,9). Hauteur 1,68 m. (Un peu plus au sud que le plan provisoire, pour dépasser du fourré ; voir §15.2.)
 - Visible dès l'arrivée, mais peu lisible en 390. Dialogue `sur_paca`.
 
 **start**
@@ -261,8 +262,8 @@ Aucun combat n'est requis. Le Service n'est plus là.
 
 | id | Sprite | Position absolue (x ; z) | Case | PV | PA | Init. | Arme | Mêlée / armes | Particularité |
 |---|---|---|---|---|---|---|---|---|---|
-| paca | gen_rc_paca | (25,5 ; 8), au fourré | libre | 10 | 6 | 6 | bâton | 35 / 15 | couverture 1 (fourré) ; `rendSous: 0.5` ; `fuitTour: 2` ; seulement si le joueur l'attaque ou brise un pacte par la force |
-| roque | gen_rc_roque | (15,8 ; 12,8), au pin | libre | 4 | 3 | 2 | (mains) | 10 / 0 | **jamais dans la liste par défaut** ; seulement si le joueur l'attaque ; `rendSous: 1.0` dès le premier coup |
+| paca | gen_rc_paca | (25,8 ; 8,9), au fourré | libre | 10 | 6 | 6 | bâton | 35 / 15 | couverture 1 (fourré) ; `rendSous: 0.5` ; `fuitTour: 2` ; seulement si le joueur l'attaque ou brise un pacte par la force |
+| roque | gen_rc_roque | (15,8 ; 13,3), au pin | libre | 4 | 3 | 2 | (mains) | 10 / 0 | **jamais dans la liste par défaut** ; seulement si le joueur l'attaque ; `rendSous: 1.0` dès le premier coup |
 
 Distances à l'entrée (30,5 ; 17) : Paca 10,3 m, Roque 15,3 m (toutes ≥ 8 m).
 
@@ -285,7 +286,7 @@ Objets existants (`water`, `ration`, `poignard`). Pas de nouvel objet obligatoir
 | Mulet | après `sur_laisse_mourir` ou victoire cruelle, ou pacte avec Paca | rien de vendre : un harnais, pas un item ; texte : « Le harnais viendrait, à qui voudrait le couper. Tu le laisses. » |
 
 ## 10. Clés d'assets : réutilisations et clés nouvelles à produire
-**Rien n'est produit dans ce lot.** Même pipeline que le pilote, la caravane et l'écluse, le moment venu : Mega-Line, caméra du jeu, 50 px/m, manifeste `assets/rencontres/manifest.json`, aucune clé existante modifiée, aucun étirement.
+Sprites produits et publiés (groupe `rc_survivant_pins`) : lot 1 sols et décors `014db7e`, lot 2 PNJ `98a6fd2`. Même pipeline que le pilote, la caravane et l'écluse : caméra du jeu, 50 px/m, manifeste `assets/rencontres/manifest.json`, aucune clé existante modifiée, aucun étirement. Poses définitives au §15.
 
 Préfixes :
 - `rc_fo_` pour les modules de la **forêt**, réutilisables par d'autres rencontres de ce biome ;
@@ -351,9 +352,11 @@ Préfixes :
 6. Action `pv:N` déjà posée au lot Verriers : le soin à l'eau l'utilise.
 7. À la sortie, poser les drapeaux de monde selon le §7 (Roque sauvé / dépouillé, Mateo pris).
 8. Tests : `?dev=1` → forcer `survivant_pins` sur F08, F09 ou G08, 1280 et 390. Rien à tester tant que les sprites et le câblage ne sont pas là.
-9. **Sprites** : pas encore produits. Le §15 se remplira après le lot d'Ocre, comme pour le pilote et les Verriers.
+9. **Sprites** : produits (`014db7e` sols et décors, `98a6fd2` PNJ). Poses, mesures et défauts au §15. La lanterne porte le `_neon` ; la flaque nocturne est l'enseigne générique du §14 (comme le bivouac), pas un décalque.
 
 ## 13. Décisions de DA et de lore à signaler à Valentin
+**Garde-fou (Régie, 18 novembre 2026)** : les drapeaux `monde_*` déjà posés par la caravane, les Verriers et maintenant Mateo servent seulement à des répliques et à des indices, sans aucune conséquence de quête, tant que Valentin n'a pas validé une quête de la filière.
+
 Rien n'est imposé ; tout est [proposition]. Les points 1 à 5 sont des **modifications ou des extensions de lore**, à valider ou à refuser une par une.
 
 **Modifications importantes**
@@ -374,7 +377,7 @@ Rien n'est imposé ; tout est [proposition]. Les points 1 à 5 sont des **modifi
 11. Première forêt du chantier : aucun module de désert ou de verre réutilisé, pour que l'identité tienne seule.
 
 ## 14. Entrée au format d'ARCHI.md §4
-Poses définitives après production des sprites (même principe que le §15 de l'écluse) ; positions ci-dessous en mètres, ancre des décors au coin sud-est de l'emprise. Les clés sont celles du §10 ; le câblage attend le lot de sprites.
+Poses définitives au §15 (même principe que l'écluse) ; positions en mètres, ancre des décors au coin sud-est de l'emprise. Roque et Paca sont un peu plus au sud que le plan provisoire du §4, pour rester lisibles devant le pin et le fourré.
 
 ```js
 survivant_pins: {
@@ -387,10 +390,10 @@ survivant_pins: {
     ground: { skin: 'g_rc_aiguilles', tint: null, paint: [ /* bande g_rc_piste_foret z 15-20 ; variantes _b/_c semées */ ] },
     ambiance: 'forest',
     buildings: [
-      // pin mort, pins, fourré, borne — poses au §15 après sprites
+      // poses définitives : §15.1 (pin mort, pins, fourré, borne, lanterne)
     ],
     props: [
-      // mulet, besace, soulier, lanterne, décalques traînée et ornières
+      // poses définitives : §15.1 (mulet, besace, soulier, décalques)
     ],
     entrees: [{ id: 'entree', x: 30.5, z: 17, side: 'east' }],
     sorties: [
@@ -401,40 +404,100 @@ survivant_pins: {
       flaque: { r: 1.5, x: 15.8, z: 12.6, couleur: '#ff9a48', i: 0.55 } }]
   },
   pnj: [
-    { id: 'sur_roque', name: 'Roque', sprite: 'gen_rc_roque', x: 15.8, z: 12.8, faceTo: [30.5, 17], dialogue: 'sur_roque' },
-    { id: 'sur_paca', name: 'Paca', sprite: 'gen_rc_paca', x: 25.5, z: 8, faceTo: [20, 16], dialogue: 'sur_paca', si: '!sur_paca_partie' }
+    { id: 'sur_roque', name: 'Roque', sprite: 'gen_rc_roque', x: 15.8, z: 13.3, faceTo: [30.5, 17], dialogue: 'sur_roque' },
+    { id: 'sur_paca', name: 'Paca', sprite: 'gen_rc_paca', x: 25.8, z: 8.9, faceTo: [20, 16], dialogue: 'sur_paca', si: '!sur_paca_partie' }
   ],
   // dialogues : §6 ; fouilles et examens : §3 et §9 ; combat : §8 (vide par défaut)
 }
 ```
 
-## 15. Table des poses (à remplir après les sprites)
-Rien n'est produit dans ce lot. Positions provisoires, pour Rivet et pour le lot de sprites à venir. x, z = coin nord-ouest de l'emprise ; l'ancre des décors tombera au coin sud-est au sol.
+## 15. Poses définitives et sprites publiés
+Sprites produits et publiés dans `assets/rencontres/` (groupe `rc_survivant_pins`, manifeste sans clé existante modifiée, vérifié par script) : lot 1 sols et décors `014db7e`, lot 2 PNJ `98a6fd2`. Même pipeline que le pilote, la caravane et l'écluse : caméra du jeu (lacet 34,5°, tangage 28,8°, 50 px/m), échelle uniforme, aucun étirement. Ombres de contact au pied des décors (pas sur la lanterne, qui est accrochée). Planche : `/workspace/nml-shots/rencontres/survivant_planche_sprites.png` ; MAQUETTE : `/workspace/nml-shots/rencontres/survivant_maquette.png`.
 
-### Sols
-| Clé | Pose |
+**Tirage** : cases de forêt F08, G08, F09 (G09 Temple exclu), §1 ; la scène ne dépend pas de la case.
+
+### 15.1 Table des poses (décors)
+x, z = coin nord-ouest de l'emprise ; l'ancre du sprite tombe au coin sud-est au sol (x + w ; z + d). `depth` = (x + w) + (z + d) ; `ordre` = ordre de dessin conseillé (décalques `fond` d'abord). Deux ajustements par rapport au plan provisoire du §4, pour que les figures se lisent : Roque un peu plus au sud, Paca juste au sud du fourré.
+
+| Clé | x | z | w | d | Solides (x, z, w, d, couv) | Ordre | Depth |
+|---|---|---|---|---|---|---|---|
+| `rc_sur_trainee_3q` | 21.5 | 16.2 | 8 | 1.5 | fond | 1 | 47.2 |
+| `rc_sur_ornieres_3q` | 26.2 | 15.4 | 4 | 3 | fond | 2 | 48.6 |
+| `rc_fo_pin_3q` | 2 | 1 | 2.2 | 2.2 | 2, 1, 2.2, 2.2, 2 | 3 | 7.4 |
+| `rc_fo_pin_b_3q` | 7 | 2 | 2 | 2 | 7, 2, 2, 2, 2 | 4 | 13 |
+| `rc_fo_borne_3q` | 2.5 | 12 | 1.2 | 1.2 | 2.5, 12, 1.2, 1.2, 1 | 5 | 16.9 |
+| `rc_fo_pin_3q` | 22 | 1.5 | 2.2 | 2.2 | 22, 1.5, 2.2, 2.2, 2 | 6 | 27.9 |
+| `rc_fo_pin_mort_3q` | 13.5 | 9 | 4 | 3.5 | 13.5, 9, 4, 3.5, 2 | 7 | 30 |
+| `rc_sur_lanterne_3q` | 15.6 | 12.0 | 0.25 | 0.25 | — | 8 | 30.5 (forcer après le pin : elle est accrochée à la branche sud) |
+| `rc_fo_pin_3q` | 4 | 22.5 | 2.2 | 2.2 | 4, 22.5, 2.2, 2.2, 2 | 9 | 30.9 |
+| `rc_fo_pin_b_3q` | 28 | 2 | 2 | 2 | 28, 2, 2, 2, 2 | 10 | 34 |
+| `rc_fo_fourre_3q` | 24.5 | 6.5 | 2.5 | 2.2 | 24.5, 6.5, 2.5, 2.2, 1 | 11 | 35.7 |
+| `rc_sur_besace_3q` | 18.4 | 15.6 | 0.8 | 0.6 | — | 12 | 35.4 |
+| `rc_fo_pin_b_3q` | 12 | 23 | 2 | 2 | 12, 23, 2, 2, 2 | 13 | 39 |
+| `rc_sur_soulier_3q` | 22.2 | 16.8 | 0.3 | 0.3 | — | 14 | 39.6 |
+| `rc_sur_mulet_3q` | 20.2 | 16.0 | 2.4 | 1.3 | 20.2, 16.0, 2.4, 1.3, 1 | 15 | 39.9 |
+| `rc_fo_pin_3q` | 24 | 22.8 | 2.2 | 2.2 | 24, 22.8, 2.2, 2.2, 2 | 16 | 51.2 |
+| `rc_fo_pin_b_3q` | 29 | 22.5 | 2 | 2 | 29, 22.5, 2, 2, 2 | 17 | 55.5 |
+
+Calques : `rc_sur_lanterne_3q_neon` (additif, même canevas, même ancre, flamme seulement, orange `#ff9a48`, pas de halo). Flaque nocturne : enseigne générique du §14 (`sur_lampe`, `flaque` r 1,5 au sol en (15,8 ; 12,6)), comme le bivouac ; ce n'est pas un décalque.
+
+### 15.2 PNJ
+| Clé | Position (x ; z) | Hauteur | Remarques |
+|---|---|---|---|
+| `gen_rc_roque` (+ `_dos`) | (15,8 ; 13,3) | 1,4 m assis | faceTo (30,5 ; 17) ; ancre au sol sous les hanches (`pivot: 0`) ; un peu plus au sud que le §4 (12,8), pour rester devant les racines du pin |
+| `gen_rc_paca` (+ `_dos`) | (25,8 ; 8,9) | 1,68 m | faceTo (20 ; 16) ; absente si `sur_paca_partie` ; un peu plus au sud que le §4 (25,5 ; 8), pour dépasser du fourré dès l'arrivée |
+
+Portraits `portrait-gen_rc_roque`, `portrait-gen_rc_paca` (192 px). Ancre au pied, au centre, comme les autres rencontres.
+
+### 15.3 Clés publiées
+| Clé | px | Ancre | Emprise L × P × H (m) |
+|---|---|---|---|
+| `g_rc_aiguilles` | 512 × 512 | — | tuile 4 m |
+| `g_rc_aiguilles_b` | 512 × 512 | — | tuile 4 m |
+| `g_rc_aiguilles_c` | 512 × 512 | — | tuile 4 m |
+| `g_rc_piste_foret` | 512 × 512 | — | tuile 4 m |
+| `g_rc_piste_foret_b` | 512 × 512 | — | tuile 4 m |
+| `rc_fo_pin_mort_3q` | 144 × 254 | [105, 253] | 4 × 3,5 × 5,5 |
+| `rc_fo_pin_3q` | 177 × 245 | [102, 244] | 2,2 × 2,2 × 5,5 |
+| `rc_fo_pin_b_3q` | 116 × 215 | [70, 214] | 2 × 2 × 4,8 |
+| `rc_fo_fourre_3q` | 164 × 127 | [102, 126] | 2,5 × 2,2 × 1,6 |
+| `rc_fo_borne_3q` | 56 × 85 | [35, 84] | 1,2 × 1,2 × 0,8 |
+| `rc_sur_mulet_3q` | 136 × 97 | [99, 96] | 2,4 × 1,3 × 0,9 |
+| `rc_sur_besace_3q` | 41 × 44 | [29, 43] | 0,8 × 0,6 × 0,3 |
+| `rc_sur_soulier_3q` | 20 × 24 | [12, 21] | 0,3 × 0,3 × 0,12 |
+| `rc_sur_lanterne_3q` | 12 × 23 | [7, 22] | 0,25 × 0,25 × 0,4 |
+| `rc_sur_lanterne_3q_neon` | 12 × 23 | [7, 22] | calque additif |
+| `rc_sur_trainee_3q` | 351 × 117 | [318, 116] | 8 × 1,5 × 0 |
+| `rc_sur_ornieres_3q` | 213 × 88 | [148, 87] | 4 × 3 × 0 |
+| `gen_rc_roque` | 614 × 512 | [307, 511] | height_m 1,4 ; pivot 0 |
+| `gen_rc_roque_dos` | 636 × 512 | [318, 511] | height_m 1,4 ; pivot 0 |
+| `portrait-gen_rc_roque` | 192 × 192 | — | portrait |
+| `gen_rc_paca` | 244 × 512 | [122, 511] | height_m 1,68 ; pivot 0 |
+| `gen_rc_paca_dos` | 252 × 512 | [126, 511] | height_m 1,68 ; pivot 0 |
+| `portrait-gen_rc_paca` | 192 × 192 | — | portrait |
+
+Pentes mesurées (cible 0,33 / 0,70), pied gauche / droit :
+
+| Clé | Pente mesurée |
 |---|---|
-| `g_rc_aiguilles` (+ `_b`, `_c`) | toute la scène, variantes semées (jamais deux voisines) |
-| `g_rc_piste_foret` (+ `_b`) | bande z 15-20, x 0-32 |
+| `rc_fo_pin_mort_3q` | 0,10 / 0,39 |
+| `rc_fo_pin_3q` | 0,67 / 0,22 |
+| `rc_fo_pin_b_3q` | 0,09 / 0,03 |
+| `rc_fo_fourre_3q` | 0,81 / 0,29 |
+| `rc_fo_borne_3q` | 0,50 / 1,00 |
+| `rc_sur_mulet_3q` | 0,67 / 0,12 |
+| `rc_sur_besace_3q` | 1,00 / 1,00 |
+| `rc_sur_soulier_3q` | — / 0,80 |
+| `rc_sur_lanterne_3q` | — / — (trop petite) |
 
-### Décor
-| Clé | x | z | w | d | Solides | Notes |
-|---|---|---|---|---|---|---|
-| `rc_sur_trainee_3q` | 21.5 | 16.2 | 8 | 1.5 | fond | sous tout le reste |
-| `rc_sur_ornieres_3q` | 26.2 | 15.4 | 4 | 3 | fond | |
-| `rc_fo_borne_3q` | 2.5 | 12 | 1.2 | 1.2 | oui, couv 1 | |
-| `rc_fo_pin_mort_3q` | 13.5 | 9 | 4 | 3.5 | oui, couv 2 | silhouette ; lanterne sur branche sud |
-| `rc_sur_lanterne_3q` | 15.6 | 12.0 | 0.25 | 0.25 | — | + `_neon` ; ou portée par le pin, selon le câblage |
-| `rc_sur_besace_3q` | 18.4 | 15.6 | 0.8 | 0.6 | — | |
-| `rc_sur_soulier_3q` | 22.2 | 16.8 | 0.3 | 0.3 | — | |
-| `rc_sur_mulet_3q` | 20.2 | 16.0 | 2.4 | 1.3 | oui, couv 1 | lisible dès l'arrivée |
-| `rc_fo_fourre_3q` | 24.5 | 6.5 | 2.5 | 2.2 | oui, couv 1 | |
-| `rc_fo_pin_3q` / `_b` | (2 ; 1), (7 ; 2), (22 ; 1,5), (28 ; 2), (4 ; 22,5), (12 ; 23), (24 ; 22,8), (29 ; 22,5) | 2-2,5 | 2-2,5 | tronc solide | modules forêt |
-
-### PNJ
-| Clé | Position (x ; z) | Remarques |
-|---|---|---|
-| `gen_rc_roque` (+ `_dos`) | (15,8 ; 12,8) | assis, faceTo (30,5 ; 17) |
-| `gen_rc_paca` (+ `_dos`) | (25,5 ; 8) | faceTo (20 ; 16) ; absente si `sur_paca_partie` |
-
-Portraits `portrait-gen_rc_roque`, `portrait-gen_rc_paca` (192 px). Ancre des PNJ au pied, au centre, comme les autres rencontres ; Roque assis : ancre au sol sous les hanches, à préciser au lot de sprites.
+### 15.4 Défauts connus (v1)
+- Les pins (et le pin foudroyé) sont des silhouettes peintes, calées sur le volume à la caméra ; leurs flancs restent plus verticaux que la boîte iso (pentes mesurées loin de 0,33 / 0,70). Ce n'est pas un étirement : l'échelle est uniforme.
+- Le fourré se lit un peu plus « vu de dessus » que les pins debout.
+- Les racines du pin foudroyé sont amples : Roque, à la position provisoire (15,8 ; 12,8), disparaissait derrière. La pose du §15.2 le met juste au sud.
+- De même, Paca à (25,5 ; 8) tombait dans l'emprise du fourré. La pose du §15.2 la fait dépasser au sud. Si le moteur trie seulement sur le pied, garder un `ordre` / `depth` supérieur à celui du fourré.
+- La lanterne fait 12 × 23 px (c'est sa taille réelle, 0,4 m) : la flamme tient en quelques pixels. La poser **après** le pin (depth > 30), sinon la branche sud la cache. Pas de halo.
+- Le soulier fait 20 × 24 px : il se lit à 1280 ; en 390, l'anneau d'examen suffit, comme prévu.
+- Les étuis des ornières sont à peine visibles à 50 px/m (volontairement un peu plus gros que nature, mais encore discrets).
+- Les joints de la piste `g_rc_piste_foret` restent un peu lisibles tous les 4 m, en bande.
+- La vue de dos de Paca est un 3/4 un peu plus profilé que celle de Roque ; le dos, le nœud du châle et le sac se lisent quand même (ce n'est pas un profil).
+- Les cheveux de Roque sont un peu moins gris de dos que de face (illisible à la taille du jeu).
