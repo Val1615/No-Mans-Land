@@ -933,11 +933,15 @@ Le bloc du §14 est déjà aligné sur ces poses (mêmes x, z, w, d, solides, mi
 { sprite: 'rc_ds_rochers_3q', x: 29, z: 27.9, w: 3, d: 1.5, solid: [{ x: 29, z: 27.9, w: 3, d: 1.5, couv: 1 }] }  // réutilisé,
 ```
 
-### 15.5 Défauts connus (v1)
+### 15.5 Défauts connus (v1, mis à jour par la retouche v1.1)
 - La porte nord de la cabane est sur une face cachée à cette caméra : elle est signalée par des planches éclatées au coin nord-est ; le dialogue passe par la fenêtre sud, visible.
-- Le blindé du repeint est plus rouillé que gris : la peinture grise brûlée ne se lit qu'à moitié.
-- Escalier : les marches se lisent mal comme une descente (IoU 0,87) ; à reprendre si Rivet trouve le passage peu lisible.
-- Le gris : l'oreille fendue ne se lit pas à la taille du jeu (visible seulement à la planche) ; le jeune chancho est plus brun que gris de cendre.
-- Les vues de dos des chanchos tiennent la pose du modèle bloc (tête au nord-est), mais les pattes avant, plus loin, montent haut à l'écran : à vérifier en jeu qu'elles ne lisent pas comme une bête qui se cabre.
+- Le gris : l'oreille fendue ne se lit pas à la taille du jeu (visible seulement à la planche).
 - Rufina : ses plaques d'avant-bras sont un peu « écailles » ; Nilo : les taches de sa chemise reprennent le motif de sa peau.
 - `g_rc_verre` : motif de dalles répétitif à 4 m sur les grandes surfaces ; semer `_b` et `_c`.
+- Escalier v1.1 : la descente se lit, mais l'emprise ne fait que 0,5 m de profondeur ; les cinq marches sont donc minces à la taille du jeu, et le liseré de sable du bas touche le bord gauche de la toile.
+
+**Corrigé en v1.1** (mêmes clés, mêmes px, mêmes ancres ; rien à recâbler) :
+- `gen_rc_chancho_dos` et `gen_rc_chancho_gris_dos` : vraies vues de dos 3/4 (croupe et queue vers la caméra, tête au nord-est presque cachée par les épaules, quatre sabots au sol), peintes sur un nouveau modèle bloc arrondi ; le centre des sabots est posé sur l'ancre v1.
+- `rc_vr_escalier_quai_3q` : géométrie refaite. Palier au niveau du quai au nord, cinq marches qui descendent vers le canal (sud), contremarches sombres, échiffres en pente, sable amassé au pied ; plus de mur en haut.
+- `rc_vr_blinde_vitrifie_3q` : tôle gris acier vitrifiée, quelques coulures de rouille seulement ; socle de verre intact. Le calque `_texte` n'a pas changé et reste aligné (même toile, même ancre).
+- `gen_rc_chancho` (le jeune) : cuir gris de cendre ; les défenses et le groin n'ont pas changé.

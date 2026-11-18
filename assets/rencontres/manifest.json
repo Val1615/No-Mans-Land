@@ -1866,14 +1866,14 @@
     "face": "3q",
     "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "Blindé du Service enfoncé dans le verre jusqu'aux essieux : peinture grise brûlée, cloquée et rouillée, canon court, écoutille ouverte, galets et chenille pris dans le verre, sel autour ; module du biome verre",
+    "role": "Blindé du Service enfoncé dans le verre jusqu'aux essieux : tôle gris acier vitrifiée par le flash, quelques coulures de rouille, canon court, écoutille ouverte, galets et chenille pris dans le verre, sel autour ; module du biome verre",
     "pose": [
       "{ sprite: 'rc_vr_blinde_vitrifie_3q', x: 26, z: 1, w: 5, d: 3, solid: [{ x: 26, z: 1, w: 5, d: 3, couv: 2 }] }  // + rc_vr_blinde_vitrifie_3q_texte en etage: 1 sur la même emprise"
     ],
     "ordre": 18,
     "depth": 35,
-    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9434), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.2704 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/blinde_g1.jpg, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.9434), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.2704 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/blinde_g1.jpg, hors dépôt) — retouche v1.1 (Ocre, 2026-11-18) : caisse ramenée au gris acier vitrifié : pixels rouille de la coque désaturés vers un gris acier légèrement froid (quelques coulures gardées), socle de verre masqué par le rendu 3D et intact ; px, ancre et alpha inchangés, le calque _texte reste aligné sans retouche",
+    "status": "v1.1",
     "groupe": "rc_ecluse_verriers",
     "pente_mesuree": "pied gauche 0.4 / droit 0.79 (cible 0,33 / 0,70)",
     "ombre_contact": true,
@@ -1969,16 +1969,16 @@
     "face": "3q",
     "pente": "iso 3/4 du jeu (lacet 34,5°, tangage 28,8°, projection parallèle, 50 px/m ; face x 0,33 / face z 0,70)",
     "px_par_m": 50,
-    "role": "Escalier du quai vers le limon : marches de pierre entre deux échiffres, sable sur les marches ; occupe le passage nord du parapet (x 12-15), non solide",
+    "role": "Escalier du quai vers le limon : on lit la descente vers le canal (palier au niveau du quai au nord, marches qui descendent vers le sud, échiffres en pente, sable amassé en bas) ; occupe le passage nord du parapet (x 12-15), non solide",
     "pose": [
       "{ sprite: 'rc_vr_escalier_quai_3q', x: 12, z: 8.5, w: 3, d: 0.5 }  // passage nord : non solide"
     ],
     "ordre": 9,
     "depth": 24.0,
-    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.8677), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.1357 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/escalier_g1.jpg, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot 1 écluse des Verriers : sols et décors (Ocre, 2026-11-18) : géométrie = modèle 3D aux cotes de MUTANTS.md §4/§10 (mut_v1/m_mut.py), rendu par le rasteriseur de la Mega-Line à la caméra exacte du jeu, soleil du pilote seul ; matière ET silhouette = repeint GenerateImage (cursor) image-à-image de ce rendu, recalé sur lui par échelle uniforme + translation (IoU 0.8677), alpha du repeint (part peinte 1,0), UNE mise à l'échelle uniforme x0.1357 vers 50 px/m ; ombre de contact peinte au pied (emprise au sol floutée, brun très sombre, alpha ≤ 0,5, décalée vers le bas-droite comme le soleil) ; aucun étirement ni cisaillement (brut mut_v1/gen/escalier_g1.jpg, hors dépôt) — retouche v1.1 (Ocre, 2026-11-18) : géométrie refaite pour lire la descente vers le canal (palier au niveau du quai au nord, cinq marches qui descendent vers le sud et la caméra, contremarches sombres, échiffres en pente, sable amassé au pied ; plus de mur en haut), même chaîne (rendu → repeint image-à-image, recalage IoU 0.8064, échelle x0.1325), posé sur l'ancre v1 dans la toile v1 (brut mut_v1/gen/escalier_g1.png, hors dépôt)",
+    "status": "v1.1",
     "groupe": "rc_ecluse_verriers",
-    "pente_mesuree": "pied gauche 0.38 / droit 0.67 (cible 0,33 / 0,70)",
+    "pente_mesuree": "pied gauche 0.37 / droit 0.78 (cible 0,33 / 0,70)",
     "ombre_contact": true
   },
   "rc_ecl_peniche_3q": {
@@ -2581,8 +2581,8 @@
     ],
     "ordre": "trié avec le décor par profondeur (point d’ancrage = centre des pattes au sol)",
     "note": "sprite stocké à 4× la résolution 50 px/m (200 px/m) pour rester net ; height_m = (hauteur du sprite / 4) / (50 × cos 28,8°) : à cette valeur le billboard sort à 50 px/m, comme les décors (même règle que gen_rc_ciro_dessous). L’ancre n’est pas le bas du sprite : c’est le point du sol sous le ventre, entre les quatre pattes.",
-    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.75 m, longueur ≈ 1.1 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (bloc + référence de style gen_rc_quilla_assise), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho.jpg, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.75 m, longueur ≈ 1.1 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (bloc + référence de style gen_rc_quilla_assise), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho.jpg, hors dépôt) — retouche v1.1 (Ocre, 2026-11-18) : cuir ramené au gris de cendre (pelage brun/olive désaturé et refroidi pixel à pixel sur le sprite v1 ; défenses, groin, yeux, alpha, px et ancre inchangés)",
+    "status": "v1.1",
     "groupe": "rc_ecluse_verriers",
     "vue_dos": "gen_rc_chancho_dos"
   },
@@ -2609,8 +2609,8 @@
     "pose": [],
     "ordre": "trié avec le décor par profondeur (point d’ancrage = centre des pattes au sol)",
     "note": "sprite stocké à 4× la résolution 50 px/m (200 px/m) pour rester net ; height_m = (hauteur du sprite / 4) / (50 × cos 28,8°) : à cette valeur le billboard sort à 50 px/m, comme les décors (même règle que gen_rc_ciro_dessous). L’ancre n’est pas le bas du sprite : c’est le point du sol sous le ventre, entre les quatre pattes.",
-    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.75 m, longueur ≈ 1.1 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (image-à-image du bloc de dos + la vue de face comme référence de matière), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho_dos.jpg, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.75 m, longueur ≈ 1.1 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (image-à-image du bloc de dos + la vue de face comme référence de matière), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho_dos.jpg, hors dépôt) — retouche v1.1 (Ocre, 2026-11-18) : vraie vue de dos 3/4 : nouveau modèle bloc arrondi (mut_v1/m_bete2.py, croupe face caméra, tête au nord-est masquée par les épaules), repeint GenerateImage (cursor) sur fond vert avec la vue de face comme référence de matière, cuir gris de cendre, quatre sabots au sol ; détourage chroma, UNE échelle uniforme, centre des quatre sabots posé sur l'ancre v1 ; même toile et même ancre (brut mut_v1/pnj/chancho_dos3.jpg, hors dépôt)",
+    "status": "v1.1",
     "groupe": "rc_ecluse_verriers",
     "vue_de": "gen_rc_chancho"
   },
@@ -2668,8 +2668,8 @@
     "pose": [],
     "ordre": "trié avec le décor par profondeur (point d’ancrage = centre des pattes au sol)",
     "note": "sprite stocké à 4× la résolution 50 px/m (200 px/m) pour rester net ; height_m = (hauteur du sprite / 4) / (50 × cos 28,8°) : à cette valeur le billboard sort à 50 px/m, comme les décors (même règle que gen_rc_ciro_dessous). L’ancre n’est pas le bas du sprite : c’est le point du sol sous le ventre, entre les quatre pattes.",
-    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.95 m, longueur ≈ 1.5 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (image-à-image du bloc de dos + la vue de face comme référence de matière), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho_gris_dos.jpg, hors dépôt)",
-    "status": "v1",
+    "source": "Ocre, lot 2 écluse des Verriers : PNJ et créatures (Ocre, 2026-11-18) : pose et angle tirés d'un modèle 3D bloc (mut_v1/m_bete.py, garrot 0.95 m, longueur ≈ 1.5 m) rendu à la caméra du jeu, peint par GenerateImage (cursor) sur fond vert (image-à-image du bloc de dos + la vue de face comme référence de matière), détourage chroma (rc_v1/cut_rc.py), UNE mise à l'échelle uniforme calée sur la largeur du modèle (×4, soit 200 px/m) ; aucun étirement (brut mut_v1/pnj/chancho_gris_dos.jpg, hors dépôt) — retouche v1.1 (Ocre, 2026-11-18) : vraie vue de dos 3/4 : nouveau modèle bloc arrondi (mut_v1/m_bete2.py, croupe face caméra, tête au nord-est masquée par les épaules), repeint GenerateImage (cursor) sur fond vert avec la vue de face comme référence de matière, quatre sabots au sol ; détourage chroma, UNE échelle uniforme, centre des quatre sabots posé sur l'ancre v1 ; même toile et même ancre (brut mut_v1/pnj/chancho_gris_dos3.jpg, hors dépôt)",
+    "status": "v1.1",
     "groupe": "rc_ecluse_verriers",
     "vue_de": "gen_rc_chancho_gris"
   }
